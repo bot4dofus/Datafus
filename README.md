@@ -1,6 +1,4 @@
-<img src="https://www.pixenli.com/image/vOMpy3KE" />
-
-<img src="https://www.pixenli.com/image/0TDofCTL" onmouseover="this.src='https://www.pixenli.com/image/uSe-LXUu'" onmouseout="this.src='https://www.pixenli.com/image/0TDofCTL'" />
+<img src="https://github.com/LucBerge/Datafus/raw/master/images/banner_tags.png" />
 
 # Datafus
 
