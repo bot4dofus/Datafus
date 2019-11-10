@@ -27,3 +27,6 @@ def contains_double(array):
 			doubles.append(item)
 		copy.append(item)
 	return doubles
+
+def get_time():
+	return time.strftime("%y-%M-%d_%X")
