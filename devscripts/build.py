@@ -59,6 +59,7 @@ class DatabaseBuilder():
 		logger.log('Building database...')
 		self.build_files()
 		self.merge_files()
+		self.check_integrity()
 
 	def build_files(self):
 		logger.log('Building files...')
