@@ -242,7 +242,7 @@ class DatabaseBuilder():
 				elif choise == '22':
 					self.add_item()
 				else:
-					logger.log('Choise ' + choise + 'does not exist')
+					logger.log('Choise ' + choise + ' does not exist')
 
 			except KeyboardInterrupt:
 				logger.log('\nYou interrupted the script')
