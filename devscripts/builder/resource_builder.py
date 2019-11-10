@@ -10,11 +10,11 @@ class ResourceBuilder(BaseBuilder):
 	URL = {
 		'fr' : 'https://www.dofus.com/fr/mmorpg/encyclopedie/ressources',
 		'en' : 'https://www.dofus.com/en/mmorpg/encyclopedia/resources',
-		# 'de' : ,
-		# 'es' : ,
-		# 'it' : ,
-		# 'pt' : 
+		'de' : 'https://www.dofus.com/de/mmorpg/leitfaden/ressourcen',
+		'es' : 'https://www.dofus.com/es/mmorpg/enciclopedia/recursos',
+		'it' : 'https://www.dofus.com/it/mmorpg/enciclopedia/risorse',
+		'pt' : 'https://www.dofus.com/pt/mmorpg/enciclopedia/recursos'
 	}
 
 	def __init__(self, language):
-		super().__init__(self.URL[language], 2780, 'resources', ResourceScrapper)
+		super().__init__(self.URL[language], 2780, 'resources', ResourceScrapper, language)

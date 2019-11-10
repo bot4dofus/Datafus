@@ -10,11 +10,11 @@ class SidekickBuilder(BaseBuilder):
 	URL = {
 		'fr' : 'https://www.dofus.com/fr/mmorpg/encyclopedie/compagnons',
 		'en' : 'https://www.dofus.com/en/mmorpg/encyclopedia/sidekicks',
-		# 'de' : ,
-		# 'es' : ,
-		# 'it' : ,
-		# 'pt' : 
+		'de' : 'https://www.dofus.com/de/mmorpg/leitfaden/begleiter',
+		'es' : 'https://www.dofus.com/es/mmorpg/enciclopedia/companeros',
+		'it' : 'https://www.dofus.com/it/mmorpg/enciclopedia/compagni',
+		'pt' : 'https://www.dofus.com/pt/mmorpg/enciclopedia/companheiros'
 	}
 
 	def __init__(self, language):
-		super().__init__(self.URL[language], 12, 'sidekicks', SidekickScrapper)
+		super().__init__(self.URL[language], 12, 'sidekicks', SidekickScrapper, language)

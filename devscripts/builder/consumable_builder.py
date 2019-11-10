@@ -10,14 +10,14 @@ class ConsumableBuilder(BaseBuilder):
 	URL = {
 		'fr' : 'https://www.dofus.com/fr/mmorpg/encyclopedie/consommables',
 		'en' : 'https://www.dofus.com/en/mmorpg/encyclopedia/consumables',
-		# 'de' : ,
-		# 'es' : ,
-		# 'it' : ,
-		# 'pt' : 
+		'de' : 'https://www.dofus.com/de/mmorpg/leitfaden/konsumgueter',
+		'es' : 'https://www.dofus.com/es/mmorpg/enciclopedia/consumibles',
+		'it' : 'https://www.dofus.com/it/mmorpg/enciclopedia/consumabili',
+		'pt' : 'https://www.dofus.com/pt/mmorpg/enciclopedia/itens-consumiveis'
 		}
 
 	def __init__(self, language):
-		super().__init__(self.URL[language], 1415, 'consumables', ConsumableScrapper)
+		super().__init__(self.URL[language], 1415, 'consumables', ConsumableScrapper, language)
 
 	@property
 	def nb(self):

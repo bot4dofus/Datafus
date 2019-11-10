@@ -4,12 +4,40 @@
 import logger
 from scrapper.base_scrapper import BaseScrapper
 
+FIELD_NAMES = {
+	'fr':{
+		'description': 'Description',								# https://www.dofus.com/fr/mmorpg/encyclopedia/equipment/14170-bzzzinga-headband
+		'effects': 'Effets',										# https://www.dofus.com/fr/mmorpg/encyclopedia/equipment/14170-bzzzinga-headband
+		'conditions': 'Conditions',									# https://www.dofus.com/fr/mmorpg/encyclopedia/pets/12541-madreggon
+		'characteristics': 'Caractéristiques',						# https://www.dofus.com/fr/mmorpg/encyclopedia/mounts/41-almond-crimson-dragoturkey
+		'evolutionary_effects': 'Effets évolutifs',					# https://www.dofus.com/fr/mmorpg/encyclopedia/pets/12541-madreggon
+		'bonuses': 'Bonus',											# https://www.dofus.com/fr/mmorpg/encyclopedia/idols/51-djim
+		'spells': 'Sorts',											# https://www.dofus.com/fr/mmorpg/encyclopedia/idols/51-djim
+		'resistances': 'Résistances',								# https://www.dofus.com/fr/mmorpg/encyclopedia/monsters/982-acrocat
+		'set_bonuses': 'Bonus de la panoplie',						# https://www.dofus.com/fr/mmorpg/encyclopedia/sets/346-rassler-set
+		'set_total_bonuses': 'Bonus total de la panoplie complète',	# https://www.dofus.com/fr/mmorpg/encyclopedia/sets/346-rassler-set
+	},
+	'en':{
+		'description': 'Description',
+		'effects': 'Effects',
+		'conditions': 'Conditions',
+		'characteristics': 'Characteristics',
+		'evolutionary_effects': 'Evolution Effects',
+		'bonuses': 'Bonus',
+		'spells': 'Spells',
+		'resistances': 'Resistances',
+		'set_bonuses': 'Set Bonus',
+		'set_total_bonuses': 'Complete Set Bonus',
+	}
+}
+
 class ItemScrapper(BaseScrapper):
 
-	def __init__(self, url):
+	def __init__(self, url, language):
 		super().__init__()
 		self.url = url
 		self.soup = self.requests(url)
+		self.fields = FIELD_NAMES[language]
 
 	def get_id_from_url(self, url):
 		try:
@@ -113,25 +141,28 @@ class ItemScrapper(BaseScrapper):
 			for title in titles:
 				striped_title = title.get_text().strip()
 
-				if striped_title == "Description":
+				if '{' in striped_title:
+					striped_title = striped_title[:striped_title.find('{')]
+
+				if striped_title == self.fields['description']:
 					description = self.get_text(title.parent, 'description')
-				elif striped_title == "Effets":
+				elif striped_title == self.fields['effects']:
 					effects = self.get_array(title.parent, 'effects')
-				elif striped_title == "Conditions":
+				elif striped_title == self.fields['conditions']:
 					conditions = self.get_array(title.parent, 'conditions')
-				elif striped_title == "Caractéristiques":
+				elif striped_title == self.fields['characteristics']:
 					characteristics = self.get_array(title.parent, 'characteristics')
-				elif striped_title == "Effets évolutifs":
-					evolutionary_effects = self.get_array(title.parent, 'evolutionary effects')
-				elif striped_title == "Bonus":
+				elif striped_title == self.fields['evolutionary_effects']:
+					evolutionary_effects = self.get_array(title.parent, 'evolutionary_effects')
+				elif striped_title == self.fields['bonuses']:
 					bonuses = self.get_array(title.parent, 'bonuses')
-				elif striped_title == "Sorts":
+				elif striped_title == self.fields['spells']:
 					spells = self.get_text(title.parent, 'spells')
-				elif striped_title == "Résistances":
+				elif striped_title == self.fields['resistances']:
 					resistances = self.get_array(title.parent, 'resistances')
-				elif striped_title == "Bonus de la panoplie":
+				elif striped_title == self.fields['set_bonuses']:
 					set_bonuses = self.get_array(title.parent, 'set_bonuses')
-				elif striped_title == "Bonus total de la panoplie complète":
+				elif striped_title == self.fields['set_total_bonuses']:
 					set_total_bonuses = self.get_array(title.parent, 'set_total_bonuses')
 
 			return description, effects, conditions, characteristics, evolutionary_effects, bonuses, spells, resistances, set_bonuses, set_total_bonuses
@@ -163,7 +194,7 @@ class ItemScrapper(BaseScrapper):
 				type_ = item.findAll("div", {"class", "ak-text"})[0].get_text().strip()
 
 				craft.append({
-					'url':url,
+					'url': self.DOMAIN + url,
 					'id':self.get_id_from_url(url),
 					'type':type_,
 					'quantity':quantity[:quantity.find(' ')]

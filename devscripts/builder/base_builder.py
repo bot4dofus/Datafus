@@ -7,12 +7,13 @@ from exceptions.exceptions import PageNotFoundException
 
 class BaseBuilder():
 
-	def __init__(self, url, nb, field_name, scrapper):
+	def __init__(self, url, nb, field_name, scrapper, language):
 		super().__init__()
 		self._url = url
 		self._nb = nb
 		self._field_name = field_name
 		self._scrapper = scrapper
+		self._language = language
 
 	@property
 	def url(self):
@@ -44,7 +45,7 @@ class BaseBuilder():
 		for i in range(len(urls)):
 			logger.log('Scrapping item ' + str(i+1) + '/' + str(len(urls)))
 			try:
-				scrapper = self._scrapper(urls[i])
+				scrapper = self._scrapper(urls[i], self._language)
 				data.append(scrapper.scrap())
 			except PageNotFoundException:
 				logger.warning("Skipping " + urls[i] + ", page does not exist")
