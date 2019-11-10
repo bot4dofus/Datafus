@@ -57,7 +57,7 @@ class DatabaseBuilder():
 
 	def build_database(self):
 		logger.log('Building database...')
-		scrap_all()
+		self.build_files()
 		self.merge_files()
 
 	def build_files(self):
