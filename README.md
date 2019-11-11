@@ -4,6 +4,13 @@
 
 Datafus is a small python3 tool to build the dofus database by scrapping the website. The final database is a JSON file.
 
+- [French database](https://github.com/LucBerge/Datafus/blob/master/data/dofus.fr.json)
+- [English database](https://github.com/LucBerge/Datafus/blob/master/data/dofus.en.json)
+- [German database](https://github.com/LucBerge/Datafus/blob/master/data/dofus.de.json)
+- [Spanish database](https://github.com/LucBerge/Datafus/blob/master/data/dofus.es.json)
+- [Itanian database](https://github.com/LucBerge/Datafus/blob/master/data/dofus.it.json)
+- [Portuguese database](https://github.com/LucBerge/Datafus/blob/master/data/dofus.pt.json)
+
 # JSON structure
 
 - `monsters`: List of monsters in the game (1832)
