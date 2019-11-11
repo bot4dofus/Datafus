@@ -31,6 +31,7 @@ _The following fields are always existing_
 
 - `url`: The item url
 - `id`: The item id
+- `name`: The item name
 - `img`: The item image url
 - `type`: The item type
 
