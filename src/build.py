@@ -153,7 +153,7 @@ class DatabaseBuilder():
 			else:
 				raise Exception('This url is not valid.')
 
-			item_data = builder.scrapper(url).scrap()
+			item_data = builder.scrapper(url, self.language).scrap()
 			data = utils.read_json(self.database_file)
 			data[builder.field_name].append(item_data)
 			utils.save_json(self.database_file, data),
