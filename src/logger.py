@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import time, utils
+import utils
 
 FILE = 'warnings.log'
 

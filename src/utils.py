@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import json, logger, os
+import json, logger, os, time
 
 def read_json(file_name):
 	if(not os.path.isfile(file_name)):
