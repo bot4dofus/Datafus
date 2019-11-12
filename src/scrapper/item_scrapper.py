@@ -6,16 +6,16 @@ from scrapper.base_scrapper import BaseScrapper
 
 FIELD_NAMES = {
 	'fr':{
-		'description': 'Description',								# https://www.dofus.com/fr/mmorpg/encyclopedia/equipment/14170-bzzzinga-headband
-		'effects': 'Effets',										# https://www.dofus.com/fr/mmorpg/encyclopedia/equipment/14170-bzzzinga-headband
-		'conditions': 'Conditions',									# https://www.dofus.com/fr/mmorpg/encyclopedia/pets/12541-madreggon
-		'characteristics': 'Caractéristiques',						# https://www.dofus.com/fr/mmorpg/encyclopedia/mounts/41-almond-crimson-dragoturkey
-		'evolutionary_effects': 'Effets évolutifs',					# https://www.dofus.com/fr/mmorpg/encyclopedia/pets/12541-madreggon
-		'bonuses': 'Bonus',											# https://www.dofus.com/fr/mmorpg/encyclopedia/idols/51-djim
-		'spells': 'Sorts',											# https://www.dofus.com/fr/mmorpg/encyclopedia/idols/51-djim
-		'resistances': 'Résistances',								# https://www.dofus.com/fr/mmorpg/encyclopedia/monsters/982-acrocat
-		'set_bonuses': 'Bonus de la panoplie',						# https://www.dofus.com/fr/mmorpg/encyclopedia/sets/346-rassler-set
-		'set_total_bonuses': 'Bonus total de la panoplie complète',	# https://www.dofus.com/fr/mmorpg/encyclopedia/sets/346-rassler-set
+		'description': 'Description',								# https://www.dofus.com/en/mmorpg/encyclopedia/equipment/14170-bzzzinga-headband
+		'effects': 'Effets',										# https://www.dofus.com/en/mmorpg/encyclopedia/equipment/14170-bzzzinga-headband
+		'conditions': 'Conditions',									# https://www.dofus.com/en/mmorpg/encyclopedia/pets/12541-madreggon
+		'characteristics': 'Caractéristiques',						# https://www.dofus.com/en/mmorpg/encyclopedia/mounts/41-almond-crimson-dragoturkey
+		'evolutionary_effects': 'Effets évolutifs',					# https://www.dofus.com/en/mmorpg/encyclopedia/pets/12541-madreggon
+		'bonuses': 'Bonus',											# https://www.dofus.com/en/mmorpg/encyclopedia/idols/51-djim
+		'spells': 'Sorts',											# https://www.dofus.com/en/mmorpg/encyclopedia/idols/51-djim
+		'resistances': 'Résistances',								# https://www.dofus.com/en/mmorpg/encyclopedia/monsters/982-acrocat
+		'set_bonuses': 'Bonus de la panoplie',						# https://www.dofus.com/en/mmorpg/encyclopedia/sets/346-rassler-set
+		'set_total_bonuses': 'Bonus total de la panoplie complète',	# https://www.dofus.com/en/mmorpg/encyclopedia/sets/346-rassler-set
 	},
 	'en':{
 		'description': 'Description',
@@ -28,6 +28,18 @@ FIELD_NAMES = {
 		'resistances': 'Resistances',
 		'set_bonuses': 'Set Bonus',
 		'set_total_bonuses': 'Complete Set Bonus',
+	},
+	'de':{
+		'description': 'Beschreibung',
+		'effects': 'Wirkungen',
+		'conditions': 'Voraussetzungen',
+		'characteristics': 'Eigenschaften',
+		'evolutionary_effects': 'Evolutionäre Wirkungen',
+		'bonuses': 'Bonus',
+		'spells': 'Zaubersprüche',
+		'resistances': 'Resistenz',
+		'set_bonuses': 'Setbonus',
+		'set_total_bonuses': 'Gesamtbonus des vollständigen Sets',
 	}
 }
 
