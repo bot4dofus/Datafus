@@ -17,4 +17,5 @@ class PetBuilder(BaseBuilder):
 	}
 
 	def __init__(self, language):
-		super().__init__(self.URL[language], 131, 'pets', PetScrapper, language)
+		super().__init__(self.URL[language], 131, 'pets', PetScrapper, language,
+			['url', 'id', 'name', 'img', 'type', 'level', 'description'])

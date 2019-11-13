@@ -17,4 +17,5 @@ class HarnessBuilder(BaseBuilder):
 	}
 
 	def __init__(self, language):
-		super().__init__(self.URL[language], 63, 'harnesses', HarnessScrapper, language)
+		super().__init__(self.URL[language], 63, 'harnesses', HarnessScrapper, language,
+			['level', 'description'])

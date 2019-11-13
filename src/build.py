@@ -106,14 +106,28 @@ class DatabaseBuilder():
 			ok = True
 
 			for builder in self.builders:
+
+				#Check the number of items
 				if len(data[builder.field_name]) != builder.nb:
 					logger.log('Got ' + str(len(data[builder.field_name])) + ' ' + builder.field_name + ', expected ' + str(builder.nb))
 					ok = False
 
+				#Check doublons
 				doubles = utils.contains_double([item['url'] for item in data[builder.field_name]])
 				if(len(doubles)):
 					logger.log('In ' + builder.field_name + ', ' + str(doubles) + ', are in doubles')
 					ok = False
+
+				#Check mandatory fields
+				for item in data[builder.field_name]:
+					missing = []
+
+					for mandatory_field in builder.mandatory_fields:
+						if(mandatory_field not in item):
+							missing.append(mandatory_field)
+
+					if(len(missing)):
+						logger.log('Fields ' + str(missing) + ' missing for ' + item['url'])
 
 			if(ok):
 				logger.log('Ok !')

@@ -17,4 +17,5 @@ class SidekickBuilder(BaseBuilder):
 	}
 
 	def __init__(self, language):
-		super().__init__(self.URL[language], 12, 'sidekicks', SidekickScrapper, language)
+		super().__init__(self.URL[language], 12, 'sidekicks', SidekickScrapper, language,
+			['url', 'id', 'name', 'img', 'type', 'description', 'characteristics'])

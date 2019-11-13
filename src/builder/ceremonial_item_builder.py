@@ -17,4 +17,5 @@ class CeremonialItemBuilder(BaseBuilder):
 	}
 
 	def __init__(self, language):
-		super().__init__(self.URL[language], 711, 'ceremonial_items', CeremonialItemScrapper, language)
+		super().__init__(self.URL[language], 711, 'ceremonial_items', CeremonialItemScrapper, language,
+			['url', 'id', 'name', 'img', 'type', 'level', 'description'])
