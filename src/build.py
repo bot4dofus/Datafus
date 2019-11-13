@@ -93,9 +93,11 @@ class DatabaseBuilder():
 
 	def remove_individual_files(self):
 		logger.log('Removing individual files...')
-
-		for builder in self.builders:
-			os.remove(self.get_file_name(builder.field_name))
+		try:
+			for builder in self.builders:
+				utils.remove_json(self.get_file_name(builder.field_name))
+		except Exception as e:
+			logger.log(str(e))
 
 	def check_integrity(self):
 		logger.log('Checking database integrity...')
@@ -140,7 +142,10 @@ class DatabaseBuilder():
 
 	def remove_database_file(self):
 		logger.log('Removing database file...')
-		os.remove(self.database_file)
+		try:
+			utils.remove_json(self.database_file)
+		except Exception as e:
+			logger.log(str(e))
 
 	def add_item(self):
 

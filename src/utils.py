@@ -19,6 +19,11 @@ def save_json(file_name, data):
 	file.write(json.dumps(data))
 	file.close()
 
+def remove_json(file_name):
+	if(not os.path.isfile(file_name)):
+		raise Exception('File ' + file_name + ' does not exist. Build it first.')
+	os.remove(file_name)
+
 def contains_double(array):
 	copy = []
 	doubles = []
