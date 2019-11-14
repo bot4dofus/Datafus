@@ -90,7 +90,7 @@ class ItemScrapper(BaseScrapper):
 	def get_id_from_url(self, url):
 		try:
 			trailer = url[url.rfind('/')+1:]
-			return trailer[:trailer.find('-')]
+			return int(trailer[:trailer.find('-')])
 		except Exception:
 			logger.warning('Cannot get id for ' + url)
 			return None
@@ -130,6 +130,7 @@ class ItemScrapper(BaseScrapper):
 				text = element.span.get_text().strip().replace('\n', ' ')
 			else:
 				text = element.get_text().strip().replace('\n', ' ')
+			text = text.replace('  ', ' ')
 			return text[text.find(':')+2:]
 		except Exception:
 			logger.warning('Cannot get type for ' + self.url)
@@ -137,7 +138,7 @@ class ItemScrapper(BaseScrapper):
 
 	def get_level(self):
 		try:
-			text = self.soup.findAll("div", {"class": "ak-encyclo-detail-level"})[0].get_text().strip()
+			text = self.soup.findAll("div", {"class": "ak-encyclo-detail-level"})[0].get_text().strip().replace('  ', ' ')
 			return text[text.find(':')+2:]
 		except Exception:
 			logger.warning('Cannot get level for ' + self.url)
@@ -197,7 +198,7 @@ class ItemScrapper(BaseScrapper):
 				elif striped_title == self.fields['effects']:
 					effects = self.get_array(title.parent, 'effects')
 				elif striped_title == self.fields['conditions']:
-					conditions = self.get_array(title.parent, 'conditions')
+					conditions = self.get_text(title.parent, 'conditions')
 				elif striped_title == self.fields['characteristics']:
 					characteristics = self.get_array(title.parent, 'characteristics')
 				elif striped_title == self.fields['evolutionary_effects']:
@@ -243,9 +244,7 @@ class ItemScrapper(BaseScrapper):
 
 				craft.append({
 					'url': self.DOMAIN + url,
-					'id':self.get_id_from_url(url),
-					'type':type_,
-					'quantity':quantity[:quantity.find(' ')]
+					'quantity':int(quantity[:quantity.find(' ')])
 					})
 			return craft
 
