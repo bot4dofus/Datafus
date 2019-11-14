@@ -9,4 +9,6 @@ class PetScrapper(ItemScrapper):
 		super().__init__(url, language)
 
 	def scrap(self):
-		return super().scrap("ak-encyclo-detail-right")
+		data = super().scrap("ak-encyclo-detail-right")
+		data['level'] = int(data['level'])
+		return data

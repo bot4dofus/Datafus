@@ -9,4 +9,6 @@ class IdolScrapper(ItemScrapper):
 		super().__init__(url, language)
 
 	def scrap(self):
-		return super().scrap("ak-encyclo-detail")
+		data = super().scrap("ak-encyclo-detail")
+		data['level'] = int(data['level'])
+		return data
