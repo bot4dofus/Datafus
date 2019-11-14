@@ -55,7 +55,10 @@ class BaseBuilder():
 			logger.log('Scrapping item ' + str(i+1) + '/' + str(len(urls)))
 			try:
 				scrapper = self._scrapper(urls[i], self._language)
-				data.append(scrapper.scrap())
+				try:
+					data.append(scrapper.scrap())
+				except Exception:
+					logger.warning("Skipping " +  urls[i] + ", missing mandatory field")
 			except PageNotFoundException:
 				logger.warning("Skipping " + urls[i] + ", page does not exist")
 

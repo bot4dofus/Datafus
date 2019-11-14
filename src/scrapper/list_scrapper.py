@@ -8,10 +8,17 @@ class ListScrapper(BaseScrapper):
 
 	SIZE = 96
 
+	###########
+	# BUILDER #
+	###########
+
 	def __init__(self, url, nb):
-		super().__init__()
-		self.url = url
+		super().__init__(url)
 		self.nb = nb
+
+	#########
+	# SCRAP #
+	#########
 
 	def scrap(self):
 

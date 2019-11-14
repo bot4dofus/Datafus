@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import requests, time, logger
+import requests, time, logger, re
 from bs4 import BeautifulSoup
 from exceptions.exceptions import PageNotFoundException
 
@@ -12,8 +12,31 @@ class BaseScrapper():
 	WAIT_ON_429 = 70
 	MAX_ITERATIONS = 5
 
-	def __init__(self):
-		pass
+	###########
+	# BUILDER #
+	###########
+	
+	def __init__(self, url):
+		self.url = url
+
+	##########
+	# STATIC #
+	##########
+
+	def get_id_from_url(self, url):
+		trailer = url[url.rfind('/')+1:]
+		return int(trailer[:trailer.find('-')])
+
+	def get_language_from_url(self, url):
+		matching = re.match(r'https://www.dofus.com/(.*)/mmorpg/.*', url)
+		if(matching):
+			return matching.group(1)
+		else:
+			raise Exception('Not a valid url')
+
+	###########
+	# GENERAL #
+	###########
 
 	def requests(self, url, iteration=0):
 		if(iteration >= self.MAX_ITERATIONS):
