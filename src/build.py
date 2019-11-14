@@ -121,13 +121,24 @@ class DatabaseBuilder():
 				#Check mandatory fields
 				for item in data[builder.field_name]:
 					missing = []
+					empty = []
 
 					for mandatory_field in builder.mandatory_fields:
+
 						if(mandatory_field not in item):
 							missing.append(mandatory_field)
 
+						else:
+							if(item[mandatory_field] == None):
+								empty.append(mandatory_field)
+							elif(len(item[mandatory_field]) == 0):
+								empty.append(mandatory_field)
+
 					if(len(missing)):
-						logger.log('Fields ' + str(missing) + ' missing for ' + item['url'])
+						logger.log('Fields ' + str(missing) + ' are missing for ' + item['url'])
+
+					if(len(empty)):
+						logger.log('Fields ' + str(empty) + ' are missing for ' + item['url'])
 
 			if(ok):
 				logger.log('Ok !')
