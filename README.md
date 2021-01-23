@@ -52,6 +52,7 @@ The following table show the feilds which exists or not for a given item.
 |`resistances`         |✔️       |❌       |❌          |❌   |❌    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
 |`craft`               |❌       |✴️       |✴️          |❌   |❌    |❌     |✴️         |✴️         |✴️               |❌        |✔️     |✴️        |
 |`bonuses`             |❌       |❌       |❌          |❌   |❌    |❌     |❌         |❌         |❌              |❌        |✔️     |❌        |
+|`items`               |❌       |❌       |❌          |✔️   |❌    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
 |`set_bonuses`         |❌       |❌       |❌          |✔️   |❌    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
 |`set_total_bonuses`   |❌       |❌       |❌          |✴️   |❌    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
 |`evolutionary_effects`|❌       |❌       |❌          |❌   |✴️    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
@@ -144,6 +145,14 @@ The following table show the feilds which exists or not for a given item.
 - `bonuses` **_List_**: List of string bonuses.
 ```json
 "bonuses":[
+  ...,
+  ...
+]
+```
+
+- `items` **_List_**: List of items url.
+```json
+"items":[
   ...,
   ...
 ]
