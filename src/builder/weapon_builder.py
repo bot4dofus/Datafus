@@ -17,5 +17,5 @@ class WeaponBuilder(BaseBuilder):
 	}
 
 	def __init__(self, language):
-		super().__init__(self.URL[language], 726, 'weapons', WeaponScrapper, language,
+		super().__init__(self.URL[language], 'weapons', WeaponScrapper, language,
 			['url', 'id', 'name', 'img', 'type', 'level', 'description', 'characteristics'])

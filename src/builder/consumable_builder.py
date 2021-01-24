@@ -17,7 +17,7 @@ class ConsumableBuilder(BaseBuilder):
 		}
 
 	def __init__(self, language):
-		super().__init__(self.URL[language], 1415, 'consumables', ConsumableScrapper, language,
+		super().__init__(self.URL[language], 'consumables', ConsumableScrapper, language,
 			['url', 'id', 'name', 'img', 'type', 'level', 'description'])
 
 	@property

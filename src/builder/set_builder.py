@@ -17,5 +17,5 @@ class SetBuilder(BaseBuilder):
 	}
 
 	def __init__(self, language):
-		super().__init__(self.URL[language], 331, 'sets', SetScrapper, language,
+		super().__init__(self.URL[language], 'sets', SetScrapper, language,
 			['url', 'id', 'name', 'img', 'type', 'level', 'set_bonuses'])

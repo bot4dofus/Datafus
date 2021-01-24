@@ -17,5 +17,5 @@ class MountBuilder(BaseBuilder):
 	}
 
 	def __init__(self, language):
-		super().__init__(self.URL[language], 142, 'mounts', MountScrapper, language,
+		super().__init__(self.URL[language], 'mounts', MountScrapper, language,
 			['url', 'id', 'name', 'img', 'type', 'characteristics'])

@@ -17,5 +17,5 @@ class EquipmentBuilder(BaseBuilder):
 	}
 
 	def __init__(self, language):
-		super().__init__(self.URL[language], 2329, 'equipments', EquipmentScrapper, language,
+		super().__init__(self.URL[language], 'equipments', EquipmentScrapper, language,
 			['url', 'id', 'name', 'img', 'type', 'level', 'description'])

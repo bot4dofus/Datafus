@@ -17,5 +17,5 @@ class ResourceBuilder(BaseBuilder):
 	}
 
 	def __init__(self, language):
-		super().__init__(self.URL[language], 2780, 'resources', ResourceScrapper, language,
+		super().__init__(self.URL[language], 'resources', ResourceScrapper, language,
 			['url', 'id', 'name', 'img', 'type', 'level', 'description'])

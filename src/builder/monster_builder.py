@@ -17,5 +17,5 @@ class MonsterBuilder(BaseBuilder):
 	}
 
 	def __init__(self, language):
-		super().__init__(self.URL[language], 1832, 'monsters', MonsterScrapper, language,
+		super().__init__(self.URL[language], 'monsters', MonsterScrapper, language,
 			['url', 'id', 'name', 'img', 'type', 'level', 'characteristics', 'resistances'])
