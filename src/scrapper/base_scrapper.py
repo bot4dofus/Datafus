@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import requests, time, logger, re
+import time, logger, re, cloudscraper
 from bs4 import BeautifulSoup
-from exceptions.exceptions import PageNotFoundException
+from exceptions.exceptions import DatafusException
 
+CLOUDSCRAPPER = cloudscraper.CloudScraper()
+        
 class BaseScrapper():
 	
 	DOMAIN = 'https://www.dofus.com'
@@ -32,7 +34,7 @@ class BaseScrapper():
 		if(matching):
 			return matching.group(1)
 		else:
-			raise Exception('Not a valid url')
+			raise DatafusException('Not a valid url')
 
 	###########
 	# GENERAL #
@@ -40,19 +42,19 @@ class BaseScrapper():
 
 	def requests(self, url, iteration=0):
 		if(iteration >= self.MAX_ITERATIONS):
-			raise Exception('Maximum iterations reached (' + str(self.MAX_ITERATIONS) + ')')
-
-		page = requests.get(url)
+			raise DatafusException('Maximum iterations reached (' + str(self.MAX_ITERATIONS) + ')')
+        
+		page = CLOUDSCRAPPER.get(url)
 
 		if(page.status_code == 429):
-			logger.log("Waiting " + str(self.WAIT_ON_429))
+			logger.log("Waiting " + str(self.WAIT_ON_429) + " seconds")
 			time.sleep(self.WAIT_ON_429)
 			return self.requests(url, iteration=iteration+1)
 
 		elif(page.status_code == 404):
-			raise PageNotFoundException('Error code ' + str(page.status_code) + " for url " + url)
+			raise DatafusException('Error code ' + str(page.status_code) + " for url " + url)
 
 		elif(page.status_code != 200):
-			raise Exception('Error code ' + str(page.status_code) + " for url " + url)
+			raise DatafusException('Error code ' + str(page.status_code) + " for url " + url)
 
 		return BeautifulSoup(page.text, 'html.parser') 
