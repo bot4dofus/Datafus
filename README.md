@@ -13,18 +13,18 @@ Datafus is a small python3 tool to build the dofus database by scrapping the web
 
 ## JSON structure
 
-- `monsters`  **_List_**: List of monsters in the game (1832)
-- `weapons` **_List_**: List of weapons in the game (726)
-- `equipments` **_List_**: List of equipments in the game (2329)
-- `sets` **_List_**: List of sets in the game (331)
-- `pets` **_List_**: List of pets in the game (131)
-- `mounts` **_List_**: List of mounts in the game (142)
-- `consumables` **_List_**: List of consumables in the game (1415)
-- `resources` **_List_**: List of resources in the game (2780)
-- `ceremonial_items` **_List_**: List of ceremonial items in the game (711)
-- `sidekicks` **_List_**: List of sidekicks items in the game (12)
-- `idols` **_List_**: List of idols in the game (89)
-- `harnesses` **_List_**: List of harnesses in the game (63)
+- `monsters`  **_List_**: List of monsters in the game
+- `weapons` **_List_**: List of weapons in the game
+- `equipments` **_List_**: List of equipments in the game
+- `sets` **_List_**: List of sets in the game
+- `pets` **_List_**: List of pets in the game
+- `mounts` **_List_**: List of mounts in the game
+- `consumables` **_List_**: List of consumables in the game
+- `resources` **_List_**: List of resources in the game
+- `ceremonial_items` **_List_**: List of ceremonial items in the game
+- `sidekicks` **_List_**: List of sidekicks items in the game
+- `idols` **_List_**: List of idols in the game
+- `harnesses` **_List_**: List of harnesses in the game
 
 ## Item structure
 
@@ -32,7 +32,7 @@ The following table show the feilds which exists or not for a given item.
 
 ✔️ The field is mandatory
 
-✴️ The field is optionnal
+⚫ The field is optionnal
 
 ❌ The field doesn't exists
 
@@ -46,16 +46,16 @@ The following table show the feilds which exists or not for a given item.
 |`type`                |✔️       |✔️       |✔️          |✔️   |✔️    |✔️      |✔️          |✔️         |✔️               |✔️        |✔️     |✔️         |
 |`level`               |✔️       |✔️       |✔️          |✔️   |✔️    |❌     |✔️           |✔️         |✔️               |❌       |✔️     |✔️         |
 |`description`         |❌       |✔️       |✔️          |❌   |✔️    |❌     |✔️          |✔️         |✔️               |✔️        |✔️     |✔️         |
-|`effects`             |❌       |✴️       |✴️          |❌   |❌    |✴️     |✴️         |✴️         |✴️               |❌        |❌     |❌        |
-|`conditions`          |❌       |✴️       |✴️          |❌   |❌    |❌     |✴️         |✴️         |✴️               |❌        |❌     |✴️        |
-|`characteristics`     |✔️       |✔️       |❌          |❌   |❌    |✔️     |❌          |❌        |✴️               |✔️        |❌     |❌        |
+|`effects`             |❌       |⚫       |⚫          |❌   |❌    |⚫     |⚫         |⚫         |⚫               |❌        |❌     |❌        |
+|`conditions`          |❌       |⚫       |⚫          |❌   |❌    |❌     |⚫         |⚫         |⚫               |❌        |❌     |⚫        |
+|`characteristics`     |✔️       |✔️       |❌          |❌   |❌    |✔️     |❌          |❌        |⚫               |✔️        |❌     |❌        |
 |`resistances`         |✔️       |❌       |❌          |❌   |❌    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
-|`craft`               |❌       |✴️       |✴️          |❌   |❌    |❌     |✴️         |✴️         |✴️               |❌        |✔️     |✴️        |
+|`craft`               |❌       |⚫       |⚫          |❌   |❌    |❌     |⚫         |⚫         |⚫               |❌        |✔️     |⚫        |
 |`bonuses`             |❌       |❌       |❌          |❌   |❌    |❌     |❌         |❌         |❌              |❌        |✔️     |❌        |
 |`items`               |❌       |❌       |❌          |✔️   |❌    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
 |`set_bonuses`         |❌       |❌       |❌          |✔️   |❌    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
-|`set_total_bonuses`   |❌       |❌       |❌          |✴️   |❌    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
-|`evolutionary_effects`|❌       |❌       |❌          |❌   |✴️    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
+|`set_total_bonuses`   |❌       |❌       |❌          |⚫   |❌    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
+|`evolutionary_effects`|❌       |❌       |❌          |❌   |⚫    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
 |`spells`              |❌       |❌       |❌          |❌   |❌    |❌     |❌        |❌          |❌              |❌        |✔️     |❌        |
 
 ## Fields description
@@ -85,9 +85,17 @@ The following table show the feilds which exists or not for a given item.
 "type":...
 ```
 
-- `level` **_Integer_**: Level of the item from 1 to 200.
+- `level` **_Integer_ (Monsters exclude)**: Level of the item from 1 to 200.
 ```json
 "level":...
+```
+
+- `level` **_Tuple of Integer_ (Monsters only)**: Minimal and Maximal value of the monster from 1 to 200.
+```json
+"level":[
+  ...,
+  ...
+]
 ```
 
 - `description`  **_String_**: Description of the item.
@@ -95,7 +103,7 @@ The following table show the feilds which exists or not for a given item.
 "description":...
 ```
 
-- `effects` **_List_** : List of string effects.
+- `effects` **_List of String_** : List of string effects.
 ```json
 "effects":[
   ...,
@@ -103,7 +111,7 @@ The following table show the feilds which exists or not for a given item.
 ]
 ```
 
-- `conditions` **_List_** : List of string conditions.
+- `conditions` **_List of String_** : List of string conditions.
 ```json
 "conditions":[
   ...,
@@ -111,7 +119,7 @@ The following table show the feilds which exists or not for a given item.
 ]
 ```
 
-- `characteristics` **_List_**: List of string characteristics.
+- `characteristics` **_List of String_**: List of string characteristics.
 ```json
 "characteristics":[
   ...,
@@ -119,7 +127,7 @@ The following table show the feilds which exists or not for a given item.
 ]
 ```
 
-- `resistances` **_List_**: List of string resistances.
+- `resistances` **_List of String_**: List of string resistances.
 ```json
 "resistances":[
   ...,
@@ -127,7 +135,7 @@ The following table show the feilds which exists or not for a given item.
 ]
 ```
 
-- `craft` **_List_** : How to craft the item.
+- `craft` **_List of Craft_** : How to craft the item.
 ```json
 "craft":[
   {
@@ -142,7 +150,7 @@ The following table show the feilds which exists or not for a given item.
 ]
 ```
 
-- `bonuses` **_List_**: List of string bonuses.
+- `bonuses` **_List of String_**: List of string bonuses.
 ```json
 "bonuses":[
   ...,
@@ -150,7 +158,7 @@ The following table show the feilds which exists or not for a given item.
 ]
 ```
 
-- `items` **_List_**: List of items url.
+- `items` **_List of String_**: List of items url.
 ```json
 "items":[
   ...,
@@ -158,7 +166,7 @@ The following table show the feilds which exists or not for a given item.
 ]
 ```
 
-- `set_bonuses` **_List_**: List of string set bonuses.
+- `set_bonuses` **_List of String_**: List of string set bonuses.
 ```json
 "set_bonuses":[
   ...,
@@ -166,7 +174,7 @@ The following table show the feilds which exists or not for a given item.
 ]
 ```
 
-- `set_total_bonuses` **_List_** : List of string set total bonuses.
+- `set_total_bonuses` **_List of String_** : List of string set total bonuses.
 ```json
 "set_total_bonuses":[
   ...,
@@ -174,7 +182,7 @@ The following table show the feilds which exists or not for a given item.
 ]
 ```
 
-- `evolutionary_effects` **_List_** : List of string evolutionary effects.
+- `evolutionary_effects` **_List of String_** : List of string evolutionary effects.
 ```json
 "evolutionary_effects":[
   ...,
@@ -182,7 +190,7 @@ The following table show the feilds which exists or not for a given item.
 ]
 ```
 
-- `spells` **_List_**: List of string spells.
+- `spells` **_List of String_**: List of string spells.
 ```json
 "spells":[
   ...,
