@@ -131,8 +131,7 @@ class ItemScrapper(BaseScrapper):
             text = element.span.get_text().strip().replace('\n', ' ')
         else:
             text = element.get_text().strip().replace('\n', ' ')
-        text = text.replace('  ', ' ')
-        return text[text.find(':')+2:]
+        return text[text.find(':')+2:].strip()
 
     ################
     # NON OPTIONAL #
