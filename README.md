@@ -11,124 +11,189 @@ Datafus is a small python3 tool to build the dofus database by scrapping the web
 - [Itanian database](https://github.com/LucBerge/Datafus/blob/master/data/dofus.it.json)
 - [Portuguese database](https://github.com/LucBerge/Datafus/blob/master/data/dofus.pt.json)
 
-# JSON structure
+## JSON structure
 
-- `monsters`  **_List_**: List of monsters in the game (1832)
-- `weapons` **_List_**: List of weapons in the game (726)
-- `equipments` **_List_**: List of equipments in the game (2329)
-- `sets` **_List_**: List of sets in the game (331)
-- `pets` **_List_**: List of pets in the game (131)
-- `mounts` **_List_**: List of mounts in the game (142)
-- `consumables` **_List_**: List of consumables in the game (1415)
-- `resources` **_List_**: List of resources in the game (2780)
-- `ceremonial_items` **_List_**: List of ceremonial items in the game (711)
-- `sidekicks` **_List_**: List of sidekicks items in the game (12)
-- `idols` **_List_**: List of idols in the game (89)
-- `harnesses` **_List_**: List of harnesses in the game (63)
+- `monsters`  **_List_**: List of monsters in the game
+- `weapons` **_List_**: List of weapons in the game
+- `equipments` **_List_**: List of equipments in the game
+- `sets` **_List_**: List of sets in the game
+- `pets` **_List_**: List of pets in the game
+- `mounts` **_List_**: List of mounts in the game
+- `consumables` **_List_**: List of consumables in the game
+- `resources` **_List_**: List of resources in the game
+- `ceremonial_items` **_List_**: List of ceremonial items in the game
+- `sidekicks` **_List_**: List of sidekicks items in the game
+- `idols` **_List_**: List of idols in the game
+- `harnesses` **_List_**: List of harnesses in the game
 
 ## Item structure
-_The following fields are always existing_
 
-- `url` **_String_**: The item url
-- `id` **_String_**: The item id
-- `name` **_String_**: The item name
-- `img` **_String_**: The item image url
-- `type` **_String_**: The item type
+The following table show the feilds which exists or not for a given item.
 
-### Monsters
-_Only for monsters_
+✔️ The field is mandatory
 
-- `level` **_String_**: String representing the range level 
-- `characteristics` **_List_**: List of string characteristics
-- `resistances` **_List_**: List of string resistances
+⚫ The field is optionnal
 
-### Weapons
-_Only for weapons_
+❌ The field doesn't exists
 
-- `level` **_String_**: Weapon level
-- `description`  **_String_**: Weapon description
-- `effects` **_List_** (optional): List of string effects
-- `conditions` **_List_** (optional): List of string conditions
-- `characteristics` **_List_**: List of string characteristics
-- `craft` (optional): How to craft the weapon
 
-### Equipments
-_Only for equipments_
+|Field                 | Monster | Weapon | Equipment | Set | Pet | Mount | Consumable | Resource | Cremonial item | Sidekick | Idol | Harnesse |
+|----------------------|:-------:|:------:|:---------:|:---:|:---:|:-----:|:----------:|:--------:|:--------------:|:--------:|:----:|:--------:|
+|`url` **key**         |✔️       |✔️       |✔️          |✔️   |✔️    |✔️      |✔️          |✔️         |✔️               |✔️        |✔️     |✔️         |
+|`id`                  |✔️       |✔️       |✔️          |✔️   |✔️    |✔️      |✔️          |✔️         |✔️               |✔️        |✔️     |✔️         |
+|`name`                |✔️       |✔️       |✔️          |✔️   |✔️    |✔️      |✔️          |✔️         |✔️               |✔️        |✔️     |✔️         |
+|`img`                 |✔️       |✔️       |✔️          |✔️   |✔️    |✔️      |✔️          |✔️         |✔️               |✔️        |✔️     |✔️         |
+|`type`                |✔️       |✔️       |✔️          |✔️   |✔️    |✔️      |✔️          |✔️         |✔️               |✔️        |✔️     |✔️         |
+|`level`               |✔️       |✔️       |✔️          |✔️   |✔️    |❌     |✔️           |✔️         |✔️               |❌       |✔️     |✔️         |
+|`description`         |❌       |✔️       |✔️          |❌   |✔️    |❌     |✔️          |✔️         |✔️               |✔️        |✔️     |✔️         |
+|`effects`             |❌       |⚫       |⚫          |❌   |❌    |⚫     |⚫         |⚫         |⚫               |❌        |❌     |❌        |
+|`conditions`          |❌       |⚫       |⚫          |❌   |❌    |❌     |⚫         |⚫         |⚫               |❌        |❌     |⚫        |
+|`characteristics`     |✔️       |✔️       |❌          |❌   |❌    |✔️     |❌          |❌        |⚫               |✔️        |❌     |❌        |
+|`resistances`         |✔️       |❌       |❌          |❌   |❌    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
+|`craft`               |❌       |⚫       |⚫          |❌   |❌    |❌     |⚫         |⚫         |⚫               |❌        |✔️     |⚫        |
+|`bonuses`             |❌       |❌       |❌          |❌   |❌    |❌     |❌         |❌         |❌              |❌        |✔️     |❌        |
+|`items`               |❌       |❌       |❌          |✔️   |❌    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
+|`set_bonuses`         |❌       |❌       |❌          |✔️   |❌    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
+|`set_total_bonuses`   |❌       |❌       |❌          |⚫   |❌    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
+|`evolutionary_effects`|❌       |❌       |❌          |❌   |⚫    |❌     |❌         |❌         |❌              |❌        |❌     |❌        |
+|`spells`              |❌       |❌       |❌          |❌   |❌    |❌     |❌        |❌          |❌              |❌        |✔️     |❌        |
 
-- `level` **_String_**: Equipment level
-- `description`  **_String_**: Equipment description
-- `effects` **_List_** (optional): List of string effects
-- `conditions` **_List_** (optional): List of string conditions
-- `craft` (optional): How to craft the item
+## Fields description
 
-### Sets
-_Only for sets_
+- `url` **_String_**: Url of the item. **Unique for each item.**
+```json
+"url":...
+```
 
-- `level` **_String_**: Set level
-- `set_bonuses` **_List_**: List of string set bonuses
-- `set_total_bonuses` **_List_** (optional): List of string set total bonuses
+- `id` **_Integer_**: Id of the item.
+```json
+"id":...
+```
 
-### Pets
-_Only for pets_
+- `name` **_String_**: Name of the item.
+```json
+"name":...
+```
 
-- `level` **_String_**: Pet level
-- `description` **_List_**: Pet description
-- `conditions` **_List_** (optional): List of string conditions
-- `evolutionary_effects` **_List_** (optional): List of string evolutionary effects
+- `img` **_String_**: Image url of the item.
+```json
+"img":...
+```
 
-### Mounts
-_Only for mounts_
+- `type` **_String_**: Type of the item (Bow, Cereal, Ore, Beer...)
+```json
+"type":...
+```
 
-- `effects` **_List_** (optional): List of string effects
-- `characteristics` **_List_**: List of string characteristics
+- `level` **_Integer_ (Monsters exclude)**: Level of the item from 1 to 200.
+```json
+"level":...
+```
 
-### Consumables
-_Only for consumables_
+- `level` **_Tuple of Integer_ (Monsters only)**: Minimal and Maximal value of the monster from 1 to 200.
+```json
+"level":[
+  ...,
+  ...
+]
+```
 
-- `level` **_String_**: Consumable level
-- `description`  **_String_**: Consumable description
-- `effects` **_List_** (optional): List of string effects
-- `conditions` **_List_** (optional):List of string conditions
-- `craft` (optional): How to craft the item
+- `description`  **_String_**: Description of the item.
+```json
+"description":...
+```
 
-### Resources
-_Only for resources_
+- `effects` **_List of String_** : List of string effects.
+```json
+"effects":[
+  ...,
+  ...
+]
+```
 
-- `level` **_String_**: Resource level
-- `description`  **_String_**: Resource description
-- `effects` **_List_** (optional): List of string effects
-- `conditions` **_List_** (optional): List of string conditions
-- `craft` (optional): How to craft the item
+- `conditions` **_List of String_** : List of string conditions.
+```json
+"conditions":[
+  ...,
+  ...
+]
+```
 
-### Ceremonial items
-_Only for ceremonial items_
+- `characteristics` **_List of String_**: List of string characteristics.
+```json
+"characteristics":[
+  ...,
+  ...
+]
+```
 
-- `level` **_String_**: Ceremonial item level
-- `description`  **_String_**: Ceremonial item description
-- `effects` **_List_** (optional): List of string effects
-- `conditions` **_List_** (optional): List of string conditions
-- `characteristics` **_List_** (optional): List of string characteristics
-- `craft` (optional): How to craft the item
+- `resistances` **_List of String_**: List of string resistances.
+```json
+"resistances":[
+  ...,
+  ...
+]
+```
 
-### Sidekicks
-_Only for sidekicks_
+- `craft` **_List of Craft_** : How to craft the item.
+```json
+"craft":[
+  {
+    "url":...,
+    "quantity":...
+  },
+  {
+    "url":...,
+    "quantity":...
+  },
+  ...
+]
+```
 
-- `description` **_String_**: Sidekick description
-- `characteristics` **_List_**: List of string characteristics
+- `bonuses` **_List of String_**: List of string bonuses.
+```json
+"bonuses":[
+  ...,
+  ...
+]
+```
 
-### Idols
-_Only for idols_
+- `items` **_List of String_**: List of items url.
+```json
+"items":[
+  ...,
+  ...
+]
+```
 
-- `level` **_String_**: Idol level
-- `description`  **_String_**: Idol description
-- `bonuses` **_List_**: List of string bonuses
-- `spells` **_List_**: List of string spells
-- `craft`: How to craft the item
+- `set_bonuses` **_List of String_**: List of string set bonuses.
+```json
+"set_bonuses":[
+  ...,
+  ...
+]
+```
 
-### Harness
-_Only for harnesses_
+- `set_total_bonuses` **_List of String_** : List of string set total bonuses.
+```json
+"set_total_bonuses":[
+  ...,
+  ...
+]
+```
 
-- `level` **_String_**: Harness level
-- `description`  **_String_**: Harness description
-- `conditions` **_List_** (optional): List of string conditions
-- `craft` (optional): How to craft the item
+- `evolutionary_effects` **_List of String_** : List of string evolutionary effects.
+```json
+"evolutionary_effects":[
+  ...,
+  ...
+]
+```
+
+- `spells` **_List of String_**: List of string spells.
+```json
+"spells":[
+  ...,
+  ...
+]
+```
