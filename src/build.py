@@ -19,29 +19,14 @@ from builder.harness_builder import HarnessBuilder
 POSSIBLE_LANGUAGES = ['fr', 'en', 'de', 'es', 'it', 'pt']
 POSSIBLE_FORMAT = ['json']
 
-BUILDERS = [
-    MonsterBuilder,
-    WeaponBuilder,
-    EquipmentBuilder,
-    SetBuilder,
-    PetBuilder,
-    MountBuilder,
-    ConsumableBuilder,
-    ResourceBuilder,
-    CeremonialItemBuilder,
-    SidekickBuilder,
-    IdolBuilder,
-    HarnessBuilder
-]
-
 class DatabaseBuilder():
 
     def __init__(self, path, database_name, database_format='json', language='fr'):
         if not language in POSSIBLE_LANGUAGES:
-            raise DatafusException('Language ' + language + ' does not exist.')
+            raise DatafusException('Language {} does not exist.'.format(language))
 
         if not database_format in POSSIBLE_FORMAT:
-            raise DatafusException('Format ' + database_format + ' does not exist.')
+            raise DatafusException('Format {} does not exist.'.format(database_format))
 
         self.path = path
         self.database_format = database_format
@@ -50,11 +35,21 @@ class DatabaseBuilder():
         self.database_file = self.get_file_name(database_name)
 
         self.builders = []
-        for builder in BUILDERS:
-            self.builders.append(builder(language))
+        self.builders.append(MonsterBuilder(language))
+        self.builders.append(WeaponBuilder(language))
+        self.builders.append(EquipmentBuilder(language))
+        self.builders.append(SetBuilder(language))
+        self.builders.append(PetBuilder(language))
+        self.builders.append(MountBuilder(language))
+        self.builders.append(ConsumableBuilder(language))
+        self.builders.append(ResourceBuilder(language))
+        self.builders.append(CeremonialItemBuilder(language))
+        self.builders.append(SidekickBuilder(language))
+        self.builders.append(IdolBuilder(language))
+        self.builders.append(HarnessBuilder(language))
 
     def get_file_name(self, field_name):
-        return self.path + field_name + '.' + self.language + '.' + self.database_format
+        return '{}{}.{}.{}'.format(self.path, field_name, self.language, self.database_format)
 
     def build_database(self):
         logger.log('Building database...')
@@ -64,15 +59,10 @@ class DatabaseBuilder():
 
     def build_files(self):
         logger.log('Building files...')
-
-        for builder in BUILDERS:
+        for builder in self.builders:
             self.build_items(builder)
 
-    def build_items(self, builderClass):
-
-        for builder in self.builders:
-            if(isinstance(builder, builderClass)):
-                break
+    def build_items(self, builder):
         data = builder.build()
         utils.save_json(self.get_file_name(builder.field_name), data)
 
@@ -306,29 +296,29 @@ class DatabaseBuilder():
                 elif choise == '2':
                     self.build_files()
                 elif choise == '3':
-                    self.build_items(MonsterBuilder)
+                    self.build_items(MonsterBuilder(self.language))
                 elif choise == '4':
-                    self.build_items(WeaponBuilder)
+                    self.build_items(WeaponBuilder(self.language))
                 elif choise == '5':
-                    self.build_items(EquipmentBuilder)
+                    self.build_items(EquipmentBuilder(self.language))
                 elif choise == '6':
-                    self.build_items(SetBuilder)
+                    self.build_items(SetBuilder(self.language))
                 elif choise == '7':
-                    self.build_items(PetBuilder)
+                    self.build_items(PetBuilder(self.language))
                 elif choise == '8':
-                    self.build_items(MountBuilder)
+                    self.build_items(MountBuilder(self.language))
                 elif choise == '9':
-                    self.build_items(ConsumableBuilder)
+                    self.build_items(ConsumableBuilder(self.language))
                 elif choise == '10':
-                    self.build_items(ResourceBuilder)
+                    self.build_items(ResourceBuilder(self.language))
                 elif choise == '11':
-                    self.build_items(CeremonialItemBuilder)
+                    self.build_items(CeremonialItemBuilder(self.language))
                 elif choise == '12':
-                    self.build_items(SidekickBuilder)
+                    self.build_items(SidekickBuilder(self.language))
                 elif choise == '13':
-                    self.build_items(IdolBuilder)
+                    self.build_items(IdolBuilder(self.language))
                 elif choise == '14':
-                    self.build_items(HarnessBuilder)
+                    self.build_items(HarnessBuilder(self.language))
                 elif choise == '15':
                     self.merge_files()
                 elif choise == '16':
