@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import json, logger
+import json
+import logger
 from scrapper.list_scrapper import ListScrapper
 from exceptions.exceptions import DatafusException
+
 
 class BaseBuilder():
 

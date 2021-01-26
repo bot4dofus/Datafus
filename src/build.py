@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: cp1252 -*-
 
-import logger, utils, os, traceback
+import logger
+import utils
+import traceback
 from exceptions.exceptions import DatafusException
 from builder.monster_builder import MonsterBuilder
 from builder.weapon_builder import WeaponBuilder
@@ -19,13 +21,14 @@ from builder.harness_builder import HarnessBuilder
 POSSIBLE_LANGUAGES = ['fr', 'en', 'de', 'es', 'it', 'pt']
 POSSIBLE_FORMAT = ['json']
 
+
 class DatabaseBuilder():
 
     def __init__(self, path, database_name, database_format='json', language='fr'):
-        if not language in POSSIBLE_LANGUAGES:
+        if language not in POSSIBLE_LANGUAGES:
             raise DatafusException('Language {} does not exist.'.format(language))
 
-        if not database_format in POSSIBLE_FORMAT:
+        if database_format not in POSSIBLE_FORMAT:
             raise DatafusException('Format {} does not exist.'.format(database_format))
 
         self.path = path
@@ -78,7 +81,6 @@ class DatabaseBuilder():
             for builder in self.builders:
                 data[builder.field_name] = utils.read_json(self.get_file_name(builder.field_name))
             utils.save_json(self.database_file, data)
-
         except DatafusException as e:
             logger.log(str(e))
 
@@ -98,13 +100,13 @@ class DatabaseBuilder():
 
             for builder in self.builders:
 
-                #Check doublons
+                # Check doublons
                 doubles = utils.contains_double([item['url'] for item in data[builder.field_name]])
                 if(len(doubles)):
                     logger.log('In {} : {} is in double'.format(builder.field_name, doubles))
                     ok = False
 
-                #Check mandatory fields
+                # Check mandatory fields
                 for item in data[builder.field_name]:
                     missing = []
                     empty = []
@@ -115,7 +117,7 @@ class DatabaseBuilder():
                             missing.append(mandatory_field)
 
                         else:
-                            if(item[mandatory_field] == None):
+                            if(item[mandatory_field] is None):
                                 empty.append(mandatory_field)
                             elif(len(str(item[mandatory_field])) == 0):
                                 empty.append(mandatory_field)
@@ -141,13 +143,10 @@ class DatabaseBuilder():
 
     def create_individual_files(self):
         logger.log('Creating individual files...')
-
         try:
             data = utils.read_json(self.database_file)
-
             for builder in self.builders:
                 utils.save_json(self.get_file_name(builder.field_name), data[builder.field_name])
-            
         except DatafusException as e:
             logger.log(str(e))
 
@@ -159,12 +158,10 @@ class DatabaseBuilder():
             logger.log(str(e))
 
     def add_item(self, urls=None):
-
-        if(urls == None):
+        if(urls is None):
             urls = [input("Url to parse : ")]
-                
         data = utils.read_json(self.database_file)
-            
+
         for url in urls:
             try:
                 for builder in self.builders:
@@ -176,20 +173,18 @@ class DatabaseBuilder():
                 logger.log("Scrapping and adding {} to the database".format(url))
                 item_data = builder.scrapper(url, self.language).scrap()
                 data[builder.field_name].append(item_data)
-                
             except DatafusException as e:
                 logger.log(str(e))
-            except Exception as e:
+            except Exception:
                 traceback.print_exc()
-                
+
         utils.save_json(self.database_file, data)
 
     def remove_item(self, urls=None):
-        if(urls == None):
+        if(urls is None):
             urls = [input("Url to parse : ")]
-
         data = utils.read_json(self.database_file)
-            
+
         for url in urls:
             try:
                 for builder in self.builders:
@@ -197,23 +192,23 @@ class DatabaseBuilder():
                         break
                 else:
                     logger.log('The url {} is not valid'.format(url))
-                    
+
                 logger.log("Removing {} from the database".format(url))
-                
+
                 for item in data[builder.field_name]:
                     if item['url'] == url:
                         data[builder.field_name].remove(item)
                         break
                 else:
                     logger.log('Coulnd\'t find the url {} in the database'.format(url))
-                
+
             except DatafusException as e:
                 logger.log(str(e))
-            except Exception as e:
+            except Exception:
                 traceback.print_exc()
-                
+
         utils.save_json(self.database_file, data)
-            
+
     def update_database(self):
         logger.log('Updating database...')
         try:
@@ -225,27 +220,27 @@ class DatabaseBuilder():
                 logger.log('Retrieving {} urls...'.format(builder.field_name))
                 remote_urls = builder.get_urls()
                 locale_urls = [item['url'] for item in data[builder.field_name]]
-                
-                missing_urls = [url for url in remote_urls if not url in locale_urls]
-                deprecated_urls = [url for url in locale_urls if not url in remote_urls]
-                
+
+                missing_urls = [url for url in remote_urls if url not in locale_urls]
+                deprecated_urls = [url for url in locale_urls if url not in remote_urls]
+
                 logger.log("Found {} remote {} and {} local ones".format(len(remote_urls), builder.field_name, len(locale_urls)))
                 logger.log("{} {} are missing and will be added".format(len(missing_urls), builder.field_name))
                 logger.log("{} {} are deprecated and will be removed".format(len(deprecated_urls), builder.field_name))
-        
+
                 total_missing_urls.extend(missing_urls)
                 total_deprecated_urls.extend(deprecated_urls)
-            
+
             if total_deprecated_urls:
                 logger.log("Removing {} items from the database...".format(len(total_deprecated_urls)))
                 self.remove_item(urls=total_deprecated_urls)
-                
+
             if total_missing_urls:
                 logger.log("Adding {} items to the database...".format(len(total_missing_urls)))
                 self.add_item(urls=total_missing_urls)
-            
+
             logger.log("The database is up to date !")
-        
+
         except DatafusException as e:
             logger.log(str(e))
 
@@ -279,11 +274,10 @@ class DatabaseBuilder():
 22) Add item
 23) Remove item
 24) Update database
-==========================\n"""
-                    .format(self.language))
+==========================\n""".format(self.language))
 
     def build(self):
-        
+
         while True:
             self.display_menu()
             choise = input("Choise : ")
@@ -346,6 +340,7 @@ class DatabaseBuilder():
                 traceback.print_exc()
             except KeyboardInterrupt:
                 logger.log('\nYou interrupted the script')
+
 
 if __name__ == "__main__":
     language = input("Language : ")

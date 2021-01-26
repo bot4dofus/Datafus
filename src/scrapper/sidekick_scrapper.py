@@ -3,21 +3,22 @@
 
 from scrapper.item_scrapper import ItemScrapper
 
+
 class SidekickScrapper(ItemScrapper):
 
-	###########
-	# BUILDER #
-	###########
+    ###########
+    # BUILDER #
+    ###########
 
-	def __init__(self, url, language):
-		super().__init__(url, language)
+    def __init__(self, url, language):
+        super().__init__(url, language)
 
-	#########
-	# SCRAP #
-	#########
+    #########
+    # SCRAP #
+    #########
 
-	def scrap(self):
-		data = super().scrap()
-		data['description'] = self.get_description()
-		data['characteristics'] = self.get_characteristics()
-		return data
+    def scrap(self):
+        data = super().scrap()
+        data['description'] = self.get_description()
+        data['characteristics'] = self.get_characteristics()
+        return data

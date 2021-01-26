@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import re, logger
+import re
+import logger
 from scrapper.item_scrapper import ItemScrapper
+
 
 class MonsterScrapper(ItemScrapper):
 

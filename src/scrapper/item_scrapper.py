@@ -4,7 +4,7 @@
 from scrapper.base_scrapper import BaseScrapper
 
 FIELD_NAMES = {
-    'fr':{
+    'fr': {
         'description': 'Description',                                # https://www.dofus.com/en/mmorpg/encyclopedia/equipment/14170-bzzzinga-headband
         'effects': 'Effets',                                        # https://www.dofus.com/en/mmorpg/encyclopedia/equipment/14170-bzzzinga-headband
         'conditions': 'Conditions',                                    # https://www.dofus.com/en/mmorpg/encyclopedia/pets/12541-madreggon
@@ -15,10 +15,10 @@ FIELD_NAMES = {
         'resistances': 'Résistances',                                # https://www.dofus.com/en/mmorpg/encyclopedia/monsters/982-acrocat
         'set_bonuses': 'Bonus de la panoplie',                        # https://www.dofus.com/en/mmorpg/encyclopedia/sets/346-rassler-set
         'set_total_bonuses': 'Bonus total de la panoplie complète',    # https://www.dofus.com/en/mmorpg/encyclopedia/sets/346-rassler-set
-        'craft' : 'Recette',
-        'set' : 'fait partie de la',
+        'craft': 'Recette',
+        'set': 'fait partie de la',
     },
-    'en':{
+    'en': {
         'description': 'Description',
         'effects': 'Effects',
         'conditions': 'Conditions',
@@ -29,10 +29,10 @@ FIELD_NAMES = {
         'resistances': 'Resistances',
         'set_bonuses': 'Set Bonus',
         'set_total_bonuses': 'Complete Set Bonus',
-        'craft' : 'Recipe',
-        'set' : 'is part of the',
+        'craft': 'Recipe',
+        'set': 'is part of the',
     },
-    'de':{
+    'de': {
         'description': 'Beschreibung',
         'effects': 'Wirkungen',
         'conditions': 'Voraussetzungen',
@@ -43,10 +43,10 @@ FIELD_NAMES = {
         'resistances': 'Resistenz',
         'set_bonuses': 'Setbonus',
         'set_total_bonuses': 'Gesamtbonus des vollständigen Sets',
-        'craft' : 'Rezeptur',
-        'set' : 'ist teil des',
+        'craft': 'Rezeptur',
+        'set': 'ist teil des',
     },
-    'es':{
+    'es': {
         'description': 'Descripción',
         'effects': 'Efectos',
         'conditions': 'Condiciones',
@@ -57,10 +57,10 @@ FIELD_NAMES = {
         'resistances': 'Resistencias',
         'set_bonuses': 'Bonus de set',
         'set_total_bonuses': 'Bonus total del set completo',
-        'craft' : 'Receta',
-        'set' : 'forma parte del',
+        'craft': 'Receta',
+        'set': 'forma parte del',
     },
-    'it':{
+    'it': {
         'description': 'Descrizione',
         'effects': 'Effetti',
         'conditions': 'Condizioni',
@@ -71,10 +71,10 @@ FIELD_NAMES = {
         'resistances': 'Resistenze',
         'set_bonuses': 'Bonus della panoplia',
         'set_total_bonuses': 'Bonus totale della panoplia completa',
-        'craft' : 'Ricetta',
-        'set' : 'fa parte di',
+        'craft': 'Ricetta',
+        'set': 'fa parte di',
     },
-    'pt':{
+    'pt': {
         'description': 'Descrição',
         'effects': 'Efeitos',
         'conditions': 'Condições',
@@ -85,10 +85,11 @@ FIELD_NAMES = {
         'resistances': 'Resistências',
         'set_bonuses': 'Bônus do conjunto',
         'set_total_bonuses': 'Bônus total do conjunto completo',
-        'craft' : 'Receita',
-        'set' : 'faz parte do',
+        'craft': 'Receita',
+        'set': 'faz parte do',
     }
 }
+
 
 class ItemScrapper(BaseScrapper):
 
@@ -169,12 +170,12 @@ class ItemScrapper(BaseScrapper):
         else:
             return None
 
-    #Weapons, Equipments, Consumables, Resources, Ceremonial items, Idols, Harnesses
+    # Weapons, Equipments, Consumables, Resources, Ceremonial items, Idols, Harnesses
     def get_craft(self):
         block = self.get_block('craft')
         if(not block):
             return None
-            
+
         craft = []
         items = block.findAll("div", {"class", "ak-list-element"})
 
@@ -185,8 +186,8 @@ class ItemScrapper(BaseScrapper):
 
             craft.append({
                 'url': self.DOMAIN + url,
-                'quantity':int(quantity[:quantity.find(' ')])
-                })
+                'quantity': int(quantity[:quantity.find(' ')])
+            })
         return craft
 
     #Weapons and Equipments
@@ -220,7 +221,7 @@ class ItemScrapper(BaseScrapper):
             else:
                 if self.fields[block_name] in block.parent.get_text():
                     return block.parent.parent
-            
+
         return None
 
     #########
@@ -229,9 +230,9 @@ class ItemScrapper(BaseScrapper):
 
     def scrap(self):
         return {
-                'url':self.url,
-                'id':self.get_id(),
-                'name':self.get_name(),
-                'img':self.get_picture(),
-                'type':self.get_type(),
-            }
+            'url': self.url,
+            'id': self.get_id(),
+            'name': self.get_name(),
+            'img': self.get_picture(),
+            'type': self.get_type(),
+        }
