@@ -9,7 +9,7 @@ def log(message):
 	print(message, flush=True)
 
 def warning(message):
-	message = '[WARNING][' + utils.get_time() + '] ' + message
+	message = '[WARNING][{}] {}'.format(utils.get_time(), message)
 	log(message)
 	file = open(FILE, 'a')
 	file.write(message + '\n')

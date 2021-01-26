@@ -36,13 +36,13 @@ class ListScrapper(BaseScrapper):
         urls = []
         
         logger.log('Scrapping page 1/?')
-        soup = self.requests(self.url + "?size=" + str(self.SIZE))
+        soup = self.requests(self.url + "?size={}".format(self.SIZE))
         nb_page = self.find_nb_pages(soup)
         urls.extend(self.find_urls(soup))
 
         for i in range(2, nb_page+1):
-            logger.log('Scrapping page ' + str(i) + '/' + str(nb_page))
-            soup = self.requests(self.url + "?size=" + str(self.SIZE) + "&page=" + str(i))
+            logger.log('Scrapping page {}/{}'.format(i,nb_page))
+            soup = self.requests(self.url + "?size={}&page={}".format(self.SIZE, i))
             urls.extend(self.find_urls(soup))
 
         return urls

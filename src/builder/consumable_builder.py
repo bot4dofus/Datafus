@@ -19,7 +19,3 @@ class ConsumableBuilder(BaseBuilder):
 	def __init__(self, language):
 		super().__init__(self.URL[language], 'consumables', ConsumableScrapper, language,
 			['url', 'id', 'name', 'img', 'type', 'level', 'description'])
-
-	@property
-	def nb(self):
-		return self._nb-1 # "https://www.dofus.com/fr/mmorpg/encyclopedie/consommables/19296-"" is always missing

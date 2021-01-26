@@ -111,7 +111,7 @@ class DatabaseBuilder():
                 #Check doublons
                 doubles = utils.contains_double([item['url'] for item in data[builder.field_name]])
                 if(len(doubles)):
-                    logger.log('In ' + builder.field_name + ', ' + str(doubles) + ', are in doubles')
+                    logger.log('In {} : {} is in double'.format(builder.field_name, doubles))
                     ok = False
 
                 #Check mandatory fields
@@ -131,10 +131,10 @@ class DatabaseBuilder():
                                 empty.append(mandatory_field)
 
                     if(len(missing)):
-                        logger.log('Fields ' + str(missing) + ' are missing for ' + item['url'])
+                        logger.log('Fields {} are missing for {}'.format(missing, item['url']))
 
                     if(len(empty)):
-                        logger.log('Fields ' + str(empty) + ' are empty for ' + item['url'])
+                        logger.log('Fields {} are empty for {}'.format(empty, item['url']))
 
             if(ok):
                 logger.log('Ok !')
@@ -181,9 +181,9 @@ class DatabaseBuilder():
                     if builder.match(url):
                         break
                 else:
-                    logger.log('The url ' + url + ' is not valid.')
+                    logger.log('The url {} is not valid'.format(url))
 
-                logger.log("Scrapping and adding " + url + " to the database.")
+                logger.log("Scrapping and adding {} to the database".format(url))
                 item_data = builder.scrapper(url, self.language).scrap()
                 data[builder.field_name].append(item_data)
                 
@@ -206,16 +206,16 @@ class DatabaseBuilder():
                     if builder.match(url):
                         break
                 else:
-                    logger.log('The url ' + url + ' is not valid.')
+                    logger.log('The url {} is not valid'.format(url))
                     
-                logger.log("Removing " + url + " from the database.")
+                logger.log("Removing {} from the database".format(url))
                 
                 for item in data[builder.field_name]:
                     if item['url'] == url:
                         data[builder.field_name].remove(item)
                         break
                 else:
-                    logger.log('Coulnd\'t find the url ' + url + ' in the database.')
+                    logger.log('Coulnd\'t find the url {} in the database'.format(url))
                 
             except DatafusException as e:
                 logger.log(str(e))
@@ -232,26 +232,26 @@ class DatabaseBuilder():
             total_deprecated_urls = []
 
             for builder in self.builders:
-                logger.log('Retrieving ' + builder.field_name + ' urls...')
+                logger.log('Retrieving {} urls...'.format(builder.field_name))
                 remote_urls = builder.get_urls()
                 locale_urls = [item['url'] for item in data[builder.field_name]]
                 
                 missing_urls = [url for url in remote_urls if not url in locale_urls]
                 deprecated_urls = [url for url in locale_urls if not url in remote_urls]
                 
-                logger.log("Found " + str(len(remote_urls)) + " remote " + builder.field_name + " and " + str(len(locale_urls)) + " local ones")
-                logger.log(str(len(missing_urls)) + " "  + builder.field_name + " are missing and will be added")
-                logger.log(str(len(deprecated_urls)) + " " + builder.field_name + " are deprecated and will be removed")
+                logger.log("Found {} remote {} and {} local ones".format(len(remote_urls), builder.field_name, len(locale_urls)))
+                logger.log("{} {} are missing and will be added".format(len(missing_urls), builder.field_name))
+                logger.log("{} {} are deprecated and will be removed".format(len(deprecated_urls), builder.field_name))
         
                 total_missing_urls.extend(missing_urls)
                 total_deprecated_urls.extend(deprecated_urls)
             
             if total_deprecated_urls:
-                logger.log("Removing " + str(len(total_deprecated_urls)) + " items from the database...")
+                logger.log("Removing {} items from the database...".format(len(total_deprecated_urls)))
                 self.remove_item(urls=total_deprecated_urls)
                 
             if total_missing_urls:
-                logger.log("Adding " + str(len(total_missing_urls)) + " items to the database...")
+                logger.log("Adding {} items to the database...".format(len(total_missing_urls)))
                 self.add_item(urls=total_missing_urls)
             
             logger.log("The database is up to date !")
@@ -260,34 +260,37 @@ class DatabaseBuilder():
             logger.log(str(e))
 
     def display_menu(self):
-        logger.log("\n========== MENU ==========\n" +
-                    "(Selected language : " + self.language + ')\n\n'+
-                    "0)  Exit\n" +
-                    "1)  Build database\n" +
-                    "2)   └── Build files\n" +
-                    "3)        └── Monsters\n" +
-                    "4)        └── Weapons\n" +
-                    "5)        └── Equipments\n" +
-                    "6)        └── Sets\n" +
-                    "7)        └── Pets\n" +
-                    "8)        └── Mounts\n" +
-                    "9)        └── Consumables\n" +
-                    "10)       └── Resources\n" +
-                    "11)       └── Ceremonial items\n" +
-                    "12)       └── Sidekicks\n" +
-                    "13)       └── Idols\n" +
-                    "14)       └── Harnesses\n" +
-                    "15)  └── Merge files\n" +
-                    "16)       └── Create database file\n" +
-                    "17)       └── Remove individual files\n" +
-                    "18)  └── Check integrity\n" +
-                    "19) Split database\n" +
-                    "20)  └── Create individual files\n" +
-                    "21)  └── Remove database file\n" +
-                    "22) Add item\n" +
-                    "23) Remove item\n" +
-                    "24) Update database\n" +
-                    "==========================\n")    
+        logger.log("""
+========== MENU ==========
+(Selected language : {})
+
+0)  Exit
+1)  Build database
+2)   └── Build files
+3)        └── Monsters
+4)        └── Weapons
+5)        └── Equipments
+6)        └── Sets
+7)        └── Pets
+8)        └── Mounts
+9)        └── Consumables
+10)       └── Resources
+11)       └── Ceremonial items
+12)       └── Sidekicks
+13)       └── Idols
+14)       └── Harnesses
+15)  └── Merge files
+16)       └── Create database file
+17)       └── Remove individual files
+18)  └── Check integrity
+19) Split database
+20)  └── Create individual files
+21)  └── Remove database file
+22) Add item
+23) Remove item
+24) Update database
+==========================\n"""
+                    .format(self.language))
 
     def build(self):
         
@@ -347,7 +350,7 @@ class DatabaseBuilder():
                 elif choise == '24':
                     self.update_database()
                 else:
-                    logger.log('Choise ' + choise + ' does not exist')
+                    logger.log('Choise {} does not exist'.format(choise))
 
             except Exception:
                 traceback.print_exc()

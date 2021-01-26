@@ -42,19 +42,19 @@ class BaseScrapper():
 
 	def requests(self, url, iteration=0):
 		if(iteration >= self.MAX_ITERATIONS):
-			raise DatafusException('Maximum iterations reached (' + str(self.MAX_ITERATIONS) + ')')
+			raise DatafusException('Maximum iterations reached ({})'.format(self.MAX_ITERATIONS))
         
 		page = CLOUDSCRAPPER.get(url)
 
 		if(page.status_code == 429):
-			logger.log("Waiting " + str(self.WAIT_ON_429) + " seconds")
+			logger.log("Waiting {} seconds".format(self.WAIT_ON_429))
 			time.sleep(self.WAIT_ON_429)
 			return self.requests(url, iteration=iteration+1)
 
 		elif(page.status_code == 404):
-			raise DatafusException('Error code ' + str(page.status_code) + " for url " + url)
+			raise DatafusException('Error code {} for url {}'.format(page.status_code, url))
 
 		elif(page.status_code != 200):
-			raise DatafusException('Error code ' + str(page.status_code) + " for url " + url)
+			raise DatafusException('Error code {} for url {}'.format(page.status_code, url))
 
 		return BeautifulSoup(page.text, 'html.parser') 

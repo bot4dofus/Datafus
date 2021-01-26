@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import logger, utils
 from scrapper.base_scrapper import BaseScrapper
 
 FIELD_NAMES = {
