@@ -16,7 +16,7 @@ jobs:
       
     - name: Get version
       run: |
-        VERSION=$( date +%Y.%m.%d )
+        VERSION=$( date +%y.%m.%d )
         echo "::set-env name=PACKAGE_VERSION::$VERSION"
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
