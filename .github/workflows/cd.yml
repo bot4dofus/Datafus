@@ -4,7 +4,7 @@ name: Release
 
 on:
   push:
-    branches: [master, dev]
+    branches: [master]
 
 jobs:
   Release:
@@ -27,7 +27,7 @@ jobs:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: ${{ env.PACKAGE_VERSION }}
         prerelease: false
-        title: zSorter-v${{ env.PACKAGE_VERSION }}
+        title: ${{ env.PACKAGE_VERSION }}
         files: |
           ./data/dofus.fr.json
           ./data/dofus.en.json
@@ -41,4 +41,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        branch: v${{ env.PACKAGE_VERSION }}
+        branch: ${{ env.PACKAGE_VERSION }}
