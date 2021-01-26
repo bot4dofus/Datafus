@@ -50,10 +50,13 @@ class BaseBuilder():
 
         for i in range(len(urls)):
             logger.log('Scrapping item ' + str(i+1) + '/' + str(len(urls)))
-            scrapper = self._scrapper(urls[i], self._language)
             try:
+                scrapper = self._scrapper(urls[i], self._language)
                 data.append(scrapper.scrap())
             except DatafusException as e:
                 logger.warning("Skipping " +  urls[i] + " for the following reason : " + str(e))
+            except Exception as e:
+                logger.warning("Skipping " +  urls[i] + " for the following reason : " + str(e))
+                logger.error(e)
 
         return data

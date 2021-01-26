@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import utils
+import utils, traceback
 
 FILE = 'warnings.log'
 
@@ -16,7 +16,7 @@ def warning(message):
 	file.close()
 
 def error(e):
-	message = '[ERROR][' + utils.get_time() + '] ' + str(e)
+	message = ''.join(traceback.format_exception(None, e, e.__traceback__))
 	log(message)
 	file = open(FILE, 'a')
 	file.write(message + '\n')
