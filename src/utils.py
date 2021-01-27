@@ -11,7 +11,7 @@ def read_json(file_name):
     if(not os.path.isfile(file_name)):
         raise Exception('File ' + file_name + ' does not exist. Build it first.')
 
-    logger.log("Reading data from " + file_name)
+    logger.info("Reading data from " + file_name)
     file = open(file_name, 'r')
     data = json.loads(file.read())
     file.close()
@@ -19,7 +19,7 @@ def read_json(file_name):
 
 
 def save_json(file_name, data):
-    logger.log("Saving data to " + file_name)
+    logger.info("Saving data to " + file_name)
     file = open(file_name, 'w')
     file.write(json.dumps(data))
     file.close()

@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import re
-import logger
 from scrapper.item_scrapper import ItemScrapper
 
 

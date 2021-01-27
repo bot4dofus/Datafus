@@ -10,6 +10,9 @@ FILE = 'warnings.log'
 def log(message):
     print(message, flush=True)
 
+def info(message):
+    message = '[INFO][{}] {}'.format(utils.get_time(), message)
+    log(message)
 
 def warning(message):
     message = '[WARNING][{}] {}'.format(utils.get_time(), message)

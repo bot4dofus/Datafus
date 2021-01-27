@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import logger
 from builder.base_builder import BaseBuilder
 from scrapper.sidekick_scrapper import SidekickScrapper
 

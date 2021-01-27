@@ -45,13 +45,13 @@ class BaseBuilder():
         return ls.scrap()
 
     def build(self):
-        logger.log('Building {} :'.format(self._field_name))
+        logger.info('Building {} :'.format(self._field_name))
 
         data = []
         urls = self.get_urls()
 
         for i in range(len(urls)):
-            logger.log('Scrapping {} {}/{}'.format(self._field_name, i+1, len(urls)))
+            logger.info('Scrapping {} {}/{}'.format(self._field_name, i+1, len(urls)))
             try:
                 scrapper = self._scrapper(urls[i], self._language)
                 data.append(scrapper.scrap())
