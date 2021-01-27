@@ -174,9 +174,10 @@ class DatabaseBuilder():
                 item_data = builder.scrapper(url, self.language).scrap()
                 data[builder.field_name].append(item_data)
             except DatafusException as e:
-                logger.log(str(e))
-            except Exception:
-                traceback.print_exc()
+                logger.warning("Skipping {} for the following reason : {}".format(url, str(e)))
+            except Exception as e:
+                logger.warning("Skipping {} for the following reason : {}".format(url, str(e)))
+                logger.error(e)
 
         utils.save_json(self.database_file, data)
 
@@ -202,10 +203,8 @@ class DatabaseBuilder():
                 else:
                     logger.log('Coulnd\'t find the url {} in the database'.format(url))
 
-            except DatafusException as e:
-                logger.log(str(e))
-            except Exception:
-                traceback.print_exc()
+            except Exception as e:
+                logger.error(e)
 
         utils.save_json(self.database_file, data)
 
