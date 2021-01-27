@@ -1,30 +1,36 @@
 <img src="https://github.com/LucBerge/Datafus/raw/master/images/banner_tags.png" />
 
+![Release](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Release/master?label=release)
+[![Release](https://img.shields.io/github/v/release/LucBerge/Datafus)](https://github.com/LucBerge/Datafus/releases)
+[![License](https://img.shields.io/github/license/LucBerge/Datafus)](https://github.com/LucBerge/Datafus/blob/master/LICENSE)
+
 # Datafus
 
-Datafus is a small python3 tool to build the dofus database by scrapping the website. The final database is a JSON file.
+Datafus is a small python3 tool to build the dofus database by scrapping the website. The final databases is a JSON file.
 
-- [French database](https://github.com/LucBerge/Datafus/blob/master/data/dofus.fr.json)
-- [English database](https://github.com/LucBerge/Datafus/blob/master/data/dofus.en.json)
-- [German database](https://github.com/LucBerge/Datafus/blob/master/data/dofus.de.json)
-- [Spanish database](https://github.com/LucBerge/Datafus/blob/master/data/dofus.es.json)
-- [Itanian database](https://github.com/LucBerge/Datafus/blob/master/data/dofus.it.json)
-- [Portuguese database](https://github.com/LucBerge/Datafus/blob/master/data/dofus.pt.json)
+## Download the database
 
-## JSON structure
+- [French database](https://github.com/LucBerge/Datafus/releases/latest)
+- [English database](https://github.com/LucBerge/Datafus/releases/latest)
+- [German database](https://github.com/LucBerge/Datafus/releases/latest)
+- [Spanish database](https://github.com/LucBerge/Datafus/releases/latest)
+- [Itanian database](https://github.com/LucBerge/Datafus/releases/latest)
+- [Portuguese database](https://github.com/LucBerge/Datafus/releases/latest)
 
-- `monsters`  **_List_**: List of monsters in the game
-- `weapons` **_List_**: List of weapons in the game
-- `equipments` **_List_**: List of equipments in the game
-- `sets` **_List_**: List of sets in the game
-- `pets` **_List_**: List of pets in the game
-- `mounts` **_List_**: List of mounts in the game
-- `consumables` **_List_**: List of consumables in the game
-- `resources` **_List_**: List of resources in the game
-- `ceremonial_items` **_List_**: List of ceremonial items in the game
-- `sidekicks` **_List_**: List of sidekicks items in the game
-- `idols` **_List_**: List of idols in the game
-- `harnesses` **_List_**: List of harnesses in the game
+## File structure
+
+- `monsters`  **_List of Item_**: List of monsters in the game
+- `weapons` **_List of Item_**: List of weapons in the game
+- `equipments` **_List of Item_**: List of equipments in the game
+- `sets` **_List of Item_**: List of sets in the game
+- `pets` **_List of Item_**: List of pets in the game
+- `mounts` **_List of Item_**: List of mounts in the game
+- `consumables` **_List of Item_**: List of consumables in the game
+- `resources` **_List of Item_**: List of resources in the game
+- `ceremonial_items` **_List of Item_**: List of ceremonial items in the game
+- `sidekicks` **_List of Item_**: List of sidekicks items in the game
+- `idols` **_List of Item_**: List of idols in the game
+- `harnesses` **_List of Item_**: List of harnesses in the game
 
 ## Item structure
 
