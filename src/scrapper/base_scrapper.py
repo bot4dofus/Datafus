@@ -33,12 +33,11 @@ class BaseScrapper():
         trailer = url[url.rfind('/')+1:]
         return int(trailer[:trailer.find('-')])
 
-    def get_language_from_url(self, url):
-        matching = re.match(r'https://www.dofus.com/(.*)/mmorpg/.*', url)
-        if(matching):
-            return matching.group(1)
-        else:
-            raise DatafusException('Not a valid url')
+    def is_url_valid(self, url):
+        m = re.match(r'https://www.dofus.com/(fr|de|en|es|it|pt)/mmorpg/(\w+)/(\w+)/(\d+)-(\w+)', url)
+        if m:
+            m = (m.group(1), m.group(2), m.group(3), m.group(4), m.group(5))
+        return m
 
     ###########
     # GENERAL #

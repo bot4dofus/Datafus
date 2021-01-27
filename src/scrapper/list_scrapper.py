@@ -22,8 +22,15 @@ class ListScrapper(BaseScrapper):
     #########
 
     def find_urls(self, soup):
+        urls = []
         items = soup.findAll("tr", {"class": "ak-bg-odd"}) + soup.findAll("tr", {"class": "ak-bg-even"})
-        return [self.DOMAIN + item.find_all("td", recursive=False)[1].find_all("a")[0]['href'] for item in items]
+        for item in items:
+            url = self.DOMAIN + item.find_all("td", recursive=False)[1].find_all("a")[0]['href']
+            if(self.is_url_valid(url)):
+                urls.append(url)
+            else:
+                logger.warning('Skipping {} : The url is not valid'.format(url))
+        return urls
 
     def find_nb_pages(self, soup):
         div = soup.find("div", {"class": "ak-list-info"})

@@ -100,7 +100,7 @@ class ItemScrapper(BaseScrapper):
     def __init__(self, url, language):
         super().__init__(url)
         self.soup = self.requests(url)
-        self.fields = FIELD_NAMES[self.get_language_from_url(url)]
+        self.fields = FIELD_NAMES[language]
 
     #############
     # MANDATORY #
