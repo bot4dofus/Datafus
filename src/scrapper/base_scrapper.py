@@ -1,35 +1,63 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import requests, time, logger
+import time
+import logger
+import re
+import cloudscraper
 from bs4 import BeautifulSoup
-from exceptions.exceptions import PageNotFoundException
+from exceptions.exceptions import DatafusException
+
+CLOUDSCRAPPER = cloudscraper.CloudScraper()
+
 
 class BaseScrapper():
-	
-	DOMAIN = 'https://www.dofus.com'
-	STATIC_DOMAIN = 'http://staticns.ankama.com'
-	WAIT_ON_429 = 70
-	MAX_ITERATIONS = 5
 
-	def __init__(self):
-		pass
+    DOMAIN = 'https://www.dofus.com'
+    STATIC_DOMAIN = 'http://staticns.ankama.com'
+    WAIT_ON_429 = 70
+    MAX_ITERATIONS = 5
 
-	def requests(self, url, iteration=0):
-		if(iteration >= self.MAX_ITERATIONS):
-			raise Exception('Maximum iterations reached (' + str(self.MAX_ITERATIONS) + ')')
+    ###########
+    # BUILDER #
+    ###########
 
-		page = requests.get(url)
+    def __init__(self, url):
+        self.url = url
 
-		if(page.status_code == 429):
-			logger.log("Waiting " + str(self.WAIT_ON_429))
-			time.sleep(self.WAIT_ON_429)
-			return self.requests(url, iteration=iteration+1)
+    ##########
+    # STATIC #
+    ##########
 
-		elif(page.status_code == 404):
-			raise PageNotFoundException('Error code ' + str(page.status_code) + " for url " + url)
+    def get_id_from_url(self, url):
+        trailer = url[url.rfind('/')+1:]
+        return int(trailer[:trailer.find('-')])
 
-		elif(page.status_code != 200):
-			raise Exception('Error code ' + str(page.status_code) + " for url " + url)
+    def is_url_valid(self, url):
+        m = re.match(r'https://www.dofus.com/(fr|de|en|es|it|pt)/mmorpg/(encyclopedie|encyclopedia|leitfaden|enciclopedia)/([a-z\-]+)/(\d+)-([a-z\-0-9]+)', url)
+        if m:
+            m = (m.group(1), m.group(2), m.group(3), m.group(4), m.group(5))
+        return m
 
-		return BeautifulSoup(page.text, 'html.parser') 
+    ###########
+    # GENERAL #
+    ###########
+
+    def requests(self, url, iteration=0):
+        if(iteration >= self.MAX_ITERATIONS):
+            raise DatafusException('Maximum iterations reached ({})'.format(self.MAX_ITERATIONS))
+
+        page = CLOUDSCRAPPER.get(url)
+
+        if(page.status_code == 429):
+            logger.info("Waiting {} seconds".format(self.WAIT_ON_429))
+            time.sleep(self.WAIT_ON_429)
+            return self.requests(url, iteration=iteration+1)
+
+        elif(page.status_code == 404):
+            raise DatafusException('Error code {} for url {}'.format(page.status_code, url))
+
+        elif(page.status_code != 200):
+            raise DatafusException('Error code {} for url {}'.format(page.status_code, url))
+
+        return BeautifulSoup(page.text, 'html.parser')

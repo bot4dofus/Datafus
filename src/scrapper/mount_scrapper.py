@@ -3,12 +3,26 @@
 
 from scrapper.item_scrapper import ItemScrapper
 
+
 class MountScrapper(ItemScrapper):
 
-	def __init__(self, url, language):
-		super().__init__(url, language)
+    ###########
+    # BUILDER #
+    ###########
 
-	def scrap(self):
-		data = super().scrap("ak-item-details-container")
-		del data['level']
-		return data
+    def __init__(self, url, language):
+        super().__init__(url, language)
+
+    #########
+    # SCRAP #
+    #########
+
+    def scrap(self):
+        data = super().scrap()
+        data['characteristics'] = self.get_characteristics()
+
+        effects = self.get_effects()
+        if(effects):
+            data['effects'] = effects
+
+        return data

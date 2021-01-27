@@ -3,12 +3,22 @@
 
 from scrapper.item_scrapper import ItemScrapper
 
+
 class SidekickScrapper(ItemScrapper):
 
-	def __init__(self, url, language):
-		super().__init__(url, language)
+    ###########
+    # BUILDER #
+    ###########
 
-	def scrap(self):
-		data = super().scrap("ak-encyclo-detail")
-		del data['level']
-		return data
+    def __init__(self, url, language):
+        super().__init__(url, language)
+
+    #########
+    # SCRAP #
+    #########
+
+    def scrap(self):
+        data = super().scrap()
+        data['description'] = self.get_description()
+        data['characteristics'] = self.get_characteristics()
+        return data

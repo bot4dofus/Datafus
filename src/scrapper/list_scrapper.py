@@ -1,33 +1,57 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import math, logger
+import math
+import logger
 from scrapper.base_scrapper import BaseScrapper
+
 
 class ListScrapper(BaseScrapper):
 
-	SIZE = 96
+    SIZE = 96
 
-	def __init__(self, url, nb):
-		super().__init__()
-		self.url = url
-		self.nb = nb
+    ###########
+    # BUILDER #
+    ###########
 
-	def scrap(self):
+    def __init__(self, url):
+        super().__init__(url)
 
-		urls = []
-		nb_page = math.ceil(self.nb/self.SIZE)
+    #########
+    # SCRAP #
+    #########
 
-		for i in range(1, nb_page+1):
-			logger.log('Scrapping page ' + str(i) + '/' + str(nb_page))
+    def find_urls(self, soup):
+        urls = []
+        items = soup.findAll("tr", {"class": "ak-bg-odd"}) + soup.findAll("tr", {"class": "ak-bg-even"})
+        for item in items:
+            url = self.DOMAIN + item.find_all("td", recursive=False)[1].find_all("a")[0]['href']
+            if(self.is_url_valid(url)):
+                urls.append(url)
+            else:
+                logger.warning('Skipping {} : The url is not valid'.format(url))
+        return urls
 
-			soup = self.requests(self.url + "?size=" + str(self.SIZE) + "&page=" + str(i))
-			items = soup.findAll("tr", {"class": "ak-bg-odd"}) + soup.findAll("tr", {"class": "ak-bg-even"})
-			
-			for item in items:
-				urls.append(self.DOMAIN + item.find_all("td" , recursive=False)[1].find_all("a")[0]['href'])
+    def find_nb_pages(self, soup):
+        div = soup.find("div", {"class": "ak-list-info"})
+        if(div != None):
+            nb = int(div.find('strong').text)
+            return math.ceil(nb/self.SIZE)
+        else:
+            return 1
 
-		if len(urls) != self.nb:
-			raise Exception('Expected ' + str(self.nb) + ' items, got ' + str(len(urls)))
+    def scrap(self):
 
-		return urls
+        urls = []
+
+        logger.info('Scrapping page 1/?')
+        soup = self.requests(self.url + "?size={}".format(self.SIZE))
+        nb_page = self.find_nb_pages(soup)
+        urls.extend(self.find_urls(soup))
+
+        for i in range(2, nb_page+1):
+            logger.info('Scrapping page {}/{}'.format(i, nb_page))
+            soup = self.requests(self.url + "?size={}&page={}".format(self.SIZE, i))
+            urls.extend(self.find_urls(soup))
+
+        return urls
