@@ -34,7 +34,7 @@ class BaseScrapper():
         return int(trailer[:trailer.find('-')])
 
     def is_url_valid(self, url):
-        m = re.match(r'https://www.dofus.com/(fr|de|en|es|it|pt)/mmorpg/(\w+)/(\w+)/(\d+)-(\w+)', url)
+        m = re.match(r'https://www.dofus.com/(fr|de|en|es|it|pt)/mmorpg/(encyclopedie|encyclopedia|leitfaden|enciclopedia)/([a-z\-]+)/(\d+)-([a-z\-0-9]+)', url)
         if m:
             m = (m.group(1), m.group(2), m.group(3), m.group(4), m.group(5))
         return m
@@ -50,7 +50,7 @@ class BaseScrapper():
         page = CLOUDSCRAPPER.get(url)
 
         if(page.status_code == 429):
-            logger.log("Waiting {} seconds".format(self.WAIT_ON_429))
+            logger.info("Waiting {} seconds".format(self.WAIT_ON_429))
             time.sleep(self.WAIT_ON_429)
             return self.requests(url, iteration=iteration+1)
 
