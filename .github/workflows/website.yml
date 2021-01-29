@@ -28,10 +28,10 @@ jobs:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       
     - name: Build restful website
-      run: python ./data/ ./build/${{ env.PACKAGE_VERSION }}/
+      run: python data/ build/${{ env.PACKAGE_VERSION }}/
   
     - name: Publish website
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+        publish_dir: build
