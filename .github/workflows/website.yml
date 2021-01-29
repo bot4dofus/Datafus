@@ -1,0 +1,34 @@
+# This workflow will build the RESTFUL website from the existing data files
+
+name: Website
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  Website:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Install python
+      run: sudo apt-get install python3.6
+      
+    - name: Get version
+      run: |
+        VERSION=$( date +%y.%m.%d )
+        echo "::set-env name=PACKAGE_VERSION::$VERSION"
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      
+    - name: Build restful website
+      run: python3 ./data/ ./build/${{ env.PACKAGE_VERSION }}/
+  
+    - name: Publish website
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
