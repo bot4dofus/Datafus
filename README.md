@@ -1,6 +1,7 @@
 <img src="https://github.com/LucBerge/Datafus/raw/master/images/banner_tags.png" />
 
 ![Release](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Release/master?label=release)
+![Website](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Website/master?label=website)
 [![Release](https://img.shields.io/github/v/release/LucBerge/Datafus)](https://github.com/LucBerge/Datafus/releases)
 [![License](https://img.shields.io/github/license/LucBerge/Datafus)](https://github.com/LucBerge/Datafus/blob/master/LICENSE)
 
