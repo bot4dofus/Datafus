@@ -11,12 +11,38 @@ Datafus is a small python3 tool to build the dofus database by scrapping the web
 
 ## Download the database
 
+If you need the database in local for your project, you download it here :
+
 - [French database](https://github.com/LucBerge/Datafus/releases/latest)
 - [English database](https://github.com/LucBerge/Datafus/releases/latest)
 - [German database](https://github.com/LucBerge/Datafus/releases/latest)
 - [Spanish database](https://github.com/LucBerge/Datafus/releases/latest)
 - [Itanian database](https://github.com/LucBerge/Datafus/releases/latest)
 - [Portuguese database](https://github.com/LucBerge/Datafus/releases/latest)
+
+## Use the RESTFULL API
+
+If you don't need the database in local, you can use the RESTFUL API setup on GitHub pages. Simply do a get request with the following url :
+
+- List all the items in the category :
+```
+https://lucberge.github.io/Datafus/{date}/{language}{category}
+```
+> Exemple :
+> 
+> Get all the monsters :
+> https://lucberge.github.io/Datafus/21.01.29/fr/monsters
+
+- Find an item from it's id :
+```
+https://lucberge.github.io/Datafus/{date}/{language}/{category}/{id}
+```
+*You need to remove the `s` in the `category` value.*
+
+> Exemple :
+> 
+> Get the monsters with a specific id:
+> https://lucberge.github.io/Datafus/21.01.29/fr/monster/1047
 
 ## File structure
 
