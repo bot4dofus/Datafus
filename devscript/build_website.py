@@ -53,5 +53,4 @@ def build_website(input_folder, output_folder):
                 save_json(file, item)
 
 
-if __name__ == "__main__":
-    build_website(sys.argv[1], sys.argv[2])
+build_website(sys.argv[1], sys.argv[2])
