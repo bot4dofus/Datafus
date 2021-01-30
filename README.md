@@ -31,7 +31,7 @@ https://lucberge.github.io/Datafus/{date}/{language}{category}
 > Exemple :
 > 
 > Get all the monsters :
-> https://lucberge.github.io/Datafus/21.01.29/fr/monsters
+> https://lucberge.github.io/Datafus/21.01.27/fr/monsters
 
 - Find an item from it's id :
 ```
@@ -42,7 +42,7 @@ https://lucberge.github.io/Datafus/{date}/{language}/{category}/{id}
 > Exemple :
 > 
 > Get the monsters with a specific id:
-> https://lucberge.github.io/Datafus/21.01.29/fr/monster/1047
+> https://lucberge.github.io/Datafus/21.01.27/fr/monster/1047
 
 ## File structure
 
