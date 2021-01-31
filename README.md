@@ -26,7 +26,7 @@ If you don't need the database in local, you can use the RESTFUL API setup on Gi
 
 - List all the items in the category :
 ```
-https://lucberge.github.io/Datafus/{date}/{language}{category}
+https://lucberge.github.io/Datafus/{date}/{language}/{category}s
 ```
 > Exemple :
 > 
@@ -37,11 +37,9 @@ https://lucberge.github.io/Datafus/{date}/{language}{category}
 ```
 https://lucberge.github.io/Datafus/{date}/{language}/{category}/{id}
 ```
-*You need to remove the `s` in the `category` value.*
-
 > Exemple :
 > 
-> Get the monsters with a specific id:
+> Get the monster with a specific id:
 > https://lucberge.github.io/Datafus/21.01.27/fr/monster/1047
 
 ## File structure
