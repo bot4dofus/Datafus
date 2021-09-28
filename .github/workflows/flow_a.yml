@@ -17,12 +17,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup python
+      - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
 
-      - name: Set up JDK 1.8
+      - name: Setup Java
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
@@ -45,7 +45,8 @@ jobs:
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
-      - uses: EndBug/add-and-commit@v7
+      - name: Commit and push
+        uses: EndBug/add-and-commit@v7
         with:
           add: '["data/DofusInvoker/", "data/events.json"]'
           message: 'Flow A - Update version ${{ env.VERSION }}'
