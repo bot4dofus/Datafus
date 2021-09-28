@@ -1,11 +1,11 @@
-![Flow A](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Flow_A/master?label=Flow_A)
-![Flow B](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Flow_B/master?label=Flow_B)
-![Flow C](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Flow_C/master?label=Flow_C)
+<img src="https://github.com/LucBerge/Datafus/raw/master/images/banner_tags.png" />
+
+![Flow A](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Flow%20A/master?label=Flow%20A)
+![Flow B](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Flow%20B/master?label=Flow%20B)
+![Flow C](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Flow%20C/master?label=Flow%20C)
 [![Release](https://img.shields.io/github/v/release/LucBerge/Datafus)](https://github.com/LucBerge/Datafus/releases)
 [![License](https://img.shields.io/github/license/LucBerge/Datafus)](https://github.com/LucBerge/Datafus/blob/master/LICENSE)
-
-<img src="https://github.com/LucBerge/Datafus/raw/master/images/flows.png" />
-
+  
 # Datafus
 
 Datafus builds the dofus database by extracting the Dofus files. The objectives are multiple:
@@ -19,6 +19,10 @@ Datafus builds the dofus database by extracting the Dofus files. The objectives 
 
 ## Download the data
 
-If you need the data in local for your project, you can download it here :
+If you need the data in local for your project, you can download it in the [release section](https://github.com/LucBerge/Datafus/releases/latest).
 
-- [Data](https://github.com/LucBerge/Datafus/releases/latest)
+## Flows
+
+<p align="center">
+  <img src="https://github.com/LucBerge/Datafus/raw/master/images/Flows.png" />
+</p>
