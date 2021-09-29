@@ -235,9 +235,6 @@ if __name__ == "__main__":
     are_files = (os.path.isfile(sys.argv[1]) and os.path.isfile(sys.argv[2]))    #If input and output are files
     are_folders = (os.path.isdir(sys.argv[1]) and os.path.isdir(sys.argv[2]))    #If input and output are folders 
 
-    print(are_files)
-    print(are_folders)
-
     if(not(are_files or are_folders)):
         raise Exception("Needs two arguments of same type: Two files or two folders")
 
