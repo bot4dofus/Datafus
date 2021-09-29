@@ -24,7 +24,7 @@ jobs:
           
       - name: B1 - Build .json
         run: |
-            python src/B1.py ../data/d2o/ ../data/entities_json/
+            python src/B1.py data/d2o/ data/entities_json/
           
       - name: Get latest Dofus version
         run: |

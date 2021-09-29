@@ -222,18 +222,23 @@ def main(input, output, is_files):
         except Exception as e:
             print(str(e))
 
-if __name__ == "__main__":
-    if(len(sys.argv) >= 3):
-        is_files = (os.path.isfile(sys.argv[1]) and os.path.isfile(sys.argv[2]))    #If input and output are files
-        is_folders = (os.path.isdir(sys.argv[1]) and os.path.isdir(sys.argv[2]))    #If input and output are folders 
-        
-        if(is_files or is_folders):
-            main(sys.argv[1], sys.argv[2], is_files)
-        else:
-            print("""Needs arguments of same type: Two files or two folders""")
-    else:
-        print("""Needs at least two arguments:
-            - An input file and an output file
-            - An input folder and an output folder""")
+if __name__ == "__main__":    
+    if(len(sys.argv) != 3):
+        raise Exception("Needs two arguments of same type: Two files or two folders")
 
+    if(not os.path.exists(sys.argv[1])):
+        raise Exception("The input {} does not exists".format(sys.argv[1]))
 
+    if(not os.path.exists(sys.argv[2])):
+        raise Exception("The output {} does not exists".format(sys.argv[2]))
+
+    are_files = (os.path.isfile(sys.argv[1]) and os.path.isfile(sys.argv[2]))    #If input and output are files
+    are_folders = (os.path.isdir(sys.argv[1]) and os.path.isdir(sys.argv[2]))    #If input and output are folders 
+
+    print(are_files)
+    print(are_folders)
+
+    if(not(are_files or are_folders)):
+        raise Exception("Needs two arguments of same type: Two files or two folders")
+
+    main(sys.argv[1], sys.argv[2], are_files)
