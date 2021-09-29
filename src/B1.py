@@ -11,7 +11,7 @@ def log(log):
 
 def save_file(file_name, data):
     file = open(file_name, 'w')
-    file.write(json.dumps(data))
+    file.write(json.dumps(data, indent=4))
     file.close()
 
 class D2OReader():
@@ -207,7 +207,7 @@ def main(input, output, is_files):
     
     if (is_files):
         file[input] = output;
-    else: 
+    else:
         files_in_input = os.listdir(input)
         for file_in_input in files_in_input:
             files_to_convert[input + file_in_input] = output + file_in_input.split('.')[0] + '.json'
