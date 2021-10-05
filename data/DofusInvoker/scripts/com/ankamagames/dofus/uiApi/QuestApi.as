@@ -372,9 +372,6 @@ package com.ankamagames.dofus.uiApi
       
       public function getQuestObjectiveFlagInfos(questId:uint, objectiveId:uint) : Object
       {
-         var objectiveWorldMapId:int = 0;
-         var entranceMapIds:Vector.<Number> = null;
-         var exitMapIds:Vector.<Number> = null;
          var mapPos:MapPosition = null;
          var subArea:SubArea = null;
          var objective:QuestObjective = QuestObjective.getQuestObjectiveById(objectiveId);
@@ -391,35 +388,7 @@ package com.ankamagames.dofus.uiApi
          {
             mapPos = MapPosition.getMapPositionById(objective.mapId);
             subArea = SubArea.getSubAreaById(mapPos.subAreaId);
-            entranceMapIds = subArea.entranceMapIds;
-            exitMapIds = subArea.exitMapIds;
-            objectiveWorldMapId = subArea.worldmap.id;
-            if(worldMapId != objectiveWorldMapId)
-            {
-               if(worldMapId == 1)
-               {
-                  if(entranceMapIds.length > 0)
-                  {
-                     mapPos = MapPosition.getMapPositionById(entranceMapIds[0]);
-                  }
-                  else
-                  {
-                     worldMapId = objectiveWorldMapId;
-                  }
-               }
-               else
-               {
-                  subArea = PlayedCharacterManager.getInstance().currentSubArea;
-                  if(exitMapIds.length > 0)
-                  {
-                     mapPos = MapPosition.getMapPositionById(exitMapIds[0]);
-                  }
-                  else
-                  {
-                     worldMapId = objectiveWorldMapId;
-                  }
-               }
-            }
+            worldMapId = subArea.worldmap.id;
             flagX = mapPos.posX;
             flagY = mapPos.posY;
          }

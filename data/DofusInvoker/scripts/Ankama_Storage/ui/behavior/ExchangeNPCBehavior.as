@@ -119,11 +119,6 @@ package Ankama_Storage.ui.behavior
          Api.ui.unloadUi(UIEnum.EXCHANGE_NPC_UI);
       }
       
-      public function isDefaultBehavior() : Boolean
-      {
-         return false;
-      }
-      
       public function getStorageUiName() : String
       {
          return UIEnum.STORAGE_UI;

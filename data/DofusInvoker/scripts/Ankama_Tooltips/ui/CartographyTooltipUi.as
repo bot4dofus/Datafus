@@ -182,9 +182,9 @@ package Ankama_Tooltips.ui
                this.lbl_allianceName.y = emblemMiddle - this.lbl_allianceName.textHeight / 2 - 3;
                this.ctr_allianceBg.height = Math.max(this.tx_emblemBack.height,this.lbl_allianceName.textHeight) + 7 * 2;
                this.tx_emblemBack.dispatchMessages = this.tx_emblemUp.dispatchMessages = true;
+               this._currentAlliance = pAlliance;
                this.tx_emblemBack.uri = this.uiApi.createUri(this.sysApi.getConfigEntry("config.gfx.path.emblem_icons.large") + "backalliance/" + pAlliance.backEmblem.idEmblem + ".swf");
                this.tx_emblemUp.uri = this.uiApi.createUri(this.sysApi.getConfigEntry("config.gfx.path.emblem_icons.large") + "up/" + pAlliance.upEmblem.idEmblem + ".swf");
-               this._currentAlliance = pAlliance;
             }
             topBlock = this.ctr_subAreaInfo;
             topBlockBg = this.ctr_subAreaInfoBg;

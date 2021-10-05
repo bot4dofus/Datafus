@@ -292,12 +292,12 @@ package Ankama_ContextMenu
          ContextMenuManager.getInstance().openNew(resultMenu,positionReference,closeCallBack,false,instanceName,pContainer);
       }
       
-      public function setBehavior(pBehaviorName:String, pBehaviorParams:Object = null) : void
+      public function setBehavior(pBehaviorName:String) : void
       {
          switch(pBehaviorName)
          {
             case "tutorial":
-               this._behavior = new TutorialMenuBehavior(pBehaviorParams);
+               this._behavior = new TutorialMenuBehavior();
                break;
             case null:
                this._behavior = null;

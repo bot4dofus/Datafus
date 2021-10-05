@@ -20,7 +20,6 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.datacenter.quest.QuestObjective;
    import com.ankamagames.dofus.datacenter.quest.QuestStep;
    import com.ankamagames.dofus.datacenter.world.MapPosition;
-   import com.ankamagames.dofus.datacenter.world.SubArea;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.internalDatacenter.appearance.OrnamentWrapper;
    import com.ankamagames.dofus.internalDatacenter.appearance.TitleWrapper;
@@ -804,7 +803,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is QuestValidatedMessage:
                qvmsg = msg as QuestValidatedMessage;
-               KernelEventsManager.getInstance().processCallback(QuestHookList.QuestValidated,qvmsg.questId);
                if(!this._completedQuests)
                {
                   this._completedQuests = new Vector.<uint>();
@@ -838,6 +836,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                      {
                         if(this._activeObjectives.indexOf(questStepObjId) != -1)
                         {
+                           KernelEventsManager.getInstance().processCallback(QuestHookList.QuestObjectiveValidated,qvmsg.questId,questStepObjId);
                            this._activeObjectives.splice(this._activeObjectives.indexOf(questStepObjId),1);
                         }
                         this._completedObjectives.push(questStepObjId);
@@ -845,6 +844,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                      KernelEventsManager.getInstance().processCallback(HookList.RemoveMapFlag,"flag_srv" + CompassTypeEnum.COMPASS_TYPE_QUEST + "_" + qvmsg.questId + "_" + questStepObjId,PlayedCharacterManager.getInstance().currentWorldMapId);
                   }
                }
+               KernelEventsManager.getInstance().processCallback(QuestHookList.QuestValidated,qvmsg.questId);
                return true;
                break;
             case msg is QuestObjectiveValidatedMessage:
@@ -1402,7 +1402,6 @@ package com.ankamagames.dofus.logic.game.common.frames
       {
          var ach:Achievement = null;
          var achievedAchievement:AchievementAchieved = null;
-         var sa:SubArea = null;
          var rewardsUiNeedOpening:Boolean = false;
          var playerAchievementsCount:int = 0;
          var accountAchievementsCount:int = 0;
@@ -1446,10 +1445,6 @@ package com.ankamagames.dofus.logic.game.common.frames
             {
                _log.warn("Succés " + achievedAchievement.id + " non exporté");
             }
-         }
-         for each(sa in SubArea.getAllSubArea())
-         {
-            sa.isDiscovered = achievementDone[sa.exploreAchievementId];
          }
          PlayedCharacterManager.getInstance().achievementPercent = Math.floor(playerAchievementsCount / this._nbAllAchievements * 100);
          PlayedCharacterManager.getInstance().achievementPoints = playerPoints;

@@ -48,6 +48,8 @@ package Ankama_Grimoire.ui
       
       private var _btnDataAssoc:Dictionary;
       
+      private var _forgettableSpellsActivated:Boolean;
+      
       public var gd_finishMoves:Grid;
       
       public var tx_illu:Texture;
@@ -76,6 +78,7 @@ package Ankama_Grimoire.ui
          this.sysApi.addHook(HookList.FinishMoveList,this.onFinishMoveList);
          this.sysApi.addHook(HookList.ConfigPropertyChange,this.onConfigPropertyChange);
          this.sysApi.sendAction(new FinishMoveListRequestAction([]));
+         this._forgettableSpellsActivated = this.configApi.isFeatureWithKeywordEnabled("character.spell.forgettable");
       }
       
       public function updateFinishMoveLine(data:*, componentsRef:*, selected:Boolean) : void
@@ -160,14 +163,14 @@ package Ankama_Grimoire.ui
          tab = tab.concat(this._finishMoves);
          tab.sortOn("id",Array.NUMERIC);
          this.gd_finishMoves.dataProvider = tab;
-         this.tx_warning.visible = this.lbl_warning.visible = this.configApi.getConfigProperty("dofus","showFinishMoves") == false && this._enabledFinishMoves.length > 0;
+         this.tx_warning.visible = this.lbl_warning.visible = !this._forgettableSpellsActivated && this.configApi.getConfigProperty("dofus","showFinishMoves") == false && this._enabledFinishMoves.length > 0;
       }
       
       private function onConfigPropertyChange(target:String, name:String, value:*, oldValue:*) : void
       {
          if(target == "dofus" && name == "showFinishMoves")
          {
-            this.tx_warning.visible = this.lbl_warning.visible = value == false && this._enabledFinishMoves.length > 0;
+            this.tx_warning.visible = this.lbl_warning.visible = !this._forgettableSpellsActivated && value == false && this._enabledFinishMoves.length > 0;
          }
       }
       
@@ -190,7 +193,7 @@ package Ankama_Grimoire.ui
                this._enabledFinishMoves.push(this.gd_finishMoves.selectedItem.id);
             }
             this.gd_finishMoves.updateItem(this.gd_finishMoves.selectedIndex);
-            this.tx_warning.visible = this.lbl_warning.visible = this.configApi.getConfigProperty("dofus","showFinishMoves") == false && this._enabledFinishMoves.length > 0;
+            this.tx_warning.visible = this.lbl_warning.visible = !this._forgettableSpellsActivated && this.configApi.getConfigProperty("dofus","showFinishMoves") == false && this._enabledFinishMoves.length > 0;
          }
       }
       
