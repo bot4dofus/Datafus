@@ -1,1 +1,109 @@
-{"def": [{"memberName": "Phoenix", "packageName": "com.ankamagames.dofus.datacenter.world", "fields": [{"name": "mapId", "type": -1}]}], "data": [{"mapId": 162051}, {"mapId": 5507076}, {"mapId": 13632516}, {"mapId": 34476296}, {"mapId": 54167340}, {"mapId": 54160168}, {"mapId": 64489222}, {"mapId": 72095750}, {"mapId": 76283910}, {"mapId": 88086283}, {"mapId": 88085252}, {"mapId": 91753991}, {"mapId": 93850624}, {"mapId": 99096077}, {"mapId": 99615238}, {"mapId": 111150345}, {"mapId": 113902337}, {"mapId": 128059398}, {"mapId": 146800640}, {"mapId": 153879809}, {"mapId": 156762630}, {"mapId": 171442689}, {"mapId": 173277699}, {"mapId": 179309058}, {"mapId": 190843392}, {"mapId": 206832133}, {"mapId": 152337}, {"mapId": 160786}, {"mapId": 144418}, {"mapId": 153088}, {"mapId": 153363}]}
+{
+	"def": [
+		{
+			"memberName": "Phoenix",
+			"packageName": "com.ankamagames.dofus.datacenter.world",
+			"fields": [
+				{
+					"name": "mapId",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"mapId": 162051
+		},
+		{
+			"mapId": 5507076
+		},
+		{
+			"mapId": 13632516
+		},
+		{
+			"mapId": 34476296
+		},
+		{
+			"mapId": 54167340
+		},
+		{
+			"mapId": 54160168
+		},
+		{
+			"mapId": 64489222
+		},
+		{
+			"mapId": 72095750
+		},
+		{
+			"mapId": 76283910
+		},
+		{
+			"mapId": 88086283
+		},
+		{
+			"mapId": 88085252
+		},
+		{
+			"mapId": 91753991
+		},
+		{
+			"mapId": 93850624
+		},
+		{
+			"mapId": 99096077
+		},
+		{
+			"mapId": 99615238
+		},
+		{
+			"mapId": 111150345
+		},
+		{
+			"mapId": 113902337
+		},
+		{
+			"mapId": 128059398
+		},
+		{
+			"mapId": 146800640
+		},
+		{
+			"mapId": 153879809
+		},
+		{
+			"mapId": 156762630
+		},
+		{
+			"mapId": 171442689
+		},
+		{
+			"mapId": 173277699
+		},
+		{
+			"mapId": 179309058
+		},
+		{
+			"mapId": 190843392
+		},
+		{
+			"mapId": 206832133
+		},
+		{
+			"mapId": 152337
+		},
+		{
+			"mapId": 160786
+		},
+		{
+			"mapId": 144418
+		},
+		{
+			"mapId": 153088
+		},
+		{
+			"mapId": 153363
+		}
+	]
+}

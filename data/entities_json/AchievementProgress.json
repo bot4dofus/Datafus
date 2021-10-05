@@ -1,1 +1,39 @@
-{"def": [{"memberName": "AchievementProgress", "packageName": "com.ankamagames.dofus.datacenter.temporis", "fields": [{"name": "id", "type": -1}, {"name": "name", "type": -3}, {"name": "seasonId", "type": -1}]}], "data": [{"id": 2, "name": "Temporis 4", "seasonId": 5}, {"id": 3, "name": "Temporis 5", "seasonId": 14}, {"id": 4, "name": "Temporis 6", "seasonId": 16}]}
+{
+	"def": [
+		{
+			"memberName": "AchievementProgress",
+			"packageName": "com.ankamagames.dofus.datacenter.temporis",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "name",
+					"type": -3
+				},
+				{
+					"name": "seasonId",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 2,
+			"name": "Temporis 4",
+			"seasonId": 5
+		},
+		{
+			"id": 3,
+			"name": "Temporis 5",
+			"seasonId": 14
+		},
+		{
+			"id": 4,
+			"name": "Temporis 6",
+			"seasonId": 16
+		}
+	]
+}
