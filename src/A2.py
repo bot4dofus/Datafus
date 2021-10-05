@@ -99,7 +99,7 @@ def save_json(file_name, data):
     print("Saving json...")
 
     file = open(file_name, 'w')
-    file.write(json.dumps(data, indent=4))
+    file.write(json.dumps(data, indent='\t'))
     file.close()
     
     print("Json saved !")

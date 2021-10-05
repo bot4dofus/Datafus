@@ -11,7 +11,7 @@ def log(log):
 
 def save_file(file_name, data):
     file = open(file_name, 'w')
-    file.write(json.dumps(data, indent=4))
+    file.write(json.dumps(data, indent='\t'))
     file.close()
 
 class D2OReader():
