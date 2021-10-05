@@ -1,0 +1,644 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Rapport de bug DOFUS</title>
+		<style>
+			body{
+				/*font-family: verdana;*/
+				color: #3E3720;
+				background-color: #C9BF9D;
+			}
+			h1, h5{
+				text-align: center;
+				font-family: Verdana;
+			}
+			
+			h2, h3, h4, h5{
+				padding: 5px;
+				margin: 5px;
+				font-family: Verdana;
+			}
+			
+			h5 a{
+				color: #888888;
+			}
+			
+			span{
+				font-weight: bold;
+				margin-right: 5px;
+			}
+			
+			pre{
+				border: #666666 1px solid;
+				overflow:scroll;
+				padding: 5px;
+				background-color : #eeeeee;
+			}
+			
+			#sos ul{
+				border: #666666 1px solid;
+				padding: 0;
+				margin:0;
+				height: 600px;
+				overflow:scroll;
+			}
+			#sos li{
+				font-family: Courier New;
+				font-size: 10pt;
+				list-style-type : none;
+			}
+
+			#sosReg ul{
+				border: #666666 1px solid;
+				padding: 0;
+				margin:0;
+				height: 600px;
+				overflow:scroll;
+			}
+			#sosReg li{
+				font-family: Courier New;
+				font-size: 10pt;
+				list-style-type : none;
+			}
+			
+			#screenshot{
+				margin: 5px;
+				padding: 5px;
+				background-color: #FFFFFF;
+				-moz-box-shadow: 0 0 5px #555;
+				-webkit-box-shadow: 0 0 5px#555;
+				box-shadow: 0 0 5px #555;
+			}
+			
+			div{
+				margin: 5px;
+				padding: 5px;
+				-moz-border-radius: 15px;
+				border-radius: 15px;
+				background-color: #DEDABE;
+			}
+			
+			.l_1	{background-color: #c5f4c5} /* Trace */
+			.l_2	{background-color: #aad4ff} /* Debug */
+			.l_4	{background-color: #ffff95} /* Info */
+			.l_8	{background-color: #ff9933} /* Warning */
+			.l_16	{background-color: #ff1313} /* Error */
+			.l_32	{background-color: #d90303} /* Fatal */
+			
+			#mouse{
+				position:relative;
+				left:26px;
+				top:-503px;
+			}
+			
+			#screen input{
+				border: #555555 1px solid;
+				margin: 5px;
+				margin-left: 220px;
+			}
+			
+			#tooltip{
+				position:absolute;
+				background-color: #fff;
+				margin: 2px;
+				padding: 2px;
+				-moz-border-radius: 3px;
+				border-radius: 3px;
+				box-shadow: 0 0 5px #AAA;
+				border: #AAA 1px solid;
+				display: none;
+			}
+			
+			#mapLegend ul{
+				margin: 5px;
+				padding: 0px;
+			}
+			#mapLegend div{
+				display: inline;
+				margin: 10px;
+			}
+			#mapLegend li{
+				list-style-type: none;
+				clear: left;
+			}
+			
+			.square{
+				margin: 3px;
+				padding: 2px;
+				-moz-border-radius: 0px;
+				border-radius: 0px;
+				float: left;
+				width: 11px;
+				height: 11px;
+			}
+			
+			.circle{
+				margin: 3px;
+				padding: 7px;
+				-moz-border-radius: 7px;
+				border-radius: 7px;
+				float: left;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			var initMapData = false;
+		</script>
+		<script type="text/javascript">
+			var obstacles = Array({{obstacles}});
+			var entitiesData = Array({{entities}});
+			var los = Array({{los}});
+			var entities = Array();
+			initMapData = true;
+		</script>
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", initContent, false)
+			
+			function initContent()
+			{
+				document.getElementById("mouse").style.left = 26 + parseFloat("{{mouseX}}") * .5;
+				document.getElementById("mouse").style.top = -503 + parseFloat("{{mouseY}}") * .5;
+				
+				var patt=new RegExp("\{\{[^\}]*\}\}","g");
+				var body = document.body.innerHTML;
+				var maxIter = 200;
+				var startPos = 0;
+				while(true)
+				{
+				
+					result = patt.exec(body)
+					if(!result || !result.length)
+						break;
+					if(!--maxIter)
+					{
+						alert("Max iter");
+						break;
+					}
+					 body = body.split(result).join("-");
+				}
+				document.body.innerHTML = body;
+
+				var fightId = document.getElementById("fightId");
+				var detailsList = document.getElementById("detailsList");
+				if(detailsList.children.length == 0 && fightId.children.length == 0)
+					document.getElementById("details").style.display = "none";
+				
+				var errorMsgContent = document.getElementById("errorMsgContent").innerHTML;
+				if(errorMsgContent.length <= 1)
+					document.getElementById("errorMsg").style.display = "none";
+				
+				var screenshot = document.getElementById("screenshot");
+				if(!screenshot.width || screenshot.width < 100)
+					document.getElementById("screen").style.display = "none";
+				
+				var stacktraceContent = document.getElementById("stacktraceContent").innerHTML;
+				if(stacktraceContent.length <= 1)
+					document.getElementById("stacktrace").style.display = "none";
+					
+				var logSos = document.getElementById("logSos");
+				if(logSos.children.length == 0)
+					document.getElementById("sos").style.display = "none";
+
+				var logSosReg = document.getElementById("logSosReg");
+				if(logSosReg.children.length == 0)
+					document.getElementById("sosReg").style.display = "none";
+
+				if(initMapData)
+					buildMap();
+				else
+					document.getElementById("map").style.display = "none";
+			}
+			
+			function switchMouseVisibility()
+			{
+				document.getElementById("mouse").style.visibility = document.getElementById("mouse").style.visibility == "hidden" ? "visible" : "hidden";
+			}
+		
+			
+			if(initMapData != undefined)
+			{
+				for(var i in entitiesData)
+				{
+					data = entitiesData[i]
+					if(!entities[data.cell])
+						entities[data.cell] = Array();
+					if(data.className == "InteractiveElement")
+						data.color = getColorFromString(data.className + data.elementTypeId)
+					else
+						data.color = getColorFromString(data.className)
+					entities[data.cell].push(data);
+				}
+			}
+			
+			tileWidth = 43;
+			tileHeight = 21.5;
+			MAP_WIDTH = 14;
+			MAP_HEIGHT = 20;
+			CELLPOS = Array();
+			function buildMap()
+			{
+				initCells();
+				
+				var c=document.getElementById("mapStatus");
+				var cxt=c.getContext("2d");
+				c.width = tileWidth * (MAP_WIDTH + 1);
+				c.height = tileHeight * (MAP_HEIGHT + 1);
+				
+				c.addEventListener("mousemove", onMouseMove, false);
+				
+				var legend = document.getElementById("mapLegend");
+				var htmlBuffer = "<ul>";
+				htmlBuffer += getLegend(0xBBBBBB, "Obstacle simple", "square");
+				htmlBuffer += getLegend(0x777777, "Obstacle sans ligne de vue", "square");
+				var done = Array();
+				for(var i in entitiesData)
+				{
+					data = entitiesData[i];
+					var id = data.className + (data.className == "InteractiveElement" ? "-" + data.elementTypeId : "")
+					if(!done[id])
+					{
+						done[id] = true;
+						htmlBuffer += getLegend(data.color, id, (data.className == "InteractiveElement" ? "square" : "circle"));
+					}
+				}
+				htmlBuffer += "</ul>";
+				legend.innerHTML = htmlBuffer;
+				
+				for(var cellId in CELLPOS)
+				{
+					// Affichage de la grille
+					drawTile(cxt, CELLPOS[cellId].pixelX, CELLPOS[cellId].pixelY, 0xFFFFFF, 0xBBBBBB);
+					
+					// Obstacle
+					if(obstacles[cellId] == 0)
+						drawTile(cxt, CELLPOS[cellId].pixelX, CELLPOS[cellId].pixelY, 0xBBBBBB);
+						
+					// Ligne de vue
+					if(los[cellId] == 0)
+						drawTile(cxt, CELLPOS[cellId].pixelX, CELLPOS[cellId].pixelY, 0x777777);
+					
+					// Entit�e
+                    if(entities[cellId] && entities[cellId].length)
+					{
+						if(entities[cellId][0].className != "InteractiveElement")
+							drawCircle(cxt, CELLPOS[cellId].pixelX, CELLPOS[cellId].pixelY, entities[cellId][0].color);
+						else
+							drawSquare(cxt, CELLPOS[cellId].pixelX, CELLPOS[cellId].pixelY, entities[cellId][0].color);
+					}
+				}
+			}
+			
+			function onMouseMove(e)
+			{
+				for(var i in entitiesData)
+				{
+					var data = entitiesData[i];
+					cellPosX = CELLPOS[data.cell].pixelX + tileWidth / 2 ;
+					cellPosY = CELLPOS[data.cell].pixelY + tileHeight / 2;
+					if(Math.sqrt(Math.pow(e.layerX - e.target.offsetLeft - cellPosX,2) + Math.pow(e.layerY - e.target.offsetTop- cellPosY,2)) < tileHeight / 2)
+					{
+						
+						showCellInfo(data.cell, e.layerX, e.layerY);
+						return
+					}
+				}
+				hideCellInfo();
+			}
+			
+			function showCellInfo(cell, x, y)
+			{
+				var tooltip = document.getElementById("tooltip");
+				tooltip.style.display = "block";
+				
+				var htmlBuffer = "";
+				for(var i in entitiesData)
+				{
+					data = entitiesData[i];
+					if(data.cell == cell)
+					{
+						var key = "className";
+						htmlBuffer += "<ul>";
+						htmlBuffer += "<li><span>" + key + " : </span>" + data[key] + "</li>";
+						for(key in data)
+						{
+							if(key != "className")
+								htmlBuffer += "<li><span>" + key + " : </span>" + data[key] + "</li>";
+						}
+						htmlBuffer += "</ul>";
+					}
+				}
+				
+				tooltip.innerHTML = htmlBuffer;
+				tooltip.style.left = (x + 10) + "px";
+				tooltip.style.top = (y + 10) + "px";
+			}
+			
+			function hideCellInfo()
+			{
+				var tooltip = document.getElementById("tooltip");
+				tooltip.style.display = "none";
+			}
+			
+			function getColorFromString(str)
+			{
+				var i = 0;
+                                var r = 0;
+                                var g = 0;
+                                var b = 0;
+                                for(i = 0; str && i < str.length; ++i)
+                                {
+                                        switch(i % 3)
+                                        {
+                                                case 0:
+                                                        r += str.charCodeAt(i) * 20;
+                                                        g += str.charCodeAt(i) * 10;
+                                                        b += str.charCodeAt(i) * 40;
+							break;
+                                                case 1:
+                                                        r += str.charCodeAt(i) * 10;
+                                                        g += str.charCodeAt(i) * 40;
+                                                        b += str.charCodeAt(i) * 20;
+							break;
+                                                case 2:
+                                                        r += str.charCodeAt(i) * 40;
+                                                        g += str.charCodeAt(i) * 20;
+                                                        b += str.charCodeAt(i) * 10;
+							break;
+                                        }
+                                }
+                                r = 0xEE - r % 150;
+                                g = 0xEE - g % 150;
+                                b = 0xEE - b % 150;
+                                return ((r & 0xFF) << 16) | ((g & 0xFF) << 8) | (b & 0xFF);
+			}
+			
+			function drawTile(target, x, y, color, borderColor)
+			{
+				if(color != undefined)
+					target.fillStyle= "#" + color.toString(16);
+				
+				if(borderColor != undefined)
+				{
+					target.strokeStyle = "#" + borderColor.toString(16);
+					target.lineWidth = .5;
+				}
+				
+				target.beginPath();
+				target.moveTo(x + tileWidth / 2,	y + 0);
+				target.lineTo(x + tileWidth, 		y + tileHeight / 2);
+				target.lineTo(x + tileWidth / 2,	y + tileHeight);
+				target.lineTo(x + 0,			y + tileHeight / 2);
+				target.lineTo(x + tileWidth / 2,	y + 0);
+				
+				if(color != undefined)
+					target.fill();
+					
+				if(borderColor != undefined)
+					target.stroke();
+			}
+			
+			function drawCircle(target, x, y, color)
+			{
+				if(color != undefined)
+					target.fillStyle= "#" + color.toString(16);
+				
+				target.beginPath();
+				target.arc(x + tileWidth / 2,	y + tileHeight / 2, tileHeight / 3, 0, Math.PI * 2, false);
+				target.closePath();
+				
+				if(color != undefined)
+					target.fill();
+			}
+			
+			function drawSquare(target, x, y, color)
+			{
+				if(color != undefined)
+					target.fillStyle= "#" + color.toString(16);
+					
+				target.beginPath();
+				target.fillRect (x + tileHeight * .7, y + tileHeight * .2, tileHeight * .6, tileHeight * .6);
+				target.closePath();
+				
+				if(color != undefined)
+					target.fill();
+			}
+			
+			function initCells()
+			{
+				var startX = 0;
+				var startY = 0;
+				var cell = 0;
+				var b;
+				for (a = 0; a < MAP_HEIGHT; a++) 
+				{
+					for (b = 0; b < MAP_WIDTH; b++) {
+						p = cellCoords(cell);
+						CELLPOS[cell] = {x:startX + b,
+								 y:startY + b,
+								 pixelX: p.x * tileWidth + (p.y % 2 == 1 ? tileWidth / 2 : 0),
+								 pixelY: p.y * tileHeight / 2
+								 };
+						cell++;
+					}
+					startX++;
+					for (b = 0; b < MAP_WIDTH; b++) {
+						p = cellCoords(cell);
+						CELLPOS[cell] = {x:startX + b,
+								 y:startY + b,
+								 pixelX: p.x * tileWidth + (p.y % 2 == 1 ? tileWidth / 2 : 0),
+								 pixelY: p.y * tileHeight / 2
+								 };
+						cell++;
+					}
+					startY--;
+				}
+			}
+			
+			function cellCoords(cellId ) 
+			{
+				return {
+					x:cellId % MAP_WIDTH,			// X
+					y:Math.floor(cellId / MAP_WIDTH)	// Y
+					}
+			}
+			
+			function getLegend(color, text, css)
+			{
+				return '<li><span class="' +  css + '" style="background-color:#' + color.toString(16) + '" ></span>' + text + '</li>';
+			}
+			function resetFilters()
+			{
+				var optionsType = document.querySelectorAll('#log_select option');
+				for (var i = 0, l = optionsType.length; i < l; i++) {
+					optionsType[i].selected = optionsType[i].defaultSelected;
+				}
+				var optionsCriticity = document.querySelectorAll('#criticity option');
+				for (var i = 0, l = optionsCriticity.length; i < l; i++) {
+					optionsCriticity[i].selected = optionsCriticity[i].defaultSelected;
+				}
+			}
+
+			function isClientLogEntry(msg, logTypes){
+				var found = false;
+				logTypes.forEach(function(logType){
+					if(logType.value != "all" && logType.value != "other"){
+						if(msg.includes(logType.value)){
+							found = true;
+							return;
+						}
+					}
+				});
+
+				return !found;
+			}
+
+			function filter()
+			{
+				var nodes = document.querySelectorAll('#logSos li');
+				var selectedLogTypes = document.querySelectorAll('#log_select option:checked');
+				var logTypes = document.querySelectorAll('#log_select option');
+
+				nodes.forEach(function(item){
+					var found = false;
+					selectedLogTypes.forEach(function(logType){
+						if(logType.value != "other" && (logType.value == "all" || item.textContent.includes(logType.value))){
+							found = true;
+							return;
+						}else if(logType.value == "other" && isClientLogEntry(item.textContent, logTypes)){
+							found = true;
+							return;
+						}
+					});
+					if(!found){
+						item.style.display = "none";
+					}else{
+						item.style.display = "block";
+					}
+				});
+
+				//filter criticity
+				var selectedCriticites = document.querySelectorAll('#criticity option:checked');
+
+				nodes.forEach(function(node){
+					if(node.style.display != "none"){
+						var found = false;
+
+						selectedCriticites.forEach(function(criticity){
+							if(criticity.value == "all" || node.className == criticity.value){
+								found = true;
+								return;
+							}
+						});
+
+						if(!found){
+							node.style.display = "none";
+						}else{
+							node.style.display = "block";
+						}
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Rapport de bug DOFUS</h1>
+		<div id="info">
+			<h2>Informations générales</h2>
+			<ul>
+				<li><span>Reporté par :</span>{{user}}</li>
+				<li><span>Date :</span>{{date}}</li>
+				<li><span>Heure :</span>{{time}}</li>
+				<li><span>OS :</span>{{os}}</li>
+				<li><span>Version Flash :</span>{{flashVersion}}</li>
+				<li><span>Dossier :</span>{{appPath}}</li>
+			</ul>
+		</div>
+		<div id="context">
+			<h2>Contexte</h2>
+			<ul>
+				<li><span>Type :</span>{{buildType}}</li>
+				<li><span>Build :</span>{{buildVersion}}</li>
+				<li><span>Multi-compte :</span>{{multicompte}}</li>
+				<li><span>Compte :</span>{{account}}</li>
+				<li><span>Serveur :</span>{{server}}</li>
+				<li><span>Personnage :</span>{{character}}</li>
+				<li><span>Map ID :</span>{{mapId}}</li>
+				<li><span>Look :</span>{{look}}</li>
+				<li><span>En combat :</span>{{wasFighting}} {{isSpectator}}</li>
+			</ul>
+		</div>
+        <div id="details">
+            <h2>Détails Combat</h2>
+            <li id="fightId">
+                {{fightId}}
+            </li>
+            <li><span>Joueur actuel :</span> {{currentPlayer}}</li>
+            <ul id="detailsList">
+                {{fighterList}}
+            </ul>
+        </div>
+		<div id="screen">
+			<h2>Capture d'écran</h2>
+			<img id="mouse" src="data:image/gif;base64,R0lGODlhDAATAJEAAAEAAP///w0NDRAQECH5BAEAAAAALAAAAAAMABMAAAIsFI4JYpoSmlshTlrlq9lBbm1geHyjZJ7lCBopy8DMzH2D6HZr86FafwEGJQUAOw==">
+			<img id="screenshot" src="data:image/jpeg;base64,{{screenshot}}" />
+			</br><input type="button" value="Afficher / Masquer la position de la souris" onClick="switchMouseVisibility(this)"/>
+		</div>
+		<div id="map">
+			<h2>Vue de la carte</h2>
+			<canvas id="mapStatus"></canvas>
+			<h3>Légende</h3>
+			<div id="mapLegend"></div>
+		</div>
+		<div id="errorMsg">
+			<h2>Message d'erreur</h2>
+			<pre id="errorMsgContent">{{errorMsg}}</pre>
+		</div>
+		<div id="stacktrace">
+			<h2>Stacktrace</h2>
+			<pre id="stacktraceContent">{{stacktrace}}</pre>
+		</div>
+		<div id="sos">
+			<h2>Log SOS</h2>
+			Type de log
+			<select multiple id="log_select" size = "9">
+				<option value="all" selected="selected">All</option>
+				<option value="[server_login]">[server_login] All</option>
+				<option value="[server_login] [SND]">[server_login] [SND]</option>
+				<option value="[server_login] [RCV]">[server_login] [RCV]</option>
+				<option value="[server_game]">[server_game] All</option>
+				<option value="[server_game] [SND]">[server_game] [SND]</option>
+				<option value="[server_game] [RCV]">[server_game] [RCV]</option>
+				<option value="[Spin2ServiceConnection]">[Spin2ServiceConnection]</option>
+				<option value="other">Other (Only Client)</option>
+			</select>
+			<span style="display:inline-block; width: 50;"></span>
+
+			Criticité
+			<select multiple id="criticity" size="7">
+				<option value="all" selected="selected">All</option>
+				<option value="l_1">Trace</option>
+				<option value="l_2">Debug</option>
+				<option value="l_4">Info</option>
+				<option value="l_8">Warning</option>
+				<option value="l_16">Error</option>
+				<option value="l_32">Fatal</option>
+			</select>
+
+			<span style="display:inline-block; width: 50;"></span>
+			<button id="reset" onclick="resetFilters()">Reset</button>
+			<button id="filter" onclick="filter()">Filtrer</button>
+
+			<br/><br/>
+			<ul id="logSos">
+				{{logSos}}
+			</ul>
+		</div>
+		<div id="sosReg">
+			<h2>Log REG</h2>
+			<ul id="logSosReg">
+				{{logSosReg}}
+			</ul>
+		</div>
+		<div id="tooltip"></div>
+	</body>
+</html>
