@@ -6,7 +6,7 @@ package Ankama_ContextMenu.behaviors
    {
        
       
-      public function TutorialMenuBehavior(pParams:Object)
+      public function TutorialMenuBehavior()
       {
          super();
       }

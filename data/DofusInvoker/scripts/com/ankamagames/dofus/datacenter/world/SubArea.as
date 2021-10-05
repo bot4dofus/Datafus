@@ -52,21 +52,11 @@ package com.ankamagames.dofus.datacenter.world
       
       public var monsters:Vector.<uint>;
       
-      public var entranceMapIds:Vector.<Number>;
-      
-      public var exitMapIds:Vector.<Number>;
-      
       public var capturable:Boolean;
-      
-      public var achievements:Vector.<uint>;
       
       public var quests:Vector.<Vector.<Number>>;
       
       public var npcs:Vector.<Vector.<Number>>;
-      
-      public var exploreAchievementId:int;
-      
-      public var isDiscovered:Boolean;
       
       public var harvestables:Vector.<int>;
       

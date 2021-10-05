@@ -1522,13 +1522,9 @@ package Ankama_Cartography.ui
          {
             contextMenu = [];
          }
-         var mountInfo:MountData = this.playerApi.getMount();
-         if((this.playerApi.isRidding() || this.playerApi.isPetsMounting()) && mountInfo)
+         if(this.hasAutoPilot())
          {
-            if(this.hasAutoPilot())
-            {
-               contextMenu.unshift(modContextMenu.createContextMenuItemObject(uiApi.getText("ui.mountTrip.travel"),this.mountRunToThisPosition,[mapViewer.currentMouseMapX,mapViewer.currentMouseMapY,_currentWorldId]));
-            }
+            contextMenu.unshift(modContextMenu.createContextMenuItemObject(uiApi.getText("ui.mountTrip.travel"),this.mountRunToThisPosition,[mapViewer.currentMouseMapX,mapViewer.currentMouseMapY,_currentWorldId]));
          }
          contextMenu.unshift(modContextMenu.createContextMenuSeparatorObject());
          contextMenu.unshift(modContextMenu.createContextMenuItemObject(uiApi.getText("ui.chat.insertCoordinates"),this.insertMapCoordinates,[mapViewer.currentMouseMapX,mapViewer.currentMouseMapY,__currentMapElement]));

@@ -29,7 +29,6 @@ package Ankama_Storage.ui.behavior
       public function BankUiBehavior()
       {
          super();
-         Api.system.addHook(ExchangeHookList.DisplayAssociatedRunes,this.onDisplayAssociatedRunes);
       }
       
       public function filterStatus(enabled:Boolean) : void
@@ -184,12 +183,14 @@ package Ankama_Storage.ui.behavior
          this._bank.btn_moveAllToRight.visible = true;
          this._bank.lbl_kamas.mouseEnabled = true;
          this._bank.lbl_kamas.handCursor = true;
+         Api.system.addHook(ExchangeHookList.DisplayAssociatedRunes,this.onDisplayAssociatedRunes);
       }
       
       public function detach() : void
       {
          this._bank.questVisible = true;
          this._bank.btn_moveAllToRight.visible = false;
+         Api.system.removeHook(ExchangeHookList.DisplayAssociatedRunes);
       }
       
       public function onUnload() : void

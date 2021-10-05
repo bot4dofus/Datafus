@@ -143,11 +143,6 @@ package Ankama_Storage.ui.behavior
          Api.system.sendAction(new LeaveDialogRequestAction([]));
       }
       
-      public function isDefaultBehavior() : Boolean
-      {
-         return false;
-      }
-      
       public function getStorageUiName() : String
       {
          return UIEnum.STORAGE_UI;

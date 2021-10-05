@@ -16,7 +16,7 @@ package com.ankamagames.dofus.datacenter.challenges
    public class Challenge implements IDataCenter
    {
       
-      public static const MODULE:String = "Challenge";
+      public static const MODULE:String = "Challenges";
       
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(Challenge));
       

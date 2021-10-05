@@ -19,6 +19,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.berilia.types.event.UiUnloadEvent;
    import com.ankamagames.berilia.types.tooltip.TooltipPlacer;
    import com.ankamagames.berilia.types.tooltip.event.TooltipEvent;
+   import com.ankamagames.dofus.datacenter.challenges.Challenge;
    import com.ankamagames.dofus.datacenter.monsters.Companion;
    import com.ankamagames.dofus.datacenter.monsters.Monster;
    import com.ankamagames.dofus.datacenter.npcs.TaxCollectorFirstname;
@@ -537,6 +538,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
       public function process(msg:Message) : Boolean
       {
          var fscf:FightSpellCastFrame = null;
+         var challenge:ChallengeWrapper = null;
          var gfsmsg:GameFightStartingMessage = null;
          var TreasurHuntMask:Sprite = null;
          var mcmsg:CurrentMapMessage = null;
@@ -598,7 +600,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var ctlrmsg:ChallengeTargetsListRequestMessage = null;
          var ctlmsg:ChallengeTargetsListMessage = null;
          var cimsg:ChallengeInfoMessage = null;
-         var challenge:ChallengeWrapper = null;
          var ctumsg:ChallengeTargetUpdateMessage = null;
          var crmsg:ChallengeResultMessage = null;
          var aflmsg:ArenaFighterLeaveMessage = null;
@@ -1330,6 +1331,10 @@ package com.ankamagames.dofus.logic.game.fight.frames
                return true;
             case msg is ChallengeInfoMessage:
                cimsg = msg as ChallengeInfoMessage;
+               if(!Challenge.getChallengeById(cimsg.challengeId))
+               {
+                  return true;
+               }
                challenge = this.getChallengeById(cimsg.challengeId);
                if(!challenge)
                {
@@ -1343,6 +1348,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                challenge.result = 0;
                KernelEventsManager.getInstance().processCallback(FightHookList.ChallengeInfoUpdate,this.challengesList);
                return true;
+               break;
             case msg is ChallengeTargetUpdateMessage:
                ctumsg = msg as ChallengeTargetUpdateMessage;
                challenge = this.getChallengeById(ctumsg.challengeId);

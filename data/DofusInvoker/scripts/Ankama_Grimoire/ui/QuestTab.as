@@ -39,6 +39,7 @@ package Ankama_Grimoire.ui
    import com.ankamagames.dofus.misc.lists.CustomUiHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.QuestHookList;
+   import com.ankamagames.dofus.network.ProtocolConstantsEnum;
    import com.ankamagames.dofus.network.enums.ChatActivableChannelsEnum;
    import com.ankamagames.dofus.network.enums.CompassTypeEnum;
    import com.ankamagames.dofus.uiApi.ConfigApi;
@@ -1268,10 +1269,10 @@ package Ankama_Grimoire.ui
       private function checkMaxFollowedQuests(questId:uint) : Boolean
       {
          var followedQuests:Vector.<uint> = this.questApi.getFollowedQuests();
-         var maxFollowedQuests:uint = this.sysApi.getSetData(QuestList.MAX_FOLLOWED_QUESTS_DATA_ID,5,DataStoreEnum.BIND_ACCOUNT);
+         var maxFollowedQuests:uint = this.sysApi.getSetData(QuestList.MAX_FOLLOWED_QUESTS_DATA_ID,ProtocolConstantsEnum.MAX_FOLLOWED_QUESTS,DataStoreEnum.BIND_ACCOUNT);
          if(followedQuests.indexOf(questId) == -1 && followedQuests.length == maxFollowedQuests)
          {
-            this.sysApi.dispatchHook(ChatHookList.TextInformation,this.uiApi.getText(maxFollowedQuests < 5 ? "ui.quest.increasableMaxQuestsReached" : "ui.quest.maxQuestsReached"),ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,this.timeApi.getTimestamp());
+            this.sysApi.dispatchHook(ChatHookList.TextInformation,this.uiApi.getText(maxFollowedQuests < ProtocolConstantsEnum.MAX_FOLLOWED_QUESTS ? "ui.quest.increasableMaxQuestsReached" : "ui.quest.maxQuestsReached"),ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,this.timeApi.getTimestamp());
             return true;
          }
          return false;
@@ -1738,6 +1739,7 @@ package Ankama_Grimoire.ui
       {
          var stepsIds:Vector.<uint> = null;
          var st:* = undefined;
+         var q:Object = null;
          if(questId == this._selectedQuest)
          {
             this.sysApi.setData("lastQuestSelected",questId);
@@ -1766,7 +1768,14 @@ package Ankama_Grimoire.ui
                this._displayedStep = stepsIds[0];
                this._currentStep = stepsIds[stepsIds.length - 1];
             }
-            this.updateStep();
+            for each(q in this._questActiveList)
+            {
+               if(q.id == questId)
+               {
+                  this.updateStep();
+                  break;
+               }
+            }
             if(this._questToFollow > 0 && this._questToFollow == questId)
             {
                this.followQuest(questId);
@@ -1844,9 +1853,28 @@ package Ankama_Grimoire.ui
       
       public function onQuestValidated(questId:uint) : void
       {
+         var data:Array = null;
+         var length:uint = 0;
+         var i:uint = 0;
+         var obj:ObjectiveWrapper = null;
          if(this._selectedQuest == questId)
          {
-            this.updateStep();
+            data = this.gd_objectives.dataProvider;
+            length = this._questActiveList.length;
+            for(i = 0; i < length; i++)
+            {
+               if(questId == this._questActiveList[i].id)
+               {
+                  this._questActiveList.splice(i,1);
+                  break;
+               }
+            }
+            this.updateQuestGrid();
+            for each(obj in data)
+            {
+               obj.status = false;
+               this.gd_objectives.updateItem(data.indexOf(obj));
+            }
          }
       }
    }

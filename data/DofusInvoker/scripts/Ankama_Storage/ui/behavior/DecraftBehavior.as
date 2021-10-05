@@ -113,11 +113,6 @@ package Ankama_Storage.ui.behavior
          Api.ui.unloadUi(UIEnum.RECYCLE);
       }
       
-      public function isDefaultBehavior() : Boolean
-      {
-         return false;
-      }
-      
       public function getStorageUiName() : String
       {
          return UIEnum.STORAGE_UI;

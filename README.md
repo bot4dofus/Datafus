@@ -1,5 +1,7 @@
-<img src="https://github.com/LucBerge/Datafus/raw/master/images/banner_tags.png" />
-
+<p align="center">
+  <img width="100%" src="https://github.com/LucBerge/Datafus/raw/master/images/banner_tags.drawio.svg" />
+</p>
+  
 ![Flow A](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Flow%20A/master?label=Flow%20A)
 ![Flow B](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Flow%20B/master?label=Flow%20B)
 ![Flow C](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Flow%20C/master?label=Flow%20C)
@@ -24,5 +26,5 @@ If you need the data in local for your project, you can download it in the [rele
 ## Flows
 
 <p align="center">
-  <img src="https://github.com/LucBerge/Datafus/raw/master/images/Flows.png" />
+  <img width="80%" src="https://github.com/LucBerge/Datafus/raw/master/images/Flows.drawio.svg" />
 </p>

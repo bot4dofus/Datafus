@@ -16,8 +16,6 @@ package Ankama_Storage.ui.behavior
       
       private var _storage:StorageUi;
       
-      private var _waitingObject:Object;
-      
       private var _mimicryUi:Object;
       
       protected var _showFilter:Boolean = true;
@@ -114,11 +112,6 @@ package Ankama_Storage.ui.behavior
          {
             Api.ui.unloadUi("mimicry");
          }
-      }
-      
-      public function isDefaultBehavior() : Boolean
-      {
-         return false;
       }
       
       public function getStorageUiName() : String

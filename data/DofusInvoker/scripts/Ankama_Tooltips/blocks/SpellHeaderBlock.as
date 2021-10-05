@@ -294,7 +294,7 @@ package Ankama_Tooltips.blocks
             });
          }
          var minCastInterval:Number = !!this._param.isTheoretical ? Number(this._spellItem.spellLevelInfos["minCastInterval"]) : Number(this._spellItem.minCastInterval);
-         if(minCastInterval)
+         if(minCastInterval > 0)
          {
             _content += _block.getChunk("pWithClass").processContent({
                "text":this.uiApi.getText("ui.spellInfo.minCastInterval") + Api.ui.getText("ui.common.colon") + " <span class=\'value\'>" + minCastInterval + "</span>",
@@ -305,7 +305,13 @@ package Ankama_Tooltips.blocks
          {
             if(this._spellItem.globalCooldown == -1)
             {
-               _content += _block.getChunk("p").processContent({"text":this.uiApi.getText("ui.spellInfo.globalCastInterval")});
+               if(minCastInterval > 0)
+               {
+                  _content += _block.getChunk("detailsEffect").processContent({
+                     "text":this.uiApi.getText("ui.spellInfo.globalCastInterval") + Api.ui.getText("ui.common.colon"),
+                     "value":minCastInterval
+                  });
+               }
             }
             else
             {

@@ -20,6 +20,7 @@ package Ankama_Grimoire.ui
    import com.ankamagames.dofus.misc.lists.CustomUiHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.QuestHookList;
+   import com.ankamagames.dofus.network.ProtocolConstantsEnum;
    import com.ankamagames.dofus.network.enums.CompassTypeEnum;
    import com.ankamagames.dofus.uiApi.ChatApi;
    import com.ankamagames.dofus.uiApi.ConfigApi;
@@ -154,7 +155,7 @@ package Ankama_Grimoire.ui
          var questParam:Object = null;
          var needInfosQuestsIds:Vector.<uint> = null;
          super.main(params);
-         this._maxQuests = sysApi.getSetData(MAX_FOLLOWED_QUESTS_DATA_ID,5,DataStoreEnum.BIND_ACCOUNT);
+         this._maxQuests = sysApi.getSetData(MAX_FOLLOWED_QUESTS_DATA_ID,ProtocolConstantsEnum.MAX_FOLLOWED_QUESTS,DataStoreEnum.BIND_ACCOUNT);
          this._resizeMode = sysApi.getSetData(FOLLOWED_QUESTS_RESIZE_MODE_DATA_ID,AUTO_RESIZE_MODE,DataStoreEnum.BIND_ACCOUNT);
          this.ctr_list.getResizeController().bottomResize = this._resizeMode == FREE_RESIZE_MODE;
          this._opacity = sysApi.getSetData(OPACITY_DATA_ID,0.7,DataStoreEnum.BIND_ACCOUNT);
@@ -1003,7 +1004,7 @@ package Ankama_Grimoire.ui
                }
             }
             endIndex = this._quests.indexOf(lastVisibleObjective) + 1;
-            if(deletedObjectiveIndex != -1 && hiddenObjective)
+            if(hiddenObjective)
             {
                this._quests.splice(endIndex,0,hiddenObjective);
             }
@@ -1062,6 +1063,7 @@ package Ankama_Grimoire.ui
       
       private function addObjective(questData:Object, objAdded:Object, numObjectivesData:int, objectiveDictionnaryIndex:int) : void
       {
+         var targetObjective:Object = null;
          var overrideLastIndex:* = false;
          var finalIndex:int = 0;
          objAdded.visible = true;
@@ -1096,7 +1098,10 @@ package Ankama_Grimoire.ui
          var optionalLabelIndex:int = objectivesStartIndex + visibleObjectives - 1;
          var objectiveMasked:int = 0;
          newIndex = objectivesStartIndex + followedObjectives - 1;
-         var targetObjective:Object = this._questsObjectivesOrder[questData.id + "_" + nextObjectiveIndex];
+         if(this._questsObjectivesOrder[questData.id + "_" + nextObjectiveIndex])
+         {
+            targetObjective = this._questsObjectivesOrder[questData.id + "_" + nextObjectiveIndex];
+         }
          if(this._quests[optionalLabelIndex] != null)
          {
             overrideLastIndex = !this._quests[optionalLabelIndex].isQuest;
@@ -1150,13 +1155,16 @@ package Ankama_Grimoire.ui
             if(nextObjectiveFound)
             {
                finalIndex = optionalLabelIndex + 1 - objectiveMasked;
-               if(this._quests[finalIndex])
+               if(targetObjective != null)
                {
-                  this._quests.splice(finalIndex,!this._quests[finalIndex].isQuest ? 1 : 0,targetObjective);
-               }
-               else
-               {
-                  this._quests.splice(finalIndex,0,targetObjective);
+                  if(this._quests[finalIndex])
+                  {
+                     this._quests.splice(finalIndex,!this._quests[finalIndex].isQuest ? 1 : 0,targetObjective);
+                  }
+                  else
+                  {
+                     this._quests.splice(finalIndex,0,targetObjective);
+                  }
                }
             }
             else if(questData.objectives.length != MAX_OBJECTIVES)
