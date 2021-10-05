@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="100%" src="https://github.com/LucBerge/Datafus/raw/master/images/banner_tags.drawio.svg" />
+  <img width="100%" src="https://github.com/LucBerge/Datafus/raw/master/images/banner_tags_plus.drawio.svg" />
 </p>
   
 ![Flow A](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Flow%20A/master?label=Flow%20A)
