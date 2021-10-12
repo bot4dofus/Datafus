@@ -3584,7 +3584,7 @@
 			"nameId": 910350,
 			"shortcutId": 910351,
 			"order": 505900,
-			"defaultAnim": "AnimEmoteEtendardKTA1",
+			"defaultAnim": "Etendardkta1",
 			"persistancy": false,
 			"eight_directions": false,
 			"aura": false,
