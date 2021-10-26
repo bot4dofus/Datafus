@@ -1,6 +1,8 @@
 DOFUS=$USERPROFILE/AppData/Local/Ankama/Dofus
 DOFUS=$((echo $DOFUS) | sed -r 's/[\]+/\//g')
 
+git pull
+
 echo "Removing .d2o files..."
 rm ../data/d2o/*
 
