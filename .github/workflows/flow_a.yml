@@ -12,6 +12,7 @@ jobs:
   Flow_A:
 
     runs-on: ubuntu-latest
+    timeout-minutes: 420
 
     steps:
       - name: Checkout repository
