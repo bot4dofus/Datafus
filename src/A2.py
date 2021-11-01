@@ -11,7 +11,7 @@ SUPER_CLASS = "NetworkMessage"
 
 CLASS_REGEX = "[\s]*public class (\w+) extends (\w+)"
 ID_REGEX = "[\s]*public static const protocolId:uint = ([0-9]+);"
-READER_REGEX = "[\s]*this.(\w+) = input.read(\w+)\(\);"
+READER_REGEX = "[\s]*public var (\w+):([a-zA-Z0-9\.<>]+)(.*);"
 
 
 def list_files(search_folder, format=ACTION_SCRIPT_FORMAT):
