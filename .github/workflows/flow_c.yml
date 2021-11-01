@@ -38,6 +38,6 @@ jobs:
       - name: Commit and push
         uses: EndBug/add-and-commit@v7
         with:
-          add: '["data/entities_json/"]'
+          add: '["data/translations_json/"]'
           message: 'Flow C - Update version ${{ env.VERSION }}'
           push: true
