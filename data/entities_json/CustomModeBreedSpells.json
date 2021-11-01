@@ -349,6 +349,13 @@
 			"breedId": 13,
 			"isInitialSpell": false,
 			"isHidden": false
+		},
+		{
+			"id": 20895,
+			"pairId": 55,
+			"breedId": 2,
+			"isInitialSpell": true,
+			"isHidden": false
 		}
 	]
 }
