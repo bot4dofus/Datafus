@@ -250,7 +250,7 @@
 			"invulnerableRange": false,
 			"cantTackle": true,
 			"cantBeTackled": true,
-			"displayTurnRemaining": false
+			"displayTurnRemaining": true
 		},
 		{
 			"id": 7,
@@ -1278,7 +1278,7 @@
 			"invulnerableRange": false,
 			"cantTackle": false,
 			"cantBeTackled": false,
-			"displayTurnRemaining": false
+			"displayTurnRemaining": true
 		},
 		{
 			"id": 64,
@@ -1532,7 +1532,7 @@
 			"invulnerableRange": false,
 			"cantTackle": false,
 			"cantBeTackled": false,
-			"displayTurnRemaining": false
+			"displayTurnRemaining": true
 		},
 		{
 			"id": 77,
@@ -1980,7 +1980,7 @@
 			"invulnerableRange": false,
 			"cantTackle": false,
 			"cantBeTackled": false,
-			"displayTurnRemaining": false
+			"displayTurnRemaining": true
 		},
 		{
 			"id": 98,
@@ -3248,7 +3248,7 @@
 			"invulnerableRange": false,
 			"cantTackle": false,
 			"cantBeTackled": false,
-			"displayTurnRemaining": false
+			"displayTurnRemaining": true
 		},
 		{
 			"id": 158,
@@ -7892,7 +7892,7 @@
 			"invulnerableRange": false,
 			"cantTackle": false,
 			"cantBeTackled": false,
-			"displayTurnRemaining": false
+			"displayTurnRemaining": true
 		},
 		{
 			"id": 380,
@@ -28392,19 +28392,17 @@
 		},
 		{
 			"id": 1316,
-			"nameId": 801059,
+			"nameId": 910767,
 			"preventsSpellCast": false,
 			"preventsFight": false,
-			"isSilent": true,
+			"isSilent": false,
 			"cantBeMoved": false,
 			"cantBePushed": false,
 			"cantDealDamage": false,
 			"invulnerable": false,
 			"cantSwitchPosition": false,
 			"incurable": false,
-			"effectsIds": [
-				16
-			],
+			"effectsIds": [],
 			"icon": "",
 			"iconVisibilityMask": 0,
 			"invulnerableMelee": false,
