@@ -279,7 +279,10 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
          }
          var destMapName:* = "{map," + this._destinationMapPosition.posX + "," + this._destinationMapPosition.posY + "," + this._destinationMapPosition.worldMap + "} (" + this._destinationMapPosition.subArea.name + ")";
          var currentRouteText:String = I18n.getUiText("ui.mountTrip.routeFound",[destMapName,path.length]);
-         currentRouteText += this.getPotentialLackOfEnergyText();
+         if(PlayedCharacterManager.getInstance().mount)
+         {
+            currentRouteText += this.getPotentialLackOfEnergyText();
+         }
          currentRouteText += "\n\n" + I18n.getUiText("ui.mountTrip.confirmTripStart");
          this._popupName = commonMod.openPopup(I18n.getUiText("ui.mountTrip.trip"),currentRouteText,[I18n.getUiText("ui.common.ok"),I18n.getUiText("ui.common.cancel")],[this.onStartTripByPopup,this.onAbortTripByPopup],this.onStartTripByPopup,this.onAbortTripByPopup,null,false,true);
       }

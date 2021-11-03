@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.choice
    public class CharacterSelectedForceMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3065;
+      public static const protocolId:uint = 7465;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.character.choice
       
       override public function getMessageId() : uint
       {
-         return 3065;
+         return 7465;
       }
       
       public function initCharacterSelectedForceMessage(id:int = 0) : CharacterSelectedForceMessage

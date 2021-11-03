@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class IdentificationAccountForceMessage extends IdentificationMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5506;
+      public static const protocolId:uint = 4931;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 5506;
+         return 4931;
       }
       
       public function initIdentificationAccountForceMessage(version:Version = null, lang:String = "", credentials:Vector.<int> = null, serverId:int = 0, autoconnect:Boolean = false, useCertificate:Boolean = false, useLoginToken:Boolean = false, sessionOptionalSalt:Number = 0, failedAttempts:Vector.<uint> = null, forcedAccountLogin:String = "") : IdentificationAccountForceMessage

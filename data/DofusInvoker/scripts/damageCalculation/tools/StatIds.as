@@ -262,10 +262,6 @@ package damageCalculation.tools
       public static var EXTRA_SCALE_PERCENT:int = 140;
       
       public static var CHARAC_COUNT:int = 141;
-      
-      public static var MAX_ACTION_POINTS:int = 144;
-      
-      public static var MAX_MOVEMENT_POINTS:int = 145;
        
       
       public function StatIds()
@@ -419,10 +415,6 @@ package damageCalculation.tools
          {
             return 97;
          }
-         if(_loc2_ == "maxActionPoints")
-         {
-            return 144;
-         }
          if(_loc2_ == "maxBomb")
          {
             return 93;
@@ -434,10 +426,6 @@ package damageCalculation.tools
          if(_loc2_ == "maxLifePoints")
          {
             return 95;
-         }
-         if(_loc2_ == "maxMovementPoints")
-         {
-            return 145;
          }
          if(_loc2_ == "maximizeRoll")
          {

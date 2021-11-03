@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
    public class ObjectEffectMinMax extends ObjectEffect implements INetworkType
    {
       
-      public static const protocolId:uint = 561;
+      public static const protocolId:uint = 4995;
        
       
       public var min:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
       
       override public function getTypeId() : uint
       {
-         return 561;
+         return 4995;
       }
       
       public function initObjectEffectMinMax(actionId:uint = 0, min:uint = 0, max:uint = 0) : ObjectEffectMinMax

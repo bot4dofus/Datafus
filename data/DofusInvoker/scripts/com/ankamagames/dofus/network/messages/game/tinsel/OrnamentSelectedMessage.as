@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.tinsel
    public class OrnamentSelectedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7319;
+      public static const protocolId:uint = 9504;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.tinsel
       
       override public function getMessageId() : uint
       {
-         return 7319;
+         return 9504;
       }
       
       public function initOrnamentSelectedMessage(ornamentId:uint = 0) : OrnamentSelectedMessage

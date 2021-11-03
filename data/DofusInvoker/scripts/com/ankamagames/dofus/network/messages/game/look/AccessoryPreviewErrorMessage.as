@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.look
    public class AccessoryPreviewErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6566;
+      public static const protocolId:uint = 6108;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.look
       
       override public function getMessageId() : uint
       {
-         return 6566;
+         return 6108;
       }
       
       public function initAccessoryPreviewErrorMessage(error:uint = 0) : AccessoryPreviewErrorMessage

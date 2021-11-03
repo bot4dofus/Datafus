@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.paddock
    public class PaddockInformationsForSell implements INetworkType
    {
       
-      public static const protocolId:uint = 5997;
+      public static const protocolId:uint = 865;
        
       
       public var guildOwner:String = "";
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.types.game.paddock
       
       public function getTypeId() : uint
       {
-         return 5997;
+         return 865;
       }
       
       public function initPaddockInformationsForSell(guildOwner:String = "", worldX:int = 0, worldY:int = 0, subAreaId:uint = 0, nbMount:int = 0, nbObject:int = 0, price:Number = 0) : PaddockInformationsForSell

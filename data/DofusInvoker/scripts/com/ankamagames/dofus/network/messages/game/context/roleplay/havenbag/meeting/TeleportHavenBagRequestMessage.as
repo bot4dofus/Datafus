@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag.me
    public class TeleportHavenBagRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2544;
+      public static const protocolId:uint = 3805;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag.me
       
       override public function getMessageId() : uint
       {
-         return 2544;
+         return 3805;
       }
       
       public function initTeleportHavenBagRequestMessage(guestId:Number = 0) : TeleportHavenBagRequestMessage

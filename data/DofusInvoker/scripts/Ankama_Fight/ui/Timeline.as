@@ -68,15 +68,9 @@ package Ankama_Fight.ui
       
       private var _fightersId:Object;
       
-      private var _unsortedFightersId:Object;
-      
       private var _hideDeadGuys:Boolean = false;
       
       private var _hideSummonedStuff:Boolean = false;
-      
-      private var _currentFighterWaitTime:int;
-      
-      private var _currentFighterRemainingTime:uint;
       
       private var _currentFighterParams:FighterParameters = null;
       
@@ -123,8 +117,6 @@ package Ankama_Fight.ui
       public var charCtr:GraphicContainer;
       
       public var charFrames:GraphicContainer;
-      
-      public var ctr_timeline:GraphicContainer;
       
       public var ctr_buffs:GraphicContainer;
       
@@ -196,8 +188,7 @@ package Ankama_Fight.ui
             {
                this._currentOrientation = params.orientation;
                this._currentFighterParams = params.fighterParams;
-               this._turnCount = params.turnCount;
-               this.onTurnCountUpdated(this._turnCount);
+               this.onTurnCountUpdated(params.turnCount);
                this._waveCountAttackers = params.waveCountAttackers;
                this._turnCountBeforeNextWaveAttackers = params.turnCountBeforeNextWaveAttackers;
                this._waveCountDefenders = params.waveCountDefenders;
@@ -895,8 +886,6 @@ package Ankama_Fight.ui
       private function initTurnOf(id:Number, waitTime:int, remainingTime:uint) : void
       {
          var pos:int = 0;
-         this._currentFighterWaitTime = id;
-         this._currentFighterRemainingTime = id;
          var fighter:Fighter = this.getFighterById(id);
          if(fighter)
          {

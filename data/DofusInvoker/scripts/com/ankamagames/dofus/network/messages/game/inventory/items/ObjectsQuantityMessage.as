@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class ObjectsQuantityMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3115;
+      public static const protocolId:uint = 5340;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 3115;
+         return 5340;
       }
       
       public function initObjectsQuantityMessage(objectsUIDAndQty:Vector.<ObjectItemQuantity> = null) : ObjectsQuantityMessage

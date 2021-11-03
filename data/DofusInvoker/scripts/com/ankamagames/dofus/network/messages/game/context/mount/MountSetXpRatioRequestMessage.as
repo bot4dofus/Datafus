@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountSetXpRatioRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8056;
+      public static const protocolId:uint = 7648;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 8056;
+         return 7648;
       }
       
       public function initMountSetXpRatioRequestMessage(xpRatio:uint = 0) : MountSetXpRatioRequestMessage

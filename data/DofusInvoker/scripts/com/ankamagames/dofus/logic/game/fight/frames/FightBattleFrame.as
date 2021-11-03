@@ -643,7 +643,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
             case msg is GameFightNewRoundMessage:
                gfnrmsg = msg as GameFightNewRoundMessage;
                this._turnsCount = gfnrmsg.roundNumber;
-               CurrentPlayedFighterManager.getInstance().getSpellCastManager().currentTurn = this._turnsCount - 1;
+               CurrentPlayedFighterManager.getInstance().getSpellCastManager().currentTurn = this._turnsCount;
                KernelEventsManager.getInstance().processCallback(FightHookList.TurnCountUpdated,this._turnsCount);
                if(GameDebugManager.getInstance().buffsDebugActivated)
                {

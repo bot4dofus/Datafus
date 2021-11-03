@@ -41,8 +41,6 @@ package Ankama_Party.ui
       private static const MAX_LEAGUE_POINTS:int = 100;
       
       private static const POPUP_KOLIZEUM_RULES:int = 33;
-      
-      private static const POPUP_KOLIZEUM_NEWS:int = 34;
        
       
       [Api(name="SystemApi")]
@@ -184,7 +182,7 @@ package Ankama_Party.ui
          this.btn_3v3SoloQueue.soundId = UISoundEnum.OK_BUTTON;
          this.btn_3v3TeamQueue.soundId = UISoundEnum.OK_BUTTON;
          this.btn_close.soundId = UISoundEnum.CANCEL_BUTTON;
-         this.popupApi.showPopup(POPUP_KOLIZEUM_NEWS);
+         this.popupApi.showPopup(POPUP_KOLIZEUM_RULES);
          this.sysApi.addHook(RoleplayHookList.ArenaRegistrationStatusUpdate,this.onArenaRegistrationStatusUpdate);
          this.sysApi.addHook(RoleplayHookList.ArenaFighterStatusUpdate,this.onArenaFighterStatusUpdate);
          this.sysApi.addHook(RoleplayHookList.ArenaFightProposition,this.onArenaFightProposition);
@@ -377,7 +375,7 @@ package Ankama_Party.ui
                this.sysApi.goToUrl(this.uiApi.getText("ui.link.arenaLadder"));
                break;
             case this.lbl_rules:
-               this.sysApi.sendAction(new OpenGuidebookAction([EnumTab.GUIDEBOOK_GAME_GUIDE,GameGuideArticlesEnum.KOLOSSIUM]));
+               this.sysApi.sendAction(new OpenGuidebookAction([EnumTab.GUIDEBOOK_GAME_GUIDE,GameGuideArticlesEnum.KOLOSSIUM_CHART]));
          }
       }
       

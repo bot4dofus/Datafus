@@ -97,7 +97,7 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
                critical = true;
             }
          }
-         gameTurn = 1 + CurrentPlayedFighterManager.getInstance().getSpellCastManager().currentTurn;
+         gameTurn = CurrentPlayedFighterManager.getInstance().getSpellCastManager().currentTurn;
          try
          {
             list = DamageCalculator.damageComputation(caster,spell,gameTurn,map,targetedCell,getInputPortal(),true,critical,GameDebugManager.getInstance().haxeGenerateTestFromNextSpellCast);

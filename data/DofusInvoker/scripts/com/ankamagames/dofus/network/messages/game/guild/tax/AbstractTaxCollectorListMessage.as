@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.guild.tax
    public class AbstractTaxCollectorListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 62;
+      public static const protocolId:uint = 5568;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.guild.tax
       
       override public function getMessageId() : uint
       {
-         return 62;
+         return 5568;
       }
       
       public function initAbstractTaxCollectorListMessage(informations:Vector.<TaxCollectorInformations> = null) : AbstractTaxCollectorListMessage

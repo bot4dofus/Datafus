@@ -1,14 +1,12 @@
 package com.ankamagames.dofus.console.debug
 {
    import com.ankamagames.dofus.datacenter.characteristics.Characteristic;
-   import com.ankamagames.dofus.internalDatacenter.stats.DetailedStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
    import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.network.enums.ConsoleMessageTypeEnum;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristic;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristicDetailed;
-   import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristicValue;
    import com.ankamagames.jerakine.console.ConsoleHandler;
    import com.ankamagames.jerakine.console.ConsoleInstructionHandler;
    import com.ankamagames.jerakine.logger.Log;
@@ -57,6 +55,12 @@ package com.ankamagames.dofus.console.debug
       
       private static const DIFF_DETAILED_STAT:String = "Detailed stat";
       
+      private static const SORTED_CLIENT_KEYS:Vector.<String> = new <String>["baseValue","additionalValue","objectsAndMountBonusValue","alignGiftBonusValue","contextModifValue","usedValue","totalValue"];
+      
+      private static const SORTED_SERVER_KEYS:Vector.<String> = new <String>["base","additional","objectsAndMountBonus","alignGiftBonus","contextModif","used","total"];
+      
+      private static const VALUES_TO_CHECK:Dictionary = new Dictionary();
+      
       private static const DIFF_ADD:uint = 0;
       
       private static const DIFF_UPDATE:uint = 1;
@@ -64,7 +68,16 @@ package com.ankamagames.dofus.console.debug
       private static const DIFF_REMOVE:uint = 2;
       
       private static const DIFF_UNKNOWN:uint = 3;
-       
+      
+      {
+         VALUES_TO_CHECK[SORTED_CLIENT_KEYS[0]] = SORTED_SERVER_KEYS[0];
+         VALUES_TO_CHECK[SORTED_CLIENT_KEYS[1]] = SORTED_SERVER_KEYS[1];
+         VALUES_TO_CHECK[SORTED_CLIENT_KEYS[2]] = SORTED_SERVER_KEYS[2];
+         VALUES_TO_CHECK[SORTED_CLIENT_KEYS[3]] = SORTED_SERVER_KEYS[3];
+         VALUES_TO_CHECK[SORTED_CLIENT_KEYS[4]] = SORTED_SERVER_KEYS[4];
+         VALUES_TO_CHECK[SORTED_CLIENT_KEYS[5]] = SORTED_SERVER_KEYS[5];
+         VALUES_TO_CHECK[SORTED_CLIENT_KEYS[6]] = SORTED_SERVER_KEYS[6];
+      }
       
       public function StatsInstructionHandler()
       {
@@ -118,7 +131,7 @@ package com.ankamagames.dofus.console.debug
             {
                stat = null;
             }
-            currentResult = getFormattedStatDiffLine(stat,serverStat);
+            currentResult = getStatDiff(stat,serverStat);
             if(currentResult !== null)
             {
                diffStatFormattedLines[serverStat.characteristicId.toString()] = currentResult;
@@ -127,7 +140,7 @@ package com.ankamagames.dofus.console.debug
          }
          for each(stat in diffStats)
          {
-            currentResult = getFormattedStatDiffLine(stat,null);
+            currentResult = getStatDiff(stat,null);
             if(currentResult !== null)
             {
                diffStatFormattedLines[stat.id.toString()] = currentResult;
@@ -288,34 +301,41 @@ package com.ankamagames.dofus.console.debug
          return true;
       }
       
-      private static function getFormattedStatDiff(statId:Number, statType:String, diffType:uint, statDiffValues:String) : String
+      private static function getStatDiff(stat:Stat, serverStat:CharacterCharacteristic) : String
       {
          var diffSymbol:String = null;
          var diffColor:String = null;
-         if(diffType === DIFF_ADD)
+         var clientKey:String = null;
+         var serverKey:String = null;
+         var isDiff:Boolean = false;
+         var value:String = null;
+         var serverValue:String = null;
+         var isDiffApplied:Boolean = false;
+         if(stat === null && serverStat === null)
          {
-            diffSymbol = "+";
-            diffColor = DIFF_ADD_COLOR;
+            return null;
          }
-         else if(diffType === DIFF_UPDATE)
-         {
-            diffSymbol = "~";
-            diffColor = DIFF_NEUTRAL_COLOR;
-         }
-         else if(diffType === DIFF_REMOVE)
+         if(stat !== null && serverStat === null)
          {
             diffSymbol = "-";
             diffColor = DIFF_REMOVE_COLOR;
          }
+         else if(stat === null && serverStat !== null)
+         {
+            diffSymbol = "+";
+            diffColor = DIFF_ADD_COLOR;
+         }
          else
          {
-            if(diffType !== DIFF_UNKNOWN)
+            if(stat.id !== serverStat.characteristicId)
             {
                return null;
             }
             diffSymbol = "~";
-            diffColor = DIFF_WARNING_COLOR;
+            diffColor = DIFF_NEUTRAL_COLOR;
+            isDiffApplied = true;
          }
+         var statId:Number = stat !== null ? Number(stat.id) : Number(serverStat.characteristicId);
          var characteristic:Characteristic = Characteristic.getCharacteristicById(statId);
          var statName:String = null;
          if(characteristic !== null)
@@ -326,99 +346,79 @@ package com.ankamagames.dofus.console.debug
          {
             statName = Stat.UNKNOWN_STAT_NAME;
          }
-         return "<font color=\"" + diffColor + "\">" + diffSymbol + "\t" + statType + " " + statName + " (" + statId.toString() + "): " + statDiffValues;
-      }
-      
-      private static function getFormattedValueDiff(valueName:String, oldValue:Number, newValue:Number) : String
-      {
-         if(oldValue === newValue)
-         {
-            return valueName + ": " + oldValue.toString();
-         }
-         var oldValueStringified:String = !!isNaN(oldValue) ? "???" : oldValue.toString();
-         var newValueStringified:String = !!isNaN(newValue) ? "???" : newValue.toString();
-         return valueName + ": <font color=\"" + DIFF_REMOVE_COLOR + "\" >" + oldValueStringified + "</font> -> " + "<font color=\"" + DIFF_ADD_COLOR + "\">" + newValueStringified + "</font>";
-      }
-      
-      private static function getFormattedStatDiffLine(stat:Stat, serverBaseStat:CharacterCharacteristic) : String
-      {
-         var serverStat:CharacterCharacteristicValue = null;
-         var serverDetailedStat:CharacterCharacteristicDetailed = null;
-         var detailedStat:DetailedStat = null;
-         if(stat === null && serverBaseStat === null)
-         {
-            return null;
-         }
          var statDiffValues:String = "";
-         var total:Number = Number.NaN;
-         if(stat === null)
+         var statObj:Object = stat;
+         var serverStatObj:Object = serverStat;
+         if(!isDiffApplied)
          {
-            if(serverBaseStat is CharacterCharacteristicValue)
+            if(stat !== null)
             {
-               serverStat = serverBaseStat as CharacterCharacteristicValue;
-               return getFormattedStatDiff(serverStat.characteristicId,DIFF_SERVER_STAT,DIFF_ADD,"total: " + serverStat.total);
+               for each(clientKey in SORTED_CLIENT_KEYS)
+               {
+                  if(statObj !== null && statObj.hasOwnProperty(clientKey))
+                  {
+                     value = statObj[clientKey].toString();
+                     statDiffValues += " " + clientKey + ": " + value;
+                  }
+               }
             }
-            if(serverBaseStat is CharacterCharacteristicDetailed)
+            else
             {
-               serverDetailedStat = serverBaseStat as CharacterCharacteristicDetailed;
-               return getFormattedStatDiff(serverDetailedStat.characteristicId,DIFF_SERVER_DETAILED_STAT,DIFF_ADD,"base: " + serverDetailedStat.base.toString() + " additional: " + serverDetailedStat.additional.toString() + " objectsAndMountBonus: " + serverDetailedStat.objectsAndMountBonus.toString() + " alignGiftBonus: " + serverDetailedStat.alignGiftBonus.toString() + " contextModif: " + serverDetailedStat.contextModif.toString() + " total: " + (serverDetailedStat.base + serverDetailedStat.additional + serverDetailedStat.objectsAndMountBonus + serverDetailedStat.alignGiftBonus + serverDetailedStat.contextModif).toString());
+               for each(serverKey in SORTED_SERVER_KEYS)
+               {
+                  if(serverStatObj !== null && serverStatObj.hasOwnProperty(serverKey))
+                  {
+                     value = serverStatObj[serverKey].toString();
+                     statDiffValues += " " + serverKey + ": " + value;
+                  }
+               }
             }
-            return null;
          }
-         if(serverBaseStat === null)
+         else
          {
-            if(stat is DetailedStat)
+            isDiff = false;
+            for each(clientKey in SORTED_CLIENT_KEYS)
             {
-               detailedStat = stat as DetailedStat;
-               return getFormattedStatDiff(stat.id,DIFF_DETAILED_STAT,DIFF_REMOVE,"base: " + detailedStat.baseValue.toString() + " additional: " + detailedStat.additionalValue.toString() + " objectsAndMountBonus: " + detailedStat.objectsAndMountBonusValue.toString() + " alignGiftBonus: " + detailedStat.alignGiftBonusValue.toString() + " contextModif: " + detailedStat.contextModifValue.toString() + " total: " + detailedStat.totalValue.toString());
+               serverKey = VALUES_TO_CHECK[clientKey];
+               if(statObj !== null && statObj.hasOwnProperty(clientKey))
+               {
+                  value = statObj[clientKey].toString();
+               }
+               else
+               {
+                  value = "???";
+               }
+               if(serverStatObj !== null && serverStatObj.hasOwnProperty(serverKey))
+               {
+                  serverValue = serverStatObj[serverKey].toString();
+               }
+               else if(serverStat is CharacterCharacteristicDetailed)
+               {
+                  serverValue = value;
+               }
+               else
+               {
+                  serverValue = "???";
+               }
+               if(value === serverValue)
+               {
+                  if(value !== "???")
+                  {
+                     statDiffValues += " " + serverKey + ": " + value;
+                  }
+               }
+               else
+               {
+                  isDiff = true;
+                  statDiffValues += " " + serverKey + ": <font color=\"" + DIFF_REMOVE_COLOR + "\" >" + value + "</font> -> " + "<font color=\"" + DIFF_ADD_COLOR + "\">" + serverValue + "</font>";
+               }
             }
-            return getFormattedStatDiff(stat.id,DIFF_STAT,DIFF_REMOVE," total: " + stat.totalValue.toString());
-         }
-         if(stat is DetailedStat && serverBaseStat is CharacterCharacteristicValue)
-         {
-            detailedStat = stat as DetailedStat;
-            serverStat = serverBaseStat as CharacterCharacteristicValue;
-            if(stat.totalValue === serverStat.total)
+            if(!isDiff)
             {
                return null;
             }
-            statDiffValues = getFormattedValueDiff("base",detailedStat.baseValue,Number.NaN) + " " + getFormattedValueDiff("additional",detailedStat.additionalValue,Number.NaN) + " " + getFormattedValueDiff("objectsAndMountBonus",detailedStat.objectsAndMountBonusValue,Number.NaN) + " " + getFormattedValueDiff("alignGiftBonus",detailedStat.alignGiftBonusValue,Number.NaN) + " " + getFormattedValueDiff("contextModif",detailedStat.contextModifValue,Number.NaN) + " " + getFormattedValueDiff("total",detailedStat.totalValue,serverStat.total);
-            return getFormattedStatDiff(stat.id,DIFF_DETAILED_STAT,DIFF_UNKNOWN,statDiffValues);
          }
-         if(stat is DetailedStat && serverBaseStat is CharacterCharacteristicDetailed)
-         {
-            detailedStat = stat as DetailedStat;
-            serverDetailedStat = serverBaseStat as CharacterCharacteristicDetailed;
-            total = serverDetailedStat.base + serverDetailedStat.additional + serverDetailedStat.objectsAndMountBonus + serverDetailedStat.alignGiftBonus + serverDetailedStat.contextModif;
-            if(detailedStat.totalValue === total && detailedStat.baseValue === serverDetailedStat.base && detailedStat.additionalValue === serverDetailedStat.additional && detailedStat.objectsAndMountBonusValue === serverDetailedStat.objectsAndMountBonus && detailedStat.alignGiftBonusValue === serverDetailedStat.alignGiftBonus && detailedStat.contextModifValue === serverDetailedStat.contextModif)
-            {
-               return null;
-            }
-            statDiffValues = getFormattedValueDiff("base",detailedStat.baseValue,serverDetailedStat.base) + " " + getFormattedValueDiff("additional",detailedStat.additionalValue,serverDetailedStat.additional) + " " + getFormattedValueDiff("objectsAndMountBonus",detailedStat.objectsAndMountBonusValue,serverDetailedStat.objectsAndMountBonus) + " " + getFormattedValueDiff("alignGiftBonus",detailedStat.alignGiftBonusValue,serverDetailedStat.alignGiftBonus) + " " + getFormattedValueDiff("contextModif",detailedStat.contextModifValue,serverDetailedStat.contextModif) + " " + getFormattedValueDiff("total",detailedStat.totalValue,total);
-            return getFormattedStatDiff(stat.id,DIFF_DETAILED_STAT,DIFF_UPDATE,statDiffValues);
-         }
-         if(stat is Stat && serverBaseStat is CharacterCharacteristicValue)
-         {
-            serverStat = serverBaseStat as CharacterCharacteristicValue;
-            if(stat.totalValue === serverStat.total)
-            {
-               return null;
-            }
-            statDiffValues = getFormattedValueDiff("total",stat.totalValue,serverStat.total);
-            return getFormattedStatDiff(stat.id,DIFF_STAT,DIFF_UPDATE,statDiffValues);
-         }
-         if(stat is Stat && serverBaseStat is CharacterCharacteristicDetailed)
-         {
-            serverDetailedStat = serverBaseStat as CharacterCharacteristicDetailed;
-            total = serverDetailedStat.base + serverDetailedStat.additional + serverDetailedStat.objectsAndMountBonus + serverDetailedStat.alignGiftBonus + serverDetailedStat.contextModif;
-            if(stat.totalValue === total)
-            {
-               return null;
-            }
-            statDiffValues = getFormattedValueDiff("total",stat.totalValue,total);
-            return getFormattedStatDiff(stat.id,DIFF_STAT,DIFF_UPDATE,statDiffValues);
-         }
-         return null;
+         return "<font color=\"" + diffColor + "\">" + diffSymbol + "\t" + statName + " (" + statId.toString() + "): " + statDiffValues;
       }
       
       private static function sortStatIds(statId1:Number, statId2:Number) : Number

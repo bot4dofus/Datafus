@@ -32,7 +32,6 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.common.misc.IInventoryView;
    import com.ankamagames.dofus.logic.game.fight.frames.FightBattleFrame;
    import com.ankamagames.dofus.logic.game.fight.frames.FightContextFrame;
-   import com.ankamagames.dofus.logic.game.fight.frames.FightPreparationFrame;
    import com.ankamagames.dofus.logic.game.roleplay.actions.DeleteObjectAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.ObjectDropAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.ObjectSetPositionAction;
@@ -196,8 +195,6 @@ package com.ankamagames.dofus.logic.game.common.frames
       private var _waitTimer:BenchmarkTimer;
       
       private var _chatText:String;
-      
-      public var shortcutBarIsUpdated:Boolean = true;
       
       public function InventoryManagementFrame()
       {
@@ -556,7 +553,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                   PlayedCharacterManager.getInstance().playerShortcutList = InventoryManager.getInstance().shortcutBarSpells;
                }
                KernelEventsManager.getInstance().processCallback(InventoryHookList.ShortcutBarViewContent,sbcmsg.barType);
-               this.shortcutBarIsUpdated = true;
                return true;
             case msg is ShortcutBarRefreshMessage:
                sbrmsg = msg as ShortcutBarRefreshMessage;
@@ -589,7 +585,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                   }
                }
                KernelEventsManager.getInstance().processCallback(InventoryHookList.ShortcutBarViewContent,sbrmsg.barType);
-               this.shortcutBarIsUpdated = true;
                return true;
             case msg is ShortcutBarRemovedMessage:
                sbrmmsg = msg as ShortcutBarRemovedMessage;
@@ -602,7 +597,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                   InventoryManager.getInstance().shortcutBarSpells[sbrmmsg.slot] = null;
                }
                KernelEventsManager.getInstance().processCallback(InventoryHookList.ShortcutBarViewContent,sbrmmsg.barType);
-               this.shortcutBarIsUpdated = true;
                return true;
             case msg is ShortcutBarReplacedMessage:
                sbrpmsg = msg as ShortcutBarReplacedMessage;
@@ -618,10 +612,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                KernelEventsManager.getInstance().processCallback(InventoryHookList.ShortcutBarViewContent,sbrpmsg.barType);
                return true;
             case msg is ShortcutBarAddRequestAction:
-               if(!this.shortcutBarIsUpdated || Kernel.getWorker().getFrame(FightContextFrame) != null && Kernel.getWorker().getFrame(FightPreparationFrame) == null)
-               {
-                  return true;
-               }
                sbara = msg as ShortcutBarAddRequestAction;
                sbarmsg = new ShortcutBarAddRequestMessage();
                if(sbara.barType == DataEnum.SHORTCUT_TYPE_ITEM)
@@ -667,21 +657,13 @@ package com.ankamagames.dofus.logic.game.common.frames
                   sbarmsg.initShortcutBarAddRequestMessage(0,shortcutd);
                }
                ConnectionsHandler.getConnection().send(sbarmsg);
-               this.shortcutBarIsUpdated = false;
                return true;
-               break;
             case msg is ShortcutBarRemoveRequestAction:
-               if(!this.shortcutBarIsUpdated || Kernel.getWorker().getFrame(FightContextFrame) != null && Kernel.getWorker().getFrame(FightPreparationFrame) == null)
-               {
-                  return true;
-               }
                sbrra = msg as ShortcutBarRemoveRequestAction;
                sbrrmsg = new ShortcutBarRemoveRequestMessage();
                sbrrmsg.initShortcutBarRemoveRequestMessage(sbrra.barType,sbrra.slot);
                ConnectionsHandler.getConnection().send(sbrrmsg);
-               this.shortcutBarIsUpdated = false;
                return true;
-               break;
             case msg is ShortcutBarSwapRequestAction:
                sbsra = msg as ShortcutBarSwapRequestAction;
                sbsrmsg = new ShortcutBarSwapRequestMessage();

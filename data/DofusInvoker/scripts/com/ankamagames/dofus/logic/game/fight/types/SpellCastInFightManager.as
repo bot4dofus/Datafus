@@ -25,7 +25,7 @@ package com.ankamagames.dofus.logic.game.fight.types
       
       private var _storedSpellCooldowns:Vector.<GameFightSpellCooldown>;
       
-      public var currentTurn:int = 0;
+      public var currentTurn:int = 1;
       
       public var entityId:Number;
       

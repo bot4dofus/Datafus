@@ -10,6 +10,7 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.dofus.kernel.sound.enum.SoundTypeEnum;
    import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.uiApi.SoundApi;
+   import com.ankamagames.dofus.uiApi.TimeApi;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import flash.utils.getQualifiedClassName;
@@ -25,6 +26,9 @@ package Ankama_GameUiCore.ui
       
       [Api(name="UiApi")]
       public var uiApi:UiApi;
+      
+      [Api(name="TimeApi")]
+      public var timeApi:TimeApi;
       
       public var mainCtr:GraphicContainer;
       
@@ -85,7 +89,7 @@ package Ankama_GameUiCore.ui
       {
          this.lbl_title_window_popup.text = this.uiApi.getText("ui.pvp.sanction");
          this.lbl_title_window_popup.cssClass = "redcenter";
-         this.lbl_ban.text = this.uiApi.getText("ui.pvp.ban",banTime);
+         this.lbl_ban.text = this.uiApi.getText("ui.pvp.ban",this.timeApi.getDuration(banTime * 60000));
          this.lbl_ban.text = this.uiApi.processText(this.lbl_ban.text,"m",banTime == 1,banTime == 0);
          this.lbl_footer.text = this.uiApi.getText("ui.pvp.preventAndRecidivism");
          this.fillReasons(this.lbl_preventReasons,preventReasons);

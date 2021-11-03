@@ -4,15 +4,15 @@ package com.ankamagames.dofus.internalDatacenter.stats
    {
        
       
-      private var _baseValue:Number = 0;
+      protected var _baseValue:Number = 0;
       
-      private var _additionalValue:Number = 0;
+      protected var _additionalValue:Number = 0;
       
-      private var _objectsAndMountBonusValue:Number = 0;
+      protected var _objectsAndMountBonusValue:Number = 0;
       
-      private var _alignGiftBonusValue:Number = 0;
+      protected var _alignGiftBonusValue:Number = 0;
       
-      private var _contextModifValue:Number = 0;
+      protected var _contextModifValue:Number = 0;
       
       public function DetailedStat(id:Number, baseValue:Number, additionalValue:Number, objectsAndMountBonusValue:Number, alignGiftBonusValue:Number, contextModifValue:Number)
       {

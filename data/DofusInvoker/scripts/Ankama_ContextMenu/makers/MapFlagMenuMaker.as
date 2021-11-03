@@ -5,6 +5,7 @@ package Ankama_ContextMenu.makers
    import com.ankamagames.berilia.interfaces.IMenuMaker;
    import com.ankamagames.dofus.datacenter.quest.Quest;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.mount.MountData;
    import com.ankamagames.dofus.logic.game.common.actions.party.PartyStopFollowingMemberAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.FriendSpouseFollowAction;
@@ -73,6 +74,7 @@ package Ankama_ContextMenu.makers
          var flagX:int = 0;
          var flagY:int = 0;
          var mountInfo:MountData = null;
+         var petsMountInfo:ItemWrapper = null;
          var hasAutopilot:Boolean = false;
          var capacityCount:int = 0;
          var i:int = 0;
@@ -92,7 +94,8 @@ package Ankama_ContextMenu.makers
             flagX = int(coords[0]);
             flagY = int(coords[1]);
             mountInfo = Api.player.getMount();
-            if((Api.player.isRidding() || Api.player.isPetsMounting()) && mountInfo)
+            petsMountInfo = Api.player.getPetsMount();
+            if(Api.player.isRidding() && mountInfo || Api.player.isPetsMounting() && petsMountInfo)
             {
                if(Api.system.getPlayerManager().hasFreeAutopilot)
                {

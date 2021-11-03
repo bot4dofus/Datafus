@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.job
    public class JobCrafterDirectoryEntryRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4671;
+      public static const protocolId:uint = 3422;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.job
       
       override public function getMessageId() : uint
       {
-         return 4671;
+         return 3422;
       }
       
       public function initJobCrafterDirectoryEntryRequestMessage(playerId:Number = 0) : JobCrafterDirectoryEntryRequestMessage

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class HumanOptionOrnament extends HumanOption implements INetworkType
    {
       
-      public static const protocolId:uint = 7160;
+      public static const protocolId:uint = 6947;
        
       
       public var ornamentId:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 7160;
+         return 6947;
       }
       
       public function initHumanOptionOrnament(ornamentId:uint = 0, level:uint = 0, leagueId:int = 0, ladderPosition:int = 0) : HumanOptionOrnament

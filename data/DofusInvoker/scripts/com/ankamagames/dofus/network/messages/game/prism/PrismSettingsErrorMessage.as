@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.prism
    public class PrismSettingsErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9936;
+      public static const protocolId:uint = 8348;
        
       
       public function PrismSettingsErrorMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function getMessageId() : uint
       {
-         return 9936;
+         return 8348;
       }
       
       public function initPrismSettingsErrorMessage() : PrismSettingsErrorMessage

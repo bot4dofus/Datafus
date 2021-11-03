@@ -775,7 +775,6 @@ package tools
             case 15:
                return 2838;
             case 23:
-            case 145:
                return 2848;
             default:
                return -1;
@@ -801,7 +800,6 @@ package tools
             case 15:
                return 2839;
             case 23:
-            case 145:
                return 2848;
             default:
                return -1;

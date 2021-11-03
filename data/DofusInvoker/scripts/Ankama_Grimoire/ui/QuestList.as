@@ -696,7 +696,7 @@ package Ankama_Grimoire.ui
             this.ReOrderObjectiveDictionary(objectiveDictionnaryIndex,followedObjectives - 1,questID);
             if(visibleObjectives > MAX_OBJECTIVES || followedObjectives > MAX_OBJECTIVES)
             {
-               if(visibleObjectives == objectivesNumber)
+               if(visibleObjectives == objectivesNumber || visibleObjectives > followedObjectives)
                {
                   if(followedObjectives > 1)
                   {
@@ -939,18 +939,23 @@ package Ankama_Grimoire.ui
          return null;
       }
       
-      private function removeObjective(objectiveData:Object, askInfos:Boolean = false) : void
+      private function removeObjective(objectiveData:Object, askInfos:Boolean = false, onlyDisplay:Boolean = false) : void
       {
          var i:int = 0;
          var j:int = 0;
+         var k:int = 0;
          var questData:Object = null;
          var objIndex:int = 0;
          var objStartIndex:int = 0;
+         var visibleObj:int = 0;
          var numObjectives:uint = 0;
          var lastVisibleObjective:Object = null;
          var hiddenObjective:Object = null;
+         var limit:int = 0;
          var endIndex:int = 0;
+         var obj:Object = null;
          var objRef:Object = null;
+         var replaceIndex:int = 0;
          var dataLen:uint = this._quests.length;
          var deletedObjectiveIndex:int = -1;
          for(i = 0; i < dataLen; i++)
@@ -967,32 +972,52 @@ package Ankama_Grimoire.ui
          }
          objIndex = this.GetObjectiveDictionaryOrder(questData,objectiveData);
          this.ReOrderObjectiveDictionary(objIndex,questData.objectives.length - 1,questData.id);
-         delete this._questsObjectivesOrder[questData.id + "_" + (questData.objectives.length - 1)];
-         questData.objectives.splice(questData.objectives.indexOf(objectiveData),1);
+         if(!onlyDisplay)
+         {
+            delete this._questsObjectivesOrder[questData.id + "_" + (questData.objectives.length - 1)];
+            questData.objectives.splice(questData.objectives.indexOf(objectiveData),1);
+         }
          if(deletedObjectiveIndex != -1)
          {
             this._quests.splice(deletedObjectiveIndex,1);
          }
-         delete this._components[objectiveData];
+         if(!onlyDisplay)
+         {
+            delete this._components[objectiveData];
+         }
          if(objectiveData.flagData)
          {
-            delete this._flagsQuestData[objectiveData.flagData.id];
+            if(!onlyDisplay)
+            {
+               delete this._flagsQuestData[objectiveData.flagData.id];
+            }
             if(objectiveData.follow)
             {
                sysApi.dispatchHook(HookList.RemoveMapFlag,objectiveData.flagData.id,objectiveData.flagData.worldMapId);
+               objectiveData.follow = false;
             }
-            sysApi.setData(playerApi.getPlayedCharacterInfo().id + "-questFlag-" + objectiveData.flagData.id,null);
+            sysApi.setData(playerApi.getPlayedCharacterInfo().id + "-questFlag-" + objectiveData.flagData.id,!!onlyDisplay ? false : null);
          }
+         objectiveData.visible = false;
          if(questData.objectives.length)
          {
             sysApi.sendAction(new FollowQuestAction([questData.id,objectiveData.id,false]));
-            objStartIndex = this._quests.indexOf(questData) + 1;
+            for(objStartIndex = this._quests.indexOf(questData) + 1; this._questsObjectivesOrder[questData.id + "_" + k] != null; )
+            {
+               obj = this._questsObjectivesOrder[questData.id + "_" + k];
+               if(obj.visible)
+               {
+                  visibleObj++;
+               }
+               k++;
+            }
             this.clearQuestDisplay(questData,objStartIndex);
             numObjectives = questData.objectives.length;
+            limit = visibleObj > MAX_OBJECTIVES ? int(visibleObj) : int(MAX_OBJECTIVES);
             for(j = 0; j < numObjectives; j++)
             {
                objRef = this._questsObjectivesOrder[questData.id + "_" + j];
-               if(j < MAX_OBJECTIVES)
+               if(j < limit)
                {
                   this._questsObjectivesOrder[questData.id + "_" + j].visible = true;
                   lastVisibleObjective = this._questsObjectivesOrder[questData.id + "_" + j];
@@ -1008,6 +1033,15 @@ package Ankama_Grimoire.ui
             {
                this._quests.splice(endIndex,0,hiddenObjective);
             }
+            if(limit == numObjectives && limit > MAX_OBJECTIVES)
+            {
+               replaceIndex = !this._quests[endIndex] || !this._quests[endIndex].seeLess ? 0 : 1;
+               this._quests.splice(endIndex,replaceIndex,{
+                  "isQuest":false,
+                  "seeLess":true,
+                  "questId":questData.id
+               });
+            }
          }
          if(askInfos)
          {
@@ -1016,6 +1050,10 @@ package Ankama_Grimoire.ui
          else if(!questData.objectives.length)
          {
             this.unfollowQuest(questData.id);
+         }
+         if(onlyDisplay)
+         {
+            this.update();
          }
       }
       
@@ -1061,7 +1099,7 @@ package Ankama_Grimoire.ui
          }
       }
       
-      private function addObjective(questData:Object, objAdded:Object, numObjectivesData:int, objectiveDictionnaryIndex:int) : void
+      private function addObjective(questData:Object, objAdded:Object, numObjectivesData:int, objectiveDictionnaryIndex:int, keepAllVisible:Boolean = false) : void
       {
          var targetObjective:Object = null;
          var overrideLastIndex:* = false;
@@ -1116,7 +1154,11 @@ package Ankama_Grimoire.ui
             {
                this.ReOrderObjectiveDictionary(objectiveDictionnaryIndex,followedObjectives - 1,questData.id);
             }
-            if(visibleObjectives > MAX_OBJECTIVES)
+            if(visibleObjectives == numObjectivesData || keepAllVisible)
+            {
+               this._quests.splice(newIndex,0,objAdded);
+            }
+            else if(visibleObjectives > MAX_OBJECTIVES)
             {
                targetObjective = this._questsObjectivesOrder[questData.id + "_" + (visibleObjectives - 1)];
                targetObjective.visible = false;
@@ -1169,7 +1211,7 @@ package Ankama_Grimoire.ui
             }
             else if(questData.objectives.length != MAX_OBJECTIVES)
             {
-               this._quests.splice(optionalLabelIndex + 1,0,{
+               this._quests.splice(optionalLabelIndex + 1,this._quests[optionalLabelIndex + 1] && this._quests[optionalLabelIndex + 1].seeLess ? 1 : 0,{
                   "isQuest":false,
                   "seeLess":true,
                   "questId":questData.id
@@ -1586,6 +1628,7 @@ package Ankama_Grimoire.ui
          var objChangeNumber:int = 0;
          var followedObjectives:int = 0;
          var visibleObjectives:int = 0;
+         var objInDictionnary:int = 0;
          var objectivesStartIndex:int = 0;
          var objDisplay:int = 0;
          var k:int = 0;
@@ -1593,6 +1636,7 @@ package Ankama_Grimoire.ui
          var obj:Object = null;
          var objStillValid:Boolean = false;
          var j:int = 0;
+         var limit:int = 0;
          if(this.questApi.getFollowedQuests().indexOf(questId) != -1)
          {
             for each(questData in this._quests)
@@ -1607,6 +1651,7 @@ package Ankama_Grimoire.ui
                      objChangeNumber = 0;
                      followedObjectives = 0;
                      visibleObjectives = 0;
+                     objInDictionnary = 0;
                      objectivesStartIndex = this._quests.indexOf(questData) + 1;
                      k = 0;
                      while(true)
@@ -1617,7 +1662,7 @@ package Ankama_Grimoire.ui
                            {
                               obj = this._questsObjectivesOrder[questData.id + "_" + k];
                               objStillValid = false;
-                              for(j = 0; j < numCurrentObjectives; j++)
+                              for(j = 0; j < numNewObjectives; j++)
                               {
                                  if(obj.id == questObjectives[j].id)
                                  {
@@ -1648,9 +1693,10 @@ package Ankama_Grimoire.ui
                               questObjectives[i].visible = false;
                               questObjectives[i].color = questData.color;
                               questData.objectives.splice(i,0,questObjectives[i]);
-                              this._questsObjectivesOrder[questData.id + "_" + (numCurrentObjectives + objChangeNumber)] = questObjectives[i];
-                              objDisplay = followedObjectives + objChangeNumber;
-                              if(objDisplay < MAX_OBJECTIVES)
+                              this._questsObjectivesOrder[questData.id + "_" + (objInDictionnary + objChangeNumber)] = questObjectives[i];
+                              objDisplay = visibleObjectives + objChangeNumber;
+                              limit = visibleObjectives + 1 > MAX_OBJECTIVES ? int(visibleObjectives + 1) : int(MAX_OBJECTIVES);
+                              if(objDisplay < limit)
                               {
                                  if(questObjectives[i].flagData)
                                  {
@@ -1658,17 +1704,17 @@ package Ankama_Grimoire.ui
                                     sysApi.sendAction(new FollowQuestAction([questId,questObjectives[i].id,true]));
                                  }
                                  questObjectives[i].visible = true;
-                                 this.addObjective(questData,questObjectives[i],numNewObjectives,this.GetObjectiveDictionaryOrder(questData,questData.objectives[i]));
+                                 this.addObjective(questData,questObjectives[i],numNewObjectives,this.GetObjectiveDictionaryOrder(questData,questObjectives[i]),true);
                               }
-                              else if(objDisplay == MAX_OBJECTIVES)
+                              else if(objDisplay == limit)
                               {
                                  if(!this._quests[objectivesStartIndex + objDisplay] || this._quests[objectivesStartIndex + objDisplay].isQuest)
                                  {
-                                    this._quests.splice(objectivesStartIndex + objDisplay,0,questObjectives[i]);
+                                    this._quests.splice(objectivesStartIndex + objDisplay,0,this._questsObjectivesOrder[questData.id + "_" + objDisplay]);
                                  }
                                  else if(this._quests[objectivesStartIndex + objDisplay].seeLess)
                                  {
-                                    this._quests.splice(objectivesStartIndex + objDisplay,1,questObjectives[i]);
+                                    this._quests.splice(objectivesStartIndex + objDisplay,1,this._questsObjectivesOrder[questData.id + "_" + objDisplay]);
                                  }
                               }
                               objChangeNumber++;
@@ -1904,6 +1950,7 @@ package Ankama_Grimoire.ui
                      menu.push(this.modContextMenu.createContextMenuItemObject(uiApi.getText("ui.quest.addFlag"),this.toggleObjectivesFlag,[targetData,true,-1,true,true]));
                   }
                }
+               menu.push(this.modContextMenu.createContextMenuItemObject(uiApi.getText("ui.quest.removeObjective"),this.removeObjective,[targetData,false,true]));
                this.modContextMenu.createContextMenu(menu);
             }
          }

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class DiceRollRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8338;
+      public static const protocolId:uint = 5596;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 8338;
+         return 5596;
       }
       
       public function initDiceRollRequestMessage(dice:uint = 0, faces:uint = 0, channel:uint = 0) : DiceRollRequestMessage

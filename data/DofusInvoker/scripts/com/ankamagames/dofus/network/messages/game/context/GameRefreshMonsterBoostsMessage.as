@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameRefreshMonsterBoostsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3360;
+      public static const protocolId:uint = 5258;
        
       
       private var _isInitialized:Boolean = false;
@@ -39,7 +39,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 3360;
+         return 5258;
       }
       
       public function initGameRefreshMonsterBoostsMessage(monsterBoosts:Vector.<MonsterBoosts> = null, familyBoosts:Vector.<MonsterBoosts> = null) : GameRefreshMonsterBoostsMessage

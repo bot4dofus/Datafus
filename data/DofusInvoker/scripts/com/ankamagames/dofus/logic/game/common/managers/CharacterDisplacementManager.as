@@ -64,14 +64,7 @@ package com.ankamagames.dofus.logic.game.common.managers
          var autopilotCapacity:MountBehavior = MountBehavior.getMountBehaviorById(DataEnum.MOUNT_CAPACITY_AUTOPILOT);
          if(!playerIsOnMount && !playerIsOnPetsMount)
          {
-            if(!playerIsOnMount)
-            {
-               KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,I18n.getUiText("ui.mountTrip.error.noMount",[autopilotCapacity.name]),ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,TimeManager.getInstance().getTimestamp());
-            }
-            else if(!playerIsOnPetsMount)
-            {
-               KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,I18n.getUiText("ui.mountTrip.error.noPetsMount",[autopilotCapacity.name]),ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,TimeManager.getInstance().getTimestamp());
-            }
+            KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,I18n.getUiText("ui.mountTrip.error.noMount",[autopilotCapacity.name]),ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,TimeManager.getInstance().getTimestamp());
             return;
          }
          var mountInfo:MountData = PlayedCharacterManager.getInstance().mount;
@@ -84,7 +77,7 @@ package com.ankamagames.dofus.logic.game.common.managers
             }
             else if(!petsMountInfo && playerIsOnPetsMount)
             {
-               KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,I18n.getUiText("ui.mountTrip.error.noMount",[autopilotCapacity.name]),ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,TimeManager.getInstance().getTimestamp());
+               KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,I18n.getUiText("ui.mountTrip.error.noPetsMount",[autopilotCapacity.name]),ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,TimeManager.getInstance().getTimestamp());
             }
             return;
          }

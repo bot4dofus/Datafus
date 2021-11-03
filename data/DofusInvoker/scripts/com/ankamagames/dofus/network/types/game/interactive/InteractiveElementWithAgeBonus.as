@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.interactive
    public class InteractiveElementWithAgeBonus extends InteractiveElement implements INetworkType
    {
       
-      public static const protocolId:uint = 643;
+      public static const protocolId:uint = 7924;
        
       
       public var ageBonus:int = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.interactive
       
       override public function getTypeId() : uint
       {
-         return 643;
+         return 7924;
       }
       
       public function initInteractiveElementWithAgeBonus(elementId:uint = 0, elementTypeId:int = 0, enabledSkills:Vector.<InteractiveElementSkill> = null, disabledSkills:Vector.<InteractiveElementSkill> = null, onCurrentMap:Boolean = false, ageBonus:int = 0) : InteractiveElementWithAgeBonus

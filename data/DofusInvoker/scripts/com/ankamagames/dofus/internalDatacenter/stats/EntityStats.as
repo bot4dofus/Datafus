@@ -202,6 +202,21 @@ package com.ankamagames.dofus.internalDatacenter.stats
          return 0;
       }
       
+      public function getStatUsedValue(statId:Number) : Number
+      {
+         var key:String = statId.toString();
+         if(!(statId in this._stats))
+         {
+            return 0;
+         }
+         var stat:Stat = this._stats[key];
+         if(stat is UsableStat)
+         {
+            return (stat as UsableStat).usedValue;
+         }
+         return 0;
+      }
+      
       public function toString() : String
       {
          var statId:Number = NaN;

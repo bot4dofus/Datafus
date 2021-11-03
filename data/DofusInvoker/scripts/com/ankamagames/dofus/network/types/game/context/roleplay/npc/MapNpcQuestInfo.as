@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.npc
    public class MapNpcQuestInfo implements INetworkType
    {
       
-      public static const protocolId:uint = 8912;
+      public static const protocolId:uint = 3947;
        
       
       public var mapId:Number = 0;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.npc
       
       public function getTypeId() : uint
       {
-         return 8912;
+         return 3947;
       }
       
       public function initMapNpcQuestInfo(mapId:Number = 0, npcsIdsWithQuest:Vector.<int> = null, questFlags:Vector.<GameRolePlayNpcQuestFlag> = null) : MapNpcQuestInfo

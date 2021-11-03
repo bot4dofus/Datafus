@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class SelectedServerDataExtendedMessage extends SelectedServerDataMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1251;
+      public static const protocolId:uint = 7213;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 1251;
+         return 7213;
       }
       
       public function initSelectedServerDataExtendedMessage(serverId:uint = 0, address:String = "", ports:Vector.<uint> = null, canCreateNewCharacter:Boolean = false, ticket:Vector.<int> = null, servers:Vector.<GameServerInformations> = null) : SelectedServerDataExtendedMessage

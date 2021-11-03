@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses
    public class HousePropertiesMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8249;
+      public static const protocolId:uint = 4088;
        
       
       private var _isInitialized:Boolean = false;
@@ -42,7 +42,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses
       
       override public function getMessageId() : uint
       {
-         return 8249;
+         return 4088;
       }
       
       public function initHousePropertiesMessage(houseId:uint = 0, doorsOnMap:Vector.<uint> = null, properties:HouseInstanceInformations = null) : HousePropertiesMessage

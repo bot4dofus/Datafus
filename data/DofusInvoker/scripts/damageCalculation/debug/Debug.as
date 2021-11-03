@@ -8,6 +8,7 @@ package damageCalculation.debug
    import damageCalculation.fighterManagement.fighterstats.HaxeDetailedStat;
    import damageCalculation.fighterManagement.fighterstats.HaxeSimpleStat;
    import damageCalculation.fighterManagement.fighterstats.HaxeStat;
+   import damageCalculation.fighterManagement.fighterstats.HaxeUsableStat;
    import damageCalculation.spellManagement.HaxeSpell;
    import damageCalculation.spellManagement.HaxeSpellEffect;
    import damageCalculation.spellManagement.Mark;
@@ -263,7 +264,7 @@ package damageCalculation.debug
       
       public static function getFighterStatsDeclaration(param1:HaxeFighter) : String
       {
-         var _loc9_:int = 0;
+         var _loc10_:int = 0;
          var _loc2_:Array = param1.data.getStatIds();
          if(int(_loc2_.length) <= 0)
          {
@@ -272,21 +273,27 @@ package damageCalculation.debug
          var _loc3_:String = "[";
          var _loc4_:HaxeStat = null;
          var _loc5_:String = null;
-         var _loc6_:HaxeDetailedStat = null;
-         var _loc7_:String = null;
+         var _loc6_:HaxeUsableStat = null;
+         var _loc7_:HaxeDetailedStat = null;
+         var _loc8_:String = null;
          Debug.INDENTATION_COUNTER = Debug.INDENTATION_COUNTER + 1;
-         var _loc8_:int = 0;
-         while(_loc8_ < int(_loc2_.length))
+         var _loc9_:int = 0;
+         while(_loc9_ < int(_loc2_.length))
          {
-            _loc9_ = _loc2_[_loc8_];
-            _loc8_++;
-            _loc4_ = param1.data.getStat(_loc9_);
-            _loc5_ = Debug.getAttributeNameFromValue(_loc9_,int,StatIds);
+            _loc10_ = _loc2_[_loc9_];
+            _loc9_++;
+            _loc4_ = param1.data.getStat(_loc10_);
+            _loc5_ = Debug.getAttributeNameFromValue(_loc10_,int,StatIds);
             if(!(_loc4_ == null || _loc5_ == null))
             {
                if(_loc4_ is HaxeSimpleStat)
                {
-                  _loc7_ = "new HaxeSimpleStat(" + _loc5_ + ", " + int(_loc4_.get_total()) + ")";
+                  _loc8_ = "new HaxeSimpleStat(" + _loc5_ + ", " + int(_loc4_.get_total()) + ")";
+               }
+               else if(_loc4_ is HaxeUsableStat)
+               {
+                  _loc6_ = _loc4_;
+                  _loc8_ = "new HaxeUsableStat(" + _loc5_ + ", " + int(_loc7_.get_base()) + ", " + int(_loc7_.get_additional()) + ", " + int(_loc7_.get_objectsAndMountBonus()) + ", " + int(_loc7_.get_alignGiftBonus()) + ", " + int(_loc7_.get_contextModif()) + ", " + _loc6_.used + ")";
                }
                else
                {
@@ -294,10 +301,10 @@ package damageCalculation.debug
                   {
                      continue;
                   }
-                  _loc6_ = _loc4_;
-                  _loc7_ = "new HaxeDetailedStat(" + _loc5_ + ", " + int(_loc6_.get_base()) + ", " + int(_loc6_.get_additional()) + ", " + int(_loc6_.get_objectsAndMountBonus()) + ", " + int(_loc6_.get_alignGiftBonus()) + ", " + int(_loc6_.get_contextModif()) + ")";
+                  _loc7_ = _loc4_;
+                  _loc8_ = "new HaxeDetailedStat(" + _loc5_ + ", " + int(_loc7_.get_base()) + ", " + int(_loc7_.get_additional()) + ", " + int(_loc7_.get_objectsAndMountBonus()) + ", " + int(_loc7_.get_alignGiftBonus()) + ", " + int(_loc7_.get_contextModif()) + ")";
                }
-               _loc3_ += "" + Debug.indent("\n") + "    " + _loc5_ + " => " + _loc7_ + ",";
+               _loc3_ += "" + Debug.indent("\n") + "    " + _loc5_ + " => " + _loc8_ + ",";
             }
          }
          Debug.INDENTATION_COUNTER = Debug.INDENTATION_COUNTER - 1;

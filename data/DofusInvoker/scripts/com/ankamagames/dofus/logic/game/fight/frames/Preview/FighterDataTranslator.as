@@ -4,6 +4,7 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
    import com.ankamagames.dofus.internalDatacenter.stats.DetailedStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
    import com.ankamagames.dofus.internalDatacenter.stats.Stat;
+   import com.ankamagames.dofus.internalDatacenter.stats.UsableStat;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
@@ -21,6 +22,7 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
    import damageCalculation.fighterManagement.fighterstats.HaxeDetailedStat;
    import damageCalculation.fighterManagement.fighterstats.HaxeSimpleStat;
    import damageCalculation.fighterManagement.fighterstats.HaxeStat;
+   import damageCalculation.fighterManagement.fighterstats.HaxeUsableStat;
    import damageCalculation.tools.StatIds;
    import flash.utils.Dictionary;
    import mapTools.MapTools;
@@ -60,9 +62,7 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
       public function getUsedPM() : int
       {
          var stats:EntityStats = StatsManager.getInstance().getStats(this._fighterInfos.contextualId);
-         var maxMovementPoints:Number = stats !== null ? Number(stats.getStatTotalValue(StatIds.MAX_MOVEMENT_POINTS)) : Number(0);
-         var movementPoints:Number = stats !== null ? Number(stats.getStatTotalValue(StatIds.MOVEMENT_POINTS)) : Number(0);
-         return Math.max(0,maxMovementPoints - movementPoints);
+         return stats !== null ? int(stats.getStatUsedValue(StatIds.MOVEMENT_POINTS)) : 0;
       }
       
       public function isSummon() : Boolean
@@ -255,13 +255,19 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
       {
          var stat:Stat = null;
          var stats:EntityStats = StatsManager.getInstance().getStats(this._id);
+         var usableStat:UsableStat = null;
          var detailedStat:DetailedStat = null;
          this._stats = new Dictionary();
          if(stats !== null)
          {
             for each(stat in stats.stats)
             {
-               if(stat is DetailedStat)
+               if(stat is UsableStat)
+               {
+                  usableStat = stat as UsableStat;
+                  this._stats[usableStat.id] = new HaxeUsableStat(usableStat.id,usableStat.baseValue,usableStat.additionalValue,usableStat.objectsAndMountBonusValue,usableStat.alignGiftBonusValue,usableStat.contextModifValue,usableStat.usedValue);
+               }
+               else if(stat is DetailedStat)
                {
                   detailedStat = stat as DetailedStat;
                   this._stats[detailedStat.id] = new HaxeDetailedStat(detailedStat.id,detailedStat.baseValue,detailedStat.additionalValue,detailedStat.objectsAndMountBonusValue,detailedStat.alignGiftBonusValue,detailedStat.contextModifValue);

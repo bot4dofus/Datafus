@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartOkHumanVendorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7458;
+      public static const protocolId:uint = 3643;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 7458;
+         return 3643;
       }
       
       public function initExchangeStartOkHumanVendorMessage(sellerId:Number = 0, objectsInfos:Vector.<ObjectItemToSellInHumanVendorShop> = null) : ExchangeStartOkHumanVendorMessage

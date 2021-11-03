@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.startup
    public class StartupActionAddObject implements INetworkType
    {
       
-      public static const protocolId:uint = 6290;
+      public static const protocolId:uint = 7878;
        
       
       public var uid:uint = 0;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.types.game.startup
       
       public function getTypeId() : uint
       {
-         return 6290;
+         return 7878;
       }
       
       public function initStartupActionAddObject(uid:uint = 0, title:String = "", text:String = "", descUrl:String = "", pictureUrl:String = "", items:Vector.<ObjectItemInformationWithQuantity> = null) : StartupActionAddObject

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.idol
    public class PartyIdol extends Idol implements INetworkType
    {
       
-      public static const protocolId:uint = 3152;
+      public static const protocolId:uint = 5294;
        
       
       public var ownersIds:Vector.<Number>;
@@ -23,7 +23,7 @@ package com.ankamagames.dofus.network.types.game.idol
       
       override public function getTypeId() : uint
       {
-         return 3152;
+         return 5294;
       }
       
       public function initPartyIdol(id:uint = 0, xpBonusPercent:uint = 0, dropBonusPercent:uint = 0, ownersIds:Vector.<Number> = null) : PartyIdol

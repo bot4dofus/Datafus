@@ -299,7 +299,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                }
                bf = Kernel.getWorker().getFrame(FightBattleFrame) as FightBattleFrame;
                playerInformation = FightEntitiesFrame.getCurrentInstance().getEntityInfos(this._currentFighterId) as GameFightFighterInformations;
-               if(bf && bf.turnsCount <= 0 || playerInformation && playerInformation.spawnInfo.alive)
+               if(bf && bf.turnsCount <= 1 || playerInformation && playerInformation.spawnInfo.alive)
                {
                   Kernel.getWorker().addFrame(this._spellCastFrame = new FightSpellCastFrame(gfsca.spellId));
                }

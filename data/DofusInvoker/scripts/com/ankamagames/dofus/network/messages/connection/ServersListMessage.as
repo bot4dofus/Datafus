@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class ServersListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2983;
+      public static const protocolId:uint = 4952;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 2983;
+         return 4952;
       }
       
       public function initServersListMessage(servers:Vector.<GameServerInformations> = null, alreadyConnectedToServerId:uint = 0, canCreateNewCharacter:Boolean = false) : ServersListMessage

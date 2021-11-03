@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.presets
    public class ForgettableSpellsPreset extends Preset implements INetworkType
    {
       
-      public static const protocolId:uint = 5104;
+      public static const protocolId:uint = 2821;
        
       
       public var baseSpellsPreset:SpellsPreset;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.presets
       
       override public function getTypeId() : uint
       {
-         return 5104;
+         return 2821;
       }
       
       public function initForgettableSpellsPreset(id:int = 0, baseSpellsPreset:SpellsPreset = null, forgettableSpells:Vector.<SpellForPreset> = null) : ForgettableSpellsPreset

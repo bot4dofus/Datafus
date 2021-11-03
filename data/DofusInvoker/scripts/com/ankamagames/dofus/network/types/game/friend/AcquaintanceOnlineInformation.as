@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.friend
    public class AcquaintanceOnlineInformation extends AcquaintanceInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 3017;
+      public static const protocolId:uint = 8561;
        
       
       public var playerId:Number = 0;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.types.game.friend
       
       override public function getTypeId() : uint
       {
-         return 3017;
+         return 8561;
       }
       
       public function initAcquaintanceOnlineInformation(accountId:uint = 0, accountTag:AccountTagInformation = null, playerState:uint = 99, playerId:Number = 0, playerName:String = "", moodSmileyId:uint = 0, status:PlayerStatus = null) : AcquaintanceOnlineInformation

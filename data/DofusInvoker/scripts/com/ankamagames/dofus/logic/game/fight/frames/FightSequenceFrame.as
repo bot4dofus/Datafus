@@ -229,8 +229,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private var _teleportThroughPortal:Boolean;
       
-      private var _teleportPortalId:int;
-      
       private var _updateMovementAreaAtSequenceEnd:Boolean;
       
       private var _playSpellScriptStep:FightPlaySpellScriptStep;
@@ -651,11 +649,18 @@ package com.ankamagames.dofus.logic.game.fight.frames
                         spellCastManager = CurrentPlayedFighterManager.getInstance().getSpellCastManagerById(playerManager.id);
                         if(spellCastManager)
                         {
-                           spellManager = spellCastManager.getSpellManagerBySpellId(gafscmsg.spellId,false,castSpellLevel.id);
-                        }
-                        if(spellManager && spellManager.cooldown <= gcdValue)
-                        {
-                           this.pushStep(new FightSpellCooldownVariationStep(playerManager.id,0,gafscmsg.spellId,gcdValue,true));
+                           spellManager = spellCastManager.getSpellManagerBySpellId(gafscmsg.spellId,true,castSpellLevel.id);
+                           if(spellCastManager.currentTurn > 1)
+                           {
+                              if(spellManager && spellManager.cooldown <= gcdValue)
+                              {
+                                 this.pushStep(new FightSpellCooldownVariationStep(playerManager.id,0,gafscmsg.spellId,gcdValue,true));
+                              }
+                           }
+                           else
+                           {
+                              this.pushStep(new FightSpellCooldownVariationStep(playerManager.id,0,gafscmsg.spellId,gcdValue,true));
+                           }
                         }
                      }
                      fe = fightEntitiesFrame.getEntitiesDictionnary();
@@ -1436,7 +1441,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
          if(mark && mark.markType == GameActionMarkTypeEnum.PORTAL)
          {
             this._teleportThroughPortal = true;
-            this._teleportPortalId = mark.markId;
          }
       }
       

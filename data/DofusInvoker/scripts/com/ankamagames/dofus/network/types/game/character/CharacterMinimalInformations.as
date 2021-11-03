@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character
    public class CharacterMinimalInformations extends CharacterBasicMinimalInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 8219;
+      public static const protocolId:uint = 6348;
        
       
       public var level:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.character
       
       override public function getTypeId() : uint
       {
-         return 8219;
+         return 6348;
       }
       
       public function initCharacterMinimalInformations(id:Number = 0, name:String = "", level:uint = 0) : CharacterMinimalInformations

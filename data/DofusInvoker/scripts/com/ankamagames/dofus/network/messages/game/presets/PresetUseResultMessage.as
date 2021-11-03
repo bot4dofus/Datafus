@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.presets
    public class PresetUseResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4327;
+      public static const protocolId:uint = 5211;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.presets
       
       override public function getMessageId() : uint
       {
-         return 4327;
+         return 5211;
       }
       
       public function initPresetUseResultMessage(presetId:int = 0, code:uint = 3) : PresetUseResultMessage

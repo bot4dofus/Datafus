@@ -144,8 +144,8 @@ package
          var version:Array = null;
          super();
          var buildType:String = String("release").replace(/[0-9]/g,"");
-         BuildInfos.VERSION = new Version("2.61.7-release",buildType.toUpperCase() == "LOCAL" ? BuildTypeEnum.INTERNAL : BuildTypeEnum[buildType.toUpperCase()]);
-         BuildInfos.BUILD_DATE = "04-10-2021 15:04";
+         BuildInfos.VERSION = new Version("2.61.9-release",buildType.toUpperCase() == "LOCAL" ? BuildTypeEnum.INTERNAL : BuildTypeEnum[buildType.toUpperCase()]);
+         BuildInfos.BUILD_DATE = "18-10-2021 13:40";
          try
          {
             versionFile = new File(File.applicationDirectory.nativePath + File.separator + "VERSION");

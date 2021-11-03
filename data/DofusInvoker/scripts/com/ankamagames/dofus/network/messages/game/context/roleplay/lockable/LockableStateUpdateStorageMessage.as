@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.lockable
    public class LockableStateUpdateStorageMessage extends LockableStateUpdateAbstractMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1022;
+      public static const protocolId:uint = 9032;
        
       
       private var _isInitialized:Boolean = false;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.lockable
       
       override public function getMessageId() : uint
       {
-         return 1022;
+         return 9032;
       }
       
       public function initLockableStateUpdateStorageMessage(locked:Boolean = false, mapId:Number = 0, elementId:uint = 0) : LockableStateUpdateStorageMessage

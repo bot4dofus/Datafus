@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.job
    public class JobDescriptionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2706;
+      public static const protocolId:uint = 9803;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.job
       
       override public function getMessageId() : uint
       {
-         return 2706;
+         return 9803;
       }
       
       public function initJobDescriptionMessage(jobsDescription:Vector.<JobDescription> = null) : JobDescriptionMessage

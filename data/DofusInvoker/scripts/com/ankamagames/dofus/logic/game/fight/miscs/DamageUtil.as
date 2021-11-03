@@ -51,7 +51,7 @@ package com.ankamagames.dofus.logic.game.fight.miscs
          if(infos != null)
          {
             caster = new FighterTranslator(infos,pCasterId);
-            gameTurn = 1 + CurrentPlayedFighterManager.getInstance().getSpellCastManager().currentTurn;
+            gameTurn = CurrentPlayedFighterManager.getInstance().getSpellCastManager().currentTurn;
             fightContext = new FightContext(gameTurn,new MapTranslator(fcf),pSpellImpactCell,caster);
             target = fightContext.getFighterById(pTargetId);
             effect = SpellEffectTranslator.fromSpell(pEffect,1,false);

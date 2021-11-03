@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.prism
    public class PrismFightSwapRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6557;
+      public static const protocolId:uint = 2041;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function getMessageId() : uint
       {
-         return 6557;
+         return 2041;
       }
       
       public function initPrismFightSwapRequestMessage(subAreaId:uint = 0, targetId:Number = 0) : PrismFightSwapRequestMessage

@@ -148,6 +148,8 @@ package Ankama_Job.ui
       
       protected var _currentRollOver:Object = null;
       
+      protected var _itemRefusedForLevel:Boolean = false;
+      
       protected var _refill_item:Object = null;
       
       protected var _refill_qty:int;
@@ -523,6 +525,11 @@ package Ankama_Job.ui
                this.fillSlot(slot,item,qty);
                return;
             }
+            if(slot == this.slot_item && this._itemRefusedForLevel)
+            {
+               this.modCommon.openPopup(this.uiApi.getText("ui.popup.warning"),this.uiApi.getText("ui.smithmagic.smithLevelTooLow"),[this.uiApi.getText("ui.common.ok")]);
+               this._itemRefusedForLevel = false;
+            }
          }
       }
       
@@ -886,6 +893,7 @@ package Ankama_Job.ui
       protected function isValidSlot(target:Slot, d:Object) : Boolean
       {
          var isUsed:* = false;
+         var smithLevelHighEnough:* = false;
          if(!this._skill)
          {
             return false;
@@ -894,7 +902,9 @@ package Ankama_Job.ui
          {
             case this.slot_item:
                this._errorItem = null;
+               this._itemRefusedForLevel = false;
                isUsed = false;
+               smithLevelHighEnough = false;
                if(d is ItemWrapper)
                {
                   isUsed = (d as ItemWrapper).position != 63;
@@ -902,6 +912,7 @@ package Ankama_Job.ui
                   {
                      this._errorItem = d as ItemWrapper;
                   }
+                  smithLevelHighEnough = (d as ItemWrapper).level <= this._skillLevel;
                }
                else if(d.hasOwnProperty("realItem") && d.realItem is ItemWrapper)
                {
@@ -910,8 +921,13 @@ package Ankama_Job.ui
                   {
                      this._errorItem = d.realItem;
                   }
+                  smithLevelHighEnough = (d.realItem as ItemWrapper).level <= this._skillLevel;
                }
-               return !isUsed && -1 != this._skill.modifiableItemTypeIds.indexOf(d.typeId);
+               if(!isUsed && this._skill.modifiableItemTypeIds.indexOf(d.typeId) != -1 && !smithLevelHighEnough)
+               {
+                  this._itemRefusedForLevel = true;
+               }
+               return !isUsed && this._skill.modifiableItemTypeIds.indexOf(d.typeId) != -1 && smithLevelHighEnough;
             case this.slot_rune:
                if((!this._skill.isForgemagus || this._runesItemTypes.indexOf(d.typeId) == -1) && d.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_POTION && d.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_ORB || d.objectGID == DataEnum.ITEM_GID_SIGNATURE_RUNE)
                {

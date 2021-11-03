@@ -688,7 +688,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   _log.log(2,"Game fight started : " + gfsmsg.fightId + "-" + PlayedCharacterManager.getInstance().currentMap.mapId + " (port : " + PlayerManager.getInstance().gameServerPort + ")");
                }
                CurrentPlayedFighterManager.getInstance().currentFighterId = PlayedCharacterManager.getInstance().id;
-               CurrentPlayedFighterManager.getInstance().getSpellCastManager().currentTurn = 0;
+               CurrentPlayedFighterManager.getInstance().getSpellCastManager().currentTurn = 1;
                SoundManager.getInstance().manager.playFightMusic(gfsmsg.containsBoss);
                SoundManager.getInstance().manager.playUISound(UISoundEnum.INTRO_FIGHT);
                return true;
@@ -764,8 +764,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
                this.tacticModeHandler();
                CurrentPlayedFighterManager.getInstance().setCurrentSummonedCreature(gfrmsg.summonCount,playerId);
                CurrentPlayedFighterManager.getInstance().setCurrentSummonedBomb(gfrmsg.bombCount,playerId);
-               this._battleFrame.turnsCount = gfrmsg.gameTurn - 1;
-               KernelEventsManager.getInstance().processCallback(FightHookList.TurnCountUpdated,gfrmsg.gameTurn - 1);
+               this._battleFrame.turnsCount = gfrmsg.gameTurn;
+               KernelEventsManager.getInstance().processCallback(FightHookList.TurnCountUpdated,gfrmsg.gameTurn);
                this._fightIdols = gfrmsg.idols;
                KernelEventsManager.getInstance().processCallback(FightHookList.FightIdolList,gfrmsg.idols);
                if(msg is GameFightResumeWithSlavesMessage)
@@ -787,7 +787,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                {
                   infos = cooldownInfos[i];
                   spellCastManager = playedFighterManager.getSpellCastManagerById(infos.slaveId);
-                  spellCastManager.currentTurn = gfrmsg.gameTurn - 1;
+                  spellCastManager.currentTurn = gfrmsg.gameTurn;
                   spellCastManager.updateCooldowns(cooldownInfos[i].spellCooldowns);
                   if(infos.slaveId != playerId)
                   {
@@ -831,8 +831,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
             case msg is GameFightSpectateMessage:
                gfspmsg = msg as GameFightSpectateMessage;
                this.tacticModeHandler();
-               this._battleFrame.turnsCount = gfspmsg.gameTurn - 1;
-               KernelEventsManager.getInstance().processCallback(FightHookList.TurnCountUpdated,gfspmsg.gameTurn - 1);
+               this._battleFrame.turnsCount = gfspmsg.gameTurn;
+               KernelEventsManager.getInstance().processCallback(FightHookList.TurnCountUpdated,gfspmsg.gameTurn);
                this._fightIdols = gfspmsg.idols;
                KernelEventsManager.getInstance().processCallback(FightHookList.FightIdolList,gfspmsg.idols);
                fightStartTime = gfspmsg.fightStart;

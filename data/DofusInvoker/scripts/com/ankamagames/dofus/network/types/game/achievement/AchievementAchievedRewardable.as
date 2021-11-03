@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.achievement
    public class AchievementAchievedRewardable extends AchievementAchieved implements INetworkType
    {
       
-      public static const protocolId:uint = 6764;
+      public static const protocolId:uint = 8724;
        
       
       public var finishedlevel:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.achievement
       
       override public function getTypeId() : uint
       {
-         return 6764;
+         return 8724;
       }
       
       public function initAchievementAchievedRewardable(id:uint = 0, achievedBy:Number = 0, finishedlevel:uint = 0) : AchievementAchievedRewardable

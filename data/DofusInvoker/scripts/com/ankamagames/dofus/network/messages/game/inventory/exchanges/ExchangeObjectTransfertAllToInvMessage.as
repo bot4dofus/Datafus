@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeObjectTransfertAllToInvMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8118;
+      public static const protocolId:uint = 7592;
        
       
       public function ExchangeObjectTransfertAllToInvMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 8118;
+         return 7592;
       }
       
       public function initExchangeObjectTransfertAllToInvMessage() : ExchangeObjectTransfertAllToInvMessage

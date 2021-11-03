@@ -4,6 +4,7 @@ package com.ankamagames.dofus.logic.common.managers
    import com.ankamagames.dofus.internalDatacenter.stats.DetailedStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
    import com.ankamagames.dofus.internalDatacenter.stats.Stat;
+   import com.ankamagames.dofus.internalDatacenter.stats.UsableStat;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.frames.EmoticonFrame;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
@@ -15,6 +16,7 @@ package com.ankamagames.dofus.logic.common.managers
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristic;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristicDetailed;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristicValue;
+   import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterUsableCharacteristicDetailed;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
@@ -145,11 +147,17 @@ package com.ankamagames.dofus.logic.common.managers
             entityStats = new EntityStats(entityId);
             this.setStats(entityStats);
          }
+         var rawUsableStat:CharacterUsableCharacteristicDetailed = null;
          var rawDetailedStat:CharacterCharacteristicDetailed = null;
          var entityStat:Stat = null;
          for each(rawStat in rawStats)
          {
-            if(rawStat is CharacterCharacteristicDetailed)
+            if(rawStat is CharacterUsableCharacteristicDetailed)
+            {
+               rawUsableStat = rawStat as CharacterUsableCharacteristicDetailed;
+               entityStat = new UsableStat(rawUsableStat.characteristicId,rawUsableStat.base,rawUsableStat.additional,rawUsableStat.objectsAndMountBonus,rawUsableStat.alignGiftBonus,rawUsableStat.contextModif,rawUsableStat.used);
+            }
+            else if(rawStat is CharacterCharacteristicDetailed)
             {
                rawDetailedStat = rawStat as CharacterCharacteristicDetailed;
                entityStat = new DetailedStat(rawDetailedStat.characteristicId,rawDetailedStat.base,rawDetailedStat.additional,rawDetailedStat.objectsAndMountBonus,rawDetailedStat.alignGiftBonus,rawDetailedStat.contextModif);

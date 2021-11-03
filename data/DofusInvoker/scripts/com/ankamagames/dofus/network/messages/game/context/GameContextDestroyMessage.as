@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameContextDestroyMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4289;
+      public static const protocolId:uint = 9306;
        
       
       public function GameContextDestroyMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 4289;
+         return 9306;
       }
       
       public function initGameContextDestroyMessage() : GameContextDestroyMessage

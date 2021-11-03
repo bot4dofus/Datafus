@@ -251,7 +251,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                FightApi.slaveContext = true;
                slaveId = sscmsg.slaveId;
                spellCastManager = CurrentPlayedFighterManager.getInstance().getSpellCastManagerById(slaveId);
-               spellCastManager.currentTurn = sscmsg.slaveTurn - 1;
+               spellCastManager.currentTurn = sscmsg.slaveTurn;
                this._fullSpellList[slaveId] = [];
                spellWrapper = null;
                for each(spellInvoc in sscmsg.slaveSpells)

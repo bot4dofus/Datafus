@@ -47,15 +47,14 @@ package com.ankamagames.dofus.console.chat
          var _loc9_:Number = NaN;
          var _loc10_:* = null;
          var _loc11_:String = null;
-         var _loc12_:Date = null;
+         var _loc12_:String = null;
          var _loc13_:String = null;
-         var _loc14_:String = null;
+         var _loc14_:int = 0;
          var _loc15_:int = 0;
-         var _loc16_:int = 0;
-         var _loc17_:Array = null;
+         var _loc16_:Array = null;
+         var _loc17_:String = null;
          var _loc18_:String = null;
-         var _loc19_:String = null;
-         var _loc20_:BasicWhoIsRequestMessage = null;
+         var _loc19_:BasicWhoIsRequestMessage = null;
          switch(param2)
          {
             case "whois":
@@ -72,12 +71,12 @@ package com.ankamagames.dofus.console.chat
                if(_loc4_.charAt(0) == "*" && _loc4_.indexOf(PlayerManager.TAG_PREFIX) >= 2)
                {
                   _loc4_ = _loc4_.substr(1,_loc4_.length);
-                  _loc17_ = _loc4_.split(PlayerManager.TAG_PREFIX);
-                  _loc18_ = _loc17_[0];
-                  _loc19_ = _loc17_[1];
-                  if(_loc18_.length >= ProtocolConstantsEnum.MIN_ACCOUNT_NAME_LEN && _loc18_.length <= ProtocolConstantsEnum.MAX_ACCOUNT_NAME_LEN && _loc19_.length == ProtocolConstantsEnum.ACCOUNT_TAG_LEN)
+                  _loc16_ = _loc4_.split(PlayerManager.TAG_PREFIX);
+                  _loc17_ = _loc16_[0];
+                  _loc18_ = _loc16_[1];
+                  if(_loc17_.length >= ProtocolConstantsEnum.MIN_ACCOUNT_NAME_LEN && _loc17_.length <= ProtocolConstantsEnum.MAX_ACCOUNT_NAME_LEN && _loc18_.length == ProtocolConstantsEnum.ACCOUNT_TAG_LEN)
                   {
-                     _loc5_ = new PlayerSearchTagInformation().initPlayerSearchTagInformation(new AccountTagInformation().initAccountTagInformation(_loc18_,_loc19_));
+                     _loc5_ = new PlayerSearchTagInformation().initPlayerSearchTagInformation(new AccountTagInformation().initAccountTagInformation(_loc17_,_loc18_));
                   }
                }
                else if(_loc4_.charAt(0) != "*" && _loc4_.length >= ProtocolConstantsEnum.MIN_NICK_LEN && _loc4_ && _loc4_.length <= ProtocolConstantsEnum.MAX_NICK_LEN)
@@ -86,9 +85,9 @@ package com.ankamagames.dofus.console.chat
                }
                if(_loc5_ != null)
                {
-                  _loc20_ = new BasicWhoIsRequestMessage();
-                  _loc20_.initBasicWhoIsRequestMessage(true,_loc5_);
-                  ConnectionsHandler.getConnection().send(_loc20_);
+                  _loc19_ = new BasicWhoIsRequestMessage();
+                  _loc19_.initBasicWhoIsRequestMessage(true,_loc5_);
+                  ConnectionsHandler.getConnection().send(_loc19_);
                }
                else
                {
@@ -125,28 +124,28 @@ package com.ankamagames.dofus.console.chat
                param1.output(I18n.getUiText("ui.console.chat.currentCell",[_loc11_]));
                break;
             case "time":
-               _loc12_ = new Date();
                param1.output(TimeManager.getInstance().formatDateIG(0) + " - " + TimeManager.getInstance().formatClock(0,false));
                break;
             case "travel":
                if(param3.length > 2 || param3.length < 1)
                {
+                  param1.output("No destination given, canceling auto travel attempt.");
                   return;
                }
-               _loc13_ = param3[0] as String;
+               _loc12_ = param3[0] as String;
                if(param3[1])
                {
-                  _loc14_ = param3[1] as String;
+                  _loc13_ = param3[1] as String;
                }
                else
                {
-                  param3 = _loc13_.split(",");
-                  _loc13_ = param3[0];
-                  _loc14_ = param3[1];
+                  param3 = _loc12_.split(",");
+                  _loc12_ = param3[0];
+                  _loc13_ = param3[1];
                }
+               _loc14_ = int(_loc12_);
                _loc15_ = int(_loc13_);
-               _loc16_ = int(_loc14_);
-               CharacterDisplacementManager.getInstance().autoTravel(_loc15_,_loc16_);
+               CharacterDisplacementManager.getInstance().autoTravel(_loc14_,_loc15_);
                break;
          }
       }

@@ -2,13 +2,10 @@ package com.ankamagames.dofus.logic.game.common.frames
 {
    import com.ankamagames.berilia.Berilia;
    import com.ankamagames.berilia.managers.KernelEventsManager;
-   import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.logic.common.managers.NotificationManager;
    import com.ankamagames.dofus.logic.game.common.actions.ForgettableSpellClientAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenForgettableSpellsUiAction;
-   import com.ankamagames.dofus.logic.game.fight.frames.FightContextFrame;
-   import com.ankamagames.dofus.logic.game.fight.frames.FightPreparationFrame;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.network.messages.game.character.spell.forgettable.ForgettableSpellClientActionMessage;
    import com.ankamagames.jerakine.messages.Frame;
@@ -48,7 +45,6 @@ package com.ankamagames.dofus.logic.game.common.frames
       {
          var action:OpenForgettableSpellsUiAction = null;
          var paramsObject:Object = null;
-         var inventoryFrame:InventoryManagementFrame = null;
          var fscaaction:ForgettableSpellClientAction = null;
          var fpcamsg:ForgettableSpellClientActionMessage = null;
          switch(true)
@@ -72,17 +68,11 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
                break;
             case msg is ForgettableSpellClientAction:
-               inventoryFrame = Kernel.getWorker().getFrame(InventoryManagementFrame) as InventoryManagementFrame;
-               if(inventoryFrame == null || !inventoryFrame.shortcutBarIsUpdated || Kernel.getWorker().getFrame(FightContextFrame) != null && Kernel.getWorker().getFrame(FightPreparationFrame) == null)
-               {
-                  return true;
-               }
                fscaaction = msg as ForgettableSpellClientAction;
                fpcamsg = new ForgettableSpellClientActionMessage();
                fpcamsg.initForgettableSpellClientActionMessage(fscaaction.spellId,fscaaction.action);
                ConnectionsHandler.getConnection().send(fpcamsg);
                return true;
-               break;
             default:
                return false;
          }

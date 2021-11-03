@@ -412,6 +412,8 @@ package Ankama_Grimoire.enum
       public static var CELLS:int = 224;
       
       public static var EVERYONE:int = 225;
+      
+      public static var KOLOSSIUM_CHART:int = 226;
        
       
       public function GameGuideArticlesEnum()

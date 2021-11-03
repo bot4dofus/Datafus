@@ -75,11 +75,6 @@ package com.ankamagames.dofus.logic.game.fight.types.castSpellManager
          return Spell.getSpellById(this._spellId);
       }
       
-      public function get spellLevelObject() : SpellLevel
-      {
-         return Spell.getSpellById(this._spellId).getSpellLevel(this._spellLevel);
-      }
-      
       public function cast(pTurn:int, pTarget:Array, pCountForCooldown:Boolean = true) : void
       {
          var target:Number = NaN;

@@ -49,11 +49,7 @@ package damageCalculation.tools
       
       public static var CUR_LIFE:String = "lifePoints";
       
-      public static var MAX_ACTION_POINTS:String = "maxActionPoints";
-      
       public static var ACTION_POINTS:String = "actionPoints";
-      
-      public static var MAX_MOVEMENT_POINTS:String = "maxMovementPoints";
       
       public static var MOVEMENT_POINTS:String = "movementPoints";
       

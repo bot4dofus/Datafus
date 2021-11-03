@@ -627,7 +627,7 @@ package Ankama_Grimoire.ui
          this.uiApi.addComponentHook(slot,ComponentHookList.ON_RIGHT_CLICK);
       }
       
-      private function updateQuestGrid() : void
+      private function updateQuestGrid(showCompletedQuestToggle:Boolean = false) : void
       {
          var list:Object = null;
          var o:Object = null;
@@ -636,6 +636,10 @@ package Ankama_Grimoire.ui
          var isCatVisible:* = false;
          var p:Object = null;
          var iQ:* = undefined;
+         var repeatableQuestFound:Boolean = false;
+         var quest:Quest = null;
+         var completedQuests:* = undefined;
+         var qID:* = undefined;
          var ts:uint = 0;
          var critSplit:Array = null;
          var knownQuests:Array = null;
@@ -696,7 +700,7 @@ package Ankama_Grimoire.ui
             this.lbl_nbQuests.text = txtPendingQuests;
             this.lbl_nbQuests.visible = !this.btn_showCompletedQuests.selected;
             this.gd_quests.dataProvider = realDP;
-            if(realDP.length > 0)
+            if(realDP.length > 0 && !showCompletedQuestToggle)
             {
                this.lbl_noQuest.visible = false;
                for(iQ in realDP)
@@ -710,9 +714,27 @@ package Ankama_Grimoire.ui
             }
             else
             {
-               this.updateEmptyStep();
-               this.lbl_noQuest.visible = true;
-               this.lbl_noQuest.text = this.uiApi.getText("ui.grimoire.quest.noQuest");
+               quest = this.dataApi.getQuest(this._selectedQuest);
+               if(quest.repeatType > 0)
+               {
+                  completedQuests = this.questApi.getCompletedQuests();
+                  for each(qID in completedQuests)
+                  {
+                     if(quest.id == qID)
+                     {
+                        this.gd_quests.selectedIndex = iQ;
+                        this.selectQuest();
+                        repeatableQuestFound = true;
+                        break;
+                     }
+                  }
+               }
+               if(!repeatableQuestFound)
+               {
+                  this.updateEmptyStep();
+                  this.lbl_noQuest.visible = true;
+                  this.lbl_noQuest.text = this.uiApi.getText("ui.grimoire.quest.noQuest");
+               }
             }
          }
          else if(this._previousSearchCriteria != this._searchCriteria + "#" + this._searchOnName + "" + this._searchOnCategory)
@@ -1489,7 +1511,7 @@ package Ankama_Grimoire.ui
             case this.btn_showCompletedQuests:
                this.sysApi.setData("showCompletedQuest",this.btn_showCompletedQuests.selected);
                this._showCompletedQuest = this.btn_showCompletedQuests.selected;
-               this.updateQuestGrid();
+               this.updateQuestGrid(true);
                break;
             case this.btn_close_ctr_itemBlock:
                if(this.ctr_itemBlock.visible)
@@ -1768,12 +1790,19 @@ package Ankama_Grimoire.ui
                this._displayedStep = stepsIds[0];
                this._currentStep = stepsIds[stepsIds.length - 1];
             }
-            for each(q in this._questActiveList)
+            if(this._showCompletedQuest)
             {
-               if(q.id == questId)
+               this.updateStep();
+            }
+            else
+            {
+               for each(q in this._questActiveList)
                {
-                  this.updateStep();
-                  break;
+                  if(q.id == questId)
+                  {
+                     this.updateStep();
+                     break;
+                  }
                }
             }
             if(this._questToFollow > 0 && this._questToFollow == questId)

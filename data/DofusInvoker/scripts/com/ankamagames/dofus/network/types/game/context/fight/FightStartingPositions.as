@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightStartingPositions implements INetworkType
    {
       
-      public static const protocolId:uint = 8551;
+      public static const protocolId:uint = 915;
        
       
       public var positionsForChallengers:Vector.<uint>;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 8551;
+         return 915;
       }
       
       public function initFightStartingPositions(positionsForChallengers:Vector.<uint> = null, positionsForDefenders:Vector.<uint> = null) : FightStartingPositions

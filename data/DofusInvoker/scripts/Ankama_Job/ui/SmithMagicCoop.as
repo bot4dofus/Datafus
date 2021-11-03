@@ -440,10 +440,12 @@ package Ankama_Job.ui
          {
             if(this.bagDropValidatorFunction(slot,item,this.gd_bag))
             {
+               _itemRefusedForLevel = false;
                _moveRequestedItemUid = item.objectUID;
                sysApi.sendAction(new ExchangeObjectMoveAction([item.objectUID,qty]));
                return;
             }
+            _itemRefusedForLevel = false;
          }
       }
       

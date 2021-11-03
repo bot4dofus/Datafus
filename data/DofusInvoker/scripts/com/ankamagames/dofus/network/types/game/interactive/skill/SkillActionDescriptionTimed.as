@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.interactive.skill
    public class SkillActionDescriptionTimed extends SkillActionDescription implements INetworkType
    {
       
-      public static const protocolId:uint = 7672;
+      public static const protocolId:uint = 3865;
        
       
       public var time:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.interactive.skill
       
       override public function getTypeId() : uint
       {
-         return 7672;
+         return 3865;
       }
       
       public function initSkillActionDescriptionTimed(skillId:uint = 0, time:uint = 0) : SkillActionDescriptionTimed

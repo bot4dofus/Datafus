@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.types.game.guild
    public class GuildMember extends CharacterMinimalInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1472;
+      public static const protocolId:uint = 5693;
        
       
       public var breed:int = 0;
@@ -53,7 +53,7 @@ package com.ankamagames.dofus.network.types.game.guild
       
       override public function getTypeId() : uint
       {
-         return 1472;
+         return 5693;
       }
       
       public function initGuildMember(id:Number = 0, name:String = "", level:uint = 0, breed:int = 0, sex:Boolean = false, rank:uint = 0, givenExperience:Number = 0, experienceGivenPercent:uint = 0, rights:uint = 0, connected:uint = 99, alignmentSide:int = 0, hoursSinceLastConnection:uint = 0, moodSmileyId:uint = 0, accountId:uint = 0, achievementPoints:int = 0, status:PlayerStatus = null, havenBagShared:Boolean = false) : GuildMember

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.document
    public class DocumentReadingBeginMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9516;
+      public static const protocolId:uint = 1878;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.document
       
       override public function getMessageId() : uint
       {
-         return 9516;
+         return 1878;
       }
       
       public function initDocumentReadingBeginMessage(documentId:uint = 0) : DocumentReadingBeginMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightNoSpellCastMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5083;
+      public static const protocolId:uint = 9993;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 5083;
+         return 9993;
       }
       
       public function initGameActionFightNoSpellCastMessage(spellLevelId:uint = 0) : GameActionFightNoSpellCastMessage
