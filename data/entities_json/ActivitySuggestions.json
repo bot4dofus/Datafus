@@ -16691,6 +16691,18 @@
 			"startDate": 0.0,
 			"endDate": 0.0,
 			"icon": "1180"
+		},
+		{
+			"id": 4069,
+			"nameId": 910812,
+			"descriptionId": 910813,
+			"categoryId": 13,
+			"level": 0,
+			"mapId": 191106050,
+			"isLarge": true,
+			"startDate": 0.0,
+			"endDate": 0.0,
+			"icon": "1181"
 		}
 	]
 }

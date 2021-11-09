@@ -3593,6 +3593,36 @@
 			"duration": 1800,
 			"weight": 0,
 			"spellLevelId": 0
+		},
+		{
+			"id": 256,
+			"nameId": 910816,
+			"shortcutId": 910817,
+			"order": 506000,
+			"defaultAnim": "Etendardemperor1",
+			"persistancy": false,
+			"eight_directions": false,
+			"aura": false,
+			"anims": [],
+			"cooldown": 1000,
+			"duration": 1800,
+			"weight": 0,
+			"spellLevelId": 0
+		},
+		{
+			"id": 257,
+			"nameId": 910800,
+			"shortcutId": 910801,
+			"order": 506100,
+			"defaultAnim": "Etendardsolary1",
+			"persistancy": false,
+			"eight_directions": false,
+			"aura": false,
+			"anims": [],
+			"cooldown": 1000,
+			"duration": 1800,
+			"weight": 0,
+			"spellLevelId": 0
 		}
 	]
 }
