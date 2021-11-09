@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.approach
    public class ReloginTokenRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7606;
+      public static const protocolId:uint = 7282;
        
       
       public function ReloginTokenRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       override public function getMessageId() : uint
       {
-         return 7606;
+         return 7282;
       }
       
       public function initReloginTokenRequestMessage() : ReloginTokenRequestMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeIsReadyMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7082;
+      public static const protocolId:uint = 2353;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 7082;
+         return 2353;
       }
       
       public function initExchangeIsReadyMessage(id:Number = 0, ready:Boolean = false) : ExchangeIsReadyMessage

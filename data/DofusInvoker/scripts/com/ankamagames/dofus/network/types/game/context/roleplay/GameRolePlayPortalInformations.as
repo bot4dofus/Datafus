@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class GameRolePlayPortalInformations extends GameRolePlayActorInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1845;
+      public static const protocolId:uint = 5041;
        
       
       public var portal:PortalInformation;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 1845;
+         return 5041;
       }
       
       public function initGameRolePlayPortalInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, portal:PortalInformation = null) : GameRolePlayPortalInformations

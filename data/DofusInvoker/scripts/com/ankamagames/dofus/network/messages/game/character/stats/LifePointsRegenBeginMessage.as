@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.stats
    public class LifePointsRegenBeginMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2203;
+      public static const protocolId:uint = 2920;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.character.stats
       
       override public function getMessageId() : uint
       {
-         return 2203;
+         return 2920;
       }
       
       public function initLifePointsRegenBeginMessage(regenRate:uint = 0) : LifePointsRegenBeginMessage

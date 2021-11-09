@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.approach
    public class HelloGameMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8650;
+      public static const protocolId:uint = 1872;
        
       
       public function HelloGameMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       override public function getMessageId() : uint
       {
-         return 8650;
+         return 1872;
       }
       
       public function initHelloGameMessage() : HelloGameMessage

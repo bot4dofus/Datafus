@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class FriendSetStatusShareMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6008;
+      public static const protocolId:uint = 6137;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 6008;
+         return 6137;
       }
       
       public function initFriendSetStatusShareMessage(share:Boolean = false) : FriendSetStatusShareMessage

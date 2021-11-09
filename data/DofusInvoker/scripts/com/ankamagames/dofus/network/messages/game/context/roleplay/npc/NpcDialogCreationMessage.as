@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
    public class NpcDialogCreationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6983;
+      public static const protocolId:uint = 5238;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
       
       override public function getMessageId() : uint
       {
-         return 6983;
+         return 5238;
       }
       
       public function initNpcDialogCreationMessage(mapId:Number = 0, npcId:int = 0) : NpcDialogCreationMessage

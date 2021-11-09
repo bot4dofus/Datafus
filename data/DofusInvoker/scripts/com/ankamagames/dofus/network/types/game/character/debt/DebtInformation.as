@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character.debt
    public class DebtInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 9175;
+      public static const protocolId:uint = 1134;
        
       
       public var id:Number = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.character.debt
       
       public function getTypeId() : uint
       {
-         return 9175;
+         return 1134;
       }
       
       public function initDebtInformation(id:Number = 0, timestamp:Number = 0) : DebtInformation

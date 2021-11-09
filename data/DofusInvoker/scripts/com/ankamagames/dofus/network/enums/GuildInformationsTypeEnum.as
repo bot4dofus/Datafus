@@ -18,6 +18,8 @@ package com.ankamagames.dofus.network.enums
       public static const INFO_TAX_COLLECTOR_ALLIANCE:uint = 7;
       
       public static const INFO_TAX_COLLECTOR_LEAVE:uint = 8;
+      
+      public static const INFO_RECRUITMENT:uint = 9;
        
       
       public function GuildInformationsTypeEnum()

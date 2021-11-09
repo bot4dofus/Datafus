@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightMultipleSummonMessage extends AbstractGameActionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4378;
+      public static const protocolId:uint = 4394;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 4378;
+         return 4394;
       }
       
       public function initGameActionFightMultipleSummonMessage(actionId:uint = 0, sourceId:Number = 0, summons:Vector.<GameContextSummonsInformation> = null) : GameActionFightMultipleSummonMessage

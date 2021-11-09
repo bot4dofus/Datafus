@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character.alignment
    public class ActorExtendedAlignmentInformations extends ActorAlignmentInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 484;
+      public static const protocolId:uint = 7091;
        
       
       public var honor:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.character.alignment
       
       override public function getTypeId() : uint
       {
-         return 484;
+         return 7091;
       }
       
       public function initActorExtendedAlignmentInformations(alignmentSide:int = 0, alignmentValue:uint = 0, alignmentGrade:uint = 0, characterPower:Number = 0, honor:uint = 0, honorGradeFloor:uint = 0, honorNextGradeFloor:uint = 0, aggressable:uint = 0) : ActorExtendedAlignmentInformations

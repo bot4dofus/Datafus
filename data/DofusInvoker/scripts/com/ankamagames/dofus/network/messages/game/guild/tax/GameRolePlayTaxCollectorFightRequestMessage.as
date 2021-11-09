@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild.tax
    public class GameRolePlayTaxCollectorFightRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1644;
+      public static const protocolId:uint = 6505;
        
       
       public function GameRolePlayTaxCollectorFightRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.guild.tax
       
       override public function getMessageId() : uint
       {
-         return 1644;
+         return 6505;
       }
       
       public function initGameRolePlayTaxCollectorFightRequestMessage() : GameRolePlayTaxCollectorFightRequestMessage

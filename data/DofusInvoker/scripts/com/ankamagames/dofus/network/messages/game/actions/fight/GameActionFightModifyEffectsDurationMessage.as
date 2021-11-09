@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightModifyEffectsDurationMessage extends AbstractGameActionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 378;
+      public static const protocolId:uint = 6889;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 378;
+         return 6889;
       }
       
       public function initGameActionFightModifyEffectsDurationMessage(actionId:uint = 0, sourceId:Number = 0, targetId:Number = 0, delta:int = 0) : GameActionFightModifyEffectsDurationMessage

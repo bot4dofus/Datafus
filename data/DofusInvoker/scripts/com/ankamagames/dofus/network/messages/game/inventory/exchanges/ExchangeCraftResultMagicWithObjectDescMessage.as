@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeCraftResultMagicWithObjectDescMessage extends ExchangeCraftResultWithObjectDescMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2833;
+      public static const protocolId:uint = 8749;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 2833;
+         return 8749;
       }
       
       public function initExchangeCraftResultMagicWithObjectDescMessage(craftResult:uint = 0, objectInfo:ObjectItemNotInContainer = null, magicPoolStatus:int = 0) : ExchangeCraftResultMagicWithObjectDescMessage

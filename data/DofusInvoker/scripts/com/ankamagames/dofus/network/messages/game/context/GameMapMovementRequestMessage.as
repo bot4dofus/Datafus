@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameMapMovementRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3322;
+      public static const protocolId:uint = 4868;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 3322;
+         return 4868;
       }
       
       public function initGameMapMovementRequestMessage(keyMovements:Vector.<uint> = null, mapId:Number = 0) : GameMapMovementRequestMessage

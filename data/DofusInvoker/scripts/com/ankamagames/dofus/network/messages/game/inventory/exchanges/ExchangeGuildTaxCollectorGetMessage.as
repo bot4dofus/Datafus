@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeGuildTaxCollectorGetMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3709;
+      public static const protocolId:uint = 2322;
        
       
       private var _isInitialized:Boolean = false;
@@ -54,7 +54,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 3709;
+         return 2322;
       }
       
       public function initExchangeGuildTaxCollectorGetMessage(collectorName:String = "", worldX:int = 0, worldY:int = 0, mapId:Number = 0, subAreaId:uint = 0, userName:String = "", callerId:Number = 0, callerName:String = "", experience:Number = 0, pods:uint = 0, objectsInfos:Vector.<ObjectItemGenericQuantity> = null) : ExchangeGuildTaxCollectorGetMessage

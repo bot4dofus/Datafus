@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.shortcut
    public class ShortcutEmote extends Shortcut implements INetworkType
    {
       
-      public static const protocolId:uint = 9177;
+      public static const protocolId:uint = 6790;
        
       
       public var emoteId:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.shortcut
       
       override public function getTypeId() : uint
       {
-         return 9177;
+         return 6790;
       }
       
       public function initShortcutEmote(slot:uint = 0, emoteId:uint = 0) : ShortcutEmote
@@ -44,11 +44,11 @@ package com.ankamagames.dofus.network.types.game.shortcut
       public function serializeAs_ShortcutEmote(output:ICustomDataOutput) : void
       {
          super.serializeAs_Shortcut(output);
-         if(this.emoteId < 0 || this.emoteId > 255)
+         if(this.emoteId < 0 || this.emoteId > 65535)
          {
             throw new Error("Forbidden value (" + this.emoteId + ") on element emoteId.");
          }
-         output.writeByte(this.emoteId);
+         output.writeShort(this.emoteId);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -75,8 +75,8 @@ package com.ankamagames.dofus.network.types.game.shortcut
       
       private function _emoteIdFunc(input:ICustomDataInput) : void
       {
-         this.emoteId = input.readUnsignedByte();
-         if(this.emoteId < 0 || this.emoteId > 255)
+         this.emoteId = input.readUnsignedShort();
+         if(this.emoteId < 0 || this.emoteId > 65535)
          {
             throw new Error("Forbidden value (" + this.emoteId + ") on element of ShortcutEmote.emoteId.");
          }

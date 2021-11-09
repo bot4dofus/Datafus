@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.deletion
    public class CharacterDeletionErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 148;
+      public static const protocolId:uint = 1044;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.character.deletion
       
       override public function getMessageId() : uint
       {
-         return 148;
+         return 1044;
       }
       
       public function initCharacterDeletionErrorMessage(reason:uint = 1) : CharacterDeletionErrorMessage

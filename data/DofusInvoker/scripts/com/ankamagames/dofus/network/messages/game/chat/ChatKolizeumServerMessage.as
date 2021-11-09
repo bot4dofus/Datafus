@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.chat
    public class ChatKolizeumServerMessage extends ChatServerMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7861;
+      public static const protocolId:uint = 7497;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.chat
       
       override public function getMessageId() : uint
       {
-         return 7861;
+         return 7497;
       }
       
       public function initChatKolizeumServerMessage(channel:uint = 0, content:String = "", timestamp:uint = 0, fingerprint:String = "", senderId:Number = 0, senderName:String = "", prefix:String = "", senderAccountId:uint = 0, originServerId:int = 0) : ChatKolizeumServerMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class ErrorMapNotFoundMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 733;
+      public static const protocolId:uint = 6811;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 733;
+         return 6811;
       }
       
       public function initErrorMapNotFoundMessage(mapId:Number = 0) : ErrorMapNotFoundMessage

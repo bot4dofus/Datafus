@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class MigratedServerListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9619;
+      public static const protocolId:uint = 508;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 9619;
+         return 508;
       }
       
       public function initMigratedServerListMessage(migratedServerIds:Vector.<uint> = null) : MigratedServerListMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.prism
    public class PrismInfoCloseMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 586;
+      public static const protocolId:uint = 2327;
        
       
       public function PrismInfoCloseMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function getMessageId() : uint
       {
-         return 586;
+         return 2327;
       }
       
       public function initPrismInfoCloseMessage() : PrismInfoCloseMessage

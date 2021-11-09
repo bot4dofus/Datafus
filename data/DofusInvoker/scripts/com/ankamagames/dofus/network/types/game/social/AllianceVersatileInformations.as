@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.social
    public class AllianceVersatileInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 3779;
+      public static const protocolId:uint = 1975;
        
       
       public var allianceId:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.social
       
       public function getTypeId() : uint
       {
-         return 3779;
+         return 1975;
       }
       
       public function initAllianceVersatileInformations(allianceId:uint = 0, nbGuilds:uint = 0, nbMembers:uint = 0, nbSubarea:uint = 0) : AllianceVersatileInformations

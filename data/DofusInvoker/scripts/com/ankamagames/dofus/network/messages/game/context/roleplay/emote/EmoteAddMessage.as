@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.emote
    public class EmoteAddMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3526;
+      public static const protocolId:uint = 5537;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.emote
       
       override public function getMessageId() : uint
       {
-         return 3526;
+         return 5537;
       }
       
       public function initEmoteAddMessage(emoteId:uint = 0) : EmoteAddMessage
@@ -73,11 +73,11 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.emote
       
       public function serializeAs_EmoteAddMessage(output:ICustomDataOutput) : void
       {
-         if(this.emoteId < 0 || this.emoteId > 255)
+         if(this.emoteId < 0 || this.emoteId > 65535)
          {
             throw new Error("Forbidden value (" + this.emoteId + ") on element emoteId.");
          }
-         output.writeByte(this.emoteId);
+         output.writeShort(this.emoteId);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -102,8 +102,8 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.emote
       
       private function _emoteIdFunc(input:ICustomDataInput) : void
       {
-         this.emoteId = input.readUnsignedByte();
-         if(this.emoteId < 0 || this.emoteId > 255)
+         this.emoteId = input.readUnsignedShort();
+         if(this.emoteId < 0 || this.emoteId > 65535)
          {
             throw new Error("Forbidden value (" + this.emoteId + ") on element of EmoteAddMessage.emoteId.");
          }

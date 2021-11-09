@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
    public class GameRolePlayArenaUnregisterMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5301;
+      public static const protocolId:uint = 6947;
        
       
       public function GameRolePlayArenaUnregisterMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       override public function getMessageId() : uint
       {
-         return 5301;
+         return 6947;
       }
       
       public function initGameRolePlayArenaUnregisterMessage() : GameRolePlayArenaUnregisterMessage

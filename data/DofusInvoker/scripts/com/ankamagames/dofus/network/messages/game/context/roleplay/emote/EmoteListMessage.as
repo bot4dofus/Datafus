@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.emote
    public class EmoteListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7087;
+      public static const protocolId:uint = 3387;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.emote
       
       override public function getMessageId() : uint
       {
-         return 7087;
+         return 3387;
       }
       
       public function initEmoteListMessage(emoteIds:Vector.<uint> = null) : EmoteListMessage
@@ -79,11 +79,11 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.emote
          output.writeShort(this.emoteIds.length);
          for(var _i1:uint = 0; _i1 < this.emoteIds.length; _i1++)
          {
-            if(this.emoteIds[_i1] < 0 || this.emoteIds[_i1] > 255)
+            if(this.emoteIds[_i1] < 0 || this.emoteIds[_i1] > 65535)
             {
                throw new Error("Forbidden value (" + this.emoteIds[_i1] + ") on element 1 (starting at 1) of emoteIds.");
             }
-            output.writeByte(this.emoteIds[_i1]);
+            output.writeShort(this.emoteIds[_i1]);
          }
       }
       
@@ -98,8 +98,8 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.emote
          var _emoteIdsLen:uint = input.readUnsignedShort();
          for(var _i1:uint = 0; _i1 < _emoteIdsLen; _i1++)
          {
-            _val1 = input.readUnsignedByte();
-            if(_val1 < 0 || _val1 > 255)
+            _val1 = input.readUnsignedShort();
+            if(_val1 < 0 || _val1 > 65535)
             {
                throw new Error("Forbidden value (" + _val1 + ") on elements of emoteIds.");
             }
@@ -128,8 +128,8 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.emote
       
       private function _emoteIdsFunc(input:ICustomDataInput) : void
       {
-         var _val:uint = input.readUnsignedByte();
-         if(_val < 0 || _val > 255)
+         var _val:uint = input.readUnsignedShort();
+         if(_val < 0 || _val > 65535)
          {
             throw new Error("Forbidden value (" + _val + ") on elements of emoteIds.");
          }

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.guild.tax
    public class TaxCollectorComplementaryInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 2589;
+      public static const protocolId:uint = 6833;
        
       
       public function TaxCollectorComplementaryInformations()
@@ -18,7 +18,7 @@ package com.ankamagames.dofus.network.types.game.guild.tax
       
       public function getTypeId() : uint
       {
-         return 2589;
+         return 6833;
       }
       
       public function initTaxCollectorComplementaryInformations() : TaxCollectorComplementaryInformations

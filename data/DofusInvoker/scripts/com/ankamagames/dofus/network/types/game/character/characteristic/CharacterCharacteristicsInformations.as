@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
    public class CharacterCharacteristicsInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 6878;
+      public static const protocolId:uint = 8140;
        
       
       public var experience:Number = 0;
@@ -49,7 +49,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       
       public function getTypeId() : uint
       {
-         return 6878;
+         return 8140;
       }
       
       public function initCharacterCharacteristicsInformations(experience:Number = 0, experienceLevelFloor:Number = 0, experienceNextLevelFloor:Number = 0, experienceBonusLimit:Number = 0, kamas:Number = 0, alignmentInfos:ActorExtendedAlignmentInformations = null, criticalHitWeapon:uint = 0, characteristics:Vector.<CharacterCharacteristic> = null, spellModifications:Vector.<CharacterSpellModification> = null, probationTime:uint = 0) : CharacterCharacteristicsInformations

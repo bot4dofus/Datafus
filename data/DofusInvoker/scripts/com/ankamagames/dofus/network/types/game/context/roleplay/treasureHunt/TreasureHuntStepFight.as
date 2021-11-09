@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt
    public class TreasureHuntStepFight extends TreasureHuntStep implements INetworkType
    {
       
-      public static const protocolId:uint = 5052;
+      public static const protocolId:uint = 3658;
        
       
       public function TreasureHuntStepFight()
@@ -18,7 +18,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt
       
       override public function getTypeId() : uint
       {
-         return 5052;
+         return 3658;
       }
       
       public function initTreasureHuntStepFight() : TreasureHuntStepFight

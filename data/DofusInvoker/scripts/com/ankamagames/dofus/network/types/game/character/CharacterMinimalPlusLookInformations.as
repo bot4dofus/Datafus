@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.character
    public class CharacterMinimalPlusLookInformations extends CharacterMinimalInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 8502;
+      public static const protocolId:uint = 3373;
        
       
       public var entityLook:EntityLook;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.character
       
       override public function getTypeId() : uint
       {
-         return 8502;
+         return 3373;
       }
       
       public function initCharacterMinimalPlusLookInformations(id:Number = 0, name:String = "", level:uint = 0, entityLook:EntityLook = null, breed:int = 0) : CharacterMinimalPlusLookInformations

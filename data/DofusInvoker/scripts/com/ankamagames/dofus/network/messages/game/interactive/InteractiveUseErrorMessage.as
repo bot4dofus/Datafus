@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.interactive
    public class InteractiveUseErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5523;
+      public static const protocolId:uint = 9420;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.interactive
       
       override public function getMessageId() : uint
       {
-         return 5523;
+         return 9420;
       }
       
       public function initInteractiveUseErrorMessage(elemId:uint = 0, skillInstanceUid:uint = 0) : InteractiveUseErrorMessage

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class ObjectItemToSellInHumanVendorShop extends Item implements INetworkType
    {
       
-      public static const protocolId:uint = 3911;
+      public static const protocolId:uint = 432;
        
       
       public var objectGID:uint = 0;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       override public function getTypeId() : uint
       {
-         return 3911;
+         return 432;
       }
       
       public function initObjectItemToSellInHumanVendorShop(objectGID:uint = 0, effects:Vector.<ObjectEffect> = null, objectUID:uint = 0, quantity:uint = 0, objectPrice:Number = 0, publicPrice:Number = 0) : ObjectItemToSellInHumanVendorShop

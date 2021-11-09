@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeCraftResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3258;
+      public static const protocolId:uint = 6893;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 3258;
+         return 6893;
       }
       
       public function initExchangeCraftResultMessage(craftResult:uint = 0) : ExchangeCraftResultMessage

@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class FriendsListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5397;
+      public static const protocolId:uint = 7144;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 5397;
+         return 7144;
       }
       
       public function initFriendsListMessage(friendsList:Vector.<FriendInformations> = null) : FriendsListMessage

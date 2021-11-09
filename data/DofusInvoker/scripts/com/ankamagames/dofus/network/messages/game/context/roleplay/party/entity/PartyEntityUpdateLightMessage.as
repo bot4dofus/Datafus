@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party.entit
    public class PartyEntityUpdateLightMessage extends PartyUpdateLightMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2355;
+      public static const protocolId:uint = 2693;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party.entit
       
       override public function getMessageId() : uint
       {
-         return 2355;
+         return 2693;
       }
       
       public function initPartyEntityUpdateLightMessage(partyId:uint = 0, id:Number = 0, lifePoints:uint = 0, maxLifePoints:uint = 0, prospecting:uint = 0, regenRate:uint = 0, indexId:uint = 0) : PartyEntityUpdateLightMessage

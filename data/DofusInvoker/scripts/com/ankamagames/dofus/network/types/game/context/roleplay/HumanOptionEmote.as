@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class HumanOptionEmote extends HumanOption implements INetworkType
    {
       
-      public static const protocolId:uint = 4815;
+      public static const protocolId:uint = 2796;
        
       
       public var emoteId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 4815;
+         return 2796;
       }
       
       public function initHumanOptionEmote(emoteId:uint = 0, emoteStartTime:Number = 0) : HumanOptionEmote
@@ -46,11 +46,11 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       public function serializeAs_HumanOptionEmote(output:ICustomDataOutput) : void
       {
          super.serializeAs_HumanOption(output);
-         if(this.emoteId < 0 || this.emoteId > 255)
+         if(this.emoteId < 0 || this.emoteId > 65535)
          {
             throw new Error("Forbidden value (" + this.emoteId + ") on element emoteId.");
          }
-         output.writeByte(this.emoteId);
+         output.writeShort(this.emoteId);
          if(this.emoteStartTime < -9007199254740992 || this.emoteStartTime > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.emoteStartTime + ") on element emoteStartTime.");
@@ -84,8 +84,8 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       private function _emoteIdFunc(input:ICustomDataInput) : void
       {
-         this.emoteId = input.readUnsignedByte();
-         if(this.emoteId < 0 || this.emoteId > 255)
+         this.emoteId = input.readUnsignedShort();
+         if(this.emoteId < 0 || this.emoteId > 65535)
          {
             throw new Error("Forbidden value (" + this.emoteId + ") on element of HumanOptionEmote.emoteId.");
          }

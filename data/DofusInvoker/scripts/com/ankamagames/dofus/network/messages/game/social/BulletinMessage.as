@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.social
    public class BulletinMessage extends SocialNoticeMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3297;
+      public static const protocolId:uint = 3379;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.social
       
       override public function getMessageId() : uint
       {
-         return 3297;
+         return 3379;
       }
       
       public function initBulletinMessage(content:String = "", timestamp:uint = 0, memberId:Number = 0, memberName:String = "", lastNotifiedTimestamp:uint = 0) : BulletinMessage

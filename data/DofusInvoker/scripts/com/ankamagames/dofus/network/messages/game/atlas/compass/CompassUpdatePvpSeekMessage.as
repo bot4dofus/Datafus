@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.atlas.compass
    public class CompassUpdatePvpSeekMessage extends CompassUpdateMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1209;
+      public static const protocolId:uint = 1845;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.atlas.compass
       
       override public function getMessageId() : uint
       {
-         return 1209;
+         return 1845;
       }
       
       public function initCompassUpdatePvpSeekMessage(type:uint = 0, coords:MapCoordinates = null, memberId:Number = 0, memberName:String = "") : CompassUpdatePvpSeekMessage

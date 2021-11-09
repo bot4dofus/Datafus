@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.basic
    public class BasicWhoIsRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6111;
+      public static const protocolId:uint = 8135;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.game.basic
       
       override public function getMessageId() : uint
       {
-         return 6111;
+         return 8135;
       }
       
       public function initBasicWhoIsRequestMessage(verbose:Boolean = false, target:AbstractPlayerSearchInformation = null) : BasicWhoIsRequestMessage

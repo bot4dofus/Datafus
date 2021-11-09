@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.storage
    public class StorageObjectsRemoveMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 223;
+      public static const protocolId:uint = 4965;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.storage
       
       override public function getMessageId() : uint
       {
-         return 223;
+         return 4965;
       }
       
       public function initStorageObjectsRemoveMessage(objectUIDList:Vector.<uint> = null) : StorageObjectsRemoveMessage

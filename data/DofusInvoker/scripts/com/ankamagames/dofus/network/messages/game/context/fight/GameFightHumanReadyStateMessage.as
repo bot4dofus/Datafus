@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightHumanReadyStateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5623;
+      public static const protocolId:uint = 9747;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 5623;
+         return 9747;
       }
       
       public function initGameFightHumanReadyStateMessage(characterId:Number = 0, isReady:Boolean = false) : GameFightHumanReadyStateMessage

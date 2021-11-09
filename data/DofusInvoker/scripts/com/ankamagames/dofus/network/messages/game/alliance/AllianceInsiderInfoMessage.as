@@ -15,7 +15,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceInsiderInfoMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1274;
+      public static const protocolId:uint = 108;
        
       
       private var _isInitialized:Boolean = false;
@@ -47,7 +47,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 1274;
+         return 108;
       }
       
       public function initAllianceInsiderInfoMessage(allianceInfos:AllianceFactSheetInformations = null, guilds:Vector.<GuildInsiderFactSheetInformations> = null, prisms:Vector.<PrismSubareaEmptyInfo> = null) : AllianceInsiderInfoMessage

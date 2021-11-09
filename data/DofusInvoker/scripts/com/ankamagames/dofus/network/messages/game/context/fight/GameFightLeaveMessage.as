@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightLeaveMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6063;
+      public static const protocolId:uint = 9034;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 6063;
+         return 9034;
       }
       
       public function initGameFightLeaveMessage(charId:Number = 0) : GameFightLeaveMessage

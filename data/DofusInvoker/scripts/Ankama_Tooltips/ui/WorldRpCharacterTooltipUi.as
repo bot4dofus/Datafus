@@ -219,6 +219,10 @@ package Ankama_Tooltips.ui
          {
             this.tx_league = new Texture();
          }
+         this.tx_emblemBack.visible = false;
+         this.tx_emblemUp.visible = false;
+         this.tx_AllianceEmblemBack.visible = false;
+         this.tx_AllianceEmblemUp.visible = false;
          var hasGuildInformation:Boolean = false;
          var hasAllianceInformation:Boolean = false;
          var hasInfos:Boolean = data.hasOwnProperty("infos");
@@ -265,17 +269,20 @@ package Ankama_Tooltips.ui
             this._colorUp = this._guildInformations.guildEmblem.symbolColor;
             this._colorBack = this._guildInformations.guildEmblem.backgroundColor;
             this.lbl_playerName.y = 18;
-            this.tx_emblemBack.visible = false;
-            this.tx_emblemUp.visible = false;
             this.infosCtr.addContent(this.tx_emblemBack);
             this.infosCtr.addContent(this.tx_emblemUp);
             this.infosCtr.addContent(this.lbl_guildName);
             this.lbl_guildName.text = this._guildInformations.guildName;
             this.lbl_guildName.fullWidthAndHeight();
-            this.tx_emblemBack.dispatchMessages = true;
+            this.tx_emblemBack.dispatchMessages = this.tx_emblemUp.dispatchMessages = true;
             this.uiApi.addComponentHook(this.tx_emblemBack,"onTextureReady");
-            this.tx_emblemUp.dispatchMessages = true;
             this.uiApi.addComponentHook(this.tx_emblemUp,"onTextureReady");
+            if(hasAllianceInformation)
+            {
+               this.tx_AllianceEmblemBack.dispatchMessages = this.tx_AllianceEmblemUp.dispatchMessages = true;
+               this.uiApi.addComponentHook(this.tx_AllianceEmblemBack,"onTextureReady");
+               this.uiApi.addComponentHook(this.tx_AllianceEmblemUp,"onTextureReady");
+            }
             this.tx_emblemBack.uri = this.uiApi.createUri(this.uiApi.me().getConstant("emblems") + "back/" + this._guildInformations.guildEmblem.backgroundShape + ".swf",true);
             this.tx_emblemUp.uri = this.uiApi.createUri(this.uiApi.me().getConstant("emblems") + "up/" + this._guildInformations.guildEmblem.symbolShape + ".swf",true);
             this.tx_emblemBack.x = 2;
@@ -317,17 +324,12 @@ package Ankama_Tooltips.ui
          {
             if(hasAllianceInformation)
             {
-               this.tx_AllianceEmblemBack.visible = false;
-               this.tx_AllianceEmblemUp.visible = false;
                this.infosCtr.addContent(this.tx_AllianceEmblemBack);
                this.infosCtr.addContent(this.tx_AllianceEmblemUp);
                this.lbl_guildName.appendText(" - [" + this._allianceInformations.allianceTag + "]");
                this.lbl_guildName.fullWidthAndHeight();
                this._allianceEmblemBgColor = this._allianceInformations.allianceEmblem.backgroundColor;
                this._allianceEmblemIconColor = this._allianceInformations.allianceEmblem.symbolColor;
-               this.tx_AllianceEmblemBack.dispatchMessages = this.tx_AllianceEmblemUp.dispatchMessages = true;
-               this.uiApi.addComponentHook(this.tx_AllianceEmblemBack,"onTextureReady");
-               this.uiApi.addComponentHook(this.tx_AllianceEmblemUp,"onTextureReady");
                if(this._allianceInformations.allianceEmblem.backgroundShape != this._guildInformations.guildEmblem.backgroundShape)
                {
                   this.tx_AllianceEmblemBack.uri = this.uiApi.createUri(this.uiApi.me().getConstant("emblems") + "backalliance/" + this._allianceInformations.allianceEmblem.backgroundShape + ".swf",true);

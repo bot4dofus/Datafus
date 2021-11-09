@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangePlayerMultiCraftRequestMessage extends ExchangeRequestMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6013;
+      public static const protocolId:uint = 9135;
        
       
       private var _isInitialized:Boolean = false;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 6013;
+         return 9135;
       }
       
       public function initExchangePlayerMultiCraftRequestMessage(exchangeType:int = 0, target:Number = 0, skillId:uint = 0) : ExchangePlayerMultiCraftRequestMessage

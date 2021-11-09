@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection.register
    public class NicknameRegistrationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 637;
+      public static const protocolId:uint = 6273;
        
       
       public function NicknameRegistrationMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.connection.register
       
       override public function getMessageId() : uint
       {
-         return 637;
+         return 6273;
       }
       
       public function initNicknameRegistrationMessage() : NicknameRegistrationMessage
