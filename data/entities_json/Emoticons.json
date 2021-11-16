@@ -3623,6 +3623,21 @@
 			"duration": 1800,
 			"weight": 0,
 			"spellLevelId": 0
+		},
+		{
+			"id": 259,
+			"nameId": 910993,
+			"shortcutId": 910994,
+			"order": 506300,
+			"defaultAnim": "Cassenoisette",
+			"persistancy": false,
+			"eight_directions": false,
+			"aura": false,
+			"anims": [],
+			"cooldown": 6500,
+			"duration": 6400,
+			"weight": 0,
+			"spellLevelId": 0
 		}
 	]
 }
