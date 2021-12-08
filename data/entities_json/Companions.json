@@ -87,12 +87,12 @@
 				8
 			],
 			"spells": [
-				1115,
-				1116,
 				1117,
 				1118,
 				1119,
-				1120
+				1120,
+				1115,
+				1116
 			],
 			"creatureBoneId": 2605,
 			"visibility": "null"
@@ -512,10 +512,10 @@
 		},
 		{
 			"id": 19,
-			"nameId": 904729,
+			"nameId": 905307,
 			"look": "{1|11,2020,3665,4153,3731,4135|1=#6a5ba3,2=#de5900,3=#9e94c2,4=#3b3b3c,5=#494949|125}",
 			"webDisplay": true,
-			"descriptionId": 910392,
+			"descriptionId": 917716,
 			"startingSpellLevelId": 54115,
 			"assetId": 13,
 			"characteristics": [
@@ -559,10 +559,10 @@
 		},
 		{
 			"id": 20,
-			"nameId": 904731,
+			"nameId": 905318,
 			"look": "{1|10,2019,4052,4000,4055,4169|1=#403122,2=#271e13,3=#b3b6a0,4=#404a43,5=#2c322e|135}",
 			"webDisplay": true,
-			"descriptionId": 910385,
+			"descriptionId": 917709,
 			"startingSpellLevelId": 54115,
 			"assetId": 14,
 			"characteristics": [
@@ -606,10 +606,10 @@
 		},
 		{
 			"id": 21,
-			"nameId": 904733,
+			"nameId": 905320,
 			"look": "{1|21,2040,3932,3019,4159|1=#c37b25,2=#ffffcc,3=#fe8605,4=#2b2313,5=#c5620b|125}",
 			"webDisplay": true,
-			"descriptionId": 910387,
+			"descriptionId": 917711,
 			"startingSpellLevelId": 54115,
 			"assetId": 15,
 			"characteristics": [
@@ -655,10 +655,10 @@
 		},
 		{
 			"id": 22,
-			"nameId": 904735,
+			"nameId": 905322,
 			"look": "{1|20,2034,1261,3678,3476|1=#0,2=#203635,3=#203635,4=#0,5=#0|130}",
 			"webDisplay": true,
-			"descriptionId": 910393,
+			"descriptionId": 917717,
 			"startingSpellLevelId": 54115,
 			"assetId": 16,
 			"characteristics": [
@@ -704,10 +704,10 @@
 		},
 		{
 			"id": 23,
-			"nameId": 904737,
+			"nameId": 905324,
 			"look": "{1|31,2053,1723,1699,3553,4137|1=#eac062,2=#f3e0a4,3=#4e0908,4=#ffffcc,5=#ffffcc|95}",
 			"webDisplay": true,
-			"descriptionId": 910394,
+			"descriptionId": 917718,
 			"startingSpellLevelId": 47422,
 			"assetId": 17,
 			"characteristics": [
@@ -752,10 +752,10 @@
 		},
 		{
 			"id": 24,
-			"nameId": 904739,
+			"nameId": 905326,
 			"look": "{1|30,2044,1101,113,3161,4046|1=#f0cf61,2=#3a332b,3=#3a332b,4=#a31418,5=#a31418|120}",
 			"webDisplay": true,
-			"descriptionId": 910395,
+			"descriptionId": 917719,
 			"startingSpellLevelId": 47422,
 			"assetId": 18,
 			"characteristics": [
@@ -799,10 +799,10 @@
 		},
 		{
 			"id": 25,
-			"nameId": 904748,
+			"nameId": 905335,
 			"look": "{1|41,2070,271,4028,4029|1=#d6aa56,2=#e0dcbe,3=#cbc09b,4=#b39559,5=#e0dcbe|155}",
 			"webDisplay": true,
-			"descriptionId": 910396,
+			"descriptionId": 917720,
 			"startingSpellLevelId": 54115,
 			"assetId": 19,
 			"characteristics": [
@@ -846,10 +846,10 @@
 		},
 		{
 			"id": 26,
-			"nameId": 904750,
+			"nameId": 905337,
 			"look": "{1|40,2067,3927,3998,3928|1=#f2e8be,2=#232318,3=#383831,4=#313131,5=#857e54|140}",
 			"webDisplay": true,
-			"descriptionId": 910397,
+			"descriptionId": 917721,
 			"startingSpellLevelId": 54115,
 			"assetId": 20,
 			"characteristics": [
@@ -894,10 +894,10 @@
 		},
 		{
 			"id": 27,
-			"nameId": 904752,
+			"nameId": 905341,
 			"look": "{1|51,2089,1091,3704,74,4133|1=#796b48,2=#fecc29,3=#556a99,4=#689aca,5=#b80101|110}",
 			"webDisplay": true,
-			"descriptionId": 910398,
+			"descriptionId": 917722,
 			"startingSpellLevelId": 53194,
 			"assetId": 21,
 			"characteristics": [
@@ -924,6 +924,7 @@
 				1049
 			],
 			"spells": [
+				849,
 				841,
 				842,
 				843,
@@ -931,18 +932,17 @@
 				845,
 				846,
 				847,
-				848,
-				849
+				848
 			],
 			"creatureBoneId": 22,
 			"visibility": "SC=5&ST=6"
 		},
 		{
 			"id": 28,
-			"nameId": 904754,
+			"nameId": 905343,
 			"look": "{1|50,2076,4192,2985,2508|1=#796b48,2=#5e4522,3=#88529c,4=#b1dade,5=#654a71|110}",
 			"webDisplay": true,
-			"descriptionId": 910399,
+			"descriptionId": 917723,
 			"startingSpellLevelId": 53194,
 			"assetId": 22,
 			"characteristics": [
@@ -986,10 +986,10 @@
 		},
 		{
 			"id": 29,
-			"nameId": 904756,
+			"nameId": 905345,
 			"look": "{1|61,2101,313,3858,4046|1=#faebd0,2=#a95401,3=#974d02,4=#666600,5=#666600|150}",
 			"webDisplay": true,
-			"descriptionId": 910384,
+			"descriptionId": 917708,
 			"startingSpellLevelId": 53198,
 			"assetId": 23,
 			"characteristics": [
@@ -1031,10 +1031,10 @@
 		},
 		{
 			"id": 30,
-			"nameId": 904758,
+			"nameId": 905347,
 			"look": "{1|60,2092,4205,2985,3473,4134|1=#494949,2=#34a9b5,3=#34a9b5,4=#b13390,5=#ff9eff|150}",
 			"webDisplay": true,
-			"descriptionId": 910400,
+			"descriptionId": 917724,
 			"startingSpellLevelId": 53198,
 			"assetId": 24,
 			"characteristics": [
@@ -1076,10 +1076,10 @@
 		},
 		{
 			"id": 31,
-			"nameId": 904760,
+			"nameId": 905349,
 			"look": "{1|71,2121,3937,3636,3639|1=#d4b47b,2=#6f6f6f,3=#fef0bc,4=#4f5051,5=#4f5051|115}",
 			"webDisplay": true,
-			"descriptionId": 910401,
+			"descriptionId": 917725,
 			"startingSpellLevelId": 53205,
 			"assetId": 25,
 			"characteristics": [
@@ -1121,10 +1121,10 @@
 		},
 		{
 			"id": 32,
-			"nameId": 904762,
+			"nameId": 905351,
 			"look": "{1|70,2108,3457,3672,44|1=#917041,2=#785545,3=#f2dab7,4=#abc24d,5=#f2dab7|110}",
 			"webDisplay": true,
-			"descriptionId": 910402,
+			"descriptionId": 917726,
 			"startingSpellLevelId": 53205,
 			"assetId": 26,
 			"characteristics": [
@@ -1166,10 +1166,10 @@
 		},
 		{
 			"id": 33,
-			"nameId": 904764,
+			"nameId": 905353,
 			"look": "{1|81,2138,4052,3858,4154|1=#5a3a13,2=#c9c4a6,3=#c2b767,4=#e3dd9e,5=#917c35|140}",
 			"webDisplay": true,
-			"descriptionId": 910403,
+			"descriptionId": 917727,
 			"startingSpellLevelId": 47515,
 			"assetId": 27,
 			"characteristics": [
@@ -1199,10 +1199,10 @@
 			],
 			"spells": [
 				877,
+				881,
 				878,
 				879,
 				880,
-				881,
 				882,
 				883,
 				884,
@@ -1213,10 +1213,10 @@
 		},
 		{
 			"id": 34,
-			"nameId": 904766,
+			"nameId": 905355,
 			"look": "{1|80,2124,3982,2934,3469,4026|1=#ffffe0,2=#f3e3a9,3=#e4dfcc,4=#384042,5=#c88507|140}",
 			"webDisplay": true,
-			"descriptionId": 910404,
+			"descriptionId": 917728,
 			"startingSpellLevelId": 47515,
 			"assetId": 28,
 			"characteristics": [
@@ -1259,10 +1259,10 @@
 		},
 		{
 			"id": 35,
-			"nameId": 904769,
+			"nameId": 905358,
 			"look": "{1|91,2148,3869,140,4016,4134|1=#8d6939,2=#e17410,3=#289be5,4=#ececed,5=#ba6e1e|135}",
 			"webDisplay": true,
-			"descriptionId": 910405,
+			"descriptionId": 917729,
 			"startingSpellLevelId": 53507,
 			"assetId": 29,
 			"characteristics": [
@@ -1303,10 +1303,10 @@
 		},
 		{
 			"id": 36,
-			"nameId": 904771,
+			"nameId": 905360,
 			"look": "{1|90,2140,3744,4002,336|1=#ca9250,2=#d7d1b1,3=#d7d1b1,4=#d78a17,5=#215138|140}",
 			"webDisplay": true,
-			"descriptionId": 910406,
+			"descriptionId": 917730,
 			"startingSpellLevelId": 53507,
 			"assetId": 30,
 			"characteristics": [
@@ -1347,10 +1347,10 @@
 		},
 		{
 			"id": 37,
-			"nameId": 904775,
+			"nameId": 905364,
 			"look": "{1|101,2164,1369,197,3857|1=#ae6a3b,2=#202020,3=#282a33,4=#d0d0d,5=#e0957b|145}",
 			"webDisplay": true,
-			"descriptionId": 910407,
+			"descriptionId": 917731,
 			"startingSpellLevelId": 53496,
 			"assetId": 31,
 			"characteristics": [
@@ -1393,10 +1393,10 @@
 		},
 		{
 			"id": 38,
-			"nameId": 904777,
+			"nameId": 905366,
 			"look": "{1|100,2162,4073,2537,3689,4169|1=#f8e795,2=#362d42,3=#ffc600,4=#362d42,5=#fedf01|150}",
 			"webDisplay": true,
-			"descriptionId": 910408,
+			"descriptionId": 917732,
 			"startingSpellLevelId": 53496,
 			"assetId": 32,
 			"characteristics": [
@@ -1439,10 +1439,10 @@
 		},
 		{
 			"id": 39,
-			"nameId": 904779,
+			"nameId": 905368,
 			"look": "{1|111,2183,4092,1326,4094|1=#cd9e60,2=#f5efd5,3=#473312,4=#8e7e5a,5=#f4edcd|140}",
 			"webDisplay": true,
-			"descriptionId": 910409,
+			"descriptionId": 917733,
 			"startingSpellLevelId": 53670,
 			"assetId": 33,
 			"characteristics": [
@@ -1484,10 +1484,10 @@
 		},
 		{
 			"id": 40,
-			"nameId": 904781,
+			"nameId": 905370,
 			"look": "{1|110,2175,3992,4046|1=#ffd27c,2=#e9ebe0,3=#263939,4=#263939,5=#139791|145}",
 			"webDisplay": true,
-			"descriptionId": 910410,
+			"descriptionId": 917734,
 			"startingSpellLevelId": 53670,
 			"assetId": 34,
 			"characteristics": [
@@ -1529,10 +1529,10 @@
 		},
 		{
 			"id": 41,
-			"nameId": 904783,
+			"nameId": 905372,
 			"look": "{1|121,2203,3569,3938,3928|1=#cfc9af,2=#514d42,3=#24231f,4=#24231f,5=#8e662e|145}",
 			"webDisplay": true,
-			"descriptionId": 910411,
+			"descriptionId": 917735,
 			"startingSpellLevelId": 53594,
 			"assetId": 35,
 			"characteristics": [
@@ -1575,10 +1575,10 @@
 		},
 		{
 			"id": 42,
-			"nameId": 904785,
+			"nameId": 905374,
 			"look": "{1|120,2188,3915,3255,3001|1=#b6b104,2=#543413,3=#d6be85,4=#696679,5=#7f4e26|160}",
 			"webDisplay": true,
-			"descriptionId": 910412,
+			"descriptionId": 917736,
 			"startingSpellLevelId": 53594,
 			"assetId": 36,
 			"characteristics": [
@@ -1621,10 +1621,10 @@
 		},
 		{
 			"id": 43,
-			"nameId": 904787,
+			"nameId": 905376,
 			"look": "{1|1407,2215,1456,1165,3748,4044|1=#c17f18,2=#f7f1db,3=#263331,4=#445a57,5=#263331|155}",
 			"webDisplay": true,
-			"descriptionId": 910413,
+			"descriptionId": 917737,
 			"startingSpellLevelId": 53663,
 			"assetId": 37,
 			"characteristics": [
@@ -1651,13 +1651,13 @@
 				1097
 			],
 			"spells": [
+				794,
+				795,
+				796,
 				790,
 				791,
 				792,
 				793,
-				794,
-				795,
-				796,
 				797,
 				798,
 				799,
@@ -1668,10 +1668,10 @@
 		},
 		{
 			"id": 44,
-			"nameId": 904789,
+			"nameId": 905378,
 			"look": "{1|1405,2210,1259,1455,3176,4138|1=#aa763b,2=#8f0101,3=#362e25,4=#8f0101,5=#362e25|160}",
 			"webDisplay": true,
-			"descriptionId": 910414,
+			"descriptionId": 917738,
 			"startingSpellLevelId": 53663,
 			"assetId": 38,
 			"characteristics": [
@@ -1715,10 +1715,10 @@
 		},
 		{
 			"id": 45,
-			"nameId": 904791,
+			"nameId": 905380,
 			"look": "{1|1438,2230,2967,2958,1181|1=#ffc367,2=#ede8e4,3=#ba0202,4=#fbfbfb,5=#ffc367|145}",
 			"webDisplay": true,
-			"descriptionId": 910415,
+			"descriptionId": 917739,
 			"startingSpellLevelId": 53510,
 			"assetId": 39,
 			"characteristics": [
@@ -1762,10 +1762,10 @@
 		},
 		{
 			"id": 46,
-			"nameId": 904793,
+			"nameId": 905382,
 			"look": "{1|1437,2227,2989,3222,3700|1=#969600,2=#dc2931,3=#6633,4=#c92b03,5=#e8e4d3|150}",
 			"webDisplay": true,
-			"descriptionId": 910416,
+			"descriptionId": 917740,
 			"startingSpellLevelId": 53510,
 			"assetId": 40,
 			"characteristics": [
@@ -1808,10 +1808,10 @@
 		},
 		{
 			"id": 47,
-			"nameId": 904795,
+			"nameId": 905384,
 			"look": "{1|1664,2245,2006,2005,3362|1=#edbc7c,2=#ffde4f,3=#ff6600,4=#ff6600,5=#ffde4f|160}",
 			"webDisplay": true,
-			"descriptionId": 910417,
+			"descriptionId": 917741,
 			"startingSpellLevelId": 54115,
 			"assetId": 41,
 			"characteristics": [
@@ -1857,10 +1857,10 @@
 		},
 		{
 			"id": 48,
-			"nameId": 904797,
+			"nameId": 905386,
 			"look": "{1|1663,2243,2511,1952,3686|1=#fed192,2=#fbf1bf,3=#191919,4=#666251,5=#a39c82|160}",
 			"webDisplay": true,
-			"descriptionId": 910418,
+			"descriptionId": 917742,
 			"startingSpellLevelId": 54115,
 			"assetId": 42,
 			"characteristics": [
@@ -1905,10 +1905,10 @@
 		},
 		{
 			"id": 49,
-			"nameId": 904799,
+			"nameId": 905388,
 			"look": "{1|3180,3191,4214,4028,4220|1=#ffd27c,2=#d4c49e,3=#d4c49e,4=#8a7d60,5=#cb8111|140}",
 			"webDisplay": true,
-			"descriptionId": 910419,
+			"descriptionId": 917743,
 			"startingSpellLevelId": 54115,
 			"assetId": 43,
 			"characteristics": [
@@ -1951,10 +1951,10 @@
 		},
 		{
 			"id": 50,
-			"nameId": 904801,
+			"nameId": 905390,
 			"look": "{1|3179,3186,2884,1519,3563|1=#b44a26,2=#bc994e,3=#e39724,4=#c0c000,5=#fbf1bf|145}",
 			"webDisplay": true,
-			"descriptionId": 910420,
+			"descriptionId": 917744,
 			"startingSpellLevelId": 54115,
 			"assetId": 44,
 			"characteristics": [
@@ -1997,10 +1997,10 @@
 		},
 		{
 			"id": 51,
-			"nameId": 904803,
+			"nameId": 905392,
 			"look": "{1|3286,3300,3983,4005,4021|1=#f9ebd0,2=#29333a,3=#45454f,4=#8e747f,5=#d1cbb4|135}",
 			"webDisplay": true,
-			"descriptionId": 910421,
+			"descriptionId": 917745,
 			"startingSpellLevelId": 53516,
 			"assetId": 45,
 			"characteristics": [
@@ -2042,10 +2042,10 @@
 		},
 		{
 			"id": 52,
-			"nameId": 904805,
+			"nameId": 905394,
 			"look": "{1|3285,3290,450,3672,3955|1=#dabb7f,2=#ffffff,3=#403c2f,4=#403c2f,5=#cdc9ab|140}",
 			"webDisplay": true,
-			"descriptionId": 910422,
+			"descriptionId": 917746,
 			"startingSpellLevelId": 53516,
 			"assetId": 46,
 			"characteristics": [
@@ -2087,10 +2087,10 @@
 		},
 		{
 			"id": 53,
-			"nameId": 904807,
+			"nameId": 905396,
 			"look": "{1|3499,3515,3984,4028,1678|1=#ffd27c,2=#3c2f00,3=#bbb89f,4=#ff6532,5=#3c2f00|145}",
 			"webDisplay": true,
-			"descriptionId": 910423,
+			"descriptionId": 917747,
 			"startingSpellLevelId": 53674,
 			"assetId": 47,
 			"characteristics": [
@@ -2133,10 +2133,10 @@
 		},
 		{
 			"id": 54,
-			"nameId": 904809,
+			"nameId": 905398,
 			"look": "{1|3498,3509,1097,4000,3884|1=#3d3624,2=#dee2e2,3=#dee2e2,4=#22b0cc,5=#cc8c19|155}",
 			"webDisplay": true,
-			"descriptionId": 910424,
+			"descriptionId": 917748,
 			"startingSpellLevelId": 53674,
 			"assetId": 48,
 			"characteristics": [

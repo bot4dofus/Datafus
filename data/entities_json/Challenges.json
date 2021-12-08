@@ -53,11 +53,11 @@
 			"nameId": 742,
 			"descriptionId": 180193,
 			"incompatibleChallenges": [
-				542,
-				8,
 				2,
-				541,
-				543
+				8,
+				542,
+				543,
+				541
 			],
 			"categoryId": 1,
 			"iconId": 1,
@@ -71,14 +71,14 @@
 			"descriptionId": 759,
 			"incompatibleChallenges": [
 				1,
-				40,
-				488,
-				541,
 				8,
-				583,
+				488,
 				39,
+				40,
 				36,
-				37
+				37,
+				541,
+				583
 			],
 			"categoryId": 1,
 			"iconId": 2,
@@ -91,13 +91,13 @@
 			"nameId": 851058,
 			"descriptionId": 737,
 			"incompatibleChallenges": [
-				4,
 				25,
-				32,
-				35,
-				34,
+				4,
 				544,
-				10
+				34,
+				10,
+				32,
+				35
 			],
 			"categoryId": 1,
 			"iconId": 3,
@@ -112,11 +112,11 @@
 			"incompatibleChallenges": [
 				3,
 				32,
-				25,
-				10,
 				544,
+				25,
 				35,
-				34
+				34,
+				10
 			],
 			"categoryId": 1,
 			"iconId": 4,
@@ -129,15 +129,15 @@
 			"nameId": 800,
 			"descriptionId": 801,
 			"incompatibleChallenges": [
+				7,
+				24,
 				41,
-				12,
 				6,
+				9,
+				12,
 				14,
 				15,
-				16,
-				24,
-				9,
-				7
+				16
 			],
 			"categoryId": 1,
 			"iconId": 5,
@@ -165,11 +165,11 @@
 			"descriptionId": 755,
 			"incompatibleChallenges": [
 				5,
-				12,
-				16,
-				15,
+				24,
 				9,
-				24
+				12,
+				15,
+				16
 			],
 			"categoryId": 1,
 			"iconId": 7,
@@ -184,9 +184,9 @@
 			"incompatibleChallenges": [
 				1,
 				2,
-				543,
 				541,
-				542
+				542,
+				543
 			],
 			"categoryId": 1,
 			"iconId": 8,
@@ -201,12 +201,12 @@
 			"incompatibleChallenges": [
 				5,
 				7,
-				22,
-				18,
-				11,
+				15,
 				12,
-				16,
-				15
+				22,
+				11,
+				18,
+				16
 			],
 			"categoryId": 1,
 			"iconId": 9,
@@ -221,11 +221,11 @@
 			"incompatibleChallenges": [
 				3,
 				4,
-				34,
-				32,
+				25,
 				35,
+				34,
 				544,
-				25
+				32
 			],
 			"categoryId": 1,
 			"iconId": 10,
@@ -254,9 +254,9 @@
 				5,
 				7,
 				9,
+				24,
 				16,
-				15,
-				24
+				15
 			],
 			"categoryId": 1,
 			"iconId": 12,
@@ -273,8 +273,8 @@
 				7,
 				9,
 				12,
-				24,
-				16
+				16,
+				24
 			],
 			"categoryId": 1,
 			"iconId": 15,
@@ -287,11 +287,11 @@
 			"nameId": 748,
 			"descriptionId": 749,
 			"incompatibleChallenges": [
-				487,
-				47,
-				33,
-				49,
 				545,
+				49,
+				487,
+				33,
+				47,
 				546
 			],
 			"categoryId": 1,
@@ -318,10 +318,10 @@
 			"nameId": 776,
 			"descriptionId": 777,
 			"incompatibleChallenges": [
-				28,
 				48,
-				29,
-				30
+				30,
+				28,
+				29
 			],
 			"categoryId": 1,
 			"iconId": 19,
@@ -334,9 +334,9 @@
 			"nameId": 732,
 			"descriptionId": 733,
 			"incompatibleChallenges": [
-				484,
 				483,
-				24
+				24,
+				484
 			],
 			"categoryId": 1,
 			"iconId": 20,
@@ -388,9 +388,9 @@
 				4,
 				10,
 				544,
-				32,
+				34,
 				35,
-				34
+				32
 			],
 			"categoryId": 1,
 			"iconId": 25,
@@ -404,11 +404,11 @@
 			"descriptionId": 767,
 			"incompatibleChallenges": [
 				19,
-				29,
-				48,
 				46,
+				29,
+				30,
 				44,
-				30
+				48
 			],
 			"categoryId": 1,
 			"iconId": 28,
@@ -423,10 +423,10 @@
 			"incompatibleChallenges": [
 				19,
 				28,
-				46,
 				30,
-				48,
-				44
+				44,
+				46,
+				48
 			],
 			"categoryId": 1,
 			"iconId": 29,
@@ -442,8 +442,8 @@
 				19,
 				28,
 				29,
-				44,
 				46,
+				44,
 				48
 			],
 			"categoryId": 1,
@@ -505,9 +505,9 @@
 				10,
 				25,
 				32,
-				35,
 				42,
-				544
+				544,
+				35
 			],
 			"categoryId": 1,
 			"iconId": 34,
@@ -536,17 +536,17 @@
 		},
 		{
 			"id": 36,
-			"nameId": 907276,
-			"descriptionId": 907277,
+			"nameId": 909674,
+			"descriptionId": 909675,
 			"incompatibleChallenges": [
 				2,
-				481,
 				488,
-				37,
-				542,
 				39,
-				543,
-				40
+				481,
+				542,
+				40,
+				37,
+				543
 			],
 			"categoryId": 1,
 			"iconId": 36,
@@ -561,11 +561,11 @@
 			"incompatibleChallenges": [
 				2,
 				36,
-				583,
 				543,
+				40,
 				542,
 				39,
-				40
+				583
 			],
 			"categoryId": 1,
 			"iconId": 37,
@@ -593,9 +593,9 @@
 				36,
 				37,
 				40,
-				542,
+				583,
 				543,
-				583
+				542
 			],
 			"categoryId": 1,
 			"iconId": 39,
@@ -613,9 +613,9 @@
 				37,
 				39,
 				542,
-				543,
+				583,
 				488,
-				583
+				543
 			],
 			"categoryId": 1,
 			"iconId": 40,
@@ -665,14 +665,14 @@
 		{
 			"id": 44,
 			"nameId": 728,
-			"descriptionId": 729,
+			"descriptionId": 905772,
 			"incompatibleChallenges": [
 				28,
 				29,
 				30,
 				42,
-				46,
-				48
+				48,
+				46
 			],
 			"categoryId": 1,
 			"iconId": 44,
@@ -2763,7 +2763,7 @@
 		{
 			"id": 233,
 			"nameId": 851749,
-			"descriptionId": 907204,
+			"descriptionId": 905259,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 10007,
@@ -2774,7 +2774,7 @@
 		{
 			"id": 234,
 			"nameId": 851752,
-			"descriptionId": 907205,
+			"descriptionId": 905260,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 10018,
@@ -3203,7 +3203,7 @@
 		{
 			"id": 277,
 			"nameId": 852200,
-			"descriptionId": 907214,
+			"descriptionId": 905261,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 10018,
@@ -5064,11 +5064,11 @@
 			"nameId": 844375,
 			"descriptionId": 866631,
 			"incompatibleChallenges": [
-				461,
-				459,
 				460,
+				461,
+				458,
 				457,
-				458
+				459
 			],
 			"categoryId": 4,
 			"iconId": 452,
@@ -5126,10 +5126,10 @@
 			"descriptionId": 844376,
 			"incompatibleChallenges": [
 				452,
-				459,
-				461,
 				458,
-				460
+				461,
+				460,
+				459
 			],
 			"categoryId": 4,
 			"iconId": 457,
@@ -5144,9 +5144,9 @@
 			"incompatibleChallenges": [
 				452,
 				457,
-				460,
+				461,
 				459,
-				461
+				460
 			],
 			"categoryId": 4,
 			"iconId": 458,
@@ -5162,8 +5162,8 @@
 				452,
 				457,
 				458,
-				461,
-				460
+				460,
+				461
 			],
 			"categoryId": 4,
 			"iconId": 459,
@@ -5313,12 +5313,12 @@
 			"nameId": 849882,
 			"descriptionId": 847628,
 			"incompatibleChallenges": [
-				479,
-				474,
+				477,
 				480,
+				479,
 				476,
 				475,
-				477
+				474
 			],
 			"categoryId": 4,
 			"iconId": 473,
@@ -5332,11 +5332,11 @@
 			"descriptionId": 850704,
 			"incompatibleChallenges": [
 				473,
-				475,
-				480,
-				477,
 				476,
-				479
+				479,
+				480,
+				475,
+				477
 			],
 			"categoryId": 4,
 			"iconId": 474,
@@ -5370,9 +5370,9 @@
 				473,
 				474,
 				475,
+				480,
 				479,
-				477,
-				480
+				477
 			],
 			"categoryId": 4,
 			"iconId": 476,
@@ -5389,8 +5389,8 @@
 				474,
 				475,
 				476,
-				479,
-				480
+				480,
+				479
 			],
 			"categoryId": 4,
 			"iconId": 477,
@@ -5539,9 +5539,9 @@
 				2,
 				36,
 				40,
-				583,
+				542,
 				543,
-				542
+				583
 			],
 			"categoryId": 4,
 			"iconId": 488,
@@ -5676,8 +5676,8 @@
 			"descriptionId": 854261,
 			"incompatibleChallenges": [
 				47,
-				546,
-				545
+				545,
+				546
 			],
 			"categoryId": 4,
 			"iconId": 492,
@@ -6017,8 +6017,8 @@
 		},
 		{
 			"id": 531,
-			"nameId": 903303,
-			"descriptionId": 903173,
+			"nameId": 903517,
+			"descriptionId": 903466,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 10015,
@@ -6058,6 +6058,39 @@
 			"completionCriterion": "Ma=0",
 			"activationCriterion": "(GM>0,6650,1|GM>0,6651,1|GM>0,6652,1|GM>0,6653,1|GM>0,6656,1|GM>0,6654,1)",
 			"targetMonsterId": 0
+		},
+		{
+			"id": 584,
+			"nameId": 921779,
+			"descriptionId": 921780,
+			"incompatibleChallenges": [],
+			"categoryId": 3,
+			"iconId": 10022,
+			"completionCriterion": "TM=1,0",
+			"activationCriterion": "GM>0,6792,1&Gm=d",
+			"targetMonsterId": 6792
+		},
+		{
+			"id": 585,
+			"nameId": 921785,
+			"descriptionId": 921786,
+			"incompatibleChallenges": [],
+			"categoryId": 3,
+			"iconId": 10018,
+			"completionCriterion": "CK#6792,1",
+			"activationCriterion": "GM>0,6792,1&Gm=d",
+			"targetMonsterId": 6792
+		},
+		{
+			"id": 586,
+			"nameId": 921787,
+			"descriptionId": 921788,
+			"incompatibleChallenges": [],
+			"categoryId": 3,
+			"iconId": 10023,
+			"completionCriterion": "ST<20",
+			"activationCriterion": "GN<3,0&GM>0,6792,1&Gm=d",
+			"targetMonsterId": 6792
 		}
 	]
 }

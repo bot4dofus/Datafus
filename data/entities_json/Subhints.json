@@ -229,6 +229,25 @@
 			"hint_creation_date": 172800000.0
 		},
 		{
+			"hint_id": 158,
+			"hint_parent_uid": "pvpArena",
+			"hint_anchored_element": "btn_help",
+			"hint_anchor": 4,
+			"hint_position_x": 0,
+			"hint_position_y": 0,
+			"hint_width": 25,
+			"hint_height": 25,
+			"hint_highlighted_element": "",
+			"hint_order": 1,
+			"hint_tooltip_text": 917605,
+			"hint_tooltip_position_enum": 1,
+			"hint_tooltip_url": "",
+			"hint_tooltip_offset_x": 5,
+			"hint_tooltip_offset_y": 5,
+			"hint_tooltip_width": 300,
+			"hint_creation_date": 1533254400000.0
+		},
+		{
 			"hint_id": 117,
 			"hint_parent_uid": "alignmentTab",
 			"hint_anchored_element": "btn_help",
@@ -664,25 +683,6 @@
 			"hint_tooltip_offset_y": 5,
 			"hint_tooltip_width": 300,
 			"hint_creation_date": 1533513600000.0
-		},
-		{
-			"hint_id": 158,
-			"hint_parent_uid": "pvpArena",
-			"hint_anchored_element": "btn_help",
-			"hint_anchor": 4,
-			"hint_position_x": 0,
-			"hint_position_y": 0,
-			"hint_width": 25,
-			"hint_height": 25,
-			"hint_highlighted_element": "",
-			"hint_order": 1,
-			"hint_tooltip_text": 768364,
-			"hint_tooltip_position_enum": 1,
-			"hint_tooltip_url": "",
-			"hint_tooltip_offset_x": 5,
-			"hint_tooltip_offset_y": 5,
-			"hint_tooltip_width": 300,
-			"hint_creation_date": 1533254400000.0
 		},
 		{
 			"hint_id": 162,

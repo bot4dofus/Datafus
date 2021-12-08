@@ -282,8 +282,8 @@
 			"showInSet": true,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 16000,
-			"effectPowerRate": 1.0,
+			"effectPriority": 15000,
+			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
 		{
@@ -414,7 +414,7 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 2100,
+			"effectPriority": 17500,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -1512,10 +1512,10 @@
 			"theoreticalDescriptionId": 0,
 			"theoreticalPattern": 1,
 			"showInSet": true,
-			"bonusType": 1,
+			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 5200,
-			"effectPowerRate": 0.25,
+			"effectPriority": 20000,
+			"effectPowerRate": 1.0,
 			"elementId": -1
 		},
 		{
@@ -1542,7 +1542,7 @@
 		},
 		{
 			"id": 112,
-			"descriptionId": 903632,
+			"descriptionId": 904473,
 			"iconId": 0,
 			"characteristic": 16,
 			"category": 0,
@@ -2246,7 +2246,7 @@
 		},
 		{
 			"id": 145,
-			"descriptionId": 903631,
+			"descriptionId": 904472,
 			"iconId": 0,
 			"characteristic": 16,
 			"category": 0,
@@ -2510,7 +2510,7 @@
 		},
 		{
 			"id": 158,
-			"descriptionId": 903630,
+			"descriptionId": 904471,
 			"iconId": 0,
 			"characteristic": 40,
 			"category": 0,
@@ -2532,7 +2532,7 @@
 		},
 		{
 			"id": 159,
-			"descriptionId": 903629,
+			"descriptionId": 904470,
 			"iconId": 0,
 			"characteristic": 0,
 			"category": 0,
@@ -2906,7 +2906,7 @@
 		},
 		{
 			"id": 178,
-			"descriptionId": 909791,
+			"descriptionId": 914986,
 			"iconId": 0,
 			"characteristic": 49,
 			"category": 0,
@@ -2928,7 +2928,7 @@
 		},
 		{
 			"id": 179,
-			"descriptionId": 909792,
+			"descriptionId": 914993,
 			"iconId": 0,
 			"characteristic": 49,
 			"category": 0,
@@ -2994,7 +2994,7 @@
 		},
 		{
 			"id": 182,
-			"descriptionId": 903626,
+			"descriptionId": 904445,
 			"iconId": 0,
 			"characteristic": 26,
 			"category": 0,
@@ -3164,7 +3164,7 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 22600,
+			"effectPriority": 22400,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -3500,7 +3500,7 @@
 		},
 		{
 			"id": 220,
-			"descriptionId": 909794,
+			"descriptionId": 914999,
 			"iconId": 0,
 			"characteristic": 50,
 			"category": 0,
@@ -3538,7 +3538,7 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 23100,
+			"effectPriority": 23000,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -3560,13 +3560,13 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 23300,
+			"effectPriority": 23200,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
 		{
 			"id": 225,
-			"descriptionId": 903625,
+			"descriptionId": 904467,
 			"iconId": 0,
 			"characteristic": 70,
 			"category": 0,
@@ -3670,7 +3670,7 @@
 			"showInSet": true,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 98200,
+			"effectPriority": 21300,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -3698,7 +3698,7 @@
 		},
 		{
 			"id": 240,
-			"descriptionId": 903637,
+			"descriptionId": 904461,
 			"iconId": 0,
 			"characteristic": 54,
 			"category": 1,
@@ -3720,7 +3720,7 @@
 		},
 		{
 			"id": 241,
-			"descriptionId": 903636,
+			"descriptionId": 904460,
 			"iconId": 0,
 			"characteristic": 56,
 			"category": 1,
@@ -3742,7 +3742,7 @@
 		},
 		{
 			"id": 242,
-			"descriptionId": 903635,
+			"descriptionId": 904407,
 			"iconId": 0,
 			"characteristic": 57,
 			"category": 1,
@@ -3764,7 +3764,7 @@
 		},
 		{
 			"id": 243,
-			"descriptionId": 903634,
+			"descriptionId": 904459,
 			"iconId": 0,
 			"characteristic": 55,
 			"category": 1,
@@ -3786,7 +3786,7 @@
 		},
 		{
 			"id": 244,
-			"descriptionId": 903633,
+			"descriptionId": 904458,
 			"iconId": 0,
 			"characteristic": 58,
 			"category": 1,
@@ -3808,7 +3808,7 @@
 		},
 		{
 			"id": 245,
-			"descriptionId": 903624,
+			"descriptionId": 904466,
 			"iconId": 0,
 			"characteristic": 54,
 			"category": 0,
@@ -3830,7 +3830,7 @@
 		},
 		{
 			"id": 246,
-			"descriptionId": 903623,
+			"descriptionId": 904465,
 			"iconId": 0,
 			"characteristic": 56,
 			"category": 0,
@@ -3852,7 +3852,7 @@
 		},
 		{
 			"id": 247,
-			"descriptionId": 903622,
+			"descriptionId": 904464,
 			"iconId": 0,
 			"characteristic": 57,
 			"category": 0,
@@ -3874,7 +3874,7 @@
 		},
 		{
 			"id": 248,
-			"descriptionId": 903621,
+			"descriptionId": 904463,
 			"iconId": 0,
 			"characteristic": 55,
 			"category": 0,
@@ -3896,7 +3896,7 @@
 		},
 		{
 			"id": 249,
-			"descriptionId": 903620,
+			"descriptionId": 904462,
 			"iconId": 0,
 			"characteristic": 58,
 			"category": 0,
@@ -5238,7 +5238,7 @@
 		},
 		{
 			"id": 414,
-			"descriptionId": 903619,
+			"descriptionId": 904457,
 			"iconId": 0,
 			"characteristic": 84,
 			"category": 0,
@@ -5260,7 +5260,7 @@
 		},
 		{
 			"id": 415,
-			"descriptionId": 903618,
+			"descriptionId": 904456,
 			"iconId": 0,
 			"characteristic": 84,
 			"category": 0,
@@ -5282,7 +5282,7 @@
 		},
 		{
 			"id": 416,
-			"descriptionId": 903617,
+			"descriptionId": 904455,
 			"iconId": 0,
 			"characteristic": 85,
 			"category": 0,
@@ -5304,7 +5304,7 @@
 		},
 		{
 			"id": 417,
-			"descriptionId": 903616,
+			"descriptionId": 904454,
 			"iconId": 0,
 			"characteristic": 85,
 			"category": 0,
@@ -5326,7 +5326,7 @@
 		},
 		{
 			"id": 418,
-			"descriptionId": 903615,
+			"descriptionId": 904446,
 			"iconId": 0,
 			"characteristic": 86,
 			"category": 0,
@@ -5348,7 +5348,7 @@
 		},
 		{
 			"id": 419,
-			"descriptionId": 903614,
+			"descriptionId": 904453,
 			"iconId": 0,
 			"characteristic": 86,
 			"category": 0,
@@ -5370,7 +5370,7 @@
 		},
 		{
 			"id": 420,
-			"descriptionId": 903613,
+			"descriptionId": 904452,
 			"iconId": 0,
 			"characteristic": 87,
 			"category": 0,
@@ -5392,7 +5392,7 @@
 		},
 		{
 			"id": 421,
-			"descriptionId": 903612,
+			"descriptionId": 904451,
 			"iconId": 0,
 			"characteristic": 87,
 			"category": 0,
@@ -5414,7 +5414,7 @@
 		},
 		{
 			"id": 422,
-			"descriptionId": 903611,
+			"descriptionId": 904450,
 			"iconId": 0,
 			"characteristic": 88,
 			"category": 0,
@@ -5436,7 +5436,7 @@
 		},
 		{
 			"id": 423,
-			"descriptionId": 903610,
+			"descriptionId": 904449,
 			"iconId": 0,
 			"characteristic": 88,
 			"category": 0,
@@ -5458,7 +5458,7 @@
 		},
 		{
 			"id": 424,
-			"descriptionId": 903609,
+			"descriptionId": 904448,
 			"iconId": 0,
 			"characteristic": 89,
 			"category": 0,
@@ -5480,7 +5480,7 @@
 		},
 		{
 			"id": 425,
-			"descriptionId": 903608,
+			"descriptionId": 904447,
 			"iconId": 0,
 			"characteristic": 89,
 			"category": 0,
@@ -5502,7 +5502,7 @@
 		},
 		{
 			"id": 426,
-			"descriptionId": 903607,
+			"descriptionId": 904408,
 			"iconId": 0,
 			"characteristic": 90,
 			"category": 0,
@@ -5524,7 +5524,7 @@
 		},
 		{
 			"id": 427,
-			"descriptionId": 903606,
+			"descriptionId": 904493,
 			"iconId": 0,
 			"characteristic": 90,
 			"category": 0,
@@ -5546,7 +5546,7 @@
 		},
 		{
 			"id": 428,
-			"descriptionId": 903602,
+			"descriptionId": 904441,
 			"iconId": 0,
 			"characteristic": 91,
 			"category": 0,
@@ -5568,7 +5568,7 @@
 		},
 		{
 			"id": 429,
-			"descriptionId": 903605,
+			"descriptionId": 904442,
 			"iconId": 0,
 			"characteristic": 91,
 			"category": 0,
@@ -5590,7 +5590,7 @@
 		},
 		{
 			"id": 430,
-			"descriptionId": 903604,
+			"descriptionId": 904443,
 			"iconId": 0,
 			"characteristic": 92,
 			"category": 0,
@@ -5612,7 +5612,7 @@
 		},
 		{
 			"id": 431,
-			"descriptionId": 903603,
+			"descriptionId": 904444,
 			"iconId": 0,
 			"characteristic": 92,
 			"category": 0,
@@ -8158,8 +8158,8 @@
 			"showInSet": true,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 28800,
-			"effectPowerRate": 20.0,
+			"effectPriority": 28900,
+			"effectPowerRate": -20.0,
 			"elementId": -1
 		},
 		{
@@ -9500,7 +9500,7 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 24800,
+			"effectPriority": 24900,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -12866,7 +12866,7 @@
 			"showInSet": true,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 90000,
+			"effectPriority": 98500,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -13812,8 +13812,8 @@
 			"showInSet": true,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 16025,
-			"effectPowerRate": 1.0,
+			"effectPriority": 15010,
+			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
 		{
@@ -15578,7 +15578,7 @@
 		},
 		{
 			"id": 2881,
-			"descriptionId": 907262,
+			"descriptionId": 909466,
 			"iconId": 0,
 			"characteristic": 0,
 			"category": 4,
@@ -15589,12 +15589,56 @@
 			"boost": false,
 			"active": false,
 			"oppositeId": 0,
-			"theoreticalDescriptionId": 907263,
+			"theoreticalDescriptionId": 903962,
 			"theoreticalPattern": 0,
 			"showInSet": true,
 			"bonusType": 0,
 			"useInFight": false,
 			"effectPriority": 98700,
+			"effectPowerRate": 0.0,
+			"elementId": -1
+		},
+		{
+			"id": 2882,
+			"descriptionId": 914773,
+			"iconId": 0,
+			"characteristic": 0,
+			"category": 3,
+			"operator": "null",
+			"showInTooltip": false,
+			"useDice": false,
+			"forceMinMax": false,
+			"boost": false,
+			"active": false,
+			"oppositeId": 0,
+			"theoreticalDescriptionId": 914774,
+			"theoreticalPattern": 0,
+			"showInSet": false,
+			"bonusType": 0,
+			"useInFight": false,
+			"effectPriority": 0,
+			"effectPowerRate": 0.0,
+			"elementId": -1
+		},
+		{
+			"id": 2883,
+			"descriptionId": 920771,
+			"iconId": 0,
+			"characteristic": 0,
+			"category": 0,
+			"operator": "null",
+			"showInTooltip": false,
+			"useDice": false,
+			"forceMinMax": false,
+			"boost": false,
+			"active": false,
+			"oppositeId": 0,
+			"theoreticalDescriptionId": 920772,
+			"theoreticalPattern": 0,
+			"showInSet": false,
+			"bonusType": 0,
+			"useInFight": false,
+			"effectPriority": 0,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		}

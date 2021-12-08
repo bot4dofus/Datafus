@@ -464,6 +464,36 @@
 			"random": false
 		},
 		{
+			"id": 287,
+			"type": 2,
+			"sounds": [
+				{
+					"id": "17031",
+					"volume": 65,
+					"soundOrder": 0
+				},
+				{
+					"id": "17033",
+					"volume": 65,
+					"soundOrder": 2
+				},
+				{
+					"id": "17032",
+					"volume": 65,
+					"soundOrder": 1
+				},
+				{
+					"id": "17034",
+					"volume": 65,
+					"soundOrder": 3
+				}
+			],
+			"startRandom": false,
+			"startRandomOnce": false,
+			"crossfadeDuration": 1000,
+			"random": false
+		},
+		{
 			"id": 95,
 			"type": 1,
 			"sounds": [
@@ -1169,6 +1199,21 @@
 			"random": false
 		},
 		{
+			"id": 288,
+			"type": 1,
+			"sounds": [
+				{
+					"id": "20166",
+					"volume": 50,
+					"soundOrder": 0
+				}
+			],
+			"startRandom": false,
+			"startRandomOnce": false,
+			"crossfadeDuration": 1000,
+			"random": false
+		},
+		{
 			"id": 31,
 			"type": 1,
 			"sounds": [
@@ -1206,6 +1251,36 @@
 					"id": "29102",
 					"volume": 75,
 					"soundOrder": 0
+				}
+			],
+			"startRandom": false,
+			"startRandomOnce": false,
+			"crossfadeDuration": 1000,
+			"random": false
+		},
+		{
+			"id": 286,
+			"type": 2,
+			"sounds": [
+				{
+					"id": "17027",
+					"volume": 55,
+					"soundOrder": 0
+				},
+				{
+					"id": "17028",
+					"volume": 55,
+					"soundOrder": 1
+				},
+				{
+					"id": "17029",
+					"volume": 55,
+					"soundOrder": 2
+				},
+				{
+					"id": "17030",
+					"volume": 55,
+					"soundOrder": 3
 				}
 			],
 			"startRandom": false,
@@ -4001,6 +4076,36 @@
 					"id": "20196",
 					"volume": 50,
 					"soundOrder": 0
+				}
+			],
+			"startRandom": false,
+			"startRandomOnce": false,
+			"crossfadeDuration": 1000,
+			"random": false
+		},
+		{
+			"id": 285,
+			"type": 2,
+			"sounds": [
+				{
+					"id": "17026",
+					"volume": 45,
+					"soundOrder": 0
+				},
+				{
+					"id": "17022",
+					"volume": 45,
+					"soundOrder": 2
+				},
+				{
+					"id": "17021",
+					"volume": 45,
+					"soundOrder": 1
+				},
+				{
+					"id": "17024",
+					"volume": 45,
+					"soundOrder": 3
 				}
 			],
 			"startRandom": false,

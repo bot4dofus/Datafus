@@ -88,12 +88,12 @@
 		{
 			"id": 79,
 			"formulaName": "t6_tempoken_to_experience",
-			"luaFormula": "function params()\n   return {\"tempoken\"}\nend\n\nfunction main()\n   return math.floor( 3785 * math.pow(tempoken, 1.74))\nend"
+			"luaFormula": "function params()\r\n   return {\"tempoken\"}\r\nend\r\n\r\nfunction main()\r\n   return math.floor( 3785 * math.pow(tempoken, 1.74))\r\nend"
 		},
 		{
 			"id": 80,
 			"formulaName": "seasonExperienceConversion_6",
-			"luaFormula": "function params()\n   return {\"item_quantity_20763\"}\nend\n\nfunction main()\n   return math.floor( 3785 * math.pow(item_quantity_20763, 1.74))\nend"
+			"luaFormula": "function params()\r\n   return {\"item_quantity_20763\"}\r\nend\r\n\r\nfunction main()\r\n   return math.floor( 3785 * math.pow(item_quantity_20763, 1.74))\r\nend"
 		}
 	]
 }

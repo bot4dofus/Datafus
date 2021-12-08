@@ -11,10 +11,6 @@
 				{
 					"name": "nameId",
 					"type": -5
-				},
-				{
-					"name": "canConquest",
-					"type": -2
 				}
 			]
 		}
@@ -22,23 +18,19 @@
 	"data": [
 		{
 			"id": 0,
-			"nameId": 179,
-			"canConquest": true
+			"nameId": 179
 		},
 		{
 			"id": 1,
-			"nameId": 178,
-			"canConquest": true
+			"nameId": 178
 		},
 		{
 			"id": 2,
-			"nameId": 309773,
-			"canConquest": true
+			"nameId": 309773
 		},
 		{
 			"id": 3,
-			"nameId": 176,
-			"canConquest": false
+			"nameId": 176
 		}
 	]
 }

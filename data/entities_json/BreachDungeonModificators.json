@@ -3563,6 +3563,33 @@
 			"score": 40.0,
 			"isPositiveForPlayers": false,
 			"tooltipBaseline": "ui.breach.modifierBaselineNegative3"
+		},
+		{
+			"id": 525,
+			"modificatorId": 635,
+			"criterion": "null",
+			"additionalRewardPercent": 1.100000023841858,
+			"score": 10.0,
+			"isPositiveForPlayers": false,
+			"tooltipBaseline": "ui.breach.modifierBaselineNegative1"
+		},
+		{
+			"id": 526,
+			"modificatorId": 636,
+			"criterion": "Wf>209",
+			"additionalRewardPercent": 1.2999999523162842,
+			"score": 25.0,
+			"isPositiveForPlayers": false,
+			"tooltipBaseline": "ui.breach.modifierBaselineNegative2"
+		},
+		{
+			"id": 527,
+			"modificatorId": 637,
+			"criterion": "Wf>219",
+			"additionalRewardPercent": 1.5,
+			"score": 40.0,
+			"isPositiveForPlayers": false,
+			"tooltipBaseline": "ui.breach.modifierBaselineNegative3"
 		}
 	]
 }

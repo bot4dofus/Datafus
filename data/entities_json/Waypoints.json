@@ -103,18 +103,6 @@
 			"activated": true
 		},
 		{
-			"id": 24,
-			"mapId": 147768,
-			"subAreaId": 513,
-			"activated": true
-		},
-		{
-			"id": 25,
-			"mapId": 144419,
-			"subAreaId": 511,
-			"activated": true
-		},
-		{
 			"id": 26,
 			"mapId": 171967506,
 			"subAreaId": 526,
@@ -358,6 +346,24 @@
 			"id": 72,
 			"mapId": 210634244,
 			"subAreaId": 956,
+			"activated": false
+		},
+		{
+			"id": 24,
+			"mapId": 212600323,
+			"subAreaId": 975,
+			"activated": true
+		},
+		{
+			"id": 25,
+			"mapId": 212861955,
+			"subAreaId": 977,
+			"activated": true
+		},
+		{
+			"id": 73,
+			"mapId": 219940866,
+			"subAreaId": 971,
 			"activated": false
 		}
 	]

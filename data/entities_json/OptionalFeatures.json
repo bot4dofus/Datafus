@@ -451,6 +451,15 @@
 			"activationCriterions": "null"
 		},
 		{
+			"id": 111,
+			"keyword": "temporis.achievementProgress",
+			"isClient": true,
+			"isServer": false,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": true,
+			"activationCriterions": "SC=5"
+		},
+		{
 			"id": 126,
 			"keyword": "game.roleplay.diceroll",
 			"isClient": true,
@@ -471,6 +480,15 @@
 		{
 			"id": 128,
 			"keyword": "map.dispatchQuests",
+			"isClient": false,
+			"isServer": true,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": false,
+			"activationCriterions": "null"
+		},
+		{
+			"id": 140,
+			"keyword": "server.conf.globalDrop",
 			"isClient": false,
 			"isServer": true,
 			"isActivationOnLaunch": false,
@@ -532,9 +550,18 @@
 			"activationCriterions": "null"
 		},
 		{
-			"id": 138,
-			"keyword": "server.conf.bonus.load",
-			"isClient": false,
+			"id": 135,
+			"keyword": "character.spell.breed.limitedActiveAndPassiveSpells",
+			"isClient": true,
+			"isServer": false,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": true,
+			"activationCriterions": "SC=5&ST=6"
+		},
+		{
+			"id": 136,
+			"keyword": "server.conf.anomaly",
+			"isClient": true,
 			"isServer": true,
 			"isActivationOnLaunch": false,
 			"isActivationOnServerConnection": false,
@@ -543,6 +570,15 @@
 		{
 			"id": 139,
 			"keyword": "server.conf.bonus.save",
+			"isClient": false,
+			"isServer": true,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": false,
+			"activationCriterions": "null"
+		},
+		{
+			"id": 138,
+			"keyword": "server.conf.bonus.load",
 			"isClient": false,
 			"isServer": true,
 			"isActivationOnLaunch": false,
@@ -559,31 +595,13 @@
 			"activationCriterions": "SC=5&ST=6"
 		},
 		{
-			"id": 111,
-			"keyword": "temporis.achievementProgress",
+			"id": 141,
+			"keyword": "server.heroic",
 			"isClient": true,
-			"isServer": false,
-			"isActivationOnLaunch": false,
-			"isActivationOnServerConnection": true,
-			"activationCriterions": "SC=5"
-		},
-		{
-			"id": 140,
-			"keyword": "server.conf.globalDrop",
-			"isClient": false,
 			"isServer": true,
 			"isActivationOnLaunch": false,
 			"isActivationOnServerConnection": false,
 			"activationCriterions": "null"
-		},
-		{
-			"id": 135,
-			"keyword": "character.spell.breed.limitedActiveAndPassiveSpells",
-			"isClient": true,
-			"isServer": false,
-			"isActivationOnLaunch": false,
-			"isActivationOnServerConnection": true,
-			"activationCriterions": "SC=5&ST=6"
 		}
 	]
 }

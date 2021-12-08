@@ -722,8 +722,8 @@
 		},
 		{
 			"id": 78,
-			"nameId": 903488,
-			"descId": 903489,
+			"nameId": 904262,
+			"descId": 904263,
 			"npcId": 1701,
 			"bonusesIds": [
 				354
@@ -3060,8 +3060,8 @@
 		},
 		{
 			"id": 341,
-			"nameId": 903490,
-			"descId": 903491,
+			"nameId": 904267,
+			"descId": 904268,
 			"npcId": 2094,
 			"bonusesIds": [
 				398

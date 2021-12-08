@@ -219,16 +219,16 @@
 		{
 			"id": 8,
 			"nameId": 460800,
-			"origineX": 7870,
-			"origineY": 9300,
-			"mapWidth": 210.0,
-			"mapHeight": 151.0,
+			"origineX": 9860,
+			"origineY": 11200,
+			"mapWidth": 260.0,
+			"mapHeight": 184.0,
 			"viewableEverywhere": true,
-			"minScale": 0.310000002,
+			"minScale": 0.5,
 			"maxScale": 1.0,
 			"startScale": 1.0,
-			"totalWidth": 3088,
-			"totalHeight": 2282,
+			"totalWidth": 2840,
+			"totalHeight": 2162,
 			"zoom": [
 				"1",
 				"0.75",
@@ -240,16 +240,16 @@
 		{
 			"id": 9,
 			"nameId": 868481,
-			"origineX": 6415,
-			"origineY": -4255,
-			"mapWidth": 210.0,
-			"mapHeight": 151.0,
+			"origineX": 7454,
+			"origineY": -5652,
+			"mapWidth": 257.0,
+			"mapHeight": 182.0,
 			"viewableEverywhere": true,
-			"minScale": 0.340000004,
+			"minScale": 0.5,
 			"maxScale": 1.0,
 			"startScale": 1.0,
-			"totalWidth": 2772,
-			"totalHeight": 2049,
+			"totalWidth": 2840,
+			"totalHeight": 2162,
 			"zoom": [
 				"1",
 				"0.75",
@@ -677,6 +677,27 @@
 				"0.25"
 			],
 			"visibleOnMap": false
+		},
+		{
+			"id": 30,
+			"nameId": 927444,
+			"origineX": 773,
+			"origineY": 532,
+			"mapWidth": 257.0,
+			"mapHeight": 183.0,
+			"viewableEverywhere": false,
+			"minScale": 0.5,
+			"maxScale": 1.0,
+			"startScale": 1.0,
+			"totalWidth": 2840,
+			"totalHeight": 2162,
+			"zoom": [
+				"1",
+				"0.75",
+				"0.5",
+				"0.25"
+			],
+			"visibleOnMap": true
 		}
 	]
 }

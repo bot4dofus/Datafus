@@ -241,8 +241,8 @@
 		{
 			"id": 18,
 			"parentId": 5,
-			"titleId": 871137,
-			"descriptionId": 871138,
+			"titleId": 918551,
+			"descriptionId": 918552,
 			"illuName": "fr_feature_idoles.jpg",
 			"buttons": [
 				{
@@ -414,15 +414,15 @@
 		{
 			"id": 31,
 			"parentId": 8,
-			"titleId": 903485,
-			"descriptionId": 904226,
+			"titleId": 904252,
+			"descriptionId": 904864,
 			"illuName": "fr_server_heroique.jpg",
 			"buttons": [
 				{
 					"id": 33,
 					"popupId": 31,
 					"type": 0,
-					"textId": 903487,
+					"textId": 904255,
 					"actionType": 0,
 					"actionValue": "link.heroique"
 				}
@@ -434,15 +434,15 @@
 		{
 			"id": 32,
 			"parentId": 5,
-			"titleId": 904331,
-			"descriptionId": 904332,
+			"titleId": 905286,
+			"descriptionId": 905287,
 			"illuName": "fr_feature_guidesuggestions.jpg",
 			"buttons": [
 				{
 					"id": 34,
 					"popupId": 32,
 					"type": 0,
-					"textId": 904333,
+					"textId": 905288,
 					"actionType": 1,
 					"actionValue": "OpenGuidebookAction:gameGuide|204|popup"
 				}
@@ -454,15 +454,15 @@
 		{
 			"id": 33,
 			"parentId": 5,
-			"titleId": 909320,
-			"descriptionId": 910633,
+			"titleId": 910441,
+			"descriptionId": 919500,
 			"illuName": "fr_feature_kolizeumrules.jpg",
 			"buttons": [
 				{
 					"id": 35,
 					"popupId": 33,
 					"type": 0,
-					"textId": 909322,
+					"textId": 910443,
 					"actionType": 1,
 					"actionValue": "OpenGuidebookAction:gameGuide|140|popup"
 				}
@@ -474,15 +474,15 @@
 		{
 			"id": 34,
 			"parentId": 5,
-			"titleId": 909517,
-			"descriptionId": 909518,
+			"titleId": 913182,
+			"descriptionId": 913183,
 			"illuName": "fr_feature_kolizeumrules.jpg",
 			"buttons": [
 				{
 					"id": 36,
 					"popupId": 34,
 					"type": 0,
-					"textId": 909519,
+					"textId": 913184,
 					"actionType": 0,
 					"actionValue": "link.devblog.kis"
 				}

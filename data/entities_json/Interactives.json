@@ -538,7 +538,7 @@
 			"id": 105,
 			"nameId": 2639,
 			"actionId": 6,
-			"displayTooltip": false
+			"displayTooltip": true
 		},
 		{
 			"id": 106,
@@ -712,7 +712,7 @@
 			"id": 139,
 			"nameId": 2586,
 			"actionId": 0,
-			"displayTooltip": false
+			"displayTooltip": true
 		},
 		{
 			"id": 140,
@@ -1040,7 +1040,7 @@
 		},
 		{
 			"id": 194,
-			"nameId": 109466,
+			"nameId": 926140,
 			"actionId": 0,
 			"displayTooltip": false
 		},
@@ -1534,7 +1534,7 @@
 			"id": 276,
 			"nameId": 585154,
 			"actionId": 0,
-			"displayTooltip": true
+			"displayTooltip": false
 		},
 		{
 			"id": 277,
@@ -2145,6 +2145,24 @@
 		{
 			"id": 378,
 			"nameId": 901593,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 379,
+			"nameId": 916922,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 380,
+			"nameId": 919898,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 381,
+			"nameId": 922046,
 			"actionId": 0,
 			"displayTooltip": true
 		}

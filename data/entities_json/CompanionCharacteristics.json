@@ -5005,46 +5005,6 @@
 			]
 		},
 		{
-			"id": 357,
-			"caracId": 26,
-			"companionId": 21,
-			"order": 16,
-			"statPerLevelRange": [
-				[
-					1.0,
-					3.0
-				]
-			]
-		},
-		{
-			"id": 377,
-			"caracId": 26,
-			"companionId": 22,
-			"order": 16,
-			"statPerLevelRange": [
-				[
-					1.0,
-					3.0
-				]
-			]
-		},
-		{
-			"id": 302,
-			"caracId": 23,
-			"companionId": 19,
-			"order": 2,
-			"statPerLevelRange": [
-				[
-					1.0,
-					3.0
-				],
-				[
-					200.0,
-					0.017
-				]
-			]
-		},
-		{
 			"id": 409,
 			"caracId": 78,
 			"companionId": 24,
@@ -5205,6 +5165,34 @@
 				[
 					200.0,
 					0.405
+				]
+			]
+		},
+		{
+			"id": 377,
+			"caracId": 26,
+			"companionId": 22,
+			"order": 16,
+			"statPerLevelRange": [
+				[
+					1.0,
+					3.0
+				]
+			]
+		},
+		{
+			"id": 302,
+			"caracId": 23,
+			"companionId": 19,
+			"order": 2,
+			"statPerLevelRange": [
+				[
+					1.0,
+					3.0
+				],
+				[
+					200.0,
+					0.017
 				]
 			]
 		},
@@ -13365,6 +13353,18 @@
 				[
 					200.0,
 					0.405
+				]
+			]
+		},
+		{
+			"id": 357,
+			"caracId": 26,
+			"companionId": 21,
+			"order": 16,
+			"statPerLevelRange": [
+				[
+					1.0,
+					3.0
 				]
 			]
 		},

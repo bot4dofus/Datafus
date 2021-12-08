@@ -616,65 +616,65 @@
 			"categoryId": 4,
 			"iconId": 28,
 			"colorId": 3,
-			"descriptionId": 904236,
+			"descriptionId": 904809,
 			"defaultEnable": true,
 			"defaultSound": true,
 			"defaultMultiAccount": true,
 			"defaultNotify": false,
 			"name": "KOLO_START",
-			"messageId": 904229
+			"messageId": 904777
 		},
 		{
 			"id": 52,
 			"categoryId": 4,
 			"iconId": 10,
 			"colorId": 3,
-			"descriptionId": 904237,
+			"descriptionId": 904810,
 			"defaultEnable": true,
 			"defaultSound": true,
 			"defaultMultiAccount": true,
 			"defaultNotify": false,
 			"name": "KOLO_JOIN",
-			"messageId": 904230
+			"messageId": 904779
 		},
 		{
 			"id": 53,
 			"categoryId": 4,
 			"iconId": 28,
 			"colorId": 3,
-			"descriptionId": 904233,
+			"descriptionId": 904784,
 			"defaultEnable": true,
 			"defaultSound": true,
 			"defaultMultiAccount": true,
 			"defaultNotify": false,
 			"name": "KOLO_TURN_START",
-			"messageId": 904232
+			"messageId": 904783
 		},
 		{
 			"id": 54,
 			"categoryId": 4,
 			"iconId": 10,
 			"colorId": 3,
-			"descriptionId": 904235,
+			"descriptionId": 904808,
 			"defaultEnable": true,
 			"defaultSound": true,
 			"defaultMultiAccount": false,
 			"defaultNotify": false,
 			"name": "KOLO_FIGHT_END",
-			"messageId": 904234
+			"messageId": 904807
 		},
 		{
 			"id": 55,
 			"categoryId": 4,
 			"iconId": 9,
 			"colorId": 3,
-			"descriptionId": 907230,
+			"descriptionId": 909297,
 			"defaultEnable": true,
 			"defaultSound": true,
 			"defaultMultiAccount": true,
 			"defaultNotify": false,
 			"name": "PETSMOUNT_TRAVEL_END",
-			"messageId": 907229
+			"messageId": 909296
 		}
 	]
 }

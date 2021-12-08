@@ -5,15 +5,15 @@
 			"packageName": "com.ankamagames.dofus.datacenter.abuse",
 			"fields": [
 				{
-					"name": "_abuseReasonId",
+					"name": "abuseReasonId",
 					"type": -1
 				},
 				{
-					"name": "_mask",
+					"name": "mask",
 					"type": -1
 				},
 				{
-					"name": "_reasonTextId",
+					"name": "reasonTextId",
 					"type": -5
 				}
 			]
@@ -21,34 +21,34 @@
 	],
 	"data": [
 		{
-			"_abuseReasonId": 1,
-			"_mask": 1,
-			"_reasonTextId": 3
+			"abuseReasonId": 1,
+			"mask": 1,
+			"reasonTextId": 3
 		},
 		{
-			"_abuseReasonId": 2,
-			"_mask": 3,
-			"_reasonTextId": 4
+			"abuseReasonId": 2,
+			"mask": 3,
+			"reasonTextId": 4
 		},
 		{
-			"_abuseReasonId": 3,
-			"_mask": 1,
-			"_reasonTextId": 1
+			"abuseReasonId": 3,
+			"mask": 1,
+			"reasonTextId": 1
 		},
 		{
-			"_abuseReasonId": 4,
-			"_mask": 1,
-			"_reasonTextId": 5
+			"abuseReasonId": 4,
+			"mask": 1,
+			"reasonTextId": 5
 		},
 		{
-			"_abuseReasonId": 5,
-			"_mask": 1,
-			"_reasonTextId": 6
+			"abuseReasonId": 5,
+			"mask": 1,
+			"reasonTextId": 6
 		},
 		{
-			"_abuseReasonId": 6,
-			"_mask": 1,
-			"_reasonTextId": 2
+			"abuseReasonId": 6,
+			"mask": 1,
+			"reasonTextId": 2
 		}
 	]
 }
