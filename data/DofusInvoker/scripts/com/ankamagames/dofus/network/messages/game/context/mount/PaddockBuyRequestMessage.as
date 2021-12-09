@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class PaddockBuyRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2605;
+      public static const protocolId:uint = 8638;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 2605;
+         return 8638;
       }
       
       public function initPaddockBuyRequestMessage(proposedPrice:Number = 0) : PaddockBuyRequestMessage

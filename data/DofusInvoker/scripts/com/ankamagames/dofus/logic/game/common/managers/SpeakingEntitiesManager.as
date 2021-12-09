@@ -61,7 +61,7 @@ package com.ankamagames.dofus.logic.game.common.managers
          var ref:RoleplayEntitiesFrame = Kernel.getWorker().getFrame(RoleplayEntitiesFrame) as RoleplayEntitiesFrame;
          if(ref)
          {
-            entityRef = ref.getEntitiesDictionnary();
+            entityRef = ref.entities;
          }
          else
          {
@@ -70,7 +70,7 @@ package com.ankamagames.dofus.logic.game.common.managers
             {
                return;
             }
-            entityRef = fef.getEntitiesDictionnary();
+            entityRef = fef.entities;
          }
          var triggers:Array = [];
          for each(entity in entityRef)

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.presets
    public class ItemForPreset implements INetworkType
    {
       
-      public static const protocolId:uint = 4445;
+      public static const protocolId:uint = 4107;
        
       
       public var position:uint = 63;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.presets
       
       public function getTypeId() : uint
       {
-         return 4445;
+         return 4107;
       }
       
       public function initItemForPreset(position:uint = 63, objGid:uint = 0, objUid:uint = 0) : ItemForPreset

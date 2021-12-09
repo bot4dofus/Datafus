@@ -588,7 +588,7 @@ package Ankama_Grimoire.ui
                this.uiApi.showTooltip(data,target,false,"standard",LocationEnum.POINT_TOPLEFT,LocationEnum.POINT_TOPRIGHT,3,null,null,{
                   "footer":true,
                   "isTheoretical":this.sysApi.getOption("useTheoreticalValuesInSpellTooltips","dofus")
-               },null,null,SpellBase.getInstance().getTooltipStrata());
+               },null,false,SpellBase.getInstance().getTooltipStrata());
             }
             else
             {

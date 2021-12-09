@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.tinsel
    public class OrnamentLostMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2474;
+      public static const protocolId:uint = 94;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.tinsel
       
       override public function getMessageId() : uint
       {
-         return 2474;
+         return 94;
       }
       
       public function initOrnamentLostMessage(ornamentId:uint = 0) : OrnamentLostMessage

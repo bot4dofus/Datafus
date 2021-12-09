@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameFightTaxCollectorInformations extends GameFightAIInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 5464;
+      public static const protocolId:uint = 5235;
        
       
       public var firstNameId:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 5464;
+         return 5235;
       }
       
       public function initGameFightTaxCollectorInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, spawnInfo:GameContextBasicSpawnInformation = null, wave:uint = 0, stats:GameFightCharacteristics = null, previousPositions:Vector.<uint> = null, firstNameId:uint = 0, lastNameId:uint = 0, level:uint = 0) : GameFightTaxCollectorInformations

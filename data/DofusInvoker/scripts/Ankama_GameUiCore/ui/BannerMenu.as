@@ -42,7 +42,7 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.dofus.misc.lists.SocialHookList;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
    import com.ankamagames.dofus.network.enums.AlignmentSideEnum;
-   import com.ankamagames.dofus.network.enums.GameServerTypeEnum;
+   import com.ankamagames.dofus.network.enums.SocialGroupCreationResultEnum;
    import com.ankamagames.dofus.uiApi.BindsApi;
    import com.ankamagames.dofus.uiApi.ConfigApi;
    import com.ankamagames.dofus.uiApi.DataApi;
@@ -63,6 +63,8 @@ package Ankama_GameUiCore.ui
    {
       
       private static const STORAGE_NEW_TEMPORIS_REWARD:String = "storageNewTemporisReward";
+      
+      private static const STORAGE_NEW_GUILD:String = "storageNewGuild";
       
       private static var _shortcutColor:String;
       
@@ -114,6 +116,8 @@ package Ankama_GameUiCore.ui
       private var _maxBtnIds:uint;
       
       private var _serverType:int;
+      
+      private var _serverHeroicActivated:Boolean = false;
       
       private var _forgettableSpellsActivated:Boolean = false;
       
@@ -214,6 +218,7 @@ package Ankama_GameUiCore.ui
          this._temporisAchievementProgressActivated = this.configApi.isFeatureWithKeywordEnabled("temporis.achievementProgress");
          this._maxBtnIds = !!this._companionsActivated ? uint(21) : uint(20);
          this._serverType = sysApi.getCurrentServer().gameTypeId;
+         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled("server.heroic");
          if(this._forgettableSpellsActivated)
          {
             this._btnSaveKey = "uiBtnOrder2_forgettableSpells";
@@ -227,6 +232,7 @@ package Ankama_GameUiCore.ui
          sysApi.addHook(MountHookList.MountSet,this.onMountSet);
          sysApi.addHook(MountHookList.MountUnSet,this.onMountUnSet);
          sysApi.addHook(SocialHookList.SpouseUpdated,this.onSpouseUpdated);
+         sysApi.addHook(SocialHookList.GuildCreationResult,this.onGuildCreationResult);
          sysApi.addHook(HookList.ConfigPropertyChange,this.onConfigChange);
          sysApi.addHook(HookList.BreachTeleport,this.onBreachTeleport);
          sysApi.addHook(BeriliaHookList.KeyUp,this.onKeyUp);
@@ -292,7 +298,7 @@ package Ankama_GameUiCore.ui
          }
          this.gd_btnUis.autoSelectMode = 0;
          this.gd_additionalBtns.autoSelectMode = 0;
-         if(this._serverType == GameServerTypeEnum.SERVER_TYPE_HARDCORE)
+         if(this._serverHeroicActivated)
          {
             breachTitleText = this.uiApi.getText("ui.breach.title") + " (" + this.uiApi.getText("ui.alert.info.aggressionZone") + ")";
          }
@@ -383,6 +389,7 @@ package Ankama_GameUiCore.ui
       {
          var temporisQuestTabSlot:Slot = null;
          var rawAreNewTemporisRewardsAvailable:* = undefined;
+         var isNewGuild:* = undefined;
          sysApi.log(4,"finished loading, binding shortcuts");
          this.uiApi.addShortcutHook("openCharacterSheet",this.onShortcut);
          this.uiApi.addShortcutHook("openInventory",this.onShortcut);
@@ -423,6 +430,19 @@ package Ankama_GameUiCore.ui
                {
                   temporisQuestTabSlot.selected = false;
                }
+            }
+         }
+         var socialSlot:Slot = this.getSlotByBtnId(this.ID_BTN_SOCIAL);
+         if(socialSlot !== null)
+         {
+            isNewGuild = sysApi.getData(STORAGE_NEW_GUILD);
+            if(isNewGuild is Boolean)
+            {
+               socialSlot.selected = isNewGuild as Boolean;
+            }
+            else
+            {
+               socialSlot.selected = false;
             }
          }
          this.uiApi.addShortcutHook(ShortcutHookListEnum.OPEN_IDOLS,this.onShortcut);
@@ -1123,6 +1143,7 @@ package Ankama_GameUiCore.ui
          if(this.shortcutTimerReady() && this.getBtnById(this.ID_BTN_SOCIAL).active)
          {
             sysApi.sendAction(new OpenSocialAction([DataEnum.SOCIAL_TAB_LAST_OPENED_ID]));
+            sysApi.setData(STORAGE_NEW_GUILD,false);
          }
       }
       
@@ -1138,14 +1159,7 @@ package Ankama_GameUiCore.ui
       {
          if(this.shortcutTimerReady() && this.getBtnById(this.ID_BTN_SOCIAL).active)
          {
-            if(this.socialApi.hasGuild())
-            {
-               sysApi.sendAction(new OpenSocialAction([DataEnum.SOCIAL_TAB_GUILD_ID]));
-            }
-            else
-            {
-               sysApi.dispatchHook(ChatHookList.TextInformation,this.uiApi.getText("ui.error.onlyForGuild"),666,this.timeApi.getTimestamp());
-            }
+            sysApi.sendAction(new OpenSocialAction([DataEnum.SOCIAL_TAB_GUILD_ID]));
          }
       }
       
@@ -1153,14 +1167,7 @@ package Ankama_GameUiCore.ui
       {
          if(this.shortcutTimerReady() && this.getBtnById(this.ID_BTN_SOCIAL).active)
          {
-            if(this.socialApi.hasAlliance())
-            {
-               sysApi.sendAction(new OpenSocialAction([DataEnum.SOCIAL_TAB_ALLIANCE_ID]));
-            }
-            else
-            {
-               sysApi.dispatchHook(ChatHookList.TextInformation,this.uiApi.getText("ui.error.onlyForAlliance"),666,this.timeApi.getTimestamp());
-            }
+            sysApi.sendAction(new OpenSocialAction([DataEnum.SOCIAL_TAB_ALLIANCE_ID]));
          }
       }
       
@@ -1198,7 +1205,7 @@ package Ankama_GameUiCore.ui
             {
                sysApi.sendAction(new OpenWebServiceAction([null]));
             }
-            else if(sysApi.getCurrentServer().gameTypeId != GameServerTypeEnum.SERVER_TYPE_HARDCORE)
+            else if(!this._serverHeroicActivated)
             {
                sysApi.dispatchHook(ChatHookList.TextInformation,this.uiApi.getText("ui.error.onlyIfModeSecured"),666,this.timeApi.getTimestamp());
             }
@@ -1502,7 +1509,7 @@ package Ankama_GameUiCore.ui
          {
             description = this.uiApi.getText("ui.error.onlyIfModeSecured");
          }
-         else if(sysApi.getCurrentServer().gameTypeId == GameServerTypeEnum.SERVER_TYPE_HARDCORE)
+         else if(this._serverHeroicActivated)
          {
             description = this.uiApi.getText("ui.banner.lockBtn.shopHeroic");
          }
@@ -1569,7 +1576,7 @@ package Ankama_GameUiCore.ui
          {
             if(!this._onBreachMap)
             {
-               if(this._serverType == GameServerTypeEnum.SERVER_TYPE_HARDCORE)
+               if(this._serverHeroicActivated)
                {
                   breachTitleText = this.uiApi.getText("ui.breach.title") + " (" + this.uiApi.getText("ui.alert.info.aggressionZone") + ")";
                }
@@ -1584,7 +1591,7 @@ package Ankama_GameUiCore.ui
                active = psiAllowed;
                this.rpApi.setButtonWrapperActivation(btn,psiAllowed,description,breachTitleText);
             }
-            else if(this._serverType == GameServerTypeEnum.SERVER_TYPE_HARDCORE)
+            else if(this._serverHeroicActivated)
             {
                description = this.uiApi.getText("ui.breach.alreadyInBreach");
                active = false;
@@ -1751,7 +1758,7 @@ package Ankama_GameUiCore.ui
          {
             if(this.getBtnById(this.ID_BTN_BREACH) == null && playerInfo.level >= ProtocolConstantsEnum.MIN_LEVEL_BREACH)
             {
-               if(this._serverType == GameServerTypeEnum.SERVER_TYPE_HARDCORE)
+               if(this._serverHeroicActivated)
                {
                   breachTitleText = this.uiApi.getText("ui.breach.title") + " (" + this.uiApi.getText("ui.alert.info.aggressionZone") + ")";
                }
@@ -1927,6 +1934,20 @@ package Ankama_GameUiCore.ui
                this.removeBannerButton(this.ID_BTN_SPOUSE);
                this.updateButtonGrids();
             }
+         }
+      }
+      
+      private function onGuildCreationResult(result:uint) : void
+      {
+         if(result !== SocialGroupCreationResultEnum.SOCIAL_GROUP_CREATE_OK)
+         {
+            return;
+         }
+         var socialButton:Slot = this.getSlotByBtnId(this.ID_BTN_SOCIAL);
+         sysApi.setData(STORAGE_NEW_GUILD,true);
+         if(socialButton !== null)
+         {
+            socialButton.selected = true;
          }
       }
       

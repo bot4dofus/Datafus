@@ -150,6 +150,24 @@ package com.ankamagames.dofus.misc.lists
       public static const NewAwayMessage:String = "NewAwayMessage";
       
       public static const ShowTopTaxCollectors:String = "ShowTopTaxCollectors";
+      
+      public static const GuildApplicationsUiRequested:String = "GuildApplicationsUiRequested";
+      
+      public static const GuildPrezAndRecruitUiRequested:String = "GuildPrezAndRecruitUiRequested";
+      
+      public static const GuildApplicationsReceived:String = "GuildApplicationsReceived";
+      
+      public static const GuildApplicationUpdated:String = "GuildApplicationUpdated";
+      
+      public static const GuildRecruitmentDataReceived:String = "GuildRecruitmentDataReceived";
+      
+      public static const GuildPlayerApplicationReceived:String = "GuildPlayerApplicationReceived";
+      
+      public static const GuildPlayerApplicationDeleted:String = "GuildPlayerApplicationDeleted";
+      
+      public static const GuildJoined:String = "GuildJoined";
+      
+      public static const GuildApplicationIsAnswered:String = "GuildApplicationIsAnsweredMessage";
        
       
       public function SocialHookList()
@@ -232,6 +250,15 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(PlayerStatusUpdate);
          Hook.createHook(NewAwayMessage);
          Hook.createHook(ShowTopTaxCollectors);
+         Hook.createHook(GuildApplicationsUiRequested);
+         Hook.createHook(GuildPrezAndRecruitUiRequested);
+         Hook.createHook(GuildApplicationsReceived);
+         Hook.createHook(GuildApplicationUpdated);
+         Hook.createHook(GuildRecruitmentDataReceived);
+         Hook.createHook(GuildPlayerApplicationReceived);
+         Hook.createHook(GuildPlayerApplicationDeleted);
+         Hook.createHook(GuildJoined);
+         Hook.createHook(GuildApplicationIsAnswered);
       }
    }
 }

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeWeightMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8417;
+      public static const protocolId:uint = 5653;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 8417;
+         return 5653;
       }
       
       public function initExchangeWeightMessage(currentWeight:uint = 0, maxWeight:uint = 0) : ExchangeWeightMessage

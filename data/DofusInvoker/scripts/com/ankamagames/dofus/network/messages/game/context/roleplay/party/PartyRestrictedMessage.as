@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyRestrictedMessage extends AbstractPartyMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7312;
+      public static const protocolId:uint = 6433;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 7312;
+         return 6433;
       }
       
       public function initPartyRestrictedMessage(partyId:uint = 0, restricted:Boolean = false) : PartyRestrictedMessage

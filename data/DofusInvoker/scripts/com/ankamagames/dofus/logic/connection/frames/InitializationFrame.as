@@ -79,6 +79,7 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowEmoteManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowEntityManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowEstate;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkShowGuildApplicationsManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowGuildManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowMonsterChatManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowMonsterFightManager;
@@ -1069,6 +1070,7 @@ package com.ankamagames.dofus.logic.connection.frames
          HyperlinkFactory.registerProtocol("map",HyperlinkMapPosition.showPosition,HyperlinkMapPosition.getText,null,true,HyperlinkMapPosition.rollOver);
          HyperlinkFactory.registerProtocol("chatitem",HyperlinkItemManager.showChatItem,null,HyperlinkItemManager.duplicateChatHyperlink,true,HyperlinkItemManager.rollOver);
          HyperlinkFactory.registerProtocol("guild",HyperlinkShowGuildManager.showGuild,HyperlinkShowGuildManager.getGuildName,null,true,HyperlinkShowGuildManager.rollOver);
+         HyperlinkFactory.registerProtocol("guildApplications",HyperlinkShowGuildApplicationsManager.showGuildApplications,null,null,true,null);
          HyperlinkFactory.registerProtocol("alliance",HyperlinkShowAllianceManager.showAlliance,HyperlinkShowAllianceManager.getAllianceName,null,true,HyperlinkShowAllianceManager.rollOver);
          HyperlinkFactory.registerProtocol("openSocial",HyperlinkSocialManager.openSocial,null,null,true,HyperlinkSocialManager.rollOver);
          HyperlinkFactory.registerProtocol("chatLinkRelease",HyperlinkURLManager.chatLinkRelease,null,null,true,HyperlinkURLManager.rollOver);
@@ -1121,7 +1123,7 @@ package com.ankamagames.dofus.logic.connection.frames
       
       private function displayLoadingScreen() : void
       {
-         this._loadingScreen = new LoadingScreen(false,true,!Dofus.getInstance().initialized && Dofus.getInstance().useMiniLoader);
+         this._loadingScreen = new LoadingScreen(true,!Dofus.getInstance().initialized && Dofus.getInstance().useMiniLoader);
          this._loadingScreen.closeMiniUiRequestHandler = this.closeMiniLoadingUi;
          this._loadingScreen.logCallbackHandler = this.onLog;
          Dofus.getInstance().addChild(this._loadingScreen);

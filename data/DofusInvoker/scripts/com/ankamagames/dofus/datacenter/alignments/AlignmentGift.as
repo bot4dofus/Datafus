@@ -22,10 +22,6 @@ package com.ankamagames.dofus.datacenter.alignments
       
       public var nameId:uint;
       
-      public var effectId:int;
-      
-      public var gfxId:uint;
-      
       private var _name:String;
       
       public function AlignmentGift()

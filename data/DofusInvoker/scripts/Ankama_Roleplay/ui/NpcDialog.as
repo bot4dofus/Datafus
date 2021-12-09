@@ -17,6 +17,7 @@ package Ankama_Roleplay.ui
    import com.ankamagames.dofus.misc.lists.RoleplayHookList;
    import com.ankamagames.dofus.misc.lists.SocialHookList;
    import com.ankamagames.dofus.network.types.game.context.roleplay.BasicNamedAllianceInformations;
+   import com.ankamagames.dofus.uiApi.ConfigApi;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
    import com.ankamagames.dofus.uiApi.SocialApi;
@@ -60,6 +61,9 @@ package Ankama_Roleplay.ui
       
       [Api(name="TimeApi")]
       public var timeApi:TimeApi;
+      
+      [Api(name="ConfigApi")]
+      public var configApi:ConfigApi;
       
       private var _npc:Object;
       
@@ -712,7 +716,7 @@ package Ankama_Roleplay.ui
          var msgTextId:int = 0;
          var allianceName:String = null;
          var allianceTag:String = null;
-         if(this.sysApi.getCurrentServer().gameTypeId == 1)
+         if(this.configApi.isFeatureWithKeywordEnabled("server.heroic"))
          {
             if(pods == 0)
             {

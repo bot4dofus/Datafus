@@ -60,7 +60,6 @@ package Ankama_ContextMenu.makers
    import com.ankamagames.dofus.network.enums.AlignmentSideEnum;
    import com.ankamagames.dofus.network.enums.BuildTypeEnum;
    import com.ankamagames.dofus.network.enums.ExchangeTypeEnum;
-   import com.ankamagames.dofus.network.enums.GameServerTypeEnum;
    import com.ankamagames.dofus.network.enums.PrismStateEnum;
    import com.ankamagames.dofus.network.enums.PvpArenaTypeEnum;
    import com.ankamagames.dofus.network.types.game.character.alignment.ActorAlignmentInformations;
@@ -853,8 +852,7 @@ package Ankama_ContextMenu.makers
          {
             return 1;
          }
-         var serverType:int = Api.system.getPlayerManager().serverGameType;
-         var sh:* = serverType == GameServerTypeEnum.SERVER_TYPE_HARDCORE;
+         var sh:Boolean = Api.config.isFeatureWithKeywordEnabled("server.heroic");
          var myAlliance:AllianceWrapper = Api.social.getAlliance();
          var subAreaWithPrism:Boolean = currentPrism && currentPrism.mapId != -1;
          var prismNotVulnerableAndSH:Boolean = false;

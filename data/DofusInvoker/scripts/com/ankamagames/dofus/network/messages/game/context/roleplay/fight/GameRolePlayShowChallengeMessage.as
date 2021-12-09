@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight
    public class GameRolePlayShowChallengeMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9968;
+      public static const protocolId:uint = 5734;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight
       
       override public function getMessageId() : uint
       {
-         return 9968;
+         return 5734;
       }
       
       public function initGameRolePlayShowChallengeMessage(commonsInfos:FightCommonInformations = null) : GameRolePlayShowChallengeMessage

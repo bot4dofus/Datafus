@@ -152,7 +152,7 @@ package Ankama_Social.ui.data
             return;
          }
          this.podsAndXp = "";
-         if(Api.system.getCurrentServer().gameTypeId == 1)
+         if(Api.config.isFeatureWithKeywordEnabled("server.heroic"))
          {
             if(data.pods != 0)
             {

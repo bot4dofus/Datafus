@@ -463,9 +463,6 @@ package Ankama_Grimoire.ui
       
       public function getCatDataLength(data:*, selected:Boolean) : *
       {
-         if(!selected)
-         {
-         }
          return 2 + (!!selected ? data.subcats.length : 0);
       }
       

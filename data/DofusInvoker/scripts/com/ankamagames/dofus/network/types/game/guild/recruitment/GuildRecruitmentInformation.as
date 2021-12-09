@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.guild.recruitment
    public class GuildRecruitmentInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 8152;
+      public static const protocolId:uint = 4584;
        
       
       public var guildId:uint = 0;
@@ -38,6 +38,8 @@ package com.ankamagames.dofus.network.types.game.guild.recruitment
       
       public var lastEditDate:Number = 0;
       
+      public var recruitmentAutoLocked:Boolean = false;
+      
       private var _selectedLanguagestree:FuncTree;
       
       private var _selectedCriteriontree:FuncTree;
@@ -51,10 +53,10 @@ package com.ankamagames.dofus.network.types.game.guild.recruitment
       
       public function getTypeId() : uint
       {
-         return 8152;
+         return 4584;
       }
       
-      public function initGuildRecruitmentInformation(guildId:uint = 0, recruitmentType:uint = 0, recruitmentTitle:String = "", recruitmentText:String = "", selectedLanguages:Vector.<uint> = null, selectedCriterion:Vector.<uint> = null, minLevel:uint = 0, minLevelFacultative:Boolean = false, minSuccess:uint = 0, minSuccessFacultative:Boolean = false, invalidatedByModeration:Boolean = false, lastEditPlayerName:String = "", lastEditDate:Number = 0) : GuildRecruitmentInformation
+      public function initGuildRecruitmentInformation(guildId:uint = 0, recruitmentType:uint = 0, recruitmentTitle:String = "", recruitmentText:String = "", selectedLanguages:Vector.<uint> = null, selectedCriterion:Vector.<uint> = null, minLevel:uint = 0, minLevelFacultative:Boolean = false, minSuccess:uint = 0, minSuccessFacultative:Boolean = false, invalidatedByModeration:Boolean = false, lastEditPlayerName:String = "", lastEditDate:Number = 0, recruitmentAutoLocked:Boolean = false) : GuildRecruitmentInformation
       {
          this.guildId = guildId;
          this.recruitmentType = recruitmentType;
@@ -69,6 +71,7 @@ package com.ankamagames.dofus.network.types.game.guild.recruitment
          this.invalidatedByModeration = invalidatedByModeration;
          this.lastEditPlayerName = lastEditPlayerName;
          this.lastEditDate = lastEditDate;
+         this.recruitmentAutoLocked = recruitmentAutoLocked;
          return this;
       }
       
@@ -87,6 +90,7 @@ package com.ankamagames.dofus.network.types.game.guild.recruitment
          this.invalidatedByModeration = false;
          this.lastEditPlayerName = "";
          this.lastEditDate = 0;
+         this.recruitmentAutoLocked = false;
       }
       
       public function serialize(output:ICustomDataOutput) : void
@@ -100,6 +104,7 @@ package com.ankamagames.dofus.network.types.game.guild.recruitment
          _box0 = BooleanByteWrapper.setFlag(_box0,0,this.minLevelFacultative);
          _box0 = BooleanByteWrapper.setFlag(_box0,1,this.minSuccessFacultative);
          _box0 = BooleanByteWrapper.setFlag(_box0,2,this.invalidatedByModeration);
+         _box0 = BooleanByteWrapper.setFlag(_box0,3,this.recruitmentAutoLocked);
          output.writeByte(_box0);
          if(this.guildId < 0)
          {
@@ -211,6 +216,7 @@ package com.ankamagames.dofus.network.types.game.guild.recruitment
          this.minLevelFacultative = BooleanByteWrapper.getFlag(_box0,0);
          this.minSuccessFacultative = BooleanByteWrapper.getFlag(_box0,1);
          this.invalidatedByModeration = BooleanByteWrapper.getFlag(_box0,2);
+         this.recruitmentAutoLocked = BooleanByteWrapper.getFlag(_box0,3);
       }
       
       private function _guildIdFunc(input:ICustomDataInput) : void

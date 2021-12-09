@@ -6,26 +6,37 @@ package Ankama_Social
    import Ankama_Social.ui.AllianceAreas;
    import Ankama_Social.ui.AllianceCard;
    import Ankama_Social.ui.AllianceCreator;
+   import Ankama_Social.ui.AllianceDirectory;
    import Ankama_Social.ui.AllianceFights;
    import Ankama_Social.ui.AllianceMembers;
    import Ankama_Social.ui.CollectedTaxCollector;
-   import Ankama_Social.ui.Directory;
    import Ankama_Social.ui.Friends;
    import Ankama_Social.ui.Guild;
+   import Ankama_Social.ui.GuildApplications;
+   import Ankama_Social.ui.GuildApplyPopup;
    import Ankama_Social.ui.GuildCard;
    import Ankama_Social.ui.GuildCreator;
+   import Ankama_Social.ui.GuildDirectory;
    import Ankama_Social.ui.GuildHouses;
+   import Ankama_Social.ui.GuildJoinPopup;
    import Ankama_Social.ui.GuildMemberRights;
    import Ankama_Social.ui.GuildMembers;
    import Ankama_Social.ui.GuildPaddock;
    import Ankama_Social.ui.GuildPersonalization;
+   import Ankama_Social.ui.GuildPrezAndRecruit;
    import Ankama_Social.ui.GuildTaxCollector;
    import Ankama_Social.ui.HousesList;
    import Ankama_Social.ui.SocialBase;
    import Ankama_Social.ui.SocialBulletin;
    import Ankama_Social.ui.Spouse;
    import Ankama_Social.ui.TopTaxCollectors;
+   import Ankama_Social.ui.items.IconWithLabelItem;
+   import Ankama_Social.ui.items.MultiIconWithLabelItem;
    import com.ankamagames.berilia.api.UiApi;
+   import com.ankamagames.berilia.enums.StrataEnum;
+   import com.ankamagames.berilia.enums.UIEnum;
+   import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.TaxCollectorWrapper;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceInvitationAnswerAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildInvitationAnswerAction;
@@ -34,6 +45,8 @@ package Ankama_Social
    import com.ankamagames.dofus.misc.lists.CustomUiHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.SocialHookList;
+   import com.ankamagames.dofus.uiApi.ChatApi;
+   import com.ankamagames.dofus.uiApi.ConfigApi;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
    import com.ankamagames.dofus.uiApi.SocialApi;
@@ -58,11 +71,17 @@ package Ankama_Social
       
       protected var guild:Guild;
       
+      protected var guildDirectory:GuildDirectory;
+      
       protected var alliance:Alliance;
       
-      protected var directory:Directory;
+      protected var directory:AllianceDirectory;
       
       protected var housesList:HousesList;
+      
+      protected var guildJoinPopup:GuildJoinPopup;
+      
+      protected var guilApplyPopup:GuildApplyPopup;
       
       protected var guildCard:GuildCard;
       
@@ -80,7 +99,11 @@ package Ankama_Social
       
       protected var guildTaxCollector:GuildTaxCollector;
       
+      protected var guildPrezAndRecruit:GuildPrezAndRecruit;
+      
       protected var guildCreator:GuildCreator;
+      
+      protected var guildApplications:GuildApplications;
       
       protected var allianceMembers:AllianceMembers;
       
@@ -96,11 +119,18 @@ package Ankama_Social
       
       protected var socialBulletin:SocialBulletin;
       
+      protected var iconWithLabelItem:IconWithLabelItem = null;
+      
+      protected var multiIconWithLabelItem:MultiIconWithLabelItem = null;
+      
       [Api(name="SystemApi")]
       public var sysApi:SystemApi;
       
       [Api(name="UiApi")]
       public var uiApi:UiApi;
+      
+      [Api(name="ChatApi")]
+      public var chatApi:ChatApi;
       
       [Api(name="SocialApi")]
       public var socialApi:SocialApi;
@@ -117,6 +147,9 @@ package Ankama_Social
       [Api(name="TimeApi")]
       public var timeApi:TimeApi;
       
+      [Api(name="ConfigApi")]
+      public var configApi:ConfigApi;
+      
       [Module(name="Ankama_Common")]
       public var modCommon:Common;
       
@@ -132,8 +165,13 @@ package Ankama_Social
       
       private var _popupAllianceName:String = null;
       
+      private const MAX_GUILD_DETAILS:uint = 6;
+      
+      private var _guildDetailsList:Array;
+      
       public function Social()
       {
+         this._guildDetailsList = [];
          super();
       }
       
@@ -152,6 +190,7 @@ package Ankama_Social
          Api.data = this.dataApi;
          Api.util = this.utilApi;
          Api.time = this.timeApi;
+         Api.config = this.configApi;
          _self = this;
          this.sysApi.addHook(SocialHookList.OpenSocial,this.onOpenSocial);
          this.sysApi.addHook(HookList.OpenHouses,this.onOpenHouses);
@@ -165,12 +204,17 @@ package Ankama_Social
          this.sysApi.addHook(SocialHookList.AllianceInvited,this.onAllianceInvited);
          this.sysApi.addHook(SocialHookList.AllianceInvitationStateRecruter,this.onAllianceInvitationStateRecruter);
          this.sysApi.addHook(SocialHookList.AllianceInvitationStateRecruted,this.onAllianceInvitationStateRecruted);
+         this.sysApi.addHook(SocialHookList.GuildApplicationsUiRequested,this.onOpenGuildApplications);
+         this.sysApi.addHook(SocialHookList.GuildPrezAndRecruitUiRequested,this.onOpenGuildPrezAndRecruit);
          this.sysApi.addHook(SocialHookList.AttackPlayer,this.onAttackPlayer);
          this.sysApi.addHook(SocialHookList.DishonourChanged,this.onDishonourChanged);
          this.sysApi.addHook(SocialHookList.OpenOneAlliance,this.onOpenOneAlliance);
          this.sysApi.addHook(SocialHookList.OpenOneGuild,this.onOpenOneGuild);
+         this.sysApi.addHook(SocialHookList.GuildJoined,this.onGuildJoined);
+         this.sysApi.addHook(SocialHookList.GuildLeft,this.onGuildLeft);
          this.sysApi.addHook(HookList.ShowCollectedTaxCollector,this.onShowCollectedTaxCollector);
          this.sysApi.addHook(SocialHookList.ShowTopTaxCollectors,this.onShowTopTaxCollectors);
+         this.sysApi.addHook(HookList.LeaveDialog,this.onLeaveDialog);
          if(!this.sysApi.getData("guildBulletinLastVisitTimestamp"))
          {
             this.sysApi.setData("guildBulletinLastVisitTimestamp",0);
@@ -193,10 +237,51 @@ package Ankama_Social
       
       private function onOpenOneGuild(guild:Object) : void
       {
+         var instanceName:String = null;
+         var guildCardName:String = "guildCard" + guild.guildId;
          this.uiApi.unloadUi("allianceCard");
-         if(!this.uiApi.getUi("guildCard"))
+         if(this._guildDetailsList.length >= 6 && this._guildDetailsList.indexOf(guildCardName) == -1)
          {
-            this.uiApi.loadUi("guildCard","guildCard",{"guild":guild});
+            instanceName = this._guildDetailsList.shift();
+            if(this.uiApi.getUi(instanceName))
+            {
+               this.uiApi.unloadUi(instanceName);
+            }
+         }
+         if(!this.uiApi.getUi(guildCardName))
+         {
+            this.uiApi.loadUi("guildCard",guildCardName,{"guild":guild},StrataEnum.STRATA_MEDIUM);
+            this._guildDetailsList.push(guildCardName);
+         }
+         else
+         {
+            this.uiApi.getUi(guildCardName).setOnTop();
+         }
+      }
+      
+      public function onGuildJoined() : void
+      {
+         var socialBase:SocialBase = null;
+         if(this.uiApi.getUi(UIEnum.SOCIAL_BASE))
+         {
+            socialBase = this.uiApi.getUi(UIEnum.SOCIAL_BASE).uiClass as SocialBase;
+            if(socialBase && socialBase.getTab() == DataEnum.SOCIAL_TAB_GUILD_DIRECTORY_ID)
+            {
+               socialBase.openTab(DataEnum.SOCIAL_TAB_GUILD_ID);
+            }
+         }
+      }
+      
+      public function onGuildLeft() : void
+      {
+         var socialBase:SocialBase = null;
+         if(this.uiApi.getUi(UIEnum.SOCIAL_BASE))
+         {
+            socialBase = this.uiApi.getUi(UIEnum.SOCIAL_BASE).uiClass as SocialBase;
+            if(socialBase && socialBase.getTab() == DataEnum.SOCIAL_TAB_GUILD_ID)
+            {
+               socialBase.openTab(DataEnum.SOCIAL_TAB_GUILD_DIRECTORY_ID);
+            }
          }
       }
       
@@ -284,6 +369,20 @@ package Ankama_Social
          {
             this.uiApi.unloadUi("socialBase");
          }
+      }
+      
+      private function onOpenGuildApplications() : void
+      {
+         var guildInfo:GuildWrapper = this.socialApi.getGuild();
+         if(guildInfo !== null && !this.uiApi.getUi(UIEnum.GUILD_APPLICATIONS))
+         {
+            this.uiApi.loadUi(UIEnum.GUILD_APPLICATIONS,null,{"hasRights":guildInfo.manageGuildApply});
+         }
+      }
+      
+      private function onOpenGuildPrezAndRecruit() : void
+      {
+         this.uiApi.loadUi(UIEnum.GUILD_PREZ_AND_RECRUIT,null,{"recruitmentData":this.socialApi.getGuild().guildRecruitmentInfo});
       }
       
       private function onOpenHouses() : void
@@ -397,9 +496,13 @@ package Ankama_Social
          this.sysApi.sendAction(new PlayerFightRequestAction([this._targetId,this._ava,false,true]));
       }
       
-      private function onGuildInvited(guildName:String, recruterId:Number, recruterName:String) : void
+      private function onGuildInvited(guildId:uint, guildName:String, recruterId:Number, recruterName:String) : void
       {
-         this._popupName = this.modCommon.openPopup(this.uiApi.getText("ui.common.invitation"),this.uiApi.getText("ui.social.aInvitYouInGuild",recruterName,guildName),[this.uiApi.getText("ui.common.yes"),this.uiApi.getText("ui.common.no")],[this.onConfirmJoinGuild,this.onCancelJoinGuild],this.onConfirmJoinGuild,this.onCancelJoinGuild);
+         var guildDescr:Object = {
+            "guildId":guildId,
+            "guildName":guildName
+         };
+         this._popupName = this.modCommon.openTextButtonPopup(this.uiApi.getText("ui.common.invitation"),this.uiApi.getText("ui.guild.invitationRequest",recruterName,this.chatApi.getGuildLink(guildDescr,guildName)),[this.uiApi.getText("ui.guild.joinGuild"),this.uiApi.getText("ui.guild.dontJoinGuild")],[this.onConfirmJoinGuild,this.onCancelJoinGuild],this.onConfirmJoinGuild,this.onCancelJoinGuild);
       }
       
       private function onConfirmJoinGuild() : void
@@ -421,11 +524,16 @@ package Ankama_Social
                break;
             case 2:
             case 3:
-               if(this._popupName && this.uiApi.getUi(this._popupName))
-               {
-                  this.uiApi.unloadUi(this._popupName);
-                  this._popupName = null;
-               }
+               this.unloadPopup();
+         }
+      }
+      
+      private function unloadPopup() : void
+      {
+         if(this._popupName && this.uiApi.getUi(this._popupName))
+         {
+            this.uiApi.unloadUi(this._popupName);
+            this._popupName = null;
          }
       }
       
@@ -504,6 +612,11 @@ package Ankama_Social
             "dungeonTopTaxCollectors":pDungeonTopTaxCollectors,
             "topTaxCollectors":pTopTaxCollectors
          },1,null,true);
+      }
+      
+      private function onLeaveDialog() : void
+      {
+         this.unloadPopup();
       }
    }
 }

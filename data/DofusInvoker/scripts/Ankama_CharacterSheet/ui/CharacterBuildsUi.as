@@ -662,9 +662,6 @@ package Ankama_CharacterSheet.ui
       
       public function getCatDataLength(data:*, selected:Boolean) : *
       {
-         if(!selected)
-         {
-         }
          return 10;
       }
       

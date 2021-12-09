@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guest
    public class GuestModeMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2459;
+      public static const protocolId:uint = 9430;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.guest
       
       override public function getMessageId() : uint
       {
-         return 2459;
+         return 9430;
       }
       
       public function initGuestModeMessage(active:Boolean = false) : GuestModeMessage

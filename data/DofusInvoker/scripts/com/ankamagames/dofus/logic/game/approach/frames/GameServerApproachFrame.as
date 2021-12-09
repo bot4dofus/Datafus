@@ -418,7 +418,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
                unusable = false;
                server = PlayerManager.getInstance().server;
                bonusXp = 1;
-               if(server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_HARDCORE || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
+               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled("server.heroic") || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
                {
                   for each(chi in clmsg.characters)
                   {
@@ -510,7 +510,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
                   this._waitingForListRefreshAfterDeletion = false;
                }
                this._charactersList = new Vector.<BasicCharacterWrapper>();
-               if(PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_HARDCORE || PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
+               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled("server.heroic") || PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
                {
                   for each(bChi in bclmsg.characters)
                   {
@@ -630,7 +630,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
                   }
                }
                remodel.colors = tempColorsArray;
-               if(PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_HARDCORE || PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
+               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled("server.heroic") || PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
                {
                   for each(person2 in this._charactersList)
                   {
@@ -1158,7 +1158,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
          var updateInformationDisplayed:String = null;
          var currentVersion:String = null;
          var fakacsa:CharacterSelectionAction = null;
-         if(charToConnect && ((server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_HARDCORE && server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_EPIC || charToConnect.deathState == 0) && !SecureModeManager.getInstance().active && !this.isCharacterWaitingForChange(charToConnect.id) && !PlayerManager.getInstance().wasAlreadyConnected))
+         if(charToConnect && ((!FeatureManager.getInstance().isFeatureWithKeywordEnabled("server.heroic") && server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_EPIC || charToConnect.deathState == 0) && !SecureModeManager.getInstance().active && !this.isCharacterWaitingForChange(charToConnect.id) && !PlayerManager.getInstance().wasAlreadyConnected))
          {
             this._openCharsList = false;
             this._kernel.processCallback(HookList.CharactersListUpdated,this._charactersList);

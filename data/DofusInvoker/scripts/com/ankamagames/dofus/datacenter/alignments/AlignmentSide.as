@@ -22,8 +22,6 @@ package com.ankamagames.dofus.datacenter.alignments
       
       public var nameId:uint;
       
-      public var canConquest:Boolean;
-      
       private var _name:String;
       
       public function AlignmentSide()

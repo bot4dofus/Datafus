@@ -3,7 +3,6 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.common.actions.AddBehaviorToStackAction;
    import com.ankamagames.dofus.logic.common.actions.AgreementAgreedAction;
    import com.ankamagames.dofus.logic.common.actions.AuthorizedCommandAction;
-   import com.ankamagames.dofus.logic.common.actions.BrowserDomainReadyAction;
    import com.ankamagames.dofus.logic.common.actions.ChangeCharacterAction;
    import com.ankamagames.dofus.logic.common.actions.ChangeServerAction;
    import com.ankamagames.dofus.logic.common.actions.DirectSelectionCharacterAction;
@@ -68,6 +67,7 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.OpenCurrentFightAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenForgettableSpellsUiAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenGuidebookAction;
+   import com.ankamagames.dofus.logic.game.common.actions.OpenGuildPrezAndRecruitAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenHousesAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenIdolsAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenInventoryAction;
@@ -604,8 +604,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const HighlightInteractiveElements:DofusApiAction = new DofusApiAction("HighlightInteractiveElementsAction",HighlightInteractiveElementsAction);
       
-      public static const BrowserDomainReady:DofusApiAction = new DofusApiAction("BrowserDomainReadyAction",BrowserDomainReadyAction);
-      
       public static const ShowUpdaterLoginInterface:DofusApiAction = new DofusApiAction("ShowUpdaterLoginInterfaceAction",ShowUpdaterLoginInterfaceAction);
       
       public static const ThemeListRequest:DofusApiAction = new DofusApiAction("ThemeListRequestAction",ThemeListRequestAction);
@@ -685,6 +683,8 @@ package com.ankamagames.dofus.misc.lists
       public static const ForgettableSpellClient:DofusApiAction = new DofusApiAction("ForgettableSpellClientAction",ForgettableSpellClientAction);
       
       public static const OpenGuidebook:DofusApiAction = new DofusApiAction("OpenGuidebookAction",OpenGuidebookAction);
+      
+      public static const OpenGuildPrezAndRecruit:DofusApiAction = new DofusApiAction("OpenGuildPrezAndRecruitAction",OpenGuildPrezAndRecruitAction);
       
       public static const ActivitySuggestionsRequest:DofusApiAction = new DofusApiAction("ActivitySuggestionsRequestAction",ActivitySuggestionsRequestAction);
       

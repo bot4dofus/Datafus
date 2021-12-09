@@ -7,7 +7,6 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.berilia.managers.UiModuleManager;
    import com.ankamagames.berilia.types.LocationEnum;
    import com.ankamagames.berilia.types.data.UiModule;
-   import com.ankamagames.dofus.datacenter.almanax.AlmanaxCalendar;
    import com.ankamagames.dofus.datacenter.bonus.Bonus;
    import com.ankamagames.dofus.datacenter.bonus.MonsterDropChanceBonus;
    import com.ankamagames.dofus.datacenter.bonus.MonsterStarRateBonus;
@@ -261,7 +260,7 @@ package com.ankamagames.dofus.uiApi
          try
          {
             abstractEntitiesFrame = Kernel.getWorker().getFrame(RoleplayEntitiesFrame) as RoleplayEntitiesFrame;
-            list = abstractEntitiesFrame.getEntitiesDictionnary();
+            list = abstractEntitiesFrame.entities;
             if(list.length <= 0)
             {
                return;
@@ -300,7 +299,7 @@ package com.ankamagames.dofus.uiApi
          var entite:IDisplayable = null;
          var bubble:ChatBubble = null;
          var abstractEntitiesFrame:RoleplayEntitiesFrame = Kernel.getWorker().getFrame(RoleplayEntitiesFrame) as RoleplayEntitiesFrame;
-         var list:Dictionary = abstractEntitiesFrame.getEntitiesDictionnary();
+         var list:Dictionary = abstractEntitiesFrame.entities;
          if(list.length <= 0)
          {
             return;
@@ -433,11 +432,6 @@ package com.ankamagames.dofus.uiApi
          monsterGroupInfos.disposition = new EntityDispositionInformations();
          monsterGroupInfos.disposition.initEntityDispositionInformations(-1);
          return monsterGroupInfos;
-      }
-      
-      public function getAlmanaxCalendar() : AlmanaxCalendar
-      {
-         return AlmanaxManager.getInstance().calendar;
       }
       
       public function getAlmanaxMonsterXpBonusMultiplier(pMonsterId:int) : Number

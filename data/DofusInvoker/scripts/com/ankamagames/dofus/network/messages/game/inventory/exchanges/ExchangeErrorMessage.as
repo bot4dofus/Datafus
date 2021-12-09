@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4230;
+      public static const protocolId:uint = 6446;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 4230;
+         return 6446;
       }
       
       public function initExchangeErrorMessage(errorType:int = 0) : ExchangeErrorMessage

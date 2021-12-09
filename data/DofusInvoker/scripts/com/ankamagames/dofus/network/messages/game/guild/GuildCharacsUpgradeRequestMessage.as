@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildCharacsUpgradeRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9434;
+      public static const protocolId:uint = 3240;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 9434;
+         return 3240;
       }
       
       public function initGuildCharacsUpgradeRequestMessage(charaTypeTarget:uint = 0) : GuildCharacsUpgradeRequestMessage

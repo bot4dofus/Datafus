@@ -14,6 +14,7 @@ package com.ankamagames.dofus.logic.game.fight.steps
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightCharacterInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
+   import com.ankamagames.jerakine.utils.display.EnterFrameDispatcher;
    import com.ankamagames.tiphon.display.TiphonSprite;
    import com.ankamagames.tiphon.events.TiphonEvent;
    import damageCalculation.tools.StatIds;
@@ -33,6 +34,10 @@ package com.ankamagames.dofus.logic.game.fight.steps
       private var _entityStats:EntityStats = null;
       
       private var _newShieldStat:Stat = null;
+      
+      private var _fighterInfo:GameFightFighterInformations = null;
+      
+      private var _target:AnimatedCharacter = null;
       
       public function FightShieldPointsVariationStep(entityId:Number, value:int, elementId:int)
       {
@@ -64,32 +69,37 @@ package com.ankamagames.dofus.logic.game.fight.steps
       
       override public function start() : void
       {
-         var ttCacheName:String = null;
-         var target:AnimatedCharacter = DofusEntities.getEntity(_targetId) as AnimatedCharacter;
-         if(target && target.isPlayingAnimation())
+         this._target = DofusEntities.getEntity(_targetId) as AnimatedCharacter;
+         if(this._target && this._target.isPlayingAnimation())
          {
-            target.addEventListener(TiphonEvent.ANIMATION_END,this.onAnimationEnd);
+            this._target.addEventListener(TiphonEvent.ANIMATION_END,this.onAnimationEnd);
             return;
          }
-         var fighterInfos:GameFightFighterInformations = FightEntitiesFrame.getCurrentInstance().getEntityInfos(_targetId) as GameFightFighterInformations;
-         if(!fighterInfos)
+         this._fighterInfo = FightEntitiesFrame.getCurrentInstance().getEntityInfos(_targetId) as GameFightFighterInformations;
+         if(!this._fighterInfo)
          {
             super.executeCallbacks();
             return;
          }
-         var ttName:String = "tooltipOverEntity_" + fighterInfos.contextualId;
-         if(fighterInfos is GameFightCharacterInformations)
+         EnterFrameDispatcher.worker.addSingleTreatment(StatsManager.getInstance(),this.apply,[]);
+      }
+      
+      private function apply() : void
+      {
+         var ttCacheName:String = null;
+         var ttName:String = "tooltipOverEntity_" + this._fighterInfo.contextualId;
+         if(this._fighterInfo is GameFightCharacterInformations)
          {
-            ttCacheName = "PlayerShortInfos" + fighterInfos.contextualId;
+            ttCacheName = "PlayerShortInfos" + this._fighterInfo.contextualId;
          }
          else
          {
-            ttCacheName = "EntityShortInfos" + fighterInfos.contextualId;
+            ttCacheName = "EntityShortInfos" + this._fighterInfo.contextualId;
          }
-         TooltipManager.updateContent(ttCacheName,ttName,fighterInfos);
-         if(target)
+         TooltipManager.updateContent(ttCacheName,ttName,this._fighterInfo);
+         if(this._target)
          {
-            TooltipManager.updatePosition(ttCacheName,ttName,target.absoluteBounds,LocationEnum.POINT_BOTTOM,LocationEnum.POINT_TOP,0,true,true,target.position.cellId);
+            TooltipManager.updatePosition(ttCacheName,ttName,this._target.absoluteBounds,LocationEnum.POINT_BOTTOM,LocationEnum.POINT_TOP,0,true,true,target.position.cellId);
          }
          if(this._intValue < 0)
          {

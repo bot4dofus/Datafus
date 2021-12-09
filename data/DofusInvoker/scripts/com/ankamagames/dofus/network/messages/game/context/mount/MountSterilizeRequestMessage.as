@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountSterilizeRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 905;
+      public static const protocolId:uint = 590;
        
       
       public function MountSterilizeRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 905;
+         return 590;
       }
       
       public function initMountSterilizeRequestMessage() : MountSterilizeRequestMessage

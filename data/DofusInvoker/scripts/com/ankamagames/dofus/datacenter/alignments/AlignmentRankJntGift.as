@@ -21,8 +21,6 @@ package com.ankamagames.dofus.datacenter.alignments
       
       public var gifts:Vector.<int>;
       
-      public var parameters:Vector.<int>;
-      
       public var levels:Vector.<int>;
       
       public function AlignmentRankJntGift()

@@ -375,11 +375,37 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const SOCIAL_TAB_GUILD_ID:uint = 1;
       
+      public static const SOCIAL_TAB_GUILD_DIRECTORY_ID:uint = 4;
+      
       public static const SOCIAL_TAB_ALLIANCE_ID:uint = 2;
+      
+      public static const SOCIAL_TAB_ALLIANCE_DIRECTORY_ID:uint = 5;
       
       public static const SOCIAL_TAB_SPOUSE_ID:uint = 3;
       
-      public static const SOCIAL_TAB_DIRECTORY_ID:uint = 4;
+      public static const GUILD_TAB_MEMBERS_ID:uint = 0;
+      
+      public static const GUILD_TAB_PERSONALIZATION_ID:uint = 1;
+      
+      public static const GUILD_TAB_COLLECTOR_ID:uint = 2;
+      
+      public static const GUILD_TAB_PADDOCK_ID:uint = 3;
+      
+      public static const GUILD_TAB_HOUSES_ID:uint = 4;
+      
+      public static const GUILD_TAB_BULLETIN_ID:uint = 5;
+      
+      public static const GUILD_TAB_DIRECTORY_ID:uint = 6;
+      
+      public static const ALLIANCE_TAB_MEMBERS_ID:uint = 0;
+      
+      public static const ALLIANCE_TAB_AREAS_ID:uint = 1;
+      
+      public static const ALLIANCE_TAB_FIGHTS_ID:uint = 2;
+      
+      public static const ALLIANCE_TAB_BULLETIN_ID:uint = 3;
+      
+      public static const ALLIANCE_TAB_DIRECTORY_ID:uint = 4;
       
       public static const BREACH_REWARD_ADD_BOSS:int = 6;
       

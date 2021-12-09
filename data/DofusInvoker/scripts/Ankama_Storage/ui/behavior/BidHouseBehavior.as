@@ -10,6 +10,7 @@ package Ankama_Storage.ui.behavior
    import com.ankamagames.berilia.types.graphic.UiRootContainer;
    import com.ankamagames.dofus.logic.game.common.actions.humanVendor.LeaveShopStockAction;
    import com.ankamagames.dofus.logic.game.common.actions.mount.MountInfoRequestAction;
+   import com.ankamagames.dofus.types.enums.AuctionHouseTypeEnum;
    import com.ankamagames.dofus.types.enums.ItemCategoryEnum;
    
    public class BidHouseBehavior implements IStorageBehavior
@@ -91,19 +92,22 @@ package Ankama_Storage.ui.behavior
          {
             switch(uiroot.currentType)
             {
-               case 1:
-               case 6:
+               case AuctionHouseTypeEnum.EQUIPMENT_CATEGORY:
+               case AuctionHouseTypeEnum.CREATURE_CATEGORY:
                   this._storage.categoryFilter = ItemCategoryEnum.EQUIPMENT_CATEGORY;
                   break;
-               case 2:
+               case AuctionHouseTypeEnum.CONSUMABLE_CATEGORY:
                   this._storage.categoryFilter = ItemCategoryEnum.CONSUMABLES_CATEGORY;
                   break;
-               case 3:
-               case 4:
+               case AuctionHouseTypeEnum.RESOURCE_CATEGORY:
+               case AuctionHouseTypeEnum.RUNE_CATEGORY:
                   this._storage.categoryFilter = ItemCategoryEnum.RESOURCES_CATEGORY;
                   break;
-               case 5:
+               case AuctionHouseTypeEnum.SOUL_CATEGORY:
                   this._storage.categoryFilter = ItemCategoryEnum.ALL_CATEGORY;
+                  break;
+               case AuctionHouseTypeEnum.COSMETIC_CATEGORY:
+                  this._storage.categoryFilter = ItemCategoryEnum.COSMETICS_CATEGORY;
             }
          }
          this._storage.setDropAllowed(false,"behavior");

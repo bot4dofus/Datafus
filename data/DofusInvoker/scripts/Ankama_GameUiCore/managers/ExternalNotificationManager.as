@@ -171,7 +171,7 @@ package Ankama_GameUiCore.managers
             this.onPlayerFight("Jenexistepas");
             this.onChatServer(0,15,0,"","Jenexistepas","test de notif ?");
             this.onTextInformation("test de notif ?",ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO);
-            this.onGuildInvitation("Fausse Guilde",0,"Jenexistepas");
+            this.onGuildInvitation(42,"Fausse Guilde",0,"Jenexistepas");
             this.onQuestValidated(469);
          }
       }
@@ -522,7 +522,7 @@ package Ankama_GameUiCore.managers
          }
       }
       
-      private function onGuildInvitation(pGuildName:String, pRecruitedId:Number, pRecruterName:String) : void
+      private function onGuildInvitation(pGuildId:uint, pGuildName:String, pRecruitedId:Number, pRecruterName:String) : void
       {
          if(this.extNotifApi.canAddExternalNotification(ExternalNotificationTypeEnum.GUILD_INVITATION))
          {

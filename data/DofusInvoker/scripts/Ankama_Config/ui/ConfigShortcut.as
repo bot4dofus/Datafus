@@ -300,9 +300,6 @@ package Ankama_Config.ui
       
       private function onChangeShortcut(pBind:Bind) : void
       {
-         if(this._currentShortcut == null)
-         {
-         }
          if(pBind != null)
          {
             this.bindsApi.setShortcutBind(this._currentShortcut.name,pBind.key,pBind.alt,pBind.ctrl,pBind.shift);

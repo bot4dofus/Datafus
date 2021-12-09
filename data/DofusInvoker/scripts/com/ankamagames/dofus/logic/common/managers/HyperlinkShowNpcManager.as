@@ -34,7 +34,7 @@ package com.ankamagames.dofus.logic.common.managers
          var abstractEntitiesFrame:RoleplayEntitiesFrame = Kernel.getWorker().getFrame(RoleplayEntitiesFrame) as RoleplayEntitiesFrame;
          if(abstractEntitiesFrame)
          {
-            list = abstractEntitiesFrame.getEntitiesDictionnary();
+            list = abstractEntitiesFrame.entities;
             for each(entitieInfo in list)
             {
                if(entitieInfo is GameRolePlayNpcInformations && (entitieInfo.npcId == npcId || npcId == -1))

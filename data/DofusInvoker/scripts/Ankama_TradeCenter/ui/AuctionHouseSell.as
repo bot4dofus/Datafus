@@ -31,6 +31,7 @@ package Ankama_TradeCenter.ui
    import com.ankamagames.dofus.misc.lists.InventoryHookList;
    import com.ankamagames.dofus.modules.utils.ItemTooltipSettings;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
+   import com.ankamagames.dofus.types.enums.AuctionHouseTypeEnum;
    import com.ankamagames.dofus.uiApi.SoundApi;
    import com.ankamagames.dofus.uiApi.TooltipApi;
    import com.ankamagames.jerakine.benchmark.BenchmarkTimer;
@@ -47,18 +48,6 @@ package Ankama_TradeCenter.ui
       private static const RELATION_MINI_FOR_WARNING_POPUP:int = 5;
       
       private static const SORT_CACHE_NAME_PREFIX:String = "HV_SELL_SORTING_";
-      
-      private static const EQUIPMENT_CATEGORY:uint = 1;
-      
-      private static const CONSUMABLE_CATEGORY:uint = 2;
-      
-      private static const RESOURCE_CATEGORY:uint = 3;
-      
-      private static const RUNE_CATEGORY:uint = 4;
-      
-      private static const SOUL_CATEGORY:uint = 5;
-      
-      private static const CREATURE_CATEGORY:uint = 6;
        
       
       [Api(name="TooltipApi")]
@@ -133,8 +122,6 @@ package Ankama_TradeCenter.ui
       public var gd_itemList:Grid;
       
       public var gd_otherItemList:Grid;
-      
-      public var btn_beta:ButtonContainer;
       
       public var ctr_currentItemDetails:GraphicContainer;
       
@@ -276,27 +263,31 @@ package Ankama_TradeCenter.ui
          }
          if(this.sellerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_COLLAR) != -1)
          {
-            this._currentType = EQUIPMENT_CATEGORY;
+            this._currentType = AuctionHouseTypeEnum.EQUIPMENT_CATEGORY;
          }
          else if(this.sellerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_DRINK) != -1)
          {
-            this._currentType = CONSUMABLE_CATEGORY;
+            this._currentType = AuctionHouseTypeEnum.CONSUMABLE_CATEGORY;
          }
          else if(this.sellerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_WING) != -1)
          {
-            this._currentType = RESOURCE_CATEGORY;
+            this._currentType = AuctionHouseTypeEnum.RESOURCE_CATEGORY;
          }
          else if(this.sellerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_SMITHMAGIC_RUNE) != -1)
          {
-            this._currentType = RUNE_CATEGORY;
+            this._currentType = AuctionHouseTypeEnum.RUNE_CATEGORY;
          }
          else if(this.sellerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_EMPTY_SOULSTONE) != -1)
          {
-            this._currentType = SOUL_CATEGORY;
+            this._currentType = AuctionHouseTypeEnum.SOUL_CATEGORY;
          }
          else if(this.sellerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_DRAGOTURKEY_CERTIFICATE) != -1)
          {
-            this._currentType = CREATURE_CATEGORY;
+            this._currentType = AuctionHouseTypeEnum.CREATURE_CATEGORY;
+         }
+         else if(this.sellerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_LIVING_OBJECT) != -1)
+         {
+            this._currentType = AuctionHouseTypeEnum.COSMETIC_CATEGORY;
          }
          this.cb_stack.dataProvider = this._stackChoices;
          this.cb_stack.value = this._stackChoices[0];
@@ -1445,7 +1436,7 @@ package Ankama_TradeCenter.ui
          if(_currentObject)
          {
             itemType = dataApi.getItemType(_currentObject.typeId);
-            if(!this.itemHasVariableEffect(_currentObject) || this._currentType == CONSUMABLE_CATEGORY || this._currentType == RESOURCE_CATEGORY || this._currentType == RUNE_CATEGORY)
+            if(!this.itemHasVariableEffect(_currentObject) || this._currentType == AuctionHouseTypeEnum.CONSUMABLE_CATEGORY || this._currentType == AuctionHouseTypeEnum.RESOURCE_CATEGORY || this._currentType == AuctionHouseTypeEnum.RUNE_CATEGORY)
             {
                dataProvider = [];
                for(key in this._currentSameItemsInAuctionHouse)

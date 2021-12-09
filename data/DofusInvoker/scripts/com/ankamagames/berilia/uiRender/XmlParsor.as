@@ -4,6 +4,7 @@ package com.ankamagames.berilia.uiRender
    import com.ankamagames.berilia.components.ComboBox;
    import com.ankamagames.berilia.components.Grid;
    import com.ankamagames.berilia.components.InputComboBox;
+   import com.ankamagames.berilia.components.MultipleComboBox;
    import com.ankamagames.berilia.components.Tree;
    import com.ankamagames.berilia.enums.EventEnums;
    import com.ankamagames.berilia.enums.LocationTypeEnum;
@@ -410,6 +411,10 @@ package com.ankamagames.berilia.uiRender
                   be = new GridElement();
                   be.className = getQualifiedClassName(ComboBox);
                   break;
+               case XmlTagsEnum.TAG_MULTIPLECOMBOBOX:
+                  be = new GridElement();
+                  be.className = getQualifiedClassName(MultipleComboBox);
+                  break;
                case XmlTagsEnum.TAG_INPUTCOMBOBOX:
                   be = new GridElement();
                   be.className = getQualifiedClassName(InputComboBox);
@@ -484,6 +489,7 @@ package com.ankamagames.berilia.uiRender
                case XmlTagsEnum.TAG_CONTAINER:
                case XmlTagsEnum.TAG_GRID:
                case XmlTagsEnum.TAG_COMBOBOX:
+               case XmlTagsEnum.TAG_MULTIPLECOMBOBOX:
                case XmlTagsEnum.TAG_INPUTCOMBOBOX:
                case XmlTagsEnum.TAG_TREE:
                   switch(parentNode.nodeName)
@@ -493,6 +499,7 @@ package com.ankamagames.berilia.uiRender
                      case XmlTagsEnum.TAG_STATECONTAINER:
                      case XmlTagsEnum.TAG_SCROLLCONTAINER:
                      case XmlTagsEnum.TAG_COMBOBOX:
+                     case XmlTagsEnum.TAG_MULTIPLECOMBOBOX:
                      case XmlTagsEnum.TAG_INPUTCOMBOBOX:
                      case XmlTagsEnum.TAG_TREE:
                      case XmlTagsEnum.TAG_GRID:
@@ -515,6 +522,7 @@ package com.ankamagames.berilia.uiRender
                      case XmlTagsEnum.TAG_SCROLLCONTAINER:
                      case XmlTagsEnum.TAG_GRID:
                      case XmlTagsEnum.TAG_COMBOBOX:
+                     case XmlTagsEnum.TAG_MULTIPLECOMBOBOX:
                      case XmlTagsEnum.TAG_INPUTCOMBOBOX:
                      case XmlTagsEnum.TAG_TREE:
                         if(xnCurrentNode.attributes["ignore"] != "true")
@@ -547,6 +555,9 @@ package com.ankamagames.berilia.uiRender
                      case XmlTagsEnum.TAG_COMBOBOX:
                         c = new ComboBox();
                         break;
+                     case XmlTagsEnum.TAG_MULTIPLECOMBOBOX:
+                        c = new MultipleComboBox();
+                        break;
                      case XmlTagsEnum.TAG_INPUTCOMBOBOX:
                         c = new InputComboBox();
                         break;
@@ -571,6 +582,7 @@ package com.ankamagames.berilia.uiRender
                         case XmlTagsEnum.TAG_SCROLLCONTAINER:
                         case XmlTagsEnum.TAG_GRID:
                         case XmlTagsEnum.TAG_COMBOBOX:
+                        case XmlTagsEnum.TAG_MULTIPLECOMBOBOX:
                         case XmlTagsEnum.TAG_INPUTCOMBOBOX:
                         case XmlTagsEnum.TAG_TREE:
                            if(ApplicationDomain.currentDomain.hasDefinition("com.ankamagames.berilia.components." + xnCurrentNode.nodeName))

@@ -23,6 +23,7 @@ package Ankama_Connection.ui
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
    import com.ankamagames.dofus.network.enums.GameServerTypeEnum;
    import com.ankamagames.dofus.network.types.connection.GameServerInformations;
+   import com.ankamagames.dofus.uiApi.ConfigApi;
    import com.ankamagames.dofus.uiApi.ConnectionApi;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.SecurityApi;
@@ -54,6 +55,9 @@ package Ankama_Connection.ui
       
       [Api(name="UiApi")]
       public var uiApi:UiApi;
+      
+      [Api(name="ConfigApi")]
+      public var configApi:ConfigApi;
       
       [Api(name="SoundApi")]
       public var soundApi:SoundApi;
@@ -98,6 +102,10 @@ package Ankama_Connection.ui
       private var _yCtrWindow:int;
       
       private var _yCtrGrid:int;
+      
+      private var _serverHeroicActivated:Boolean = false;
+      
+      private var _bonusXpCreation:int = 0;
       
       public var ctr_window:GraphicContainer;
       
@@ -152,6 +160,7 @@ package Ankama_Connection.ui
       
       public function main(charaList:Vector.<BasicCharacterWrapper>) : void
       {
+         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled("server.heroic");
          this.soundApi.switchIntroMusic(false);
          this.btn_create.soundId = SoundEnum.OK_BUTTON;
          this.btn_play.isMute = true;
@@ -301,7 +310,7 @@ package Ankama_Connection.ui
             }
             else
             {
-               if(server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_HARDCORE || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
+               if(this._serverHeroicActivated || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
                {
                   if(this._selectedChar.deathState != DEATH_STATE_ALIVE)
                   {
@@ -335,8 +344,14 @@ package Ankama_Connection.ui
                this.uiApi.addComponentHook(componentsRef.btn_gridCharacter,ComponentHookList.ON_ROLL_OVER);
                this.uiApi.addComponentHook(componentsRef.btn_gridCharacter,ComponentHookList.ON_ROLL_OUT);
             }
+            if(!this._interactiveComponentsList[componentsRef.tx_bonusXp.name])
+            {
+               this.uiApi.addComponentHook(componentsRef.tx_bonusXp,ComponentHookList.ON_ROLL_OVER);
+               this.uiApi.addComponentHook(componentsRef.tx_bonusXp,ComponentHookList.ON_ROLL_OUT);
+            }
             this._interactiveComponentsList[componentsRef.btn_cross.name] = data;
             this._interactiveComponentsList[componentsRef.btn_gridCharacter.name] = data;
+            this._interactiveComponentsList[componentsRef.tx_bonusXp.name] = data;
             if(data.bonusXp <= 1 || data.bonusXp >= 7)
             {
                componentsRef.tx_bonusXp.visible = false;
@@ -459,7 +474,6 @@ package Ankama_Connection.ui
       public function onCharactersListUpdated(charactersList:Vector.<BasicCharacterWrapper>) : void
       {
          var cha:BasicCharacterWrapper = null;
-         var bonus:int = 0;
          if(this._askedToDeleteCharacterId > 0)
          {
             this.soundApi.playSound(SoundTypeEnum.DELETE_CHARACTER);
@@ -468,33 +482,32 @@ package Ankama_Connection.ui
             this._lockPopup = null;
          }
          var server:Server = this.sysApi.getCurrentServer();
-         var bonusXpCreation:int = 0;
+         this._bonusXpCreation = 0;
          this._aCharactersList = [];
          for each(cha in charactersList)
          {
             this._aCharactersList.push(cha);
-            if(server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_HARDCORE && server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_EPIC)
+            if(!this._serverHeroicActivated && server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_EPIC)
             {
-               if(cha.level > 1)
+               if(cha.level > 1 && this._bonusXpCreation < 3)
                {
-                  bonusXpCreation++;
+                  ++this._bonusXpCreation;
                }
             }
          }
-         if(server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_HARDCORE || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
+         if(this._serverHeroicActivated || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
          {
-            bonusXpCreation = 2;
+            this._bonusXpCreation = 2;
          }
-         if(server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_CLASSICAL || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_HARDCORE || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
+         if(server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_CLASSICAL || this._serverHeroicActivated || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
          {
-            bonus = bonusXpCreation > 3 ? 3 : int(bonusXpCreation);
-            if(bonus == 0)
+            if(this._bonusXpCreation == 0)
             {
                this.tx_bonusXpCreation.visible = false;
             }
             else
             {
-               this.tx_bonusXpCreation.uri = this.uiApi.createUri(this.uiApi.me().getConstant("texture_onboarding") + "xpBonusRectangle" + bonus + ".png");
+               this.tx_bonusXpCreation.uri = this.uiApi.createUri(this.uiApi.me().getConstant("texture_onboarding") + "xpBonusRectangle" + this._bonusXpCreation + ".png");
                this.tx_bonusXpCreation.visible = true;
             }
          }
@@ -587,7 +600,7 @@ package Ankama_Connection.ui
                }
                break;
             case this.tx_bonusXp:
-               if(server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_HARDCORE || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
+               if(this._serverHeroicActivated || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
                {
                   tooltipText = this.uiApi.getText("ui.common.experiencePoint") + " x " + this._selectedChar.bonusXp + "\n\n";
                   if(this._selectedChar.bonusXp == 6)
@@ -601,17 +614,17 @@ package Ankama_Connection.ui
                }
                else
                {
-                  tooltipText = this.uiApi.getText("ui.information.xpFamilyBonus");
+                  tooltipText = this.uiApi.getText("ui.common.experiencePoint") + " x " + this._selectedChar.bonusXp + "\n\n" + this.uiApi.getText("ui.information.xpFamilyBonus");
                }
                break;
             case this.tx_bonusXpCreation:
-               if(server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_HARDCORE || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
+               if(this._serverHeroicActivated || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
                {
                   tooltipText = this.uiApi.getText("ui.common.experiencePoint") + " x 3\n\n" + this.uiApi.getText("ui.information.xpHardcoreEpicBonus");
                }
                else
                {
-                  tooltipText = this.uiApi.getText("ui.information.xpFamilyBonus");
+                  tooltipText = this.uiApi.getText("ui.common.experiencePoint") + " x " + (this._bonusXpCreation + 1) + "\n\n" + this.uiApi.getText("ui.information.xpFamilyBonus");
                }
                break;
             default:
@@ -630,6 +643,10 @@ package Ankama_Connection.ui
                else if(target.name.indexOf("tx_level") != -1)
                {
                   tooltipText = this.uiApi.getText("ui.tooltip.OmegaLevel");
+               }
+               else if(target.name.indexOf("tx_bonusXp") != -1)
+               {
+                  tooltipText = this.uiApi.getText("ui.common.experiencePoint") + " x " + this._interactiveComponentsList[target.name].bonusXp + "\n\n" + this.uiApi.getText("ui.information.xpFamilyBonus");
                }
          }
          if(tooltipText)

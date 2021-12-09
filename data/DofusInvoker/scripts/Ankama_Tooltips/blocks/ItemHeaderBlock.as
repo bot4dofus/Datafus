@@ -65,8 +65,9 @@ package Ankama_Tooltips.blocks
       
       public function onAllChunkLoaded() : void
       {
+         var chunkParams:Object = null;
          var effect:Object = null;
-         var chunkParams:Object = this.getItemHeaderChunkParams(this._item);
+         chunkParams = this.getItemHeaderChunkParams(this._item);
          _content = "";
          if(this._showTitleAndIcon)
          {

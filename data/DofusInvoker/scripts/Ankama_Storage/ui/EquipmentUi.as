@@ -210,6 +210,7 @@ package Ankama_Storage.ui
             case btnEquipable:
             case btnConsumables:
             case btnRessources:
+            case btnCosmetics:
             case btnQuest:
             case btnMinouki:
                ctr_storageContent.visible = true;

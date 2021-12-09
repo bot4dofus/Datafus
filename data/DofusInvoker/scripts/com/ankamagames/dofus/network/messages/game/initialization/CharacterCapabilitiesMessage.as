@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.initialization
    public class CharacterCapabilitiesMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7248;
+      public static const protocolId:uint = 344;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.initialization
       
       override public function getMessageId() : uint
       {
-         return 7248;
+         return 344;
       }
       
       public function initCharacterCapabilitiesMessage(guildEmblemSymbolCategories:uint = 0) : CharacterCapabilitiesMessage

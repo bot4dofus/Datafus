@@ -2,6 +2,7 @@ package Ankama_Social.ui
 {
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.components.Label;
+   import com.ankamagames.berilia.components.Texture;
    import com.ankamagames.berilia.types.LocationEnum;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
@@ -23,11 +24,16 @@ package Ankama_Social.ui
    import com.ankamagames.dofus.uiApi.SocialApi;
    import com.ankamagames.dofus.uiApi.SoundApi;
    import com.ankamagames.dofus.uiApi.SystemApi;
+   import com.ankamagames.jerakine.managers.StoreDataManager;
+   import com.ankamagames.jerakine.types.DataStoreType;
+   import com.ankamagames.jerakine.types.enums.DataStoreEnum;
    
    public class SocialBase
    {
       
       private static var _shortcutColor:String;
+      
+      private static const DATA_GUILD_WARNING:String = "SocialBase_GuildWarning";
        
       
       [Api(name="BindsApi")]
@@ -64,6 +70,8 @@ package Ankama_Social.ui
       
       private var _hasSpouse:Boolean;
       
+      private var _ds:DataStoreType;
+      
       public var uiCtr:GraphicContainer;
       
       public var btn_close:ButtonContainer;
@@ -76,18 +84,17 @@ package Ankama_Social.ui
       
       public var btn_tabAlliance:ButtonContainer;
       
-      public var btn_tabDirectory:ButtonContainer;
-      
       public var lbl_btn_tabFriend:Label;
       
       public var lbl_btn_tabGuild:Label;
       
       public var lbl_btn_tabAlliance:Label;
       
-      public var lbl_btn_tabDirectory:Label;
+      public var tx_tabGuildWarning:Texture;
       
       public function SocialBase()
       {
+         this._ds = new DataStoreType("SocialBase",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_CHARACTER);
          super();
       }
       
@@ -102,7 +109,6 @@ package Ankama_Social.ui
          this.btn_tabFriend.soundId = SoundEnum.TAB;
          this.btn_tabGuild.soundId = SoundEnum.TAB;
          this.btn_tabAlliance.soundId = SoundEnum.TAB;
-         this.btn_tabDirectory.soundId = SoundEnum.TAB;
          this.sysApi.addHook(SocialHookList.SpouseUpdated,this.onSpouseUpdated);
          this.sysApi.addHook(SocialHookList.GuildMembershipUpdated,this.onGuildMembershipUpdated);
          this.sysApi.addHook(SocialHookList.AllianceMembershipUpdated,this.onAllianceMembershipUpdated);
@@ -115,9 +121,6 @@ package Ankama_Social.ui
          this.uiApi.addComponentHook(this.btn_tabAlliance,"onRelease");
          this.uiApi.addComponentHook(this.btn_tabAlliance,"onRollOver");
          this.uiApi.addComponentHook(this.btn_tabAlliance,"onRollOut");
-         this.uiApi.addComponentHook(this.btn_tabDirectory,"onRelease");
-         this.uiApi.addComponentHook(this.btn_tabDirectory,"onRollOver");
-         this.uiApi.addComponentHook(this.btn_tabDirectory,"onRollOut");
          this.uiApi.addComponentHook(this.btn_close,"onRelease");
          this.uiApi.addComponentHook(this.btn_help,"onRelease");
          this.uiApi.addShortcutHook("closeUi",this.onShortcut);
@@ -166,6 +169,7 @@ package Ankama_Social.ui
          {
             this.openTab(-1);
          }
+         this.tx_tabGuildWarning.visible = this._currentTabUi != DataEnum.SOCIAL_TAB_GUILD_ID && StoreDataManager.getInstance().getSetData(this._ds,DATA_GUILD_WARNING,false);
          if(!_shortcutColor)
          {
             _shortcutColor = this.sysApi.getConfigEntry("colors.shortcut");
@@ -189,7 +193,6 @@ package Ankama_Social.ui
          {
             this.lbl_btn_tabAlliance.text += " <font color=\'" + _shortcutColor + "\'>(" + shortcut + ")</font>";
          }
-         this.lbl_btn_tabDirectory.text = this.uiApi.getText("ui.common.directory");
       }
       
       public function unload() : void
@@ -221,21 +224,10 @@ package Ankama_Social.ui
       
       private function displayTabs() : void
       {
-         if(this.btn_tabGuild.softDisabled == this._hasGuild)
+         this.btn_tabGuild.softDisabled = !this.socialApi.hasGuild() && this.playerApi.isInKoli();
+         if(this._currentTabUi == DataEnum.SOCIAL_TAB_GUILD_DIRECTORY_ID && this.btn_tabGuild.softDisabled)
          {
-            this.btn_tabGuild.softDisabled = !this._hasGuild;
-         }
-         if(this.btn_tabAlliance.softDisabled == this._hasAlliance)
-         {
-            this.btn_tabAlliance.softDisabled = !this._hasAlliance;
-         }
-         if(this._currentTabUi == 1 && this.btn_tabGuild.softDisabled)
-         {
-            this.openTab(0);
-         }
-         if(this._currentTabUi == 2 && this.btn_tabAlliance.softDisabled)
-         {
-            this.openTab(0);
+            this.openTab(DataEnum.SOCIAL_TAB_FRIENDS_ID);
          }
       }
       
@@ -253,18 +245,42 @@ package Ankama_Social.ui
          if(tab == -1)
          {
             lastTab = this.sysApi.getData("lastSocialTab");
-            if(lastTab && this.getButtonByTab(lastTab) && !this.getButtonByTab(lastTab).disabled)
+            if(lastTab && this.getButtonByTab(lastTab))
             {
-               this._currentTabUi = lastTab;
+               if(lastTab == DataEnum.SOCIAL_TAB_GUILD_ID || lastTab == DataEnum.SOCIAL_TAB_GUILD_DIRECTORY_ID)
+               {
+                  this.tx_tabGuildWarning.visible = false;
+                  StoreDataManager.getInstance().setData(this._ds,DATA_GUILD_WARNING,false);
+                  if(lastTab && lastTab == DataEnum.SOCIAL_TAB_GUILD_DIRECTORY_ID && this.playerApi.isInKoli())
+                  {
+                     this._currentTabUi = DataEnum.SOCIAL_TAB_FRIENDS_ID;
+                  }
+                  else
+                  {
+                     this._currentTabUi = !!this._hasGuild ? int(DataEnum.SOCIAL_TAB_GUILD_ID) : int(DataEnum.SOCIAL_TAB_GUILD_DIRECTORY_ID);
+                  }
+               }
+               else if(lastTab == DataEnum.SOCIAL_TAB_ALLIANCE_ID || lastTab == DataEnum.SOCIAL_TAB_ALLIANCE_DIRECTORY_ID)
+               {
+                  this._currentTabUi = !!this.socialApi.hasAlliance() ? int(DataEnum.SOCIAL_TAB_ALLIANCE_ID) : int(DataEnum.SOCIAL_TAB_ALLIANCE_DIRECTORY_ID);
+               }
+               else
+               {
+                  this._currentTabUi = lastTab;
+               }
             }
             else
             {
                this._currentTabUi = DataEnum.SOCIAL_TAB_FRIENDS_ID;
             }
-            if(lastTab && (lastTab == DataEnum.SOCIAL_TAB_GUILD_ID && !this.socialApi.hasGuild() || lastTab == DataEnum.SOCIAL_TAB_ALLIANCE_ID && !this.socialApi.hasAlliance()))
-            {
-               this._currentTabUi = DataEnum.SOCIAL_TAB_FRIENDS_ID;
-            }
+         }
+         else if(tab == DataEnum.SOCIAL_TAB_GUILD_ID || tab == DataEnum.SOCIAL_TAB_GUILD_DIRECTORY_ID)
+         {
+            this._currentTabUi = !!this.socialApi.hasGuild() ? int(DataEnum.SOCIAL_TAB_GUILD_ID) : int(DataEnum.SOCIAL_TAB_GUILD_DIRECTORY_ID);
+         }
+         else if(tab == DataEnum.SOCIAL_TAB_ALLIANCE_ID || tab == DataEnum.SOCIAL_TAB_ALLIANCE_DIRECTORY_ID)
+         {
+            this._currentTabUi = !!this.socialApi.hasAlliance() ? int(DataEnum.SOCIAL_TAB_ALLIANCE_ID) : int(DataEnum.SOCIAL_TAB_ALLIANCE_DIRECTORY_ID);
          }
          else
          {
@@ -278,14 +294,14 @@ package Ankama_Social.ui
          }
          else if(this._currentTabUi == DataEnum.SOCIAL_TAB_ALLIANCE_ID)
          {
-            this.sysApi.sendAction(new AllianceInsiderInfoRequestAction([]));
+            if(this.socialApi.hasAlliance())
+            {
+               this.sysApi.sendAction(new AllianceInsiderInfoRequestAction([]));
+            }
          }
          else if(this._currentTabUi == DataEnum.SOCIAL_TAB_SPOUSE_ID)
          {
             this.sysApi.sendAction(new SpouseRequestAction([]));
-         }
-         else if(this._currentTabUi == DataEnum.SOCIAL_TAB_DIRECTORY_ID)
-         {
          }
          this.sysApi.setData("lastSocialTab",this._currentTabUi);
          this.uiCtr.getUi().restoreSnapshotAfterLoading = restoreSnapshot;
@@ -308,13 +324,12 @@ package Ankama_Social.ui
                returnButton = this.btn_tabFriend;
                break;
             case DataEnum.SOCIAL_TAB_GUILD_ID:
+            case DataEnum.SOCIAL_TAB_GUILD_DIRECTORY_ID:
                returnButton = this.btn_tabGuild;
                break;
             case DataEnum.SOCIAL_TAB_ALLIANCE_ID:
+            case DataEnum.SOCIAL_TAB_ALLIANCE_DIRECTORY_ID:
                returnButton = this.btn_tabAlliance;
-               break;
-            case DataEnum.SOCIAL_TAB_DIRECTORY_ID:
-               returnButton = this.btn_tabDirectory;
          }
          return returnButton;
       }
@@ -327,12 +342,14 @@ package Ankama_Social.ui
                return "friends";
             case DataEnum.SOCIAL_TAB_GUILD_ID:
                return "guild";
+            case DataEnum.SOCIAL_TAB_GUILD_DIRECTORY_ID:
+               return "guildDirectory";
             case DataEnum.SOCIAL_TAB_ALLIANCE_ID:
                return "alliance";
+            case DataEnum.SOCIAL_TAB_ALLIANCE_DIRECTORY_ID:
+               return "allianceDirectory";
             case DataEnum.SOCIAL_TAB_SPOUSE_ID:
                return "spouse";
-            case DataEnum.SOCIAL_TAB_DIRECTORY_ID:
-               return "directory";
             default:
                return "";
          }
@@ -346,19 +363,16 @@ package Ankama_Social.ui
       private function onGuildMembershipUpdated(hasGuild:Boolean) : void
       {
          this._hasGuild = hasGuild;
-         this.displayTabs();
       }
       
       private function onAllianceMembershipUpdated(hasAlliance:Boolean) : void
       {
          this._hasAlliance = hasAlliance;
-         this.displayTabs();
       }
       
       private function onSpouseUpdated() : void
       {
          this._hasSpouse = this.socialApi.hasSpouse();
-         this.displayTabs();
       }
       
       public function onRelease(target:GraphicContainer) : void
@@ -379,9 +393,6 @@ package Ankama_Social.ui
                break;
             case this.btn_tabAlliance:
                this.openTab(DataEnum.SOCIAL_TAB_ALLIANCE_ID);
-               break;
-            case this.btn_tabDirectory:
-               this.openTab(DataEnum.SOCIAL_TAB_DIRECTORY_ID);
          }
       }
       
@@ -400,13 +411,17 @@ package Ankama_Social.ui
                }
                return true;
             case "openSocialGuild":
-               if(this._currentTabUi == DataEnum.SOCIAL_TAB_GUILD_ID)
+               if(this._currentTabUi == DataEnum.SOCIAL_TAB_GUILD_ID || this._currentTabUi == DataEnum.SOCIAL_TAB_GUILD_DIRECTORY_ID)
                {
                   this.uiApi.unloadUi(this.uiApi.me().name);
                }
-               else
+               else if(this.socialApi.hasGuild())
                {
                   this.openTab(DataEnum.SOCIAL_TAB_GUILD_ID);
+               }
+               else
+               {
+                  this.openTab(DataEnum.SOCIAL_TAB_GUILD_DIRECTORY_ID);
                }
                return true;
             case "openSocialAlliance":
@@ -431,24 +446,23 @@ package Ankama_Social.ui
       {
          var point:uint = LocationEnum.POINT_LEFT;
          var relPoint:uint = LocationEnum.POINT_RIGHT;
-         var description:String = "";
          var tooltipTxt:String = "";
          switch(target)
          {
             case this.btn_tabGuild:
-               description = this.uiApi.getText("ui.banner.lockBtn.guild");
+               if(this.playerApi.isInKoli())
+               {
+                  tooltipTxt = this.uiApi.getText("ui.guild.lockDirectory");
+               }
+               else
+               {
+                  tooltipTxt = this.uiApi.getText("ui.banner.lockBtn.guild");
+               }
                break;
             case this.btn_tabAlliance:
-               description = this.uiApi.getText("ui.banner.lockBtn.alliance");
+               tooltipTxt = this.uiApi.getText("ui.banner.lockBtn.alliance");
          }
-         if(target.softDisabled)
-         {
-            if(description)
-            {
-               tooltipTxt = description;
-            }
-         }
-         if(tooltipTxt && tooltipTxt != "")
+         if(target.softDisabled && tooltipTxt && tooltipTxt != "")
          {
             this.uiApi.showTooltip(this.uiApi.textTooltipInfo(tooltipTxt),target,false,"standard",point,relPoint,3,null,null,null,"TextInfo");
          }

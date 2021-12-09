@@ -100,9 +100,11 @@ package Ankama_TradeCenter.ui
       
       public var btnRessources:ButtonContainer;
       
-      public var btnAll:ButtonContainer;
+      public var btnCosmetics:ButtonContainer;
       
       public var btnMinouki:ButtonContainer;
+      
+      public var btnAll:ButtonContainer;
       
       public var cb_category:ComboBox;
       
@@ -120,12 +122,6 @@ package Ankama_TradeCenter.ui
       
       public var ctr_bottomInfos:GraphicContainer;
       
-      public var btn_beta:ButtonContainer;
-      
-      public var ctr_btnBeta:GraphicContainer;
-      
-      public var tx_warningBetaMode:Texture;
-      
       protected var _searchCriteria:String;
       
       protected var _searchTimer:BenchmarkTimer;
@@ -135,8 +131,6 @@ package Ankama_TradeCenter.ui
       protected var _typeSelectedByCatBtnName:Dictionary;
       
       protected var _objectsInStock:Array;
-      
-      protected var _categoryIdByItemUID:Dictionary;
       
       protected var _currentCategoryBtn:Object;
       
@@ -152,7 +146,6 @@ package Ankama_TradeCenter.ui
       {
          this._categoriesIdByBtnName = new Dictionary();
          this._typeSelectedByCatBtnName = new Dictionary();
-         this._categoryIdByItemUID = new Dictionary();
          this._componentsList = new Dictionary(true);
          super();
       }
@@ -163,6 +156,7 @@ package Ankama_TradeCenter.ui
          this.btnEquipable.soundId = SoundEnum.TAB;
          this.btnConsumables.soundId = SoundEnum.TAB;
          this.btnRessources.soundId = SoundEnum.TAB;
+         this.btnCosmetics.soundId = SoundEnum.TAB;
          this.btnAll.soundId = SoundEnum.TAB;
          this.btnMinouki.soundId = SoundEnum.TAB;
          this.sysApi.addHook(BeriliaHookList.KeyUp,this.onKeyUp);
@@ -176,17 +170,16 @@ package Ankama_TradeCenter.ui
          this.uiApi.addComponentHook(this.btnConsumables,ComponentHookList.ON_ROLL_OUT);
          this.uiApi.addComponentHook(this.btnRessources,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.btnRessources,ComponentHookList.ON_ROLL_OUT);
+         this.uiApi.addComponentHook(this.btnCosmetics,ComponentHookList.ON_ROLL_OVER);
+         this.uiApi.addComponentHook(this.btnCosmetics,ComponentHookList.ON_ROLL_OUT);
          this.uiApi.addComponentHook(this.inp_search,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.cb_category,ComponentHookList.ON_SELECT_ITEM);
          this.uiApi.addComponentHook(this.btn_help,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btnMinouki,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.btnMinouki,ComponentHookList.ON_ROLL_OUT);
-         var showWarningBetaMode:Boolean = this.sysApi.getData("BetaModeAuctionHouseAlreadyDisplayed",DataStoreEnum.BIND_ACCOUNT);
-         this.tx_warningBetaMode.visible = !showWarningBetaMode;
          this.ctr_center.visible = false;
          this.ctr_bottomInfos.visible = false;
          this.btn_closeSearch.visible = false;
-         this.ctr_btnBeta.visible = false;
          this.gd_shop.autoSelectMode = 0;
          this._currentCategoryBtn = this.btnAll;
          this.btnAll.selected = true;
@@ -205,6 +198,7 @@ package Ankama_TradeCenter.ui
          this._categoriesIdByBtnName[this.btnEquipable.name] = ItemCategoryEnum.EQUIPMENT_CATEGORY;
          this._categoriesIdByBtnName[this.btnConsumables.name] = ItemCategoryEnum.CONSUMABLES_CATEGORY;
          this._categoriesIdByBtnName[this.btnRessources.name] = ItemCategoryEnum.RESOURCES_CATEGORY;
+         this._categoriesIdByBtnName[this.btnCosmetics.name] = ItemCategoryEnum.COSMETICS_CATEGORY;
          this._categoriesIdByBtnName[this.btnAll.name] = ItemCategoryEnum.ALL_CATEGORY;
          this._categoriesIdByBtnName[this.btnMinouki.name] = ItemCategoryEnum.ECAFLIP_CARD_CATEGORY;
          this.minoukiVisible = this.dataApi.getCurrentTemporisSeasonNumber() == 5;
@@ -234,6 +228,7 @@ package Ankama_TradeCenter.ui
             this._objectsInStock.sort(this.shopStockSort);
             this.updateStockInventory();
          }
+         this.replaceCategoryButtons();
       }
       
       public function unload() : void
@@ -498,6 +493,7 @@ package Ankama_TradeCenter.ui
          {
             buttons.push(this.btnMinouki);
          }
+         buttons.push(this.btnCosmetics);
          var currentTotalWidth:int = buttons.length * this.btnAll.width + (buttons.length - 1);
          var allButtonsTotalWidth:int = 5 * this.btnAll.width + 5;
          var offsetToCenterButtons:int = int((allButtonsTotalWidth - currentTotalWidth) / 2);
@@ -519,6 +515,7 @@ package Ankama_TradeCenter.ui
             case this.btnEquipable:
             case this.btnConsumables:
             case this.btnRessources:
+            case this.btnCosmetics:
             case this.btnMinouki:
             case this.btnAll:
                this._currentCategoryBtn = target;
@@ -581,6 +578,9 @@ package Ankama_TradeCenter.ui
                break;
             case this.btnRessources:
                info = this.uiApi.getText("ui.common.ressources");
+               break;
+            case this.btnCosmetics:
+               info = this.uiApi.getText("ui.common.cosmetic");
                break;
             case this.btnMinouki:
                info = this.uiApi.getText("ui.temporis.ecaflipusCards");

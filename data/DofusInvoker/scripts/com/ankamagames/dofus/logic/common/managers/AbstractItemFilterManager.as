@@ -44,6 +44,8 @@ package com.ankamagames.dofus.logic.common.managers
       
       protected const CREATURE_CATEGORY:String = "creature";
       
+      protected const COSMETIC_CATEGORY:String = "cosmetic";
+      
       protected const SEARCHBAR_CAT_ID:uint = 0;
       
       protected const ITEMTYPE_CAT_ID:uint = 1;
@@ -53,6 +55,8 @@ package com.ankamagames.dofus.logic.common.managers
       protected const FIRST_SUBFILTER_CAT_ID:uint = 3;
       
       protected const SECOND_SUBFILTER_CAT_ID:uint = 4;
+      
+      protected const THIRD_SUBFILTER_CAT_ID:uint = 5;
       
       protected const ITEM_COMPONENT_CAT_ID:uint = 0;
       
@@ -693,7 +697,7 @@ package com.ankamagames.dofus.logic.common.managers
                   myIndex = index;
                }
             }
-            if(!entry.isCat && this._openedCategories.indexOf(entry.cat) != -1)
+            else if(this._openedCategories.indexOf(entry.cat) != -1)
             {
                if(entry.cat == this.SEARCHBAR_CAT_ID)
                {

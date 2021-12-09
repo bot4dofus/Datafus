@@ -7,7 +7,6 @@ package Ankama_Connection
    import Ankama_Connection.ui.ConnectionBackground;
    import Ankama_Connection.ui.GiftMenu;
    import Ankama_Connection.ui.Login;
-   import Ankama_Connection.ui.LoginThirdParty;
    import Ankama_Connection.ui.PreGameMainMenu;
    import Ankama_Connection.ui.PseudoChoice;
    import Ankama_Connection.ui.SecretPopup;
@@ -76,8 +75,6 @@ package Ankama_Connection
        
       
       protected var login:Login;
-      
-      protected var loginThirdParty:LoginThirdParty;
       
       protected var serverListSelection:ServerListSelection;
       
@@ -193,10 +190,6 @@ package Ankama_Connection
             this.sysApi.addHook(HookList.AgreementsRequired,this.onAgreementsRequired);
          }
          this.uiApi.addShortcutHook("closeUi",this.onOpenMainMenu);
-         if(this.sysApi.getConfigEntry("config.loginMode") == "web")
-         {
-            loginUiName = "loginThirdParty";
-         }
          loginMustBeSaved = this.sysApi.getData("saveLogin");
          _self = this;
       }

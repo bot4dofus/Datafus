@@ -11,7 +11,9 @@ package com.ankamagames.dofus.logic.game.common.managers
    import com.ankamagames.dofus.internalDatacenter.mount.MountData;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
    import com.ankamagames.dofus.internalDatacenter.world.WorldPointWrapper;
+   import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
+   import com.ankamagames.dofus.logic.game.fight.frames.FightContextFrame;
    import com.ankamagames.dofus.misc.EntityLookAdapter;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.stats.StatisticsManager;
@@ -22,6 +24,8 @@ package com.ankamagames.dofus.logic.game.common.managers
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristicsInformations;
    import com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations;
    import com.ankamagames.dofus.network.types.game.character.restriction.ActorRestrictionsInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations;
+   import com.ankamagames.dofus.network.types.game.guild.application.GuildApplicationInformation;
    import com.ankamagames.dofus.network.types.game.havenbag.HavenBagRoomPreviewInformation;
    import com.ankamagames.dofus.network.types.game.look.EntityLook;
    import com.ankamagames.jerakine.interfaces.IDestroyable;
@@ -150,6 +154,10 @@ package com.ankamagames.dofus.logic.game.common.managers
       public var waitingGifts:Array;
       
       public var speedAjust:int = 0;
+      
+      public var applicationInfo:GuildApplicationInformation;
+      
+      public var guildApplicationInfo:GuildInformations;
       
       public function PlayedCharacterManager()
       {
@@ -307,6 +315,12 @@ package com.ankamagames.dofus.logic.game.common.managers
       public function get cantAttackMonster() : Boolean
       {
          return this.restrictions.cantAttackMonster;
+      }
+      
+      public function get isInKoli() : Boolean
+      {
+         var fightContextFrame:FightContextFrame = Kernel.getWorker().getFrame(FightContextFrame) as FightContextFrame;
+         return fightContextFrame && fightContextFrame.isKolossium;
       }
       
       public function get limitedLevel() : uint

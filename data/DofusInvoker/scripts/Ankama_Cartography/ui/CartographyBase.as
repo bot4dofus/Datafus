@@ -37,7 +37,6 @@ package Ankama_Cartography.ui
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.PrismHookList;
    import com.ankamagames.dofus.misc.lists.SocialHookList;
-   import com.ankamagames.dofus.network.enums.GameServerTypeEnum;
    import com.ankamagames.dofus.network.enums.GuildInformationsTypeEnum;
    import com.ankamagames.dofus.network.enums.PrismListenEnum;
    import com.ankamagames.dofus.network.enums.PrismStateEnum;
@@ -1169,7 +1168,7 @@ package Ankama_Cartography.ui
          {
             return;
          }
-         var sh:* = sysApi.getCurrentServer().gameTypeId == GameServerTypeEnum.SERVER_TYPE_HARDCORE;
+         var sh:Boolean = this.configApi.isFeatureWithKeywordEnabled("server.heroic");
          var mapElemList:Array = mapViewer.getMapElementsByLayer(MAP_LAYER_PRIVATE);
          var nElems:int = mapElemList.length;
          for(var i:int = 0; i < nElems; i++)

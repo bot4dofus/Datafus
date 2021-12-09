@@ -21,11 +21,6 @@ package com.ankamagames.dofus.datacenter.appearance
          super();
       }
       
-      public static function getUnknownCreatureBone() : int
-      {
-         return (GameData.getObject(MODULE,0) as CreatureBoneType).creatureBoneId;
-      }
-      
       public static function getMonsterCreatureBone() : int
       {
          return (GameData.getObject(MODULE,1) as CreatureBoneType).creatureBoneId;
@@ -41,19 +36,9 @@ package com.ankamagames.dofus.datacenter.appearance
          return (GameData.getObject(MODULE,3) as CreatureBoneType).creatureBoneId;
       }
       
-      public static function getPlayerInvocationCreatureBone() : int
-      {
-         return (GameData.getObject(MODULE,4) as CreatureBoneType).creatureBoneId;
-      }
-      
       public static function getPlayerIncarnationCreatureBone() : int
       {
          return (GameData.getObject(MODULE,5) as CreatureBoneType).creatureBoneId;
-      }
-      
-      public static function getPlayerMutantCreatureBone() : int
-      {
-         return (GameData.getObject(MODULE,6) as CreatureBoneType).creatureBoneId;
       }
       
       public static function getPrismCreatureBone() : int

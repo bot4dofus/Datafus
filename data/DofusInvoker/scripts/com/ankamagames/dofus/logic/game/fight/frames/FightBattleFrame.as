@@ -514,7 +514,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   {
                      fightEntitesFrame = Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame;
                      alivePlayers = 0;
-                     for each(en in fightEntitesFrame.getEntitiesDictionnary())
+                     for each(en in fightEntitesFrame.entities)
                      {
                         if(en is GameFightCharacterInformations && GameFightCharacterInformations(en).spawnInfo.alive && en.contextualId > 0)
                         {

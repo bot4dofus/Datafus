@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.subscription
    public class AccountInformationsUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2515;
+      public static const protocolId:uint = 3664;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.subscription
       
       override public function getMessageId() : uint
       {
-         return 2515;
+         return 3664;
       }
       
       public function initAccountInformationsUpdateMessage(subscriptionEndDate:Number = 0) : AccountInformationsUpdateMessage

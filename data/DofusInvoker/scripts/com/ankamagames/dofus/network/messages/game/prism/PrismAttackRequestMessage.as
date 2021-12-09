@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.prism
    public class PrismAttackRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8793;
+      public static const protocolId:uint = 2686;
        
       
       public function PrismAttackRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function getMessageId() : uint
       {
-         return 8793;
+         return 2686;
       }
       
       public function initPrismAttackRequestMessage() : PrismAttackRequestMessage

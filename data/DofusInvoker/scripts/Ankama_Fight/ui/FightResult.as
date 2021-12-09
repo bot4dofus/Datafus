@@ -240,6 +240,8 @@ package Ankama_Fight.ui
       
       private var _fightResults:Object = null;
       
+      private var _serverHeroicActivated:Boolean = false;
+      
       public function FightResult()
       {
          this._pictoUris = [];
@@ -279,6 +281,7 @@ package Ankama_Fight.ui
          var i:int = 0;
          var idol:Idol = null;
          var coeff:Number = NaN;
+         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled("server.heroic");
          this._fightResults = fightResults;
          if(this.uiApi.getUi("levelUp"))
          {
@@ -608,7 +611,7 @@ package Ankama_Fight.ui
                   compRef.tx_xpBonusPicto.visible = true;
                   compRef.tx_xpBonusPicto.uri = this.uiApi.createUri(this.uiApi.me().getConstant("texture") + "XPBonus" + xpMultiplicator.toString() + ".png");
                }
-               else if(data.type == 0 && (server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_HARDCORE || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC))
+               else if(data.type == 0 && (this._serverHeroicActivated || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC))
                {
                   heroicEpicXpMultiplicator = this.getPlayerExperienceBonusPercent();
                   if(heroicEpicXpMultiplicator > 1 && heroicEpicXpMultiplicator < 7)
@@ -691,9 +694,6 @@ package Ankama_Fight.ui
       
       public function getDataLength(data:*, selected:Boolean) : *
       {
-         if(!selected)
-         {
-         }
          return 2 + (!!selected ? data.subcats.length : 0);
       }
       
@@ -1289,7 +1289,7 @@ package Ankama_Fight.ui
                   if(data)
                   {
                      bonusXp = 0;
-                     if(server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_HARDCORE || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
+                     if(this._serverHeroicActivated || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
                      {
                         bonusXp = this.getPlayerExperienceBonusPercent();
                         if(bonusXp == 6)

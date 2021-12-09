@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.social
    public class SocialNoticeMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3704;
+      public static const protocolId:uint = 8560;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.game.social
       
       override public function getMessageId() : uint
       {
-         return 3704;
+         return 8560;
       }
       
       public function initSocialNoticeMessage(content:String = "", timestamp:uint = 0, memberId:Number = 0, memberName:String = "") : SocialNoticeMessage

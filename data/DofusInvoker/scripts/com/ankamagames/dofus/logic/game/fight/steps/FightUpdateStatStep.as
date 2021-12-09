@@ -2,8 +2,6 @@ package com.ankamagames.dofus.logic.game.fight.steps
 {
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristic;
-   import com.ankamagames.jerakine.messages.Treatment;
-   import com.ankamagames.jerakine.messages.Worker;
    import com.ankamagames.jerakine.sequencer.AbstractSequencable;
    import com.ankamagames.jerakine.utils.display.EnterFrameDispatcher;
    
@@ -39,24 +37,7 @@ package com.ankamagames.dofus.logic.game.fight.steps
       
       override public function start() : void
       {
-         var similarTreatment:Treatment = null;
-         var newStat:CharacterCharacteristic = null;
-         var worker:Worker = EnterFrameDispatcher.worker;
-         var similarTreatments:Array = worker.findTreatments(StatsManager.getInstance(),StatsManager.getInstance().addRawStats,[this._entityId]);
-         if(similarTreatments.length > 0)
-         {
-            for each(similarTreatment in similarTreatments)
-            {
-               for each(newStat in this._newStats)
-               {
-                  similarTreatment.params[1].push(newStat);
-               }
-            }
-         }
-         else
-         {
-            worker.addSingleTreatment(StatsManager.getInstance(),StatsManager.getInstance().addRawStats,[this._entityId,this._newStats]);
-         }
+         EnterFrameDispatcher.worker.addSingleTreatment(StatsManager.getInstance(),StatsManager.getInstance().addRawStats,[this._entityId,this._newStats]);
          super.start();
          executeCallbacks();
       }

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.chat
    public class ChatErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2455;
+      public static const protocolId:uint = 5479;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.chat
       
       override public function getMessageId() : uint
       {
-         return 2455;
+         return 5479;
       }
       
       public function initChatErrorMessage(reason:uint = 0) : ChatErrorMessage

@@ -3,6 +3,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionType;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
+   import com.ankamagames.dofus.logic.common.managers.NotificationManager;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.connection.managers.AuthentificationManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
@@ -158,6 +159,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          ConnectionsHandler.getConnection().close(ConnectionType.TO_KOLI_SERVER);
          ConnectionsHandler.getConnection().messageRouter = null;
          PlayerManager.getInstance().kisServerPort = 0;
+         NotificationManager.getInstance().sendNotification();
          return true;
       }
       

@@ -17,7 +17,6 @@ package Ankama_Grimoire.ui
    import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.network.enums.AggressableStatusEnum;
    import com.ankamagames.dofus.network.enums.AlignmentSideEnum;
-   import com.ankamagames.dofus.network.enums.GameServerTypeEnum;
    import com.ankamagames.dofus.uiApi.AlignmentApi;
    import com.ankamagames.dofus.uiApi.BindsApi;
    import com.ankamagames.dofus.uiApi.ConfigApi;
@@ -211,7 +210,7 @@ package Ankama_Grimoire.ui
                this._listRanksID[numBtn] = -1;
                numBtn++;
             }
-            if(this.sysApi.getCurrentServer().gameTypeId == GameServerTypeEnum.SERVER_TYPE_HARDCORE)
+            if(this.configApi.isFeatureWithKeywordEnabled("server.heroic"))
             {
                this.btn_pvp.softDisabled = true;
             }

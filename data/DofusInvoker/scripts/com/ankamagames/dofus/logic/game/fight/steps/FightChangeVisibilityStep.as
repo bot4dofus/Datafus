@@ -72,7 +72,7 @@ package com.ankamagames.dofus.logic.game.fight.steps
                {
                   invisibleEntityPos = AnimatedCharacter(invisibleEntity).position;
                   entitiesFrame = Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame;
-                  fightEntities = entitiesFrame.getEntitiesDictionnary();
+                  fightEntities = entitiesFrame.entities;
                   for(entityId in fightEntities)
                   {
                      entityInfos = entitiesFrame.getEntityInfos(entityId) as GameFightFighterInformations;

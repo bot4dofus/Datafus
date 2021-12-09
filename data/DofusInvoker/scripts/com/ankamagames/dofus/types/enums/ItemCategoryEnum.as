@@ -16,6 +16,8 @@ package com.ankamagames.dofus.types.enums
       public static const ECAFLIP_CARD_CATEGORY:int = 238;
       
       public static const OTHER_CATEGORY:int = 4;
+      
+      public static const COSMETICS_CATEGORY:int = 5;
        
       
       public function ItemCategoryEnum()

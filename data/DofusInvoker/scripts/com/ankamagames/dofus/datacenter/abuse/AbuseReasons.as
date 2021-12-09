@@ -18,11 +18,11 @@ package com.ankamagames.dofus.datacenter.abuse
       public static var idAccessors:IdAccessors = new IdAccessors(getReasonNameById,getReasonNames);
        
       
-      public var _abuseReasonId:uint;
+      public var abuseReasonId:uint;
       
-      public var _mask:uint;
+      public var mask:uint;
       
-      public var _reasonTextId:int;
+      public var reasonTextId:int;
       
       private var _name:String;
       
@@ -45,7 +45,7 @@ package com.ankamagames.dofus.datacenter.abuse
       {
          if(!this._name)
          {
-            this._name = I18n.getText(this._reasonTextId);
+            this._name = I18n.getText(this.reasonTextId);
          }
          return this._name;
       }

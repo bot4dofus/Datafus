@@ -1,11 +1,13 @@
 package com.ankamagames.dofus.logic.game.fight.steps
 {
+   import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.fight.fightEvents.FightEventsHelper;
    import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
    import com.ankamagames.dofus.logic.game.fight.steps.abstract.AbstractStatContextualStep;
    import com.ankamagames.dofus.logic.game.fight.types.FightEventEnum;
    import com.ankamagames.dofus.network.enums.GameContextEnum;
    import com.ankamagames.jerakine.managers.OptionManager;
+   import com.ankamagames.jerakine.utils.display.EnterFrameDispatcher;
    
    public class FightMovementPointsVariationStep extends AbstractStatContextualStep implements IFightStep
    {
@@ -44,6 +46,11 @@ package com.ankamagames.dofus.logic.game.fight.steps
       }
       
       override public function start() : void
+      {
+         EnterFrameDispatcher.worker.addSingleTreatment(StatsManager.getInstance(),this.apply,[]);
+      }
+      
+      private function apply() : void
       {
          if(this._updateCharacteristicManager)
          {

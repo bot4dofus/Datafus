@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class HumanOptionTitle extends HumanOption implements INetworkType
    {
       
-      public static const protocolId:uint = 971;
+      public static const protocolId:uint = 1813;
        
       
       public var titleId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 971;
+         return 1813;
       }
       
       public function initHumanOptionTitle(titleId:uint = 0, titleParam:String = "") : HumanOptionTitle

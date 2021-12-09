@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildInfosUpgradeMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9595;
+      public static const protocolId:uint = 2887;
        
       
       private var _isInitialized:Boolean = false;
@@ -54,7 +54,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 9595;
+         return 2887;
       }
       
       public function initGuildInfosUpgradeMessage(maxTaxCollectorsCount:uint = 0, taxCollectorsCount:uint = 0, taxCollectorLifePoints:uint = 0, taxCollectorDamagesBonuses:uint = 0, taxCollectorPods:uint = 0, taxCollectorProspecting:uint = 0, taxCollectorWisdom:uint = 0, boostPoints:uint = 0, spellId:Vector.<uint> = null, spellLevel:Vector.<int> = null) : GuildInfosUpgradeMessage

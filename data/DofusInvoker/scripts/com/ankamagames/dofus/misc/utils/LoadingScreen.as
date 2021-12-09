@@ -7,12 +7,9 @@ package com.ankamagames.dofus.misc.utils
    import com.ankamagames.berilia.types.graphic.UiRootContainer;
    import com.ankamagames.berilia.utils.BeriliaHookList;
    import com.ankamagames.dofus.BuildInfos;
-   import com.ankamagames.dofus.datacenter.quest.AchievementCategory;
    import com.ankamagames.dofus.misc.BuildTypeParser;
    import com.ankamagames.dofus.network.enums.BuildTypeEnum;
-   import com.ankamagames.dofus.network.messages.game.achievement.AchievementListMessage;
-   import com.ankamagames.dofus.network.types.game.achievement.AchievementAchieved;
-   import com.ankamagames.jerakine.data.I18n;
+   import com.ankamagames.jerakine.handlers.HumanInputHandler;
    import com.ankamagames.jerakine.managers.FontManager;
    import com.ankamagames.jerakine.resources.IResourceObserver;
    import com.ankamagames.jerakine.resources.adapters.impl.BitmapAdapter;
@@ -36,7 +33,6 @@ package com.ankamagames.dofus.misc.utils
    import flash.net.navigateToURL;
    import flash.system.Capabilities;
    import flash.text.TextField;
-   import flash.text.TextFieldAutoSize;
    import flash.text.TextFormat;
    
    public class LoadingScreen extends UiRootContainer implements FinalizableUIComponent, IResourceObserver
@@ -99,17 +95,9 @@ package com.ankamagames.dofus.misc.utils
       
       private var _tipsTextField:TextField;
       
-      private var _achievementLabel:TextField;
-      
-      private var _achievementNumbersLabel:TextField;
-      
       private var _btnContinueClip:DisplayObject;
       
       private var _continueCallBack:Function;
-      
-      private var _progressBar:DisplayObject;
-      
-      private var _progressBarBackground:DisplayObject;
       
       private var _enableTipsScrollBar:Boolean;
       
@@ -125,17 +113,11 @@ package com.ankamagames.dofus.misc.utils
       
       private var _logTf:TextField;
       
-      private var _showDetailledVersion:Boolean;
-      
       private var _beforeLogin:Boolean;
       
       private var _customLoadingScreen:CustomLoadingScreen;
       
       private var _startLoadingTime:Number;
-      
-      private var _workerbufferSize:int = -1;
-      
-      private var _connectionBufferSize:int = -1;
       
       public var logCallbackHandler:Function;
       
@@ -143,7 +125,7 @@ package com.ankamagames.dofus.misc.utils
       
       private var _bandeauBas:Bitmap;
       
-      public function LoadingScreen(showDetailledVersion:Boolean = false, beforeLogin:Boolean = false, displayMiniUi:Boolean = false)
+      public function LoadingScreen(beforeLogin:Boolean = false, displayMiniUi:Boolean = false)
       {
          var adapter:BitmapAdapter = null;
          this._loader = ResourceLoaderFactory.getLoader(ResourceLoaderType.SERIAL_LOADER);
@@ -164,7 +146,6 @@ package com.ankamagames.dofus.misc.utils
          super(null,null);
          this._startLoadingTime = new Date().getTime();
          listenResize(true);
-         this._showDetailledVersion = showDetailledVersion;
          this._beforeLogin = beforeLogin;
          if(displayMiniUi)
          {
@@ -211,15 +192,6 @@ package com.ankamagames.dofus.misc.utils
       {
       }
       
-      public function get closeMiniUiRequestHandler() : Function
-      {
-         if(this._lsl)
-         {
-            return this._lsl.closeRequestHandler;
-         }
-         return null;
-      }
-      
       public function set closeMiniUiRequestHandler(value:Function) : void
       {
          if(this._lsl)
@@ -257,6 +229,8 @@ package com.ankamagames.dofus.misc.utils
       
       private function finalizeInitialization() : void
       {
+         HumanInputHandler.getInstance().unregisterListeners();
+         HumanInputHandler.getInstance().registerLoadingListeners();
          this._backgroundContainer = new Sprite();
          if(this._customLoadingScreen && this._customLoadingScreen.linkUrl)
          {
@@ -389,96 +363,6 @@ package com.ankamagames.dofus.misc.utils
             this._lsl.destroy();
             this._lsl = null;
          }
-      }
-      
-      private function displayAchievmentProgressBar(achievmentsInfo:AchievementListMessage) : void
-      {
-         var randomIndex:Number = NaN;
-         var category:AchievementCategory = null;
-         var tempCat:AchievementCategory = null;
-         var tempId:uint = 0;
-         var finishedAChievement:AchievementAchieved = null;
-         var font:String = null;
-         var achievementsCategories:Array = AchievementCategory.getAchievementCategories();
-         var isAParent:Boolean = false;
-         while(!isAParent)
-         {
-            randomIndex = Math.round(Math.random() * (achievementsCategories.length - 1));
-            category = achievementsCategories[randomIndex];
-            if(category.parentId > 0)
-            {
-               achievementsCategories.splice(randomIndex,1);
-            }
-            else
-            {
-               isAParent = true;
-            }
-         }
-         achievementsCategories = AchievementCategory.getAchievementCategories();
-         var finishedAchievementCount:int = 0;
-         var totalAchievementCount:int = 0;
-         for each(tempCat in achievementsCategories)
-         {
-            if(tempCat.parentId == category.id || tempCat.id == category.id)
-            {
-               for each(tempId in tempCat.achievementIds)
-               {
-                  for each(finishedAChievement in achievmentsInfo.finishedAchievements)
-                  {
-                     if(finishedAChievement.id == tempId)
-                     {
-                        finishedAchievementCount++;
-                     }
-                  }
-                  totalAchievementCount++;
-               }
-            }
-         }
-         this._progressBar = new this._txProgressBar();
-         this._progressBarBackground = new this._txProgressBarBackground();
-         this._achievementLabel = new TextField();
-         this._achievementNumbersLabel = new TextField();
-         this._tipsBackgroundTexture.y -= 18;
-         this._tipsBackgroundTexture.height -= 200;
-         this._tipsTextField.y = this._tipsBackgroundTexture.y + 10;
-         font = FontManager.initialized && FontManager.getInstance().getFontInfo("Tahoma") ? FontManager.getInstance().getFontInfo("Tahoma").className : "Tahoma";
-         this._achievementLabel.x = this._tipsBackgroundTexture.x;
-         this._achievementLabel.defaultTextFormat = new TextFormat(font,19,16777215,null,null,null,null,null,"center");
-         this._achievementLabel.embedFonts = true;
-         this._achievementLabel.selectable = false;
-         this._achievementLabel.visible = true;
-         this._achievementLabel.multiline = false;
-         this._achievementLabel.text = I18n.getUiText("ui.achievement.achievement") + I18n.getUiText("ui.common.colon") + category.name;
-         this._achievementLabel.autoSize = TextFieldAutoSize.LEFT;
-         this._achievementNumbersLabel.defaultTextFormat = new TextFormat(font,19,16777215,null,null,null,null,null,"center");
-         this._achievementNumbersLabel.embedFonts = true;
-         this._achievementNumbersLabel.selectable = false;
-         this._achievementNumbersLabel.visible = true;
-         this._achievementNumbersLabel.multiline = false;
-         this._achievementNumbersLabel.text = finishedAchievementCount + " / " + totalAchievementCount;
-         this._achievementNumbersLabel.autoSize = TextFieldAutoSize.LEFT;
-         this._achievementNumbersLabel.x = this._tipsBackgroundTexture.x + this._tipsBackgroundTexture.width - this._achievementNumbersLabel.width;
-         this._progressBarBackground.height = -3;
-         this._progressBarBackground.x = this._achievementLabel.x + this._achievementLabel.width + 5;
-         this._progressBarBackground.y = this._tipsBackgroundTexture.y + this._tipsBackgroundTexture.height + 5;
-         this._achievementLabel.y = this._progressBarBackground.y - this._achievementLabel.height / 4;
-         this._achievementLabel.height = this._progressBarBackground.height;
-         this._achievementNumbersLabel.height = this._progressBarBackground.height;
-         this._achievementNumbersLabel.y = this._progressBarBackground.y - this._achievementNumbersLabel.height / 4;
-         this._progressBar.x = this._progressBarBackground.x;
-         this._progressBar.y = this._progressBarBackground.y;
-         this._progressBarBackground.width = this._tipsBackgroundTexture.x + this._tipsBackgroundTexture.width - this._achievementNumbersLabel.width - this._progressBarBackground.x - 5;
-         var colorTransfom:ColorTransform = new ColorTransform();
-         colorTransfom.color = uint(category.color);
-         this._progressBar.transform.colorTransform = colorTransfom;
-         var achievementPercent:Number = finishedAchievementCount / totalAchievementCount;
-         this._progressBar.width = achievementPercent * this._progressBarBackground.width;
-         this._progressBar.visible = true;
-         this._progressBarBackground.visible = true;
-         addChild(this._progressBarBackground);
-         addChild(this._progressBar);
-         addChild(this._achievementLabel);
-         addChild(this._achievementNumbersLabel);
       }
       
       public function log(text:String, level:uint) : void
@@ -635,6 +519,7 @@ package com.ankamagames.dofus.misc.utils
       
       private function onRemoveFromStage(e:Event) : void
       {
+         HumanInputHandler.getInstance().registerRemainingListeners();
          this.removeEventListeners();
          var stats:Object = UiStatsFrame.getStatsData();
          var id:String = !!this._beforeLogin ? "first_loading_duration" : "loading_duration";

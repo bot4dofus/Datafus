@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameMapSpeedMovementMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1105;
+      public static const protocolId:uint = 8414;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 1105;
+         return 8414;
       }
       
       public function initGameMapSpeedMovementMessage(speedMultiplier:int = 0) : GameMapSpeedMovementMessage

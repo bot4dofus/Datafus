@@ -69,7 +69,7 @@ package com.ankamagames.dofus.logic.common.frames
          var tip:Tips = null;
          this._waitDone = false;
          this._startTime = getTimer();
-         this._loadingScreen = new LoadingScreen(true);
+         this._loadingScreen = new LoadingScreen();
          Dofus.getInstance().addChild(this._loadingScreen);
          for each(tip in Tips.getAllTips())
          {

@@ -1,16 +1,21 @@
 package Ankama_Social.ui
 {
    import Ankama_Common.Common;
+   import Ankama_Grimoire.enum.EnumTab;
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.components.Input;
    import com.ankamagames.berilia.components.Label;
    import com.ankamagames.berilia.components.ProgressBar;
    import com.ankamagames.berilia.components.Texture;
+   import com.ankamagames.berilia.components.TextureBitmap;
+   import com.ankamagames.berilia.enums.UIEnum;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.types.graphic.UiRootContainer;
    import com.ankamagames.berilia.utils.ComponentHookList;
    import com.ankamagames.dofus.datacenter.guild.EmblemSymbol;
+   import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.guild.GuildRecruitmentDataWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
    import com.ankamagames.dofus.kernel.sound.enum.SoundEnum;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildGetInformationsAction;
@@ -21,6 +26,8 @@ package Ankama_Social.ui
    import com.ankamagames.dofus.network.enums.GuildInformationsTypeEnum;
    import com.ankamagames.dofus.uiApi.ChatApi;
    import com.ankamagames.dofus.uiApi.DataApi;
+   import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
+   import com.ankamagames.dofus.uiApi.SecurityApi;
    import com.ankamagames.dofus.uiApi.SocialApi;
    import com.ankamagames.dofus.uiApi.SystemApi;
    import com.ankamagames.dofus.uiApi.TimeApi;
@@ -51,6 +58,12 @@ package Ankama_Social.ui
       
       [Api(name="TimeApi")]
       public var timeApi:TimeApi;
+      
+      [Api(name="SecurityApi")]
+      public var secureApi:SecurityApi;
+      
+      [Api(name="PlayedCharacterApi")]
+      public var playerApi:PlayedCharacterApi;
       
       [Module(name="Ankama_Common")]
       public var modCommon:Common;
@@ -91,6 +104,12 @@ package Ankama_Social.ui
       
       public var btn_motdEdit:ButtonContainer;
       
+      public var ctr_editPlaceholder:GraphicContainer;
+      
+      public var ctr_motdInteractive:GraphicContainer;
+      
+      public var tx_add:TextureBitmap;
+      
       public var ctr_editMotd:GraphicContainer;
       
       public var inp_motd:Input;
@@ -111,6 +130,10 @@ package Ankama_Social.ui
       
       public var btn_houses:ButtonContainer;
       
+      public var btn_directory:ButtonContainer;
+      
+      public var btn_recruitmentSettings:ButtonContainer;
+      
       public function Guild()
       {
          super();
@@ -124,9 +147,12 @@ package Ankama_Social.ui
          this.btn_taxCollector.soundId = SoundEnum.TAB;
          this.btn_paddock.soundId = SoundEnum.TAB;
          this.btn_houses.soundId = SoundEnum.TAB;
+         this.btn_directory.soundId = SoundEnum.TAB;
          this.sysApi.addHook(SocialHookList.GuildInformationsGeneral,this.onGuildInformationsGeneral);
          this.sysApi.addHook(SocialHookList.GuildMotd,this.onGuildMotd);
          this.sysApi.addHook(SocialHookList.GuildBulletin,this.onGuildBulletin);
+         this.sysApi.addHook(SocialHookList.GuildRecruitmentDataReceived,this.onRecruitmentData);
+         this.sysApi.addHook(SocialHookList.GuildMembershipUpdated,this.onGuildMembershipUpdated);
          this.uiApi.addShortcutHook(ShortcutHookListEnum.VALID_UI,this.onShortcut);
          this.uiApi.addShortcutHook(ShortcutHookListEnum.CLOSE_UI,this.onShortcut);
          this._guild = this.socialApi.getGuild();
@@ -162,6 +188,9 @@ package Ankama_Social.ui
          this.uiApi.addComponentHook(this.btn_taxCollector,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btn_paddock,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btn_houses,ComponentHookList.ON_RELEASE);
+         this.uiApi.addComponentHook(this.btn_directory,ComponentHookList.ON_RELEASE);
+         this.uiApi.addComponentHook(this.btn_directory,ComponentHookList.ON_ROLL_OVER);
+         this.uiApi.addComponentHook(this.btn_directory,ComponentHookList.ON_ROLL_OUT);
          this.uiApi.addComponentHook(this.pb_experience,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.pb_experience,ComponentHookList.ON_ROLL_OUT);
          this.uiApi.addComponentHook(this.lbl_guildLevel,ComponentHookList.ON_ROLL_OVER);
@@ -176,11 +205,17 @@ package Ankama_Social.ui
          this.uiApi.addComponentHook(this.btn_motdExit,ComponentHookList.ON_ROLL_OUT);
          this.uiApi.addComponentHook(this.tx_bulletinWarning,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.tx_bulletinWarning,ComponentHookList.ON_ROLL_OUT);
+         this.uiApi.addComponentHook(this.btn_recruitmentSettings,ComponentHookList.ON_ROLL_OVER);
+         this.uiApi.addComponentHook(this.btn_recruitmentSettings,ComponentHookList.ON_ROLL_OUT);
          this.inp_motd.html = false;
          this.inp_motd.maxChars = ProtocolConstantsEnum.USER_MAX_MOTD_LEN;
          this.tx_emblemBack.uri = this._guild.backEmblem.fullSizeIconUri;
          this.tx_emblemUp.uri = this._guild.upEmblem.fullSizeIconUri;
+         this.sysApi.sendAction(new GuildGetInformationsAction([GuildInformationsTypeEnum.INFO_RECRUITMENT]));
+         this.btn_directory.softDisabled = this.playerApi.isInKoli();
+         this.btn_recruitmentSettings.softDisabled = this.playerApi.isInKoli();
          this.openSelectedTab(args[0][0]);
+         this.setUpRecruitmentSettingsButton();
       }
       
       public function unload() : void
@@ -202,11 +237,15 @@ package Ankama_Social.ui
          }
          switch(tab)
          {
-            case 2:
+            case DataEnum.GUILD_TAB_PERSONALIZATION_ID:
                this.sysApi.sendAction(new GuildGetInformationsAction([GuildInformationsTypeEnum.INFO_TAX_COLLECTOR_GUILD_ONLY]));
                break;
-            case 4:
+            case DataEnum.GUILD_TAB_HOUSES_ID:
                this.sysApi.sendAction(new GuildGetInformationsAction([GuildInformationsTypeEnum.INFO_HOUSES]));
+         }
+         if(tab == DataEnum.GUILD_TAB_DIRECTORY_ID && this.playerApi.isInKoli())
+         {
+            tab == DataEnum.GUILD_TAB_MEMBERS_ID;
          }
          this.uiApi.unloadUi("subGuildUi");
          this.uiApi.loadUiInside(this.getUiNameByTab(tab),this.guildCtr,"subGuildUi",null) as UiRootContainer;
@@ -217,58 +256,66 @@ package Ankama_Social.ui
       
       private function getUiNameByTab(tab:uint) : String
       {
-         if(tab == 0)
+         if(tab == DataEnum.GUILD_TAB_MEMBERS_ID)
          {
-            return "guildMembers";
+            return EnumTab.GUILD_MEMBERS_TAB;
          }
-         if(tab == 1)
+         if(tab == DataEnum.GUILD_TAB_PERSONALIZATION_ID)
          {
-            return "guildPersonalization";
+            return EnumTab.GUILD_PERSONALIZATION_TAB;
          }
-         if(tab == 2)
+         if(tab == DataEnum.GUILD_TAB_COLLECTOR_ID)
          {
-            return "guildTaxCollector";
+            return EnumTab.GUILD_TAX_COLLECTOR_TAB;
          }
-         if(tab == 3)
+         if(tab == DataEnum.GUILD_TAB_PADDOCK_ID)
          {
-            return "guildPaddock";
+            return EnumTab.GUILD_PADDOCK_TAB;
          }
-         if(tab == 4)
+         if(tab == DataEnum.GUILD_TAB_HOUSES_ID)
          {
-            return "guildHouses";
+            return EnumTab.GUILD_HOUSES_TAB;
          }
-         if(tab == 5)
+         if(tab == DataEnum.GUILD_TAB_BULLETIN_ID)
          {
-            return "socialBulletin";
+            return EnumTab.GUILD_BULLETIN_TAB;
+         }
+         if(tab == DataEnum.GUILD_TAB_DIRECTORY_ID)
+         {
+            return EnumTab.GUILD_DIRECTORY_TAB;
          }
          return null;
       }
       
       private function getButtonByTab(tab:uint) : ButtonContainer
       {
-         if(tab == 0)
+         if(tab == DataEnum.GUILD_TAB_MEMBERS_ID)
          {
             return this.btn_members;
          }
-         if(tab == 1)
+         if(tab == DataEnum.GUILD_TAB_PERSONALIZATION_ID)
          {
             return this.btn_customization;
          }
-         if(tab == 2)
+         if(tab == DataEnum.GUILD_TAB_COLLECTOR_ID)
          {
             return this.btn_taxCollector;
          }
-         if(tab == 3)
+         if(tab == DataEnum.GUILD_TAB_PADDOCK_ID)
          {
             return this.btn_paddock;
          }
-         if(tab == 4)
+         if(tab == DataEnum.GUILD_TAB_HOUSES_ID)
          {
             return this.btn_houses;
          }
-         if(tab == 5)
+         if(tab == DataEnum.GUILD_TAB_BULLETIN_ID)
          {
             return this.btn_bulletin;
+         }
+         if(tab == DataEnum.GUILD_TAB_DIRECTORY_ID)
+         {
+            return this.btn_directory;
          }
          return null;
       }
@@ -287,6 +334,35 @@ package Ankama_Social.ui
          {
             this.ctr_editMotd.visible = false;
             this.ctr_motd.visible = true;
+         }
+      }
+      
+      private function setUpRecruitmentSettingsButton() : void
+      {
+         if(this._guild === null || !this._guild.manageGuildRecruitment || !this._guild.guildRecruitmentInfo)
+         {
+            this.btn_recruitmentSettings.visible = false;
+            this.ctr_editPlaceholder.width = 540;
+            this.ctr_motdInteractive.width = 505;
+            this.lbl_motd.width = 525;
+            this.btn_motdEdit.x = 540;
+            this.tx_add.width = 550;
+            this.inp_motd.width = 525;
+            this.btn_motdValid.x = 540;
+            this.btn_motdExit.x = 540;
+         }
+         else
+         {
+            this.btn_recruitmentSettings.visible = true;
+            this.btn_recruitmentSettings.softDisabled = this.secureApi.SecureModeisActive() || this.playerApi.isInKoli();
+            this.ctr_editPlaceholder.width = 390;
+            this.ctr_motdInteractive.width = 355;
+            this.lbl_motd.width = 370;
+            this.btn_motdEdit.x = 390;
+            this.tx_add.width = 400;
+            this.inp_motd.width = 370;
+            this.btn_motdValid.x = 390;
+            this.btn_motdExit.x = 390;
          }
       }
       
@@ -356,7 +432,7 @@ package Ankama_Social.ui
       
       private function onGuildBulletin() : void
       {
-         if(this._nCurrentTab == 5)
+         if(this._nCurrentTab == DataEnum.GUILD_TAB_BULLETIN_ID)
          {
             return;
          }
@@ -376,30 +452,46 @@ package Ankama_Social.ui
          this.uiApi.me().childUiRoot.uiClass.showTabHints();
       }
       
+      private function onRecruitmentData(recruitmentData:GuildRecruitmentDataWrapper) : void
+      {
+         this.setUpRecruitmentSettingsButton();
+      }
+      
+      private function onGuildMembershipUpdated(hasGuild:Boolean) : void
+      {
+         if(!hasGuild)
+         {
+            this.uiApi.unloadUi(UIEnum.SOCIAL_BASE);
+         }
+      }
+      
       public function onRelease(target:GraphicContainer) : void
       {
          var escapeText:String = null;
          switch(target)
          {
             case this.btn_members:
-               this.openSelectedTab(0);
+               this.openSelectedTab(DataEnum.GUILD_TAB_MEMBERS_ID);
                break;
             case this.btn_bulletin:
                this.tx_bulletinWarning.visible = false;
-               this.openSelectedTab(5);
+               this.openSelectedTab(DataEnum.GUILD_TAB_BULLETIN_ID);
                break;
             case this.btn_customization:
-               this.openSelectedTab(1);
+               this.openSelectedTab(DataEnum.GUILD_TAB_PERSONALIZATION_ID);
                break;
             case this.btn_taxCollector:
-               this.openSelectedTab(2);
+               this.openSelectedTab(DataEnum.GUILD_TAB_COLLECTOR_ID);
                break;
             case this.btn_paddock:
                this.tx_paddockWarning.visible = false;
-               this.openSelectedTab(3);
+               this.openSelectedTab(DataEnum.GUILD_TAB_PADDOCK_ID);
                break;
             case this.btn_houses:
-               this.openSelectedTab(4);
+               this.openSelectedTab(DataEnum.GUILD_TAB_HOUSES_ID);
+               break;
+            case this.btn_directory:
+               this.openSelectedTab(DataEnum.GUILD_TAB_DIRECTORY_ID);
                break;
             case this.btn_motdEdit:
                this.switchMotdEditMode(true);
@@ -414,6 +506,14 @@ package Ankama_Social.ui
                   this.sysApi.sendAction(new GuildMotdSetRequestAction([escapeText]));
                }
                this.switchMotdEditMode(false);
+               break;
+            case this.btn_recruitmentSettings:
+               if(this.uiApi.getUi(UIEnum.GUILD_PREZ_AND_RECRUIT) || !this._guild || !this._guild.guildRecruitmentInfo)
+               {
+                  return;
+               }
+               this.uiApi.loadUi(UIEnum.GUILD_PREZ_AND_RECRUIT,null,{"recruitmentData":this._guild.guildRecruitmentInfo});
+               break;
          }
       }
       
@@ -461,6 +561,25 @@ package Ankama_Social.ui
                break;
             case this.tx_paddockWarning:
                tooltipText = this.uiApi.getText("ui.mount.paddocksAbandonned");
+               break;
+            case this.btn_directory:
+               if(this.playerApi.isInKoli())
+               {
+                  tooltipText = this.uiApi.getText("ui.guild.lockDirectory");
+               }
+               break;
+            case this.btn_recruitmentSettings:
+               if(this.btn_recruitmentSettings.softDisabled)
+               {
+                  if(this.secureApi.SecureModeisActive())
+                  {
+                     tooltipText = this.uiApi.getText("ui.charSel.deletionErrorUnsecureMode");
+                  }
+                  else if(this.playerApi.isInKoli())
+                  {
+                     tooltipText = this.uiApi.getText("ui.guild.lockRecruitmentSettings");
+                  }
+               }
          }
          if(tooltipText)
          {

@@ -24,6 +24,8 @@ package com.ankamagames.dofus.datacenter.quest
       
       public static const MODULE:String = "Achievements";
       
+      public static var _totalAchievementPoints:Number = Number.NaN;
+      
       public static var idAccessors:IdAccessors = new IdAccessors(getAchievementById,getAchievements);
        
       
@@ -76,6 +78,25 @@ package com.ankamagames.dofus.datacenter.quest
       public static function getAchievements() : Array
       {
          return GameData.getObjects(MODULE);
+      }
+      
+      public static function getTotalAchievementPoints() : Number
+      {
+         var achievements:Array = null;
+         var i:int = 0;
+         if(isNaN(_totalAchievementPoints))
+         {
+            _totalAchievementPoints = 0;
+            achievements = getAchievements();
+            for(i = 0; i < achievements.length; i++)
+            {
+               if(achievements[i].category.visible)
+               {
+                  _totalAchievementPoints += achievements[i].points;
+               }
+            }
+         }
+         return _totalAchievementPoints;
       }
       
       public function get name() : String

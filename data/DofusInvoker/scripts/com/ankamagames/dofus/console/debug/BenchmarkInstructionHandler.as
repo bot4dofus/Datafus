@@ -147,7 +147,7 @@ package com.ankamagames.dofus.console.debug
                break;
             case "setdirection":
                fef = Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame;
-               dic = fef.getEntitiesDictionnary();
+               dic = fef.entities;
                dirEntity = DofusEntities.getEntity(PlayedCharacterManager.getInstance().id) as IAnimated;
                for each(fightEntity in dic)
                {
@@ -361,7 +361,7 @@ package com.ankamagames.dofus.console.debug
                if(paramIndex == 1)
                {
                   fef = Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame;
-                  dic = fef.getEntitiesDictionnary();
+                  dic = fef.entities;
                   monsterList = [];
                   for each(fightEntity in dic)
                   {

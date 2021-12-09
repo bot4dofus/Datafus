@@ -631,6 +631,7 @@ package Ankama_Grimoire.ui
       {
          var list:Object = null;
          var o:Object = null;
+         var questId:uint = 0;
          var i:int = 0;
          var txtPendingQuests:String = null;
          var isCatVisible:* = false;
@@ -638,12 +639,10 @@ package Ankama_Grimoire.ui
          var iQ:* = undefined;
          var repeatableQuestFound:Boolean = false;
          var quest:Quest = null;
-         var completedQuests:* = undefined;
-         var qID:* = undefined;
+         var completedQuests:Vector.<uint> = null;
          var ts:uint = 0;
          var critSplit:Array = null;
          var knownQuests:Array = null;
-         var qId:int = 0;
          var nameCatResult:Array = null;
          var nameNameResult:Array = null;
          var catCatResult:Array = null;
@@ -671,7 +670,8 @@ package Ankama_Grimoire.ui
                this.sysApi.setData("showCompletedQuest",true);
             }
             this._questsToShow = [];
-            for(list = this.questApi.getAllQuestsOrderByCategory(this.btn_showCompletedQuests.selected,!this.btn_showCompletedQuests.selected); i < list.length; )
+            list = this.questApi.getAllQuestsOrderByCategory(this.btn_showCompletedQuests.selected,!this.btn_showCompletedQuests.selected);
+            for(i = 0; i < list.length; i++)
             {
                if(!(list[i] == null || list[i].data.length == 0))
                {
@@ -692,7 +692,6 @@ package Ankama_Grimoire.ui
                      }
                   }
                }
-               i += 1;
             }
             this.btn_label_btn_showCompletedQuests.text = this.uiApi.getText("ui.grimoire.displayFinishedQuests",this._questCompletedList.length);
             this.btn_showCompletedQuests.visible = true;
@@ -718,9 +717,9 @@ package Ankama_Grimoire.ui
                if(quest.repeatType > 0)
                {
                   completedQuests = this.questApi.getCompletedQuests();
-                  for each(qID in completedQuests)
+                  for each(questId in completedQuests)
                   {
-                     if(quest.id == qID)
+                     if(quest.id == questId)
                      {
                         this.gd_quests.selectedIndex = iQ;
                         this.selectQuest();
@@ -763,13 +762,13 @@ package Ankama_Grimoire.ui
             this.lbl_noQuest.visible = false;
             this._questsToShow = [];
             knownQuests = [];
-            for each(qId in this.questApi.getActiveQuests())
+            for each(questId in this.questApi.getActiveQuests())
             {
-               knownQuests.push(qId);
+               knownQuests.push(questId);
             }
-            for each(qId in this.questApi.getCompletedQuests())
+            for each(questId in this.questApi.getCompletedQuests())
             {
-               knownQuests.push(qId);
+               knownQuests.push(questId);
             }
             nameCatResult = [];
             nameNameResult = [];
@@ -779,9 +778,9 @@ package Ankama_Grimoire.ui
             {
                catCatResult.push(catId);
                questCat = this.dataApi.getQuestCategory(catId);
-               for each(qId in questCat.questIds)
+               for each(questId in questCat.questIds)
                {
-                  catNameResult.push(qId);
+                  catNameResult.push(questId);
                }
             }
             for each(nameId in this._searchResultByCriteriaList["_searchOnName"])
@@ -792,7 +791,8 @@ package Ankama_Grimoire.ui
                   nameCatResult.push(this.dataApi.getQuest(nameId).categoryId);
                }
             }
-            for(list = this.questApi.getAllQuestsOrderByCategory(true); j < list.length; )
+            list = this.questApi.getAllQuestsOrderByCategory(true);
+            for(j = 0; j < list.length; j++)
             {
                if(!(list[j] == null || list[j].data.length == 0))
                {
@@ -830,7 +830,6 @@ package Ankama_Grimoire.ui
                      }
                   }
                }
-               j += 1;
             }
             this.gd_quests.dataProvider = realDP;
             if(realDP.length > 0)

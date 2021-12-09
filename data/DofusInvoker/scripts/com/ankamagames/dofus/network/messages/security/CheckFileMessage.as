@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.security
    public class CheckFileMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1114;
+      public static const protocolId:uint = 6281;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.security
       
       override public function getMessageId() : uint
       {
-         return 1114;
+         return 6281;
       }
       
       public function initCheckFileMessage(filenameHash:String = "", type:uint = 0, value:String = "") : CheckFileMessage

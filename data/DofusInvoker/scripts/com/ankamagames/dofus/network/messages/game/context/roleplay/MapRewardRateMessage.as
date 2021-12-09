@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class MapRewardRateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9264;
+      public static const protocolId:uint = 1514;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 9264;
+         return 1514;
       }
       
       public function initMapRewardRateMessage(mapRate:int = 0, subAreaRate:int = 0, totalRate:int = 0) : MapRewardRateMessage

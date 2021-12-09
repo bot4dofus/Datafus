@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class IdentificationSuccessWithLoginTokenMessage extends IdentificationSuccessMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3871;
+      public static const protocolId:uint = 2204;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 3871;
+         return 2204;
       }
       
       public function initIdentificationSuccessWithLoginTokenMessage(login:String = "", accountTag:AccountTagInformation = null, accountId:uint = 0, communityId:uint = 0, hasRights:Boolean = false, hasConsoleRight:Boolean = false, secretQuestion:String = "", accountCreation:Number = 0, subscriptionElapsedDuration:Number = 0, subscriptionEndDate:Number = 0, wasAlreadyConnected:Boolean = false, havenbagAvailableRoom:uint = 0, loginToken:String = "") : IdentificationSuccessWithLoginTokenMessage

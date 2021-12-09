@@ -12,6 +12,8 @@ package com.ankamagames.dofus.uiApi
    {
       
       private static const MINUTE_TO_MILLISECOND:Number = 60000;
+      
+      public static const DAY_TO_MILLISECOND:Number = 86400000;
        
       
       private var _module:UiModule;
@@ -60,6 +62,11 @@ package com.ankamagames.dofus.uiApi
       public function getDate(time:Number = 0, useTimezoneOffset:Boolean = false, unchanged:Boolean = false) : String
       {
          return TimeManager.getInstance().formatDateIRL(time,useTimezoneOffset,unchanged);
+      }
+      
+      public function getIRLDate(time:Number = 0, useTimezoneOffset:Boolean = false, unchanged:Boolean = false, padding:Boolean = false) : String
+      {
+         return TimeManager.getInstance().formatTextDate(time,useTimezoneOffset,unchanged,padding);
       }
       
       public function getDofusDate(time:Number = 0) : String

@@ -428,6 +428,8 @@ package com.ankamagames.dofus.logic.game.common.managers
                return this.inventory.getView("storageConsumables") as IStorageView;
             case ItemCategoryEnum.RESOURCES_CATEGORY:
                return this.inventory.getView("storageResources") as IStorageView;
+            case ItemCategoryEnum.COSMETICS_CATEGORY:
+               return this.inventory.getView("storageCosmetics") as IStorageView;
             case ItemCategoryEnum.QUEST_CATEGORY:
                return this.inventory.getView("storageQuest") as IStorageView;
             case ItemCategoryEnum.ECAFLIP_CARD_CATEGORY:
@@ -447,6 +449,8 @@ package com.ankamagames.dofus.logic.game.common.managers
                return InventoryManager.getInstance().bankInventory.getView("bankConsumables") as IStorageView;
             case ItemCategoryEnum.RESOURCES_CATEGORY:
                return InventoryManager.getInstance().bankInventory.getView("bankRessources") as IStorageView;
+            case ItemCategoryEnum.COSMETICS_CATEGORY:
+               return InventoryManager.getInstance().bankInventory.getView("bankCosmetics") as IStorageView;
             case ItemCategoryEnum.QUEST_CATEGORY:
                return InventoryManager.getInstance().bankInventory.getView("bankQuest") as IStorageView;
             case ItemCategoryEnum.ECAFLIP_CARD_CATEGORY:

@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.guild.tax
    public class TaxCollectorWaitingForHelpInformations extends TaxCollectorComplementaryInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 2225;
+      public static const protocolId:uint = 3199;
        
       
       public var waitingForHelpInfo:ProtectedEntityWaitingForHelpInfo;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.guild.tax
       
       override public function getTypeId() : uint
       {
-         return 2225;
+         return 3199;
       }
       
       public function initTaxCollectorWaitingForHelpInformations(waitingForHelpInfo:ProtectedEntityWaitingForHelpInfo = null) : TaxCollectorWaitingForHelpInformations

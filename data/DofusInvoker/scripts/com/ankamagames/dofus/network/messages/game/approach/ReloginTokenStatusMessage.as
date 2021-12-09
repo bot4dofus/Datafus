@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.approach
    public class ReloginTokenStatusMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7776;
+      public static const protocolId:uint = 3172;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       override public function getMessageId() : uint
       {
-         return 7776;
+         return 3172;
       }
       
       public function initReloginTokenStatusMessage(validToken:Boolean = false, ticket:Vector.<int> = null) : ReloginTokenStatusMessage

@@ -32,6 +32,7 @@ package Ankama_Storage.ui.behavior
             _storage.btnAll.disabled = true;
             _storage.btnEquipable.disabled = true;
             _storage.btnConsumables.disabled = true;
+            _storage.btnCosmetics.disabled = true;
             _storage.categoryFilter = ItemCategoryEnum.RESOURCES_CATEGORY;
          }
          else
@@ -46,6 +47,7 @@ package Ankama_Storage.ui.behavior
          _storage.btnAll.disabled = false;
          _storage.btnEquipable.disabled = false;
          _storage.btnConsumables.disabled = false;
+         _storage.btnCosmetics.disabled = false;
          _storage.btn_moveAllToLeft.visible = true;
       }
       

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character
    public class CharacterMinimalGuildPublicInformations extends CharacterMinimalInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 6882;
+      public static const protocolId:uint = 393;
        
       
       public var rank:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.character
       
       override public function getTypeId() : uint
       {
-         return 6882;
+         return 393;
       }
       
       public function initCharacterMinimalGuildPublicInformations(id:Number = 0, name:String = "", level:uint = 0, rank:uint = 0) : CharacterMinimalGuildPublicInformations

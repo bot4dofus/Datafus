@@ -103,7 +103,7 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
       {
          var infos:GameContextActorInformations = null;
          var positions:List = new List();
-         var fightEntities:Dictionary = (Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame).getEntitiesDictionnary();
+         var fightEntities:Dictionary = (Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame).entities;
          for each(infos in fightEntities)
          {
             positions.add({

@@ -265,11 +265,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          return entitiesList;
       }
       
-      public function getEntitiesDictionnary() : Dictionary
-      {
-         return this._entities;
-      }
-      
       public function hasEntity(entityId:Number) : Boolean
       {
          return this._entities !== null && this._entitiesTotal > 0 && entityId in this._entities;

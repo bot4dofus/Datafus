@@ -9,6 +9,7 @@ package Ankama_Social.ui
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.utils.ComponentHookList;
+   import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
    import com.ankamagames.dofus.kernel.sound.enum.SoundEnum;
    import com.ankamagames.dofus.kernel.sound.enum.SoundTypeEnum;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildChangeMemberParametersAction;
@@ -140,121 +141,135 @@ package Ankama_Social.ui
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsAllRights"),
-            "rightString":"manageRights",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"manageRights"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"manageRights")
+            "rightString":GuildWrapper.MANAGE_RIGHTS,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.MANAGE_RIGHTS),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.MANAGE_RIGHTS)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsBoost"),
-            "rightString":"manageGuildBoosts",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"manageGuildBoosts"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"manageGuildBoosts")
+            "rightString":GuildWrapper.MANAGE_GUILD_BOOSTS,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.MANAGE_GUILD_BOOSTS),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.MANAGE_GUILD_BOOSTS)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsRights"),
-            "rightString":"manageLightRights",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"manageLightRights"),
+            "rightString":GuildWrapper.MANAGE_LIGHT_RIGHTS,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.MANAGE_LIGHT_RIGHTS),
             "disabled":!drm || this._partChangeRights
          });
          this._rightsList.push({
             "drm":drm,
+            "name":this.uiApi.getText("ui.social.guildRightsManageRecruitment"),
+            "rightString":GuildWrapper.RIGHT_MANAGE_GUILD_RECRUITMENT,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.RIGHT_MANAGE_GUILD_RECRUITMENT),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.RIGHT_MANAGE_GUILD_RECRUITMENT)
+         });
+         this._rightsList.push({
+            "drm":drm,
+            "name":this.uiApi.getText("ui.social.guildRightsManageApply"),
+            "rightString":GuildWrapper.RIGHT_MANAGE_GUILD_APPLY,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.RIGHT_MANAGE_GUILD_APPLY),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.RIGHT_MANAGE_GUILD_APPLY)
+         });
+         this._rightsList.push({
+            "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsInvit"),
-            "rightString":"inviteNewMembers",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"inviteNewMembers"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"inviteNewMembers")
+            "rightString":GuildWrapper.INVITE_NEW_MEMBERS,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.INVITE_NEW_MEMBERS),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.INVITE_NEW_MEMBERS)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsBann"),
-            "rightString":"banMembers",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"banMembers"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"banMembers")
+            "rightString":GuildWrapper.BAN_MEMBERS,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.BAN_MEMBERS),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.BAN_MEMBERS)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsPercentXP"),
-            "rightString":"manageXPContribution",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"manageXPContribution"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"manageXPContribution")
+            "rightString":GuildWrapper.MANAGE_XP_CONTRIBUTION,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.MANAGE_XP_CONTRIBUTION),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.MANAGE_XP_CONTRIBUTION)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightManageOwnXP"),
-            "rightString":"manageMyXpContribution",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"manageMyXpContribution"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"manageMyXpContribution")
+            "rightString":GuildWrapper.MANAGE_MY_XP_CONTRIBUTION,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.MANAGE_MY_XP_CONTRIBUTION),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.MANAGE_MY_XP_CONTRIBUTION)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsRank"),
-            "rightString":"manageRanks",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"manageRanks"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"manageRanks")
+            "rightString":GuildWrapper.MANAGE_RANKS,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.MANAGE_RANKS),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.MANAGE_RANKS)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsPrioritizeMe"),
-            "rightString":"prioritizeMeInDefense",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"prioritizeMeInDefense"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"prioritizeMeInDefense")
+            "rightString":GuildWrapper.PRIORITIZE_DEFENSE,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.PRIORITIZE_DEFENSE),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.PRIORITIZE_DEFENSE)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsHiretax"),
-            "rightString":"hireTaxCollector",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"hireTaxCollector"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"hireTaxCollector")
+            "rightString":GuildWrapper.HIRE_TAX_COLLECTOR,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.HIRE_TAX_COLLECTOR),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.HIRE_TAX_COLLECTOR)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsCollect"),
-            "rightString":"collect",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"collect"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"collect")
+            "rightString":GuildWrapper.COLLECT,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.COLLECT),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.COLLECT)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsCollectMy"),
-            "rightString":"collectMyTaxCollectors",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"collectMyTaxCollectors"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"collectMyTaxCollectors")
+            "rightString":GuildWrapper.COLLECT_MY_TAX_COLLECTORS,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.COLLECT_MY_TAX_COLLECTORS),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.COLLECT_MY_TAX_COLLECTORS)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsMountParkUse"),
-            "rightString":"useFarms",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"useFarms"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"useFarms")
+            "rightString":GuildWrapper.USE_FARMS,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.USE_FARMS),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.USE_FARMS)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsMountParkArrange"),
-            "rightString":"organizeFarms",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"organizeFarms"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"organizeFarms")
+            "rightString":GuildWrapper.ORGANIZE_FARMS,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.ORGANIZE_FARMS),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.ORGANIZE_FARMS)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsManageOtherMount"),
-            "rightString":"takeOthersRidesInFarm",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"takeOthersRidesInFarm"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"takeOthersRidesInFarm")
+            "rightString":GuildWrapper.TAKE_OTHERS_RIDES_IN_FARM,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.TAKE_OTHERS_RIDES_IN_FARM),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.TAKE_OTHERS_RIDES_IN_FARM)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsSetAlliancePrism"),
-            "rightString":"setAlliancePrism",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"setAlliancePrism"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"setAlliancePrism")
+            "rightString":GuildWrapper.SET_ALLIANCE_PRISM,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.SET_ALLIANCE_PRISM),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.SET_ALLIANCE_PRISM)
          });
          this._rightsList.push({
             "drm":drm,
             "name":this.uiApi.getText("ui.social.guildRightsTalkInAllianceChannel"),
-            "rightString":"talkInAllianceChannel",
-            "selected":this.socialApi.hasGuildRight(this._playerId,"talkInAllianceChannel"),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,"talkInAllianceChannel")
+            "rightString":GuildWrapper.TALK_IN_ALLIANCE_CHANNEL,
+            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.TALK_IN_ALLIANCE_CHANNEL),
+            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.TALK_IN_ALLIANCE_CHANNEL)
          });
          this.gd_list.dataProvider = this._rightsList;
          if(manageRanks && (this._playerRank != 1 || params.iamBoss))

@@ -14,7 +14,6 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.kernel.zaap.ZaapApi;
    import com.ankamagames.dofus.kernel.zaap.messages.IZaapInputMessage;
    import com.ankamagames.dofus.kernel.zaap.messages.impl.ZaapNeedUpdateMessage;
-   import com.ankamagames.dofus.logic.common.actions.BrowserDomainReadyAction;
    import com.ankamagames.dofus.logic.common.frames.AuthorizedFrame;
    import com.ankamagames.dofus.logic.common.frames.ChangeCharacterFrame;
    import com.ankamagames.dofus.logic.common.frames.DisconnectionHandlerFrame;
@@ -35,7 +34,6 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.stats.StatisticsManager;
    import com.ankamagames.dofus.network.enums.BuildTypeEnum;
-   import com.ankamagames.dofus.network.enums.IdentificationFailureReasonEnum;
    import com.ankamagames.dofus.network.messages.connection.HelloConnectMessage;
    import com.ankamagames.dofus.network.messages.connection.IdentificationAccountForceMessage;
    import com.ankamagames.dofus.network.messages.connection.IdentificationFailedBannedMessage;
@@ -179,7 +177,6 @@ package com.ankamagames.dofus.logic.connection.frames
       {
          var lvwta:LoginValidationWithTokenAction = null;
          var dst:DataStoreType = null;
-         var bdra:BrowserDomainReadyAction = null;
          var lva:LoginValidationAction = null;
          var ports:String = null;
          var connexionPorts:Array = null;
@@ -206,8 +203,6 @@ package com.ankamagames.dofus.logic.connection.frames
          var nrfmsg:NicknameRefusedMessage = null;
          var ncra:NicknameChoiceRequestAction = null;
          var ncrmsg:NicknameChoiceRequestMessage = null;
-         var token:String = null;
-         var fakeLvwta:LoginValidationWithTicketAction = null;
          var porc:String = null;
          var connectionHostsSignatureEntry:String = null;
          var output:ByteArray = null;
@@ -245,30 +240,6 @@ package com.ankamagames.dofus.logic.connection.frames
                      _connexionHosts = [lvwta.host];
                   }
                   ZaapConnectionManager.getInstance().requestApiToken();
-               }
-               return true;
-            case msg is BrowserDomainReadyAction:
-               bdra = BrowserDomainReadyAction(msg);
-               if(bdra.browser.content)
-               {
-                  try
-                  {
-                     token = bdra.browser.content.getElementById("token").innerHTML;
-                  }
-                  catch(error:Error)
-                  {
-                     _log.fatal("Could not find authentication token on " + bdra.browser.location + " (" + error.message + ")");
-                  }
-                  if(token)
-                  {
-                     fakeLvwta = LoginValidationWithTicketAction.create("",token,false);
-                     this.process(fakeLvwta);
-                  }
-                  else
-                  {
-                     KernelEventsManager.getInstance().processCallback(HookList.IdentificationFailed,IdentificationFailureReasonEnum.SERVICE_UNAVAILABLE);
-                  }
-                  bdra.browser.clearLocation();
                }
                return true;
             case msg is LoginValidationAction:

@@ -77,7 +77,7 @@ package com.ankamagames.jerakine.handlers
          {
             throw new SingletonError("HumanInputHandler constructor should not be called directly.");
          }
-         this.initialize();
+         this._keyPoll = new KeyPoll();
       }
       
       public static function getInstance() : HumanInputHandler
@@ -136,12 +136,6 @@ package com.ankamagames.jerakine.handlers
          this._lastTarget = null;
       }
       
-      private function initialize() : void
-      {
-         this._keyPoll = new KeyPoll();
-         this.registerListeners();
-      }
-      
       public function unregisterListeners(target:Stage = null) : void
       {
          if(target == null)
@@ -174,7 +168,7 @@ package com.ankamagames.jerakine.handlers
       {
          if(target == null)
          {
-            var target:Stage = StageShareManager.stage;
+            target = StageShareManager.stage;
          }
          target.addEventListener(MouseEvent.DOUBLE_CLICK,this.onDoubleClick,true,1,true);
          target.addEventListener(MouseEvent.CLICK,this.onClick,true,1,true);
@@ -183,19 +177,41 @@ package com.ankamagames.jerakine.handlers
          target.addEventListener(MouseEvent.MOUSE_OUT,this.onMouseOut,true,1,true);
          target.addEventListener(MouseEvent.MOUSE_DOWN,this.onMouseDown,true,1,true);
          target.addEventListener(MouseEvent.MOUSE_UP,this.onMouseUp,true,1,true);
-         try
-         {
-            target.addEventListener(MouseEvent.MIDDLE_CLICK,this.onMiddleClick,true,1,true);
-            target.addEventListener(MouseEvent.RIGHT_CLICK,this.onRightClick,true,1,true);
-            target.addEventListener(MouseEvent.RIGHT_MOUSE_DOWN,this.onRightMouseDown,true,1,true);
-            target.addEventListener(MouseEvent.RIGHT_MOUSE_UP,this.onRightMouseUp,true,1,true);
-         }
-         catch(e:TypeError)
-         {
-            _log.error("RIGHT_CLICK / MIDDLE_CLICK non supporté");
-         }
+         target.addEventListener(MouseEvent.MIDDLE_CLICK,this.onMiddleClick,true,1,true);
+         target.addEventListener(MouseEvent.RIGHT_CLICK,this.onRightClick,true,1,true);
+         target.addEventListener(MouseEvent.RIGHT_MOUSE_DOWN,this.onRightMouseDown,true,1,true);
+         target.addEventListener(MouseEvent.RIGHT_MOUSE_UP,this.onRightMouseUp,true,1,true);
          target.addEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown,false,1,true);
          target.addEventListener(KeyboardEvent.KEY_UP,this.onKeyUp,false,1,true);
+      }
+      
+      public function registerLoadingListeners(target:Stage = null) : void
+      {
+         if(target == null)
+         {
+            target = StageShareManager.stage;
+         }
+         target.addEventListener(MouseEvent.DOUBLE_CLICK,this.onDoubleClick,true,1,true);
+         target.addEventListener(MouseEvent.CLICK,this.onClick,true,1,true);
+         target.addEventListener(MouseEvent.MOUSE_WHEEL,this.onMouseWheel,false,1,true);
+         target.addEventListener(MouseEvent.MOUSE_DOWN,this.onMouseDown,true,1,true);
+         target.addEventListener(MouseEvent.MOUSE_UP,this.onMouseUp,true,1,true);
+         target.addEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown,false,1,true);
+         target.addEventListener(KeyboardEvent.KEY_UP,this.onKeyUp,false,1,true);
+      }
+      
+      public function registerRemainingListeners(target:Stage = null) : void
+      {
+         if(target == null)
+         {
+            target = StageShareManager.stage;
+         }
+         target.addEventListener(MouseEvent.MOUSE_OVER,this.onMouseOver,true,1,true);
+         target.addEventListener(MouseEvent.MOUSE_OUT,this.onMouseOut,true,1,true);
+         target.addEventListener(MouseEvent.MIDDLE_CLICK,this.onMiddleClick,true,1,true);
+         target.addEventListener(MouseEvent.RIGHT_CLICK,this.onRightClick,true,1,true);
+         target.addEventListener(MouseEvent.RIGHT_MOUSE_DOWN,this.onRightMouseDown,true,1,true);
+         target.addEventListener(MouseEvent.RIGHT_MOUSE_UP,this.onRightMouseUp,true,1,true);
       }
       
       private function onDoubleClick(me:MouseEvent) : void

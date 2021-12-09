@@ -56,6 +56,8 @@ package com.ankamagames.berilia.components
       
       private var _scrollBeforeChange:int;
       
+      private var _placeholderText:String;
+      
       public var focusEventHandlerPriority:Boolean = true;
       
       public function TextAreaInput()
@@ -111,6 +113,7 @@ package com.ankamagames.berilia.components
       
       override public function set text(sValue:String) : void
       {
+         this.removePlaceholderText();
          this._lastTextOnInput = null;
          super.text = sValue;
          _tText.text = sValue;
@@ -123,6 +126,23 @@ package com.ankamagames.berilia.components
          this.checkClearHistory();
          this._undoing = this._redoing = this._deleting = this._chatHistoryText = false;
          this.onTextChange(null);
+      }
+      
+      public function get placeholderText() : String
+      {
+         return this._placeholderText;
+      }
+      
+      public function set placeholderText(sValue:String) : void
+      {
+         this._placeholderText = sValue;
+         this.text = this._placeholderText;
+         this.alpha = 0.5;
+      }
+      
+      public function get placeholderActivated() : Boolean
+      {
+         return this.alpha == 0.5;
       }
       
       override public function remove() : void
@@ -378,6 +398,10 @@ package com.ankamagames.berilia.components
          Berilia.getInstance().handler.process(new ChangeMessage(InteractiveObject(this)));
          updateScrollBarPos();
          updateScrollBar();
+         if(text.length == 0)
+         {
+            this.addPlaceholder();
+         }
          if(this._scrollBeforeChange >= 0)
          {
             scrollV = this._scrollBeforeChange;
@@ -388,6 +412,7 @@ package com.ankamagames.berilia.components
       
       private function onTextInput(pEvent:TextEvent) : void
       {
+         this.removePlaceholderText();
          if(pEvent.text.length > 1)
          {
             this.checkClearHistory();
@@ -446,6 +471,23 @@ package com.ankamagames.berilia.components
          else if(!pEvent.altKey && pEvent.shiftKey && !pEvent.ctrlKey && pEvent.keyCode == Keyboard.ENTER)
          {
             _log.debug("shift entrée");
+         }
+      }
+      
+      private function removePlaceholderText() : void
+      {
+         this.alpha = 1;
+         if(this._placeholderText && _tText.text == this._placeholderText)
+         {
+            _tText.text = "";
+         }
+      }
+      
+      private function addPlaceholder() : void
+      {
+         if(this._placeholderText)
+         {
+            this.placeholderText = this._placeholderText;
          }
       }
    }

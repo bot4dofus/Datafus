@@ -191,7 +191,7 @@ package com.ankamagames.dofus.logic.game.fight.fightEvents
          sendFightEvent(null,null,0,-1);
          sendAllFightEvents();
          var entitiesFrame:FightEntitiesFrame = Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame;
-         var entitiesList:Dictionary = !!entitiesFrame ? entitiesFrame.getEntitiesDictionnary() : new Dictionary();
+         var entitiesList:Dictionary = !!entitiesFrame ? entitiesFrame.entities : new Dictionary();
          _detailsActive = sysApi.getOption("showLogPvDetails","dofus");
          groupAllEventsForDisplay(entitiesList);
       }

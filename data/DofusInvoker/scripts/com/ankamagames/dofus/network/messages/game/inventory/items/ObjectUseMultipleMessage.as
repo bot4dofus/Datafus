@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class ObjectUseMultipleMessage extends ObjectUseMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9466;
+      public static const protocolId:uint = 1126;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 9466;
+         return 1126;
       }
       
       public function initObjectUseMultipleMessage(objectUID:uint = 0, quantity:uint = 0) : ObjectUseMultipleMessage

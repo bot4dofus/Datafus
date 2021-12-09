@@ -421,7 +421,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var spellKnown:SpellWrapper = null;
          var spell:Spell = null;
          var castSpellLevel:SpellLevel = null;
-         var fe:Dictionary = null;
          var fighterInfos:GameFightFighterInformations = null;
          var simf:SpellInventoryManagementFrame = null;
          var gcdValue:int = 0;
@@ -597,11 +596,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   CurrentPlayedFighterManager.getInstance().getSpellCastManagerById(gafscmsg.sourceId).castSpell(gafscmsg.spellId,gafscmsg.spellLevel,spellTargetEntities);
                }
                critical = gafscmsg.critical == FightSpellCastCriticalEnum.CRITICAL_HIT;
-               if(fightEntitiesFrame)
-               {
-                  entities = fightEntitiesFrame.getEntitiesDictionnary();
-                  fighter = entities[gafscmsg.sourceId];
-               }
+               entities = FightEntitiesFrame.getCurrentInstance().entities;
+               fighter = entities[gafscmsg.sourceId];
                if(closeCombatWeaponId != 0)
                {
                   this.pushStep(new FightCloseCombatStep(gafscmsg.sourceId,closeCombatWeaponId,gafscmsg.critical,gafscmsg.verboseCast));
@@ -663,9 +659,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
                            }
                         }
                      }
-                     fe = fightEntitiesFrame.getEntitiesDictionnary();
                      simf = Kernel.getWorker().getFrame(SpellInventoryManagementFrame) as SpellInventoryManagementFrame;
-                     for each(fighterInfos in fe)
+                     for each(fighterInfos in entities)
                      {
                         gfsc = new GameFightSpellCooldown();
                         if(fighterInfos is GameFightEntityInformation && gafscmsg.sourceId != fighterInfos.contextualId)
@@ -1046,7 +1041,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var summonedEntityInfos:GameFightMonsterInformations = null;
          var monster:Monster = null;
          var fighterInfos:GameFightFighterInformations = null;
-         var entitiesDictionnary:Dictionary = FightEntitiesFrame.getCurrentInstance().getEntitiesDictionnary();
+         var entitiesDictionnary:Dictionary = FightEntitiesFrame.getCurrentInstance().entities;
          for each(gcai in entitiesDictionnary)
          {
             if(gcai is GameFightFighterInformations)
@@ -1176,7 +1171,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var currentPlayedFighterManager:CurrentPlayedFighterManager = null;
          var monster:Monster = null;
          var fightEntityFrame_gaflmsg:FightEntitiesFrame = FightEntitiesFrame.getCurrentInstance();
-         var entitiesL:Dictionary = fightEntityFrame_gaflmsg.getEntitiesDictionnary();
+         var entitiesL:Dictionary = fightEntityFrame_gaflmsg.entities;
          for each(gcaiL in entitiesL)
          {
             if(gcaiL is GameFightFighterInformations)
@@ -1301,7 +1296,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          {
             if(gafsnmsg.actionId == ActionIds.ACTION_CHARACTER_ADD_ILLUSION_RANDOM || gafsnmsg.actionId == ActionIds.ACTION_CHARACTER_ADD_ILLUSION_MIRROR)
             {
-               fightEntities = this.fightEntitiesFrame.getEntitiesDictionnary();
+               fightEntities = this.fightEntitiesFrame.entities;
                for(fighterId in fightEntities)
                {
                   infos = this.fightEntitiesFrame.getEntityInfos(fighterId) as GameFightFighterInformations;
@@ -2018,12 +2013,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private function summonEntity(entity:GameFightFighterInformations, sourceId:Number, actionId:uint) : void
       {
-         var isBomb:Boolean = false;
-         var isCreature:Boolean = false;
          var entityInfosS:GameContextActorInformations = null;
          var summonedEntityInfosS:GameFightMonsterInformations = null;
          var monsterS:Monster = null;
-         var summonedCharacterInfoS:GameFightCharacterInformations = null;
          var gfsgmsg:GameFightShowFighterMessage = new GameFightShowFighterMessage();
          gfsgmsg.initGameFightShowFighterMessage(entity);
          Kernel.getWorker().getFrame(FightEntitiesFrame).process(gfsgmsg);
@@ -2037,44 +2029,42 @@ package com.ankamagames.dofus.logic.game.fight.frames
             summonedCreature.visible = false;
          }
          this.pushStep(new FightSummonStep(sourceId,entity));
-         if(sourceId == CurrentPlayedFighterManager.getInstance().currentFighterId)
+         var isBomb:Boolean = false;
+         var isCreature:Boolean = false;
+         var summonedCharacterInfoS:GameFightCharacterInformations = null;
+         if(actionId == ActionIds.ACTION_SUMMON_BOMB)
          {
+            isBomb = true;
+         }
+         else
+         {
+            entityInfosS = FightEntitiesFrame.getCurrentInstance().getEntityInfos(entity.contextualId);
             isBomb = false;
-            isCreature = false;
-            if(actionId == ActionIds.ACTION_SUMMON_BOMB)
+            summonedEntityInfosS = entityInfosS as GameFightMonsterInformations;
+            if(summonedEntityInfosS)
             {
-               isBomb = true;
+               monsterS = Monster.getMonsterById(summonedEntityInfosS.creatureGenericId);
+               if(monsterS && monsterS.useBombSlot)
+               {
+                  isBomb = true;
+               }
+               if(monsterS && monsterS.useSummonSlot)
+               {
+                  isCreature = true;
+               }
             }
             else
             {
-               entityInfosS = FightEntitiesFrame.getCurrentInstance().getEntityInfos(entity.contextualId);
-               isBomb = false;
-               summonedEntityInfosS = entityInfosS as GameFightMonsterInformations;
-               if(summonedEntityInfosS)
-               {
-                  monsterS = Monster.getMonsterById(summonedEntityInfosS.creatureGenericId);
-                  if(monsterS && monsterS.useBombSlot)
-                  {
-                     isBomb = true;
-                  }
-                  if(monsterS && monsterS.useSummonSlot)
-                  {
-                     isCreature = true;
-                  }
-               }
-               else
-               {
-                  summonedCharacterInfoS = entityInfosS as GameFightCharacterInformations;
-               }
+               summonedCharacterInfoS = entityInfosS as GameFightCharacterInformations;
             }
-            if(isCreature || summonedCharacterInfoS)
-            {
-               CurrentPlayedFighterManager.getInstance().addSummonedCreature();
-            }
-            else if(isBomb)
-            {
-               CurrentPlayedFighterManager.getInstance().addSummonedBomb();
-            }
+         }
+         if(isCreature || summonedCharacterInfoS)
+         {
+            CurrentPlayedFighterManager.getInstance().addSummonedCreature(sourceId);
+         }
+         else if(isBomb)
+         {
+            CurrentPlayedFighterManager.getInstance().addSummonedBomb(sourceId);
          }
          var nextPlayableCharacterId:Number = this._fightBattleFrame.getNextPlayableCharacterId();
          if(this._fightBattleFrame.currentPlayerId != CurrentPlayedFighterManager.getInstance().currentFighterId && nextPlayableCharacterId != CurrentPlayedFighterManager.getInstance().currentFighterId && nextPlayableCharacterId == entity.contextualId)

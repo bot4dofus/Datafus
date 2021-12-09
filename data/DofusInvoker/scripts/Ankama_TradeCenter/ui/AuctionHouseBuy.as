@@ -26,6 +26,7 @@ package Ankama_TradeCenter.ui
    import com.ankamagames.dofus.misc.lists.ExchangeHookList;
    import com.ankamagames.dofus.misc.lists.InventoryHookList;
    import com.ankamagames.dofus.modules.utils.ItemTooltipSettings;
+   import com.ankamagames.dofus.types.enums.AuctionHouseTypeEnum;
    import com.ankamagames.dofus.uiApi.AuctionHouseItemFilterApi;
    import com.ankamagames.dofus.uiApi.AveragePricesApi;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
@@ -56,18 +57,6 @@ package Ankama_TradeCenter.ui
       private static const CTR_ITEM_DETAILS:String = "ctr_itemDetails";
       
       private static const CTR_ITEM_EMPTY:String = "ctr_itemEmpty";
-      
-      private static const EQUIPMENT_CATEGORY:uint = 1;
-      
-      private static const CONSUMABLE_CATEGORY:uint = 2;
-      
-      private static const RESOURCE_CATEGORY:uint = 3;
-      
-      private static const RUNE_CATEGORY:uint = 4;
-      
-      private static const SOUL_CATEGORY:uint = 5;
-      
-      private static const CREATURE_CATEGORY:uint = 6;
       
       private static const SORT_CACHE_NAME_PREFIX:String = "HV_BUY_SORTING_";
       
@@ -299,32 +288,37 @@ package Ankama_TradeCenter.ui
          this._allItems = new Dictionary(true);
          if(this.sellerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_COLLAR) != -1)
          {
-            this.currentType = EQUIPMENT_CATEGORY;
+            this.currentType = AuctionHouseTypeEnum.EQUIPMENT_CATEGORY;
             this.btn_label_btn_displayAllItems.text = uiApi.getText("ui.bidhouse.displayAvailable",uiApi.getText("ui.common.equipments").toLowerCase());
          }
          else if(this.sellerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_DRINK) != -1)
          {
-            this.currentType = CONSUMABLE_CATEGORY;
+            this.currentType = AuctionHouseTypeEnum.CONSUMABLE_CATEGORY;
             this.btn_label_btn_displayAllItems.text = uiApi.getText("ui.bidhouse.displayAvailable",uiApi.getText("ui.common.consumables").toLowerCase());
          }
          else if(this.sellerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_WING) != -1)
          {
-            this.currentType = RESOURCE_CATEGORY;
+            this.currentType = AuctionHouseTypeEnum.RESOURCE_CATEGORY;
             this.btn_label_btn_displayAllItems.text = uiApi.getText("ui.bidhouse.displayAvailable",uiApi.getText("ui.common.ressources").toLowerCase());
          }
          else if(this.sellerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_SMITHMAGIC_RUNE) != -1)
          {
-            this.currentType = RUNE_CATEGORY;
+            this.currentType = AuctionHouseTypeEnum.RUNE_CATEGORY;
             this.btn_label_btn_displayAllItems.text = uiApi.getText("ui.bidhouse.displayAvailable",uiApi.getText("ui.common.objects").toLowerCase());
          }
          else if(this.sellerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_EMPTY_SOULSTONE) != -1)
          {
-            this.currentType = SOUL_CATEGORY;
+            this.currentType = AuctionHouseTypeEnum.SOUL_CATEGORY;
             this.btn_label_btn_displayAllItems.text = uiApi.getText("ui.bidhouse.displayAvailable",uiApi.getText("ui.common.soulStones").toLowerCase());
          }
          else if(this.sellerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_DRAGOTURKEY_CERTIFICATE) != -1)
          {
-            this.currentType = CREATURE_CATEGORY;
+            this.currentType = AuctionHouseTypeEnum.CREATURE_CATEGORY;
+            this.btn_label_btn_displayAllItems.text = uiApi.getText("ui.bidhouse.displayAvailable",uiApi.getText("ui.common.objects").toLowerCase());
+         }
+         else if(this.sellerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_LIVING_OBJECT) != -1)
+         {
+            this.currentType = AuctionHouseTypeEnum.COSMETIC_CATEGORY;
             this.btn_label_btn_displayAllItems.text = uiApi.getText("ui.bidhouse.displayAvailable",uiApi.getText("ui.common.objects").toLowerCase());
          }
          var sortInfos:Object = sysApi.getData(SORT_CACHE_NAME_PREFIX + this.currentType,DataStoreEnum.BIND_ACCOUNT);
@@ -338,7 +332,7 @@ package Ankama_TradeCenter.ui
          this.itemFilterApi.initFilters(this.currentType,this.playerApi.getPlayedCharacterInfo(),this.setCurrentTypeInfos(),sysApi.getData("openedFilterCat"),this.gd_filters,this.gd_itemList,this.sellerDescriptor.types);
          this.btn_resetFilters.disabled = true;
          this.lbl_resetFilters.cssClass = "lightgreycenter";
-         if(this.currentType == SOUL_CATEGORY)
+         if(this.currentType == AuctionHouseTypeEnum.SOUL_CATEGORY)
          {
             this._maxOpenedItem = 1;
          }
@@ -815,13 +809,13 @@ package Ankama_TradeCenter.ui
                      this.itemFilterApi.currentFilteredIds().splice(this.itemFilterApi.currentFilteredIds().indexOf(typeIdToRemove),1);
                   }
                }
-               if(this.currentType == EQUIPMENT_CATEGORY && this.itemFilterApi.currentFilteredIds().length <= 0)
+               if(this.currentType == AuctionHouseTypeEnum.EQUIPMENT_CATEGORY && this.itemFilterApi.currentFilteredIds().length <= 0)
                {
                   this.itemFilterApi.currentWeaponEffectIds().splice(0,this.itemFilterApi.currentWeaponEffectIds().length);
                   this.itemFilterApi.currentConsumableEffectIds().splice(0,this.itemFilterApi.currentConsumableEffectIds().length);
                   this.itemFilterApi.currentCharacIds().splice(0,this.itemFilterApi.currentCharacIds().length);
                }
-               if(this.currentType == EQUIPMENT_CATEGORY && typeId == DataEnum.ITEM_SUPERTYPE_COSTUME)
+               if(this.currentType == AuctionHouseTypeEnum.EQUIPMENT_CATEGORY && typeId == DataEnum.ITEM_SUPERTYPE_COSTUME)
                {
                   this.itemFilterApi.currentSkinTargetIds().splice(0,this.itemFilterApi.currentSkinTargetIds().length);
                }
@@ -899,9 +893,9 @@ package Ankama_TradeCenter.ui
          {
             if(this.itemFilterApi.currentFilteredIds().indexOf(id) == -1)
             {
-               this.addTypeFilterId(id,this.currentType != EQUIPMENT_CATEGORY ? false : !this.itemFilterApi.checkSubFilters(id));
+               this.addTypeFilterId(id,this.currentType != AuctionHouseTypeEnum.EQUIPMENT_CATEGORY ? false : !this.itemFilterApi.checkSubFilters(id));
             }
-            if(this.currentType == SOUL_CATEGORY || this.currentType == CREATURE_CATEGORY)
+            if(this.currentType == AuctionHouseTypeEnum.SOUL_CATEGORY || this.currentType == AuctionHouseTypeEnum.CREATURE_CATEGORY)
             {
                break;
             }
@@ -1170,7 +1164,7 @@ package Ankama_TradeCenter.ui
                      {
                         this.itemFilterApi.subFilteredTypes().splice(this.itemFilterApi.subFilteredTypes().indexOf(superTypeIdToRemove),1);
                      }
-                     if(superTypeIdToRemove == DataEnum.ITEM_SUPERTYPE_CONSUMABLE || superTypeIdToRemove == DataEnum.ITEM_SUPERTYPE_RESOURCES || this.currentType == SOUL_CATEGORY || this.currentType == CREATURE_CATEGORY)
+                     if(superTypeIdToRemove == DataEnum.ITEM_SUPERTYPE_CONSUMABLE || superTypeIdToRemove == DataEnum.ITEM_SUPERTYPE_RESOURCES || this.currentType == AuctionHouseTypeEnum.SOUL_CATEGORY || this.currentType == AuctionHouseTypeEnum.CREATURE_CATEGORY || this.currentType == AuctionHouseTypeEnum.COSMETIC_CATEGORY)
                      {
                         if(this.itemFilterApi.currentFilteredIds().indexOf(superTypeIdToRemove) != -1)
                         {
@@ -1191,13 +1185,13 @@ package Ankama_TradeCenter.ui
                      }
                   }
                }
-               if(this.currentType == EQUIPMENT_CATEGORY && this.itemFilterApi.currentFilteredIds().length <= 0)
+               if(this.currentType == AuctionHouseTypeEnum.EQUIPMENT_CATEGORY && this.itemFilterApi.currentFilteredIds().length <= 0)
                {
                   this.itemFilterApi.currentWeaponEffectIds().splice(0,this.itemFilterApi.currentWeaponEffectIds().length);
                   this.itemFilterApi.currentConsumableEffectIds().splice(0,this.itemFilterApi.currentWeaponEffectIds().length);
                   this.itemFilterApi.currentCharacIds().splice(0,this.itemFilterApi.currentWeaponEffectIds().length);
                }
-               if(this.currentType == CREATURE_CATEGORY && this.itemFilterApi.currentSubIds().indexOf(DataEnum.ITEM_TYPE_BREEDING_ITEM) == -1)
+               if(this.currentType == AuctionHouseTypeEnum.CREATURE_CATEGORY && this.itemFilterApi.currentSubIds().indexOf(DataEnum.ITEM_TYPE_BREEDING_ITEM) == -1)
                {
                   this.itemFilterApi.currentBreedingItemEffectIds().splice(0,this.itemFilterApi.currentBreedingItemEffectIds().length);
                }
@@ -1302,7 +1296,7 @@ package Ankama_TradeCenter.ui
             this.lbl_selectCategory.visible = !this.gd_itemList.visible;
             if(this.itemFilterApi.currentFilteredIds().length <= 0 && this.itemFilterApi.currentCharacIds().length <= 0 && this.itemFilterApi.currentWeaponEffectIds().length <= 0 && this.itemFilterApi.currentConsumableEffectIds().length <= 0 && !TradeCenter.SEARCH_MODE && !this._selectInventory)
             {
-               if(this.currentType == CONSUMABLE_CATEGORY)
+               if(this.currentType == AuctionHouseTypeEnum.CONSUMABLE_CATEGORY)
                {
                   this.lbl_selectCategory.text = uiApi.getText("ui.common.selectCategoryOrEffect");
                }
@@ -2210,7 +2204,7 @@ package Ankama_TradeCenter.ui
          this._selectInventory = true;
          inp_search.text = selectedItem.name;
          this.btn_resetSearch.visible = true;
-         if(this.currentType == RUNE_CATEGORY && selectedItem.isEquipment && selectedItem.enhanceable)
+         if(this.currentType == AuctionHouseTypeEnum.RUNE_CATEGORY && selectedItem.isEquipment && selectedItem.enhanceable)
          {
             this.characsIdList = new Vector.<uint>();
             this._areRunesAssociatedWithWeapon = false;
@@ -2472,7 +2466,7 @@ package Ankama_TradeCenter.ui
          else if(target.name.indexOf("btn_gridItemDetails") != -1)
          {
             this.currentRollOverDetails = target;
-            if(this.currentType != RESOURCE_CATEGORY && this.currentType != RUNE_CATEGORY && this.currentType != CONSUMABLE_CATEGORY || this.currentType == CONSUMABLE_CATEGORY && this._componentList[target.name].data.itemWrapper.typeId == DataEnum.ITEM_TYPE_BREEDING_ITEM)
+            if(this.currentType != AuctionHouseTypeEnum.RESOURCE_CATEGORY && this.currentType != AuctionHouseTypeEnum.RUNE_CATEGORY && this.currentType != AuctionHouseTypeEnum.CONSUMABLE_CATEGORY || this.currentType == AuctionHouseTypeEnum.CONSUMABLE_CATEGORY && this._componentList[target.name].data.itemWrapper.typeId == DataEnum.ITEM_TYPE_BREEDING_ITEM)
             {
                tmpItem = this._componentList[target.name].data;
                this.displayItemTooltip(target,tmpItem);

@@ -8,6 +8,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.internalDatacenter.conquest.PrismSubAreaWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildFactSheetWrapper;
+   import com.ankamagames.dofus.internalDatacenter.guild.GuildRecruitmentDataWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.SocialEntityInFightWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
@@ -560,11 +561,11 @@ package com.ankamagames.dofus.logic.game.common.frames
                   guildSheetForA = afsocialFrame.getGuildById(giai.guildId);
                   if(guildSheetForA)
                   {
-                     guildSheetForA.update(giai.guildId,giai.guildName,giai.guildEmblem,guildSheetForA.leaderId,guildSheetForA.leaderName,giai.guildLevel,giai.nbMembers,guildSheetForA.creationDate,guildSheetForA.members,guildSheetForA.nbConnectedMembers,guildSheetForA.nbTaxCollectors,guildSheetForA.lastActivity,afmsg.infos.allianceId,afmsg.infos.allianceName,afmsg.infos.allianceTag,firstAlliance);
+                     guildSheetForA.update(giai.guildId,giai.guildName,giai.guildEmblem,guildSheetForA.leaderId,guildSheetForA.leaderName,giai.guildLevel,giai.nbMembers,guildSheetForA.creationDate,guildSheetForA.members,guildSheetForA.guildRecruitmentInfo,guildSheetForA.nbConnectedMembers,guildSheetForA.nbTaxCollectors,guildSheetForA.lastActivity,afmsg.infos.allianceId,afmsg.infos.allianceName,afmsg.infos.allianceTag,firstAlliance);
                   }
                   else
                   {
-                     guildSheetForA = GuildFactSheetWrapper.create(giai.guildId,giai.guildName,giai.guildEmblem,0,"",giai.guildLevel,giai.nbMembers,0,null,0,0,0,afmsg.infos.allianceId,afmsg.infos.allianceName,afmsg.infos.allianceTag,firstAlliance);
+                     guildSheetForA = GuildFactSheetWrapper.create(giai.guildId,giai.guildName,giai.guildEmblem,0,"",giai.guildLevel,giai.nbMembers,0,null,new GuildRecruitmentDataWrapper(),0,0,0,afmsg.infos.allianceId,afmsg.infos.allianceName,afmsg.infos.allianceTag,firstAlliance);
                   }
                   nbAllianceMembers += giai.nbMembers;
                   afsocialFrame.updateGuildById(giai.guildId,guildSheetForA);
@@ -610,11 +611,11 @@ package com.ankamagames.dofus.logic.game.common.frames
                   guildSheetForMyA = aisocialFrame.getGuildById(gifsi.guildId);
                   if(guildSheetForMyA)
                   {
-                     guildSheetForMyA.update(gifsi.guildId,gifsi.guildName,gifsi.guildEmblem,gifsi.leaderId,gifsi.leaderName,gifsi.guildLevel,gifsi.nbMembers,guildSheetForMyA.creationDate,guildSheetForMyA.members,gifsi.nbConnectedMembers,gifsi.nbTaxCollectors,gifsi.lastActivity,aiimsg.allianceInfos.allianceId,aiimsg.allianceInfos.allianceName,aiimsg.allianceInfos.allianceTag,first);
+                     guildSheetForMyA.update(gifsi.guildId,gifsi.guildName,gifsi.guildEmblem,gifsi.leaderId,gifsi.leaderName,gifsi.guildLevel,gifsi.nbMembers,guildSheetForMyA.creationDate,guildSheetForMyA.members,GuildRecruitmentDataWrapper.wrap(gifsi.recruitment),gifsi.nbConnectedMembers,gifsi.nbTaxCollectors,gifsi.lastActivityDay,aiimsg.allianceInfos.allianceId,aiimsg.allianceInfos.allianceName,aiimsg.allianceInfos.allianceTag,first);
                   }
                   else
                   {
-                     guildSheetForMyA = GuildFactSheetWrapper.create(gifsi.guildId,gifsi.guildName,gifsi.guildEmblem,gifsi.leaderId,gifsi.leaderName,gifsi.guildLevel,gifsi.nbMembers,0,null,gifsi.nbConnectedMembers,gifsi.nbTaxCollectors,gifsi.lastActivity,aiimsg.allianceInfos.allianceId,aiimsg.allianceInfos.allianceName,aiimsg.allianceInfos.allianceTag,first);
+                     guildSheetForMyA = GuildFactSheetWrapper.create(gifsi.guildId,gifsi.guildName,gifsi.guildEmblem,gifsi.leaderId,gifsi.leaderName,gifsi.guildLevel,gifsi.nbMembers,0,null,GuildRecruitmentDataWrapper.wrap(gifsi.recruitment),gifsi.nbConnectedMembers,gifsi.nbTaxCollectors,gifsi.lastActivityDay,aiimsg.allianceInfos.allianceId,aiimsg.allianceInfos.allianceName,aiimsg.allianceInfos.allianceTag,first);
                   }
                   nbMembersInAlliance += gifsi.nbMembers;
                   aisocialFrame.updateGuildById(gifsi.guildId,guildSheetForMyA);

@@ -26,6 +26,7 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupLightInformations;
    import com.ankamagames.dofus.uiApi.BreachApi;
    import com.ankamagames.dofus.uiApi.ChatApi;
+   import com.ankamagames.dofus.uiApi.ConfigApi;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.MapApi;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
@@ -72,7 +73,10 @@ package Ankama_GameUiCore.ui
       [Api(name="UtilApi")]
       public var utilApi:UtilApi;
       
-      private var _isHardcoreServer:Boolean;
+      [Api(name="ConfigApi")]
+      public var configApi:ConfigApi;
+      
+      private var _serverHeroicActivated:Boolean;
       
       private var _currentSubAreaId:int;
       
@@ -170,7 +174,7 @@ package Ankama_GameUiCore.ui
          this.uiApi.addComponentHook(this.tx_mapReward,ComponentHookList.ON_ROLL_OUT);
          this.uiApi.addComponentHook(this.tx_anomaly,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.tx_anomaly,ComponentHookList.ON_ROLL_OUT);
-         this._isHardcoreServer = this.sysApi.getPlayerManager().serverGameType == 1;
+         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled("server.heroic");
          this._myVeryOwnAlliance = this.socialApi.getAlliance();
       }
       
@@ -275,7 +279,7 @@ package Ankama_GameUiCore.ui
          {
             return;
          }
-         if(!this._isHardcoreServer && (!this._currentPlayerAlignment || !this._myVeryOwnAlliance || (this._currentPlayerAlignment.aggressable == AggressableStatusEnum.AvA_DISQUALIFIED || this._currentPlayerAlignment.aggressable == AggressableStatusEnum.AvA_ENABLED_NON_AGGRESSABLE || this._currentPlayerAlignment.aggressable == AggressableStatusEnum.NON_AGGRESSABLE || this._currentPlayerAlignment.aggressable == AggressableStatusEnum.PvP_ENABLED_NON_AGGRESSABLE)))
+         if(!this._serverHeroicActivated && (!this._currentPlayerAlignment || !this._myVeryOwnAlliance || (this._currentPlayerAlignment.aggressable == AggressableStatusEnum.AvA_DISQUALIFIED || this._currentPlayerAlignment.aggressable == AggressableStatusEnum.AvA_ENABLED_NON_AGGRESSABLE || this._currentPlayerAlignment.aggressable == AggressableStatusEnum.NON_AGGRESSABLE || this._currentPlayerAlignment.aggressable == AggressableStatusEnum.PvP_ENABLED_NON_AGGRESSABLE)))
          {
             return;
          }

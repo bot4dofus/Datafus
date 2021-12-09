@@ -544,6 +544,8 @@ package com.ankamagames.dofus.misc.lists
       public static const ArenaExternalNotification:String = "ArenaExternalNotification";
       
       public static const PopupWarningClosed:String = "PopupWarningClosed";
+      
+      public static const GuildsReceived:String = "GuildsReceived";
        
       
       private var _import_CustomUiHookList:CustomUiHookList = null;
@@ -827,6 +829,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(DisplayHostSelection);
          Hook.createHook(ArenaExternalNotification);
          Hook.createHook(PopupWarningClosed);
+         Hook.createHook(GuildsReceived);
       }
    }
 }

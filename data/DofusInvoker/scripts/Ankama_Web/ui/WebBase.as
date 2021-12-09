@@ -37,6 +37,8 @@ package Ankama_Web.ui
       public static const possibleTabs:Array = [WebTabEnum.SHOP_TAB,WebTabEnum.BAK_TAB,WebTabEnum.CODES_AND_GIFTS_TAB];
        
       
+      private var _serverHeroicActivated:Boolean = false;
+      
       [Api(name="SystemApi")]
       public var sysApi:SystemApi;
       
@@ -85,6 +87,7 @@ package Ankama_Web.ui
       public function main(oParams:* = null) : void
       {
          var lastTab:String = null;
+         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled("server.heroic");
          this.uiApi.me().restoreSnapshotAfterLoading = false;
          this.tx_line.mask = this.ctr_linemask;
          this.uiApi.addShortcutHook("closeUi",this.onShortcut);
@@ -101,9 +104,9 @@ package Ankama_Web.ui
             isShopAvailable = true;
          }
          currentTabUi = null;
-         this.btn_tabOgrines.visible = this.sysApi.getCurrentServer().gameTypeId != GameServerTypeEnum.SERVER_TYPE_TEMPORIS && this.sysApi.getCurrentServer().gameTypeId != GameServerTypeEnum.SERVER_TYPE_HARDCORE;
-         this.btn_tabShop.visible = isShopAvailable && this.sysApi.getCurrentServer().gameTypeId != GameServerTypeEnum.SERVER_TYPE_HARDCORE;
-         this.btn_tabCodesAndGifts.visible = isCodesAndGiftsAvailable && this.sysApi.getCurrentServer().gameTypeId != GameServerTypeEnum.SERVER_TYPE_HARDCORE;
+         this.btn_tabOgrines.visible = this.sysApi.getCurrentServer().gameTypeId != GameServerTypeEnum.SERVER_TYPE_TEMPORIS && !this._serverHeroicActivated;
+         this.btn_tabShop.visible = isShopAvailable && !this._serverHeroicActivated;
+         this.btn_tabCodesAndGifts.visible = isCodesAndGiftsAvailable && !this._serverHeroicActivated;
          if(oParams && oParams is Array && oParams[0])
          {
             this.openTab(oParams[0],oParams[1]);
@@ -111,7 +114,7 @@ package Ankama_Web.ui
          else
          {
             lastTab = this.sysApi.getSetData("shopLastOpenedTab",WebTabEnum.SHOP_TAB);
-            if((this.sysApi.getCurrentServer().gameTypeId == GameServerTypeEnum.SERVER_TYPE_TEMPORIS || this.sysApi.getCurrentServer().gameTypeId == GameServerTypeEnum.SERVER_TYPE_HARDCORE) && lastTab == WebTabEnum.BAK_TAB)
+            if((this.sysApi.getCurrentServer().gameTypeId == GameServerTypeEnum.SERVER_TYPE_TEMPORIS || this._serverHeroicActivated) && lastTab == WebTabEnum.BAK_TAB)
             {
                lastTab = WebTabEnum.SHOP_TAB;
             }

@@ -56,6 +56,7 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.dofus.network.enums.ChatActivableChannelsEnum;
    import com.ankamagames.dofus.network.enums.ForgettableSpellClientActionEnum;
    import com.ankamagames.dofus.network.enums.ShortcutBarEnum;
+   import com.ankamagames.dofus.types.enums.ItemCategoryEnum;
    import com.ankamagames.dofus.uiApi.BindsApi;
    import com.ankamagames.dofus.uiApi.ConfigApi;
    import com.ankamagames.dofus.uiApi.ContextMenuApi;
@@ -1478,7 +1479,7 @@ package Ankama_GameUiCore.ui
                               this.useItem((target as Grid).selectedItem.id);
                            }
                         }
-                        if(item.category == 0 && (selectMethod == GridItemSelectMethodEnum.DOUBLE_CLICK || selectMethod == GridItemSelectMethodEnum.MANUAL))
+                        if((item.category == ItemCategoryEnum.EQUIPMENT_CATEGORY || item.category == ItemCategoryEnum.COSMETICS_CATEGORY) && (selectMethod == GridItemSelectMethodEnum.DOUBLE_CLICK || selectMethod == GridItemSelectMethodEnum.MANUAL))
                         {
                            this.equipItem(item);
                         }

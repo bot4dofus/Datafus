@@ -48,6 +48,12 @@ package com.ankamagames.berilia.components
       
       private var _unboxedProcessDrop:Function;
       
+      private var _forceScrollPos:Boolean = false;
+      
+      private var _scrollPosX:int = 0;
+      
+      private var _scrollPosY:int = 0;
+      
       protected var ___width:uint;
       
       public function TextArea()
@@ -96,6 +102,7 @@ package com.ankamagames.berilia.components
       public function set scrollBarY(pY:int) : void
       {
          this._sbScrollBar.y = pY;
+         this._scrollPosY = pY;
       }
       
       public function get scrollBarX() : int
@@ -106,6 +113,12 @@ package com.ankamagames.berilia.components
       public function set scrollBarX(pX:int) : void
       {
          this._sbScrollBar.x = pX;
+         this._scrollPosX = pX;
+      }
+      
+      public function set forceScrollPos(force:Boolean) : void
+      {
+         this._forceScrollPos = force;
       }
       
       public function get scrollBottomMargin() : int
@@ -127,7 +140,7 @@ package com.ankamagames.berilia.components
       public function set scrollTopMargin(value:int) : void
       {
          this._scrollTopMargin = value;
-         this._sbScrollBar.y = this._scrollTopMargin;
+         this._sbScrollBar.y = !!this._forceScrollPos ? Number(this._scrollPosY) : Number(this._scrollTopMargin);
          this._sbScrollBar.height = height - this._scrollTopMargin - this._scrollBottomMargin;
       }
       
@@ -426,12 +439,12 @@ package com.ankamagames.berilia.components
          _tText.width = this.width - this._sbScrollBar.width - this._scrollXOffset;
          if(this._nScrollPos >= 0)
          {
-            this._sbScrollBar.x = this.width - this._sbScrollBar.width;
+            this._sbScrollBar.x = !!this._forceScrollPos ? Number(this._scrollPosX) : Number(this.width - this._sbScrollBar.width);
             _tText.x = 0;
          }
          else
          {
-            this._sbScrollBar.x = 0;
+            this._sbScrollBar.x = !!this._forceScrollPos ? Number(this._scrollPosX) : Number(0);
             _tText.x = this._sbScrollBar.width + this._scrollXOffset;
          }
       }

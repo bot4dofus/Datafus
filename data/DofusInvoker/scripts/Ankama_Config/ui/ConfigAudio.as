@@ -3,14 +3,12 @@ package Ankama_Config.ui
    import Ankama_Common.Common;
    import Ankama_Config.types.ConfigProperty;
    import com.ankamagames.berilia.components.ProgressBar;
-   import com.ankamagames.berilia.components.TextArea;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.dofus.kernel.sound.enum.SoundEnum;
    import com.ankamagames.dofus.misc.lists.CustomUiHookList;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.SoundApi;
-   import flash.events.Event;
    import flash.utils.Dictionary;
    
    public class ConfigAudio extends ConfigUi
@@ -65,8 +63,6 @@ package Ankama_Config.ui
       public var btn_ambientSoundMute:ButtonContainer;
       
       public var soundOptionCtr:GraphicContainer;
-      
-      public var lbl_updater:TextArea;
       
       private var _textfieldDico:Dictionary;
       
@@ -162,23 +158,6 @@ package Ankama_Config.ui
             this.btn_ambientSoundMute.soundId = SoundEnum.CHECKBOX_UNCHECKED;
          }
          this.activeOptions(this.btn_globalMute.selected);
-      }
-      
-      private function onVolChange(pEvent:Event) : void
-      {
-         if(pEvent.target.text == "")
-         {
-            pEvent.target.text = 0;
-         }
-         this.soundApi.setBusVolume(this._textfieldDico[pEvent.target.name],pEvent.target.text);
-      }
-      
-      private function saveOptions() : void
-      {
-      }
-      
-      private function undoOptions() : void
-      {
       }
       
       private function activeOptions(pActivate:Boolean) : void

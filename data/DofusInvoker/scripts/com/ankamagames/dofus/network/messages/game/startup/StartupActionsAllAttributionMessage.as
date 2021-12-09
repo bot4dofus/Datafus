@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.startup
    public class StartupActionsAllAttributionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8595;
+      public static const protocolId:uint = 2956;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.startup
       
       override public function getMessageId() : uint
       {
-         return 8595;
+         return 2956;
       }
       
       public function initStartupActionsAllAttributionMessage(characterId:Number = 0) : StartupActionsAllAttributionMessage

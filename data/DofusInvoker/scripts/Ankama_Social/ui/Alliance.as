@@ -1,6 +1,7 @@
 package Ankama_Social.ui
 {
    import Ankama_Common.Common;
+   import Ankama_Grimoire.enum.EnumTab;
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.components.Input;
    import com.ankamagames.berilia.components.Label;
@@ -9,6 +10,7 @@ package Ankama_Social.ui
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.utils.ComponentHookList;
    import com.ankamagames.dofus.datacenter.guild.EmblemSymbol;
+   import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.kernel.sound.enum.SoundEnum;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceMotdSetRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.prism.PrismsListRegisterAction;
@@ -80,6 +82,8 @@ package Ankama_Social.ui
       
       public var btn_fights:ButtonContainer;
       
+      public var btn_directory:ButtonContainer;
+      
       public var ctr_motd:GraphicContainer;
       
       public var lbl_motd:Label;
@@ -105,6 +109,7 @@ package Ankama_Social.ui
          this.btn_bulletin.soundId = SoundEnum.TAB;
          this.btn_areas.soundId = SoundEnum.TAB;
          this.btn_fights.soundId = SoundEnum.TAB;
+         this.btn_directory.soundId = SoundEnum.TAB;
          this.sysApi.addHook(SocialHookList.AllianceUpdateInformations,this.onAllianceUpdateInformations);
          this.sysApi.addHook(SocialHookList.AllianceMotd,this.onAllianceMotd);
          this.sysApi.addHook(SocialHookList.AllianceBulletin,this.onAllianceBulletin);
@@ -114,6 +119,7 @@ package Ankama_Social.ui
          this.uiApi.addComponentHook(this.btn_bulletin,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btn_areas,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btn_fights,ComponentHookList.ON_RELEASE);
+         this.uiApi.addComponentHook(this.btn_directory,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.lbl_name,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.lbl_name,ComponentHookList.ON_ROLL_OUT);
          this.uiApi.addComponentHook(this.tx_emblemBack,ComponentHookList.ON_TEXTURE_READY);
@@ -196,42 +202,50 @@ package Ankama_Social.ui
       
       private function getUiNameByTab(tab:uint) : String
       {
-         if(tab == 0)
+         if(tab == DataEnum.ALLIANCE_TAB_MEMBERS_ID)
          {
-            return "allianceMembers";
+            return EnumTab.ALLIANCE_MEMBERS_TAB;
          }
-         if(tab == 1)
+         if(tab == DataEnum.ALLIANCE_TAB_AREAS_ID)
          {
-            return "allianceAreas";
+            return EnumTab.ALLIANCE_AREAS_TAB;
          }
-         if(tab == 2)
+         if(tab == DataEnum.ALLIANCE_TAB_FIGHTS_ID)
          {
-            return "allianceFights";
+            return EnumTab.ALLIANCE_FIGHTS_TAB;
          }
-         if(tab == 3)
+         if(tab == DataEnum.ALLIANCE_TAB_BULLETIN_ID)
          {
-            return "socialBulletin";
+            return EnumTab.ALLIANCE_BULLETIN_TAB;
+         }
+         if(tab == DataEnum.ALLIANCE_TAB_DIRECTORY_ID)
+         {
+            return EnumTab.ALLIANCE_DIRECTORY_TAB;
          }
          return null;
       }
       
       private function getButtonByTab(tab:uint) : ButtonContainer
       {
-         if(tab == 0)
+         if(tab == DataEnum.ALLIANCE_TAB_MEMBERS_ID)
          {
             return this.btn_members;
          }
-         if(tab == 1)
+         if(tab == DataEnum.ALLIANCE_TAB_AREAS_ID)
          {
             return this.btn_areas;
          }
-         if(tab == 2)
+         if(tab == DataEnum.ALLIANCE_TAB_FIGHTS_ID)
          {
             return this.btn_fights;
          }
-         if(tab == 3)
+         if(tab == DataEnum.ALLIANCE_TAB_BULLETIN_ID)
          {
             return this.btn_bulletin;
+         }
+         if(tab == DataEnum.ALLIANCE_TAB_DIRECTORY_ID)
+         {
+            return this.btn_directory;
          }
          return null;
       }
@@ -300,7 +314,7 @@ package Ankama_Social.ui
       
       private function onAllianceBulletin() : void
       {
-         if(this._nCurrentTab == 3)
+         if(this._nCurrentTab == DataEnum.ALLIANCE_TAB_BULLETIN_ID)
          {
             return;
          }
@@ -325,20 +339,24 @@ package Ankama_Social.ui
          var escapeText:String = null;
          if(target == this.btn_members)
          {
-            this.openSelectedTab(0);
+            this.openSelectedTab(DataEnum.ALLIANCE_TAB_MEMBERS_ID);
          }
          else if(target == this.btn_bulletin)
          {
             this.tx_bulletinWarning.visible = false;
-            this.openSelectedTab(3);
+            this.openSelectedTab(DataEnum.ALLIANCE_TAB_BULLETIN_ID);
          }
          else if(target == this.btn_areas)
          {
-            this.openSelectedTab(1);
+            this.openSelectedTab(DataEnum.ALLIANCE_TAB_AREAS_ID);
          }
          else if(target == this.btn_fights)
          {
-            this.openSelectedTab(2);
+            this.openSelectedTab(DataEnum.ALLIANCE_TAB_FIGHTS_ID);
+         }
+         else if(target == this.btn_directory)
+         {
+            this.openSelectedTab(DataEnum.ALLIANCE_TAB_DIRECTORY_ID);
          }
          else if(target == this.btn_motdEdit)
          {

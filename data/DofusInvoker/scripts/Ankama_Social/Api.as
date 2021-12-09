@@ -18,6 +18,8 @@ package Ankama_Social
       public static var util:Object;
       
       public static var time:Object;
+      
+      public static var config:Object;
        
       
       public function Api()

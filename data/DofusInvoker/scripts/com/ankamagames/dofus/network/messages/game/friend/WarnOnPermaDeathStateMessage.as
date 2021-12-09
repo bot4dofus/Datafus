@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class WarnOnPermaDeathStateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4098;
+      public static const protocolId:uint = 8629;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 4098;
+         return 8629;
       }
       
       public function initWarnOnPermaDeathStateMessage(enable:Boolean = false) : WarnOnPermaDeathStateMessage

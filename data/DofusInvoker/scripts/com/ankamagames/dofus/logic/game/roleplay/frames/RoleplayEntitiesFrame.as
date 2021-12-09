@@ -1786,7 +1786,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       public function updateMonstersGroups() : void
       {
          var entityInfo:GameContextActorInformations = null;
-         var entities:Dictionary = getEntitiesDictionnary();
+         var entities:Dictionary = entities;
          for each(entityInfo in entities)
          {
             if(entityInfo is GameRolePlayGroupMonsterInformations)

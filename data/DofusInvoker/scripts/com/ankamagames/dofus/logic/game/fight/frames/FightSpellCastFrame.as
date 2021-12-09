@@ -259,7 +259,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          Atouin.getInstance().options.addEventListener(PropertyChangeEvent.PROPERTY_CHANGED,this.onPropertyChanged);
          this._fightContextFrame = Kernel.getWorker().getFrame(FightContextFrame) as FightContextFrame;
          var fef:FightEntitiesFrame = Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame;
-         var fighters:Dictionary = fef.getEntitiesDictionnary();
+         var fighters:Dictionary = fef.entities;
          for each(actorInfos in fighters)
          {
             fighterInfos = actorInfos as GameFightFighterInformations;
@@ -393,7 +393,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          if(fbf)
          {
             fef = Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame;
-            fighters = fef.getEntitiesDictionnary();
+            fighters = fef.entities;
             for each(actorInfos in fighters)
             {
                fighterInfos = actorInfos as GameFightFighterInformations;

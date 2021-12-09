@@ -1,9 +1,11 @@
 package Ankama_Common.ui
 {
    import com.ankamagames.berilia.components.Label;
+   import com.ankamagames.berilia.components.TextureBitmap;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.utils.ComponentHookList;
+   import com.ankamagames.dofus.kernel.sound.enum.SoundTypeEnum;
    
    public class TextButtonPopup extends Popup
    {
@@ -15,7 +17,11 @@ package Ankama_Common.ui
       
       public var lbl_btn_secondary:Label;
       
+      public var btn_texture_btn_primary:TextureBitmap;
+      
       public var popup:GraphicContainer;
+      
+      protected var height:int = 0;
       
       public function TextButtonPopup()
       {
@@ -42,12 +48,22 @@ package Ankama_Common.ui
             _aEventIndex[this.lbl_btn_secondary.name] = params.buttonCallback[1];
             onEnterKey = !!params.onEnterKey ? params.onEnterKey : params.buttonCallback[0];
             onCancelFunction = !!params.onCancel ? params.onCancel : params.buttonCallback[0];
-            lbl_content.fullWidthAndHeight();
-            this.popup.height = lbl_content.y + lbl_content.height - lbl_title_popup.y + Number(uiApi.me().getConstant("bottom_margin"));
+            this.btn_lbl_btn_primary.fullWidthAndHeight();
+            this.btn_primary.width = this.btn_lbl_btn_primary.width + Number(uiApi.me().getConstant("primary_button_margin")) * 2;
+            this.btn_texture_btn_primary.width = this.btn_primary.width;
+            this.btn_lbl_btn_primary.width = this.btn_primary.width;
+            lbl_content.fullWidthAndHeight(0,20);
+            this.height += lbl_content.y + lbl_content.height - lbl_title_popup.y + Number(uiApi.me().getConstant("bottom_margin"));
+            this.popup.height = this.height;
             uiApi.me().render();
             return;
          }
          throw new Error("Can\'t load popup without properties.");
+      }
+      
+      override public function unload() : void
+      {
+         soundApi.playSound(SoundTypeEnum.CLOSE_WINDOW);
       }
    }
 }

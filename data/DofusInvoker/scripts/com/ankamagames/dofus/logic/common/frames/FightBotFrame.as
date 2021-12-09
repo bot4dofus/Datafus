@@ -306,7 +306,7 @@ package com.ankamagames.dofus.logic.common.frames
             return;
          }
          var avaibleCells:Array = [];
-         for each(entity in rpEF.getEntitiesDictionnary())
+         for each(entity in rpEF.entities)
          {
             if(entity is GameRolePlayGroupMonsterInformations)
             {
@@ -413,7 +413,7 @@ package com.ankamagames.dofus.logic.common.frames
          else
          {
             avaibleCells = [];
-            for each(entity in FightEntitiesFrame.getCurrentInstance().getEntitiesDictionnary())
+            for each(entity in FightEntitiesFrame.getCurrentInstance().entities)
             {
                if(entity.contextualId < 0 && entity is GameFightMonsterInformations)
                {

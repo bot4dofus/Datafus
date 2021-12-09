@@ -2,7 +2,6 @@ package com.ankamagames.berilia.components
 {
    import com.ankamagames.berilia.Berilia;
    import com.ankamagames.berilia.FinalizableUIComponent;
-   import com.ankamagames.berilia.components.gridRenderer.LabelGridRenderer;
    import com.ankamagames.berilia.components.messages.SelectItemMessage;
    import com.ankamagames.berilia.enums.SelectMethodEnum;
    import com.ankamagames.berilia.enums.StatesEnum;
@@ -53,8 +52,6 @@ package com.ankamagames.berilia.components
       
       protected var _listTexture:Texture;
       
-      protected var _isIcon:Boolean = false;
-      
       protected var _labelCssPath:String = null;
       
       protected var _useKeyboard:Boolean = true;
@@ -95,7 +92,7 @@ package com.ankamagames.berilia.components
          this._button = new ButtonContainer();
          this._button.soundId = "0";
          this._listTexture = new Texture();
-         this._list = new ComboBoxGrid();
+         this.setGrid();
          this.showList(false);
          addEventListener(Event.ADDED_TO_STAGE,this.onAddedToStage);
          StageShareManager.stage.nativeWindow.addEventListener(Event.DEACTIVATE,this.onWindowDeactivate);
@@ -251,11 +248,6 @@ package com.ankamagames.berilia.components
          this._listTexture.height = this._list.height;
          this._listTexture.width = this._list.width;
          this._list.dataProvider = data;
-         if(this._list.renderer is LabelGridRenderer)
-         {
-            (this._list.renderer as LabelGridRenderer).isIcon = this._isIcon;
-            this.setButtonLabel();
-         }
          this._dpString = this.getDpString();
       }
       
@@ -326,15 +318,6 @@ package com.ankamagames.berilia.components
          return this._list.autoSelectMode;
       }
       
-      public function set isIcon(b:Boolean) : void
-      {
-         this._isIcon = b;
-         if(this._list.renderer is LabelGridRenderer)
-         {
-            (this._list.renderer as LabelGridRenderer).isIcon = this._isIcon;
-         }
-      }
-      
       public function set labelCss(labelCssPath:String) : void
       {
          this._labelCssPath = labelCssPath;
@@ -391,6 +374,11 @@ package com.ankamagames.berilia.components
          this._dpString = this.getDpString();
       }
       
+      public function get isUnfolded() : Boolean
+      {
+         return this._previousState;
+      }
+      
       public function renderModificator(childs:Array, accessKey:Object) : Array
       {
          if(accessKey != SecureCenter.ACCESS_KEY)
@@ -406,18 +394,8 @@ package com.ankamagames.berilia.components
          return this._list.renderModificator(childs,accessKey);
       }
       
-      override public function finalize() : void
+      protected function setUpMainContainer() : void
       {
-         if(this._bgTexture is TextureBitmap && !this._bgTexture.finalized)
-         {
-            return;
-         }
-         this.finalizeBaseComponents();
-         if(this._list.renderer is LabelGridRenderer)
-         {
-            (this._list.renderer as LabelGridRenderer).buttonWidth = this._bgTexture.width;
-            (this._list.renderer as LabelGridRenderer).isIcon = this._isIcon;
-         }
          this._mainContainer = this._list.renderer.render(null,0,false);
          this._mainContainer.height = !!this.mainContainerHeight ? Number(this.mainContainerHeight) : Number(this._list.slotHeight);
          this._mainContainer.x = this._list.x;
@@ -426,7 +404,16 @@ package com.ankamagames.berilia.components
             this._mainContainer.y = (height - this._mainContainer.height) / 2;
          }
          this._button.addChild(this._mainContainer);
-         this.setButtonLabel();
+      }
+      
+      override public function finalize() : void
+      {
+         if(this._bgTexture is TextureBitmap && !this._bgTexture.finalized)
+         {
+            return;
+         }
+         this.finalizeBaseComponents();
+         this.setUpMainContainer();
          super.finalize();
          _finalized = true;
          getUi().iAmFinalized(this);
@@ -756,38 +743,6 @@ package com.ankamagames.berilia.components
          this._previousState = show;
       }
       
-      private function setButtonLabel() : void
-      {
-         var container:GraphicContainer = null;
-         var buttonLabel:Label = null;
-         var buttonIcon:Texture = null;
-         if(this._list.renderer is LabelGridRenderer && this._button !== null && this._button.numChildren > 0)
-         {
-            container = this._button.getChildAt(this._button.numChildren - 1) as GraphicContainer;
-            if(container !== null && container.numChildren > 0)
-            {
-               buttonLabel = container.getChildAt(0) as Label;
-               if((this._list.renderer as LabelGridRenderer).isIcon && buttonLabel !== null && container.numChildren > 1)
-               {
-                  buttonIcon = container.getChildAt(1) as Texture;
-                  container.y = 0;
-                  if(buttonIcon !== null)
-                  {
-                     buttonLabel.x = LabelGridRenderer.getLabelOffset(buttonIcon,this._list.dataProvider[this._list.selectedIndex]);
-                  }
-               }
-               else if(buttonLabel !== null)
-               {
-                  buttonLabel.y = -2;
-               }
-               if(buttonLabel !== null && this._labelCssPath)
-               {
-                  buttonLabel.css = new Uri(this._labelCssPath);
-               }
-            }
-         }
-      }
-      
       protected function cleanString(spaced:String) : String
       {
          var regSpace:RegExp = /\s/g;
@@ -826,6 +781,11 @@ package com.ankamagames.berilia.components
       {
          removeEventListener(Event.ADDED_TO_STAGE,this.onAddedToStage);
          StageShareManager.stage.addEventListener(MouseEvent.CLICK,this.onClick);
+      }
+      
+      protected function setGrid() : void
+      {
+         this._list = new ComboBoxGrid();
       }
    }
 }

@@ -3,6 +3,7 @@ package com.ankamagames.dofus.internalDatacenter.guild
    import com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations;
    import com.ankamagames.dofus.network.types.game.guild.GuildEmblem;
+   import com.ankamagames.dofus.network.types.game.social.GuildFactSheetInformations;
    import com.ankamagames.dofus.network.types.game.social.GuildVersatileInformations;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
@@ -49,12 +50,22 @@ package com.ankamagames.dofus.internalDatacenter.guild
       
       public static const TALK_IN_ALLIANCE_CHANNEL:String = "talkInAllianceChannel";
       
-      public static const guildRights:Array = new Array(IS_BOSS,MANAGE_GUILD_BOOSTS,MANAGE_RIGHTS,MANAGE_LIGHT_RIGHTS,INVITE_NEW_MEMBERS,BAN_MEMBERS,MANAGE_XP_CONTRIBUTION,MANAGE_RANKS,HIRE_TAX_COLLECTOR,MANAGE_MY_XP_CONTRIBUTION,COLLECT,USE_FARMS,ORGANIZE_FARMS,TAKE_OTHERS_RIDES_IN_FARM,PRIORITIZE_DEFENSE,COLLECT_MY_TAX_COLLECTORS,SET_ALLIANCE_PRISM,TALK_IN_ALLIANCE_CHANNEL);
+      public static const RIGHT_MANAGE_GUILD_APPLY:String = "manageGuildApply";
+      
+      public static const RIGHT_MANAGE_GUILD_RECRUITMENT:String = "manageGuildRecruitment";
+      
+      public static const guildRights:Array = new Array(IS_BOSS,MANAGE_GUILD_BOOSTS,MANAGE_RIGHTS,MANAGE_LIGHT_RIGHTS,INVITE_NEW_MEMBERS,BAN_MEMBERS,MANAGE_XP_CONTRIBUTION,MANAGE_RANKS,HIRE_TAX_COLLECTOR,MANAGE_MY_XP_CONTRIBUTION,COLLECT,USE_FARMS,ORGANIZE_FARMS,TAKE_OTHERS_RIDES_IN_FARM,PRIORITIZE_DEFENSE,COLLECT_MY_TAX_COLLECTORS,SET_ALLIANCE_PRISM,TALK_IN_ALLIANCE_CHANNEL,RIGHT_MANAGE_GUILD_APPLY,RIGHT_MANAGE_GUILD_RECRUITMENT);
       
       public static var _rightDictionnary:Dictionary = new Dictionary();
        
       
       private var _guildName:String;
+      
+      public var guildRecruitmentInfo:GuildRecruitmentDataWrapper;
+      
+      public var lastActivityDay:uint;
+      
+      public var nbPendingApply:uint;
       
       public var guildId:uint;
       
@@ -146,6 +157,15 @@ package com.ankamagames.dofus.internalDatacenter.guild
                o.backEmblem = EmblemWrapper.fromNetwork(GuildInformations(msg).guildEmblem,true);
                o.upEmblem = EmblemWrapper.fromNetwork(GuildInformations(msg).guildEmblem,false);
             }
+            if(msg is GuildFactSheetInformations)
+            {
+               o.level = (msg as GuildFactSheetInformations).guildLevel;
+               o.leaderId = (msg as GuildFactSheetInformations).leaderId;
+               o.nbMembers = (msg as GuildFactSheetInformations).nbMembers;
+               o.guildRecruitmentInfo = GuildRecruitmentDataWrapper.wrap((msg as GuildFactSheetInformations).recruitment);
+               o.lastActivityDay = (msg as GuildFactSheetInformations).lastActivityDay;
+               o.nbPendingApply = (msg as GuildFactSheetInformations).nbPendingApply;
+            }
          }
          return o;
       }
@@ -169,6 +189,31 @@ package com.ankamagames.dofus.internalDatacenter.guild
             item.backEmblem = EmblemWrapper.create(pGuildEmblem.backgroundShape,EmblemWrapper.BACK,pGuildEmblem.backgroundColor);
          }
          return item;
+      }
+      
+      public static function fromGuildFactSheetWrapper(guildFactSheetWrapper:GuildFactSheetWrapper) : GuildWrapper
+      {
+         var o:GuildWrapper = null;
+         if(_ref[guildFactSheetWrapper.guildId])
+         {
+            o = _ref[guildFactSheetWrapper.guildId];
+         }
+         else
+         {
+            o = new GuildWrapper();
+            _ref[guildFactSheetWrapper.guildId] = o;
+         }
+         o.guildId = guildFactSheetWrapper.guildId;
+         o._guildName = guildFactSheetWrapper.guildName;
+         o.upEmblem = guildFactSheetWrapper.upEmblem;
+         o.backEmblem = guildFactSheetWrapper.backEmblem;
+         o.nbMembers = guildFactSheetWrapper.nbMembers;
+         o.guildRecruitmentInfo = guildFactSheetWrapper.guildRecruitmentInfo;
+         o.leaderId = guildFactSheetWrapper.leaderId;
+         o.level = guildFactSheetWrapper.guildLevel;
+         o.creationDate = guildFactSheetWrapper.creationDate;
+         o.nbConnectedMembers = guildFactSheetWrapper.nbConnectedMembers;
+         return o;
       }
       
       public static function getRightsNumber(pRightsIDs:Array) : Number
@@ -236,6 +281,8 @@ package com.ankamagames.dofus.internalDatacenter.guild
          rights.push(this.collectMyTaxCollectors);
          rights.push(this.setAlliancePrism);
          rights.push(this.talkInAllianceChannel);
+         rights.push(this.manageGuildRecruitment);
+         rights.push(this.manageGuildApply);
          return rights;
       }
       
@@ -329,6 +376,16 @@ package com.ankamagames.dofus.internalDatacenter.guild
          return this.isBoss || this.manageRights || (262144 & this._memberRightsNumber) > 0;
       }
       
+      public function get manageGuildRecruitment() : Boolean
+      {
+         return this.isBoss || this.manageRights || (4194304 & this._memberRightsNumber) > 0;
+      }
+      
+      public function get manageGuildApply() : Boolean
+      {
+         return this.isBoss || this.manageRights || (8388608 & this._memberRightsNumber) > 0;
+      }
+      
       public function clone() : GuildWrapper
       {
          var wrapper:GuildWrapper = create(this.guildId,this.guildName,null,this.memberRightsNumber);
@@ -404,6 +461,12 @@ package com.ankamagames.dofus.internalDatacenter.guild
                break;
             case TALK_IN_ALLIANCE_CHANNEL:
                returnValue = this.talkInAllianceChannel;
+               break;
+            case RIGHT_MANAGE_GUILD_RECRUITMENT:
+               returnValue = this.manageGuildRecruitment;
+               break;
+            case RIGHT_MANAGE_GUILD_APPLY:
+               returnValue = this.manageGuildApply;
          }
          return returnValue;
       }
@@ -428,6 +491,8 @@ package com.ankamagames.dofus.internalDatacenter.guild
          _rightDictionnary[COLLECT_MY_TAX_COLLECTORS] = 16;
          _rightDictionnary[SET_ALLIANCE_PRISM] = 17;
          _rightDictionnary[TALK_IN_ALLIANCE_CHANNEL] = 18;
+         _rightDictionnary[RIGHT_MANAGE_GUILD_RECRUITMENT] = 22;
+         _rightDictionnary[RIGHT_MANAGE_GUILD_APPLY] = 23;
       }
    }
 }

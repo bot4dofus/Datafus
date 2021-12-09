@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
    public class LeagueFriendInformations extends AbstractContactInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 4930;
+      public static const protocolId:uint = 107;
        
       
       public var playerId:Number = 0;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
       
       override public function getTypeId() : uint
       {
-         return 4930;
+         return 107;
       }
       
       public function initLeagueFriendInformations(accountId:uint = 0, accountTag:AccountTagInformation = null, playerId:Number = 0, playerName:String = "", breed:int = 0, sex:Boolean = false, level:uint = 0, leagueId:int = 0, totalLeaguePoints:int = 0, ladderPosition:int = 0) : LeagueFriendInformations

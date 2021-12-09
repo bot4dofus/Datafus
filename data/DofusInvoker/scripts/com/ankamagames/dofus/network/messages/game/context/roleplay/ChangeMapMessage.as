@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class ChangeMapMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 154;
+      public static const protocolId:uint = 3431;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 154;
+         return 3431;
       }
       
       public function initChangeMapMessage(mapId:Number = 0, autopilot:Boolean = false) : ChangeMapMessage

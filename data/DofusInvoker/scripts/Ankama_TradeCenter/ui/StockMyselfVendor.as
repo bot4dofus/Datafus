@@ -97,6 +97,10 @@ package Ankama_TradeCenter.ui
                   _currentCategoryBtn = btnRessources;
                   btnRessources.selected = true;
                   break;
+               case ItemCategoryEnum.COSMETICS_CATEGORY:
+                  _currentCategoryBtn = btnCosmetics;
+                  btnCosmetics.selected = true;
+                  break;
                default:
                   _currentCategoryBtn = btnAll;
                   btnAll.selected = true;

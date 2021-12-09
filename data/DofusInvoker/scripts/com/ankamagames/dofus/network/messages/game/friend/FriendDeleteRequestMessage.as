@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class FriendDeleteRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7172;
+      public static const protocolId:uint = 7400;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 7172;
+         return 7400;
       }
       
       public function initFriendDeleteRequestMessage(accountId:uint = 0) : FriendDeleteRequestMessage

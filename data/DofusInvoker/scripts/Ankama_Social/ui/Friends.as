@@ -665,9 +665,6 @@ package Ankama_Social.ui
       
       public function getCategoryDataLength(data:*, selected:Boolean) : *
       {
-         if(!selected)
-         {
-         }
          return 10;
       }
       

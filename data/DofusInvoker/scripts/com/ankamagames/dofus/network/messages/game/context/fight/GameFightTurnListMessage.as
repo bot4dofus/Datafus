@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightTurnListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2929;
+      public static const protocolId:uint = 7238;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 2929;
+         return 7238;
       }
       
       public function initGameFightTurnListMessage(ids:Vector.<Number> = null, deadsIds:Vector.<Number> = null) : GameFightTurnListMessage

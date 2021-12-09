@@ -54,7 +54,7 @@ package Ankama_Common.ui
       
       public var tx_externalLink:Texture;
       
-      private var _ignoreShortcuts:Boolean = false;
+      protected var _ignoreShortcuts:Boolean = false;
       
       private var _timer:BenchmarkTimer;
       

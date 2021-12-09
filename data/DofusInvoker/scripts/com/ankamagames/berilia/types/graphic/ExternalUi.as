@@ -7,13 +7,11 @@ package com.ankamagames.berilia.types.graphic
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.utils.display.StageShareManager;
    import flash.display.DisplayObject;
-   import flash.display.DisplayObjectContainer;
    import flash.display.InteractiveObject;
    import flash.display.NativeWindow;
    import flash.display.NativeWindowInitOptions;
    import flash.display.NativeWindowSystemChrome;
    import flash.display.NativeWindowType;
-   import flash.display.Shape;
    import flash.display.Sprite;
    import flash.display.StageAlign;
    import flash.display.StageScaleMode;
@@ -103,21 +101,6 @@ package com.ankamagames.berilia.types.graphic
          target.mouseEnabled = true;
       }
       
-      public function removeDragController(target:InteractiveObject) : void
-      {
-         target.removeEventListener(MouseEvent.MOUSE_DOWN,this.onMouseDownForDrag);
-      }
-      
-      public function addResizeControler(target:InteractiveObject) : void
-      {
-         target.addEventListener(MouseEvent.MOUSE_DOWN,this.onMouseDownForResize,false,0,true);
-      }
-      
-      public function removeResizeControler(target:InteractiveObject) : void
-      {
-         target.removeEventListener(MouseEvent.MOUSE_DOWN,this.onMouseDownForResize);
-      }
-      
       protected function onUiRendered(e:UiRenderEvent) : void
       {
          visible = true;
@@ -128,43 +111,6 @@ package com.ankamagames.berilia.types.graphic
          y = firstCtr.y + StageShareManager.stage.nativeWindow.y + this.margin;
          firstCtr.x = 0;
          firstCtr.y = 0;
-      }
-      
-      private function exploreUi(target:DisplayObject, indent:String = "") : void
-      {
-         var doc:DisplayObjectContainer = null;
-         var i:uint = 0;
-         if(target is DisplayObjectContainer)
-         {
-            doc = target as DisplayObjectContainer;
-            for(i = 0; i < doc.numChildren; i++)
-            {
-               this.exploreUi(doc.getChildAt(i),indent + ".   ");
-            }
-         }
-      }
-      
-      private function colorUi(target:DisplayObject) : void
-      {
-         var doc:DisplayObjectContainer = null;
-         var i:uint = 0;
-         var s:Shape = null;
-         if(target is DisplayObjectContainer)
-         {
-            doc = target as DisplayObjectContainer;
-            for(i = 0; i < doc.numChildren; i++)
-            {
-               this.exploreUi(doc.getChildAt(i));
-            }
-         }
-         if(target is Sprite)
-         {
-            s = new Shape();
-            s.graphics.beginFill(16777215 * Math.random(),0.4);
-            s.graphics.drawRect(target.x,target.y,target.width,target.height);
-            s.graphics.endFill();
-            Sprite(target).addChild(s);
-         }
       }
       
       private function onActivate(event:Event) : void
@@ -183,15 +129,6 @@ package com.ankamagames.berilia.types.graphic
             }
          }
          return super.startMove();
-      }
-      
-      protected function onMouseOver(event:MouseEvent) : void
-      {
-      }
-      
-      protected function onMouseDownForResize(event:MouseEvent) : void
-      {
-         this.startResize();
       }
       
       protected function onMouseDownForDrag(event:MouseEvent) : void
@@ -222,6 +159,7 @@ package com.ankamagames.berilia.types.graphic
          this._uiRootContainer.removeEventListener(UiRenderEvent.UIRenderComplete,this.onUiRendered);
          removeEventListener(Event.ACTIVATE,this.onActivate);
          ExternalUiManager.getInstance().unregisterExternalUi(this);
+         HumanInputHandler.getInstance().unregisterListeners(stage);
          close();
       }
    }

@@ -147,7 +147,7 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
          var rnd:PRNG = new ParkMillerCarta();
          rnd.seed(mapId + 5435);
          var entitiesFrame:RoleplayEntitiesFrame = Kernel.getWorker().getFrame(RoleplayEntitiesFrame) as RoleplayEntitiesFrame;
-         var entities:Dictionary = entitiesFrame.getEntitiesDictionnary();
+         var entities:Dictionary = entitiesFrame.entities;
          this._specialAnimFunMaxAnimDuration = 0;
          this._entitiesList.length = 0;
          for each(entity in entities)
@@ -440,7 +440,7 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
       {
          var entity:GameContextActorInformations = null;
          var entitiesFrame:RoleplayEntitiesFrame = Kernel.getWorker().getFrame(RoleplayEntitiesFrame) as RoleplayEntitiesFrame;
-         var entities:Dictionary = entitiesFrame.getEntitiesDictionnary();
+         var entities:Dictionary = entitiesFrame.entities;
          for each(entity in entities)
          {
             if(entity is GameRolePlayNpcInformations)
@@ -527,7 +527,7 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
          var entity:GameContextActorInformations = null;
          var sprite:AnimatedCharacter = null;
          var entitiesFrame:RoleplayEntitiesFrame = Kernel.getWorker().getFrame(RoleplayEntitiesFrame) as RoleplayEntitiesFrame;
-         var entities:Dictionary = entitiesFrame.getEntitiesDictionnary();
+         var entities:Dictionary = entitiesFrame.entities;
          var monsters:Array = new Array();
          for each(entity in entities)
          {

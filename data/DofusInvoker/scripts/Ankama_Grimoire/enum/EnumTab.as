@@ -47,6 +47,30 @@ package Ankama_Grimoire.enum
       
       public static var GUIDEBOOK_GAME_SUGGESTION:String = "gameSuggestion";
       
+      public static var GUILD_MEMBERS_TAB:String = "guildMembers";
+      
+      public static var GUILD_PERSONALIZATION_TAB:String = "guildPersonalization";
+      
+      public static var GUILD_TAX_COLLECTOR_TAB:String = "guildTaxCollector";
+      
+      public static var GUILD_PADDOCK_TAB:String = "guildPaddock";
+      
+      public static var GUILD_HOUSES_TAB:String = "guildHouses";
+      
+      public static var GUILD_BULLETIN_TAB:String = "socialBulletin";
+      
+      public static var GUILD_DIRECTORY_TAB:String = "guildDirectoryMinimize";
+      
+      public static var ALLIANCE_MEMBERS_TAB:String = "allianceMembers";
+      
+      public static var ALLIANCE_AREAS_TAB:String = "allianceAreas";
+      
+      public static var ALLIANCE_FIGHTS_TAB:String = "allianceFights";
+      
+      public static var ALLIANCE_BULLETIN_TAB:String = "socialBulletin";
+      
+      public static var ALLIANCE_DIRECTORY_TAB:String = "allianceDirectoryMinimize";
+      
       public static var ALIGNMENT_GIFTS_TAB:String = "alignmentGiftsTab";
       
       public static var ALIGNMENT_WAREFFORT_TAB:String = "alignmentWarEffortTab";

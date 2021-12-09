@@ -43,10 +43,5 @@ package com.ankamagames.dofus.datacenter.alignments
       {
          return I18n.getText(this.namesId[grade]);
       }
-      
-      public function getShortNameFromGrade(grade:int) : String
-      {
-         return I18n.getText(this.shortsId[grade]);
-      }
    }
 }

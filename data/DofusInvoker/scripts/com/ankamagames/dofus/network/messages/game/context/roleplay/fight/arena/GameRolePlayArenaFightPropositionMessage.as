@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
    public class GameRolePlayArenaFightPropositionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5501;
+      public static const protocolId:uint = 2533;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       override public function getMessageId() : uint
       {
-         return 5501;
+         return 2533;
       }
       
       public function initGameRolePlayArenaFightPropositionMessage(fightId:uint = 0, alliesId:Vector.<Number> = null, duration:uint = 0) : GameRolePlayArenaFightPropositionMessage

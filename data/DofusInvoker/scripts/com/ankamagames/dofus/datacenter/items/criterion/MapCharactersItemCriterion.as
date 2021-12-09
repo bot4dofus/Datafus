@@ -52,7 +52,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
          var entitiesFrame:RoleplayEntitiesFrame = Kernel.getWorker().getFrame(RoleplayEntitiesFrame) as RoleplayEntitiesFrame;
          if(entitiesFrame)
          {
-            entitiesInfos = entitiesFrame.getEntitiesDictionnary();
+            entitiesInfos = entitiesFrame.entities;
             for each(actorInfo in entitiesInfos)
             {
                if(actorInfo is GameRolePlayCharacterInformations)

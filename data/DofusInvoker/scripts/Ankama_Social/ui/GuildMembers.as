@@ -3,23 +3,32 @@ package Ankama_Social.ui
    import Ankama_Common.Common;
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.components.Grid;
+   import com.ankamagames.berilia.components.Input;
    import com.ankamagames.berilia.components.Label;
    import com.ankamagames.berilia.components.Texture;
    import com.ankamagames.berilia.enums.StrataEnum;
+   import com.ankamagames.berilia.enums.UIEnum;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.utils.ComponentHookList;
    import com.ankamagames.dofus.datacenter.communication.Smiley;
+   import com.ankamagames.dofus.internalDatacenter.guild.GuildApplicationWrapper;
+   import com.ankamagames.dofus.internalDatacenter.guild.GuildRecruitmentDataWrapper;
+   import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildApplicationsRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildGetInformationsAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildKickRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildSetApplicationUpdatesRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.MemberWarningSetAction;
    import com.ankamagames.dofus.logic.game.common.actions.spectator.GameFightSpectatePlayerRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.havenbag.HavenbagEnterAction;
    import com.ankamagames.dofus.misc.lists.SocialHookList;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
+   import com.ankamagames.dofus.network.enums.GuildApplicationStateEnum;
    import com.ankamagames.dofus.network.enums.GuildInformationsTypeEnum;
+   import com.ankamagames.dofus.network.enums.GuildRecruitmentTypeEnum;
    import com.ankamagames.dofus.network.enums.PlayerStateEnum;
-   import com.ankamagames.dofus.network.enums.PlayerStatusEnum;
+   import com.ankamagames.dofus.network.types.game.character.status.PlayerStatus;
    import com.ankamagames.dofus.network.types.game.character.status.PlayerStatusExtended;
    import com.ankamagames.dofus.network.types.game.guild.GuildMember;
    import com.ankamagames.dofus.uiApi.DataApi;
@@ -29,7 +38,10 @@ package Ankama_Social.ui
    import com.ankamagames.dofus.uiApi.UiTutoApi;
    import com.ankamagames.dofus.uiApi.UtilApi;
    import com.ankamagames.jerakine.types.Uri;
+   import com.ankamagames.jerakine.types.enums.DataStoreEnum;
+   import com.ankamagames.jerakine.utils.misc.StringUtils;
    import flash.utils.Dictionary;
+   import flashx.textLayout.formats.TextAlign;
    
    public class GuildMembers
    {
@@ -63,6 +75,24 @@ package Ankama_Social.ui
       [Module(name="Ankama_Common")]
       public var modCommon:Common;
       
+      private const DATA_SORT_MEMBERS:String = "sortGuildMembers";
+      
+      private const SORT_ARROW_OFFSET:uint = 8;
+      
+      private const SORT_ORDER:String = "rankOrder";
+      
+      private const SORT_NAME:String = "name";
+      
+      private const SORT_LEVEL:String = "level";
+      
+      private const SORT_XP:String = "XP";
+      
+      private const SORT_XPP:String = "XPP";
+      
+      private const SORT_ACHIEVEMENT:String = "achievementPoints";
+      
+      private const SORT_STATUS:String = "status.statusId";
+      
       private var _membersList:Object;
       
       private var _iconsPath:String;
@@ -73,9 +103,17 @@ package Ankama_Social.ui
       
       private var _bDescendingSort:Boolean = false;
       
+      private var _sortingParams:Object;
+      
       private var _interactiveComponentsList:Dictionary;
       
       private var _memberIdWaitingForKick:Number;
+      
+      private var INPUT_SEARCH_DEFAULT_TEXT:String;
+      
+      private var _currentSearchText:String;
+      
+      private var _guildApplicationTotal:int = 0;
       
       public var gd_list:Grid;
       
@@ -87,7 +125,7 @@ package Ankama_Social.ui
       
       public var lbl_membersLevel:Label;
       
-      public var btn_tabBreed:ButtonContainer;
+      public var btn_tabStatus:ButtonContainer;
       
       public var btn_tabName:ButtonContainer;
       
@@ -103,10 +141,40 @@ package Ankama_Social.ui
       
       public var btn_tabState:ButtonContainer;
       
+      public var btn_seeGuildApplications:ButtonContainer;
+      
       public var tx_status:Texture;
+      
+      public var btn_lbl_btn_tabStatus:Label;
+      
+      public var btn_lbl_btn_tabName:Label;
+      
+      public var btn_lbl_btn_tabRank:Label;
+      
+      public var btn_lbl_btn_tabLevel:Label;
+      
+      public var btn_lbl_btn_tabXP:Label;
+      
+      public var btn_lbl_btn_tabXPP:Label;
+      
+      public var btn_lbl_btn_tabAchievement:Label;
+      
+      public var tx_sortDown:Texture;
+      
+      public var tx_sortUp:Texture;
+      
+      public var ctr_search:GraphicContainer;
+      
+      public var inp_search:Input;
+      
+      public var btn_resetSearch:ButtonContainer;
       
       public function GuildMembers()
       {
+         this._sortingParams = {
+            "sortType":this.SORT_ORDER,
+            "descending":false
+         };
          this._interactiveComponentsList = new Dictionary(true);
          super();
       }
@@ -117,14 +185,67 @@ package Ankama_Social.ui
          this.sysApi.addHook(SocialHookList.MemberWarningState,this.onMemberWarningState);
          this.sysApi.addHook(SocialHookList.GuildInformationsMemberUpdate,this.onGuildInformationsMemberUpdate);
          this.sysApi.addHook(SocialHookList.GuildMembershipUpdated,this.onGuildMembershipUpdated);
-         this.uiApi.addComponentHook(this.btn_showOfflineMembers,"onRelease");
-         this.uiApi.addComponentHook(this.btn_warnWhenMemberIsOnline,"onRelease");
+         this.sysApi.addHook(SocialHookList.GuildApplicationsReceived,this.onApplications);
+         this.sysApi.addHook(SocialHookList.GuildApplicationUpdated,this.onUpdatedApplication);
+         this.uiApi.addComponentHook(this.btn_showOfflineMembers,ComponentHookList.ON_RELEASE);
+         this.uiApi.addComponentHook(this.btn_warnWhenMemberIsOnline,ComponentHookList.ON_RELEASE);
+         this.uiApi.addComponentHook(this.btn_resetSearch,ComponentHookList.ON_RELEASE);
+         this.uiApi.addComponentHook(this.btn_tabXPP,ComponentHookList.ON_ROLL_OVER);
+         this.uiApi.addComponentHook(this.btn_tabXPP,ComponentHookList.ON_ROLL_OUT);
+         this.uiApi.addComponentHook(this.btn_tabXP,ComponentHookList.ON_ROLL_OVER);
+         this.uiApi.addComponentHook(this.btn_tabXP,ComponentHookList.ON_ROLL_OUT);
+         this.uiApi.addComponentHook(this.inp_search,ComponentHookList.ON_CHANGE);
+         this._sortingParams = this.sysApi.getSetData(this.DATA_SORT_MEMBERS,this._sortingParams,DataStoreEnum.BIND_CHARACTER);
+         this._bDescendingSort = this._sortingParams.descending;
          this.sysApi.sendAction(new GuildGetInformationsAction([GuildInformationsTypeEnum.INFO_MEMBERS]));
+         this.initSortArrow(this._sortingParams.sortType);
+         this.INPUT_SEARCH_DEFAULT_TEXT = this.uiApi.getText("ui.guild.searchMembers");
+         this.inp_search.placeholderText = this.INPUT_SEARCH_DEFAULT_TEXT;
+         this.inp_search.restrict = "^[&\"~!@#$£%*\\_+=\'[]|;<>./?{},]()";
+         this.btn_resetSearch.visible = false;
+         this.btn_lbl_btn_tabXP.text = this.btn_lbl_btn_tabXP.text.toLocaleUpperCase();
+         this.btn_lbl_btn_tabXPP.text = this.btn_lbl_btn_tabXPP.text.toLocaleUpperCase();
          this._iconsPath = this.uiApi.me().getConstant("icons_uri");
          this._bgLevelUri = this.uiApi.createUri(this.uiApi.me().getConstant("bgLevel_uri"));
          this._bgPrestigeUri = this.uiApi.createUri(this.uiApi.me().getConstant("bgPrestige_uri"));
          this.btn_showOfflineMembers.selected = _showOfflineMembers;
          this.btn_warnWhenMemberIsOnline.selected = this.socialApi.getWarnOnMemberConnec();
+         this.setGuildApplicationsButton(false);
+         if(this.uiApi.getUi(UIEnum.GUILD_APPLICATIONS) === null)
+         {
+            this.sysApi.sendAction(GuildSetApplicationUpdatesRequestAction.create(true));
+         }
+         this.sysApi.sendAction(GuildApplicationsRequestAction.create(0,0));
+      }
+      
+      public function unload() : void
+      {
+         if(this.uiApi.getUi(UIEnum.GUILD_APPLICATIONS) === null)
+         {
+            this.sysApi.sendAction(GuildSetApplicationUpdatesRequestAction.create(false));
+         }
+      }
+      
+      private function isRecruitmentBlocked() : Boolean
+      {
+         var guildWrapper:GuildWrapper = this.socialApi.getGuild();
+         return guildWrapper !== null && guildWrapper.guildRecruitmentInfo !== null && guildWrapper.guildRecruitmentInfo.recruitmentType === GuildRecruitmentTypeEnum.DISABLED && this._guildApplicationTotal === 0;
+      }
+      
+      private function setGuildApplicationsButton(areThereApplications:Boolean) : void
+      {
+         var isButtonDisabled:Boolean = !areThereApplications || this.isRecruitmentBlocked() || this.playerApi.isInKoli();
+         this.btn_seeGuildApplications.softDisabled = isButtonDisabled;
+         if(isButtonDisabled)
+         {
+            this.uiApi.addComponentHook(this.btn_seeGuildApplications,ComponentHookList.ON_ROLL_OVER);
+            this.uiApi.addComponentHook(this.btn_seeGuildApplications,ComponentHookList.ON_ROLL_OUT);
+         }
+         else
+         {
+            this.uiApi.removeComponentHook(this.btn_seeGuildApplications,ComponentHookList.ON_ROLL_OVER);
+            this.uiApi.removeComponentHook(this.btn_seeGuildApplications,ComponentHookList.ON_ROLL_OUT);
+         }
       }
       
       public function updateGuildMemberLine(data:*, components:*, selected:Boolean) : void
@@ -153,6 +274,12 @@ package Ankama_Social.ui
             this.uiApi.addComponentHook(components.lbl_playerName,ComponentHookList.ON_ROLL_OUT);
          }
          this._interactiveComponentsList[components.lbl_playerName.name] = data;
+         if(!this._interactiveComponentsList[components.tx_head.name])
+         {
+            this.uiApi.addComponentHook(components.tx_head,ComponentHookList.ON_ROLL_OVER);
+            this.uiApi.addComponentHook(components.tx_head,ComponentHookList.ON_ROLL_OUT);
+         }
+         this._interactiveComponentsList[components.tx_head.name] = data;
          if(!this._interactiveComponentsList[components.tx_status.name])
          {
             this.uiApi.addComponentHook(components.tx_status,ComponentHookList.ON_ROLL_OVER);
@@ -215,6 +342,7 @@ package Ankama_Social.ui
                components.lbl_lvl.text = memberInfo.level;
                components.tx_lvl.uri = this._bgLevelUri;
             }
+            components.tx_slotHead.visible = true;
             components.tx_head.uri = this.uiApi.createUri(this.uiApi.me().getConstant("heads") + data.breed + "" + data.sex + ".png");
             if(data.achievementPoints == -1)
             {
@@ -222,7 +350,7 @@ package Ankama_Social.ui
             }
             else
             {
-               components.lbl_achievement.text = data.achievementPoints;
+               components.lbl_achievement.text = StringUtils.kamasToString(data.achievementPoints,"");
             }
             if(memberInfo.connected != PlayerStateEnum.NOT_CONNECTED && memberInfo.moodSmileyId != 0)
             {
@@ -273,31 +401,7 @@ package Ankama_Social.ui
             {
                components.tx_havenbag.visible = false;
             }
-            if(memberInfo.connected != PlayerStateEnum.NOT_CONNECTED)
-            {
-               if(memberInfo.status.statusId)
-               {
-                  switch(memberInfo.status.statusId)
-                  {
-                     case PlayerStatusEnum.PLAYER_STATUS_AVAILABLE:
-                        components.tx_status.uri = this.uiApi.createUri(this._iconsPath + "green.png");
-                        break;
-                     case PlayerStatusEnum.PLAYER_STATUS_AFK:
-                     case PlayerStatusEnum.PLAYER_STATUS_IDLE:
-                        components.tx_status.uri = this.uiApi.createUri(this._iconsPath + "yellow.png");
-                        break;
-                     case PlayerStatusEnum.PLAYER_STATUS_PRIVATE:
-                        components.tx_status.uri = this.uiApi.createUri(this._iconsPath + "blue.png");
-                        break;
-                     case PlayerStatusEnum.PLAYER_STATUS_SOLO:
-                        components.tx_status.uri = this.uiApi.createUri(this._iconsPath + "red.png");
-                  }
-               }
-               else
-               {
-                  components.tx_status.uri = null;
-               }
-            }
+            components.tx_status.uri = this.socialApi.getStatusIcon(memberInfo.status.statusId);
             if(data.displayBanMember)
             {
                components.btn_kick.visible = true;
@@ -324,6 +428,7 @@ package Ankama_Social.ui
             components.lbl_XPP.text = "";
             components.lbl_XP.text = "";
             components.tx_head.uri = null;
+            components.tx_slotHead.visible = false;
             components.tx_state.uri = null;
             components.tx_mood.uri = null;
             components.tx_fight.uri = null;
@@ -333,11 +438,19 @@ package Ankama_Social.ui
             components.tx_status.uri = null;
             components.lbl_achievement.text = "";
          }
+         this.sysApi.addHook(SocialHookList.GuildRecruitmentDataReceived,this.onRecruitmentData);
+      }
+      
+      private function onRecruitmentData(recruitmentData:GuildRecruitmentDataWrapper) : void
+      {
+         this.setGuildApplicationsButton(this._guildApplicationTotal > 0);
       }
       
       private function popupDeletePlayer(data:Object) : void
       {
          var text:String = null;
+         var quitButton:String = null;
+         var cancelButton:String = null;
          if(data.isBoss && !data.isAlone)
          {
             this.modCommon.openPopup(this.uiApi.getText("ui.popup.warning"),this.uiApi.getText("ui.social.guildBossCantBeBann"),[this.uiApi.getText("ui.common.ok")]);
@@ -347,13 +460,17 @@ package Ankama_Social.ui
             if(this.playerApi.id() == data.member.id)
             {
                text = this.uiApi.getText("ui.social.doUDeleteYou");
+               quitButton = this.uiApi.getText("ui.guild.quit");
+               cancelButton = this.uiApi.getText("ui.guild.stay");
             }
             else
             {
                text = this.uiApi.getText("ui.social.doUDeleteMember",data.member.name);
+               quitButton = this.uiApi.getText("ui.guild.exclude");
+               cancelButton = this.uiApi.getText("ui.guild.keep");
             }
             this._memberIdWaitingForKick = data.member.id;
-            this.modCommon.openPopup(this.uiApi.getText("ui.popup.warning"),text,[this.uiApi.getText("ui.common.yes"),this.uiApi.getText("ui.common.no")],[this.onConfirmDeletePlayer,this.onCancelDeletePlayer],this.onConfirmDeletePlayer,this.onCancelDeletePlayer);
+            this.modCommon.openTextButtonPopup(this.uiApi.getText("ui.popup.warning"),text,[quitButton,cancelButton],[this.onConfirmDeletePlayer,this.onCancelDeletePlayer],this.onConfirmDeletePlayer,this.onCancelDeletePlayer);
          }
       }
       
@@ -458,6 +575,163 @@ package Ankama_Social.ui
          return this.isBoss(pPlayerRights) || (16384 & pPlayerRights) > 0;
       }
       
+      private function manageRecruitment(pPlayerRights:uint) : Boolean
+      {
+         return this.isBoss(pPlayerRights) || (4194304 & pPlayerRights) > 0;
+      }
+      
+      public function manageGuildApply(pPlayerRights:uint) : Boolean
+      {
+         return this.isBoss(pPlayerRights) || (8388608 & pPlayerRights) > 0;
+      }
+      
+      private function searchMember() : void
+      {
+         var member:GuildMember = null;
+         var listDisplayed:Array = [];
+         for each(member in this._membersList)
+         {
+            if(member.connected || _showOfflineMembers)
+            {
+               listDisplayed.push(this.createMemberObject(member,this._membersList.length == 1));
+            }
+         }
+         listDisplayed = this.utilApi.filter(listDisplayed,this._currentSearchText,"name");
+         this.gd_list.dataProvider = this.sortMembers(listDisplayed);
+      }
+      
+      private function resetSearch() : void
+      {
+         this._currentSearchText = null;
+         this.inp_search.placeholderText = this.INPUT_SEARCH_DEFAULT_TEXT;
+         this.btn_resetSearch.visible = false;
+         if(this._membersList != null)
+         {
+            this.onGuildMembersUpdated(this._membersList);
+         }
+      }
+      
+      private function sortMembers(members:Array) : Array
+      {
+         switch(this._sortingParams.sortType)
+         {
+            case this.SORT_NAME:
+               if(this._sortingParams.descending)
+               {
+                  return members.sortOn(this._sortingParams.sortType,Array.CASEINSENSITIVE | Array.DESCENDING);
+               }
+               return members.sortOn(this._sortingParams.sortType,Array.CASEINSENSITIVE);
+               break;
+            case this.SORT_ORDER:
+            case this.SORT_LEVEL:
+            case this.SORT_XP:
+            case this.SORT_XPP:
+            case this.SORT_ACHIEVEMENT:
+               if(this._sortingParams.descending)
+               {
+                  return members.sortOn([this._sortingParams.sortType,this.SORT_NAME],[Array.NUMERIC | Array.DESCENDING,Array.CASEINSENSITIVE]);
+               }
+               return members.sortOn([this._sortingParams.sortType,this.SORT_NAME],[Array.NUMERIC,Array.CASEINSENSITIVE]);
+               break;
+            case this.SORT_STATUS:
+               if(this._sortingParams.descending)
+               {
+                  return members.sort(this.sortByStatus,Array.DESCENDING);
+               }
+               return members.sort(this.sortByStatus);
+               break;
+            default:
+               return members;
+         }
+      }
+      
+      private function initSortArrow(sort:String) : void
+      {
+         switch(sort)
+         {
+            case this.SORT_NAME:
+               this.updateSortArrow(this.btn_tabName);
+               break;
+            case this.SORT_ORDER:
+               this.updateSortArrow(this.btn_tabRank);
+               break;
+            case this.SORT_LEVEL:
+               this.updateSortArrow(this.btn_tabLevel);
+               break;
+            case this.SORT_XP:
+               this.updateSortArrow(this.btn_tabXP);
+               break;
+            case this.SORT_XPP:
+               this.updateSortArrow(this.btn_tabXPP);
+               break;
+            case this.SORT_ACHIEVEMENT:
+               this.updateSortArrow(this.btn_tabAchievement);
+               break;
+            case this.SORT_STATUS:
+               this.updateSortArrow(this.btn_tabStatus);
+         }
+      }
+      
+      private function updateSortArrow(target:GraphicContainer) : void
+      {
+         var btn_lbl_target:Label = this["btn_lbl_" + target.name];
+         this.tx_sortDown.visible = !this._bDescendingSort;
+         this.tx_sortUp.visible = this._bDescendingSort;
+         var pos:int = 0;
+         switch(btn_lbl_target.textFormat.align)
+         {
+            case TextAlign.LEFT:
+            case TextAlign.JUSTIFY:
+               pos = target.anchorX + btn_lbl_target.textWidth + this.SORT_ARROW_OFFSET + 3;
+               break;
+            case TextAlign.CENTER:
+               pos = target.anchorX + btn_lbl_target.width / 2 + btn_lbl_target.textWidth / 2 + this.SORT_ARROW_OFFSET;
+               break;
+            case TextAlign.RIGHT:
+               pos = target.anchorX + btn_lbl_target.width + this.SORT_ARROW_OFFSET;
+         }
+         this.tx_sortDown.x = this.tx_sortUp.x = pos;
+      }
+      
+      private function sortByStatus(member1:Object, member2:Object) : int
+      {
+         var firstStatus:int = (member1.status as PlayerStatus).statusId;
+         var secondStatus:int = (member2.status as PlayerStatus).statusId;
+         firstStatus = firstStatus != 0 ? int(firstStatus) : 1000;
+         secondStatus = secondStatus != 0 ? int(secondStatus) : 1000;
+         if(firstStatus > secondStatus)
+         {
+            return 1;
+         }
+         if(firstStatus < secondStatus)
+         {
+            return -1;
+         }
+         return 0;
+      }
+      
+      private function onApplications(applicationDescrs:Vector.<GuildApplicationWrapper>, offset:uint, limit:uint, total:uint) : void
+      {
+         this._guildApplicationTotal = total;
+         this.setGuildApplicationsButton(this._guildApplicationTotal > 0);
+      }
+      
+      private function onUpdatedApplication(application:GuildApplicationWrapper, state:uint, playerId:Number) : void
+      {
+         switch(state)
+         {
+            case GuildApplicationStateEnum.ADDED:
+               ++this._guildApplicationTotal;
+               break;
+            case GuildApplicationStateEnum.DELETED:
+               this._guildApplicationTotal = Math.max(0,this._guildApplicationTotal - 1);
+               break;
+            default:
+               return;
+         }
+         this.setGuildApplicationsButton(this._guildApplicationTotal > 0);
+      }
+      
       private function onGuildMembersUpdated(members:Object) : void
       {
          var member:GuildMember = null;
@@ -482,8 +756,7 @@ package Ankama_Social.ui
                }
             }
          }
-         listDisplayed.sortOn("rankOrder",Array.NUMERIC);
-         this.gd_list.dataProvider = listDisplayed;
+         this.gd_list.dataProvider = this.sortMembers(listDisplayed);
          this.lbl_membersLevel.text = this.uiApi.getText("ui.social.guildAvgMembersLevel") + this.uiApi.getText("ui.common.colon") + int(totalLevels / totalMembers);
          this.lbl_membersNumber.text = this.uiApi.getText("ui.social.guildMembers") + this.uiApi.getText("ui.common.colon") + connected + " / " + totalMembers;
       }
@@ -523,7 +796,7 @@ package Ankama_Social.ui
             {
                listDisplayed.push(this.updateMemberObjectWithMyRights(member));
             }
-            this.gd_list.dataProvider = listDisplayed;
+            this.gd_list.dataProvider = this.sortMembers(listDisplayed);
          }
       }
       
@@ -593,106 +866,186 @@ package Ankama_Social.ui
             {
                this.onGuildMembersUpdated(this._membersList);
             }
+            if(this.inp_search.text != "" && this.inp_search.text != this.INPUT_SEARCH_DEFAULT_TEXT)
+            {
+               this.searchMember();
+            }
          }
          else if(target == this.btn_warnWhenMemberIsOnline)
          {
             this.sysApi.sendAction(new MemberWarningSetAction([this.btn_warnWhenMemberIsOnline.selected]));
          }
-         else if(target == this.btn_tabBreed)
+         else if(target == this.btn_tabStatus)
          {
-            if(this._bDescendingSort)
+            if(this._sortingParams.sortType == this.SORT_STATUS)
             {
-               this.gd_list.sortOn("breed",Array.NUMERIC);
+               this._bDescendingSort = !this._bDescendingSort;
             }
             else
             {
-               this.gd_list.sortOn("breed",Array.NUMERIC | Array.DESCENDING);
+               this._bDescendingSort = false;
             }
-            this._bDescendingSort = !this._bDescendingSort;
+            if(this._bDescendingSort)
+            {
+               this.gd_list.dataProvider = this.gd_list.dataProvider.sort(this.sortByStatus,Array.DESCENDING);
+            }
+            else
+            {
+               this.gd_list.dataProvider = this.gd_list.dataProvider.sort(this.sortByStatus);
+            }
+            this.updateSortArrow(target);
+            this._sortingParams.sortType = this.SORT_STATUS;
+            this._sortingParams.descending = this._bDescendingSort;
+            this.sysApi.setData(this.DATA_SORT_MEMBERS,this._sortingParams,DataStoreEnum.BIND_CHARACTER);
          }
          else if(target == this.btn_tabName)
          {
-            if(this._bDescendingSort)
+            if(this._sortingParams.sortType == this.SORT_NAME)
             {
-               this.gd_list.sortOn("name",Array.CASEINSENSITIVE);
+               this._bDescendingSort = !this._bDescendingSort;
             }
             else
             {
-               this.gd_list.sortOn("name",Array.CASEINSENSITIVE | Array.DESCENDING);
+               this._bDescendingSort = false;
             }
-            this._bDescendingSort = !this._bDescendingSort;
+            if(this._bDescendingSort)
+            {
+               this.gd_list.sortOn(this.SORT_NAME,Array.CASEINSENSITIVE | Array.DESCENDING);
+            }
+            else
+            {
+               this.gd_list.sortOn(this.SORT_NAME,Array.CASEINSENSITIVE);
+            }
+            this.updateSortArrow(target);
+            this._sortingParams.sortType = this.SORT_NAME;
+            this._sortingParams.descending = this._bDescendingSort;
+            this.sysApi.setData(this.DATA_SORT_MEMBERS,this._sortingParams,DataStoreEnum.BIND_CHARACTER);
          }
          else if(target == this.btn_tabRank)
          {
-            if(this._bDescendingSort)
+            if(this._sortingParams.sortType == this.SORT_ORDER)
             {
-               this.gd_list.sortOn("rankOrder",Array.NUMERIC);
+               this._bDescendingSort = !this._bDescendingSort;
             }
             else
             {
-               this.gd_list.sortOn("rankOrder",Array.NUMERIC | Array.DESCENDING);
+               this._bDescendingSort = false;
             }
-            this._bDescendingSort = !this._bDescendingSort;
+            if(this._bDescendingSort)
+            {
+               this.gd_list.sortArrayOn([this.SORT_ORDER,this.SORT_NAME],[Array.NUMERIC | Array.DESCENDING,Array.CASEINSENSITIVE]);
+            }
+            else
+            {
+               this.gd_list.sortArrayOn([this.SORT_ORDER,this.SORT_NAME],[Array.NUMERIC,Array.CASEINSENSITIVE]);
+            }
+            this.updateSortArrow(target);
+            this._sortingParams.sortType = this.SORT_ORDER;
+            this._sortingParams.descending = this._bDescendingSort;
+            this.sysApi.setData(this.DATA_SORT_MEMBERS,this._sortingParams,DataStoreEnum.BIND_CHARACTER);
          }
          else if(target == this.btn_tabLevel)
          {
-            if(this._bDescendingSort)
+            if(this._sortingParams.sortType == this.SORT_LEVEL)
             {
-               this.gd_list.sortOn("level",Array.NUMERIC);
+               this._bDescendingSort = !this._bDescendingSort;
             }
             else
             {
-               this.gd_list.sortOn("level",Array.NUMERIC | Array.DESCENDING);
+               this._bDescendingSort = false;
             }
-            this._bDescendingSort = !this._bDescendingSort;
+            if(this._bDescendingSort)
+            {
+               this.gd_list.sortArrayOn([this.SORT_LEVEL,this.SORT_NAME],[Array.NUMERIC | Array.DESCENDING,Array.CASEINSENSITIVE]);
+            }
+            else
+            {
+               this.gd_list.sortArrayOn([this.SORT_LEVEL,this.SORT_NAME],[Array.NUMERIC,Array.CASEINSENSITIVE]);
+            }
+            this.updateSortArrow(target);
+            this._sortingParams.sortType = this.SORT_LEVEL;
+            this._sortingParams.descending = this._bDescendingSort;
+            this.sysApi.setData(this.DATA_SORT_MEMBERS,this._sortingParams,DataStoreEnum.BIND_CHARACTER);
          }
          else if(target == this.btn_tabXP)
          {
-            if(this._bDescendingSort)
+            if(this._sortingParams.sortType == this.SORT_XP)
             {
-               this.gd_list.sortOn("XP",Array.NUMERIC);
+               this._bDescendingSort = !this._bDescendingSort;
             }
             else
             {
-               this.gd_list.sortOn("XP",Array.NUMERIC | Array.DESCENDING);
+               this._bDescendingSort = false;
             }
-            this._bDescendingSort = !this._bDescendingSort;
+            if(this._bDescendingSort)
+            {
+               this.gd_list.sortArrayOn([this.SORT_XP,this.SORT_NAME],[Array.NUMERIC | Array.DESCENDING,Array.CASEINSENSITIVE]);
+            }
+            else
+            {
+               this.gd_list.sortArrayOn([this.SORT_XP,this.SORT_NAME],[Array.NUMERIC,Array.CASEINSENSITIVE]);
+            }
+            this.updateSortArrow(target);
+            this._sortingParams.sortType = this.SORT_XP;
+            this._sortingParams.descending = this._bDescendingSort;
+            this.sysApi.setData(this.DATA_SORT_MEMBERS,this._sortingParams,DataStoreEnum.BIND_CHARACTER);
          }
          else if(target == this.btn_tabXPP)
          {
-            if(this._bDescendingSort)
+            if(this._sortingParams.sortType == this.SORT_XPP)
             {
-               this.gd_list.sortOn("XPP",Array.NUMERIC);
+               this._bDescendingSort = !this._bDescendingSort;
             }
             else
             {
-               this.gd_list.sortOn("XPP",Array.NUMERIC | Array.DESCENDING);
+               this._bDescendingSort = false;
             }
-            this._bDescendingSort = !this._bDescendingSort;
+            if(this._bDescendingSort)
+            {
+               this.gd_list.sortArrayOn([this.SORT_XPP,this.SORT_NAME],[Array.NUMERIC | Array.DESCENDING,Array.CASEINSENSITIVE]);
+            }
+            else
+            {
+               this.gd_list.sortArrayOn([this.SORT_XPP,this.SORT_NAME],[Array.NUMERIC,Array.CASEINSENSITIVE]);
+            }
+            this.updateSortArrow(target);
+            this._sortingParams.sortType = this.SORT_XPP;
+            this._sortingParams.descending = this._bDescendingSort;
+            this.sysApi.setData(this.DATA_SORT_MEMBERS,this._sortingParams,DataStoreEnum.BIND_CHARACTER);
          }
          else if(target == this.btn_tabAchievement)
          {
-            if(this._bDescendingSort)
+            if(this._sortingParams.sortType == this.SORT_ACHIEVEMENT)
             {
-               this.gd_list.sortOn("achievementPoints",Array.NUMERIC);
+               this._bDescendingSort = !this._bDescendingSort;
             }
             else
             {
-               this.gd_list.sortOn("achievementPoints",Array.NUMERIC | Array.DESCENDING);
+               this._bDescendingSort = false;
             }
-            this._bDescendingSort = !this._bDescendingSort;
+            if(this._bDescendingSort)
+            {
+               this.gd_list.sortArrayOn([this.SORT_ACHIEVEMENT,this.SORT_NAME],[Array.NUMERIC | Array.DESCENDING,Array.CASEINSENSITIVE]);
+            }
+            else
+            {
+               this.gd_list.sortArrayOn([this.SORT_ACHIEVEMENT,this.SORT_NAME],[Array.NUMERIC,Array.CASEINSENSITIVE]);
+            }
+            this.updateSortArrow(target);
+            this._sortingParams.sortType = this.SORT_ACHIEVEMENT;
+            this._sortingParams.descending = this._bDescendingSort;
+            this.sysApi.setData(this.DATA_SORT_MEMBERS,this._sortingParams,DataStoreEnum.BIND_CHARACTER);
          }
-         else if(target == this.btn_tabState)
+         else if(target == this.btn_resetSearch)
          {
-            if(this._bDescendingSort)
+            this.resetSearch();
+         }
+         else if(target == this.btn_seeGuildApplications)
+         {
+            if(!this.uiApi.getUi(UIEnum.GUILD_APPLICATIONS))
             {
-               this.gd_list.sortOn("state",Array.NUMERIC);
+               this.uiApi.loadUi(UIEnum.GUILD_APPLICATIONS,null,{"hasRights":this.manageGuildApply(playerRights)});
             }
-            else
-            {
-               this.gd_list.sortOn("state",Array.NUMERIC | Array.DESCENDING);
-            }
-            this._bDescendingSort = !this._bDescendingSort;
          }
          else if(target.name.indexOf("btn_rights") != -1)
          {
@@ -723,21 +1076,53 @@ package Ankama_Social.ui
       {
          var tooltipText:String = null;
          var data:Object = null;
+         var playerId:Number = NaN;
          var memberInfo:Object = null;
          var months:int = 0;
          var days:int = 0;
          var argText:String = null;
-         var sdata:Object = null;
          var memberStatusInfo:Object = null;
          var point:uint = 6;
          var relPoint:uint = 0;
-         if(target.name.indexOf("btn_rights") != -1)
+         if(target == this.btn_tabXPP)
+         {
+            tooltipText = this.uiApi.getText("ui.guild.XPPercent");
+         }
+         else if(target == this.btn_tabXP)
+         {
+            tooltipText = this.uiApi.getText("ui.guild.XPAmount");
+         }
+         else if(target == this.btn_seeGuildApplications)
+         {
+            if(this.isRecruitmentBlocked())
+            {
+               tooltipText = this.uiApi.getText("ui.guild.recruitmentBlockedWarning");
+            }
+            else if(this.playerApi.isInKoli())
+            {
+               tooltipText = this.uiApi.getText("ui.guild.lockGuildApplications");
+            }
+            else
+            {
+               tooltipText = this.uiApi.getText("ui.guild.noApplicationsAvailable");
+            }
+         }
+         else if(target.name.indexOf("btn_rights") != -1)
          {
             tooltipText = this.uiApi.getText("ui.social.guildManageRights");
          }
          else if(target.name.indexOf("btn_kick") != -1)
          {
             tooltipText = this.uiApi.getText("ui.charsel.characterDelete");
+            playerId = this._interactiveComponentsList[target.name].id;
+            if(playerId === this.playerApi.id())
+            {
+               tooltipText = this.uiApi.getText("ui.guild.quitGuild");
+            }
+            else
+            {
+               tooltipText = this.uiApi.getText("ui.guild.excludeFromGuild");
+            }
          }
          else if(target.name.indexOf("tx_state") != -1 || target.name.indexOf("tx_mood") != -1 || target.name.indexOf("tx_fight") != -1)
          {
@@ -789,36 +1174,28 @@ package Ankama_Social.ui
          {
             tooltipText = this.uiApi.getText("ui.tooltip.OmegaLevel");
          }
+         else if(target.name.indexOf("tx_head") != -1)
+         {
+            data = this._interactiveComponentsList[target.name];
+            tooltipText = this.dataApi.getBreed(data.breed).name;
+         }
          else if(target.name.indexOf("tx_status") != -1)
          {
-            sdata = this._interactiveComponentsList[target.name];
-            if(!sdata)
+            data = this._interactiveComponentsList[target.name];
+            if(!data)
             {
                return;
             }
-            memberStatusInfo = sdata.member;
-            if(memberStatusInfo && memberStatusInfo.connected != 0)
+            memberStatusInfo = data.member;
+            if(memberStatusInfo)
             {
-               switch(memberStatusInfo.status.statusId)
+               if(memberStatusInfo.status is PlayerStatusExtended && PlayerStatusExtended(memberStatusInfo.status).message != "")
                {
-                  case PlayerStatusEnum.PLAYER_STATUS_AVAILABLE:
-                     tooltipText = this.uiApi.getText("ui.chat.status.availiable");
-                     break;
-                  case PlayerStatusEnum.PLAYER_STATUS_IDLE:
-                     tooltipText = this.uiApi.getText("ui.chat.status.idle");
-                     break;
-                  case PlayerStatusEnum.PLAYER_STATUS_AFK:
-                     tooltipText = this.uiApi.getText("ui.chat.status.away");
-                     if(memberStatusInfo.status is PlayerStatusExtended && PlayerStatusExtended(memberStatusInfo.status).message != "")
-                     {
-                        tooltipText += this.uiApi.getText("ui.common.colon") + PlayerStatusExtended(memberStatusInfo.status).message;
-                     }
-                     break;
-                  case PlayerStatusEnum.PLAYER_STATUS_PRIVATE:
-                     tooltipText = this.uiApi.getText("ui.chat.status.private");
-                     break;
-                  case PlayerStatusEnum.PLAYER_STATUS_SOLO:
-                     tooltipText = this.uiApi.getText("ui.chat.status.solo");
+                  tooltipText = this.socialApi.getStatusText(memberStatusInfo.status.statusId,PlayerStatusExtended(memberStatusInfo.status).message);
+               }
+               else
+               {
+                  tooltipText = this.socialApi.getStatusText(memberStatusInfo.status.statusId);
                }
             }
          }
@@ -831,6 +1208,24 @@ package Ankama_Social.ui
       public function onRollOut(target:GraphicContainer) : void
       {
          this.uiApi.hideTooltip();
+      }
+      
+      public function onChange(target:Input) : void
+      {
+         switch(target)
+         {
+            case this.inp_search:
+               if(this.inp_search.text.length && this.inp_search.text != this.INPUT_SEARCH_DEFAULT_TEXT)
+               {
+                  this._currentSearchText = this.inp_search.text;
+                  this.btn_resetSearch.visible = true;
+                  this.searchMember();
+               }
+               else if(this._currentSearchText)
+               {
+                  this.resetSearch();
+               }
+         }
       }
    }
 }

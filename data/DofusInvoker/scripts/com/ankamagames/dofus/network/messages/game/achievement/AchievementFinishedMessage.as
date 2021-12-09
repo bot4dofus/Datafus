@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.achievement
    public class AchievementFinishedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4544;
+      public static const protocolId:uint = 8970;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.achievement
       
       override public function getMessageId() : uint
       {
-         return 4544;
+         return 8970;
       }
       
       public function initAchievementFinishedMessage(achievement:AchievementAchievedRewardable = null) : AchievementFinishedMessage

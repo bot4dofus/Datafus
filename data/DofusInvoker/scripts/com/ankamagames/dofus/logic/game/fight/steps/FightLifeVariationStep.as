@@ -13,6 +13,7 @@ package com.ankamagames.dofus.logic.game.fight.steps
    import com.ankamagames.dofus.network.enums.GameContextEnum;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightCharacterInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations;
+   import com.ankamagames.jerakine.utils.display.EnterFrameDispatcher;
    import damageCalculation.tools.StatIds;
    
    public class FightLifeVariationStep extends AbstractStatContextualStep implements IFightStep
@@ -30,6 +31,8 @@ package com.ankamagames.dofus.logic.game.fight.steps
       private var _elementId:int;
       
       public var skipTextEvent:Boolean = false;
+      
+      public var _fighterInfo:GameFightFighterInformations = null;
       
       public function FightLifeVariationStep(entityId:Number, delta:int, permanentDamages:int, elementId:int)
       {
@@ -67,25 +70,30 @@ package com.ankamagames.dofus.logic.game.fight.steps
       
       override public function start() : void
       {
-         var fighterInfos:GameFightFighterInformations = FightEntitiesFrame.getCurrentInstance().getEntityInfos(_targetId) as GameFightFighterInformations;
-         if(!fighterInfos)
+         this._fighterInfo = FightEntitiesFrame.getCurrentInstance().getEntityInfos(_targetId) as GameFightFighterInformations;
+         if(!this._fighterInfo)
          {
             super.executeCallbacks();
             return;
          }
+         EnterFrameDispatcher.worker.addSingleTreatment(StatsManager.getInstance(),this.apply,[]);
+      }
+      
+      private function apply() : void
+      {
          var stats:EntityStats = StatsManager.getInstance().getStats(_targetId);
          var res:int = stats.getHealthPoints() + this._delta;
          var maxLifePoints:Number = Math.max(1,stats.getMaxHealthPoints() + this._permanentDamages);
          var lifePoints:Number = Math.min(Math.max(0,res),maxLifePoints);
          stats.setStat(new Stat(StatIds.CUR_PERMANENT_DAMAGE,stats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE) - this._permanentDamages));
          stats.setStat(new Stat(StatIds.CUR_LIFE,lifePoints - maxLifePoints - stats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE)));
-         if(fighterInfos is GameFightCharacterInformations)
+         if(this._fighterInfo is GameFightCharacterInformations)
          {
-            TooltipManager.updateContent("PlayerShortInfos" + fighterInfos.contextualId,"tooltipOverEntity_" + fighterInfos.contextualId,fighterInfos);
+            TooltipManager.updateContent("PlayerShortInfos" + this._fighterInfo.contextualId,"tooltipOverEntity_" + this._fighterInfo.contextualId,this._fighterInfo);
          }
          else
          {
-            TooltipManager.updateContent("EntityShortInfos" + fighterInfos.contextualId,"tooltipOverEntity_" + fighterInfos.contextualId,fighterInfos);
+            TooltipManager.updateContent("EntityShortInfos" + this._fighterInfo.contextualId,"tooltipOverEntity_" + this._fighterInfo.contextualId,this._fighterInfo);
          }
          if(this._delta < 0 || this._delta == 0 && !this.skipTextEvent)
          {
@@ -94,7 +102,7 @@ package com.ankamagames.dofus.logic.game.fight.steps
             {
                SpeakingItemManager.getInstance().triggerEvent(SpeakingItemManager.SPEAK_TRIGGER_PLAYER_LOOSE_LIFE);
             }
-            else if(fighterInfos.spawnInfo.teamId == PlayedCharacterManager.getInstance().teamId)
+            else if(this._fighterInfo.spawnInfo.teamId == PlayedCharacterManager.getInstance().teamId)
             {
                SpeakingItemManager.getInstance().triggerEvent(SpeakingItemManager.SPEAK_TRIGGER_ALLIED_LOOSE_LIFE);
             }

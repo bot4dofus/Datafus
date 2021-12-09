@@ -121,7 +121,7 @@ package Ankama_Storage.ui.behavior
       {
          var freeSlot:int = 0;
          var item:ItemWrapper = pItem as ItemWrapper;
-         if(item && item.category == 0)
+         if(item && (item.category == ItemCategoryEnum.EQUIPMENT_CATEGORY || item.category == ItemCategoryEnum.COSMETICS_CATEGORY))
          {
             freeSlot = Api.storage.getBestEquipablePosition(item);
             if(freeSlot > -1)

@@ -114,8 +114,6 @@ package
       
       private var _doOptions:DofusOptions;
       
-      private var _blockLoading:Boolean;
-      
       private var _initialized:Boolean = false;
       
       private var _windowInitialized:Boolean = false;
@@ -144,8 +142,8 @@ package
          var version:Array = null;
          super();
          var buildType:String = String("release").replace(/[0-9]/g,"");
-         BuildInfos.VERSION = new Version("2.61.10-release",buildType.toUpperCase() == "LOCAL" ? BuildTypeEnum.INTERNAL : BuildTypeEnum[buildType.toUpperCase()]);
-         BuildInfos.BUILD_DATE = "08-11-2021 15:10";
+         BuildInfos.VERSION = new Version("2.62.1-release",buildType.toUpperCase() == "LOCAL" ? BuildTypeEnum.INTERNAL : BuildTypeEnum[buildType.toUpperCase()]);
+         BuildInfos.BUILD_DATE = "06-12-2021 15:51";
          try
          {
             versionFile = new File(File.applicationDirectory.nativePath + File.separator + "VERSION");
@@ -187,7 +185,6 @@ package
          URLRequestDefaults.userAgent = userAgent;
          URLRequestDefaults.idleTimeout = BuildInfos.BUILD_TYPE == BuildTypeEnum.INTERNAL || BuildInfos.BUILD_TYPE == BuildTypeEnum.DEBUG ? Number(this.REQUEST_TIMEOUT_LOCAL) : Number(this.REQUEST_TIMEOUT);
          Dofus.setInstance(this);
-         this._blockLoading = name != "root1";
          ErrorManager.registerLoaderInfo(loaderInfo);
          mouseEnabled = false;
          tabChildren = false;
@@ -508,6 +505,7 @@ package
                pEvt.preventDefault();
                pEvt.stopPropagation();
             }
+            _log.info("[exit] Start timeout timer.");
             this._timeoutTimer = new BenchmarkTimer(this.EXIT_TIMEOUT,1,"DofusClientMain._timeoutTimer");
             this._timeoutTimer.addEventListener(TimerEvent.TIMER_COMPLETE,this.onExitTimeout);
             this._timeoutTimer.start();

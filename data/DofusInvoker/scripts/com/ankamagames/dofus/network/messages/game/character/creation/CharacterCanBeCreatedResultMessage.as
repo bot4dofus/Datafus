@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.creation
    public class CharacterCanBeCreatedResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 251;
+      public static const protocolId:uint = 9527;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.character.creation
       
       override public function getMessageId() : uint
       {
-         return 251;
+         return 9527;
       }
       
       public function initCharacterCanBeCreatedResultMessage(yesYouCan:Boolean = false) : CharacterCanBeCreatedResultMessage

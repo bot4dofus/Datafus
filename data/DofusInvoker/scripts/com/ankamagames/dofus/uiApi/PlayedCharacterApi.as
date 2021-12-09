@@ -49,8 +49,10 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayActorInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayCharacterInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMutantInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.HumanOptionTitle;
    import com.ankamagames.dofus.network.types.game.data.items.ForgettableSpellItem;
+   import com.ankamagames.dofus.network.types.game.guild.application.GuildApplicationInformation;
    import com.ankamagames.dofus.types.data.PlayerSetInfo;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
    import com.ankamagames.jerakine.logger.Log;
@@ -725,6 +727,29 @@ package com.ankamagames.dofus.uiApi
       public function getKamaDebt() : uint
       {
          return DebtManager.getInstance().getTotalKamaDebt();
+      }
+      
+      public function getApplicationInfo() : GuildApplicationInformation
+      {
+         return PlayedCharacterManager.getInstance().applicationInfo;
+      }
+      
+      public function getGuildApplicationInfo() : GuildInformations
+      {
+         return PlayedCharacterManager.getInstance().guildApplicationInfo;
+      }
+      
+      public function getPlayerApplicationInformation() : Object
+      {
+         return {
+            "guildInfo":PlayedCharacterManager.getInstance().guildApplicationInfo,
+            "applicationInfo":PlayedCharacterManager.getInstance().applicationInfo
+         };
+      }
+      
+      public function isInKoli() : Boolean
+      {
+         return PlayedCharacterManager.getInstance().isInKoli;
       }
    }
 }

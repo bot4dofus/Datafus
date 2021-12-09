@@ -233,9 +233,6 @@ package Ankama_Grimoire.ui.optionalFeatures
       
       public function getCatDataLength(data:*, selected:Boolean) : *
       {
-         if(!selected)
-         {
-         }
          return 10;
       }
       

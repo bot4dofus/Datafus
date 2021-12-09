@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class FriendWarnOnLevelGainStateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7434;
+      public static const protocolId:uint = 7352;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 7434;
+         return 7352;
       }
       
       public function initFriendWarnOnLevelGainStateMessage(enable:Boolean = false) : FriendWarnOnLevelGainStateMessage

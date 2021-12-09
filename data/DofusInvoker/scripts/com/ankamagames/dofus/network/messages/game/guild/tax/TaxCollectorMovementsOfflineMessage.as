@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.guild.tax
    public class TaxCollectorMovementsOfflineMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 335;
+      public static const protocolId:uint = 3016;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.guild.tax
       
       override public function getMessageId() : uint
       {
-         return 335;
+         return 3016;
       }
       
       public function initTaxCollectorMovementsOfflineMessage(movements:Vector.<TaxCollectorMovement> = null) : TaxCollectorMovementsOfflineMessage

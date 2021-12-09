@@ -48,15 +48,18 @@ package com.ankamagames.dofus.internalDatacenter.guild
       
       public var lastActivity:Number = 0;
       
+      public var guildRecruitmentInfo:GuildRecruitmentDataWrapper;
+      
       public var hoursSinceLastConnection:Number;
       
       public function GuildFactSheetWrapper()
       {
          this.members = new Vector.<CharacterMinimalGuildPublicInformations>();
+         this.guildRecruitmentInfo = new GuildRecruitmentDataWrapper();
          super();
       }
       
-      public static function create(guildId:uint, guildName:String, guildEmblem:GuildEmblem, leaderId:Number, leaderName:String, guildLevel:uint, nbMembers:uint, creationDate:Number, members:Vector.<CharacterMinimalGuildPublicInformations>, nbConnectedMembers:uint = 0, nbTaxCollectors:uint = 0, lastActivity:Number = 0, allianceId:uint = 0, allianceName:String = "", allianceTag:String = "", allianceLeader:Boolean = false) : GuildFactSheetWrapper
+      public static function create(guildId:uint, guildName:String, guildEmblem:GuildEmblem, leaderId:Number, leaderName:String, guildLevel:uint, nbMembers:uint, creationDate:Number, members:Vector.<CharacterMinimalGuildPublicInformations>, guildRecruitmentInfo:GuildRecruitmentDataWrapper, nbConnectedMembers:uint = 0, nbTaxCollectors:uint = 0, lastActivity:Number = 0, allianceId:uint = 0, allianceName:String = "", allianceTag:String = "", allianceLeader:Boolean = false) : GuildFactSheetWrapper
       {
          var nowDate:Date = null;
          var item:GuildFactSheetWrapper = new GuildFactSheetWrapper();
@@ -80,6 +83,7 @@ package com.ankamagames.dofus.internalDatacenter.guild
          item.nbConnectedMembers = nbConnectedMembers;
          item.nbTaxCollectors = nbTaxCollectors;
          item.lastActivity = lastActivity;
+         item.guildRecruitmentInfo = guildRecruitmentInfo;
          if(lastActivity == 0)
          {
             item.hoursSinceLastConnection = 0;
@@ -133,7 +137,7 @@ package com.ankamagames.dofus.internalDatacenter.guild
          return this._leaderName;
       }
       
-      public function update(guildId:uint, guildName:String, guildEmblem:GuildEmblem, leaderId:Number, leaderName:String, guildLevel:uint, nbMembers:uint, creationDate:Number, members:Vector.<CharacterMinimalGuildPublicInformations>, nbConnectedMembers:uint = 0, nbTaxCollectors:uint = 0, lastActivity:Number = 0, allianceId:uint = 0, allianceName:String = "", allianceTag:String = "", allianceLeader:Boolean = false) : void
+      public function update(guildId:uint, guildName:String, guildEmblem:GuildEmblem, leaderId:Number, leaderName:String, guildLevel:uint, nbMembers:uint, creationDate:Number, members:Vector.<CharacterMinimalGuildPublicInformations>, guildRecruitmentInfo:GuildRecruitmentDataWrapper, nbConnectedMembers:uint = 0, nbTaxCollectors:uint = 0, lastActivity:Number = 0, allianceId:uint = 0, allianceName:String = "", allianceTag:String = "", allianceLeader:Boolean = false) : void
       {
          var nowDate:Date = null;
          this.guildId = guildId;
@@ -153,6 +157,7 @@ package com.ankamagames.dofus.internalDatacenter.guild
          this.nbConnectedMembers = nbConnectedMembers;
          this.nbTaxCollectors = nbTaxCollectors;
          this.lastActivity = lastActivity;
+         this.guildRecruitmentInfo = guildRecruitmentInfo;
          if(lastActivity == 0)
          {
             this.hoursSinceLastConnection = 0;

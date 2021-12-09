@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeBidHouseGenericItemRemovedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6826;
+      public static const protocolId:uint = 9780;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 6826;
+         return 9780;
       }
       
       public function initExchangeBidHouseGenericItemRemovedMessage(objGenericId:uint = 0) : ExchangeBidHouseGenericItemRemovedMessage

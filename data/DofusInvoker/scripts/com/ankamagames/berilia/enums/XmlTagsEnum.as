@@ -15,6 +15,8 @@ package com.ankamagames.berilia.enums
       
       public static const TAG_COMBOBOX:String = "ComboBox";
       
+      public static const TAG_MULTIPLECOMBOBOX:String = "MultipleComboBox";
+      
       public static const TAG_INPUTCOMBOBOX:String = "InputComboBox";
       
       public static const TAG_TREE:String = "Tree";

@@ -15,6 +15,7 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.berilia.components.TextureBitmap;
    import com.ankamagames.berilia.enums.EventEnums;
    import com.ankamagames.berilia.enums.UIEnum;
+   import com.ankamagames.berilia.interfaces.IRadioItem;
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.berilia.types.data.TextTooltipInfo;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
@@ -119,6 +120,8 @@ package Ankama_GameUiCore.ui
       private static const MAX_CHAT_ITEMS:int = 16;
       
       private static const LINK_CONTENT_REGEXP:RegExp = /<a.*?>\s*(.*?)\s*<\/a>/g;
+      
+      private static const SAVED_TAB_KEY:String = "Chat_SavedTabKey";
       
       private static var _currentStatus:int = PlayerStatusEnum.PLAYER_STATUS_AVAILABLE;
       
@@ -504,7 +507,18 @@ package Ankama_GameUiCore.ui
          {
             this.sysApi.sendAction(new TabsUpdateAction([null,this._aTabsPicto]));
          }
-         this.uiApi.setRadioGroupSelectedItem("tabChatGroup",this.btn_tab0,this.uiApi.me());
+         var rawSavedTab:* = this.sysApi.getData(SAVED_TAB_KEY);
+         if(!(rawSavedTab is Number))
+         {
+            rawSavedTab = 0;
+         }
+         var savedTab:Number = rawSavedTab as Number;
+         if(savedTab > 3)
+         {
+            savedTab %= 4;
+         }
+         var radioItem:IRadioItem = this["btn_tab" + savedTab] as IRadioItem;
+         this.uiApi.setRadioGroupSelectedItem("tabChatGroup",radioItem,this.uiApi.me());
          this._init = true;
          this.init();
          this.initChatUi();
@@ -1356,6 +1370,7 @@ package Ankama_GameUiCore.ui
          this.tfsb_scrollBar.lines = this._tabsCache[this._nCurrentTab].texts;
          this.tfsb_scrollBar.updateScrolling();
          this.tfsb_scrollBar.scrollAtEnd();
+         this.sysApi.setData(SAVED_TAB_KEY,tab);
       }
       
       public function onWindowResize(width:Number, height:Number, scale:Number) : void

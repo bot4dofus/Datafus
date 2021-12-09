@@ -8,8 +8,10 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.externalnotification.ExternalNotificationManager;
    import com.ankamagames.dofus.externalnotification.enums.ExternalNotificationTypeEnum;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.guild.GuildApplicationWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildFactSheetWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildHouseWrapper;
+   import com.ankamagames.dofus.internalDatacenter.guild.GuildRecruitmentDataWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.SocialEntityInFightWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.SocialFightersWrapper;
@@ -24,25 +26,37 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.logic.common.managers.AccountManager;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkShowGuildManager;
    import com.ankamagames.dofus.logic.common.managers.NotificationManager;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.common.actions.ContactLookRequestByIdAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseTeleportRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.OpenGuildPrezAndRecruitAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenSocialAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildApplicationReplyAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildApplicationsRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildBulletinSetRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildChangeMemberParametersAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildCharacsUpgradeRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildDeleteApplicationRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFactsRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFarmTeleportRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFightJoinRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFightLeaveRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFightTakePlaceRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildGetInformationsAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildGetPlayerApplicationAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildInvitationAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildInvitationByNameAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildJoinRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildKickRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildMotdSetRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildSetApplicationUpdatesRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildSpellUpgradeRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildSubmitApplicationAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildSummaryRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildUpdateApplicationAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.SendGuildRecruitmentDataAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.AddEnemyAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.AddFriendAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.AddIgnoredAction;
@@ -154,6 +168,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.guild.GuildInvitationStateRecrutedMessage;
    import com.ankamagames.dofus.network.messages.game.guild.GuildInvitationStateRecruterMessage;
    import com.ankamagames.dofus.network.messages.game.guild.GuildInvitedMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.GuildJoinAutomaticallyRequestMessage;
    import com.ankamagames.dofus.network.messages.game.guild.GuildJoinedMessage;
    import com.ankamagames.dofus.network.messages.game.guild.GuildKickRequestMessage;
    import com.ankamagames.dofus.network.messages.game.guild.GuildLeftMessage;
@@ -168,6 +183,25 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.guild.GuildPaddockRemovedMessage;
    import com.ankamagames.dofus.network.messages.game.guild.GuildPaddockTeleportRequestMessage;
    import com.ankamagames.dofus.network.messages.game.guild.GuildSpellUpgradeRequestMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.GuildSummaryMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.GuildSummaryRequestMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildApplicationAnswerMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildApplicationDeletedMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildApplicationIsAnsweredMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildApplicationListenMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildApplicationReceivedMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildDeleteApplicationRequestMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildGetPlayerApplicationMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildListApplicationAnswerMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildListApplicationModifiedMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildListApplicationRequestMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildPlayerApplicationInformationMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildPlayerNoApplicationInformationMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildSubmitApplicationMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildUpdateApplicationMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.recruitment.GuildRecruitmentInvalidateMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.recruitment.RecruitmentInformationMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.recruitment.UpdateRecruitmentInformationMessage;
    import com.ankamagames.dofus.network.messages.game.guild.tax.GuildFightJoinRequestMessage;
    import com.ankamagames.dofus.network.messages.game.guild.tax.GuildFightLeaveRequestMessage;
    import com.ankamagames.dofus.network.messages.game.guild.tax.GuildFightPlayersEnemiesListMessage;
@@ -204,18 +238,23 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.types.game.friend.FriendOnlineInformations;
    import com.ankamagames.dofus.network.types.game.friend.IgnoredOnlineInformations;
    import com.ankamagames.dofus.network.types.game.guild.GuildMember;
+   import com.ankamagames.dofus.network.types.game.guild.application.GuildApplicationInformation;
    import com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorInformations;
    import com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorMovement;
    import com.ankamagames.dofus.network.types.game.house.HouseInformationsForGuild;
    import com.ankamagames.dofus.network.types.game.paddock.PaddockContentInformations;
+   import com.ankamagames.dofus.network.types.game.social.GuildFactSheetInformations;
    import com.ankamagames.dofus.types.enums.NotificationTypeEnum;
    import com.ankamagames.dofus.uiApi.ChatApi;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.managers.OptionManager;
+   import com.ankamagames.jerakine.managers.StoreDataManager;
    import com.ankamagames.jerakine.messages.Frame;
    import com.ankamagames.jerakine.messages.Message;
+   import com.ankamagames.jerakine.types.DataStoreType;
+   import com.ankamagames.jerakine.types.enums.DataStoreEnum;
    import com.ankamagames.jerakine.types.enums.Priority;
    import com.ankamagames.jerakine.utils.pattern.PatternDecoder;
    import flash.utils.Dictionary;
@@ -224,9 +263,21 @@ package com.ankamagames.dofus.logic.game.common.frames
    public class SocialFrame implements Frame
    {
       
+      public static const MAX_MEMBERS:uint = 240;
+      
+      private static const MAX_LEVEL:uint = 200;
+      
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(SocialFrame));
       
       private static var _instance:SocialFrame;
+      
+      private static var _fakeApplicationData:Vector.<Object> = null;
+      
+      private static var _fakeApplicationList:Vector.<Object> = null;
+      
+      private static var _fakeBasicGuildData:Vector.<Object> = null;
+      
+      private static var _fakeGuildData:Vector.<GuildWrapper> = null;
        
       
       private var _guildDialogFrame:GuildDialogFrame;
@@ -275,11 +326,15 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       private var _allGuilds:Dictionary;
       
+      private var _allGuildsInDirectory:Vector.<GuildWrapper>;
+      
       private var _socialDatFrame:SocialDataFrame;
       
       private var _dungeonTopTaxCollectors:Vector.<TaxCollectorInformations>;
       
       private var _topTaxCollectors:Vector.<TaxCollectorInformations>;
+      
+      private var _sortDescending:Boolean = false;
       
       public function SocialFrame()
       {
@@ -430,6 +485,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          ConnectionsHandler.getConnection().send(new AcquaintancesGetListMessage());
          ConnectionsHandler.getConnection().send(new IgnoredGetListMessage());
          ConnectionsHandler.getConnection().send(new SpouseGetInformationsMessage());
+         ConnectionsHandler.getConnection().send(new GuildGetPlayerApplicationMessage());
          return true;
       }
       
@@ -440,35 +496,36 @@ package com.ankamagames.dofus.logic.game.common.frames
          return true;
       }
       
-      public function process(msg:Message) : Boolean
+      public function process(subareaName:Message) : Boolean
       {
-         var reason:String = null;
-         var foi:FriendOnlineInformations = null;
-         var aoi:AcquaintanceOnlineInformation = null;
-         var gmmsg:GuildMembershipMessage = null;
-         var flmsg:FriendsListMessage = null;
-         var almsg:AcquaintancesListMessage = null;
-         var sra:SpouseRequestAction = null;
-         var simsg:SpouseInformationsMessage = null;
-         var ilmsg:IgnoredListMessage = null;
-         var osa:OpenSocialAction = null;
-         var afa:AddFriendAction = null;
-         var famsg:FriendAddedMessage = null;
-         var friendToAdd:FriendWrapper = null;
-         var isAlreadyMyFriend:Boolean = false;
-         var aamsg:AcquaintanceAddedMessage = null;
-         var contactToAdd:ContactWrapper = null;
-         var aea:AddEnemyAction = null;
-         var iamsg:IgnoredAddedMessage = null;
-         var rfa:RemoveFriendAction = null;
-         var fdrqmsg:FriendDeleteRequestMessage = null;
-         var fdrmsg:FriendDeleteResultMessage = null;
-         var fumsg:FriendUpdateMessage = null;
-         var friendToUpdate:FriendWrapper = null;
-         var friendAlreadyInGame:Boolean = false;
-         var rea:RemoveEnemyAction = null;
-         var idrqmsg:IgnoredDeleteRequestMessage = null;
-         var idrmsg:IgnoredDeleteResultMessage = null;
+         var suba:String = null;
+         var nid:FriendOnlineInformations = null;
+         var openSocialParams:AcquaintanceOnlineInformation = null;
+         var taxCollectorInfo:uint = 0;
+         var dungeonTopTaxCollectors:GuildMembershipMessage = null;
+         var topTaxCollectors:FriendsListMessage = null;
+         var ggimsg:AcquaintancesListMessage = null;
+         var ds:SpouseRequestAction = null;
+         var applicationInfo:SpouseInformationsMessage = null;
+         var guildFactInfo:IgnoredListMessage = null;
+         var tc2:OpenSocialAction = null;
+         var tcInFight:AddFriendAction = null;
+         var defender:FriendAddedMessage = null;
+         var ghuimsg:FriendWrapper = null;
+         var toUpdate:Boolean = false;
+         var house1:AcquaintanceAddedMessage = null;
+         var ghw1:ContactWrapper = null;
+         var ghrmsg:AddEnemyAction = null;
+         var iGHR:IgnoredAddedMessage = null;
+         var giafmsg:RemoveFriendAction = null;
+         var textMotd:FriendDeleteRequestMessage = null;
+         var members:FriendDeleteResultMessage = null;
+         var snm:FriendUpdateMessage = null;
+         var istatus:FriendWrapper = null;
+         var frdstatus:Boolean = false;
+         var ctcStatus:RemoveEnemyAction = null;
+         var cApi:IgnoredDeleteRequestMessage = null;
+         var clrbim:IgnoredDeleteResultMessage = null;
          var aiga:AddIgnoredAction = null;
          var ria:RemoveIgnoredAction = null;
          var idrq2msg:IgnoredDeleteRequestMessage = null;
@@ -583,6 +640,19 @@ package com.ankamagames.dofus.logic.game.common.frames
          var gibna:GuildInvitationByNameAction = null;
          var gibnmsg:GuildInvitationSearchMessage = null;
          var player_GIBNMSG:PlayerSearchCharacterNameInformation = null;
+         var gdarmsg:GuildDeleteApplicationRequestMessage = null;
+         var gadm:GuildApplicationDeletedMessage = null;
+         var gjra:GuildJoinRequestAction = null;
+         var gjarmsg:GuildJoinAutomaticallyRequestMessage = null;
+         var gsaa:GuildSubmitApplicationAction = null;
+         var gsamsg:GuildSubmitApplicationMessage = null;
+         var filters:Object = null;
+         var guaa:GuildUpdateApplicationAction = null;
+         var guamsg:GuildUpdateApplicationMessage = null;
+         var gaiamsg:GuildApplicationIsAnsweredMessage = null;
+         var notifId:uint = 0;
+         var garmsg:GuildApplicationReceivedMessage = null;
+         var grimsg:GuildRecruitmentInvalidateMessage = null;
          var gkra:GuildKickRequestAction = null;
          var gkrmsg:GuildKickRequestMessage = null;
          var gcmpa:GuildChangeMemberParametersAction = null;
@@ -596,6 +666,20 @@ package com.ankamagames.dofus.logic.game.common.frames
          var gftrmsg:GuildPaddockTeleportRequestMessage = null;
          var ghtra:HouseTeleportRequestAction = null;
          var ghtrmsg:HouseTeleportRequestMessage = null;
+         var galmsg:GuildApplicationListenMessage = null;
+         var garaction:GuildApplicationsRequestAction = null;
+         var glarmsg:GuildListApplicationRequestMessage = null;
+         var glaamsg:GuildListApplicationAnswerMessage = null;
+         var applicationDescrs:Vector.<GuildApplicationWrapper> = null;
+         var guildApplicationReplyAction:GuildApplicationReplyAction = null;
+         var guildApplicationAnswerMessage:GuildApplicationAnswerMessage = null;
+         var glammsg:GuildListApplicationModifiedMessage = null;
+         var gsra:GuildSummaryRequestAction = null;
+         var gsrm:GuildSummaryRequestMessage = null;
+         var gsm:GuildSummaryMessage = null;
+         var guildWrapper:GuildWrapper = null;
+         var ggpam:GuildGetPlayerApplicationMessage = null;
+         var gpaim:GuildPlayerApplicationInformationMessage = null;
          var gfjra:GuildFightJoinRequestAction = null;
          var gfjrmsg:GuildFightJoinRequestMessage = null;
          var gftpra:GuildFightTakePlaceRequestAction = null;
@@ -627,6 +711,9 @@ package com.ankamagames.dofus.logic.game.common.frames
          var status:PlayerStatus = null;
          var psurmsg:PlayerStatusUpdateRequestMessage = null;
          var clrbia:ContactLookRequestByIdAction = null;
+         var recruitmentData:GuildRecruitmentDataWrapper = null;
+         var newRecruitmentData:GuildRecruitmentDataWrapper = null;
+         var urimsg:UpdateRecruitmentInformationMessage = null;
          var f:FriendInformations = null;
          var fw:FriendWrapper = null;
          var a:AcquaintanceInformation = null;
@@ -660,100 +747,102 @@ package com.ankamagames.dofus.logic.game.common.frames
          var mb:GuildMember = null;
          var houseInformation:HouseInformationsForGuild = null;
          var ghw:GuildHouseWrapper = null;
-         var notificationId:uint = 0;
          var nmu:int = 0;
          var k:int = 0;
          var guildMember:GuildMember = null;
          var text:String = null;
          var enemy:CharacterMinimalPlusLookInformations = null;
          var guildName2:String = null;
-         var subareaName:String = null;
-         var suba:SubArea = null;
-         var nid:uint = 0;
-         var openSocialParams:Array = null;
-         var taxCollectorInfo:TaxCollectorInformations = null;
-         var dungeonTopTaxCollectors:Vector.<TaxCollectorWrapper> = null;
-         var topTaxCollectors:Vector.<TaxCollectorWrapper> = null;
-         var ggimsg:GuildGetInformationsMessage = null;
-         var tc2:TaxCollectorWrapper = null;
-         var tcInFight:SocialEntityInFightWrapper = null;
-         var defender:SocialFightersWrapper = null;
-         var ghuimsg:GuildHouseUpdateInformationMessage = null;
-         var toUpdate:Boolean = false;
-         var house1:GuildHouseWrapper = null;
-         var ghw1:GuildHouseWrapper = null;
-         var ghrmsg:GuildHouseRemoveMessage = null;
-         var iGHR:int = 0;
-         var giafmsg:GuildInAllianceFactsMessage = null;
-         var textMotd:String = null;
-         var members:GuildMember = null;
-         var snm:int = 0;
-         var istatus:int = 0;
-         var frdstatus:FriendWrapper = null;
-         var ctcStatus:ContactWrapper = null;
-         var cApi:ChatApi = null;
-         var clrbim:ContactLookRequestByIdMessage = null;
+         var _loc257_:String = null;
+         var _loc258_:SubArea = null;
+         var _loc259_:uint = 0;
+         var _loc260_:Array = null;
+         var _loc261_:TaxCollectorInformations = null;
+         var _loc262_:Vector.<TaxCollectorWrapper> = null;
+         var _loc263_:Vector.<TaxCollectorWrapper> = null;
+         var _loc264_:GuildGetInformationsMessage = null;
+         var _loc265_:DataStoreType = null;
+         var _loc266_:GuildApplicationInformation = null;
+         var _loc267_:GuildFactSheetInformations = null;
+         var _loc268_:TaxCollectorWrapper = null;
+         var _loc269_:SocialEntityInFightWrapper = null;
+         var _loc270_:SocialFightersWrapper = null;
+         var _loc271_:GuildHouseUpdateInformationMessage = null;
+         var _loc272_:Boolean = false;
+         var _loc273_:GuildHouseWrapper = null;
+         var _loc274_:GuildHouseWrapper = null;
+         var _loc275_:GuildHouseRemoveMessage = null;
+         var _loc276_:int = 0;
+         var _loc277_:GuildInAllianceFactsMessage = null;
+         var _loc278_:String = null;
+         var _loc279_:GuildMember = null;
+         var _loc280_:int = 0;
+         var _loc281_:int = 0;
+         var _loc282_:FriendWrapper = null;
+         var _loc283_:ContactWrapper = null;
+         var _loc284_:ChatApi = null;
+         var _loc285_:ContactLookRequestByIdMessage = null;
          switch(true)
          {
-            case msg is GuildMembershipMessage:
-               gmmsg = msg as GuildMembershipMessage;
+            case subareaName is GuildMembershipMessage:
+               dungeonTopTaxCollectors = subareaName as GuildMembershipMessage;
                if(this._guild != null)
                {
-                  this._guild.update(gmmsg.guildInfo.guildId,gmmsg.guildInfo.guildName,gmmsg.guildInfo.guildEmblem,gmmsg.memberRights);
+                  this._guild.update(dungeonTopTaxCollectors.guildInfo.guildId,dungeonTopTaxCollectors.guildInfo.guildName,dungeonTopTaxCollectors.guildInfo.guildEmblem,dungeonTopTaxCollectors.memberRights);
                }
                else
                {
-                  this._guild = GuildWrapper.create(gmmsg.guildInfo.guildId,gmmsg.guildInfo.guildName,gmmsg.guildInfo.guildEmblem,gmmsg.memberRights);
+                  this._guild = GuildWrapper.create(dungeonTopTaxCollectors.guildInfo.guildId,dungeonTopTaxCollectors.guildInfo.guildName,dungeonTopTaxCollectors.guildInfo.guildEmblem,dungeonTopTaxCollectors.memberRights);
                }
                this._hasGuild = true;
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildMembershipUpdated,true);
                return true;
-            case msg is FriendsListMessage:
-               flmsg = msg as FriendsListMessage;
+            case subareaName is FriendsListMessage:
+               topTaxCollectors = subareaName as FriendsListMessage;
                this._friendsList = new Vector.<SocialCharacterWrapper>();
-               for each(f in flmsg.friendsList)
+               for each(f in topTaxCollectors.friendsList)
                {
                   if(f is FriendOnlineInformations)
                   {
-                     foi = f as FriendOnlineInformations;
-                     AccountManager.getInstance().setAccount(foi.playerName,foi.accountId,foi.accountTag.nickname,foi.accountTag.tagNumber);
-                     ChatAutocompleteNameManager.getInstance().addEntry(foi.playerName,2);
+                     nid = f as FriendOnlineInformations;
+                     AccountManager.getInstance().setAccount(nid.playerName,nid.accountId,nid.accountTag.nickname,nid.accountTag.tagNumber);
+                     ChatAutocompleteNameManager.getInstance().addEntry(nid.playerName,2);
                   }
                   fw = new FriendWrapper(f);
                   this._friendsList.push(fw);
                }
                KernelEventsManager.getInstance().processCallback(SocialHookList.FriendsListUpdated);
                return true;
-            case msg is AcquaintancesListMessage:
-               almsg = msg as AcquaintancesListMessage;
+            case subareaName is AcquaintancesListMessage:
+               ggimsg = subareaName as AcquaintancesListMessage;
                this._contactsList = new Vector.<SocialCharacterWrapper>();
-               for each(a in almsg.acquaintanceList)
+               for each(a in ggimsg.acquaintanceList)
                {
                   if(a is AcquaintanceOnlineInformation)
                   {
-                     aoi = a as AcquaintanceOnlineInformation;
-                     AccountManager.getInstance().setAccount(aoi.playerName,aoi.accountId,aoi.accountTag.nickname,aoi.accountTag.tagNumber);
-                     ChatAutocompleteNameManager.getInstance().addEntry(aoi.playerName,2);
+                     openSocialParams = a as AcquaintanceOnlineInformation;
+                     AccountManager.getInstance().setAccount(openSocialParams.playerName,openSocialParams.accountId,openSocialParams.accountTag.nickname,openSocialParams.accountTag.tagNumber);
+                     ChatAutocompleteNameManager.getInstance().addEntry(openSocialParams.playerName,2);
                   }
                   cw = new ContactWrapper(a);
                   this._contactsList.push(cw);
                }
                KernelEventsManager.getInstance().processCallback(SocialHookList.ContactsListUpdated);
                return true;
-            case msg is SpouseRequestAction:
-               sra = msg as SpouseRequestAction;
+            case subareaName is SpouseRequestAction:
+               ds = subareaName as SpouseRequestAction;
                ConnectionsHandler.getConnection().send(new SpouseGetInformationsMessage());
                return true;
-            case msg is SpouseInformationsMessage:
-               simsg = msg as SpouseInformationsMessage;
-               this._spouse = new SpouseWrapper(simsg.spouse);
+            case subareaName is SpouseInformationsMessage:
+               applicationInfo = subareaName as SpouseInformationsMessage;
+               this._spouse = new SpouseWrapper(applicationInfo.spouse);
                this._hasSpouse = true;
                KernelEventsManager.getInstance().processCallback(SocialHookList.SpouseUpdated);
                return true;
-            case msg is IgnoredListMessage:
+            case subareaName is IgnoredListMessage:
                this._enemiesList = new Vector.<SocialCharacterWrapper>();
-               ilmsg = msg as IgnoredListMessage;
-               for each(i in ilmsg.ignoredList)
+               guildFactInfo = subareaName as IgnoredListMessage;
+               for each(i in guildFactInfo.ignoredList)
                {
                   if(i is IgnoredOnlineInformations)
                   {
@@ -765,117 +854,120 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                KernelEventsManager.getInstance().processCallback(SocialHookList.EnemiesListUpdated);
                return true;
-            case msg is OpenSocialAction:
-               osa = msg as OpenSocialAction;
-               KernelEventsManager.getInstance().processCallback(SocialHookList.OpenSocial,osa.id);
+            case subareaName is OpenSocialAction:
+               tc2 = subareaName as OpenSocialAction;
+               KernelEventsManager.getInstance().processCallback(SocialHookList.OpenSocial,tc2.id);
                return true;
-            case msg is FriendsListRequestAction:
+            case subareaName is OpenGuildPrezAndRecruitAction:
+               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildPrezAndRecruitUiRequested);
+               return true;
+            case subareaName is FriendsListRequestAction:
                ConnectionsHandler.getConnection().send(new FriendsGetListMessage());
                return true;
-            case msg is ContactsListRequestAction:
+            case subareaName is ContactsListRequestAction:
                ConnectionsHandler.getConnection().send(new AcquaintancesGetListMessage());
                return true;
-            case msg is EnemiesListRequestAction:
+            case subareaName is EnemiesListRequestAction:
                ConnectionsHandler.getConnection().send(new IgnoredGetListMessage());
                return true;
-            case msg is AddFriendAction:
-               afa = msg as AddFriendAction;
-               if(!this.isLenghtCorrect(afa.name,afa.tag))
+            case subareaName is AddFriendAction:
+               tcInFight = subareaName as AddFriendAction;
+               if(!this.isLenghtCorrect(tcInFight.name,tcInFight.tag))
                {
                   displayNotFoundError();
                }
-               else if(this.isMe(afa.name,afa.tag))
+               else if(this.isMe(tcInFight.name,tcInFight.tag))
                {
                   displayEgoError();
                }
                else
                {
                   farmsg = new FriendAddRequestMessage();
-                  farmsg.initFriendAddRequestMessage(this.createAbstractPlayerSearchInformation(afa.name,afa.tag));
+                  farmsg.initFriendAddRequestMessage(this.createAbstractPlayerSearchInformation(tcInFight.name,tcInFight.tag));
                   ConnectionsHandler.getConnection().send(farmsg);
                }
                return true;
-            case msg is FriendAddedMessage:
-               famsg = msg as FriendAddedMessage;
-               if(famsg.friendAdded is FriendOnlineInformations)
+            case subareaName is FriendAddedMessage:
+               defender = subareaName as FriendAddedMessage;
+               if(defender.friendAdded is FriendOnlineInformations)
                {
-                  foi = famsg.friendAdded as FriendOnlineInformations;
-                  AccountManager.getInstance().setAccount(foi.playerName,foi.accountId,foi.accountTag.nickname,foi.accountTag.tagNumber);
-                  ChatAutocompleteNameManager.getInstance().addEntry(foi.playerName,2);
+                  nid = defender.friendAdded as FriendOnlineInformations;
+                  AccountManager.getInstance().setAccount(nid.playerName,nid.accountId,nid.accountTag.nickname,nid.accountTag.tagNumber);
+                  ChatAutocompleteNameManager.getInstance().addEntry(nid.playerName,2);
                }
-               friendToAdd = new FriendWrapper(famsg.friendAdded);
-               isAlreadyMyFriend = false;
+               ghuimsg = new FriendWrapper(defender.friendAdded);
+               toUpdate = false;
                for each(friendW in this._friendsList)
                {
-                  if(friendW.accountId == friendToAdd.accountId)
+                  if(friendW.accountId == ghuimsg.accountId)
                   {
-                     isAlreadyMyFriend = true;
+                     toUpdate = true;
                      break;
                   }
                }
                for(contactIndex in this._contactsList)
                {
-                  if(this._contactsList[contactIndex].name == friendToAdd.name && this._contactsList[contactIndex].tag == friendToAdd.tag)
+                  if(this._contactsList[contactIndex].name == ghuimsg.name && this._contactsList[contactIndex].tag == ghuimsg.tag)
                   {
                      this._contactsList.splice(contactIndex,1);
                      KernelEventsManager.getInstance().processCallback(SocialHookList.ContactsListUpdated);
                      break;
                   }
                }
-               if(!isAlreadyMyFriend)
+               if(!toUpdate)
                {
-                  this._friendsList.push(friendToAdd);
+                  this._friendsList.push(ghuimsg);
                }
                KernelEventsManager.getInstance().processCallback(SocialHookList.FriendsListUpdated);
                return true;
-            case msg is AcquaintanceAddedMessage:
-               aamsg = msg as AcquaintanceAddedMessage;
-               if(aamsg.acquaintanceAdded is AcquaintanceOnlineInformation)
+            case subareaName is AcquaintanceAddedMessage:
+               house1 = subareaName as AcquaintanceAddedMessage;
+               if(house1.acquaintanceAdded is AcquaintanceOnlineInformation)
                {
-                  aoi = aamsg.acquaintanceAdded as AcquaintanceOnlineInformation;
-                  AccountManager.getInstance().setAccount(aoi.playerName,aoi.accountId,aoi.accountTag.nickname,aoi.accountTag.tagNumber);
-                  ChatAutocompleteNameManager.getInstance().addEntry(aoi.playerName,2);
+                  openSocialParams = house1.acquaintanceAdded as AcquaintanceOnlineInformation;
+                  AccountManager.getInstance().setAccount(openSocialParams.playerName,openSocialParams.accountId,openSocialParams.accountTag.nickname,openSocialParams.accountTag.tagNumber);
+                  ChatAutocompleteNameManager.getInstance().addEntry(openSocialParams.playerName,2);
                }
-               contactToAdd = new ContactWrapper(aamsg.acquaintanceAdded);
-               this._contactsList.push(contactToAdd);
+               ghw1 = new ContactWrapper(house1.acquaintanceAdded);
+               this._contactsList.push(ghw1);
                KernelEventsManager.getInstance().processCallback(SocialHookList.ContactsListUpdated);
                return true;
-            case msg is FriendAddFailureMessage:
-               this.displayError((msg as FriendAddFailureMessage).reason);
+            case subareaName is FriendAddFailureMessage:
+               this.displayError((subareaName as FriendAddFailureMessage).reason);
                return true;
-            case msg is ContactAddFailureMessage:
-               this.displayError((msg as ContactAddFailureMessage).reason);
+            case subareaName is ContactAddFailureMessage:
+               this.displayError((subareaName as ContactAddFailureMessage).reason);
                return true;
-            case msg is IgnoredAddFailureMessage:
-               this.displayError((msg as IgnoredAddFailureMessage).reason);
+            case subareaName is IgnoredAddFailureMessage:
+               this.displayError((subareaName as IgnoredAddFailureMessage).reason);
                return true;
-            case msg is AddEnemyAction:
-               aea = msg as AddEnemyAction;
-               if(!this.isLenghtCorrect(aea.name,aea.tag))
+            case subareaName is AddEnemyAction:
+               ghrmsg = subareaName as AddEnemyAction;
+               if(!this.isLenghtCorrect(ghrmsg.name,ghrmsg.tag))
                {
                   displayNotFoundError();
                }
-               else if(this.isMe(aea.tag,aea.name))
+               else if(this.isMe(ghrmsg.tag,ghrmsg.name))
                {
                   displayEgoError();
                }
                else
                {
                   iarmsg = new IgnoredAddRequestMessage();
-                  iarmsg.initIgnoredAddRequestMessage(this.createAbstractPlayerSearchInformation(aea.name,aea.tag));
+                  iarmsg.initIgnoredAddRequestMessage(this.createAbstractPlayerSearchInformation(ghrmsg.name,ghrmsg.tag));
                   ConnectionsHandler.getConnection().send(iarmsg);
                }
                return true;
-            case msg is IgnoredAddedMessage:
-               iamsg = msg as IgnoredAddedMessage;
-               if(iamsg.ignoreAdded is IgnoredOnlineInformations)
+            case subareaName is IgnoredAddedMessage:
+               iGHR = subareaName as IgnoredAddedMessage;
+               if(iGHR.ignoreAdded is IgnoredOnlineInformations)
                {
-                  ioi = iamsg.ignoreAdded as IgnoredOnlineInformations;
+                  ioi = iGHR.ignoreAdded as IgnoredOnlineInformations;
                   AccountManager.getInstance().setAccount(ioi.playerName,ioi.accountId,ioi.accountTag.nickname,ioi.accountTag.tagNumber);
                }
-               if(!iamsg.session)
+               if(!iGHR.session)
                {
-                  enemyToAdd = new EnemyWrapper(iamsg.ignoreAdded);
+                  enemyToAdd = new EnemyWrapper(iGHR.ignoreAdded);
                   this._enemiesList.push(enemyToAdd);
                   KernelEventsManager.getInstance().processCallback(SocialHookList.EnemiesListUpdated);
                }
@@ -883,30 +975,30 @@ package com.ankamagames.dofus.logic.game.common.frames
                {
                   for each(ignored in this._ignoredList)
                   {
-                     if(ignored.name == iamsg.ignoreAdded.accountTag.nickname)
+                     if(ignored.name == iGHR.ignoreAdded.accountTag.nickname)
                      {
                         return true;
                      }
                   }
-                  this._ignoredList.push(new IgnoredWrapper(iamsg.ignoreAdded.accountTag.nickname,iamsg.ignoreAdded.accountTag.tagNumber,iamsg.ignoreAdded.accountId));
+                  this._ignoredList.push(new IgnoredWrapper(iGHR.ignoreAdded.accountTag.nickname,iGHR.ignoreAdded.accountTag.tagNumber,iGHR.ignoreAdded.accountId));
                   KernelEventsManager.getInstance().processCallback(SocialHookList.IgnoredListUpdated);
                }
                return true;
-            case msg is RemoveFriendAction:
-               rfa = msg as RemoveFriendAction;
-               fdrqmsg = new FriendDeleteRequestMessage();
-               fdrqmsg.initFriendDeleteRequestMessage(rfa.accountId);
-               ConnectionsHandler.getConnection().send(fdrqmsg);
+            case subareaName is RemoveFriendAction:
+               giafmsg = subareaName as RemoveFriendAction;
+               textMotd = new FriendDeleteRequestMessage();
+               textMotd.initFriendDeleteRequestMessage(giafmsg.accountId);
+               ConnectionsHandler.getConnection().send(textMotd);
                return true;
-            case msg is FriendDeleteResultMessage:
-               fdrmsg = msg as FriendDeleteResultMessage;
-               if(fdrmsg.success)
+            case subareaName is FriendDeleteResultMessage:
+               members = subareaName as FriendDeleteResultMessage;
+               if(members.success)
                {
-                  output = I18n.getUiText("ui.social.friend.delete",[PlayerManager.getInstance().formatTagName(fdrmsg.tag.nickname,fdrmsg.tag.tagNumber,null,false)]);
+                  output = I18n.getUiText("ui.social.friend.delete",[PlayerManager.getInstance().formatTagName(members.tag.nickname,members.tag.tagNumber,null,false)]);
                   KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,output,ChatFrame.RED_CHANNEL_ID,TimeManager.getInstance().getTimestamp());
                   for(fd in this._friendsList)
                   {
-                     if(this._friendsList[fd].name == fdrmsg.tag.nickname && this._friendsList[fd].tag == fdrmsg.tag.tagNumber)
+                     if(this._friendsList[fd].name == members.tag.nickname && this._friendsList[fd].tag == members.tag.tagNumber)
                      {
                         this._friendsList.splice(fd,1);
                         KernelEventsManager.getInstance().processCallback(SocialHookList.FriendsListUpdated);
@@ -915,7 +1007,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   }
                   for(ct in this._contactsList)
                   {
-                     if(this._contactsList[ct].name == fdrmsg.tag.nickname && this._contactsList[ct].tag == fdrmsg.tag.tagNumber)
+                     if(this._contactsList[ct].name == members.tag.nickname && this._contactsList[ct].tag == members.tag.tagNumber)
                      {
                         this._contactsList.splice(ct,1);
                         KernelEventsManager.getInstance().processCallback(SocialHookList.ContactsListUpdated);
@@ -924,39 +1016,39 @@ package com.ankamagames.dofus.logic.game.common.frames
                   }
                }
                return true;
-            case msg is FriendUpdateMessage:
-               fumsg = msg as FriendUpdateMessage;
-               friendToUpdate = new FriendWrapper(fumsg.friendUpdated);
+            case subareaName is FriendUpdateMessage:
+               snm = subareaName as FriendUpdateMessage;
+               istatus = new FriendWrapper(snm.friendUpdated);
                for each(frd in this._friendsList)
                {
-                  if(frd.name == friendToUpdate.name)
+                  if(frd.name == istatus.name)
                   {
-                     frd = friendToUpdate;
+                     frd = istatus;
                      break;
                   }
                }
-               friendAlreadyInGame = friendToUpdate.state == PlayerStateEnum.GAME_TYPE_ROLEPLAY || friendToUpdate.state == PlayerStateEnum.GAME_TYPE_FIGHT;
+               frdstatus = istatus.state == PlayerStateEnum.GAME_TYPE_ROLEPLAY || istatus.state == PlayerStateEnum.GAME_TYPE_FIGHT;
                KernelEventsManager.getInstance().processCallback(SocialHookList.FriendsListUpdated);
-               if(ExternalNotificationManager.getInstance().canAddExternalNotification(ExternalNotificationTypeEnum.FRIEND_CONNECTION) && this._warnOnFrienConnec && friendToUpdate.online && !friendAlreadyInGame)
+               if(ExternalNotificationManager.getInstance().canAddExternalNotification(ExternalNotificationTypeEnum.FRIEND_CONNECTION) && this._warnOnFrienConnec && istatus.online && !frdstatus)
                {
-                  KernelEventsManager.getInstance().processCallback(HookList.ExternalNotification,ExternalNotificationTypeEnum.FRIEND_CONNECTION,[friendToUpdate.name,friendToUpdate.playerName,friendToUpdate.playerId]);
+                  KernelEventsManager.getInstance().processCallback(HookList.ExternalNotification,ExternalNotificationTypeEnum.FRIEND_CONNECTION,[istatus.name,istatus.playerName,istatus.playerId]);
                }
                return true;
-            case msg is RemoveEnemyAction:
-               rea = msg as RemoveEnemyAction;
-               idrqmsg = new IgnoredDeleteRequestMessage();
-               idrqmsg.initIgnoredDeleteRequestMessage(rea.accountId);
-               ConnectionsHandler.getConnection().send(idrqmsg);
+            case subareaName is RemoveEnemyAction:
+               ctcStatus = subareaName as RemoveEnemyAction;
+               cApi = new IgnoredDeleteRequestMessage();
+               cApi.initIgnoredDeleteRequestMessage(ctcStatus.accountId);
+               ConnectionsHandler.getConnection().send(cApi);
                return true;
-            case msg is IgnoredDeleteResultMessage:
-               idrmsg = msg as IgnoredDeleteResultMessage;
-               if(!idrmsg.session)
+            case subareaName is IgnoredDeleteResultMessage:
+               clrbim = subareaName as IgnoredDeleteResultMessage;
+               if(!clrbim.session)
                {
-                  if(idrmsg.success)
+                  if(clrbim.success)
                   {
                      for(ed in this._enemiesList)
                      {
-                        if(this._enemiesList[ed].name == idrmsg.tag.nickname && this._enemiesList[ed].tag == idrmsg.tag.tagNumber)
+                        if(this._enemiesList[ed].name == clrbim.tag.nickname && this._enemiesList[ed].tag == clrbim.tag.tagNumber)
                         {
                            this._enemiesList.splice(ed,1);
                            KernelEventsManager.getInstance().processCallback(SocialHookList.EnemiesListUpdated);
@@ -965,11 +1057,11 @@ package com.ankamagames.dofus.logic.game.common.frames
                      }
                   }
                }
-               else if(idrmsg.success)
+               else if(clrbim.success)
                {
                   for(il in this._ignoredList)
                   {
-                     if(this._ignoredList[il].name == idrmsg.tag.nickname && this._ignoredList[il].tag == idrmsg.tag.tagNumber)
+                     if(this._ignoredList[il].name == clrbim.tag.nickname && this._ignoredList[il].tag == clrbim.tag.tagNumber)
                      {
                         this._ignoredList.splice(il,1);
                         KernelEventsManager.getInstance().processCallback(SocialHookList.IgnoredListUpdated);
@@ -978,8 +1070,8 @@ package com.ankamagames.dofus.logic.game.common.frames
                   }
                }
                return true;
-            case msg is AddIgnoredAction:
-               aiga = msg as AddIgnoredAction;
+            case subareaName is AddIgnoredAction:
+               aiga = subareaName as AddIgnoredAction;
                if(!this.isLenghtCorrect(aiga.name,aiga.tag))
                {
                   displayNotFoundError();
@@ -1002,72 +1094,72 @@ package com.ankamagames.dofus.logic.game.common.frames
                   ConnectionsHandler.getConnection().send(iar2msg);
                }
                return true;
-            case msg is RemoveIgnoredAction:
-               ria = msg as RemoveIgnoredAction;
+            case subareaName is RemoveIgnoredAction:
+               ria = subareaName as RemoveIgnoredAction;
                idrq2msg = new IgnoredDeleteRequestMessage();
                idrq2msg.initIgnoredDeleteRequestMessage(ria.accountId,true);
                ConnectionsHandler.getConnection().send(idrq2msg);
                return true;
-            case msg is JoinFriendAction:
-               jfa = msg as JoinFriendAction;
+            case subareaName is JoinFriendAction:
+               jfa = subareaName as JoinFriendAction;
                fjrmsg = new FriendJoinRequestMessage();
                player_FJRMSG = new PlayerSearchCharacterNameInformation().initPlayerSearchCharacterNameInformation(jfa.name);
                fjrmsg.initFriendJoinRequestMessage(player_FJRMSG);
                ConnectionsHandler.getConnection().send(fjrmsg);
                return true;
-            case msg is JoinSpouseAction:
+            case subareaName is JoinSpouseAction:
                ConnectionsHandler.getConnection().send(new FriendSpouseJoinRequestMessage());
                return true;
-            case msg is FriendSpouseFollowAction:
-               fsfa = msg as FriendSpouseFollowAction;
+            case subareaName is FriendSpouseFollowAction:
+               fsfa = subareaName as FriendSpouseFollowAction;
                fsfwcmsg = new FriendSpouseFollowWithCompassRequestMessage();
                fsfwcmsg.initFriendSpouseFollowWithCompassRequestMessage(fsfa.enable);
                ConnectionsHandler.getConnection().send(fsfwcmsg);
                return true;
-            case msg is StatusShareSetAction:
-               sssa = msg as StatusShareSetAction;
+            case subareaName is StatusShareSetAction:
+               sssa = subareaName as StatusShareSetAction;
                this._shareStatus = sssa.enable;
                fsssm = new FriendSetStatusShareMessage();
                fsssm.initFriendSetStatusShareMessage(sssa.enable);
                ConnectionsHandler.getConnection().send(fsssm);
                return true;
-            case msg is FriendWarningSetAction:
-               fwsa = msg as FriendWarningSetAction;
+            case subareaName is FriendWarningSetAction:
+               fwsa = subareaName as FriendWarningSetAction;
                this._warnOnFrienConnec = fwsa.enable;
                fsocmsg = new FriendSetWarnOnConnectionMessage();
                fsocmsg.initFriendSetWarnOnConnectionMessage(fwsa.enable);
                ConnectionsHandler.getConnection().send(fsocmsg);
                return true;
-            case msg is MemberWarningSetAction:
-               mwsa = msg as MemberWarningSetAction;
+            case subareaName is MemberWarningSetAction:
+               mwsa = subareaName as MemberWarningSetAction;
                this._warnOnMemberConnec = mwsa.enable;
                gmswocmsg = new GuildMemberSetWarnOnConnectionMessage();
                gmswocmsg.initGuildMemberSetWarnOnConnectionMessage(mwsa.enable);
                ConnectionsHandler.getConnection().send(gmswocmsg);
                return true;
-            case msg is FriendOrGuildMemberLevelUpWarningSetAction:
-               fogmwsa = msg as FriendOrGuildMemberLevelUpWarningSetAction;
+            case subareaName is FriendOrGuildMemberLevelUpWarningSetAction:
+               fogmwsa = subareaName as FriendOrGuildMemberLevelUpWarningSetAction;
                this._warnWhenFriendOrGuildMemberLvlUp = fogmwsa.enable;
                fswolgmsg = new FriendSetWarnOnLevelGainMessage();
                fswolgmsg.initFriendSetWarnOnLevelGainMessage(fogmwsa.enable);
                ConnectionsHandler.getConnection().send(fswolgmsg);
                return true;
-            case msg is FriendGuildSetWarnOnAchievementCompleteAction:
-               fgswoaca = msg as FriendGuildSetWarnOnAchievementCompleteAction;
+            case subareaName is FriendGuildSetWarnOnAchievementCompleteAction:
+               fgswoaca = subareaName as FriendGuildSetWarnOnAchievementCompleteAction;
                this._warnWhenFriendOrGuildMemberAchieve = fgswoaca.enable;
                fgswoacmsg = new FriendGuildSetWarnOnAchievementCompleteMessage();
                fgswoacmsg.initFriendGuildSetWarnOnAchievementCompleteMessage(fgswoaca.enable);
                ConnectionsHandler.getConnection().send(fgswoacmsg);
                return true;
-            case msg is WarnOnHardcoreDeathAction:
-               wohda = msg as WarnOnHardcoreDeathAction;
+            case subareaName is WarnOnHardcoreDeathAction:
+               wohda = subareaName as WarnOnHardcoreDeathAction;
                this._warnOnHardcoreDeath = wohda.enable;
                wopdmsg = new WarnOnPermaDeathMessage();
                wopdmsg.initWarnOnPermaDeathMessage(wohda.enable);
                ConnectionsHandler.getConnection().send(wopdmsg);
                return true;
-            case msg is SpouseStatusMessage:
-               ssmsg = msg as SpouseStatusMessage;
+            case subareaName is SpouseStatusMessage:
+               ssmsg = subareaName as SpouseStatusMessage;
                this._hasSpouse = ssmsg.hasSpouse;
                if(!this._hasSpouse)
                {
@@ -1077,8 +1169,8 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                KernelEventsManager.getInstance().processCallback(SocialHookList.SpouseUpdated);
                return true;
-            case msg is MoodSmileyUpdateMessage:
-               msumsg = msg as MoodSmileyUpdateMessage;
+            case subareaName is MoodSmileyUpdateMessage:
+               msumsg = subareaName as MoodSmileyUpdateMessage;
                if(this._guildMembers != null)
                {
                   nm = this._guildMembers.length;
@@ -1118,27 +1210,27 @@ package com.ankamagames.dofus.logic.game.common.frames
                   }
                }
                return true;
-            case msg is FriendStatusShareStateMessage:
-               fsssmsg = msg as FriendStatusShareStateMessage;
+            case subareaName is FriendStatusShareStateMessage:
+               fsssmsg = subareaName as FriendStatusShareStateMessage;
                this._shareStatus = fsssmsg.share;
                KernelEventsManager.getInstance().processCallback(SocialHookList.ShareStatusState,fsssmsg.share);
                return true;
-            case msg is FriendWarnOnConnectionStateMessage:
-               fwocsmsg = msg as FriendWarnOnConnectionStateMessage;
+            case subareaName is FriendWarnOnConnectionStateMessage:
+               fwocsmsg = subareaName as FriendWarnOnConnectionStateMessage;
                this._warnOnFrienConnec = fwocsmsg.enable;
                KernelEventsManager.getInstance().processCallback(SocialHookList.FriendWarningState,fwocsmsg.enable);
                return true;
-            case msg is GuildMemberWarnOnConnectionStateMessage:
-               gmwocsmsg = msg as GuildMemberWarnOnConnectionStateMessage;
+            case subareaName is GuildMemberWarnOnConnectionStateMessage:
+               gmwocsmsg = subareaName as GuildMemberWarnOnConnectionStateMessage;
                this._warnOnMemberConnec = gmwocsmsg.enable;
                KernelEventsManager.getInstance().processCallback(SocialHookList.MemberWarningState,gmwocsmsg.enable);
                return true;
-            case msg is GuildMemberOnlineStatusMessage:
+            case subareaName is GuildMemberOnlineStatusMessage:
                if(!this._friendsList)
                {
                   return true;
                }
-               gmosm = msg as GuildMemberOnlineStatusMessage;
+               gmosm = subareaName as GuildMemberOnlineStatusMessage;
                if(ExternalNotificationManager.getInstance().canAddExternalNotification(ExternalNotificationTypeEnum.MEMBER_CONNECTION) && this._warnOnMemberConnec && gmosm.online)
                {
                   for each(gm in this._guildMembers)
@@ -1165,23 +1257,23 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                return true;
                break;
-            case msg is FriendWarnOnLevelGainStateMessage:
-               fwolgsmsg = msg as FriendWarnOnLevelGainStateMessage;
+            case subareaName is FriendWarnOnLevelGainStateMessage:
+               fwolgsmsg = subareaName as FriendWarnOnLevelGainStateMessage;
                this._warnWhenFriendOrGuildMemberLvlUp = fwolgsmsg.enable;
                KernelEventsManager.getInstance().processCallback(SocialHookList.FriendOrGuildMemberLevelUpWarningState,fwolgsmsg.enable);
                return true;
-            case msg is FriendGuildWarnOnAchievementCompleteStateMessage:
-               fgwoacsmsg = msg as FriendGuildWarnOnAchievementCompleteStateMessage;
+            case subareaName is FriendGuildWarnOnAchievementCompleteStateMessage:
+               fgwoacsmsg = subareaName as FriendGuildWarnOnAchievementCompleteStateMessage;
                this._warnWhenFriendOrGuildMemberAchieve = fgwoacsmsg.enable;
                KernelEventsManager.getInstance().processCallback(SocialHookList.FriendGuildWarnOnAchievementCompleteState,fgwoacsmsg.enable);
                return true;
-            case msg is WarnOnPermaDeathStateMessage:
-               wopdsmsg = msg as WarnOnPermaDeathStateMessage;
+            case subareaName is WarnOnPermaDeathStateMessage:
+               wopdsmsg = subareaName as WarnOnPermaDeathStateMessage;
                this._warnOnHardcoreDeath = wopdsmsg.enable;
                KernelEventsManager.getInstance().processCallback(SocialHookList.WarnOnHardcoreDeathState,wopdsmsg.enable);
                return true;
-            case msg is GuildInformationsMembersMessage:
-               gimmsg = msg as GuildInformationsMembersMessage;
+            case subareaName is GuildInformationsMembersMessage:
+               gimmsg = subareaName as GuildInformationsMembersMessage;
                for each(mb in gimmsg.members)
                {
                   ChatAutocompleteNameManager.getInstance().addEntry(mb.name,2);
@@ -1189,8 +1281,8 @@ package com.ankamagames.dofus.logic.game.common.frames
                this._guildMembers = gimmsg.members;
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInformationsMembers,this._guildMembers);
                return true;
-            case msg is GuildHousesInformationMessage:
-               ghimsg = msg as GuildHousesInformationMessage;
+            case subareaName is GuildHousesInformationMessage:
+               ghimsg = subareaName as GuildHousesInformationMessage;
                this._guildHouses = new Vector.<GuildHouseWrapper>();
                for each(houseInformation in ghimsg.housesInformations)
                {
@@ -1201,17 +1293,17 @@ package com.ankamagames.dofus.logic.game.common.frames
                this._guildHousesListUpdate = true;
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildHousesUpdate);
                return true;
-            case msg is GuildCreationStartedMessage:
+            case subareaName is GuildCreationStartedMessage:
                Kernel.getWorker().addFrame(this._guildDialogFrame);
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildCreationStarted,false,false);
                return true;
-            case msg is GuildModificationStartedMessage:
-               gmsmsg = msg as GuildModificationStartedMessage;
+            case subareaName is GuildModificationStartedMessage:
+               gmsmsg = subareaName as GuildModificationStartedMessage;
                Kernel.getWorker().addFrame(this._guildDialogFrame);
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildCreationStarted,gmsmsg.canChangeName,gmsmsg.canChangeEmblem);
                return true;
-            case msg is GuildCreationResultMessage:
-               gcrmsg = msg as GuildCreationResultMessage;
+            case subareaName is GuildCreationResultMessage:
+               gcrmsg = subareaName as GuildCreationResultMessage;
                switch(gcrmsg.result)
                {
                   case SocialGroupCreationResultEnum.SOCIAL_GROUP_CREATE_ERROR_ALREADY_IN_GROUP:
@@ -1245,13 +1337,13 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildCreationResult,gcrmsg.result);
                return true;
-            case msg is GuildInvitedMessage:
-               gimsg = msg as GuildInvitedMessage;
+            case subareaName is GuildInvitedMessage:
+               gimsg = subareaName as GuildInvitedMessage;
                Kernel.getWorker().addFrame(this._guildDialogFrame);
-               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInvited,gimsg.guildInfo.guildName,gimsg.recruterId,gimsg.recruterName);
+               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInvited,gimsg.guildInfo.guildId,gimsg.guildInfo.guildName,gimsg.recruterId,gimsg.recruterName);
                return true;
-            case msg is GuildInvitationStateRecruterMessage:
-               gisrermsg = msg as GuildInvitationStateRecruterMessage;
+            case subareaName is GuildInvitationStateRecruterMessage:
+               gisrermsg = subareaName as GuildInvitationStateRecruterMessage;
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInvitationStateRecruter,gisrermsg.invitationState,gisrermsg.recrutedName);
                if(gisrermsg.invitationState == SocialGroupInvitationStateEnum.SOCIAL_GROUP_INVITATION_CANCELED || gisrermsg.invitationState == SocialGroupInvitationStateEnum.SOCIAL_GROUP_INVITATION_OK)
                {
@@ -1262,16 +1354,16 @@ package com.ankamagames.dofus.logic.game.common.frames
                   Kernel.getWorker().addFrame(this._guildDialogFrame);
                }
                return true;
-            case msg is GuildInvitationStateRecrutedMessage:
-               gisredmsg = msg as GuildInvitationStateRecrutedMessage;
+            case subareaName is GuildInvitationStateRecrutedMessage:
+               gisredmsg = subareaName as GuildInvitationStateRecrutedMessage;
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInvitationStateRecruted,gisredmsg.invitationState);
                if(gisredmsg.invitationState == SocialGroupInvitationStateEnum.SOCIAL_GROUP_INVITATION_CANCELED || gisredmsg.invitationState == SocialGroupInvitationStateEnum.SOCIAL_GROUP_INVITATION_OK)
                {
                   Kernel.getWorker().removeFrame(this._guildDialogFrame);
                }
                return true;
-            case msg is GuildJoinedMessage:
-               gjmsg = msg as GuildJoinedMessage;
+            case subareaName is GuildJoinedMessage:
+               gjmsg = subareaName as GuildJoinedMessage;
                this._hasGuild = true;
                this._guild = GuildWrapper.create(gjmsg.guildInfo.guildId,gjmsg.guildInfo.guildName,gjmsg.guildInfo.guildEmblem,gjmsg.memberRights);
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildMembershipUpdated,true);
@@ -1280,13 +1372,14 @@ package com.ankamagames.dofus.logic.game.common.frames
                seasonNumber = !!ServerTemporisSeason.getCurrentSeason() ? int(ServerTemporisSeason.getCurrentSeason().seasonNumber) : -1;
                if(PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_TEMPORIS && seasonNumber == 5)
                {
-                  notificationId = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.social.xpGuild"),I18n.getUiText("ui.social.modifyXpGuild"),NotificationTypeEnum.TUTORIAL,"temporisXpGuild_T" + seasonNumber);
-                  NotificationManager.getInstance().addButtonToNotification(notificationId,I18n.getUiText("ui.common.modify"),"OpenSocialAction",[DataEnum.SOCIAL_TAB_GUILD_ID]);
-                  NotificationManager.getInstance().sendNotification(notificationId);
+                  taxCollectorInfo = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.social.xpGuild"),I18n.getUiText("ui.social.modifyXpGuild"),NotificationTypeEnum.TUTORIAL,"temporisXpGuild_T" + seasonNumber);
+                  NotificationManager.getInstance().addButtonToNotification(taxCollectorInfo,I18n.getUiText("ui.common.modify"),"OpenSocialAction",[DataEnum.SOCIAL_TAB_GUILD_ID]);
+                  NotificationManager.getInstance().sendNotification(taxCollectorInfo);
                }
+               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildJoined);
                return true;
-            case msg is GuildInformationsGeneralMessage:
-               gigmsg = msg as GuildInformationsGeneralMessage;
+            case subareaName is GuildInformationsGeneralMessage:
+               gigmsg = subareaName as GuildInformationsGeneralMessage;
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInformationsGeneral,gigmsg.expLevelFloor,gigmsg.experience,gigmsg.expNextLevelFloor,gigmsg.level,gigmsg.creationDate,gigmsg.abandonnedPaddock,gigmsg.nbConnectedMembers,gigmsg.nbTotalMembers);
                this._guild.level = gigmsg.level;
                this._guild.experience = gigmsg.experience;
@@ -1296,8 +1389,8 @@ package com.ankamagames.dofus.logic.game.common.frames
                this._guild.nbMembers = gigmsg.nbTotalMembers;
                this._guild.nbConnectedMembers = gigmsg.nbConnectedMembers;
                return true;
-            case msg is GuildInformationsMemberUpdateMessage:
-               gimumsg = msg as GuildInformationsMemberUpdateMessage;
+            case subareaName is GuildInformationsMemberUpdateMessage:
+               gimumsg = subareaName as GuildInformationsMemberUpdateMessage;
                if(this._guildMembers != null)
                {
                   nmu = this._guildMembers.length;
@@ -1328,8 +1421,8 @@ package com.ankamagames.dofus.logic.game.common.frames
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInformationsMembers,this._guildMembers);
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInformationsMemberUpdate,gimumsg.member);
                return true;
-            case msg is GuildMemberLeavingMessage:
-               gmlmsg = msg as GuildMemberLeavingMessage;
+            case subareaName is GuildMemberLeavingMessage:
+               gmlmsg = subareaName as GuildMemberLeavingMessage;
                comptgm = 0;
                for each(guildMember in this._guildMembers)
                {
@@ -1342,24 +1435,24 @@ package com.ankamagames.dofus.logic.game.common.frames
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInformationsMembers,this._guildMembers);
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildMemberLeaving,gmlmsg.kicked,gmlmsg.memberId);
                return true;
-            case msg is GuildLeftMessage:
-               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildLeft);
+            case subareaName is GuildLeftMessage:
                this._hasGuild = false;
                this._guild = null;
                this._guildHousesList = false;
+               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildLeft);
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildMembershipUpdated,false);
                return true;
-            case msg is GuildInfosUpgradeMessage:
-               gipmsg = msg as GuildInfosUpgradeMessage;
+            case subareaName is GuildInfosUpgradeMessage:
+               gipmsg = subareaName as GuildInfosUpgradeMessage;
                TaxCollectorsManager.getInstance().updateGuild(gipmsg.maxTaxCollectorsCount,gipmsg.taxCollectorsCount,gipmsg.taxCollectorLifePoints,gipmsg.taxCollectorDamagesBonuses,gipmsg.taxCollectorPods,gipmsg.taxCollectorProspecting,gipmsg.taxCollectorWisdom);
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInfosUpgrade,gipmsg.boostPoints,gipmsg.maxTaxCollectorsCount,gipmsg.spellId,gipmsg.spellLevel,gipmsg.taxCollectorDamagesBonuses,gipmsg.taxCollectorLifePoints,gipmsg.taxCollectorPods,gipmsg.taxCollectorProspecting,gipmsg.taxCollectorsCount,gipmsg.taxCollectorWisdom);
                return true;
-            case msg is GuildFightPlayersHelpersJoinMessage:
-               gfphjmsg = msg as GuildFightPlayersHelpersJoinMessage;
+            case subareaName is GuildFightPlayersHelpersJoinMessage:
+               gfphjmsg = subareaName as GuildFightPlayersHelpersJoinMessage;
                TaxCollectorsManager.getInstance().addFighter(0,gfphjmsg.fightId,gfphjmsg.playerInfo,true);
                return true;
-            case msg is GuildFightPlayersHelpersLeaveMessage:
-               gfphlmsg = msg as GuildFightPlayersHelpersLeaveMessage;
+            case subareaName is GuildFightPlayersHelpersLeaveMessage:
+               gfphlmsg = subareaName as GuildFightPlayersHelpersLeaveMessage;
                if(this._autoLeaveHelpers)
                {
                   text = I18n.getUiText("ui.social.guild.autoFightLeave");
@@ -1367,20 +1460,20 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                TaxCollectorsManager.getInstance().removeFighter(0,gfphlmsg.fightId,gfphlmsg.playerId,true);
                return true;
-            case msg is GuildFightPlayersEnemiesListMessage:
-               gfpelmsg = msg as GuildFightPlayersEnemiesListMessage;
+            case subareaName is GuildFightPlayersEnemiesListMessage:
+               gfpelmsg = subareaName as GuildFightPlayersEnemiesListMessage;
                for each(enemy in gfpelmsg.playerInfo)
                {
                   TaxCollectorsManager.getInstance().addFighter(0,gfpelmsg.fightId,enemy,false,false);
                }
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildFightEnnemiesListUpdate,0,gfpelmsg.fightId);
                return true;
-            case msg is GuildFightPlayersEnemyRemoveMessage:
-               gfpermsg = msg as GuildFightPlayersEnemyRemoveMessage;
+            case subareaName is GuildFightPlayersEnemyRemoveMessage:
+               gfpermsg = subareaName as GuildFightPlayersEnemyRemoveMessage;
                TaxCollectorsManager.getInstance().removeFighter(0,gfpermsg.fightId,gfpermsg.playerId,false);
                return true;
-            case msg is TaxCollectorMovementMessage:
-               tcmmsg = msg as TaxCollectorMovementMessage;
+            case subareaName is TaxCollectorMovementMessage:
+               tcmmsg = subareaName as TaxCollectorMovementMessage;
                taxCollectorName = TaxCollectorFirstname.getTaxCollectorFirstnameById(tcmmsg.basicInfos.firstNameId).firstname + " " + TaxCollectorName.getTaxCollectorNameById(tcmmsg.basicInfos.lastNameId).name;
                worldMapId = SubArea.getSubAreaByMapId(tcmmsg.basicInfos.mapId).worldmap.id;
                playerLink = "{player," + tcmmsg.playerName + "," + tcmmsg.playerId + "}";
@@ -1396,8 +1489,8 @@ package com.ankamagames.dofus.logic.game.common.frames
                      KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,infoText,ChatActivableChannelsEnum.CHANNEL_GUILD,TimeManager.getInstance().getTimestamp());
                }
                return true;
-            case msg is TaxCollectorAttackedMessage:
-               tcamsg = msg as TaxCollectorAttackedMessage;
+            case subareaName is TaxCollectorAttackedMessage:
+               tcamsg = subareaName as TaxCollectorAttackedMessage;
                worldX = tcamsg.worldX;
                worldY = tcamsg.worldY;
                taxCollectorN = TaxCollectorFirstname.getTaxCollectorFirstnameById(tcamsg.firstNameId).firstname + " " + TaxCollectorName.getTaxCollectorNameById(tcamsg.lastNameId).name;
@@ -1409,8 +1502,8 @@ package com.ankamagames.dofus.logic.game.common.frames
                else
                {
                   guildName2 = tcamsg.guild.guildName;
-                  subareaName = SubArea.getSubAreaById(tcamsg.subAreaId).name;
-                  sentenceToDisplatch = I18n.getUiText("ui.guild.taxCollectorAttacked",[guildName2,subareaName,worldX + "," + worldY]);
+                  _loc257_ = SubArea.getSubAreaById(tcamsg.subAreaId).name;
+                  sentenceToDisplatch = I18n.getUiText("ui.guild.taxCollectorAttacked",[guildName2,_loc257_,worldX + "," + worldY]);
                   KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,"{openSocial,2,2,0," + tcamsg.mapId + "::" + sentenceToDisplatch + "}",ChatActivableChannelsEnum.CHANNEL_ALLIANCE,TimeManager.getInstance().getTimestamp());
                }
                if(ExternalNotificationManager.getInstance().canAddExternalNotification(ExternalNotificationTypeEnum.TAXCOLLECTOR_ATTACK))
@@ -1419,23 +1512,23 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                if(OptionManager.getOptionManager("dofus").getOption("warnOnGuildItemAgression"))
                {
-                  suba = SubArea.getSubAreaById(tcamsg.subAreaId);
-                  nid = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.guild.taxCollectorAttackedTitle"),I18n.getUiText("ui.guild.taxCollectorAttacked",[tcamsg.guild.guildName,suba.name,worldX + "," + worldY]),NotificationTypeEnum.INVITATION,"TaxCollectorAttacked");
-                  openSocialParams = new Array();
+                  _loc258_ = SubArea.getSubAreaById(tcamsg.subAreaId);
+                  _loc259_ = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.guild.taxCollectorAttackedTitle"),I18n.getUiText("ui.guild.taxCollectorAttacked",[tcamsg.guild.guildName,_loc258_.name,worldX + "," + worldY]),NotificationTypeEnum.INVITATION,"TaxCollectorAttacked");
+                  _loc260_ = new Array();
                   if(!tcamsg.guild || tcamsg.guild.guildId == this._guild.guildId)
                   {
-                     openSocialParams = [1,2];
+                     _loc260_ = [1,2];
                   }
                   else
                   {
-                     openSocialParams = [2,2,[0,tcamsg.mapId]];
+                     _loc260_ = [2,2,[0,tcamsg.mapId]];
                   }
-                  NotificationManager.getInstance().addButtonToNotification(nid,I18n.getUiText("ui.common.join"),"OpenSocial",openSocialParams,true,200,0,"hook");
-                  NotificationManager.getInstance().sendNotification(nid);
+                  NotificationManager.getInstance().addButtonToNotification(_loc259_,I18n.getUiText("ui.common.join"),"OpenSocial",_loc260_,true,200,0,"hook");
+                  NotificationManager.getInstance().sendNotification(_loc259_);
                }
                return true;
-            case msg is TaxCollectorAttackedResultMessage:
-               tcarmsg = msg as TaxCollectorAttackedResultMessage;
+            case subareaName is TaxCollectorAttackedResultMessage:
+               tcarmsg = subareaName as TaxCollectorAttackedResultMessage;
                taxCName = TaxCollectorFirstname.getTaxCollectorFirstnameById(tcarmsg.basicInfos.firstNameId).firstname + " " + TaxCollectorName.getTaxCollectorNameById(tcarmsg.basicInfos.lastNameId).name;
                guildName = tcarmsg.guild.guildName;
                if(guildName == "#NONAME#")
@@ -1470,8 +1563,8 @@ package com.ankamagames.dofus.logic.game.common.frames
                   KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,sentenceToDisplatchResultAttack,ChatActivableChannelsEnum.CHANNEL_ALLIANCE,TimeManager.getInstance().getTimestamp());
                }
                return true;
-            case msg is TaxCollectorErrorMessage:
-               tcemsg = msg as TaxCollectorErrorMessage;
+            case subareaName is TaxCollectorErrorMessage:
+               tcemsg = subareaName as TaxCollectorErrorMessage;
                errorTaxCollectorMessage = "";
                switch(tcemsg.reason)
                {
@@ -1504,15 +1597,15 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,errorTaxCollectorMessage,ChatFrame.RED_CHANNEL_ID,TimeManager.getInstance().getTimestamp());
                return true;
-            case msg is TaxCollectorListMessage:
-               tclmamsg = msg as TaxCollectorListMessage;
+            case subareaName is TaxCollectorListMessage:
+               tclmamsg = subareaName as TaxCollectorListMessage;
                TaxCollectorsManager.getInstance().maxTaxCollectorsCount = tclmamsg.nbcollectorMax;
                TaxCollectorsManager.getInstance().setTaxCollectors(tclmamsg.informations);
                TaxCollectorsManager.getInstance().setTaxCollectorsFighters(tclmamsg.fightersInformations);
                KernelEventsManager.getInstance().processCallback(SocialHookList.TaxCollectorListUpdate,tclmamsg.infoType);
                return true;
-            case msg is TaxCollectorMovementAddMessage:
-               tcmamsg = msg as TaxCollectorMovementAddMessage;
+            case subareaName is TaxCollectorMovementAddMessage:
+               tcmamsg = subareaName as TaxCollectorMovementAddMessage;
                oldState = -1;
                if(TaxCollectorsManager.getInstance().taxCollectors[tcmamsg.informations.uniqueId])
                {
@@ -1529,15 +1622,15 @@ package com.ankamagames.dofus.logic.game.common.frames
                   KernelEventsManager.getInstance().processCallback(SocialHookList.GuildTaxCollectorAdd,TaxCollectorsManager.getInstance().taxCollectors[tcmamsg.informations.uniqueId]);
                }
                return true;
-            case msg is TaxCollectorMovementRemoveMessage:
-               tcmrmsg = msg as TaxCollectorMovementRemoveMessage;
+            case subareaName is TaxCollectorMovementRemoveMessage:
+               tcmrmsg = subareaName as TaxCollectorMovementRemoveMessage;
                delete TaxCollectorsManager.getInstance().taxCollectors[tcmrmsg.collectorId];
                delete TaxCollectorsManager.getInstance().guildTaxCollectorsFighters[tcmrmsg.collectorId];
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildTaxCollectorRemoved,tcmrmsg.collectorId);
                KernelEventsManager.getInstance().processCallback(HookList.RemoveMapFlag,"flag_taxcollector" + tcmrmsg.collectorId,-1);
                return true;
-            case msg is TaxCollectorStateUpdateMessage:
-               tcsumsg = msg as TaxCollectorStateUpdateMessage;
+            case subareaName is TaxCollectorStateUpdateMessage:
+               tcsumsg = subareaName as TaxCollectorStateUpdateMessage;
                if(TaxCollectorsManager.getInstance().taxCollectors[tcsumsg.uniqueId])
                {
                   TaxCollectorsManager.getInstance().taxCollectors[tcsumsg.uniqueId].state = tcsumsg.state;
@@ -1551,8 +1644,8 @@ package com.ankamagames.dofus.logic.game.common.frames
                   }
                }
                return true;
-            case msg is TaxCollectorMovementsOfflineMessage:
-               tcmomsg = msg as TaxCollectorMovementsOfflineMessage;
+            case subareaName is TaxCollectorMovementsOfflineMessage:
+               tcmomsg = subareaName as TaxCollectorMovementsOfflineMessage;
                tcHarvestedNamesList = "";
                tcDefeatedNamesList = "";
                harvestedNumber = 0;
@@ -1604,8 +1697,8 @@ package com.ankamagames.dofus.logic.game.common.frames
                   KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,sentenceToDisplatchDisappearances,ChatActivableChannelsEnum.CHANNEL_GUILD,TimeManager.getInstance().getTimestamp());
                }
                return true;
-            case msg is TopTaxCollectorListMessage:
-               ttclmsg = msg as TopTaxCollectorListMessage;
+            case subareaName is TopTaxCollectorListMessage:
+               ttclmsg = subareaName as TopTaxCollectorListMessage;
                if(ttclmsg.isDungeon)
                {
                   this._dungeonTopTaxCollectors = ttclmsg.informations;
@@ -1616,23 +1709,23 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                if(this._dungeonTopTaxCollectors && this._topTaxCollectors)
                {
-                  dungeonTopTaxCollectors = new Vector.<TaxCollectorWrapper>(0);
-                  topTaxCollectors = new Vector.<TaxCollectorWrapper>(0);
-                  for each(taxCollectorInfo in this._dungeonTopTaxCollectors)
+                  _loc262_ = new Vector.<TaxCollectorWrapper>(0);
+                  _loc263_ = new Vector.<TaxCollectorWrapper>(0);
+                  for each(_loc261_ in this._dungeonTopTaxCollectors)
                   {
-                     dungeonTopTaxCollectors.push(TaxCollectorWrapper.create(taxCollectorInfo));
+                     _loc262_.push(TaxCollectorWrapper.create(_loc261_));
                   }
-                  for each(taxCollectorInfo in this._topTaxCollectors)
+                  for each(_loc261_ in this._topTaxCollectors)
                   {
-                     topTaxCollectors.push(TaxCollectorWrapper.create(taxCollectorInfo));
+                     _loc263_.push(TaxCollectorWrapper.create(_loc261_));
                   }
-                  KernelEventsManager.getInstance().processCallback(SocialHookList.ShowTopTaxCollectors,dungeonTopTaxCollectors,topTaxCollectors);
+                  KernelEventsManager.getInstance().processCallback(SocialHookList.ShowTopTaxCollectors,_loc262_,_loc263_);
                   this._dungeonTopTaxCollectors = null;
                   this._topTaxCollectors = null;
                }
                return true;
-            case msg is ExchangeGuildTaxCollectorGetMessage:
-               egtcgmsg = msg as ExchangeGuildTaxCollectorGetMessage;
+            case subareaName is ExchangeGuildTaxCollectorGetMessage:
+               egtcgmsg = subareaName as ExchangeGuildTaxCollectorGetMessage;
                for each(taxCollectorObjet in egtcgmsg.objectsInfos)
                {
                   totalQuantity += taxCollectorObjet.quantity;
@@ -1656,35 +1749,35 @@ package com.ankamagames.dofus.logic.game.common.frames
                taxcollectorCollectedMsg = "{taxcollectorCollected," + taxCollectorWrapper.uniqueId + "::" + PatternDecoder.combine(I18n.getUiText("ui.social.taxCollector.collected",[egtcgmsg.userName,totalQuantity]),"n",totalQuantity <= 1,totalQuantity == 0) + "}";
                KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,taxcollectorCollectedMsg,ChatActivableChannelsEnum.CHANNEL_GUILD,TimeManager.getInstance().getTimestamp(),false);
                return true;
-            case msg is GuildInformationsPaddocksMessage:
-               gifmsg = msg as GuildInformationsPaddocksMessage;
+            case subareaName is GuildInformationsPaddocksMessage:
+               gifmsg = subareaName as GuildInformationsPaddocksMessage;
                this._guildPaddocksMax = gifmsg.nbPaddockMax;
                this._guildPaddocks = gifmsg.paddocksInformations;
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInformationsFarms);
                return true;
-            case msg is GuildPaddockBoughtMessage:
-               gpbmsg = msg as GuildPaddockBoughtMessage;
+            case subareaName is GuildPaddockBoughtMessage:
+               gpbmsg = subareaName as GuildPaddockBoughtMessage;
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildPaddockAdd,gpbmsg.paddockInfo);
                return true;
-            case msg is GuildPaddockRemovedMessage:
-               gprmsg = msg as GuildPaddockRemovedMessage;
+            case subareaName is GuildPaddockRemovedMessage:
+               gprmsg = subareaName as GuildPaddockRemovedMessage;
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildPaddockRemoved,gprmsg.paddockId);
                return true;
-            case msg is AllianceTaxCollectorDialogQuestionExtendedMessage:
-               atcdqemsg = msg as AllianceTaxCollectorDialogQuestionExtendedMessage;
+            case subareaName is AllianceTaxCollectorDialogQuestionExtendedMessage:
+               atcdqemsg = subareaName as AllianceTaxCollectorDialogQuestionExtendedMessage;
                KernelEventsManager.getInstance().processCallback(SocialHookList.AllianceTaxCollectorDialogQuestionExtended,atcdqemsg.guildInfo.guildName,atcdqemsg.maxPods,atcdqemsg.prospecting,atcdqemsg.wisdom,atcdqemsg.taxCollectorsCount,atcdqemsg.taxCollectorAttack,atcdqemsg.kamas,atcdqemsg.experience,atcdqemsg.pods,atcdqemsg.itemsValue,atcdqemsg.alliance);
                return true;
-            case msg is TaxCollectorDialogQuestionExtendedMessage:
-               tcdqemsg = msg as TaxCollectorDialogQuestionExtendedMessage;
+            case subareaName is TaxCollectorDialogQuestionExtendedMessage:
+               tcdqemsg = subareaName as TaxCollectorDialogQuestionExtendedMessage;
                KernelEventsManager.getInstance().processCallback(SocialHookList.TaxCollectorDialogQuestionExtended,tcdqemsg.guildInfo.guildName,tcdqemsg.maxPods,tcdqemsg.prospecting,tcdqemsg.wisdom,tcdqemsg.taxCollectorsCount,tcdqemsg.taxCollectorAttack,tcdqemsg.kamas,tcdqemsg.experience,tcdqemsg.pods,tcdqemsg.itemsValue);
                return true;
-            case msg is TaxCollectorDialogQuestionBasicMessage:
-               tcdqbmsg = msg as TaxCollectorDialogQuestionBasicMessage;
+            case subareaName is TaxCollectorDialogQuestionBasicMessage:
+               tcdqbmsg = subareaName as TaxCollectorDialogQuestionBasicMessage;
                guildw = GuildWrapper.create(0,tcdqbmsg.guildInfo.guildName,null,0);
                KernelEventsManager.getInstance().processCallback(SocialHookList.TaxCollectorDialogQuestionBasic,guildw.guildName);
                return true;
-            case msg is ContactLookMessage:
-               clmsg = msg as ContactLookMessage;
+            case subareaName is ContactLookMessage:
+               clmsg = subareaName as ContactLookMessage;
                if(clmsg.requestId == 0)
                {
                   KernelEventsManager.getInstance().processCallback(CraftHookList.JobCrafterContactLook,clmsg.playerId,clmsg.playerName,EntityLookAdapter.fromNetwork(clmsg.look));
@@ -1694,11 +1787,11 @@ package com.ankamagames.dofus.logic.game.common.frames
                   KernelEventsManager.getInstance().processCallback(HookList.ContactLook,clmsg.playerId,clmsg.playerName,EntityLookAdapter.fromNetwork(clmsg.look));
                }
                return true;
-            case msg is ContactLookErrorMessage:
-               clemsg = msg as ContactLookErrorMessage;
+            case subareaName is ContactLookErrorMessage:
+               clemsg = subareaName as ContactLookErrorMessage;
                return true;
-            case msg is GuildGetInformationsAction:
-               ggia = msg as GuildGetInformationsAction;
+            case subareaName is GuildGetInformationsAction:
+               ggia = subareaName as GuildGetInformationsAction;
                askInformation = true;
                switch(ggia.infoType)
                {
@@ -1717,90 +1810,234 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                if(askInformation)
                {
-                  ggimsg = new GuildGetInformationsMessage();
-                  ggimsg.initGuildGetInformationsMessage(ggia.infoType);
-                  ConnectionsHandler.getConnection().send(ggimsg);
+                  _loc264_ = new GuildGetInformationsMessage();
+                  _loc264_.initGuildGetInformationsMessage(ggia.infoType);
+                  ConnectionsHandler.getConnection().send(_loc264_);
                }
                return true;
-            case msg is GuildInvitationAction:
-               gia = msg as GuildInvitationAction;
+            case subareaName is GuildInvitationAction:
+               gia = subareaName as GuildInvitationAction;
                ginvitationmsg = new GuildInvitationMessage();
                ginvitationmsg.initGuildInvitationMessage(gia.targetId);
                ConnectionsHandler.getConnection().send(ginvitationmsg);
                return true;
-            case msg is GuildInvitationSearchMessage:
-               gibna = msg as GuildInvitationByNameAction;
+            case subareaName is GuildInvitationSearchMessage:
+               gibna = subareaName as GuildInvitationByNameAction;
                gibnmsg = new GuildInvitationSearchMessage();
                player_GIBNMSG = new PlayerSearchCharacterNameInformation().initPlayerSearchCharacterNameInformation(gibna.target);
                gibnmsg.initGuildInvitationSearchMessage(player_GIBNMSG);
                ConnectionsHandler.getConnection().send(gibnmsg);
                return true;
-            case msg is GuildKickRequestAction:
-               gkra = msg as GuildKickRequestAction;
+            case subareaName is GuildDeleteApplicationRequestAction:
+               gdarmsg = new GuildDeleteApplicationRequestMessage();
+               ConnectionsHandler.getConnection().send(gdarmsg);
+               return true;
+            case subareaName is GuildApplicationDeletedMessage:
+               gadm = subareaName as GuildApplicationDeletedMessage;
+               PlayedCharacterManager.getInstance().applicationInfo = null;
+               PlayedCharacterManager.getInstance().guildApplicationInfo = null;
+               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildPlayerApplicationDeleted,gadm.deleted);
+               if(!gadm.deleted)
+               {
+                  KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,I18n.getUiText("ui.guild.applyDeleteDelay"),666,TimeManager.getInstance().getTimestamp(),false);
+               }
+               return true;
+            case subareaName is GuildJoinRequestAction:
+               gjra = subareaName as GuildJoinRequestAction;
+               gjarmsg = new GuildJoinAutomaticallyRequestMessage();
+               gjarmsg.initGuildJoinAutomaticallyRequestMessage(gjra.guildId);
+               ConnectionsHandler.getConnection().send(gjarmsg);
+               return true;
+            case subareaName is GuildSubmitApplicationAction:
+               gsaa = subareaName as GuildSubmitApplicationAction;
+               gsamsg = new GuildSubmitApplicationMessage();
+               filters = gsaa.filters.formatForData();
+               gsamsg.initGuildSubmitApplicationMessage(gsaa.applyText,gsaa.guildId,gsaa.timeSpent,filters.languageFilters,filters.ambianceFilters,filters.playtimeFilters,filters.interestFilters,filters.guildLevelMinMax,filters.recruitmentType,filters.playerLevelMinMax,filters.achievementMinMax,filters.searchName,filters.lastSort);
+               ConnectionsHandler.getConnection().send(gsamsg);
+               return true;
+            case subareaName is GuildUpdateApplicationAction:
+               guaa = subareaName as GuildUpdateApplicationAction;
+               guamsg = new GuildUpdateApplicationMessage();
+               guamsg.initGuildUpdateApplicationMessage(guaa.applyText,guaa.guildId);
+               ConnectionsHandler.getConnection().send(guamsg);
+               return true;
+            case subareaName is GuildApplicationIsAnsweredMessage:
+               gaiamsg = subareaName as GuildApplicationIsAnsweredMessage;
+               notifId = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.guild.application"),I18n.getUiText(!!gaiamsg.accepted ? "ui.guild.applyAccepted" : "ui.guild.applyRejected",[HyperlinkShowGuildManager.getLink(gaiamsg.guildInformation,gaiamsg.guildInformation.guildName)]),NotificationTypeEnum.SERVER_INFORMATION,"notifApplyAnswer");
+               NotificationManager.getInstance().sendNotification(notifId);
+               if(gaiamsg.accepted)
+               {
+                  _loc265_ = new DataStoreType("SocialBase",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_CHARACTER);
+                  StoreDataManager.getInstance().setData(_loc265_,"SocialBase_GuildWarning",true);
+               }
+               PlayedCharacterManager.getInstance().applicationInfo = null;
+               PlayedCharacterManager.getInstance().guildApplicationInfo = null;
+               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildApplicationIsAnswered,gaiamsg.guildInformation,gaiamsg.accepted);
+               return true;
+            case subareaName is GuildApplicationReceivedMessage:
+               garmsg = subareaName as GuildApplicationReceivedMessage;
+               taxCollectorInfo = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.guild.applicationReceived"),I18n.getUiText("ui.guild.applicationReceivedNotif",["{player," + garmsg.playerName + "," + garmsg.playerId + "::" + garmsg.playerName + "}"]),NotificationTypeEnum.SERVER_INFORMATION,"notifApplicationReceived");
+               NotificationManager.getInstance().addButtonToNotification(taxCollectorInfo,I18n.getUiText("ui.guild.seeApplication"),"GuildApplicationsUiRequested",null,true,140,0,"hook");
+               if(!PlayedCharacterManager.getInstance().isInKoli)
+               {
+                  NotificationManager.getInstance().sendNotification(taxCollectorInfo);
+               }
+               return true;
+            case subareaName is GuildRecruitmentInvalidateMessage:
+               grimsg = subareaName as GuildRecruitmentInvalidateMessage;
+               taxCollectorInfo = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.guild.recruitmentInvalidate"),I18n.getUiText("ui.guild.recruitment.rulesBreak"),NotificationTypeEnum.SERVER_INFORMATION,"notifRecruitmentInvalidate");
+               NotificationManager.getInstance().addButtonToNotification(taxCollectorInfo,I18n.getUiText("ui.guild.setUpRecruitment"),"OpenGuildPrezAndRecruitAction",null,true,200,0,"action");
+               NotificationManager.getInstance().sendNotification(taxCollectorInfo);
+               return true;
+            case subareaName is GuildKickRequestAction:
+               gkra = subareaName as GuildKickRequestAction;
                gkrmsg = new GuildKickRequestMessage();
                gkrmsg.initGuildKickRequestMessage(gkra.targetId);
                ConnectionsHandler.getConnection().send(gkrmsg);
                return true;
-            case msg is GuildChangeMemberParametersAction:
-               gcmpa = msg as GuildChangeMemberParametersAction;
+            case subareaName is GuildChangeMemberParametersAction:
+               gcmpa = subareaName as GuildChangeMemberParametersAction;
                newRights = GuildWrapper.getRightsNumber(gcmpa.rights);
                gcmpmsg = new GuildChangeMemberParametersMessage();
                gcmpmsg.initGuildChangeMemberParametersMessage(gcmpa.memberId,gcmpa.rank,gcmpa.experienceGivenPercent,newRights);
                ConnectionsHandler.getConnection().send(gcmpmsg);
                return true;
-            case msg is GuildSpellUpgradeRequestAction:
-               gsura = msg as GuildSpellUpgradeRequestAction;
+            case subareaName is GuildSpellUpgradeRequestAction:
+               gsura = subareaName as GuildSpellUpgradeRequestAction;
                gsurmsg = new GuildSpellUpgradeRequestMessage();
                gsurmsg.initGuildSpellUpgradeRequestMessage(gsura.spellId);
                ConnectionsHandler.getConnection().send(gsurmsg);
                return true;
-            case msg is GuildCharacsUpgradeRequestAction:
-               gcura = msg as GuildCharacsUpgradeRequestAction;
+            case subareaName is GuildCharacsUpgradeRequestAction:
+               gcura = subareaName as GuildCharacsUpgradeRequestAction;
                gcurmsg = new GuildCharacsUpgradeRequestMessage();
                gcurmsg.initGuildCharacsUpgradeRequestMessage(gcura.charaTypeTarget);
                ConnectionsHandler.getConnection().send(gcurmsg);
                return true;
-            case msg is GuildFarmTeleportRequestAction:
-               gftra = msg as GuildFarmTeleportRequestAction;
+            case subareaName is GuildFarmTeleportRequestAction:
+               gftra = subareaName as GuildFarmTeleportRequestAction;
                gftrmsg = new GuildPaddockTeleportRequestMessage();
                gftrmsg.initGuildPaddockTeleportRequestMessage(gftra.farmId);
                ConnectionsHandler.getConnection().send(gftrmsg);
                return true;
-            case msg is HouseTeleportRequestAction:
-               ghtra = msg as HouseTeleportRequestAction;
+            case subareaName is HouseTeleportRequestAction:
+               ghtra = subareaName as HouseTeleportRequestAction;
                ghtrmsg = new HouseTeleportRequestMessage();
                ghtrmsg.initHouseTeleportRequestMessage(ghtra.houseId,ghtra.houseInstanceId);
                ConnectionsHandler.getConnection().send(ghtrmsg);
                return true;
-            case msg is GuildFightJoinRequestAction:
-               gfjra = msg as GuildFightJoinRequestAction;
+            case subareaName is GuildSetApplicationUpdatesRequestAction:
+               if(!this._guild)
+               {
+                  return true;
+               }
+               galmsg = new GuildApplicationListenMessage();
+               galmsg.initGuildApplicationListenMessage((subareaName as GuildSetApplicationUpdatesRequestAction).areEnabled);
+               ConnectionsHandler.getConnection().send(galmsg);
+               return true;
+               break;
+            case subareaName is GuildApplicationsRequestAction:
+               garaction = subareaName as GuildApplicationsRequestAction;
+               glarmsg = new GuildListApplicationRequestMessage();
+               glarmsg.initGuildListApplicationRequestMessage(garaction.timestamp,garaction.limit);
+               ConnectionsHandler.getConnection().send(glarmsg);
+               return true;
+            case subareaName is GuildListApplicationAnswerMessage:
+               glaamsg = subareaName as GuildListApplicationAnswerMessage;
+               applicationDescrs = new Vector.<GuildApplicationWrapper>(0);
+               for each(_loc266_ in glaamsg.applies)
+               {
+                  applicationDescrs.push(GuildApplicationWrapper.wrap(_loc266_));
+               }
+               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildApplicationsReceived,applicationDescrs,glaamsg.offset,glaamsg.count,glaamsg.total);
+               return true;
+            case subareaName is GuildApplicationReplyAction:
+               guildApplicationReplyAction = subareaName as GuildApplicationReplyAction;
+               guildApplicationAnswerMessage = new GuildApplicationAnswerMessage();
+               guildApplicationAnswerMessage.initGuildApplicationAnswerMessage(guildApplicationReplyAction.isAccepted,guildApplicationReplyAction.playerId);
+               ConnectionsHandler.getConnection().send(guildApplicationAnswerMessage);
+               return true;
+            case subareaName is GuildListApplicationModifiedMessage:
+               glammsg = subareaName as GuildListApplicationModifiedMessage;
+               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildApplicationUpdated,GuildApplicationWrapper.wrap(glammsg.apply),glammsg.state,glammsg.playerId);
+               return true;
+            case subareaName is GuildSummaryRequestAction:
+               gsra = subareaName as GuildSummaryRequestAction;
+               gsrm = new GuildSummaryRequestMessage();
+               gsrm.initGuildSummaryRequestMessage();
+               gsrm.offset = gsra.offset;
+               gsrm.count = gsra.count;
+               gsrm.nameFilter = gsra.filters.nameFilter;
+               gsrm.minLevelFilter = gsra.filters.minLevelFilter;
+               gsrm.maxLevelFilter = gsra.filters.maxLevelFilter;
+               gsrm.recruitmentTypeFilter = gsra.filters.recruitmentTypeFilter;
+               gsrm.languagesFilter = gsra.filters.languagesFilter;
+               gsrm.criterionFilter = gsra.filters.criterionFilter;
+               gsrm.minPlayerLevelFilter = gsra.filters.minPlayerLevelFilter;
+               gsrm.maxPlayerLevelFilter = gsra.filters.maxPlayerLevelFilter;
+               gsrm.minSuccessFilter = gsra.filters.minSuccessFilter;
+               gsrm.maxSuccessFilter = gsra.filters.maxSuccessFilter;
+               gsrm.sortType = gsra.filters.sortType;
+               gsrm.sortDescending = gsra.filters.sortDescending;
+               gsrm.hideFullFilter = gsra.filters.hideFullFilter;
+               ConnectionsHandler.getConnection().send(gsrm);
+               return true;
+            case subareaName is GuildSummaryMessage:
+               gsm = subareaName as GuildSummaryMessage;
+               this._allGuildsInDirectory = new Vector.<GuildWrapper>(0);
+               for each(_loc267_ in gsm.guilds)
+               {
+                  guildWrapper = GuildWrapper.getFromNetwork(_loc267_);
+                  if(guildWrapper)
+                  {
+                     this._allGuildsInDirectory.push(guildWrapper);
+                  }
+               }
+               KernelEventsManager.getInstance().processCallback(HookList.GuildsReceived,this._allGuildsInDirectory,gsm.offset,gsm.count,gsm.total);
+               return true;
+            case subareaName is GuildGetPlayerApplicationAction:
+               ggpam = new GuildGetPlayerApplicationMessage();
+               ConnectionsHandler.getConnection().send(ggpam);
+               return true;
+            case subareaName is GuildPlayerApplicationInformationMessage:
+               gpaim = subareaName as GuildPlayerApplicationInformationMessage;
+               PlayedCharacterManager.getInstance().applicationInfo = gpaim.apply;
+               PlayedCharacterManager.getInstance().guildApplicationInfo = gpaim.guildInformation;
+               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildPlayerApplicationReceived,gpaim.guildInformation,gpaim.apply);
+               return true;
+            case subareaName is GuildPlayerNoApplicationInformationMessage:
+               PlayedCharacterManager.getInstance().applicationInfo = null;
+               PlayedCharacterManager.getInstance().guildApplicationInfo = null;
+               return true;
+            case subareaName is GuildFightJoinRequestAction:
+               gfjra = subareaName as GuildFightJoinRequestAction;
                gfjrmsg = new GuildFightJoinRequestMessage();
                gfjrmsg.initGuildFightJoinRequestMessage(gfjra.taxCollectorId);
                ConnectionsHandler.getConnection().send(gfjrmsg);
                return true;
-            case msg is GuildFightTakePlaceRequestAction:
-               gftpra = msg as GuildFightTakePlaceRequestAction;
+            case subareaName is GuildFightTakePlaceRequestAction:
+               gftpra = subareaName as GuildFightTakePlaceRequestAction;
                gftprmsg = new GuildFightTakePlaceRequestMessage();
                gftprmsg.initGuildFightTakePlaceRequestMessage(gftpra.taxCollectorId,gftpra.replacedCharacterId);
                ConnectionsHandler.getConnection().send(gftprmsg);
                return true;
-            case msg is GuildFightLeaveRequestAction:
-               gflra = msg as GuildFightLeaveRequestAction;
+            case subareaName is GuildFightLeaveRequestAction:
+               gflra = subareaName as GuildFightLeaveRequestAction;
                this._autoLeaveHelpers = false;
                if(gflra.warning)
                {
-                  for each(tc2 in TaxCollectorsManager.getInstance().taxCollectors)
+                  for each(_loc268_ in TaxCollectorsManager.getInstance().taxCollectors)
                   {
-                     if(tc2.state == TaxCollectorStateEnum.STATE_WAITING_FOR_HELP)
+                     if(_loc268_.state == TaxCollectorStateEnum.STATE_WAITING_FOR_HELP)
                      {
-                        tcInFight = TaxCollectorsManager.getInstance().allTaxCollectorsInFight[tc2.uniqueId];
-                        for each(defender in tcInFight.allyCharactersInformations)
+                        _loc269_ = TaxCollectorsManager.getInstance().allTaxCollectorsInFight[_loc268_.uniqueId];
+                        for each(_loc270_ in _loc269_.allyCharactersInformations)
                         {
-                           if(defender.playerCharactersInformations.id == gflra.characterId)
+                           if(_loc270_.playerCharactersInformations.id == gflra.characterId)
                            {
                               this._autoLeaveHelpers = true;
                               gflrmsg = new GuildFightLeaveRequestMessage();
-                              gflrmsg.initGuildFightLeaveRequestMessage(tc2.uniqueId,gflra.characterId);
+                              gflrmsg.initGuildFightLeaveRequestMessage(_loc268_.uniqueId,gflra.characterId);
                               ConnectionsHandler.getConnection().send(gflrmsg);
                            }
                         }
@@ -1814,85 +2051,85 @@ package com.ankamagames.dofus.logic.game.common.frames
                   ConnectionsHandler.getConnection().send(gflrmsg);
                }
                return true;
-            case msg is GuildHouseUpdateInformationMessage:
+            case subareaName is GuildHouseUpdateInformationMessage:
                if(this._guildHousesList)
                {
-                  ghuimsg = msg as GuildHouseUpdateInformationMessage;
-                  toUpdate = false;
-                  for each(house1 in this._guildHouses)
+                  _loc271_ = subareaName as GuildHouseUpdateInformationMessage;
+                  _loc272_ = false;
+                  for each(_loc273_ in this._guildHouses)
                   {
-                     if(house1.houseId == ghuimsg.housesInformations.houseId && house1.houseInstanceId == ghuimsg.housesInformations.instanceId)
+                     if(_loc273_.houseId == _loc271_.housesInformations.houseId && _loc273_.houseInstanceId == _loc271_.housesInformations.instanceId)
                      {
-                        house1.update(ghuimsg.housesInformations);
-                        toUpdate = true;
+                        _loc273_.update(_loc271_.housesInformations);
+                        _loc272_ = true;
                      }
                      KernelEventsManager.getInstance().processCallback(SocialHookList.GuildHousesUpdate);
                   }
-                  if(!toUpdate)
+                  if(!_loc272_)
                   {
-                     ghw1 = GuildHouseWrapper.create(ghuimsg.housesInformations);
-                     this._guildHouses.push(ghw1);
-                     KernelEventsManager.getInstance().processCallback(SocialHookList.GuildHouseAdd,ghw1);
+                     _loc274_ = GuildHouseWrapper.create(_loc271_.housesInformations);
+                     this._guildHouses.push(_loc274_);
+                     KernelEventsManager.getInstance().processCallback(SocialHookList.GuildHouseAdd,_loc274_);
                   }
                   this._guildHousesListUpdate = true;
                }
                return true;
-            case msg is GuildHouseRemoveMessage:
+            case subareaName is GuildHouseRemoveMessage:
                if(this._guildHousesList)
                {
-                  ghrmsg = msg as GuildHouseRemoveMessage;
-                  for(iGHR = 0; iGHR < this._guildHouses.length; iGHR++)
+                  _loc275_ = subareaName as GuildHouseRemoveMessage;
+                  for(_loc276_ = 0; _loc276_ < this._guildHouses.length; _loc276_++)
                   {
-                     if(this._guildHouses[iGHR].houseId == ghrmsg.houseId && this._guildHouses[iGHR].houseInstanceId == ghrmsg.instanceId)
+                     if(this._guildHouses[_loc276_].houseId == _loc275_.houseId && this._guildHouses[_loc276_].houseInstanceId == _loc275_.instanceId)
                      {
-                        this._guildHouses.splice(iGHR,1);
+                        this._guildHouses.splice(_loc276_,1);
                      }
                   }
                   this._guildHousesListUpdate = true;
-                  KernelEventsManager.getInstance().processCallback(SocialHookList.GuildHouseRemoved,ghrmsg.houseId);
+                  KernelEventsManager.getInstance().processCallback(SocialHookList.GuildHouseRemoved,_loc275_.houseId);
                }
                return true;
-            case msg is GuildFactsRequestAction:
-               gfra = msg as GuildFactsRequestAction;
+            case subareaName is GuildFactsRequestAction:
+               gfra = subareaName as GuildFactsRequestAction;
                gfrmsg = new GuildFactsRequestMessage();
                gfrmsg.initGuildFactsRequestMessage(gfra.guildId);
                ConnectionsHandler.getConnection().send(gfrmsg);
                return true;
-            case msg is GuildFactsMessage:
-               gfmsg = msg as GuildFactsMessage;
+            case subareaName is GuildFactsMessage:
+               gfmsg = subareaName as GuildFactsMessage;
                guildSheet = this._allGuilds[gfmsg.infos.guildId];
                allianceId = 0;
                allianceName = "";
                allianceTag = "";
-               if(msg is GuildInAllianceFactsMessage)
+               if(subareaName is GuildInAllianceFactsMessage)
                {
-                  giafmsg = msg as GuildInAllianceFactsMessage;
-                  allianceId = giafmsg.allianceInfos.allianceId;
-                  allianceName = giafmsg.allianceInfos.allianceName;
-                  allianceTag = giafmsg.allianceInfos.allianceTag;
+                  _loc277_ = subareaName as GuildInAllianceFactsMessage;
+                  allianceId = _loc277_.allianceInfos.allianceId;
+                  allianceName = _loc277_.allianceInfos.allianceName;
+                  allianceTag = _loc277_.allianceInfos.allianceTag;
                }
                if(guildSheet)
                {
-                  guildSheet.update(gfmsg.infos.guildId,gfmsg.infos.guildName,gfmsg.infos.guildEmblem,gfmsg.infos.leaderId,guildSheet.leaderName,gfmsg.infos.guildLevel,gfmsg.infos.nbMembers,gfmsg.creationDate,gfmsg.members,guildSheet.nbConnectedMembers,gfmsg.nbTaxCollectors,guildSheet.lastActivity,allianceId,allianceName,allianceTag,guildSheet.allianceLeader);
+                  guildSheet.update(gfmsg.infos.guildId,gfmsg.infos.guildName,gfmsg.infos.guildEmblem,gfmsg.infos.leaderId,guildSheet.leaderName,gfmsg.infos.guildLevel,gfmsg.infos.nbMembers,gfmsg.creationDate,gfmsg.members,GuildRecruitmentDataWrapper.wrap(gfmsg.infos.recruitment),guildSheet.nbConnectedMembers,gfmsg.nbTaxCollectors,guildSheet.lastActivity,allianceId,allianceName,allianceTag,guildSheet.allianceLeader);
                }
                else
                {
-                  guildSheet = GuildFactSheetWrapper.create(gfmsg.infos.guildId,gfmsg.infos.guildName,gfmsg.infos.guildEmblem,gfmsg.infos.leaderId,"",gfmsg.infos.guildLevel,gfmsg.infos.nbMembers,gfmsg.creationDate,gfmsg.members,0,gfmsg.nbTaxCollectors,0,allianceId,allianceName,allianceTag);
+                  guildSheet = GuildFactSheetWrapper.create(gfmsg.infos.guildId,gfmsg.infos.guildName,gfmsg.infos.guildEmblem,gfmsg.infos.leaderId,"",gfmsg.infos.guildLevel,gfmsg.infos.nbMembers,gfmsg.creationDate,gfmsg.members,GuildRecruitmentDataWrapper.wrap(gfmsg.infos.recruitment),0,gfmsg.nbTaxCollectors,0,allianceId,allianceName,allianceTag);
                   this._allGuilds[gfmsg.infos.guildId] = guildSheet;
                }
                KernelEventsManager.getInstance().processCallback(SocialHookList.OpenOneGuild,guildSheet);
                return true;
-            case msg is GuildFactsErrorMessage:
+            case subareaName is GuildFactsErrorMessage:
                KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,I18n.getUiText("ui.guild.doesntExistAnymore"),ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,TimeManager.getInstance().getTimestamp());
                return true;
-            case msg is GuildMotdSetRequestAction:
-               gmsra = msg as GuildMotdSetRequestAction;
+            case subareaName is GuildMotdSetRequestAction:
+               gmsra = subareaName as GuildMotdSetRequestAction;
                gmsrmsg = new GuildMotdSetRequestMessage();
                gmsrmsg.initGuildMotdSetRequestMessage(gmsra.content);
                ConnectionsHandler.getConnection().send(gmsrmsg);
                return true;
-            case msg is GuildMotdMessage:
-               gmomsg = msg as GuildMotdMessage;
+            case subareaName is GuildMotdMessage:
+               gmomsg = subareaName as GuildMotdMessage;
                content = gmomsg.content;
                pattern = /</g;
                content = content.replace(pattern,"&lt;");
@@ -1905,33 +2142,33 @@ package com.ankamagames.dofus.logic.game.common.frames
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildMotd);
                if(gmomsg.content != "" && !OptionManager.getOptionManager("dofus").getOption("disableGuildMotd"))
                {
-                  textMotd = I18n.getUiText("ui.motd.guild") + I18n.getUiText("ui.common.colon") + motdContent[0];
-                  KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,textMotd,ChatActivableChannelsEnum.CHANNEL_GUILD,TimeManager.getInstance().getTimestamp());
+                  _loc278_ = I18n.getUiText("ui.motd.guild") + I18n.getUiText("ui.common.colon") + motdContent[0];
+                  KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,_loc278_,ChatActivableChannelsEnum.CHANNEL_GUILD,TimeManager.getInstance().getTimestamp());
                }
                return true;
-            case msg is GuildMotdSetErrorMessage:
-               gmosemsg = msg as GuildMotdSetErrorMessage;
+            case subareaName is GuildMotdSetErrorMessage:
+               gmosemsg = subareaName as GuildMotdSetErrorMessage;
                switch(gmosemsg.reason)
                {
                   case SocialNoticeErrorEnum.SOCIAL_NOTICE_UNKNOWN_ERROR:
-                     reason = I18n.getUiText("ui.common.unknownFail");
+                     suba = I18n.getUiText("ui.common.unknownFail");
                      break;
                   case SocialNoticeErrorEnum.SOCIAL_NOTICE_COOLDOWN:
-                     reason = I18n.getUiText("ui.motd.errorCooldown");
+                     suba = I18n.getUiText("ui.motd.errorCooldown");
                      break;
                   case SocialNoticeErrorEnum.SOCIAL_NOTICE_INVALID_RIGHTS:
-                     reason = I18n.getUiText("ui.social.taxCollectorNoRights");
+                     suba = I18n.getUiText("ui.social.taxCollectorNoRights");
                }
-               KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,reason,ChatFrame.RED_CHANNEL_ID,TimeManager.getInstance().getTimestamp());
+               KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,suba,ChatFrame.RED_CHANNEL_ID,TimeManager.getInstance().getTimestamp());
                return true;
-            case msg is GuildBulletinSetRequestAction:
-               gbsra = msg as GuildBulletinSetRequestAction;
+            case subareaName is GuildBulletinSetRequestAction:
+               gbsra = subareaName as GuildBulletinSetRequestAction;
                gbsrmsg = new GuildBulletinSetRequestMessage();
                gbsrmsg.initGuildBulletinSetRequestMessage(gbsra.content,gbsra.notifyMembers);
                ConnectionsHandler.getConnection().send(gbsrmsg);
                return true;
-            case msg is GuildBulletinMessage:
-               gbomsg = msg as GuildBulletinMessage;
+            case subareaName is GuildBulletinMessage:
+               gbomsg = subareaName as GuildBulletinMessage;
                content = gbomsg.content;
                pattern = /</g;
                content = content.replace(pattern,"&lt;");
@@ -1944,23 +2181,23 @@ package com.ankamagames.dofus.logic.game.common.frames
                this._guild.lastNotifiedTimestamp = gbomsg.lastNotifiedTimestamp;
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildBulletin);
                return true;
-            case msg is GuildBulletinSetErrorMessage:
-               gbosemsg = msg as GuildBulletinSetErrorMessage;
+            case subareaName is GuildBulletinSetErrorMessage:
+               gbosemsg = subareaName as GuildBulletinSetErrorMessage;
                switch(gbosemsg.reason)
                {
                   case SocialNoticeErrorEnum.SOCIAL_NOTICE_UNKNOWN_ERROR:
-                     reason = I18n.getUiText("ui.common.unknownFail");
+                     suba = I18n.getUiText("ui.common.unknownFail");
                      break;
                   case SocialNoticeErrorEnum.SOCIAL_NOTICE_COOLDOWN:
-                     reason = I18n.getUiText("ui.motd.errorCooldown");
+                     suba = I18n.getUiText("ui.motd.errorCooldown");
                      break;
                   case SocialNoticeErrorEnum.SOCIAL_NOTICE_INVALID_RIGHTS:
-                     reason = I18n.getUiText("ui.social.taxCollectorNoRights");
+                     suba = I18n.getUiText("ui.social.taxCollectorNoRights");
                }
-               KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,reason,ChatFrame.RED_CHANNEL_ID,TimeManager.getInstance().getTimestamp());
+               KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,suba,ChatFrame.RED_CHANNEL_ID,TimeManager.getInstance().getTimestamp());
                return true;
-            case msg is PlayerStatusUpdateMessage:
-               psum = msg as PlayerStatusUpdateMessage;
+            case subareaName is PlayerStatusUpdateMessage:
+               psum = subareaName as PlayerStatusUpdateMessage;
                message = "";
                if(psum.status is PlayerStatusExtended)
                {
@@ -1969,28 +2206,28 @@ package com.ankamagames.dofus.logic.game.common.frames
                KernelEventsManager.getInstance().processCallback(SocialHookList.PlayerStatusUpdate,psum.accountId,psum.playerId,psum.status.statusId,message);
                if(this._guildMembers != null)
                {
-                  snm = this._guildMembers.length;
-                  for(istatus = 0; istatus < snm; istatus++)
+                  _loc280_ = this._guildMembers.length;
+                  for(_loc281_ = 0; _loc281_ < _loc280_; _loc281_++)
                   {
-                     if(this._guildMembers[istatus].id == psum.playerId)
+                     if(this._guildMembers[_loc281_].id == psum.playerId)
                      {
-                        this._guildMembers[istatus].status = psum.status;
-                        members = this._guildMembers[istatus];
-                        KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInformationsMemberUpdate,members);
+                        this._guildMembers[_loc281_].status = psum.status;
+                        _loc279_ = this._guildMembers[_loc281_];
+                        KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInformationsMemberUpdate,_loc279_);
                         break;
                      }
                   }
                }
                if(this._friendsList != null)
                {
-                  for each(frdstatus in this._friendsList)
+                  for each(_loc282_ in this._friendsList)
                   {
-                     if(frdstatus.accountId == psum.accountId)
+                     if(_loc282_.accountId == psum.accountId)
                      {
-                        frdstatus.statusId = psum.status.statusId;
+                        _loc282_.statusId = psum.status.statusId;
                         if(psum.status is PlayerStatusExtended)
                         {
-                           frdstatus.awayMessage = PlayerStatusExtended(psum.status).message;
+                           _loc282_.awayMessage = PlayerStatusExtended(psum.status).message;
                         }
                         KernelEventsManager.getInstance().processCallback(SocialHookList.FriendsListUpdated);
                         break;
@@ -1999,14 +2236,14 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                if(this._contactsList != null)
                {
-                  for each(ctcStatus in this._contactsList)
+                  for each(_loc283_ in this._contactsList)
                   {
-                     if(ctcStatus.accountId == psum.accountId)
+                     if(_loc283_.accountId == psum.accountId)
                      {
-                        ctcStatus.statusId = psum.status.statusId;
+                        _loc283_.statusId = psum.status.statusId;
                         if(psum.status is PlayerStatusExtended)
                         {
-                           ctcStatus.awayMessage = PlayerStatusExtended(psum.status).message;
+                           _loc283_.awayMessage = PlayerStatusExtended(psum.status).message;
                         }
                         KernelEventsManager.getInstance().processCallback(SocialHookList.ContactsListUpdated);
                         break;
@@ -2014,15 +2251,15 @@ package com.ankamagames.dofus.logic.game.common.frames
                   }
                }
                return false;
-            case msg is PlayerStatusUpdateErrorMessage:
+            case subareaName is PlayerStatusUpdateErrorMessage:
                KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,I18n.getUiText("ui.chat.status.awaymessageerror"),ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,TimeManager.getInstance().getTimestamp());
                return false;
-            case msg is PlayerStatusUpdateRequestAction:
-               psura = msg as PlayerStatusUpdateRequestAction;
+            case subareaName is PlayerStatusUpdateRequestAction:
+               psura = subareaName as PlayerStatusUpdateRequestAction;
                if(psura.message)
                {
-                  cApi = new ChatApi();
-                  psura.message = cApi.escapeChatString(psura.message);
+                  _loc284_ = new ChatApi();
+                  psura.message = _loc284_.escapeChatString(psura.message);
                   status = new PlayerStatusExtended();
                   PlayerStatusExtended(status).initPlayerStatusExtended(psura.status,psura.message);
                }
@@ -2035,19 +2272,38 @@ package com.ankamagames.dofus.logic.game.common.frames
                psurmsg.initPlayerStatusUpdateRequestMessage(status);
                ConnectionsHandler.getConnection().send(psurmsg);
                return true;
-            case msg is ContactLookRequestByIdAction:
-               clrbia = msg as ContactLookRequestByIdAction;
+            case subareaName is ContactLookRequestByIdAction:
+               clrbia = subareaName as ContactLookRequestByIdAction;
                if(clrbia.entityId == PlayedCharacterManager.getInstance().id)
                {
                   KernelEventsManager.getInstance().processCallback(HookList.ContactLook,PlayedCharacterManager.getInstance().id,PlayedCharacterManager.getInstance().infos.name,EntityLookAdapter.fromNetwork(PlayedCharacterManager.getInstance().infos.entityLook));
                }
                else
                {
-                  clrbim = new ContactLookRequestByIdMessage();
-                  clrbim.initContactLookRequestByIdMessage(1,clrbia.contactType,clrbia.entityId);
-                  ConnectionsHandler.getConnection().send(clrbim);
+                  _loc285_ = new ContactLookRequestByIdMessage();
+                  _loc285_.initContactLookRequestByIdMessage(1,clrbia.contactType,clrbia.entityId);
+                  ConnectionsHandler.getConnection().send(_loc285_);
                }
                return true;
+            case subareaName is RecruitmentInformationMessage:
+               recruitmentData = GuildRecruitmentDataWrapper.wrap((subareaName as RecruitmentInformationMessage).recruitmentData);
+               if(this._guild)
+               {
+                  this._guild.guildRecruitmentInfo = recruitmentData;
+               }
+               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildRecruitmentDataReceived,recruitmentData);
+               return true;
+            case subareaName is SendGuildRecruitmentDataAction:
+               newRecruitmentData = (subareaName as SendGuildRecruitmentDataAction).recruitmentData;
+               if(newRecruitmentData === null)
+               {
+                  return true;
+               }
+               urimsg = new UpdateRecruitmentInformationMessage();
+               urimsg.initUpdateRecruitmentInformationMessage(newRecruitmentData.unwrap());
+               ConnectionsHandler.getConnection().send(urimsg);
+               return true;
+               break;
             default:
                return false;
          }
@@ -2172,6 +2428,119 @@ package com.ankamagames.dofus.logic.game.common.frames
             return new PlayerSearchCharacterNameInformation().initPlayerSearchCharacterNameInformation(name);
          }
          return new PlayerSearchTagInformation().initPlayerSearchTagInformation(new AccountTagInformation().initAccountTagInformation(name,tag));
+      }
+      
+      public function generateApplicationServerMessage(size:Number) : Vector.<Object>
+      {
+         var fakeApplication:Object = null;
+         var playerInfo:FriendOnlineInformations = null;
+         if(_fakeApplicationList !== null)
+         {
+            return _fakeApplicationList;
+         }
+         if(_fakeApplicationData === null)
+         {
+            _fakeApplicationData = new <Object>[{
+               "id":42,
+               "characterName":"Croquette",
+               "characterId":34001424242,
+               "accountUsername":"papychat",
+               "accountTag":4581,
+               "accountId":424242,
+               "characterLevel":200,
+               "characterSex":1,
+               "characterBreedId":2,
+               "statusId":10,
+               "timestamp":1633425214000,
+               "awayMessage":null,
+               "text":"Bonjour, je suis Angy. Je cherche une guilde casu pour jouer le we et un soir par semaine, j\'aime faire du PVP et des donjons. J\'aimerais trouver une guilde avec une bonne ambiance sans prise de tête."
+            },{
+               "id":43,
+               "characterName":"Alea",
+               "characterId":34001424243,
+               "accountUsername":"hackxor",
+               "accountTag":4421,
+               "accountId":424243,
+               "characterLevel":200,
+               "characterSex":1,
+               "characterBreedId":13,
+               "statusId":21,
+               "timestamp":1633252414000,
+               "awayMessage":"brb 5min",
+               "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nisl leo, facilisis eget venenatis sit amet, sagittis in nulla. Quisque erat risus, aliquet et tincidunt et, laoreet sit amet."
+            },{
+               "id":44,
+               "characterName":"Jonas",
+               "characterId":34001424244,
+               "accountUsername":"helloworld",
+               "accountTag":9992,
+               "accountId":424244,
+               "characterLevel":200,
+               "characterSex":0,
+               "characterBreedId":18,
+               "statusId":20,
+               "timestamp":1633166014000,
+               "awayMessage":null,
+               "text":"Donec non tristique libero. Sed nec maximus sem. Proin metus lorem, vestibulum id nibh eu, efficitur pellentesque metus. Suspendisse ex lorem, iaculis in iaculis in, dignissim quis nulla."
+            },{
+               "id":45,
+               "characterName":"FeelGood",
+               "characterId":34001424245,
+               "accountUsername":"oneorzero",
+               "accountTag":1337,
+               "accountId":424245,
+               "characterLevel":200,
+               "characterSex":0,
+               "characterBreedId":8,
+               "statusId":10,
+               "timestamp":1633165474000,
+               "awayMessage":null,
+               "text":"Cras ornare at lacus eget vehicula. Cras ac massa elit. Maecenas tincidunt laoreet tincidunt. In a nisl dolor. Donec dictum quam sapien, eu tempor tellus euismod sed. Morbi rutrum posuere nunc."
+            },{
+               "id":46,
+               "characterName":"Arthur",
+               "characterId":34001424246,
+               "accountUsername":"CinemaLover",
+               "accountTag":1795,
+               "accountId":424246,
+               "characterLevel":200,
+               "characterSex":0,
+               "characterBreedId":16,
+               "statusId":21,
+               "timestamp":1633079074000,
+               "awayMessage":null,
+               "text":"Ut eu mattis lacus, quis volutpat sapien. Duis tincidunt magna diam, et malesuada nunc sagittis eget. Sed auctor condimentum sapien eget tincidunt. Vivamus feugiat tempus erat in aliquam."
+            }];
+         }
+         var fakeData:Vector.<Object> = new Vector.<Object>(0);
+         var fakeApplicationDataSize:Number = _fakeApplicationData.length;
+         for(var index:Number = 0; index < size; index++)
+         {
+            fakeApplication = _fakeApplicationData[index % fakeApplicationDataSize];
+            playerInfo = new FriendOnlineInformations();
+            playerInfo.playerName = fakeApplication.characterName;
+            playerInfo.breed = fakeApplication.characterBreedId;
+            playerInfo.playerId = fakeApplication.characterId;
+            playerInfo.level = fakeApplication.characterLevel;
+            playerInfo.sex = fakeApplication.characterSex;
+            playerInfo.accountId = fakeApplication.accountId;
+            playerInfo.accountTag.nickname = fakeApplication.accountUsername;
+            playerInfo.accountTag.tagNumber = fakeApplication.accountTag;
+            playerInfo.status = new PlayerStatusExtended();
+            playerInfo.status.statusId = fakeApplication.statusId;
+            (playerInfo.status as PlayerStatusExtended).message = fakeApplication.awayMessage;
+            playerInfo.playerName = "Character #" + index;
+            fakeApplication.id = index;
+            fakeApplication.timestamp = 1633079074000 + index * 200000000;
+            fakeData.push({
+               "id":fakeApplication.id,
+               "playerInfo":playerInfo,
+               "text":fakeApplication.text,
+               "timestamp":fakeApplication.timestamp
+            });
+         }
+         _fakeApplicationList = fakeData;
+         return _fakeApplicationList;
       }
    }
 }

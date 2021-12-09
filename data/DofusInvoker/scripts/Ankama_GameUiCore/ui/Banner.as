@@ -1676,7 +1676,7 @@ package Ankama_GameUiCore.ui
                if(!this._bIsSpectator)
                {
                   server = sysApi.getCurrentServer();
-                  if(server.gameTypeId == 1 && this.fightApi.getFightType() != FightTypeEnum.FIGHT_TYPE_CHALLENGE || server.gameTypeId == 4 && (this.fightApi.getFightType() == FightTypeEnum.FIGHT_TYPE_MXvM || this.fightApi.getFightType() == FightTypeEnum.FIGHT_TYPE_PvM))
+                  if(this.configApi.isFeatureWithKeywordEnabled("server.heroic") && this.fightApi.getFightType() != FightTypeEnum.FIGHT_TYPE_CHALLENGE || server.gameTypeId == 4 && (this.fightApi.getFightType() == FightTypeEnum.FIGHT_TYPE_MXvM || this.fightApi.getFightType() == FightTypeEnum.FIGHT_TYPE_PvM))
                   {
                      giveUp = this.uiApi.getText("ui.popup.hardcoreGiveup");
                   }

@@ -13,7 +13,6 @@ package Ankama_TradeCenter.ui
    import com.ankamagames.dofus.logic.game.common.actions.bid.BidSwitchToBuyerModeAction;
    import com.ankamagames.dofus.logic.game.common.actions.bid.BidSwitchToSellerModeAction;
    import com.ankamagames.dofus.logic.game.common.actions.humanVendor.LeaveShopStockAction;
-   import com.ankamagames.jerakine.types.enums.DataStoreEnum;
    
    public class AuctionHouse extends Stock
    {
@@ -73,6 +72,10 @@ package Ankama_TradeCenter.ui
          {
             this.tx_icon_auctionHouse.uri = uiApi.createUri(uiApi.me().getConstant("texture") + "windowIcon/icon__0040_creatures_HDV.png");
          }
+         else if(params.sellerBuyerDescriptor.types.indexOf(DataEnum.ITEM_TYPE_LIVING_OBJECT) != -1)
+         {
+            this.tx_icon_auctionHouse.uri = uiApi.createUri(uiApi.me().getConstant("texture") + "windowIcon/icon__0047_apparat_HDV.png");
+         }
          if(this._currentTabUi == "")
          {
             if(TradeCenter.BID_HOUSE_BUY_MODE)
@@ -106,7 +109,6 @@ package Ankama_TradeCenter.ui
       override public function unload() : void
       {
          TradeCenter.SEARCH_MODE = false;
-         sysApi.setData("BetaModeAuctionHouseAlreadyDisplayed",true,DataStoreEnum.BIND_ACCOUNT);
          sysApi.sendAction(new CloseInventoryAction([]));
          if(this._currentTabUi != "")
          {

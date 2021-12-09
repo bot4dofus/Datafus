@@ -151,6 +151,8 @@ package com.ankamagames.berilia.components
       
       protected var _forceUppercase:Boolean = false;
       
+      public var useExtension:Boolean = true;
+      
       private var _useTooltipExtension:Boolean = true;
       
       private var _textFieldTooltipExtension:TextField;
@@ -314,6 +316,26 @@ package com.ankamagames.berilia.components
       public function set useStyleSheet(bValue:Boolean) : void
       {
          this._useStyleSheet = bValue;
+      }
+      
+      public function set useTooltipExtension(bValue:Boolean) : void
+      {
+         this._useTooltipExtension = bValue;
+         if(this._textFieldTooltipExtension)
+         {
+            if(!this._useTooltipExtension)
+            {
+               this._textFieldTooltipExtension.removeEventListener(MouseEvent.ROLL_OVER,this.onTooltipExtensionOver);
+               this._textFieldTooltipExtension.removeEventListener(MouseEvent.ROLL_OUT,this.onTooltipExtensionOut);
+               this._textFieldTooltipExtension.removeEventListener(MouseEvent.MOUSE_WHEEL,this.onTooltipExtensionOut);
+            }
+            else
+            {
+               this._textFieldTooltipExtension.addEventListener(MouseEvent.ROLL_OVER,this.onTooltipExtensionOver);
+               this._textFieldTooltipExtension.addEventListener(MouseEvent.ROLL_OUT,this.onTooltipExtensionOut);
+               this._textFieldTooltipExtension.addEventListener(MouseEvent.MOUSE_WHEEL,this.onTooltipExtensionOut);
+            }
+         }
       }
       
       public function get useCustomFormat() : Boolean
@@ -868,7 +890,7 @@ package com.ankamagames.berilia.components
             HyperlinkFactory.removeTextClickHandler(this._tText);
             HyperlinkFactory.removeRollOverHandler(this._tText);
          }
-         if(this._textFieldTooltipExtension)
+         if(this._textFieldTooltipExtension && this._useTooltipExtension)
          {
             this._textFieldTooltipExtension.removeEventListener(MouseEvent.ROLL_OVER,this.onTooltipExtensionOver);
             this._textFieldTooltipExtension.removeEventListener(MouseEvent.ROLL_OUT,this.onTooltipExtensionOut);
@@ -1330,6 +1352,21 @@ package com.ankamagames.berilia.components
                this._tText.width = this._tText.textWidth + 10;
             }
          }
+         if(this.useExtension)
+         {
+            if(this._tText.width > this._tText.textWidth)
+            {
+               if(this._textFieldTooltipExtension !== null)
+               {
+                  __width = this._nWidth;
+                  this.removeTooltipExtension();
+               }
+            }
+            else if(this._textFieldTooltipExtension === null)
+            {
+               this.addTooltipExtension();
+            }
+         }
       }
       
       public function resizeText() : void
@@ -1343,7 +1380,7 @@ package com.ankamagames.berilia.components
             currentTextFieldWidth = this._tText.width;
             if(this._tText.textWidth > currentTextFieldWidth + 1 || this._tText.textHeight > this._tText.height || this._bFixedHeightForMultiline && this._tText.textHeight > this.height)
             {
-               if(this._useTooltipExtension)
+               if(this.useExtension)
                {
                   needTooltipExtension = true;
                }
@@ -1419,8 +1456,11 @@ package com.ankamagames.berilia.components
             removeChild(this._textFieldTooltipExtension);
             this._tText.width = __width + int(this._textFieldTooltipExtension.width + 2);
             __width = this._tText.width;
-            this._textFieldTooltipExtension.removeEventListener(MouseEvent.ROLL_OVER,this.onTooltipExtensionOver);
-            this._textFieldTooltipExtension.removeEventListener(MouseEvent.ROLL_OUT,this.onTooltipExtensionOut);
+            if(this._useTooltipExtension)
+            {
+               this._textFieldTooltipExtension.removeEventListener(MouseEvent.ROLL_OVER,this.onTooltipExtensionOver);
+               this._textFieldTooltipExtension.removeEventListener(MouseEvent.ROLL_OUT,this.onTooltipExtensionOut);
+            }
             this._textFieldTooltipExtension = null;
          }
       }
@@ -1515,9 +1555,12 @@ package com.ankamagames.berilia.components
                break;
             }
          }
-         this._textFieldTooltipExtension.addEventListener(MouseEvent.ROLL_OVER,this.onTooltipExtensionOver,false,0,true);
-         this._textFieldTooltipExtension.addEventListener(MouseEvent.ROLL_OUT,this.onTooltipExtensionOut,false,0,true);
-         this._textFieldTooltipExtension.addEventListener(MouseEvent.MOUSE_WHEEL,this.onTooltipExtensionOut,false,0,true);
+         if(this._useTooltipExtension)
+         {
+            this._textFieldTooltipExtension.addEventListener(MouseEvent.ROLL_OVER,this.onTooltipExtensionOver,false,0,true);
+            this._textFieldTooltipExtension.addEventListener(MouseEvent.ROLL_OUT,this.onTooltipExtensionOut,false,0,true);
+            this._textFieldTooltipExtension.addEventListener(MouseEvent.MOUSE_WHEEL,this.onTooltipExtensionOut,false,0,true);
+         }
       }
       
       private function updateTooltipExtensionStyle() : void

@@ -15,26 +15,36 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceModificationNameAndTagValidAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceModificationValidAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceMotdSetRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildApplicationReplyAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildApplicationsRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildBulletinSetRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildChangeMemberParametersAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildCharacsUpgradeRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildCreationValidAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildDeleteApplicationRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFactsRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFarmTeleportRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFightJoinRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFightLeaveRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFightTakePlaceRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildGetInformationsAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildGetPlayerApplicationAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildInvitationAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildInvitationAnswerAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildInvitationByNameAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildJoinRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildKickRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildListRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildModificationEmblemValidAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildModificationNameValidAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildModificationValidAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildMotdSetRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildSetApplicationUpdatesRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildSpellUpgradeRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildSubmitApplicationAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildSummaryRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildUpdateApplicationAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.SendGuildRecruitmentDataAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.AddEnemyAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.AddFriendAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.AddIgnoredAction;
@@ -115,9 +125,17 @@ package com.ankamagames.dofus.misc.lists
       
       public static const GuildInvitation:DofusApiAction = new DofusApiAction("GuildInvitationAction",GuildInvitationAction);
       
+      public static const GuildDeleteApplicationRequest:DofusApiAction = new DofusApiAction("GuildDeleteApplicationRequestAction",GuildDeleteApplicationRequestAction);
+      
       public static const GuildInvitationByName:DofusApiAction = new DofusApiAction("GuildInvitationByNameAction",GuildInvitationByNameAction);
       
       public static const GuildInvitationAnswer:DofusApiAction = new DofusApiAction("GuildInvitationAnswerAction",GuildInvitationAnswerAction);
+      
+      public static const GuildJoinRequest:DofusApiAction = new DofusApiAction("GuildJoinRequestAction",GuildJoinRequestAction);
+      
+      public static const GuildSubmitApplication:DofusApiAction = new DofusApiAction("GuildSubmitApplicationAction",GuildSubmitApplicationAction);
+      
+      public static const GuildUpdateApplication:DofusApiAction = new DofusApiAction("GuildUpdateApplicationAction",GuildUpdateApplicationAction);
       
       public static const GuildKickRequest:DofusApiAction = new DofusApiAction("GuildKickRequestAction",GuildKickRequestAction);
       
@@ -132,6 +150,16 @@ package com.ankamagames.dofus.misc.lists
       public static const HouseTeleportRequest:DofusApiAction = new DofusApiAction("HouseTeleportRequestAction",HouseTeleportRequestAction);
       
       public static const GuildMotdSetRequest:DofusApiAction = new DofusApiAction("GuildMotdSetRequestAction",GuildMotdSetRequestAction);
+      
+      public static const GuildApplicationReply:DofusApiAction = new DofusApiAction("GuildApplicationReplyAction",GuildApplicationReplyAction);
+      
+      public static const GuildApplicationsRequest:DofusApiAction = new DofusApiAction("GuildApplicationsRequestAction",GuildApplicationsRequestAction);
+      
+      public static const GuildSetApplicationUpdatesRequest:DofusApiAction = new DofusApiAction("GuildSetApplicationUpdatesRequestAction",GuildSetApplicationUpdatesRequestAction);
+      
+      public static const GuildSummaryRequest:DofusApiAction = new DofusApiAction("GuildSummaryRequestAction",GuildSummaryRequestAction);
+      
+      public static const GuildGetPlayerApplicationRequest:DofusApiAction = new DofusApiAction("GuildGetPlayerApplicationAction",GuildGetPlayerApplicationAction);
       
       public static const GuildBulletinSetRequest:DofusApiAction = new DofusApiAction("GuildBulletinSetRequestAction",GuildBulletinSetRequestAction);
       
@@ -178,6 +206,8 @@ package com.ankamagames.dofus.misc.lists
       public static const ChatReport:DofusApiAction = new DofusApiAction("ChatReportAction",ChatReportAction);
       
       public static const PlayerStatusUpdateRequest:DofusApiAction = new DofusApiAction("PlayerStatusUpdateRequestAction",PlayerStatusUpdateRequestAction);
+      
+      public static const SendGuildRecruitmentData:DofusApiAction = new DofusApiAction("SendGuildRecruitmentDataAction",SendGuildRecruitmentDataAction);
        
       
       public function ApiSocialActionList()

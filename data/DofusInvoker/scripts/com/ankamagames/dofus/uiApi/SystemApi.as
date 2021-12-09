@@ -4,8 +4,6 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.atouin.Atouin;
    import com.ankamagames.atouin.AtouinConstants;
    import com.ankamagames.atouin.managers.DataGroundMapManager;
-   import com.ankamagames.berilia.components.ComponentInternalAccessor;
-   import com.ankamagames.berilia.components.WebBrowser;
    import com.ankamagames.berilia.interfaces.IApi;
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.berilia.managers.ThemeManager;
@@ -604,20 +602,6 @@ package com.ankamagames.dofus.uiApi
       public function getCurrentZoom() : Number
       {
          return Atouin.getInstance().currentZoom;
-      }
-      
-      public function goToThirdPartyLogin(target:WebBrowser) : void
-      {
-         var ur:URLRequest = null;
-         if(BuildInfos.BUILD_TYPE == BuildTypeEnum.DEBUG)
-         {
-            ur = new URLRequest("http://127.0.0.1/login.php");
-         }
-         else
-         {
-            ur = new URLRequest(I18n.getUiText("ui.link.thirdparty.login"));
-         }
-         ComponentInternalAccessor.access(target,"load")(ur);
       }
       
       public function goToCheckLink(url:String, sender:Number, senderName:String) : void

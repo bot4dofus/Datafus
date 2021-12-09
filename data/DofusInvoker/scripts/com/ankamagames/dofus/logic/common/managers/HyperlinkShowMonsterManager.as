@@ -33,7 +33,7 @@ package com.ankamagames.dofus.logic.common.managers
          var roleplayEntitiesFrame:RoleplayEntitiesFrame = Kernel.getWorker().getFrame(RoleplayEntitiesFrame) as RoleplayEntitiesFrame;
          if(roleplayEntitiesFrame)
          {
-            list = roleplayEntitiesFrame.getEntitiesDictionnary();
+            list = roleplayEntitiesFrame.entities;
             for each(monster in list)
             {
                if(monster is GameRolePlayGroupMonsterInformations && (monster.staticInfos.mainCreatureLightInfos.genericId == monsterId || monsterId == -1))

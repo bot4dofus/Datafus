@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class LivingObjectChangeSkinRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2514;
+      public static const protocolId:uint = 7679;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 2514;
+         return 7679;
       }
       
       public function initLivingObjectChangeSkinRequestMessage(livingUID:uint = 0, livingPosition:uint = 0, skinId:uint = 0) : LivingObjectChangeSkinRequestMessage

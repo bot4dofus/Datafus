@@ -23,8 +23,6 @@ package com.ankamagames.dofus.datacenter.appearance
       
       public var iconId:int;
       
-      public var rarity:int;
-      
       public var order:int;
       
       private var _name:String;

@@ -16,7 +16,6 @@ package Ankama_Document.ui
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
    import com.ankamagames.dofus.uiApi.SystemApi;
    import flash.text.StyleSheet;
-   import flash.text.TextFormat;
    
    public class DocumentBase
    {
@@ -53,8 +52,6 @@ package Ankama_Document.ui
       private var _rootDebugCtr:GraphicContainer;
       
       private var _debugTextField:Input;
-      
-      private var _debugTextFormat:TextFormat;
       
       private var _debugValidBtn:ButtonContainer;
       

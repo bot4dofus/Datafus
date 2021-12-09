@@ -6,6 +6,7 @@ package com.ankamagames.berilia.components
    import com.ankamagames.berilia.components.gridRenderer.InlineXmlGridRenderer;
    import com.ankamagames.berilia.components.gridRenderer.LabelGridRenderer;
    import com.ankamagames.berilia.components.gridRenderer.MultiGridRenderer;
+   import com.ankamagames.berilia.components.gridRenderer.MultipleComboBoxRenderer;
    import com.ankamagames.berilia.components.gridRenderer.SlotGridRenderer;
    import com.ankamagames.berilia.components.gridRenderer.XmlUiGridRenderer;
    import com.ankamagames.berilia.components.messages.ItemRightClickMessage;
@@ -64,6 +65,8 @@ package com.ankamagames.berilia.components
       private static var _include_InlineXmlGridRenderer:InlineXmlGridRenderer = null;
       
       private static var _include_MultiGridRenderer:MultiGridRenderer = null;
+      
+      private static var _include_MultipleComboBoxRenderer:MultipleComboBoxRenderer = null;
       
       public static var MEMORY_LOG:Dictionary = new Dictionary(true);
       
@@ -902,7 +905,7 @@ package com.ankamagames.berilia.components
          for(var index:uint = 0; index < this._items.length; index++)
          {
             currenItem = this._items[index];
-            if(!(!currenItem || this._nSelectedIndex < 0))
+            if(!(!currenItem || this._nSelectedIndex < 0 || index >= this._dataProvider.length))
             {
                if(currenItem.index == this._nSelectedIndex)
                {
@@ -1094,6 +1097,17 @@ package com.ankamagames.berilia.components
                return cmpRes;
             });
          }
+         this.finalize();
+         this.initSlot();
+      }
+      
+      public function sortArrayOn(fieldName:Object, options:Object = null) : void
+      {
+         if(!(this._dataProvider is Array))
+         {
+            return;
+         }
+         this._dataProvider.sortOn(fieldName,options);
          this.finalize();
          this.initSlot();
       }

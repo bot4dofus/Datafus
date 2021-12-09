@@ -20,15 +20,9 @@ package Ankama_Admin.adminMenu
    public class AdminMenu
    {
       
-      private static const ADMIN_CONFIG_URL_RELEASE:String = "http://menuadmin.dofus.com/dofus2/";
-      
-      private static const ADMIN_CONFIG_URL_BETA:String = "http://menuadmin.dofus.com/dofus2-beta/";
-      
       private static const ADMIN_CONFIG_URL_INTERNAL:String = "http://deposit.dofus2.lan/admin/";
       
       private static const LOCAL_CONFIG_PATH:String = "ui/Ankama_Admin/";
-      
-      private static const LOCALIZATION_PARAM_PREFIX:String = "localizationParam";
        
       
       private var _menu:Array;
@@ -50,19 +44,15 @@ package Ankama_Admin.adminMenu
          this._menu = [];
          this._startCmd = [];
          this._menuAdminUrls = [];
-         this._parameterRegex = new RegExp("\\b" + LOCALIZATION_PARAM_PREFIX + "[0-9]+\\b");
+         this._parameterRegex = /\blocalizationParam[0-9]+\b/;
          super();
          if(Api.systemApi.getBuildType() >= BuildTypeEnum.INTERNAL)
          {
             Api.fileApi.loadXmlFile(ADMIN_CONFIG_URL_INTERNAL + "ranks.xml",this.onRanksFileLoaded,this.onRanksLoadError);
          }
-         else if(Api.systemApi.getBuildType() == BuildTypeEnum.BETA)
-         {
-            Api.fileApi.loadXmlFile(ADMIN_CONFIG_URL_BETA + "ranks.xml",this.onRanksFileLoaded,this.onRanksLoadError);
-         }
          else
          {
-            Api.fileApi.loadXmlFile(ADMIN_CONFIG_URL_RELEASE + "ranks.xml",this.onRanksFileLoaded,this.onRanksLoadError);
+            Api.fileApi.loadXmlFile(LOCAL_CONFIG_PATH + "ranks.xml",this.onRanksFileLoaded,this.onRanksLoadError);
          }
       }
       
@@ -351,13 +341,9 @@ package Ankama_Admin.adminMenu
             {
                baseUrl = ADMIN_CONFIG_URL_INTERNAL + this._hierarchyString + "_" + Api.systemApi.getCurrentLanguage();
             }
-            else if(Api.systemApi.getBuildType() == BuildTypeEnum.BETA)
-            {
-               baseUrl = ADMIN_CONFIG_URL_BETA + this._hierarchyString + "_" + Api.systemApi.getCurrentLanguage();
-            }
             else
             {
-               baseUrl = ADMIN_CONFIG_URL_RELEASE + this._hierarchyString + "_" + Api.systemApi.getCurrentLanguage();
+               baseUrl = LOCAL_CONFIG_PATH + this._hierarchyString + "_" + Api.systemApi.getCurrentLanguage();
             }
             if(Api.systemApi.getBuildType() < BuildTypeEnum.INTERNAL)
             {

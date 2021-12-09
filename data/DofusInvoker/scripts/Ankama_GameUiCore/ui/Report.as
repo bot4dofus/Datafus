@@ -116,13 +116,13 @@ package Ankama_GameUiCore.ui
             abuseReason = reasonList[i];
             if(abuseReason != null)
             {
-               if((abuseReason._mask >> this._type & 1) == 1)
+               if((abuseReason.mask >> this._type & 1) == 1)
                {
                   reasonObject = {
                      "label":abuseReason.name,
-                     "abuseReasonId":abuseReason._abuseReasonId,
-                     "mask":abuseReason._mask,
-                     "reasonTextId":abuseReason._reasonTextId
+                     "abuseReasonId":abuseReason.abuseReasonId,
+                     "mask":abuseReason.mask,
+                     "reasonTextId":abuseReason.reasonTextId
                   };
                   cbProvider.push(reasonObject);
                }

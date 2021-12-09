@@ -244,6 +244,7 @@ package Ankama_Storage.ui
             case btnEquipable:
             case btnConsumables:
             case btnRessources:
+            case btnCosmetics:
                sysApi.setData("lastStorageTab",target.name);
                break;
             case btnQuest:

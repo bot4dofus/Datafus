@@ -293,7 +293,7 @@ package Ankama_Cartography.ui
          this._hintCategoryFiltersListSearch = [];
          this._worldmapCatInfosDisplayed = [];
          this._openedCategories = [];
-         this._worldmapCatOrder = [3,0,5,82,84];
+         this._worldmapCatOrder = [3,0,5,6,84];
          this._componentList = new Dictionary(true);
          super();
       }

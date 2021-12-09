@@ -129,7 +129,7 @@ package com.ankamagames.dofus.console.chat
             case "travel":
                if(param3.length > 2 || param3.length < 1)
                {
-                  param1.output("No destination given, canceling auto travel attempt.");
+                  param1.output(I18n.getUiText("ui.mountTrip.error.noDestinationMap"));
                   return;
                }
                _loc12_ = param3[0] as String;

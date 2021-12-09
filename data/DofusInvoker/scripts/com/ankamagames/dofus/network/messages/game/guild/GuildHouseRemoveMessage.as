@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildHouseRemoveMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6747;
+      public static const protocolId:uint = 1802;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 6747;
+         return 1802;
       }
       
       public function initGuildHouseRemoveMessage(houseId:uint = 0, instanceId:uint = 0, secondHand:Boolean = false) : GuildHouseRemoveMessage

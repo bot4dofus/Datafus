@@ -20,15 +20,18 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.logic.game.common.frames.SocialFrame;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.managers.TaxCollectorsManager;
+   import com.ankamagames.dofus.network.enums.PlayerStatusEnum;
    import com.ankamagames.dofus.network.types.game.guild.GuildMember;
    import com.ankamagames.dofus.network.types.game.paddock.PaddockContentInformations;
    import com.ankamagames.dofus.network.types.game.prism.AllianceInsiderPrismInformation;
    import com.ankamagames.dofus.network.types.game.prism.AlliancePrismInformation;
    import com.ankamagames.dofus.network.types.game.prism.PrismInformation;
    import com.ankamagames.jerakine.data.I18n;
+   import com.ankamagames.jerakine.data.XmlConfig;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.types.DataStoreType;
+   import com.ankamagames.jerakine.types.Uri;
    import com.ankamagames.jerakine.types.enums.DataStoreEnum;
    import flash.utils.Dictionary;
    import flash.utils.getQualifiedClassName;
@@ -456,6 +459,63 @@ package com.ankamagames.dofus.uiApi
             }
          }
          return se;
+      }
+      
+      public function getStatusIcon(statusId:uint) : Uri
+      {
+         var basePath:* = XmlConfig.getInstance().getEntry("config.ui.skin") + "texture/icon_state_";
+         switch(statusId)
+         {
+            case PlayerStatusEnum.PLAYER_STATUS_AVAILABLE:
+               return new Uri(basePath + "green.png");
+            case PlayerStatusEnum.PLAYER_STATUS_AFK:
+            case PlayerStatusEnum.PLAYER_STATUS_IDLE:
+               return new Uri(basePath + "yellow.png");
+            case PlayerStatusEnum.PLAYER_STATUS_PRIVATE:
+               return new Uri(basePath + "blue.png");
+            case PlayerStatusEnum.PLAYER_STATUS_SOLO:
+               return new Uri(basePath + "red.png");
+            default:
+               return new Uri(basePath + "grey.png");
+         }
+      }
+      
+      public function getStatusText(statusId:uint, message:String = null) : String
+      {
+         var toReturn:String = null;
+         switch(statusId)
+         {
+            case PlayerStatusEnum.PLAYER_STATUS_AVAILABLE:
+               toReturn = I18n.getUiText("ui.chat.status.availiable");
+               break;
+            case PlayerStatusEnum.PLAYER_STATUS_AFK:
+               toReturn = I18n.getUiText("ui.chat.status.away");
+               break;
+            case PlayerStatusEnum.PLAYER_STATUS_IDLE:
+               toReturn = I18n.getUiText("ui.chat.status.idle");
+               break;
+            case PlayerStatusEnum.PLAYER_STATUS_PRIVATE:
+               toReturn = I18n.getUiText("ui.chat.status.private");
+               break;
+            case PlayerStatusEnum.PLAYER_STATUS_SOLO:
+               toReturn = I18n.getUiText("ui.chat.status.solo");
+               break;
+            case PlayerStatusEnum.PLAYER_STATUS_OFFLINE:
+               toReturn = I18n.getUiText("ui.chat.status.offline");
+               break;
+            default:
+               return null;
+         }
+         if(message)
+         {
+            toReturn += I18n.getUiText("ui.common.colon") + message;
+         }
+         return toReturn;
+      }
+      
+      public function getGuildMembersMax(guildLevel:uint) : uint
+      {
+         return 140 + Math.floor(guildLevel * 0.5);
       }
    }
 }

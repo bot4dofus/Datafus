@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildInformationsPaddocksMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4979;
+      public static const protocolId:uint = 178;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 4979;
+         return 178;
       }
       
       public function initGuildInformationsPaddocksMessage(nbPaddockMax:uint = 0, paddocksInformations:Vector.<PaddockContentInformations> = null) : GuildInformationsPaddocksMessage

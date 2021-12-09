@@ -19,7 +19,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class MapComplementaryInformationsDataMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9852;
+      public static const protocolId:uint = 1182;
        
       
       private var _isInitialized:Boolean = false;
@@ -77,7 +77,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 9852;
+         return 1182;
       }
       
       public function initMapComplementaryInformationsDataMessage(subAreaId:uint = 0, mapId:Number = 0, houses:Vector.<HouseInformations> = null, actors:Vector.<GameRolePlayActorInformations> = null, interactiveElements:Vector.<InteractiveElement> = null, statedElements:Vector.<StatedElement> = null, obstacles:Vector.<MapObstacle> = null, fights:Vector.<FightCommonInformations> = null, hasAggressiveMonsters:Boolean = false, fightStartPositions:FightStartingPositions = null) : MapComplementaryInformationsDataMessage

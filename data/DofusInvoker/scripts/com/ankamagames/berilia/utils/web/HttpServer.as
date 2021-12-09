@@ -79,11 +79,6 @@ package com.ankamagames.berilia.utils.web
          return false;
       }
       
-      public function getUrlTo(target:String) : String
-      {
-         return "http://localhost:" + this._usedPort + "/" + target;
-      }
-      
       public function close() : void
       {
          var httpSocket:HttpSocket = null;

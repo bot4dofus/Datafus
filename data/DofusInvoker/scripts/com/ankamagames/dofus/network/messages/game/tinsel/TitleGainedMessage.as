@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.tinsel
    public class TitleGainedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7907;
+      public static const protocolId:uint = 3386;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.tinsel
       
       override public function getMessageId() : uint
       {
-         return 7907;
+         return 3386;
       }
       
       public function initTitleGainedMessage(titleId:uint = 0) : TitleGainedMessage

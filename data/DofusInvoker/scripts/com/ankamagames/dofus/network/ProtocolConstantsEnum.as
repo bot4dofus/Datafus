@@ -137,6 +137,10 @@ package com.ankamagames.dofus.network
       
       public static const MAX_MEMBERS_PER_GUILD:int = 240;
       
+      public static const MAX_GUILD_PER_PAGE:int = 50;
+      
+      public static const MAX_GUILD_APPLICATION_PER_PAGE:int = 50;
+      
       public static const MAX_ADDITIONNAL_PER_CARAC:int = 100;
       
       public static const MAX_RECONNECTION_ATTEMPTS:int = 5;

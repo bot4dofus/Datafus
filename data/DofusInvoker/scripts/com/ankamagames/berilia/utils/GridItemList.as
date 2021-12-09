@@ -3,6 +3,7 @@ package com.ankamagames.berilia.utils
    import com.ankamagames.berilia.components.gridRenderer.EntityGridRenderer;
    import com.ankamagames.berilia.components.gridRenderer.LabelGridRenderer;
    import com.ankamagames.berilia.components.gridRenderer.MultiGridRenderer;
+   import com.ankamagames.berilia.components.gridRenderer.MultipleComboBoxRenderer;
    import com.ankamagames.berilia.components.gridRenderer.SlotGridRenderer;
    import com.ankamagames.berilia.components.gridRenderer.TreeGridRenderer;
    import com.ankamagames.berilia.components.gridRenderer.XmlUiGridRenderer;
@@ -21,6 +22,8 @@ package com.ankamagames.berilia.utils
       public static const import_EntityGridRenderer:EntityGridRenderer = null;
       
       public static const import_MultiGridRenderer:MultiGridRenderer = null;
+      
+      public static const import_MultipleComboBoxRenderer:MultipleComboBoxRenderer = null;
        
       
       public function GridItemList()

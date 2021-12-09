@@ -1,6 +1,7 @@
 package com.ankamagames.dofus.network.types.game.social
 {
    import com.ankamagames.dofus.network.types.game.guild.GuildEmblem;
+   import com.ankamagames.dofus.network.types.game.guild.recruitment.GuildRecruitmentInformation;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
    import com.ankamagames.jerakine.network.INetworkType;
@@ -9,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.social
    public class GuildInsiderFactSheetInformations extends GuildFactSheetInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 574;
+      public static const protocolId:uint = 8132;
        
       
       public var leaderName:String = "";
@@ -18,8 +19,6 @@ package com.ankamagames.dofus.network.types.game.social
       
       public var nbTaxCollectors:uint = 0;
       
-      public var lastActivity:uint = 0;
-      
       public function GuildInsiderFactSheetInformations()
       {
          super();
@@ -27,16 +26,15 @@ package com.ankamagames.dofus.network.types.game.social
       
       override public function getTypeId() : uint
       {
-         return 574;
+         return 8132;
       }
       
-      public function initGuildInsiderFactSheetInformations(guildId:uint = 0, guildName:String = "", guildLevel:uint = 0, guildEmblem:GuildEmblem = null, leaderId:Number = 0, nbMembers:uint = 0, leaderName:String = "", nbConnectedMembers:uint = 0, nbTaxCollectors:uint = 0, lastActivity:uint = 0) : GuildInsiderFactSheetInformations
+      public function initGuildInsiderFactSheetInformations(guildId:uint = 0, guildName:String = "", guildLevel:uint = 0, guildEmblem:GuildEmblem = null, leaderId:Number = 0, nbMembers:uint = 0, lastActivityDay:uint = 0, recruitment:GuildRecruitmentInformation = null, nbPendingApply:uint = 0, leaderName:String = "", nbConnectedMembers:uint = 0, nbTaxCollectors:uint = 0) : GuildInsiderFactSheetInformations
       {
-         super.initGuildFactSheetInformations(guildId,guildName,guildLevel,guildEmblem,leaderId,nbMembers);
+         super.initGuildFactSheetInformations(guildId,guildName,guildLevel,guildEmblem,leaderId,nbMembers,lastActivityDay,recruitment,nbPendingApply);
          this.leaderName = leaderName;
          this.nbConnectedMembers = nbConnectedMembers;
          this.nbTaxCollectors = nbTaxCollectors;
-         this.lastActivity = lastActivity;
          return this;
       }
       
@@ -46,7 +44,6 @@ package com.ankamagames.dofus.network.types.game.social
          this.leaderName = "";
          this.nbConnectedMembers = 0;
          this.nbTaxCollectors = 0;
-         this.lastActivity = 0;
       }
       
       override public function serialize(output:ICustomDataOutput) : void
@@ -68,11 +65,6 @@ package com.ankamagames.dofus.network.types.game.social
             throw new Error("Forbidden value (" + this.nbTaxCollectors + ") on element nbTaxCollectors.");
          }
          output.writeByte(this.nbTaxCollectors);
-         if(this.lastActivity < 0)
-         {
-            throw new Error("Forbidden value (" + this.lastActivity + ") on element lastActivity.");
-         }
-         output.writeInt(this.lastActivity);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -86,7 +78,6 @@ package com.ankamagames.dofus.network.types.game.social
          this._leaderNameFunc(input);
          this._nbConnectedMembersFunc(input);
          this._nbTaxCollectorsFunc(input);
-         this._lastActivityFunc(input);
       }
       
       override public function deserializeAsync(tree:FuncTree) : void
@@ -100,7 +91,6 @@ package com.ankamagames.dofus.network.types.game.social
          tree.addChild(this._leaderNameFunc);
          tree.addChild(this._nbConnectedMembersFunc);
          tree.addChild(this._nbTaxCollectorsFunc);
-         tree.addChild(this._lastActivityFunc);
       }
       
       private function _leaderNameFunc(input:ICustomDataInput) : void
@@ -123,15 +113,6 @@ package com.ankamagames.dofus.network.types.game.social
          if(this.nbTaxCollectors < 0)
          {
             throw new Error("Forbidden value (" + this.nbTaxCollectors + ") on element of GuildInsiderFactSheetInformations.nbTaxCollectors.");
-         }
-      }
-      
-      private function _lastActivityFunc(input:ICustomDataInput) : void
-      {
-         this.lastActivity = input.readInt();
-         if(this.lastActivity < 0)
-         {
-            throw new Error("Forbidden value (" + this.lastActivity + ") on element of GuildInsiderFactSheetInformations.lastActivity.");
          }
       }
    }

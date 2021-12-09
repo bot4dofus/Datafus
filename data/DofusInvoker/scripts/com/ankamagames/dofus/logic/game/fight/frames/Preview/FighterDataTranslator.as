@@ -100,7 +100,7 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
       
       public function isAlly() : Boolean
       {
-         var entities:Dictionary = FightEntitiesFrame.getCurrentInstance().getEntitiesDictionnary();
+         var entities:Dictionary = FightEntitiesFrame.getCurrentInstance().entities;
          var fighter:GameFightFighterInformations = entities[this._id];
          if(fighter === null)
          {

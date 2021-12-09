@@ -56,6 +56,10 @@ package Ankama_Storage.ui
       
       public static const SUBFILTER_ID_PRECIOUS_STONE:int = 50;
       
+      public static const CATEGORY_BUTTONS_TOTAL_WIDTH:int = 318;
+      
+      public static const CATEGORY_BUTTON_ORIGINAL_WIDTH:int = 51;
+      
       protected static const SORT_ON_NONE:int = -1;
       
       protected static const SORT_ON_DEFAULT:int = 0;
@@ -234,6 +238,8 @@ package Ankama_Storage.ui
       
       public var btnRessources:ButtonContainer;
       
+      public var btnCosmetics:ButtonContainer;
+      
       public var btnQuest:ButtonContainer;
       
       public var btnMinouki:ButtonContainer;
@@ -285,6 +291,9 @@ package Ankama_Storage.ui
          this.uiApi.addComponentHook(this.btnRessources,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btnRessources,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.btnRessources,ComponentHookList.ON_ROLL_OUT);
+         this.uiApi.addComponentHook(this.btnCosmetics,ComponentHookList.ON_RELEASE);
+         this.uiApi.addComponentHook(this.btnCosmetics,ComponentHookList.ON_ROLL_OVER);
+         this.uiApi.addComponentHook(this.btnCosmetics,ComponentHookList.ON_ROLL_OUT);
          this.uiApi.addComponentHook(this.btnQuest,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btnQuest,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.btnQuest,ComponentHookList.ON_ROLL_OUT);
@@ -360,6 +369,7 @@ package Ankama_Storage.ui
          {
             this.btn_checkCraft.visible = false;
          }
+         this.replaceCategoryButtons();
       }
       
       public function unload() : void
@@ -694,6 +704,7 @@ package Ankama_Storage.ui
             case this.btnEquipable:
             case this.btnConsumables:
             case this.btnRessources:
+            case this.btnCosmetics:
             case this.btnMinouki:
                this.itemWithAssociatedRunesDisplayed = null;
                this.storageApi.disableBankAssociatedRunesFilter();
@@ -757,6 +768,9 @@ package Ankama_Storage.ui
                break;
             case this.btnRessources:
                text = this.uiApi.getText("ui.common.ressources");
+               break;
+            case this.btnCosmetics:
+               text = this.uiApi.getText("ui.common.cosmetic");
                break;
             case this.btnQuest:
                text = this.uiApi.getText("ui.common.quest.objects");
@@ -835,6 +849,7 @@ package Ankama_Storage.ui
          this.btnEquipable.disabled = true;
          this.btnConsumables.disabled = true;
          this.btnRessources.disabled = true;
+         this.btnCosmetics.disabled = true;
          var index:int = 0;
          for each(itemCategory in this.cb_category.dataProvider)
          {
@@ -855,6 +870,7 @@ package Ankama_Storage.ui
          this.btnEquipable.disabled = false;
          this.btnConsumables.disabled = false;
          this.btnRessources.disabled = false;
+         this.btnCosmetics.disabled = false;
          this._forceCategory = false;
          this.cb_category.disabled = false;
          this.updateSubFilter(this.getStorageTypes(this.categoryFilter));
@@ -959,6 +975,8 @@ package Ankama_Storage.ui
                return this.btnConsumables;
             case ItemCategoryEnum.RESOURCES_CATEGORY:
                return this.btnRessources;
+            case ItemCategoryEnum.COSMETICS_CATEGORY:
+               return this.btnCosmetics;
             case ItemCategoryEnum.ECAFLIP_CARD_CATEGORY:
                return this.btnMinouki;
             default:
@@ -978,6 +996,8 @@ package Ankama_Storage.ui
                return ItemCategoryEnum.CONSUMABLES_CATEGORY;
             case this.btnRessources:
                return ItemCategoryEnum.RESOURCES_CATEGORY;
+            case this.btnCosmetics:
+               return ItemCategoryEnum.COSMETICS_CATEGORY;
             case this.btnMinouki:
                return ItemCategoryEnum.ECAFLIP_CARD_CATEGORY;
             default:
@@ -1217,6 +1237,7 @@ package Ankama_Storage.ui
          this.btnEquipable.soundId = SoundEnum.TAB;
          this.btnConsumables.soundId = SoundEnum.TAB;
          this.btnRessources.soundId = SoundEnum.TAB;
+         this.btnCosmetics.soundId = SoundEnum.TAB;
          this.btn_close.isMute = true;
       }
       
@@ -1313,6 +1334,7 @@ package Ankama_Storage.ui
       private function replaceCategoryButtons() : void
       {
          var btn:ButtonContainer = null;
+         var width:int = 0;
          var buttons:Array = [this.btnAll,this.btnEquipable,this.btnConsumables,this.btnRessources];
          if(this.minoukiVisible)
          {
@@ -1322,9 +1344,18 @@ package Ankama_Storage.ui
          {
             buttons.push(this.btnQuest);
          }
-         var currentTotalWidth:int = buttons.length * this.btnAll.width + (buttons.length - 1);
-         var allButtonsTotalWidth:int = 6 * this.btnAll.width + 5;
-         var offsetToCenterButtons:int = int((allButtonsTotalWidth - currentTotalWidth) / 2);
+         buttons.push(this.btnCosmetics);
+         var currentTotalWidth:int = buttons.length * CATEGORY_BUTTON_ORIGINAL_WIDTH + (buttons.length - 1);
+         if(CATEGORY_BUTTONS_TOTAL_WIDTH - currentTotalWidth < 0)
+         {
+            width = (CATEGORY_BUTTONS_TOTAL_WIDTH - buttons.length + 1) / buttons.length;
+            currentTotalWidth = width * buttons.length;
+            for each(btn in buttons)
+            {
+               btn.width = width;
+            }
+         }
+         var offsetToCenterButtons:int = int((CATEGORY_BUTTONS_TOTAL_WIDTH - currentTotalWidth) / 2);
          var xForCurrentButtonWithoutOffset:int = 0;
          for each(btn in buttons)
          {

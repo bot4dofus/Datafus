@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class GameRolePlayGroupMonsterInformations extends GameRolePlayActorInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 7750;
+      public static const protocolId:uint = 3148;
        
       
       public var staticInfos:GroupMonsterStaticInformations;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 7750;
+         return 3148;
       }
       
       public function initGameRolePlayGroupMonsterInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, staticInfos:GroupMonsterStaticInformations = null, lootShare:int = 0, alignmentSide:int = 0, keyRingBonus:Boolean = false, hasHardcoreDrop:Boolean = false, hasAVARewardToken:Boolean = false) : GameRolePlayGroupMonsterInformations

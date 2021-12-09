@@ -172,6 +172,20 @@ package com.ankamagames.dofus.logic.game.common.managers
          return months[month];
       }
       
+      public function formatTextDate(time:Number, useTimezoneOffset:Boolean = false, unchanged:Boolean = false, padding:Boolean = false) : String
+      {
+         var timeToUse:Number = time;
+         if(unchanged && timeToUse > 0)
+         {
+            timeToUse -= this.serverTimeLag;
+         }
+         var date:Array = this.getDateFromTime(timeToUse,useTimezoneOffset);
+         var day:String = date[2] > 9 || !padding ? date[2].toString() : "0" + date[2];
+         var month:String = this.getMonthIRL(date[3] - 1);
+         var year:String = date[4];
+         return I18n.getUiText("ui.time.dateLetters",[day,month,year]);
+      }
+      
       public function formatEndOfSeasonDate(time:Number, useTimezoneOffset:Boolean = false, unchanged:Boolean = false) : String
       {
          var timeToUse:Number = time;

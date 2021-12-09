@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.achievement
    public class AchievementObjective implements INetworkType
    {
       
-      public static const protocolId:uint = 47;
+      public static const protocolId:uint = 8917;
        
       
       public var id:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.achievement
       
       public function getTypeId() : uint
       {
-         return 47;
+         return 8917;
       }
       
       public function initAchievementObjective(id:uint = 0, maxValue:uint = 0) : AchievementObjective

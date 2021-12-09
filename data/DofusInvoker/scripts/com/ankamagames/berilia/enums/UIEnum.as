@@ -126,6 +126,16 @@ package com.ankamagames.berilia.enums
       public static const GUIDEBOOK:String = "guidebook";
       
       public static const ITEM_EFFECTS_MODIFIER:String = "itemEffectsModifier";
+      
+      public static const SOCIAL_BASE:String = "socialBase";
+      
+      public static const GUILD_APPLICATIONS:String = "guildApplications";
+      
+      public static const GUILD_PREZ_AND_RECRUIT:String = "guildPrezAndRecruit";
+      
+      public static const GUILD_JOIN_POPUP:String = "guildJoinPopup";
+      
+      public static const GUILD_APPLY_POPUP:String = "guildApplyPopup";
        
       
       public function UIEnum()

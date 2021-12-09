@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.common
    public class PlayerSearchTagInformation extends AbstractPlayerSearchInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 2997;
+      public static const protocolId:uint = 3556;
        
       
       public var tag:AccountTagInformation;
@@ -23,7 +23,7 @@ package com.ankamagames.dofus.network.types.common
       
       override public function getTypeId() : uint
       {
-         return 2997;
+         return 3556;
       }
       
       public function initPlayerSearchTagInformation(tag:AccountTagInformation = null) : PlayerSearchTagInformation

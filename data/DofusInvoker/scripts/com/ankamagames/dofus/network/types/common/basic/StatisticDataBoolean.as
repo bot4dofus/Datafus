@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.common.basic
    public class StatisticDataBoolean extends StatisticData implements INetworkType
    {
       
-      public static const protocolId:uint = 2326;
+      public static const protocolId:uint = 8397;
        
       
       public var value:Boolean = false;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.common.basic
       
       override public function getTypeId() : uint
       {
-         return 2326;
+         return 8397;
       }
       
       public function initStatisticDataBoolean(value:Boolean = false) : StatisticDataBoolean

@@ -747,7 +747,7 @@ class InteractiveItemEntity extends InteractiveItem
       }
       if(entityFrame)
       {
-         entities = entityFrame.getEntitiesDictionnary();
+         entities = entityFrame.entities;
       }
       else
       {

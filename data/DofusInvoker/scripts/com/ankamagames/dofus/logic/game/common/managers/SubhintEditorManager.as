@@ -303,13 +303,14 @@ package com.ankamagames.dofus.logic.game.common.managers
       
       private function onStatus(e:HTTPStatusEvent) : void
       {
-         this.endLoadingRequest();
          switch(e.status)
          {
             case 400:
+               this.endLoadingRequest();
                this._log.error("Error 400 : Bad request");
                break;
             case 404:
+               this.endLoadingRequest();
                if(this._request.method == URLRequestMethod.GET && this._request.url.charAt(this._request.url.length) == "/")
                {
                   this._log.error("Error 404 : Not Found, ID not found or invalid, get data from export");
@@ -333,6 +334,7 @@ package com.ankamagames.dofus.logic.game.common.managers
                }
                break;
             case 500:
+               this.endLoadingRequest();
                if(this._request.method == URLRequestMethod.GET && this._request.url.charAt(this._request.url.length) == "/")
                {
                   this._log.error("Error 500 : Internal Server Error, get data from export");

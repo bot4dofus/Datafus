@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.prism
    public class PrismSetSabotagedRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7512;
+      public static const protocolId:uint = 1746;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function getMessageId() : uint
       {
-         return 7512;
+         return 1746;
       }
       
       public function initPrismSetSabotagedRequestMessage(subAreaId:uint = 0) : PrismSetSabotagedRequestMessage

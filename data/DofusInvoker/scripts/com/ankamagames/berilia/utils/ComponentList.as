@@ -25,7 +25,6 @@ package com.ankamagames.berilia.utils
    import com.ankamagames.berilia.components.TextureBitmap;
    import com.ankamagames.berilia.components.Tree;
    import com.ankamagames.berilia.components.VideoPlayer;
-   import com.ankamagames.berilia.components.WebBrowser;
    
    public class ComponentList
    {
@@ -69,8 +68,6 @@ package com.ankamagames.berilia.utils
       public static const tree:Tree = null;
       
       public static const videoPlayer:VideoPlayer = null;
-      
-      public static const webBrowser:WebBrowser = null;
       
       public static const slider:Slider = null;
       

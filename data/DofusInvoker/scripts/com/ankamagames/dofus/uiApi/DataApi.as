@@ -34,6 +34,8 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.datacenter.guild.EmblemBackground;
    import com.ankamagames.dofus.datacenter.guild.EmblemSymbol;
    import com.ankamagames.dofus.datacenter.guild.EmblemSymbolCategory;
+   import com.ankamagames.dofus.datacenter.guild.GuildTag;
+   import com.ankamagames.dofus.datacenter.guild.GuildTagsType;
    import com.ankamagames.dofus.datacenter.guild.RankName;
    import com.ankamagames.dofus.datacenter.houses.HavenbagFurniture;
    import com.ankamagames.dofus.datacenter.houses.HavenbagTheme;
@@ -851,6 +853,11 @@ package com.ankamagames.dofus.uiApi
          return Achievement.getAchievements();
       }
       
+      public function getTotalAchievementPoints() : Number
+      {
+         return Achievement.getTotalAchievementPoints();
+      }
+      
       public function getAchievementCategory(achievementCatId:int) : AchievementCategory
       {
          return AchievementCategory.getAchievementCategoryById(achievementCatId);
@@ -1450,6 +1457,31 @@ package com.ankamagames.dofus.uiApi
       public function getFeatureDescriptionById(descriptionId:uint) : FeatureDescription
       {
          return FeatureDescription.getFeatureDescriptionById(descriptionId);
+      }
+      
+      public function getGuildTagById(tagId:uint) : GuildTag
+      {
+         return GuildTag.getGuildTagById(tagId);
+      }
+      
+      public function getAllGuildTag() : Array
+      {
+         return GuildTag.getGuildTags();
+      }
+      
+      public function getGuildTagsTypeById(typeId:uint) : GuildTagsType
+      {
+         return GuildTagsType.getGuildTagsTypeById(typeId);
+      }
+      
+      public function getAllGuildTagsType() : Array
+      {
+         return GuildTagsType.getGuildTagsTypes();
+      }
+      
+      public function getGuildTagsFromGuildTagId(guildTagId:int) : Vector.<GuildTag>
+      {
+         return GuildTag.getGuildTagsByTagId(guildTagId);
       }
    }
 }

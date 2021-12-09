@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.dialog
    public class PauseDialogMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8128;
+      public static const protocolId:uint = 8906;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.dialog
       
       override public function getMessageId() : uint
       {
-         return 8128;
+         return 8906;
       }
       
       public function initPauseDialogMessage(dialogType:uint = 0) : PauseDialogMessage

@@ -3,9 +3,7 @@ package com.ankamagames.berilia.components.gridRenderer
    import com.ankamagames.berilia.UIComponent;
    import com.ankamagames.berilia.components.Grid;
    import com.ankamagames.berilia.components.Label;
-   import com.ankamagames.berilia.components.Texture;
    import com.ankamagames.berilia.interfaces.IGridRenderer;
-   import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.messages.Message;
@@ -20,8 +18,6 @@ package com.ankamagames.berilia.components.gridRenderer
    
    public class LabelGridRenderer implements IGridRenderer
    {
-      
-      private static const DEFAULT_ICON_MARGIN:Number = -7;
        
       
       protected var _log:Logger;
@@ -45,8 +41,6 @@ package com.ankamagames.berilia.components.gridRenderer
       private var _firstEntryCssClass:String;
       
       private var _buttonWidth:Number = 0;
-      
-      public var isIcon:Boolean = false;
       
       public function LabelGridRenderer(strParams:String)
       {
@@ -86,42 +80,6 @@ package com.ankamagames.berilia.components.gridRenderer
                this._cssClass = params[6];
             }
          }
-      }
-      
-      public static function getLabelOffset(icon:Texture, data:Object) : Number
-      {
-         if(icon === null)
-         {
-            return 0;
-         }
-         var iconMargin:Number = data !== null && data.hasOwnProperty("margin") ? Number(data.margin) : Number(DEFAULT_ICON_MARGIN);
-         return icon.x + icon.width + iconMargin;
-      }
-      
-      private static function getLabelAndIcon(container:GraphicContainer) : Object
-      {
-         var tmpDisplayObject:DisplayObject = null;
-         var toReturn:Object = {
-            "label":null,
-            "icon":null
-         };
-         if(container !== null && container.numChildren >= 1)
-         {
-            tmpDisplayObject = container.getChildAt(0);
-            if(tmpDisplayObject is Label)
-            {
-               toReturn.label = tmpDisplayObject as Label;
-            }
-            if(container.numChildren >= 2)
-            {
-               tmpDisplayObject = container.getChildAt(1);
-               if(tmpDisplayObject is Texture)
-               {
-                  toReturn.icon = tmpDisplayObject as Texture;
-               }
-            }
-         }
-         return toReturn;
       }
       
       public function set buttonWidth(width:Number) : void
@@ -183,56 +141,28 @@ package com.ankamagames.berilia.components.gridRenderer
          {
             label.text = data.label;
          }
-         var labelOffset:Number = 0;
-         var icon:Texture = new Texture();
-         icon.width = icon.height = label.height;
-         if(this.isIcon && data !== null)
-         {
-            icon.uri = data.icon;
-            labelOffset = getLabelOffset(icon,data);
-            label.x += labelOffset;
-            label.width -= labelOffset;
-         }
-         icon.finalize();
-         this.updateBackground(label,index,selected,this.isIcon,labelOffset);
+         this.updateBackground(label,index,selected);
          label.finalize();
          label.addEventListener(MouseEvent.MOUSE_OVER,this.onRollOver);
          label.addEventListener(MouseEvent.MOUSE_OUT,this.onRollOut);
-         var container:GraphicContainer = new GraphicContainer();
-         container.addChild(label);
-         container.addChild(icon);
-         container.finalize();
-         return container;
+         return label;
       }
       
       public function update(data:*, index:uint, dispObj:DisplayObject, selected:Boolean, subIndex:uint = 0) : void
       {
-         var containerContent:Object = null;
-         var isIcon:Boolean = false;
          var label:Label = null;
-         var icon:Texture = null;
-         var labelOffset:Number = NaN;
-         if(dispObj is GraphicContainer)
+         if(dispObj is Label)
          {
-            containerContent = getLabelAndIcon(dispObj as GraphicContainer);
-            isIcon = data !== null && !(data is String) && data.hasOwnProperty("icon");
-            label = containerContent.label as Label;
-            icon = containerContent.icon as Texture;
-            labelOffset = 0;
-            if(data is String || data === null)
+            label = dispObj as Label;
+            if(data is String || data == null)
             {
                label.text = data;
             }
-            else if(data is Object)
+            else
             {
                label.text = data.label;
-               if(isIcon && icon !== null)
-               {
-                  icon.uri = data.icon;
-                  labelOffset = getLabelOffset(icon,data);
-               }
             }
-            this.updateBackground(label,index,selected,isIcon,labelOffset);
+            this.updateBackground(label,index,selected);
          }
          else
          {
@@ -276,7 +206,7 @@ package com.ankamagames.berilia.components.gridRenderer
          return functionName;
       }
       
-      private function updateBackground(label:Label, index:uint, selected:Boolean, isIcon:Boolean, labelOffset:Number = 0) : void
+      private function updateBackground(label:Label, index:uint, selected:Boolean) : void
       {
          var shape:Shape = null;
          if(!this._shapeIndex[label])
@@ -289,7 +219,6 @@ package com.ankamagames.berilia.components.gridRenderer
                "trans":new Transform(shape),
                "shape":shape
             };
-            shape.x -= labelOffset;
          }
          else
          {

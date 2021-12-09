@@ -63,6 +63,7 @@ package com.ankamagames.dofus.kernel
    import com.ankamagames.dofus.types.DofusOptions;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
    import com.ankamagames.dofus.types.enums.AnimationEnum;
+   import com.ankamagames.dofus.types.enums.LanguageEnum;
    import com.ankamagames.jerakine.benchmark.FileLoggerEnum;
    import com.ankamagames.jerakine.benchmark.LogInFile;
    import com.ankamagames.jerakine.data.XmlConfig;
@@ -244,6 +245,7 @@ package com.ankamagames.dofus.kernel
                BuildInfos.VERSION.buildType = buildType;
             }
          }
+         LangManager.getInstance().lang = this.getCurrentLang();
          this.initOptions();
          InterClientManager.getInstance().update();
          Atouin.getInstance().showWorld(false);
@@ -459,6 +461,70 @@ package com.ankamagames.dofus.kernel
                dataSoundLabel = TiphonEventsManager.BALISE_DATASOUND + TiphonEventsManager.BALISE_PARAM_BEGIN + (sa.label != null && sa.label != "null" ? sa.label : "") + TiphonEventsManager.BALISE_PARAM_END;
                animation.spriteHandler.tiphonEventManager.addEvent(dataSoundLabel,sa.startFrame,name);
             }
+         }
+      }
+      
+      private function getCurrentLang() : String
+      {
+         var currentLang:String = XmlConfig.getInstance().getEntry("config.lang.current");
+         var binds:String = XmlConfig.getInstance().getEntry("config.binds.current");
+         switch(currentLang)
+         {
+            case LanguageEnum.LANG_FR:
+               if(binds == "frFR")
+               {
+                  return "frFr";
+               }
+               if(binds == "frBE")
+               {
+                  return "frBe";
+               }
+               if(binds == "frCA")
+               {
+                  return "frCa";
+               }
+               if(binds == "frCH")
+               {
+                  return "frCh";
+               }
+               return "frFr";
+               break;
+            case LanguageEnum.LANG_EN:
+               if(binds == "enUK")
+               {
+                  return "enUk";
+               }
+               if(binds == "enUS")
+               {
+                  return "enUS";
+               }
+               return "enUS";
+               break;
+            case LanguageEnum.LANG_ES:
+               return "esEs";
+            case LanguageEnum.LANG_PT:
+               if(binds == "ptPT")
+               {
+                  return "ptPt";
+               }
+               if(binds == "ptBR")
+               {
+                  return "ptBr";
+               }
+               return "ptPt";
+               break;
+            case LanguageEnum.LANG_IT:
+               return "itIt";
+            case LanguageEnum.LANG_DE:
+               return "deDe";
+            case LanguageEnum.LANG_NL:
+               return "nlNl";
+            case LanguageEnum.LANG_JA:
+               return "jaJp";
+            case LanguageEnum.LANG_RU:
+               return "ruRu";
+            default:
+               return "enUs";
          }
       }
    }

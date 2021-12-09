@@ -4,6 +4,7 @@ package com.ankamagames.dofus.logic.game.common.managers
    import com.ankamagames.dofus.logic.game.common.misc.Inventory;
    import com.ankamagames.dofus.logic.game.common.misc.PlayerInventory;
    import com.ankamagames.dofus.logic.game.common.misc.inventoryView.BankConsumablesView;
+   import com.ankamagames.dofus.logic.game.common.misc.inventoryView.BankCosmeticsView;
    import com.ankamagames.dofus.logic.game.common.misc.inventoryView.BankEquipementView;
    import com.ankamagames.dofus.logic.game.common.misc.inventoryView.BankFilteredView;
    import com.ankamagames.dofus.logic.game.common.misc.inventoryView.BankMinoukiFilteredView;
@@ -16,6 +17,7 @@ package com.ankamagames.dofus.logic.game.common.managers
    import com.ankamagames.dofus.logic.game.common.misc.inventoryView.RealView;
    import com.ankamagames.dofus.logic.game.common.misc.inventoryView.RoleplayBuffView;
    import com.ankamagames.dofus.logic.game.common.misc.inventoryView.StorageConsumablesView;
+   import com.ankamagames.dofus.logic.game.common.misc.inventoryView.StorageCosmeticsView;
    import com.ankamagames.dofus.logic.game.common.misc.inventoryView.StorageEquipmentView;
    import com.ankamagames.dofus.logic.game.common.misc.inventoryView.StorageFilteredView;
    import com.ankamagames.dofus.logic.game.common.misc.inventoryView.StorageMinoukiFilteredView;
@@ -72,6 +74,7 @@ package com.ankamagames.dofus.logic.game.common.managers
          this.inventory.addView(new StorageEquipmentView(this.inventory.hookLock));
          this.inventory.addView(new StorageConsumablesView(this.inventory.hookLock));
          this.inventory.addView(new StorageResourcesView(this.inventory.hookLock));
+         this.inventory.addView(new StorageCosmeticsView(this.inventory.hookLock));
          this.inventory.addView(new StorageMinoukiView(this.inventory.hookLock));
          this.inventory.addView(new StorageMinoukiFilteredView(this.inventory.hookLock));
          this.inventory.addView(new StorageQuestCategory(this.inventory.hookLock));
@@ -133,6 +136,7 @@ package com.ankamagames.dofus.logic.game.common.managers
             this._bankInventory.addView(new BankEquipementView(this._bankInventory.hookLock));
             this._bankInventory.addView(new BankConsumablesView(this._bankInventory.hookLock));
             this._bankInventory.addView(new BankRessourcesView(this._bankInventory.hookLock));
+            this._bankInventory.addView(new BankCosmeticsView(this._bankInventory.hookLock));
             this._bankInventory.addView(new BankQuestView(this._bankInventory.hookLock));
             this._bankInventory.addView(new BankMinoukiView(this._bankInventory.hookLock));
             this._bankInventory.addView(new BankMinoukiFilteredView(this._bankInventory.hookLock));

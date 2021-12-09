@@ -28,8 +28,6 @@ package com.ankamagames.dofus.datacenter.alignments
       
       public var minimumAlignment:int;
       
-      public var objectsStolen:int;
-      
       public var gifts:Vector.<int>;
       
       private var _name:String;

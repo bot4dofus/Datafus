@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeObjectMoveKamaMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8601;
+      public static const protocolId:uint = 427;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 8601;
+         return 427;
       }
       
       public function initExchangeObjectMoveKamaMessage(quantity:Number = 0) : ExchangeObjectMoveKamaMessage

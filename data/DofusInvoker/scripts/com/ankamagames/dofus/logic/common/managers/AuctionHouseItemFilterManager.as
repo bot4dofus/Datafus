@@ -72,6 +72,11 @@ package com.ankamagames.dofus.logic.common.managers
                setLevelRange(_minLevel,_maxLevel);
                getBreedingItemTypeEffects();
                _openedCategories = [SEARCHBAR_CAT_ID,LEVELFILTER_CAT_ID,FIRST_SUBFILTER_CAT_ID];
+               break;
+            case 7:
+               _currentCategory = COSMETIC_CATEGORY;
+               setLevelRange(_minLevel,_maxLevel);
+               _openedCategories = [SEARCHBAR_CAT_ID,LEVELFILTER_CAT_ID,FIRST_SUBFILTER_CAT_ID,SECOND_SUBFILTER_CAT_ID,THIRD_SUBFILTER_CAT_ID];
          }
          _currentTypeInfos = currentTypeInfos;
          setItemsWithCurrentTypes();
@@ -84,35 +89,32 @@ package com.ankamagames.dofus.logic.common.managers
          var charac:Characteristic = null;
          super.dataInit(specificFilters);
          var characteristicsCategoriesData:Object = _dataApi.getCharacteristicCategories();
-         if(_currentFilteredIds.length > 0 && _currentFilteredIds.some(canDisplayCharacFilters))
+         if(_currentFilteredIds.length > 0 && _currentFilteredIds.some(canDisplayCharacFilters) && _currentCategory == EQUIPMENT_CATEGORY)
          {
-            if(_currentCategory == EQUIPMENT_CATEGORY)
+            for each(cat in characteristicsCategoriesData)
             {
-               for each(cat in characteristicsCategoriesData)
+               _dataMatrix.push({
+                  "name":_dataApi.getCharacteristicCategory(cat.id).name,
+                  "id":_catNumber,
+                  "isCat":true
+               });
+               for each(cId in cat.characteristicIds)
                {
-                  _dataMatrix.push({
-                     "name":_dataApi.getCharacteristicCategory(cat.id).name,
-                     "id":_catNumber,
-                     "isCat":true
-                  });
-                  for each(cId in cat.characteristicIds)
+                  charac = _dataApi.getCharacteristic(cId);
+                  if(charac)
                   {
-                     charac = _dataApi.getCharacteristic(cId);
-                     if(charac)
-                     {
-                        _dataMatrix.push(filterGridItem(cId,charac.keyword,charac.name,charac.asset,false,_catNumber));
-                     }
+                     _dataMatrix.push(filterGridItem(cId,charac.keyword,charac.name,charac.asset,false,_catNumber));
                   }
-                  if(cat.id == 3)
-                  {
-                     charac = _dataApi.getCharacteristic(40);
-                     if(charac)
-                     {
-                        _dataMatrix.push(filterGridItem(40,charac.keyword,charac.name,charac.asset,false,_catNumber));
-                     }
-                  }
-                  ++_catNumber;
                }
+               if(cat.id == 3)
+               {
+                  charac = _dataApi.getCharacteristic(40);
+                  if(charac)
+                  {
+                     _dataMatrix.push(filterGridItem(40,charac.keyword,charac.name,charac.asset,false,_catNumber));
+                  }
+               }
+               ++_catNumber;
             }
          }
          switch(_currentCategory)
@@ -128,12 +130,6 @@ package com.ankamagames.dofus.logic.common.managers
                   if(_currentFilteredIds.indexOf(DataEnum.ITEM_SUPERTYPE_CAPE) != -1)
                   {
                      setSubFilters(DataEnum.ITEM_SUPERTYPE_CAPE,DataEnum.ITEM_SUPERTYPE_CAPE,_currentUi.uiClass.uiApi.getText("ui.encyclopedia.capeCategory"));
-                  }
-                  if(_currentFilteredIds.indexOf(DataEnum.ITEM_SUPERTYPE_COSTUME) != -1)
-                  {
-                     this.addTargetCategory(_targetEquipment,_currentUi.uiClass.uiApi.getText("ui.encyclopedia.targetEquipment"),"targetEquipment");
-                     this.addTargetCategory(_targetWeapon,_currentUi.uiClass.uiApi.getText("ui.encyclopedia.targetWeapon"),"targetWeapon");
-                     setSubFilters(DataEnum.ITEM_SUPERTYPE_COSTUME,DataEnum.ITEM_SUPERTYPE_COSTUME,_currentUi.uiClass.uiApi.getText("ui.encyclopedia.encyclopediaType25"));
                   }
                   if(_currentFilteredIds.indexOf(DataEnum.ITEM_SUPERTYPE_DOFUS_TROPHY) != -1)
                   {
@@ -166,7 +162,6 @@ package com.ankamagames.dofus.logic.common.managers
             case CREATURE_CATEGORY:
                setSubFilters(DataEnum.ITEM_SUPERTYPE_PET,DataEnum.ITEM_SUPERTYPE_PET,_currentUi.uiClass.uiApi.getText("ui.encyclopedia.petCategory"));
                setSubFilters(DataEnum.ITEM_SUPERTYPE_CATCHING_ITEMS,DataEnum.ITEM_SUPERTYPE_CATCHING_ITEMS,_currentUi.uiClass.uiApi.getText("ui.common.equipments"));
-               setSubFilters(DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT,DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT,_currentUi.uiClass.uiApi.getText("ui.encyclopedia.petEquipmentCategory"));
                setSubFilters(DataEnum.ITEM_SUPERTYPE_PET_GHOST,DataEnum.ITEM_SUPERTYPE_PET_GHOST,_currentUi.uiClass.uiApi.getText("ui.encyclopedia.petResourceCategory"));
                setSubFilters(DataEnum.ITEM_TYPE_PET_EGG,DataEnum.ITEM_SUPERTYPE_CONSUMABLE,_currentUi.uiClass.uiApi.getText("ui.encyclopedia.petConsumableCategory"));
                if(_currentFilteredIds.indexOf(DataEnum.ITEM_SUPERTYPE_PET) != -1 || _currentFilteredIds.indexOf(DataEnum.ITEM_SUPERTYPE_CERTIFICATE) != -1 || _currentFilteredIds.indexOf(DataEnum.ITEM_SUPERTYPE_LIVING_ITEMS) != -1)
@@ -193,6 +188,11 @@ package com.ankamagames.dofus.logic.common.managers
                {
                   this.addBreedingItemType(_breedingItemType,_uiApi.getText("ui.encyclopedia.breedingItemCategory"),"breedingItem");
                }
+               break;
+            case COSMETIC_CATEGORY:
+               setSubFilters(DataEnum.ITEM_SUPERTYPE_LIVING_ITEMS,DataEnum.ITEM_SUPERTYPE_LIVING_ITEMS,_currentUi.uiClass.uiApi.getText("ui.encyclopedia.encyclopediaType22"));
+               setSubFilters(DataEnum.ITEM_SUPERTYPE_COSTUME,DataEnum.ITEM_SUPERTYPE_COSTUME,_currentUi.uiClass.uiApi.getText("ui.encyclopedia.encyclopediaType25"));
+               setSubFilters(DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT,DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT,_currentUi.uiClass.uiApi.getText("ui.encyclopedia.petEquipmentCategory"));
          }
       }
       

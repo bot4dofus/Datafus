@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class MapFightStartPositionsUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9358;
+      public static const protocolId:uint = 5408;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 9358;
+         return 5408;
       }
       
       public function initMapFightStartPositionsUpdateMessage(mapId:Number = 0, fightStartPositions:FightStartingPositions = null) : MapFightStartPositionsUpdateMessage

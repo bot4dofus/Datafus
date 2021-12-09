@@ -18,8 +18,8 @@ package Ankama_Connection.ui
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.network.enums.BuildTypeEnum;
-   import com.ankamagames.dofus.network.enums.GameServerTypeEnum;
    import com.ankamagames.dofus.network.types.connection.GameServerInformations;
+   import com.ankamagames.dofus.uiApi.ConfigApi;
    import com.ankamagames.dofus.uiApi.ConnectionApi;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.SystemApi;
@@ -37,6 +37,9 @@ package Ankama_Connection.ui
       
       [Api(name="UiApi")]
       public var uiApi:UiApi;
+      
+      [Api(name="ConfigApi")]
+      public var configApi:ConfigApi;
       
       [Api(name="TimeApi")]
       public var timeApi:TimeApi;
@@ -282,7 +285,7 @@ package Ankama_Connection.ui
          {
             this._selectedServerType = this.cb_mode.selectedItem.type;
             this.sysApi.log(2,"Mode choisi : " + this.cb_mode.selectedItem.label + " : " + this._selectedServerType + "      select method " + selectMethod);
-            if(this._selectedServerType == GameServerTypeEnum.SERVER_TYPE_HARDCORE && !this._isSuscribed)
+            if(this.configApi.isFeatureWithKeywordEnabled("server.heroic") && !this._isSuscribed)
             {
                text = this.uiApi.getText("ui.sersel.sucriberOnly");
             }
