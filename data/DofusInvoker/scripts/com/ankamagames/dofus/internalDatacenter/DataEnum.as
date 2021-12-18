@@ -169,9 +169,13 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const ITEM_TYPE_SMITHMAGIC_ORB:int = 189;
       
+      public static const ITEM_TYPE_HARNESS_MOUNT:int = 190;
+      
       public static const ITEM_TYPE_MULDO_CERTIFICATE:int = 196;
       
       public static const ITEM_TYPE_RECEIPT:int = 197;
+      
+      public static const ITEM_TYPE_COSMETIC_COSTUME:int = 199;
       
       public static const ITEM_TYPE_MOUNT_POTION:int = 206;
       
@@ -184,6 +188,24 @@ package com.ankamagames.dofus.internalDatacenter
       public static const ITEM_TYPE_PRYSMARADITE:int = 217;
       
       public static const ITEM_TYPE_HAVENBAG:int = 218;
+      
+      public static const ITEM_TYPE_COSMETIC_HAT:int = 246;
+      
+      public static const ITEM_TYPE_COSMETIC_CLOAK:int = 247;
+      
+      public static const ITEM_TYPE_COSMETIC_SHIELD:int = 248;
+      
+      public static const ITEM_TYPE_COSMETIC_PET:int = 249;
+      
+      public static const ITEM_TYPE_COSMETIC_PETMOUNT:int = 250;
+      
+      public static const ITEM_TYPE_COSMETIC_WEAPON:int = 251;
+      
+      public static const ITEM_TYPE_COSMETIC_MISC:int = 252;
+      
+      public static const ITEM_TYPE_HARNESS_MULDO:int = 255;
+      
+      public static const ITEM_TYPE_HARNESS_FLYHORN:int = 256;
       
       public static const ITEM_TYPE_FORGETTABLE_SPELL_SCROLL:int = 223;
       

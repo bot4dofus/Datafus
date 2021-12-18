@@ -47,6 +47,10 @@ package Ankama_TradeCenter.ui
    
    public class Stock
    {
+      
+      public static const CATEGORY_BUTTONS_TOTAL_WIDTH:int = 395;
+      
+      public static const CATEGORY_BUTTON_ORIGINAL_WIDTH:int = 51;
        
       
       [Api(name="SystemApi")]
@@ -485,18 +489,27 @@ package Ankama_TradeCenter.ui
          return false;
       }
       
-      private function replaceCategoryButtons() : void
+      protected function replaceCategoryButtons() : void
       {
          var btn:ButtonContainer = null;
+         var width:int = 0;
          var buttons:Array = [this.btnAll,this.btnEquipable,this.btnConsumables,this.btnRessources];
          if(this.minoukiVisible)
          {
             buttons.push(this.btnMinouki);
          }
          buttons.push(this.btnCosmetics);
-         var currentTotalWidth:int = buttons.length * this.btnAll.width + (buttons.length - 1);
-         var allButtonsTotalWidth:int = 5 * this.btnAll.width + 5;
-         var offsetToCenterButtons:int = int((allButtonsTotalWidth - currentTotalWidth) / 2);
+         var currentTotalWidth:int = buttons.length * CATEGORY_BUTTON_ORIGINAL_WIDTH + (buttons.length - 1);
+         if(CATEGORY_BUTTONS_TOTAL_WIDTH - currentTotalWidth < 0)
+         {
+            width = (CATEGORY_BUTTONS_TOTAL_WIDTH - buttons.length + 1) / buttons.length;
+            currentTotalWidth = width * buttons.length;
+            for each(btn in buttons)
+            {
+               btn.width = width;
+            }
+         }
+         var offsetToCenterButtons:int = int((CATEGORY_BUTTONS_TOTAL_WIDTH - currentTotalWidth) / 2);
          var xForCurrentButtonWithoutOffset:int = 0;
          for each(btn in buttons)
          {

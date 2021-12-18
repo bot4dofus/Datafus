@@ -45,6 +45,7 @@ package Ankama_Social
    import com.ankamagames.dofus.misc.lists.CustomUiHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.SocialHookList;
+   import com.ankamagames.dofus.network.enums.GameContextEnum;
    import com.ankamagames.dofus.uiApi.ChatApi;
    import com.ankamagames.dofus.uiApi.ConfigApi;
    import com.ankamagames.dofus.uiApi.DataApi;
@@ -395,9 +396,11 @@ package Ankama_Social
       
       private function onContextChanged(context:uint) : void
       {
-         if(context == 2)
+         if(context == GameContextEnum.FIGHT || context == GameContextEnum.ROLE_PLAY)
          {
-            this.uiApi.unloadUi("socialBase");
+            this.uiApi.unloadUi(UIEnum.SOCIAL_BASE);
+            this.uiApi.unloadUi(UIEnum.GUILD_PREZ_AND_RECRUIT);
+            this.uiApi.unloadUi(UIEnum.GUILD_APPLICATIONS);
          }
       }
       

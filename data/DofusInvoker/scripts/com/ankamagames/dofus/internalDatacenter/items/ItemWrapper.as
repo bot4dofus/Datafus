@@ -47,8 +47,6 @@ package com.ankamagames.dofus.internalDatacenter.items
       
       private static const COSMETIC_WRAPPER_TEXTURE_URI:String = "texture/slot/blueSlot_40.png";
       
-      private static const HARNESS_TYPE_ID:int = 190;
-      
       public static var MEMORY_LOG:Dictionary = new Dictionary(true);
       
       private static var _cache:Dictionary = new Dictionary();
@@ -197,7 +195,7 @@ package com.ankamagames.dofus.internalDatacenter.items
          item.effects = new Vector.<EffectInstance>();
          item.exchangeAllowed = true;
          item.updateEffects(newEffects);
-         if(item.isWrapperObject || item.isLivingObject || item.isHarness)
+         if(item.isWrapperObject || item.isLivingObject || item.isHarness || item.isCosmetic)
          {
             if(cosmecticWrapperBlueBorderUri == null)
             {
@@ -384,7 +382,7 @@ package com.ankamagames.dofus.internalDatacenter.items
       
       public function get isHarness() : Boolean
       {
-         return type.id == HARNESS_TYPE_ID;
+         return type.id == DataEnum.ITEM_TYPE_HARNESS_MOUNT || type.id == DataEnum.ITEM_TYPE_HARNESS_MULDO || type.id == DataEnum.ITEM_TYPE_HARNESS_FLYHORN;
       }
       
       public function get isObjectWrapped() : Boolean
@@ -525,6 +523,11 @@ package com.ankamagames.dofus.internalDatacenter.items
       public function get isEquipment() : Boolean
       {
          return category == ItemCategoryEnum.EQUIPMENT_CATEGORY;
+      }
+      
+      public function get isCosmetic() : Boolean
+      {
+         return category == ItemCategoryEnum.COSMETICS_CATEGORY;
       }
       
       public function get isUsable() : Boolean

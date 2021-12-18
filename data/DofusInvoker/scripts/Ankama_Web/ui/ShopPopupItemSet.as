@@ -127,10 +127,10 @@ package Ankama_Web.ui
          this._containsWeapon = false;
          for each(itemTmp in params.article.items)
          {
-            if(!(!(itemTmp is ItemWrapper) || !(itemTmp as ItemWrapper).isEquipment))
+            if(!(!(itemTmp is ItemWrapper) || !(itemTmp as ItemWrapper).isCosmetic))
             {
                item = itemTmp as ItemWrapper;
-               if(item.type.id != DataEnum.ITEM_TYPE_CEREMONIAL_ITEMS)
+               if(!this.isCosmeticItemId(item.type.id))
                {
                   superTypeId = item.type.superTypeId;
                }
@@ -258,6 +258,27 @@ package Ankama_Web.ui
          else
          {
             this.ed_popupChar.direction = this._direction;
+         }
+      }
+      
+      private function isCosmeticItemId(id:int) : Boolean
+      {
+         switch(id)
+         {
+            case DataEnum.ITEM_TYPE_HARNESS_MOUNT:
+            case DataEnum.ITEM_TYPE_COSMETIC_HAT:
+            case DataEnum.ITEM_TYPE_COSMETIC_CLOAK:
+            case DataEnum.ITEM_TYPE_COSMETIC_SHIELD:
+            case DataEnum.ITEM_TYPE_COSMETIC_PET:
+            case DataEnum.ITEM_TYPE_COSMETIC_PETMOUNT:
+            case DataEnum.ITEM_TYPE_COSMETIC_WEAPON:
+            case DataEnum.ITEM_TYPE_COSMETIC_MISC:
+            case DataEnum.ITEM_TYPE_HARNESS_MULDO:
+            case DataEnum.ITEM_TYPE_HARNESS_FLYHORN:
+            case DataEnum.ITEM_TYPE_LIVING_OBJECT:
+               return true;
+            default:
+               return false;
          }
       }
       

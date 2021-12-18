@@ -130,11 +130,11 @@ package com.ankamagames.dofus.internalDatacenter.guild
       
       public function get leaderName() : String
       {
-         if(this._leaderName == "" && this.members && this.members.length > 0)
+         if(this.members && this.members.length > 0)
          {
             return this.members[0].name;
          }
-         return this._leaderName;
+         return "";
       }
       
       public function update(guildId:uint, guildName:String, guildEmblem:GuildEmblem, leaderId:Number, leaderName:String, guildLevel:uint, nbMembers:uint, creationDate:Number, members:Vector.<CharacterMinimalGuildPublicInformations>, guildRecruitmentInfo:GuildRecruitmentDataWrapper, nbConnectedMembers:uint = 0, nbTaxCollectors:uint = 0, lastActivity:Number = 0, allianceId:uint = 0, allianceName:String = "", allianceTag:String = "", allianceLeader:Boolean = false) : void

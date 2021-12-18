@@ -2,7 +2,6 @@ package Ankama_Social.ui
 {
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.components.Label;
-   import com.ankamagames.berilia.components.Texture;
    import com.ankamagames.berilia.types.LocationEnum;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
@@ -90,8 +89,6 @@ package Ankama_Social.ui
       
       public var lbl_btn_tabAlliance:Label;
       
-      public var tx_tabGuildWarning:Texture;
-      
       public function SocialBase()
       {
          this._ds = new DataStoreType("SocialBase",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_CHARACTER);
@@ -169,7 +166,6 @@ package Ankama_Social.ui
          {
             this.openTab(-1);
          }
-         this.tx_tabGuildWarning.visible = this._currentTabUi != DataEnum.SOCIAL_TAB_GUILD_ID && StoreDataManager.getInstance().getSetData(this._ds,DATA_GUILD_WARNING,false);
          if(!_shortcutColor)
          {
             _shortcutColor = this.sysApi.getConfigEntry("colors.shortcut");
@@ -249,7 +245,6 @@ package Ankama_Social.ui
             {
                if(lastTab == DataEnum.SOCIAL_TAB_GUILD_ID || lastTab == DataEnum.SOCIAL_TAB_GUILD_DIRECTORY_ID)
                {
-                  this.tx_tabGuildWarning.visible = false;
                   StoreDataManager.getInstance().setData(this._ds,DATA_GUILD_WARNING,false);
                   if(lastTab && lastTab == DataEnum.SOCIAL_TAB_GUILD_DIRECTORY_ID && this.playerApi.isInKoli())
                   {

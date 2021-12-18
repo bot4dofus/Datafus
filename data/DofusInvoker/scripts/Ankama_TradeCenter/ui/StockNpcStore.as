@@ -3,6 +3,7 @@ package Ankama_TradeCenter.ui
    import com.ankamagames.berilia.enums.UIEnum;
    import com.ankamagames.berilia.types.LocationEnum;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
+   import com.ankamagames.berilia.utils.BeriliaHookList;
    import com.ankamagames.berilia.utils.ComponentHookList;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.misc.lists.ExchangeHookList;
@@ -21,12 +22,22 @@ package Ankama_TradeCenter.ui
       {
          super.main(params);
          uiApi.loadUi(UIEnum.NPC_ITEM,UIEnum.NPC_ITEM);
+         sysApi.addHook(BeriliaHookList.UiLoaded,this.onUiLoaded);
          sysApi.addHook(InventoryHookList.ObjectQuantity,this.onObjectQuantity);
          sysApi.addHook(InventoryHookList.ObjectDeleted,this.onObjectDeleted);
          uiApi.addComponentHook(btn_itemsFilter,ComponentHookList.ON_RELEASE);
          lbl_title.text = uiApi.getText("ui.common.shop");
          ed_merchant.look = params.look;
          tx_bgEntity.visible = true;
+         replaceCategoryButtons();
+      }
+      
+      public function onUiLoaded(name:String) : void
+      {
+         if(name == UIEnum.NPC_ITEM)
+         {
+            replaceCategoryButtons();
+         }
       }
       
       override public function unload() : void

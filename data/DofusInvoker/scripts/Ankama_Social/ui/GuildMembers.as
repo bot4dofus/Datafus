@@ -211,16 +211,19 @@ package Ankama_Social.ui
          this.btn_showOfflineMembers.selected = _showOfflineMembers;
          this.btn_warnWhenMemberIsOnline.selected = this.socialApi.getWarnOnMemberConnec();
          this.setGuildApplicationsButton(false);
-         if(this.uiApi.getUi(UIEnum.GUILD_APPLICATIONS) === null)
+         if(!this.playerApi.isInKoli())
          {
-            this.sysApi.sendAction(GuildSetApplicationUpdatesRequestAction.create(true));
+            if(this.uiApi.getUi(UIEnum.GUILD_APPLICATIONS) === null)
+            {
+               this.sysApi.sendAction(GuildSetApplicationUpdatesRequestAction.create(true));
+            }
+            this.sysApi.sendAction(GuildApplicationsRequestAction.create(0,0));
          }
-         this.sysApi.sendAction(GuildApplicationsRequestAction.create(0,0));
       }
       
       public function unload() : void
       {
-         if(this.uiApi.getUi(UIEnum.GUILD_APPLICATIONS) === null)
+         if(!this.playerApi.isInKoli() && this.uiApi.getUi(UIEnum.GUILD_APPLICATIONS) === null)
          {
             this.sysApi.sendAction(GuildSetApplicationUpdatesRequestAction.create(false));
          }

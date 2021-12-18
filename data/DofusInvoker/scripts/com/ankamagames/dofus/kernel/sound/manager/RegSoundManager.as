@@ -319,25 +319,22 @@ package com.ankamagames.dofus.kernel.sound.manager
          var entityId:Number = -1;
          if(pSprite.hasOwnProperty("absoluteBounds"))
          {
-            if(pSprite.getAnimation().indexOf("AnimAttaque4000") != -1)
+            if(rpEntitiesFrame)
             {
-               if(rpEntitiesFrame)
+               actorInfo = rpEntitiesFrame.getEntityInfos(pSprite.id);
+            }
+            else
+            {
+               fightFrame = Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame;
+               if(fightFrame)
                {
-                  actorInfo = rpEntitiesFrame.getEntityInfos(pSprite.id);
+                  actorInfo = fightFrame.getEntityInfos(pSprite.id);
                }
-               else
-               {
-                  fightFrame = Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame;
-                  if(fightFrame)
-                  {
-                     actorInfo = fightFrame.getEntityInfos(pSprite.id);
-                  }
-               }
-               if(actorInfo)
-               {
-                  posX = InteractiveCellManager.getInstance().getCell(actorInfo.disposition.cellId).x;
-                  posY = InteractiveCellManager.getInstance().getCell(actorInfo.disposition.cellId).y;
-               }
+            }
+            if(actorInfo)
+            {
+               posX = InteractiveCellManager.getInstance().getCell(actorInfo.disposition.cellId).x;
+               posY = InteractiveCellManager.getInstance().getCell(actorInfo.disposition.cellId).y;
             }
             else
             {

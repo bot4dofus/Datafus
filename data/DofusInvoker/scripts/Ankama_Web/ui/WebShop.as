@@ -897,7 +897,7 @@ package Ankama_Web.ui
             }
             if(sa.type == ShopArticleTypeEnum.UNKNOWN)
             {
-               if(sa.items[0].isHarness || sa.items[0].typeId == DataEnum.ITEM_TYPE_CEREMONIAL_ITEMS)
+               if(sa.items[0].isHarness)
                {
                   sa.type = ShopArticleTypeEnum.HARNESS;
                }
@@ -1216,7 +1216,7 @@ package Ankama_Web.ui
          var item:* = undefined;
          for each(item in article.items)
          {
-            if(item is ItemWrapper && (item as ItemWrapper).isEquipment)
+            if(item is ItemWrapper && (item as ItemWrapper).type.id != DataEnum.ITEM_TYPE_LIVING_OBJECT && ((item as ItemWrapper).isEquipment || (item as ItemWrapper).isCosmetic))
             {
                return true;
             }
