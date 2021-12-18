@@ -2188,20 +2188,41 @@
 			"id": 333,
 			"nameMaleId": 925974,
 			"nameFemaleId": 925975,
-			"visible": true,
+			"visible": false,
 			"categoryId": 11
 		},
 		{
 			"id": 334,
 			"nameMaleId": 925976,
 			"nameFemaleId": 925977,
-			"visible": true,
+			"visible": false,
 			"categoryId": 11
 		},
 		{
 			"id": 335,
 			"nameMaleId": 926104,
 			"nameFemaleId": 926105,
+			"visible": true,
+			"categoryId": 7
+		},
+		{
+			"id": 336,
+			"nameMaleId": 927987,
+			"nameFemaleId": 927988,
+			"visible": true,
+			"categoryId": 7
+		},
+		{
+			"id": 337,
+			"nameMaleId": 927989,
+			"nameFemaleId": 927990,
+			"visible": true,
+			"categoryId": 7
+		},
+		{
+			"id": 338,
+			"nameMaleId": 927991,
+			"nameFemaleId": 927992,
 			"visible": true,
 			"categoryId": 7
 		}

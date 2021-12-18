@@ -5677,18 +5677,6 @@
 			"clientProperties": ""
 		},
 		{
-			"id": 566,
-			"typeId": 1,
-			"showTitle": true,
-			"showBackgroundImage": true,
-			"titleId": 764569,
-			"authorId": 764571,
-			"subTitleId": 764570,
-			"contentId": 896638,
-			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class7 {\r\n\tfont-style: italic;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\tlist-style-type: circle;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n",
-			"clientProperties": ""
-		},
-		{
 			"id": 275,
 			"typeId": 1,
 			"showTitle": true,
@@ -6371,6 +6359,18 @@
 			"contentId": 926103,
 			"contentCSS": "body {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\n.document_content2_es-class12 {\n\tfont-weight: bold;\n}\n.document_content2_en-class13 {\n\tfont-style: italic;\n\tfont-weight: bold;\n}\n.document_content2_es-class13 {\n\tfont-style: italic;\n\tfont-weight: bold;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\n.document_content2_fr-class13 {\n\tfont-weight: bold;\n}\n.document_content2_fr-class12 {\n\tfont-size: 16pt;\n\tfont-style: italic;\n\ttext-align: center;\n}\n.document_content2_fr-class11 {\n\tfont-style: italic;\n\tfont-weight: bold;\n}\n.document_content2_it-class13 {\n\tfont-weight: bold;\n}\n.document_content2_it-class12 {\n\tfont-size: 16pt;\n\tfont-style: italic;\n\ttext-align: center;\n}\n.document_content2_it-class11 {\n\tfont-style: italic;\n\tfont-weight: bold;\n}\nli {\n\ttext-indent: 12pt;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
 			"clientProperties": "null"
+		},
+		{
+			"id": 566,
+			"typeId": 1,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 764569,
+			"authorId": 764571,
+			"subTitleId": 764570,
+			"contentId": 928121,
+			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class7 {\r\n\tfont-style: italic;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\tlist-style-type: circle;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n",
+			"clientProperties": ""
 		}
 	]
 }

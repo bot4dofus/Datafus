@@ -8895,12 +8895,12 @@
 			"categoryId": 4,
 			"gfx": 419,
 			"nameId": 921888,
-			"mapId": 219546626,
+			"mapId": 212862981,
 			"realMapId": 0,
-			"x": -27,
-			"y": 35,
+			"x": -24,
+			"y": 38,
 			"outdoor": true,
-			"subareaId": 982,
+			"subareaId": 978,
 			"worldMapId": 1,
 			"level": 0
 		},
@@ -9225,6 +9225,20 @@
 			"subareaId": 971,
 			"worldMapId": 30,
 			"level": 200
+		},
+		{
+			"id": 3571,
+			"categoryId": 4,
+			"gfx": 419,
+			"nameId": 928120,
+			"mapId": 212601346,
+			"realMapId": 0,
+			"x": -30,
+			"y": -58,
+			"outdoor": true,
+			"subareaId": 973,
+			"worldMapId": 1,
+			"level": 0
 		}
 	]
 }

@@ -33963,7 +33963,7 @@
 				3077
 			],
 			"isPartyQuest": false,
-			"startCriterion": "PL>189&OA=1705&Qf=2409&((Qa=2422&Qo>18280)|Qf=2422)&PO=737&PO=694&PO=739&PO=7754&PO=7115&PO=7114",
+			"startCriterion": "PL>189&OA=1705&Qf=2409&Qf=2138&((Qa=2422&Qo>18280)|Qf=2422)&PO=737&PO=694&PO=739&PO=7754&PO=7115&PO=7114",
 			"followable": true
 		},
 		{

@@ -1534,7 +1534,7 @@
 			"id": 276,
 			"nameId": 585154,
 			"actionId": 0,
-			"displayTooltip": false
+			"displayTooltip": true
 		},
 		{
 			"id": 277,
@@ -2163,6 +2163,18 @@
 		{
 			"id": 381,
 			"nameId": 922046,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 386,
+			"nameId": 928132,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 387,
+			"nameId": 928131,
 			"actionId": 0,
 			"displayTooltip": true
 		}

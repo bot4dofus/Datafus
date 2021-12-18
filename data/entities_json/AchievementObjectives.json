@@ -65910,7 +65910,7 @@
 			"achievementId": 5174,
 			"order": 0,
 			"nameId": 921843,
-			"criterion": "(QQ>1099)&Wo=0"
+			"criterion": "(QQ>1599)&Wo=0"
 		},
 		{
 			"id": 11142,
@@ -66232,14 +66232,14 @@
 			"achievementId": 5201,
 			"order": 0,
 			"nameId": 924095,
-			"criterion": "(OA=5195)&Wo=0"
+			"criterion": "(OA=5196)&Wo=0"
 		},
 		{
 			"id": 11198,
 			"achievementId": 5201,
 			"order": 1,
 			"nameId": 924096,
-			"criterion": "(OA=5196)&Wo=0"
+			"criterion": "(OA=5195)&Wo=0"
 		},
 		{
 			"id": 11199,

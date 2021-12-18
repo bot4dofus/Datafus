@@ -22432,11 +22432,11 @@
 		{
 			"id": 212599555.0,
 			"rightExists": true,
-			"bottomExists": false,
+			"bottomExists": true,
 			"leftExists": true,
 			"topExists": false,
 			"rightMapId": 212600065.0,
-			"bottomMapId": 0.0,
+			"bottomMapId": 212599296.0,
 			"leftMapId": 212730626.0,
 			"topMapId": 0.0
 		},
@@ -22463,6 +22463,17 @@
 			"topMapId": 0.0
 		},
 		{
+			"id": 212600321.0,
+			"rightExists": true,
+			"bottomExists": false,
+			"leftExists": false,
+			"topExists": false,
+			"rightMapId": 212601346.0,
+			"bottomMapId": 0.0,
+			"leftMapId": 0.0,
+			"topMapId": 0.0
+		},
+		{
 			"id": 212600322.0,
 			"rightExists": true,
 			"bottomExists": false,
@@ -22485,6 +22496,17 @@
 			"topMapId": 0.0
 		},
 		{
+			"id": 212600839.0,
+			"rightExists": false,
+			"bottomExists": true,
+			"leftExists": false,
+			"topExists": false,
+			"rightMapId": 0.0,
+			"bottomMapId": 212601353.0,
+			"leftMapId": 0.0,
+			"topMapId": 0.0
+		},
+		{
 			"id": 212601344.0,
 			"rightExists": true,
 			"bottomExists": false,
@@ -22493,6 +22515,17 @@
 			"rightMapId": 212603138.0,
 			"bottomMapId": 0.0,
 			"leftMapId": 0.0,
+			"topMapId": 0.0
+		},
+		{
+			"id": 212601346.0,
+			"rightExists": false,
+			"bottomExists": false,
+			"leftExists": true,
+			"topExists": false,
+			"rightMapId": 0.0,
+			"bottomMapId": 0.0,
+			"leftMapId": 212600321.0,
 			"topMapId": 0.0
 		},
 		{
@@ -22795,11 +22828,11 @@
 		{
 			"id": 212861955.0,
 			"rightExists": false,
-			"bottomExists": false,
+			"bottomExists": true,
 			"leftExists": true,
 			"topExists": false,
 			"rightMapId": 0.0,
-			"bottomMapId": 0.0,
+			"bottomMapId": 212861957.0,
 			"leftMapId": 212860931.0,
 			"topMapId": 0.0
 		},
@@ -22810,6 +22843,17 @@
 			"leftExists": false,
 			"topExists": false,
 			"rightMapId": 172232193.0,
+			"bottomMapId": 0.0,
+			"leftMapId": 0.0,
+			"topMapId": 0.0
+		},
+		{
+			"id": 212862466.0,
+			"rightExists": true,
+			"bottomExists": false,
+			"leftExists": false,
+			"topExists": false,
+			"rightMapId": 212863490.0,
 			"bottomMapId": 0.0,
 			"leftMapId": 0.0,
 			"topMapId": 0.0
@@ -22834,6 +22878,17 @@
 			"rightMapId": 0.0,
 			"bottomMapId": 0.0,
 			"leftMapId": 172231692.0,
+			"topMapId": 0.0
+		},
+		{
+			"id": 212863490.0,
+			"rightExists": false,
+			"bottomExists": false,
+			"leftExists": true,
+			"topExists": false,
+			"rightMapId": 0.0,
+			"bottomMapId": 0.0,
+			"leftMapId": 212862466.0,
 			"topMapId": 0.0
 		},
 		{

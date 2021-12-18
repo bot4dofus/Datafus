@@ -6622,7 +6622,7 @@
 		{
 			"id": 240,
 			"superRaceId": 13,
-			"nameId": 917463,
+			"nameId": 928053,
 			"aggressiveZoneSize": 3,
 			"aggressiveLevelDiff": 50,
 			"aggressiveImmunityCriterion": "PO=9910",
@@ -6640,7 +6640,7 @@
 		{
 			"id": 241,
 			"superRaceId": 13,
-			"nameId": 917464,
+			"nameId": 928052,
 			"aggressiveZoneSize": 3,
 			"aggressiveLevelDiff": 50,
 			"aggressiveImmunityCriterion": "PO=9910",

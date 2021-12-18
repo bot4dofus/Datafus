@@ -32,14 +32,14 @@
 			"uid": 1,
 			"seasonNumber": 1,
 			"information": "Temporis I",
-			"beginning": 1524614400000.0,
-			"closure": 1532995200000.0
+			"beginning": 1524610800000.0,
+			"closure": 1532991600000.0
 		},
 		{
 			"uid": 3,
 			"seasonNumber": 2,
 			"information": "Temporis II : Fake news",
-			"beginning": 1533081600000.0,
+			"beginning": 1533078000000.0,
 			"closure": 1548720000000.0
 		},
 		{
@@ -47,34 +47,34 @@
 			"seasonNumber": 2,
 			"information": "Temporis II : La revanche du drop",
 			"beginning": 1548720000000.0,
-			"closure": 1554854400000.0
+			"closure": 1554850800000.0
 		},
 		{
 			"uid": 4,
 			"seasonNumber": 3,
 			"information": "Temporis III : Fake news",
-			"beginning": 1563235200000.0,
-			"closure": 1569888000000.0
+			"beginning": 1563231600000.0,
+			"closure": 1569884400000.0
 		},
 		{
 			"uid": 5,
 			"seasonNumber": 4,
 			"information": "Temporis IV : L'av\u00e8nement des Parchomanciens",
 			"beginning": 1579737600000.0,
-			"closure": 1596240000000.0
+			"closure": 1596236400000.0
 		},
 		{
 			"uid": 14,
 			"seasonNumber": 5,
 			"information": "Temporis V : Ecaflip City",
 			"beginning": 1612137600000.0,
-			"closure": 1625616000000.0
+			"closure": 1625612400000.0
 		},
 		{
 			"uid": 16,
 			"seasonNumber": 6,
 			"information": "Temporis VI : L'av\u00e8nement des Recommanciens",
-			"beginning": 1625702400000.0,
+			"beginning": 1625698800000.0,
 			"closure": 1640995200000.0
 		}
 	]

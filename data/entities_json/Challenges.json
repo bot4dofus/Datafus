@@ -6088,7 +6088,7 @@
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 10023,
-			"completionCriterion": "ST<20",
+			"completionCriterion": "ST<40",
 			"activationCriterion": "GN<3,0&GM>0,6792,1&Gm=d",
 			"targetMonsterId": 6792
 		}
