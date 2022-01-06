@@ -805,6 +805,7 @@ package Ankama_Connection
       
       private function onZaapConnectionFailed() : void
       {
+         this._sPopup = "zaapConnectionFailed";
          this.modCommon.openPopup(this.uiApi.getText("ui.popup.warning"),this.uiApi.getText("ui.connection.updaterConnectionFailed"),[this.uiApi.getText("ui.common.ok")],[],null,null,null,false,true);
       }
       

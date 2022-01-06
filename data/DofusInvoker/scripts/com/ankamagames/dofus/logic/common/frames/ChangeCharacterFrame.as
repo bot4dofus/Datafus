@@ -101,7 +101,7 @@ package com.ankamagames.dofus.logic.common.frames
                   }
                   else if(ZaapApi.canLoginWithZaap())
                   {
-                     if(ZaapApi.canLoginWithZaap() && !ZaapApi.isUsingZaap())
+                     if(!ZaapApi.isUsingZaap())
                      {
                         forceNoRetry = true;
                      }

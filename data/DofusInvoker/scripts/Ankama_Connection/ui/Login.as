@@ -47,6 +47,12 @@ package Ankama_Connection.ui
       
       private static const GAMEMODE_LOG_IN_ZAAP:uint = 5;
       
+      private static const CONNECT_TO_SERVER_LIST:uint = 0;
+      
+      private static const CONNECT_TO_CHARACTER_LIST:uint = 1;
+      
+      private static const CONNECT_TO_GAME:uint = 2;
+      
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(Login));
        
       
@@ -81,11 +87,11 @@ package Ankama_Connection.ui
       
       private var _previousFocus:Input;
       
-      private var _domain:int = -1;
-      
       private var _mustDisableConnectionButton:Boolean = false;
       
       private var _timeoutId:uint;
+      
+      private var _popupName:String;
       
       public var ctr_center:GraphicContainer;
       
@@ -159,22 +165,21 @@ package Ankama_Connection.ui
       
       public function main(params:Array) : void
       {
-         var popup:String = null;
          var porc:String = null;
          var serverport:uint = 0;
+         var initialUiMode:uint = 0;
          var loginMustBeSaved:int = 0;
          var lastLogins:Array = null;
          var deprecatedLogin:String = null;
          var logins:Array = null;
          if(params.length > 0)
          {
-            popup = params[0];
+            this._popupName = params[0];
          }
          if(params.length > 1 && !this.uiApi.me().uiModule.mainClass.unlocked)
          {
             this._mustDisableConnectionButton = params[1];
          }
-         var initialUiMode:uint = this.sysApi.getSetData("loginUiMode",GAMEMODE_NONE);
          if(this.sysApi.isUsingZaapLogin())
          {
             this._zaapLoginAvailable = true;
@@ -232,13 +237,13 @@ package Ankama_Connection.ui
          this.cb_socket.value = aPortsName[this._aPorts.indexOf(serverport)];
          this.cb_connectionType.dataProvider = [{
             "label":this.uiApi.getText("ui.connection.connectionToServerChoice"),
-            "type":0
+            "connectionType":CONNECT_TO_SERVER_LIST
          },{
             "label":this.uiApi.getText("ui.connection.connectionToCharacterChoice"),
-            "type":1
+            "connectionType":CONNECT_TO_CHARACTER_LIST
          },{
             "label":this.uiApi.getText("ui.connection.connectionDirectAccess"),
-            "type":2
+            "connectionType":CONNECT_TO_GAME
          }];
          var autoConnectType:uint = this.configApi.getConfigProperty("dofus","autoConnectType");
          this.cb_connectionType.value = this.cb_connectionType.dataProvider[autoConnectType];
@@ -314,9 +319,13 @@ package Ankama_Connection.ui
                }
             }
          }
-         if(popup == "unexpectedSocketClosure")
+         if(this._popupName == "unexpectedSocketClosure")
          {
-            this.modCommon.openPopup(this.uiApi.getText("ui.popup.unexpectedSocketClosure"),this.uiApi.getText("ui.popup.unexpectedSocketClosure.text"),[this.uiApi.getText("ui.common.ok")]);
+            this.modCommon.openPopup(this.uiApi.getText("ui.popup.unexpectedSocketClosure"),this.uiApi.getText("ui.popup.unexpectedSocketClosure.text"),[this.uiApi.getText("ui.common.ok")],[this.onClosePopup]);
+         }
+         else if(this._popupName == "zaapConnectionFailed")
+         {
+            this.modCommon.openPopup(this.uiApi.getText("ui.popup.warning"),this.uiApi.getText("ui.connection.updaterConnectionFailed"),[this.uiApi.getText("ui.common.ok")],[this.onClosePopup],null,null,null,false,true);
          }
          this.lbl_capsLock.multiline = false;
          this.lbl_capsLock.wordWrap = false;
@@ -341,6 +350,11 @@ package Ankama_Connection.ui
          {
             this.hideHostSelection();
          }
+      }
+      
+      private function onClosePopup() : void
+      {
+         this._popupName = null;
       }
       
       public function unload() : void
@@ -408,14 +422,7 @@ package Ankama_Connection.ui
          {
             componentsRef["lbl_loginName" + mod].text = data;
             componentsRef["btn_removeLogin" + mod].visible = true;
-            if(selected)
-            {
-               componentsRef["btn_login" + mod].selected = true;
-            }
-            else
-            {
-               componentsRef["btn_login" + mod].selected = false;
-            }
+            componentsRef["btn_login" + mod].selected = selected;
          }
          else
          {
@@ -489,12 +496,12 @@ package Ankama_Connection.ui
             }
             else
             {
-               directConnection = this.cb_connectionType.selectedItem.type == 2;
+               directConnection = this.cb_connectionType.selectedItem.connectionType == CONNECT_TO_GAME;
                if(directConnection)
                {
                   this.connectionApi.allowAutoConnectCharacter(true);
                }
-               this.sysApi.sendAction(new LoginValidationAction([sLogin,sPass,this.cb_connectionType.selectedItem.type != 0,0,this.cb_hosts.dataProvider.length >= 0 ? this.cb_hosts.selectedItem : null]));
+               this.sysApi.sendAction(new LoginValidationAction([sLogin,sPass,this.cb_connectionType.selectedItem.connectionType != CONNECT_TO_SERVER_LIST,0,this.cb_hosts.dataProvider.length >= 0 ? this.cb_hosts.selectedItem : null]));
             }
          }
       }
@@ -504,7 +511,7 @@ package Ankama_Connection.ui
          if(this._currentMode == GAMEMODE_LOG_IN_ZAAP)
          {
             this.soundApi.playSound(SoundTypeEnum.OK_BUTTON);
-            if(this.cb_connectionType.selectedItem.type == 2)
+            if(this.cb_connectionType.selectedItem.connectionType == CONNECT_TO_GAME)
             {
                this.connectionApi.allowAutoConnectCharacter(true);
             }
@@ -598,14 +605,7 @@ package Ankama_Connection.ui
                this.sysApi.goToUrl(this.uiApi.getText("ui.link.createAccount"));
                break;
             case this.btn_options:
-               if(this.ctr_options.visible)
-               {
-                  this.ctr_options.visible = false;
-               }
-               else
-               {
-                  this.ctr_options.visible = true;
-               }
+               this.ctr_options.visible = !this.ctr_options.visible;
                break;
             case this.btn_members:
                this.sysApi.goToUrl(this.uiApi.getText("ui.link.members"));
@@ -700,7 +700,7 @@ package Ankama_Connection.ui
                this.sysApi.setPort(this._aPorts[this.cb_socket.selectedIndex]);
                break;
             case this.cb_connectionType:
-               this.configApi.setConfigProperty("dofus","autoConnectType",this.cb_connectionType.selectedItem.type);
+               this.configApi.setConfigProperty("dofus","autoConnectType",this.cb_connectionType.selectedItem.connectionType);
                break;
             case this.cbx_login:
                if(selectMethod != GridItemSelectMethodEnum.AUTO)
@@ -845,6 +845,10 @@ package Ankama_Connection.ui
             this.ctr_zaap.visible = false;
             this.cb_connectionType.disabled = false;
             this.btn_rememberLogin.disabled = false;
+            if(!this._popupName)
+            {
+               this._popupName = this.modCommon.openPopup(this.uiApi.getText("ui.popup.warning"),this.uiApi.getText("ui.connection.updaterConnectionFailed"),[this.uiApi.getText("ui.common.ok")],[this.onClosePopup],null,null,null,false,true);
+            }
          }
          else if(mode == GAMEMODE_LOG_IN_ZAAP)
          {
