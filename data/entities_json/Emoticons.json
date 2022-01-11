@@ -3683,6 +3683,21 @@
 			"duration": 0,
 			"weight": 1005,
 			"spellLevelId": 0
+		},
+		{
+			"id": 262,
+			"nameId": 928289,
+			"shortcutId": 928290,
+			"order": 506600,
+			"defaultAnim": "Jiva",
+			"persistancy": false,
+			"eight_directions": false,
+			"aura": false,
+			"anims": [],
+			"cooldown": 1008,
+			"duration": 1008,
+			"weight": 0,
+			"spellLevelId": 0
 		}
 	]
 }

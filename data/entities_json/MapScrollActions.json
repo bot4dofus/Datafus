@@ -22497,11 +22497,11 @@
 		},
 		{
 			"id": 212600839.0,
-			"rightExists": false,
+			"rightExists": true,
 			"bottomExists": true,
 			"leftExists": false,
 			"topExists": false,
-			"rightMapId": 0.0,
+			"rightMapId": 212601864.0,
 			"bottomMapId": 212601353.0,
 			"leftMapId": 0.0,
 			"topMapId": 0.0
@@ -22554,11 +22554,11 @@
 			"id": 212601864.0,
 			"rightExists": false,
 			"bottomExists": false,
-			"leftExists": false,
+			"leftExists": true,
 			"topExists": true,
 			"rightMapId": 0.0,
 			"bottomMapId": 0.0,
-			"leftMapId": 0.0,
+			"leftMapId": 212600839.0,
 			"topMapId": 212601350.0
 		},
 		{
