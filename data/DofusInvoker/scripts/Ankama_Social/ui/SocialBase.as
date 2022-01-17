@@ -420,13 +420,17 @@ package Ankama_Social.ui
                }
                return true;
             case "openSocialAlliance":
-               if(this._currentTabUi == DataEnum.SOCIAL_TAB_ALLIANCE_ID)
+               if(this._currentTabUi == DataEnum.SOCIAL_TAB_ALLIANCE_ID || this._currentTabUi == DataEnum.SOCIAL_TAB_ALLIANCE_DIRECTORY_ID)
                {
                   this.uiApi.unloadUi(this.uiApi.me().name);
                }
-               else
+               else if(this.socialApi.hasAlliance())
                {
                   this.openTab(DataEnum.SOCIAL_TAB_ALLIANCE_ID);
+               }
+               else
+               {
+                  this.openTab(DataEnum.SOCIAL_TAB_ALLIANCE_DIRECTORY_ID);
                }
                return true;
             case "closeUi":

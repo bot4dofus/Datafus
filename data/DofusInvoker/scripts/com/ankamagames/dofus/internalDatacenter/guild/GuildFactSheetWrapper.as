@@ -130,9 +130,16 @@ package com.ankamagames.dofus.internalDatacenter.guild
       
       public function get leaderName() : String
       {
+         var member:CharacterMinimalGuildPublicInformations = null;
          if(this.members && this.members.length > 0)
          {
-            return this.members[0].name;
+            for each(member in this.members)
+            {
+               if(member.id == this.leaderId)
+               {
+                  return member.name;
+               }
+            }
          }
          return "";
       }
