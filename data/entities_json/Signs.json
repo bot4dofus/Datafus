@@ -727,12 +727,6 @@
 			"textKey": 0
 		},
 		{
-			"id": 522942,
-			"params": "2823",
-			"skillId": 361,
-			"textKey": 0
-		},
-		{
 			"id": 522965,
 			"params": "2946",
 			"skillId": 361,
@@ -795,12 +789,6 @@
 		{
 			"id": 522991,
 			"params": "2793",
-			"skillId": 361,
-			"textKey": 0
-		},
-		{
-			"id": 522996,
-			"params": "2776",
 			"skillId": 361,
 			"textKey": 0
 		},
@@ -1025,6 +1013,18 @@
 			"params": "20",
 			"skillId": 360,
 			"textKey": 924660
+		},
+		{
+			"id": 522942,
+			"params": "2823",
+			"skillId": 361,
+			"textKey": 0
+		},
+		{
+			"id": 522996,
+			"params": "2776",
+			"skillId": 361,
+			"textKey": 0
 		}
 	]
 }

@@ -2176,7 +2176,7 @@
 			"id": 387,
 			"nameId": 928131,
 			"actionId": 0,
-			"displayTooltip": true
+			"displayTooltip": false
 		}
 	]
 }
