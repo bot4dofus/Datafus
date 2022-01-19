@@ -121,6 +121,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag.meeting.TeleportHavenBagRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.job.JobAllowMultiCraftRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.job.JobMultiCraftAvailableSkillsMessage;
+   import com.ankamagames.dofus.network.messages.game.context.roleplay.npc.ListMapNpcsQuestStatusUpdateMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.npc.NpcDialogCreationMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.npc.NpcGenericActionFailureMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.npc.NpcGenericActionRequestMessage;
@@ -289,6 +290,8 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       private var _obtainedItemBonusTextFormat:TextFormat;
       
       private var _mountBoosTextFormat:TextFormat;
+      
+      private var _listMapNpcsMsg:ListMapNpcsQuestStatusUpdateMessage;
       
       public function RoleplayContextFrame()
       {
@@ -615,6 +618,15 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                }
                KernelEventsManager.getInstance().processCallback(HookList.CurrentMap,mcmsg.mapId);
                return false;
+            case msg is ListMapNpcsQuestStatusUpdateMessage:
+               if(this._entitiesFrame && Kernel.getWorker().contains(RoleplayEntitiesFrame))
+               {
+                  this._listMapNpcsMsg = null;
+                  return false;
+               }
+               this._listMapNpcsMsg = msg as ListMapNpcsQuestStatusUpdateMessage;
+               return true;
+               break;
             case msg is MapsLoadingCompleteMessage:
                mlcm = msg as MapsLoadingCompleteMessage;
                if(!Kernel.getWorker().contains(RoleplayEntitiesFrame))
@@ -641,6 +653,11 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                Kernel.getWorker().clearUnstoppableMsgClassList();
                ConnectionsHandler.resume();
                SurveyManager.getInstance().checkSurveys();
+               if(this._listMapNpcsMsg)
+               {
+                  Kernel.getWorker().process(this._listMapNpcsMsg);
+                  this._listMapNpcsMsg = null;
+               }
                return true;
             case msg is MapLoadingFailedMessage:
                switch(MapLoadingFailedMessage(msg).errorReason)

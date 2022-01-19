@@ -97,7 +97,7 @@ package com.ankamagames.dofus.logic.game.fight.steps
             ttCacheName = "EntityShortInfos" + this._fighterInfo.contextualId;
          }
          TooltipManager.updateContent(ttCacheName,ttName,this._fighterInfo);
-         if(this._target)
+         if(this._target && target && target.position)
          {
             TooltipManager.updatePosition(ttCacheName,ttName,this._target.absoluteBounds,LocationEnum.POINT_BOTTOM,LocationEnum.POINT_TOP,0,true,true,target.position.cellId);
          }

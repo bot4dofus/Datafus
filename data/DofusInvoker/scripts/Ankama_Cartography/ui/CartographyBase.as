@@ -309,7 +309,7 @@ package Ankama_Cartography.ui
             mapViewer.removeMapElement(icon);
          }
          subArea = !!sysApi.getPlayerManager().isMapInHavenbag(this.playerApi.currentMap().mapId) ? this.playerApi.previousSubArea() : this.playerApi.currentSubArea();
-         if(subArea.area.superArea.worldmap.id != this.__worldMapInfo.id)
+         if(subArea.worldmap.id != this.__worldMapInfo.id)
          {
             return;
          }
@@ -319,6 +319,7 @@ package Ankama_Cartography.ui
          {
             this._oldIcons.push(mapViewer.addIcon(MAP_LAYER_QUEST,questIcon.id,uri,questIcon.x,questIcon.y,this.__iconScale,uiApi.getText("ui.cartography.availableQuests") + " (" + questIcon.nb + ")"));
          }
+         mapViewer.updateMapElements();
       }
       
       public function addFlag(flagId:String, flagLegend:String, x:int, y:int, color:int = -1, playSound:Boolean = true, needMapUpdate:Boolean = true, canBeManuallyRemoved:Boolean = true, allowDuplicate:Boolean = false) : void

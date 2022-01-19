@@ -73,7 +73,7 @@ package com.ankamagames.dofus.types.characteristicContextual
          var txtCxt:TextContextual = null;
          var txtSCxt:StyledTextContextual = null;
          var data:TweenData = null;
-         if(!oEntity || oEntity.position.cellId == -1)
+         if(!oEntity || !oEntity.position || oEntity.position.cellId == -1)
          {
             return null;
          }

@@ -232,7 +232,7 @@ package com.ankamagames.berilia.components
             {
                addedLines += this._nbLines[this._lines[i]];
             }
-            for(i = 0; i < Math.max(addedLines + this._maxInterScroll - oldMaxInterScroll + this._interScroll,this._label.textfield.numLines); i++)
+            for(i = 0; i < Math.min(addedLines + this._maxInterScroll - oldMaxInterScroll + this._interScroll,this._label.textfield.numLines); i++)
             {
                nbCharDiffSelectionBegin += this._label.textfield.getLineLength(i);
             }
@@ -427,7 +427,7 @@ package com.ankamagames.berilia.components
          this._scrollBar.graphics.drawRoundRect(0,0,WIDTH,vHeight,5);
          this._scrollBar.graphics.endFill();
          var ytemp:int = this._interScroll;
-         for(var i:int = 0; i < this._scroll; i++)
+         for(var i:int = 0; i < Math.min(this._scroll,this._lines.length - 1); i++)
          {
             ytemp += this._nbLines[this._lines[i]];
          }
