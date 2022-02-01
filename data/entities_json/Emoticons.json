@@ -3698,6 +3698,21 @@
 			"duration": 1008,
 			"weight": 0,
 			"spellLevelId": 0
+		},
+		{
+			"id": 263,
+			"nameId": 928486,
+			"shortcutId": 928479,
+			"order": 506700,
+			"defaultAnim": "Silvosse",
+			"persistancy": false,
+			"eight_directions": false,
+			"aura": false,
+			"anims": [],
+			"cooldown": 1628,
+			"duration": 1008,
+			"weight": 0,
+			"spellLevelId": 0
 		}
 	]
 }
