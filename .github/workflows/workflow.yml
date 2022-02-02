@@ -1,0 +1,45 @@
+name: Workflow
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/DofusInvoker.swf'
+      - 'data/d2o/*'
+      - 'data/d2i/*'
+    branches:
+      - master
+
+jobs:
+
+  Flow_A_:
+    runs-on: ubuntu-latest
+    if: contains(github.event.commits[modified], "data/DofusInvoker.swf")
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+  Flow_B_:
+    runs-on: ubuntu-latest
+    if: contains(github.event.commits[modified], "data/d2o")
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+  Flow_C_:
+    runs-on: ubuntu-latest
+    if: contains(github.event.commits[modified], "data/d2i")
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+  Publish_:
+    runs-on: ubuntu-latest
+    needs: [Flow_A_, Flow_B_, Flow_C_]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
