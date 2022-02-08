@@ -14,7 +14,7 @@ jobs:
 
   Flow_A_:
     runs-on: ubuntu-latest
-    if: contains(github.event.commits[modified], "data/DofusInvoker.swf")
+    if: (github.event_name == 'workflow_dispatch') or contains(github.event.commits[modified], "data/DofusInvoker.swf")
 
     steps:
       - name: Checkout repository
@@ -22,7 +22,7 @@ jobs:
 
   Flow_B_:
     runs-on: ubuntu-latest
-    if: contains(github.event.commits[modified], "data/d2o")
+    if: (github.event_name == 'workflow_dispatch') or contains(github.event.commits[modified], "data/d2o")
 
     steps:
       - name: Checkout repository
@@ -30,7 +30,7 @@ jobs:
 
   Flow_C_:
     runs-on: ubuntu-latest
-    if: contains(github.event.commits[modified], "data/d2i")
+    if: (github.event_name == 'workflow_dispatch') or contains(github.event.commits[modified], "data/d2i")
 
     steps:
       - name: Checkout repository
