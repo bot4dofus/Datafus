@@ -19,6 +19,7 @@ package com.ankamagames.dofus.types
          add("optimizeMultiAccount",true);
          add("fullScreen",false);
          add("autoConnectType",1);
+         add("connectionPort",5555);
          add("showEveryMonsters",false);
          add("allowAnimsFun",true);
          add("turnPicture",true);

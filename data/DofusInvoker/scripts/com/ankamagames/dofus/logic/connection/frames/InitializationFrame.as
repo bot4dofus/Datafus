@@ -275,6 +275,10 @@ package com.ankamagames.dofus.logic.connection.frames
       
       private var _autoConnectTypeValue:int = -1;
       
+      private var _connectionPortObtained:Boolean = false;
+      
+      private var _connectionPortValue:int = 5555;
+      
       private var _skinChangePop:SystemPopupUI;
       
       private var _api:ZaapApi;
@@ -435,10 +439,12 @@ package com.ankamagames.dofus.logic.connection.frames
          if(ZaapConnectionHelper.hasZaapArguments())
          {
             this._api.getZaapSetting("autoConnectType");
+            this._api.getZaapSetting("connectionPort");
          }
          else
          {
             this._autoConnectTypeObtained = true;
+            this._connectionPortObtained = true;
          }
          return true;
       }
@@ -680,6 +686,19 @@ package com.ankamagames.dofus.logic.connection.frames
                   this._autoConnectTypeObtained = true;
                   this.completeConfigInit();
                }
+               else if(zsm.name == "connectionPort")
+               {
+                  if(ErrorCode.VALID_VALUES.contains(zsm.error))
+                  {
+                     _log.error("Error getting Zaap setting " + zsm.name + " : " + ErrorCode.VALUES_TO_NAMES[zsm.error]);
+                  }
+                  else if(zsm.value)
+                  {
+                     this._connectionPortValue = int(zsm.value);
+                  }
+                  this._connectionPortObtained = true;
+                  this.completeConfigInit();
+               }
          }
       }
       
@@ -689,7 +708,7 @@ package com.ankamagames.dofus.logic.connection.frames
          var langConfigFileRegExp:RegExp = null;
          var fileList:Array = null;
          var i:int = 0;
-         if(!this._autoConnectTypeObtained || !this._langObtained)
+         if(!this._autoConnectTypeObtained || !this._connectionPortObtained || !this._langObtained)
          {
             return;
          }
@@ -830,6 +849,7 @@ package com.ankamagames.dofus.logic.connection.frames
          {
             Dofus.getInstance().options.setOption("autoConnectType",this._autoConnectTypeValue);
          }
+         Dofus.getInstance().options.setOption("connectionPort",this._connectionPortValue);
          this._aFiles.push(LangManager.getInstance().getEntry("config.ui.asset.fontsList"));
          for(var i:uint = 0; i < this._aFiles.length; i++)
          {
