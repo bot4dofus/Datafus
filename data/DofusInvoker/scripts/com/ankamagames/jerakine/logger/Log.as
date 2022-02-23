@@ -18,6 +18,8 @@ package com.ankamagames.jerakine.logger
    public final class Log
    {
       
+      public static const CONFIG_FILE:String = "log4as.xml";
+      
       private static var _tempTarget:TemporaryBufferTarget;
       
       private static var _initializing:Boolean;
@@ -32,8 +34,6 @@ package com.ankamagames.jerakine.logger
       
       private static var _dispatcher:EventDispatcher = new EventDispatcher();
       
-      private static var _configfile:String = "";
-      
       public static var PREFIX:String = "";
       
       protected static var _log:Logger;
@@ -46,11 +46,6 @@ package com.ankamagames.jerakine.logger
          super();
       }
       
-      public static function get CONFIG_FILE() : String
-      {
-         return _configfile;
-      }
-      
       public static function initFromString(xml:String) : void
       {
          _manualInit = true;
@@ -59,14 +54,13 @@ package com.ankamagames.jerakine.logger
          LogLogger.activeLog(true);
       }
       
-      public static function getLogger(category:String, configFile:String = "log4as.xml") : Logger
+      public static function getLogger(category:String) : Logger
       {
          var xmlLoader:URLLoader = null;
          var logger:LogLogger = null;
          if(!_initializing)
          {
             _initializing = true;
-            _configfile = configFile;
             _tempTarget = new TemporaryBufferTarget();
             addTarget(_tempTarget);
             xmlLoader = new URLLoader();
@@ -75,7 +69,7 @@ package com.ankamagames.jerakine.logger
             xmlLoader.addEventListener(SecurityErrorEvent.SECURITY_ERROR,securityErrorHandler);
             try
             {
-               xmlLoader.load(new URLRequest(_configfile));
+               xmlLoader.load(new URLRequest(CONFIG_FILE));
                _log = Log.getLogger(getQualifiedClassName(Log));
             }
             catch(e:Error)
@@ -268,7 +262,7 @@ package com.ankamagames.jerakine.logger
          {
             return;
          }
-         configurationFileMissing("Missing " + _configfile + " file.");
+         configurationFileMissing("Missing " + CONFIG_FILE + " file.");
       }
       
       private static function securityErrorHandler(se:SecurityErrorEvent) : void
@@ -278,7 +272,7 @@ package com.ankamagames.jerakine.logger
          {
             return;
          }
-         configurationFileMissing("Can\'t load " + _configfile + " file : forbidden by sandbox.");
+         configurationFileMissing("Can\'t load " + CONFIG_FILE + " file : forbidden by sandbox.");
       }
       
       private static function removeEventListeners(e:Event) : void

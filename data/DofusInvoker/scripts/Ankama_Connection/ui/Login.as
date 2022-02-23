@@ -166,7 +166,8 @@ package Ankama_Connection.ui
       public function main(params:Array) : void
       {
          var porc:String = null;
-         var serverport:uint = 0;
+         var serverPort:uint = 0;
+         var autoConnectType:uint = 0;
          var initialUiMode:uint = 0;
          var loginMustBeSaved:int = 0;
          var lastLogins:Array = null;
@@ -210,8 +211,6 @@ package Ankama_Connection.ui
          this.cbx_login.input.tabEnabled = true;
          this.input_pass.tabEnabled = true;
          this.tx_login_help.visible = true;
-         var cachePortIsStillOk:Boolean = false;
-         var cachePort:int = this.sysApi.getPort();
          this._aPorts = [];
          var aPortsName:Array = [];
          var ports:String = this.sysApi.getConfigKey("connection.port");
@@ -219,22 +218,11 @@ package Ankama_Connection.ui
          {
             this._aPorts.push(int(porc));
             aPortsName.push("" + porc);
-            if(cachePort == int(porc))
-            {
-               cachePortIsStillOk = true;
-            }
          }
          this.cb_socket.dataProvider = aPortsName;
-         if(cachePort && cachePortIsStillOk)
-         {
-            serverport = cachePort;
-         }
-         else
-         {
-            serverport = this._aPorts[0];
-            this.sysApi.setPort(this._aPorts[0]);
-         }
-         this.cb_socket.value = aPortsName[this._aPorts.indexOf(serverport)];
+         serverPort = this.configApi.getConfigProperty("dofus","connectionPort");
+         this.sysApi.setPort(serverPort);
+         this.cb_socket.value = aPortsName[this._aPorts.indexOf(serverPort)];
          this.cb_connectionType.dataProvider = [{
             "label":this.uiApi.getText("ui.connection.connectionToServerChoice"),
             "connectionType":CONNECT_TO_SERVER_LIST
@@ -245,7 +233,7 @@ package Ankama_Connection.ui
             "label":this.uiApi.getText("ui.connection.connectionDirectAccess"),
             "connectionType":CONNECT_TO_GAME
          }];
-         var autoConnectType:uint = this.configApi.getConfigProperty("dofus","autoConnectType");
+         autoConnectType = this.configApi.getConfigProperty("dofus","autoConnectType");
          this.cb_connectionType.value = this.cb_connectionType.dataProvider[autoConnectType];
          this.cbx_login.input.restrict = "A-Za-z0-9\\-\\|.@_[]+";
          if(this.sysApi.isEventMode())

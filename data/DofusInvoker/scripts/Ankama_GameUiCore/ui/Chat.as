@@ -1242,7 +1242,7 @@ package Ankama_GameUiCore.ui
                   this.displayMessage(msg.channel,msg.msg,msg.timestamp,msg.fingerprint,msg.senderId,-1,msg.prefix,msg.senderName,msg.objects,"",0,false,msg.admin);
                   break;
                case "recipientSentence":
-                  this.displayMessage(msg.channel,msg.msg,msg.timestamp,msg.fingerprint,msg.senderId,msg.prefix,msg.senderName,msg.objects,msg.receiverName,msg.receiverId);
+                  this.displayMessage(msg.channel,msg.msg,msg.timestamp,msg.fingerprint,msg.senderId,-1,msg.prefix,msg.senderName,msg.objects,msg.receiverName,msg.receiverId);
                   break;
                case "informationSentence":
                   this.displayMessage(msg.channel,msg.msg,msg.timestamp,msg.fingerprint);
@@ -2135,7 +2135,7 @@ package Ankama_GameUiCore.ui
          }
          else
          {
-            this.displayMessage(ChatActivableChannelsEnum.PSEUDO_CHANNEL_PRIVATE,msg.content,Number(msg.createdTimestamp),"",Number(msg.author.userId),-1,"",msg.author.name,"","",0,false,false,false,true);
+            this.displayMessage(ChatActivableChannelsEnum.PSEUDO_CHANNEL_PRIVATE,msg.content,Number(msg.createdTimestamp),"",Number(msg.author.userId),-1,"",msg.author.name,null,"",0,false,false,false,true);
          }
       }
       
@@ -2317,7 +2317,7 @@ package Ankama_GameUiCore.ui
       public function onChatSpeakingItem(channel:uint = 0, item:Object = null, content:String = "", timestamp:Number = 0, fingerprint:String = "") : void
       {
          this.sysApi.sendAction(new SaveMessageAction([item.name + this.uiApi.getText("ui.common.colon") + content,channel,timestamp]));
-         this.displayMessage(channel,content,timestamp,fingerprint,0,-1,"",item.name,null,"",0,true);
+         this.displayMessage(channel,content,timestamp,fingerprint,0,-1,"",item["name"],null,"",0,true);
       }
       
       public function onLivingObjectMessage(owner:String = "", text:String = "", timestamp:Number = 0) : void
