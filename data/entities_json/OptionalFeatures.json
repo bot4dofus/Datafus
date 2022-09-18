@@ -316,6 +316,15 @@
 			"activationCriterions": "null"
 		},
 		{
+			"id": 145,
+			"keyword": "social.guild.chestTab",
+			"isClient": true,
+			"isServer": true,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": false,
+			"activationCriterions": "null"
+		},
+		{
 			"id": 17,
 			"keyword": "social.alliance",
 			"isClient": true,
@@ -330,6 +339,15 @@
 			"isClient": true,
 			"isServer": false,
 			"isActivationOnLaunch": true,
+			"isActivationOnServerConnection": false,
+			"activationCriterions": "null"
+		},
+		{
+			"id": 146,
+			"keyword": "game.feature.idol.exp.bonus",
+			"isClient": true,
+			"isServer": true,
+			"isActivationOnLaunch": false,
 			"isActivationOnServerConnection": false,
 			"activationCriterions": "null"
 		},
@@ -415,18 +433,18 @@
 			"activationCriterions": "null"
 		},
 		{
-			"id": 112,
-			"keyword": "temporis.drops",
-			"isClient": true,
-			"isServer": false,
-			"isActivationOnLaunch": false,
-			"isActivationOnServerConnection": true,
-			"activationCriterions": "SC=5&ST=4"
-		},
-		{
 			"id": 113,
 			"keyword": "pvp.fights.logging",
 			"isClient": false,
+			"isServer": true,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": false,
+			"activationCriterions": "null"
+		},
+		{
+			"id": 142,
+			"keyword": "character.spell.forgettable.modsters",
+			"isClient": true,
 			"isServer": true,
 			"isActivationOnLaunch": false,
 			"isActivationOnServerConnection": false,
@@ -541,9 +559,27 @@
 			"activationCriterions": "null"
 		},
 		{
+			"id": 143,
+			"keyword": "character.closecombat",
+			"isClient": true,
+			"isServer": true,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": false,
+			"activationCriterions": "null"
+		},
+		{
 			"id": 134,
 			"keyword": "almanach.bonus",
 			"isClient": false,
+			"isServer": true,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": false,
+			"activationCriterions": "null"
+		},
+		{
+			"id": 147,
+			"keyword": "game.feature.idol.drop.bonus",
+			"isClient": true,
 			"isServer": true,
 			"isActivationOnLaunch": false,
 			"isActivationOnServerConnection": false,
@@ -556,7 +592,7 @@
 			"isServer": false,
 			"isActivationOnLaunch": false,
 			"isActivationOnServerConnection": true,
-			"activationCriterions": "SC=5&ST=6"
+			"activationCriterions": "SC=5&ST=7"
 		},
 		{
 			"id": 136,
@@ -602,6 +638,24 @@
 			"isActivationOnLaunch": false,
 			"isActivationOnServerConnection": false,
 			"activationCriterions": "null"
+		},
+		{
+			"id": 112,
+			"keyword": "temporis.drops",
+			"isClient": true,
+			"isServer": false,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": true,
+			"activationCriterions": "SC=5&ST=7"
+		},
+		{
+			"id": 144,
+			"keyword": "fight.slave.actionbars",
+			"isClient": true,
+			"isServer": false,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": true,
+			"activationCriterions": ""
 		}
 	]
 }

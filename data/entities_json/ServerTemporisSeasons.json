@@ -76,6 +76,13 @@
 			"information": "Temporis VI : L'av\u00e8nement des Recommanciens",
 			"beginning": 1625698800000.0,
 			"closure": 1640995200000.0
+		},
+		{
+			"uid": 24,
+			"seasonNumber": 7,
+			"information": "Temporis VII",
+			"beginning": 1642636800000.0,
+			"closure": 1664578800000.0
 		}
 	]
 }

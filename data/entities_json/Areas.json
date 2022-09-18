@@ -75,7 +75,7 @@
 			"bounds": {
 				"x": -47,
 				"y": -70,
-				"width": 63,
+				"width": 65,
 				"height": 104
 			},
 			"worldmapId": 0,
@@ -652,7 +652,7 @@
 				"x": 0,
 				"y": 0,
 				"width": 7,
-				"height": 13
+				"height": 14
 			},
 			"worldmapId": 0,
 			"hasWorldMap": false,
@@ -1021,6 +1021,22 @@
 				"y": 0,
 				"width": 1,
 				"height": 1
+			},
+			"worldmapId": 0,
+			"hasWorldMap": false,
+			"hasSuggestion": true
+		},
+		{
+			"id": 92,
+			"nameId": 936177,
+			"superAreaId": 0,
+			"containHouses": false,
+			"containPaddocks": false,
+			"bounds": {
+				"x": -7,
+				"y": 0,
+				"width": 8,
+				"height": 23
 			},
 			"worldmapId": 0,
 			"hasWorldMap": false,

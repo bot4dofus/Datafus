@@ -54,10 +54,7 @@
 			"descriptionId": 180193,
 			"incompatibleChallenges": [
 				2,
-				8,
-				542,
-				543,
-				541
+				8
 			],
 			"categoryId": 1,
 			"iconId": 1,
@@ -71,14 +68,12 @@
 			"descriptionId": 759,
 			"incompatibleChallenges": [
 				1,
-				8,
-				488,
-				39,
-				40,
 				36,
 				37,
-				541,
-				583
+				488,
+				39,
+				8,
+				40
 			],
 			"categoryId": 1,
 			"iconId": 2,
@@ -91,13 +86,14 @@
 			"nameId": 851058,
 			"descriptionId": 737,
 			"incompatibleChallenges": [
-				25,
+				35,
 				4,
-				544,
-				34,
 				10,
-				32,
-				35
+				25,
+				34,
+				595,
+				594,
+				32
 			],
 			"categoryId": 1,
 			"iconId": 3,
@@ -111,10 +107,11 @@
 			"descriptionId": 791,
 			"incompatibleChallenges": [
 				3,
-				32,
-				544,
-				25,
+				595,
 				35,
+				594,
+				32,
+				25,
 				34,
 				10
 			],
@@ -129,15 +126,15 @@
 			"nameId": 800,
 			"descriptionId": 801,
 			"incompatibleChallenges": [
-				7,
-				24,
 				41,
+				16,
 				6,
-				9,
-				12,
 				14,
 				15,
-				16
+				7,
+				9,
+				12,
+				24
 			],
 			"categoryId": 1,
 			"iconId": 5,
@@ -165,11 +162,11 @@
 			"descriptionId": 755,
 			"incompatibleChallenges": [
 				5,
-				24,
 				9,
-				12,
+				16,
 				15,
-				16
+				12,
+				24
 			],
 			"categoryId": 1,
 			"iconId": 7,
@@ -183,10 +180,7 @@
 			"descriptionId": 408751,
 			"incompatibleChallenges": [
 				1,
-				2,
-				541,
-				542,
-				543
+				2
 			],
 			"categoryId": 1,
 			"iconId": 8,
@@ -201,12 +195,12 @@
 			"incompatibleChallenges": [
 				5,
 				7,
-				15,
-				12,
 				22,
-				11,
 				18,
-				16
+				15,
+				16,
+				12,
+				11
 			],
 			"categoryId": 1,
 			"iconId": 9,
@@ -221,11 +215,12 @@
 			"incompatibleChallenges": [
 				3,
 				4,
-				25,
+				595,
+				32,
 				35,
-				34,
-				544,
-				32
+				25,
+				594,
+				34
 			],
 			"categoryId": 1,
 			"iconId": 10,
@@ -287,12 +282,10 @@
 			"nameId": 748,
 			"descriptionId": 749,
 			"incompatibleChallenges": [
-				545,
 				49,
 				487,
-				33,
 				47,
-				546
+				33
 			],
 			"categoryId": 1,
 			"iconId": 17,
@@ -318,9 +311,9 @@
 			"nameId": 776,
 			"descriptionId": 777,
 			"incompatibleChallenges": [
+				28,
 				48,
 				30,
-				28,
 				29
 			],
 			"categoryId": 1,
@@ -331,11 +324,11 @@
 		},
 		{
 			"id": 20,
-			"nameId": 732,
+			"nameId": 933931,
 			"descriptionId": 733,
 			"incompatibleChallenges": [
-				483,
 				24,
+				483,
 				484
 			],
 			"categoryId": 1,
@@ -387,10 +380,11 @@
 				3,
 				4,
 				10,
-				544,
-				34,
+				594,
+				595,
 				35,
-				32
+				32,
+				34
 			],
 			"categoryId": 1,
 			"iconId": 25,
@@ -405,10 +399,10 @@
 			"incompatibleChallenges": [
 				19,
 				46,
-				29,
 				30,
-				44,
-				48
+				29,
+				48,
+				44
 			],
 			"categoryId": 1,
 			"iconId": 28,
@@ -423,10 +417,10 @@
 			"incompatibleChallenges": [
 				19,
 				28,
-				30,
 				44,
-				46,
-				48
+				30,
+				48,
+				46
 			],
 			"categoryId": 1,
 			"iconId": 29,
@@ -442,8 +436,8 @@
 				19,
 				28,
 				29,
-				46,
 				44,
+				46,
 				48
 			],
 			"categoryId": 1,
@@ -465,7 +459,7 @@
 		},
 		{
 			"id": 32,
-			"nameId": 788,
+			"nameId": 933930,
 			"descriptionId": 789,
 			"incompatibleChallenges": [
 				3,
@@ -473,6 +467,8 @@
 				10,
 				25,
 				34,
+				595,
+				594,
 				35
 			],
 			"categoryId": 1,
@@ -506,8 +502,9 @@
 				25,
 				32,
 				42,
-				544,
-				35
+				596,
+				35,
+				595
 			],
 			"categoryId": 1,
 			"iconId": 34,
@@ -526,7 +523,7 @@
 				25,
 				32,
 				34,
-				544
+				594
 			],
 			"categoryId": 1,
 			"iconId": 35,
@@ -540,13 +537,11 @@
 			"descriptionId": 909675,
 			"incompatibleChallenges": [
 				2,
-				488,
-				39,
 				481,
-				542,
-				40,
+				488,
 				37,
-				543
+				40,
+				39
 			],
 			"categoryId": 1,
 			"iconId": 36,
@@ -561,11 +556,8 @@
 			"incompatibleChallenges": [
 				2,
 				36,
-				543,
-				40,
-				542,
 				39,
-				583
+				40
 			],
 			"categoryId": 1,
 			"iconId": 37,
@@ -592,10 +584,7 @@
 				2,
 				36,
 				37,
-				40,
-				583,
-				543,
-				542
+				40
 			],
 			"categoryId": 1,
 			"iconId": 39,
@@ -612,10 +601,7 @@
 				36,
 				37,
 				39,
-				542,
-				583,
-				488,
-				543
+				488
 			],
 			"categoryId": 1,
 			"iconId": 40,
@@ -642,8 +628,9 @@
 			"descriptionId": 723,
 			"incompatibleChallenges": [
 				34,
-				46,
-				44
+				44,
+				594,
+				46
 			],
 			"categoryId": 1,
 			"iconId": 42,
@@ -671,8 +658,9 @@
 				29,
 				30,
 				42,
-				48,
-				46
+				596,
+				46,
+				48
 			],
 			"categoryId": 1,
 			"iconId": 44,
@@ -704,7 +692,8 @@
 				42,
 				44,
 				45,
-				48
+				48,
+				596
 			],
 			"categoryId": 1,
 			"iconId": 46,
@@ -842,7 +831,7 @@
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 10023,
-			"completionCriterion": "ST<21",
+			"completionCriterion": "ST<20",
 			"activationCriterion": "GN<3,0&GM>0,3234,1&Gm=d",
 			"targetMonsterId": 3234
 		},
@@ -864,7 +853,7 @@
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 10023,
-			"completionCriterion": "ST<19",
+			"completionCriterion": "ST<20",
 			"activationCriterion": "GN<3,0&GM>0,2986,1&Gm=d",
 			"targetMonsterId": 2986
 		},
@@ -875,7 +864,7 @@
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 10023,
-			"completionCriterion": "ST<17",
+			"completionCriterion": "ST<20",
 			"activationCriterion": "GN<3,0&GM>0,2864,1&Gm=d",
 			"targetMonsterId": 2864
 		},
@@ -952,7 +941,7 @@
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 10023,
-			"completionCriterion": "ST<41",
+			"completionCriterion": "ST<40",
 			"activationCriterion": "GN<3,0&GM>0,423,1&Gm=d",
 			"targetMonsterId": 423
 		},
@@ -966,39 +955,6 @@
 			"completionCriterion": "ST<20",
 			"activationCriterion": "GN<3,0&GM>0,3232,1&Gm=d",
 			"targetMonsterId": 3232
-		},
-		{
-			"id": 70,
-			"nameId": 293390,
-			"descriptionId": 293391,
-			"incompatibleChallenges": [],
-			"categoryId": 3,
-			"iconId": 0,
-			"completionCriterion": "ST<20",
-			"activationCriterion": "GN<3,0&GM>0,568,1&Gm=d",
-			"targetMonsterId": 568
-		},
-		{
-			"id": 71,
-			"nameId": 293386,
-			"descriptionId": 293387,
-			"incompatibleChallenges": [],
-			"categoryId": 3,
-			"iconId": 0,
-			"completionCriterion": "ST<20",
-			"activationCriterion": "GN<3,0&GM>0,612,1&Gm=d",
-			"targetMonsterId": 612
-		},
-		{
-			"id": 72,
-			"nameId": 293398,
-			"descriptionId": 293399,
-			"incompatibleChallenges": [],
-			"categoryId": 3,
-			"iconId": 0,
-			"completionCriterion": "ST<11",
-			"activationCriterion": "GN<3,0&GM>0,605,1&Gm=d",
-			"targetMonsterId": 605
 		},
 		{
 			"id": 73,
@@ -2343,28 +2299,6 @@
 			"targetMonsterId": 2854
 		},
 		{
-			"id": 195,
-			"nameId": 293278,
-			"descriptionId": 293279,
-			"incompatibleChallenges": [],
-			"categoryId": 3,
-			"iconId": 0,
-			"completionCriterion": "CK#612,1",
-			"activationCriterion": "GM>0,612,1&Gm=d",
-			"targetMonsterId": 612
-		},
-		{
-			"id": 196,
-			"nameId": 293280,
-			"descriptionId": 293281,
-			"incompatibleChallenges": [],
-			"categoryId": 3,
-			"iconId": 0,
-			"completionCriterion": "TD<2,0",
-			"activationCriterion": "GM>0,612,1&Gm=d&GN>1,0",
-			"targetMonsterId": 612
-		},
-		{
 			"id": 197,
 			"nameId": 851597,
 			"descriptionId": 851598,
@@ -2429,50 +2363,6 @@
 			"completionCriterion": "SW<1,1",
 			"activationCriterion": "GM>0,780,1&Gm=d",
 			"targetMonsterId": 780
-		},
-		{
-			"id": 203,
-			"nameId": 293246,
-			"descriptionId": 293247,
-			"incompatibleChallenges": [],
-			"categoryId": 3,
-			"iconId": 0,
-			"completionCriterion": "SF=1",
-			"activationCriterion": "GM>0,568,1&Gm=d&GN>1,1",
-			"targetMonsterId": 568
-		},
-		{
-			"id": 204,
-			"nameId": 293242,
-			"descriptionId": 293243,
-			"incompatibleChallenges": [],
-			"categoryId": 3,
-			"iconId": 0,
-			"completionCriterion": "TD<2,1",
-			"activationCriterion": "GM>0,568,1&Gm=d",
-			"targetMonsterId": 568
-		},
-		{
-			"id": 205,
-			"nameId": 293240,
-			"descriptionId": 293241,
-			"incompatibleChallenges": [],
-			"categoryId": 3,
-			"iconId": 0,
-			"completionCriterion": "Tm<1,0",
-			"activationCriterion": "GM>0,605,1&Gm=d",
-			"targetMonsterId": 605
-		},
-		{
-			"id": 206,
-			"nameId": 293238,
-			"descriptionId": 293239,
-			"incompatibleChallenges": [],
-			"categoryId": 3,
-			"iconId": 0,
-			"completionCriterion": "TD<2,1",
-			"activationCriterion": "GM>0,605,1&Gm=d",
-			"targetMonsterId": 605
 		},
 		{
 			"id": 207,
@@ -3020,7 +2910,7 @@
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 10023,
-			"completionCriterion": "ST<41",
+			"completionCriterion": "ST<40",
 			"activationCriterion": "GN<3,0&GM>0,3384,1&Gm=d",
 			"targetMonsterId": 3384
 		},
@@ -4351,7 +4241,7 @@
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 10023,
-			"completionCriterion": "ST<21",
+			"completionCriterion": "ST<20",
 			"activationCriterion": "GN<3,0&GM>0,4803,1&Gm=d",
 			"targetMonsterId": 4803
 		},
@@ -4593,7 +4483,7 @@
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 10023,
-			"completionCriterion": "ST<21",
+			"completionCriterion": "ST<20",
 			"activationCriterion": "GN<3,0&GM>0,5664,1&Gm=d",
 			"targetMonsterId": 5664
 		},
@@ -4648,7 +4538,7 @@
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 10023,
-			"completionCriterion": "ST<41",
+			"completionCriterion": "ST<40",
 			"activationCriterion": "GN<3,0&GM>0,5666,1&Gm=d",
 			"targetMonsterId": 5666
 		},
@@ -5065,9 +4955,9 @@
 			"descriptionId": 866631,
 			"incompatibleChallenges": [
 				460,
+				457,
 				461,
 				458,
-				457,
 				459
 			],
 			"categoryId": 4,
@@ -5126,10 +5016,10 @@
 			"descriptionId": 844376,
 			"incompatibleChallenges": [
 				452,
+				459,
 				458,
-				461,
 				460,
-				459
+				461
 			],
 			"categoryId": 4,
 			"iconId": 457,
@@ -5144,8 +5034,8 @@
 			"incompatibleChallenges": [
 				452,
 				457,
-				461,
 				459,
+				461,
 				460
 			],
 			"categoryId": 4,
@@ -5162,8 +5052,8 @@
 				452,
 				457,
 				458,
-				460,
-				461
+				461,
+				460
 			],
 			"categoryId": 4,
 			"iconId": 459,
@@ -5313,12 +5203,12 @@
 			"nameId": 849882,
 			"descriptionId": 847628,
 			"incompatibleChallenges": [
-				477,
-				480,
-				479,
 				476,
 				475,
-				474
+				474,
+				480,
+				479,
+				477
 			],
 			"categoryId": 4,
 			"iconId": 473,
@@ -5332,11 +5222,11 @@
 			"descriptionId": 850704,
 			"incompatibleChallenges": [
 				473,
-				476,
-				479,
-				480,
 				475,
-				477
+				480,
+				479,
+				477,
+				476
 			],
 			"categoryId": 4,
 			"iconId": 474,
@@ -5351,10 +5241,10 @@
 			"incompatibleChallenges": [
 				473,
 				474,
-				477,
 				479,
-				480,
-				476
+				477,
+				476,
+				480
 			],
 			"categoryId": 4,
 			"iconId": 475,
@@ -5370,9 +5260,9 @@
 				473,
 				474,
 				475,
+				477,
 				480,
-				479,
-				477
+				479
 			],
 			"categoryId": 4,
 			"iconId": 476,
@@ -5389,8 +5279,8 @@
 				474,
 				475,
 				476,
-				480,
-				479
+				479,
+				480
 			],
 			"categoryId": 4,
 			"iconId": 477,
@@ -5450,8 +5340,7 @@
 			"nameId": 848697,
 			"descriptionId": 848698,
 			"incompatibleChallenges": [
-				36,
-				583
+				36
 			],
 			"categoryId": 4,
 			"iconId": 481,
@@ -5538,10 +5427,7 @@
 			"incompatibleChallenges": [
 				2,
 				36,
-				40,
-				542,
-				543,
-				583
+				40
 			],
 			"categoryId": 4,
 			"iconId": 488,
@@ -5557,7 +5443,7 @@
 			"categoryId": 1,
 			"iconId": 0,
 			"completionCriterion": "BI=1",
-			"activationCriterion": "BI=1",
+			"activationCriterion": "BV=0",
 			"targetMonsterId": 0
 		},
 		{
@@ -5568,7 +5454,7 @@
 			"categoryId": 1,
 			"iconId": 0,
 			"completionCriterion": "BI=1",
-			"activationCriterion": "BI=1",
+			"activationCriterion": "BV=0",
 			"targetMonsterId": 0
 		},
 		{
@@ -5579,7 +5465,7 @@
 			"categoryId": 1,
 			"iconId": 0,
 			"completionCriterion": "BI=1",
-			"activationCriterion": "BI=1",
+			"activationCriterion": "BV=0",
 			"targetMonsterId": 0
 		},
 		{
@@ -5590,7 +5476,7 @@
 			"categoryId": 1,
 			"iconId": 0,
 			"completionCriterion": "BI=1",
-			"activationCriterion": "BI=1",
+			"activationCriterion": "BV=0",
 			"targetMonsterId": 0
 		},
 		{
@@ -5601,7 +5487,7 @@
 			"categoryId": 1,
 			"iconId": 0,
 			"completionCriterion": "Ta=0,77,1&Ta=0,127,1&Ta=0,169,1&Ta=0,1080,1&Ta=0,116,1&Ta=0,320,1",
-			"activationCriterion": "BI=1",
+			"activationCriterion": "BV=0",
 			"targetMonsterId": 0
 		},
 		{
@@ -5675,9 +5561,7 @@
 			"nameId": 853452,
 			"descriptionId": 854261,
 			"incompatibleChallenges": [
-				47,
-				545,
-				546
+				47
 			],
 			"categoryId": 4,
 			"iconId": 492,
@@ -5931,7 +5815,9 @@
 			"id": 523,
 			"nameId": 876664,
 			"descriptionId": 876669,
-			"incompatibleChallenges": [],
+			"incompatibleChallenges": [
+				524
+			],
 			"categoryId": 4,
 			"iconId": 507,
 			"completionCriterion": "Ma=1",
@@ -5942,7 +5828,9 @@
 			"id": 524,
 			"nameId": 876670,
 			"descriptionId": 876671,
-			"incompatibleChallenges": [],
+			"incompatibleChallenges": [
+				523
+			],
 			"categoryId": 4,
 			"iconId": 508,
 			"completionCriterion": "Ma=1",
@@ -5957,7 +5845,7 @@
 			"categoryId": 4,
 			"iconId": 509,
 			"completionCriterion": "Ma=1",
-			"activationCriterion": "GM>0,6473,1|GM>0,6474,1|GM>0,6475,1|GM>0,6476,1|GM>0,6477,1|GM>0,6478,1",
+			"activationCriterion": "(GM>0,6473,1|GM>0,6474,1|GM>0,6475,1|GM>0,6476,1|GM>0,6477,1)&GM<1,6478,1",
 			"targetMonsterId": 0
 		},
 		{
@@ -5975,7 +5863,9 @@
 			"id": 527,
 			"nameId": 876680,
 			"descriptionId": 876681,
-			"incompatibleChallenges": [],
+			"incompatibleChallenges": [
+				528
+			],
 			"categoryId": 4,
 			"iconId": 511,
 			"completionCriterion": "Ma=1",
@@ -5986,11 +5876,13 @@
 			"id": 528,
 			"nameId": 876682,
 			"descriptionId": 876683,
-			"incompatibleChallenges": [],
+			"incompatibleChallenges": [
+				527
+			],
 			"categoryId": 4,
 			"iconId": 512,
 			"completionCriterion": "Ma=1",
-			"activationCriterion": "GM>0,6467,1|GM>0,6468,1|GM>0,6469,1|GM>0,6470,1|GM>0,6471,1|GM>0,6472,1",
+			"activationCriterion": "(GM>0,6467,1|GM>0,6468,1|GM>0,6469,1|GM>0,6470,1|GM>0,6471,1)&GM<1,6472,1",
 			"targetMonsterId": 0
 		},
 		{
@@ -6001,7 +5893,7 @@
 			"categoryId": 4,
 			"iconId": 506,
 			"completionCriterion": "Ma=1",
-			"activationCriterion": "(GM>0,6467,1|GM>0,6468,1|GM>0,6469,1|GM>0,6470,1|GM>0,6471,1|GM>0,6472,1)&(GM>0,6467,1|GM>0,6468,1|GM>0,6469,1|GM>0,6470,1|GM>0,6471,1|GM>0,6472,1)",
+			"activationCriterion": "(GM>1,6467,1|GM>1,6468,1|GM>1,6469,1|GM>1,6470,1|GM>1,6471,1|GM>1,6472,1)&(GM>1,6467,1|GM>1,6468,1|GM>1,6469,1|GM>1,6470,1|GM>1,6471,1|GM>1,6472,1)",
 			"targetMonsterId": 0
 		},
 		{
@@ -6041,7 +5933,9 @@
 			"id": 534,
 			"nameId": 899967,
 			"descriptionId": 899968,
-			"incompatibleChallenges": [],
+			"incompatibleChallenges": [
+				537
+			],
 			"categoryId": 4,
 			"iconId": 513,
 			"completionCriterion": "Ma=1",
@@ -6052,7 +5946,9 @@
 			"id": 537,
 			"nameId": 899973,
 			"descriptionId": 899974,
-			"incompatibleChallenges": [],
+			"incompatibleChallenges": [
+				534
+			],
 			"categoryId": 4,
 			"iconId": 514,
 			"completionCriterion": "Ma=0",
@@ -6091,6 +5987,463 @@
 			"completionCriterion": "ST<40",
 			"activationCriterion": "GN<3,0&GM>0,6792,1&Gm=d",
 			"targetMonsterId": 6792
+		},
+		{
+			"id": 587,
+			"nameId": 937202,
+			"descriptionId": 937204,
+			"incompatibleChallenges": [],
+			"categoryId": 3,
+			"iconId": 10023,
+			"completionCriterion": "ST<20",
+			"activationCriterion": "GN<3,0&GM>0,107,1&Gm=d",
+			"targetMonsterId": 107
+		},
+		{
+			"id": 589,
+			"nameId": 937214,
+			"descriptionId": 937216,
+			"incompatibleChallenges": [],
+			"categoryId": 3,
+			"iconId": 10020,
+			"completionCriterion": "Tm<1,0",
+			"activationCriterion": "GM>0,107,1&Gm=d",
+			"targetMonsterId": 107
+		},
+		{
+			"id": 590,
+			"nameId": 937218,
+			"descriptionId": 937220,
+			"incompatibleChallenges": [],
+			"categoryId": 3,
+			"iconId": 10007,
+			"completionCriterion": "Ck#107,1",
+			"activationCriterion": "GM>0,107,1&Gm=d",
+			"targetMonsterId": 107
+		},
+		{
+			"id": 591,
+			"nameId": 937222,
+			"descriptionId": 937224,
+			"incompatibleChallenges": [],
+			"categoryId": 3,
+			"iconId": 10023,
+			"completionCriterion": "ST<20",
+			"activationCriterion": "GN<3,0&GM>0,6903,1&Gm=d",
+			"targetMonsterId": 6903
+		},
+		{
+			"id": 592,
+			"nameId": 937226,
+			"descriptionId": 937228,
+			"incompatibleChallenges": [],
+			"categoryId": 3,
+			"iconId": 10018,
+			"completionCriterion": "CK#6903,1",
+			"activationCriterion": "GM>0,6903,1&Gm=d",
+			"targetMonsterId": 6903
+		},
+		{
+			"id": 593,
+			"nameId": 937230,
+			"descriptionId": 937232,
+			"incompatibleChallenges": [],
+			"categoryId": 3,
+			"iconId": 10017,
+			"completionCriterion": "TM=m,0&TT=0,0",
+			"activationCriterion": "GM>0,6903,1&Gm=d",
+			"targetMonsterId": 6903
+		},
+		{
+			"id": 594,
+			"nameId": 949745,
+			"descriptionId": 949747,
+			"incompatibleChallenges": [
+				3,
+				4,
+				10,
+				25,
+				32,
+				35,
+				42,
+				595
+			],
+			"categoryId": 6,
+			"iconId": 34,
+			"completionCriterion": "CC=1",
+			"activationCriterion": "(GN>1,1)&(GN>1,0)&GL>4,0",
+			"targetMonsterId": 0
+		},
+		{
+			"id": 595,
+			"nameId": 949749,
+			"descriptionId": 949751,
+			"incompatibleChallenges": [
+				3,
+				4,
+				10,
+				25,
+				32,
+				34,
+				594
+			],
+			"categoryId": 6,
+			"iconId": 35,
+			"completionCriterion": "CO=1",
+			"activationCriterion": "GN>1,1&GL>4,0",
+			"targetMonsterId": 0
+		},
+		{
+			"id": 597,
+			"nameId": 949758,
+			"descriptionId": 949760,
+			"incompatibleChallenges": [],
+			"categoryId": 6,
+			"iconId": 43,
+			"completionCriterion": "SH!0",
+			"activationCriterion": "GB>0,7,0&GL>4,0",
+			"targetMonsterId": 0
+		},
+		{
+			"id": 751,
+			"nameId": 955497,
+			"descriptionId": 955498,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10011,
+			"completionCriterion": "TD<2,1",
+			"activationCriterion": "GM>0,5684,1",
+			"targetMonsterId": 5684
+		},
+		{
+			"id": 752,
+			"nameId": 955499,
+			"descriptionId": 955500,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10018,
+			"completionCriterion": "CK#5684,1",
+			"activationCriterion": "GM>0,5684,1",
+			"targetMonsterId": 5684
+		},
+		{
+			"id": 753,
+			"nameId": 955503,
+			"descriptionId": 955502,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10026,
+			"completionCriterion": "Sa=0",
+			"activationCriterion": "GM>0,5684,1",
+			"targetMonsterId": 5684
+		},
+		{
+			"id": 754,
+			"nameId": 955528,
+			"descriptionId": 955529,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10008,
+			"completionCriterion": "SO=1",
+			"activationCriterion": "GM>0,5662,1",
+			"targetMonsterId": 5662
+		},
+		{
+			"id": 755,
+			"nameId": 955530,
+			"descriptionId": 955531,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10015,
+			"completionCriterion": "Sd!0",
+			"activationCriterion": "GM>0,5662,1",
+			"targetMonsterId": 5662
+		},
+		{
+			"id": 756,
+			"nameId": 955532,
+			"descriptionId": 955533,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10026,
+			"completionCriterion": "Sa=0",
+			"activationCriterion": "GM>0,5662,1",
+			"targetMonsterId": 5662
+		},
+		{
+			"id": 757,
+			"nameId": 955538,
+			"descriptionId": 955539,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10022,
+			"completionCriterion": "TM=1,0",
+			"activationCriterion": "GM>0,5682,1",
+			"targetMonsterId": 5682
+		},
+		{
+			"id": 758,
+			"nameId": 955540,
+			"descriptionId": 955541,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10021,
+			"completionCriterion": "SAt0",
+			"activationCriterion": "GM>0,5682,1",
+			"targetMonsterId": 5682
+		},
+		{
+			"id": 759,
+			"nameId": 955542,
+			"descriptionId": 955543,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10026,
+			"completionCriterion": "Sa=0",
+			"activationCriterion": "GM>0,5682,1",
+			"targetMonsterId": 5682
+		},
+		{
+			"id": 760,
+			"nameId": 955544,
+			"descriptionId": 955545,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10020,
+			"completionCriterion": "Tm<1,0",
+			"activationCriterion": "GM>0,5673,1",
+			"targetMonsterId": 5673
+		},
+		{
+			"id": 761,
+			"nameId": 955546,
+			"descriptionId": 955547,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10015,
+			"completionCriterion": "Sd!0",
+			"activationCriterion": "GM>0,5673,1",
+			"targetMonsterId": 5673
+		},
+		{
+			"id": 762,
+			"nameId": 955548,
+			"descriptionId": 955549,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10026,
+			"completionCriterion": "Sa=0",
+			"activationCriterion": "GM>0,5673,1",
+			"targetMonsterId": 5673
+		},
+		{
+			"id": 763,
+			"nameId": 955553,
+			"descriptionId": 955554,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10027,
+			"completionCriterion": "SC=0",
+			"activationCriterion": "GM>0,5663,1",
+			"targetMonsterId": 5663
+		},
+		{
+			"id": 764,
+			"nameId": 955555,
+			"descriptionId": 955556,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10021,
+			"completionCriterion": "SAt0",
+			"activationCriterion": "GM>0,5663,1",
+			"targetMonsterId": 5663
+		},
+		{
+			"id": 765,
+			"nameId": 955557,
+			"descriptionId": 955558,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10026,
+			"completionCriterion": "Sa=0",
+			"activationCriterion": "GM>0,5663,1",
+			"targetMonsterId": 5663
+		},
+		{
+			"id": 766,
+			"nameId": 955563,
+			"descriptionId": 955564,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10022,
+			"completionCriterion": "TM=1,0",
+			"activationCriterion": "GM>0,5683,1",
+			"targetMonsterId": 5683
+		},
+		{
+			"id": 767,
+			"nameId": 955570,
+			"descriptionId": 955571,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10007,
+			"completionCriterion": "Ck#5683,1",
+			"activationCriterion": "GM>0,5683,1",
+			"targetMonsterId": 5683
+		},
+		{
+			"id": 768,
+			"nameId": 955584,
+			"descriptionId": 955585,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10026,
+			"completionCriterion": "Sa=0",
+			"activationCriterion": "GM>0,5683,1",
+			"targetMonsterId": 5683
+		},
+		{
+			"id": 769,
+			"nameId": 955682,
+			"descriptionId": 955683,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10011,
+			"completionCriterion": "TD<2,1",
+			"activationCriterion": "GM>0,5688,1",
+			"targetMonsterId": 5688
+		},
+		{
+			"id": 770,
+			"nameId": 955684,
+			"descriptionId": 955685,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10018,
+			"completionCriterion": "CK#5688,1",
+			"activationCriterion": "GM>0,5688,1",
+			"targetMonsterId": 5688
+		},
+		{
+			"id": 771,
+			"nameId": 955686,
+			"descriptionId": 955687,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10026,
+			"completionCriterion": "Sa=0",
+			"activationCriterion": "GM>0,5688,1",
+			"targetMonsterId": 5688
+		},
+		{
+			"id": 772,
+			"nameId": 955688,
+			"descriptionId": 955689,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10008,
+			"completionCriterion": "SO=1",
+			"activationCriterion": "GM>0,5781,1",
+			"targetMonsterId": 5781
+		},
+		{
+			"id": 773,
+			"nameId": 955690,
+			"descriptionId": 955691,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10019,
+			"completionCriterion": "TD>1,1",
+			"activationCriterion": "GM>0,5781,1",
+			"targetMonsterId": 5781
+		},
+		{
+			"id": 774,
+			"nameId": 955692,
+			"descriptionId": 955693,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10026,
+			"completionCriterion": "Sa=0",
+			"activationCriterion": "GM>0,5781,1",
+			"targetMonsterId": 5781
+		},
+		{
+			"id": 775,
+			"nameId": 955694,
+			"descriptionId": 955695,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10002,
+			"completionCriterion": "Tc>0,0",
+			"activationCriterion": "GM>0,5687,1",
+			"targetMonsterId": 5687
+		},
+		{
+			"id": 776,
+			"nameId": 955696,
+			"descriptionId": 955697,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10001,
+			"completionCriterion": "TD!1,0",
+			"activationCriterion": "GM>0,5687,1",
+			"targetMonsterId": 5687
+		},
+		{
+			"id": 777,
+			"nameId": 955698,
+			"descriptionId": 955699,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10026,
+			"completionCriterion": "Sa=0",
+			"activationCriterion": "GM>0,5687,1",
+			"targetMonsterId": 5687
+		},
+		{
+			"id": 778,
+			"nameId": 955700,
+			"descriptionId": 955701,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10015,
+			"completionCriterion": "Sd!0",
+			"activationCriterion": "GM>0,5755,1",
+			"targetMonsterId": 5755
+		},
+		{
+			"id": 779,
+			"nameId": 955702,
+			"descriptionId": 955703,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10018,
+			"completionCriterion": "CK#5755,1",
+			"activationCriterion": "GM>0,5755,1",
+			"targetMonsterId": 5755
+		},
+		{
+			"id": 780,
+			"nameId": 955704,
+			"descriptionId": 955705,
+			"incompatibleChallenges": [],
+			"categoryId": 9,
+			"iconId": 10026,
+			"completionCriterion": "Sa=0",
+			"activationCriterion": "GM>0,5755,1",
+			"targetMonsterId": 5755
+		},
+		{
+			"id": 806,
+			"nameId": 961688,
+			"descriptionId": 961690,
+			"incompatibleChallenges": [],
+			"categoryId": 6,
+			"iconId": 50,
+			"completionCriterion": "TM<100,0",
+			"activationCriterion": "GL>0,1&(GM>0,168,1|GM>0,165,1|GM>0,3976,1|GM>0,166,1|GM>0,166,1|GM>0,162,1|GM>0,160,1|GM>0,4290,1|GM>0,167,1|GM>0,161,1|GM>0,4777,1|GM>0,2691,1|GM>0,3111,1|GM>0,455,1|GM>0,169,1|GM>0,163,1|GM>0,3286,1|GM>0,164,1|GM>0,3132,1)",
+			"targetMonsterId": 0
 		}
 	]
 }

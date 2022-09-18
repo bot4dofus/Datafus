@@ -490,6 +490,37 @@
 			"criterion": "",
 			"cacheType": 1,
 			"autoTrigger": false
+		},
+		{
+			"id": 36,
+			"parentId": 5,
+			"titleId": 956336,
+			"descriptionId": 959146,
+			"illuName": "fr_feature_temporalanomalies.jpg",
+			"buttons": [
+				{
+					"id": 37,
+					"popupId": 36,
+					"type": 0,
+					"textId": 956338,
+					"actionType": 1,
+					"actionValue": "OpenGuidebookAction:gameGuide|135|popup"
+				}
+			],
+			"criterion": "PL>49",
+			"cacheType": 2,
+			"autoTrigger": true
+		},
+		{
+			"id": 37,
+			"parentId": 9,
+			"titleId": 958230,
+			"descriptionId": 958231,
+			"illuName": "fr_temporis_7_osatopia.jpg",
+			"buttons": [],
+			"criterion": "SC=5&ST=7&Pm=154010883",
+			"cacheType": 1,
+			"autoTrigger": true
 		}
 	]
 }

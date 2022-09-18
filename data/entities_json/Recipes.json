@@ -1612,16 +1612,16 @@
 		},
 		{
 			"resultId": 327,
-			"resultNameId": 53577,
+			"resultNameId": 933390,
 			"resultTypeId": 6,
 			"resultLevel": 16,
 			"ingredientIds": [
-				382,
-				363
+				363,
+				374
 			],
 			"quantities": [
-				1,
-				3
+				3,
+				4
 			],
 			"jobId": 11,
 			"skillId": 20,
@@ -3186,12 +3186,12 @@
 			"ingredientIds": [
 				6845,
 				6844,
-				1677
+				886
 			],
 			"quantities": [
 				4,
 				4,
-				1
+				2
 			],
 			"jobId": 27,
 			"skillId": 63,
@@ -5174,12 +5174,12 @@
 			"resultTypeId": 16,
 			"resultLevel": 20,
 			"ingredientIds": [
-				2674,
-				13727
+				13727,
+				13335
 			],
 			"quantities": [
-				1,
-				3
+				3,
+				1
 			],
 			"jobId": 27,
 			"skillId": 63,
@@ -12942,16 +12942,16 @@
 				546,
 				2056,
 				2543,
-				2656,
-				18371
+				18371,
+				14473
 			],
 			"quantities": [
 				20,
 				2,
 				1,
 				1,
-				1,
-				10
+				10,
+				1
 			],
 			"jobId": 11,
 			"skillId": 20,
@@ -13823,19 +13823,19 @@
 			"resultLevel": 83,
 			"ingredientIds": [
 				749,
-				838,
 				18385,
 				14470,
 				14635,
-				16150
+				16150,
+				18371
 			],
 			"quantities": [
 				4,
-				11,
 				1,
 				1,
 				60,
-				9
+				9,
+				11
 			],
 			"jobId": 11,
 			"skillId": 20,
@@ -14209,19 +14209,19 @@
 			"resultLevel": 81,
 			"ingredientIds": [
 				16150,
-				838,
 				1660,
 				18371,
 				749,
-				14635
+				14635,
+				1691
 			],
 			"quantities": [
 				13,
-				9,
 				1,
 				12,
 				4,
-				60
+				60,
+				5
 			],
 			"jobId": 13,
 			"skillId": 15,
@@ -14316,16 +14316,16 @@
 				846,
 				8075,
 				12737,
-				838,
-				18371
+				18371,
+				1691
 			],
 			"quantities": [
 				4,
 				12,
 				1,
 				6,
-				10,
-				8
+				8,
+				10
 			],
 			"jobId": 13,
 			"skillId": 15,
@@ -16055,19 +16055,19 @@
 			"resultLevel": 88,
 			"ingredientIds": [
 				845,
-				838,
 				14471,
 				14468,
 				749,
-				12737
+				12737,
+				8496
 			],
 			"quantities": [
-				10,
 				10,
 				1,
 				1,
 				4,
-				6
+				6,
+				10
 			],
 			"jobId": 11,
 			"skillId": 20,
@@ -16132,18 +16132,18 @@
 			"ingredientIds": [
 				749,
 				8002,
-				838,
 				14472,
 				14635,
-				18385
+				18385,
+				8494
 			],
 			"quantities": [
 				4,
 				9,
-				10,
 				1,
 				60,
-				1
+				1,
+				10
 			],
 			"jobId": 11,
 			"skillId": 20,
@@ -17239,19 +17239,19 @@
 			"resultLevel": 83,
 			"ingredientIds": [
 				14473,
-				838,
 				8075,
 				18371,
 				749,
-				12737
+				12737,
+				1691
 			],
 			"quantities": [
 				2,
-				7,
 				1,
 				7,
 				4,
-				6
+				6,
+				5
 			],
 			"jobId": 15,
 			"skillId": 13,
@@ -19723,19 +19723,19 @@
 				291,
 				415,
 				2503,
-				2656,
 				8399,
 				7301,
 				7291,
-				2493
+				2493,
+				8387
 			],
 			"quantities": [
 				8,
 				15,
 				4,
-				12,
 				4,
 				12,
+				1,
 				1,
 				1
 			],
@@ -19868,20 +19868,20 @@
 			"ingredientIds": [
 				13491,
 				6478,
-				2656,
 				7300,
 				2287,
 				7304,
-				7305
+				7305,
+				8384
 			],
 			"quantities": [
 				30,
 				5,
-				20,
 				10,
 				12,
 				1,
-				1
+				1,
+				5
 			],
 			"jobId": 27,
 			"skillId": 63,
@@ -20985,23 +20985,23 @@
 			"resultLevel": 125,
 			"ingredientIds": [
 				653,
-				2656,
 				8075,
 				7300,
 				8347,
 				7277,
 				2552,
-				2562
+				2562,
+				7305
 			],
 			"quantities": [
 				6,
-				10,
 				12,
 				2,
 				3,
 				1,
 				1,
-				1
+				1,
+				4
 			],
 			"jobId": 27,
 			"skillId": 63,
@@ -21108,20 +21108,20 @@
 				409,
 				651,
 				6478,
-				2656,
 				7304,
 				15068,
-				7306
+				7306,
+				2299
 			],
 			"quantities": [
 				40,
 				16,
 				3,
 				5,
-				30,
 				2,
 				1,
-				1
+				1,
+				11
 			],
 			"jobId": 27,
 			"skillId": 63,
@@ -21136,20 +21136,20 @@
 			"ingredientIds": [
 				650,
 				6478,
-				2656,
 				8399,
 				7300,
 				7277,
 				2552,
-				7291
+				7291,
+				7386
 			],
 			"quantities": [
 				6,
 				2,
-				10,
 				8,
 				1,
 				2,
+				1,
 				1,
 				1
 			],
@@ -21276,22 +21276,22 @@
 			"ingredientIds": [
 				291,
 				13491,
-				2656,
 				8075,
 				8347,
 				7305,
 				7301,
-				7291
+				7291,
+				16211
 			],
 			"quantities": [
 				11,
 				12,
-				5,
 				6,
 				3,
 				1,
 				16,
-				1
+				1,
+				9
 			],
 			"jobId": 27,
 			"skillId": 63,
@@ -21536,22 +21536,22 @@
 			"resultTypeId": 2,
 			"resultLevel": 120,
 			"ingredientIds": [
-				2656,
 				7014,
 				14282,
 				8358,
 				7036,
 				2624,
 				14467,
-				8322
+				8322,
+				15727
 			],
 			"quantities": [
-				1,
 				4,
 				6,
 				2,
 				1,
 				3,
+				1,
 				1,
 				1
 			],
@@ -21622,23 +21622,23 @@
 			"resultTypeId": 2,
 			"resultLevel": 123,
 			"ingredientIds": [
-				2656,
 				7016,
 				7027,
 				6475,
 				1674,
 				1610,
 				3002,
-				2559
+				2559,
+				15727
 			],
 			"quantities": [
-				1,
 				12,
 				4,
 				2,
 				2,
 				2,
 				2,
+				1,
 				1
 			],
 			"jobId": 13,
@@ -22116,21 +22116,21 @@
 			"resultTypeId": 2,
 			"resultLevel": 124,
 			"ingredientIds": [
-				2656,
 				7014,
 				7016,
 				14282,
 				1610,
 				2561,
 				3002,
-				18198
+				18198,
+				15727
 			],
 			"quantities": [
-				1,
 				5,
 				20,
 				2,
 				4,
+				1,
 				1,
 				1,
 				1
@@ -22290,21 +22290,21 @@
 			"ingredientIds": [
 				470,
 				918,
-				1677,
 				1679,
 				7035,
 				7036,
 				3002,
-				8322
+				8322,
+				2299
 			],
 			"quantities": [
 				30,
 				10,
-				6,
 				1,
 				3,
 				5,
 				5,
+				1,
 				1
 			],
 			"jobId": 11,
@@ -22507,19 +22507,19 @@
 			"resultLevel": 83,
 			"ingredientIds": [
 				749,
-				2656,
 				13731,
 				8002,
 				18371,
-				15263
+				15263,
+				14473
 			],
 			"quantities": [
 				4,
-				1,
 				10,
 				13,
 				7,
-				60
+				60,
+				11
 			],
 			"jobId": 11,
 			"skillId": 20,
@@ -23040,18 +23040,18 @@
 			"ingredientIds": [
 				750,
 				7225,
-				2656,
 				12737,
-				838,
-				13167
+				13167,
+				21265,
+				8403
 			],
 			"quantities": [
 				2,
 				5,
-				1,
 				10,
-				13,
-				11
+				11,
+				1,
+				10
 			],
 			"jobId": 27,
 			"skillId": 63,
@@ -23139,17 +23139,17 @@
 				7225,
 				14490,
 				8144,
-				838,
 				12744,
-				15263
+				15263,
+				15164
 			],
 			"quantities": [
 				5,
 				1,
 				1,
-				13,
 				1,
-				100
+				100,
+				10
 			],
 			"jobId": 27,
 			"skillId": 63,
@@ -24105,7 +24105,7 @@
 			"resultLevel": 6,
 			"ingredientIds": [
 				1575,
-				678,
+				1546,
 				17060
 			],
 			"quantities": [
@@ -24197,17 +24197,17 @@
 			"resultLevel": 58,
 			"ingredientIds": [
 				748,
-				2656,
 				14473,
 				844,
-				8731
+				8731,
+				11695
 			],
 			"quantities": [
 				4,
-				1,
 				8,
 				9,
-				1
+				1,
+				10
 			],
 			"jobId": 16,
 			"skillId": 12,
@@ -30032,7 +30032,7 @@
 		},
 		{
 			"resultId": 8448,
-			"resultNameId": 927142,
+			"resultNameId": 927359,
 			"resultTypeId": 9,
 			"resultLevel": 98,
 			"ingredientIds": [
@@ -30088,7 +30088,7 @@
 		},
 		{
 			"resultId": 8451,
-			"resultNameId": 926899,
+			"resultNameId": 927062,
 			"resultTypeId": 16,
 			"resultLevel": 105,
 			"ingredientIds": [
@@ -30172,7 +30172,7 @@
 		},
 		{
 			"resultId": 8454,
-			"resultNameId": 926897,
+			"resultNameId": 927060,
 			"resultTypeId": 9,
 			"resultLevel": 101,
 			"ingredientIds": [
@@ -30355,9 +30355,9 @@
 				2500,
 				8490,
 				918,
-				838,
 				8448,
-				8485
+				8485,
+				8399
 			],
 			"quantities": [
 				1,
@@ -30365,9 +30365,9 @@
 				1,
 				2,
 				3,
-				20,
 				1,
-				6
+				6,
+				10
 			],
 			"jobId": 16,
 			"skillId": 12,
@@ -37794,7 +37794,7 @@
 			"quantities": [
 				5,
 				7,
-				1,
+				5,
 				13
 			],
 			"jobId": 15,
@@ -38204,7 +38204,7 @@
 			"ingredientIds": [
 				425,
 				643,
-				2656
+				16219
 			],
 			"quantities": [
 				30,
@@ -41294,7 +41294,7 @@
 			"quantities": [
 				6,
 				5,
-				1,
+				7,
 				8
 			],
 			"jobId": 15,
@@ -50688,18 +50688,18 @@
 			"ingredientIds": [
 				749,
 				2596,
-				2656,
 				13731,
 				18385,
-				15263
+				15263,
+				14473
 			],
 			"quantities": [
 				4,
 				7,
-				1,
 				7,
 				1,
-				80
+				80,
+				11
 			],
 			"jobId": 27,
 			"skillId": 63,
@@ -50715,17 +50715,17 @@
 				749,
 				14490,
 				18368,
-				838,
 				18385,
-				14635
+				14635,
+				14468
 			],
 			"quantities": [
 				4,
 				1,
 				9,
-				12,
 				1,
-				80
+				80,
+				1
 			],
 			"jobId": 16,
 			"skillId": 12,
@@ -50767,17 +50767,17 @@
 				2543,
 				8075,
 				844,
-				838,
 				18385,
-				15263
+				15263,
+				16181
 			],
 			"quantities": [
 				2,
 				1,
 				11,
-				7,
 				1,
-				80
+				80,
+				7
 			],
 			"jobId": 13,
 			"skillId": 15,
@@ -52558,22 +52558,22 @@
 			"resultTypeId": 16,
 			"resultLevel": 150,
 			"ingredientIds": [
-				302,
 				481,
 				2336,
 				2654,
 				12834,
 				12845,
 				12862,
-				12863
+				12863,
+				15170
 			],
 			"quantities": [
-				2,
 				1,
 				50,
 				2,
 				1,
 				20,
+				1,
 				1,
 				1
 			],
@@ -52619,21 +52619,21 @@
 			"resultLevel": 150,
 			"ingredientIds": [
 				2525,
-				2674,
 				6480,
 				7305,
 				12834,
 				12845,
 				12862,
-				12863
+				12863,
+				15170
 			],
 			"quantities": [
 				2,
-				25,
 				1,
 				2,
 				1,
 				20,
+				1,
 				1,
 				1
 			],
@@ -55118,24 +55118,24 @@
 			"resultTypeId": 16,
 			"resultLevel": 198,
 			"ingredientIds": [
-				2656,
 				8809,
 				11322,
 				11323,
 				11940,
 				12740,
 				13154,
-				15727
+				15727,
+				16460
 			],
 			"quantities": [
-				40,
 				6,
 				3,
 				41,
 				7,
 				3,
 				9,
-				13
+				13,
+				2
 			],
 			"jobId": 27,
 			"skillId": 63,
@@ -61635,21 +61635,21 @@
 				12728,
 				12733,
 				12738,
-				838,
 				13699,
 				13731,
 				14290,
-				14635
+				14635,
+				15263
 			],
 			"quantities": [
 				1,
 				1,
 				5,
 				10,
-				10,
 				20,
 				1,
-				1000
+				1000,
+				100
 			],
 			"jobId": 60,
 			"skillId": 156,
@@ -73860,20 +73860,20 @@
 			"resultTypeId": 9,
 			"resultLevel": 90,
 			"ingredientIds": [
-				838,
 				13731,
 				1660,
 				16207,
 				2543,
-				12737
+				12737,
+				8495
 			],
 			"quantities": [
-				10,
 				13,
 				1,
 				1,
 				2,
-				6
+				6,
+				2
 			],
 			"jobId": 16,
 			"skillId": 12,
@@ -75329,8 +75329,8 @@
 				12744,
 				14635,
 				16311,
-				838,
-				14473
+				14473,
+				16211
 			],
 			"quantities": [
 				1,
@@ -79106,7 +79106,7 @@
 				2540,
 				11695,
 				8002,
-				838
+				16211
 			],
 			"quantities": [
 				2,
@@ -80934,22 +80934,22 @@
 			"resultTypeId": 112,
 			"resultLevel": 80,
 			"ingredientIds": [
-				838,
 				2543,
 				2503,
 				2321,
 				8740,
 				14660,
-				14662
+				14662,
+				18371
 			],
 			"quantities": [
-				2,
 				2,
 				2,
 				20,
 				20,
 				1,
-				1
+				1,
+				2
 			],
 			"jobId": 65,
 			"skillId": 171,
@@ -90956,7 +90956,7 @@
 		},
 		{
 			"resultId": 19337,
-			"resultNameId": 736564,
+			"resultNameId": 939713,
 			"resultTypeId": 78,
 			"resultLevel": 90,
 			"ingredientIds": [
@@ -93618,7 +93618,7 @@
 			"ingredientIds": [
 				20680,
 				12845,
-				2656
+				643
 			],
 			"quantities": [
 				1,
@@ -95567,11 +95567,34 @@
 			"tooltipExpirationDate": NaN
 		},
 		{
+			"resultId": 20962,
+			"resultNameId": 952973,
+			"resultTypeId": 12,
+			"resultLevel": 60,
+			"ingredientIds": [
+				26870,
+				395,
+				1731,
+				434
+			],
+			"quantities": [
+				10,
+				5,
+				10,
+				10
+			],
+			"jobId": 26,
+			"skillId": 23,
+			"changeVersion": "null",
+			"tooltipExpirationDate": NaN
+		},
+		{
 			"resultId": 20968,
 			"resultNameId": 789554,
 			"resultTypeId": 209,
 			"resultLevel": 200,
 			"ingredientIds": [
+				26870,
 				20959,
 				19975,
 				17864,
@@ -95579,10 +95602,11 @@
 				20961
 			],
 			"quantities": [
+				100,
 				1,
 				12,
 				4,
-				2,
+				1,
 				1
 			],
 			"jobId": 1,
@@ -95596,12 +95620,14 @@
 			"resultTypeId": 50,
 			"resultLevel": 200,
 			"ingredientIds": [
+				26870,
 				21012,
 				15271,
 				14635,
 				17864
 			],
 			"quantities": [
+				20,
 				3,
 				10,
 				3500,
@@ -95618,12 +95644,14 @@
 			"resultTypeId": 50,
 			"resultLevel": 200,
 			"ingredientIds": [
+				26870,
 				21013,
 				15271,
 				14635,
 				17864
 			],
 			"quantities": [
+				20,
 				3,
 				10,
 				3500,
@@ -95668,12 +95696,14 @@
 			"resultTypeId": 15,
 			"resultLevel": 200,
 			"ingredientIds": [
+				26870,
 				20963,
 				15219,
 				14921,
 				19975
 			],
 			"quantities": [
+				10,
 				1,
 				10,
 				6,
@@ -95687,17 +95717,19 @@
 		{
 			"resultId": 20973,
 			"resultNameId": 789568,
-			"resultTypeId": 209,
+			"resultTypeId": 172,
 			"resultLevel": 200,
 			"ingredientIds": [
 				20969,
+				20964,
+				21013,
 				20971,
-				20972,
-				20964
+				20972
 			],
 			"quantities": [
 				1,
 				1,
+				2,
 				1,
 				1
 			],
@@ -95709,17 +95741,19 @@
 		{
 			"resultId": 20974,
 			"resultNameId": 789570,
-			"resultTypeId": 209,
+			"resultTypeId": 172,
 			"resultLevel": 200,
 			"ingredientIds": [
-				20969,
+				20970,
+				20965,
+				21012,
 				20971,
-				20972,
-				20965
+				20972
 			],
 			"quantities": [
 				1,
 				1,
+				2,
 				1,
 				1
 			],
@@ -95731,17 +95765,19 @@
 		{
 			"resultId": 20975,
 			"resultNameId": 789572,
-			"resultTypeId": 209,
+			"resultTypeId": 172,
 			"resultLevel": 200,
 			"ingredientIds": [
 				20969,
+				20966,
+				21013,
 				20971,
-				20972,
-				20966
+				20972
 			],
 			"quantities": [
 				1,
 				1,
+				2,
 				1,
 				1
 			],
@@ -95753,17 +95789,19 @@
 		{
 			"resultId": 20976,
 			"resultNameId": 789574,
-			"resultTypeId": 209,
+			"resultTypeId": 172,
 			"resultLevel": 200,
 			"ingredientIds": [
 				20970,
+				20967,
+				21012,
 				20971,
-				20972,
-				20967
+				20972
 			],
 			"quantities": [
 				1,
 				1,
+				2,
 				1,
 				1
 			],
@@ -96278,7 +96316,7 @@
 			"resultId": 21451,
 			"resultNameId": 808234,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21981,
 				21980,
@@ -96308,7 +96346,7 @@
 			"resultId": 21452,
 			"resultNameId": 808236,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21981,
 				21980,
@@ -96338,7 +96376,7 @@
 			"resultId": 21453,
 			"resultNameId": 808238,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21981,
 				21980,
@@ -97158,7 +97196,7 @@
 			"resultId": 21996,
 			"resultNameId": 818388,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21975,
 				21974,
@@ -97184,7 +97222,7 @@
 			"resultId": 21997,
 			"resultNameId": 818390,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21975,
 				21974,
@@ -97210,7 +97248,7 @@
 			"resultId": 21998,
 			"resultNameId": 818392,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21975,
 				21974,
@@ -97236,7 +97274,7 @@
 			"resultId": 21999,
 			"resultNameId": 818394,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21972,
 				21971,
@@ -97258,7 +97296,7 @@
 			"resultId": 22000,
 			"resultNameId": 818396,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21972,
 				21971,
@@ -97280,7 +97318,7 @@
 			"resultId": 22001,
 			"resultNameId": 818398,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21972,
 				21971,
@@ -97302,7 +97340,7 @@
 			"resultId": 22002,
 			"resultNameId": 818400,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21978,
 				21977,
@@ -97332,7 +97370,7 @@
 			"resultId": 22003,
 			"resultNameId": 818402,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21978,
 				21977,
@@ -97362,7 +97400,7 @@
 			"resultId": 22004,
 			"resultNameId": 818404,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21978,
 				21977,
@@ -97392,7 +97430,7 @@
 			"resultId": 22005,
 			"resultNameId": 818406,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21972,
 				21971,
@@ -97414,7 +97452,7 @@
 			"resultId": 22006,
 			"resultNameId": 818408,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21972,
 				21971,
@@ -97436,7 +97474,7 @@
 			"resultId": 22007,
 			"resultNameId": 818410,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21972,
 				21971,
@@ -97458,7 +97496,7 @@
 			"resultId": 22008,
 			"resultNameId": 818412,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21975,
 				21974,
@@ -97484,7 +97522,7 @@
 			"resultId": 22009,
 			"resultNameId": 818414,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21975,
 				21974,
@@ -97510,7 +97548,7 @@
 			"resultId": 22010,
 			"resultNameId": 818416,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21975,
 				21974,
@@ -97536,7 +97574,7 @@
 			"resultId": 22011,
 			"resultNameId": 818418,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21978,
 				21977,
@@ -97566,7 +97604,7 @@
 			"resultId": 22012,
 			"resultNameId": 818420,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21978,
 				21977,
@@ -97596,7 +97634,7 @@
 			"resultId": 22013,
 			"resultNameId": 818422,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21978,
 				21977,
@@ -97626,7 +97664,7 @@
 			"resultId": 22014,
 			"resultNameId": 818424,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21972,
 				21971,
@@ -97648,7 +97686,7 @@
 			"resultId": 22015,
 			"resultNameId": 818426,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21972,
 				21971,
@@ -97670,7 +97708,7 @@
 			"resultId": 22016,
 			"resultNameId": 818428,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21981,
 				21980,
@@ -97700,7 +97738,7 @@
 			"resultId": 22017,
 			"resultNameId": 818430,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21981,
 				21980,
@@ -97730,7 +97768,7 @@
 			"resultId": 22018,
 			"resultNameId": 818432,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21981,
 				21980,
@@ -97760,7 +97798,7 @@
 			"resultId": 22019,
 			"resultNameId": 818434,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21981,
 				21980,
@@ -97790,7 +97828,7 @@
 			"resultId": 22020,
 			"resultNameId": 818436,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21981,
 				21980,
@@ -97820,7 +97858,7 @@
 			"resultId": 22022,
 			"resultNameId": 818440,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21972,
 				21971,
@@ -97842,7 +97880,7 @@
 			"resultId": 22023,
 			"resultNameId": 818442,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21975,
 				21974,
@@ -97868,7 +97906,7 @@
 			"resultId": 22024,
 			"resultNameId": 818444,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21981,
 				21980,
@@ -97898,7 +97936,7 @@
 			"resultId": 22025,
 			"resultNameId": 818446,
 			"resultTypeId": 217,
-			"resultLevel": 180,
+			"resultLevel": 200,
 			"ingredientIds": [
 				21975,
 				21974,
@@ -98945,22 +98983,6 @@
 			"tooltipExpirationDate": NaN
 		},
 		{
-			"resultId": 23053,
-			"resultNameId": 837040,
-			"resultTypeId": 144,
-			"resultLevel": 1,
-			"ingredientIds": [
-				23054
-			],
-			"quantities": [
-				1
-			],
-			"jobId": 26,
-			"skillId": 23,
-			"changeVersion": "null",
-			"tooltipExpirationDate": NaN
-		},
-		{
 			"resultId": 23094,
 			"resultNameId": 880503,
 			"resultTypeId": 82,
@@ -99912,7 +99934,7 @@
 		},
 		{
 			"resultId": 23342,
-			"resultNameId": 845193,
+			"resultNameId": 927461,
 			"resultTypeId": 144,
 			"resultLevel": 10,
 			"ingredientIds": [
@@ -101346,14 +101368,14 @@
 			"ingredientIds": [
 				425,
 				16385,
-				2656,
-				1688
+				1688,
+				2656
 			],
 			"quantities": [
 				30,
 				20,
-				5,
-				1
+				1,
+				10
 			],
 			"jobId": 27,
 			"skillId": 63,
@@ -101899,744 +101921,6 @@
 			"skillId": 171,
 			"changeVersion": "",
 			"tooltipExpirationDate": 1623333414241.0
-		},
-		{
-			"resultId": 25443,
-			"resultNameId": 910106,
-			"resultTypeId": 223,
-			"resultLevel": 1,
-			"ingredientIds": [
-				25445,
-				25769
-			],
-			"quantities": [
-				1,
-				1
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25456,
-			"resultNameId": 906177,
-			"resultTypeId": 223,
-			"resultLevel": 9,
-			"ingredientIds": [
-				25455,
-				25769
-			],
-			"quantities": [
-				1,
-				3
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25470,
-			"resultNameId": 906261,
-			"resultTypeId": 223,
-			"resultLevel": 17,
-			"ingredientIds": [
-				25462,
-				25769
-			],
-			"quantities": [
-				1,
-				5
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25483,
-			"resultNameId": 906339,
-			"resultTypeId": 223,
-			"resultLevel": 26,
-			"ingredientIds": [
-				25481,
-				25480,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				7
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25495,
-			"resultNameId": 906411,
-			"resultTypeId": 223,
-			"resultLevel": 34,
-			"ingredientIds": [
-				25494,
-				25491,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				9
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25504,
-			"resultNameId": 906465,
-			"resultTypeId": 223,
-			"resultLevel": 41,
-			"ingredientIds": [
-				25502,
-				25500,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				11
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25513,
-			"resultNameId": 906519,
-			"resultTypeId": 223,
-			"resultLevel": 48,
-			"ingredientIds": [
-				25511,
-				25512,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				12
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25525,
-			"resultNameId": 906591,
-			"resultTypeId": 223,
-			"resultLevel": 55,
-			"ingredientIds": [
-				25526,
-				25520,
-				25519,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				14
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25537,
-			"resultNameId": 911797,
-			"resultTypeId": 223,
-			"resultLevel": 62,
-			"ingredientIds": [
-				25531,
-				25533,
-				25534,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				16
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25544,
-			"resultNameId": 906705,
-			"resultTypeId": 223,
-			"resultLevel": 67,
-			"ingredientIds": [
-				25543,
-				25542,
-				25541,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				17
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25551,
-			"resultNameId": 906747,
-			"resultTypeId": 223,
-			"resultLevel": 72,
-			"ingredientIds": [
-				25550,
-				25547,
-				25546,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				18
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25562,
-			"resultNameId": 906813,
-			"resultTypeId": 223,
-			"resultLevel": 79,
-			"ingredientIds": [
-				25559,
-				25561,
-				25558,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				20
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25569,
-			"resultNameId": 906855,
-			"resultTypeId": 223,
-			"resultLevel": 85,
-			"ingredientIds": [
-				25567,
-				25566,
-				25565,
-				25564,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				22
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25577,
-			"resultNameId": 906903,
-			"resultTypeId": 223,
-			"resultLevel": 91,
-			"ingredientIds": [
-				25571,
-				25572,
-				25573,
-				25574,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				23
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25584,
-			"resultNameId": 906945,
-			"resultTypeId": 223,
-			"resultLevel": 97,
-			"ingredientIds": [
-				25579,
-				25578,
-				25580,
-				25581,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				25
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25596,
-			"resultNameId": 907017,
-			"resultTypeId": 223,
-			"resultLevel": 105,
-			"ingredientIds": [
-				25591,
-				25593,
-				25592,
-				25594,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				27
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25608,
-			"resultNameId": 907089,
-			"resultTypeId": 223,
-			"resultLevel": 113,
-			"ingredientIds": [
-				25604,
-				25605,
-				25606,
-				25607,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				29
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25614,
-			"resultNameId": 907125,
-			"resultTypeId": 223,
-			"resultLevel": 117,
-			"ingredientIds": [
-				25611,
-				25610,
-				25612,
-				25613,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				30
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25621,
-			"resultNameId": 907167,
-			"resultTypeId": 223,
-			"resultLevel": 122,
-			"ingredientIds": [
-				25615,
-				25616,
-				25617,
-				25618,
-				25620,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				1,
-				31
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25628,
-			"resultNameId": 907209,
-			"resultTypeId": 223,
-			"resultLevel": 127,
-			"ingredientIds": [
-				25626,
-				25624,
-				25625,
-				25627,
-				25629,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				1,
-				32
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25636,
-			"resultNameId": 907257,
-			"resultTypeId": 223,
-			"resultLevel": 133,
-			"ingredientIds": [
-				25630,
-				25632,
-				25633,
-				25634,
-				25635,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				1,
-				34
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25644,
-			"resultNameId": 907305,
-			"resultTypeId": 223,
-			"resultLevel": 139,
-			"ingredientIds": [
-				25638,
-				25641,
-				25639,
-				25640,
-				25642,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				1,
-				35
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25653,
-			"resultNameId": 907359,
-			"resultTypeId": 223,
-			"resultLevel": 146,
-			"ingredientIds": [
-				25647,
-				25646,
-				25648,
-				25649,
-				25650,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				1,
-				37
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25661,
-			"resultNameId": 907407,
-			"resultTypeId": 223,
-			"resultLevel": 152,
-			"ingredientIds": [
-				25656,
-				25654,
-				25655,
-				25657,
-				25658,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				1,
-				38
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25668,
-			"resultNameId": 907449,
-			"resultTypeId": 223,
-			"resultLevel": 157,
-			"ingredientIds": [
-				25663,
-				25662,
-				25665,
-				25664,
-				25667,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				1,
-				40
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25679,
-			"resultNameId": 907515,
-			"resultTypeId": 223,
-			"resultLevel": 164,
-			"ingredientIds": [
-				25675,
-				25676,
-				25677,
-				25678,
-				25680,
-				25684,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				1,
-				1,
-				41
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25692,
-			"resultNameId": 907593,
-			"resultTypeId": 223,
-			"resultLevel": 173,
-			"ingredientIds": [
-				25688,
-				25689,
-				25691,
-				25690,
-				25686,
-				25694,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				1,
-				1,
-				44
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25700,
-			"resultNameId": 907641,
-			"resultTypeId": 223,
-			"resultLevel": 179,
-			"ingredientIds": [
-				25696,
-				25695,
-				25697,
-				25698,
-				25699,
-				25703,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				1,
-				1,
-				45
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25713,
-			"resultNameId": 907719,
-			"resultTypeId": 223,
-			"resultLevel": 188,
-			"ingredientIds": [
-				25710,
-				25709,
-				25712,
-				25711,
-				25706,
-				25708,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				1,
-				1,
-				47
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25721,
-			"resultNameId": 907767,
-			"resultTypeId": 223,
-			"resultLevel": 193,
-			"ingredientIds": [
-				25717,
-				25718,
-				25716,
-				25719,
-				25720,
-				25714,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				1,
-				1,
-				49
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
-		},
-		{
-			"resultId": 25730,
-			"resultNameId": 907821,
-			"resultTypeId": 223,
-			"resultLevel": 200,
-			"ingredientIds": [
-				25722,
-				25723,
-				25724,
-				25725,
-				25727,
-				25726,
-				25769
-			],
-			"quantities": [
-				1,
-				1,
-				1,
-				1,
-				1,
-				1,
-				50
-			],
-			"jobId": 75,
-			"skillId": 383,
-			"changeVersion": "",
-			"tooltipExpirationDate": 1627893990325.0
 		},
 		{
 			"resultId": 25752,
@@ -103186,7 +102470,7 @@
 		},
 		{
 			"resultId": 26198,
-			"resultNameId": 926229,
+			"resultNameId": 926391,
 			"resultTypeId": 21,
 			"resultLevel": 10,
 			"ingredientIds": [
@@ -103203,6 +102487,2340 @@
 			"skillId": 20,
 			"changeVersion": "",
 			"tooltipExpirationDate": 1637311959366.0
+		},
+		{
+			"resultId": 26308,
+			"resultNameId": 933397,
+			"resultTypeId": 9,
+			"resultLevel": 146,
+			"ingredientIds": [
+				12738,
+				12733,
+				2299,
+				8381,
+				26317,
+				26318,
+				26319,
+				26316
+			],
+			"quantities": [
+				4,
+				2,
+				11,
+				3,
+				27,
+				17,
+				51,
+				11
+			],
+			"jobId": 16,
+			"skillId": 12,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1620397498117.0
+		},
+		{
+			"resultId": 26309,
+			"resultNameId": 933399,
+			"resultTypeId": 11,
+			"resultLevel": 148,
+			"ingredientIds": [
+				12738,
+				12733,
+				2299,
+				8401,
+				26320,
+				26321,
+				26317,
+				26316
+			],
+			"quantities": [
+				4,
+				2,
+				9,
+				4,
+				29,
+				24,
+				33,
+				9
+			],
+			"jobId": 15,
+			"skillId": 13,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1634314060624.0
+		},
+		{
+			"resultId": 26310,
+			"resultNameId": 933306,
+			"resultTypeId": 22,
+			"resultLevel": 150,
+			"ingredientIds": [
+				12733,
+				2299,
+				15170,
+				26318,
+				26320,
+				26321,
+				26316,
+				15271
+			],
+			"quantities": [
+				2,
+				11,
+				3,
+				43,
+				31,
+				18,
+				10,
+				4
+			],
+			"jobId": 11,
+			"skillId": 20,
+			"changeVersion": "8.63",
+			"tooltipExpirationDate": 1634289898107.0
+		},
+		{
+			"resultId": 26311,
+			"resultNameId": 938460,
+			"resultTypeId": 9,
+			"resultLevel": 146,
+			"ingredientIds": [
+				12733,
+				2299,
+				7028,
+				8399,
+				26320,
+				26321,
+				26317,
+				26316
+			],
+			"quantities": [
+				1,
+				11,
+				2,
+				3,
+				19,
+				24,
+				27,
+				9
+			],
+			"jobId": 16,
+			"skillId": 12,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1620397498117.0
+		},
+		{
+			"resultId": 26313,
+			"resultNameId": 938462,
+			"resultTypeId": 17,
+			"resultLevel": 148,
+			"ingredientIds": [
+				12733,
+				7028,
+				2299,
+				8400,
+				26318,
+				26320,
+				26321,
+				26316
+			],
+			"quantities": [
+				1,
+				2,
+				9,
+				4,
+				33,
+				31,
+				18,
+				10
+			],
+			"jobId": 27,
+			"skillId": 63,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1620400246876.0
+		},
+		{
+			"resultId": 26314,
+			"resultNameId": 938466,
+			"resultTypeId": 4,
+			"resultLevel": 150,
+			"ingredientIds": [
+				12733,
+				7028,
+				2299,
+				7386,
+				26318,
+				26319,
+				26317,
+				26316
+			],
+			"quantities": [
+				1,
+				2,
+				10,
+				3,
+				27,
+				40,
+				33,
+				11
+			],
+			"jobId": 13,
+			"skillId": 15,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1592920697626.0
+		},
+		{
+			"resultId": 26333,
+			"resultNameId": 938336,
+			"resultTypeId": 84,
+			"resultLevel": 150,
+			"ingredientIds": [
+				26317,
+				26318,
+				26320,
+				26319,
+				425,
+				7925,
+				446,
+				16385
+			],
+			"quantities": [
+				1,
+				1,
+				1,
+				1,
+				6,
+				6,
+				6,
+				6
+			],
+			"jobId": 65,
+			"skillId": 171,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1634744752106.0
+		},
+		{
+			"resultId": 26336,
+			"resultNameId": 938475,
+			"resultTypeId": 16,
+			"resultLevel": 40,
+			"ingredientIds": [
+				12745,
+				2264,
+				838,
+				2259
+			],
+			"quantities": [
+				1,
+				5,
+				11,
+				14
+			],
+			"jobId": 27,
+			"skillId": 63,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1634313671737.0
+		},
+		{
+			"resultId": 26337,
+			"resultNameId": 938473,
+			"resultTypeId": 11,
+			"resultLevel": 42,
+			"ingredientIds": [
+				746,
+				2264,
+				838,
+				2656,
+				382
+			],
+			"quantities": [
+				1,
+				6,
+				12,
+				8,
+				15
+			],
+			"jobId": 15,
+			"skillId": 13,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1634314060624.0
+		},
+		{
+			"resultId": 26343,
+			"resultNameId": 938471,
+			"resultTypeId": 10,
+			"resultLevel": 36,
+			"ingredientIds": [
+				746,
+				2264,
+				838,
+				302
+			],
+			"quantities": [
+				1,
+				4,
+				9,
+				14
+			],
+			"jobId": 15,
+			"skillId": 13,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1643361893835.0
+		},
+		{
+			"resultId": 26344,
+			"resultNameId": 938469,
+			"resultTypeId": 22,
+			"resultLevel": 38,
+			"ingredientIds": [
+				12745,
+				2264,
+				838,
+				2674
+			],
+			"quantities": [
+				1,
+				7,
+				10,
+				15
+			],
+			"jobId": 11,
+			"skillId": 20,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1634290268680.0
+		},
+		{
+			"resultId": 26345,
+			"resultNameId": 932991,
+			"resultTypeId": 258,
+			"resultLevel": 80,
+			"ingredientIds": [
+				1536,
+				16493
+			],
+			"quantities": [
+				5,
+				1
+			],
+			"jobId": 2,
+			"skillId": 101,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1643637765688.0
+		},
+		{
+			"resultId": 26347,
+			"resultNameId": 935046,
+			"resultTypeId": 258,
+			"resultLevel": 80,
+			"ingredientIds": [
+				1538,
+				16493
+			],
+			"quantities": [
+				5,
+				1
+			],
+			"jobId": 2,
+			"skillId": 101,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1643638430546.0
+		},
+		{
+			"resultId": 26348,
+			"resultNameId": 933052,
+			"resultTypeId": 258,
+			"resultLevel": 80,
+			"ingredientIds": [
+				1535,
+				16493
+			],
+			"quantities": [
+				5,
+				1
+			],
+			"jobId": 2,
+			"skillId": 101,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1643643390093.0
+		},
+		{
+			"resultId": 26349,
+			"resultNameId": 932989,
+			"resultTypeId": 258,
+			"resultLevel": 80,
+			"ingredientIds": [
+				1537,
+				16493
+			],
+			"quantities": [
+				5,
+				1
+			],
+			"jobId": 2,
+			"skillId": 101,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1643643424670.0
+		},
+		{
+			"resultId": 26351,
+			"resultNameId": 932996,
+			"resultTypeId": 258,
+			"resultLevel": 40,
+			"ingredientIds": [
+				1531,
+				16491
+			],
+			"quantities": [
+				5,
+				1
+			],
+			"jobId": 2,
+			"skillId": 101,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1643643380269.0
+		},
+		{
+			"resultId": 26352,
+			"resultNameId": 933002,
+			"resultTypeId": 258,
+			"resultLevel": 40,
+			"ingredientIds": [
+				1534,
+				16491
+			],
+			"quantities": [
+				5,
+				1
+			],
+			"jobId": 2,
+			"skillId": 101,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1643643488631.0
+		},
+		{
+			"resultId": 26353,
+			"resultNameId": 933008,
+			"resultTypeId": 258,
+			"resultLevel": 20,
+			"ingredientIds": [
+				1526,
+				16490
+			],
+			"quantities": [
+				5,
+				1
+			],
+			"jobId": 2,
+			"skillId": 101,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1643643701950.0
+		},
+		{
+			"resultId": 26354,
+			"resultNameId": 933014,
+			"resultTypeId": 258,
+			"resultLevel": 20,
+			"ingredientIds": [
+				1529,
+				16490
+			],
+			"quantities": [
+				5,
+				1
+			],
+			"jobId": 2,
+			"skillId": 101,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1643646983900.0
+		},
+		{
+			"resultId": 26355,
+			"resultNameId": 933021,
+			"resultTypeId": 258,
+			"resultLevel": 20,
+			"ingredientIds": [
+				1527,
+				16490
+			],
+			"quantities": [
+				5,
+				1
+			],
+			"jobId": 2,
+			"skillId": 101,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1643638468898.0
+		},
+		{
+			"resultId": 26356,
+			"resultNameId": 933027,
+			"resultTypeId": 258,
+			"resultLevel": 40,
+			"ingredientIds": [
+				1533,
+				16491
+			],
+			"quantities": [
+				5,
+				1
+			],
+			"jobId": 2,
+			"skillId": 101,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1643643468904.0
+		},
+		{
+			"resultId": 26357,
+			"resultNameId": 933033,
+			"resultTypeId": 258,
+			"resultLevel": 40,
+			"ingredientIds": [
+				1532,
+				16491
+			],
+			"quantities": [
+				5,
+				1
+			],
+			"jobId": 2,
+			"skillId": 101,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1643646979256.0
+		},
+		{
+			"resultId": 26358,
+			"resultNameId": 933039,
+			"resultTypeId": 258,
+			"resultLevel": 20,
+			"ingredientIds": [
+				1528,
+				16490
+			],
+			"quantities": [
+				5,
+				1
+			],
+			"jobId": 2,
+			"skillId": 101,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1643643493529.0
+		},
+		{
+			"resultId": 26362,
+			"resultNameId": 933289,
+			"resultTypeId": 43,
+			"resultLevel": 40,
+			"ingredientIds": [
+				8730,
+				8749,
+				8752,
+				8751,
+				8750
+			],
+			"quantities": [
+				1,
+				1,
+				1,
+				1,
+				1
+			],
+			"jobId": 26,
+			"skillId": 23,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1643888539249.0
+		},
+		{
+			"resultId": 26369,
+			"resultNameId": 933440,
+			"resultTypeId": 126,
+			"resultLevel": 1,
+			"ingredientIds": [
+				463,
+				464,
+				1660,
+				1528,
+				2540
+			],
+			"quantities": [
+				30,
+				6,
+				6,
+				6,
+				1
+			],
+			"jobId": 1,
+			"skillId": 401,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1635238593261.0
+		},
+		{
+			"resultId": 26660,
+			"resultNameId": 935010,
+			"resultTypeId": 43,
+			"resultLevel": 100,
+			"ingredientIds": [
+				26373,
+				13366,
+				17613
+			],
+			"quantities": [
+				1,
+				1,
+				2
+			],
+			"jobId": 36,
+			"skillId": 135,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1613384768434.0
+		},
+		{
+			"resultId": 26661,
+			"resultNameId": 935013,
+			"resultTypeId": 43,
+			"resultLevel": 100,
+			"ingredientIds": [
+				26373,
+				13366,
+				15169
+			],
+			"quantities": [
+				1,
+				1,
+				2
+			],
+			"jobId": 36,
+			"skillId": 135,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1613384768434.0
+		},
+		{
+			"resultId": 26662,
+			"resultNameId": 935016,
+			"resultTypeId": 43,
+			"resultLevel": 100,
+			"ingredientIds": [
+				26373,
+				13366,
+				15462
+			],
+			"quantities": [
+				1,
+				1,
+				2
+			],
+			"jobId": 36,
+			"skillId": 135,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1613384768434.0
+		},
+		{
+			"resultId": 26663,
+			"resultNameId": 935021,
+			"resultTypeId": 43,
+			"resultLevel": 100,
+			"ingredientIds": [
+				26373,
+				13366,
+				15732
+			],
+			"quantities": [
+				1,
+				1,
+				2
+			],
+			"jobId": 36,
+			"skillId": 135,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1613384768434.0
+		},
+		{
+			"resultId": 26680,
+			"resultNameId": 936436,
+			"resultTypeId": 84,
+			"resultLevel": 40,
+			"ingredientIds": [
+				395,
+				533,
+				603,
+				476,
+				382,
+				302,
+				2674,
+				2259
+			],
+			"quantities": [
+				6,
+				6,
+				6,
+				6,
+				1,
+				1,
+				1,
+				1
+			],
+			"jobId": 65,
+			"skillId": 171,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1634744752106.0
+		},
+		{
+			"resultId": 26753,
+			"resultNameId": 938413,
+			"resultTypeId": 69,
+			"resultLevel": 120,
+			"ingredientIds": [
+				7018,
+				1977,
+				17144
+			],
+			"quantities": [
+				1,
+				1,
+				1
+			],
+			"jobId": 41,
+			"skillId": 134,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1646037884942.0
+		},
+		{
+			"resultId": 26803,
+			"resultNameId": 940037,
+			"resultTypeId": 167,
+			"resultLevel": 140,
+			"ingredientIds": [
+				2299
+			],
+			"quantities": [
+				10
+			],
+			"jobId": 26,
+			"skillId": 23,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1623329084363.0
+		},
+		{
+			"resultId": 26804,
+			"resultNameId": 940044,
+			"resultTypeId": 167,
+			"resultLevel": 40,
+			"ingredientIds": [
+				838
+			],
+			"quantities": [
+				10
+			],
+			"jobId": 26,
+			"skillId": 23,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1623329084363.0
+		},
+		{
+			"resultId": 26805,
+			"resultNameId": 940064,
+			"resultTypeId": 93,
+			"resultLevel": 145,
+			"ingredientIds": [
+				26803,
+				391,
+				26319,
+				11309,
+				8311,
+				14951,
+				26316,
+				15171
+			],
+			"quantities": [
+				1,
+				3,
+				1,
+				1,
+				1,
+				1,
+				2,
+				1
+			],
+			"jobId": 65,
+			"skillId": 171,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1633090242875.0
+		},
+		{
+			"resultId": 26806,
+			"resultNameId": 940070,
+			"resultTypeId": 93,
+			"resultLevel": 45,
+			"ingredientIds": [
+				26804,
+				2264,
+				2259,
+				411,
+				13596
+			],
+			"quantities": [
+				1,
+				2,
+				1,
+				1,
+				1
+			],
+			"jobId": 65,
+			"skillId": 171,
+			"changeVersion": "2.63",
+			"tooltipExpirationDate": 1647002896321.0
+		},
+		{
+			"resultId": 26871,
+			"resultNameId": 943573,
+			"resultTypeId": 12,
+			"resultLevel": 120,
+			"ingredientIds": [
+				26870,
+				20962,
+				2287,
+				18357,
+				1801
+			],
+			"quantities": [
+				20,
+				5,
+				3,
+				2,
+				10
+			],
+			"jobId": 26,
+			"skillId": 23,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1649837122266.0
+		},
+		{
+			"resultId": 26872,
+			"resultNameId": 943576,
+			"resultTypeId": 12,
+			"resultLevel": 180,
+			"ingredientIds": [
+				26870,
+				26871,
+				13937,
+				6486,
+				12734
+			],
+			"quantities": [
+				50,
+				5,
+				3,
+				10,
+				1
+			],
+			"jobId": 26,
+			"skillId": 23,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1649837122266.0
+		},
+		{
+			"resultId": 26989,
+			"resultNameId": 948960,
+			"resultTypeId": 226,
+			"resultLevel": 1,
+			"ingredientIds": [
+				289,
+				1782
+			],
+			"quantities": [
+				2,
+				2
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1650959592577.0
+		},
+		{
+			"resultId": 26990,
+			"resultNameId": 948964,
+			"resultTypeId": 226,
+			"resultLevel": 40,
+			"ingredientIds": [
+				442,
+				395,
+				17128
+			],
+			"quantities": [
+				2,
+				2,
+				2
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1650959592577.0
+		},
+		{
+			"resultId": 26991,
+			"resultNameId": 948966,
+			"resultTypeId": 226,
+			"resultLevel": 90,
+			"ingredientIds": [
+				2357,
+				600,
+				17138
+			],
+			"quantities": [
+				2,
+				2,
+				2
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1650959592577.0
+		},
+		{
+			"resultId": 26992,
+			"resultNameId": 949637,
+			"resultTypeId": 226,
+			"resultLevel": 140,
+			"ingredientIds": [
+				425,
+				446,
+				16465,
+				16385,
+				449
+			],
+			"quantities": [
+				2,
+				2,
+				2,
+				2,
+				2
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1650959592577.0
+		},
+		{
+			"resultId": 26993,
+			"resultNameId": 949636,
+			"resultTypeId": 226,
+			"resultLevel": 180,
+			"ingredientIds": [
+				470,
+				17156,
+				16389,
+				7033,
+				16456,
+				16469
+			],
+			"quantities": [
+				2,
+				2,
+				2,
+				2,
+				2,
+				2
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1650959592577.0
+		},
+		{
+			"resultId": 27021,
+			"resultNameId": 948443,
+			"resultTypeId": 262,
+			"resultLevel": 10,
+			"ingredientIds": [
+				1984,
+				26989
+			],
+			"quantities": [
+				3,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27022,
+			"resultNameId": 948453,
+			"resultTypeId": 262,
+			"resultLevel": 45,
+			"ingredientIds": [
+				311,
+				1983,
+				26990
+			],
+			"quantities": [
+				3,
+				3,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27023,
+			"resultNameId": 948458,
+			"resultTypeId": 262,
+			"resultLevel": 95,
+			"ingredientIds": [
+				2012,
+				519,
+				26991,
+				1736
+			],
+			"quantities": [
+				3,
+				3,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27024,
+			"resultNameId": 948461,
+			"resultTypeId": 262,
+			"resultLevel": 145,
+			"ingredientIds": [
+				1730,
+				1978,
+				26992,
+				6671,
+				1731
+			],
+			"quantities": [
+				3,
+				3,
+				1,
+				3,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27025,
+			"resultNameId": 948464,
+			"resultTypeId": 262,
+			"resultLevel": 185,
+			"ingredientIds": [
+				1985,
+				1734,
+				26993,
+				1977,
+				1973,
+				2331
+			],
+			"quantities": [
+				3,
+				3,
+				1,
+				3,
+				3,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27026,
+			"resultNameId": 948477,
+			"resultTypeId": 262,
+			"resultLevel": 15,
+			"ingredientIds": [
+				287,
+				27021,
+				2659
+			],
+			"quantities": [
+				2,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27027,
+			"resultNameId": 948480,
+			"resultTypeId": 262,
+			"resultLevel": 25,
+			"ingredientIds": [
+				8680,
+				27021,
+				306
+			],
+			"quantities": [
+				2,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27028,
+			"resultNameId": 948483,
+			"resultTypeId": 262,
+			"resultLevel": 35,
+			"ingredientIds": [
+				384,
+				27021,
+				2571,
+				430
+			],
+			"quantities": [
+				2,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27029,
+			"resultNameId": 948487,
+			"resultTypeId": 262,
+			"resultLevel": 45,
+			"ingredientIds": [
+				398,
+				27021,
+				417,
+				13489
+			],
+			"quantities": [
+				2,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27030,
+			"resultNameId": 948494,
+			"resultTypeId": 262,
+			"resultLevel": 55,
+			"ingredientIds": [
+				361,
+				27022,
+				2509,
+				6476
+			],
+			"quantities": [
+				2,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27031,
+			"resultNameId": 948504,
+			"resultTypeId": 262,
+			"resultLevel": 65,
+			"ingredientIds": [
+				14282,
+				27022,
+				2056,
+				2528,
+				2596
+			],
+			"quantities": [
+				1,
+				1,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27032,
+			"resultNameId": 948511,
+			"resultTypeId": 262,
+			"resultLevel": 75,
+			"ingredientIds": [
+				18366,
+				27022,
+				8740,
+				14473,
+				463
+			],
+			"quantities": [
+				2,
+				1,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27033,
+			"resultNameId": 948514,
+			"resultTypeId": 262,
+			"resultLevel": 85,
+			"ingredientIds": [
+				7903,
+				27022,
+				7904,
+				3002,
+				13343
+			],
+			"quantities": [
+				2,
+				1,
+				2,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27034,
+			"resultNameId": 948519,
+			"resultTypeId": 262,
+			"resultLevel": 95,
+			"ingredientIds": [
+				16215,
+				27022,
+				11250,
+				2253,
+				14514
+			],
+			"quantities": [
+				2,
+				1,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27035,
+			"resultNameId": 948522,
+			"resultTypeId": 262,
+			"resultLevel": 105,
+			"ingredientIds": [
+				2060,
+				27023,
+				8756,
+				17610,
+				2578,
+				479
+			],
+			"quantities": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27036,
+			"resultNameId": 948526,
+			"resultTypeId": 262,
+			"resultLevel": 115,
+			"ingredientIds": [
+				8571,
+				27023,
+				8570,
+				14479,
+				8052,
+				8322
+			],
+			"quantities": [
+				2,
+				1,
+				2,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27037,
+			"resultNameId": 948529,
+			"resultTypeId": 262,
+			"resultLevel": 125,
+			"ingredientIds": [
+				8800,
+				27023,
+				15071,
+				8356,
+				13504,
+				8308,
+				2654
+			],
+			"quantities": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27038,
+			"resultNameId": 948532,
+			"resultTypeId": 262,
+			"resultLevel": 135,
+			"ingredientIds": [
+				7305,
+				27023,
+				11223,
+				2513,
+				11247,
+				8783,
+				7306
+			],
+			"quantities": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27039,
+			"resultNameId": 948535,
+			"resultTypeId": 262,
+			"resultLevel": 145,
+			"ingredientIds": [
+				7304,
+				27023,
+				7025,
+				7023,
+				8347,
+				7293,
+				15172
+			],
+			"quantities": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27040,
+			"resultNameId": 948538,
+			"resultTypeId": 262,
+			"resultLevel": 155,
+			"ingredientIds": [
+				26316,
+				27024,
+				8797,
+				17619,
+				7405,
+				15041,
+				11319,
+				26319
+			],
+			"quantities": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27041,
+			"resultNameId": 948541,
+			"resultTypeId": 262,
+			"resultLevel": 165,
+			"ingredientIds": [
+				7384,
+				27024,
+				11325,
+				18563,
+				7383,
+				15726,
+				13737,
+				9263
+			],
+			"quantities": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27042,
+			"resultNameId": 948544,
+			"resultTypeId": 262,
+			"resultLevel": 175,
+			"ingredientIds": [
+				18567,
+				27024,
+				11891,
+				15454,
+				426,
+				13746,
+				11919,
+				11527
+			],
+			"quantities": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27043,
+			"resultNameId": 948547,
+			"resultTypeId": 262,
+			"resultLevel": 185,
+			"ingredientIds": [
+				11522,
+				27024,
+				11533,
+				11938,
+				14927,
+				8809,
+				12001,
+				11927
+			],
+			"quantities": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27044,
+			"resultNameId": 948550,
+			"resultTypeId": 262,
+			"resultLevel": 195,
+			"ingredientIds": [
+				18735,
+				27025,
+				18543,
+				15691,
+				19074,
+				14795,
+				25182,
+				19968
+			],
+			"quantities": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1
+			],
+			"jobId": 78,
+			"skillId": 402,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1651243066115.0
+		},
+		{
+			"resultId": 27125,
+			"resultNameId": 959206,
+			"resultTypeId": 226,
+			"resultLevel": 20,
+			"ingredientIds": [
+				27026,
+				27021,
+				26832
+			],
+			"quantities": [
+				1,
+				2,
+				1
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27126,
+			"resultNameId": 959203,
+			"resultTypeId": 226,
+			"resultLevel": 30,
+			"ingredientIds": [
+				27027,
+				27021,
+				26837,
+				880
+			],
+			"quantities": [
+				1,
+				2,
+				1,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27127,
+			"resultNameId": 959201,
+			"resultTypeId": 226,
+			"resultLevel": 40,
+			"ingredientIds": [
+				27028,
+				27021,
+				26841,
+				838
+			],
+			"quantities": [
+				1,
+				2,
+				1,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27128,
+			"resultNameId": 961379,
+			"resultTypeId": 226,
+			"resultLevel": 50,
+			"ingredientIds": [
+				27029,
+				27022,
+				26846,
+				13140
+			],
+			"quantities": [
+				1,
+				3,
+				1,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27129,
+			"resultNameId": 959197,
+			"resultTypeId": 226,
+			"resultLevel": 60,
+			"ingredientIds": [
+				27030,
+				27022,
+				26851,
+				9388
+			],
+			"quantities": [
+				1,
+				3,
+				1,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27130,
+			"resultNameId": 959195,
+			"resultTypeId": 226,
+			"resultLevel": 70,
+			"ingredientIds": [
+				27031,
+				27022,
+				26856,
+				21264,
+				8102
+			],
+			"quantities": [
+				1,
+				3,
+				1,
+				2,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27131,
+			"resultNameId": 959193,
+			"resultTypeId": 226,
+			"resultLevel": 80,
+			"ingredientIds": [
+				27032,
+				27022,
+				26862,
+				14468,
+				18371
+			],
+			"quantities": [
+				1,
+				3,
+				1,
+				2,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27132,
+			"resultNameId": 959191,
+			"resultTypeId": 226,
+			"resultLevel": 90,
+			"ingredientIds": [
+				27033,
+				27022,
+				26877,
+				1691,
+				16180
+			],
+			"quantities": [
+				1,
+				3,
+				1,
+				2,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27133,
+			"resultNameId": 959189,
+			"resultTypeId": 226,
+			"resultLevel": 100,
+			"ingredientIds": [
+				27034,
+				27023,
+				26824,
+				2267,
+				8403,
+				2581
+			],
+			"quantities": [
+				1,
+				4,
+				1,
+				1,
+				2,
+				1
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27134,
+			"resultNameId": 959187,
+			"resultTypeId": 226,
+			"resultLevel": 100,
+			"ingredientIds": [
+				27034,
+				27023,
+				26826,
+				2643,
+				21268,
+				2582
+			],
+			"quantities": [
+				1,
+				4,
+				1,
+				1,
+				2,
+				1
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27135,
+			"resultNameId": 959185,
+			"resultTypeId": 226,
+			"resultLevel": 100,
+			"ingredientIds": [
+				27034,
+				27023,
+				26828,
+				8393,
+				8383,
+				8144
+			],
+			"quantities": [
+				1,
+				4,
+				1,
+				1,
+				2,
+				1
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27136,
+			"resultNameId": 959183,
+			"resultTypeId": 226,
+			"resultLevel": 100,
+			"ingredientIds": [
+				27034,
+				27023,
+				26830,
+				487,
+				15164,
+				2580
+			],
+			"quantities": [
+				1,
+				4,
+				1,
+				1,
+				2,
+				1
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27137,
+			"resultNameId": 959181,
+			"resultTypeId": 226,
+			"resultLevel": 110,
+			"ingredientIds": [
+				27035,
+				27023,
+				26881,
+				8486,
+				8764,
+				16211
+			],
+			"quantities": [
+				1,
+				4,
+				1,
+				2,
+				2,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27138,
+			"resultNameId": 959179,
+			"resultTypeId": 226,
+			"resultLevel": 110,
+			"ingredientIds": [
+				27035,
+				27023,
+				26884,
+				8485,
+				1892,
+				17614
+			],
+			"quantities": [
+				1,
+				4,
+				1,
+				2,
+				2,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27139,
+			"resultNameId": 959177,
+			"resultTypeId": 226,
+			"resultLevel": 120,
+			"ingredientIds": [
+				27036,
+				27023,
+				26891,
+				11221,
+				2998,
+				9389
+			],
+			"quantities": [
+				1,
+				4,
+				1,
+				2,
+				2,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27140,
+			"resultNameId": 959175,
+			"resultTypeId": 226,
+			"resultLevel": 120,
+			"ingredientIds": [
+				27036,
+				27023,
+				26897,
+				8367,
+				2247,
+				15727
+			],
+			"quantities": [
+				1,
+				4,
+				1,
+				2,
+				2,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27141,
+			"resultNameId": 959173,
+			"resultTypeId": 226,
+			"resultLevel": 130,
+			"ingredientIds": [
+				27037,
+				27023,
+				26901,
+				15065,
+				6488,
+				15457,
+				14921
+			],
+			"quantities": [
+				1,
+				4,
+				1,
+				2,
+				2,
+				2,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27142,
+			"resultNameId": 959171,
+			"resultTypeId": 226,
+			"resultLevel": 130,
+			"ingredientIds": [
+				27037,
+				27023,
+				26905,
+				7386,
+				6486,
+				8399,
+				15263
+			],
+			"quantities": [
+				1,
+				4,
+				1,
+				2,
+				2,
+				2,
+				75
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27143,
+			"resultNameId": 959169,
+			"resultTypeId": 226,
+			"resultLevel": 140,
+			"ingredientIds": [
+				27038,
+				27023,
+				26912,
+				13166,
+				11232,
+				8401,
+				15219
+			],
+			"quantities": [
+				1,
+				4,
+				1,
+				1,
+				1,
+				1,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27144,
+			"resultNameId": 959167,
+			"resultTypeId": 226,
+			"resultLevel": 140,
+			"ingredientIds": [
+				27038,
+				27023,
+				26917,
+				8777,
+				11321,
+				8400,
+				15263
+			],
+			"quantities": [
+				1,
+				4,
+				1,
+				1,
+				1,
+				1,
+				100
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27145,
+			"resultNameId": 959165,
+			"resultTypeId": 226,
+			"resultLevel": 150,
+			"ingredientIds": [
+				27039,
+				27024,
+				26923,
+				8490,
+				15170,
+				8493,
+				15219,
+				15271
+			],
+			"quantities": [
+				1,
+				5,
+				1,
+				1,
+				1,
+				1,
+				3,
+				1
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27146,
+			"resultNameId": 959163,
+			"resultTypeId": 226,
+			"resultLevel": 150,
+			"ingredientIds": [
+				27039,
+				27024,
+				26930,
+				13155,
+				2299,
+				8381,
+				14921,
+				15271
+			],
+			"quantities": [
+				1,
+				5,
+				1,
+				1,
+				1,
+				1,
+				2,
+				1
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27147,
+			"resultNameId": 959161,
+			"resultTypeId": 226,
+			"resultLevel": 160,
+			"ingredientIds": [
+				27040,
+				27024,
+				26934,
+				8795,
+				8406,
+				11333,
+				17620,
+				15271
+			],
+			"quantities": [
+				1,
+				5,
+				1,
+				1,
+				1,
+				1,
+				1,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27148,
+			"resultNameId": 959159,
+			"resultTypeId": 226,
+			"resultLevel": 160,
+			"ingredientIds": [
+				27040,
+				27024,
+				26938,
+				13164,
+				8410,
+				15039,
+				7393,
+				15271
+			],
+			"quantities": [
+				1,
+				5,
+				1,
+				1,
+				1,
+				1,
+				1,
+				2
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27149,
+			"resultNameId": 959157,
+			"resultTypeId": 226,
+			"resultLevel": 170,
+			"ingredientIds": [
+				27041,
+				27024,
+				26950,
+				11341,
+				18568,
+				11342,
+				14921,
+				15271
+			],
+			"quantities": [
+				1,
+				5,
+				1,
+				1,
+				1,
+				1,
+				1,
+				3
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27150,
+			"resultNameId": 959155,
+			"resultTypeId": 226,
+			"resultLevel": 170,
+			"ingredientIds": [
+				27041,
+				27024,
+				26946,
+				11342,
+				15721,
+				7385,
+				15219,
+				15271
+			],
+			"quantities": [
+				1,
+				5,
+				1,
+				1,
+				1,
+				1,
+				5,
+				3
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27151,
+			"resultNameId": 959153,
+			"resultTypeId": 226,
+			"resultLevel": 180,
+			"ingredientIds": [
+				27042,
+				27024,
+				26959,
+				11895,
+				9401,
+				9280,
+				14921,
+				15271
+			],
+			"quantities": [
+				1,
+				5,
+				1,
+				1,
+				1,
+				1,
+				6,
+				4
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27152,
+			"resultNameId": 959151,
+			"resultTypeId": 226,
+			"resultLevel": 180,
+			"ingredientIds": [
+				27042,
+				27024,
+				26955,
+				11896,
+				13157,
+				13156,
+				15219,
+				15271
+			],
+			"quantities": [
+				1,
+				5,
+				1,
+				1,
+				1,
+				1,
+				6,
+				4
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27153,
+			"resultNameId": 959149,
+			"resultTypeId": 226,
+			"resultLevel": 190,
+			"ingredientIds": [
+				27043,
+				27025,
+				26964,
+				14928,
+				11884,
+				11518,
+				11943,
+				15271
+			],
+			"quantities": [
+				1,
+				6,
+				1,
+				1,
+				1,
+				1,
+				1,
+				5
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
+		},
+		{
+			"resultId": 27154,
+			"resultNameId": 959147,
+			"resultTypeId": 226,
+			"resultLevel": 200,
+			"ingredientIds": [
+				27044,
+				27025,
+				26972,
+				17626,
+				17976,
+				21207,
+				13994,
+				15271
+			],
+			"quantities": [
+				1,
+				6,
+				1,
+				1,
+				1,
+				1,
+				1,
+				6
+			],
+			"jobId": 78,
+			"skillId": 403,
+			"changeVersion": "",
+			"tooltipExpirationDate": 1653059451176.0
 		}
 	]
 }

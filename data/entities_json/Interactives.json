@@ -1040,7 +1040,7 @@
 		},
 		{
 			"id": 194,
-			"nameId": 926140,
+			"nameId": 926217,
 			"actionId": 0,
 			"displayTooltip": false
 		},
@@ -1288,7 +1288,7 @@
 			"id": 235,
 			"nameId": 423446,
 			"actionId": 0,
-			"displayTooltip": false
+			"displayTooltip": true
 		},
 		{
 			"id": 236,
@@ -2168,13 +2168,79 @@
 		},
 		{
 			"id": 386,
-			"nameId": 928132,
+			"nameId": 928367,
 			"actionId": 0,
 			"displayTooltip": false
 		},
 		{
 			"id": 387,
-			"nameId": 928131,
+			"nameId": 928362,
+			"actionId": 0,
+			"displayTooltip": false
+		},
+		{
+			"id": 388,
+			"nameId": 933046,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 389,
+			"nameId": 937477,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 390,
+			"nameId": 939086,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 391,
+			"nameId": 939087,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 392,
+			"nameId": 939088,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 393,
+			"nameId": 939089,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 395,
+			"nameId": 954179,
+			"actionId": 0,
+			"displayTooltip": false
+		},
+		{
+			"id": 396,
+			"nameId": 954178,
+			"actionId": 0,
+			"displayTooltip": false
+		},
+		{
+			"id": 397,
+			"nameId": 954180,
+			"actionId": 0,
+			"displayTooltip": false
+		},
+		{
+			"id": 398,
+			"nameId": 954181,
+			"actionId": 0,
+			"displayTooltip": false
+		},
+		{
+			"id": 399,
+			"nameId": 954182,
 			"actionId": 0,
 			"displayTooltip": false
 		}

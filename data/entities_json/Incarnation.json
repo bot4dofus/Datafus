@@ -310,10 +310,10 @@
 		},
 		{
 			"id": 42,
-			"lookMale": "{338}",
-			"lookFemale": "{338}",
-			"maleBoneId": 338,
-			"femaleBoneId": 338
+			"lookMale": "{6877||1=11764720,3=8721945,5=5574286}",
+			"lookFemale": "{6877||1=11764720,3=8721945,5=5574286}",
+			"maleBoneId": 6877,
+			"femaleBoneId": 6877
 		},
 		{
 			"id": 43,

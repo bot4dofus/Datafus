@@ -34,6 +34,11 @@
 			"id": 4,
 			"name": "Temporis 6",
 			"seasonId": 16
+		},
+		{
+			"id": 5,
+			"name": "Temporis 7",
+			"seasonId": 24
 		}
 	]
 }

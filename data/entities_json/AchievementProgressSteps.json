@@ -1735,6 +1735,489 @@
 			"score": 3500,
 			"isCosmetic": true,
 			"achievementId": 2972
+		},
+		{
+			"id": 246,
+			"progressId": 5,
+			"score": 5,
+			"isCosmetic": true,
+			"achievementId": 2903
+		},
+		{
+			"id": 247,
+			"progressId": 5,
+			"score": 10,
+			"isCosmetic": false,
+			"achievementId": 2904
+		},
+		{
+			"id": 248,
+			"progressId": 5,
+			"score": 15,
+			"isCosmetic": false,
+			"achievementId": 2905
+		},
+		{
+			"id": 249,
+			"progressId": 5,
+			"score": 20,
+			"isCosmetic": false,
+			"achievementId": 2906
+		},
+		{
+			"id": 250,
+			"progressId": 5,
+			"score": 25,
+			"isCosmetic": true,
+			"achievementId": 2907
+		},
+		{
+			"id": 251,
+			"progressId": 5,
+			"score": 30,
+			"isCosmetic": false,
+			"achievementId": 2908
+		},
+		{
+			"id": 252,
+			"progressId": 5,
+			"score": 40,
+			"isCosmetic": false,
+			"achievementId": 2909
+		},
+		{
+			"id": 253,
+			"progressId": 5,
+			"score": 50,
+			"isCosmetic": false,
+			"achievementId": 2910
+		},
+		{
+			"id": 254,
+			"progressId": 5,
+			"score": 60,
+			"isCosmetic": true,
+			"achievementId": 2911
+		},
+		{
+			"id": 255,
+			"progressId": 5,
+			"score": 80,
+			"isCosmetic": false,
+			"achievementId": 2912
+		},
+		{
+			"id": 256,
+			"progressId": 5,
+			"score": 100,
+			"isCosmetic": false,
+			"achievementId": 2913
+		},
+		{
+			"id": 257,
+			"progressId": 5,
+			"score": 120,
+			"isCosmetic": false,
+			"achievementId": 2914
+		},
+		{
+			"id": 258,
+			"progressId": 5,
+			"score": 150,
+			"isCosmetic": true,
+			"achievementId": 2915
+		},
+		{
+			"id": 259,
+			"progressId": 5,
+			"score": 180,
+			"isCosmetic": false,
+			"achievementId": 2916
+		},
+		{
+			"id": 260,
+			"progressId": 5,
+			"score": 210,
+			"isCosmetic": false,
+			"achievementId": 2917
+		},
+		{
+			"id": 261,
+			"progressId": 5,
+			"score": 240,
+			"isCosmetic": false,
+			"achievementId": 2918
+		},
+		{
+			"id": 262,
+			"progressId": 5,
+			"score": 270,
+			"isCosmetic": true,
+			"achievementId": 2919
+		},
+		{
+			"id": 263,
+			"progressId": 5,
+			"score": 300,
+			"isCosmetic": false,
+			"achievementId": 2920
+		},
+		{
+			"id": 264,
+			"progressId": 5,
+			"score": 330,
+			"isCosmetic": false,
+			"achievementId": 2921
+		},
+		{
+			"id": 265,
+			"progressId": 5,
+			"score": 360,
+			"isCosmetic": false,
+			"achievementId": 2922
+		},
+		{
+			"id": 266,
+			"progressId": 5,
+			"score": 390,
+			"isCosmetic": true,
+			"achievementId": 2923
+		},
+		{
+			"id": 267,
+			"progressId": 5,
+			"score": 420,
+			"isCosmetic": false,
+			"achievementId": 2924
+		},
+		{
+			"id": 268,
+			"progressId": 5,
+			"score": 450,
+			"isCosmetic": false,
+			"achievementId": 2925
+		},
+		{
+			"id": 269,
+			"progressId": 5,
+			"score": 480,
+			"isCosmetic": false,
+			"achievementId": 2926
+		},
+		{
+			"id": 270,
+			"progressId": 5,
+			"score": 510,
+			"isCosmetic": true,
+			"achievementId": 2927
+		},
+		{
+			"id": 271,
+			"progressId": 5,
+			"score": 540,
+			"isCosmetic": false,
+			"achievementId": 2928
+		},
+		{
+			"id": 272,
+			"progressId": 5,
+			"score": 570,
+			"isCosmetic": false,
+			"achievementId": 2929
+		},
+		{
+			"id": 273,
+			"progressId": 5,
+			"score": 610,
+			"isCosmetic": false,
+			"achievementId": 2930
+		},
+		{
+			"id": 274,
+			"progressId": 5,
+			"score": 650,
+			"isCosmetic": true,
+			"achievementId": 2931
+		},
+		{
+			"id": 275,
+			"progressId": 5,
+			"score": 690,
+			"isCosmetic": false,
+			"achievementId": 2932
+		},
+		{
+			"id": 276,
+			"progressId": 5,
+			"score": 730,
+			"isCosmetic": false,
+			"achievementId": 2933
+		},
+		{
+			"id": 277,
+			"progressId": 5,
+			"score": 770,
+			"isCosmetic": false,
+			"achievementId": 2934
+		},
+		{
+			"id": 278,
+			"progressId": 5,
+			"score": 810,
+			"isCosmetic": true,
+			"achievementId": 2935
+		},
+		{
+			"id": 279,
+			"progressId": 5,
+			"score": 860,
+			"isCosmetic": false,
+			"achievementId": 2936
+		},
+		{
+			"id": 280,
+			"progressId": 5,
+			"score": 910,
+			"isCosmetic": false,
+			"achievementId": 2937
+		},
+		{
+			"id": 281,
+			"progressId": 5,
+			"score": 960,
+			"isCosmetic": false,
+			"achievementId": 2938
+		},
+		{
+			"id": 282,
+			"progressId": 5,
+			"score": 1010,
+			"isCosmetic": true,
+			"achievementId": 2939
+		},
+		{
+			"id": 283,
+			"progressId": 5,
+			"score": 1060,
+			"isCosmetic": false,
+			"achievementId": 2940
+		},
+		{
+			"id": 284,
+			"progressId": 5,
+			"score": 1110,
+			"isCosmetic": false,
+			"achievementId": 2941
+		},
+		{
+			"id": 285,
+			"progressId": 5,
+			"score": 1160,
+			"isCosmetic": false,
+			"achievementId": 2942
+		},
+		{
+			"id": 286,
+			"progressId": 5,
+			"score": 1210,
+			"isCosmetic": true,
+			"achievementId": 2943
+		},
+		{
+			"id": 287,
+			"progressId": 5,
+			"score": 1260,
+			"isCosmetic": false,
+			"achievementId": 2944
+		},
+		{
+			"id": 288,
+			"progressId": 5,
+			"score": 1310,
+			"isCosmetic": false,
+			"achievementId": 2945
+		},
+		{
+			"id": 289,
+			"progressId": 5,
+			"score": 1360,
+			"isCosmetic": false,
+			"achievementId": 2946
+		},
+		{
+			"id": 290,
+			"progressId": 5,
+			"score": 1410,
+			"isCosmetic": true,
+			"achievementId": 2947
+		},
+		{
+			"id": 291,
+			"progressId": 5,
+			"score": 1460,
+			"isCosmetic": false,
+			"achievementId": 2948
+		},
+		{
+			"id": 292,
+			"progressId": 5,
+			"score": 1510,
+			"isCosmetic": false,
+			"achievementId": 2949
+		},
+		{
+			"id": 293,
+			"progressId": 5,
+			"score": 1560,
+			"isCosmetic": false,
+			"achievementId": 2950
+		},
+		{
+			"id": 294,
+			"progressId": 5,
+			"score": 1610,
+			"isCosmetic": true,
+			"achievementId": 2951
+		},
+		{
+			"id": 295,
+			"progressId": 5,
+			"score": 1660,
+			"isCosmetic": false,
+			"achievementId": 2952
+		},
+		{
+			"id": 296,
+			"progressId": 5,
+			"score": 1710,
+			"isCosmetic": false,
+			"achievementId": 2953
+		},
+		{
+			"id": 297,
+			"progressId": 5,
+			"score": 1760,
+			"isCosmetic": false,
+			"achievementId": 2954
+		},
+		{
+			"id": 298,
+			"progressId": 5,
+			"score": 1810,
+			"isCosmetic": true,
+			"achievementId": 2955
+		},
+		{
+			"id": 299,
+			"progressId": 5,
+			"score": 1860,
+			"isCosmetic": false,
+			"achievementId": 2956
+		},
+		{
+			"id": 300,
+			"progressId": 5,
+			"score": 1910,
+			"isCosmetic": false,
+			"achievementId": 2957
+		},
+		{
+			"id": 301,
+			"progressId": 5,
+			"score": 1960,
+			"isCosmetic": false,
+			"achievementId": 2958
+		},
+		{
+			"id": 302,
+			"progressId": 5,
+			"score": 2010,
+			"isCosmetic": true,
+			"achievementId": 2959
+		},
+		{
+			"id": 303,
+			"progressId": 5,
+			"score": 2070,
+			"isCosmetic": false,
+			"achievementId": 2960
+		},
+		{
+			"id": 304,
+			"progressId": 5,
+			"score": 2140,
+			"isCosmetic": false,
+			"achievementId": 2961
+		},
+		{
+			"id": 305,
+			"progressId": 5,
+			"score": 2220,
+			"isCosmetic": false,
+			"achievementId": 2962
+		},
+		{
+			"id": 306,
+			"progressId": 5,
+			"score": 2310,
+			"isCosmetic": true,
+			"achievementId": 2963
+		},
+		{
+			"id": 307,
+			"progressId": 5,
+			"score": 2410,
+			"isCosmetic": false,
+			"achievementId": 2964
+		},
+		{
+			"id": 308,
+			"progressId": 5,
+			"score": 2520,
+			"isCosmetic": false,
+			"achievementId": 2965
+		},
+		{
+			"id": 309,
+			"progressId": 5,
+			"score": 2640,
+			"isCosmetic": false,
+			"achievementId": 2967
+		},
+		{
+			"id": 310,
+			"progressId": 5,
+			"score": 2770,
+			"isCosmetic": true,
+			"achievementId": 2968
+		},
+		{
+			"id": 311,
+			"progressId": 5,
+			"score": 2910,
+			"isCosmetic": false,
+			"achievementId": 2969
+		},
+		{
+			"id": 312,
+			"progressId": 5,
+			"score": 3060,
+			"isCosmetic": false,
+			"achievementId": 2970
+		},
+		{
+			"id": 313,
+			"progressId": 5,
+			"score": 3250,
+			"isCosmetic": false,
+			"achievementId": 2971
+		},
+		{
+			"id": 314,
+			"progressId": 5,
+			"score": 3500,
+			"isCosmetic": true,
+			"achievementId": 2972
 		}
 	]
 }

@@ -3590,6 +3590,60 @@
 			"score": 40.0,
 			"isPositiveForPlayers": false,
 			"tooltipBaseline": "ui.breach.modifierBaselineNegative3"
+		},
+		{
+			"id": 528,
+			"modificatorId": 661,
+			"criterion": "null",
+			"additionalRewardPercent": 1.100000023841858,
+			"score": 10.0,
+			"isPositiveForPlayers": false,
+			"tooltipBaseline": "ui.breach.modifierBaselineNegative1"
+		},
+		{
+			"id": 529,
+			"modificatorId": 660,
+			"criterion": "Wf>209",
+			"additionalRewardPercent": 1.2999999523162842,
+			"score": 25.0,
+			"isPositiveForPlayers": false,
+			"tooltipBaseline": "ui.breach.modifierBaselineNegative2"
+		},
+		{
+			"id": 530,
+			"modificatorId": 659,
+			"criterion": "Wf>219",
+			"additionalRewardPercent": 1.5,
+			"score": 40.0,
+			"isPositiveForPlayers": false,
+			"tooltipBaseline": "ui.breach.modifierBaselineNegative3"
+		},
+		{
+			"id": 531,
+			"modificatorId": 663,
+			"criterion": "Wf>219",
+			"additionalRewardPercent": 1.5,
+			"score": 40.0,
+			"isPositiveForPlayers": false,
+			"tooltipBaseline": "ui.breach.modifierBaselineNegative3"
+		},
+		{
+			"id": 532,
+			"modificatorId": 664,
+			"criterion": "Wf>209",
+			"additionalRewardPercent": 1.2999999523162842,
+			"score": 25.0,
+			"isPositiveForPlayers": false,
+			"tooltipBaseline": "ui.breach.modifierBaselineNegative2"
+		},
+		{
+			"id": 533,
+			"modificatorId": 662,
+			"criterion": "null",
+			"additionalRewardPercent": 1.100000023841858,
+			"score": 10.0,
+			"isPositiveForPlayers": false,
+			"tooltipBaseline": "ui.breach.modifierBaselineNegative1"
 		}
 	]
 }

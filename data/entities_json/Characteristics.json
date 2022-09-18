@@ -46,7 +46,7 @@
 	"data": [
 		{
 			"id": 0,
-			"keyword": "lifePoints",
+			"keyword": "hitPoints",
 			"nameId": 501949,
 			"asset": "tx_lifePoints",
 			"categoryId": 1,
@@ -167,7 +167,7 @@
 		},
 		{
 			"id": 16,
-			"keyword": "allDamagesBonus",
+			"keyword": "allDamageBonus",
 			"nameId": 501943,
 			"asset": "tx_damage",
 			"categoryId": 4,
@@ -255,7 +255,7 @@
 		},
 		{
 			"id": 25,
-			"keyword": "damagesBonusPercent",
+			"keyword": "damagePercent",
 			"nameId": 501883,
 			"asset": "tx_damagesPercent",
 			"categoryId": 2,
@@ -266,7 +266,7 @@
 		},
 		{
 			"id": 26,
-			"keyword": "summonableCreaturesBoost",
+			"keyword": "maxSummonedCreaturesBoost",
 			"nameId": 501880,
 			"asset": "tx_summonableCreaturesBoost",
 			"categoryId": 3,
@@ -277,7 +277,7 @@
 		},
 		{
 			"id": 27,
-			"keyword": "dodgePALostProbability",
+			"keyword": "DodgeApLostProbability",
 			"nameId": 846698,
 			"asset": "tx_dodgeAP",
 			"categoryId": 3,
@@ -288,7 +288,7 @@
 		},
 		{
 			"id": 28,
-			"keyword": "dodgePMLostProbability",
+			"keyword": "DodgeMpLostProbability",
 			"nameId": 846700,
 			"asset": "tx_dodgeMP",
 			"categoryId": 3,
@@ -321,7 +321,7 @@
 		},
 		{
 			"id": 31,
-			"keyword": "weaponDamagesBonusPercent",
+			"keyword": "weaponDamagePercent",
 			"nameId": 501852,
 			"asset": "tx_weaponDamage",
 			"categoryId": 4,
@@ -332,8 +332,8 @@
 		},
 		{
 			"id": 32,
-			"keyword": "physicalDamages",
-			"nameId": 506560,
+			"keyword": "physicalDamageBonus",
+			"nameId": 928611,
 			"asset": "null",
 			"categoryId": 1,
 			"visible": true,
@@ -420,7 +420,7 @@
 		},
 		{
 			"id": 41,
-			"keyword": "null",
+			"keyword": "restrictionOnPlayer",
 			"nameId": 506589,
 			"asset": "null",
 			"categoryId": 1,
@@ -431,7 +431,7 @@
 		},
 		{
 			"id": 42,
-			"keyword": "null",
+			"keyword": "restrictionOnOthers",
 			"nameId": 506586,
 			"asset": "null",
 			"categoryId": 1,
@@ -497,7 +497,7 @@
 		},
 		{
 			"id": 48,
-			"keyword": "prospecting",
+			"keyword": "magicFind",
 			"nameId": 505866,
 			"asset": "tx_prospecting",
 			"categoryId": 3,
@@ -519,7 +519,7 @@
 		},
 		{
 			"id": 50,
-			"keyword": "reflect",
+			"keyword": "reflectDamage",
 			"nameId": 501906,
 			"asset": "tx_return",
 			"categoryId": 4,
@@ -552,7 +552,7 @@
 		},
 		{
 			"id": 53,
-			"keyword": "null",
+			"keyword": "disgracePoints",
 			"nameId": 506579,
 			"asset": "null",
 			"categoryId": 1,
@@ -618,7 +618,7 @@
 		},
 		{
 			"id": 69,
-			"keyword": "trapBonusPercent",
+			"keyword": "trapDamageBonusPercent",
 			"nameId": 501894,
 			"asset": "tx_trapPercent",
 			"categoryId": 4,
@@ -629,7 +629,7 @@
 		},
 		{
 			"id": 70,
-			"keyword": "trapBonus",
+			"keyword": "trapDamageBonus",
 			"nameId": 501933,
 			"asset": "tx_trap",
 			"categoryId": 4,
@@ -750,7 +750,7 @@
 		},
 		{
 			"id": 82,
-			"keyword": "PAAttack",
+			"keyword": "apReduction",
 			"nameId": 846697,
 			"asset": "tx_attackAP",
 			"categoryId": 3,
@@ -761,7 +761,7 @@
 		},
 		{
 			"id": 83,
-			"keyword": "PMAttack",
+			"keyword": "mpReduction",
 			"nameId": 846699,
 			"asset": "tx_attackMP",
 			"categoryId": 3,
@@ -882,7 +882,7 @@
 		},
 		{
 			"id": 94,
-			"keyword": "bombCombo",
+			"keyword": "bombComboBonus",
 			"nameId": 506578,
 			"asset": "null",
 			"categoryId": 1,
@@ -915,7 +915,7 @@
 		},
 		{
 			"id": 97,
-			"keyword": "curLife",
+			"keyword": "hitPointLoss",
 			"nameId": 506572,
 			"asset": "null",
 			"categoryId": 1,
@@ -926,7 +926,7 @@
 		},
 		{
 			"id": 98,
-			"keyword": "spellPercentDamages",
+			"keyword": "damagePercentSpell",
 			"nameId": 506570,
 			"asset": "null",
 			"categoryId": 1,
@@ -959,7 +959,7 @@
 		},
 		{
 			"id": 101,
-			"keyword": "percentResist",
+			"keyword": "resistPercent",
 			"nameId": 506562,
 			"asset": "null",
 			"categoryId": 1,
@@ -1014,7 +1014,7 @@
 		},
 		{
 			"id": 107,
-			"keyword": "dealtDamagesMultiplicator",
+			"keyword": "dealtDamageMultiplier",
 			"nameId": 506593,
 			"asset": "null",
 			"categoryId": 1,
@@ -1037,7 +1037,7 @@
 		{
 			"id": 109,
 			"keyword": "hunter",
-			"nameId": 721078,
+			"nameId": 0,
 			"asset": "",
 			"categoryId": 1,
 			"visible": false,
@@ -1057,96 +1057,8 @@
 			"upgradable": false
 		},
 		{
-			"id": 112,
-			"keyword": "meleeDamageDonePercent",
-			"nameId": 721074,
-			"asset": "",
-			"categoryId": 1,
-			"visible": true,
-			"order": 46,
-			"scaleFormulaId": 0,
-			"upgradable": false
-		},
-		{
-			"id": 113,
-			"keyword": "rangedDamageDonePercent",
-			"nameId": 721075,
-			"asset": "",
-			"categoryId": 1,
-			"visible": true,
-			"order": 47,
-			"scaleFormulaId": 0,
-			"upgradable": false
-		},
-		{
-			"id": 114,
-			"keyword": "weaponDamageDonePercent",
-			"nameId": 721076,
-			"asset": "",
-			"categoryId": 1,
-			"visible": true,
-			"order": 48,
-			"scaleFormulaId": 0,
-			"upgradable": false
-		},
-		{
-			"id": 115,
-			"keyword": "meleeDamageReceivedPercent",
-			"nameId": 721077,
-			"asset": "",
-			"categoryId": 1,
-			"visible": true,
-			"order": 50,
-			"scaleFormulaId": 0,
-			"upgradable": false
-		},
-		{
-			"id": 116,
-			"keyword": "spellDamageDonePercent",
-			"nameId": 721078,
-			"asset": "",
-			"categoryId": 1,
-			"visible": true,
-			"order": 49,
-			"scaleFormulaId": 0,
-			"upgradable": false
-		},
-		{
-			"id": 117,
-			"keyword": "rangedDamageReceivedPercent",
-			"nameId": 721079,
-			"asset": "",
-			"categoryId": 1,
-			"visible": true,
-			"order": 51,
-			"scaleFormulaId": 0,
-			"upgradable": false
-		},
-		{
-			"id": 118,
-			"keyword": "weaponDamageReceivedPercent",
-			"nameId": 721080,
-			"asset": "",
-			"categoryId": 1,
-			"visible": true,
-			"order": 52,
-			"scaleFormulaId": 0,
-			"upgradable": false
-		},
-		{
-			"id": 119,
-			"keyword": "spellDamageReceivedPercent",
-			"nameId": 721081,
-			"asset": "",
-			"categoryId": 1,
-			"visible": true,
-			"order": 53,
-			"scaleFormulaId": 0,
-			"upgradable": false
-		},
-		{
 			"id": 120,
-			"keyword": "rangedDamageDonePercent",
+			"keyword": "dealtDamageMultiplierDistance",
 			"nameId": 723361,
 			"asset": "",
 			"categoryId": 4,
@@ -1157,7 +1069,7 @@
 		},
 		{
 			"id": 121,
-			"keyword": "rangedDamageReceivedPercent",
+			"keyword": "receivedDamageMultiplierDistance",
 			"nameId": 723362,
 			"asset": "",
 			"categoryId": 5,
@@ -1168,7 +1080,7 @@
 		},
 		{
 			"id": 122,
-			"keyword": "weaponDamageDonePercent",
+			"keyword": "dealtDamageMultiplierWeapon",
 			"nameId": 723363,
 			"asset": "",
 			"categoryId": 4,
@@ -1179,7 +1091,7 @@
 		},
 		{
 			"id": 123,
-			"keyword": "spellDamageDonePercent",
+			"keyword": "dealtDamageMultiplierSpells",
 			"nameId": 723364,
 			"asset": "",
 			"categoryId": 4,
@@ -1190,7 +1102,7 @@
 		},
 		{
 			"id": 124,
-			"keyword": "meleeDamageReceivedPercent",
+			"keyword": "receivedDamageMultiplierMelee",
 			"nameId": 723365,
 			"asset": "",
 			"categoryId": 5,
@@ -1201,7 +1113,7 @@
 		},
 		{
 			"id": 125,
-			"keyword": "meleeDamageDonePercent",
+			"keyword": "dealtDamageMultiplierMelee",
 			"nameId": 723366,
 			"asset": "",
 			"categoryId": 4,
@@ -1322,18 +1234,18 @@
 		},
 		{
 			"id": 136,
-			"keyword": "PAAttackInitialPercent",
+			"keyword": "apAttackInitialPercent",
 			"nameId": 788291,
 			"asset": "",
 			"categoryId": 1,
 			"visible": true,
-			"order": 62,
+			"order": 70,
 			"scaleFormulaId": 0,
 			"upgradable": false
 		},
 		{
 			"id": 137,
-			"keyword": "PMAttackInitialPercent",
+			"keyword": "mpAttackInitialPercent",
 			"nameId": 788292,
 			"asset": "",
 			"categoryId": 1,
@@ -1344,7 +1256,7 @@
 		},
 		{
 			"id": 138,
-			"keyword": "dodgePALostProbabilityInitialPercent",
+			"keyword": "dodgeApLostProbabilityInitialPercent",
 			"nameId": 788293,
 			"asset": "",
 			"categoryId": 1,
@@ -1355,7 +1267,7 @@
 		},
 		{
 			"id": 139,
-			"keyword": "dodgePMLostProbabilityInitialPercent",
+			"keyword": "dodgeMpLostProbabilityInitialPercent",
 			"nameId": 788294,
 			"asset": "",
 			"categoryId": 1,
@@ -1377,7 +1289,7 @@
 		},
 		{
 			"id": 141,
-			"keyword": "spellDamageReceivedPercent",
+			"keyword": "receivedDamageMultiplierSpells",
 			"nameId": 808521,
 			"asset": "",
 			"categoryId": 5,
@@ -1388,7 +1300,7 @@
 		},
 		{
 			"id": 142,
-			"keyword": "weaponDamageReceivedPercent",
+			"keyword": "receivedDamageMultiplierWeapon",
 			"nameId": 808523,
 			"asset": "",
 			"categoryId": 5,
@@ -1398,24 +1310,35 @@
 			"upgradable": false
 		},
 		{
-			"id": 144,
-			"keyword": "maxActionPoints",
-			"nameId": 853204,
+			"id": 146,
+			"keyword": "unknown",
+			"nameId": 928283,
 			"asset": "",
-			"categoryId": 2,
+			"categoryId": 1,
 			"visible": false,
-			"order": 11,
+			"order": 69,
 			"scaleFormulaId": 0,
 			"upgradable": false
 		},
 		{
-			"id": 145,
-			"keyword": "maxMovementPoints",
-			"nameId": 853205,
+			"id": 147,
+			"keyword": "curPermanentDamage",
+			"nameId": 928284,
 			"asset": "",
-			"categoryId": 2,
+			"categoryId": 4,
 			"visible": false,
-			"order": 12,
+			"order": 17,
+			"scaleFormulaId": 0,
+			"upgradable": false
+		},
+		{
+			"id": 148,
+			"keyword": "damageFactor",
+			"nameId": 928610,
+			"asset": "",
+			"categoryId": 4,
+			"visible": false,
+			"order": 18,
 			"scaleFormulaId": 0,
 			"upgradable": false
 		}

@@ -3880,15 +3880,19 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				392,
+				302,
 				2264,
 				382,
-				2259
+				2259,
+				2674,
+				2656
 			],
 			"itemsQuantityReward": [
-				10,
 				1,
-				10,
+				1,
+				1,
+				1,
+				1,
 				1
 			],
 			"emotesReward": [],
@@ -14743,7 +14747,7 @@
 		{
 			"id": 1974,
 			"achievementId": 1052,
-			"criteria": "null",
+			"criteria": "SC!5&ST!7",
 			"kamasRatio": 0.0,
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
@@ -14761,7 +14765,7 @@
 		{
 			"id": 1975,
 			"achievementId": 1053,
-			"criteria": "null",
+			"criteria": "SC!5&ST!7",
 			"kamasRatio": 0.0,
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
@@ -84309,7 +84313,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				6
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84327,7 +84331,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84345,7 +84349,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				8
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84363,7 +84367,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				9
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84381,7 +84385,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84435,7 +84439,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				20
+				10
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84453,7 +84457,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				20
+				10
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84471,7 +84475,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84489,7 +84493,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84507,7 +84511,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84525,7 +84529,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84543,7 +84547,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84561,7 +84565,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84579,7 +84583,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84597,7 +84601,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84615,7 +84619,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84633,7 +84637,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84651,7 +84655,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84669,7 +84673,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84687,7 +84691,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84705,7 +84709,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84723,7 +84727,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84741,7 +84745,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84759,7 +84763,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84777,7 +84781,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84795,7 +84799,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84813,7 +84817,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				25
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84831,7 +84835,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84849,7 +84853,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84867,7 +84871,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84885,7 +84889,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84903,7 +84907,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84921,7 +84925,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84939,7 +84943,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84957,7 +84961,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84975,7 +84979,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -84993,7 +84997,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -85011,7 +85015,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -85029,7 +85033,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -85047,7 +85051,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				20
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87099,7 +87103,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87117,7 +87121,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87135,7 +87139,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				15
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87153,7 +87157,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				15
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87171,7 +87175,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				20
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87189,7 +87193,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				20
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87207,7 +87211,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87225,7 +87229,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87243,7 +87247,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				40
+				10
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87315,7 +87319,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87333,7 +87337,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87351,7 +87355,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				15
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87369,7 +87373,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				15
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87387,7 +87391,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				20
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87405,7 +87409,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				20
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87423,7 +87427,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87441,7 +87445,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				30
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -87459,7 +87463,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				40
+				10
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -91362,7 +91366,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25407
+				26861
 			],
 			"itemsQuantityReward": [
 				1
@@ -91380,7 +91384,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25796
+				27102
 			],
 			"itemsQuantityReward": [
 				1
@@ -91434,7 +91438,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25785
+				27079
 			],
 			"itemsQuantityReward": [
 				1
@@ -91452,7 +91456,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25674
+				27196
 			],
 			"itemsQuantityReward": [
 				1
@@ -91470,7 +91474,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25707
+				27196
 			],
 			"itemsQuantityReward": [
 				1
@@ -91488,7 +91492,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25794
+				27198
 			],
 			"itemsQuantityReward": [
 				1
@@ -91506,7 +91510,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25728
+				27199
 			],
 			"itemsQuantityReward": [
 				1
@@ -91596,7 +91600,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25781
+				27072
 			],
 			"itemsQuantityReward": [
 				1
@@ -91650,7 +91654,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25792
+				27098
 			],
 			"itemsQuantityReward": [
 				1
@@ -91668,7 +91672,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25643
+				27196
 			],
 			"itemsQuantityReward": [
 				1
@@ -91704,7 +91708,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25693
+				27196
 			],
 			"itemsQuantityReward": [
 				1
@@ -91722,7 +91726,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25787
+				27084
 			],
 			"itemsQuantityReward": [
 				1
@@ -91740,7 +91744,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25732
+				27196
 			],
 			"itemsQuantityReward": [
 				1
@@ -91896,7 +91900,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25790
+				27191
 			],
 			"itemsQuantityReward": [
 				1
@@ -91914,7 +91918,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25780
+				27070
 			],
 			"itemsQuantityReward": [
 				1
@@ -91932,7 +91936,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25735
+				27196
 			],
 			"itemsQuantityReward": [
 				1
@@ -91950,7 +91954,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25795
+				27104
 			],
 			"itemsQuantityReward": [
 				1
@@ -91968,7 +91972,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25506
+				27196
 			],
 			"itemsQuantityReward": [
 				1
@@ -92004,7 +92008,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25536
+				27196
 			],
 			"itemsQuantityReward": [
 				1
@@ -92040,7 +92044,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25733
+				27196
 			],
 			"itemsQuantityReward": [
 				1
@@ -92058,7 +92062,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25783
+				27075
 			],
 			"itemsQuantityReward": [
 				1
@@ -92076,7 +92080,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25420
+				27196
 			],
 			"itemsQuantityReward": [
 				1
@@ -92094,7 +92098,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25797
+				27106
 			],
 			"itemsQuantityReward": [
 				1
@@ -92112,7 +92116,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25590
+				26903
 			],
 			"itemsQuantityReward": [
 				1
@@ -92130,7 +92134,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25782
+				27077
 			],
 			"itemsQuantityReward": [
 				1
@@ -92148,7 +92152,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25731
+				27196
 			],
 			"itemsQuantityReward": [
 				1
@@ -92184,7 +92188,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25623
+				27196
 			],
 			"itemsQuantityReward": [
 				1
@@ -92202,7 +92206,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25422
+				27197
 			],
 			"itemsQuantityReward": [
 				1
@@ -92220,7 +92224,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25399
+				26942
 			],
 			"itemsQuantityReward": [
 				1
@@ -92238,7 +92242,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25798
+				27107
 			],
 			"itemsQuantityReward": [
 				1
@@ -92274,7 +92278,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25786
+				27082
 			],
 			"itemsQuantityReward": [
 				1
@@ -92292,7 +92296,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25397
+				25845
 			],
 			"itemsQuantityReward": [
 				1
@@ -92310,7 +92314,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25793
+				27099
 			],
 			"itemsQuantityReward": [
 				1
@@ -92328,7 +92332,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25845
+				27199
 			],
 			"itemsQuantityReward": [
 				1
@@ -92346,7 +92350,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25425
+				26986
 			],
 			"itemsQuantityReward": [
 				1
@@ -92400,7 +92404,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25788
+				27086
 			],
 			"itemsQuantityReward": [
 				1
@@ -92436,7 +92440,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25789
+				27088
 			],
 			"itemsQuantityReward": [
 				1
@@ -92454,7 +92458,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25734
+				27171
 			],
 			"itemsQuantityReward": [
 				1
@@ -92472,7 +92476,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25791
+				27189
 			],
 			"itemsQuantityReward": [
 				1
@@ -97193,7 +97197,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				2
+				3
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -97373,7 +97377,7 @@
 			"achievementId": 3043,
 			"criteria": "null",
 			"kamasRatio": 0.0,
-			"experienceRatio": 1.0,
+			"experienceRatio": 2.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [],
 			"itemsQuantityReward": [],
@@ -100147,7 +100151,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				4
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -100165,7 +100169,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				6
+				7
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102559,7 +102563,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				5
+				3
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102577,7 +102581,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				5
+				3
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102595,7 +102599,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				6
+				4
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102613,7 +102617,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				6
+				4
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102631,7 +102635,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				6
+				4
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102649,7 +102653,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				6
+				4
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102667,7 +102671,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				6
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102685,7 +102689,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				6
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102703,7 +102707,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				6
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102721,7 +102725,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102739,7 +102743,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102757,7 +102761,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102775,7 +102779,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102793,7 +102797,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102811,7 +102815,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102829,7 +102833,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102847,7 +102851,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102865,7 +102869,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102883,7 +102887,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102901,7 +102905,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102919,7 +102923,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102937,7 +102941,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102955,7 +102959,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102973,7 +102977,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -102991,7 +102995,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103009,7 +103013,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103027,7 +103031,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				7
+				5
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103045,7 +103049,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				8
+				6
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103063,7 +103067,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				8
+				6
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103081,7 +103085,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				8
+				6
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103099,7 +103103,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				8
+				6
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103117,7 +103121,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				8
+				6
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103135,7 +103139,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				8
+				6
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103153,7 +103157,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				8
+				6
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103171,7 +103175,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				8
+				6
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103189,7 +103193,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				8
+				6
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103207,7 +103211,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				8
+				6
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103225,7 +103229,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				8
+				6
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103243,7 +103247,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				9
+				7
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103261,7 +103265,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				9
+				7
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103279,7 +103283,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				9
+				7
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103297,7 +103301,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				9
+				7
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103315,7 +103319,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				8
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103333,7 +103337,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				8
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103351,7 +103355,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				8
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103369,7 +103373,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				8
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103387,7 +103391,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				8
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103405,7 +103409,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				8
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103423,7 +103427,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				8
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103441,7 +103445,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				8
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103459,7 +103463,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				8
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103477,7 +103481,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				10
+				8
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103495,7 +103499,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				11
+				9
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103513,7 +103517,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				11
+				9
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103531,7 +103535,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				11
+				9
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103549,7 +103553,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				11
+				9
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103567,7 +103571,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				11
+				9
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103585,7 +103589,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				12
+				10
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103603,7 +103607,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				12
+				10
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103621,7 +103625,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				13
+				12
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103639,7 +103643,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				13
+				12
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103657,7 +103661,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				14
+				12
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103675,7 +103679,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				15
+				13
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103783,7 +103787,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				11
+				9
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103801,7 +103805,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				12
+				10
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103819,7 +103823,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				12
+				10
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103837,7 +103841,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				12
+				10
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -103855,7 +103859,7 @@
 				20763
 			],
 			"itemsQuantityReward": [
-				12
+				10
 			],
 			"emotesReward": [],
 			"spellsReward": [],
@@ -104468,7 +104472,7 @@
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				25414
+				26840
 			],
 			"itemsQuantityReward": [
 				1
@@ -108550,6 +108554,8394 @@
 			"criteria": "null",
 			"kamasRatio": 1.0,
 			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8501,
+			"achievementId": 5205,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8502,
+			"achievementId": 5205,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8503,
+			"achievementId": 5205,
+			"criteria": "Ob!5205",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				2299
+			],
+			"itemsQuantityReward": [
+				10
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8504,
+			"achievementId": 5206,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8505,
+			"achievementId": 5206,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8506,
+			"achievementId": 5206,
+			"criteria": "Ob!5206",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				2299
+			],
+			"itemsQuantityReward": [
+				10
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8507,
+			"achievementId": 5207,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 2.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8508,
+			"achievementId": 5207,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8509,
+			"achievementId": 5207,
+			"criteria": "Ob!5207",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				2299
+			],
+			"itemsQuantityReward": [
+				10
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8510,
+			"achievementId": 5208,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8511,
+			"achievementId": 5208,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8512,
+			"achievementId": 5209,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8513,
+			"achievementId": 5209,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8514,
+			"achievementId": 5210,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 2.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8515,
+			"achievementId": 5210,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8516,
+			"achievementId": 5210,
+			"criteria": "Ob!5210",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				2299
+			],
+			"itemsQuantityReward": [
+				10
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8517,
+			"achievementId": 5211,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8518,
+			"achievementId": 5211,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8519,
+			"achievementId": 5211,
+			"criteria": "Ob!5211",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				2299
+			],
+			"itemsQuantityReward": [
+				10
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8520,
+			"achievementId": 5212,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8521,
+			"achievementId": 5212,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8522,
+			"achievementId": 5212,
+			"criteria": "Ob!5212",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				26317,
+				26318,
+				26320,
+				26321,
+				26319,
+				26316
+			],
+			"itemsQuantityReward": [
+				10,
+				10,
+				10,
+				10,
+				10,
+				1
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8523,
+			"achievementId": 5213,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8524,
+			"achievementId": 5213,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8525,
+			"achievementId": 5213,
+			"criteria": "Ob!5213",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				838
+			],
+			"itemsQuantityReward": [
+				10
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8526,
+			"achievementId": 5214,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8527,
+			"achievementId": 5214,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8528,
+			"achievementId": 5214,
+			"criteria": "Ob!5214",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				838
+			],
+			"itemsQuantityReward": [
+				10
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8529,
+			"achievementId": 5215,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8530,
+			"achievementId": 5215,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8531,
+			"achievementId": 5215,
+			"criteria": "Ob!5215",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				838
+			],
+			"itemsQuantityReward": [
+				10
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8532,
+			"achievementId": 5216,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 2.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8533,
+			"achievementId": 5216,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8534,
+			"achievementId": 5216,
+			"criteria": "Ob!5216",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				838
+			],
+			"itemsQuantityReward": [
+				10
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8535,
+			"achievementId": 5217,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8536,
+			"achievementId": 5217,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8537,
+			"achievementId": 5218,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8538,
+			"achievementId": 5218,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8539,
+			"achievementId": 5219,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8540,
+			"achievementId": 5219,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8541,
+			"achievementId": 5219,
+			"criteria": "Ob!5219",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				838
+			],
+			"itemsQuantityReward": [
+				10
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8542,
+			"achievementId": 5220,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 2.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8543,
+			"achievementId": 5220,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8544,
+			"achievementId": 5220,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [
+				341
+			],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8545,
+			"achievementId": 5221,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 2.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8546,
+			"achievementId": 5221,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8547,
+			"achievementId": 5221,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				26316
+			],
+			"itemsQuantityReward": [
+				3
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8548,
+			"achievementId": 5222,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 2.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8549,
+			"achievementId": 5222,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8550,
+			"achievementId": 5224,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				5
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8551,
+			"achievementId": 5225,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				5
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8552,
+			"achievementId": 5226,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				7
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8553,
+			"achievementId": 5227,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				9
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8556,
+			"achievementId": 5234,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				9
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8557,
+			"achievementId": 5235,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 3.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8558,
+			"achievementId": 5235,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				5
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8559,
+			"achievementId": 5236,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 5.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8560,
+			"achievementId": 5236,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8563,
+			"achievementId": 5247,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8564,
+			"achievementId": 5248,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8566,
+			"achievementId": 5251,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8567,
+			"achievementId": 5253,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8568,
+			"achievementId": 5254,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8569,
+			"achievementId": 5256,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8570,
+			"achievementId": 5257,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8571,
+			"achievementId": 5259,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8572,
+			"achievementId": 5260,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8573,
+			"achievementId": 5262,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8574,
+			"achievementId": 5263,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8575,
+			"achievementId": 5265,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8576,
+			"achievementId": 5266,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8577,
+			"achievementId": 5268,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8578,
+			"achievementId": 5269,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8579,
+			"achievementId": 5271,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8580,
+			"achievementId": 5272,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8581,
+			"achievementId": 5274,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8582,
+			"achievementId": 5275,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8583,
+			"achievementId": 5277,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8584,
+			"achievementId": 5278,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8585,
+			"achievementId": 5280,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8586,
+			"achievementId": 5281,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8587,
+			"achievementId": 5283,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8588,
+			"achievementId": 5284,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8589,
+			"achievementId": 5286,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8590,
+			"achievementId": 5287,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8591,
+			"achievementId": 5289,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8592,
+			"achievementId": 5290,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8593,
+			"achievementId": 5292,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8594,
+			"achievementId": 5293,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8595,
+			"achievementId": 5295,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8596,
+			"achievementId": 5296,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8597,
+			"achievementId": 5298,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8598,
+			"achievementId": 5299,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8599,
+			"achievementId": 5301,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8600,
+			"achievementId": 5302,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8601,
+			"achievementId": 5304,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8602,
+			"achievementId": 5305,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8603,
+			"achievementId": 5307,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8604,
+			"achievementId": 5308,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8605,
+			"achievementId": 5310,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8606,
+			"achievementId": 5311,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8607,
+			"achievementId": 5313,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8608,
+			"achievementId": 5314,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8609,
+			"achievementId": 5316,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8610,
+			"achievementId": 5317,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8611,
+			"achievementId": 5319,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8612,
+			"achievementId": 5320,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8613,
+			"achievementId": 5322,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8614,
+			"achievementId": 5323,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8615,
+			"achievementId": 5325,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8616,
+			"achievementId": 5326,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8617,
+			"achievementId": 5328,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8618,
+			"achievementId": 5329,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8619,
+			"achievementId": 5331,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8620,
+			"achievementId": 5332,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8621,
+			"achievementId": 5334,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8622,
+			"achievementId": 5335,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8623,
+			"achievementId": 5337,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8624,
+			"achievementId": 5338,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8625,
+			"achievementId": 5340,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8626,
+			"achievementId": 5341,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8627,
+			"achievementId": 5343,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8628,
+			"achievementId": 5344,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8629,
+			"achievementId": 5346,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8630,
+			"achievementId": 5347,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8631,
+			"achievementId": 5349,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8632,
+			"achievementId": 5350,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8633,
+			"achievementId": 5352,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8634,
+			"achievementId": 5353,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8635,
+			"achievementId": 5355,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8636,
+			"achievementId": 5356,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8637,
+			"achievementId": 5358,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8638,
+			"achievementId": 5359,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8639,
+			"achievementId": 5361,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8640,
+			"achievementId": 5362,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8641,
+			"achievementId": 5364,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8642,
+			"achievementId": 5365,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8643,
+			"achievementId": 5367,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8644,
+			"achievementId": 5368,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8645,
+			"achievementId": 5370,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8646,
+			"achievementId": 5371,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8647,
+			"achievementId": 5373,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8648,
+			"achievementId": 5374,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8649,
+			"achievementId": 5376,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8650,
+			"achievementId": 5377,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8651,
+			"achievementId": 5379,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8652,
+			"achievementId": 5380,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8653,
+			"achievementId": 5382,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8654,
+			"achievementId": 5383,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8655,
+			"achievementId": 5385,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8656,
+			"achievementId": 5386,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8657,
+			"achievementId": 5388,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8658,
+			"achievementId": 5389,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8659,
+			"achievementId": 5391,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8660,
+			"achievementId": 5392,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8661,
+			"achievementId": 5394,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8662,
+			"achievementId": 5395,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8663,
+			"achievementId": 5397,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8664,
+			"achievementId": 5398,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8665,
+			"achievementId": 5400,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8666,
+			"achievementId": 5401,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8667,
+			"achievementId": 5403,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8668,
+			"achievementId": 5404,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8669,
+			"achievementId": 5406,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8670,
+			"achievementId": 5407,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8671,
+			"achievementId": 5409,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8672,
+			"achievementId": 5410,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8673,
+			"achievementId": 5412,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8674,
+			"achievementId": 5413,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8675,
+			"achievementId": 5415,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8676,
+			"achievementId": 5416,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8677,
+			"achievementId": 5418,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8678,
+			"achievementId": 5419,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8679,
+			"achievementId": 5421,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8680,
+			"achievementId": 5422,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8681,
+			"achievementId": 5424,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8682,
+			"achievementId": 5425,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8683,
+			"achievementId": 5427,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8684,
+			"achievementId": 5428,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8685,
+			"achievementId": 5430,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8686,
+			"achievementId": 5431,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8687,
+			"achievementId": 5433,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8688,
+			"achievementId": 5434,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8689,
+			"achievementId": 5436,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8690,
+			"achievementId": 5437,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8691,
+			"achievementId": 5439,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8692,
+			"achievementId": 5440,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8693,
+			"achievementId": 5442,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8694,
+			"achievementId": 5443,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8695,
+			"achievementId": 5445,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8696,
+			"achievementId": 5446,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8697,
+			"achievementId": 5448,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8698,
+			"achievementId": 5449,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8699,
+			"achievementId": 5451,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8700,
+			"achievementId": 5452,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8701,
+			"achievementId": 5454,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8702,
+			"achievementId": 5455,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8703,
+			"achievementId": 5457,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8704,
+			"achievementId": 5458,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8705,
+			"achievementId": 5460,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8706,
+			"achievementId": 5461,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8707,
+			"achievementId": 5463,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8708,
+			"achievementId": 5464,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8709,
+			"achievementId": 5466,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8710,
+			"achievementId": 5467,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8711,
+			"achievementId": 5469,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8712,
+			"achievementId": 5470,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8713,
+			"achievementId": 5472,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8714,
+			"achievementId": 5473,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8715,
+			"achievementId": 5475,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8716,
+			"achievementId": 5476,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8717,
+			"achievementId": 5478,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8718,
+			"achievementId": 5479,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8719,
+			"achievementId": 5481,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8720,
+			"achievementId": 5482,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8721,
+			"achievementId": 5484,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8722,
+			"achievementId": 5485,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8723,
+			"achievementId": 5487,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8724,
+			"achievementId": 5488,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8725,
+			"achievementId": 5490,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8726,
+			"achievementId": 5491,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8727,
+			"achievementId": 5493,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8728,
+			"achievementId": 5494,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8729,
+			"achievementId": 5496,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8730,
+			"achievementId": 5497,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8731,
+			"achievementId": 5499,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8732,
+			"achievementId": 5500,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8733,
+			"achievementId": 5502,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8734,
+			"achievementId": 5503,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8735,
+			"achievementId": 5505,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8736,
+			"achievementId": 5506,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8737,
+			"achievementId": 5508,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8738,
+			"achievementId": 5509,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8739,
+			"achievementId": 5511,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8740,
+			"achievementId": 5512,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8741,
+			"achievementId": 5514,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8742,
+			"achievementId": 5515,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8743,
+			"achievementId": 5517,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8744,
+			"achievementId": 5518,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8745,
+			"achievementId": 5520,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8746,
+			"achievementId": 5521,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8747,
+			"achievementId": 5523,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8748,
+			"achievementId": 5524,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8749,
+			"achievementId": 5526,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8750,
+			"achievementId": 5527,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8751,
+			"achievementId": 5529,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8752,
+			"achievementId": 5530,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8753,
+			"achievementId": 5532,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8754,
+			"achievementId": 5533,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8755,
+			"achievementId": 5535,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8756,
+			"achievementId": 5536,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8757,
+			"achievementId": 5538,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8758,
+			"achievementId": 5539,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8759,
+			"achievementId": 5541,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8760,
+			"achievementId": 5542,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8761,
+			"achievementId": 5544,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8762,
+			"achievementId": 5545,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8763,
+			"achievementId": 5547,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8764,
+			"achievementId": 5548,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8765,
+			"achievementId": 5550,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8766,
+			"achievementId": 5551,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8767,
+			"achievementId": 5553,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8768,
+			"achievementId": 5554,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8769,
+			"achievementId": 5556,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8770,
+			"achievementId": 5557,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8771,
+			"achievementId": 5559,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8772,
+			"achievementId": 5560,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8773,
+			"achievementId": 5562,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8774,
+			"achievementId": 5563,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8775,
+			"achievementId": 5565,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8776,
+			"achievementId": 5566,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8777,
+			"achievementId": 5568,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8778,
+			"achievementId": 5569,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8779,
+			"achievementId": 5571,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8780,
+			"achievementId": 5572,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8781,
+			"achievementId": 5574,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8782,
+			"achievementId": 5575,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8783,
+			"achievementId": 5577,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8784,
+			"achievementId": 5578,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8785,
+			"achievementId": 5580,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8786,
+			"achievementId": 5581,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8787,
+			"achievementId": 5583,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8788,
+			"achievementId": 5584,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8789,
+			"achievementId": 5586,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8790,
+			"achievementId": 5587,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8791,
+			"achievementId": 5589,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8792,
+			"achievementId": 5590,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8793,
+			"achievementId": 5592,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8794,
+			"achievementId": 5593,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8795,
+			"achievementId": 5595,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8796,
+			"achievementId": 5596,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8797,
+			"achievementId": 5598,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8798,
+			"achievementId": 5599,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8799,
+			"achievementId": 5601,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8800,
+			"achievementId": 5602,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8801,
+			"achievementId": 5604,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8802,
+			"achievementId": 5605,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8803,
+			"achievementId": 5607,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8804,
+			"achievementId": 5608,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8805,
+			"achievementId": 5610,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8806,
+			"achievementId": 5611,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8807,
+			"achievementId": 5613,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8808,
+			"achievementId": 5614,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8809,
+			"achievementId": 5616,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8810,
+			"achievementId": 5617,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8811,
+			"achievementId": 5619,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8812,
+			"achievementId": 5620,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8813,
+			"achievementId": 5622,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8814,
+			"achievementId": 5623,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8815,
+			"achievementId": 5625,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8816,
+			"achievementId": 5626,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8817,
+			"achievementId": 5628,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8818,
+			"achievementId": 5629,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8819,
+			"achievementId": 5631,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8820,
+			"achievementId": 5632,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8821,
+			"achievementId": 5634,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8822,
+			"achievementId": 5635,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8823,
+			"achievementId": 5637,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8824,
+			"achievementId": 5638,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8825,
+			"achievementId": 5640,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8826,
+			"achievementId": 5641,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8827,
+			"achievementId": 5643,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8828,
+			"achievementId": 5644,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8829,
+			"achievementId": 5646,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8830,
+			"achievementId": 5647,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8831,
+			"achievementId": 5649,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8832,
+			"achievementId": 5650,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8833,
+			"achievementId": 5652,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8834,
+			"achievementId": 5653,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8835,
+			"achievementId": 5655,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8836,
+			"achievementId": 5656,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8837,
+			"achievementId": 5658,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8838,
+			"achievementId": 5659,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8839,
+			"achievementId": 5661,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8840,
+			"achievementId": 5662,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8841,
+			"achievementId": 5664,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8842,
+			"achievementId": 5665,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8843,
+			"achievementId": 5667,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8844,
+			"achievementId": 5668,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8845,
+			"achievementId": 5670,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8846,
+			"achievementId": 5671,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8847,
+			"achievementId": 5673,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8848,
+			"achievementId": 5674,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8849,
+			"achievementId": 5676,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8850,
+			"achievementId": 5677,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8851,
+			"achievementId": 5679,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8852,
+			"achievementId": 5680,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8853,
+			"achievementId": 5682,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8854,
+			"achievementId": 5683,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8855,
+			"achievementId": 5685,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8856,
+			"achievementId": 5686,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8857,
+			"achievementId": 5688,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8858,
+			"achievementId": 5689,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8859,
+			"achievementId": 5691,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8860,
+			"achievementId": 5692,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8861,
+			"achievementId": 5694,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8862,
+			"achievementId": 5695,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8863,
+			"achievementId": 5697,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8864,
+			"achievementId": 5698,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8865,
+			"achievementId": 5239,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				12
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8866,
+			"achievementId": 5700,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 3.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8867,
+			"achievementId": 5700,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				6
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8868,
+			"achievementId": 5701,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 5.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8869,
+			"achievementId": 5701,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				3
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8870,
+			"achievementId": 5702,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				4
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8871,
+			"achievementId": 5703,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 3.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8872,
+			"achievementId": 5703,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				2
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8873,
+			"achievementId": 5704,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 5.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8874,
+			"achievementId": 5704,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				1
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8875,
+			"achievementId": 5715,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8876,
+			"achievementId": 5716,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8877,
+			"achievementId": 5717,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8878,
+			"achievementId": 5718,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8879,
+			"achievementId": 5719,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8880,
+			"achievementId": 5720,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8881,
+			"achievementId": 5720,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8882,
+			"achievementId": 5721,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8883,
+			"achievementId": 5721,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8884,
+			"achievementId": 5722,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8885,
+			"achievementId": 5722,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8886,
+			"achievementId": 5723,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8887,
+			"achievementId": 5723,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8888,
+			"achievementId": 5724,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8889,
+			"achievementId": 5724,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8890,
+			"achievementId": 5725,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8891,
+			"achievementId": 5725,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8892,
+			"achievementId": 5726,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8893,
+			"achievementId": 5726,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8894,
+			"achievementId": 5727,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8895,
+			"achievementId": 5727,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8896,
+			"achievementId": 5728,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8897,
+			"achievementId": 5728,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8898,
+			"achievementId": 5729,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8899,
+			"achievementId": 5729,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8900,
+			"achievementId": 5730,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8901,
+			"achievementId": 5730,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8902,
+			"achievementId": 5731,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8903,
+			"achievementId": 5731,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8904,
+			"achievementId": 5732,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8905,
+			"achievementId": 5732,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8906,
+			"achievementId": 5733,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8907,
+			"achievementId": 5733,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8908,
+			"achievementId": 5734,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8909,
+			"achievementId": 5734,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8910,
+			"achievementId": 5735,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8911,
+			"achievementId": 5735,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8912,
+			"achievementId": 5736,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8913,
+			"achievementId": 5736,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8914,
+			"achievementId": 5737,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8915,
+			"achievementId": 5737,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8916,
+			"achievementId": 5738,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8917,
+			"achievementId": 5738,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8918,
+			"achievementId": 5739,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8919,
+			"achievementId": 5739,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8920,
+			"achievementId": 5740,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8921,
+			"achievementId": 5740,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8922,
+			"achievementId": 5741,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8923,
+			"achievementId": 5741,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8924,
+			"achievementId": 5742,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8925,
+			"achievementId": 5742,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8926,
+			"achievementId": 5743,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8927,
+			"achievementId": 5743,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8928,
+			"achievementId": 5744,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8929,
+			"achievementId": 5744,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8930,
+			"achievementId": 5745,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8931,
+			"achievementId": 5745,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8932,
+			"achievementId": 5746,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8933,
+			"achievementId": 5746,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8934,
+			"achievementId": 5747,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8935,
+			"achievementId": 5747,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8936,
+			"achievementId": 5748,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8937,
+			"achievementId": 5748,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8938,
+			"achievementId": 5749,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8939,
+			"achievementId": 5749,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8940,
+			"achievementId": 5750,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8941,
+			"achievementId": 5750,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8942,
+			"achievementId": 5751,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8943,
+			"achievementId": 5751,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8944,
+			"achievementId": 5752,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8945,
+			"achievementId": 5752,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8946,
+			"achievementId": 5753,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8947,
+			"achievementId": 5753,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8948,
+			"achievementId": 5754,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8949,
+			"achievementId": 5754,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8950,
+			"achievementId": 5755,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8951,
+			"achievementId": 5755,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8952,
+			"achievementId": 5756,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8953,
+			"achievementId": 5756,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8954,
+			"achievementId": 5757,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8955,
+			"achievementId": 5757,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8956,
+			"achievementId": 5758,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8957,
+			"achievementId": 5758,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8958,
+			"achievementId": 5759,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8959,
+			"achievementId": 5759,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8960,
+			"achievementId": 5760,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8961,
+			"achievementId": 5760,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8962,
+			"achievementId": 5761,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8963,
+			"achievementId": 5761,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8964,
+			"achievementId": 5762,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8965,
+			"achievementId": 5762,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8966,
+			"achievementId": 5763,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8967,
+			"achievementId": 5763,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8970,
+			"achievementId": 5765,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8971,
+			"achievementId": 5765,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8972,
+			"achievementId": 5766,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8973,
+			"achievementId": 5766,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8974,
+			"achievementId": 5767,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8975,
+			"achievementId": 5767,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8976,
+			"achievementId": 5768,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8977,
+			"achievementId": 5768,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8978,
+			"achievementId": 5769,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8979,
+			"achievementId": 5769,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8980,
+			"achievementId": 5770,
+			"criteria": "",
+			"kamasRatio": 1.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8981,
+			"achievementId": 5770,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8982,
+			"achievementId": 5772,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8983,
+			"achievementId": 5773,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8984,
+			"achievementId": 5774,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8985,
+			"achievementId": 5775,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8986,
+			"achievementId": 5776,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8987,
+			"achievementId": 5777,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8988,
+			"achievementId": 5778,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8989,
+			"achievementId": 5779,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8990,
+			"achievementId": 5780,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8991,
+			"achievementId": 5781,
+			"criteria": "null",
+			"kamasRatio": 1.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8992,
+			"achievementId": 5771,
+			"criteria": "null",
+			"kamasRatio": 2.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8993,
+			"achievementId": 5782,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				60
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8994,
+			"achievementId": 5783,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				60
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8995,
+			"achievementId": 5784,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				60
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8996,
+			"achievementId": 5785,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				60
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8997,
+			"achievementId": 5786,
+			"criteria": "Ob!5786",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				100
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8998,
+			"achievementId": 5787,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				200
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 8999,
+			"achievementId": 5771,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 9000,
+			"achievementId": 5771,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [
+				347
+			],
+			"ornamentsReward": [
+				161
+			]
+		},
+		{
+			"id": 9001,
+			"achievementId": 5795,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				60
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 9002,
+			"achievementId": 5796,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				12
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 9003,
+			"achievementId": 5797,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 3.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 9004,
+			"achievementId": 5797,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				6
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 9005,
+			"achievementId": 5798,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 5.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 9006,
+			"achievementId": 5798,
+			"criteria": "",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [
+				20763
+			],
+			"itemsQuantityReward": [
+				3
+			],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 9007,
+			"achievementId": 5799,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.5,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 9008,
+			"achievementId": 5799,
+			"criteria": "null",
+			"kamasRatio": 0.5,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": true,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": []
+		},
+		{
+			"id": 9009,
+			"achievementId": 5800,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 1.0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [],
 			"itemsQuantityReward": [],
