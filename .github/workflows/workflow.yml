@@ -14,7 +14,7 @@ jobs:
 
   Flow_A_:
     runs-on: ubuntu-latest
-    if: (github.event_name == 'workflow_dispatch') || contains(github.event.commits[*].modified[*], "data/DofusInvoker.swf")
+    if: (github.event_name == 'workflow_dispatch') || contains(github.event.commits[*].modified[*], 'data/DofusInvoker.swf')
 
     steps:
       - name: Echo A
