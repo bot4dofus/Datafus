@@ -30,7 +30,6 @@ package Ankama_Exchange.ui
    import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.ExchangeHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
-   import com.ankamagames.dofus.misc.lists.InventoryHookList;
    import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.modules.utils.ItemTooltipSettings;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
@@ -266,7 +265,6 @@ package Ankama_Exchange.ui
          this.sysApi.addHook(ExchangeHookList.AskExchangeMoveObject,this.onAskExchangeMoveObject);
          this.sysApi.addHook(ExchangeHookList.ExchangeIsReady,this.onExchangeIsReady);
          this.sysApi.addHook(HookList.DoubleClickItemInventory,this.onDoubleClickItemInventory);
-         this.sysApi.addHook(InventoryHookList.ObjectSelected,this.onObjectSelected);
          this.sysApi.addHook(ExchangeHookList.ExchangeLeave,this.onExchangeLeave);
          this.sysApi.addHook(ExchangeHookList.ExchangeObjectListAdded,this.onExchangeObjectListAdded);
          this.sysApi.addHook(ExchangeHookList.ExchangeObjectListModified,this.onExchangeObjectListModified);
@@ -520,22 +518,6 @@ package Ankama_Exchange.ui
          }
       }
       
-      public function onObjectSelected(item:Object) : void
-      {
-         if(!this.sysApi.getOption("displayTooltips","dofus"))
-         {
-            if(item)
-            {
-               this.modCommon.createItemBox("itemBox",this.ctr_item,item);
-               this.ctr_itemBlock.visible = true;
-            }
-            else
-            {
-               this.ctr_itemBlock.visible = false;
-            }
-         }
-      }
-      
       public function onRelease(target:GraphicContainer) : void
       {
          var contextMenu:Array = null;
@@ -576,7 +558,6 @@ package Ankama_Exchange.ui
       public function onSelectItem(target:Grid, selectMethod:uint, isNewSelection:Boolean) : void
       {
          var selectedItem:Object = null;
-         var selectedItem2:Object = null;
          switch(target)
          {
             case this.gd_right:
@@ -594,14 +575,6 @@ package Ankama_Exchange.ui
                   this._waitingObject = selectedItem;
                   this.modCommon.openQuantityPopup(1,this._waitingObject.quantity,this._waitingObject.quantity,this.onAltValidQty);
                }
-               else
-               {
-                  this.onObjectSelected(selectedItem);
-               }
-               break;
-            case this.gd_left:
-               selectedItem2 = this.gd_left.selectedItem;
-               this.onObjectSelected(selectedItem2);
          }
       }
       
@@ -726,7 +699,6 @@ package Ankama_Exchange.ui
             this._timerKamaDelay.removeEventListener(TimerEvent.TIMER_COMPLETE,this.onTimerKamaDelay);
          }
          this.uiApi.hideTooltip();
-         this.uiApi.unloadUi("itemBox");
          if(!this._hasExchangeResult)
          {
             this.sysApi.sendAction(new ExchangeRefuseAction([]));

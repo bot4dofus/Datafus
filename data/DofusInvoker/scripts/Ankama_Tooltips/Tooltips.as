@@ -1,5 +1,7 @@
 package Ankama_Tooltips
 {
+   import Ankama_Tooltips.makers.AchievementModsterTooltipMaker;
+   import Ankama_Tooltips.makers.AlterationTooltipMaker;
    import Ankama_Tooltips.makers.BreachMonstersGroupTooltipMaker;
    import Ankama_Tooltips.makers.BreachRewardTooltipMaker;
    import Ankama_Tooltips.makers.BreachRoomTooltipMaker;
@@ -43,6 +45,8 @@ package Ankama_Tooltips
    import Ankama_Tooltips.makers.world.WorldRpSignTooltipMaker;
    import Ankama_Tooltips.makers.world.WorldRpTaxeCollectorTooltipMaker;
    import Ankama_Tooltips.makers.world.WorldTaxeCollectorFighterTooltipMaker;
+   import Ankama_Tooltips.ui.AchievementModsterTooltipUi;
+   import Ankama_Tooltips.ui.AlterationTooltipUi;
    import Ankama_Tooltips.ui.BreachMonstersGroupTooltipUi;
    import Ankama_Tooltips.ui.BreachRewardTooltipUi;
    import Ankama_Tooltips.ui.BreachRoomTooltipUi;
@@ -213,6 +217,8 @@ package Ankama_Tooltips
          this.tooltipApi.registerTooltipMaker("directionalSign",WorldRpSignTooltipMaker,WorldRpSignTooltipUi);
          this.tooltipApi.registerTooltipMaker("breachReward",BreachRewardTooltipMaker,BreachRewardTooltipUi);
          this.tooltipApi.registerTooltipMaker("mysteryBox",MysteryBoxTooltipMaker,MysteryBoxTooltipUi);
+         this.tooltipApi.registerTooltipMaker("achievementModster",AchievementModsterTooltipMaker,AchievementModsterTooltipUi);
+         this.tooltipApi.registerTooltipMaker("alteration",AlterationTooltipMaker,AlterationTooltipUi);
          this.tooltipApi.registerTooltipMaker("simpleInterfaceTuto",InterfaceTutoTooltipMaker,InterfaceTutoTooltipUi);
          this.tooltipApi.registerTooltipMaker("cartography",CartographyTooltipMaker,CartographyTooltipUi);
          this.tooltipApi.registerTooltipMaker("textInfoWithHorizontalSeparator",TextInfoWithHorizontalSeparatorTooltipMaker,TextInfoWithHorizontalSeparatorTooltipUi);

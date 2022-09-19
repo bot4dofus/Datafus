@@ -173,6 +173,20 @@ package tools
          return _loc3_;
       }
       
+      public static function arrayCopy_damageCalculation_spellManagement_HaxeSpellEffect(param1:Array) : Array
+      {
+         var _loc4_:* = null as HaxeSpellEffect;
+         var _loc2_:Array = [];
+         var _loc3_:int = 0;
+         while(_loc3_ < int(param1.length))
+         {
+            _loc4_ = param1[_loc3_];
+            _loc3_++;
+            _loc2_.push(_loc4_);
+         }
+         return _loc2_;
+      }
+      
       public static function arrayRemove_damageCalculation_spellManagement_Mark(param1:Array, param2:Mark) : void
       {
          var _loc3_:int = param1.indexOf(param2);
@@ -235,20 +249,6 @@ package tools
       public static function arrayCopy_String(param1:Array) : Array
       {
          var _loc4_:* = null as String;
-         var _loc2_:Array = [];
-         var _loc3_:int = 0;
-         while(_loc3_ < int(param1.length))
-         {
-            _loc4_ = param1[_loc3_];
-            _loc3_++;
-            _loc2_.push(_loc4_);
-         }
-         return _loc2_;
-      }
-      
-      public static function arrayCopy_damageCalculation_spellManagement_HaxeSpellEffect(param1:Array) : Array
-      {
-         var _loc4_:* = null as HaxeSpellEffect;
          var _loc2_:Array = [];
          var _loc3_:int = 0;
          while(_loc3_ < int(param1.length))

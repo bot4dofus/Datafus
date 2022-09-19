@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
    public class GameRolePlayArenaPlayerBehavioursMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 92;
+      public static const protocolId:uint = 2266;
        
       
       private var _isInitialized:Boolean = false;
@@ -40,7 +40,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       override public function getMessageId() : uint
       {
-         return 92;
+         return 2266;
       }
       
       public function initGameRolePlayArenaPlayerBehavioursMessage(flags:Vector.<String> = null, sanctions:Vector.<String> = null, banDuration:uint = 0) : GameRolePlayArenaPlayerBehavioursMessage

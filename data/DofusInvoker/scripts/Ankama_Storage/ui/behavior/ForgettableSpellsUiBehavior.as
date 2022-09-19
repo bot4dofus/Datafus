@@ -13,15 +13,13 @@ package Ankama_Storage.ui.behavior
    
    public class ForgettableSpellsUiBehavior implements IStorageBehavior
    {
-      
-      private static const FILTER_STATUS_DATA_KEY:String = "filterForgettableSpellsUiStorage";
        
       
-      private var _storage:InventoryUi;
+      protected var _storage:InventoryUi;
       
-      private var _inventoryUI:UiRootContainer;
+      protected var _inventoryUI:UiRootContainer;
       
-      private var _defaultSetOnTopOnClick:Boolean;
+      protected var _defaultSetOnTopOnClick:Boolean;
       
       public function ForgettableSpellsUiBehavior()
       {
@@ -30,7 +28,7 @@ package Ankama_Storage.ui.behavior
       
       public function filterStatus(enabled:Boolean) : void
       {
-         Api.system.setData(FILTER_STATUS_DATA_KEY,enabled);
+         Api.system.setData(this.filterStatusDataKey,enabled);
          this.refreshFilter();
       }
       
@@ -76,16 +74,16 @@ package Ankama_Storage.ui.behavior
          this._storage.categoryFilter = ItemCategoryEnum.CONSUMABLES_CATEGORY;
          this._storage.setDropAllowed(false,"behavior");
          this._storage.btn_moveAllToLeft.visible = false;
-         this._storage.forceCategory(DataEnum.ITEM_TYPE_FORGETTABLE_SPELL_SCROLL);
+         this._storage.forceCategory(this.forcedCategory);
          this._storage.btn_checkCraft.visible = false;
-         this._storage.showFilter(Api.ui.getText("ui.temporis.hideLearnedSpells"),Api.system.getData(FILTER_STATUS_DATA_KEY));
+         this._storage.showFilter(Api.ui.getText(this.filterTextKey),Api.system.getData(this.filterStatusDataKey));
          this.refreshFilter();
       }
       
       public function detach() : void
       {
          Api.system.enableWorldInteraction();
-         Api.storage.disableForgettableSpellsFilter();
+         this.disableFilters();
          if(this._inventoryUI !== null)
          {
             this._inventoryUI.setOnTopOnClick = this._defaultSetOnTopOnClick;
@@ -99,16 +97,16 @@ package Ankama_Storage.ui.behavior
       
       public function onUnload() : void
       {
-         var forgettableSpellsUi:UiRootContainer = Api.ui.getUi(UIEnum.FORGETTABLE_SPELLS_UI);
+         var forgettableSpellsUi:UiRootContainer = Api.ui.getUi(this.attachedUiName);
          if(forgettableSpellsUi !== null)
          {
-            Api.ui.unloadUi(UIEnum.FORGETTABLE_SPELLS_UI);
+            Api.ui.unloadUi(this.attachedUiName);
          }
       }
       
-      private function refreshFilter() : void
+      protected function refreshFilter() : void
       {
-         Api.storage.enableForgettableSpellsFilter([DataEnum.ITEM_TYPE_FORGETTABLE_SPELL_SCROLL,DataEnum.ITEM_TYPE_FORGETTABLE_HIDDEN_SPELL],this._storage.btn_itemsFilter.selected);
+         this.enableFiltersFunction.call(null,this.allowedTypes,this._storage.btn_itemsFilter.selected);
          Api.storage.updateStorageView();
          Api.storage.releaseHooks();
       }
@@ -121,6 +119,11 @@ package Ankama_Storage.ui.behavior
       public function getName() : String
       {
          return StorageState.FORGETTABLE_SPELLS_UI_MOD;
+      }
+      
+      protected function get attachedUiName() : String
+      {
+         return UIEnum.FORGETTABLE_SPELLS_UI;
       }
       
       public function get replacable() : Boolean
@@ -156,6 +159,36 @@ package Ankama_Storage.ui.behavior
          {
             this._storage.useItem(item);
          }
+      }
+      
+      protected function get allowedTypes() : Array
+      {
+         return [DataEnum.ITEM_TYPE_FORGETTABLE_SPELL_SCROLL,DataEnum.ITEM_TYPE_FORGETTABLE_HIDDEN_SPELL];
+      }
+      
+      protected function get enableFiltersFunction() : Function
+      {
+         return Api.storage.enableForgettableSpellsFilter;
+      }
+      
+      protected function disableFilters() : void
+      {
+         Api.storage.disableForgettableSpellsFilter();
+      }
+      
+      protected function get filterTextKey() : String
+      {
+         return "ui.temporis.hideLearnedSpells";
+      }
+      
+      protected function get forcedCategory() : int
+      {
+         return DataEnum.ITEM_TYPE_FORGETTABLE_SPELL_SCROLL;
+      }
+      
+      protected function get filterStatusDataKey() : String
+      {
+         return "filterForgettableSpellsUiStorage";
       }
    }
 }

@@ -13,6 +13,8 @@ package Ankama_Grimoire.enum
       
       public static var TEMPORIS_TAB:String = "temporisTab";
       
+      public static var COLLECTION_TAB:String = "collectionTab";
+      
       public static var CALENDAR_TAB:String = "calendarTab";
       
       public static var ACHIEVEMENT_TAB:String = "achievementTab";
@@ -57,9 +59,9 @@ package Ankama_Grimoire.enum
       
       public static var GUILD_HOUSES_TAB:String = "guildHouses";
       
-      public static var GUILD_BULLETIN_TAB:String = "socialBulletin";
-      
       public static var GUILD_DIRECTORY_TAB:String = "guildDirectoryMinimize";
+      
+      public static var GUILD_LOG_BOOK_TAB:String = "guildLogBook";
       
       public static var ALLIANCE_MEMBERS_TAB:String = "allianceMembers";
       
@@ -76,6 +78,8 @@ package Ankama_Grimoire.enum
       public static var ALIGNMENT_WAREFFORT_TAB:String = "alignmentWarEffortTab";
       
       public static var FORGETTABLE_SPELLS_UI:String = "forgettableSpellsUi";
+      
+      public static var FORGETTABLE_MODSTERS_UI:String = "forgettableModstersUi";
        
       
       public function EnumTab()

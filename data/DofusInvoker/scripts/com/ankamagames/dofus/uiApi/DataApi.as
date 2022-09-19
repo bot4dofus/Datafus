@@ -34,9 +34,11 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.datacenter.guild.EmblemBackground;
    import com.ankamagames.dofus.datacenter.guild.EmblemSymbol;
    import com.ankamagames.dofus.datacenter.guild.EmblemSymbolCategory;
+   import com.ankamagames.dofus.datacenter.guild.GuildRank;
+   import com.ankamagames.dofus.datacenter.guild.GuildRankNameSuggestion;
+   import com.ankamagames.dofus.datacenter.guild.GuildRightGroup;
    import com.ankamagames.dofus.datacenter.guild.GuildTag;
    import com.ankamagames.dofus.datacenter.guild.GuildTagsType;
-   import com.ankamagames.dofus.datacenter.guild.RankName;
    import com.ankamagames.dofus.datacenter.houses.HavenbagFurniture;
    import com.ankamagames.dofus.datacenter.houses.HavenbagTheme;
    import com.ankamagames.dofus.datacenter.houses.House;
@@ -339,9 +341,9 @@ package com.ankamagames.dofus.uiApi
          return Spell.getSpells();
       }
       
-      public function getSpellWrapper(id:uint, level:uint = 1, useCache:Boolean = false, playerId:Number = 0, variantActivated:Boolean = false) : SpellWrapper
+      public function getSpellWrapper(id:uint, level:uint = 1, useCache:Boolean = false, playerId:Number = 0, variantActivated:Boolean = false, areModifiers:Boolean = true, isActiveOutsideTurn:Boolean = false) : SpellWrapper
       {
-         return SpellWrapper.create(id,level,useCache,playerId,variantActivated);
+         return SpellWrapper.create(id,level,useCache,playerId,variantActivated,areModifiers,isActiveOutsideTurn);
       }
       
       public function getEmoteWrapper(id:uint, position:uint = 0) : EmoteWrapper
@@ -701,14 +703,19 @@ package com.ankamagames.dofus.uiApi
          return AlignmentSide.getAlignmentSideById(sideId);
       }
       
-      public function getRankName(rankId:uint) : RankName
+      public function getGuildRank(rankId:uint) : GuildRank
       {
-         return RankName.getRankNameById(rankId);
+         return GuildRank.getGuildRankById(rankId);
       }
       
-      public function getAllRankNames() : Array
+      public function getAllGuildRanks() : Array
       {
-         return RankName.getRankNames();
+         return GuildRank.getGuildRanks();
+      }
+      
+      public function getGuildRankNameSuggestions() : Array
+      {
+         return GuildRankNameSuggestion.getGuildRankNameSuggestions();
       }
       
       public function getItemWrapper(itemGID:uint, itemPosition:int = 0, itemUID:uint = 0, itemQuantity:uint = 0, itemEffects:* = null) : ItemWrapper
@@ -1482,6 +1489,16 @@ package com.ankamagames.dofus.uiApi
       public function getGuildTagsFromGuildTagId(guildTagId:int) : Vector.<GuildTag>
       {
          return GuildTag.getGuildTagsByTagId(guildTagId);
+      }
+      
+      public function getGuildRightGroupById(groupId:int) : GuildRightGroup
+      {
+         return GuildRightGroup.getGuildRightGroupById(groupId);
+      }
+      
+      public function getGuildRightGroups() : Array
+      {
+         return GuildRightGroup.getGuildRightGroups();
       }
    }
 }

@@ -18,6 +18,7 @@ package Ankama_Connection
    import Ankama_Connection.ui.items.GiftCharacterSelectionItem;
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.enums.StrataEnum;
+   import com.ankamagames.berilia.enums.UIEnum;
    import com.ankamagames.berilia.types.graphic.UiRootContainer;
    import com.ankamagames.dofus.internalDatacenter.connection.BasicCharacterWrapper;
    import com.ankamagames.dofus.logic.common.actions.ChangeCharacterAction;
@@ -70,8 +71,6 @@ package Ankama_Connection
       public static var waitingForCharactersList:Boolean = false;
       
       public static var waitingForServersList:String = "";
-      
-      public static var loginMustBeSaved:int;
        
       
       protected var login:Login;
@@ -162,7 +161,6 @@ package Ankama_Connection
          this.sysApi.addHook(HookList.ServersList,this.onServersList);
          this.sysApi.addHook(HookList.SelectedServerRefused,this.onSelectedServerRefused);
          this.sysApi.addHook(HookList.GameStart,this.onGameStart);
-         this.sysApi.addHook(HookList.GiftList,this.onGiftList);
          this.sysApi.addHook(HookList.CharactersListUpdated,this.onCharactersListUpdated);
          this.sysApi.addHook(HookList.CharacterImpossibleSelection,this.onCharacterImpossibleSelection);
          this.sysApi.addHook(HookList.TutorielAvailable,this.onTutorielAvailable);
@@ -190,7 +188,6 @@ package Ankama_Connection
             this.sysApi.addHook(HookList.AgreementsRequired,this.onAgreementsRequired);
          }
          this.uiApi.addShortcutHook("closeUi",this.onOpenMainMenu);
-         loginMustBeSaved = this.sysApi.getData("saveLogin");
          _self = this;
       }
       
@@ -209,11 +206,6 @@ package Ankama_Connection
             return this._charaList.length;
          }
          return 0;
-      }
-      
-      public function connexionEnd() : void
-      {
-         this.onGameStart();
       }
       
       public function characterCreationStart(charactersList:Object = null) : void
@@ -251,13 +243,13 @@ package Ankama_Connection
          }
       }
       
-      private function onAuthentificationStart(mustDisplayLogin:Boolean = false) : void
+      private function onAuthentificationStart() : void
       {
          var skinName:String = null;
          var version:com.ankamagames.jerakine.types.Version = null;
          var lastCustomUISkinWarning:uint = 0;
          this.displayHeader(false);
-         this.uiApi.loadUi(loginUiName,null,[this._sPopup,!mustDisplayLogin],1,null,true);
+         this.uiApi.loadUi(loginUiName,null,[this._sPopup],1,null,true);
          this.sysApi.setData("forceServerListDisplay",false,DataStoreEnum.BIND_ACCOUNT);
          this.sysApi.setData("forceCharacterCreationDisplay",false,DataStoreEnum.BIND_ACCOUNT);
          if(this.sysApi.useCustomUISkin())
@@ -265,11 +257,10 @@ package Ankama_Connection
             skinName = this.sysApi.getOption("currentUiSkin","dofus");
             version = this.sysApi.getCurrentVersion();
             lastCustomUISkinWarning = this.sysApi.getData("lastCustomUISkinWarningWithVersion_" + skinName);
-            if(lastCustomUISkinWarning && lastCustomUISkinWarning == version.minor)
+            if(!lastCustomUISkinWarning || lastCustomUISkinWarning != version.minor)
             {
-               return;
+               this.modCommon.openPopup(this.uiApi.getText("ui.popup.warning"),this.uiApi.getText("ui.popup.customTheme.warningContent"),[this.uiApi.getText("ui.popup.customTheme.restaureDefault"),this.uiApi.getText("ui.popup.doNotShowAgain")],[this.onRestoreUiSkin,this.onDoNotShowUISkinPopupAnymore],this.onRestoreUiSkin,null,null,false,false,false);
             }
-            this.modCommon.openPopup(this.uiApi.getText("ui.popup.warning"),this.uiApi.getText("ui.popup.customTheme.warningContent"),[this.uiApi.getText("ui.popup.customTheme.restaureDefault"),this.uiApi.getText("ui.popup.doNotShowAgain")],[this.onRestoreUiSkin,this.onDoNotShowUISkinPopupAnymore],this.onRestoreUiSkin,null,null,false,false,false);
          }
       }
       
@@ -406,10 +397,10 @@ package Ankama_Connection
             isServerListDisplayForced = this.sysApi.getData("forceServerListDisplay",DataStoreEnum.BIND_ACCOUNT);
             if((serversWithCharacters.length == 0 || waitingForCreation) && !isServerListDisplayForced)
             {
-               waitingForCreation = true;
                chosenServer = this.connecApi.getAutoChosenServer(GameServerTypeEnum.SERVER_TYPE_CLASSICAL);
                if(chosenServer)
                {
+                  waitingForCreation = true;
                   this.sysApi.log(2,"Connexion au serveur " + chosenServer.id);
                   this.sysApi.sendAction(new ServerSelectionAction([chosenServer.id]));
                   return;
@@ -450,32 +441,15 @@ package Ankama_Connection
       
       private function onOpenMainMenu(s:String = "") : Boolean
       {
-         if(!this.uiApi.getUi("preGameMainMenu"))
+         if(!this.uiApi.getUi(UIEnum.PRE_GAME_MAIN_MENU))
          {
-            this.uiApi.loadUi("preGameMainMenu",null,[],3);
+            this.uiApi.loadUi(UIEnum.PRE_GAME_MAIN_MENU,null,[],3);
          }
          else
          {
-            this.uiApi.unloadUi("preGameMainMenu");
+            this.uiApi.unloadUi(UIEnum.PRE_GAME_MAIN_MENU);
          }
          return true;
-      }
-      
-      private function onGiftList(giftList:Object, characterList:Object) : void
-      {
-         if(!this.uiApi.getUi("giftMenu"))
-         {
-            this.uiApi.loadUi("giftMenu","giftMenu",{
-               "gift":giftList,
-               "chara":characterList
-            },2);
-         }
-         this.previousUi = this.currentUi;
-         this.currentUi = "giftMenu";
-         if(this.previousUi)
-         {
-            this.uiApi.unloadUi(this.previousUi);
-         }
       }
       
       private function onTutorielAvailable(tutorielAvailable:Boolean) : void
@@ -665,69 +639,17 @@ package Ankama_Connection
          this.unlockLogin();
       }
       
-      public function onIdentificationSuccess(login:String, isForced:Boolean) : void
+      public function onIdentificationSuccess() : void
       {
-         var oldLogins:Array = null;
-         var logins:Array = null;
-         var oldLogIndex:* = undefined;
-         var oldLog:String = null;
-         var logins2:Array = null;
-         var oldLog2:String = null;
          this.removeTimer();
-         if(login && login.length > 0)
-         {
-            if(login.indexOf("[") != -1 && login.indexOf("]") != -1)
-            {
-               return;
-            }
-            oldLogins = this.sysApi.getData("LastLogins");
-            if(loginMustBeSaved > -1)
-            {
-               logins = [];
-               for(oldLogIndex in oldLogins)
-               {
-                  if(oldLogins[oldLogIndex] && oldLogins[oldLogIndex].toLowerCase() == login.toLowerCase())
-                  {
-                     oldLogins.splice(oldLogIndex,1);
-                     break;
-                  }
-               }
-               if(!isForced)
-               {
-                  logins.push(login);
-               }
-               for each(oldLog in oldLogins)
-               {
-                  if(logins.length < 10 && logins.indexOf(oldLog) == -1)
-                  {
-                     logins.push(oldLog);
-                  }
-               }
-               this.sysApi.setData("LastLogins",logins);
-            }
-            else if(oldLogins && oldLogins.length > 0)
-            {
-               logins2 = [];
-               for each(oldLog2 in oldLogins)
-               {
-                  if(oldLog2 && oldLog2.toLowerCase() != login.toLowerCase())
-                  {
-                     logins2.push(oldLog2);
-                  }
-               }
-               this.sysApi.setData("LastLogins",logins2);
-            }
-         }
       }
       
       public function onIdentificationFailedForBadVersion(reason:uint, requiredVersion:com.ankamagames.dofus.network.types.version.Version) : void
       {
-         var reqVersion:com.ankamagames.jerakine.types.Version = null;
          this.removeTimer();
          if(reason == IdentificationFailureReasonEnum.BAD_VERSION)
          {
-            reqVersion = com.ankamagames.jerakine.types.Version.fromServerData(requiredVersion.major,requiredVersion.minor,requiredVersion.code,requiredVersion.build,requiredVersion.buildType);
-            this.modCommon.openPopup(this.uiApi.getText("ui.popup.accessDenied"),this.uiApi.getText("ui.popup.accessDenied.badVersion",this.sysApi.getCurrentVersion(),reqVersion.major + "." + reqVersion.minor + "." + reqVersion.code + "." + reqVersion.build),[this.uiApi.getText("ui.common.ok")]);
+            this.modCommon.openPopup(this.uiApi.getText("ui.popup.accessDenied"),this.uiApi.getText("ui.popup.accessDenied.badVersion",this.sysApi.getCurrentVersion(),requiredVersion.major + "." + requiredVersion.minor + "." + requiredVersion.code + "." + requiredVersion.build),[this.uiApi.getText("ui.common.ok")]);
          }
          this.unlockLogin();
       }
@@ -750,7 +672,6 @@ package Ankama_Connection
       {
          this.removeTimer();
          this._sPopup = "unexpectedSocketClosure";
-         this.modCommon.openPopup(this.uiApi.getText("ui.popup.unexpectedSocketClosure"),this.uiApi.getText("ui.popup.unexpectedSocketClosure.text"),[this.uiApi.getText("ui.common.ok")]);
          this.unlockLogin();
       }
       
@@ -806,7 +727,6 @@ package Ankama_Connection
       private function onZaapConnectionFailed() : void
       {
          this._sPopup = "zaapConnectionFailed";
-         this.modCommon.openPopup(this.uiApi.getText("ui.popup.warning"),this.uiApi.getText("ui.connection.updaterConnectionFailed"),[this.uiApi.getText("ui.common.ok")],[],null,null,null,false,true);
       }
       
       private function onMigratedServerList(migratedServerIds:Vector.<uint>) : void

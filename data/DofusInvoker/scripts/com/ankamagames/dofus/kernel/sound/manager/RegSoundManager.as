@@ -243,6 +243,11 @@ package com.ankamagames.dofus.kernel.sound.manager
          this._fightMusicManager.setFightSounds(combatPlaylist,bossFightPlaylist);
       }
       
+      public function setCustomFightPlaylist(id:int) : void
+      {
+         this._fightMusicManager.setCustomFightSounds(Playlist.getPlaylistById(id));
+      }
+      
       public function playUISound(pSoundId:String, pLoop:Boolean = false) : void
       {
          if(!this.checkIfAvailable())
@@ -279,11 +284,12 @@ package com.ankamagames.dofus.kernel.sound.manager
          this.fadeBusVolume(TubulSoundConfiguration.BUS_FIGHT_MUSIC_ID,1,0);
       }
       
-      public function playFightMusic(hasBoss:Boolean = false) : void
+      public function playFightMusic(hasBoss:Boolean = false, playCustom:Boolean = false) : void
       {
          this._fightMusicManager.prepareFightMusic();
          this._fightMusicManager.selectValidSounds();
          this._fightMusicManager.hasBoss = hasBoss;
+         this._fightMusicManager.playCustom = playCustom;
          this._fightMusicManager.startFightPlaylist();
       }
       

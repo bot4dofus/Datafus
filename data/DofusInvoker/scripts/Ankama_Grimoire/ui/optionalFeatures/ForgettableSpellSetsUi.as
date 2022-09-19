@@ -9,6 +9,7 @@ package Ankama_Grimoire.ui.optionalFeatures
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.types.graphic.UiRootContainer;
    import com.ankamagames.berilia.utils.ComponentHookList;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.items.BuildWrapper;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
    import com.ankamagames.dofus.kernel.sound.enum.SoundTypeEnum;
@@ -16,6 +17,7 @@ package Ankama_Grimoire.ui.optionalFeatures
    import com.ankamagames.dofus.misc.lists.InventoryHookList;
    import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.network.types.game.presets.SpellForPreset;
+   import com.ankamagames.dofus.uiApi.ConfigApi;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.InventoryApi;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
@@ -53,12 +55,17 @@ package Ankama_Grimoire.ui.optionalFeatures
       [Api(name="UtilApi")]
       public var utilApi:UtilApi;
       
+      [Api(name="ConfigApi")]
+      public var configApi:ConfigApi;
+      
       [Module(name="Ankama_Common")]
       public var ankamaCommon:Common;
       
-      private var _componentsDictionary:Dictionary;
+      protected var _componentsDictionary:Dictionary;
       
       private var _currentSpellSetBuild:BuildWrapper = null;
+      
+      private var _isModsterActivated:Boolean = false;
       
       public var btn_close:ButtonContainer;
       
@@ -75,6 +82,7 @@ package Ankama_Grimoire.ui.optionalFeatures
       public function main(paramsObject:Object = null) : void
       {
          this.uiApi.addShortcutHook(ShortcutHookListEnum.CLOSE_UI,this.onShortcut);
+         this._isModsterActivated = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.MODSTERS);
          this.systemApi.addHook(InventoryHookList.PresetsUpdate,this.onPresetsUpdate);
          this.systemApi.addHook(InventoryHookList.PresetUsed,this.onPresetUsed);
          this.systemApi.addHook(InventoryHookList.PresetSelected,this.onPresetSelected);
@@ -141,6 +149,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          components.slot_spellSetIcon.data = spellSetDescr.spellSetData;
          components.lbl_spellSetName.text = spellSetDescr.spellSetName;
          components.gd_forgettableSpells.dataProvider = spellSetDescr.forgettableSpells;
+         this.additionnalComponents(spellSetDescr,components);
       }
       
       private function equipSpellSet(spellSetDescr:Object) : void
@@ -153,7 +162,7 @@ package Ankama_Grimoire.ui.optionalFeatures
       {
          if(!this.uiApi.getUi(UIEnum.FORGETTABLE_SPELL_SET_POP_UP))
          {
-            this.uiApi.loadUi(UIEnum.FORGETTABLE_SPELL_SET_POP_UP,UIEnum.FORGETTABLE_SPELL_SET_POP_UP,[ForgettableSpellSetPopUp.ACTION_EDIT_SPELL_SET,spellSetDescr]);
+            this.uiApi.loadUi(UIEnum.FORGETTABLE_SPELL_SET_POP_UP,UIEnum.FORGETTABLE_SPELL_SET_POP_UP,[ForgettableSpellSetPopUp.ACTION_EDIT_SPELL_SET,spellSetDescr,!!this._isModsterActivated ? UIEnum.FORGETTABLE_MODSTERS_UI : UIEnum.FORGETTABLE_SPELLS_UI]);
          }
       }
       
@@ -265,6 +274,15 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
       }
       
+      protected function additionnalComponents(spellSetDescr:Object, components:*) : void
+      {
+      }
+      
+      protected function get editSetOverText() : String
+      {
+         return this.uiApi.getText("ui.temporis.editOrDeleteSpellSet");
+      }
+      
       public function onRollOver(target:GraphicContainer) : void
       {
          this.uiApi.hideTooltip(TOOLTIP_UI_NAME);
@@ -272,7 +290,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          var tooltipText:String = null;
          if(target.name.indexOf("btn_editSpellSet") !== -1)
          {
-            tooltipText = this.uiApi.getText("ui.temporis.editOrDeleteSpellSet");
+            tooltipText = this.editSetOverText;
          }
          else if(target.name.indexOf("btn_shareForgettableSpells") !== -1)
          {

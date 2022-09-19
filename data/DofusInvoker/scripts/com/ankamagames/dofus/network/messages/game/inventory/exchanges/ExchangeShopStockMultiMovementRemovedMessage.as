@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeShopStockMultiMovementRemovedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3309;
+      public static const protocolId:uint = 2006;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 3309;
+         return 2006;
       }
       
       public function initExchangeShopStockMultiMovementRemovedMessage(objectIdList:Vector.<uint> = null) : ExchangeShopStockMultiMovementRemovedMessage

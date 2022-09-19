@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
    public class DungeonPartyFinderPlayer implements INetworkType
    {
       
-      public static const protocolId:uint = 5806;
+      public static const protocolId:uint = 7952;
        
       
       public var playerId:Number = 0;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
       
       public function getTypeId() : uint
       {
-         return 5806;
+         return 7952;
       }
       
       public function initDungeonPartyFinderPlayer(playerId:Number = 0, playerName:String = "", breed:int = 0, sex:Boolean = false, level:uint = 0) : DungeonPartyFinderPlayer

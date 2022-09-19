@@ -141,7 +141,7 @@ package com.ankamagames.dofus.internalDatacenter.guild
                }
             }
          }
-         return "";
+         return this._leaderName;
       }
       
       public function update(guildId:uint, guildName:String, guildEmblem:GuildEmblem, leaderId:Number, leaderName:String, guildLevel:uint, nbMembers:uint, creationDate:Number, members:Vector.<CharacterMinimalGuildPublicInformations>, guildRecruitmentInfo:GuildRecruitmentDataWrapper, nbConnectedMembers:uint = 0, nbTaxCollectors:uint = 0, lastActivity:Number = 0, allianceId:uint = 0, allianceName:String = "", allianceTag:String = "", allianceLeader:Boolean = false) : void

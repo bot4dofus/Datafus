@@ -10,11 +10,11 @@ package com.ankama.haapi.client.model
       
       private var _articles_obj_class:Array = null;
       
-      public var articles:Vector.<Number>;
+      public var articles:Vector.<ShopOrderArticle>;
       
       public function ShopOrder()
       {
-         this.articles = new Vector.<Number>();
+         this.articles = new Vector.<ShopOrderArticle>();
          super();
       }
       

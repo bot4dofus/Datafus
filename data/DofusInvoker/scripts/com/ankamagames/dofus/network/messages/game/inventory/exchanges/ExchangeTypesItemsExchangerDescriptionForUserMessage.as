@@ -12,10 +12,12 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeTypesItemsExchangerDescriptionForUserMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6681;
+      public static const protocolId:uint = 1463;
        
       
       private var _isInitialized:Boolean = false;
+      
+      public var objectGID:uint = 0;
       
       public var objectType:uint = 0;
       
@@ -36,11 +38,12 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 6681;
+         return 1463;
       }
       
-      public function initExchangeTypesItemsExchangerDescriptionForUserMessage(objectType:uint = 0, itemTypeDescriptions:Vector.<BidExchangerObjectInfo> = null) : ExchangeTypesItemsExchangerDescriptionForUserMessage
+      public function initExchangeTypesItemsExchangerDescriptionForUserMessage(objectGID:uint = 0, objectType:uint = 0, itemTypeDescriptions:Vector.<BidExchangerObjectInfo> = null) : ExchangeTypesItemsExchangerDescriptionForUserMessage
       {
+         this.objectGID = objectGID;
          this.objectType = objectType;
          this.itemTypeDescriptions = itemTypeDescriptions;
          this._isInitialized = true;
@@ -49,6 +52,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function reset() : void
       {
+         this.objectGID = 0;
          this.objectType = 0;
          this.itemTypeDescriptions = new Vector.<BidExchangerObjectInfo>();
          this._isInitialized = false;
@@ -81,15 +85,20 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       public function serializeAs_ExchangeTypesItemsExchangerDescriptionForUserMessage(output:ICustomDataOutput) : void
       {
+         if(this.objectGID < 0)
+         {
+            throw new Error("Forbidden value (" + this.objectGID + ") on element objectGID.");
+         }
+         output.writeVarInt(this.objectGID);
          if(this.objectType < 0)
          {
             throw new Error("Forbidden value (" + this.objectType + ") on element objectType.");
          }
          output.writeInt(this.objectType);
          output.writeShort(this.itemTypeDescriptions.length);
-         for(var _i2:uint = 0; _i2 < this.itemTypeDescriptions.length; _i2++)
+         for(var _i3:uint = 0; _i3 < this.itemTypeDescriptions.length; _i3++)
          {
-            (this.itemTypeDescriptions[_i2] as BidExchangerObjectInfo).serializeAs_BidExchangerObjectInfo(output);
+            (this.itemTypeDescriptions[_i3] as BidExchangerObjectInfo).serializeAs_BidExchangerObjectInfo(output);
          }
       }
       
@@ -100,14 +109,15 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       public function deserializeAs_ExchangeTypesItemsExchangerDescriptionForUserMessage(input:ICustomDataInput) : void
       {
-         var _item2:BidExchangerObjectInfo = null;
+         var _item3:BidExchangerObjectInfo = null;
+         this._objectGIDFunc(input);
          this._objectTypeFunc(input);
          var _itemTypeDescriptionsLen:uint = input.readUnsignedShort();
-         for(var _i2:uint = 0; _i2 < _itemTypeDescriptionsLen; _i2++)
+         for(var _i3:uint = 0; _i3 < _itemTypeDescriptionsLen; _i3++)
          {
-            _item2 = new BidExchangerObjectInfo();
-            _item2.deserialize(input);
-            this.itemTypeDescriptions.push(_item2);
+            _item3 = new BidExchangerObjectInfo();
+            _item3.deserialize(input);
+            this.itemTypeDescriptions.push(_item3);
          }
       }
       
@@ -118,8 +128,18 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       public function deserializeAsyncAs_ExchangeTypesItemsExchangerDescriptionForUserMessage(tree:FuncTree) : void
       {
+         tree.addChild(this._objectGIDFunc);
          tree.addChild(this._objectTypeFunc);
          this._itemTypeDescriptionstree = tree.addChild(this._itemTypeDescriptionstreeFunc);
+      }
+      
+      private function _objectGIDFunc(input:ICustomDataInput) : void
+      {
+         this.objectGID = input.readVarUhInt();
+         if(this.objectGID < 0)
+         {
+            throw new Error("Forbidden value (" + this.objectGID + ") on element of ExchangeTypesItemsExchangerDescriptionForUserMessage.objectGID.");
+         }
       }
       
       private function _objectTypeFunc(input:ICustomDataInput) : void

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory
    public class ObjectAveragePricesMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5921;
+      public static const protocolId:uint = 1712;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.inventory
       
       override public function getMessageId() : uint
       {
-         return 5921;
+         return 1712;
       }
       
       public function initObjectAveragePricesMessage(ids:Vector.<uint> = null, avgPrices:Vector.<Number> = null) : ObjectAveragePricesMessage
@@ -90,7 +90,7 @@ package com.ankamagames.dofus.network.messages.game.inventory
             {
                throw new Error("Forbidden value (" + this.ids[_i1] + ") on element 1 (starting at 1) of ids.");
             }
-            output.writeVarShort(this.ids[_i1]);
+            output.writeVarInt(this.ids[_i1]);
          }
          output.writeShort(this.avgPrices.length);
          for(var _i2:uint = 0; _i2 < this.avgPrices.length; _i2++)
@@ -115,7 +115,7 @@ package com.ankamagames.dofus.network.messages.game.inventory
          var _idsLen:uint = input.readUnsignedShort();
          for(var _i1:uint = 0; _i1 < _idsLen; _i1++)
          {
-            _val1 = input.readVarUhShort();
+            _val1 = input.readVarUhInt();
             if(_val1 < 0)
             {
                throw new Error("Forbidden value (" + _val1 + ") on elements of ids.");
@@ -156,7 +156,7 @@ package com.ankamagames.dofus.network.messages.game.inventory
       
       private function _idsFunc(input:ICustomDataInput) : void
       {
-         var _val:uint = input.readVarUhShort();
+         var _val:uint = input.readVarUhInt();
          if(_val < 0)
          {
             throw new Error("Forbidden value (" + _val + ") on elements of ids.");

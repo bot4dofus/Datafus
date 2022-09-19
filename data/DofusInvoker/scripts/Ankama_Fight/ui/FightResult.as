@@ -6,7 +6,6 @@ package Ankama_Fight.ui
    import com.ankamagames.berilia.components.Label;
    import com.ankamagames.berilia.components.Texture;
    import com.ankamagames.berilia.components.TextureBitmap;
-   import com.ankamagames.berilia.enums.GridItemSelectMethodEnum;
    import com.ankamagames.berilia.enums.StrataEnum;
    import com.ankamagames.berilia.types.LocationEnum;
    import com.ankamagames.berilia.types.data.ContextMenuData;
@@ -18,6 +17,7 @@ package Ankama_Fight.ui
    import com.ankamagames.dofus.datacenter.monsters.Monster;
    import com.ankamagames.dofus.datacenter.servers.Server;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.fight.ChallengeWrapper;
    import com.ankamagames.dofus.internalDatacenter.fight.EnumChallengeCategory;
    import com.ankamagames.dofus.internalDatacenter.fight.EnumChallengeResult;
@@ -281,7 +281,7 @@ package Ankama_Fight.ui
          var i:int = 0;
          var idol:Idol = null;
          var coeff:Number = NaN;
-         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled("server.heroic");
+         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER);
          this._fightResults = fightResults;
          if(this.uiApi.getUi("levelUp"))
          {
@@ -290,7 +290,6 @@ package Ankama_Fight.ui
          this.uiApi.addComponentHook(this.btn_close_fightResultWindow,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.ctr_rewardRate,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.ctr_rewardRate,ComponentHookList.ON_ROLL_OUT);
-         this.uiApi.addComponentHook(this.gd_drop,ComponentHookList.ON_SELECT_ITEM);
          this.uiApi.addComponentHook(this.gd_drop,ComponentHookList.ON_ITEM_RIGHT_CLICK);
          this.uiApi.addComponentHook(this.gd_drop,ComponentHookList.ON_ITEM_ROLL_OVER);
          this.uiApi.addComponentHook(this.gd_drop,ComponentHookList.ON_ITEM_ROLL_OUT);
@@ -453,7 +452,6 @@ package Ankama_Fight.ui
                {
                   this.uiApi.addComponentHook(compRef.gd_objects,ComponentHookList.ON_ITEM_ROLL_OVER);
                   this.uiApi.addComponentHook(compRef.gd_objects,ComponentHookList.ON_ITEM_ROLL_OUT);
-                  this.uiApi.addComponentHook(compRef.gd_objects,ComponentHookList.ON_SELECT_ITEM);
                   this.uiApi.addComponentHook(compRef.gd_objects,ComponentHookList.ON_ITEM_RIGHT_CLICK);
                }
                this._hookGridObjects[compRef.gd_objects.name] = data;
@@ -557,7 +555,7 @@ package Ankama_Fight.ui
                   compRef.tx_head.visible = false;
                   compRef.tx_fighterHeadSlot.visible = false;
                }
-               if(data.showExperience && this.configApi.isFeatureWithKeywordEnabled("character.xp"))
+               if(data.showExperience && this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP))
                {
                   if(data.level > ProtocolConstantsEnum.MAX_LEVEL)
                   {
@@ -576,7 +574,7 @@ package Ankama_Fight.ui
                else
                {
                   compRef.pb_xpGauge.visible = false;
-                  if(!this.configApi.isFeatureWithKeywordEnabled("character.xp"))
+                  if(!this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP))
                   {
                      compRef.tx_level.x = 348;
                      compRef.lbl_level.x = 355;
@@ -883,7 +881,7 @@ package Ankama_Fight.ui
          var pony:Array = [];
          for(i in results)
          {
-            results[i].rewards.objects.sort(this.compareItemsAveragePrices);
+            results[i].rewards.objects.sort(this.compareItems);
             if(this.dataApi.getCurrentTemporisSeasonNumber() == 5 && results[i].outcome != FightOutcomeEnum.RESULT_TAX && this.isMiniGameFight(results))
             {
                if(this.checkVictoryTemporisMiniGame(results))
@@ -1054,8 +1052,16 @@ package Ankama_Fight.ui
          return false;
       }
       
-      private function compareItemsAveragePrices(pItemA:Object, pItemB:Object) : int
+      private function compareItems(pItemA:ItemWrapper, pItemB:ItemWrapper) : int
       {
+         if(pItemA.dropPriority > pItemB.dropPriority)
+         {
+            return -1;
+         }
+         if(pItemA.dropPriority < pItemB.dropPriority)
+         {
+            return 1;
+         }
          var itemAPrice:Number = this.averagePricesApi.getItemAveragePrice(pItemA.objectGID) * pItemA.quantity;
          var itemBPrice:Number = this.averagePricesApi.getItemAveragePrice(pItemB.objectGID) * pItemB.quantity;
          return itemAPrice < itemBPrice ? 1 : (itemAPrice > itemBPrice ? -1 : 0);
@@ -1241,7 +1247,7 @@ package Ankama_Fight.ui
                   data = this._hookGridObjects[target.name];
                   if(data)
                   {
-                     if(!this.configApi.isFeatureWithKeywordEnabled("character.xp") && data.breed > 0)
+                     if(!this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP) && data.breed > 0)
                      {
                         if(data.showExperienceForGuild)
                         {
@@ -1362,19 +1368,6 @@ package Ankama_Fight.ui
       public function onRollOut(target:GraphicContainer) : void
       {
          this.uiApi.hideTooltip();
-      }
-      
-      public function onSelectItem(target:GraphicContainer, selectMethod:uint, isNewSelection:Boolean) : void
-      {
-         var item:Object = null;
-         if(target.name.indexOf("gd_objects") != -1 || target == this.gd_drop)
-         {
-            if(!this.sysApi.getOption("displayTooltips","dofus") && (selectMethod == GridItemSelectMethodEnum.CLICK || selectMethod == GridItemSelectMethodEnum.MANUAL))
-            {
-               item = (target as Grid).selectedItem;
-               this.sysApi.dispatchHook(ChatHookList.ShowObjectLinked,item);
-            }
-         }
       }
       
       public function onItemRollOver(target:GraphicContainer, item:Object) : void

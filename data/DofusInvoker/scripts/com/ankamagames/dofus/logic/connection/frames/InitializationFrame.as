@@ -30,6 +30,7 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.datacenter.appearance.SkinMapping;
    import com.ankamagames.dofus.datacenter.feature.OptionalFeature;
    import com.ankamagames.dofus.datacenter.misc.CensoredContent;
+   import com.ankamagames.dofus.datacenter.quest.Achievement;
    import com.ankamagames.dofus.datacenter.spells.SpellPair;
    import com.ankamagames.dofus.internalDatacenter.communication.ChatBubble;
    import com.ankamagames.dofus.internalDatacenter.communication.DelayedActionItem;
@@ -59,6 +60,7 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.logic.common.frames.QueueFrame;
    import com.ankamagames.dofus.logic.common.managers.DofusFpsManager;
    import com.ankamagames.dofus.logic.common.managers.FeatureManager;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkAlterationManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkBakManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkBreachManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkDisplayArrowManager;
@@ -66,6 +68,7 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.logic.common.managers.HyperlinkGuidebookManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkItemManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkMapPosition;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkOpenAnomaly;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkOpenBook;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkOpenCompanion;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkOptionManager;
@@ -81,6 +84,7 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowEstate;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowGuildApplicationsManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowGuildManager;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkShowGuildRanks;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowMonsterChatManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowMonsterFightManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowMonsterGroup;
@@ -102,6 +106,7 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.logic.common.managers.HyperlinkTaxCollectorPosition;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkURLManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkZaapManager;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkZaapPosition;
    import com.ankamagames.dofus.logic.common.managers.temporis.HyperlinkTemporisManager;
    import com.ankamagames.dofus.logic.connection.managers.StoreUserDataManager;
    import com.ankamagames.dofus.logic.game.roleplay.types.CharacterTooltipInformation;
@@ -248,6 +253,10 @@ package com.ankamagames.dofus.logic.connection.frames
       
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(InitializationFrame));
       
+      private static const MODSTER_CUSTOM_PLAYLIST_ID:int = 299;
+      
+      private static const MODSTER_FEATURE_ID:int = 142;
+      
       private static var _fhct:FolderHashChecker;
        
       
@@ -326,6 +335,7 @@ package com.ankamagames.dofus.logic.connection.frames
          {
             LogInFile.getInstance().enableFeature(enabled);
          });
+         featureManager.addListenerToFeatureWithId(MODSTER_FEATURE_ID,onModsterFeature);
          var featureName:QName = null;
          var featureKeyword:String = null;
          var isFeatureRequiredRaw:String = null;
@@ -379,6 +389,14 @@ package com.ankamagames.dofus.logic.connection.frames
             }
          }
          LogInFile.getInstance().onFeatureManagerInitializationFinished();
+      }
+      
+      private static function onModsterFeature(featureKeyword:String, featureId:int, isEnabled:Boolean) : void
+      {
+         if(isEnabled)
+         {
+            SoundManager.getInstance().manager.setCustomFightPlaylist(MODSTER_CUSTOM_PLAYLIST_ID);
+         }
       }
       
       private static function enableLaunchFeatures() : void
@@ -508,10 +526,6 @@ package com.ankamagames.dofus.logic.connection.frames
                      if(!langAllMsg.success)
                      {
                         throw new BeriliaError("Impossible de charger " + langAllMsg.file);
-                     }
-                     if(Dofus.getInstance().forcedLang)
-                     {
-                        LangManager.getInstance().setEntry("config.lang.current",Dofus.getInstance().forcedLang);
                      }
                      if(ZaapConnectionHelper.hasZaapArguments() && !ZaapApi.isDisconnected())
                      {
@@ -1055,6 +1069,7 @@ package com.ankamagames.dofus.logic.connection.frames
          TooltipsFactory.registerAssoc(GameFightEntityInformation,"companionFighter");
          TooltipsFactory.registerAssoc(HouseWrapper,"house");
          TooltipsFactory.registerAssoc(SubhintWrapper,"simpleInterfaceTuto");
+         TooltipsFactory.registerAssoc(Achievement,"achievementModster");
          MenusFactory.registerAssoc(GameRolePlayMerchantInformations,"humanVendor");
          MenusFactory.registerAssoc(ItemWrapper,"item");
          MenusFactory.registerAssoc(QuantifiedItemWrapper,"item");
@@ -1092,6 +1107,7 @@ package com.ankamagames.dofus.logic.connection.frames
          HyperlinkFactory.registerProtocol("guild",HyperlinkShowGuildManager.showGuild,HyperlinkShowGuildManager.getGuildName,null,true,HyperlinkShowGuildManager.rollOver);
          HyperlinkFactory.registerProtocol("guildApplications",HyperlinkShowGuildApplicationsManager.showGuildApplications,null,null,true,null);
          HyperlinkFactory.registerProtocol("alliance",HyperlinkShowAllianceManager.showAlliance,HyperlinkShowAllianceManager.getAllianceName,null,true,HyperlinkShowAllianceManager.rollOver);
+         HyperlinkFactory.registerProtocol("rank",HyperlinkShowGuildRanks.showRanks,HyperlinkShowGuildRanks.getRankName,null,true);
          HyperlinkFactory.registerProtocol("openSocial",HyperlinkSocialManager.openSocial,null,null,true,HyperlinkSocialManager.rollOver);
          HyperlinkFactory.registerProtocol("chatLinkRelease",HyperlinkURLManager.chatLinkRelease,null,null,true,HyperlinkURLManager.rollOver);
          HyperlinkFactory.registerProtocol("chatWarning",HyperlinkURLManager.chatWarning);
@@ -1139,6 +1155,9 @@ package com.ankamagames.dofus.logic.connection.frames
          HyperlinkFactory.registerProtocol("openTemporisSuccesses",HyperlinkTemporisManager.openTemporisSuccesses);
          HyperlinkFactory.registerProtocol("openTemporisQuestTab",HyperlinkTemporisManager.openTemporisTab);
          HyperlinkFactory.registerProtocol("locatePorisAssistant",HyperlinkTemporisManager.locatePorisAssistant);
+         HyperlinkFactory.registerProtocol("zaap",HyperlinkZaapPosition.showPosition,HyperlinkZaapPosition.getText,null,true,HyperlinkZaapPosition.rollOver);
+         HyperlinkFactory.registerProtocol("openAnomaly",HyperlinkOpenAnomaly.open,null,null,true);
+         HyperlinkFactory.registerProtocol("alteration",HyperlinkAlterationManager.showPinnedTooltip,HyperlinkAlterationManager.getText,null,true,HyperlinkAlterationManager.rollOver);
       }
       
       private function displayLoadingScreen() : void
@@ -1219,7 +1238,7 @@ package com.ankamagames.dofus.logic.connection.frames
             Kernel.getWorker().addFrame(new AuthentificationFrame());
             Kernel.getWorker().addFrame(new QueueFrame());
             Kernel.getWorker().addFrame(new GameStartingFrame());
-            if(!ZaapApi.isConnected() && BuildInfos.BUILD_TYPE != BuildTypeEnum.DEBUG)
+            if(!ZaapApi.isConnected())
             {
                KernelEventsManager.getInstance().processCallback(HookList.ZaapConnectionFailed);
             }

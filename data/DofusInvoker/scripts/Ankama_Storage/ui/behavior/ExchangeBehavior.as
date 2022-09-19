@@ -15,7 +15,6 @@ package Ankama_Storage.ui.behavior
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertListFromInvAction;
    import com.ankamagames.dofus.misc.lists.ExchangeHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
-   import com.ankamagames.dofus.misc.lists.InventoryHookList;
    import com.ankamagames.dofus.types.enums.ItemCategoryEnum;
    
    public class ExchangeBehavior implements IStorageBehavior
@@ -81,7 +80,6 @@ package Ankama_Storage.ui.behavior
                switch(selectMethod)
                {
                   case SelectMethodEnum.CLICK:
-                     Api.system.dispatchHook(InventoryHookList.ObjectSelected,item);
                      Api.system.dispatchHook(ExchangeHookList.ClickItemInventory,item);
                      break;
                   case SelectMethodEnum.DOUBLE_CLICK:

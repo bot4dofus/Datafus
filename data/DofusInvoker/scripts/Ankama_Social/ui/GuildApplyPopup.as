@@ -58,8 +58,10 @@ package Ankama_Social.ui
          params.onCancel = function():void
          {
          };
-         params.onEnterKey = this.apply;
-         _ignoreShortcuts = true;
+         params.onEnterKey = function():void
+         {
+         };
+         _closeUIonValid = false;
          this.inp_applyPrezInput.placeholderText = uiApi.getText("ui.guild.applyPlaceholder");
          if(params.hasOwnProperty("presentation"))
          {

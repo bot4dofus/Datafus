@@ -27,6 +27,8 @@ package com.ankamagames.dofus.misc.lists
       
       public static const LoginQueueStatus:String = "LoginQueueStatus";
       
+      public static const LoginLoaded:String = "LoginLoaded";
+      
       public static const QueueStatus:String = "QueueStatus";
       
       public static const SubscribersList:String = "SubscribersList";
@@ -351,8 +353,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const ErrorPopup:String = "ErrorPopup";
       
-      public static const GiftList:String = "GiftList";
-      
       public static const GiftAssigned:String = "GiftAssigned";
       
       public static const DocumentReadingBeginMessage:String = "DocumentReadingBeginMessage";
@@ -394,6 +394,8 @@ package com.ankamagames.dofus.misc.lists
       public static const SecureModeChange:String = "SecureModeChange";
       
       public static const InactivityNotification:String = "InactivityNotification";
+      
+      public static const KISConnectingServer:String = "KISConnectingServer";
       
       public static const KISInactivityNotification:String = "KISInactivityNotification";
       
@@ -546,6 +548,8 @@ package com.ankamagames.dofus.misc.lists
       public static const PopupWarningClosed:String = "PopupWarningClosed";
       
       public static const GuildsReceived:String = "GuildsReceived";
+      
+      public static const AlliancesReceived:String = "AlliancesReceived";
        
       
       private var _import_CustomUiHookList:CustomUiHookList = null;
@@ -570,6 +574,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(SubscriptionEndDateUpdate);
          Hook.createHook(LoginQueueStart);
          Hook.createHook(LoginQueueStatus);
+         Hook.createHook(LoginLoaded);
          Hook.createHook(QueueStatus);
          Hook.createHook(SubscribersList);
          Hook.createHook(ServerConnectionStarted);
@@ -732,7 +737,6 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(GuestMode);
          Hook.createHook(GuestLimitationPopup);
          Hook.createHook(ErrorPopup);
-         Hook.createHook(GiftList);
          Hook.createHook(GiftAssigned);
          Hook.createHook(DocumentReadingBeginMessage);
          Hook.createHook(AddMapFlag);
@@ -754,6 +758,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(HideNotification);
          Hook.createHook(SecureModeChange);
          Hook.createHook(InactivityNotification);
+         Hook.createHook(KISConnectingServer);
          Hook.createHook(KISInactivityNotification);
          Hook.createHook(KISMissingEquipementWarning);
          Hook.createHook(KISPreventAndSanctionPopup);
@@ -830,6 +835,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(ArenaExternalNotification);
          Hook.createHook(PopupWarningClosed);
          Hook.createHook(GuildsReceived);
+         Hook.createHook(AlliancesReceived);
       }
    }
 }

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeShowVendorTaxMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 673;
+      public static const protocolId:uint = 3467;
        
       
       public function ExchangeShowVendorTaxMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 673;
+         return 3467;
       }
       
       public function initExchangeShowVendorTaxMessage() : ExchangeShowVendorTaxMessage

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.delay
    public class GameRolePlayDelayedObjectUseMessage extends GameRolePlayDelayedActionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1157;
+      public static const protocolId:uint = 6065;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.delay
       
       override public function getMessageId() : uint
       {
-         return 1157;
+         return 6065;
       }
       
       public function initGameRolePlayDelayedObjectUseMessage(delayedCharacterId:Number = 0, delayTypeId:uint = 0, delayEndTime:Number = 0, objectGID:uint = 0) : GameRolePlayDelayedObjectUseMessage
@@ -79,7 +79,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.delay
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element objectGID.");
          }
-         output.writeVarShort(this.objectGID);
+         output.writeVarInt(this.objectGID);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -106,7 +106,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.delay
       
       private function _objectGIDFunc(input:ICustomDataInput) : void
       {
-         this.objectGID = input.readVarUhShort();
+         this.objectGID = input.readVarUhInt();
          if(this.objectGID < 0)
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element of GameRolePlayDelayedObjectUseMessage.objectGID.");

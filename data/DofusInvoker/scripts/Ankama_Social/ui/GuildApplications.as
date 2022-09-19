@@ -23,6 +23,7 @@ package Ankama_Social.ui
    import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.misc.lists.SocialHookList;
    import com.ankamagames.dofus.network.enums.GuildApplicationStateEnum;
+   import com.ankamagames.dofus.network.enums.GuildRightsEnum;
    import com.ankamagames.dofus.network.enums.PlayerStatusEnum;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
    import com.ankamagames.dofus.uiApi.SecurityApi;
@@ -88,8 +89,6 @@ package Ankama_Social.ui
       
       private var _componentsDictionary:Dictionary;
       
-      private var _hasRights:Boolean = false;
-      
       private var _cachedItems:GuildApplicationItems;
       
       private var _applicationsRequestsHandle:uint = 0;
@@ -123,7 +122,6 @@ package Ankama_Social.ui
          this.sysApi.addHook(SocialHookList.GuildApplicationUpdated,this.onApplicationState);
          this.soundApi.playSound(SoundTypeEnum.OPEN_WINDOW);
          this._headsPath = this.uiApi.me().getConstant("heads_uri");
-         this._hasRights = params !== null && params.hasOwnProperty("hasRights") && params.hasRights;
          this.gd_guildApplications.mouseClickEnabled = false;
          this.requestNewerApplications(0,DEFAULT_LIMIT);
          this.setApplicationUpdates(true);
@@ -247,9 +245,9 @@ package Ankama_Social.ui
          this._componentsDictionary[components.tx_statusIcon.name] = playerData;
          this.uiApi.addComponentHook(components.tx_statusIcon,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(components.tx_statusIcon,ComponentHookList.ON_ROLL_OUT);
-         components.btn_accept.softDisabled = !this._hasRights || this.secureApi.SecureModeisActive();
-         components.lbl_btn_reject.cssClass = this._hasRights && !this.secureApi.SecureModeisActive() ? this.uiApi.me().getConstant("btn_reject_enabled") : this.uiApi.me().getConstant("btn_reject_disabled");
-         if(this._hasRights && !this.secureApi.SecureModeisActive())
+         components.btn_accept.softDisabled = !this.canManageApplications() || this.secureApi.SecureModeisActive();
+         components.lbl_btn_reject.cssClass = this.canManageApplications() && !this.secureApi.SecureModeisActive() ? this.uiApi.me().getConstant("btn_reject_enabled") : this.uiApi.me().getConstant("btn_reject_disabled");
+         if(this.canManageApplications() && !this.secureApi.SecureModeisActive())
          {
             this.uiApi.addComponentHook(components.btn_accept,ComponentHookList.ON_RELEASE);
             this.uiApi.addComponentHook(components.lbl_btn_reject,ComponentHookList.ON_RELEASE);
@@ -363,6 +361,11 @@ package Ankama_Social.ui
          this.lbl_pendingApplications.text = PatternDecoder.combine(this.uiApi.getText("ui.guild.pendingApplications",[this._currentTotal]),"f",this._currentTotal <= 1,this._currentTotal == 0);
          this.lbl_pendingApplications.fullWidth();
          this.tx_loadingWarning.x = this.lbl_pendingApplications.x + this.lbl_pendingApplications.width + Number(this.uiApi.me().getConstant("loading_warning_icon_margin"));
+      }
+      
+      private function canManageApplications() : Boolean
+      {
+         return this.socialApi.playerGuildRank.rights.indexOf(GuildRightsEnum.RIGHT_MANAGE_APPLY_AND_INVITATION) != -1;
       }
       
       private function onApplications(applications:Vector.<GuildApplicationWrapper>, timestamp:uint, limit:uint, total:uint) : void
@@ -493,7 +496,7 @@ package Ankama_Social.ui
          }
          else if(target.name.indexOf("btn_accept") !== -1 || target.name.indexOf("lbl_btn_reject") !== -1)
          {
-            if(!this._hasRights)
+            if(!this.canManageApplications())
             {
                tooltipText = this.uiApi.getText("ui.guild.applicationOperationForbidden");
             }

@@ -6,10 +6,12 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.atouin.managers.FrustumManager;
    import com.ankamagames.berilia.Berilia;
    import com.ankamagames.berilia.enums.StrataEnum;
+   import com.ankamagames.berilia.managers.BindsManager;
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.berilia.managers.UiModuleManager;
    import com.ankamagames.berilia.types.data.UiModule;
    import com.ankamagames.berilia.types.graphic.UiRootContainer;
+   import com.ankamagames.berilia.types.shortcut.Bind;
    import com.ankamagames.dofus.datacenter.effects.EffectInstance;
    import com.ankamagames.dofus.datacenter.items.Item;
    import com.ankamagames.dofus.datacenter.monsters.Companion;
@@ -21,6 +23,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.datacenter.quest.QuestStep;
    import com.ankamagames.dofus.datacenter.world.MapPosition;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.appearance.OrnamentWrapper;
    import com.ankamagames.dofus.internalDatacenter.appearance.TitleWrapper;
    import com.ankamagames.dofus.internalDatacenter.communication.EmoteWrapper;
@@ -32,6 +35,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.common.actions.AuthorizedCommandAction;
    import com.ankamagames.dofus.logic.common.managers.AccountManager;
    import com.ankamagames.dofus.logic.common.managers.FeatureManager;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkShowPlayerMenuManager;
    import com.ankamagames.dofus.logic.common.managers.NotificationManager;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.common.actions.FollowQuestAction;
@@ -516,7 +520,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var adrmsg:AchievementDetailsRequestMessage = null;
          var admsg:AchievementDetailsMessage = null;
          var afimsg:AchievementFinishedInformationMessage = null;
-         var info3:String = null;
+         var achievement:Achievement = null;
          var afmsg:AchievementFinishedMessage = null;
          var nid:uint = 0;
          var finishedAchievement:Achievement = null;
@@ -582,6 +586,8 @@ package com.ankamagames.dofus.logic.game.common.frames
          var idQuest:uint = 0;
          var questInfosRequestMsg:QuestStepInfoRequestMessage = null;
          var achievementFinishedRewardable:AchievementAchievedRewardable = null;
+         var info3:String = null;
+         var shortcut:* = null;
          var characterDst:DataStoreType = null;
          var companion:Companion = null;
          var param:Object = null;
@@ -1034,17 +1040,44 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is AchievementFinishedInformationMessage:
                afimsg = msg as AchievementFinishedInformationMessage;
-               info3 = ParamsDecoder.applyParams(I18n.getUiText("ui.achievement.characterUnlocksAchievement",["{player," + afimsg.name + "," + afimsg.playerId + "}"]),[afimsg.name,afimsg.achievement.id]);
-               KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,info3,ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,TimeManager.getInstance().getTimestamp());
+               achievement = Achievement.getAchievementById(afimsg.achievement.id);
+               if(achievement && achievement.categoryId != DataEnum.ACHIEVEMENT_CAT_MODSTERS_HIDDEN)
+               {
+                  info3 = ParamsDecoder.applyParams(I18n.getUiText("ui.achievement.characterUnlocksAchievement",[HyperlinkShowPlayerMenuManager.getLink(afimsg.playerId,afimsg.name)]),[afimsg.name,afimsg.achievement.id]);
+                  KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,info3,ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,TimeManager.getInstance().getTimestamp());
+               }
                return true;
             case msg is AchievementFinishedMessage:
                afmsg = msg as AchievementFinishedMessage;
+               finishedAchievement = Achievement.getAchievementById(afmsg.achievement.id);
                if(PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_TEMPORIS)
                {
-                  if(afmsg.achievement.id == FIRST_TEMPORIS_REWARD_ACHIEVEMENT_ID)
+                  if(finishedAchievement.id == FIRST_TEMPORIS_REWARD_ACHIEVEMENT_ID)
                   {
                      nid = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.temporis.popupFirstRewardTitle"),I18n.getUiText("ui.temporis.popupFirstRewardContent"),NotificationTypeEnum.TUTORIAL,"FirstTemporisRewardNotif");
                      NotificationManager.getInstance().addButtonToNotification(nid,I18n.getUiText("ui.achievement.rewardsGet"),"OpenGuidebookAction",["temporisTab"]);
+                     NotificationManager.getInstance().sendNotification(nid);
+                  }
+               }
+               if(finishedAchievement.category.id === 130)
+               {
+                  if((finishedAchievement.id == 5246 || finishedAchievement.id == 5252 || finishedAchievement.id == 5258 || finishedAchievement.id == 5264) && (!this.achievementIsFinished(5246) && !this.achievementIsFinished(5252) && !this.achievementIsFinished(5258) && !this.achievementIsFinished(5264)))
+                  {
+                     shortcut = this.getShortcutBindString("openBookSpell");
+                     if(shortcut != "")
+                     {
+                        shortcut = " (" + shortcut + ")";
+                     }
+                     nid = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.temporis.pushup.equipModsterTitle"),I18n.getUiText("ui.temporis.pushup.equipModsterDescription"),NotificationTypeEnum.TUTORIAL,"FirstModsterTemporisSpellNotif");
+                     NotificationManager.getInstance().addButtonToNotification(nid,I18n.getUiText("ui.temporis.pushup.equipModsterButton") + shortcut,"OpenBookAction",["forgettableModstersUi"],true,160);
+                     NotificationManager.getInstance().sendNotification(nid);
+                     shortcut = this.getShortcutBindString("openGuidebook");
+                     if(shortcut != "")
+                     {
+                        shortcut = " (" + shortcut + ")";
+                     }
+                     nid = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.temporis.pushup.collectionTitle"),I18n.getUiText("ui.temporis.pushup.collectionDescription"),NotificationTypeEnum.TUTORIAL,"FirstModsterTemporisCollectionNotif");
+                     NotificationManager.getInstance().addButtonToNotification(nid,I18n.getUiText("ui.temporis.pushup.collectionButton") + shortcut,"OpenGuidebookAction",["collectionTab"],true,160);
                      NotificationManager.getInstance().sendNotification(nid);
                   }
                }
@@ -1054,7 +1087,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                   this._achievementsFinishedCache = [];
                }
                this._achievementsFinishedCache.push(new AchievementAchievedRewardable().initAchievementAchievedRewardable(afmsg.achievement.id,afmsg.achievement.achievedBy,afmsg.achievement.finishedlevel));
-               finishedAchievement = Achievement.getAchievementById(afmsg.achievement.id);
                if(finishedAchievement.category.id === TEMPORIS_CATEGORY)
                {
                   if(finishedAchievement.id == FIRST_TEMPORIS_COMPANION_REWARD_ACHIEVEMENT_ID)
@@ -1090,7 +1122,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                      this._rewardableAchievementsVisible = true;
                      KernelEventsManager.getInstance().processCallback(QuestHookList.RewardableAchievementsVisible,this._rewardableAchievementsVisible);
                   }
-                  if(FeatureManager.getInstance().isFeatureWithKeywordEnabled("temporis.achievementProgress") && finishedAchievement.category.id === TEMPORIS_CATEGORY)
+                  if(FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_ACHIEVEMENT_PROGRESS) && finishedAchievement.category.id === TEMPORIS_CATEGORY)
                   {
                      displayFinishedAchievementInChat(finishedAchievement);
                   }
@@ -1155,7 +1187,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   KernelEventsManager.getInstance().processCallback(QuestHookList.RewardableAchievementsVisible,this._rewardableAchievementsVisible);
                }
                rewardedAchievement = Achievement.getAchievementById(arsmsg.achievementId);
-               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled("temporis.achievementProgress") && rewardedAchievement !== null && rewardedAchievement.category.id === TEMPORIS_CATEGORY)
+               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_ACHIEVEMENT_PROGRESS) && rewardedAchievement !== null && rewardedAchievement.category.id === TEMPORIS_CATEGORY)
                {
                   displayRewardedAchievementInChat(rewardedAchievement);
                }
@@ -1539,6 +1571,29 @@ package com.ankamagames.dofus.logic.game.common.frames
             }
          }
          return false;
+      }
+      
+      private function achievementIsFinished(achievementId:uint) : Boolean
+      {
+         var achievement:AchievementAchievedRewardable = null;
+         for each(achievement in this._achievementsFinishedCache)
+         {
+            if(achievementId == achievement.id)
+            {
+               return true;
+            }
+         }
+         return false;
+      }
+      
+      public function getShortcutBindString(shortcutName:String) : String
+      {
+         var bind:Bind = BindsManager.getInstance().getBindFromShortcut(shortcutName,false);
+         if(bind != null && bind.key != null)
+         {
+            return bind.toString();
+         }
+         return "";
       }
    }
 }

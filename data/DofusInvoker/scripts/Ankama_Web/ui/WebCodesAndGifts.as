@@ -26,6 +26,7 @@ package Ankama_Web.ui
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.RoleplayHookList;
    import com.ankamagames.dofus.modules.utils.ItemTooltipSettings;
+   import com.ankamagames.dofus.network.enums.StartupActionObjectTypeEnum;
    import com.ankamagames.dofus.types.enums.DofusShopEnum;
    import com.ankamagames.dofus.types.enums.NotificationTypeEnum;
    import com.ankamagames.dofus.uiApi.DataApi;
@@ -270,6 +271,17 @@ package Ankama_Web.ui
             componentsRef.lbl_name.text = data.name;
             componentsRef.lbl_quantity.text = data.type == "MysteryBox" ? data.ids.length : "1";
             componentsRef.btn_lbl_btn_getGift.text = data.type == "Gift" ? this.uiApi.getText("ui.achievement.rewardsGet") : (data.type == "Purchase" ? this.uiApi.getText("ui.common.use") : this.uiApi.getText("ui.common.open"));
+            componentsRef.tx_warning.visible = data.actionType == StartupActionObjectTypeEnum.OBJECT_GIFT;
+            if(componentsRef.tx_warning.visible)
+            {
+               this.uiApi.addComponentHook(componentsRef.tx_warning,ComponentHookList.ON_ROLL_OVER);
+               this.uiApi.addComponentHook(componentsRef.tx_warning,ComponentHookList.ON_ROLL_OUT);
+            }
+            else
+            {
+               this.uiApi.removeComponentHook(componentsRef.tx_warning,ComponentHookList.ON_ROLL_OVER);
+               this.uiApi.removeComponentHook(componentsRef.tx_warning,ComponentHookList.ON_ROLL_OUT);
+            }
             componentsRef.ctr_gd_Gift.visible = true;
          }
       }
@@ -349,10 +361,20 @@ package Ankama_Web.ui
       
       private function updateGrid() : void
       {
+         var gift:Object = null;
          this.btn_getAll.softDisabled = this._giftsList.length == 0;
          this.btn_getAll.handCursor = !this.btn_getAll.softDisabled;
-         this.gd_giftList.dataProvider = this._giftsList;
-         this.gd_giftList.dataProvider = this.gd_giftList.dataProvider.concat(this._purchaseList);
+         var wholeList:Array = this._giftsList.concat(this._purchaseList);
+         var giftCount:int = 0;
+         for each(gift in wholeList)
+         {
+            if(gift.actionType == StartupActionObjectTypeEnum.OBJECT_GIFT)
+            {
+               giftCount++;
+            }
+         }
+         this.sysApi.dispatchHook(ExternalGameHookList.CodesAndGiftEOSWarning,giftCount != 0);
+         this.gd_giftList.dataProvider = wholeList;
       }
       
       private function consume(data:Object) : void
@@ -583,11 +605,21 @@ package Ankama_Web.ui
                   }
                   this.tx_giftVisu.uri = data.type == "Purchase" || data.type == "MysteryBox" ? data.iconUri : data.item.items[0].fullSizeIconUri;
                }
+               else if(target.name.indexOf("tx_warning") != -1)
+               {
+                  this.uiApi.showTooltip(this.uiApi.textTooltipInfo(this.uiApi.getText("ui.gift.thisGiftWillBeLost")),target,false,"standard",LocationEnum.POINT_RIGHT,LocationEnum.POINT_LEFT,3,null,null,null,"TextInfo");
+               }
          }
          if(tooltipText != "")
          {
             this.uiApi.showTooltip(this.uiApi.textTooltipInfo(tooltipText),target);
          }
+      }
+      
+      public function onRollOut(target:GraphicContainer) : void
+      {
+         this.uiApi.hideTooltip();
+         this.uiApi.hideTooltip("mysteryBox");
       }
       
       private function onShortcut(shortcut:String) : Boolean
@@ -606,12 +638,6 @@ package Ankama_Web.ui
          {
             this.updateValidateButton();
          }
-      }
-      
-      public function onRollOut(target:GraphicContainer) : void
-      {
-         this.uiApi.hideTooltip();
-         this.uiApi.hideTooltip("mysteryBox");
       }
       
       private function validCode() : void
@@ -756,6 +782,7 @@ package Ankama_Web.ui
             return {
                "item":item,
                "type":"Gift",
+               "actionType":item.actionType,
                "name":item.title,
                "iconUri":item.items[0].iconUri
             };

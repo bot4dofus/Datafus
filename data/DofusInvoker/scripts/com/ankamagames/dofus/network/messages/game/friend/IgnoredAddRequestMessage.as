@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class IgnoredAddRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2801;
+      public static const protocolId:uint = 3626;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 2801;
+         return 3626;
       }
       
       public function initIgnoredAddRequestMessage(target:AbstractPlayerSearchInformation = null, session:Boolean = false) : IgnoredAddRequestMessage

@@ -62,12 +62,12 @@ package com.ankamagames.dofus.scripts.spells
          }
       }
       
-      protected function addCasterSetDirectionStep(target:MapPoint) : void
+      protected function addCasterSetDirectionStep(target:MapPoint, forcedDirection:int = -1) : void
       {
          var orientationStep:SetDirectionStep = null;
          if(this.caster && this.caster.position && target)
          {
-            orientationStep = new SetDirectionStep(this.caster,0,target);
+            orientationStep = new SetDirectionStep(this.caster,forcedDirection,target);
             if(!this.latestStep && this.runner.stepsBuffer.length > 0)
             {
                this.latestStep = this.runner.stepsBuffer[this.runner.stepsBuffer.length - 1];

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeBidPriceMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8533;
+      public static const protocolId:uint = 4446;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 8533;
+         return 4446;
       }
       
       public function initExchangeBidPriceMessage(genericId:uint = 0, averagePrice:Number = 0) : ExchangeBidPriceMessage
@@ -81,7 +81,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
          {
             throw new Error("Forbidden value (" + this.genericId + ") on element genericId.");
          }
-         output.writeVarShort(this.genericId);
+         output.writeVarInt(this.genericId);
          if(this.averagePrice < -9007199254740992 || this.averagePrice > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.averagePrice + ") on element averagePrice.");
@@ -113,7 +113,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       private function _genericIdFunc(input:ICustomDataInput) : void
       {
-         this.genericId = input.readVarUhShort();
+         this.genericId = input.readVarUhInt();
          if(this.genericId < 0)
          {
             throw new Error("Forbidden value (" + this.genericId + ") on element of ExchangeBidPriceMessage.genericId.");

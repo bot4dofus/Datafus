@@ -27,5 +27,10 @@ package com.ankamagames.dofus.datacenter.items.criterion
          var serverSeason:ServerTemporisSeason = ServerTemporisSeason.getCurrentSeason();
          return serverSeason != null ? int(serverSeason.seasonNumber) : 0;
       }
+      
+      override public function get isRespected() : Boolean
+      {
+         return _operator.compare(this.getCriterion(),_criterionValue);
+      }
    }
 }

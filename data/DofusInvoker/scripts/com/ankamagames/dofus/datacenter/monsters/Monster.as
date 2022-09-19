@@ -47,6 +47,8 @@ package com.ankamagames.dofus.datacenter.monsters
       
       public var spells:Vector.<uint>;
       
+      public var spellGrades:Vector.<String>;
+      
       public var favoriteSubareaId:int;
       
       public var isMiniBoss:Boolean;

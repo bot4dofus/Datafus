@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.look
    public class AccessoryPreviewRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 35;
+      public static const protocolId:uint = 9868;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.look
       
       override public function getMessageId() : uint
       {
-         return 35;
+         return 9868;
       }
       
       public function initAccessoryPreviewRequestMessage(genericId:Vector.<uint> = null) : AccessoryPreviewRequestMessage
@@ -83,7 +83,7 @@ package com.ankamagames.dofus.network.messages.game.look
             {
                throw new Error("Forbidden value (" + this.genericId[_i1] + ") on element 1 (starting at 1) of genericId.");
             }
-            output.writeVarShort(this.genericId[_i1]);
+            output.writeVarInt(this.genericId[_i1]);
          }
       }
       
@@ -98,7 +98,7 @@ package com.ankamagames.dofus.network.messages.game.look
          var _genericIdLen:uint = input.readUnsignedShort();
          for(var _i1:uint = 0; _i1 < _genericIdLen; _i1++)
          {
-            _val1 = input.readVarUhShort();
+            _val1 = input.readVarUhInt();
             if(_val1 < 0)
             {
                throw new Error("Forbidden value (" + _val1 + ") on elements of genericId.");
@@ -128,7 +128,7 @@ package com.ankamagames.dofus.network.messages.game.look
       
       private function _genericIdFunc(input:ICustomDataInput) : void
       {
-         var _val:uint = input.readVarUhShort();
+         var _val:uint = input.readVarUhInt();
          if(_val < 0)
          {
             throw new Error("Forbidden value (" + _val + ") on elements of genericId.");

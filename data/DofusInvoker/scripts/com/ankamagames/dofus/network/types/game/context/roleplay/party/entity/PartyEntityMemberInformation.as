@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party.entity
    public class PartyEntityMemberInformation extends PartyEntityBaseInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 2136;
+      public static const protocolId:uint = 8792;
        
       
       public var initiative:uint = 0;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party.entity
       
       override public function getTypeId() : uint
       {
-         return 2136;
+         return 8792;
       }
       
       public function initPartyEntityMemberInformation(indexId:uint = 0, entityModelId:uint = 0, entityLook:EntityLook = null, initiative:uint = 0, lifePoints:uint = 0, maxLifePoints:uint = 0, prospecting:uint = 0, regenRate:uint = 0) : PartyEntityMemberInformation
@@ -65,7 +65,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party.entity
          {
             throw new Error("Forbidden value (" + this.initiative + ") on element initiative.");
          }
-         output.writeVarShort(this.initiative);
+         output.writeVarInt(this.initiative);
          if(this.lifePoints < 0)
          {
             throw new Error("Forbidden value (" + this.lifePoints + ") on element lifePoints.");
@@ -80,7 +80,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party.entity
          {
             throw new Error("Forbidden value (" + this.prospecting + ") on element prospecting.");
          }
-         output.writeVarShort(this.prospecting);
+         output.writeVarInt(this.prospecting);
          if(this.regenRate < 0 || this.regenRate > 255)
          {
             throw new Error("Forbidden value (" + this.regenRate + ") on element regenRate.");
@@ -120,7 +120,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party.entity
       
       private function _initiativeFunc(input:ICustomDataInput) : void
       {
-         this.initiative = input.readVarUhShort();
+         this.initiative = input.readVarUhInt();
          if(this.initiative < 0)
          {
             throw new Error("Forbidden value (" + this.initiative + ") on element of PartyEntityMemberInformation.initiative.");
@@ -147,7 +147,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party.entity
       
       private function _prospectingFunc(input:ICustomDataInput) : void
       {
-         this.prospecting = input.readVarUhShort();
+         this.prospecting = input.readVarUhInt();
          if(this.prospecting < 0)
          {
             throw new Error("Forbidden value (" + this.prospecting + ") on element of PartyEntityMemberInformation.prospecting.");

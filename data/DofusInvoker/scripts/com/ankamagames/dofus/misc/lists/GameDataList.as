@@ -8,6 +8,8 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.datacenter.alignments.AlignmentSide;
    import com.ankamagames.dofus.datacenter.alignments.AlignmentTitle;
    import com.ankamagames.dofus.datacenter.almanax.AlmanaxCalendar;
+   import com.ankamagames.dofus.datacenter.alterations.Alteration;
+   import com.ankamagames.dofus.datacenter.alterations.AlterationCategory;
    import com.ankamagames.dofus.datacenter.ambientSounds.PlaylistSound;
    import com.ankamagames.dofus.datacenter.appearance.Appearance;
    import com.ankamagames.dofus.datacenter.appearance.CreatureBoneOverride;
@@ -45,6 +47,8 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.datacenter.challenges.Challenge;
    import com.ankamagames.dofus.datacenter.characteristics.Characteristic;
    import com.ankamagames.dofus.datacenter.characteristics.CharacteristicCategory;
+   import com.ankamagames.dofus.datacenter.collection.Collectable;
+   import com.ankamagames.dofus.datacenter.collection.Collection;
    import com.ankamagames.dofus.datacenter.communication.CensoredWord;
    import com.ankamagames.dofus.datacenter.communication.ChatChannel;
    import com.ankamagames.dofus.datacenter.communication.Emoticon;
@@ -62,9 +66,13 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.datacenter.guild.EmblemBackground;
    import com.ankamagames.dofus.datacenter.guild.EmblemSymbol;
    import com.ankamagames.dofus.datacenter.guild.EmblemSymbolCategory;
+   import com.ankamagames.dofus.datacenter.guild.GuildChestTab;
+   import com.ankamagames.dofus.datacenter.guild.GuildRank;
+   import com.ankamagames.dofus.datacenter.guild.GuildRankNameSuggestion;
+   import com.ankamagames.dofus.datacenter.guild.GuildRight;
+   import com.ankamagames.dofus.datacenter.guild.GuildRightGroup;
    import com.ankamagames.dofus.datacenter.guild.GuildTag;
    import com.ankamagames.dofus.datacenter.guild.GuildTagsType;
-   import com.ankamagames.dofus.datacenter.guild.RankName;
    import com.ankamagames.dofus.datacenter.houses.HavenbagFurniture;
    import com.ankamagames.dofus.datacenter.houses.HavenbagTheme;
    import com.ankamagames.dofus.datacenter.houses.House;
@@ -116,6 +124,7 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.datacenter.npcs.NpcMessage;
    import com.ankamagames.dofus.datacenter.npcs.TaxCollectorFirstname;
    import com.ankamagames.dofus.datacenter.npcs.TaxCollectorName;
+   import com.ankamagames.dofus.datacenter.optionalFeatures.Modster;
    import com.ankamagames.dofus.datacenter.playlists.Playlist;
    import com.ankamagames.dofus.datacenter.popup.PopupButton;
    import com.ankamagames.dofus.datacenter.popup.PopupInformation;
@@ -178,7 +187,7 @@ package com.ankamagames.dofus.misc.lists
    public class GameDataList
    {
       
-      public static const CLASSES:Vector.<Class> = new <Class>[Server,ServerCommunity,ServerGameType,ServerPopulation,ServerLang,Monster,MonsterGrade,MonsterRace,MonsterSuperRace,MonsterDrop,Notification,Spell,Effect,EvolutiveEffect,EffectInstance,SpellLevel,SpellType,SpellState,Breed,BreedRole,BreedRoleByBreed,Head,Characteristic,CharacteristicCategory,SuperArea,Area,WorldMap,SubArea,Hint,HintCategory,MapPosition,MapReference,MapScrollAction,Item,ChatChannel,Weapon,Job,Skill,Recipe,ItemSet,Month,Npc,NpcAction,NpcMessage,InfoMessage,TaxCollectorFirstname,TaxCollectorName,Challenge,AlignmentGift,AlignmentOrder,AlignmentRank,AlignmentRankJntGift,AlignmentSide,AlignmentTitle,House,RankName,EmblemBackground,EmblemSymbol,EmblemSymbolCategory,Interactive,Sign,ItemType,EvolutiveItemType,Emoticon,Smiley,SmileyPack,SmileyCategory,Quest,QuestCategory,QuestStep,QuestStepRewards,QuestObjective,QuestObjectiveType,QuestObjectiveCraftItem,QuestObjectiveBringItemToNpc,QuestObjectiveBringSoulToNpc,QuestObjectiveDiscoverMap,QuestObjectiveDiscoverSubArea,QuestObjectiveDuelSpecificPlayer,QuestObjectiveFightMonster,QuestObjectiveFightMonstersOnMap,QuestObjectiveMultiFightMonster,QuestObjectiveFreeForm,QuestObjectiveGoToNpc,Achievement,AchievementCategory,AchievementObjective,AchievementReward,PointOfInterest,PointOfInterestCategory,LegendaryTreasureHunt,Mount,MountBone,MountBehavior,MountFamily,RideFood,Document,Appearance,SkinMapping,SpeakingItemsTrigger,SpeakingItemText,LivingObjectSkinJntMood,AbuseReasons,Tips,Pack,OptionalFeature,CensoredWord,NamingRule,Title,TitleCategory,Ornament,Dungeon,MonsterMiniBoss,SoundAnimation,SoundBones,StealthBones,ExternalNotification,AlmanaxCalendar,SoundUi,SoundUiElement,SoundUiHook,SkinPosition,Companion,CompanionCharacteristic,CompanionSpell,CreatureBoneOverride,CreatureBoneType,Phoenix,Playlist,PlaylistSound,Idol,IdolsPresetIcon,HavenbagFurniture,HavenbagTheme,Bonus,MonsterXPBonus,QuestXPBonus,QuestKamasBonus,MountBonus,MonsterStarRateBonus,MonsterDropChanceBonus,BonusCriterion,BonusMonsterCriterion,BonusMonsterFamilyCriterion,BonusSubAreaCriterion,BonusAreaCriterion,BonusQuestCategoryCriterion,BonusEquippedItemCriterion,FinishMove,Subhint,LuaFormula,ArenaLeague,ArenaLeagueReward,ArenaLeagueSeason,BreachPrize,BreachBoss,ServerTemporisSeason,MonsterDropCoefficient,LegendaryPowerCategory,CharacterXPMapping,SpellConversion,BreachWorldMapCoordinate,BreachDungeonModificator,BreachWorldMapSector,BreachInfinityLevel,RandomDropGroup,RandomDropItem,FeatureDescription,PopupInformation,PopupButton,ActivitySuggestion,ActivitySuggestionsCategory,GuildTag,GuildTagsType];
+      public static const CLASSES:Vector.<Class> = new <Class>[Server,ServerCommunity,ServerGameType,ServerPopulation,ServerLang,Monster,MonsterGrade,MonsterRace,MonsterSuperRace,MonsterDrop,Notification,Spell,Effect,EvolutiveEffect,EffectInstance,SpellLevel,SpellType,SpellState,Breed,BreedRole,BreedRoleByBreed,Head,Characteristic,CharacteristicCategory,SuperArea,Area,WorldMap,SubArea,Hint,HintCategory,MapPosition,MapReference,MapScrollAction,Item,ChatChannel,Weapon,Job,Skill,Recipe,ItemSet,Month,Npc,NpcAction,NpcMessage,InfoMessage,TaxCollectorFirstname,TaxCollectorName,Challenge,AlignmentGift,AlignmentOrder,AlignmentRank,AlignmentRankJntGift,AlignmentSide,AlignmentTitle,House,GuildRank,EmblemBackground,EmblemSymbol,EmblemSymbolCategory,Interactive,Sign,ItemType,EvolutiveItemType,Emoticon,Smiley,SmileyPack,SmileyCategory,Quest,QuestCategory,QuestStep,QuestStepRewards,QuestObjective,QuestObjectiveType,QuestObjectiveCraftItem,QuestObjectiveBringItemToNpc,QuestObjectiveBringSoulToNpc,QuestObjectiveDiscoverMap,QuestObjectiveDiscoverSubArea,QuestObjectiveDuelSpecificPlayer,QuestObjectiveFightMonster,QuestObjectiveFightMonstersOnMap,QuestObjectiveMultiFightMonster,QuestObjectiveFreeForm,QuestObjectiveGoToNpc,Achievement,AchievementCategory,AchievementObjective,AchievementReward,PointOfInterest,PointOfInterestCategory,LegendaryTreasureHunt,Mount,MountBone,MountBehavior,MountFamily,RideFood,Document,Appearance,SkinMapping,SpeakingItemsTrigger,SpeakingItemText,LivingObjectSkinJntMood,AbuseReasons,Tips,Pack,OptionalFeature,CensoredWord,NamingRule,Title,TitleCategory,Ornament,Dungeon,MonsterMiniBoss,SoundAnimation,SoundBones,StealthBones,ExternalNotification,AlmanaxCalendar,SoundUi,SoundUiElement,SoundUiHook,SkinPosition,Companion,CompanionCharacteristic,CompanionSpell,CreatureBoneOverride,CreatureBoneType,Phoenix,Playlist,PlaylistSound,Idol,IdolsPresetIcon,HavenbagFurniture,HavenbagTheme,Bonus,MonsterXPBonus,QuestXPBonus,QuestKamasBonus,MountBonus,MonsterStarRateBonus,MonsterDropChanceBonus,BonusCriterion,BonusMonsterCriterion,BonusMonsterFamilyCriterion,BonusSubAreaCriterion,BonusAreaCriterion,BonusQuestCategoryCriterion,BonusEquippedItemCriterion,FinishMove,Subhint,LuaFormula,ArenaLeague,ArenaLeagueReward,ArenaLeagueSeason,BreachPrize,BreachBoss,ServerTemporisSeason,MonsterDropCoefficient,LegendaryPowerCategory,CharacterXPMapping,SpellConversion,BreachWorldMapCoordinate,BreachDungeonModificator,BreachWorldMapSector,BreachInfinityLevel,RandomDropGroup,RandomDropItem,FeatureDescription,PopupInformation,PopupButton,ActivitySuggestion,ActivitySuggestionsCategory,GuildTag,GuildTagsType,GuildRightGroup,GuildRight,GuildRankNameSuggestion,Collection,Collectable,GuildChestTab,Modster,Alteration,AlterationCategory];
        
       
       public function GameDataList()

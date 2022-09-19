@@ -329,7 +329,6 @@ package Ankama_Job.ui
          this._mergeButtonTimer.stop();
          this._mergeButtonTimer.removeEventListener(TimerEvent.TIMER_COMPLETE,this.onMergeButtonTimer);
          this.sysApi.setData(ADVANCED_MODE_CACHE_TAG,this.chk_advancedMode.selected,DataStoreEnum.BIND_ACCOUNT);
-         this.uiApi.unloadUi("itemBoxSmith");
          this.storageApi.removeAllItemMasks("smithMagic");
          this.storageApi.releaseHooks();
          this.sysApi.sendAction(new LeaveDialogRequestAction([]));
@@ -643,11 +642,14 @@ package Ankama_Job.ui
          var thEi:EffectInstance = null;
          var effectActionId:int = 0;
          var ei:EffectInstance = null;
+         var itemWEffects:Vector.<EffectInstance> = null;
          var e:Object = null;
          var i:int = 0;
          var item:Item = null;
          var eiZero:EffectInstance = null;
          var tempMin:int = 0;
+         var bestMatch:EffectInstance = null;
+         var category:int = 0;
          var j:int = 0;
          if(!itemW)
          {
@@ -737,8 +739,8 @@ package Ankama_Job.ui
                }
             }
          }
-         var updatedEffectsId:Array = [];
-         var existingEffectsId:Array = [];
+         var effectsCountById:Dictionary = new Dictionary();
+         var existingEffects:Array = [];
          for each(ei in itemW.effects)
          {
             if(ei.bonusType == -1 && ei.oppositeId != -1)
@@ -749,11 +751,14 @@ package Ankama_Job.ui
             {
                effectActionId = ei.effectId;
             }
+            existingEffects.push(ei);
          }
+         itemWEffects = itemW.effects.concat(new Vector.<EffectInstance>());
          for each(e in this._itemEffects)
          {
             e.delta = 0;
-            for each(ei in itemW.effects)
+            bestMatch = null;
+            for each(ei in itemWEffects)
             {
                if(ei.bonusType == -1 && ei.oppositeId != -1)
                {
@@ -765,14 +770,29 @@ package Ankama_Job.ui
                }
                if(ei && e.id == effectActionId)
                {
-                  updatedEffectsId.push(e.id);
-                  e.effect = ei;
+                  if(!effectsCountById[e.id])
+                  {
+                     effectsCountById[e.id] = 0;
+                  }
+                  effectsCountById[e.id] += 1;
+                  if(effectsCountById[e.id] == 1)
+                  {
+                     bestMatch = ei;
+                  }
+                  else if(e.hasOwnProperty("min") && e.hasOwnProperty("max"))
+                  {
+                     if(ei is EffectInstanceMinMax && e.min == (ei as EffectInstanceMinMax).min && e.max == (ei as EffectInstanceMinMax).max || ei is EffectInstanceInteger && e.min == (ei as EffectInstanceInteger).value && e.max == e.min)
+                     {
+                        bestMatch = ei;
+                     }
+                  }
                   if(this._effectsDeltas)
                   {
                      e.delta = 0;
                      for each(delta in this._effectsDeltas)
                      {
-                        if(e.id == delta.id)
+                        category = this.dataApi.getEffect(e.id).category;
+                        if(e.id == delta.id && category != DataEnum.ACTION_TYPE_DAMAGES)
                         {
                            e.delta = delta.value;
                         }
@@ -780,8 +800,13 @@ package Ankama_Job.ui
                   }
                }
             }
+            e.effect = bestMatch;
+            if(bestMatch)
+            {
+               itemWEffects.removeAt(itemWEffects.indexOf(bestMatch));
+            }
          }
-         for each(ei in itemW.effects)
+         for each(ei in itemWEffects)
          {
             if(ei.bonusType == -1 && ei.oppositeId != -1)
             {
@@ -791,12 +816,8 @@ package Ankama_Job.ui
             {
                effectActionId = ei.effectId;
             }
-            if(ei && updatedEffectsId.indexOf(effectActionId) == -1)
+            if(!(ei.bonusType == 0 && ei.category != 2))
             {
-               if(ei.bonusType == 0 && ei.category != 2)
-               {
-                  continue;
-               }
                o = {
                   "id":effectActionId,
                   "min":int.MIN_VALUE,
@@ -833,11 +854,10 @@ package Ankama_Job.ui
                   }
                }
             }
-            existingEffectsId.push(effectActionId);
          }
          for(i = this._itemEffects.length - 1; i >= 0; i--)
          {
-            if(this._itemEffects[i] && existingEffectsId.indexOf(this._itemEffects[i].id) == -1)
+            if(this._itemEffects[i] && existingEffects.indexOf(this._itemEffects[i].effect) == -1)
             {
                if(this._itemEffects[i].descZero == "")
                {
@@ -929,7 +949,7 @@ package Ankama_Job.ui
                }
                return !isUsed && this._skill.modifiableItemTypeIds.indexOf(d.typeId) != -1 && smithLevelHighEnough;
             case this.slot_rune:
-               if((!this._skill.isForgemagus || this._runesItemTypes.indexOf(d.typeId) == -1) && d.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_POTION && d.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_ORB || d.objectGID == DataEnum.ITEM_GID_SIGNATURE_RUNE)
+               if((!this._skill.isForgemagus || this._runesItemTypes.indexOf(d.typeId) == -1) && d.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_POTION && d.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_ORB && d.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_CARVING || d.objectGID == DataEnum.ITEM_GID_SIGNATURE_RUNE)
                {
                   return false;
                }

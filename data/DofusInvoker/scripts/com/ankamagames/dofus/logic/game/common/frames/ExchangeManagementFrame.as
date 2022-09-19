@@ -10,7 +10,10 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.logic.common.actions.ChangeWorldInteractionAction;
    import com.ankamagames.dofus.logic.game.common.actions.LeaveDialogAction;
+   import com.ankamagames.dofus.logic.game.common.actions.StartGuildChestContributionAction;
+   import com.ankamagames.dofus.logic.game.common.actions.StopGuildChestContributionAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectMoveKamaAction;
+   import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectMoveToTabAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertAllFromInvAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertAllToInvAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertExistingFromInvAction;
@@ -18,6 +21,8 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertListFromInvAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertListToInvAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertListWithQuantityToInvAction;
+   import com.ankamagames.dofus.logic.game.common.actions.exchange.GuildSelectChestTabRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildGetChestTabContributionsRequestAction;
    import com.ankamagames.dofus.logic.game.common.managers.InventoryManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
@@ -35,8 +40,15 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.enums.DialogTypeEnum;
    import com.ankamagames.dofus.network.enums.ExchangeTypeEnum;
    import com.ankamagames.dofus.network.messages.game.dialog.LeaveDialogRequestMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.GuildChestTabContributionMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.GuildChestTabContributionsMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.GuildGetChestTabContributionsRequestMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.GuildSelectChestTabRequestMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.StartGuildChestContributionMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.StopGuildChestContributionMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeLeaveMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeObjectMoveKamaMessage;
+   import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeObjectMoveToTabMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeObjectTransfertAllFromInvMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeObjectTransfertAllToInvMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeObjectTransfertExistingFromInvMessage;
@@ -51,6 +63,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartOkRunesTradeMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartedMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartedTaxCollectorShopMessage;
+   import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartedWithMultiTabStorageMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartedWithPodsMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartedWithStorageMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.RecycleResultMessage;
@@ -194,6 +207,8 @@ package com.ankamagames.dofus.logic.game.common.frames
          var exwsmsg:ExchangeStartedWithStorageMessage = null;
          var commonExchangeFrame:CommonExchangeManagementFrame = null;
          var pods:int = 0;
+         var eswmtsm:ExchangeStartedWithMultiTabStorageMessage = null;
+         var commonExchangeManagementFrame:CommonExchangeManagementFrame = null;
          var esmsg:ExchangeStartedMessage = null;
          var commonExchangeFrame2:CommonExchangeManagementFrame = null;
          var estcsm:ExchangeStartedTaxCollectorShopMessage = null;
@@ -225,6 +240,15 @@ package com.ankamagames.dofus.logic.game.common.frames
          var esorctmsg:ExchangeStartOkRecycleTradeMessage = null;
          var rrmsg:RecycleResultMessage = null;
          var elm:ExchangeLeaveMessage = null;
+         var gcctra:GuildSelectChestTabRequestAction = null;
+         var gcctrm:GuildSelectChestTabRequestMessage = null;
+         var sgccm:StartGuildChestContributionMessage = null;
+         var spgccm:StopGuildChestContributionMessage = null;
+         var gctcm:GuildChestTabContributionMessage = null;
+         var ggctcrm:GuildGetChestTabContributionsRequestMessage = null;
+         var gctcsm:GuildChestTabContributionsMessage = null;
+         var eomtta:ExchangeObjectMoveToTabAction = null;
+         var eomttm:ExchangeObjectMoveToTabMessage = null;
          var sourceName:String = null;
          var targetName:String = null;
          var sourceLook:TiphonEntityLook = null;
@@ -257,6 +281,16 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                pods = exwsmsg.storageMaxSlot;
                this._kernelEventsManager.processCallback(ExchangeHookList.ExchangeBankStartedWithStorage,exwsmsg.exchangeType,pods);
+               return false;
+            case msg is ExchangeStartedWithMultiTabStorageMessage:
+               eswmtsm = msg as ExchangeStartedWithMultiTabStorageMessage;
+               PlayedCharacterManager.getInstance().isInExchange = true;
+               commonExchangeManagementFrame = Kernel.getWorker().getFrame(CommonExchangeManagementFrame) as CommonExchangeManagementFrame;
+               if(commonExchangeManagementFrame)
+               {
+                  commonExchangeManagementFrame.resetEchangeSequence();
+               }
+               this._kernelEventsManager.processCallback(ExchangeHookList.ExchangeBankStartedWithMultiTabStorage,eswmtsm.exchangeType,eswmtsm.storageMaxSlot,eswmtsm.tabNumber);
                return false;
             case msg is ExchangeStartedMessage:
                esmsg = msg as ExchangeStartedMessage;
@@ -468,6 +502,41 @@ package com.ankamagames.dofus.logic.game.common.frames
                   this._success = elm.success;
                   Kernel.getWorker().removeFrame(this);
                }
+               return true;
+            case msg is GuildSelectChestTabRequestAction:
+               gcctra = msg as GuildSelectChestTabRequestAction;
+               gcctrm = new GuildSelectChestTabRequestMessage();
+               gcctrm.initGuildSelectChestTabRequestMessage(gcctra.tabNumber);
+               ConnectionsHandler.getConnection().send(gcctrm);
+               return true;
+            case msg is StartGuildChestContributionAction:
+               sgccm = new StartGuildChestContributionMessage();
+               sgccm.initStartGuildChestContributionMessage();
+               ConnectionsHandler.getConnection().send(sgccm);
+               return true;
+            case msg is StopGuildChestContributionAction:
+               spgccm = new StopGuildChestContributionMessage();
+               spgccm.initStopGuildChestContributionMessage();
+               ConnectionsHandler.getConnection().send(spgccm);
+               return true;
+            case msg is GuildChestTabContributionMessage:
+               gctcm = msg as GuildChestTabContributionMessage;
+               KernelEventsManager.getInstance().processCallback(ExchangeHookList.GuildChestTabContribution,gctcm.tabNumber,gctcm.requiredAmount,gctcm.currentAmount,gctcm.chestContributionEnrollmentDelay,gctcm.chestContributionDelay);
+               return true;
+            case msg is GuildGetChestTabContributionsRequestAction:
+               ggctcrm = new GuildGetChestTabContributionsRequestMessage();
+               ggctcrm.initGuildGetChestTabContributionsRequestMessage();
+               ConnectionsHandler.getConnection().send(ggctcrm);
+               return true;
+            case msg is GuildChestTabContributionsMessage:
+               gctcsm = msg as GuildChestTabContributionsMessage;
+               KernelEventsManager.getInstance().processCallback(ExchangeHookList.GuildChestContributions,gctcsm.contributions);
+               return true;
+            case msg is ExchangeObjectMoveToTabAction:
+               eomtta = msg as ExchangeObjectMoveToTabAction;
+               eomttm = new ExchangeObjectMoveToTabMessage();
+               eomttm.initExchangeObjectMoveToTabMessage(eomtta.objectUID,eomtta.quantity,eomtta.tabNumber);
+               ConnectionsHandler.getConnection().send(eomttm);
                return true;
             default:
                return false;

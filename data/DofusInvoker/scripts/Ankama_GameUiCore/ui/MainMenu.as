@@ -5,7 +5,6 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.berilia.components.ComboBox;
    import com.ankamagames.berilia.components.Label;
    import com.ankamagames.berilia.components.Texture;
-   import com.ankamagames.berilia.components.TextureBitmap;
    import com.ankamagames.berilia.enums.SelectMethodEnum;
    import com.ankamagames.berilia.enums.UIEnum;
    import com.ankamagames.berilia.types.LocationEnum;
@@ -24,6 +23,7 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
+   import com.ankamagames.dofus.network.enums.BuildTypeEnum;
    import com.ankamagames.dofus.network.enums.ServerStatusEnum;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.FightApi;
@@ -92,13 +92,15 @@ package Ankama_GameUiCore.ui
       
       public var btnCancel:ButtonContainer;
       
+      public var ctr_abo:GraphicContainer;
+      
+      public var blk_disconnect:GraphicContainer;
+      
+      public var mainCtr:GraphicContainer;
+      
       public var cb_characters:ComboBox;
       
       public var cb_servers:ComboBox;
-      
-      public var bgcb_characters:TextureBitmap;
-      
-      public var bgcb_servers:TextureBitmap;
       
       public var tx_safe:Texture;
       
@@ -125,6 +127,25 @@ package Ankama_GameUiCore.ui
          this.btnChangeServer.soundId = SoundEnum.SPEC_BUTTON;
          this.btnDisconnect.soundId = SoundEnum.SPEC_BUTTON;
          this.btnCancel.soundId = SoundEnum.CANCEL_BUTTON;
+         var displayDisconnectButton:* = this.sysApi.getCurrentVersion().buildType >= BuildTypeEnum.TESTING;
+         if(displayDisconnectButton)
+         {
+            this.btnDisconnect.visible = true;
+            this.blk_disconnect.height = 153;
+            this.btnQuitGame.y = 115;
+            this.ctr_abo.y = 210;
+            this.btnCancel.y = 305;
+            this.mainCtr.height = 415;
+         }
+         else
+         {
+            this.btnDisconnect.visible = false;
+            this.blk_disconnect.height = 125;
+            this.btnQuitGame.y = 85;
+            this.ctr_abo.y = 185;
+            this.btnCancel.y = 280;
+            this.mainCtr.height = 390;
+         }
          this.sysApi.addHook(HookList.GameFightEnd,this.onGameFightEnd);
          this.sysApi.addHook(HookList.GameFightJoin,this.onGameFightJoin);
          this.sysApi.addHook(HookList.ServerStatusUpdate,this.onServerStatusUpdate);

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.objects
    public class ObjectGroundAddedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3936;
+      public static const protocolId:uint = 5465;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.objects
       
       override public function getMessageId() : uint
       {
-         return 3936;
+         return 5465;
       }
       
       public function initObjectGroundAddedMessage(cellId:uint = 0, objectGID:uint = 0) : ObjectGroundAddedMessage
@@ -86,7 +86,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.objects
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element objectGID.");
          }
-         output.writeVarShort(this.objectGID);
+         output.writeVarInt(this.objectGID);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -122,7 +122,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.objects
       
       private function _objectGIDFunc(input:ICustomDataInput) : void
       {
-         this.objectGID = input.readVarUhShort();
+         this.objectGID = input.readVarUhInt();
          if(this.objectGID < 0)
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element of ObjectGroundAddedMessage.objectGID.");

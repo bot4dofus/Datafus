@@ -59,13 +59,15 @@ package com.ankamagames.jerakine.data
       
       public static function replaceParams(text:String, params:Array, replace:String) : String
       {
+         var pattern:RegExp = null;
          if(!params || !params.length)
          {
             return text;
          }
          for(var i:uint = 1; i <= params.length; i++)
          {
-            text = text.replace(replace + i,params[i - 1]);
+            pattern = new RegExp(replace + i,"g");
+            text = text.replace(pattern,params[i - 1]);
          }
          return text;
       }

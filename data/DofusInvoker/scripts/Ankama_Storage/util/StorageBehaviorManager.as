@@ -7,7 +7,10 @@ package Ankama_Storage.util
    import Ankama_Storage.ui.behavior.DecraftBehavior;
    import Ankama_Storage.ui.behavior.ExchangeBehavior;
    import Ankama_Storage.ui.behavior.ExchangeNPCBehavior;
+   import Ankama_Storage.ui.behavior.ForgettableModstersUiBehavior;
    import Ankama_Storage.ui.behavior.ForgettableSpellsUiBehavior;
+   import Ankama_Storage.ui.behavior.GuildChestStorageBehavior;
+   import Ankama_Storage.ui.behavior.GuildChestUiBehavior;
    import Ankama_Storage.ui.behavior.HumanVendorBehavior;
    import Ankama_Storage.ui.behavior.IStorageBehavior;
    import Ankama_Storage.ui.behavior.ItemEffectsModifierBehavior;
@@ -77,8 +80,14 @@ package Ankama_Storage.util
                return new MimicryBehavior();
             case StorageState.FORGETTABLE_SPELLS_UI_MOD:
                return new ForgettableSpellsUiBehavior();
+            case StorageState.FORGETTABLE_MODSTERS_UI_MOD:
+               return new ForgettableModstersUiBehavior();
             case StorageState.ITEM_EFFECTS_MODIFIER_UI_MOD:
                return new ItemEffectsModifierBehavior();
+            case StorageState.GUILD_CHEST_STORAGE_MOD:
+               return new GuildChestStorageBehavior();
+            case StorageState.GUILD_CHEST_UI_MOD:
+               return new GuildChestUiBehavior();
             default:
                throw new Error("Invalid behavior : " + behaviorName);
          }

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightSpectatorJoinMessage extends GameFightJoinMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6927;
+      public static const protocolId:uint = 1476;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 6927;
+         return 1476;
       }
       
       public function initGameFightSpectatorJoinMessage(isTeamPhase:Boolean = false, canBeCancelled:Boolean = false, canSayReady:Boolean = false, isFightStarted:Boolean = false, timeMaxBeforeFightStart:uint = 0, fightType:uint = 0, namedPartyTeams:Vector.<NamedPartyTeam> = null) : GameFightSpectatorJoinMessage

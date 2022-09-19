@@ -13,6 +13,7 @@ package Ankama_ContextMenu.makers
    import com.ankamagames.dofus.logic.game.roleplay.actions.NpcGenericActionRequestAction;
    import com.ankamagames.dofus.misc.lists.SocialHookList;
    import com.ankamagames.dofus.network.enums.AlliancePrismModuleTypeEnum;
+   import com.ankamagames.dofus.network.enums.GuildRightsEnum;
    import com.ankamagames.dofus.network.enums.PrismStateEnum;
    import com.ankamagames.dofus.network.types.game.data.items.ObjectItem;
    import com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect;
@@ -139,7 +140,7 @@ package Ankama_ContextMenu.makers
                }
             }
             menu.push(ContextMenu.static_createContextMenuItemObject(Api.ui.getText("ui.prism.manageModules"),this.onPrismModulesManage,null,prismInfos.state == PrismStateEnum.PRISM_STATE_VULNERABLE));
-            if(Api.social.hasGuildRight(Api.player.id(),"setAlliancePrism"))
+            if(Api.social.hasGuildRight(Api.player.id(),GuildRightsEnum.RIGHT_SET_ALLIANCE_PRISM))
             {
                menu.push(ContextMenu.static_createContextMenuItemObject(Api.ui.getText("ui.common.modify"),this.onPrismModify));
                menu.push(ContextMenu.static_createContextMenuItemObject(Api.ui.getText("ui.prism.sabotage"),this.onPrismSabotage,[alInsiderPrismInfos.nextVulnerabilityDate],prismInfos.state != PrismStateEnum.PRISM_STATE_NORMAL));

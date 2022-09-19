@@ -59,6 +59,8 @@ package com.ankamagames.dofus.logic.connection.managers
       
       public var tokenMode:Boolean = false;
       
+      public var isAccountForced:Boolean = false;
+      
       public function AuthentificationManager()
       {
          this._verifyKey = AuthentificationManager__verifyKey;
@@ -183,30 +185,38 @@ package com.ankamagames.dofus.logic.connection.managers
       {
          var imsg:IdentificationMessage = null;
          var token:String = null;
-         var login:Array = null;
-         var iafmsg:IdentificationAccountForceMessage = null;
          var buildType:uint = BuildInfos.BUILD_TYPE;
-         if(this._lva.username.indexOf("|") == -1)
+         if(AuthentificationManager.getInstance().isAccountForced)
+         {
+            imsg = new IdentificationAccountForceMessage();
+         }
+         else
          {
             imsg = new IdentificationMessage();
-            if(this._lva is LoginValidationWithTicketAction || this.nextToken)
+         }
+         if(this._lva is LoginValidationWithTicketAction || this.nextToken)
+         {
+            token = !!this.nextToken ? this.nextToken : LoginValidationWithTicketAction(this._lva).ticket;
+            this.nextToken = null;
+            if(imsg is IdentificationAccountForceMessage)
             {
-               token = !!this.nextToken ? this.nextToken : LoginValidationWithTicketAction(this._lva).ticket;
-               this.nextToken = null;
-               imsg.initIdentificationMessage(imsg.version,XmlConfig.getInstance().getEntry("config.lang.current"),this.cipherRsa("   ",token,this._certificate),this._lva.serverId,this._lva.autoSelectServer,this._certificate != null,true);
+               (imsg as IdentificationAccountForceMessage).initIdentificationAccountForceMessage(imsg.version,XmlConfig.getInstance().getEntry("config.lang.current"),this.cipherRsa("   ",token,this._certificate),this._lva.serverId,this._lva.autoSelectServer,this._certificate != null,true,0,null,AuthentificationManager.getInstance().username);
             }
             else
             {
-               imsg.initIdentificationMessage(imsg.version,XmlConfig.getInstance().getEntry("config.lang.current"),this.cipherRsa(this._lva.username,this._lva.password,this._certificate),this._lva.serverId,this._lva.autoSelectServer,this._certificate != null,false);
+               imsg.initIdentificationMessage(imsg.version,XmlConfig.getInstance().getEntry("config.lang.current"),this.cipherRsa("   ",token,this._certificate),this._lva.serverId,this._lva.autoSelectServer,this._certificate != null,true);
             }
-            imsg.version.initVersion(BuildInfos.VERSION.major,BuildInfos.VERSION.minor,BuildInfos.VERSION.code,BuildInfos.VERSION.build,buildType);
-            return imsg;
          }
-         login = this._lva.username.split("|");
-         iafmsg = new IdentificationAccountForceMessage();
-         iafmsg.initIdentificationAccountForceMessage(iafmsg.version,XmlConfig.getInstance().getEntry("config.lang.current"),this.cipherRsa(login[0],this._lva.password,this._certificate),this._lva.serverId,this._lva.autoSelectServer,this._certificate != null,false,0,null,login[1]);
-         iafmsg.version.initVersion(BuildInfos.VERSION.major,BuildInfos.VERSION.minor,BuildInfos.VERSION.code,BuildInfos.VERSION.build,buildType);
-         return iafmsg;
+         else if(imsg is IdentificationAccountForceMessage)
+         {
+            (imsg as IdentificationAccountForceMessage).initIdentificationAccountForceMessage(imsg.version,XmlConfig.getInstance().getEntry("config.lang.current"),this.cipherRsa(this._lva.username,this._lva.password,this._certificate),this._lva.serverId,this._lva.autoSelectServer,this._certificate != null,false,0,null,AuthentificationManager.getInstance().username);
+         }
+         else
+         {
+            imsg.initIdentificationMessage(imsg.version,XmlConfig.getInstance().getEntry("config.lang.current"),this.cipherRsa(this._lva.username,this._lva.password,this._certificate),this._lva.serverId,this._lva.autoSelectServer,this._certificate != null,false);
+         }
+         imsg.version.initVersion(BuildInfos.VERSION.major,BuildInfos.VERSION.minor,BuildInfos.VERSION.code,BuildInfos.VERSION.build,buildType);
+         return imsg;
       }
       
       public function destroy() : void

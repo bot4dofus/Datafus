@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class IdentificationSuccessMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 331;
+      public static const protocolId:uint = 2356;
        
       
       private var _isInitialized:Boolean = false;
@@ -43,6 +43,8 @@ package com.ankamagames.dofus.network.messages.connection
       
       public var havenbagAvailableRoom:uint = 0;
       
+      public var isAccountForced:Boolean = false;
+      
       private var _accountTagtree:FuncTree;
       
       public function IdentificationSuccessMessage()
@@ -58,10 +60,10 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 331;
+         return 2356;
       }
       
-      public function initIdentificationSuccessMessage(login:String = "", accountTag:AccountTagInformation = null, accountId:uint = 0, communityId:uint = 0, hasRights:Boolean = false, hasConsoleRight:Boolean = false, secretQuestion:String = "", accountCreation:Number = 0, subscriptionElapsedDuration:Number = 0, subscriptionEndDate:Number = 0, wasAlreadyConnected:Boolean = false, havenbagAvailableRoom:uint = 0) : IdentificationSuccessMessage
+      public function initIdentificationSuccessMessage(login:String = "", accountTag:AccountTagInformation = null, accountId:uint = 0, communityId:uint = 0, hasRights:Boolean = false, hasConsoleRight:Boolean = false, secretQuestion:String = "", accountCreation:Number = 0, subscriptionElapsedDuration:Number = 0, subscriptionEndDate:Number = 0, wasAlreadyConnected:Boolean = false, havenbagAvailableRoom:uint = 0, isAccountForced:Boolean = false) : IdentificationSuccessMessage
       {
          this.login = login;
          this.accountTag = accountTag;
@@ -75,6 +77,7 @@ package com.ankamagames.dofus.network.messages.connection
          this.subscriptionEndDate = subscriptionEndDate;
          this.wasAlreadyConnected = wasAlreadyConnected;
          this.havenbagAvailableRoom = havenbagAvailableRoom;
+         this.isAccountForced = isAccountForced;
          this._isInitialized = true;
          return this;
       }
@@ -92,6 +95,7 @@ package com.ankamagames.dofus.network.messages.connection
          this.subscriptionEndDate = 0;
          this.wasAlreadyConnected = false;
          this.havenbagAvailableRoom = 0;
+         this.isAccountForced = false;
          this._isInitialized = false;
       }
       
@@ -126,6 +130,7 @@ package com.ankamagames.dofus.network.messages.connection
          _box0 = BooleanByteWrapper.setFlag(_box0,0,this.hasRights);
          _box0 = BooleanByteWrapper.setFlag(_box0,1,this.hasConsoleRight);
          _box0 = BooleanByteWrapper.setFlag(_box0,2,this.wasAlreadyConnected);
+         _box0 = BooleanByteWrapper.setFlag(_box0,3,this.isAccountForced);
          output.writeByte(_box0);
          output.writeUTF(this.login);
          this.accountTag.serializeAs_AccountTagInformation(output);
@@ -207,6 +212,7 @@ package com.ankamagames.dofus.network.messages.connection
          this.hasRights = BooleanByteWrapper.getFlag(_box0,0);
          this.hasConsoleRight = BooleanByteWrapper.getFlag(_box0,1);
          this.wasAlreadyConnected = BooleanByteWrapper.getFlag(_box0,2);
+         this.isAccountForced = BooleanByteWrapper.getFlag(_box0,3);
       }
       
       private function _loginFunc(input:ICustomDataInput) : void

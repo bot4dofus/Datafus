@@ -52,6 +52,11 @@ package com.ankamagames.dofus.logic.game.fight.steps
       
       private function apply() : void
       {
+         if(!FightEntitiesFrame.getCurrentInstance())
+         {
+            _log.warn("FightEntitiesFrame does not exist anymore, we don\'t execute this step.");
+            return;
+         }
          if(this._updateCharacteristicManager)
          {
             FightEntitiesFrame.getCurrentInstance().setLastKnownEntityMovementPoint(_targetId,-this._intValue,true);

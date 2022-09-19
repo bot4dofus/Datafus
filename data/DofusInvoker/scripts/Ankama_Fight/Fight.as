@@ -12,15 +12,26 @@ package Ankama_Fight
    import Ankama_Fight.ui.SwapPositionIcon;
    import Ankama_Fight.ui.Timeline;
    import Ankama_Fight.ui.TurnStart;
+   import Ankama_Fight.ui.slaves.SlaveFightUi;
+   import Ankama_Fight.ui.slaves.SlaveFightUiHandler;
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.types.graphic.UiRootContainer;
+   import com.ankamagames.dofus.datacenter.monsters.Monster;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
+   import com.ankamagames.dofus.internalDatacenter.fight.FighterInformations;
    import com.ankamagames.dofus.kernel.Kernel;
+   import com.ankamagames.dofus.logic.common.managers.FeatureManager;
    import com.ankamagames.dofus.logic.game.fight.actions.GameFightPlacementSwapPositionsAcceptAction;
    import com.ankamagames.dofus.logic.game.fight.actions.GameFightPlacementSwapPositionsCancelAction;
    import com.ankamagames.dofus.logic.game.fight.actions.ToggleEntityIconsAction;
    import com.ankamagames.dofus.logic.game.fight.frames.FightContextFrame;
+   import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
+   import com.ankamagames.dofus.logic.game.fight.types.FightEventEnum;
    import com.ankamagames.dofus.misc.lists.FightHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
+   import com.ankamagames.dofus.network.types.game.context.GameContextActorInformations;
+   import com.ankamagames.dofus.network.types.game.context.fight.GameFightEntityInformation;
+   import com.ankamagames.dofus.network.types.game.context.fight.GameFightMonsterInformations;
    import com.ankamagames.dofus.network.types.game.idol.Idol;
    import com.ankamagames.dofus.uiApi.ChatApi;
    import com.ankamagames.dofus.uiApi.ConfigApi;
@@ -49,6 +60,8 @@ package Ankama_Fight
       protected var turnStart:TurnStart;
       
       protected var fighterInfo:FighterInfo;
+      
+      protected var slaveFightUi:SlaveFightUi;
       
       protected var challengeDisplay:ChallengeDisplay;
       
@@ -86,6 +99,8 @@ package Ankama_Fight
       public var modContextMenu:ContextMenu;
       
       private var _currentBuffsOwnerId:Number;
+      
+      private var _slaveFightUiHandler:SlaveFightUiHandler = null;
       
       private var _currentFightStartDate:Number = 0;
       
@@ -135,7 +150,11 @@ package Ankama_Fight
          this.sysApi.addHook(FightHookList.ShowSwapPositionRequestMenu,this.onShowSwapPositionRequestMenu);
          this.sysApi.addHook(FightHookList.IdolFightPreparationUpdate,this.onIdolFightPreparationUpdate);
          this.sysApi.addHook(FightHookList.FightIdolList,this.onFightIdolList);
+         this.sysApi.addHook(FightHookList.FighterRemoved,this.onFighterRemoved);
+         this.sysApi.addHook(FightHookList.SlaveTurnStart,this.onSlaveTurnStart);
+         this.sysApi.addHook(HookList.FightEvent,this.onFightEvent);
          this.uiApi.addShortcutHook("toggleEntityIcons",this.onShortcut);
+         this._slaveFightUiHandler = new SlaveFightUiHandler(this.uiApi);
       }
       
       public function onShortcut(shortcut:String) : Boolean
@@ -150,6 +169,10 @@ package Ankama_Fight
       
       public function unload() : void
       {
+         if(this._slaveFightUiHandler !== null)
+         {
+            this._slaveFightUiHandler.unload();
+         }
       }
       
       private function onTurnStart(fighterId:Number, waitingTime:uint, remainingTime:uint, picture:Boolean) : void
@@ -179,6 +202,7 @@ package Ankama_Fight
       
       private function onFightersListUpdated() : void
       {
+         var fighterId:Number = NaN;
          var currentOrientation:uint = 0;
          var uiName:String = null;
          if(!this.uiApi.getUi("timeline"))
@@ -187,10 +211,19 @@ package Ankama_Fight
             uiName = currentOrientation == 0 ? "timeline" : "timelineVertical";
             this.uiApi.loadUi(uiName,"timeline");
          }
+         var fighterIds:Vector.<Number> = Api.fightApi.getFighters();
+         for each(fighterId in fighterIds)
+         {
+            if(this._slaveFightUiHandler.getUiIdFromSlaveId(fighterId) === SlaveFightUi.INVALID_UI_ID)
+            {
+               this.handleSlaveFightUiCreation(fighterId);
+            }
+         }
       }
       
       private function onGameFightEnd(resultsKey:String) : void
       {
+         this._slaveFightUiHandler.clearUis();
          this.uiApi.unloadUi("timeline");
          this.uiApi.unloadUi("fighterInfo");
          if(this.uiApi.getUi("buffs"))
@@ -429,6 +462,96 @@ package Ankama_Fight
          if(!this.uiApi.getUi("fightIdols"))
          {
             this.uiApi.loadUi("fightIdols","fightIdols",[-1,idols,true]);
+         }
+      }
+      
+      private function isSlaveUiAvailable(entityId:Number, isSlaveContextSwitch:Boolean = false) : Boolean
+      {
+         var monsterInfo:GameFightMonsterInformations = null;
+         var monsterData:Monster = null;
+         var companionInfo:GameFightEntityInformation = null;
+         var playerId:Number = this.playerApi.id();
+         if(playerId === entityId)
+         {
+            return false;
+         }
+         var playerFighterInfo:FighterInformations = Api.fightApi.getFighterInformations(playerId);
+         var entityFighterInfo:FighterInformations = Api.fightApi.getFighterInformations(entityId);
+         if(!isSlaveContextSwitch && playerFighterInfo.teamId !== entityFighterInfo.teamId || !entityFighterInfo.isAlive)
+         {
+            return false;
+         }
+         var entitiesFrame:FightEntitiesFrame = Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame;
+         if(entitiesFrame === null)
+         {
+            return false;
+         }
+         var entityInfo:GameContextActorInformations = entitiesFrame.getEntityInfos(entityId);
+         if(entityInfo is GameFightMonsterInformations)
+         {
+            monsterInfo = entityInfo as GameFightMonsterInformations;
+            monsterData = Monster.getMonsterById(monsterInfo.creatureGenericId);
+            return monsterData !== null && monsterData.canPlay && (!entityFighterInfo.summoned || entityFighterInfo.summoned && (entityFighterInfo.summoner === playerId || isSlaveContextSwitch));
+         }
+         if(entityInfo is GameFightEntityInformation)
+         {
+            companionInfo = entityInfo as GameFightEntityInformation;
+            return companionInfo.masterId === playerId && (!companionInfo.stats.summoned || companionInfo.stats.summoner === playerId);
+         }
+         return false;
+      }
+      
+      private function handleSlaveFightUiCreation(entityId:Number, isSlaveContextSwitch:Boolean = false) : void
+      {
+         if(!FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.FIGHT_SLAVE_ACTION_BARS))
+         {
+            return;
+         }
+         if(!this.isSlaveUiAvailable(entityId,isSlaveContextSwitch))
+         {
+            return;
+         }
+         this._slaveFightUiHandler.addUi(entityId);
+      }
+      
+      private function handleSlaveFightUiDestruction(entityId:Number) : void
+      {
+         var uiId:uint = this._slaveFightUiHandler.getUiIdFromSlaveId(entityId);
+         if(uiId === SlaveFightUi.INVALID_UI_ID)
+         {
+            return;
+         }
+         this._slaveFightUiHandler.removeUi(uiId);
+      }
+      
+      private function onFighterRemoved(entityId:Number = 0) : void
+      {
+         this.handleSlaveFightUiDestruction(entityId);
+      }
+      
+      private function onSlaveTurnStart(entityId:Number, isSlave:Boolean) : void
+      {
+         if(this._slaveFightUiHandler.getUiIdFromSlaveId(entityId) !== SlaveFightUi.INVALID_UI_ID)
+         {
+            if(!isSlave)
+            {
+               this.handleSlaveFightUiDestruction(entityId);
+            }
+            return;
+         }
+         if(isSlave)
+         {
+            this.handleSlaveFightUiCreation(entityId,true);
+         }
+      }
+      
+      private function onFightEvent(eventName:String, params:Object, targetList:Object = null) : void
+      {
+         var entityId:Number = NaN;
+         if(eventName === FightEventEnum.FIGHTER_DEATH)
+         {
+            entityId = params[0];
+            this.handleSlaveFightUiDestruction(entityId);
          }
       }
    }

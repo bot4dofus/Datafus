@@ -423,7 +423,7 @@ package damageCalculation
                _loc3_ = _loc2_.item;
                _loc2_ = _loc2_.next;
                _loc4_ = _loc3_;
-               if(_loc4_.damageRange != null || _loc4_.movement != null || _loc4_.attemptedApTheft || _loc4_.attemptedAmTheft || _loc4_.apStolen != 0 || _loc4_.amStolen != 0 || _loc4_.rangeStolen != 0 || _loc4_.summon != null || _loc4_.isSummoning || _loc4_.dispell || _loc4_.death)
+               if(_loc4_.damageRange != null || _loc4_.movement != null || _loc4_.attemptedApTheft || _loc4_.attemptedAmTheft || _loc4_.apStolen != 0 || _loc4_.amStolen != 0 || _loc4_.rangeLoss != 0 || _loc4_.rangeGain != 0 || _loc4_.summon != null || _loc4_.isSummoning || _loc4_.dispell || _loc4_.death)
                {
                   return true;
                }

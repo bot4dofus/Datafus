@@ -64,6 +64,7 @@ package com.ankamagames.dofus.logic.common.managers
       {
          var criterionList:Vector.<IItemCriterion> = null;
          var respectAllCriterion:* = false;
+         var isPrepared:Boolean = false;
          var popupInformation:PopupInformation = null;
          var criterion:IItemCriterion = null;
          var popups:Array = PopupInformation.getPopupInformations();
@@ -73,11 +74,13 @@ package com.ankamagames.dofus.logic.common.managers
             {
                criterionList = CriterionUtils.getCriteriaFromString(popupInformation.criterion);
                respectAllCriterion = criterionList.length > 0;
+               isPrepared = false;
                for each(criterion in criterionList)
                {
-                  if(criterion is ServerTypeItemCriterion)
+                  if(criterion is ServerTypeItemCriterion && !this.isInCache(popupInformation))
                   {
                      this.preparePopup(popupInformation);
+                     isPrepared = true;
                   }
                   else if(!criterion.isRespected)
                   {
@@ -85,7 +88,7 @@ package com.ankamagames.dofus.logic.common.managers
                      break;
                   }
                }
-               if(!respectAllCriterion && !this.isInCache(popupInformation))
+               if(!isPrepared && !respectAllCriterion && !this.isInCache(popupInformation))
                {
                   this.preparePopup(popupInformation);
                }

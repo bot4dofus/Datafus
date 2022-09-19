@@ -668,6 +668,11 @@ package damageCalculation.fighterManagement
          return Boolean(hasStateEffect(7));
       }
       
+      public function isInvisible() : Boolean
+      {
+         return Boolean(hasState(250));
+      }
+      
       public function isIncurable() : Boolean
       {
          return Boolean(hasStateEffect(5));

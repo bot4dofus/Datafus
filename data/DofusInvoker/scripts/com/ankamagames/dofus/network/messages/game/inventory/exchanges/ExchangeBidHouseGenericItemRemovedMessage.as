@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeBidHouseGenericItemRemovedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9780;
+      public static const protocolId:uint = 5366;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 9780;
+         return 5366;
       }
       
       public function initExchangeBidHouseGenericItemRemovedMessage(objGenericId:uint = 0) : ExchangeBidHouseGenericItemRemovedMessage
@@ -77,7 +77,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
          {
             throw new Error("Forbidden value (" + this.objGenericId + ") on element objGenericId.");
          }
-         output.writeVarShort(this.objGenericId);
+         output.writeVarInt(this.objGenericId);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -102,7 +102,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       private function _objGenericIdFunc(input:ICustomDataInput) : void
       {
-         this.objGenericId = input.readVarUhShort();
+         this.objGenericId = input.readVarUhInt();
          if(this.objGenericId < 0)
          {
             throw new Error("Forbidden value (" + this.objGenericId + ") on element of ExchangeBidHouseGenericItemRemovedMessage.objGenericId.");

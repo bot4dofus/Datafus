@@ -35,7 +35,7 @@ package com.ankamagames.dofus.scripts.spells
          {
             return;
          }
-         addCasterSetDirectionStep(target);
+         addCasterSetDirectionStep(target,spellFxRunner.castingSpell.spellDirection);
          if(!FxApi.IsPositionsEquals(FxApi.GetEntityCell(caster),target))
          {
             orientation = FxApi.GetOrientationTo(FxApi.GetEntityCell(caster),target);

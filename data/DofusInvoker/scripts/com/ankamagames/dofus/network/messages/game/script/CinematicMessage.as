@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.script
    public class CinematicMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5054;
+      public static const protocolId:uint = 2481;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.script
       
       override public function getMessageId() : uint
       {
-         return 5054;
+         return 2481;
       }
       
       public function initCinematicMessage(cinematicId:uint = 0) : CinematicMessage

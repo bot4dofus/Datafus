@@ -305,7 +305,16 @@ package damageCalculation.damageManagement
          var _loc6_:int = MapTools.getLookDirection4(int(param2.getCaster().getCurrentPositionCell()),param1.targetedCell);
          var _loc7_:EffectOutput = EffectOutput.fromMovement(param3.id,int(param2.getCaster().getCurrentPositionCell()),_loc6_);
          _loc7_.carriedBy = param2.getCaster().id;
-         return [EffectOutput.fromStateChange(param2.getCaster().id,3,true),EffectOutput.fromStateChange(param3.id,8,true),_loc7_];
+         var _loc8_:Array = [EffectOutput.fromStateChange(param2.getCaster().id,3,true),EffectOutput.fromStateChange(param3.id,8,true),_loc7_];
+         if(param2.getCaster().hasState(250))
+         {
+            _loc8_.push(EffectOutput.fromStateChange(param2.getCaster().id,250,false));
+         }
+         if(param3.hasState(250))
+         {
+            _loc8_.push(EffectOutput.fromStateChange(param3.id,250,false));
+         }
+         return _loc8_;
       }
    }
 }

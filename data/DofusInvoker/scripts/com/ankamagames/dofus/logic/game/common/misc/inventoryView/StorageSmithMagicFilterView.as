@@ -21,7 +21,7 @@ package com.ankamagames.dofus.logic.game.common.misc.inventoryView
       
       public function StorageSmithMagicFilterView(hookLock:HookLock, parentView:IStorageView, skill:Skill)
       {
-         this._listeningItemTypes = [DataEnum.ITEM_TYPE_SMITHMAGIC_RUNE,DataEnum.ITEM_TYPE_SMITHMAGIC_POTION,DataEnum.ITEM_TYPE_SMITHMAGIC_ORB,DataEnum.ITEM_TYPE_SMITHMAGIC_TRANSCENDANCE_RUNE,DataEnum.ITEM_TYPE_SMITHMAGIC_CORRUPTION_RUNE];
+         this._listeningItemTypes = [DataEnum.ITEM_TYPE_SMITHMAGIC_RUNE,DataEnum.ITEM_TYPE_SMITHMAGIC_POTION,DataEnum.ITEM_TYPE_SMITHMAGIC_ORB,DataEnum.ITEM_TYPE_SMITHMAGIC_CARVING,DataEnum.ITEM_TYPE_SMITHMAGIC_TRANSCENDANCE_RUNE,DataEnum.ITEM_TYPE_SMITHMAGIC_CORRUPTION_RUNE];
          super(hookLock);
          this._skill = skill;
          this._parent = parentView;

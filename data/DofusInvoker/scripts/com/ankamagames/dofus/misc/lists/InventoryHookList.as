@@ -27,11 +27,11 @@ package com.ankamagames.dofus.misc.lists
       
       public static const ObjectModified:String = "ObjectModified";
       
-      public static const ObjectSelected:String = "ObjectSelected";
-      
       public static const StorageViewContent:String = "StorageViewContent";
       
       public static const BankViewContent:String = "BankViewContent";
+      
+      public static const BankObjectNumberUpdate:String = "BankObjectNumberUpdate";
       
       public static const EquipmentViewContent:String = "EquipmentViewContent";
       
@@ -58,6 +58,12 @@ package com.ankamagames.dofus.misc.lists
       public static const AccessoryPreview:String = "AccessoryPreview";
       
       public static const SpellVariantActivated:String = "SpellVariantActivated";
+      
+      public static const ListenersOfSynchronizedStorage:String = "ListenersOfSynchronizedStorage";
+      
+      public static const AddListenerOfSynchronizedStorage:String = "AddListenerOfSynchronizedStorage";
+      
+      public static const RemoveListenerOfSynchronizedStorage:String = "RemoveListenerOfSynchronizedStorage";
        
       
       public function InventoryHookList()
@@ -78,9 +84,9 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(ObjectDeleted);
          Hook.createHook(ObjectQuantity);
          Hook.createHook(ObjectModified);
-         Hook.createHook(ObjectSelected);
          Hook.createHook(StorageViewContent);
          Hook.createHook(BankViewContent);
+         Hook.createHook(BankObjectNumberUpdate);
          Hook.createHook(EquipmentViewContent);
          Hook.createHook(RoleplayBuffViewContent);
          Hook.createHook(ShortcutBarViewContent);
@@ -94,6 +100,9 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(PresetError);
          Hook.createHook(AccessoryPreview);
          Hook.createHook(SpellVariantActivated);
+         Hook.createHook(ListenersOfSynchronizedStorage);
+         Hook.createHook(AddListenerOfSynchronizedStorage);
+         Hook.createHook(RemoveListenerOfSynchronizedStorage);
       }
    }
 }

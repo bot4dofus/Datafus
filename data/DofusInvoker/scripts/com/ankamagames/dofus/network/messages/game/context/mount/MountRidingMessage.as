@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountRidingMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6231;
+      public static const protocolId:uint = 2038;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 6231;
+         return 2038;
       }
       
       public function initMountRidingMessage(isRiding:Boolean = false, isAutopilot:Boolean = false) : MountRidingMessage

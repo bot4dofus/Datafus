@@ -2,7 +2,6 @@ package Ankama_GameUiCore.ui
 {
    import Ankama_Common.Common;
    import Ankama_ContextMenu.ContextMenu;
-   import Ankama_GameUiCore.Api;
    import Ankama_GameUiCore.ui.enums.ContextEnum;
    import Ankama_GameUiCore.ui.params.ActionBarParameters;
    import com.ankamagames.berilia.api.UiApi;
@@ -19,6 +18,7 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.utils.BeriliaHookList;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.communication.EmoteWrapper;
    import com.ankamagames.dofus.internalDatacenter.communication.SmileyWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.BuildWrapper;
@@ -185,6 +185,8 @@ package Ankama_GameUiCore.ui
       
       protected var isForgettableSpellsUi:Boolean = false;
       
+      protected var isModsterUi:Boolean = false;
+      
       public function ActionBar()
       {
          super();
@@ -209,7 +211,8 @@ package Ankama_GameUiCore.ui
       {
          var i:int = 0;
          super.main(args);
-         this.isForgettableSpellsUi = this.configApi.isFeatureWithKeywordEnabled("character.spell.forgettable");
+         this.isForgettableSpellsUi = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS);
+         this.isModsterUi = this.isForgettableSpellsUi && this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.MODSTERS);
          if(args && args.length && (args[0] as ActionBarParameters).context)
          {
             currentContext = (args[0] as ActionBarParameters).context;
@@ -618,7 +621,7 @@ package Ankama_GameUiCore.ui
                {
                   contextMenu.content.push(this.modContextMenu.createContextMenuSeparatorObject());
                }
-               if(Api.system.getOption("displayTooltips","dofus") && data.type != TYPE_BUILD_WRAPPER && data.type != TYPE_IDOLS_PRESET_WRAPPER)
+               if(data.type != TYPE_BUILD_WRAPPER && data.type != TYPE_IDOLS_PRESET_WRAPPER)
                {
                   itemTooltipSettings = this.getItemTooltipSettings();
                   contextMenu.content.push(this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.common.tooltip"),null,null,false,[this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.common.name"),this.onItemTooltipDisplayOption,["header"],disabled,null,itemTooltipSettings.header,false),this.modContextMenu.createContextMenuItemObject(this.uiApi.processText(this.uiApi.getText("ui.common.effects"),"",false),this.onItemTooltipDisplayOption,["effects"],disabled,null,itemTooltipSettings.effects,false),this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.common.conditions"),this.onItemTooltipDisplayOption,["conditions"],disabled,null,itemTooltipSettings.conditions,false),this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.common.description"),this.onItemTooltipDisplayOption,["description"],disabled,null,itemTooltipSettings.description,false),this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.item.averageprice"),this.onItemTooltipDisplayOption,["averagePrice"],disabled,null,itemTooltipSettings.averagePrice,false)],disabled));
@@ -1044,7 +1047,7 @@ package Ankama_GameUiCore.ui
             case "cac":
                if(sysApi.isFightContext() && this.playerApi.canCastThisSpell(0,1))
                {
-                  sysApi.sendAction(new GameFightSpellCastAction([0,-1]));
+                  sysApi.sendAction(GameFightSpellCastAction.create(CurrentPlayedFighterManager.getInstance().currentFighterId,0,-1));
                }
                return true;
             case "s1":
@@ -1364,7 +1367,7 @@ package Ankama_GameUiCore.ui
       
       public function onCastSpellMode(spellWrapper:Object) : void
       {
-         this.uiApi.setFollowCursorUri(spellWrapper.iconUri,false,false,15,15,0.75);
+         this.uiApi.setFollowCursorUri(spellWrapper.iconUri,false,false,15,15,1,this.gd_spellitemotes.slotWidth * 0.75,this.gd_spellitemotes.slotHeight * 0.75);
       }
       
       private function onItemTooltipDisplayOption(field:String) : void
@@ -1394,6 +1397,7 @@ package Ankama_GameUiCore.ui
       {
          var _spellShortcut:ShortcutWrapper = null;
          var spellCastResult:String = null;
+         var uiName:String = null;
          var item:ItemWrapper = null;
          switch(target)
          {
@@ -1411,9 +1415,10 @@ package Ankama_GameUiCore.ui
                         }
                         else if(selectMethod == GridItemSelectMethodEnum.DOUBLE_CLICK)
                         {
-                           if(this.configApi.isFeatureWithKeywordEnabled("character.spell.forgettable"))
+                           if(this.isForgettableSpellsUi)
                            {
-                              sysApi.sendAction(new OpenForgettableSpellsUiAction([]));
+                              uiName = !!this.isModsterUi ? UIEnum.FORGETTABLE_MODSTERS_UI : UIEnum.FORGETTABLE_SPELLS_UI;
+                              sysApi.sendAction(OpenForgettableSpellsUiAction.create(false,uiName));
                            }
                            else
                            {
@@ -1422,7 +1427,7 @@ package Ankama_GameUiCore.ui
                         }
                         else if((target as Grid).selectedItem.active)
                         {
-                           sysApi.sendAction(new GameFightSpellCastAction([_spellShortcut.id,this.gd_spellitemotes.selectedIndex + 1]));
+                           sysApi.sendAction(GameFightSpellCastAction.create(CurrentPlayedFighterManager.getInstance().currentFighterId,_spellShortcut.id,this.gd_spellitemotes.selectedIndex + 1));
                         }
                      }
                      else if(sysApi.isFightContext())
@@ -1466,7 +1471,6 @@ package Ankama_GameUiCore.ui
                            {
                               this.onItemUseOnCell((target as Grid).selectedItem.id);
                            }
-                           sysApi.dispatchHook(InventoryHookList.ObjectSelected,item);
                         }
                         else if(selectMethod == GridItemSelectMethodEnum.MANUAL)
                         {

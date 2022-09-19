@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.startup
    public class StartupActionAddObject implements INetworkType
    {
       
-      public static const protocolId:uint = 6157;
+      public static const protocolId:uint = 4737;
        
       
       public var uid:uint = 0;
@@ -24,6 +24,8 @@ package com.ankamagames.dofus.network.types.game.startup
       
       public var items:Vector.<ObjectItemInformationWithQuantity>;
       
+      public var type:uint = 1;
+      
       private var _itemstree:FuncTree;
       
       public function StartupActionAddObject()
@@ -34,10 +36,10 @@ package com.ankamagames.dofus.network.types.game.startup
       
       public function getTypeId() : uint
       {
-         return 6157;
+         return 4737;
       }
       
-      public function initStartupActionAddObject(uid:uint = 0, title:String = "", text:String = "", descUrl:String = "", pictureUrl:String = "", items:Vector.<ObjectItemInformationWithQuantity> = null) : StartupActionAddObject
+      public function initStartupActionAddObject(uid:uint = 0, title:String = "", text:String = "", descUrl:String = "", pictureUrl:String = "", items:Vector.<ObjectItemInformationWithQuantity> = null, type:uint = 1) : StartupActionAddObject
       {
          this.uid = uid;
          this.title = title;
@@ -45,6 +47,7 @@ package com.ankamagames.dofus.network.types.game.startup
          this.descUrl = descUrl;
          this.pictureUrl = pictureUrl;
          this.items = items;
+         this.type = type;
          return this;
       }
       
@@ -56,6 +59,7 @@ package com.ankamagames.dofus.network.types.game.startup
          this.descUrl = "";
          this.pictureUrl = "";
          this.items = new Vector.<ObjectItemInformationWithQuantity>();
+         this.type = 1;
       }
       
       public function serialize(output:ICustomDataOutput) : void
@@ -79,6 +83,7 @@ package com.ankamagames.dofus.network.types.game.startup
          {
             (this.items[_i6] as ObjectItemInformationWithQuantity).serializeAs_ObjectItemInformationWithQuantity(output);
          }
+         output.writeVarInt(this.type);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -101,6 +106,7 @@ package com.ankamagames.dofus.network.types.game.startup
             _item6.deserialize(input);
             this.items.push(_item6);
          }
+         this._typeFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -116,6 +122,7 @@ package com.ankamagames.dofus.network.types.game.startup
          tree.addChild(this._descUrlFunc);
          tree.addChild(this._pictureUrlFunc);
          this._itemstree = tree.addChild(this._itemstreeFunc);
+         tree.addChild(this._typeFunc);
       }
       
       private function _uidFunc(input:ICustomDataInput) : void
@@ -161,6 +168,15 @@ package com.ankamagames.dofus.network.types.game.startup
          var _item:ObjectItemInformationWithQuantity = new ObjectItemInformationWithQuantity();
          _item.deserialize(input);
          this.items.push(_item);
+      }
+      
+      private function _typeFunc(input:ICustomDataInput) : void
+      {
+         this.type = input.readVarUhInt();
+         if(this.type < 0)
+         {
+            throw new Error("Forbidden value (" + this.type + ") on element of StartupActionAddObject.type.");
+         }
       }
    }
 }

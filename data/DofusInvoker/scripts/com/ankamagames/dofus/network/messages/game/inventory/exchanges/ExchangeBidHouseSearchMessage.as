@@ -11,12 +11,12 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeBidHouseSearchMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6250;
+      public static const protocolId:uint = 4791;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var genId:uint = 0;
+      public var objectGID:uint = 0;
       
       public var follow:Boolean = false;
       
@@ -32,12 +32,12 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 6250;
+         return 4791;
       }
       
-      public function initExchangeBidHouseSearchMessage(genId:uint = 0, follow:Boolean = false) : ExchangeBidHouseSearchMessage
+      public function initExchangeBidHouseSearchMessage(objectGID:uint = 0, follow:Boolean = false) : ExchangeBidHouseSearchMessage
       {
-         this.genId = genId;
+         this.objectGID = objectGID;
          this.follow = follow;
          this._isInitialized = true;
          return this;
@@ -45,7 +45,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function reset() : void
       {
-         this.genId = 0;
+         this.objectGID = 0;
          this.follow = false;
          this._isInitialized = false;
       }
@@ -77,11 +77,11 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       public function serializeAs_ExchangeBidHouseSearchMessage(output:ICustomDataOutput) : void
       {
-         if(this.genId < 0)
+         if(this.objectGID < 0)
          {
-            throw new Error("Forbidden value (" + this.genId + ") on element genId.");
+            throw new Error("Forbidden value (" + this.objectGID + ") on element objectGID.");
          }
-         output.writeVarShort(this.genId);
+         output.writeVarInt(this.objectGID);
          output.writeBoolean(this.follow);
       }
       
@@ -92,7 +92,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       public function deserializeAs_ExchangeBidHouseSearchMessage(input:ICustomDataInput) : void
       {
-         this._genIdFunc(input);
+         this._objectGIDFunc(input);
          this._followFunc(input);
       }
       
@@ -103,16 +103,16 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       public function deserializeAsyncAs_ExchangeBidHouseSearchMessage(tree:FuncTree) : void
       {
-         tree.addChild(this._genIdFunc);
+         tree.addChild(this._objectGIDFunc);
          tree.addChild(this._followFunc);
       }
       
-      private function _genIdFunc(input:ICustomDataInput) : void
+      private function _objectGIDFunc(input:ICustomDataInput) : void
       {
-         this.genId = input.readVarUhShort();
-         if(this.genId < 0)
+         this.objectGID = input.readVarUhInt();
+         if(this.objectGID < 0)
          {
-            throw new Error("Forbidden value (" + this.genId + ") on element of ExchangeBidHouseSearchMessage.genId.");
+            throw new Error("Forbidden value (" + this.objectGID + ") on element of ExchangeBidHouseSearchMessage.objectGID.");
          }
       }
       

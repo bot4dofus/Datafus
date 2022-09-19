@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
    public class GameRolePlayArenaFighterStatusMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5125;
+      public static const protocolId:uint = 4979;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       override public function getMessageId() : uint
       {
-         return 5125;
+         return 4979;
       }
       
       public function initGameRolePlayArenaFighterStatusMessage(fightId:uint = 0, playerId:Number = 0, accepted:Boolean = false) : GameRolePlayArenaFighterStatusMessage
@@ -86,11 +86,11 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
             throw new Error("Forbidden value (" + this.fightId + ") on element fightId.");
          }
          output.writeVarShort(this.fightId);
-         if(this.playerId < -9007199254740992 || this.playerId > 9007199254740992)
+         if(this.playerId < 0 || this.playerId > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.playerId + ") on element playerId.");
          }
-         output.writeDouble(this.playerId);
+         output.writeVarLong(this.playerId);
          output.writeBoolean(this.accepted);
       }
       
@@ -129,8 +129,8 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       private function _playerIdFunc(input:ICustomDataInput) : void
       {
-         this.playerId = input.readDouble();
-         if(this.playerId < -9007199254740992 || this.playerId > 9007199254740992)
+         this.playerId = input.readVarUhLong();
+         if(this.playerId < 0 || this.playerId > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.playerId + ") on element of GameRolePlayArenaFighterStatusMessage.playerId.");
          }

@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeBidHouseInListAddedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 213;
+      public static const protocolId:uint = 5794;
        
       
       private var _isInitialized:Boolean = false;
@@ -46,7 +46,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 213;
+         return 5794;
       }
       
       public function initExchangeBidHouseInListAddedMessage(itemUID:int = 0, objectGID:uint = 0, objectType:uint = 0, effects:Vector.<ObjectEffect> = null, prices:Vector.<Number> = null) : ExchangeBidHouseInListAddedMessage
@@ -102,7 +102,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element objectGID.");
          }
-         output.writeVarShort(this.objectGID);
+         output.writeVarInt(this.objectGID);
          if(this.objectType < 0)
          {
             throw new Error("Forbidden value (" + this.objectType + ") on element objectType.");
@@ -179,7 +179,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       private function _objectGIDFunc(input:ICustomDataInput) : void
       {
-         this.objectGID = input.readVarUhShort();
+         this.objectGID = input.readVarUhInt();
          if(this.objectGID < 0)
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element of ExchangeBidHouseInListAddedMessage.objectGID.");

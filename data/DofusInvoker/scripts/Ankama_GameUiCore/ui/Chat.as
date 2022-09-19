@@ -29,6 +29,7 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.dofus.datacenter.servers.Server;
    import com.ankamagames.dofus.datacenter.servers.ServerLang;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.alterations.AlterationWrapper;
    import com.ankamagames.dofus.internalDatacenter.appearance.OrnamentWrapper;
    import com.ankamagames.dofus.internalDatacenter.appearance.TitleWrapper;
    import com.ankamagames.dofus.internalDatacenter.communication.EmoteWrapper;
@@ -45,6 +46,7 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
    import com.ankamagames.dofus.internalDatacenter.userInterface.ButtonWrapper;
    import com.ankamagames.dofus.kernel.sound.enum.SoundEnum;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkMapPosition;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.common.actions.OpenSmileysAction;
    import com.ankamagames.dofus.logic.game.common.actions.chat.ChannelEnablingAction;
@@ -1009,12 +1011,12 @@ package Ankama_GameUiCore.ui
                   if(account)
                   {
                      senderFriend = this.chatServiceApi.service.getFriend(senderId.toString());
-                     senderName = (!!account ? "{account," + senderName + "," + senderFriend.user.tag + "," + senderId + "," + SocialCharacterCategoryEnum.CATEGORY_FRIEND_ANKAMA : "{player," + escape(senderName) + "," + senderId + "," + timestamp + "," + fingerprint + "," + channel) + "::<b>" + (senderPrefix != "" ? senderPrefix + " " : "") + PlayerManager.getInstance().formatTagName(senderName,senderFriend.user.tag,null,false) + "</b>}";
+                     senderName = (!!account ? "{account," + senderName + "," + senderFriend.user.tag + "," + senderId + "," + SocialCharacterCategoryEnum.CATEGORY_FRIEND_ANKAMA : "{player," + senderName + "," + senderId + "," + timestamp + "," + fingerprint + "," + channel) + "::<b>" + (senderPrefix != "" ? senderPrefix + " " : "") + PlayerManager.getInstance().formatTagName(senderName,senderFriend.user.tag,null,false) + "</b>}";
                      senderBaseName += "#" + senderFriend.user.tag;
                   }
                   else
                   {
-                     senderName = "{player," + escape(senderName) + "," + senderId + "," + timestamp + "," + fingerprint + "," + channel + "::<b>" + (senderPrefix != "" ? senderPrefix + " " : "") + senderName + "</b>}";
+                     senderName = "{player," + senderName + "," + senderId + "," + timestamp + "," + fingerprint + "," + channel + "::<b>" + (senderPrefix != "" ? senderPrefix + " " : "") + senderName + "</b>}";
                   }
                   if(originServerId != PlayerManager.getInstance().server.id)
                   {
@@ -2868,6 +2870,10 @@ package Ankama_GameUiCore.ui
             {
                hyperLinkCode = this.chatApi.getGuildLink(data);
             }
+            else if(data is AlterationWrapper)
+            {
+               hyperLinkCode = this.chatApi.getAlterationLink(data as AlterationWrapper);
+            }
             else if(data.hasOwnProperty("spellLevel"))
             {
                hyperLinkCode = "{spell," + data.id + "," + data.spellLevel + "}";
@@ -2880,7 +2886,7 @@ package Ankama_GameUiCore.ui
                }
                if(data == "Map")
                {
-                  hyperLinkCode = "{map," + params.x + "," + params.y + "," + params.worldMapId + "," + escape(params.elementName) + "}";
+                  hyperLinkCode = HyperlinkMapPosition.getLink(params.x,params.y,params.worldMapId,escape(params.elementName));
                }
                else if(data == "MonsterGroup")
                {

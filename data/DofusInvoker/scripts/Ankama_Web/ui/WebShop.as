@@ -1826,6 +1826,10 @@ package Ankama_Web.ui
                newTexture.y = !!sa.isLarge ? Number(1) : Number(5);
                this._textureCache[-1][sa.article.id] = newTexture;
             }
+            if(sa.article.fanion)
+            {
+               this._fanionCache[-1][sa.article.id] = this.getFanion(sa);
+            }
             articlesToDisplay.push(sa);
             if(sa.isLarge)
             {

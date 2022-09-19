@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountSterilizedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3777;
+      public static const protocolId:uint = 2722;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 3777;
+         return 2722;
       }
       
       public function initMountSterilizedMessage(mountId:int = 0) : MountSterilizedMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.common.basic
    public class BasicStatMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 514;
+      public static const protocolId:uint = 4091;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.common.basic
       
       override public function getMessageId() : uint
       {
-         return 514;
+         return 4091;
       }
       
       public function initBasicStatMessage(timeSpent:Number = 0, statId:uint = 0) : BasicStatMessage

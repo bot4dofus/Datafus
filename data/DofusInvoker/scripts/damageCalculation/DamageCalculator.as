@@ -132,17 +132,18 @@ package damageCalculation
       
       public static function executeSpell(param1:FightContext, param2:HaxeFighter, param3:HaxeSpell, param4:Boolean, param5:RunningEffect, param6:Boolean = false, param7:Boolean = false) : void
       {
-         var _loc8_:* = null as RunningEffect;
-         var _loc9_:* = null as Array;
-         var _loc13_:* = null as HaxeSpellEffect;
-         var _loc14_:* = null as HaxeFighter;
-         var _loc15_:* = null;
-         var _loc16_:int = 0;
-         var _loc17_:* = null as IMap;
-         var _loc18_:Number = NaN;
-         var _loc19_:* = null as Array;
-         var _loc20_:* = null as RandomGroup;
-         var _loc21_:* = null as List;
+         var _loc8_:* = null as EffectOutput;
+         var _loc9_:* = null as RunningEffect;
+         var _loc10_:* = null as Array;
+         var _loc14_:* = null as HaxeSpellEffect;
+         var _loc15_:* = null as HaxeFighter;
+         var _loc16_:* = null;
+         var _loc17_:int = 0;
+         var _loc18_:* = null as IMap;
+         var _loc19_:Number = NaN;
+         var _loc20_:* = null as Array;
+         var _loc21_:* = null as RandomGroup;
+         var _loc22_:* = null as List;
          if(param1.debugMode)
          {
             Debug.storeSpell(param3);
@@ -151,104 +152,110 @@ package damageCalculation
          {
             return;
          }
+         if(param2.playerType != PlayerTypeEnum.MONSTER && param2.hasState(250) && param3.isImmediateDamageInflicted(param4))
+         {
+            _loc8_ = EffectOutput.fromStateChange(param2.id,250,false);
+            param2.pendingEffects.add(_loc8_);
+            DamageCalculator.triggerHandler([_loc8_],new RunningEffect(param2,param3,HaxeSpellEffect.EMPTY),param1,param2,true,param6);
+         }
          if(param5 == null && (param3.criticalHitProbability == 0 || int(param3.getCriticalEffects().length) == 0))
          {
             param4 = false;
          }
          if(!param4 || param5 != null || int(param3.getCriticalEffects().length) == 0)
          {
-            _loc9_ = param3.getEffects();
+            _loc10_ = param3.getEffects();
          }
          else
          {
-            _loc9_ = param3.getCriticalEffects();
+            _loc10_ = param3.getCriticalEffects();
          }
-         _loc9_ = FpUtils.arrayCopy_damageCalculation_spellManagement_HaxeSpellEffect(_loc9_);
-         var _loc10_:IMap = new IntMap();
+         _loc10_ = FpUtils.arrayCopy_damageCalculation_spellManagement_HaxeSpellEffect(_loc10_);
          var _loc11_:IMap = new IntMap();
-         var _loc12_:int = 0;
-         while(_loc12_ < int(_loc9_.length))
+         var _loc12_:IMap = new IntMap();
+         var _loc13_:int = 0;
+         while(_loc13_ < int(_loc10_.length))
          {
-            _loc13_ = _loc9_[_loc12_];
-            _loc14_ = param5 != null ? param5.triggeringFighter : null;
-            _loc15_ = TargetManagement.getTargets(param1,param2,param3,_loc13_,_loc14_);
-            if(_loc15_.isUsed)
+            _loc14_ = _loc10_[_loc13_];
+            _loc15_ = param5 != null ? param5.triggeringFighter : null;
+            _loc16_ = TargetManagement.getTargets(param1,param2,param3,_loc14_,_loc15_);
+            if(_loc16_.isUsed)
             {
-               _loc10_.h[int(_loc13_.id)] = _loc15_.targetedFighters;
-               _loc11_.h[int(_loc13_.id)] = _loc15_.additionalTargets;
-               _loc12_++;
+               _loc11_.h[int(_loc14_.id)] = _loc16_.targetedFighters;
+               _loc12_.h[int(_loc14_.id)] = _loc16_.additionalTargets;
+               _loc13_++;
             }
             else
             {
-               _loc9_.splice(_loc12_,1);
+               _loc10_.splice(_loc13_,1);
             }
          }
-         _loc16_ = 0;
-         while(_loc16_ < int(_loc9_.length))
+         _loc17_ = 0;
+         while(_loc17_ < int(_loc10_.length))
          {
-            _loc13_ = _loc9_[_loc16_];
-            _loc16_++;
-            if(_loc13_.randomWeight <= 0)
+            _loc14_ = _loc10_[_loc17_];
+            _loc17_++;
+            if(_loc14_.randomWeight <= 0)
             {
-               _loc8_ = new RunningEffect(param2,param3,_loc13_);
-               _loc8_.setParentEffect(param5);
-               _loc8_.forceCritical = param4 || _loc13_.isCritical;
-               DamageCalculator.computeEffect(param1,_loc8_,param6,_loc10_.h[int(_loc13_.id)],_loc11_.h[int(_loc13_.id)],param7);
+               _loc9_ = new RunningEffect(param2,param3,_loc14_);
+               _loc9_.setParentEffect(param5);
+               _loc9_.forceCritical = param4 || _loc14_.isCritical;
+               DamageCalculator.computeEffect(param1,_loc9_,param6,_loc11_.h[int(_loc14_.id)],_loc12_.h[int(_loc14_.id)],param7);
             }
          }
-         if(!!param3.hasAtLeastOneRandomEffect() && _loc9_ != null)
+         if(!!param3.hasAtLeastOneRandomEffect() && _loc10_ != null)
          {
-            _loc17_ = RandomGroup.createGroups(_loc9_);
-            _loc18_ = Number(RandomGroup.totalWeight(_loc17_));
-            _loc16_ = 0;
-            _loc19_ = param1.fighters;
-            while(_loc16_ < int(_loc19_.length))
+            _loc18_ = RandomGroup.createGroups(_loc10_);
+            _loc19_ = Number(RandomGroup.totalWeight(_loc18_));
+            _loc17_ = 0;
+            _loc20_ = param1.fighters;
+            while(_loc17_ < int(_loc20_.length))
             {
-               _loc14_ = _loc19_[_loc16_];
-               _loc16_++;
-               _loc14_.save();
+               _loc15_ = _loc20_[_loc17_];
+               _loc17_++;
+               _loc15_.save();
             }
-            _loc15_ = new IntMapValuesIterator(_loc17_.h);
-            while(_loc15_.hasNext())
+            _loc16_ = new IntMapValuesIterator(_loc18_.h);
+            while(_loc16_.hasNext())
             {
-               _loc20_ = _loc15_.next();
-               _loc16_ = 0;
-               _loc19_ = _loc20_.effects;
-               while(_loc16_ < int(_loc19_.length))
+               _loc21_ = _loc16_.next();
+               _loc17_ = 0;
+               _loc20_ = _loc21_.effects;
+               while(_loc17_ < int(_loc20_.length))
                {
-                  _loc13_ = _loc19_[_loc16_];
-                  _loc16_++;
-                  if(SpellManager.isInstantaneousSpellEffect(_loc13_))
+                  _loc14_ = _loc20_[_loc17_];
+                  _loc17_++;
+                  if(SpellManager.isInstantaneousSpellEffect(_loc14_))
                   {
-                     _loc8_ = new RunningEffect(param2,param3,_loc13_);
-                     _loc8_.setParentEffect(param5);
-                     _loc8_.forceCritical = param4 || _loc13_.isCritical;
-                     _loc8_.probability = Number(MathUtils.roundWithPrecision(_loc20_.weight / _loc18_ * 100,3));
-                     DamageCalculator.computeEffect(param1,_loc8_,param6,_loc10_.h[int(_loc13_.id)],_loc11_.h[int(_loc13_.id)]);
+                     _loc9_ = new RunningEffect(param2,param3,_loc14_);
+                     _loc9_.setParentEffect(param5);
+                     _loc9_.forceCritical = param4 || _loc14_.isCritical;
+                     _loc9_.probability = Number(MathUtils.roundWithPrecision(_loc21_.weight / _loc19_ * 100,3));
+                     DamageCalculator.computeEffect(param1,_loc9_,param6,_loc11_.h[int(_loc14_.id)],_loc12_.h[int(_loc14_.id)]);
                   }
                }
-               _loc16_ = 0;
-               _loc19_ = param1.fighters;
-               while(_loc16_ < int(_loc19_.length))
+               _loc17_ = 0;
+               _loc20_ = param1.fighters;
+               while(_loc17_ < int(_loc20_.length))
                {
-                  _loc14_ = _loc19_[_loc16_];
-                  _loc16_++;
-                  _loc21_ = _loc14_.getEffectsDeltaFromSave();
-                  if(_loc21_ != null)
+                  _loc15_ = _loc20_[_loc17_];
+                  _loc17_++;
+                  _loc22_ = _loc15_.getEffectsDeltaFromSave();
+                  if(_loc22_ != null)
                   {
-                     if(_loc14_.totalEffects != null)
+                     if(_loc15_.totalEffects != null)
                      {
-                        _loc14_.totalEffects = FpUtils.listConcat_damageCalculation_damageManagement_EffectOutput(_loc14_.totalEffects,_loc21_);
+                        _loc15_.totalEffects = FpUtils.listConcat_damageCalculation_damageManagement_EffectOutput(_loc15_.totalEffects,_loc22_);
                      }
                      else
                      {
-                        _loc14_.totalEffects = _loc21_;
+                        _loc15_.totalEffects = _loc22_;
                      }
                   }
-                  if(!_loc14_.load())
+                  if(!_loc15_.load())
                   {
-                     _loc14_.savePendingEffects();
-                     _loc14_.resetToInitialState();
+                     _loc15_.savePendingEffects();
+                     _loc15_.resetToInitialState();
                   }
                }
             }
@@ -473,7 +480,7 @@ package damageCalculation
                continue;
             }
             _loc19_ = effect.actionId;
-            if(Boolean(ActionIdHelper.isStatModifier(_loc19_)) == true)
+            if((_loc19_ != 117 && _loc19_ != 116 && ActionIdHelper.isStatModifier(_loc19_)) == true)
             {
                _loc27_ = HaxeBuff.fromRunningEffect(param2);
                if(param2.isTriggered)
@@ -626,33 +633,455 @@ package damageCalculation
                   _loc24_ = param2.getCaster();
                   _loc14_ = Teleport.throwFighter(fightContext,_loc24_,param2,param3);
                }
-               else if(_loc23_ == 141)
+               else
                {
-                  _loc36_ = ActionIdHelper.isPush(_loc21_);
-                  if(_loc36_ == true)
+                  if(_loc23_ != 116)
                   {
-                     _loc39_ = effect.param1;
-                     _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                     _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
-                     _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc39_,_loc40_,_loc41_,param3);
-                  }
-                  else
-                  {
-                     _loc37_ = ActionIdHelper.isPull(_loc21_);
-                     if(_loc37_ == true)
+                     if(_loc23_ != 117)
                      {
-                        _loc39_ = effect.param1;
-                        _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                        _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc39_,_loc40_,param3);
-                     }
-                     else
-                     {
-                        _loc14_ = [EffectOutput.deathOf(_loc17_.id)];
+                        if(_loc23_ != 320)
+                        {
+                           if(_loc23_ == 141)
+                           {
+                              _loc36_ = ActionIdHelper.isPush(_loc21_);
+                              if(_loc36_ == true)
+                              {
+                                 _loc39_ = effect.param1;
+                                 _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                 _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
+                                 _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc39_,_loc40_,_loc41_,param3);
+                              }
+                              else
+                              {
+                                 _loc37_ = ActionIdHelper.isPull(_loc21_);
+                                 if(_loc37_ == true)
+                                 {
+                                    _loc39_ = effect.param1;
+                                    _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                    _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc39_,_loc40_,param3);
+                                 }
+                                 else
+                                 {
+                                    _loc14_ = [EffectOutput.deathOf(_loc17_.id)];
+                                 }
+                              }
+                              addr2788:
+                              _loc40_ = false;
+                              if(ActionIdHelper.isTargetMaxLifeAffected(effect.actionId))
+                              {
+                                 _loc14_.push(EffectOutput.fromAffectedMaxLifePoints(_loc17_.id));
+                              }
+                              _loc23_ = 0;
+                              while(_loc23_ < int(_loc14_.length))
+                              {
+                                 _loc42_ = _loc14_[_loc23_];
+                                 _loc23_++;
+                                 if(_loc42_.damageRange != null && param6 == true)
+                                 {
+                                    _loc42_.unknown = true;
+                                 }
+                                 _loc24_ = fightContext.getFighterById(_loc42_.fighterId);
+                                 if(_loc42_.damageRange != null)
+                                 {
+                                    _loc34_ = _loc42_.damageRange;
+                                    _loc41_ = !(_loc34_.min == 0 && _loc34_.max == 0);
+                                 }
+                                 else
+                                 {
+                                    _loc41_ = false;
+                                 }
+                                 if(_loc41_)
+                                 {
+                                    _loc42_.areLifePointsAffected = true;
+                                    _loc34_ = DamageReceiver.getPermanentDamage(_loc42_.damageRange,_loc24_);
+                                    _loc42_.areErodedLifePointsAffected = _loc34_ != null && !(_loc34_.min == 0 && _loc34_.max == 0);
+                                 }
+                                 if(_loc42_.areErodedLifePointsAffected)
+                                 {
+                                    _loc42_.areMaxLifePointsAffected = true;
+                                 }
+                                 if(_loc42_.death)
+                                 {
+                                    fightContext.addLastKilledAlly(_loc24_);
+                                 }
+                                 if(_loc42_.summon != null)
+                                 {
+                                    _loc40_ = true;
+                                 }
+                                 _loc24_.pendingEffects.add(_loc42_);
+                              }
+                              DamageCalculator.triggerHandler(_loc14_,param2,fightContext,_loc17_,_loc35_,param3);
+                              if(_loc40_ == true && _loc10_ != null)
+                              {
+                                 _loc31_ = DamageCalculator.dataInterface.getStartingSpell(_loc10_,effect.param2);
+                                 if(_loc31_ != null)
+                                 {
+                                    DamageCalculator.executeSpell(fightContext,_loc10_,_loc31_,param2.forceCritical,null,param3,param6);
+                                 }
+                              }
+                              continue;
+                           }
+                           if(_loc23_ == 783)
+                           {
+                              _loc14_ = PushUtils.pushTo(fightContext,param2,_loc17_,false,false,param3);
+                           }
+                           else if(_loc23_ == 786)
+                           {
+                              _loc36_ = ActionIdHelper.isPush(_loc21_);
+                              if(_loc36_ == true)
+                              {
+                                 _loc39_ = effect.param1;
+                                 _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                 _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
+                                 _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc39_,_loc40_,_loc41_,param3);
+                              }
+                              else
+                              {
+                                 _loc37_ = ActionIdHelper.isPull(_loc21_);
+                                 if(_loc37_ == true)
+                                 {
+                                    _loc39_ = effect.param1;
+                                    _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                    _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc39_,_loc40_,param3);
+                                 }
+                                 else
+                                 {
+                                    _loc43_ = effect.getDamageInterval();
+                                    _loc34_ = param2.triggeringOutput.computeLifeDamage();
+                                    _loc24_ = param2.getParentEffect() != null ? param2.getParentEffect().getCaster() : null;
+                                    if(_loc34_ != null && _loc24_ != null && !_loc34_.isHeal && !_loc34_.isInvulnerable && !(_loc34_.min == 0 && _loc34_.max == 0))
+                                    {
+                                       _loc34_.multiply(_loc43_.min);
+                                       _loc34_.multiply(0.01);
+                                       _loc34_.isHeal = true;
+                                       _loc34_.isShieldDamage = false;
+                                       _loc14_ = [EffectOutput.fromDamageRange(_loc24_.id,_loc34_)];
+                                    }
+                                    else
+                                    {
+                                       _loc14_ = [];
+                                    }
+                                 }
+                              }
+                           }
+                           else if(_loc23_ == 950)
+                           {
+                              _loc36_ = ActionIdHelper.isPush(_loc21_);
+                              if(_loc36_ == true)
+                              {
+                                 _loc39_ = effect.param1;
+                                 _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                 _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
+                                 _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc39_,_loc40_,_loc41_,param3);
+                              }
+                              else
+                              {
+                                 _loc37_ = ActionIdHelper.isPull(_loc21_);
+                                 if(_loc37_ == true)
+                                 {
+                                    _loc39_ = effect.param1;
+                                    _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                    _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc39_,_loc40_,param3);
+                                 }
+                                 else
+                                 {
+                                    _loc27_ = HaxeBuff.fromRunningEffect(param2);
+                                    if(param2.isTriggered)
+                                    {
+                                       _loc27_.effect.triggers = ["I"];
+                                    }
+                                    _loc17_.storePendingBuff(_loc27_);
+                                    _loc14_ = [EffectOutput.fromStateChange(_loc17_.id,effect.param3,true)];
+                                 }
+                              }
+                           }
+                           else if(_loc23_ == 951)
+                           {
+                              _loc36_ = ActionIdHelper.isPush(_loc21_);
+                              if(_loc36_ == true)
+                              {
+                                 _loc39_ = effect.param1;
+                                 _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                 _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
+                                 _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc39_,_loc40_,_loc41_,param3);
+                              }
+                              else
+                              {
+                                 _loc37_ = ActionIdHelper.isPull(_loc21_);
+                                 if(_loc37_ == true)
+                                 {
+                                    _loc39_ = effect.param1;
+                                    _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                    _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc39_,_loc40_,param3);
+                                 }
+                                 else
+                                 {
+                                    _loc14_ = !!_loc17_.removeState(int(effect.getMinRoll())) ? [EffectOutput.fromStateChange(_loc17_.id,effect.param3,false)] : [];
+                                 }
+                              }
+                           }
+                           else if(_loc23_ == 1043)
+                           {
+                              _loc14_ = PushUtils.pullTo(fightContext,param2,_loc17_,false,param3);
+                           }
+                           else if(_loc23_ == 1075)
+                           {
+                              _loc36_ = ActionIdHelper.isPush(_loc21_);
+                              if(_loc36_ == true)
+                              {
+                                 _loc39_ = effect.param1;
+                                 _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                 _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
+                                 _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc39_,_loc40_,_loc41_,param3);
+                              }
+                              else
+                              {
+                                 _loc37_ = ActionIdHelper.isPull(_loc21_);
+                                 if(_loc37_ == true)
+                                 {
+                                    _loc39_ = effect.param1;
+                                    _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                    _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc39_,_loc40_,param3);
+                                 }
+                                 else
+                                 {
+                                    _loc20_ = _loc17_.reduceBuffDurations(int(effect.getMinRoll()));
+                                    if(_loc20_ != null && int(_loc20_.length) > 0)
+                                    {
+                                       _loc44_ = [EffectOutput.fromDispell(_loc17_.id)];
+                                       _loc39_ = 0;
+                                       while(_loc39_ < int(_loc20_.length))
+                                       {
+                                          _loc27_ = _loc20_[_loc39_];
+                                          _loc39_++;
+                                          if(_loc27_.effect.actionId == 950)
+                                          {
+                                             _loc44_.push(EffectOutput.fromStateChange(_loc17_.id,_loc27_.effect.param3,false));
+                                          }
+                                       }
+                                       _loc14_ = _loc44_;
+                                    }
+                                    else
+                                    {
+                                       _loc14_ = [];
+                                    }
+                                 }
+                              }
+                           }
+                           else
+                           {
+                              if(_loc23_ != 84)
+                              {
+                                 if(_loc23_ != 1079)
+                                 {
+                                    if(_loc23_ != 77)
+                                    {
+                                       if(_loc23_ != 1080)
+                                       {
+                                          _loc36_ = ActionIdHelper.isPush(_loc21_);
+                                          if(_loc36_ == true)
+                                          {
+                                             _loc23_ = effect.param1;
+                                             _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                             _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
+                                             _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc23_,_loc40_,_loc41_,param3);
+                                          }
+                                          else
+                                          {
+                                             _loc37_ = ActionIdHelper.isPull(_loc21_);
+                                             if(_loc37_ == true)
+                                             {
+                                                _loc23_ = effect.param1;
+                                                _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                                _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc23_,_loc40_,param3);
+                                                §§goto(addr2788);
+                                             }
+                                             else
+                                             {
+                                                _loc38_ = ActionIdHelper.isSummon(_loc21_);
+                                                if(_loc38_ == true)
+                                                {
+                                                   if(!!ActionIdHelper.isSummonWithoutTarget(effect.actionId) && _loc10_ != null)
+                                                   {
+                                                      _loc23_ = effect.actionId;
+                                                      if(_loc23_ != 180)
+                                                      {
+                                                         if(_loc23_ != 1097)
+                                                         {
+                                                            if(_loc23_ == 1189)
+                                                            {
+                                                               addr2306:
+                                                               _loc33_ = _loc8_.id;
+                                                            }
+                                                            else
+                                                            {
+                                                               _loc33_ = 0;
+                                                            }
+                                                            _loc23_ = MapTools.getLookDirection4(int(_loc8_.getCurrentPositionCell()),int(_loc17_.getCurrentPositionCell()));
+                                                            _loc14_ = [EffectOutput.fromSummon(_loc17_.id,int(_loc17_.getCurrentPositionCell()),_loc23_,_loc33_),EffectOutput.fromSummoning(_loc8_.id)];
+                                                            addr2432:
+                                                            §§goto(addr2788);
+                                                         }
+                                                      }
+                                                      §§goto(addr2306);
+                                                   }
+                                                   else if(!!ActionIdHelper.isKillAndSummon(effect.actionId) && (!DamageCalculator.summonTakesSlot(effect,fightContext,_loc8_) || int(fightContext.getFighterCurrentSummonCount(_loc8_)) > int(_loc8_.data.getCharacteristicValue(26))))
+                                                   {
+                                                      _loc20_ = [EffectOutput.deathOf(_loc17_.id)];
+                                                      _loc24_ = DamageCalculator.summon(effect,fightContext,_loc8_);
+                                                      _loc23_ = MapTools.getLookDirection4(int(_loc8_.getCurrentPositionCell()),int(_loc24_.getCurrentPositionCell()));
+                                                      if(_loc24_ != null)
+                                                      {
+                                                         _loc20_.push(EffectOutput.fromSummon(_loc24_.id,int(_loc24_.getCurrentPositionCell()),_loc23_));
+                                                         _loc20_.push(EffectOutput.fromSummoning(_loc8_.id));
+                                                      }
+                                                      _loc14_ = _loc20_;
+                                                   }
+                                                   else
+                                                   {
+                                                      _loc14_ = [];
+                                                   }
+                                                   §§goto(addr2432);
+                                                }
+                                                else
+                                                {
+                                                   _loc23_ = effect.actionId;
+                                                   if(_loc23_ == 80)
+                                                   {
+                                                      _loc34_ = PushUtils.getCollisionDamage(fightContext,_loc8_,_loc17_,effect.param1,effect.param2);
+                                                   }
+                                                   else
+                                                   {
+                                                      _loc40_ = ActionIdHelper.isBasedOnTargetLife(_loc23_);
+                                                      _loc34_ = _loc40_ == true ? DamageReceiver.getDamageBasedOnTargetLife(param2.getSpellEffect(),_loc17_,_loc11_.copy()) : _loc11_.copy();
+                                                   }
+                                                   if(param2.getCaster() == _loc17_)
+                                                   {
+                                                      _loc35_ = false;
+                                                      if(effect.actionId == 90)
+                                                      {
+                                                         _loc34_.isHeal = false;
+                                                      }
+                                                   }
+                                                   if(!ActionIdHelper.isFakeDamage(effect.actionId) && effect.actionId != 80 && !(_loc34_.min == 0 && _loc34_.max == 0))
+                                                   {
+                                                      _loc33_ = 1;
+                                                      if((param5 == null || int(param5.indexOf(_loc17_)) == -1) && ActionIdHelper.allowAOEMalus(effect.actionId))
+                                                      {
+                                                         _loc39_ = 0;
+                                                         if(effect.zone.radius >= 1)
+                                                         {
+                                                            _loc45_ = effect.zone;
+                                                            _loc39_ = _loc45_.getAOEMalus(fightContext.targetedCell,int(_loc8_.getCurrentPositionCell()),int(_loc17_.getBeforeLastSpellPosition()));
+                                                         }
+                                                         _loc33_ *= (100 - _loc39_) / 100;
+                                                      }
+                                                      if(fightContext.usingPortal())
+                                                      {
+                                                         _loc33_ *= Number(1 + int(fightContext.getPortalBonus()) * 0.01);
+                                                      }
+                                                      _loc34_.multiply(_loc33_);
+                                                   }
+                                                   _loc39_ = effect.actionId;
+                                                   if(_loc39_ == 106)
+                                                   {
+                                                      _loc42_ = param2.triggeringOutput;
+                                                      _loc48_ = param2.triggeringOutput.damageRange;
+                                                      _loc49_ = param2.getParentEffect();
+                                                      _loc24_ = _loc49_ != null ? _loc49_.getCaster() : null;
+                                                      _loc50_ = _loc49_ != null ? _loc49_.getSpell().level : 1;
+                                                      _loc51_ = _loc49_ != null && _loc49_.getSpell().isWeapon;
+                                                      if(_loc24_ != null && _loc49_ != null && _loc48_ != null && !_loc42_.damageRange.isCollision && _loc50_ <= effect.param2 && !_loc51_)
+                                                      {
+                                                         _loc17_.pendingEffects.remove(_loc42_);
+                                                         _loc14_ = DamageReceiver.receiveDamageOrHeal(fightContext,_loc49_,_loc42_.damageRange,_loc24_,_loc35_,param3);
+                                                      }
+                                                      else
+                                                      {
+                                                         _loc14_ = [];
+                                                      }
+                                                   }
+                                                   else
+                                                   {
+                                                      _loc41_ = Boolean(ActionIdHelper.isShield(_loc39_));
+                                                      if(_loc41_ == true)
+                                                      {
+                                                         _loc14_ = [EffectOutput.fromDamageRange(_loc17_.id,_loc34_)];
+                                                      }
+                                                      else
+                                                      {
+                                                         _loc46_ = ActionIdHelper.isHeal(_loc39_);
+                                                         if(_loc46_ == true)
+                                                         {
+                                                            _loc14_ = DamageReceiver.receiveDamageOrHeal(fightContext,param2,_loc34_,_loc17_,_loc35_,param3);
+                                                         }
+                                                         else
+                                                         {
+                                                            _loc47_ = ActionIdHelper.isDamage(effect.category,effect.actionId);
+                                                            _loc14_ = _loc47_ == true ? DamageReceiver.receiveDamageOrHeal(fightContext,param2,_loc34_,_loc17_,_loc35_,param3) : [];
+                                                         }
+                                                      }
+                                                   }
+                                                   §§goto(addr2788);
+                                                }
+                                             }
+                                          }
+                                       }
+                                       §§goto(addr2788);
+                                    }
+                                    _loc36_ = ActionIdHelper.isPush(_loc21_);
+                                    if(_loc36_ == true)
+                                    {
+                                       _loc39_ = effect.param1;
+                                       _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                       _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
+                                       _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc39_,_loc40_,_loc41_,param3);
+                                    }
+                                    else
+                                    {
+                                       _loc37_ = ActionIdHelper.isPull(_loc21_);
+                                       if(_loc37_ == true)
+                                       {
+                                          _loc39_ = effect.param1;
+                                          _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                          _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc39_,_loc40_,param3);
+                                       }
+                                       else
+                                       {
+                                          _loc14_ = [EffectOutput.fromAmTheft(_loc17_.id,effect.getDamageInterval().min)];
+                                       }
+                                    }
+                                 }
+                                 §§goto(addr2788);
+                              }
+                              _loc36_ = ActionIdHelper.isPush(_loc21_);
+                              if(_loc36_ == true)
+                              {
+                                 _loc39_ = effect.param1;
+                                 _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                 _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
+                                 _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc39_,_loc40_,_loc41_,param3);
+                              }
+                              else
+                              {
+                                 _loc37_ = ActionIdHelper.isPull(_loc21_);
+                                 if(_loc37_ == true)
+                                 {
+                                    _loc39_ = effect.param1;
+                                    _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
+                                    _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc39_,_loc40_,param3);
+                                 }
+                                 else
+                                 {
+                                    _loc14_ = [EffectOutput.fromApTheft(_loc17_.id,effect.getDamageInterval().min)];
+                                 }
+                              }
+                           }
+                           §§goto(addr2788);
+                        }
+                        §§goto(addr2788);
                      }
                   }
-               }
-               else if(_loc23_ == 320)
-               {
                   _loc36_ = ActionIdHelper.isPush(_loc21_);
                   if(_loc36_ == true)
                   {
@@ -673,422 +1102,21 @@ package damageCalculation
                      else
                      {
                         _loc42_ = new EffectOutput(_loc17_.id);
-                        _loc42_.rangeStolen = effect.getDamageInterval().min;
+                        _loc39_ = effect.getDamageInterval().min;
+                        if(effect.actionId == 320 || effect.actionId == 116)
+                        {
+                           _loc42_.rangeLoss = _loc39_;
+                        }
+                        else
+                        {
+                           _loc42_.rangeGain = _loc39_;
+                        }
                         _loc14_ = [_loc42_];
                      }
                   }
                }
-               else if(_loc23_ == 783)
-               {
-                  _loc14_ = PushUtils.pushTo(fightContext,param2,_loc17_,false,false,param3);
-               }
-               else if(_loc23_ == 786)
-               {
-                  _loc36_ = ActionIdHelper.isPush(_loc21_);
-                  if(_loc36_ == true)
-                  {
-                     _loc39_ = effect.param1;
-                     _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                     _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
-                     _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc39_,_loc40_,_loc41_,param3);
-                  }
-                  else
-                  {
-                     _loc37_ = ActionIdHelper.isPull(_loc21_);
-                     if(_loc37_ == true)
-                     {
-                        _loc39_ = effect.param1;
-                        _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                        _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc39_,_loc40_,param3);
-                     }
-                     else
-                     {
-                        _loc43_ = effect.getDamageInterval();
-                        _loc34_ = param2.triggeringOutput.computeLifeDamage();
-                        _loc24_ = param2.getParentEffect() != null ? param2.getParentEffect().getCaster() : null;
-                        if(_loc34_ != null && _loc24_ != null && !_loc34_.isHeal && !_loc34_.isInvulnerable && !(_loc34_.min == 0 && _loc34_.max == 0))
-                        {
-                           _loc34_.multiply(_loc43_.min);
-                           _loc34_.multiply(0.01);
-                           _loc34_.isHeal = true;
-                           _loc34_.isShieldDamage = false;
-                           _loc14_ = [EffectOutput.fromDamageRange(_loc24_.id,_loc34_)];
-                        }
-                        else
-                        {
-                           _loc14_ = [];
-                        }
-                     }
-                  }
-               }
-               else if(_loc23_ == 950)
-               {
-                  _loc36_ = ActionIdHelper.isPush(_loc21_);
-                  if(_loc36_ == true)
-                  {
-                     _loc39_ = effect.param1;
-                     _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                     _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
-                     _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc39_,_loc40_,_loc41_,param3);
-                  }
-                  else
-                  {
-                     _loc37_ = ActionIdHelper.isPull(_loc21_);
-                     if(_loc37_ == true)
-                     {
-                        _loc39_ = effect.param1;
-                        _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                        _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc39_,_loc40_,param3);
-                     }
-                     else
-                     {
-                        _loc27_ = HaxeBuff.fromRunningEffect(param2);
-                        if(param2.isTriggered)
-                        {
-                           _loc27_.effect.triggers = ["I"];
-                        }
-                        _loc17_.storePendingBuff(_loc27_);
-                        _loc14_ = [EffectOutput.fromStateChange(_loc17_.id,effect.param3,true)];
-                     }
-                  }
-               }
-               else if(_loc23_ == 951)
-               {
-                  _loc36_ = ActionIdHelper.isPush(_loc21_);
-                  if(_loc36_ == true)
-                  {
-                     _loc39_ = effect.param1;
-                     _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                     _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
-                     _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc39_,_loc40_,_loc41_,param3);
-                  }
-                  else
-                  {
-                     _loc37_ = ActionIdHelper.isPull(_loc21_);
-                     if(_loc37_ == true)
-                     {
-                        _loc39_ = effect.param1;
-                        _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                        _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc39_,_loc40_,param3);
-                     }
-                     else
-                     {
-                        _loc14_ = !!_loc17_.removeState(int(effect.getMinRoll())) ? [EffectOutput.fromStateChange(_loc17_.id,effect.param3,false)] : [];
-                     }
-                  }
-               }
-               else if(_loc23_ == 1043)
-               {
-                  _loc14_ = PushUtils.pullTo(fightContext,param2,_loc17_,false,param3);
-               }
-               else if(_loc23_ == 1075)
-               {
-                  _loc36_ = ActionIdHelper.isPush(_loc21_);
-                  if(_loc36_ == true)
-                  {
-                     _loc39_ = effect.param1;
-                     _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                     _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
-                     _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc39_,_loc40_,_loc41_,param3);
-                  }
-                  else
-                  {
-                     _loc37_ = ActionIdHelper.isPull(_loc21_);
-                     if(_loc37_ == true)
-                     {
-                        _loc39_ = effect.param1;
-                        _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                        _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc39_,_loc40_,param3);
-                     }
-                     else
-                     {
-                        _loc20_ = _loc17_.reduceBuffDurations(int(effect.getMinRoll()));
-                        if(_loc20_ != null && int(_loc20_.length) > 0)
-                        {
-                           _loc44_ = [EffectOutput.fromDispell(_loc17_.id)];
-                           _loc39_ = 0;
-                           while(_loc39_ < int(_loc20_.length))
-                           {
-                              _loc27_ = _loc20_[_loc39_];
-                              _loc39_++;
-                              if(_loc27_.effect.actionId == 950)
-                              {
-                                 _loc44_.push(EffectOutput.fromStateChange(_loc17_.id,_loc27_.effect.param3,false));
-                              }
-                           }
-                           _loc14_ = _loc44_;
-                        }
-                        else
-                        {
-                           _loc14_ = [];
-                        }
-                     }
-                  }
-               }
-               else
-               {
-                  if(_loc23_ != 84)
-                  {
-                     if(_loc23_ != 1079)
-                     {
-                        if(_loc23_ != 77)
-                        {
-                           if(_loc23_ != 1080)
-                           {
-                              _loc36_ = ActionIdHelper.isPush(_loc21_);
-                              if(_loc36_ == true)
-                              {
-                                 _loc23_ = effect.param1;
-                                 _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                                 _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
-                                 _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc23_,_loc40_,_loc41_,param3);
-                                 addr2750:
-                                 _loc40_ = false;
-                                 if(ActionIdHelper.isTargetMaxLifeAffected(effect.actionId))
-                                 {
-                                    _loc14_.push(EffectOutput.fromAffectedMaxLifePoints(_loc17_.id));
-                                 }
-                                 _loc23_ = 0;
-                                 while(_loc23_ < int(_loc14_.length))
-                                 {
-                                    _loc42_ = _loc14_[_loc23_];
-                                    _loc23_++;
-                                    if(_loc42_.damageRange != null && param6 == true)
-                                    {
-                                       _loc42_.unknown = true;
-                                    }
-                                    _loc24_ = fightContext.getFighterById(_loc42_.fighterId);
-                                    if(_loc42_.damageRange != null)
-                                    {
-                                       _loc34_ = _loc42_.damageRange;
-                                       _loc41_ = !(_loc34_.min == 0 && _loc34_.max == 0);
-                                    }
-                                    else
-                                    {
-                                       _loc41_ = false;
-                                    }
-                                    if(_loc41_)
-                                    {
-                                       _loc42_.areLifePointsAffected = true;
-                                       _loc34_ = DamageReceiver.getPermanentDamage(_loc42_.damageRange,_loc24_);
-                                       _loc42_.areErodedLifePointsAffected = _loc34_ != null && !(_loc34_.min == 0 && _loc34_.max == 0);
-                                    }
-                                    if(_loc42_.areErodedLifePointsAffected)
-                                    {
-                                       _loc42_.areMaxLifePointsAffected = true;
-                                    }
-                                    if(_loc42_.death)
-                                    {
-                                       fightContext.addLastKilledAlly(_loc24_);
-                                    }
-                                    if(_loc42_.summon != null)
-                                    {
-                                       _loc40_ = true;
-                                    }
-                                    _loc24_.pendingEffects.add(_loc42_);
-                                 }
-                                 DamageCalculator.triggerHandler(_loc14_,param2,fightContext,_loc17_,_loc35_,param3);
-                                 if(_loc40_ == true && _loc10_ != null)
-                                 {
-                                    _loc31_ = DamageCalculator.dataInterface.getStartingSpell(_loc10_,effect.param2);
-                                    if(_loc31_ != null)
-                                    {
-                                       DamageCalculator.executeSpell(fightContext,_loc10_,_loc31_,param2.forceCritical,null,param3,param6);
-                                    }
-                                 }
-                                 continue;
-                              }
-                              _loc37_ = ActionIdHelper.isPull(_loc21_);
-                              if(_loc37_ == true)
-                              {
-                                 _loc23_ = effect.param1;
-                                 _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                                 _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc23_,_loc40_,param3);
-                                 §§goto(addr2750);
-                              }
-                              else
-                              {
-                                 _loc38_ = ActionIdHelper.isSummon(_loc21_);
-                                 if(_loc38_ == true)
-                                 {
-                                    if(!!ActionIdHelper.isSummonWithoutTarget(effect.actionId) && _loc10_ != null)
-                                    {
-                                       _loc23_ = effect.actionId;
-                                       if(_loc23_ != 180)
-                                       {
-                                          if(_loc23_ != 1097)
-                                          {
-                                             if(_loc23_ == 1189)
-                                             {
-                                                addr2268:
-                                                _loc33_ = _loc8_.id;
-                                             }
-                                             else
-                                             {
-                                                _loc33_ = 0;
-                                             }
-                                             _loc23_ = MapTools.getLookDirection4(int(_loc8_.getCurrentPositionCell()),int(_loc17_.getCurrentPositionCell()));
-                                             _loc14_ = [EffectOutput.fromSummon(_loc17_.id,int(_loc17_.getCurrentPositionCell()),_loc23_,_loc33_),EffectOutput.fromSummoning(_loc8_.id)];
-                                             addr2394:
-                                             §§goto(addr2750);
-                                          }
-                                       }
-                                       §§goto(addr2268);
-                                    }
-                                    else if(!!ActionIdHelper.isKillAndSummon(effect.actionId) && (!DamageCalculator.summonTakesSlot(effect,fightContext,_loc8_) || int(fightContext.getFighterCurrentSummonCount(_loc8_)) > int(_loc8_.data.getCharacteristicValue(26))))
-                                    {
-                                       _loc20_ = [EffectOutput.deathOf(_loc17_.id)];
-                                       _loc24_ = DamageCalculator.summon(effect,fightContext,_loc8_);
-                                       _loc23_ = MapTools.getLookDirection4(int(_loc8_.getCurrentPositionCell()),int(_loc24_.getCurrentPositionCell()));
-                                       if(_loc24_ != null)
-                                       {
-                                          _loc20_.push(EffectOutput.fromSummon(_loc24_.id,int(_loc24_.getCurrentPositionCell()),_loc23_));
-                                          _loc20_.push(EffectOutput.fromSummoning(_loc8_.id));
-                                       }
-                                       _loc14_ = _loc20_;
-                                    }
-                                    else
-                                    {
-                                       _loc14_ = [];
-                                    }
-                                    §§goto(addr2394);
-                                 }
-                                 else
-                                 {
-                                    _loc23_ = effect.actionId;
-                                    if(_loc23_ == 80)
-                                    {
-                                       _loc34_ = PushUtils.getCollisionDamage(fightContext,_loc8_,_loc17_,effect.param1,effect.param2);
-                                    }
-                                    else
-                                    {
-                                       _loc40_ = ActionIdHelper.isBasedOnTargetLife(_loc23_);
-                                       _loc34_ = _loc40_ == true ? DamageReceiver.getDamageBasedOnTargetLife(param2.getSpellEffect(),_loc17_,_loc11_.copy()) : _loc11_.copy();
-                                    }
-                                    if(param2.getCaster() == _loc17_)
-                                    {
-                                       _loc35_ = false;
-                                       if(effect.actionId == 90)
-                                       {
-                                          _loc34_.isHeal = false;
-                                       }
-                                    }
-                                    if(!ActionIdHelper.isFakeDamage(effect.actionId) && effect.actionId != 80 && !(_loc34_.min == 0 && _loc34_.max == 0))
-                                    {
-                                       _loc33_ = 1;
-                                       if((param5 == null || int(param5.indexOf(_loc17_)) == -1) && ActionIdHelper.allowAOEMalus(effect.actionId))
-                                       {
-                                          _loc39_ = 0;
-                                          if(effect.zone.radius >= 1)
-                                          {
-                                             _loc45_ = effect.zone;
-                                             _loc39_ = _loc45_.getAOEMalus(fightContext.targetedCell,int(_loc8_.getCurrentPositionCell()),int(_loc17_.getBeforeLastSpellPosition()));
-                                          }
-                                          _loc33_ *= (100 - _loc39_) / 100;
-                                       }
-                                       if(fightContext.usingPortal())
-                                       {
-                                          _loc33_ *= Number(1 + int(fightContext.getPortalBonus()) * 0.01);
-                                       }
-                                       _loc34_.multiply(_loc33_);
-                                    }
-                                    _loc39_ = effect.actionId;
-                                    if(_loc39_ == 106)
-                                    {
-                                       _loc42_ = param2.triggeringOutput;
-                                       _loc48_ = param2.triggeringOutput.damageRange;
-                                       _loc49_ = param2.getParentEffect();
-                                       _loc24_ = _loc49_ != null ? _loc49_.getCaster() : null;
-                                       _loc50_ = _loc49_ != null ? _loc49_.getSpell().level : 1;
-                                       _loc51_ = _loc49_ != null && _loc49_.getSpell().isWeapon;
-                                       if(_loc24_ != null && _loc49_ != null && _loc48_ != null && !_loc42_.damageRange.isCollision && _loc50_ <= effect.param2 && !_loc51_)
-                                       {
-                                          _loc17_.pendingEffects.remove(_loc42_);
-                                          _loc14_ = DamageReceiver.receiveDamageOrHeal(fightContext,_loc49_,_loc42_.damageRange,_loc24_,_loc35_,param3);
-                                       }
-                                       else
-                                       {
-                                          _loc14_ = [];
-                                       }
-                                    }
-                                    else
-                                    {
-                                       _loc41_ = Boolean(ActionIdHelper.isShield(_loc39_));
-                                       if(_loc41_ == true)
-                                       {
-                                          _loc14_ = [EffectOutput.fromDamageRange(_loc17_.id,_loc34_)];
-                                       }
-                                       else
-                                       {
-                                          _loc46_ = ActionIdHelper.isHeal(_loc39_);
-                                          if(_loc46_ == true)
-                                          {
-                                             _loc14_ = DamageReceiver.receiveDamageOrHeal(fightContext,param2,_loc34_,_loc17_,_loc35_,param3);
-                                          }
-                                          else
-                                          {
-                                             _loc47_ = ActionIdHelper.isDamage(effect.category,effect.actionId);
-                                             _loc14_ = _loc47_ == true ? DamageReceiver.receiveDamageOrHeal(fightContext,param2,_loc34_,_loc17_,_loc35_,param3) : [];
-                                          }
-                                       }
-                                    }
-                                    §§goto(addr2750);
-                                 }
-                              }
-                              §§goto(addr2750);
-                           }
-                           §§goto(addr2750);
-                        }
-                        _loc36_ = ActionIdHelper.isPush(_loc21_);
-                        if(_loc36_ == true)
-                        {
-                           _loc39_ = effect.param1;
-                           _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                           _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
-                           _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc39_,_loc40_,_loc41_,param3);
-                        }
-                        else
-                        {
-                           _loc37_ = ActionIdHelper.isPull(_loc21_);
-                           if(_loc37_ == true)
-                           {
-                              _loc39_ = effect.param1;
-                              _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                              _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc39_,_loc40_,param3);
-                           }
-                           else
-                           {
-                              _loc14_ = [EffectOutput.fromAmTheft(_loc17_.id,effect.getDamageInterval().min)];
-                           }
-                        }
-                     }
-                     §§goto(addr2750);
-                  }
-                  _loc36_ = ActionIdHelper.isPush(_loc21_);
-                  if(_loc36_ == true)
-                  {
-                     _loc39_ = effect.param1;
-                     _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                     _loc41_ = Boolean(ActionIdHelper.allowCollisionDamage(effect.actionId));
-                     _loc14_ = PushUtils.push(fightContext,param2,_loc17_,_loc39_,_loc40_,_loc41_,param3);
-                  }
-                  else
-                  {
-                     _loc37_ = ActionIdHelper.isPull(_loc21_);
-                     if(_loc37_ == true)
-                     {
-                        _loc39_ = effect.param1;
-                        _loc40_ = ActionIdHelper.isForcedDrag(effect.actionId);
-                        _loc14_ = PushUtils.pull(fightContext,param2,_loc17_,_loc39_,_loc40_,param3);
-                     }
-                     else
-                     {
-                        _loc14_ = [EffectOutput.fromApTheft(_loc17_.id,effect.getDamageInterval().min)];
-                     }
-                  }
-               }
             }
-            §§goto(addr2750);
+            §§goto(addr2788);
          }
       }
       
@@ -1213,7 +1241,7 @@ package damageCalculation
                _loc5_ = _loc5_.next;
                _loc7_ = _loc6_;
                _loc8_ = _loc7_.item;
-               if(_loc8_.effect.actionId == 792 || _loc8_.effect.actionId == 793)
+               if(_loc8_.effect.actionId == 792 || _loc8_.effect.actionId == 793 || int(_loc8_.effect.triggers.indexOf("K")) != -1 || int(_loc8_.effect.triggers.indexOf("KWW")) != -1 || int(_loc8_.effect.triggers.indexOf("KWS")) != -1 || int(_loc8_.effect.triggers.indexOf("PO")) != -1)
                {
                   _loc9_ = param4;
                }

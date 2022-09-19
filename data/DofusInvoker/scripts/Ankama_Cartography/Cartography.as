@@ -259,7 +259,7 @@ package Ankama_Cartography
          this._onBreachMap = teleported;
       }
       
-      private function onOpenMap(ignoreSetting:Boolean = false, fromShortcut:Boolean = false, conquest:Boolean = false) : void
+      private function onOpenMap(ignoreSetting:Boolean = false, fromShortcut:Boolean = false, conquest:Boolean = false, anomaly:Boolean = false) : void
       {
          var displayedMap:WorldPointWrapper = null;
          var currentWorldMapId:int = 0;
@@ -309,7 +309,8 @@ package Ankama_Cartography
                   "currentMap":displayedMap,
                   "flags":flags,
                   "conquest":conquest,
-                  "fromShortcut":fromShortcut
+                  "fromShortcut":fromShortcut,
+                  "anomaly":anomaly
                },StrataEnum.STRATA_LOW);
             }
          }

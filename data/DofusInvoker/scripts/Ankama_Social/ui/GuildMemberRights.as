@@ -3,24 +3,23 @@ package Ankama_Social.ui
    import Ankama_Common.Common;
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.components.ComboBox;
-   import com.ankamagames.berilia.components.Grid;
    import com.ankamagames.berilia.components.Label;
    import com.ankamagames.berilia.components.TextureBitmap;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.utils.ComponentHookList;
-   import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
    import com.ankamagames.dofus.kernel.sound.enum.SoundEnum;
    import com.ankamagames.dofus.kernel.sound.enum.SoundTypeEnum;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildChangeMemberParametersAction;
-   import com.ankamagames.dofus.network.ProtocolConstantsEnum;
+   import com.ankamagames.dofus.network.types.game.guild.GuildMember;
+   import com.ankamagames.dofus.network.types.game.guild.GuildRankInformation;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
    import com.ankamagames.dofus.uiApi.SocialApi;
    import com.ankamagames.dofus.uiApi.SoundApi;
    import com.ankamagames.dofus.uiApi.SystemApi;
    import com.ankamagames.dofus.uiApi.UiTutoApi;
-   import flash.utils.Dictionary;
+   import com.ankamagames.jerakine.data.XmlConfig;
    
    public class GuildMemberRights
    {
@@ -50,29 +49,25 @@ package Ankama_Social.ui
       [Module(name="Ankama_Common")]
       public var modCommon:Common;
       
-      private var _rightsList:Array;
-      
-      private var _memberInfo:Object;
+      private var _memberInfo:GuildMember;
       
       private var _playerId:Number;
       
       private var _percentXP:int;
       
-      private var _playerRank:uint;
+      private var _playerRank:GuildRankInformation;
+      
+      private var _myRank:GuildRankInformation;
+      
+      private var _myId:Number;
       
       private var _rankIndex:int;
       
-      private var _currentRankId:uint;
-      
-      private var _partChangeRights:Boolean;
-      
-      private var _rigthBtnList:Dictionary;
+      private var _currentRankOrder:uint;
       
       public var cb_rank:ComboBox;
       
       public var bgcb_rank:TextureBitmap;
-      
-      public var gd_list:Grid;
       
       public var btn_modify:ButtonContainer;
       
@@ -90,7 +85,6 @@ package Ankama_Social.ui
       
       public function GuildMemberRights()
       {
-         this._rigthBtnList = new Dictionary(true);
          super();
       }
       
@@ -101,202 +95,74 @@ package Ankama_Social.ui
          var rankListSize:int = 0;
          var currentRank:Object = null;
          var i:int = 0;
-         var rankName:Object = null;
+         var guildRank:GuildRankInformation = null;
          var rankObject:Object = null;
          this.soundApi.playSound(SoundTypeEnum.OPEN_WINDOW);
          this.btn_modify.soundId = SoundEnum.OK_BUTTON;
          this.btn_close.soundId = SoundEnum.CANCEL_BUTTON;
          this._memberInfo = params.memberInfo;
-         this._partChangeRights = params.rightsToChange;
-         var drm:Boolean = params.displayRightsMember;
-         var manageRanks:Boolean = params.allowToManageRank;
          this.uiApi.addComponentHook(this.btn_changeGuildXP,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.cb_rank,ComponentHookList.ON_SELECT_ITEM);
          this.uiApi.addComponentHook(this.btn_close,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btn_modify,ComponentHookList.ON_RELEASE);
+         this.uiApi.addComponentHook(this.btn_changeGuildXP,ComponentHookList.ON_ROLL_OVER);
+         this.uiApi.addComponentHook(this.btn_changeGuildXP,ComponentHookList.ON_ROLL_OUT);
          this.uiApi.addShortcutHook("closeUi",this.onShortcut);
          this.uiApi.addShortcutHook("validUi",this.onShortcut);
-         var myId:Number = this.playerApi.id();
+         this._myId = this.playerApi.id();
+         this._myRank = params.myRank;
          this._playerId = this._memberInfo.id;
          this._percentXP = this._memberInfo.experienceGivenPercent;
-         this._playerRank = this._memberInfo.rank;
-         this._currentRankId = this._playerRank;
+         this._playerRank = this.socialApi.getGuildRankById(this._memberInfo.rankId);
+         this._currentRankOrder = this._playerRank.order;
          this.lbl_guildXP.text = this._percentXP + " %";
-         if(this._memberInfo.level > ProtocolConstantsEnum.MAX_LEVEL)
+         if(params.selfPlayerItem)
          {
-            this.lbl_title.text = this._memberInfo.name + " - <font size=\'14\'>" + this.uiApi.getText("ui.common.short.prestige") + (this._memberInfo.level - ProtocolConstantsEnum.MAX_LEVEL) + "</font>";
+            this.lbl_title.text = this.uiApi.getText("ui.guild.myGuildRights");
          }
          else
          {
-            this.lbl_title.text = this._memberInfo.name + " - <font size=\'14\'>" + this.uiApi.getText("ui.common.short.level") + this._memberInfo.level + "</font>";
+            this.lbl_title.text = this.uiApi.getText("ui.guild.playerGuildRights",this._memberInfo.name);
          }
-         if(!params.manageXPContribution)
+         if(this._myRank.order < this._playerRank.order && params.manageXPContribution)
          {
-            if(!(params.manageMyXPContribution && params.selfPlayerItem))
-            {
-               this.btn_changeGuildXP.disabled = true;
-            }
+            this.btn_changeGuildXP.disabled = false;
          }
-         this._rightsList = [];
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsAllRights"),
-            "rightString":GuildWrapper.MANAGE_RIGHTS,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.MANAGE_RIGHTS),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.MANAGE_RIGHTS)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsBoost"),
-            "rightString":GuildWrapper.MANAGE_GUILD_BOOSTS,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.MANAGE_GUILD_BOOSTS),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.MANAGE_GUILD_BOOSTS)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsRights"),
-            "rightString":GuildWrapper.MANAGE_LIGHT_RIGHTS,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.MANAGE_LIGHT_RIGHTS),
-            "disabled":!drm || this._partChangeRights
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsManageRecruitment"),
-            "rightString":GuildWrapper.RIGHT_MANAGE_GUILD_RECRUITMENT,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.RIGHT_MANAGE_GUILD_RECRUITMENT),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.RIGHT_MANAGE_GUILD_RECRUITMENT)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsManageApply"),
-            "rightString":GuildWrapper.RIGHT_MANAGE_GUILD_APPLY,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.RIGHT_MANAGE_GUILD_APPLY),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.RIGHT_MANAGE_GUILD_APPLY)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsInvit"),
-            "rightString":GuildWrapper.INVITE_NEW_MEMBERS,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.INVITE_NEW_MEMBERS),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.INVITE_NEW_MEMBERS)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsBann"),
-            "rightString":GuildWrapper.BAN_MEMBERS,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.BAN_MEMBERS),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.BAN_MEMBERS)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsPercentXP"),
-            "rightString":GuildWrapper.MANAGE_XP_CONTRIBUTION,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.MANAGE_XP_CONTRIBUTION),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.MANAGE_XP_CONTRIBUTION)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightManageOwnXP"),
-            "rightString":GuildWrapper.MANAGE_MY_XP_CONTRIBUTION,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.MANAGE_MY_XP_CONTRIBUTION),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.MANAGE_MY_XP_CONTRIBUTION)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsRank"),
-            "rightString":GuildWrapper.MANAGE_RANKS,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.MANAGE_RANKS),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.MANAGE_RANKS)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsPrioritizeMe"),
-            "rightString":GuildWrapper.PRIORITIZE_DEFENSE,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.PRIORITIZE_DEFENSE),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.PRIORITIZE_DEFENSE)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsHiretax"),
-            "rightString":GuildWrapper.HIRE_TAX_COLLECTOR,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.HIRE_TAX_COLLECTOR),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.HIRE_TAX_COLLECTOR)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsCollect"),
-            "rightString":GuildWrapper.COLLECT,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.COLLECT),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.COLLECT)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsCollectMy"),
-            "rightString":GuildWrapper.COLLECT_MY_TAX_COLLECTORS,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.COLLECT_MY_TAX_COLLECTORS),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.COLLECT_MY_TAX_COLLECTORS)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsMountParkUse"),
-            "rightString":GuildWrapper.USE_FARMS,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.USE_FARMS),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.USE_FARMS)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsMountParkArrange"),
-            "rightString":GuildWrapper.ORGANIZE_FARMS,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.ORGANIZE_FARMS),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.ORGANIZE_FARMS)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsManageOtherMount"),
-            "rightString":GuildWrapper.TAKE_OTHERS_RIDES_IN_FARM,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.TAKE_OTHERS_RIDES_IN_FARM),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.TAKE_OTHERS_RIDES_IN_FARM)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsSetAlliancePrism"),
-            "rightString":GuildWrapper.SET_ALLIANCE_PRISM,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.SET_ALLIANCE_PRISM),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.SET_ALLIANCE_PRISM)
-         });
-         this._rightsList.push({
-            "drm":drm,
-            "name":this.uiApi.getText("ui.social.guildRightsTalkInAllianceChannel"),
-            "rightString":GuildWrapper.TALK_IN_ALLIANCE_CHANNEL,
-            "selected":this.socialApi.hasGuildRight(this._playerId,GuildWrapper.TALK_IN_ALLIANCE_CHANNEL),
-            "disabled":!drm || this._partChangeRights && !this.socialApi.hasGuildRight(myId,GuildWrapper.TALK_IN_ALLIANCE_CHANNEL)
-         });
-         this.gd_list.dataProvider = this._rightsList;
-         if(manageRanks && (this._playerRank != 1 || params.iamBoss))
+         else if(this._myRank.order == this._playerRank.order && params.manageMyXPContribution && params.selfPlayerItem)
          {
-            rankList = this.dataApi.getAllRankNames();
+            this.btn_changeGuildXP.disabled = false;
+         }
+         else
+         {
+            this.btn_changeGuildXP.disabled = true;
+         }
+         if(params.allowToManageRank && this._playerRank.order > this._myRank.order)
+         {
+            rankList = this.socialApi.getGuildRanks();
             cbProvider = [];
             rankListSize = rankList.length;
             for(i = 0; i < rankListSize; i++)
             {
-               rankName = rankList[i];
+               guildRank = rankList[i];
                rankObject = {
-                  "order":rankName.order,
-                  "label":rankName.name,
-                  "rankId":rankName.id
+                  "order":guildRank.order,
+                  "label":guildRank.name,
+                  "rank":guildRank,
+                  "disabled":this._myRank.order != 0 && guildRank.order <= this._myRank.order,
+                  "icon":guildRank.gfxId
                };
-               if(rankName.id != 1 || params.iamBoss)
+               if(guildRank.id != 1 || params.iamBoss)
                {
                   cbProvider.push(rankObject);
                }
-               if(rankName.id == this._playerRank)
+               if(guildRank.id == this._playerRank.id)
                {
                   currentRank = rankObject;
                }
             }
             cbProvider.sortOn("order",Array.NUMERIC);
             this.cb_rank.dataProvider = cbProvider;
-            this.cb_rank.value = currentRank;
+            this.cb_rank.selectedItem = currentRank;
             this._rankIndex = this.cb_rank.selectedIndex;
             this.cb_rank.visible = true;
             this.bgcb_rank.visible = true;
@@ -307,7 +173,20 @@ package Ankama_Social.ui
             this.cb_rank.visible = false;
             this.bgcb_rank.visible = false;
             this.lbl_rank.visible = true;
-            this.lbl_rank.text = this.dataApi.getRankName(this._playerRank).name;
+            this.lbl_rank.text = this._playerRank.name;
+         }
+      }
+      
+      public function updateRankRightsLine(data:Object, components:*, selected:Boolean) : void
+      {
+         if(data)
+         {
+            components.lbl_cb_rankName.text = data.label;
+            components.btn_grid.softDisabled = data.disabled;
+            components.btn_grid.handCursor = !data.disabled;
+            components.tx_cb_rankName.uri = data.icon == 116 || data.icon == 117 ? this.uiApi.createUri(XmlConfig.getInstance().getEntry("config.gfx.path") + "guildRanks/" + data.icon + ".png") : this.socialApi.getGuildRankIconUriById(data.icon);
+            this.uiApi.addComponentHook(components.btn_grid,ComponentHookList.ON_ROLL_OVER);
+            this.uiApi.addComponentHook(components.btn_grid,ComponentHookList.ON_ROLL_OUT);
          }
       }
       
@@ -316,44 +195,9 @@ package Ankama_Social.ui
          this.soundApi.playSound(SoundTypeEnum.CLOSE_WINDOW);
       }
       
-      public function updateRightLine(data:*, componentsRef:*, selected:Boolean) : void
-      {
-         var selectedChk:Boolean = false;
-         if(!this._rigthBtnList[componentsRef.lblcb_right.name])
-         {
-            this.uiApi.addComponentHook(componentsRef.lblcb_right,"onRelease");
-         }
-         this._rigthBtnList[componentsRef.lblcb_right.name] = data;
-         if(data)
-         {
-            componentsRef.btn_label_lblcb_right.text = data.name;
-            componentsRef.lblcb_right.selected = data.selected;
-            componentsRef.lblcb_right.visible = true;
-            componentsRef.lblcb_right.disabled = data.disabled;
-         }
-         else
-         {
-            componentsRef.lblcb_right.visible = false;
-         }
-      }
-      
-      private function rightsToArray() : Array
-      {
-         var right:Object = null;
-         var rightsList:Array = [];
-         for each(right in this._rightsList)
-         {
-            if(right.selected)
-            {
-               rightsList.push(right.rightString);
-            }
-         }
-         return rightsList;
-      }
-      
       private function onConfirmNewBoss() : void
       {
-         this._playerRank = 1;
+         this._playerRank = this._myRank;
          this._rankIndex = this.cb_rank.selectedIndex;
       }
       
@@ -370,25 +214,9 @@ package Ankama_Social.ui
       
       public function onRelease(target:GraphicContainer) : void
       {
-         var right:Object = null;
-         var vsv:int = 0;
-         if(target.name.indexOf("lblcb_right") != -1)
+         if(target == this.btn_modify)
          {
-            for each(right in this._rightsList)
-            {
-               if(right.rightString == this._rigthBtnList[target.name].rightString)
-               {
-                  right.selected = !right.selected;
-                  break;
-               }
-            }
-            vsv = this.gd_list.verticalScrollValue;
-            this.gd_list.updateItems();
-            this.gd_list.verticalScrollValue = vsv;
-         }
-         else if(target == this.btn_modify)
-         {
-            this.sysApi.sendAction(new GuildChangeMemberParametersAction([this._playerId,this._playerRank,this._percentXP,this.rightsToArray()]));
+            this.sysApi.sendAction(new GuildChangeMemberParametersAction([this._playerId,this._playerRank.id,this._percentXP]));
             this.uiApi.unloadUi("guildMemberRights");
          }
          else if(target == this.btn_close)
@@ -411,13 +239,13 @@ package Ankama_Social.ui
          {
             if(isNewSelection && selectMethod != 2)
             {
-               if((target as ComboBox).value.rankId == 1 && this._currentRankId != 1)
+               if((target as ComboBox).selectedItem.rank.id == 1 && this._currentRankOrder != 0)
                {
-                  this.modCommon.openPopup(this.uiApi.getText("ui.popup.warning"),this.uiApi.getText("ui.social.doUGiveRights",this._memberInfo.name),[this.uiApi.getText("ui.common.yes"),this.uiApi.getText("ui.common.no")],[this.onConfirmNewBoss,this.onCancelNewBoss],this.onConfirmNewBoss,this.onCancelNewBoss);
+                  this.modCommon.openTextButtonPopup(this.uiApi.getText("ui.popup.warning"),this.uiApi.getText("ui.social.doUGiveRights",(target as ComboBox).selectedItem.rank.name,this._memberInfo.name,(target as ComboBox).selectedItem.rank.name),[this.uiApi.getText("ui.common.validation"),this.uiApi.getText("ui.common.cancel")],[this.onConfirmNewBoss,this.onCancelNewBoss],this.onConfirmNewBoss,this.onCancelNewBoss);
                }
                else
                {
-                  this._playerRank = (target as ComboBox).value.rankId;
+                  this._playerRank = (target as ComboBox).selectedItem.rank;
                   this._rankIndex = (target as ComboBox).selectedIndex;
                }
             }
@@ -429,7 +257,7 @@ package Ankama_Social.ui
          switch(s)
          {
             case "validUi":
-               this.sysApi.sendAction(new GuildChangeMemberParametersAction([this._playerId,this._playerRank,this._percentXP,this.rightsToArray()]));
+               this.sysApi.sendAction(new GuildChangeMemberParametersAction([this._playerId,this._playerRank.id,this._percentXP]));
                this.uiApi.unloadUi("guildMemberRights");
                return true;
             case "closeUi":
@@ -438,6 +266,38 @@ package Ankama_Social.ui
             default:
                return false;
          }
+      }
+      
+      public function onRollOver(target:GraphicContainer) : void
+      {
+         var tooltipText:String = "";
+         if(target == this.btn_changeGuildXP)
+         {
+            if(!this.btn_changeGuildXP.disabled)
+            {
+               tooltipText = this.uiApi.getText("ui.guild.modifyGuildXP");
+            }
+            else
+            {
+               tooltipText = this.uiApi.getText("ui.guild.cantModifyGuildXP");
+            }
+         }
+         else if(target.name.indexOf("btn_grid") != -1)
+         {
+            if(target.softDisabled)
+            {
+               tooltipText = this.uiApi.getText("ui.guild.modifyHigherRank");
+            }
+         }
+         if(tooltipText)
+         {
+            this.uiApi.showTooltip(this.uiApi.textTooltipInfo(tooltipText),target,false,"standard",7,1,3,null,null,null,"TextInfo");
+         }
+      }
+      
+      public function onRollOut(target:GraphicContainer) : void
+      {
+         this.uiApi.hideTooltip();
       }
    }
 }

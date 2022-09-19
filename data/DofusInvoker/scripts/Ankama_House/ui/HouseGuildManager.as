@@ -302,11 +302,11 @@ package Ankama_House.ui
                icon = this.dataApi.getEmblemSymbol(guildToDisplay.upEmblem.idEmblem);
                if(icon.colorizable)
                {
-                  this.utilApi.changeColor(this.tx_emblemUp.getChildByName("up"),guildToDisplay.upEmblem.color,0);
+                  this.utilApi.changeColor(this.tx_emblemUp,guildToDisplay.upEmblem.color,0);
                }
                else
                {
-                  this.utilApi.changeColor(this.tx_emblemUp.getChildByName("up"),guildToDisplay.upEmblem.color,0,true);
+                  this.utilApi.changeColor(this.tx_emblemUp,guildToDisplay.upEmblem.color,0,true);
                }
                break;
             case this.tx_emblemBackOld:
@@ -316,11 +316,11 @@ package Ankama_House.ui
                icono = this.dataApi.getEmblemSymbol(this._houseSharingGuild.upEmblem.idEmblem);
                if(icono.colorizable)
                {
-                  this.utilApi.changeColor(this.tx_emblemUpOld.getChildByName("up"),this._houseSharingGuild.upEmblem.color,0);
+                  this.utilApi.changeColor(this.tx_emblemUpOld,this._houseSharingGuild.upEmblem.color,0);
                }
                else
                {
-                  this.utilApi.changeColor(this.tx_emblemUpOld.getChildByName("up"),this._houseSharingGuild.upEmblem.color,0,true);
+                  this.utilApi.changeColor(this.tx_emblemUpOld,this._houseSharingGuild.upEmblem.color,0,true);
                }
                break;
             case this.tx_emblemBackNew:
@@ -330,11 +330,11 @@ package Ankama_House.ui
                iconn = this.dataApi.getEmblemSymbol(this._myGuild.upEmblem.idEmblem);
                if(iconn.colorizable)
                {
-                  this.utilApi.changeColor(this.tx_emblemUpNew.getChildByName("up"),this._myGuild.upEmblem.color,0);
+                  this.utilApi.changeColor(this.tx_emblemUpNew,this._myGuild.upEmblem.color,0);
                }
                else
                {
-                  this.utilApi.changeColor(this.tx_emblemUpNew.getChildByName("up"),this._myGuild.upEmblem.color,0,true);
+                  this.utilApi.changeColor(this.tx_emblemUpNew,this._myGuild.upEmblem.color,0,true);
                }
          }
       }

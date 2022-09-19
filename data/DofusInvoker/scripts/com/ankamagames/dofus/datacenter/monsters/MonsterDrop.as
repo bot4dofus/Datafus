@@ -29,6 +29,8 @@ package com.ankamagames.dofus.datacenter.monsters
       
       public var hasCriteria:Boolean;
       
+      public var hiddenIfInvalidCriteria:Boolean;
+      
       public var specificDropCoefficient:Vector.<MonsterDropCoefficient>;
       
       private var _monster:Monster;

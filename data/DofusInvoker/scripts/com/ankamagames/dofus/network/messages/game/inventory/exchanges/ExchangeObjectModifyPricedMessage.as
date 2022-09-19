@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeObjectModifyPricedMessage extends ExchangeObjectMovePricedMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3929;
+      public static const protocolId:uint = 6806;
        
       
       private var _isInitialized:Boolean = false;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 3929;
+         return 6806;
       }
       
       public function initExchangeObjectModifyPricedMessage(objectUID:uint = 0, quantity:int = 0, price:Number = 0) : ExchangeObjectModifyPricedMessage

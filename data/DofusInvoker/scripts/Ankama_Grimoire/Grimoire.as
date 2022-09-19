@@ -6,6 +6,7 @@ package Ankama_Grimoire
    import Ankama_Grimoire.ui.BestiaryTab;
    import Ankama_Grimoire.ui.Book;
    import Ankama_Grimoire.ui.CalendarTab;
+   import Ankama_Grimoire.ui.CollectionTab;
    import Ankama_Grimoire.ui.CompanionTab;
    import Ankama_Grimoire.ui.EncyclopediaBase;
    import Ankama_Grimoire.ui.EncyclopediaList;
@@ -28,12 +29,15 @@ package Ankama_Grimoire
    import Ankama_Grimoire.ui.optionalFeatures.AlignmentGiftsTab;
    import Ankama_Grimoire.ui.optionalFeatures.AlignmentWarEffortTab;
    import Ankama_Grimoire.ui.optionalFeatures.ChinqUi;
+   import Ankama_Grimoire.ui.optionalFeatures.ForgettableModsterSetsUi;
+   import Ankama_Grimoire.ui.optionalFeatures.ForgettableModstersUi;
    import Ankama_Grimoire.ui.optionalFeatures.ForgettableSpellGetScrollWarningPopUp;
    import Ankama_Grimoire.ui.optionalFeatures.ForgettableSpellSetDeletionPopUp;
    import Ankama_Grimoire.ui.optionalFeatures.ForgettableSpellSetPopUp;
    import Ankama_Grimoire.ui.optionalFeatures.ForgettableSpellSetsUi;
    import Ankama_Grimoire.ui.optionalFeatures.ForgettableSpellsIntroPopUp;
    import Ankama_Grimoire.ui.optionalFeatures.ForgettableSpellsUi;
+   import Ankama_Grimoire.ui.optionalFeatures.ModsterGetScrollWarningPopUp;
    import Ankama_Grimoire.ui.temporis.TemporisTab;
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.enums.StrataEnum;
@@ -45,6 +49,7 @@ package Ankama_Grimoire
    import com.ankamagames.dofus.datacenter.npcs.Npc;
    import com.ankamagames.dofus.datacenter.world.Area;
    import com.ankamagames.dofus.datacenter.world.SubArea;
+   import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.internalDatacenter.almanax.AlmanaxEvent;
    import com.ankamagames.dofus.internalDatacenter.almanax.AlmanaxMonth;
    import com.ankamagames.dofus.internalDatacenter.almanax.AlmanaxZodiac;
@@ -122,9 +127,13 @@ package Ankama_Grimoire
       
       protected var forgettableSpellsUi:ForgettableSpellsUi = null;
       
+      protected var forgettableModstersUi:ForgettableModstersUi = null;
+      
       protected var forgettableSpellSetPopUp:ForgettableSpellSetPopUp = null;
       
       protected var forgettableSpellGetScrollWarningPopUp:ForgettableSpellGetScrollWarningPopUp = null;
+      
+      protected var modsterGetScrollWarningPopUp:ModsterGetScrollWarningPopUp = null;
       
       protected var forgettableSpellsIntroPopUp:ForgettableSpellsIntroPopUp = null;
       
@@ -132,9 +141,13 @@ package Ankama_Grimoire
       
       protected var forgettableSpellSetDeletionPopUp:ForgettableSpellSetDeletionPopUp = null;
       
+      protected var forgettableModsterSetsUi:ForgettableModsterSetsUi = null;
+      
       protected var chinqUi:ChinqUi = null;
       
       protected var temporisTab:TemporisTab = null;
+      
+      protected var collectionTab:CollectionTab = null;
       
       [Api(name="SystemApi")]
       public var sysApi:SystemApi;
@@ -282,7 +295,7 @@ package Ankama_Grimoire
          {
             for each(race in monsterRaces)
             {
-               if(race.superRaceId == mainCat.realId && race.id > -1 && race.monsters && race.monsters.length)
+               if(race.superRaceId == mainCat.realId && race.id > -1 && race.monsters && race.monsters.length && race.id != DataEnum.MONSTER_TYPE_OSATOPIA)
                {
                   mainCat.subcats.push({
                      "id":uniqId,
@@ -591,6 +604,7 @@ package Ankama_Grimoire
          var uiRoot:UiRootContainer = null;
          var questBaseUi:* = undefined;
          var tabUi:* = undefined;
+         var guidebookUi:UiRootContainer = null;
          switch(tab)
          {
             case EnumTab.SPELL_TAB:
@@ -599,6 +613,7 @@ package Ankama_Grimoire
             case EnumTab.JOB_TAB:
             case EnumTab.IDOLS_TAB:
             case EnumTab.FORGETTABLE_SPELLS_UI:
+            case EnumTab.FORGETTABLE_MODSTERS_UI:
             case EnumTab.ENCYCLOPEDIA:
                if(!this.uiApi.getUi(tab))
                {
@@ -656,6 +671,21 @@ package Ankama_Grimoire
                   {
                      questBaseUi.uiClass.openTab(tab,0,param);
                   }
+               }
+               return;
+            case EnumTab.COLLECTION_TAB:
+               if(!this.uiApi.getUi(UIEnum.GUIDEBOOK))
+               {
+                  this.uiApi.loadUi(UIEnum.GUIDEBOOK,UIEnum.GUIDEBOOK,[tab],1,null,false,false,false);
+               }
+               else
+               {
+                  guidebookUi = this.uiApi.getUi(UIEnum.GUIDEBOOK);
+                  if(!guidebookUi)
+                  {
+                     return;
+                  }
+                  guidebookUi.uiClass.openTab(tab);
                }
                return;
             default:
@@ -964,6 +994,10 @@ package Ankama_Grimoire
                }
             }
             else if(guidebookUi.uiClass.getCurrentTab() != EnumTab.GUIDEBOOK_GAME_GUIDE && tab == EnumTab.GUIDEBOOK_GAME_GUIDE)
+            {
+               guidebookUi.uiClass.openTab(tab,params);
+            }
+            else
             {
                guidebookUi.uiClass.openTab(tab,params);
             }

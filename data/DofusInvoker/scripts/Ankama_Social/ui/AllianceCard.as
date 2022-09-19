@@ -213,11 +213,11 @@ package Ankama_Social.ui
             icon = this.dataApi.getEmblemSymbol(data.upEmblem.idEmblem);
             if(icon.colorizable)
             {
-               this.utilApi.changeColor(target.getChildByName("up"),data.upEmblem.color,0);
+               this.utilApi.changeColor(target,data.upEmblem.color,0);
             }
             else
             {
-               this.utilApi.changeColor(target.getChildByName("up"),data.upEmblem.color,0,true);
+               this.utilApi.changeColor(target,data.upEmblem.color,0,true);
             }
          }
       }

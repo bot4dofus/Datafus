@@ -58,6 +58,18 @@ package com.ankamagames.dofus.misc.lists
       public static const GiftsWaitingAllocation:String = "GiftsWaitingAllocation";
       
       public static const MerchantListUpdated:String = "MerchantListUpdated";
+      
+      public static const Alterations:String = "Alterations";
+      
+      public static const AlterationAdded:String = "AlterationAdded";
+      
+      public static const AlterationsUpdated:String = "AlterationsUpdated";
+      
+      public static const AlterationRemoved:String = "AlterationDeleted";
+      
+      public static const OpenAlterationUi:String = "OpenAlterationUi";
+      
+      public static const DisplayAlterationPinnedTooltip:String = "DisplayAlterationPinnedTooltip";
        
       
       public function RoleplayHookList()
@@ -94,6 +106,12 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(PortalDialogQuestion);
          Hook.createHook(GiftsWaitingAllocation);
          Hook.createHook(MerchantListUpdated);
+         Hook.createHook(Alterations);
+         Hook.createHook(AlterationAdded);
+         Hook.createHook(AlterationsUpdated);
+         Hook.createHook(AlterationRemoved);
+         Hook.createHook(OpenAlterationUi);
+         Hook.createHook(DisplayAlterationPinnedTooltip);
       }
    }
 }

@@ -3,6 +3,7 @@ package Ankama_Connection.ui
    import Ankama_Common.Common;
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.components.Grid;
+   import com.ankamagames.berilia.components.Texture;
    import com.ankamagames.berilia.types.LocationEnum;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
@@ -10,6 +11,7 @@ package Ankama_Connection.ui
    import com.ankamagames.dofus.logic.game.approach.actions.GiftAssignRequestAction;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.modules.utils.ItemTooltipSettings;
+   import com.ankamagames.dofus.network.enums.StartupActionObjectTypeEnum;
    import com.ankamagames.dofus.uiApi.SystemApi;
    import com.ankamagames.dofus.uiApi.TooltipApi;
    import com.ankamagames.jerakine.types.enums.DataStoreEnum;
@@ -49,6 +51,8 @@ package Ankama_Connection.ui
       
       public var gd_character_select:Grid;
       
+      public var tx_warning:Texture;
+      
       public function GiftMenu()
       {
          this._giftsObjectsList = new Dictionary(true);
@@ -85,7 +89,6 @@ package Ankama_Connection.ui
       
       public function unload() : void
       {
-         this.uiApi.unloadUi("itemBox");
          this.uiApi.unloadUi("itemRecipes");
          this.uiApi.unloadUi("itemsSet");
          this.uiApi.hideTooltip();
@@ -130,6 +133,18 @@ package Ankama_Connection.ui
             }
             this._btnAcceptGiftList[compRef.btn_acceptOne.name] = [compRef.btn_acceptOne,data.uid];
             compRef.btn_acceptOne.softDisabled = !this._characterSelected;
+            if(data.actionType == StartupActionObjectTypeEnum.OBJECT_GIFT)
+            {
+               compRef.tx_warning.visible = true;
+               this.uiApi.addComponentHook(compRef.tx_warning,ComponentHookList.ON_ROLL_OVER);
+               this.uiApi.addComponentHook(compRef.tx_warning,ComponentHookList.ON_ROLL_OUT);
+            }
+            else
+            {
+               compRef.tx_warning.visible = false;
+               this.uiApi.removeComponentHook(compRef.tx_warning,ComponentHookList.ON_ROLL_OVER);
+               this.uiApi.removeComponentHook(compRef.tx_warning,ComponentHookList.ON_ROLL_OUT);
+            }
             compRef.ctr_gift.visible = true;
          }
          else
@@ -176,6 +191,10 @@ package Ankama_Connection.ui
             {
                text = this.uiApi.getText("ui.connection.selectedCharacterNeeded");
             }
+         }
+         if(target.name.indexOf("tx_warning") != -1)
+         {
+            text = this.uiApi.getText("ui.gift.thisGiftWillBeLost");
          }
          if(text)
          {

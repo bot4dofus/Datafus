@@ -10,10 +10,10 @@ package com.ankamagames.dofus.network.types.game.guild.application
    public class ApplicationPlayerInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 3872;
+      public static const protocolId:uint = 6454;
        
       
-      public var playerId:uint = 0;
+      public var playerId:Number = 0;
       
       public var playerName:String = "";
       
@@ -41,10 +41,10 @@ package com.ankamagames.dofus.network.types.game.guild.application
       
       public function getTypeId() : uint
       {
-         return 3872;
+         return 6454;
       }
       
-      public function initApplicationPlayerInformation(playerId:uint = 0, playerName:String = "", breed:int = 0, sex:Boolean = false, level:uint = 0, accountId:uint = 0, accountTag:String = "", accountNickname:String = "", status:PlayerStatus = null) : ApplicationPlayerInformation
+      public function initApplicationPlayerInformation(playerId:Number = 0, playerName:String = "", breed:int = 0, sex:Boolean = false, level:uint = 0, accountId:uint = 0, accountTag:String = "", accountNickname:String = "", status:PlayerStatus = null) : ApplicationPlayerInformation
       {
          this.playerId = playerId;
          this.playerName = playerName;
@@ -78,11 +78,11 @@ package com.ankamagames.dofus.network.types.game.guild.application
       
       public function serializeAs_ApplicationPlayerInformation(output:ICustomDataOutput) : void
       {
-         if(this.playerId < 0)
+         if(this.playerId < 0 || this.playerId > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.playerId + ") on element playerId.");
          }
-         output.writeVarInt(this.playerId);
+         output.writeVarLong(this.playerId);
          output.writeUTF(this.playerName);
          output.writeByte(this.breed);
          output.writeBoolean(this.sex);
@@ -140,8 +140,8 @@ package com.ankamagames.dofus.network.types.game.guild.application
       
       private function _playerIdFunc(input:ICustomDataInput) : void
       {
-         this.playerId = input.readVarUhInt();
-         if(this.playerId < 0)
+         this.playerId = input.readVarUhLong();
+         if(this.playerId < 0 || this.playerId > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.playerId + ") on element of ApplicationPlayerInformation.playerId.");
          }

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeCraftResultWithObjectIdMessage extends ExchangeCraftResultMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7556;
+      public static const protocolId:uint = 2175;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 7556;
+         return 2175;
       }
       
       public function initExchangeCraftResultWithObjectIdMessage(craftResult:uint = 0, objectGenericId:uint = 0) : ExchangeCraftResultWithObjectIdMessage
@@ -79,7 +79,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
          {
             throw new Error("Forbidden value (" + this.objectGenericId + ") on element objectGenericId.");
          }
-         output.writeVarShort(this.objectGenericId);
+         output.writeVarInt(this.objectGenericId);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -106,7 +106,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       private function _objectGenericIdFunc(input:ICustomDataInput) : void
       {
-         this.objectGenericId = input.readVarUhShort();
+         this.objectGenericId = input.readVarUhInt();
          if(this.objectGenericId < 0)
          {
             throw new Error("Forbidden value (" + this.objectGenericId + ") on element of ExchangeCraftResultWithObjectIdMessage.objectGenericId.");

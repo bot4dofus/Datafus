@@ -8,6 +8,7 @@ package Ankama_ContextMenu.makers
    import com.ankamagames.dofus.internalDatacenter.guild.PaddockWrapper;
    import com.ankamagames.dofus.logic.game.common.actions.mount.PaddockMoveItemRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.mount.PaddockRemoveItemRequestAction;
+   import com.ankamagames.dofus.network.enums.GuildRightsEnum;
    
    public class PaddockItemMenuMaker implements IMenuMaker
    {
@@ -45,7 +46,7 @@ package Ankama_ContextMenu.makers
             else
             {
                guild = Api.social.getGuild();
-               if(guild && Api.social.hasGuildRight(Api.player.id(),"organizeFarms"))
+               if(guild && Api.social.hasGuildRight(Api.player.id(),GuildRightsEnum.RIGHT_MANAGE_PADDOCKS))
                {
                   for each(paddockInstance in paddock.paddockInstances)
                   {

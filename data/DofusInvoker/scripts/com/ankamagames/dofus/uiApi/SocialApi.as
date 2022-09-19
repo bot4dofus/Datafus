@@ -14,6 +14,7 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.internalDatacenter.people.SocialCharacterWrapper;
    import com.ankamagames.dofus.internalDatacenter.people.SpouseWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.UpdateGuildRankRequestAction;
    import com.ankamagames.dofus.logic.game.common.frames.AllianceFrame;
    import com.ankamagames.dofus.logic.game.common.frames.ChatFrame;
    import com.ankamagames.dofus.logic.game.common.frames.PlayedCharacterUpdatesFrame;
@@ -22,6 +23,7 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.logic.game.common.managers.TaxCollectorsManager;
    import com.ankamagames.dofus.network.enums.PlayerStatusEnum;
    import com.ankamagames.dofus.network.types.game.guild.GuildMember;
+   import com.ankamagames.dofus.network.types.game.guild.GuildRankInformation;
    import com.ankamagames.dofus.network.types.game.paddock.PaddockContentInformations;
    import com.ankamagames.dofus.network.types.game.prism.AllianceInsiderPrismInformation;
    import com.ankamagames.dofus.network.types.game.prism.AlliancePrismInformation;
@@ -190,42 +192,38 @@ package com.ankamagames.dofus.uiApi
          return this.socialFrame.guildmembers;
       }
       
-      public function getGuildRights() : Array
-      {
-         return GuildWrapper.guildRights;
-      }
-      
       public function getGuildByid(id:int) : GuildFactSheetWrapper
       {
          return this.socialFrame.getGuildById(id);
       }
       
-      public function hasGuildRight(pPlayerId:Number, pRightId:String) : Boolean
+      public function hasGuildRight(pPlayerId:Number, pRightId:uint) : Boolean
       {
          var member:GuildMember = null;
-         var temporaryWrapper:GuildWrapper = null;
+         var rank:GuildRankInformation = null;
          if(!this.socialFrame.hasGuild)
          {
             return false;
          }
          if(pPlayerId == PlayedCharacterManager.getInstance().id)
          {
-            return this.socialFrame.guild.hasRight(pRightId);
+            return this.socialFrame.playerGuildRank.rights.indexOf(pRightId) != -1;
          }
          for each(member in this.socialFrame.guildmembers)
          {
             if(member.id == pPlayerId)
             {
-               temporaryWrapper = GuildWrapper.create(0,"",null,member.rights);
-               return temporaryWrapper.hasRight(pRightId);
+               rank = this.socialFrame.getGuildRankById(member.rankId);
+               return rank.rights.indexOf(pRightId) != -1;
             }
          }
          return false;
       }
       
-      public function hasGuildRank(pPlayerId:Number, rankId:int) : Boolean
+      public function hasGuildRank(pPlayerId:Number, rankOrder:int) : Boolean
       {
          var member:GuildMember = null;
+         var rank:GuildRankInformation = null;
          if(!this.socialFrame.hasGuild)
          {
             return false;
@@ -234,10 +232,48 @@ package com.ankamagames.dofus.uiApi
          {
             if(member.id == pPlayerId)
             {
-               return member.rank == rankId;
+               rank = this.socialFrame.getGuildRankById(member.rankId);
+               return rank != null && rank.order == rankOrder;
             }
          }
          return false;
+      }
+      
+      public function getPlayerGuildRank(playerId:Number) : GuildRankInformation
+      {
+         var member:GuildMember = null;
+         if(!this.socialFrame.hasGuild)
+         {
+            return null;
+         }
+         for each(member in this.socialFrame.guildmembers)
+         {
+            if(member.id == playerId)
+            {
+               return this.socialFrame.getGuildRankById(member.rankId);
+            }
+         }
+         return null;
+      }
+      
+      public function getGuildRanks() : Vector.<GuildRankInformation>
+      {
+         return this.socialFrame.getGuildRanks();
+      }
+      
+      public function getGuildRankById(id:uint) : GuildRankInformation
+      {
+         return this.socialFrame.getGuildRankById(id);
+      }
+      
+      public function getGuildRankIconIds() : Vector.<uint>
+      {
+         return this.socialFrame.getGuildRanksIconIds();
+      }
+      
+      public function getGuildRankIconUriById(iconId:uint) : Uri
+      {
+         return this.socialFrame.getGuildRankIconUriById(iconId);
       }
       
       public function getGuildHouses() : Vector.<GuildHouseWrapper>
@@ -516,6 +552,16 @@ package com.ankamagames.dofus.uiApi
       public function getGuildMembersMax(guildLevel:uint) : uint
       {
          return 140 + Math.floor(guildLevel * 0.5);
+      }
+      
+      public function get playerGuildRank() : GuildRankInformation
+      {
+         return this.socialFrame.playerGuildRank;
+      }
+      
+      public function modifyRank(guildRank:GuildRankInformation) : void
+      {
+         Kernel.getWorker().process(UpdateGuildRankRequestAction.create(guildRank));
       }
    }
 }

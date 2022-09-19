@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightCloseCombatMessage extends AbstractGameActionFightTargetedAbilityMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9973;
+      public static const protocolId:uint = 1309;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 9973;
+         return 1309;
       }
       
       public function initGameActionFightCloseCombatMessage(actionId:uint = 0, sourceId:Number = 0, targetId:Number = 0, destinationCellId:int = 0, critical:uint = 1, silentCast:Boolean = false, verboseCast:Boolean = false, weaponGenericId:uint = 0) : GameActionFightCloseCombatMessage
@@ -79,7 +79,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
          {
             throw new Error("Forbidden value (" + this.weaponGenericId + ") on element weaponGenericId.");
          }
-         output.writeVarShort(this.weaponGenericId);
+         output.writeVarInt(this.weaponGenericId);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -106,7 +106,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       private function _weaponGenericIdFunc(input:ICustomDataInput) : void
       {
-         this.weaponGenericId = input.readVarUhShort();
+         this.weaponGenericId = input.readVarUhInt();
          if(this.weaponGenericId < 0)
          {
             throw new Error("Forbidden value (" + this.weaponGenericId + ") on element of GameActionFightCloseCombatMessage.weaponGenericId.");

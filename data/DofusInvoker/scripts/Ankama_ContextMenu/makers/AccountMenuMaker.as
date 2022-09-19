@@ -61,7 +61,7 @@ package Ankama_ContextMenu.makers
          {
             menu.push(ContextMenu.static_createContextMenuItemObject(Api.ui.getText("ui.common.wisperMessage"),this.onWhisperMessage,[data.id],disabled));
          }
-         if(data.category)
+         if(data.category && Api.system.getPlayerManager().accountId != data.id)
          {
             menu.push(ContextMenu.static_createContextMenuSeparatorObject());
             if(this._chatService !== null && data.category == SocialCharacterCategoryEnum.CATEGORY_FRIEND_ANKAMA)

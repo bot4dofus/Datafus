@@ -99,6 +99,11 @@ package com.ankamagames.berilia.components
          MEMORY_LOG[this] = 1;
       }
       
+      public function get list() : ComboBoxGrid
+      {
+         return this._list;
+      }
+      
       public function set buttonTexture(tx:String) : void
       {
          if(tx.toLowerCase().indexOf(".swf") != -1)

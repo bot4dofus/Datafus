@@ -11,7 +11,9 @@ package com.ankamagames.dofus.uiApi
    public class TimeApi implements IApi
    {
       
-      private static const MINUTE_TO_MILLISECOND:Number = 60000;
+      public static const MINUTE_TO_MILLISECOND:Number = 60000;
+      
+      public static const HOUR_TO_MILLISECOND:Number = 3600000;
       
       public static const DAY_TO_MILLISECOND:Number = 86400000;
        

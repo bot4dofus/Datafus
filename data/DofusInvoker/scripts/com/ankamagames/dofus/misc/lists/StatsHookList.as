@@ -6,6 +6,8 @@ package com.ankamagames.dofus.misc.lists
    {
       
       public static const GameGuideArticleSelectionType:String = "GameGuideArticleSelectionType";
+      
+      public static const LogBookHistoryStats:String = "LogBookHistoryStats";
        
       
       public function StatsHookList()
@@ -16,6 +18,7 @@ package com.ankamagames.dofus.misc.lists
       public static function initHooks() : void
       {
          Hook.createHook(GameGuideArticleSelectionType);
+         Hook.createHook(LogBookHistoryStats);
       }
    }
 }

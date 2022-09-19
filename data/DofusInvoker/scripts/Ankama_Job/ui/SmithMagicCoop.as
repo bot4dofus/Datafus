@@ -530,7 +530,7 @@ package Ankama_Job.ui
          if(!this.isItemFromBag(data))
          {
             item = dataApi.getItem(data.objectGID);
-            if(item.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_POTION && item.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_ORB && _runesItemTypes.indexOf(item.typeId) == -1 && item.id != DataEnum.ITEM_GID_SIGNATURE_RUNE)
+            if(item.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_POTION && item.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_ORB && _runesItemTypes.indexOf(item.typeId) == -1 && item.id != DataEnum.ITEM_GID_SIGNATURE_RUNE && item.id != DataEnum.ITEM_TYPE_SMITHMAGIC_CARVING)
             {
                return false;
             }

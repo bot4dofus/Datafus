@@ -2,6 +2,7 @@ package com.ankamagames.dofus.network.types.game.guild
 {
    import com.ankamagames.dofus.network.ProtocolTypeManager;
    import com.ankamagames.dofus.network.types.game.character.CharacterMinimalInformations;
+   import com.ankamagames.dofus.network.types.game.character.guild.note.PlayerNote;
    import com.ankamagames.dofus.network.types.game.character.status.PlayerStatus;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -12,20 +13,20 @@ package com.ankamagames.dofus.network.types.game.guild
    public class GuildMember extends CharacterMinimalInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 5491;
+      public static const protocolId:uint = 6328;
        
       
       public var breed:int = 0;
       
       public var sex:Boolean = false;
       
-      public var rank:uint = 0;
+      public var rankId:uint = 0;
+      
+      public var enrollmentDate:Number = 0;
       
       public var givenExperience:Number = 0;
       
       public var experienceGivenPercent:uint = 0;
-      
-      public var rights:uint = 0;
       
       public var connected:uint = 99;
       
@@ -43,28 +44,33 @@ package com.ankamagames.dofus.network.types.game.guild
       
       public var havenBagShared:Boolean = false;
       
+      public var note:PlayerNote;
+      
       private var _statustree:FuncTree;
+      
+      private var _notetree:FuncTree;
       
       public function GuildMember()
       {
          this.status = new PlayerStatus();
+         this.note = new PlayerNote();
          super();
       }
       
       override public function getTypeId() : uint
       {
-         return 5491;
+         return 6328;
       }
       
-      public function initGuildMember(id:Number = 0, name:String = "", level:uint = 0, breed:int = 0, sex:Boolean = false, rank:uint = 0, givenExperience:Number = 0, experienceGivenPercent:uint = 0, rights:uint = 0, connected:uint = 99, alignmentSide:int = 0, hoursSinceLastConnection:uint = 0, moodSmileyId:uint = 0, accountId:uint = 0, achievementPoints:int = 0, status:PlayerStatus = null, havenBagShared:Boolean = false) : GuildMember
+      public function initGuildMember(id:Number = 0, name:String = "", level:uint = 0, breed:int = 0, sex:Boolean = false, rankId:uint = 0, enrollmentDate:Number = 0, givenExperience:Number = 0, experienceGivenPercent:uint = 0, connected:uint = 99, alignmentSide:int = 0, hoursSinceLastConnection:uint = 0, moodSmileyId:uint = 0, accountId:uint = 0, achievementPoints:int = 0, status:PlayerStatus = null, havenBagShared:Boolean = false, note:PlayerNote = null) : GuildMember
       {
          super.initCharacterMinimalInformations(id,name,level);
          this.breed = breed;
          this.sex = sex;
-         this.rank = rank;
+         this.rankId = rankId;
+         this.enrollmentDate = enrollmentDate;
          this.givenExperience = givenExperience;
          this.experienceGivenPercent = experienceGivenPercent;
-         this.rights = rights;
          this.connected = connected;
          this.alignmentSide = alignmentSide;
          this.hoursSinceLastConnection = hoursSinceLastConnection;
@@ -73,6 +79,7 @@ package com.ankamagames.dofus.network.types.game.guild
          this.achievementPoints = achievementPoints;
          this.status = status;
          this.havenBagShared = havenBagShared;
+         this.note = note;
          return this;
       }
       
@@ -81,10 +88,10 @@ package com.ankamagames.dofus.network.types.game.guild
          super.reset();
          this.breed = 0;
          this.sex = false;
-         this.rank = 0;
+         this.rankId = 0;
+         this.enrollmentDate = 0;
          this.givenExperience = 0;
          this.experienceGivenPercent = 0;
-         this.rights = 0;
          this.connected = 99;
          this.alignmentSide = 0;
          this.hoursSinceLastConnection = 0;
@@ -92,6 +99,7 @@ package com.ankamagames.dofus.network.types.game.guild
          this.accountId = 0;
          this.achievementPoints = 0;
          this.status = new PlayerStatus();
+         this.note = new PlayerNote();
       }
       
       override public function serialize(output:ICustomDataOutput) : void
@@ -107,11 +115,16 @@ package com.ankamagames.dofus.network.types.game.guild
          _box0 = BooleanByteWrapper.setFlag(_box0,1,this.havenBagShared);
          output.writeByte(_box0);
          output.writeByte(this.breed);
-         if(this.rank < 0)
+         if(this.rankId < 0)
          {
-            throw new Error("Forbidden value (" + this.rank + ") on element rank.");
+            throw new Error("Forbidden value (" + this.rankId + ") on element rankId.");
          }
-         output.writeVarShort(this.rank);
+         output.writeVarInt(this.rankId);
+         if(this.enrollmentDate < -9007199254740992 || this.enrollmentDate > 9007199254740992)
+         {
+            throw new Error("Forbidden value (" + this.enrollmentDate + ") on element enrollmentDate.");
+         }
+         output.writeDouble(this.enrollmentDate);
          if(this.givenExperience < 0 || this.givenExperience > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.givenExperience + ") on element givenExperience.");
@@ -122,11 +135,6 @@ package com.ankamagames.dofus.network.types.game.guild
             throw new Error("Forbidden value (" + this.experienceGivenPercent + ") on element experienceGivenPercent.");
          }
          output.writeByte(this.experienceGivenPercent);
-         if(this.rights < 0)
-         {
-            throw new Error("Forbidden value (" + this.rights + ") on element rights.");
-         }
-         output.writeVarInt(this.rights);
          output.writeByte(this.connected);
          output.writeByte(this.alignmentSide);
          if(this.hoursSinceLastConnection < 0 || this.hoursSinceLastConnection > 65535)
@@ -147,6 +155,7 @@ package com.ankamagames.dofus.network.types.game.guild
          output.writeInt(this.achievementPoints);
          output.writeShort(this.status.getTypeId());
          this.status.serialize(output);
+         this.note.serializeAs_PlayerNote(output);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -159,10 +168,10 @@ package com.ankamagames.dofus.network.types.game.guild
          super.deserialize(input);
          this.deserializeByteBoxes(input);
          this._breedFunc(input);
-         this._rankFunc(input);
+         this._rankIdFunc(input);
+         this._enrollmentDateFunc(input);
          this._givenExperienceFunc(input);
          this._experienceGivenPercentFunc(input);
-         this._rightsFunc(input);
          this._connectedFunc(input);
          this._alignmentSideFunc(input);
          this._hoursSinceLastConnectionFunc(input);
@@ -172,6 +181,8 @@ package com.ankamagames.dofus.network.types.game.guild
          var _id13:uint = input.readUnsignedShort();
          this.status = ProtocolTypeManager.getInstance(PlayerStatus,_id13);
          this.status.deserialize(input);
+         this.note = new PlayerNote();
+         this.note.deserialize(input);
       }
       
       override public function deserializeAsync(tree:FuncTree) : void
@@ -184,10 +195,10 @@ package com.ankamagames.dofus.network.types.game.guild
          super.deserializeAsync(tree);
          tree.addChild(this.deserializeByteBoxes);
          tree.addChild(this._breedFunc);
-         tree.addChild(this._rankFunc);
+         tree.addChild(this._rankIdFunc);
+         tree.addChild(this._enrollmentDateFunc);
          tree.addChild(this._givenExperienceFunc);
          tree.addChild(this._experienceGivenPercentFunc);
-         tree.addChild(this._rightsFunc);
          tree.addChild(this._connectedFunc);
          tree.addChild(this._alignmentSideFunc);
          tree.addChild(this._hoursSinceLastConnectionFunc);
@@ -195,6 +206,7 @@ package com.ankamagames.dofus.network.types.game.guild
          tree.addChild(this._accountIdFunc);
          tree.addChild(this._achievementPointsFunc);
          this._statustree = tree.addChild(this._statustreeFunc);
+         this._notetree = tree.addChild(this._notetreeFunc);
       }
       
       private function deserializeByteBoxes(input:ICustomDataInput) : void
@@ -209,12 +221,21 @@ package com.ankamagames.dofus.network.types.game.guild
          this.breed = input.readByte();
       }
       
-      private function _rankFunc(input:ICustomDataInput) : void
+      private function _rankIdFunc(input:ICustomDataInput) : void
       {
-         this.rank = input.readVarUhShort();
-         if(this.rank < 0)
+         this.rankId = input.readVarUhInt();
+         if(this.rankId < 0)
          {
-            throw new Error("Forbidden value (" + this.rank + ") on element of GuildMember.rank.");
+            throw new Error("Forbidden value (" + this.rankId + ") on element of GuildMember.rankId.");
+         }
+      }
+      
+      private function _enrollmentDateFunc(input:ICustomDataInput) : void
+      {
+         this.enrollmentDate = input.readDouble();
+         if(this.enrollmentDate < -9007199254740992 || this.enrollmentDate > 9007199254740992)
+         {
+            throw new Error("Forbidden value (" + this.enrollmentDate + ") on element of GuildMember.enrollmentDate.");
          }
       }
       
@@ -233,15 +254,6 @@ package com.ankamagames.dofus.network.types.game.guild
          if(this.experienceGivenPercent < 0 || this.experienceGivenPercent > 100)
          {
             throw new Error("Forbidden value (" + this.experienceGivenPercent + ") on element of GuildMember.experienceGivenPercent.");
-         }
-      }
-      
-      private function _rightsFunc(input:ICustomDataInput) : void
-      {
-         this.rights = input.readVarUhInt();
-         if(this.rights < 0)
-         {
-            throw new Error("Forbidden value (" + this.rights + ") on element of GuildMember.rights.");
          }
       }
       
@@ -296,6 +308,12 @@ package com.ankamagames.dofus.network.types.game.guild
          var _id:uint = input.readUnsignedShort();
          this.status = ProtocolTypeManager.getInstance(PlayerStatus,_id);
          this.status.deserializeAsync(this._statustree);
+      }
+      
+      private function _notetreeFunc(input:ICustomDataInput) : void
+      {
+         this.note = new PlayerNote();
+         this.note.deserializeAsync(this._notetree);
       }
    }
 }

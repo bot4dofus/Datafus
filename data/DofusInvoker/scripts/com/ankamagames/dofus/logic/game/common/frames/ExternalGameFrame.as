@@ -1,5 +1,6 @@
 package com.ankamagames.dofus.logic.game.common.frames
 {
+   import com.ankama.haapi.client.api.CmsItemsApi;
    import com.ankamagames.berilia.Berilia;
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.berilia.managers.UiModuleManager;
@@ -29,6 +30,8 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.common.managers.DofusShopManager;
    import com.ankamagames.dofus.logic.game.common.managers.InventoryManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
+   import com.ankamagames.dofus.logic.game.common.misc.welcomeMessages.WelcomeMessageWrapper;
+   import com.ankamagames.dofus.logic.game.common.misc.welcomeMessages.WelcomeMessagesHandler;
    import com.ankamagames.dofus.misc.lists.ExternalGameHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.InventoryHookList;
@@ -61,17 +64,28 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.jerakine.data.XmlConfig;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
+   import com.ankamagames.jerakine.managers.StoreDataManager;
    import com.ankamagames.jerakine.messages.Frame;
    import com.ankamagames.jerakine.messages.Message;
+   import com.ankamagames.jerakine.types.DataStoreType;
+   import com.ankamagames.jerakine.types.enums.DataStoreEnum;
    import com.ankamagames.jerakine.types.enums.Priority;
    import flash.events.TimerEvent;
    import flash.utils.Dictionary;
    import flash.utils.getQualifiedClassName;
+   import org.openapitools.common.ApiUserCredentials;
+   import org.openapitools.event.ApiClientEvent;
    
    public class ExternalGameFrame implements Frame
    {
       
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(ExternalGameFrame));
+      
+      private static var _dataStoreType:DataStoreType = null;
+      
+      private static var DATA_STORE_CATEGORY:String = "ComputerModule_externalGameFrame";
+      
+      private static var DATA_STORE_KEY_WELCOME_MESSAGE_PREFIX:String = "externamGameFrame_welcomeMessage_";
        
       
       private const BAK_INTERFACE_NAME:String = "bakTab";
@@ -88,11 +102,39 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       private var _haapiKeyRequestHasTimedOut:Boolean = false;
       
+      private var _haapiKey:String = null;
+      
+      private var _welcomeMessagesHandler:WelcomeMessagesHandler = null;
+      
       public function ExternalGameFrame()
       {
          this._tokenRequestCallback = [];
          this._haapiKeyRequestCallback = [];
          super();
+      }
+      
+      private static function onWelcomeMessagesError(event:ApiClientEvent) : void
+      {
+         if(!event.response.payload)
+         {
+            _log.error("Error while reaching the welcome messages. No payload provided when reaching the welcome messages call error. What happened?");
+            return;
+         }
+         _log.error("Error while reaching the welcome messages. Code " + event.response.payload.status.toString() + ": " + event.response.payload.message);
+      }
+      
+      private static function onWelcomeMessage(message:WelcomeMessageWrapper) : void
+      {
+         var storeDataManager:StoreDataManager = StoreDataManager.getInstance();
+         var dataKey:String = DATA_STORE_KEY_WELCOME_MESSAGE_PREFIX + message.id.toString();
+         if(storeDataManager.getData(_dataStoreType,dataKey))
+         {
+            _log.debug("Welcome message already added: " + message.id.toString() + ".");
+            return;
+         }
+         storeDataManager.setData(_dataStoreType,dataKey,true);
+         var commonMod:Object = UiModuleManager.getInstance().getModule("Ankama_Common").mainClass;
+         commonMod.openPopup(message.title,message.text,[I18n.getUiText("ui.common.ok")],null,null,null,null,false,true);
       }
       
       public function get priority() : int
@@ -102,6 +144,13 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       public function pushed() : Boolean
       {
+         if(_dataStoreType === null)
+         {
+            _dataStoreType = new DataStoreType(DATA_STORE_CATEGORY,true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_COMPUTER);
+         }
+         this._welcomeMessagesHandler = new WelcomeMessagesHandler();
+         this._welcomeMessagesHandler.addListener(onWelcomeMessage);
+         this.getHaapiKey(this.onHaapiKey);
          return true;
       }
       
@@ -109,6 +158,11 @@ package com.ankamagames.dofus.logic.game.common.frames
       {
          this.clearTokenRequestTimer();
          this._tokenRequestCallback.length = 0;
+         if(this._welcomeMessagesHandler !== null)
+         {
+            this._welcomeMessagesHandler.reset();
+            this._welcomeMessagesHandler = null;
+         }
          return true;
       }
       
@@ -460,50 +514,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          this._haapiKeyRequestTimeoutTimer.start();
       }
       
-      private function openShop(token:String) : void
-      {
-         if(!token)
-         {
-            KernelEventsManager.getInstance().processCallback(ExternalGameHookList.DofusShopError,DofusShopEnum.ERROR_AUTHENTICATION_FAILED);
-            return;
-         }
-         DofusShopManager.getInstance().init(token);
-      }
-      
-      private function openCodesAndGift(apiKey:String) : void
-      {
-         if(!apiKey)
-         {
-            KernelEventsManager.getInstance().processCallback(ExternalGameHookList.DofusShopError,DofusShopEnum.ERROR_AUTHENTICATION_FAILED);
-            return;
-         }
-         CodesAndGiftManager.getInstance().init(apiKey);
-      }
-      
-      private function openBak(token:String) : void
-      {
-         if(!token)
-         {
-            KernelEventsManager.getInstance().processCallback(ExternalGameHookList.BakTimeout);
-            return;
-         }
-         DofusBakManager.getInstance().init(token);
-      }
-      
-      private function onTokenRequestTimeout(event:TimerEvent) : void
-      {
-         this._tokenRequestHasTimedOut = true;
-         this.clearTokenRequestTimer();
-         this.callOnTokenFunctions("");
-      }
-      
-      private function onHaapiKeyRequestTimeout(event:TimerEvent) : void
-      {
-         this._haapiKeyRequestHasTimedOut = true;
-         this.clearHaapiKeyRequestTimer();
-         this.callOnHaapiKeyFunctions("");
-      }
-      
       private function callOnTokenFunctions(token:String) : void
       {
          var fct:Function = null;
@@ -548,6 +558,80 @@ package com.ankamagames.dofus.logic.game.common.frames
             this._haapiKeyRequestTimeoutTimer.removeEventListener(TimerEvent.TIMER_COMPLETE,this.onHaapiKeyRequestTimeout);
             this._haapiKeyRequestTimeoutTimer = null;
          }
+      }
+      
+      private function onHaapiKey(haapiKey:String) : void
+      {
+         this._haapiKey = haapiKey;
+         if(!this._haapiKey)
+         {
+            _log.error("Unable to get the HAAPI key. What happened?");
+            return;
+         }
+         var xmlConfig:XmlConfig = XmlConfig.getInstance();
+         var apiCredentials:ApiUserCredentials = new ApiUserCredentials("",xmlConfig.getEntry("config.haapiUrlAnkama"),this._haapiKey);
+         var cmdItemsApi:CmsItemsApi = new CmsItemsApi(apiCredentials);
+         cmdItemsApi.get_feeds("DOFUS",xmlConfig.getEntry("config.lang.current"),0,1000).onSuccess(this.onWelcomeMessages).onError(onWelcomeMessagesError).call();
+      }
+      
+      private function onWelcomeMessages(event:ApiClientEvent) : void
+      {
+         if(!event.response.isSuccess)
+         {
+            _log.warn("Welcome messages seem to be successfully retrieved, but the event response is NOT successful. What happened? Handling the response as an error.");
+            onWelcomeMessagesError(event);
+            return;
+         }
+         if(!event.response.payload || event.response.payload.length <= 0)
+         {
+            _log.error("No payload provided when reaching the welcome messages. What happened?");
+            return;
+         }
+         this._welcomeMessagesHandler.addRawMessages(event.response.payload as Array);
+      }
+      
+      private function openShop(token:String) : void
+      {
+         if(!token)
+         {
+            KernelEventsManager.getInstance().processCallback(ExternalGameHookList.DofusShopError,DofusShopEnum.ERROR_AUTHENTICATION_FAILED);
+            return;
+         }
+         DofusShopManager.getInstance().init(token);
+      }
+      
+      private function openCodesAndGift(apiKey:String) : void
+      {
+         if(!apiKey)
+         {
+            KernelEventsManager.getInstance().processCallback(ExternalGameHookList.DofusShopError,DofusShopEnum.ERROR_AUTHENTICATION_FAILED);
+            return;
+         }
+         CodesAndGiftManager.getInstance().init(apiKey);
+      }
+      
+      private function openBak(token:String) : void
+      {
+         if(!token)
+         {
+            KernelEventsManager.getInstance().processCallback(ExternalGameHookList.BakTimeout);
+            return;
+         }
+         DofusBakManager.getInstance().init(token);
+      }
+      
+      private function onTokenRequestTimeout(event:TimerEvent) : void
+      {
+         this._tokenRequestHasTimedOut = true;
+         this.clearTokenRequestTimer();
+         this.callOnTokenFunctions("");
+      }
+      
+      private function onHaapiKeyRequestTimeout(event:TimerEvent) : void
+      {
+         this._haapiKeyRequestHasTimedOut = true;
+         this.clearHaapiKeyRequestTimer();
+         this.callOnHaapiKeyFunctions("");
       }
       
       private function onTokenInput(value:String) : void

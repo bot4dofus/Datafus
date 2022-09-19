@@ -14,6 +14,7 @@ package Ankama_Social.ui
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildSpellUpgradeRequestAction;
    import com.ankamagames.dofus.misc.lists.SocialHookList;
    import com.ankamagames.dofus.network.enums.GuildInformationsTypeEnum;
+   import com.ankamagames.dofus.network.enums.GuildRightsEnum;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.SocialApi;
    import com.ankamagames.dofus.uiApi.SystemApi;
@@ -90,7 +91,7 @@ package Ankama_Social.ui
          this.uiApi.addComponentHook(this.btn_maxTaxCollectorsCount,"onRollOut");
          this.sysApi.sendAction(new GuildGetInformationsAction([GuildInformationsTypeEnum.INFO_BOOSTS]));
          var guild:GuildWrapper = this.socialApi.getGuild();
-         this._allowModifyBoosts = guild.manageGuildBoosts;
+         this._allowModifyBoosts = this.socialApi.playerGuildRank.rights.indexOf(GuildRightsEnum.RIGHT_MANAGE_BOOSTS) != -1;
          this.displayBtnBoost();
          var ponyLook:String = "{714|";
          ponyLook += this.dataApi.getEmblemSymbol(guild.upEmblem.idEmblem).skinId + "|";
@@ -220,11 +221,9 @@ package Ankama_Social.ui
       
       private function onGuildMembershipUpdated(hasGuild:Boolean) : void
       {
-         var myGuild:GuildWrapper = null;
          if(hasGuild)
          {
-            myGuild = this.socialApi.getGuild();
-            this._allowModifyBoosts = myGuild.manageGuildBoosts;
+            this._allowModifyBoosts = this.socialApi.playerGuildRank.rights.indexOf(GuildRightsEnum.RIGHT_MANAGE_BOOSTS) != -1;
          }
          else
          {

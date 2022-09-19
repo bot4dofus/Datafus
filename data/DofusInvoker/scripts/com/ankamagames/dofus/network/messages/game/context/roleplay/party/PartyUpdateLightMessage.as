@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyUpdateLightMessage extends AbstractPartyEventMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 585;
+      public static const protocolId:uint = 139;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 585;
+         return 139;
       }
       
       public function initPartyUpdateLightMessage(partyId:uint = 0, id:Number = 0, lifePoints:uint = 0, maxLifePoints:uint = 0, prospecting:uint = 0, regenRate:uint = 0) : PartyUpdateLightMessage
@@ -110,7 +110,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
          {
             throw new Error("Forbidden value (" + this.prospecting + ") on element prospecting.");
          }
-         output.writeVarShort(this.prospecting);
+         output.writeVarInt(this.prospecting);
          if(this.regenRate < 0 || this.regenRate > 255)
          {
             throw new Error("Forbidden value (" + this.regenRate + ") on element regenRate.");
@@ -177,7 +177,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       private function _prospectingFunc(input:ICustomDataInput) : void
       {
-         this.prospecting = input.readVarUhShort();
+         this.prospecting = input.readVarUhInt();
          if(this.prospecting < 0)
          {
             throw new Error("Forbidden value (" + this.prospecting + ") on element of PartyUpdateLightMessage.prospecting.");

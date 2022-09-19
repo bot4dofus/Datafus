@@ -12,14 +12,14 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildJoinedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1218;
+      public static const protocolId:uint = 6855;
        
       
       private var _isInitialized:Boolean = false;
       
       public var guildInfo:GuildInformations;
       
-      public var memberRights:uint = 0;
+      public var rankId:uint = 0;
       
       private var _guildInfotree:FuncTree;
       
@@ -36,13 +36,13 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 1218;
+         return 6855;
       }
       
-      public function initGuildJoinedMessage(guildInfo:GuildInformations = null, memberRights:uint = 0) : GuildJoinedMessage
+      public function initGuildJoinedMessage(guildInfo:GuildInformations = null, rankId:uint = 0) : GuildJoinedMessage
       {
          this.guildInfo = guildInfo;
-         this.memberRights = memberRights;
+         this.rankId = rankId;
          this._isInitialized = true;
          return this;
       }
@@ -81,11 +81,11 @@ package com.ankamagames.dofus.network.messages.game.guild
       public function serializeAs_GuildJoinedMessage(output:ICustomDataOutput) : void
       {
          this.guildInfo.serializeAs_GuildInformations(output);
-         if(this.memberRights < 0)
+         if(this.rankId < 0)
          {
-            throw new Error("Forbidden value (" + this.memberRights + ") on element memberRights.");
+            throw new Error("Forbidden value (" + this.rankId + ") on element rankId.");
          }
-         output.writeVarInt(this.memberRights);
+         output.writeVarInt(this.rankId);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -97,7 +97,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       {
          this.guildInfo = new GuildInformations();
          this.guildInfo.deserialize(input);
-         this._memberRightsFunc(input);
+         this._rankIdFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -108,7 +108,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       public function deserializeAsyncAs_GuildJoinedMessage(tree:FuncTree) : void
       {
          this._guildInfotree = tree.addChild(this._guildInfotreeFunc);
-         tree.addChild(this._memberRightsFunc);
+         tree.addChild(this._rankIdFunc);
       }
       
       private function _guildInfotreeFunc(input:ICustomDataInput) : void
@@ -117,12 +117,12 @@ package com.ankamagames.dofus.network.messages.game.guild
          this.guildInfo.deserializeAsync(this._guildInfotree);
       }
       
-      private function _memberRightsFunc(input:ICustomDataInput) : void
+      private function _rankIdFunc(input:ICustomDataInput) : void
       {
-         this.memberRights = input.readVarUhInt();
-         if(this.memberRights < 0)
+         this.rankId = input.readVarUhInt();
+         if(this.rankId < 0)
          {
-            throw new Error("Forbidden value (" + this.memberRights + ") on element of GuildJoinedMessage.memberRights.");
+            throw new Error("Forbidden value (" + this.rankId + ") on element of GuildJoinedMessage.rankId.");
          }
       }
    }

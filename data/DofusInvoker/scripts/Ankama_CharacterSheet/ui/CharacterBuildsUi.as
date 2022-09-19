@@ -26,6 +26,7 @@ package Ankama_CharacterSheet.ui
    import com.ankamagames.dofus.datacenter.spells.Spell;
    import com.ankamagames.dofus.datacenter.spells.SpellConversion;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.items.BuildWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.MountWrapper;
@@ -339,6 +340,8 @@ package Ankama_CharacterSheet.ui
       
       private var _isForgettableSpellsUi:Boolean = false;
       
+      private var _isForgettableModstersUi:Boolean = false;
+      
       public function CharacterBuildsUi()
       {
          this._componentList = new Dictionary(true);
@@ -365,7 +368,8 @@ package Ankama_CharacterSheet.ui
       public function main(params:Object) : void
       {
          var shortcutColor:String = null;
-         this._isForgettableSpellsUi = this.configApi.isFeatureWithKeywordEnabled("character.spell.forgettable");
+         this._isForgettableSpellsUi = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS);
+         this._isForgettableModstersUi = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.MODSTERS);
          this.soundApi.playSound(SoundTypeEnum.OPEN_WINDOW);
          this.sysApi.addHook(HookList.CharacterStatsList,this.onCharacterStatsList);
          this.sysApi.addHook(HookList.FightEvent,this.onFightEvent);
@@ -2088,6 +2092,7 @@ package Ankama_CharacterSheet.ui
       
       public function onRelease(target:GraphicContainer) : void
       {
+         var uiName:String = null;
          var forgettableSpellsUiContainer:UiRootContainer = null;
          var isRoleplayOrPrefight:Boolean = false;
          var slotData:* = undefined;
@@ -2177,12 +2182,13 @@ package Ankama_CharacterSheet.ui
                this.onPopupSave();
                break;
             case this.lbl_manageSpellSets:
-               forgettableSpellsUiContainer = this.uiApi.getUi(UIEnum.FORGETTABLE_SPELLS_UI);
+               uiName = !!this._isForgettableModstersUi ? UIEnum.FORGETTABLE_MODSTERS_UI : UIEnum.FORGETTABLE_SPELLS_UI;
+               forgettableSpellsUiContainer = this.uiApi.getUi(uiName);
                if(!forgettableSpellsUiContainer)
                {
-                  this.sysApi.sendAction(new OpenForgettableSpellsUiAction([true]));
+                  this.sysApi.sendAction(new OpenForgettableSpellsUiAction([true,uiName]));
                }
-               else if(!this.uiApi.getUi(UIEnum.FORGETTABLE_SPELL_SETS_UI))
+               else if(!this.uiApi.getUi(UIEnum.FORGETTABLE_SPELL_SETS_UI) && !this.uiApi.getUi(UIEnum.FORGETTABLE_MODSTER_SETS_UI))
                {
                   forgettableSpellsUiContainer.uiClass.getSpellSets();
                }

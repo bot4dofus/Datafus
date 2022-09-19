@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.social
    public class AlliancedGuildFactSheetInformations extends GuildInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1714;
+      public static const protocolId:uint = 1200;
        
       
       public var allianceInfos:BasicNamedAllianceInformations;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.social
       
       override public function getTypeId() : uint
       {
-         return 1714;
+         return 1200;
       }
       
       public function initAlliancedGuildFactSheetInformations(guildId:uint = 0, guildName:String = "", guildLevel:uint = 0, guildEmblem:GuildEmblem = null, allianceInfos:BasicNamedAllianceInformations = null) : AlliancedGuildFactSheetInformations

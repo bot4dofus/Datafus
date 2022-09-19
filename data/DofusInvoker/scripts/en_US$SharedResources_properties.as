@@ -15,16 +15,16 @@ package
       override protected function getContent() : Object
       {
          return {
-            "dateFormat":"MM/DD/YYYY",
-            "dayNames":"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday",
-            "thousandsSeparatorFrom":",",
-            "monthNames":"January,February,March,April,May,June,July,August,September,October,November,December",
+            "thousandsSeparatorTo":",",
             "decimalSeparatorFrom":".",
+            "alignSymbol":"left",
+            "dateFormat":"MM/DD/YYYY",
+            "monthSymbol":"",
+            "dayNames":"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday",
             "currencySymbol":"$",
             "decimalSeparatorTo":".",
-            "thousandsSeparatorTo":",",
-            "monthSymbol":"",
-            "alignSymbol":"left"
+            "monthNames":"January,February,March,April,May,June,July,August,September,October,November,December",
+            "thousandsSeparatorFrom":","
          };
       }
    }

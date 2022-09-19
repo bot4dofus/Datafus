@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.web.haapi
    public class HaapiSessionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5486;
+      public static const protocolId:uint = 7022;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.web.haapi
       
       override public function getMessageId() : uint
       {
-         return 5486;
+         return 7022;
       }
       
       public function initHaapiSessionMessage(key:String = "", type:uint = 0) : HaapiSessionMessage

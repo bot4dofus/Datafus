@@ -4,6 +4,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.berilia.Berilia;
    import com.ankamagames.berilia.components.Texture;
    import com.ankamagames.berilia.components.params.TooltipProperties;
+   import com.ankamagames.berilia.enums.UIEnum;
    import com.ankamagames.berilia.factories.TooltipsFactory;
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.berilia.managers.UiModuleManager;
@@ -13,6 +14,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.datacenter.idols.Idol;
    import com.ankamagames.dofus.datacenter.items.Item;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.items.BuildWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.IdolsPresetWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
@@ -25,6 +27,8 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.common.managers.PopupManager;
    import com.ankamagames.dofus.logic.game.common.actions.AccessoryPreviewRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.GuildUpdateChestTabRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.OpenForgettableSpellsUiAction;
    import com.ankamagames.dofus.logic.game.common.managers.InventoryManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
@@ -49,6 +53,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.misc.enum.CharacterBuildType;
    import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.CraftHookList;
+   import com.ankamagames.dofus.misc.lists.ExchangeHookList;
    import com.ankamagames.dofus.misc.lists.ExternalGameHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.InventoryHookList;
@@ -63,7 +68,13 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.enums.PresetUseResultEnum;
    import com.ankamagames.dofus.network.enums.ShortcutBarEnum;
    import com.ankamagames.dofus.network.enums.SubEntityBindingPointCategoryEnum;
+   import com.ankamagames.dofus.network.messages.game.guild.GuildChestTabLastContributionMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.GuildUpdateChestTabRequestMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.chest.AddListenerOnSynchronizedStorageMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.chest.ListenersOfSynchronizedStorageMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.chest.RemoveListenerOnSynchronizedStorageMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.KamasUpdateMessage;
+   import com.ankamagames.dofus.network.messages.game.inventory.MultiTabStorageMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.DecraftResultMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.items.InventoryContentMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.items.InventoryWeightMessage;
@@ -108,6 +119,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.shortcut.ShortcutBarSwapRequestMessage;
    import com.ankamagames.dofus.network.types.game.data.items.ObjectItem;
    import com.ankamagames.dofus.network.types.game.data.items.ObjectItemQuantity;
+   import com.ankamagames.dofus.network.types.game.inventory.StorageTabInformation;
    import com.ankamagames.dofus.network.types.game.look.EntityLook;
    import com.ankamagames.dofus.network.types.game.look.SubEntity;
    import com.ankamagames.dofus.network.types.game.presets.ForgettableSpellsPreset;
@@ -195,6 +207,8 @@ package com.ankamagames.dofus.logic.game.common.frames
       private var _waitTimer:BenchmarkTimer;
       
       private var _chatText:String;
+      
+      public var guildChestTabs:Vector.<StorageTabInformation>;
       
       public function InventoryManagementFrame()
       {
@@ -348,6 +362,13 @@ package com.ankamagames.dofus.logic.game.common.frames
          var apmsg:AccessoryPreviewMessage = null;
          var previewLook:EntityLook = null;
          var drmsg:DecraftResultMessage = null;
+         var lossm:ListenersOfSynchronizedStorageMessage = null;
+         var alossm:AddListenerOnSynchronizedStorageMessage = null;
+         var rlossm:RemoveListenerOnSynchronizedStorageMessage = null;
+         var mtsm:MultiTabStorageMessage = null;
+         var guctra:GuildUpdateChestTabRequestAction = null;
+         var guctrm:GuildUpdateChestTabRequestMessage = null;
+         var gctlcm:GuildChestTabLastContributionMessage = null;
          var message:String = null;
          var itwa:ItemWrapper = null;
          var osait:ObjectItem = null;
@@ -916,7 +937,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   }
                   else if(preset is IconNamedPreset)
                   {
-                     forgettableSpellsActivated = FeatureManager.getInstance().isFeatureWithKeywordEnabled("character.spell.forgettable");
+                     forgettableSpellsActivated = FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS);
                      buildPreset = preset as IconNamedPreset;
                      _log.debug(" - " + buildPreset.id + "  build   " + buildPreset.name);
                      fullStatsPreset = null;
@@ -1117,7 +1138,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                else if(psmsg.preset is IconNamedPreset)
                {
-                  forgettableSpellsActivated = FeatureManager.getInstance().isFeatureWithKeywordEnabled("character.spell.forgettable");
+                  forgettableSpellsActivated = FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS);
                   newBuild = psmsg.preset as IconNamedPreset;
                   _log.debug("Saved " + newBuild.id + "  build   " + newBuild.name);
                   fullStatsPresetSaved = null;
@@ -1365,6 +1386,35 @@ package com.ankamagames.dofus.logic.game.common.frames
                drmsg = msg as DecraftResultMessage;
                KernelEventsManager.getInstance().processCallback(CraftHookList.DecraftResult,drmsg.results);
                return true;
+            case msg is ListenersOfSynchronizedStorageMessage:
+               lossm = msg as ListenersOfSynchronizedStorageMessage;
+               KernelEventsManager.getInstance().processCallback(InventoryHookList.ListenersOfSynchronizedStorage,lossm.players);
+               return true;
+            case msg is AddListenerOnSynchronizedStorageMessage:
+               alossm = msg as AddListenerOnSynchronizedStorageMessage;
+               KernelEventsManager.getInstance().processCallback(InventoryHookList.AddListenerOfSynchronizedStorage,alossm.player);
+               return true;
+            case msg is RemoveListenerOnSynchronizedStorageMessage:
+               rlossm = msg as RemoveListenerOnSynchronizedStorageMessage;
+               KernelEventsManager.getInstance().processCallback(InventoryHookList.RemoveListenerOfSynchronizedStorage,rlossm.player);
+               return true;
+            case msg is MultiTabStorageMessage:
+               mtsm = msg as MultiTabStorageMessage;
+               PlayedCharacterManager.getInstance().guildChestLastContributionDate = -1;
+               this.guildChestTabs = mtsm.tabs.concat();
+               KernelEventsManager.getInstance().processCallback(ExchangeHookList.MultiTabStorage,mtsm.tabs);
+               return true;
+            case msg is GuildUpdateChestTabRequestAction:
+               guctra = msg as GuildUpdateChestTabRequestAction;
+               guctrm = new GuildUpdateChestTabRequestMessage();
+               guctrm.initGuildUpdateChestTabRequestMessage(guctra.storageTabInfo);
+               ConnectionsHandler.getConnection().send(guctrm);
+               return true;
+            case msg is GuildChestTabLastContributionMessage:
+               gctlcm = msg as GuildChestTabLastContributionMessage;
+               PlayedCharacterManager.getInstance().guildChestLastContributionDate = gctlcm.lastContributionDate;
+               KernelEventsManager.getInstance().processCallback(ExchangeHookList.GuildChestLastContribution,gctlcm.lastContributionDate);
+               return true;
          }
          return false;
       }
@@ -1469,6 +1519,14 @@ package com.ankamagames.dofus.logic.game.common.frames
             else
             {
                ConnectionsHandler.getConnection().send(oumsg);
+            }
+            if(iw.typeId == DataEnum.ITEM_TYPE_MODSTER)
+            {
+               if(Berilia.getInstance().getUi(UIEnum.STORAGE_UI) != null)
+               {
+                  Berilia.getInstance().unloadUi(UIEnum.STORAGE_UI);
+               }
+               Kernel.getWorker().process(OpenForgettableSpellsUiAction.create(false,UIEnum.FORGETTABLE_MODSTERS_UI));
             }
          }
       }

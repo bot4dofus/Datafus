@@ -9,6 +9,7 @@ package com.ankamagames.dofus.logic.game.common.managers
    import com.ankamagames.dofus.logic.game.common.misc.IStorageView;
    import com.ankamagames.dofus.logic.game.common.misc.Inventory;
    import com.ankamagames.dofus.logic.game.common.misc.inventoryView.BankAssociatedRunesView;
+   import com.ankamagames.dofus.logic.game.common.misc.inventoryView.ForgettableModstersFilterView;
    import com.ankamagames.dofus.logic.game.common.misc.inventoryView.ForgettableSpellsFilterView;
    import com.ankamagames.dofus.logic.game.common.misc.inventoryView.StorageBidHouseFilterView;
    import com.ankamagames.dofus.logic.game.common.misc.inventoryView.StorageCraftFilterView;
@@ -312,6 +313,11 @@ package com.ankamagames.dofus.logic.game.common.managers
          {
             return view;
          }
+         view = this.inventory.getView("forgettableModstersFilter") as IStorageView;
+         if(view)
+         {
+            return view;
+         }
          return this.getStorageViewOrFilter();
       }
       
@@ -498,6 +504,7 @@ package com.ankamagames.dofus.logic.game.common.managers
          var smithMagicFilterView:StorageSmithMagicFilterView = null;
          var craftFilterView:StorageCraftFilterView = null;
          var forgettableSpellsFilterView:ForgettableSpellsFilterView = null;
+         var forgettableModstersFilterView:ForgettableModstersFilterView = null;
          var parentView:IStorageView = this.getStorageViewOrFilter();
          if(this.getIsBidHouseFilterEnabled())
          {
@@ -523,6 +530,12 @@ package com.ankamagames.dofus.logic.game.common.managers
             forgettableSpellsFilterView.parent = parentView;
             this.refreshView("forgettableSpellsFilter");
          }
+         if(this.getIsForgettableModstersFilterEnabled())
+         {
+            forgettableModstersFilterView = this.inventory.getView("forgettableModstersFilter") as ForgettableModstersFilterView;
+            forgettableModstersFilterView.parent = parentView;
+            this.refreshView("forgettableModstersFilter");
+         }
       }
       
       private function refreshView(viewName:String) : void
@@ -539,11 +552,23 @@ package com.ankamagames.dofus.logic.game.common.managers
          return this.inventory.getView("forgettableSpellsFilter") !== null;
       }
       
+      public function getIsForgettableModstersFilterEnabled() : Boolean
+      {
+         return this.inventory.getView("forgettableModstersFilter") !== null;
+      }
+      
       public function enableForgettableSpellsFilter(allowedTypes:Vector.<uint>, isHideLearnedSpells:Boolean) : void
       {
          this.disableBidHouseFilter();
          this.inventory.addView(new ForgettableSpellsFilterView(this.inventory.hookLock,this.currentStorageView,allowedTypes,isHideLearnedSpells));
-         InventoryManager.getInstance().inventory.refillView("storageResources","forgettableSpellsFilter");
+         InventoryManager.getInstance().inventory.refillView("storageConsumables","forgettableSpellsFilter");
+      }
+      
+      public function enableForgettableModstersFilter(allowedTypes:Vector.<uint>, isHideLearnedSpells:Boolean) : void
+      {
+         this.disableBidHouseFilter();
+         this.inventory.addView(new ForgettableModstersFilterView(this.inventory.hookLock,this.currentStorageView,allowedTypes,isHideLearnedSpells));
+         InventoryManager.getInstance().inventory.refillView("storageConsumables","forgettableModstersFilter");
       }
       
       public function disableForgettableSpellsFilter() : void
@@ -551,6 +576,14 @@ package com.ankamagames.dofus.logic.game.common.managers
          if(this.inventory.getView("forgettableSpellsFilter"))
          {
             this.inventory.removeView("forgettableSpellsFilter");
+         }
+      }
+      
+      public function disableForgettableModstersFilter() : void
+      {
+         if(this.inventory.getView("forgettableModstersFilter"))
+         {
+            this.inventory.removeView("forgettableModstersFilter");
          }
       }
       

@@ -1,7 +1,5 @@
 package com.ankamagames.atouin.entities.behaviours.movements
 {
-   import com.ankamagames.jerakine.utils.errors.SingletonError;
-   
    public class MountedMovementBehavior extends AnimatedMovementBehavior
    {
       
@@ -12,26 +10,16 @@ package com.ankamagames.atouin.entities.behaviours.movements
       private static const RUN_VERTICAL_DIAGONAL_VELOCITY:Number = 1 / 120;
       
       private static const RUN_ANIMATION:String = "AnimCourse";
-      
-      private static var _self:MountedMovementBehavior;
        
       
       public function MountedMovementBehavior()
       {
          super();
-         if(_self)
-         {
-            throw new SingletonError("Warning : MountedMovementBehavior is a singleton class and shoulnd\'t be instancied directly!");
-         }
       }
       
-      public static function getInstance() : MountedMovementBehavior
+      public static function getInstance(speedAdjust:Number = 0.0) : MountedMovementBehavior
       {
-         if(!_self)
-         {
-            _self = new MountedMovementBehavior();
-         }
-         return _self;
+         return getFromCache(speedAdjust,MountedMovementBehavior) as MountedMovementBehavior;
       }
       
       override protected function getLinearVelocity() : Number

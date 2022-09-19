@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
    public class CharacterUsableCharacteristicDetailed extends CharacterCharacteristicDetailed implements INetworkType
    {
       
-      public static const protocolId:uint = 9575;
+      public static const protocolId:uint = 8623;
        
       
       public var used:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       
       override public function getTypeId() : uint
       {
-         return 9575;
+         return 8623;
       }
       
       public function initCharacterUsableCharacteristicDetailed(characteristicId:int = 0, base:int = 0, additional:int = 0, objectsAndMountBonus:int = 0, alignGiftBonus:int = 0, contextModif:int = 0, used:uint = 0) : CharacterUsableCharacteristicDetailed
@@ -48,7 +48,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
          {
             throw new Error("Forbidden value (" + this.used + ") on element used.");
          }
-         output.writeVarShort(this.used);
+         output.writeVarInt(this.used);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -75,7 +75,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       
       private function _usedFunc(input:ICustomDataInput) : void
       {
-         this.used = input.readVarUhShort();
+         this.used = input.readVarUhInt();
          if(this.used < 0)
          {
             throw new Error("Forbidden value (" + this.used + ") on element of CharacterUsableCharacteristicDetailed.used.");

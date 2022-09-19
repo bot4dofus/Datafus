@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.debug
    public class DebugHighlightCellsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 307;
+      public static const protocolId:uint = 7229;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.debug
       
       override public function getMessageId() : uint
       {
-         return 307;
+         return 7229;
       }
       
       public function initDebugHighlightCellsMessage(color:Number = 0, cells:Vector.<uint> = null) : DebugHighlightCellsMessage

@@ -17,7 +17,7 @@ package com.ankamagames.dofus.logic.game.common.misc
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(Inventory));
        
       
-      private var _itemsDict:Dictionary;
+      private var _itemsDict:ItemDict;
       
       private var _views:Dictionary;
       
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.logic.game.common.misc
       
       public function Inventory()
       {
-         this._itemsDict = new Dictionary();
+         this._itemsDict = new ItemDict();
          this._hookLock = new HookLock();
          super();
          this._views = new Dictionary();
@@ -47,6 +47,11 @@ package com.ankamagames.dofus.logic.game.common.misc
       {
          this._kamas = value;
          StorageOptionManager.getInstance().updateStorageView();
+      }
+      
+      public function get objectNumber() : int
+      {
+         return this._itemsDict.length;
       }
       
       public function addView(view:IInventoryView) : void
@@ -70,16 +75,17 @@ package com.ankamagames.dofus.logic.game.common.misc
       
       public function getItem(uid:int) : ItemWrapper
       {
-         if(this._itemsDict[uid])
+         var itemSet:ItemSet = this._itemsDict.getObject(uid);
+         if(itemSet)
          {
-            return (this._itemsDict[uid] as ItemSet).item;
+            return itemSet.item;
          }
          return null;
       }
       
       public function getItemMaskCount(uid:int, mask:String) : int
       {
-         var itemSet:ItemSet = this._itemsDict[uid];
+         var itemSet:ItemSet = this._itemsDict.getObject(uid);
          if(!itemSet)
          {
             _log.error("Suppression d\'un item qui n\'existe pas");
@@ -96,11 +102,11 @@ package com.ankamagames.dofus.logic.game.common.misc
       {
          var item:ItemWrapper = null;
          var itemSet:ItemSet = null;
-         this._itemsDict = new Dictionary();
+         this._itemsDict = new ItemDict();
          for each(item in items)
          {
             itemSet = new ItemSet(item);
-            this._itemsDict[item.objectUID] = itemSet;
+            this._itemsDict.addObject(item.objectUID,itemSet);
          }
          this.initializeViews(items);
       }
@@ -110,14 +116,14 @@ package com.ankamagames.dofus.logic.game.common.misc
          var i:int = 0;
          var iw:ItemWrapper = null;
          var item:ObjectItem = null;
-         this._itemsDict = new Dictionary();
+         this._itemsDict = new ItemDict();
          var list:Vector.<ItemWrapper> = new Vector.<ItemWrapper>();
          var l:int = items.length;
          for(i = 0; i < l; i++)
          {
             item = items[i];
             iw = ItemWrapper.create(item.position,item.objectUID,item.objectGID,item.quantity,item.effects);
-            this._itemsDict[item.objectUID] = new ItemSet(iw);
+            this._itemsDict.addObject(item.objectUID,new ItemSet(iw));
             list.push(iw);
          }
          this.initializeViews(list);
@@ -132,7 +138,7 @@ package com.ankamagames.dofus.logic.game.common.misc
       public function addItem(item:ItemWrapper) : void
       {
          var oldItem:ItemWrapper = null;
-         var itemSet:ItemSet = this._itemsDict[item.objectUID];
+         var itemSet:ItemSet = this._itemsDict.getObject(item.objectUID);
          if(itemSet)
          {
             oldItem = item.clone();
@@ -143,7 +149,7 @@ package com.ankamagames.dofus.logic.game.common.misc
          else
          {
             itemSet = new ItemSet(item);
-            this._itemsDict[item.objectUID] = itemSet;
+            this._itemsDict.addObject(item.objectUID,itemSet);
             this.addItemToViews(itemSet);
          }
       }
@@ -151,7 +157,7 @@ package com.ankamagames.dofus.logic.game.common.misc
       public function removeItem(itemUID:int, quantity:int = -1) : void
       {
          var oldItem:ItemWrapper = null;
-         var itemSet:ItemSet = this._itemsDict[itemUID];
+         var itemSet:ItemSet = this._itemsDict.getObject(itemUID);
          if(!itemSet)
          {
             _log.error("Suppression d\'un item qui n\'existe pas");
@@ -159,7 +165,7 @@ package com.ankamagames.dofus.logic.game.common.misc
          }
          if(quantity == -1 || quantity == itemSet.item.quantity)
          {
-            delete this._itemsDict[itemUID];
+            this._itemsDict.removeObject(itemUID);
             this.removeItemFromViews(itemSet);
          }
          else
@@ -177,7 +183,7 @@ package com.ankamagames.dofus.logic.game.common.misc
       
       public function modifyItemQuantity(itemUID:int, quantity:int) : void
       {
-         var itemSet:ItemSet = this._itemsDict[itemUID];
+         var itemSet:ItemSet = this._itemsDict.getObject(itemUID);
          if(!itemSet)
          {
             _log.error("On essaye de modifier la quantité d\'un objet qui n\'existe pas");
@@ -190,7 +196,7 @@ package com.ankamagames.dofus.logic.game.common.misc
       
       public function modifyItemPosition(itemUID:int, position:int) : void
       {
-         var itemSet:ItemSet = this._itemsDict[itemUID];
+         var itemSet:ItemSet = this._itemsDict.getObject(itemUID);
          if(!itemSet)
          {
             _log.error("On essaye de modifier la position d\'un objet qui n\'existe pas");
@@ -235,7 +241,7 @@ package com.ankamagames.dofus.logic.game.common.misc
       public function modifyItem(item:ItemWrapper) : void
       {
          var oldItem:ItemWrapper = null;
-         var itemSet:ItemSet = this._itemsDict[item.objectUID];
+         var itemSet:ItemSet = this._itemsDict.getObject(item.objectUID);
          if(itemSet)
          {
             oldItem = itemSet.item.clone();
@@ -250,7 +256,7 @@ package com.ankamagames.dofus.logic.game.common.misc
       
       public function addItemMask(objectUID:int, name:String, size:int) : void
       {
-         var itemSet:ItemSet = this._itemsDict[objectUID];
+         var itemSet:ItemSet = this._itemsDict.getObject(objectUID);
          if(!itemSet)
          {
             _log.error("On essaye de masquer un item qui n\'existe pas dans l\'inventaire");
@@ -262,7 +268,7 @@ package com.ankamagames.dofus.logic.game.common.misc
       
       public function removeItemMask(objectUID:int, name:String) : void
       {
-         var itemSet:ItemSet = this._itemsDict[objectUID];
+         var itemSet:ItemSet = this._itemsDict.getObject(objectUID);
          if(!itemSet)
          {
             return;
@@ -274,7 +280,7 @@ package com.ankamagames.dofus.logic.game.common.misc
       public function removeAllItemMasks(name:String) : void
       {
          var itemSet:ItemSet = null;
-         for each(itemSet in this._itemsDict)
+         for each(itemSet in this._itemsDict.objects)
          {
             if(itemSet.masks[name])
             {
@@ -398,5 +404,56 @@ class ItemSet
    public function set masks(value:Dictionary) : void
    {
       this._masks = value;
+   }
+}
+
+import flash.utils.Dictionary;
+
+class ItemDict
+{
+    
+   
+   private var _itemsDict:Dictionary;
+   
+   private var _dictLength:int = 0;
+   
+   function ItemDict()
+   {
+      this._itemsDict = new Dictionary();
+      super();
+   }
+   
+   public function get length() : uint
+   {
+      return this._dictLength;
+   }
+   
+   public function addObject(objectUid:uint, itemSet:ItemSet) : void
+   {
+      if(!this._itemsDict[objectUid])
+      {
+         ++this._dictLength;
+      }
+      this._itemsDict[objectUid] = itemSet;
+   }
+   
+   public function removeObject(objectUid:uint) : void
+   {
+      if(!this._itemsDict[objectUid])
+      {
+         return;
+      }
+      delete this._itemsDict[objectUid];
+      --this._dictLength;
+   }
+   
+   public function getObject(objectUid:uint) : ItemSet
+   {
+      return this._itemsDict[objectUid];
+   }
+   
+   public function get objects() : Dictionary
+   {
+      return this._itemsDict;
    }
 }

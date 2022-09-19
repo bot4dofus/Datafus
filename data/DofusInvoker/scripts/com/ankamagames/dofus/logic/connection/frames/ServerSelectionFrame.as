@@ -2,7 +2,6 @@ package com.ankamagames.dofus.logic.connection.frames
 {
    import com.ankamagames.berilia.Berilia;
    import com.ankamagames.berilia.managers.KernelEventsManager;
-   import com.ankamagames.berilia.managers.UiModuleManager;
    import com.ankamagames.dofus.datacenter.servers.Server;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
@@ -27,7 +26,6 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.network.messages.connection.search.AcquaintanceServerListMessage;
    import com.ankamagames.dofus.network.types.common.AccountTagInformation;
    import com.ankamagames.dofus.network.types.connection.GameServerInformations;
-   import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.messages.Frame;
@@ -54,8 +52,6 @@ package com.ankamagames.dofus.logic.connection.frames
       private var _selectedServer:SelectedServerDataMessage;
       
       private var _worker:Worker;
-      
-      private var _alreadyConnectedToServerId:int = 0;
       
       private var _serverSelectionAction:ServerSelectionAction;
       
@@ -125,16 +121,13 @@ package com.ankamagames.dofus.logic.connection.frames
          var ssrmsg:SelectedServerRefusedMessage = null;
          var error:* = null;
          var mslm:MigratedServerListMessage = null;
+         var scfm:ServerConnectionFailedMessage = null;
+         var formerPort:uint = 0;
          var knownServer:GameServerInformations = null;
-         var serverAlreadyInName:String = null;
-         var serverSelectedName:String = null;
-         var commonMod:Object = null;
          var server:* = undefined;
          var ssmsg:ServerSelectionMessage = null;
          var errorText:* = null;
          var port:uint = 0;
-         var scfm:ServerConnectionFailedMessage = null;
-         var formerPort:uint = 0;
          var newPort:uint = 0;
          switch(true)
          {
@@ -143,7 +136,6 @@ package com.ankamagames.dofus.logic.connection.frames
                PlayerManager.getInstance().server = null;
                this._serversList = slmsg.servers;
                this._serversList.sort(serverDateSortFunction);
-               this._alreadyConnectedToServerId = slmsg.alreadyConnectedToServerId;
                initFrame = Kernel.getWorker().getFrame(InitializationFrame);
                if(initFrame)
                {
@@ -179,15 +171,6 @@ package com.ankamagames.dofus.logic.connection.frames
                return true;
             case msg is ServerSelectionAction:
                ssaction = msg as ServerSelectionAction;
-               if(this._alreadyConnectedToServerId > 0 && ssaction.serverId != this._alreadyConnectedToServerId)
-               {
-                  this._serverSelectionAction = ssaction;
-                  serverAlreadyInName = Server.getServerById(this._alreadyConnectedToServerId).name;
-                  serverSelectedName = Server.getServerById(ssaction.serverId).name;
-                  commonMod = UiModuleManager.getInstance().getModule("Ankama_Common").mainClass;
-                  commonMod.openPopup(I18n.getUiText("ui.popup.warning"),I18n.getUiText("ui.server.alreadyInFightOnAnotherServer",[serverAlreadyInName,serverSelectedName]),[I18n.getUiText("ui.common.ok"),I18n.getUiText("ui.common.cancel")],[this.onValidServerSelection,this.onCancelServerSelection],this.onValidServerSelection,this.onCancelServerSelection);
-                  return true;
-               }
                for each(server in this._serversList)
                {
                   if(server.id == ssaction.serverId)
@@ -228,7 +211,6 @@ package com.ankamagames.dofus.logic.connection.frames
                   }
                }
                return true;
-               break;
             case msg is SelectedServerDataExtendedMessage:
                ssdemsg = msg as SelectedServerDataExtendedMessage;
                this._serversList = ssdemsg.servers;
@@ -448,7 +430,6 @@ package com.ankamagames.dofus.logic.connection.frames
       
       private function onValidServerSelection() : void
       {
-         this._alreadyConnectedToServerId = 0;
          this.process(this._serverSelectionAction);
          this._serverSelectionAction = null;
       }

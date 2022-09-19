@@ -36,7 +36,7 @@ package com.ankamagames.dofus.internalDatacenter.guild
          {
             pgi = paddockInstanceInfo as PaddockGuildedInformations;
             paddock.isAbandonned = pgi.deserted;
-            paddock.guildIdentity = GuildWrapper.create(pgi.guildInfo.guildId,pgi.guildInfo.guildName,pgi.guildInfo.guildEmblem,0);
+            paddock.guildIdentity = GuildWrapper.create(pgi.guildInfo.guildId,pgi.guildInfo.guildName,pgi.guildInfo.guildEmblem);
          }
          return paddock;
       }

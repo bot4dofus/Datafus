@@ -10,6 +10,7 @@ package Ankama_ContextMenu
    import Ankama_ContextMenu.contextMenu.ContextMenuSeparator;
    import Ankama_ContextMenu.contextMenu.ContextMenuTitle;
    import Ankama_ContextMenu.makers.AccountMenuMaker;
+   import Ankama_ContextMenu.makers.AlterationMenuMaker;
    import Ankama_ContextMenu.makers.CompanionMenuMaker;
    import Ankama_ContextMenu.makers.FightAllyMenuMaker;
    import Ankama_ContextMenu.makers.FightWorldMenuMaker;
@@ -226,6 +227,7 @@ package Ankama_ContextMenu
          this.menuApi.registerMenuMaker("fightAlly",FightAllyMenuMaker);
          this.menuApi.registerMenuMaker("interactiveElement",InteractiveElementMenuMaker);
          this.menuApi.registerMenuMaker("house",HouseMenuMaker);
+         this.menuApi.registerMenuMaker("alteration",AlterationMenuMaker);
       }
       
       public function getMenuMaker(label:String) : Object

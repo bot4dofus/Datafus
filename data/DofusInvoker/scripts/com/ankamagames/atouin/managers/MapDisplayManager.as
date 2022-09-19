@@ -132,7 +132,7 @@ package com.ankamagames.atouin.managers
       public function fromMap(map:Map, decryptionKey:ByteArray = null, renderFixture:Boolean = true) : uint
       {
          this._currentMap = WorldPoint.fromMapId(map.id);
-         var request:RenderRequest = new RenderRequest(this._currentMap,false,decryptionKey,renderFixture);
+         var request:RenderRequest = new RenderRequest(this._currentMap,false,renderFixture);
          this._renderRequestStack.push(request);
          this._currentRenderId = request.renderId;
          Atouin.getInstance().showWorld(true);
@@ -144,9 +144,9 @@ package com.ankamagames.atouin.managers
          return this._currentRenderId;
       }
       
-      public function display(pMap:WorldPoint, forceReloadWithoutCache:Boolean = false, decryptionKey:ByteArray = null, renderFixture:Boolean = true, displayWorld:Boolean = true) : uint
+      public function display(pMap:WorldPoint, forceReloadWithoutCache:Boolean = false, renderFixture:Boolean = true, displayWorld:Boolean = true) : uint
       {
-         var request:RenderRequest = new RenderRequest(pMap,forceReloadWithoutCache,decryptionKey,renderFixture,displayWorld);
+         var request:RenderRequest = new RenderRequest(pMap,forceReloadWithoutCache,renderFixture,displayWorld);
          _log.debug("Ask render map " + pMap.mapId + ", renderRequestID: " + request.renderId);
          this._renderRequestStack.push(request);
          this.checkForRender(displayWorld);
@@ -359,7 +359,7 @@ package com.ankamagames.atouin.managers
          {
             try
             {
-               map.fromRaw(e.resource,request.decryptionKey);
+               map.fromRaw(e.resource);
             }
             catch(err:Error)
             {
@@ -509,7 +509,6 @@ package com.ankamagames.atouin.managers
 }
 
 import com.ankamagames.jerakine.types.positions.WorldPoint;
-import flash.utils.ByteArray;
 
 class RenderRequest
 {
@@ -523,19 +522,16 @@ class RenderRequest
    
    public var forceReloadWithoutCache:Boolean;
    
-   public var decryptionKey:ByteArray;
-   
    public var renderFixture:Boolean;
    
    public var displayWorld:Boolean;
    
-   function RenderRequest(map:WorldPoint, forceReloadWithoutCache:Boolean, decryptionKey:ByteArray, renderFixture:Boolean = true, displayWorld:Boolean = true)
+   function RenderRequest(map:WorldPoint, forceReloadWithoutCache:Boolean, renderFixture:Boolean = true, displayWorld:Boolean = true)
    {
       super();
       this.renderId = RENDER_ID++;
       this.map = map;
       this.forceReloadWithoutCache = forceReloadWithoutCache;
-      this.decryptionKey = decryptionKey;
       this.renderFixture = renderFixture;
       this.displayWorld = displayWorld;
    }

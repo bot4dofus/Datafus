@@ -11,7 +11,6 @@ package Ankama_Storage.ui.behavior
    import com.ankamagames.dofus.internalDatacenter.jobs.KnownJobWrapper;
    import com.ankamagames.dofus.logic.game.roleplay.actions.LeaveDialogRequestAction;
    import com.ankamagames.dofus.misc.lists.ExchangeHookList;
-   import com.ankamagames.dofus.misc.lists.InventoryHookList;
    
    public class CraftBehavior implements IStorageBehavior
    {
@@ -76,12 +75,6 @@ package Ankama_Storage.ui.behavior
                item = this._storage.grid.selectedItem;
                switch(selectMethod)
                {
-                  case SelectMethodEnum.CLICK:
-                     if(!Api.system.getOption("displayTooltips","dofus"))
-                     {
-                        Api.system.dispatchHook(InventoryHookList.ObjectSelected,{"data":item});
-                     }
-                     break;
                   case SelectMethodEnum.DOUBLE_CLICK:
                      if(Api.inventory.getItem(item.objectUID))
                      {

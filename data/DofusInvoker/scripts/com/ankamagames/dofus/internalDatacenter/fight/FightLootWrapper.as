@@ -2,6 +2,7 @@ package com.ankamagames.dofus.internalDatacenter.fight
 {
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.network.types.game.context.fight.FightLoot;
+   import com.ankamagames.dofus.network.types.game.context.fight.FightLootObject;
    import com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
    
@@ -15,11 +16,12 @@ package com.ankamagames.dofus.internalDatacenter.fight
       
       public function FightLootWrapper(loot:FightLoot)
       {
+         var reward:FightLootObject = null;
          super();
          this.objects = new Array();
-         for(var i:uint = 0; i < loot.objects.length; i += 2)
+         for each(reward in loot.objects)
          {
-            this.objects.push(ItemWrapper.create(63,0,loot.objects[i],loot.objects[i + 1],new Vector.<ObjectEffect>(),false));
+            this.objects.push(ItemWrapper.create(63,0,reward.objectId,reward.quantity,new Vector.<ObjectEffect>(),false,reward.priorityHint));
          }
          this.kamas = loot.kamas;
       }

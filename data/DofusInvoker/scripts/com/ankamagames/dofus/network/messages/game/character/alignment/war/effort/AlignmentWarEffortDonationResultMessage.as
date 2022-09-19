@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.alignment.war.effo
    public class AlignmentWarEffortDonationResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6010;
+      public static const protocolId:uint = 4122;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.character.alignment.war.effo
       
       override public function getMessageId() : uint
       {
-         return 6010;
+         return 4122;
       }
       
       public function initAlignmentWarEffortDonationResultMessage(result:int = 4) : AlignmentWarEffortDonationResultMessage

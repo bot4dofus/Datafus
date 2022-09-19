@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.death
    public class GameRolePlayFreeSoulRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2760;
+      public static const protocolId:uint = 1792;
        
       
       public function GameRolePlayFreeSoulRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.death
       
       override public function getMessageId() : uint
       {
-         return 2760;
+         return 1792;
       }
       
       public function initGameRolePlayFreeSoulRequestMessage() : GameRolePlayFreeSoulRequestMessage

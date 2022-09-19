@@ -90,11 +90,11 @@ package Ankama_Social.ui
             icon = this.dataApi.getEmblemSymbol(this.guild.upEmblem.idEmblem);
             if(icon.colorizable)
             {
-               this.utilApi.changeColor(this.tx_emblemUpGuild.getChildByName("up"),this.guild.upEmblem.color,0);
+               this.utilApi.changeColor(this.tx_emblemUpGuild,this.guild.upEmblem.color,0);
             }
             else
             {
-               this.utilApi.changeColor(this.tx_emblemUpGuild.getChildByName("up"),this.guild.upEmblem.color,0,true);
+               this.utilApi.changeColor(this.tx_emblemUpGuild,this.guild.upEmblem.color,0,true);
             }
          }
       }

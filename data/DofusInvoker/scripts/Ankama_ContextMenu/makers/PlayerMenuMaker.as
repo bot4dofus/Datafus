@@ -9,6 +9,7 @@ package Ankama_ContextMenu.makers
    import com.ankamagames.dofus.datacenter.world.SubArea;
    import com.ankamagames.dofus.datacenter.world.SuperArea;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.conquest.PrismSubAreaWrapper;
    import com.ankamagames.dofus.internalDatacenter.fight.FighterInformations;
    import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
@@ -60,6 +61,7 @@ package Ankama_ContextMenu.makers
    import com.ankamagames.dofus.network.enums.AlignmentSideEnum;
    import com.ankamagames.dofus.network.enums.BuildTypeEnum;
    import com.ankamagames.dofus.network.enums.ExchangeTypeEnum;
+   import com.ankamagames.dofus.network.enums.GuildRightsEnum;
    import com.ankamagames.dofus.network.enums.PrismStateEnum;
    import com.ankamagames.dofus.network.enums.PvpArenaTypeEnum;
    import com.ankamagames.dofus.network.types.game.character.alignment.ActorAlignmentInformations;
@@ -699,7 +701,7 @@ package Ankama_ContextMenu.makers
                   menu.push(ContextMenu.static_createContextMenuItemObject(Api.ui.getText("ui.party.addToArena"),this.onArenaInvite,[pPlayerName],disabled));
                }
             }
-            if(Api.social.hasGuild() && Api.social.hasGuildRight(playerInfos.id,"inviteNewMembers"))
+            if(Api.social.hasGuild() && Api.social.hasGuildRight(playerInfos.id,GuildRightsEnum.RIGHT_MANAGE_APPLY_AND_INVITATION))
             {
                if(!pPlayerGuild)
                {
@@ -852,7 +854,7 @@ package Ankama_ContextMenu.makers
          {
             return 1;
          }
-         var sh:Boolean = Api.config.isFeatureWithKeywordEnabled("server.heroic");
+         var sh:Boolean = Api.config.isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER);
          var myAlliance:AllianceWrapper = Api.social.getAlliance();
          var subAreaWithPrism:Boolean = currentPrism && currentPrism.mapId != -1;
          var prismNotVulnerableAndSH:Boolean = false;

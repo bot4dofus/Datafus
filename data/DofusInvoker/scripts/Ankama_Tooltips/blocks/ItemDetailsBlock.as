@@ -89,7 +89,7 @@ package Ankama_Tooltips.blocks
          }
          chunkParams = this.getItemDetailsChunkParams();
          _content += _block.getChunk("details").processContent(chunkParams);
-         if(this._item.type && (this._item.type.id == DataEnum.ITEM_TYPE_BREEDING_ITEM || this._item.type.id == DataEnum.ITEM_TYPE_COMPANION))
+         if(this._item.type && (this._item.type.id == DataEnum.ITEM_TYPE_BREEDING_ITEM || this._item.type.id == DataEnum.ITEM_TYPE_COMPANION || this._item.type.superTypeId === DataEnum.ITEM_SUPERTYPE_COLLAR || this._item.type.superTypeId === DataEnum.ITEM_SUPERTYPE_WEAPON || this._item.type.superTypeId === DataEnum.ITEM_SUPERTYPE_RING || this._item.type.superTypeId === DataEnum.ITEM_SUPERTYPE_BELT || this._item.type.superTypeId === DataEnum.ITEM_SUPERTYPE_SHOES || this._item.type.superTypeId === DataEnum.ITEM_SUPERTYPE_SHIELD || this._item.type.superTypeId === DataEnum.ITEM_SUPERTYPE_HELMET || this._item.type.superTypeId === DataEnum.ITEM_SUPERTYPE_CAPE))
          {
             leftUseDescription = "";
             for each(effect in this._item.effects)

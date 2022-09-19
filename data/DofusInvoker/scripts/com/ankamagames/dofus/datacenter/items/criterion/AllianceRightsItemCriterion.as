@@ -53,7 +53,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
          switch(criterionValue)
          {
             case AllianceRightsBitEnum.ALLIANCE_RIGHT_BOSS:
-               readableCriterionValue = I18n.getUiText("ui.guild.right.leader");
+               readableCriterionValue = I18n.getUiText("ui.alliance.right.leader");
                break;
             case AllianceRightsBitEnum.ALLIANCE_RIGHT_KICK_GUILDS:
                readableCriterionValue = I18n.getUiText("ui.social.guildRightsBann");

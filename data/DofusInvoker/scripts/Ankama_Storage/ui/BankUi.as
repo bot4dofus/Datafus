@@ -61,8 +61,8 @@ package Ankama_Storage.ui
                if(!playerApi.isInHavenbag())
                {
                   _hasSlot = true;
-                  _slotsMax = !param.maxSlots ? uint(0) : uint(param.maxSlots);
-                  tx_weightBar.visible = _slotsMax != 0;
+                  slotsMax = !param.maxSlots ? uint(0) : uint(param.maxSlots);
+                  tx_weightBar.visible = slotsMax != 0;
                }
                else
                {
@@ -79,24 +79,24 @@ package Ankama_Storage.ui
             case ExchangeTypeEnum.BANK:
                lbl_title.text = uiApi.getText("ui.common.bank");
                _hasSlot = true;
-               _slotsMax = !param.maxSlots ? uint(0) : uint(param.maxSlots);
-               tx_weightBar.visible = _slotsMax != 0;
+               slotsMax = !param.maxSlots ? uint(0) : uint(param.maxSlots);
+               tx_weightBar.visible = slotsMax != 0;
                lbl_kamas.handCursor = !playerApi.hasDebt();
                behavior = StorageState.BANK_MOD;
                break;
             case ExchangeTypeEnum.TRASHBIN:
                lbl_title.text = uiApi.getText("ui.common.bin");
                _hasSlot = true;
-               _slotsMax = !param.maxSlots ? uint(0) : uint(param.maxSlots);
+               slotsMax = !param.maxSlots ? uint(0) : uint(param.maxSlots);
                ctr_kamas.visible = false;
-               tx_weightBar.visible = _slotsMax != 0;
+               tx_weightBar.visible = slotsMax != 0;
                behavior = StorageState.BANK_MOD;
                break;
             case ExchangeTypeEnum.ALLIANCE_PRISM:
                lbl_title.text = uiApi.getText("ui.zaap.prism");
                _hasSlot = true;
-               _slotsMax = !param.maxSlots ? uint(0) : uint(param.maxSlots);
-               tx_weightBar.visible = _slotsMax != 0;
+               slotsMax = !param.maxSlots ? uint(0) : uint(param.maxSlots);
+               tx_weightBar.visible = slotsMax != 0;
                behavior = StorageState.BANK_MOD;
                break;
             default:

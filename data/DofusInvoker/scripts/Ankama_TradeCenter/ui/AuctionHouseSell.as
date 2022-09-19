@@ -316,7 +316,7 @@ package Ankama_TradeCenter.ui
          this.gd_otherItemList.updateItems();
       }
       
-      override public function unload() : void
+      public function unload() : void
       {
          sysApi.setData(SORT_CACHE_NAME_PREFIX + this._currentType,{
             "sort":this._sortCriteria,

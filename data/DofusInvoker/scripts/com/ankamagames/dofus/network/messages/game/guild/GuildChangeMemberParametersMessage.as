@@ -11,18 +11,16 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildChangeMemberParametersMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3633;
+      public static const protocolId:uint = 4048;
        
       
       private var _isInitialized:Boolean = false;
       
       public var memberId:Number = 0;
       
-      public var rank:uint = 0;
+      public var rankId:uint = 0;
       
       public var experienceGivenPercent:uint = 0;
-      
-      public var rights:uint = 0;
       
       public function GuildChangeMemberParametersMessage()
       {
@@ -36,15 +34,14 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 3633;
+         return 4048;
       }
       
-      public function initGuildChangeMemberParametersMessage(memberId:Number = 0, rank:uint = 0, experienceGivenPercent:uint = 0, rights:uint = 0) : GuildChangeMemberParametersMessage
+      public function initGuildChangeMemberParametersMessage(memberId:Number = 0, rankId:uint = 0, experienceGivenPercent:uint = 0) : GuildChangeMemberParametersMessage
       {
          this.memberId = memberId;
-         this.rank = rank;
+         this.rankId = rankId;
          this.experienceGivenPercent = experienceGivenPercent;
-         this.rights = rights;
          this._isInitialized = true;
          return this;
       }
@@ -52,9 +49,8 @@ package com.ankamagames.dofus.network.messages.game.guild
       override public function reset() : void
       {
          this.memberId = 0;
-         this.rank = 0;
+         this.rankId = 0;
          this.experienceGivenPercent = 0;
-         this.rights = 0;
          this._isInitialized = false;
       }
       
@@ -90,21 +86,16 @@ package com.ankamagames.dofus.network.messages.game.guild
             throw new Error("Forbidden value (" + this.memberId + ") on element memberId.");
          }
          output.writeVarLong(this.memberId);
-         if(this.rank < 0)
+         if(this.rankId < 0)
          {
-            throw new Error("Forbidden value (" + this.rank + ") on element rank.");
+            throw new Error("Forbidden value (" + this.rankId + ") on element rankId.");
          }
-         output.writeVarShort(this.rank);
+         output.writeVarInt(this.rankId);
          if(this.experienceGivenPercent < 0 || this.experienceGivenPercent > 100)
          {
             throw new Error("Forbidden value (" + this.experienceGivenPercent + ") on element experienceGivenPercent.");
          }
          output.writeByte(this.experienceGivenPercent);
-         if(this.rights < 0)
-         {
-            throw new Error("Forbidden value (" + this.rights + ") on element rights.");
-         }
-         output.writeVarInt(this.rights);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -115,9 +106,8 @@ package com.ankamagames.dofus.network.messages.game.guild
       public function deserializeAs_GuildChangeMemberParametersMessage(input:ICustomDataInput) : void
       {
          this._memberIdFunc(input);
-         this._rankFunc(input);
+         this._rankIdFunc(input);
          this._experienceGivenPercentFunc(input);
-         this._rightsFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -128,9 +118,8 @@ package com.ankamagames.dofus.network.messages.game.guild
       public function deserializeAsyncAs_GuildChangeMemberParametersMessage(tree:FuncTree) : void
       {
          tree.addChild(this._memberIdFunc);
-         tree.addChild(this._rankFunc);
+         tree.addChild(this._rankIdFunc);
          tree.addChild(this._experienceGivenPercentFunc);
-         tree.addChild(this._rightsFunc);
       }
       
       private function _memberIdFunc(input:ICustomDataInput) : void
@@ -142,12 +131,12 @@ package com.ankamagames.dofus.network.messages.game.guild
          }
       }
       
-      private function _rankFunc(input:ICustomDataInput) : void
+      private function _rankIdFunc(input:ICustomDataInput) : void
       {
-         this.rank = input.readVarUhShort();
-         if(this.rank < 0)
+         this.rankId = input.readVarUhInt();
+         if(this.rankId < 0)
          {
-            throw new Error("Forbidden value (" + this.rank + ") on element of GuildChangeMemberParametersMessage.rank.");
+            throw new Error("Forbidden value (" + this.rankId + ") on element of GuildChangeMemberParametersMessage.rankId.");
          }
       }
       
@@ -157,15 +146,6 @@ package com.ankamagames.dofus.network.messages.game.guild
          if(this.experienceGivenPercent < 0 || this.experienceGivenPercent > 100)
          {
             throw new Error("Forbidden value (" + this.experienceGivenPercent + ") on element of GuildChangeMemberParametersMessage.experienceGivenPercent.");
-         }
-      }
-      
-      private function _rightsFunc(input:ICustomDataInput) : void
-      {
-         this.rights = input.readVarUhInt();
-         if(this.rights < 0)
-         {
-            throw new Error("Forbidden value (" + this.rights + ") on element of GuildChangeMemberParametersMessage.rights.");
          }
       }
    }

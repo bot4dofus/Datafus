@@ -76,8 +76,6 @@ package com.ankamagames.dofus.datacenter.world
       
       public var nameId:int;
       
-      public var showNameOnFingerpost:Boolean;
-      
       public var playlists:Vector.<Vector.<int>>;
       
       public var subAreaId:int;

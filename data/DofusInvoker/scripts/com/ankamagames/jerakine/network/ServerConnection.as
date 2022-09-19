@@ -8,7 +8,6 @@ package com.ankamagames.jerakine.network
    import com.ankamagames.jerakine.network.messages.ServerConnectionClosedMessage;
    import com.ankamagames.jerakine.network.messages.ServerConnectionFailedMessage;
    import com.ankamagames.jerakine.network.utils.FuncTree;
-   import com.ankamagames.jerakine.utils.crypto.Base64;
    import com.ankamagames.jerakine.utils.display.EnterFrameDispatcher;
    import com.ankamagames.jerakine.utils.display.StageShareManager;
    import com.ankamagames.jerakine.utils.display.enums.EnterFrameConst;
@@ -30,19 +29,9 @@ package com.ankamagames.jerakine.network
    public class ServerConnection implements IEventDispatcher, IServerConnection
    {
       
-      public static var disabled:Boolean;
-      
-      public static var disabledIn:Boolean;
-      
-      public static var disabledOut:Boolean;
-      
       public static var DEBUG_VERBOSE:Boolean = false;
       
-      public static var LOG_ENCODED_CLIENT_MESSAGES:Boolean = false;
-      
       public static var DEBUG_LOW_LEVEL_VERBOSE:Boolean = false;
-      
-      private static const DEBUG_DATA:Boolean = true;
       
       private static const LATENCY_AVG_BUFFER_SIZE:uint = 50;
       
@@ -85,13 +74,9 @@ package com.ankamagames.jerakine.network
       
       private var _latestSent:uint;
       
-      private var _lastSent:uint;
-      
       private var _timeoutTimer:BenchmarkTimer;
       
       private var _lagometer:ILagometer;
-      
-      private var _sendSequenceId:uint = 0;
       
       private var _asyncMessages:Vector.<INetworkMessage>;
       
@@ -199,11 +184,6 @@ package com.ankamagames.jerakine.network
          return this._remoteSrvPort;
       }
       
-      public function get lastSent() : uint
-      {
-         return this._lastSent;
-      }
-      
       public function set lagometer(l:ILagometer) : void
       {
          this._lagometer = l;
@@ -212,11 +192,6 @@ package com.ankamagames.jerakine.network
       public function get lagometer() : ILagometer
       {
          return this._lagometer;
-      }
-      
-      public function get sendSequenceId() : uint
-      {
-         return this._sendSequenceId;
       }
       
       public function get connected() : Boolean
@@ -231,7 +206,7 @@ package com.ankamagames.jerakine.network
       
       public function connect(host:String, port:int) : void
       {
-         if(this._connecting || disabled || disabledIn && disabledOut)
+         if(this._connecting)
          {
             return;
          }
@@ -341,14 +316,7 @@ package com.ankamagames.jerakine.network
       
       public function send(msg:INetworkMessage, connectionId:String = "") : void
       {
-         if(DEBUG_DATA)
-         {
-            _log.trace("[" + this._id + "] [SND] > " + (!!DEBUG_VERBOSE ? this.inspect(msg) : msg));
-         }
-         if(disabled || disabledOut)
-         {
-            return;
-         }
+         _log.trace("[" + this._id + "] [SND] > " + (!!DEBUG_VERBOSE ? this.inspect(msg) : msg));
          if(!msg.isInitialized)
          {
             _log.warn("[" + this._id + "] Sending non-initialized packet " + msg + " !");
@@ -415,10 +383,7 @@ package com.ankamagames.jerakine.network
          while(this._pauseBuffer.length && !this._pause)
          {
             msg = this._pauseBuffer.shift();
-            if(DEBUG_DATA)
-            {
-               _log.trace("[" + this._id + "] [RCV] (after Resume) " + (!!DEBUG_VERBOSE ? this.inspect(msg) : msg));
-            }
+            _log.trace("[" + this._id + "] [RCV] (after Resume) " + (!!DEBUG_VERBOSE ? this.inspect(msg) : msg));
             _log.logDirectly(new NetworkLogEvent(msg,true));
             this._handler.process(msg);
          }
@@ -566,15 +531,12 @@ package com.ankamagames.jerakine.network
             }
             else if(!this._pause)
             {
-               if(DEBUG_DATA && msg.getMessageId() != 176 && msg.getMessageId() != 6362)
+               if(msg.getMessageId() != 176 && msg.getMessageId() != 6362)
                {
                   _log.trace("[" + this._id + "] [RCV] " + (!!DEBUG_VERBOSE ? this.inspect(msg) : msg));
                }
                _log.logDirectly(new NetworkLogEvent(msg,true));
-               if(!disabledIn)
-               {
-                  this._handler.process(msg);
-               }
+               this._handler.process(msg);
             }
             else
             {
@@ -610,17 +572,8 @@ package com.ankamagames.jerakine.network
       
       protected function lowSend(msg:INetworkMessage, autoFlush:Boolean = true) : void
       {
-         var data:ByteArray = null;
-         if(LOG_ENCODED_CLIENT_MESSAGES && msg.getMessageId() != 5607 && msg.getMessageId() != 6372 && msg.getMessageId() != 6156 && msg.getMessageId() != 6609 && msg.getMessageId() != 4 && msg.getMessageId() != 6119 && msg.getMessageId() != 110 && msg.getMessageId() != 6540 && msg.getMessageId() != 6648 && msg.getMessageId() != 6608)
-         {
-            data = new ByteArray();
-            msg.pack(new CustomDataWrapper(data));
-            _log.trace("[" + this._id + "] [SND] > " + msg + " ---" + Base64.encodeByteArray(data) + "---");
-         }
          msg.pack(new CustomDataWrapper(this._socket));
          this._latestSent = getTimer();
-         this._lastSent = getTimer();
-         ++this._sendSequenceId;
          if(this._lagometer)
          {
             this._lagometer.ping(msg);
@@ -817,10 +770,7 @@ package com.ankamagames.jerakine.network
          var msg:INetworkMessage = null;
          this._connecting = false;
          this.stopConnectionTimeout();
-         if(DEBUG_DATA)
-         {
-            _log.trace("[" + this._id + "] Connection opened.");
-         }
+         _log.trace("[" + this._id + "] Connection opened.");
          for each(msg in this._outputBuffer)
          {
             this.lowSend(msg,false);
@@ -842,10 +792,7 @@ package com.ankamagames.jerakine.network
             this._willClose = true;
             return;
          }
-         if(DEBUG_DATA)
-         {
-            _log.trace("[" + this._id + "] Connection closed.");
-         }
+         _log.trace("[" + this._id + "] Connection closed.");
          setTimeout(this.removeListeners,30000);
          if(this._lagometer)
          {

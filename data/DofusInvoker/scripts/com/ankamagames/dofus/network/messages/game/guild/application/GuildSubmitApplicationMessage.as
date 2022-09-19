@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
    public class GuildSubmitApplicationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9276;
+      public static const protocolId:uint = 5724;
        
       
       private var _isInitialized:Boolean = false;
@@ -54,7 +54,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       override public function getMessageId() : uint
       {
-         return 9276;
+         return 5724;
       }
       
       public function initGuildSubmitApplicationMessage(applyText:String = "", guildId:uint = 0, timeSpent:uint = 0, filterLanguage:String = "", filterAmbiance:String = "", filterPlaytime:String = "", filterInterest:String = "", filterMinMaxGuildLevel:String = "", filterRecruitmentType:String = "", filterMinMaxCharacterLevel:String = "", filterMinMaxAchievement:String = "", filterSearchName:String = "", filterLastSort:String = "") : GuildSubmitApplicationMessage

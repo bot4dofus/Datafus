@@ -37,7 +37,6 @@ package com.ankamagames.dofus.kernel
    import com.ankamagames.dofus.logic.common.frames.ServerControlFrame;
    import com.ankamagames.dofus.logic.common.managers.FeatureManager;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
-   import com.ankamagames.dofus.logic.connection.actions.ShowUpdaterLoginInterfaceAction;
    import com.ankamagames.dofus.logic.connection.frames.InitializationFrame;
    import com.ankamagames.dofus.logic.connection.managers.AuthentificationManager;
    import com.ankamagames.dofus.logic.game.common.frames.CameraControlFrame;
@@ -93,7 +92,6 @@ package com.ankamagames.dofus.kernel
    import com.ankamagames.tiphon.types.Skin;
    import com.ankamagames.tiphon.types.TiphonOptions;
    import com.ankamagames.tubul.types.TubulOptions;
-   import flash.display.DisplayObject;
    import flash.display.Sprite;
    import flash.display.Stage;
    import flash.system.ApplicationDomain;
@@ -181,217 +179,7 @@ package com.ankamagames.dofus.kernel
          }
       }
       
-      public function init(stage:Stage, rootClip:DisplayObject) : void
-      {
-         StageShareManager.stage = stage;
-         StageShareManager.rootContainer = Dofus.getInstance().rootContainer;
-         FrameIdManager.init();
-         ApplicationDomainShareManager.currentApplicationDomain = ApplicationDomain.currentDomain;
-         _worker.clear();
-         HumanInputHandler.getInstance().handler = _worker;
-         FocusHandler.getInstance().handler = HumanInputHandler.getInstance().handler;
-         BoneIndexManager.getInstance().setAnimNameModifier(AnimationCleaner.cleanBones1AnimName);
-         if(StatisticsManager.getInstance().statsEnabled)
-         {
-            StatisticsManager.getInstance().init();
-         }
-         this.addInitialFrames(true);
-         _log.info("Using protocole #" + Metadata.PROTOCOL_BUILD + ", built on " + Metadata.PROTOCOL_DATE);
-         if(ZaapConnectionHelper.hasZaapArguments())
-         {
-            ZaapApi.init();
-         }
-      }
-      
-      public function postInit() : void
-      {
-         var ui:SoundUi = null;
-         var buildType:int = 0;
-         var configVersion:String = null;
-         var uiElem:SoundUiElement = null;
-         this.initCaches();
-         XmlConfig.getInstance().init(LangManager.getInstance().getCategory("config"));
-         StatisticsManager.getInstance().onConfigfileLoaded();
-         if(XmlConfig.getInstance().getEntry("config.buildType"))
-         {
-            buildType = -1;
-            configVersion = XmlConfig.getInstance().getEntry("config.buildType");
-            switch(configVersion.replace(/[0-9]/g,"").toLowerCase())
-            {
-               case "draft":
-                  buildType = BuildTypeEnum.DRAFT;
-                  break;
-               case "debug":
-                  buildType = BuildTypeEnum.DEBUG;
-                  break;
-               case "local":
-               case "internal":
-                  buildType = BuildTypeEnum.INTERNAL;
-                  break;
-               case "testing":
-                  buildType = BuildTypeEnum.TESTING;
-                  break;
-               case "alpha":
-                  buildType = BuildTypeEnum.ALPHA;
-                  break;
-               case "beta":
-                  buildType = BuildTypeEnum.BETA;
-                  break;
-               case "release":
-                  buildType = BuildTypeEnum.RELEASE;
-            }
-            if(buildType != -1 && buildType < BuildInfos.BUILD_TYPE)
-            {
-               BuildInfos.VERSION.buildType = buildType;
-            }
-         }
-         LangManager.getInstance().lang = this.getCurrentLang();
-         this.initOptions();
-         InterClientManager.getInstance().update();
-         Atouin.getInstance().showWorld(false);
-         DataMapProvider.init(AnimatedCharacter);
-         TiphonSprite.subEntityHandler = SubEntityHandler.instance;
-         Tiphon.getInstance().init(LangManager.getInstance().getEntry("config.gfx.path.skull"),LangManager.getInstance().getEntry("config.gfx.path.skin"),LangManager.getInstance().getEntry("config.gfx.path.animIndex"));
-         Tiphon.getInstance().addRasterizeAnimation(AnimationEnum.ANIM_COURSE);
-         Tiphon.getInstance().addRasterizeAnimation(AnimationEnum.ANIM_MARCHE);
-         Tiphon.getInstance().addRasterizeAnimation(AnimationEnum.ANIM_STATIQUE);
-         Skin.skinPartTransformProvider = new SkinPartTransformProvider();
-         UiSoundManager.getInstance().playSound = SoundManager.getInstance().manager.playUISound;
-         var uiSound:Array = SoundUi.getSoundUis();
-         for each(ui in uiSound)
-         {
-            UiSoundManager.getInstance().registerUi(ui.uiName,ui.openFile,ui.closeFile);
-            for each(uiElem in ui.subElements)
-            {
-               UiSoundManager.getInstance().registerUiElement(ui.uiName,uiElem.name,uiElem.hook,uiElem.file);
-            }
-         }
-         Berilia.getInstance().autoReloadUiOnChange = LangManager.getInstance().getEntry("config.dev.autoReloadUi") == "true";
-         WorldPathFinder.init();
-      }
-      
-      public function reset(messagesToDispatchAfter:Array = null, autoRetry:Boolean = false, reloadData:Boolean = false) : void
-      {
-         var msg:Message = null;
-         TooltipManager.hide();
-         var featureManager:FeatureManager = FeatureManager.getInstance();
-         if(featureManager !== null)
-         {
-            featureManager.resetEnabledServerFeatures();
-            featureManager.resetEnabledServerConnectionFeatures();
-         }
-         StatsManager.getInstance().reset();
-         SpellModifiersManager.getInstance().reset();
-         if(ZaapApi.isUsingZaapLogin())
-         {
-            if(messagesToDispatchAfter == null)
-            {
-               messagesToDispatchAfter = new Array();
-            }
-            messagesToDispatchAfter.push(new ShowUpdaterLoginInterfaceAction());
-         }
-         if(Constants.EVENT_MODE)
-         {
-            _log.error("eventmode : quit");
-            Dofus.getInstance().reboot();
-         }
-         if(!autoRetry)
-         {
-            AuthentificationManager.getInstance().destroy();
-         }
-         if(Console.isVisible())
-         {
-            Console.getInstance().close();
-         }
-         ModuleDebugManager.display(false);
-         FightersStateManager.getInstance().endFight();
-         CurrentPlayedFighterManager.getInstance().endFight();
-         PlayedCharacterManager.getInstance().destroy();
-         StatisticsManager.getInstance().destroy();
-         HaapiKeyManager.getInstance().destroy();
-         SpellWrapper.removeAllSpellWrapper();
-         Atouin.getInstance().reset();
-         InactivityManager.getInstance().stop();
-         DofusEntities.reset();
-         _worker.clear();
-         ItemWrapper.clearCache();
-         SpeakingItemManager.getInstance().destroy();
-         TimeoutHTMLLoader.resetCache();
-         OptionManager.reset();
-         this.initOptions();
-         this.addInitialFrames(reloadData);
-         Kernel.beingInReconection = false;
-         if(messagesToDispatchAfter != null && messagesToDispatchAfter.length > 0)
-         {
-            for each(msg in messagesToDispatchAfter)
-            {
-               _worker.process(msg);
-            }
-         }
-         SoundManager.getInstance().manager.reset();
-         if(ExternalNotificationManager.getInstance().initialized)
-         {
-            ExternalNotificationManager.getInstance().reset();
-         }
-         Atouin.getInstance().rootContainer.mouseChildren = true;
-         Atouin.getInstance().rootContainer.mouseEnabled = true;
-         _worker.removeFrame(_worker.getFrame(CameraControlFrame));
-      }
-      
-      public function initOptions() : void
-      {
-         var popup:SystemPopupUI = null;
-         OptionManager.reset();
-         var ao:AtouinOptions = new AtouinOptions(Dofus.getInstance().getWorldContainer(),Kernel.getWorker());
-         ao.setOption("frustum",new Frustum(LangManager.getInstance().getIntEntry("config.atouin.frustum.marginLeft"),LangManager.getInstance().getIntEntry("config.atouin.frustum.marginTop"),LangManager.getInstance().getIntEntry("config.atouin.frustum.marginRight"),LangManager.getInstance().getIntEntry("config.atouin.frustum.marginBottom")));
-         ao.setOption("mapsPath",LangManager.getInstance().getEntry("config.atouin.path.maps"));
-         ao.setOption("elementsIndexPath",LangManager.getInstance().getEntry("config.atouin.path.elements"));
-         ao.setOption("elementsPath",LangManager.getInstance().getEntry("config.gfx.path.cellElement"));
-         ao.setOption("jpgSubPath",LangManager.getInstance().getEntry("config.gfx.subpath.world.jpg"));
-         ao.setOption("pngSubPath",LangManager.getInstance().getEntry("config.gfx.subpath.world.png"));
-         ao.setOption("pngPathOverride",LangManager.getInstance().getEntry("config.gfx.path.world.pngOverride"));
-         ao.setOption("swfPath",LangManager.getInstance().getEntry("config.gfx.path.world.swf"));
-         ao.setOption("particlesScriptsPath",LangManager.getInstance().getEntry("config.atouin.path.emitters"));
-         ao.setOption("mapPictoExtension",LangManager.getInstance().getEntry("config.gfx.subpath.world.extension"));
-         ao.setOption("tacticalModeTemplatesPath",LangManager.getInstance().getEntry("config.atouin.path.tacticalModeTemplates"));
-         if(ao.getOption("jpgSubPath").charAt(0) == "!")
-         {
-            ao.setOption("jpgSubPath","jpg");
-         }
-         if(ao.getOption("pngSubPath").charAt(0) == "!")
-         {
-            ao.setOption("pngSubPath","png");
-         }
-         if(ao.getOption("mapPictoExtension").charAt(0) == "!")
-         {
-            ao.setOption("mapPictoExtension","png");
-         }
-         if(ao.getOption("pngPathOverride").charAt(0) == "!")
-         {
-            ao.setOption("pngPathOverride","");
-         }
-         Atouin.getInstance().setDisplayOptions(ao);
-         StageShareManager.rootContainer.addEventListener(ScriptedAnimationEvent.SCRIPTED_ANIMATION_ADDED,this.onScriptedAnimationAdded);
-         LogInFile.getInstance().logLine("Kernel StageSharemanager.rootContainer.addEventListener onScriptedAnimationAdded",FileLoggerEnum.EVENTLISTENERS);
-         var dofusO:DofusOptions = new DofusOptions();
-         Dofus.getInstance().setDisplayOptions(dofusO);
-         var beriliaO:BeriliaOptions = new BeriliaOptions();
-         Berilia.getInstance().setDisplayOptions(beriliaO);
-         var tiphonO:TiphonOptions = new TiphonOptions();
-         Tiphon.getInstance().setDisplayOptions(tiphonO);
-         var tubulO:TubulOptions = new TubulOptions();
-         SoundManager.getInstance().setDisplayOptions(tubulO);
-         PerformanceManager.init(Dofus.getInstance().options.getOption("optimize"));
-         if(Constants.LOG_UPLOAD_MODE)
-         {
-            popup = new SystemPopupUI("logWarning");
-            popup.title = "Attention";
-            popup.content = "Vous participez au programme d\'analyse des performances de Dofus 2.0 mais le système de log est désactivé dans les options (Options -> Support)";
-            popup.show();
-         }
-      }
-      
-      private function addInitialFrames(firstLaunch:Boolean = false) : void
+      private static function addInitialFrames(firstLaunch:Boolean = false) : void
       {
          if(firstLaunch)
          {
@@ -436,13 +224,13 @@ package com.ankamagames.dofus.kernel
          }
       }
       
-      private function initCaches() : void
+      private static function initCaches() : void
       {
          UriCacheFactory.init(".swf",new DisplayObjectCache(100));
          UriCacheFactory.init(".png",new Cache(200,new LruGarbageCollector()));
       }
       
-      private function onScriptedAnimationAdded(e:ScriptedAnimationEvent) : void
+      private static function onScriptedAnimationAdded(e:ScriptedAnimationEvent) : void
       {
          var name:String = null;
          var vsa:Vector.<SoundAnimation> = null;
@@ -464,7 +252,7 @@ package com.ankamagames.dofus.kernel
          }
       }
       
-      private function getCurrentLang() : String
+      private static function getCurrentLang() : String
       {
          var currentLang:String = XmlConfig.getInstance().getEntry("config.lang.current");
          var binds:String = XmlConfig.getInstance().getEntry("config.binds.current");
@@ -525,6 +313,208 @@ package com.ankamagames.dofus.kernel
                return "ruRu";
             default:
                return "enUs";
+         }
+      }
+      
+      public function init(stage:Stage) : void
+      {
+         StageShareManager.stage = stage;
+         StageShareManager.rootContainer = Dofus.getInstance().rootContainer;
+         FrameIdManager.init();
+         ApplicationDomainShareManager.currentApplicationDomain = ApplicationDomain.currentDomain;
+         _worker.clear();
+         HumanInputHandler.getInstance().handler = _worker;
+         FocusHandler.getInstance().handler = HumanInputHandler.getInstance().handler;
+         BoneIndexManager.getInstance().setAnimNameModifier(AnimationCleaner.cleanBones1AnimName);
+         if(StatisticsManager.getInstance().statsEnabled)
+         {
+            StatisticsManager.getInstance().init();
+         }
+         addInitialFrames(true);
+         _log.info("Using protocole #" + Metadata.PROTOCOL_BUILD + ", built on " + Metadata.PROTOCOL_DATE);
+         if(ZaapConnectionHelper.hasZaapArguments())
+         {
+            ZaapApi.init();
+         }
+      }
+      
+      public function postInit() : void
+      {
+         var ui:SoundUi = null;
+         var buildType:int = 0;
+         var configVersion:String = null;
+         var uiElem:SoundUiElement = null;
+         initCaches();
+         XmlConfig.getInstance().init(LangManager.getInstance().getCategory("config"));
+         StatisticsManager.getInstance().onConfigfileLoaded();
+         if(XmlConfig.getInstance().getEntry("config.buildType"))
+         {
+            buildType = -1;
+            configVersion = XmlConfig.getInstance().getEntry("config.buildType");
+            switch(configVersion.replace(/[0-9]/g,"").toLowerCase())
+            {
+               case "draft":
+                  buildType = BuildTypeEnum.DRAFT;
+                  break;
+               case "debug":
+                  buildType = BuildTypeEnum.DEBUG;
+                  break;
+               case "local":
+               case "internal":
+                  buildType = BuildTypeEnum.INTERNAL;
+                  break;
+               case "testing":
+                  buildType = BuildTypeEnum.TESTING;
+                  break;
+               case "alpha":
+                  buildType = BuildTypeEnum.ALPHA;
+                  break;
+               case "beta":
+                  buildType = BuildTypeEnum.BETA;
+                  break;
+               case "release":
+                  buildType = BuildTypeEnum.RELEASE;
+            }
+            if(buildType != -1 && buildType < BuildInfos.BUILD_TYPE)
+            {
+               BuildInfos.VERSION.buildType = buildType;
+            }
+         }
+         LangManager.getInstance().lang = getCurrentLang();
+         this.initOptions();
+         InterClientManager.getInstance().update();
+         Atouin.getInstance().showWorld(false);
+         DataMapProvider.init(AnimatedCharacter);
+         TiphonSprite.subEntityHandler = SubEntityHandler.instance;
+         Tiphon.getInstance().init(LangManager.getInstance().getEntry("config.gfx.path.skull"),LangManager.getInstance().getEntry("config.gfx.path.skin"),LangManager.getInstance().getEntry("config.gfx.path.animIndex"));
+         Tiphon.getInstance().addRasterizeAnimation(AnimationEnum.ANIM_COURSE);
+         Tiphon.getInstance().addRasterizeAnimation(AnimationEnum.ANIM_MARCHE);
+         Tiphon.getInstance().addRasterizeAnimation(AnimationEnum.ANIM_STATIQUE);
+         Skin.skinPartTransformProvider = new SkinPartTransformProvider();
+         UiSoundManager.getInstance().playSound = SoundManager.getInstance().manager.playUISound;
+         var uiSound:Array = SoundUi.getSoundUis();
+         for each(ui in uiSound)
+         {
+            UiSoundManager.getInstance().registerUi(ui.uiName,ui.openFile,ui.closeFile);
+            for each(uiElem in ui.subElements)
+            {
+               UiSoundManager.getInstance().registerUiElement(ui.uiName,uiElem.name,uiElem.hook,uiElem.file);
+            }
+         }
+         Berilia.getInstance().autoReloadUiOnChange = LangManager.getInstance().getEntry("config.dev.autoReloadUi") == "true";
+         WorldPathFinder.init();
+      }
+      
+      public function reset(messagesToDispatchAfter:Array = null, autoRetry:Boolean = false, reloadData:Boolean = false) : void
+      {
+         var msg:Message = null;
+         TooltipManager.hide();
+         var featureManager:FeatureManager = FeatureManager.getInstance();
+         if(featureManager !== null)
+         {
+            featureManager.resetEnabledServerFeatures();
+            featureManager.resetEnabledServerConnectionFeatures();
+         }
+         StatsManager.getInstance().reset();
+         SpellModifiersManager.getInstance().reset();
+         if(Constants.EVENT_MODE)
+         {
+            _log.error("eventmode : quit");
+            Dofus.getInstance().reboot();
+         }
+         if(!autoRetry)
+         {
+            AuthentificationManager.getInstance().destroy();
+         }
+         if(Console.isVisible())
+         {
+            Console.getInstance().close();
+         }
+         ModuleDebugManager.display(false);
+         FightersStateManager.getInstance().endFight();
+         CurrentPlayedFighterManager.getInstance().endFight();
+         PlayedCharacterManager.getInstance().destroy();
+         StatisticsManager.getInstance().destroy();
+         HaapiKeyManager.getInstance().destroy();
+         SpellWrapper.removeAllSpellWrapper();
+         Atouin.getInstance().reset();
+         InactivityManager.getInstance().stop();
+         DofusEntities.reset();
+         _worker.clear();
+         ItemWrapper.clearCache();
+         SpeakingItemManager.getInstance().destroy();
+         TimeoutHTMLLoader.resetCache();
+         OptionManager.reset();
+         this.initOptions();
+         addInitialFrames(reloadData);
+         Kernel.beingInReconection = false;
+         if(messagesToDispatchAfter != null && messagesToDispatchAfter.length > 0)
+         {
+            for each(msg in messagesToDispatchAfter)
+            {
+               _worker.process(msg);
+            }
+         }
+         SoundManager.getInstance().manager.reset();
+         if(ExternalNotificationManager.getInstance().initialized)
+         {
+            ExternalNotificationManager.getInstance().reset();
+         }
+         Atouin.getInstance().rootContainer.mouseChildren = true;
+         Atouin.getInstance().rootContainer.mouseEnabled = true;
+         _worker.removeFrame(_worker.getFrame(CameraControlFrame));
+      }
+      
+      public function initOptions() : void
+      {
+         var popup:SystemPopupUI = null;
+         OptionManager.reset();
+         var ao:AtouinOptions = new AtouinOptions(Dofus.getInstance().getWorldContainer(),Kernel.getWorker());
+         ao.setOption("frustum",new Frustum(LangManager.getInstance().getIntEntry("config.atouin.frustum.marginLeft"),LangManager.getInstance().getIntEntry("config.atouin.frustum.marginTop"),LangManager.getInstance().getIntEntry("config.atouin.frustum.marginRight"),LangManager.getInstance().getIntEntry("config.atouin.frustum.marginBottom")));
+         ao.setOption("mapsPath",LangManager.getInstance().getEntry("config.atouin.path.maps"));
+         ao.setOption("elementsIndexPath",LangManager.getInstance().getEntry("config.atouin.path.elements"));
+         ao.setOption("elementsPath",LangManager.getInstance().getEntry("config.gfx.path.cellElement"));
+         ao.setOption("jpgSubPath",LangManager.getInstance().getEntry("config.gfx.subpath.world.jpg"));
+         ao.setOption("pngSubPath",LangManager.getInstance().getEntry("config.gfx.subpath.world.png"));
+         ao.setOption("pngPathOverride",LangManager.getInstance().getEntry("config.gfx.path.world.pngOverride"));
+         ao.setOption("swfPath",LangManager.getInstance().getEntry("config.gfx.path.world.swf"));
+         ao.setOption("particlesScriptsPath",LangManager.getInstance().getEntry("config.atouin.path.emitters"));
+         ao.setOption("mapPictoExtension",LangManager.getInstance().getEntry("config.gfx.subpath.world.extension"));
+         ao.setOption("tacticalModeTemplatesPath",LangManager.getInstance().getEntry("config.atouin.path.tacticalModeTemplates"));
+         if(ao.getOption("jpgSubPath").charAt(0) == "!")
+         {
+            ao.setOption("jpgSubPath","jpg");
+         }
+         if(ao.getOption("pngSubPath").charAt(0) == "!")
+         {
+            ao.setOption("pngSubPath","png");
+         }
+         if(ao.getOption("mapPictoExtension").charAt(0) == "!")
+         {
+            ao.setOption("mapPictoExtension","png");
+         }
+         if(ao.getOption("pngPathOverride").charAt(0) == "!")
+         {
+            ao.setOption("pngPathOverride","");
+         }
+         Atouin.getInstance().setDisplayOptions(ao);
+         StageShareManager.rootContainer.addEventListener(ScriptedAnimationEvent.SCRIPTED_ANIMATION_ADDED,onScriptedAnimationAdded);
+         LogInFile.getInstance().logLine("Kernel StageSharemanager.rootContainer.addEventListener onScriptedAnimationAdded",FileLoggerEnum.EVENTLISTENERS);
+         var dofusO:DofusOptions = new DofusOptions();
+         Dofus.getInstance().setDisplayOptions(dofusO);
+         var beriliaO:BeriliaOptions = new BeriliaOptions();
+         Berilia.getInstance().setDisplayOptions(beriliaO);
+         var tiphonO:TiphonOptions = new TiphonOptions();
+         Tiphon.getInstance().setDisplayOptions(tiphonO);
+         var tubulO:TubulOptions = new TubulOptions();
+         SoundManager.getInstance().setDisplayOptions(tubulO);
+         PerformanceManager.init(Dofus.getInstance().options.getOption("optimize"));
+         if(Constants.LOG_UPLOAD_MODE)
+         {
+            popup = new SystemPopupUI("logWarning");
+            popup.title = "Attention";
+            popup.content = "Vous participez au programme d\'analyse des performances de Dofus 2.0 mais le système de log est désactivé dans les options (Options -> Support)";
+            popup.show();
          }
       }
    }

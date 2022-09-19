@@ -8,7 +8,6 @@ package Ankama_Social.ui
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.utils.ComponentHookList;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceBulletinSetRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildBulletinSetRequestAction;
    import com.ankamagames.dofus.misc.lists.SocialHookList;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
@@ -16,11 +15,10 @@ package Ankama_Social.ui
    import com.ankamagames.dofus.uiApi.SystemApi;
    import com.ankamagames.dofus.uiApi.TimeApi;
    import com.ankamagames.dofus.uiApi.UiTutoApi;
+   import com.ankamagames.jerakine.utils.misc.StringUtils;
    
    public class SocialBulletin
    {
-      
-      private static const GUILD:int = 1;
       
       private static const ALLIANCE:int = 2;
        
@@ -76,7 +74,6 @@ package Ankama_Social.ui
       
       public function main(... args) : void
       {
-         this.sysApi.addHook(SocialHookList.GuildBulletin,this.onGuildBulletin);
          this.sysApi.addHook(SocialHookList.AllianceBulletin,this.onAllianceBulletin);
          this.uiApi.addComponentHook(this.lbl_lastEdit,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.lbl_lastEdit,ComponentHookList.ON_ROLL_OUT);
@@ -87,26 +84,14 @@ package Ankama_Social.ui
          this.btn_valid.visible = false;
          this.btn_exit.visible = false;
          this.btn_notifyMembers.visible = false;
-         if(this._currentSocialGroup == ALLIANCE)
-         {
-            this._socialGroupData = this.socialApi.getAlliance();
-            this.lbl_title.text = this._socialGroupData.allianceName;
-         }
-         else
-         {
-            this._socialGroupData = this.socialApi.getGuild();
-            this.lbl_title.text = this._socialGroupData.guildName;
-         }
+         this._socialGroupData = this.socialApi.getAlliance();
+         this.lbl_title.text = this._socialGroupData.allianceName;
          this.updateBulletin();
       }
       
       public function showEditButtonIfHasRight() : void
       {
-         if(this.socialApi.hasGuildRight(this._playerId,"isBoss"))
-         {
-            this.btn_edit.visible = true;
-         }
-         else if(this._currentSocialGroup == GUILD && this.socialApi.hasGuildRank(this._playerId,2))
+         if(this.socialApi.hasGuildRank(this._playerId,0))
          {
             this.btn_edit.visible = true;
          }
@@ -119,21 +104,14 @@ package Ankama_Social.ui
       public function unload() : void
       {
          var currentTimestamp:Number = Math.round(new Date().time / 1000);
-         if(this._currentSocialGroup == GUILD)
-         {
-            this.sysApi.setData("guildBulletinLastVisitTimestamp",currentTimestamp);
-         }
-         else
-         {
-            this.sysApi.setData("allianceBulletinLastVisitTimestamp",currentTimestamp);
-         }
+         this.sysApi.setData("allianceBulletinLastVisitTimestamp",currentTimestamp);
       }
       
       private function switchEditMode(editMode:Boolean) : void
       {
          if(editMode)
          {
-            this.inp_bulletin.text = this._socialGroupData.bulletin;
+            this.inp_bulletin.text = StringUtils.unescape(this._socialGroupData.bulletin);
             this.inp_bulletin.focus();
             this.inp_bulletin.setSelection(8388607,8388607);
             this.ctr_edit.visible = true;
@@ -157,26 +135,12 @@ package Ankama_Social.ui
       private function updateBulletin() : void
       {
          var date:Number = NaN;
-         if(this._currentSocialGroup == ALLIANCE)
-         {
-            this._socialGroupData = this.socialApi.getAlliance();
-         }
-         else
-         {
-            this._socialGroupData = this.socialApi.getGuild();
-         }
+         this._socialGroupData = this.socialApi.getAlliance();
          this.lbl_bulletin.text = this._socialGroupData.formattedBulletin;
          this.inp_bulletin.text = this._socialGroupData.bulletin;
          if(!this.lbl_bulletin.text || this.lbl_bulletin.text == "")
          {
-            if(this._currentSocialGroup == ALLIANCE)
-            {
-               this.lbl_bulletin.text = this.uiApi.getText("ui.motd.allianceBulletinDefault");
-            }
-            else
-            {
-               this.lbl_bulletin.text = this.uiApi.getText("ui.motd.guildBulletinDefault");
-            }
+            this.lbl_bulletin.text = this.uiApi.getText("ui.motd.allianceBulletinDefault");
          }
          if(this._socialGroupData.bulletinWriterName != "")
          {
@@ -187,26 +151,10 @@ package Ankama_Social.ui
       
       private function onAllianceBulletin() : void
       {
-         var currentTimestamp:Number = NaN;
-         if(this._currentSocialGroup == ALLIANCE)
-         {
-            this.updateBulletin();
-            this.switchEditMode(false);
-            currentTimestamp = Math.round(new Date().time / 1000);
-            this.sysApi.setData("allianceBulletinLastVisitTimestamp",currentTimestamp);
-         }
-      }
-      
-      private function onGuildBulletin() : void
-      {
-         var currentTimestamp:Number = NaN;
-         if(this._currentSocialGroup == GUILD)
-         {
-            this.updateBulletin();
-            this.switchEditMode(false);
-            currentTimestamp = Math.round(new Date().time / 1000);
-            this.sysApi.setData("guildBulletinLastVisitTimestamp",currentTimestamp);
-         }
+         this.updateBulletin();
+         this.switchEditMode(false);
+         var currentTimestamp:Number = Math.round(new Date().time / 1000);
+         this.sysApi.setData("allianceBulletinLastVisitTimestamp",currentTimestamp);
       }
       
       public function showTabHints() : void
@@ -230,14 +178,7 @@ package Ankama_Social.ui
             if(this.inp_bulletin.text != this._socialGroupData.bulletin)
             {
                notifyMembers = this.btn_notifyMembers.selected;
-               if(this._currentSocialGroup == GUILD)
-               {
-                  this.sysApi.sendAction(new GuildBulletinSetRequestAction([this.inp_bulletin.text,notifyMembers]));
-               }
-               else if(this._currentSocialGroup == ALLIANCE)
-               {
-                  this.sysApi.sendAction(new AllianceBulletinSetRequestAction([this.inp_bulletin.text,notifyMembers]));
-               }
+               this.sysApi.sendAction(new AllianceBulletinSetRequestAction([this.inp_bulletin.text,notifyMembers]));
             }
             else
             {
@@ -253,14 +194,7 @@ package Ankama_Social.ui
          var relPoint:uint = 1;
          if(target == this.lbl_lastEdit)
          {
-            if(this._currentSocialGroup == GUILD)
-            {
-               tooltipText = this.uiApi.getText("ui.motd.guildBulletinEdit");
-            }
-            else
-            {
-               tooltipText = this.uiApi.getText("ui.motd.allianceBulletinEdit");
-            }
+            tooltipText = this.uiApi.getText("ui.motd.allianceBulletinEdit");
          }
          if(tooltipText)
          {

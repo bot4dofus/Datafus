@@ -40,14 +40,13 @@ package Ankama_TradeCenter.ui
          btn_lbl_btn_valid.text = uiApi.getText("ui.common.buy");
       }
       
-      override public function unload() : void
+      public function unload() : void
       {
          if(this._popup)
          {
             uiApi.unloadUi(this._popup);
          }
          this._popup = null;
-         super.unload();
       }
       
       override public function onRelease(target:GraphicContainer) : void

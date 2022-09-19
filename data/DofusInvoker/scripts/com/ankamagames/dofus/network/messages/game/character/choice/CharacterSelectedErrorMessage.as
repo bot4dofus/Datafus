@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.choice
    public class CharacterSelectedErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9221;
+      public static const protocolId:uint = 1256;
        
       
       public function CharacterSelectedErrorMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.character.choice
       
       override public function getMessageId() : uint
       {
-         return 9221;
+         return 1256;
       }
       
       public function initCharacterSelectedErrorMessage() : CharacterSelectedErrorMessage

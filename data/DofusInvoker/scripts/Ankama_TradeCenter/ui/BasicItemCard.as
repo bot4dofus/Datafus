@@ -125,11 +125,6 @@ package Ankama_TradeCenter.ui
       {
       }
       
-      public function unload() : void
-      {
-         this.uiApi.unloadUi("itemBox_" + this.uiApi.me().name);
-      }
-      
       public function onChange(target:GraphicContainer) : void
       {
          var value:Number = 0;

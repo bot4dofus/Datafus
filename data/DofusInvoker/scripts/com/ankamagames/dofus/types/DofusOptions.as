@@ -41,7 +41,6 @@ package com.ankamagames.dofus.types
          add("pinTooltipOnClick",false);
          add("alwaysDisplayTheoreticalEffectsInTooltip",false);
          add("showOmegaUnderOrnament",true);
-         add("displayTooltips",true);
          add("lockUI",false);
          add("smallScreenFont",false);
          add("bigMenuButton",false);
@@ -63,7 +62,7 @@ package com.ankamagames.dofus.types
          add("mapFilters",4062);
          add("mapFilters_miniMap",4062);
          add("mapFiltersConquest",288);
-         add("mapFiltersReward",1344);
+         add("mapFiltersAnomaly",1344);
          add("mapFiltersSearch",256);
          add("showMiniMap",true);
          add("showMapGrid",false);

@@ -6,7 +6,9 @@ package Ankama_Fight.ui
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.dofus.datacenter.idols.Idol;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
+   import com.ankamagames.dofus.logic.common.managers.FeatureManager;
    import com.ankamagames.dofus.logic.game.common.actions.OpenIdolsAction;
    import com.ankamagames.dofus.misc.lists.CustomUiHookList;
    import com.ankamagames.dofus.misc.lists.FightHookList;
@@ -352,15 +354,21 @@ package Ankama_Fight.ui
       public function onRollOver(target:GraphicContainer) : void
       {
          var tooltipText:* = null;
+         var featureManager:FeatureManager = null;
          var idolData:com.ankamagames.dofus.datacenter.idols.Idol = null;
+         var idolDropBonusPercent:uint = 0;
+         var idolXpBonusPercent:uint = 0;
          var idol:com.ankamagames.dofus.network.types.game.idol.Idol = this._idols[this._slots.indexOf(target)];
          if(idol)
          {
+            featureManager = FeatureManager.getInstance();
             idolData = this.dataApi.getIdol(idol.id);
+            idolDropBonusPercent = !!featureManager.isFeatureWithKeywordEnabled(FeatureEnum.IDOL_DROP_BONUS) ? uint(idol.dropBonusPercent) : uint(0);
+            idolXpBonusPercent = !!featureManager.isFeatureWithKeywordEnabled(FeatureEnum.IDOL_XP_BONUS) ? uint(idol.xpBonusPercent) : uint(0);
             tooltipText = "<p><b>" + idolData.item.name + "</b></p><br>";
             tooltipText += "<p>" + idolData.spellPair.description + "</p><br>";
-            tooltipText += "<p>" + this.uiApi.getText("ui.idol.short.bonusLoot",idol.dropBonusPercent) + "%" + "<br>";
-            tooltipText += this.uiApi.getText("ui.idol.short.bonusXp",idol.xpBonusPercent) + "%</p>";
+            tooltipText += "<p>" + this.uiApi.getText("ui.idol.short.bonusLoot",idolDropBonusPercent) + "%" + "<br>";
+            tooltipText += this.uiApi.getText("ui.idol.short.bonusXp",idolXpBonusPercent) + "%</p>";
             if(target.softDisabled == true)
             {
                tooltipText += "<br><p><b>" + this._deactivationReason[this._idols.indexOf(idol)] + "</b></p>";

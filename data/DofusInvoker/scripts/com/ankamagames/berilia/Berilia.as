@@ -67,8 +67,6 @@ package com.ankamagames.berilia
       
       private var _bOptions:BeriliaOptions;
       
-      private var _applicationVersion:uint;
-      
       private var _uiSavedModificationPresetName:String = "default";
       
       private var _docMain:Sprite;
@@ -284,11 +282,6 @@ package com.ankamagames.berilia
          return this._bOptions;
       }
       
-      public function get applicationVersion() : uint
-      {
-         return this._applicationVersion;
-      }
-      
       public function setDisplayOptions(bopt:BeriliaOptions) : void
       {
          this._bOptions = bopt;
@@ -316,12 +309,11 @@ package com.ankamagames.berilia
          FpsManager.getInstance().stopTracking("ui");
       }
       
-      public function init(docContainer:Sprite, applicationVersion:uint) : void
+      public function init(docContainer:Sprite) : void
       {
          this._docMain = docContainer;
          this._docMain.removeChildren();
          this._docMain.mouseEnabled = false;
-         this._applicationVersion = applicationVersion;
          this._docStrataWorld = new Sprite();
          this._docStrataWorld.name = "strataWorld";
          this._docStrataLow = new Sprite();

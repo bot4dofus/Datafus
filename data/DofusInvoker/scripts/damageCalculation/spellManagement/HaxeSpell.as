@@ -1,5 +1,7 @@
 package damageCalculation.spellManagement
 {
+   import tools.ActionIdHelper;
+   
    public class HaxeSpell
    {
        
@@ -57,6 +59,31 @@ package damageCalculation.spellManagement
          needsFreeCell = param10;
          needsTakenCell = param11;
          maxEffectsStack = param12;
+      }
+      
+      public function isImmediateDamageInflicted(param1:Boolean) : Boolean
+      {
+         var _loc4_:* = null as HaxeSpellEffect;
+         if(isWeapon)
+         {
+            return true;
+         }
+         var _loc2_:Array = !!param1 ? _criticalEffects : _effects;
+         if(_loc2_ == null)
+         {
+            return false;
+         }
+         var _loc3_:int = 0;
+         while(_loc3_ < int(_loc2_.length))
+         {
+            _loc4_ = _loc2_[_loc3_];
+            _loc3_++;
+            if(!!SpellManager.isInstantaneousSpellEffect(_loc4_) && ActionIdHelper.isDamageInflicted(_loc4_.actionId))
+            {
+               return true;
+            }
+         }
+         return false;
       }
       
       public function hasAtLeastOneRandomEffect() : Boolean

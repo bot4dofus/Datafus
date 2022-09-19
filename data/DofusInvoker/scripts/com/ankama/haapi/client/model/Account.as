@@ -68,6 +68,10 @@ package com.ankama.haapi.client.model
       
       public var tag:String = null;
       
+      public var firstname:String = null;
+      
+      public var lastname:String = null;
+      
       private var _security_obj_class:Array = null;
       
       public var security:Vector.<String>;
@@ -114,6 +118,8 @@ package com.ankama.haapi.client.model
          str += " (login: " + this.login + ")";
          str += " (nickname: " + this.nickname + ")";
          str += " (tag: " + this.tag + ")";
+         str += " (firstname: " + this.firstname + ")";
+         str += " (lastname: " + this.lastname + ")";
          str += " (security: " + this.security + ")";
          str += " (lang: " + this.lang + ")";
          str += " (community: " + this.community + ")";

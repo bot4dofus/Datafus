@@ -9,9 +9,11 @@ package Ankama_Tooltips.ui
    import com.ankamagames.berilia.utils.BeriliaHookList;
    import com.ankamagames.dofus.datacenter.idols.Idol;
    import com.ankamagames.dofus.datacenter.monsters.Monster;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.conquest.PrismSubAreaWrapper;
    import com.ankamagames.dofus.internalDatacenter.people.PartyMemberWrapper;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
+   import com.ankamagames.dofus.logic.common.managers.FeatureManager;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
    import com.ankamagames.dofus.network.enums.AlignmentSideEnum;
@@ -338,7 +340,7 @@ package Ankama_Tooltips.ui
          }
          var firstInit:* = this.ctr_back.height == 0;
          var backHeight:Number = this.ctr_main.height;
-         if(!this.configApi.isFeatureWithKeywordEnabled("character.xp"))
+         if(!this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP))
          {
             this.lbl_monsterXp.visible = false;
             this.ctr_separatorXp.y = -this.lbl_monsterXp.height;
@@ -668,6 +670,10 @@ package Ankama_Tooltips.ui
          var incompatibleIdol:Boolean = false;
          var monster:Monster = null;
          var m:Object = null;
+         if(!FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.IDOL_XP_BONUS))
+         {
+            return 0;
+         }
          var numIdols:uint = pIdolsList.length;
          var idolsExpBonusTotalPercent:uint = 0;
          var enabledIdols:Vector.<uint> = new Vector.<uint>(0);

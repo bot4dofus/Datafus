@@ -11,6 +11,7 @@ package Ankama_Tooltips.makers
    import com.ankamagames.berilia.interfaces.ITooltipMaker;
    import com.ankamagames.berilia.types.tooltip.Tooltip;
    import com.ankamagames.dofus.datacenter.spells.SpellPair;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
    import com.ankamagames.dofus.logic.common.managers.FeatureManager;
    
@@ -181,7 +182,7 @@ package Ankama_Tooltips.makers
                      "rightCss":"footerright",
                      "rightText":Api.ui.getText("ui.tooltip.spell.showTheoreticalValues")
                   },chunkType).block);
-                  if(!FeatureManager.getInstance().isFeatureWithKeywordEnabled("character.spell.forgettable"))
+                  if(!FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS))
                   {
                      tooltip.addBlock(new TextTooltipBlock(Api.ui.getText("ui.tooltip.spell.moveSpell"),{"classCss":"footerleft"},chunkType).block);
                   }
@@ -195,7 +196,7 @@ package Ankama_Tooltips.makers
                   "rightCss":"footerright",
                   "rightText":Api.ui.getText("ui.tooltip.spell.showEffectiveValues")
                },chunkType).block);
-               if(!FeatureManager.getInstance().isFeatureWithKeywordEnabled("character.spell.forgettable"))
+               if(!FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS))
                {
                   tooltip.addBlock(new TextTooltipBlock(Api.ui.getText("ui.tooltip.spell.moveSpell"),{"classCss":"footerleft"},chunkType).block);
                }

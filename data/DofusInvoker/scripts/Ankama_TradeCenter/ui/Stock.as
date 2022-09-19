@@ -615,14 +615,7 @@ package Ankama_TradeCenter.ui
                   {
                      itemTooltipSettings.showEffects = false;
                   }
-                  if(this.sysApi.getOption("displayTooltips","dofus"))
-                  {
-                     this.uiApi.showTooltip((target as Slot).data,target,false,"standard",3,3,0,null,null,itemTooltipSettings);
-                  }
-                  else
-                  {
-                     this.uiApi.showTooltip((target as Slot).data,target,false,"standard",LocationEnum.POINT_BOTTOMRIGHT,LocationEnum.POINT_TOPRIGHT,0,"itemName",null,itemTooltipSettings,"ItemInfo");
-                  }
+                  this.uiApi.showTooltip((target as Slot).data,target,false,"standard",3,3,0,null,null,itemTooltipSettings);
                }
          }
          if(info)

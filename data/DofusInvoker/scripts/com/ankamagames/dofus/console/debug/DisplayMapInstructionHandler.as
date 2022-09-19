@@ -29,7 +29,6 @@ package com.ankamagames.dofus.console.debug
    import com.ankamagames.jerakine.utils.display.StageShareManager;
    import com.ankamagames.tiphon.events.TiphonEvent;
    import com.ankamagames.tiphon.types.look.TiphonEntityLook;
-   import com.hurlant.util.Hex;
    import flash.display.BitmapData;
    import flash.display.DisplayObjectContainer;
    import flash.display.Screen;
@@ -58,7 +57,6 @@ package com.ankamagames.dofus.console.debug
       
       public function handle(console:ConsoleHandler, cmd:String, args:Array) : void
       {
-         var decryptionKey:ByteArray = null;
          var worldPoint:WorldPoint = null;
          var outputStr:String = null;
          var mapGenericId:Number = NaN;
@@ -100,18 +98,13 @@ package com.ankamagames.dofus.console.debug
                   console.output("Error : need mapId or map location as first parameter");
                   return;
                }
-               decryptionKey = args.length > 1 ? Hex.toArray(Hex.fromString(args[1])) : null;
-               if(decryptionKey)
-               {
-                  decryptionKey.position = 0;
-               }
                if(args[0].indexOf(",") == -1)
                {
-                  MapDisplayManager.getInstance().display(getWorldPointFromMapId(args[0]),false,decryptionKey);
+                  MapDisplayManager.getInstance().display(getWorldPointFromMapId(args[0]),false);
                }
                else
                {
-                  MapDisplayManager.getInstance().display(WorldPoint.fromCoords(0,args[0].split(",")[0],args[0].split(",")[1]),false,decryptionKey);
+                  MapDisplayManager.getInstance().display(WorldPoint.fromCoords(0,args[0].split(",")[0],args[0].split(",")[1]),false);
                }
                break;
             case "getmapcoord":

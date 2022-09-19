@@ -368,6 +368,63 @@ package com.ankamagames.dofus.logic.game.common.managers
          return result;
       }
       
+      public function getShortDuration(time:Number, isReallyShortDuration:Boolean = false) : String
+      {
+         if(!this._bTextInit)
+         {
+            this.initText();
+         }
+         var future:Date = new Date(time);
+         var now:Date = new Date(this.getUtcTimestamp());
+         var durationDelta:Number = future.getTime() - now.getTime();
+         if(durationDelta < 1000)
+         {
+            return null;
+         }
+         var duration:Number = Math.floor(durationDelta / (1000 * 60 * 60 * 24 * 365.2425));
+         if(duration > 0)
+         {
+            if(isReallyShortDuration)
+            {
+               return I18n.getUiText("ui.time.yearShort",[duration]);
+            }
+            return duration + " " + PatternDecoder.combine(this._nameYears,"f",duration <= 1,duration == 0);
+         }
+         duration = Math.floor(durationDelta / (1000 * 60 * 60 * 24));
+         if(duration > 0)
+         {
+            if(isReallyShortDuration)
+            {
+               return I18n.getUiText("ui.time.dayShort",[duration]);
+            }
+            return duration + " " + PatternDecoder.combine(this._nameDays,"m",duration <= 1,duration == 0);
+         }
+         duration = Math.floor(durationDelta / (1000 * 60 * 60));
+         if(duration > 2)
+         {
+            if(isReallyShortDuration)
+            {
+               return I18n.getUiText("ui.time.hourShort",[duration]);
+            }
+            return duration + " " + PatternDecoder.combine(this._nameHours,"f",duration <= 1,duration == 0);
+         }
+         duration = Math.floor(durationDelta / (1000 * 60));
+         if(duration > 0)
+         {
+            if(isReallyShortDuration)
+            {
+               return I18n.getUiText("ui.time.minuteShort",[duration]);
+            }
+            return duration + " " + PatternDecoder.combine(this._nameMinutes,"f",duration <= 1,duration == 0);
+         }
+         duration = Math.floor(durationDelta / 1000);
+         if(isReallyShortDuration)
+         {
+            return I18n.getUiText("ui.time.secondShort",[duration]);
+         }
+         return duration + " " + PatternDecoder.combine(this._nameSeconds,"f",duration <= 1,duration == 0);
+      }
+      
       public function getDateFromTime(timeUTC:Number, useTimezoneOffset:Boolean = false) : Array
       {
          var date:Date = null;

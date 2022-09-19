@@ -19,6 +19,8 @@ package damageCalculation.tools
       
       public static var STATE_CARRYING:int = 3;
       
+      public static var STATE_INVISIBLE:int = 250;
+      
       public static var MAX_BOMB_SUMMON_COUNT:int = 3;
       
       public static var SPELL_IS_CRITICAL:String = "spellIsCritical";

@@ -58,6 +58,12 @@ package com.ankamagames.dofus.misc.lists
       public static const ArenaFighterLeave:String = "ArenaFighterLeave";
       
       public static const OpenFightResults:String = "OpenFightResults";
+      
+      public static const FighterRemoved:String = "FighterRemoved";
+      
+      public static const FightersInitiative:String = "FighterInitiative";
+      
+      public static const SlaveTurnStart:String = "SlaveTurnStart";
        
       
       public function FightHookList()
@@ -94,6 +100,9 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(FightIdolList);
          Hook.createHook(ArenaFighterLeave);
          Hook.createHook(OpenFightResults);
+         Hook.createHook(FighterRemoved);
+         Hook.createHook(FightersInitiative);
+         Hook.createHook(SlaveTurnStart);
       }
    }
 }

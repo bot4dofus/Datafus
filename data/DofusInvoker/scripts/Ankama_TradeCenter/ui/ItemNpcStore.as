@@ -36,11 +36,6 @@ package Ankama_TradeCenter.ui
          }
       }
       
-      override public function unload() : void
-      {
-         super.unload();
-      }
-      
       override public function onRelease(target:GraphicContainer) : void
       {
          var r:RegExp = null;

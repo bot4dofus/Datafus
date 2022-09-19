@@ -11,14 +11,14 @@ package com.ankamagames.dofus.network.messages.game.guild.application
    public class GuildApplicationAnswerMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5404;
+      public static const protocolId:uint = 4198;
        
       
       private var _isInitialized:Boolean = false;
       
       public var accepted:Boolean = false;
       
-      public var playerId:uint = 0;
+      public var playerId:Number = 0;
       
       public function GuildApplicationAnswerMessage()
       {
@@ -32,10 +32,10 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       override public function getMessageId() : uint
       {
-         return 5404;
+         return 4198;
       }
       
-      public function initGuildApplicationAnswerMessage(accepted:Boolean = false, playerId:uint = 0) : GuildApplicationAnswerMessage
+      public function initGuildApplicationAnswerMessage(accepted:Boolean = false, playerId:Number = 0) : GuildApplicationAnswerMessage
       {
          this.accepted = accepted;
          this.playerId = playerId;
@@ -78,11 +78,11 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       public function serializeAs_GuildApplicationAnswerMessage(output:ICustomDataOutput) : void
       {
          output.writeBoolean(this.accepted);
-         if(this.playerId < 0)
+         if(this.playerId < 0 || this.playerId > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.playerId + ") on element playerId.");
          }
-         output.writeVarInt(this.playerId);
+         output.writeVarLong(this.playerId);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -114,8 +114,8 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       private function _playerIdFunc(input:ICustomDataInput) : void
       {
-         this.playerId = input.readVarUhInt();
-         if(this.playerId < 0)
+         this.playerId = input.readVarUhLong();
+         if(this.playerId < 0 || this.playerId > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.playerId + ") on element of GuildApplicationAnswerMessage.playerId.");
          }

@@ -9,6 +9,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.datacenter.spells.SpellLevel;
    import com.ankamagames.dofus.datacenter.spells.SpellVariant;
    import com.ankamagames.dofus.datacenter.world.SubArea;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.conquest.PrismSubAreaWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.people.PartyMemberWrapper;
@@ -18,6 +19,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.kernel.sound.SoundManager;
    import com.ankamagames.dofus.kernel.sound.enum.UISoundEnum;
+   import com.ankamagames.dofus.logic.common.managers.FeatureManager;
    import com.ankamagames.dofus.logic.common.managers.NotificationManager;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
@@ -73,7 +75,6 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.character.stats.CharacterLevelUpMessage;
    import com.ankamagames.dofus.network.messages.game.character.stats.CharacterStatsListMessage;
    import com.ankamagames.dofus.network.messages.game.character.stats.ResetCharacterStatsRequestMessage;
-   import com.ankamagames.dofus.network.messages.game.context.GameMapSpeedMovementMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.MapComplementaryInformationsDataMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.death.GameRolePlayGameOverMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.death.GameRolePlayPlayerLifeStatusMessage;
@@ -101,7 +102,6 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.types.game.data.items.ObjectItemInformationWithQuantity;
    import com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject;
    import com.ankamagames.dofus.types.data.PlayerSetInfo;
-   import com.ankamagames.dofus.types.entities.AnimatedCharacter;
    import com.ankamagames.dofus.types.enums.NotificationTypeEnum;
    import com.ankamagames.dofus.types.sequences.AddGfxEntityStep;
    import com.ankamagames.jerakine.data.I18n;
@@ -223,8 +223,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          var fsesmsg:ForgettableSpellEquipmentSlotsMessage = null;
          var kzlmsg:KnownZaapListMessage = null;
          var usmaction:UpdateSpellModifierAction = null;
-         var gmsmm:GameMapSpeedMovementMessage = null;
-         var newSpeedAjust:int = 0;
          var infos:GameRolePlayHumanoidInformations = null;
          var playerInfos:GameRolePlayCharacterInformations = null;
          var currentLook:TiphonEntityLook = null;
@@ -661,7 +659,8 @@ package com.ankamagames.dofus.logic.game.common.frames
                      "uid":gift.uid,
                      "title":gift.title,
                      "text":gift.text,
-                     "items":_items
+                     "items":_items,
+                     "actionType":gift.type
                   };
                   giftList.push(obj);
                }
@@ -767,7 +766,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                else
                {
                   ds = new DataStoreType("AccountModule_",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_ACCOUNT);
-                  if(!StoreDataManager.getInstance().getData(ds,FORGETTABLE_SPELL_FIRST_NOTIF_NAME))
+                  if(!StoreDataManager.getInstance().getData(ds,FORGETTABLE_SPELL_FIRST_NOTIF_NAME) && !FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.MODSTERS))
                   {
                      StoreDataManager.getInstance().setData(ds,FORGETTABLE_SPELL_FIRST_NOTIF_NAME,true);
                      nid = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.temporis.popupFirstSpellAddedTitle"),I18n.getUiText("ui.temporis.popupFirstSpellAddedContent"),NotificationTypeEnum.TUTORIAL,"FirstForgettableSpellNotif");
@@ -808,14 +807,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                usmaction = msg as UpdateSpellModifierAction;
                this.updateSpellModifier(usmaction.entityId,usmaction.spellId,usmaction.statId);
                return true;
-            case msg is GameMapSpeedMovementMessage:
-               gmsmm = msg as GameMapSpeedMovementMessage;
-               newSpeedAjust = 10 * (gmsmm.speedMultiplier - 1);
-               PlayedCharacterManager.getInstance().speedAjust = newSpeedAjust;
-               if(DofusEntities.getEntity(PlayedCharacterManager.getInstance().id) != null && this.roleplayContextFrame != null)
-               {
-                  (DofusEntities.getEntity(PlayedCharacterManager.getInstance().id) as AnimatedCharacter).speedAdjust = newSpeedAjust;
-               }
          }
          return false;
       }

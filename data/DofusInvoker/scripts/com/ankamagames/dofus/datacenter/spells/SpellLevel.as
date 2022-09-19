@@ -73,11 +73,7 @@ package com.ankamagames.dofus.datacenter.spells
       
       public var playAnimation:Boolean;
       
-      public var statesRequired:Vector.<int>;
-      
-      public var statesAuthorized:Vector.<int>;
-      
-      public var statesForbidden:Vector.<int>;
+      public var statesCriterion:String;
       
       public var effects:Vector.<EffectInstanceDice>;
       

@@ -4,6 +4,7 @@ package com.ankamagames.dofus.kernel.zaap
    import com.ankama.zaap.OverlayPosition;
    import com.ankama.zaap.ZaapClient;
    import com.ankama.zaap.ZaapError;
+   import com.ankamagames.dofus.BuildInfos;
    import com.ankamagames.dofus.kernel.zaap.messages.IZaapInputMessage;
    import com.ankamagames.dofus.kernel.zaap.messages.IZaapOutputMessage;
    import com.ankamagames.dofus.kernel.zaap.messages.impl.ApiTokenMessage;
@@ -19,14 +20,19 @@ package com.ankamagames.dofus.kernel.zaap
    import com.ankamagames.dofus.kernel.zaap.messages.impl.ZaapResetOgrinesMessage;
    import com.ankamagames.dofus.kernel.zaap.messages.impl.ZaapSettingMessage;
    import com.ankamagames.dofus.kernel.zaap.messages.impl.ZaapUserInfosMessage;
+   import com.ankamagames.dofus.network.enums.BuildTypeEnum;
    import com.ankamagames.jerakine.json.JSON;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.managers.ErrorManager;
    import com.ankamagames.jerakine.utils.errors.Result;
+   import com.ankamagames.jerakine.utils.misc.JsonUtil;
    import com.ankamagames.jerakine.utils.system.CommandLineArguments;
    import flash.events.ErrorEvent;
    import flash.events.Event;
+   import flash.filesystem.File;
+   import flash.filesystem.FileMode;
+   import flash.filesystem.FileStream;
    import flash.utils.getQualifiedClassName;
    
    public class ZaapConnectionHelper
@@ -54,8 +60,28 @@ package com.ankamagames.dofus.kernel.zaap
          this._buffer = new Vector.<IZaapOutputMessage>();
       }
       
+      private static function getOverlayPosition() : OverlayPosition
+      {
+         var pos:OverlayPosition = new OverlayPosition();
+         pos.posX = 25;
+         pos.posY = 25;
+         pos.width = 50;
+         pos.height = 50;
+         return pos;
+      }
+      
       public static function hasZaapArguments() : Boolean
       {
+         var zaapFile:File = null;
+         if(BuildInfos.BUILD_TYPE == BuildTypeEnum.DEBUG)
+         {
+            zaapFile = new File(File.applicationDirectory.nativePath + File.separator + "credentials.json");
+            if(zaapFile.exists)
+            {
+               return true;
+            }
+            throw new Error("Cannot connect to launcher, credentials.json not generated");
+         }
          return CommandLineArguments.getInstance().hasArgument("port") && CommandLineArguments.getInstance().hasArgument("gameName") && CommandLineArguments.getInstance().hasArgument("gameRelease") && CommandLineArguments.getInstance().hasArgument("instanceId") && CommandLineArguments.getInstance().hasArgument("hash") && CommandLineArguments.getInstance().hasArgument("canLogin");
       }
       
@@ -71,16 +97,56 @@ package com.ankamagames.dofus.kernel.zaap
       
       public function connect() : void
       {
+         var zaapFile:File = null;
+         var stream:FileStream = null;
+         var content:String = null;
+         var credentials:Object = null;
+         var port:int = 0;
+         var name:String = null;
+         var release:String = null;
+         var instanceId:int = 0;
+         var hash:String = null;
          if(hasZaapArguments())
          {
-            this._zaapLogin = CommandLineArguments.getInstance().getArgument("canLogin") == "true";
-            if(this._zaap == null)
+            if(BuildInfos.BUILD_TYPE == BuildTypeEnum.DEBUG)
             {
-               this._zaap = new ZaapClient();
+               zaapFile = new File(File.applicationDirectory.nativePath + File.separator + "credentials.json");
+               if(!zaapFile.exists)
+               {
+                  throw new Error("Cannot connect to launcher, credentials.json not generated");
+               }
+               stream = new FileStream();
+               stream.open(zaapFile,FileMode.READ);
+               content = stream.readMultiByte(zaapFile.size,"utf-8");
+               stream.close();
+               credentials = JsonUtil.fromJson(content);
+               this._zaapLogin = true;
+               if(this._zaap == null)
+               {
+                  this._zaap = new ZaapClient();
+               }
+               if(this._zaap.connection == null)
+               {
+                  port = parseInt(credentials.port);
+                  name = credentials.name;
+                  release = credentials.release;
+                  instanceId = parseInt(credentials.instanceId);
+                  hash = credentials.hash;
+                  _log.debug("zaap credentials : " + port + " " + name + " " + release + " " + instanceId + " " + hash);
+                  this._zaap.connect(port,name,release,instanceId,hash,this.onDebugError,this.onConnectionOpened,this.onDebugConnectionClosed);
+               }
             }
-            if(this._zaap.connection == null)
+            else
             {
-               this._zaap.connect(parseInt(CommandLineArguments.getInstance().getArgument("port")),CommandLineArguments.getInstance().getArgument("gameName"),CommandLineArguments.getInstance().getArgument("gameRelease"),parseInt(CommandLineArguments.getInstance().getArgument("instanceId")),CommandLineArguments.getInstance().getArgument("hash"),this.onError,this.onConnectionOpened,this.onConnectionClosed);
+               this._zaapLogin = CommandLineArguments.getInstance().getArgument("canLogin") == "true";
+               if(this._zaap == null)
+               {
+                  this._zaap = new ZaapClient();
+               }
+               if(this._zaap.connection == null)
+               {
+                  this._zaap.connect(parseInt(CommandLineArguments.getInstance().getArgument("port")),CommandLineArguments.getInstance().getArgument("gameName"),CommandLineArguments.getInstance().getArgument("gameRelease"),parseInt(CommandLineArguments.getInstance().getArgument("instanceId")),CommandLineArguments.getInstance().getArgument("hash"),this.onError,this.onConnectionOpened,this.onConnectionClosed);
+               }
             }
          }
       }
@@ -95,11 +161,7 @@ package com.ankamagames.dofus.kernel.zaap
       
       public function isConnected() : Boolean
       {
-         if(this._zaap && this._zaap.session != null)
-         {
-            return true;
-         }
-         return false;
+         return this._zaap && this._zaap.session != null;
       }
       
       public function isDisconnected() : Boolean
@@ -190,20 +252,10 @@ package com.ankamagames.dofus.kernel.zaap
             {
                rzpam = msg as RequestZaapPayArticleMessage;
                _log.info("Asking zaap pay article... (" + rzpam.articleId + ")");
-               this._zaap.client.payArticle(this._zaap.session,rzpam.apiKey,rzpam.articleId,this.getOverlayPosition(),this.onZaapPayArticleError,this.onZaapPayArticleSuccess);
+               this._zaap.client.payArticle(this._zaap.session,rzpam.apiKey,rzpam.articleId,getOverlayPosition(),this.onZaapPayArticleError,this.onZaapPayArticleSuccess);
             }
          }
          return true;
-      }
-      
-      private function getOverlayPosition() : OverlayPosition
-      {
-         var pos:OverlayPosition = new OverlayPosition();
-         pos.posX = 25;
-         pos.posY = 25;
-         pos.width = 50;
-         pos.height = 50;
-         return pos;
       }
       
       private function onZaapPayArticleError(e:Error) : void
@@ -401,6 +453,19 @@ package com.ankamagames.dofus.kernel.zaap
          }
          this.dispatchConnected();
          this.resumeMessages();
+      }
+      
+      private function onDebugError(event:ErrorEvent) : void
+      {
+         _log.error("Error : [" + event.errorID + "] " + event.text);
+         this.dispatchRageQuit();
+         throw new Error("Zaap connection could not be established. Your Launcher may not be launched, or you did not launch a game today.");
+      }
+      
+      private function onDebugConnectionClosed(event:Event) : void
+      {
+         this.dispatchRageQuit();
+         throw new Error("Zaap connection has been closed. Did your Launcher crash ?");
       }
       
       private function onConnectionClosed(event:Event) : void

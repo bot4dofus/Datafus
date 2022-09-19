@@ -7,7 +7,6 @@ package Ankama_Fight.ui
    import com.ankamagames.berilia.components.Label;
    import com.ankamagames.berilia.components.Texture;
    import com.ankamagames.berilia.components.TextureBitmap;
-   import com.ankamagames.berilia.enums.GridItemSelectMethodEnum;
    import com.ankamagames.berilia.types.LocationEnum;
    import com.ankamagames.berilia.types.data.ContextMenuData;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
@@ -15,12 +14,12 @@ package Ankama_Fight.ui
    import com.ankamagames.berilia.utils.ComponentHookList;
    import com.ankamagames.dofus.datacenter.idols.Idol;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.fight.ChallengeWrapper;
    import com.ankamagames.dofus.internalDatacenter.fight.EnumChallengeCategory;
    import com.ankamagames.dofus.internalDatacenter.fight.FightResultEntryWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.kernel.sound.enum.SoundTypeEnum;
-   import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.FightHookList;
    import com.ankamagames.dofus.modules.utils.ItemTooltipSettings;
    import com.ankamagames.dofus.network.enums.FightOutcomeEnum;
@@ -166,7 +165,6 @@ package Ankama_Fight.ui
          this.uiApi.addComponentHook(this.tx_challenge_result1,ComponentHookList.ON_ROLL_OUT);
          this.uiApi.addComponentHook(this.tx_challenge_result2,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.tx_challenge_result2,ComponentHookList.ON_ROLL_OUT);
-         this.uiApi.addComponentHook(this.gd_objects,ComponentHookList.ON_SELECT_ITEM);
          this.uiApi.addComponentHook(this.gd_objects,ComponentHookList.ON_ITEM_RIGHT_CLICK);
          this.uiApi.addComponentHook(this.gd_objects,ComponentHookList.ON_ITEM_ROLL_OVER);
          this.uiApi.addComponentHook(this.gd_objects,ComponentHookList.ON_ITEM_ROLL_OUT);
@@ -301,7 +299,7 @@ package Ankama_Fight.ui
                      this.soundApi.playSound(SoundTypeEnum.FIGHT_LOSE);
                   }
                }
-               if(result.showExperienceFightDelta && this.configApi.isFeatureWithKeywordEnabled("character.xp"))
+               if(result.showExperienceFightDelta && this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP))
                {
                   this.lbl_xp.text = this.utilApi.kamasToString(result.experienceFightDelta,"");
                }
@@ -323,7 +321,7 @@ package Ankama_Fight.ui
                }
                if(result.rewards.objects.length > 0)
                {
-                  result.rewards.objects.sort(this.compareItemsAveragePrices);
+                  result.rewards.objects.sort(this.compareItems);
                   objects = [];
                   for each(o in result.rewards.objects)
                   {
@@ -421,8 +419,16 @@ package Ankama_Fight.ui
          }
       }
       
-      private function compareItemsAveragePrices(pItemA:Object, pItemB:Object) : int
+      private function compareItems(pItemA:Object, pItemB:Object) : int
       {
+         if(pItemA.dropPriority > pItemB.dropPriority)
+         {
+            return -1;
+         }
+         if(pItemA.dropPriority < pItemB.dropPriority)
+         {
+            return 1;
+         }
          var itemAPrice:Number = this.averagePricesApi.getItemAveragePrice(pItemA.objectGID) * pItemA.quantity;
          var itemBPrice:Number = this.averagePricesApi.getItemAveragePrice(pItemB.objectGID) * pItemB.quantity;
          return itemAPrice < itemBPrice ? 1 : (itemAPrice > itemBPrice ? -1 : 0);
@@ -503,19 +509,6 @@ package Ankama_Fight.ui
       public function onRollOut(target:GraphicContainer) : void
       {
          this.uiApi.hideTooltip();
-      }
-      
-      public function onSelectItem(target:GraphicContainer, selectMethod:uint, isNewSelection:Boolean) : void
-      {
-         var item:Object = null;
-         if(target.name.indexOf("gd_objects") != -1)
-         {
-            if(!Api.sysApi.getOption("displayTooltips","dofus") && (selectMethod == GridItemSelectMethodEnum.CLICK || selectMethod == GridItemSelectMethodEnum.MANUAL))
-            {
-               item = (target as Grid).selectedItem;
-               Api.sysApi.dispatchHook(ChatHookList.ShowObjectLinked,item);
-            }
-         }
       }
       
       public function onItemRollOver(target:GraphicContainer, item:Object) : void

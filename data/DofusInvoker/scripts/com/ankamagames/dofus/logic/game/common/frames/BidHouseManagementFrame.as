@@ -60,8 +60,6 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       private var _vendorObjects:Array;
       
-      private var _GIDAsk:uint;
-      
       private var _NPCId:uint;
       
       private var _listItemsSearchMode:Array;
@@ -135,6 +133,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var ebhsa:ExchangeBidHouseSearchAction = null;
          var ebhsmsg:ExchangeBidHouseSearchMessage = null;
          var ebhla:ExchangeBidHouseListAction = null;
+         var ebhlmsg:ExchangeBidHouseListMessage = null;
          var ebhta:ExchangeBidHouseTypeAction = null;
          var ebhtmsg:ExchangeBidHouseTypeMessage = null;
          var ebhba:ExchangeBidHouseBuyAction = null;
@@ -173,6 +172,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var tod:TypeObjectData = null;
          var etiedfumsg:ExchangeTypesItemsExchangerDescriptionForUserMessage = null;
          var typeAsked_2:uint = 0;
+         var GIDAsk:uint = 0;
          var goData0:GIDObjectData = null;
          var goData:GIDObjectData = null;
          var bhssa:BidHouseStringSearchAction = null;
@@ -184,8 +184,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          var buyngarmsg:NpcGenericActionRequestMessage = null;
          var sellngarmsg:NpcGenericActionRequestMessage = null;
          var elm:ExchangeLeaveMessage = null;
-         var ebhlmsg:ExchangeBidHouseListMessage = null;
-         var ebhlmsg2:ExchangeBidHouseListMessage = null;
          var objectToSell:ItemSellByPlayer = null;
          var ugoda:GIDObjectData = null;
          var objectUpdate:ItemSellByBid = null;
@@ -218,25 +216,14 @@ package com.ankamagames.dofus.logic.game.common.frames
             case msg is ExchangeBidHouseSearchAction:
                ebhsa = msg as ExchangeBidHouseSearchAction;
                ebhsmsg = new ExchangeBidHouseSearchMessage();
-               ebhsmsg.initExchangeBidHouseSearchMessage(ebhsa.genId,ebhsa.follow);
-               this._GIDAsk = ebhsa.genId;
+               ebhsmsg.initExchangeBidHouseSearchMessage(ebhsa.objectGID,ebhsa.follow);
                ConnectionsHandler.getConnection().send(ebhsmsg);
                return true;
             case msg is ExchangeBidHouseListAction:
                ebhla = msg as ExchangeBidHouseListAction;
-               if(this._GIDAsk != ebhla.id)
-               {
-                  this._GIDAsk = ebhla.id;
-                  ebhlmsg = new ExchangeBidHouseListMessage();
-                  ebhlmsg.initExchangeBidHouseListMessage(ebhla.id,ebhla.follow);
-                  ConnectionsHandler.getConnection().send(ebhlmsg);
-               }
-               else
-               {
-                  ebhlmsg2 = new ExchangeBidHouseListMessage();
-                  ebhlmsg2.initExchangeBidHouseListMessage(ebhla.id,ebhla.follow);
-                  ConnectionsHandler.getConnection().send(ebhlmsg2);
-               }
+               ebhlmsg = new ExchangeBidHouseListMessage();
+               ebhlmsg.initExchangeBidHouseListMessage(ebhla.objectGID,ebhla.follow);
+               ConnectionsHandler.getConnection().send(ebhlmsg);
                return true;
             case msg is ExchangeBidHouseTypeAction:
                ebhta = msg as ExchangeBidHouseTypeAction;
@@ -253,7 +240,7 @@ package com.ankamagames.dofus.logic.game.common.frames
             case msg is ExchangeBidHousePriceAction:
                ebhpa = msg as ExchangeBidHousePriceAction;
                ebhpmsg = new ExchangeBidHousePriceMessage();
-               ebhpmsg.initExchangeBidHousePriceMessage(ebhpa.genId);
+               ebhpmsg.initExchangeBidHousePriceMessage(ebhpa.objectGID);
                ConnectionsHandler.getConnection().send(ebhpmsg);
                return true;
             case msg is ExchangeBidPriceForSellerMessage:
@@ -433,15 +420,12 @@ package com.ankamagames.dofus.logic.game.common.frames
             case msg is ExchangeTypesItemsExchangerDescriptionForUserMessage:
                etiedfumsg = msg as ExchangeTypesItemsExchangerDescriptionForUserMessage;
                typeAsked_2 = etiedfumsg.objectType;
-               if(etiedfumsg.itemTypeDescriptions.length > 0)
-               {
-                  this._GIDAsk = (etiedfumsg.itemTypeDescriptions[0] as BidExchangerObjectInfo).objectGID;
-               }
-               goData0 = this.getGIDObject(typeAsked_2,this._GIDAsk);
+               GIDAsk = etiedfumsg.objectGID;
+               goData0 = this.getGIDObject(typeAsked_2,GIDAsk);
                if(!goData0)
                {
                   tod0 = this.getTypeObject(typeAsked_2);
-                  goTest = new GIDObjectData(this._GIDAsk,[]);
+                  goTest = new GIDObjectData(GIDAsk,[]);
                   if(tod0)
                   {
                      if(!tod0.objects)
@@ -454,7 +438,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                      }
                   }
                }
-               goData = this.getGIDObject(typeAsked_2,this._GIDAsk);
+               goData = this.getGIDObject(typeAsked_2,GIDAsk);
                if(goData)
                {
                   goData.objects = [];
@@ -468,11 +452,11 @@ package com.ankamagames.dofus.logic.game.common.frames
                      }
                      goData.objects.push(new ItemSellByBid(itemW,objectsPrices));
                   }
-                  this._kernelEventsManager.processCallback(ExchangeHookList.BidObjectListUpdate,goData.objects,this._GIDAsk,false,true);
+                  this._kernelEventsManager.processCallback(ExchangeHookList.BidObjectListUpdate,goData.objects,GIDAsk,false,true);
                }
                else
                {
-                  this._kernelEventsManager.processCallback(ExchangeHookList.BidObjectListUpdate,null,this._GIDAsk,false,true);
+                  this._kernelEventsManager.processCallback(ExchangeHookList.BidObjectListUpdate,null,GIDAsk,false,true);
                }
                return true;
             case msg is BidHouseStringSearchAction:

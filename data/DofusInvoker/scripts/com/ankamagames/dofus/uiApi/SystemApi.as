@@ -294,18 +294,6 @@ package com.ankamagames.dofus.uiApi
          return BuffManager.getInstance();
       }
       
-      public function getPort() : uint
-      {
-         var dst:DataStoreType = new DataStoreType("Dofus_ComputerOptions",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_ACCOUNT);
-         return StoreDataManager.getInstance().getData(dst,"defaultConnectionPort");
-      }
-      
-      public function setPort(port:uint) : Boolean
-      {
-         var dst:DataStoreType = new DataStoreType("Dofus_ComputerOptions",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_ACCOUNT);
-         return StoreDataManager.getInstance().setData(dst,"defaultConnectionPort",port);
-      }
-      
       public function setData(name:String, value:*, dataStore:int = 2) : Boolean
       {
          var dst:DataStoreType = null;
@@ -427,10 +415,6 @@ package com.ankamagames.dofus.uiApi
       
       public function getOption(name:String, moduleName:String) : *
       {
-         if(moduleName == "dofus" && name == "displayTooltips")
-         {
-            return true;
-         }
          return OptionManager.getOptionManager(moduleName).getOption(name);
       }
       

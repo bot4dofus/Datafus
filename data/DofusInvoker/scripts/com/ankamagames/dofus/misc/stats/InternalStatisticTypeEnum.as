@@ -54,6 +54,10 @@ package com.ankamagames.dofus.misc.stats
       public static const CHINQ:uint = 747;
       
       public static const SUGGESTIONS:uint = 752;
+      
+      public static const JOURNAL:uint = 829;
+      
+      public static const LOG_BOOK_HISTORY:uint = 830;
        
       
       public function InternalStatisticTypeEnum()

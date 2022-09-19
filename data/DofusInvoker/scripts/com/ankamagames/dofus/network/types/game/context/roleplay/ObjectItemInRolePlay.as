@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class ObjectItemInRolePlay implements INetworkType
    {
       
-      public static const protocolId:uint = 4848;
+      public static const protocolId:uint = 2508;
        
       
       public var cellId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       public function getTypeId() : uint
       {
-         return 4848;
+         return 2508;
       }
       
       public function initObjectItemInRolePlay(cellId:uint = 0, objectGID:uint = 0) : ObjectItemInRolePlay
@@ -54,7 +54,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element objectGID.");
          }
-         output.writeVarShort(this.objectGID);
+         output.writeVarInt(this.objectGID);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -90,7 +90,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       private function _objectGIDFunc(input:ICustomDataInput) : void
       {
-         this.objectGID = input.readVarUhShort();
+         this.objectGID = input.readVarUhInt();
          if(this.objectGID < 0)
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element of ObjectItemInRolePlay.objectGID.");

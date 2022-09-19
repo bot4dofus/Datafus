@@ -1,10 +1,12 @@
 package Ankama_Storage
 {
    import com.ankamagames.berilia.api.UiApi;
+   import com.ankamagames.dofus.uiApi.ChatApi;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.InventoryApi;
    import com.ankamagames.dofus.uiApi.JobsApi;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
+   import com.ankamagames.dofus.uiApi.SocialApi;
    import com.ankamagames.dofus.uiApi.SoundApi;
    import com.ankamagames.dofus.uiApi.StorageApi;
    import com.ankamagames.dofus.uiApi.SystemApi;
@@ -31,6 +33,10 @@ package Ankama_Storage
       public static var data:DataApi;
       
       public static var jobs:JobsApi;
+      
+      public static var social:SocialApi;
+      
+      public static var chat:ChatApi;
        
       
       public function Api()

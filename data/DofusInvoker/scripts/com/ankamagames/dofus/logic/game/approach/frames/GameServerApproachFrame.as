@@ -14,6 +14,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
    import com.ankamagames.dofus.console.moduleLogger.ModuleDebugManager;
    import com.ankamagames.dofus.datacenter.servers.Server;
    import com.ankamagames.dofus.externalnotification.ExternalNotificationManager;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.connection.BasicCharacterWrapper;
    import com.ankamagames.dofus.internalDatacenter.connection.CreationCharacterWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
@@ -24,6 +25,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
    import com.ankamagames.dofus.logic.common.frames.MiscFrame;
    import com.ankamagames.dofus.logic.common.managers.FeatureManager;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
+   import com.ankamagames.dofus.logic.connection.frames.AuthentificationFrame;
    import com.ankamagames.dofus.logic.connection.frames.GameStartingFrame;
    import com.ankamagames.dofus.logic.connection.frames.ServerSelectionFrame;
    import com.ankamagames.dofus.logic.connection.managers.AuthentificationManager;
@@ -71,6 +73,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
    import com.ankamagames.dofus.logic.game.common.managers.InactivityManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
+   import com.ankamagames.dofus.logic.game.roleplay.frames.AlterationFrame;
    import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayIntroductionFrame;
    import com.ankamagames.dofus.logic.game.spin2.chat.ChatServiceManager;
    import com.ankamagames.dofus.logic.shield.SecureModeManager;
@@ -301,6 +304,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
          var currentServer:Server = null;
          var bTutorial:Boolean = false;
          var cssmsg:CharacterSelectedSuccessMessage = null;
+         var authenticationFrame:AuthentificationFrame = null;
          var isRelease:* = false;
          var gccrmsg:GameContextCreateRequestMessage = null;
          var soundApi:SoundApi = null;
@@ -418,7 +422,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
                unusable = false;
                server = PlayerManager.getInstance().server;
                bonusXp = 1;
-               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled("server.heroic") || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
+               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER) || server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
                {
                   for each(chi in clmsg.characters)
                   {
@@ -441,7 +445,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
                else
                {
                   featureManager = FeatureManager.getInstance();
-                  bonusXpFeatureActivated = !featureManager || featureManager.isFeatureWithKeywordEnabled("character.xp.bonusForYoungerCharacters");
+                  bonusXpFeatureActivated = !featureManager || featureManager.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP_BONUS_YOUNG_CHARACTERS);
                   for each(cbi in clmsg.characters)
                   {
                      bonusXp = 1;
@@ -510,7 +514,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
                   this._waitingForListRefreshAfterDeletion = false;
                }
                this._charactersList = new Vector.<BasicCharacterWrapper>();
-               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled("server.heroic") || PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
+               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER) || PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
                {
                   for each(bChi in bclmsg.characters)
                   {
@@ -561,7 +565,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
                return true;
             case msg is CharacterCreationResultMessage:
                ccrmsg = msg as CharacterCreationResultMessage;
-               this._kernel.processCallback(HookList.CharacterCreationResult,ccrmsg.result);
+               this._kernel.processCallback(HookList.CharacterCreationResult,ccrmsg.result,ccrmsg.reason);
                return true;
             case msg is CharacterDeletionAction:
                cda = msg as CharacterDeletionAction;
@@ -602,6 +606,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
             case msg is CharacterNameSuggestionFailureMessage:
                cnsfmsg = msg as CharacterNameSuggestionFailureMessage;
                _log.error("Generation de nom impossible !");
+               this._kernel.processCallback(HookList.CharacterNameSuggestioned,"");
                return true;
             case msg is CharacterSelectedForceMessage:
                if(!this._reconnectMsgSend)
@@ -630,7 +635,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
                   }
                }
                remodel.colors = tempColorsArray;
-               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled("server.heroic") || PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
+               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER) || PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
                {
                   for each(person2 in this._charactersList)
                   {
@@ -787,6 +792,11 @@ package com.ankamagames.dofus.logic.game.approach.frames
                break;
             case msg is CharacterSelectedSuccessMessage:
                cssmsg = msg as CharacterSelectedSuccessMessage;
+               authenticationFrame = Kernel.getWorker().getFrame(AuthentificationFrame) as AuthentificationFrame;
+               if(authenticationFrame)
+               {
+                  Kernel.getWorker().removeFrame(authenticationFrame);
+               }
                this._loadingStart = new Date().time;
                ConnectionsHandler.pause();
                if(Kernel.getWorker().getFrame(ServerSelectionFrame))
@@ -799,7 +809,6 @@ package com.ankamagames.dofus.logic.game.approach.frames
                   Kernel.getWorker().addFrame(this._gmaf);
                }
                PlayedCharacterManager.getInstance().infos = cssmsg.infos;
-               DataStoreType.CHARACTER_ID = cssmsg.infos.id.toString();
                Kernel.getWorker().pause();
                this._cssmsg = cssmsg;
                UiModuleManager.getInstance().reset();
@@ -847,6 +856,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
                Kernel.getWorker().addFrame(new AllianceFrame());
                Kernel.getWorker().addFrame(new PlayedCharacterUpdatesFrame());
                Kernel.getWorker().addFrame(new SocialFrame());
+               Kernel.getWorker().addFrame(new AlterationFrame());
                Kernel.getWorker().addFrame(new SpellInventoryManagementFrame());
                Kernel.getWorker().addFrame(new InventoryManagementFrame());
                Kernel.getWorker().addFrame(new ContextChangeFrame());
@@ -868,7 +878,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
                Kernel.getWorker().addFrame(new RoleplayIntroductionFrame());
                Kernel.getWorker().addFrame(new ScreenCaptureFrame());
                Kernel.getWorker().addFrame(new AdministrablePopupFrame());
-               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled("character.spell.forgettable"))
+               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS))
                {
                   Kernel.getWorker().addFrame(new ForgettableSpellsUiFrame());
                }
@@ -893,7 +903,6 @@ package com.ankamagames.dofus.logic.game.approach.frames
                if(this._cssmsg != null)
                {
                   PlayedCharacterManager.getInstance().infos = this._cssmsg.infos;
-                  DataStoreType.CHARACTER_ID = this._cssmsg.infos.id.toString();
                }
                Kernel.getWorker().removeFrame(this);
                if(XmlConfig.getInstance().getBooleanEntry("config.dev.mode"))
@@ -994,7 +1003,8 @@ package com.ankamagames.dofus.logic.game.approach.frames
                      "uid":gift.uid,
                      "title":gift.title,
                      "text":gift.text,
-                     "items":_items
+                     "items":_items,
+                     "actionType":gift.type
                   };
                   this._giftList.push(oj);
                }
@@ -1158,7 +1168,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
          var updateInformationDisplayed:String = null;
          var currentVersion:String = null;
          var fakacsa:CharacterSelectionAction = null;
-         if(charToConnect && ((!FeatureManager.getInstance().isFeatureWithKeywordEnabled("server.heroic") && server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_EPIC || charToConnect.deathState == 0) && !SecureModeManager.getInstance().active && !this.isCharacterWaitingForChange(charToConnect.id) && !PlayerManager.getInstance().wasAlreadyConnected))
+         if(charToConnect && ((!FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER) && server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_EPIC || charToConnect.deathState == 0) && !SecureModeManager.getInstance().active && !this.isCharacterWaitingForChange(charToConnect.id) && !PlayerManager.getInstance().wasAlreadyConnected))
          {
             this._openCharsList = false;
             this._kernel.processCallback(HookList.CharactersListUpdated,this._charactersList);

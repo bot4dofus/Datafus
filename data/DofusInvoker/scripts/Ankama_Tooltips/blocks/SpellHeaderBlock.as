@@ -1,7 +1,19 @@
 package Ankama_Tooltips.blocks
 {
    import Ankama_Tooltips.Api;
+   import com.ankamagames.dofus.datacenter.items.criterion.GroupItemCriterion;
+   import com.ankamagames.dofus.datacenter.items.criterion.IItemCriterion;
+   import com.ankamagames.dofus.datacenter.items.criterion.ItemCriterionOperator;
+   import com.ankamagames.dofus.datacenter.items.criterion.StateCriterion;
+   import com.ankamagames.dofus.datacenter.optionalFeatures.CustomModeBreedSpell;
+   import com.ankamagames.dofus.datacenter.optionalFeatures.Modster;
+   import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
+   import com.ankamagames.dofus.kernel.Kernel;
+   import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
+   import com.ankamagames.dofus.network.types.game.context.GameContextActorInformations;
+   import com.ankamagames.dofus.network.types.game.context.fight.GameFightMonsterInformations;
    import com.ankamagames.jerakine.utils.display.spellZone.SpellShapeEnum;
+   import com.ankamagames.jerakine.utils.misc.StringUtils;
    
    public class SpellHeaderBlock extends AbstractTooltipBlock
    {
@@ -228,8 +240,15 @@ package Ankama_Tooltips.blocks
       public function onAllChunkLoaded() : void
       {
          var chunkParams:Object = null;
-         var state:int = 0;
+         var slaveInfo:GameContextActorInformations = null;
+         var entitiesFrame:FightEntitiesFrame = null;
+         var monsterInfo:GameFightMonsterInformations = null;
+         var modsterData:Modster = null;
+         var criterion:GroupItemCriterion = null;
          var spellState:Object = null;
+         var contentRequired:String = null;
+         var contentForbidden:String = null;
+         var stateCriterion:IItemCriterion = null;
          _content = "";
          if(this._param.name)
          {
@@ -237,8 +256,32 @@ package Ankama_Tooltips.blocks
             _content += _block.getChunk("header").processContent(chunkParams);
             _content += _block.getChunk("separator").processContent({});
          }
-         this.addApCost();
-         this.addRange();
+         var areCastRequirementsDisplayed:Boolean = true;
+         var customModeBreedSpell:CustomModeBreedSpell = CustomModeBreedSpell.getCustomModeBreedSpellById(this._spellItem.id);
+         if(customModeBreedSpell !== null && customModeBreedSpell.isInitialSpell)
+         {
+            areCastRequirementsDisplayed = false;
+         }
+         else
+         {
+            slaveInfo = null;
+            entitiesFrame = Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame;
+            if(entitiesFrame !== null)
+            {
+               slaveInfo = entitiesFrame.getEntityInfos(this._spellItem.playerId);
+            }
+            if(slaveInfo is GameFightMonsterInformations)
+            {
+               monsterInfo = slaveInfo as GameFightMonsterInformations;
+               modsterData = Modster.getModsterByModsterId(monsterInfo.creatureGenericId);
+               areCastRequirementsDisplayed = modsterData === null || modsterData.modsterPassiveSpells.indexOf(this._spellItem.id) === -1;
+            }
+         }
+         if(areCastRequirementsDisplayed)
+         {
+            this.addApCost();
+            this.addRange();
+         }
          this.addCriticalHit();
          chunkParams = this.getSpellZoneChunkParams(this._spellItem);
          if(chunkParams.spellZone)
@@ -294,7 +337,7 @@ package Ankama_Tooltips.blocks
             });
          }
          var minCastInterval:Number = !!this._param.isTheoretical ? Number(this._spellItem.spellLevelInfos["minCastInterval"]) : Number(this._spellItem.minCastInterval);
-         if(minCastInterval > 0)
+         if(minCastInterval > 0 && minCastInterval !== SpellWrapper.INFINITE_VALUE)
          {
             _content += _block.getChunk("pWithClass").processContent({
                "text":this.uiApi.getText("ui.spellInfo.minCastInterval") + Api.ui.getText("ui.common.colon") + " <span class=\'value\'>" + minCastInterval + "</span>",
@@ -305,7 +348,7 @@ package Ankama_Tooltips.blocks
          {
             if(this._spellItem.globalCooldown == -1)
             {
-               if(minCastInterval > 0)
+               if(minCastInterval > 0 && minCastInterval !== SpellWrapper.INFINITE_VALUE)
                {
                   _content += _block.getChunk("detailsEffect").processContent({
                      "text":this.uiApi.getText("ui.spellInfo.globalCastInterval") + Api.ui.getText("ui.common.colon"),
@@ -313,7 +356,7 @@ package Ankama_Tooltips.blocks
                   });
                }
             }
-            else
+            else if(this._spellItem.globalCooldown !== SpellWrapper.INFINITE_VALUE)
             {
                _content += _block.getChunk("detailsEffect").processContent({
                   "text":this.uiApi.getText("ui.spellInfo.globalCastInterval") + Api.ui.getText("ui.common.colon"),
@@ -321,33 +364,42 @@ package Ankama_Tooltips.blocks
                });
             }
          }
-         if(this._spellItem.statesRequired.length > 0)
+         if(this._spellItem.statesCriterion && this._spellItem.statesCriterion.length > 0)
          {
-            for each(state in this._spellItem.statesRequired)
+            criterion = new GroupItemCriterion(this._spellItem.statesCriterion);
+            contentRequired = "";
+            contentForbidden = "";
+            for each(stateCriterion in criterion.criteria)
             {
-               spellState = this.dataApi.getSpellState(state);
-               if(!spellState.isSilent)
+               if(stateCriterion is StateCriterion && StateCriterion(stateCriterion).operatorText == ItemCriterionOperator.EQUAL)
                {
-                  _content += _block.getChunk("detailsEffect").processContent({
-                     "text":this.uiApi.getText("ui.spellInfo.stateRequired") + Api.ui.getText("ui.common.colon"),
-                     "value":spellState.name
-                  });
+                  spellState = this.dataApi.getSpellState(int(StateCriterion(stateCriterion).criterionValue));
+                  if(!spellState.isSilent)
+                  {
+                     contentRequired += _block.getChunk("detailsEffect").processContent({
+                        "text":this.uiApi.getText("ui.spellInfo.stateRequired") + Api.ui.getText("ui.common.colon"),
+                        "value":spellState.name
+                     });
+                  }
+               }
+               if(stateCriterion is StateCriterion && StateCriterion(stateCriterion).operatorText == ItemCriterionOperator.DIFFERENT)
+               {
+                  spellState = this.dataApi.getSpellState(int(StateCriterion(stateCriterion).criterionValue));
+                  if(!spellState.isSilent)
+                  {
+                     contentForbidden += _block.getChunk("detailsEffect").processContent({
+                        "text":this.uiApi.getText("ui.spellInfo.stateForbidden") + Api.ui.getText("ui.common.colon"),
+                        "value":spellState.name
+                     });
+                  }
                }
             }
+            _content += contentRequired + contentForbidden;
          }
-         if(this._spellItem.statesForbidden.length > 0)
+         _content = StringUtils.trim(_content);
+         if(_content.length > 5 && _content.substr(-5,5) == "<br/>")
          {
-            for each(state in this._spellItem.statesForbidden)
-            {
-               spellState = this.dataApi.getSpellState(state);
-               if(!spellState.isSilent)
-               {
-                  _content += _block.getChunk("detailsEffect").processContent({
-                     "text":this.uiApi.getText("ui.spellInfo.stateForbidden") + Api.ui.getText("ui.common.colon"),
-                     "value":spellState.name
-                  });
-               }
-            }
+            _content = _content.substr(0,_content.length - 5);
          }
          this.removeApis();
       }

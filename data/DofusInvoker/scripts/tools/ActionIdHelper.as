@@ -930,5 +930,14 @@ package tools
          }
          return true;
       }
+      
+      public static function isDamageInflicted(param1:int) : Boolean
+      {
+         if(!(param1 == 100 || param1 == 144 || param1 == 89 || param1 == 1071 || param1 == 1092 || param1 == 1118 || param1 == 670 || param1 == 671 || param1 == 672 || param1 == 279 || param1 == 95 || param1 == 82 || param1 == 1012 || param1 == 1223 || param1 == 1123 || param1 == 1224 || param1 == 1124 || param1 == 97 || param1 == 1063 || param1 == 86 || param1 == 1070 || param1 == 276 || param1 == 1096 || param1 == 1122 || param1 == 92 || param1 == 1016 || param1 == 1228 || param1 == 1128 || param1 == 98 || param1 == 1064 || param1 == 87 || param1 == 1067 || param1 == 277 || param1 == 1093 || param1 == 1119 || param1 == 93 || param1 == 1013 || param1 == 1225 || param1 == 1125 || param1 == 96 || param1 == 1065 || param1 == 85 || param1 == 1068 || param1 == 1095 || param1 == 1121 || param1 == 275 || param1 == 91 || param1 == 1014 || param1 == 1227 || param1 == 1127 || param1 == 99 || param1 == 1066 || param1 == 88 || param1 == 1069 || param1 == 1094 || param1 == 1120 || param1 == 278 || param1 == 94 || param1 == 1015 || param1 == 80 || param1 == 1226 || param1 == 1126 || param1 == 2822 || param1 == 2830 || param1 == 2829))
+         {
+            return param1 == 2828;
+         }
+         return true;
+      }
    }
 }

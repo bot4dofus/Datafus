@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class SetUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2982;
+      public static const protocolId:uint = 9543;
        
       
       private var _isInitialized:Boolean = false;
@@ -42,7 +42,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 2982;
+         return 9543;
       }
       
       public function initSetUpdateMessage(setId:uint = 0, setObjects:Vector.<uint> = null, setEffects:Vector.<ObjectEffect> = null) : SetUpdateMessage
@@ -101,7 +101,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
             {
                throw new Error("Forbidden value (" + this.setObjects[_i2] + ") on element 2 (starting at 1) of setObjects.");
             }
-            output.writeVarShort(this.setObjects[_i2]);
+            output.writeVarInt(this.setObjects[_i2]);
          }
          output.writeShort(this.setEffects.length);
          for(var _i3:uint = 0; _i3 < this.setEffects.length; _i3++)
@@ -125,7 +125,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
          var _setObjectsLen:uint = input.readUnsignedShort();
          for(var _i2:uint = 0; _i2 < _setObjectsLen; _i2++)
          {
-            _val2 = input.readVarUhShort();
+            _val2 = input.readVarUhInt();
             if(_val2 < 0)
             {
                throw new Error("Forbidden value (" + _val2 + ") on elements of setObjects.");
@@ -174,7 +174,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       private function _setObjectsFunc(input:ICustomDataInput) : void
       {
-         var _val:uint = input.readVarUhShort();
+         var _val:uint = input.readVarUhInt();
          if(_val < 0)
          {
             throw new Error("Forbidden value (" + _val + ") on elements of setObjects.");

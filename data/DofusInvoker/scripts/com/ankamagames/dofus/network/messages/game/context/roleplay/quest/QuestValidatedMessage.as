@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
    public class QuestValidatedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1984;
+      public static const protocolId:uint = 3070;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
       
       override public function getMessageId() : uint
       {
-         return 1984;
+         return 3070;
       }
       
       public function initQuestValidatedMessage(questId:uint = 0) : QuestValidatedMessage

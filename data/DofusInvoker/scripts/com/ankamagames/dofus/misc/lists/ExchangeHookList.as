@@ -37,6 +37,8 @@ package com.ankamagames.dofus.misc.lists
       
       public static const ExchangeBankStartedWithStorage:String = "ExchangeBankStartedWithStorage";
       
+      public static const ExchangeBankStartedWithMultiTabStorage:String = "ExchangeBankStartedWithMultiTabStorage";
+      
       public static const ExchangeStartedType:String = "ExchangeStartedType";
       
       public static const AskExchangeMoveObject:String = "AskExchangeMoveObject";
@@ -118,6 +120,14 @@ package com.ankamagames.dofus.misc.lists
       public static const SwitchingBidMode:String = "SwitchingBidMode";
       
       public static const ExchangeStartOkNpcShop:String = "ExchangeStartOkNpcShop";
+      
+      public static const MultiTabStorage:String = "MultiTabStorage";
+      
+      public static const GuildChestTabContribution:String = "GuildChestTabContribution";
+      
+      public static const GuildChestLastContribution:String = "GuildChestLastContribution";
+      
+      public static const GuildChestContributions:String = "GuildChestContributions";
        
       
       public function ExchangeHookList()
@@ -143,6 +153,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(ExchangeStarted);
          Hook.createHook(ExchangeBankStarted);
          Hook.createHook(ExchangeBankStartedWithStorage);
+         Hook.createHook(ExchangeBankStartedWithMultiTabStorage);
          Hook.createHook(ExchangeStartedType);
          Hook.createHook(AskExchangeMoveObject);
          Hook.createHook(ExchangeIsReady);
@@ -184,6 +195,10 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(PricesUpdate);
          Hook.createHook(SwitchingBidMode);
          Hook.createHook(ExchangeStartOkNpcShop);
+         Hook.createHook(MultiTabStorage);
+         Hook.createHook(GuildChestTabContribution);
+         Hook.createHook(GuildChestLastContribution);
+         Hook.createHook(GuildChestContributions);
       }
    }
 }

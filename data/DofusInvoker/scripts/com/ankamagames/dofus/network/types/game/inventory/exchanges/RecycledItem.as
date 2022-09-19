@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.inventory.exchanges
    public class RecycledItem implements INetworkType
    {
       
-      public static const protocolId:uint = 161;
+      public static const protocolId:uint = 169;
        
       
       public var id:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.inventory.exchanges
       
       public function getTypeId() : uint
       {
-         return 161;
+         return 169;
       }
       
       public function initRecycledItem(id:uint = 0, qty:uint = 0) : RecycledItem
@@ -49,7 +49,7 @@ package com.ankamagames.dofus.network.types.game.inventory.exchanges
          {
             throw new Error("Forbidden value (" + this.id + ") on element id.");
          }
-         output.writeVarShort(this.id);
+         output.writeVarInt(this.id);
          if(this.qty < 0 || this.qty > 4294967295)
          {
             throw new Error("Forbidden value (" + this.qty + ") on element qty.");
@@ -81,7 +81,7 @@ package com.ankamagames.dofus.network.types.game.inventory.exchanges
       
       private function _idFunc(input:ICustomDataInput) : void
       {
-         this.id = input.readVarUhShort();
+         this.id = input.readVarUhInt();
          if(this.id < 0)
          {
             throw new Error("Forbidden value (" + this.id + ") on element of RecycledItem.id.");

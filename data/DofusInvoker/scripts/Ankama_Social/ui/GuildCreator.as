@@ -570,11 +570,14 @@ package Ankama_Social.ui
                this.sysApi.addHook(SocialHookList.GuildRecruitmentDataReceived,this.onRecruitmentData);
                this.sysApi.sendAction(new GuildGetInformationsAction([GuildInformationsTypeEnum.INFO_RECRUITMENT]));
                sendActionFunc = this.sysApi.sendAction;
-               this.modCommon.openPopup(this.uiApi.getText("ui.common.congratulations"),this.uiApi.getText("ui.guild.creationConfirmation",this.inp_guildname.text),[this.uiApi.getText("ui.guild.setUpRecruitment")],[function():void
+               if(this._mode == CREATION)
                {
-                  sendActionFunc(new OpenSocialAction([DataEnum.SOCIAL_TAB_GUILD_ID]));
-                  sendActionFunc(OpenGuildPrezAndRecruitAction.create());
-               }]);
+                  this.modCommon.openPopup(this.uiApi.getText("ui.common.congratulations"),this.uiApi.getText("ui.guild.creationConfirmation",this.inp_guildname.text),[this.uiApi.getText("ui.guild.setUpRecruitment")],[function():void
+                  {
+                     sendActionFunc(new OpenSocialAction([DataEnum.SOCIAL_TAB_GUILD_ID]));
+                     sendActionFunc(OpenGuildPrezAndRecruitAction.create());
+                  }]);
+               }
                break;
             case SocialGroupCreationResultEnum.SOCIAL_GROUP_CREATE_ERROR_NAME_ALREADY_EXISTS:
                this.modCommon.openPopup(this.uiApi.getText("ui.common.error"),this.uiApi.getText("ui.guild.AlreadyUseName"),[this.uiApi.getText("ui.common.ok")]);

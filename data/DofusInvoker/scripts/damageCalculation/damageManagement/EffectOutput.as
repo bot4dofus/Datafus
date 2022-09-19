@@ -17,7 +17,9 @@ package damageCalculation.damageManagement
       
       public var shield:Interval;
       
-      public var rangeStolen:int;
+      public var rangeLoss:int;
+      
+      public var rangeGain:int;
       
       public var newStateId:int;
       
@@ -68,7 +70,8 @@ package damageCalculation.damageManagement
          dispell = false;
          lostStateId = -1;
          newStateId = -1;
-         rangeStolen = 0;
+         rangeGain = 0;
+         rangeLoss = 0;
          amStolen = 0;
          apStolen = 0;
          attemptedAmTheft = false;

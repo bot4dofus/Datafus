@@ -29,6 +29,7 @@ package com.ankamagames.dofus.misc.stats
    import com.ankamagames.dofus.misc.stats.ui.GetArticlesStats;
    import com.ankamagames.dofus.misc.stats.ui.IUiStats;
    import com.ankamagames.dofus.misc.stats.ui.KolizeumStats;
+   import com.ankamagames.dofus.misc.stats.ui.LogBookStats;
    import com.ankamagames.dofus.misc.stats.ui.NicknameRegistrationStats;
    import com.ankamagames.dofus.misc.stats.ui.OpenBoxStats;
    import com.ankamagames.dofus.misc.stats.ui.PayZoneUiStats;
@@ -248,6 +249,7 @@ package com.ankamagames.dofus.misc.stats
          this.registerStats("cartography",CartographyStats);
          this.registerStats("chinq",ChinqStats);
          this.registerStats("suggestions",SuggestionsStats);
+         this.registerStats("logBook",LogBookStats);
          Berilia.getInstance().addEventListener(UiRenderEvent.UIRenderComplete,this.onUiLoaded);
          Berilia.getInstance().addEventListener(UiUnloadEvent.UNLOAD_UI_STARTED,this.onUiUnloadStart);
          ModuleLogger.active = true;

@@ -25,6 +25,8 @@ package Ankama_Grimoire.ui.optionalFeatures
       
       private var _validationCallback:Function;
       
+      private var _isSpellUsedInActualSet:Boolean = false;
+      
       public var btn_close:ButtonContainer;
       
       public var btn_cancelGetScrollAction:ButtonContainer;
@@ -45,14 +47,15 @@ package Ankama_Grimoire.ui.optionalFeatures
             throw new Error("You must provide the spell description, spellSets used and the validation callback");
          }
          this._spellDescr = params[0];
-         this.cbx_impactedSpellSets.dataProvider = params[1];
-         this._validationCallback = params[2];
+         this._isSpellUsedInActualSet = params[2];
+         this.cbx_impactedSpellSets.dataProvider = this.getComboBoxDataProvider(params[1]);
+         this._validationCallback = params[3];
          if(this._spellDescr === null || this.cbx_impactedSpellSets.dataProvider === null || this._validationCallback === null)
          {
             throw new Error("The arguments provided must not be null");
          }
          this.cbx_impactedSpellSets.finalize();
-         this.uiApi.getUi(UIEnum.FORGETTABLE_SPELL_GET_SCROLL_WARNING_POP_UP).strata = this.uiApi.getUi(UIEnum.FORGETTABLE_SPELLS_UI).strata - 1;
+         this.uiApi.getUi(this.uiName).strata = this.uiApi.getUi(params[4]).strata - 1;
          this.btn_cancelGetScrollAction.soundId = SoundEnum.OK_BUTTON;
          this.btn_confirmGetScrollAction.soundId = SoundEnum.OK_BUTTON;
          this.uiApi.addComponentHook(this.btn_cancelGetScrollAction,ComponentHookList.ON_RELEASE);
@@ -65,7 +68,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          this.soundApi.playSound(SoundTypeEnum.CLOSE_WINDOW);
       }
       
-      private function closeMe() : void
+      protected function closeMe() : void
       {
          if(this.uiApi !== null)
          {
@@ -111,6 +114,26 @@ package Ankama_Grimoire.ui.optionalFeatures
             case this.btn_cancelGetScrollAction:
                this.closeMe();
          }
+      }
+      
+      private function getComboBoxDataProvider(sets:Array) : Array
+      {
+         var actualTeam:Object = null;
+         if(this._isSpellUsedInActualSet)
+         {
+            actualTeam = {
+               "label":"Equipe Actuelle",
+               "icon":null,
+               "id":-1
+            };
+            return [actualTeam].concat(sets);
+         }
+         return sets;
+      }
+      
+      protected function get uiName() : String
+      {
+         return UIEnum.FORGETTABLE_SPELL_GET_SCROLL_WARNING_POP_UP;
       }
    }
 }

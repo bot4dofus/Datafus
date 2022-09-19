@@ -14,8 +14,6 @@ package Ankama_Common
    import Ankama_Common.ui.ImagePopup;
    import Ankama_Common.ui.InputComboBoxPopup;
    import Ankama_Common.ui.InputPopup;
-   import Ankama_Common.ui.ItemBox;
-   import Ankama_Common.ui.ItemBoxPopup;
    import Ankama_Common.ui.ItemRecipes;
    import Ankama_Common.ui.ItemsList;
    import Ankama_Common.ui.ItemsSet;
@@ -109,10 +107,6 @@ package Ankama_Common
       private var include_EvolutiveFeedUi:EvolutiveFeedUi = null;
       
       private var include_LockedPopup:LockedPopup = null;
-      
-      private var include_ItemBox:ItemBox = null;
-      
-      private var include_ItemBoxPopup:ItemBoxPopup = null;
       
       private var include_SecureMode:SecureMode = null;
       
@@ -439,7 +433,7 @@ package Ankama_Common
          params.onEnterKey = onEnterKey;
          params.onCancel = onCancel;
          var popupName:String = "popup" + ++this._popupId;
-         this.uiApi.loadUi("textButtonPopup",popupName,params);
+         this.uiApi.loadUi("textButtonPopup",popupName,params,StrataEnum.STRATA_TOP);
          return popupName;
       }
       
@@ -568,30 +562,6 @@ package Ankama_Common
             settings.showEffects = true;
          }
          Api.ui.showTooltip(item,new Rectangle(420,220,0,0),false,"standard",0,0,0,null,null,settings,null,true,4,1,"common");
-      }
-      
-      public function createItemBox(name:String, father:GraphicContainer, item:ItemWrapper, showTheoretical:Boolean = false, ownedItem:Boolean = false) : UiRootContainer
-      {
-         if(!item || item == null)
-         {
-            Api.ui.unloadUi(name);
-         }
-         else
-         {
-            if(!this.uiApi.getUi(name))
-            {
-               return this.uiApi.loadUiInside("itemBox",father,name,{
-                  "item":item,
-                  "showTheoretical":showTheoretical,
-                  "ownedItem":ownedItem
-               });
-            }
-            if(this.uiApi.getUi(name).uiClass)
-            {
-               this.uiApi.getUi(name).uiClass.onItemSelected(item,showTheoretical);
-            }
-         }
-         return null;
       }
       
       public function openPasswordMenu(size:int, changeOrUse:Boolean, onConfirm:Function, onCancel:Function = null) : void

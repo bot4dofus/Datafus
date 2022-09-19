@@ -64,6 +64,8 @@ package com.ankamagames.dofus.network.enums
       public static const EVOLUTIVE_OBJECT_ELEMENTARY_RECYCLE:int = 29;
       
       public static const NPC_RIDE_CAPABILITY_TRADE:int = 30;
+      
+      public static const GUILD_CHEST:int = 31;
        
       
       public function ExchangeTypeEnum()

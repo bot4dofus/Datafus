@@ -1516,7 +1516,7 @@ package Ankama_Tutorial.ui
       
       private function selectDirectory() : void
       {
-         var dir:String = "\\\\bise\\dofus2-resources\\content\\gfx\\illusUi\\helpTooltips";
+         var dir:String = "\\\\bise.ankama.lan\\dofus2-resources\\content\\gfx\\illusUi\\helpTooltips";
          var f:File = new File(dir);
          var imageFileTypes:FileFilter = new FileFilter("Images (*.jpg, *.jpeg, *.png)","*.jpg;*.jpeg;*.png");
          f.browseForOpen("Selection de l\'image",[imageFileTypes]);

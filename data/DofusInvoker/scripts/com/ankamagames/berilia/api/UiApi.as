@@ -549,16 +549,26 @@ package com.ankamagames.berilia.api
          return TreeData.fromArray(array);
       }
       
-      public function setFollowCursorUri(uri:*, lockX:Boolean = false, lockY:Boolean = false, xOffset:int = 0, yOffset:int = 0, scale:Number = 1) : void
+      public function setFollowCursorUri(uri:*, lockX:Boolean = false, lockY:Boolean = false, xOffset:int = 0, yOffset:int = 0, scale:Number = 1, forceWidth:int = -1, forceHeight:int = -1) : void
       {
          var cd:LinkedCursorData = null;
+         var scaleFactor:int = 0;
          if(uri)
          {
             cd = new LinkedCursorData();
             cd.sprite = new Texture();
             Texture(cd.sprite).uri = uri is String ? new Uri(uri) : uri;
-            cd.sprite.scaleX = scale;
-            cd.sprite.scaleY = scale;
+            if(forceWidth != -1 || forceHeight != -1)
+            {
+               scaleFactor = forceWidth != -1 ? int(forceWidth / cd.sprite.width) : int(forceHeight / cd.sprite.height);
+               cd.sprite.width = forceWidth != -1 ? Number(forceWidth) : Number(cd.sprite.width * scaleFactor);
+               cd.sprite.height = forceHeight != -1 ? Number(forceHeight) : Number(cd.sprite.height * scaleFactor);
+            }
+            else
+            {
+               cd.sprite.scaleX = scale;
+               cd.sprite.scaleY = scale;
+            }
             Texture(cd.sprite).finalize();
             cd.lockX = lockX;
             cd.lockY = lockY;

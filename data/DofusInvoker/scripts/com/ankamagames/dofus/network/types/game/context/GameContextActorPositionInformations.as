@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context
    public class GameContextActorPositionInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1244;
+      public static const protocolId:uint = 7625;
        
       
       public var contextualId:Number = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.context
       
       public function getTypeId() : uint
       {
-         return 1244;
+         return 7625;
       }
       
       public function initGameContextActorPositionInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null) : GameContextActorPositionInformations

@@ -11,14 +11,12 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class CurrentMapMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9325;
+      public static const protocolId:uint = 5809;
        
       
       private var _isInitialized:Boolean = false;
       
       public var mapId:Number = 0;
-      
-      public var mapKey:String = "";
       
       public function CurrentMapMessage()
       {
@@ -32,13 +30,12 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 9325;
+         return 5809;
       }
       
-      public function initCurrentMapMessage(mapId:Number = 0, mapKey:String = "") : CurrentMapMessage
+      public function initCurrentMapMessage(mapId:Number = 0) : CurrentMapMessage
       {
          this.mapId = mapId;
-         this.mapKey = mapKey;
          this._isInitialized = true;
          return this;
       }
@@ -46,7 +43,6 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       override public function reset() : void
       {
          this.mapId = 0;
-         this.mapKey = "";
          this._isInitialized = false;
       }
       
@@ -82,7 +78,6 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
             throw new Error("Forbidden value (" + this.mapId + ") on element mapId.");
          }
          output.writeDouble(this.mapId);
-         output.writeUTF(this.mapKey);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -93,7 +88,6 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       public function deserializeAs_CurrentMapMessage(input:ICustomDataInput) : void
       {
          this._mapIdFunc(input);
-         this._mapKeyFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -104,7 +98,6 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       public function deserializeAsyncAs_CurrentMapMessage(tree:FuncTree) : void
       {
          tree.addChild(this._mapIdFunc);
-         tree.addChild(this._mapKeyFunc);
       }
       
       private function _mapIdFunc(input:ICustomDataInput) : void
@@ -114,11 +107,6 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
          {
             throw new Error("Forbidden value (" + this.mapId + ") on element of CurrentMapMessage.mapId.");
          }
-      }
-      
-      private function _mapKeyFunc(input:ICustomDataInput) : void
-      {
-         this.mapKey = input.readUTF();
       }
    }
 }

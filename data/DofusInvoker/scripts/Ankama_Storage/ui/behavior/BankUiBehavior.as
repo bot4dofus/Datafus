@@ -14,7 +14,6 @@ package Ankama_Storage.ui.behavior
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertAllToInvAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertExistingToInvAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertListToInvAction;
-   import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.ExchangeHookList;
    import com.ankamagames.dofus.types.enums.ItemCategoryEnum;
    
@@ -108,10 +107,6 @@ package Ankama_Storage.ui.behavior
                if(selectMethod == SelectMethodEnum.CLICK)
                {
                   Api.system.dispatchHook(ExchangeHookList.ClickItemInventory,selectedItem);
-                  if(!Api.system.getOption("displayTooltips","dofus"))
-                  {
-                     Api.system.dispatchHook(ChatHookList.ShowObjectLinked,selectedItem);
-                  }
                }
                else if(selectMethod == SelectMethodEnum.DOUBLE_CLICK)
                {

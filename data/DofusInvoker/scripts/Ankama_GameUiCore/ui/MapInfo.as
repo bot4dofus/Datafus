@@ -12,10 +12,13 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.dofus.datacenter.world.MapPosition;
    import com.ankamagames.dofus.datacenter.world.SubArea;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.conquest.PrismSubAreaWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
+   import com.ankamagames.dofus.internalDatacenter.guild.EmblemWrapper;
    import com.ankamagames.dofus.internalDatacenter.house.HouseWrapper;
    import com.ankamagames.dofus.internalDatacenter.world.WorldPointWrapper;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkOpenAnomaly;
    import com.ankamagames.dofus.misc.lists.BreachHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.PrismHookList;
@@ -35,9 +38,17 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.dofus.uiApi.SystemApi;
    import com.ankamagames.dofus.uiApi.TimeApi;
    import com.ankamagames.dofus.uiApi.UtilApi;
+   import flash.filters.BitmapFilterQuality;
+   import flash.filters.GlowFilter;
    
    public class MapInfo
    {
+      
+      private static const OUTLINE_BONUS_COLOR:int = 3815990;
+      
+      private static const OUTLINE_ANOMALY_COLOR:int = 4658310;
+      
+      private static const OUTLINE_WIDTH:int = 2;
        
       
       [Api(name="BreachApi")]
@@ -108,15 +119,11 @@ package Ankama_GameUiCore.ui
       
       private var _anomalyUri:String;
       
-      private var _anomalyTimedUri:String;
-      
       private var _anomalyClosingTime:Number;
       
-      private var _totalRewardRate:int;
-      
-      private var _mapRewardRate:int;
-      
       private var _subAreaRewardRate:int;
+      
+      private var outlineFilter:GlowFilter;
       
       public var lbl_info:Label;
       
@@ -138,8 +145,11 @@ package Ankama_GameUiCore.ui
       
       public var lbl_alliance:Label;
       
+      public var lbl_rewardBonus:Label;
+      
       public function MapInfo()
       {
+         this.outlineFilter = new GlowFilter();
          super();
       }
       
@@ -149,7 +159,6 @@ package Ankama_GameUiCore.ui
          this._zoneBonusUri = hudPath + "icon_bonus_reward.png";
          this._zoneMalusUri = hudPath + "icon_malus_reward.png";
          this._anomalyUri = hudPath + "icon_anomaly.png";
-         this._anomalyTimedUri = hudPath + "icon_anomaly_time.png";
          this.tx_allianceEmblemBack.dispatchMessages = true;
          this.uiApi.addComponentHook(this.tx_allianceEmblemBack,"onTextureReady");
          this.tx_allianceEmblemUp.dispatchMessages = true;
@@ -172,10 +181,20 @@ package Ankama_GameUiCore.ui
          this.uiApi.addComponentHook(this.tx_warning,ComponentHookList.ON_ROLL_OUT);
          this.uiApi.addComponentHook(this.tx_mapReward,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.tx_mapReward,ComponentHookList.ON_ROLL_OUT);
+         this.uiApi.addComponentHook(this.tx_mapReward,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.tx_anomaly,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.tx_anomaly,ComponentHookList.ON_ROLL_OUT);
-         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled("server.heroic");
+         this.uiApi.addComponentHook(this.tx_anomaly,ComponentHookList.ON_RELEASE);
+         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER);
          this._myVeryOwnAlliance = this.socialApi.getAlliance();
+         this.outlineFilter.blurX = this.outlineFilter.blurY = OUTLINE_WIDTH;
+         this.outlineFilter.color = 0;
+         this.outlineFilter.quality = BitmapFilterQuality.HIGH;
+         this.outlineFilter.strength = 100;
+         this.tx_mapReward.handCursor = true;
+         this.tx_anomaly.handCursor = true;
+         this.lbl_rewardBonus.handCursor = true;
+         this.lbl_rewardBonus.useTooltipExtension = false;
       }
       
       public function set visible(visible:Boolean) : void
@@ -239,6 +258,8 @@ package Ankama_GameUiCore.ui
       
       private function showAllianceInfo(pAllianceInfo:AllianceWrapper) : void
       {
+         var allianceEmblemBackWrapper:EmblemWrapper = null;
+         var allianceEmblemUpWrapper:EmblemWrapper = null;
          if(!this._inFight && this._currentAllianceId != pAllianceInfo.allianceId)
          {
             this.lbl_alliance.text = this.chatApi.getAllianceLink(pAllianceInfo,"[" + pAllianceInfo.allianceTag + "]");
@@ -248,14 +269,16 @@ package Ankama_GameUiCore.ui
                this._allianceEmblemBgShape = pAllianceInfo.backEmblem.idEmblem;
                this._allianceEmblemBgColor = pAllianceInfo.backEmblem.color;
                this.tx_allianceEmblemBack.visible = false;
-               this.tx_allianceEmblemBack.uri = this.uiApi.createUri(this.sysApi.getConfigEntry("config.gfx.path.emblem_icons.large") + "backalliance/" + pAllianceInfo.backEmblem.idEmblem + ".swf");
+               allianceEmblemBackWrapper = EmblemWrapper.create(this._allianceEmblemBgShape,EmblemWrapper.BACK,this._allianceEmblemBgColor);
+               this.tx_allianceEmblemBack.uri = allianceEmblemBackWrapper.fullSizeIconUri;
             }
             if(this._allianceEmblemIconShape != pAllianceInfo.upEmblem.idEmblem || this._allianceEmblemIconColor != pAllianceInfo.upEmblem.color || !this._showAlliance)
             {
                this._allianceEmblemIconShape = pAllianceInfo.upEmblem.idEmblem;
                this._allianceEmblemIconColor = pAllianceInfo.upEmblem.color;
                this.tx_allianceEmblemUp.visible = false;
-               this.tx_allianceEmblemUp.uri = this.uiApi.createUri(this.sysApi.getConfigEntry("config.gfx.path.emblem_icons.large") + "up/" + this._allianceEmblemIconShape + ".swf");
+               allianceEmblemUpWrapper = EmblemWrapper.create(this._allianceEmblemIconShape,EmblemWrapper.UP,this._allianceEmblemIconColor);
+               this.tx_allianceEmblemUp.uri = allianceEmblemUpWrapper.fullSizeIconUri;
             }
             this._currentAllianceId = pAllianceInfo.allianceId;
             this.renderUpdate();
@@ -317,33 +340,35 @@ package Ankama_GameUiCore.ui
          this.lbl_alliance.visible = false;
          this.tx_allianceEmblemBack.visible = false;
          this.tx_allianceEmblemUp.visible = false;
-         this.onAnomalyState(true,this._anomalyClosingTime,this._currentSubAreaId);
       }
       
       private function onAnomalyState(open:Boolean, closingTime:Number, subAreaId:int) : void
       {
+         if(subAreaId != this.playerApi.currentSubArea().id)
+         {
+            return;
+         }
+         if(!open)
+         {
+            this.onMapRewardRate(this._subAreaRewardRate);
+            return;
+         }
          this._anomalyClosingTime = closingTime;
          this.tx_anomaly.visible = open && subAreaId > 0;
-         if(open)
+         this.tx_mapReward.visible = !this.tx_anomaly.visible && this.tx_mapReward.visible;
+         this.tx_anomaly.uri = this.uiApi.createUri(this._anomalyUri);
+         this.lbl_rewardBonus.text = this._subAreaRewardRate + "%";
+         if(this.tx_anomaly.visible)
          {
-            if(this._anomalyClosingTime > 0)
-            {
-               this.tx_anomaly.uri = this.uiApi.createUri(this._anomalyTimedUri);
-            }
-            else
-            {
-               this.tx_anomaly.uri = this.uiApi.createUri(this._anomalyUri);
-            }
+            this.outlineFilter.color = OUTLINE_ANOMALY_COLOR;
          }
          this.renderUpdate();
       }
       
-      private function onMapRewardRate(totalRate:int, mapRate:int, subAreaRate:int) : void
+      private function onMapRewardRate(subAreaRate:int) : void
       {
-         this._totalRewardRate = totalRate;
-         this._mapRewardRate = mapRate;
          this._subAreaRewardRate = subAreaRate;
-         if(this._totalRewardRate >= 0)
+         if(this._subAreaRewardRate >= 50)
          {
             this.tx_mapReward.uri = this.uiApi.createUri(this._zoneBonusUri);
          }
@@ -351,7 +376,10 @@ package Ankama_GameUiCore.ui
          {
             this.tx_mapReward.uri = this.uiApi.createUri(this._zoneMalusUri);
          }
+         this.outlineFilter.color = OUTLINE_BONUS_COLOR;
+         this.lbl_rewardBonus.text = subAreaRate + "%";
          this.tx_mapReward.visible = true;
+         this.tx_anomaly.visible = false;
          this.renderUpdate();
       }
       
@@ -367,6 +395,8 @@ package Ankama_GameUiCore.ui
          this._currentSubAreaId = subAreaId;
          this._currentMap = map as WorldPointWrapper;
          this.tx_mapReward.visible = false;
+         this.tx_anomaly.visible = false;
+         this.lbl_rewardBonus.visible = false;
          this.lbl_coordAndLevel.visible = true;
          if(show)
          {
@@ -446,7 +476,6 @@ package Ankama_GameUiCore.ui
             this.infoContainer.visible = false;
          }
          this.updateAttackWarning();
-         this.onAnomalyState(false,0,-1);
          this.renderUpdate();
       }
       
@@ -468,11 +497,11 @@ package Ankama_GameUiCore.ui
             icon = this.dataApi.getEmblemSymbol(this._allianceEmblemIconShape);
             if(icon.colorizable)
             {
-               this.utilApi.changeColor(this.tx_allianceEmblemUp.getChildByName("up"),this._allianceEmblemIconColor,0);
+               this.utilApi.changeColor(this.tx_allianceEmblemUp,this._allianceEmblemIconColor,0);
             }
             else
             {
-               this.utilApi.changeColor(this.tx_allianceEmblemUp.getChildByName("up"),this._allianceEmblemIconColor,0,true);
+               this.utilApi.changeColor(this.tx_allianceEmblemUp,this._allianceEmblemIconColor,0,true);
             }
             this.tx_allianceEmblemUp.mouseEnabled = this.tx_allianceEmblemUp.mouseChildren = false;
             this.tx_allianceEmblemUp.visible = true;
@@ -519,12 +548,26 @@ package Ankama_GameUiCore.ui
          }
       }
       
+      public function onRelease(target:GraphicContainer) : void
+      {
+         if(target != this.tx_anomaly && target != this.tx_mapReward && target != this.lbl_rewardBonus)
+         {
+            return;
+         }
+         HyperlinkOpenAnomaly.open();
+      }
+      
       public function onRollOver(target:GraphicContainer) : void
       {
          var text:String = null;
-         var mapBonusOrMalus:String = null;
-         var subAreaBonusOrMalus:String = null;
-         var timeLeft:Number = NaN;
+         var timeLeft:int = 0;
+         var hours:int = 0;
+         var hoursStr:String = null;
+         var mins:int = 0;
+         var minsStr:String = null;
+         var seconds:int = 0;
+         var secondsStr:String = null;
+         var timeLeftStr:String = null;
          var pos:Object = {
             "point":LocationEnum.POINT_BOTTOM,
             "relativePoint":LocationEnum.POINT_TOP
@@ -535,19 +578,26 @@ package Ankama_GameUiCore.ui
                text = this.uiApi.getText("ui.map.warningAttack");
                break;
             case this.tx_mapReward:
-               mapBonusOrMalus = this._mapRewardRate >= 0 ? this.uiApi.getText("ui.common.bonus") : this.uiApi.getText("ui.common.malus");
-               mapBonusOrMalus = mapBonusOrMalus.toLowerCase();
-               subAreaBonusOrMalus = this._subAreaRewardRate >= 0 ? this.uiApi.getText("ui.common.bonus") : this.uiApi.getText("ui.common.malus");
-               subAreaBonusOrMalus = subAreaBonusOrMalus.toLowerCase();
-               text = this._totalRewardRate >= 0 ? this.uiApi.getText("ui.map.increasedLoot",this._totalRewardRate,subAreaBonusOrMalus,this._subAreaRewardRate,mapBonusOrMalus,this._mapRewardRate) : this.uiApi.getText("ui.map.decreasedLoot",this._totalRewardRate,subAreaBonusOrMalus,this._subAreaRewardRate,mapBonusOrMalus,this._mapRewardRate);
+               text = this.uiApi.getText("ui.anomaly.mapInfos.bonus",this._subAreaRewardRate + "%");
                break;
             case this.tx_anomaly:
-               text = this.uiApi.getText("ui.map.timeAnomaly");
-               timeLeft = this._anomalyClosingTime - this.timeApi.getUtcTimestamp();
-               if(timeLeft >= 0)
+               timeLeft = this._anomalyClosingTime - new Date().valueOf();
+               hours = Math.ceil(timeLeft % 86400000 / 3600000);
+               hoursStr = hours <= 1 ? "" : hours - 1 + this.uiApi.processText(this.uiApi.getText("ui.time.short.hour"),"m",hours - 1 == 1,hours - 1 == 0);
+               mins = Math.ceil(timeLeft % 3600000 / 60000);
+               minsStr = mins <= 1 ? "" : mins - 1 + "" + (!!hoursStr ? "" : " " + this.uiApi.processText(this.uiApi.getText("ui.time.minutes"),"m",mins - 1 == 1,mins - 1 == 0));
+               if(mins <= 10 && hoursStr)
                {
-                  text += "\n" + this.uiApi.getText("ui.map.timeLeft",this.timeApi.getDuration(timeLeft,true));
+                  minsStr = "0" + minsStr;
                }
+               seconds = Math.ceil(timeLeft % 60000 / 1000);
+               secondsStr = seconds <= 1 ? "" : seconds - 1 + " " + this.uiApi.processText(this.uiApi.getText("ui.time.seconds"),"m",seconds - 1 == 1,seconds - 1 == 0);
+               timeLeftStr = hoursStr + minsStr;
+               if(timeLeftStr == "")
+               {
+                  timeLeftStr = secondsStr;
+               }
+               text = this.uiApi.getText("ui.anomaly.mapInfos.anomaly",this._subAreaRewardRate + "%") + (timeLeftStr != "" ? " " + this.uiApi.getText("ui.anomaly.mapInfos.anomalyClosingTime",timeLeftStr) : "");
          }
          if(text && text != "")
          {
@@ -577,12 +627,15 @@ package Ankama_GameUiCore.ui
          if(this.tx_mapReward.visible)
          {
             this.tx_mapReward.x = posX;
-            posX += this.tx_mapReward.width + 10;
          }
-         if(this.tx_anomaly.visible)
+         else if(this.tx_anomaly.visible)
          {
             this.tx_anomaly.x = posX;
          }
+         this.lbl_rewardBonus.visible = this.tx_anomaly.visible || this.tx_mapReward.visible;
+         this.lbl_rewardBonus.fullWidthAndHeight(0,10);
+         this.lbl_rewardBonus.x = posX - Math.floor((this.lbl_rewardBonus.width - this.tx_mapReward.width) / 2);
+         this.applyFilter();
          if(!this._inFight && this._currentAllianceId > 0)
          {
             this.lbl_alliance.fullWidthAndHeight();
@@ -590,6 +643,11 @@ package Ankama_GameUiCore.ui
             this.tx_allianceEmblemUp.x = this.tx_allianceEmblemBack.x + 8;
             this.tx_allianceEmblemUp.y = this.tx_allianceEmblemBack.y + 8;
          }
+      }
+      
+      private function applyFilter() : void
+      {
+         this.lbl_rewardBonus.filters = [this.outlineFilter];
       }
    }
 }

@@ -7,7 +7,6 @@ package Ankama_GameUiCore
    import Ankama_GameUiCore.ui.ActionBar;
    import Ankama_GameUiCore.ui.Banner;
    import Ankama_GameUiCore.ui.BannerMenu;
-   import Ankama_GameUiCore.ui.BuffUi;
    import Ankama_GameUiCore.ui.Chat;
    import Ankama_GameUiCore.ui.CinematicPlayer;
    import Ankama_GameUiCore.ui.ExternalActionBar;
@@ -27,21 +26,29 @@ package Ankama_GameUiCore
    import Ankama_GameUiCore.ui.RewardsUi;
    import Ankama_GameUiCore.ui.Smileys;
    import Ankama_GameUiCore.ui.Zoom;
+   import Ankama_GameUiCore.ui.alterations.AlterationsUi;
+   import Ankama_GameUiCore.ui.alterations.PreviewedAlterationsUi;
    import com.ankama.dofus.enums.ActionIds;
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.enums.StrataEnum;
    import com.ankamagames.berilia.enums.UIEnum;
+   import com.ankamagames.berilia.managers.TooltipManager;
+   import com.ankamagames.berilia.types.LocationEnum;
    import com.ankamagames.berilia.types.data.ContextMenuData;
    import com.ankamagames.berilia.types.graphic.UiRootContainer;
    import com.ankamagames.berilia.utils.BeriliaHookList;
+   import com.ankamagames.dofus.internalDatacenter.alterations.AlterationWrapper;
+   import com.ankamagames.dofus.internalDatacenter.alterations.AlterationsDescr;
    import com.ankamagames.dofus.internalDatacenter.items.BuildWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
+   import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.actions.roleplay.GameRolePlayFreeSoulRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.AddIgnoredAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.ObjectDropAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.ObjectSetPositionAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.PlayerFightFriendlyAnswerAction;
+   import com.ankamagames.dofus.logic.game.roleplay.frames.AlterationFrame;
    import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.CustomUiHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
@@ -64,11 +71,14 @@ package Ankama_GameUiCore
    import com.ankamagames.dofus.uiApi.UtilApi;
    import com.ankamagames.jerakine.types.enums.DataStoreEnum;
    import flash.display.Sprite;
+   import flash.geom.Rectangle;
    
    public class GameUiCore extends Sprite
    {
       
       private static var _self:GameUiCore;
+      
+      private static const TOOLTIP_TARGET:Rectangle = new Rectangle(20,20,0,0);
        
       
       protected var banner:Banner;
@@ -91,7 +101,9 @@ package Ankama_GameUiCore
       
       protected var hardcoreDeath:HardcoreDeath;
       
-      protected var buffUi:BuffUi;
+      protected var previewedAlterationsUi:PreviewedAlterationsUi;
+      
+      protected var alterationsUi:AlterationsUi;
       
       protected var fightModificatorUi:FightModificatorUi;
       
@@ -221,6 +233,11 @@ package Ankama_GameUiCore
          this.sysApi.addHook(RoleplayHookList.PlayerFightRequestSent,this.onPlayerFightRequestSent);
          this.sysApi.addHook(RoleplayHookList.PlayerFightFriendlyRequested,this.onPlayerFightFriendlyRequested);
          this.sysApi.addHook(RoleplayHookList.PlayerFightFriendlyAnswered,this.onPlayerFightFriendlyAnswered);
+         this.sysApi.addHook(RoleplayHookList.Alterations,this.onAlterations);
+         this.sysApi.addHook(RoleplayHookList.AlterationAdded,this.onAlterationAdded);
+         this.sysApi.addHook(RoleplayHookList.AlterationsUpdated,this.onAlterationsUpdated);
+         this.sysApi.addHook(RoleplayHookList.OpenAlterationUi,this.onOpenAlterationUi);
+         this.sysApi.addHook(RoleplayHookList.DisplayAlterationPinnedTooltip,this.onAlterationPinnedTooltipUi);
          this.sysApi.addHook(HookList.GameRolePlayPlayerLifeStatus,this.onGameRolePlayPlayerLifeStatus);
          this.sysApi.addHook(HookList.SubscriptionZone,this.onSubscriptionZone);
          this.sysApi.addHook(HookList.NonSubscriberPopup,this.onNonSubscriberPopup);
@@ -501,11 +518,46 @@ package Ankama_GameUiCore
          }
       }
       
-      private function onRoleplayBuffViewContent(buffs:Object) : void
+      private function onRoleplayBuffViewContent(buffs:Vector.<ItemWrapper>) : void
       {
-         if(!this.uiApi.getUi(UIEnum.BUFF_UI))
+         var alterationFrame:AlterationFrame = Kernel.getWorker().getFrame(AlterationFrame) as AlterationFrame;
+         alterationFrame.processOldAlterations(buffs);
+      }
+      
+      private function onAlterations(descr:AlterationsDescr) : void
+      {
+         if(descr.alterations.length > 0 && !this.uiApi.getUi(UIEnum.PREVIEWED_ALTERATIONS_UI))
          {
-            this.uiApi.loadUi(UIEnum.BUFF_UI,UIEnum.BUFF_UI,{"buffs":buffs});
+            this.uiApi.loadUi(UIEnum.PREVIEWED_ALTERATIONS_UI,UIEnum.PREVIEWED_ALTERATIONS_UI,descr);
+         }
+      }
+      
+      private function onAlterationAdded(addedAlteration:AlterationWrapper) : void
+      {
+         if(!this.uiApi.getUi(UIEnum.PREVIEWED_ALTERATIONS_UI))
+         {
+            this.uiApi.loadUi(UIEnum.PREVIEWED_ALTERATIONS_UI,UIEnum.PREVIEWED_ALTERATIONS_UI,new AlterationsDescr(new <AlterationWrapper>[addedAlteration]));
+         }
+      }
+      
+      private function onAlterationsUpdated(alterations:Vector.<AlterationWrapper>) : void
+      {
+         if(!this.uiApi.getUi(UIEnum.PREVIEWED_ALTERATIONS_UI))
+         {
+            this.uiApi.loadUi(UIEnum.PREVIEWED_ALTERATIONS_UI,UIEnum.PREVIEWED_ALTERATIONS_UI,new AlterationsDescr(alterations));
+         }
+      }
+      
+      private function onAlterationPinnedTooltipUi(alteration:AlterationWrapper) : void
+      {
+         this.uiApi.showTooltip(alteration,TOOLTIP_TARGET,false,TooltipManager.TOOLTIP_STANDARD_NAME,LocationEnum.POINT_TOPLEFT,LocationEnum.POINT_TOPLEFT,0,"alteration",null,{"pinnable":true},null,true,StrataEnum.STRATA_TOOLTIP,1,"storage");
+      }
+      
+      private function onOpenAlterationUi(descr:AlterationsDescr) : void
+      {
+         if(!this.uiApi.getUi(UIEnum.ALTERATIONS_UI))
+         {
+            this.uiApi.loadUi(UIEnum.ALTERATIONS_UI,UIEnum.ALTERATIONS_UI,descr);
          }
       }
       

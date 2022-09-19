@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.achievement
    public class AchievementDetailsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5303;
+      public static const protocolId:uint = 4114;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.achievement
       
       override public function getMessageId() : uint
       {
-         return 5303;
+         return 4114;
       }
       
       public function initAchievementDetailsMessage(achievement:Achievement = null) : AchievementDetailsMessage

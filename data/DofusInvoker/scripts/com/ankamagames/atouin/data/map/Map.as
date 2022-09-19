@@ -19,6 +19,8 @@ package com.ankamagames.atouin.data.map
    {
       
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(Map));
+      
+      private static var decryptionKey:ByteArray = null;
        
       
       public var mapVersion:int;
@@ -140,7 +142,7 @@ package com.ankamagames.atouin.data.map
          return this._gfxCount[gfxId];
       }
       
-      public function fromRaw(raw:IDataInput, decryptionKey:ByteArray = null) : void
+      public function fromRaw(raw:IDataInput) : void
       {
          var i:int = 0;
          var header:int = 0;
@@ -156,6 +158,11 @@ package com.ankamagames.atouin.data.map
          var gridGreen:int = 0;
          var gridBlue:int = 0;
          var fg:Fixture = null;
+         if(decryptionKey == null)
+         {
+            decryptionKey = new ByteArray();
+            decryptionKey.writeMultiByte("649ae451ca33ec53bbcbcc33becf15f4","ascii");
+         }
          try
          {
             header = raw.readByte();

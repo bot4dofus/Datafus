@@ -27,6 +27,8 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const HINT_CATEGORY_TRANSPORTATIONS:int = 9;
       
+      public static const MONSTER_TYPE_OSATOPIA:uint = 248;
+      
       public static const ITEM_SUPERTYPE_COLLAR:uint = 1;
       
       public static const ITEM_SUPERTYPE_WEAPON:uint = 2;
@@ -119,6 +121,8 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const ITEM_TYPE_MUTATIONS:int = 27;
       
+      public static const ITEM_TYPE_ROLEPLAY_BUFF:int = 31;
+      
       public static const ITEM_TYPE_MEAT:int = 63;
       
       public static const ITEM_TYPE_PET_EGG:int = 72;
@@ -207,6 +211,8 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const ITEM_TYPE_HARNESS_FLYHORN:int = 256;
       
+      public static const ITEM_TYPE_SMITHMAGIC_CARVING:int = 258;
+      
       public static const ITEM_TYPE_FORGETTABLE_SPELL_SCROLL:int = 223;
       
       public static const ITEM_TYPE_FORGETTABLE_HIDDEN_SPELL:int = 224;
@@ -216,6 +222,10 @@ package com.ankamagames.dofus.internalDatacenter
       public static const ITEM_TYPE_MINOUKI:int = 240;
       
       public static const ITEM_TYPE_ECAFLIP_CARD:int = 238;
+      
+      public static const ITEM_TYPE_MODSTER:int = 261;
+      
+      public static const ITEM_TYPE_FORGETTABLE_MODSTERS:int = 261;
       
       public static const ITEM_GID_SOULSTONE:int = 7010;
       
@@ -278,6 +288,8 @@ package com.ankamagames.dofus.internalDatacenter
       public static const SKILL_ACCESS_PADDOCK:int = 175;
       
       public static const SKILL_BUY_PADDOCK:int = 176;
+      
+      public static const SKILL_SELL_PADDOCK:int = 177;
       
       public static const SKILL_SHATTER_ITEM:int = 181;
       
@@ -415,9 +427,31 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const GUILD_TAB_HOUSES_ID:uint = 4;
       
-      public static const GUILD_TAB_BULLETIN_ID:uint = 5;
+      public static const GUILD_TAB_LOG_BOOK_ID:uint = 5;
       
       public static const GUILD_TAB_DIRECTORY_ID:uint = 6;
+      
+      public static const GUILD_RIGHTS_GROUP_MEMBERS_ID:uint = 1;
+      
+      public static const GUILD_RIGHTS_GROUP_XP_ID:uint = 2;
+      
+      public static const GUILD_RIGHTS_GROUP_LOGBOOK_ID:uint = 3;
+      
+      public static const GUILD_RIGHTS_GROUP_CHEST_LOGBOOK_ID:uint = 4;
+      
+      public static const GUILD_RIGHTS_GROUP_TAX_COLLECTOR_ID:uint = 5;
+      
+      public static const GUILD_RIGHTS_GROUP_PADDOCKS_ID:uint = 6;
+      
+      public static const GUILD_RIGHTS_GROUP_ALLIANCE_ID:uint = 7;
+      
+      public static const GUILD_RIGHTS_GROUP_CHEST_1_ID:uint = 9;
+      
+      public static const GUILD_RIGHTS_GROUP_CHEST_2_ID:uint = 10;
+      
+      public static const GUILD_RIGHTS_GROUP_CHEST_3_ID:uint = 11;
+      
+      public static const GUILD_RIGHTS_GROUP_CHEST_4_ID:uint = 12;
       
       public static const ALLIANCE_TAB_MEMBERS_ID:uint = 0;
       
@@ -476,6 +510,28 @@ package com.ankamagames.dofus.internalDatacenter
       public static const LOCATION_SPADE_CUSTOM_EFFECT_ID:uint = 13;
       
       public static const LOCATION_CLUB_CUSTOM_EFFECT_ID:uint = 14;
+      
+      public static const COLLECTION_MOBEDEX:uint = 1;
+      
+      public static const COLLECTABLE_CATEGORY_COMMON:uint = 0;
+      
+      public static const COLLECTABLE_CATEGORY_RARE:uint = 1;
+      
+      public static const COLLECTABLE_CATEGORY_EVOLUTION:uint = 2;
+      
+      public static const COLLECTABLE_CATEGORY_EPIC:uint = 3;
+      
+      public static const COLLECTABLE_CATEGORY_LEGENDARY:uint = 4;
+      
+      public static const BASE_EFFECT_CATEGORY_ANNOYING_THING:uint = 82;
+      
+      public static const BASE_EFFECT_CATEGORY_GOOD_THING:uint = 83;
+      
+      public static const BASE_EFFECT_CATEGORY_TIME_OF_USE:uint = 477;
+      
+      public static const BASE_EFFECT_ADD_ALTERATION:uint = 493;
+      
+      public static const ACHIEVEMENT_CAT_MODSTERS_HIDDEN:uint = 130;
        
       
       public function DataEnum()

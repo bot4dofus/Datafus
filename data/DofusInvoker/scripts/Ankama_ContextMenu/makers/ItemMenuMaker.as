@@ -7,6 +7,7 @@ package Ankama_ContextMenu.makers
    import com.ankamagames.dofus.datacenter.items.EvolutiveItemType;
    import com.ankamagames.dofus.datacenter.items.Item;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.items.BuildWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.logic.game.common.actions.OpenBookAction;
@@ -57,7 +58,7 @@ package Ankama_ContextMenu.makers
          var data:Object = {};
          data.monsterId = 0;
          data.monsterSearch = item.name;
-         if(Api.config.isFeatureWithKeywordEnabled("temporis.drops"))
+         if(Api.config.isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_DROPS))
          {
             monsterIdsList = null;
             if(item.hasOwnProperty("dropMonsterIds") && item.dropMonsterIds && item.dropMonsterIds.length > 0)
@@ -215,7 +216,7 @@ package Ankama_ContextMenu.makers
             menu.push(ContextMenu.static_createContextMenuItemObject(Api.ui.getText("ui.item.displayAssociatedRunes"),this.askAssociatedRunes,[data],disabled));
          }
          var areDrops:Boolean = data.hasOwnProperty("dropMonsterIds") && data.dropMonsterIds && data.dropMonsterIds.length > 0;
-         if(Api.config.isFeatureWithKeywordEnabled("temporis.drops"))
+         if(Api.config.isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_DROPS))
          {
             areDrops = areDrops || data.hasOwnProperty("dropTemporisMonsterIds") && data.dropTemporisMonsterIds && data.dropTemporisMonsterIds.length > 0;
          }
@@ -247,7 +248,7 @@ package Ankama_ContextMenu.makers
          {
             menu.push(ContextMenu.static_createContextMenuItemObject(Api.ui.getText("ui.item.dissociate"),this.dissociateWrapperObjectItem,[data],disabled || notOwnedItem));
          }
-         if(data.hasOwnProperty("isMimicryObject") && data.isMimicryObject && uiName != "itemBoxPop")
+         if(data.hasOwnProperty("isMimicryObject") && data.isMimicryObject)
          {
             menu.push(ContextMenu.static_createContextMenuItemObject(Api.ui.getText("ui.mimicry.free"),this.dissociateMimicryObjectItem,[data],disabled || notOwnedItem));
          }

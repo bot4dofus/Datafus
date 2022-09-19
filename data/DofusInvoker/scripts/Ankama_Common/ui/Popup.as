@@ -56,6 +56,8 @@ package Ankama_Common.ui
       
       protected var _ignoreShortcuts:Boolean = false;
       
+      protected var _closeUIonValid:Boolean = true;
+      
       private var _timer:BenchmarkTimer;
       
       private var _canValidUI:Boolean = false;
@@ -307,7 +309,10 @@ package Ankama_Common.ui
                {
                   this.defaultShortcutFunction();
                }
-               this.closeMe();
+               if(this._closeUIonValid)
+               {
+                  this.closeMe();
+               }
                return true;
                break;
             case "closeUi":

@@ -22,7 +22,7 @@ package com.ankamagames.dofus.logic.common.managers
       public static function getLink(pGuild:*, pText:String = null) : String
       {
          var text:String = !!pText ? "::" + pText : "";
-         return "{guild," + pGuild.guildId + "," + escape(pGuild.guildName) + text + "}";
+         return "{guild," + pGuild.guildId + "," + pGuild.guildName + text + "}";
       }
       
       public static function showGuild(guildId:uint, guildName:String) : void

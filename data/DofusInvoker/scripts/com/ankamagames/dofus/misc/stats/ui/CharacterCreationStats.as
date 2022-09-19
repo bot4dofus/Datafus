@@ -87,10 +87,7 @@ package com.ankamagames.dofus.misc.stats.ui
                   switch(ccmsg.result)
                   {
                      case CharacterCreationResultEnum.ERR_INVALID_NAME:
-                        errorMsg = I18n.getUiText("ui.popup.charcrea.invalidName");
-                        break;
-                     case CharacterCreationResultEnum.ERR_NAME_ALREADY_EXISTS:
-                        errorMsg = I18n.getUiText("ui.popup.charcrea.nameAlreadyExist");
+                        errorMsg = I18n.getUiText("ui.charcrea.invalidNameReason" + ccmsg.reason);
                         break;
                      case CharacterCreationResultEnum.ERR_NOT_ALLOWED:
                         errorMsg = I18n.getUiText("ui.popup.charcrea.notSubscriber");
@@ -101,7 +98,7 @@ package com.ankamagames.dofus.misc.stats.ui
                      case CharacterCreationResultEnum.ERR_NO_REASON:
                         errorMsg = I18n.getUiText("ui.popup.charcrea.noReason");
                         break;
-                     case CharacterCreationResultEnum.ERR_RESTRICED_ZONE:
+                     case CharacterCreationResultEnum.ERR_RESTRICTED_ZONE:
                         errorMsg = I18n.getUiText("ui.charSel.deletionErrorUnsecureMode");
                         break;
                      case CharacterCreationResultEnum.ERR_INCONSISTENT_COMMUNITY:

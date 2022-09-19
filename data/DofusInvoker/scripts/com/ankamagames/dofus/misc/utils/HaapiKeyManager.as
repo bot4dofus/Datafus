@@ -156,7 +156,7 @@ package com.ankamagames.dofus.misc.utils
             this._apiCredentials.apiPath = XmlConfig.getInstance().getEntry("config.haapiUrlAnkama");
          }
          this._accountApi = new AccountApi(this._apiCredentials);
-         this._accountApi.create_token(this._askedTokens[0]).onSuccess(this.onAccountApiCallResult).onError(this.onAccountApiCallError).call();
+         this._accountApi.create_token(this._askedTokens[0],0,null).onSuccess(this.onAccountApiCallResult).onError(this.onAccountApiCallError).call();
       }
       
       public function callWithApiKey(callback:Function) : void

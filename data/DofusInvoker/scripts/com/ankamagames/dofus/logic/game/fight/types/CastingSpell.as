@@ -38,6 +38,8 @@ package com.ankamagames.dofus.logic.game.fight.types
       
       public var defaultTargetGfxId:uint;
       
+      public var spellDirection:int = -1;
+      
       public function CastingSpell(updateCastingId:Boolean = true)
       {
          super();

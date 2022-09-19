@@ -1,6 +1,7 @@
 package com.ankamagames.dofus.logic.game.common.managers
 {
    import com.ankamagames.berilia.managers.KernelEventsManager;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.kernel.net.ConnectionType;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.logic.common.managers.FeatureManager;
@@ -117,7 +118,7 @@ package com.ankamagames.dofus.logic.game.common.managers
       {
          var serverInactivityDelay:int = SERVER_INACTIVITY_DELAY;
          var featureManager:FeatureManager = FeatureManager.getInstance();
-         if(featureManager && featureManager.isFeatureWithKeywordEnabled("system.fastPing"))
+         if(featureManager && featureManager.isFeatureWithKeywordEnabled(FeatureEnum.FAST_PING))
          {
             serverInactivityDelay = SERVER_INACTIVITY_SPEED_PING_DELAY;
          }

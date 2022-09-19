@@ -141,7 +141,7 @@ package Ankama_Social.ui
          this.sysApi.sendAction(new PrismsListRegisterAction(["Alliance",PrismListenEnum.PRISM_LISTEN_MINE]));
          this._alliance = this.socialApi.getAlliance();
          this.updateAllianceInfos();
-         if(this.socialApi.hasGuildRight(this.playerApi.id(),"isBoss"))
+         if(this.socialApi.hasGuildRank(this.playerApi.id(),0))
          {
             this.btn_motdEdit.visible = true;
          }
@@ -279,11 +279,11 @@ package Ankama_Social.ui
                icon = this.dataApi.getEmblemSymbol(this._alliance.upEmblem.idEmblem);
                if(icon.colorizable)
                {
-                  this.utilApi.changeColor(this.tx_emblemUp.getChildByName("up"),this._alliance.upEmblem.color,0);
+                  this.utilApi.changeColor(this.tx_emblemUp,this._alliance.upEmblem.color,0);
                }
                else
                {
-                  this.utilApi.changeColor(this.tx_emblemUp.getChildByName("up"),this._alliance.upEmblem.color,0,true);
+                  this.utilApi.changeColor(this.tx_emblemUp,this._alliance.upEmblem.color,0,true);
                }
          }
       }
@@ -336,7 +336,6 @@ package Ankama_Social.ui
       
       public function onRelease(target:GraphicContainer) : void
       {
-         var escapeText:String = null;
          if(target == this.btn_members)
          {
             this.openSelectedTab(DataEnum.ALLIANCE_TAB_MEMBERS_ID);
@@ -368,10 +367,9 @@ package Ankama_Social.ui
          }
          else if(target == this.btn_motdValid)
          {
-            escapeText = this.chatApi.escapeChatString(this.inp_motd.text);
-            if(escapeText != this._alliance.motd)
+            if(this.inp_motd.text != this._alliance.motd)
             {
-               this.sysApi.sendAction(new AllianceMotdSetRequestAction([escapeText]));
+               this.sysApi.sendAction(new AllianceMotdSetRequestAction([this.inp_motd.text]));
             }
             this.switchMotdEditMode(false);
          }
@@ -429,16 +427,14 @@ package Ankama_Social.ui
       
       public function onShortcut(s:String) : Boolean
       {
-         var escapeText:String = null;
          switch(s)
          {
             case "validUi":
                if(this.inp_motd.visible && this.inp_motd.haveFocus)
                {
-                  escapeText = this.chatApi.escapeChatString(this.inp_motd.text);
-                  if(escapeText != this._alliance.motd)
+                  if(this.inp_motd.text != this._alliance.motd)
                   {
-                     this.sysApi.sendAction(new AllianceMotdSetRequestAction([escapeText]));
+                     this.sysApi.sendAction(new AllianceMotdSetRequestAction([this.inp_motd.text]));
                   }
                   this.switchMotdEditMode(false);
                   return true;

@@ -9,24 +9,21 @@ package com.ankamagames.dofus.logic.game.common.actions.guild
       
       public var memberId:Number;
       
-      public var rank:uint;
+      public var rankId:uint;
       
       public var experienceGivenPercent:uint;
-      
-      public var rights:Array;
       
       public function GuildChangeMemberParametersAction(params:Array = null)
       {
          super(params);
       }
       
-      public static function create(pMemberId:Number, pRank:uint, pExperienceGivenPercent:uint, pRights:Array) : GuildChangeMemberParametersAction
+      public static function create(pMemberId:Number, pRankId:uint, pExperienceGivenPercent:uint) : GuildChangeMemberParametersAction
       {
          var action:GuildChangeMemberParametersAction = new GuildChangeMemberParametersAction(arguments);
          action.memberId = pMemberId;
-         action.rank = pRank;
+         action.rankId = pRankId;
          action.experienceGivenPercent = pExperienceGivenPercent;
-         action.rights = pRights;
          return action;
       }
    }

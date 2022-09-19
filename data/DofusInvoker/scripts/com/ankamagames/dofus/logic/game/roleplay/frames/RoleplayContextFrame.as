@@ -204,13 +204,11 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.jerakine.utils.display.StageShareManager;
    import com.ankamagames.tiphon.types.TiphonUtility;
    import com.ankamagames.tiphon.types.look.TiphonEntityLook;
-   import com.hurlant.util.Hex;
    import flash.events.MouseEvent;
    import flash.events.TimerEvent;
    import flash.filters.GlowFilter;
    import flash.geom.Point;
    import flash.text.TextFormat;
-   import flash.utils.ByteArray;
    import flash.utils.getQualifiedClassName;
    
    public class RoleplayContextFrame implements Frame
@@ -221,6 +219,8 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       private static const MOUNT_BOOSTS_ICONS_PATH:String = XmlConfig.getInstance().getEntry("config.content.path") + "gfx/characteristics/mount.swf|";
       
       private static var FORGETTABLE_SPELLS_UI:String = "forgettableSpellsUi";
+      
+      private static var FORGETTABLE_MODSTERS_UI:String = "forgettableModstersUi";
        
       
       private var _priority:int = 0;
@@ -413,7 +413,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var mcmsg:CurrentMapMessage = null;
          var newSubArea:SubArea = null;
          var wp:WorldPointWrapper = null;
-         var decryptionKey:ByteArray = null;
          var commonMod:Object = null;
          var questFrame:QuestFrame = null;
          var mlcm:MapsLoadingCompleteMessage = null;
@@ -507,7 +506,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var iihbmsg:InviteInHavenBagMessage = null;
          var iihbcmsg:InviteInHavenBagClosedMessage = null;
          var tsuia:ToggleShowUIAction = null;
-         var decryptionKeyString:String = null;
          var commonMod2:Object = null;
          var emnfmsg:ErrorMapNotFoundMessage = null;
          var currentMapX:int = 0;
@@ -597,16 +595,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                PlayedCharacterManager.getInstance().currentMap = wp;
                Atouin.getInstance().clearEntities();
                KernelEventsManager.getInstance().processCallback(HookList.MapFightCount,0);
-               if(mcmsg.mapKey && mcmsg.mapKey.length)
-               {
-                  decryptionKeyString = XmlConfig.getInstance().getEntry("config.maps.encryptionKey");
-                  if(!decryptionKeyString)
-                  {
-                     decryptionKeyString = mcmsg.mapKey;
-                  }
-                  decryptionKey = Hex.toArray(Hex.fromString(decryptionKeyString));
-               }
-               Atouin.getInstance().display(wp,decryptionKey,!HavenbagTheme.isMapIdInHavenbag(wp.mapId));
+               Atouin.getInstance().display(wp,!HavenbagTheme.isMapIdInHavenbag(wp.mapId));
                TooltipManager.hideAll();
                commonMod = UiModuleManager.getInstance().getModule("Ankama_Common").mainClass;
                commonMod.closeAllMenu();
@@ -912,7 +901,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                KernelEventsManager.getInstance().processCallback(ExchangeHookList.ExchangeReplyTaxVendor,ertvmsg.totalTaxValue);
                return true;
             case msg is ExchangeRequestOnShopStockAction:
-               if(Berilia.getInstance().getUi(FORGETTABLE_SPELLS_UI))
+               if(Berilia.getInstance().getUi(FORGETTABLE_SPELLS_UI) || Berilia.getInstance().getUi(FORGETTABLE_MODSTERS_UI))
                {
                   return true;
                }
@@ -1522,6 +1511,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                rpSpellCastProvider.castingSpell.spell = Spell.getSpellById(grpsamsg.spellId);
                rpSpellCastProvider.castingSpell.spellRank = rpSpellCastProvider.castingSpell.spell.getSpellLevel(grpsamsg.spellLevel);
                rpSpellCastProvider.castingSpell.targetedCell = MapPoint.fromCellId(grpsamsg.targetCellId);
+               rpSpellCastProvider.castingSpell.spellDirection = grpsamsg.direction;
                spellScriptId = rpSpellCastProvider.castingSpell.spell.getScriptId(rpSpellCastProvider.castingSpell.isCriticalHit);
                SpellScriptManager.getInstance().runSpellScript(spellScriptId,rpSpellCastProvider,new Callback(this.executeSpellBuffer,null,true,true,rpSpellCastProvider),new Callback(this.executeSpellBuffer,null,true,false,rpSpellCastProvider));
                return true;

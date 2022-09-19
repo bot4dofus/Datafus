@@ -8,6 +8,7 @@ package Ankama_Roleplay.ui
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.types.graphic.ScrollContainer;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.conquest.PrismSubAreaWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
    import com.ankamagames.dofus.kernel.sound.enum.SoundTypeEnum;
@@ -716,7 +717,7 @@ package Ankama_Roleplay.ui
          var msgTextId:int = 0;
          var allianceName:String = null;
          var allianceTag:String = null;
-         if(this.configApi.isFeatureWithKeywordEnabled("server.heroic"))
+         if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER))
          {
             if(pods == 0)
             {

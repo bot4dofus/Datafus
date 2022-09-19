@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.approach
    public class ServerOptionalFeaturesMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 189;
+      public static const protocolId:uint = 6290;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       override public function getMessageId() : uint
       {
-         return 189;
+         return 6290;
       }
       
       public function initServerOptionalFeaturesMessage(features:Vector.<uint> = null) : ServerOptionalFeaturesMessage
@@ -83,7 +83,7 @@ package com.ankamagames.dofus.network.messages.game.approach
             {
                throw new Error("Forbidden value (" + this.features[_i1] + ") on element 1 (starting at 1) of features.");
             }
-            output.writeByte(this.features[_i1]);
+            output.writeInt(this.features[_i1]);
          }
       }
       
@@ -98,7 +98,7 @@ package com.ankamagames.dofus.network.messages.game.approach
          var _featuresLen:uint = input.readUnsignedShort();
          for(var _i1:uint = 0; _i1 < _featuresLen; _i1++)
          {
-            _val1 = input.readByte();
+            _val1 = input.readInt();
             if(_val1 < 0)
             {
                throw new Error("Forbidden value (" + _val1 + ") on elements of features.");
@@ -128,7 +128,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       private function _featuresFunc(input:ICustomDataInput) : void
       {
-         var _val:uint = input.readByte();
+         var _val:uint = input.readInt();
          if(_val < 0)
          {
             throw new Error("Forbidden value (" + _val + ") on elements of features.");

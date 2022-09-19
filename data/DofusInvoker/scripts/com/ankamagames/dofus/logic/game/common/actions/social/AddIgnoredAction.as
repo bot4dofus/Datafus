@@ -16,7 +16,7 @@ package com.ankamagames.dofus.logic.game.common.actions.social
          super(params);
       }
       
-      public static function create(name:String, tag:String) : AddIgnoredAction
+      public static function create(name:String, tag:String = "") : AddIgnoredAction
       {
          var a:AddIgnoredAction = new AddIgnoredAction(arguments);
          a.name = name;

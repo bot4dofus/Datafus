@@ -84,9 +84,13 @@ package Ankama_Cartography.ui
       
       private static const CONQUEST_FILTERS:String = "mapFiltersConquest";
       
-      private static const REWARD_FILTERS:String = "mapFiltersReward";
+      private static const ANOMALY_FILTERS:String = "mapFiltersAnomaly";
       
       private static const SEARCH_FILTERS:String = "mapFiltersSearch";
+      
+      private static const ANOMALY_SORT:String = "mapSortAnomaly";
+      
+      private static const ANOMALY_SORT_ASCENDING:String = "mapSortAnomalyAscending";
       
       private static const SORT_BY_NAME:uint = 1;
       
@@ -94,18 +98,22 @@ package Ankama_Cartography.ui
       
       private static const SORT_BY_PERCENT:uint = 3;
       
+      private static const SORT_BY_LEVEL:uint = 4;
+      
       private static const CTR_WORLDMAP_CAT:String = "ctr_worldmapCat";
       
       private static const CTR_WORLDMAP_SUB_CAT:String = "ctr_worldmapSubCat";
       
       private static const MAX_WORLDMAP_DISPLAYED:uint = 15;
       
+      private static const NOTIFY_ANOMALY_DATA:String = "anomalynotificationdata";
+      
       private static var _worldmapCatInfos:Array = null;
        
       
       public var conquest_content;
       
-      public var reward_content;
+      public var anomaly_content;
       
       public var mainCtr:GraphicContainer;
       
@@ -173,11 +181,13 @@ package Ankama_Cartography.ui
       
       public var tx_filter_bg:TextureBitmap;
       
-      public var territory_filter_close:ButtonContainer;
+      public var territory_filter_close_conquest:ButtonContainer;
+      
+      public var territory_filter_close_anomaly:ButtonContainer;
       
       public var btnConquest:ButtonContainer;
       
-      public var btnReward:ButtonContainer;
+      public var btnAnomaly:ButtonContainer;
       
       public var btnBestiary:ButtonContainer;
       
@@ -187,31 +197,47 @@ package Ankama_Cartography.ui
       
       public var btn_player:ButtonContainer;
       
-      public var btn_help:ButtonContainer;
+      public var btn_helpConquest:ButtonContainer;
+      
+      public var btn_helpAnomaly:ButtonContainer;
       
       public var btn_tabName:ButtonContainer;
       
       public var btn_tabPercent:ButtonContainer;
       
+      public var btn_tabLevel:ButtonContainer;
+      
       public var btn_showOnlyCurrentMapSubareas:ButtonContainer;
+      
+      public var btn_notifyNewAnomaly:ButtonContainer;
       
       public var tiSearch:Input;
       
       public var lbl_results:Label;
       
-      public var lbl_title:Label;
+      public var lbl_conquestWindow:Label;
       
-      public var ctr_locTree:GraphicContainer;
+      public var lbl_tabLevel:Label;
+      
+      public var lbl_tabPercent:Label;
+      
+      public var lbl_tabName:Label;
+      
+      public var ctr_locTreeConquest:GraphicContainer;
+      
+      public var ctr_locTreeAnomaly:GraphicContainer;
       
       public var ctr_quantity:GraphicContainer;
       
       public var ctr_search_bg:GraphicContainer;
       
-      public var cbx_territory_type:ComboBox;
+      public var cbx_territory_type_conquest:ComboBox;
+      
+      public var cbx_territory_type_anomaly:ComboBox;
       
       public var gdZone:Grid;
       
-      public var gdZoneReward:Grid;
+      public var gdZoneAnomaly:Grid;
       
       public var gdSearchAll:Grid;
       
@@ -225,17 +251,29 @@ package Ankama_Cartography.ui
       
       public var tx_bgWorldmapMenu:TextureBitmap;
       
+      public var tx_sortTerritoryByName:Texture;
+      
+      public var tx_sortTerritoryByNameDescending:Texture;
+      
+      public var tx_sortAnomalyByPercent:Texture;
+      
+      public var tx_sortAnomalyByPercentDescending:Texture;
+      
+      public var tx_sortAnomalyByLevel:Texture;
+      
+      public var tx_sortAnomalyByLevelDescending:Texture;
+      
       private var _dataProvider:AreaGroup;
       
       private var _searchCriteria:String;
       
-      private var _rewardMode:Boolean = false;
+      private var _anomalyMode:Boolean = false;
       
       private var _conquestMode:Boolean = false;
       
       private var _gdConquestProvider:Vector.<AreaGroup>;
       
-      private var _gdRewardProvider:Vector.<AreaGroup>;
+      private var _gdAnomalyProvider:Vector.<AreaGroup>;
       
       private var _lastLayer:String;
       
@@ -243,7 +281,7 @@ package Ankama_Cartography.ui
       
       private var _updateConquestAreas:Boolean;
       
-      private var _updateRewardAreas:Boolean;
+      private var _updateAnomalyAreas:Boolean;
       
       private var _lastSearch:String;
       
@@ -265,15 +303,19 @@ package Ankama_Cartography.ui
       
       private var _hintCategoryFiltersListConquest:Array;
       
-      private var _hintCategoryFiltersListReward:Array;
+      private var _hintCategoryFiltersListAnomaly:Array;
       
       private var _hintCategoryFiltersListSearch:Array;
       
       private var _hasResultsInOtherWorldMap:Boolean;
       
-      private var currentSorting:uint;
+      private var currentSorting:uint = 1;
       
-      private var _showOnlyCurrentMapSubareas:Boolean = true;
+      private var _isAscending:Boolean = true;
+      
+      private var _useDataSorting:Boolean = true;
+      
+      private var _showOnlyCurrentMapSubareas:Boolean = false;
       
       private var _worldmapCatInfosDisplayed:Array;
       
@@ -289,7 +331,7 @@ package Ankama_Cartography.ui
       {
          this._filterCat = new Dictionary(true);
          this._hintCategoryFiltersListConquest = [];
-         this._hintCategoryFiltersListReward = [];
+         this._hintCategoryFiltersListAnomaly = [];
          this._hintCategoryFiltersListSearch = [];
          this._worldmapCatInfosDisplayed = [];
          this._openedCategories = [];
@@ -311,6 +353,11 @@ package Ankama_Cartography.ui
       public function set currentTabName(value:String) : void
       {
          this._currentTabName = value;
+      }
+      
+      public function get cbxTerritoryType() : ComboBox
+      {
+         return !!this._conquestMode ? this.cbx_territory_type_conquest : this.cbx_territory_type_anomaly;
       }
       
       override public function main(params:Object = null) : void
@@ -373,8 +420,8 @@ package Ankama_Cartography.ui
          uiApi.addComponentHook(this.btnFilterAll,ComponentHookList.ON_ROLL_OUT);
          uiApi.addComponentHook(this.tx_filter_bg,ComponentHookList.ON_ROLL_OVER);
          uiApi.addComponentHook(this.tx_filter_bg,ComponentHookList.ON_ROLL_OUT);
-         uiApi.addComponentHook(this.btnReward,ComponentHookList.ON_ROLL_OVER);
-         uiApi.addComponentHook(this.btnReward,ComponentHookList.ON_ROLL_OUT);
+         uiApi.addComponentHook(this.btnAnomaly,ComponentHookList.ON_ROLL_OVER);
+         uiApi.addComponentHook(this.btnAnomaly,ComponentHookList.ON_ROLL_OUT);
          uiApi.addComponentHook(this.btnConquest,ComponentHookList.ON_ROLL_OVER);
          uiApi.addComponentHook(this.btnConquest,ComponentHookList.ON_ROLL_OUT);
          uiApi.addComponentHook(this.btnBestiary,ComponentHookList.ON_ROLL_OVER);
@@ -382,24 +429,44 @@ package Ankama_Cartography.ui
          uiApi.addComponentHook(this.btn_player,ComponentHookList.ON_ROLL_OVER);
          uiApi.addComponentHook(this.btn_player,ComponentHookList.ON_ROLL_OUT);
          uiApi.addComponentHook(this.tiSearch,ComponentHookList.ON_RELEASE);
-         uiApi.addComponentHook(this.btnReward,ComponentHookList.ON_RELEASE);
+         uiApi.addComponentHook(this.btnAnomaly,ComponentHookList.ON_RELEASE);
          uiApi.addComponentHook(this.btnConquest,ComponentHookList.ON_RELEASE);
          uiApi.addComponentHook(this.btnBestiary,ComponentHookList.ON_RELEASE);
-         uiApi.addComponentHook(this.territory_filter_close,ComponentHookList.ON_RELEASE);
-         uiApi.addComponentHook(this.cbx_territory_type,ComponentHookList.ON_SELECT_ITEM);
+         uiApi.addComponentHook(this.territory_filter_close_conquest,ComponentHookList.ON_RELEASE);
+         uiApi.addComponentHook(this.territory_filter_close_anomaly,ComponentHookList.ON_RELEASE);
+         uiApi.addComponentHook(this.cbx_territory_type_conquest,ComponentHookList.ON_SELECT_ITEM);
+         uiApi.addComponentHook(this.cbx_territory_type_anomaly,ComponentHookList.ON_SELECT_ITEM);
          uiApi.addComponentHook(this.gdZone,ComponentHookList.ON_SELECT_ITEM);
          uiApi.addComponentHook(this.gdZone,ComponentHookList.ON_ITEM_ROLL_OVER);
-         uiApi.addComponentHook(this.gdZoneReward,ComponentHookList.ON_SELECT_ITEM);
-         uiApi.addComponentHook(this.gdZoneReward,ComponentHookList.ON_ITEM_ROLL_OVER);
-         uiApi.addComponentHook(this.gdZoneReward,ComponentHookList.ON_ITEM_ROLL_OUT);
+         uiApi.addComponentHook(this.gdZoneAnomaly,ComponentHookList.ON_SELECT_ITEM);
+         uiApi.addComponentHook(this.gdZoneAnomaly,ComponentHookList.ON_ITEM_ROLL_OVER);
+         uiApi.addComponentHook(this.gdZoneAnomaly,ComponentHookList.ON_ITEM_ROLL_OUT);
          sysApi.addHook(BeriliaHookList.KeyDown,this.onKeyDown);
          sysApi.addHook(HookList.MapDebugWorldGraphSortcutToggle,this.traceShortcuts);
+         if(sysApi.getData(ANOMALY_SORT) == null)
+         {
+            sysApi.setData(ANOMALY_SORT,SORT_BY_NAME);
+         }
+         if(sysApi.getData(ANOMALY_SORT_ASCENDING) == null)
+         {
+            sysApi.setData(ANOMALY_SORT_ASCENDING,true);
+         }
+         var anomalyNotificationEnabled:* = sysApi.getData(NOTIFY_ANOMALY_DATA);
+         if(anomalyNotificationEnabled == null || !(anomalyNotificationEnabled is Boolean))
+         {
+            this.btn_notifyNewAnomaly.selected = false;
+            sysApi.setData(NOTIFY_ANOMALY_DATA,false);
+         }
+         else
+         {
+            this.btn_notifyNewAnomaly.selected = Boolean(anomalyNotificationEnabled);
+         }
          loadMapFilters(this._hintCategoryFiltersListConquest,CONQUEST_FILTERS);
-         loadMapFilters(this._hintCategoryFiltersListReward,REWARD_FILTERS);
+         loadMapFilters(this._hintCategoryFiltersListAnomaly,ANOMALY_FILTERS);
          loadMapFilters(this._hintCategoryFiltersListSearch,SEARCH_FILTERS);
          loadMapFilters(__hintCategoryFiltersList,MAP_FILTERS);
-         this._conquestMode = params.conquest;
-         this.switchTo();
+         this.lbl_tabName.fullWidthAndHeight(0,20);
+         this._anomalyMode = params.anomaly;
          gridDisplayed = configApi.getConfigProperty("dofus","showMapGrid");
          if(!_worldmapCatInfos)
          {
@@ -444,13 +511,14 @@ package Ankama_Cartography.ui
          var coordinate:BreachWorldMapCoordinate = null;
          var breachIconId:int = 0;
          super.initMap();
-         this._updateRewardAreas = true;
+         this._updateAnomalyAreas = true;
          mapViewer.addLayer(SEARCH_AREAS);
          mapViewer.addLayer(SEARCH_AREAS_FLAGS);
          mapViewer.addLayer(SEARCH_HINTS);
-         this.btnReward.soundId = SoundEnum.TAB;
+         this.btnAnomaly.soundId = SoundEnum.TAB;
          this.btnConquest.soundId = SoundEnum.TAB;
-         this.territory_filter_close.soundId = SoundEnum.TAB;
+         this.territory_filter_close_conquest.soundId = SoundEnum.TAB;
+         this.territory_filter_close_anomaly.soundId = SoundEnum.TAB;
          soundApi.playSound(SoundTypeEnum.MAP_OPEN);
          this.showHints(__hintCategoryFiltersList);
          this.setLblFilterWidth(1);
@@ -542,9 +610,9 @@ package Ankama_Cartography.ui
          {
             saveMapFilters(this._hintCategoryFiltersListConquest,CONQUEST_FILTERS);
          }
-         else if(this._rewardMode)
+         else if(this._anomalyMode)
          {
-            saveMapFilters(this._hintCategoryFiltersListReward,REWARD_FILTERS);
+            saveMapFilters(this._hintCategoryFiltersListAnomaly,ANOMALY_FILTERS);
          }
          else if(this._searchSelectedItem)
          {
@@ -560,19 +628,28 @@ package Ankama_Cartography.ui
       public function updateGridLine(data:AreaInfo, componentsRef:*, selected:Boolean) : void
       {
          var c:ColorTransform = null;
+         var colorKey:String = null;
          if(data)
          {
             c = new ColorTransform();
             if(data.parent != null)
             {
-               c.color = uiApi.me().getConstant(data.parent.colorKey);
+               colorKey = !!this._anomalyMode ? (data.percent >= 50 ? "capturable_areas_color" : "normal_areas_color") : data.parent.colorKey;
+               if(data.hasAnomaly && this._anomalyMode)
+               {
+                  colorKey = "sabotaged_areas_color";
+               }
+               c.color = uiApi.me().getConstant(colorKey);
             }
-            if(this._rewardMode)
+            if(this._anomalyMode)
             {
                componentsRef.tx_anomaly_filter.visible = data.hasAnomaly;
-               componentsRef.lbl_percent_filter.text = (data.percent > 0 ? "+" : "") + data.percent + "%";
+               componentsRef.lbl_percent_filter.text = "+" + data.percent + "%";
                componentsRef.lbl_percent_filter.colorTransform = c;
+               componentsRef.lbl_level_filter.text = data.data.level;
+               componentsRef.lbl_level_filter.colorTransform = c;
             }
+            componentsRef.btn_filter.visible = true;
             componentsRef.tx_area_filter.uri = uiApi.createUri(uiApi.me().getConstant(data.uri));
             componentsRef.tx_area_filter.colorTransform = c;
             componentsRef.lbl_area_filter.text = data.label;
@@ -581,8 +658,13 @@ package Ankama_Cartography.ui
          }
          else
          {
+            if(this._anomalyMode && componentsRef.lbl_level_filter)
+            {
+               componentsRef.lbl_level_filter.text = "";
+            }
             componentsRef.tx_area_filter.uri = null;
             componentsRef.lbl_area_filter.text = "";
+            componentsRef.btn_filter.visible = false;
             if(componentsRef["tx_anomaly_filter"])
             {
                componentsRef.tx_anomaly_filter.visible = false;
@@ -600,15 +682,8 @@ package Ankama_Cartography.ui
          if(data)
          {
             c = new ColorTransform();
-            if(data.layer == ANOMALY_AREAS)
-            {
-               c.color = uiApi.me().getConstant("sabotaged_areas_color");
-            }
-            else
-            {
-               c.color = uiApi.me().getConstant(data.colorKey);
-            }
-            if(this._rewardMode)
+            c.color = uiApi.me().getConstant(!!data.labelColor ? data.labelColor : data.colorKey);
+            if(this._anomalyMode)
             {
                componentsRef.lbl_area_filter.text = data.label;
             }
@@ -656,10 +731,10 @@ package Ankama_Cartography.ui
             filters = this._hintCategoryFiltersListConquest;
             filtersMode = CONQUEST_FILTERS;
          }
-         else if(this._rewardMode)
+         else if(this._anomalyMode)
          {
-            filters = this._hintCategoryFiltersListReward;
-            filtersMode = REWARD_FILTERS;
+            filters = this._hintCategoryFiltersListAnomaly;
+            filtersMode = ANOMALY_FILTERS;
          }
          else if(this._searchSelectedItem)
          {
@@ -704,10 +779,10 @@ package Ankama_Cartography.ui
             filters = this._hintCategoryFiltersListConquest;
             filtersMode = CONQUEST_FILTERS;
          }
-         else if(this._rewardMode)
+         else if(this._anomalyMode)
          {
-            filters = this._hintCategoryFiltersListReward;
-            filtersMode = REWARD_FILTERS;
+            filters = this._hintCategoryFiltersListAnomaly;
+            filtersMode = ANOMALY_FILTERS;
          }
          else if(this._searchSelectedItem)
          {
@@ -817,26 +892,26 @@ package Ankama_Cartography.ui
                list.children.sort(this.compareSubAreaItem);
             }
             selectedTerritoryTypeLayer = "";
-            if(this.cbx_territory_type.selectedItem)
+            if(this.cbxTerritoryType.selectedItem)
             {
-               selectedTerritoryTypeLayer = this.cbx_territory_type.selectedItem.value.layer;
+               selectedTerritoryTypeLayer = this.cbxTerritoryType.selectedItem.value.layer;
             }
             if(this.gdZone.selectedItem)
             {
                itemValue = this.gdZone.selectedItem.value.data.id;
             }
-            this.cbx_territory_type.dataProvider = this._gdConquestProvider;
+            this.cbxTerritoryType.dataProvider = this._gdConquestProvider;
             if(!this._searchCriteria)
             {
                for each(areaGroup in this._gdConquestProvider)
                {
                   if(areaGroup.layer == selectedTerritoryTypeLayer)
                   {
-                     this.cbx_territory_type.selectedItem = areaGroup;
+                     this.cbxTerritoryType.selectedItem = areaGroup;
                      break;
                   }
                }
-               this.gdZone.dataProvider = this.cbx_territory_type.selectedItem.value.children;
+               this.gdZone.dataProvider = this.cbxTerritoryType.selectedItem.value.children;
                for each(item in this.gdZone.dataProvider)
                {
                   if(item.data.id == itemValue)
@@ -848,7 +923,7 @@ package Ankama_Cartography.ui
             }
             else
             {
-               this.cbx_territory_type.selectedItem = __allAreas;
+               this.cbxTerritoryType.selectedItem = __allAreas;
                this.gdZone.dataProvider = this.filterSubArea(this._searchCriteria,__allAreas.children);
                for each(item in this.gdZone.dataProvider)
                {
@@ -1288,26 +1363,27 @@ package Ankama_Cartography.ui
             case this.btnFilterAll:
                this.updateAllFilters();
                break;
-            case this.territory_filter_close:
-               this._rewardMode = false;
+            case this.territory_filter_close_conquest:
+            case this.territory_filter_close_anomaly:
+               this._anomalyMode = false;
                this._conquestMode = false;
                this.switchTo();
                hintsApi.closeSubHints();
                break;
-            case this.btnReward:
-               this._rewardMode = !this._rewardMode;
+            case this.btnAnomaly:
+               this._anomalyMode = !this._anomalyMode;
                this._conquestMode = false;
                this.conquest_content.visible = false;
-               this.reward_content.visible = true;
+               this.anomaly_content.visible = true;
                this.switchTo();
                uiApi.hideTooltip();
                hintsApi.uiTutoTabLaunch();
                break;
             case this.btnConquest:
                this.conquest_content.visible = true;
-               this.reward_content.visible = false;
+               this.anomaly_content.visible = false;
                this._conquestMode = !this._conquestMode;
-               this._rewardMode = false;
+               this._anomalyMode = false;
                this.switchTo();
                uiApi.hideTooltip();
                hintsApi.uiTutoTabLaunch();
@@ -1329,9 +1405,9 @@ package Ankama_Cartography.ui
                this._lastSearchSubAreaId = -1;
                clearTimeout(this._searchTimeoutId);
                this._searchCriteria = null;
-               if(this.cbx_territory_type.selectedItem && this.cbx_territory_type.selectedItem is AreaGroup && this.cbx_territory_type.selectedItem.children)
+               if(this.cbxTerritoryType.selectedItem && this.cbxTerritoryType.selectedItem is AreaGroup && this.cbxTerritoryType.selectedItem.children)
                {
-                  this._dataProvider = this.cbx_territory_type.selectedItem as AreaGroup;
+                  this._dataProvider = this.cbxTerritoryType.selectedItem as AreaGroup;
                }
                else
                {
@@ -1350,7 +1426,7 @@ package Ankama_Cartography.ui
                {
                   menu.push(modContextMenu.createContextMenuItemObject(uiApi.getText("ui.prism.sortByVulnerabilityDate"),this.onSortSubarea,[SORT_BY_VULNERABILITY_DATE],false,null,this.currentSorting == SORT_BY_VULNERABILITY_DATE));
                }
-               else if(this._rewardMode)
+               else if(this._anomalyMode)
                {
                   menu.push(modContextMenu.createContextMenuItemObject(uiApi.getText("ui.common.sortBy.bonus"),this.onSortSubarea,[SORT_BY_PERCENT],false,null,this.currentSorting == SORT_BY_PERCENT));
                }
@@ -1362,11 +1438,18 @@ package Ankama_Cartography.ui
             case this.btn_tabPercent:
                this.onSortSubarea(SORT_BY_PERCENT);
                break;
+            case this.btn_tabLevel:
+               this.onSortSubarea(SORT_BY_LEVEL);
+               break;
             case this.btn_showOnlyCurrentMapSubareas:
                this._showOnlyCurrentMapSubareas = !this._showOnlyCurrentMapSubareas;
                this.showOnlyCurrentMapSubareas();
                break;
-            case this.btn_help:
+            case this.btn_notifyNewAnomaly:
+               sysApi.setData(NOTIFY_ANOMALY_DATA,this.btn_notifyNewAnomaly.selected);
+               break;
+            case this.btn_helpAnomaly:
+            case this.btn_helpConquest:
                hintsApi.showSubHints(this.currentTabName);
                break;
             case this.btn_worldmap:
@@ -1383,7 +1466,7 @@ package Ankama_Cartography.ui
                      {
                         sysApi.dispatchHook(HookList.DisplayWorldmap,worldmapCatInfo.worldmap);
                      }
-                     openNewMap(worldmapCatInfo.worldmap,MAP_TYPE_SUPERAREA,worldmapCatInfo.areaInfo);
+                     this.openNewMap(worldmapCatInfo.worldmap,MAP_TYPE_SUPERAREA,worldmapCatInfo.areaInfo);
                      zoom = parseFloat(worldmapCatInfo.worldmap.zoom[worldmapCatInfo.worldmap.zoom.length - 1]);
                      worldmapSelected = this.selectWorldmapCatInfoById(_currentWorldId);
                      if(worldmapSelected)
@@ -1504,11 +1587,11 @@ package Ankama_Cartography.ui
             item = (target as Grid).selectedItem;
          }
          var searchEntrySelected:Boolean = target == this.gdSearchAll && method == SelectMethodEnum.CLICK;
-         if(target == this.cbx_territory_type)
+         if(target == this.cbxTerritoryType)
          {
             this._dataProvider = item is AreaGroup ? item as AreaGroup : new AreaGroup("","","","");
             this.searchFilter();
-            this.onSortSubarea(this.currentSorting,true);
+            this.onSortSubarea(!!this._anomalyMode ? uint(0) : uint(this.currentSorting),true);
          }
          if(searchEntrySelected)
          {
@@ -1528,7 +1611,7 @@ package Ankama_Cartography.ui
             {
                case "superarea":
                   saveCurrentMapPreset();
-                  openNewMap(item.data.worldmap,MAP_TYPE_SUPERAREA,item.data);
+                  this.openNewMap(item.data.worldmap,MAP_TYPE_SUPERAREA,item.data);
                   break;
                case "subarea":
                   saveCurrentMapPreset();
@@ -1537,7 +1620,7 @@ package Ankama_Cartography.ui
                      sa = dataApi.getArea(item.data.areaId).superArea;
                      if(_currentWorldId != sa.worldmapId)
                      {
-                        openNewMap(sa.worldmap,MAP_TYPE_SUPERAREA,sa);
+                        this.openNewMap(sa.worldmap,MAP_TYPE_SUPERAREA,sa);
                         __areaShapeDisplayed = [];
                         this.showConquestAreaShapes(item.parent.layer);
                         __lastHighlightElement = "shape" + item.data.id;
@@ -1551,7 +1634,7 @@ package Ankama_Cartography.ui
                         }
                      }
                   }
-                  if(!openNewMap(item.data.worldmap,MAP_TYPE_SUBAREA,item.data))
+                  if(!this.openNewMap(item.data.worldmap,MAP_TYPE_SUBAREA,item.data))
                   {
                      subAreaCenter = mapApi.getSubAreaCenter(item.data.id);
                      if(subAreaCenter)
@@ -1791,17 +1874,10 @@ package Ankama_Cartography.ui
                relPoint = LocationEnum.POINT_TOPRIGHT;
                tooltipText = uiApi.getText("ui.map.player");
                break;
-            case this.btnReward:
+            case this.btnAnomaly:
                point = LocationEnum.POINT_BOTTOMRIGHT;
                relPoint = LocationEnum.POINT_TOPRIGHT;
-               if(!this._rewardMode)
-               {
-                  tooltipText = uiApi.getText("ui.map.showLoot");
-               }
-               else
-               {
-                  tooltipText = uiApi.getText("ui.map.hideLoot");
-               }
+               tooltipText = uiApi.getText("ui.map.anomaly");
                break;
             case this.btnConquest:
                point = LocationEnum.POINT_BOTTOMRIGHT;
@@ -1856,7 +1932,7 @@ package Ankama_Cartography.ui
                this.lblbtnFilterConquest.text = uiApi.getText("ui.map.conquest");
                this.lblbtnFilterDungeon.text = uiApi.getText("ui.map.dungeon");
                this.lblbtnFilterQuest.text = uiApi.getText("ui.cartography.availableQuests");
-               this.lblbtnFilterAnomaly.text = uiApi.getText("ui.common.anomalies");
+               this.lblbtnFilterAnomaly.text = uiApi.getText("ui.cartography.filterAnomalies");
                this.lblbtnFilterAll.text = !!this.btnFilterAll.selected ? uiApi.getText("ui.map.hideAll") : uiApi.getText("ui.map.displayAll");
                break;
             case this.gdSearchAll:
@@ -1868,6 +1944,9 @@ package Ankama_Cartography.ui
                   tooltipText = uiApi.getText("ui.search.resourceEstimatedQuantity");
                   maxWidth = 500;
                }
+               break;
+            case this.btn_tabPercent:
+               tooltipText = uiApi.getText("ui.anomaly.experienceAndLootBonus");
                break;
             default:
                if(target.name.indexOf("btn_breachSector") != -1)
@@ -1903,7 +1982,7 @@ package Ankama_Cartography.ui
          switch(target)
          {
             case this.btnBestiary:
-            case this.btnReward:
+            case this.btnAnomaly:
             case this.btnConquest:
                break;
             case this.btnFilterTemple:
@@ -2107,7 +2186,7 @@ package Ankama_Cartography.ui
             i = 0;
             for each(shortcut in shortcuts)
             {
-               mapViewer.addLine("shortcuts",(i++).toString(),shortcut.from.posX,shortcut.from.posY,shortcut.to.posX,shortcut.to.posY,"\\\\bise\\dofus2-resources\\content\\gfx\\icons\\hintsShadow\\flag.png","[" + shortcut.from.posX + "," + shortcut.from.posY + "] > [" + shortcut.to.posX + "," + shortcut.to.posY + "] | " + shortcut.from.id + "|" + shortcut.fromRp + (!!shortcut.from.outdoor ? "" : "(indoor)") + " > " + shortcut.to.id + "|" + shortcut.toRp + (!!shortcut.to.outdoor ? "" : "(indoor)") + " | " + shortcut.transitionText);
+               mapViewer.addLine("shortcuts",(i++).toString(),shortcut.from.posX,shortcut.from.posY,shortcut.to.posX,shortcut.to.posY,"\\\\bise.ankama.lan\\dofus2-resources\\content\\gfx\\icons\\hintsShadow\\flag.png","[" + shortcut.from.posX + "," + shortcut.from.posY + "] > [" + shortcut.to.posX + "," + shortcut.to.posY + "] | " + shortcut.from.id + "|" + shortcut.fromRp + (!!shortcut.from.outdoor ? "" : "(indoor)") + " > " + shortcut.to.id + "|" + shortcut.toRp + (!!shortcut.to.outdoor ? "" : "(indoor)") + " | " + shortcut.transitionText);
             }
          }
          mapViewer.showLayer("shortcuts",MapApi.DEBUG_WORLD_GRAPH_SHORTCUTS);
@@ -2140,8 +2219,9 @@ package Ankama_Cartography.ui
       {
          this.tiSearch.text = "";
          this.btn_closeSearch.visible = false;
-         this.ctr_locTree.visible = this._conquestMode || this._rewardMode;
-         this.currentTabName = !!this._conquestMode ? "ctr_locTree_conquest_content" : (!!this._rewardMode ? "ctr_locTree_reward_content" : "");
+         this.ctr_locTreeConquest.visible = this.btn_helpConquest.visible = this._conquestMode;
+         this.ctr_locTreeAnomaly.visible = this.btn_helpAnomaly.visible = this._anomalyMode;
+         this.currentTabName = !!this._conquestMode ? "ctr_locTree_conquest_content" : (!!this._anomalyMode ? "ctr_locTree_anomaly_content" : "");
          this.switchMode();
       }
       
@@ -2149,32 +2229,35 @@ package Ankama_Cartography.ui
       {
          __areaShapeDisplayed = [];
          __lastHighlightElement = "";
-         if(this._conquestMode || this._rewardMode)
+         if(this._conquestMode || this._anomalyMode)
          {
             this.onRelease(this.btn_closeSearch);
             if(this._conquestMode)
             {
-               if(this._updateConquestAreas)
+               if(this._updateConquestAreas || this._gdConquestProvider == null)
                {
                   this.updateConquestSubarea();
                }
+               this.btn_sortConquests.visible = true;
                this._dataProvider = __allAreas;
                this.showHints(this._hintCategoryFiltersListConquest);
-               this.cbx_territory_type.dataProvider = this._gdConquestProvider.concat();
-               this.lbl_title.text = uiApi.getText("ui.common.territory") + " (" + __allAreas.children.length + ")";
+               this.cbxTerritoryType.dataProvider = this._gdConquestProvider.concat();
+               this.lbl_conquestWindow.text = uiApi.getText("ui.common.territory") + " (" + __allAreas.children.length + ")";
             }
-            else if(this._rewardMode)
+            else if(this._anomalyMode)
             {
-               if(this._updateRewardAreas)
+               this.currentSorting = sysApi.getData(ANOMALY_SORT);
+               this._isAscending = sysApi.getData(ANOMALY_SORT_ASCENDING);
+               if(this._updateAnomalyAreas || this._gdAnomalyProvider == null)
                {
-                  this.updateRewardSubarea();
+                  this.updateAnomalySubarea();
                }
-               this._dataProvider = __allRewardAreas;
-               this.showHints(this._hintCategoryFiltersListReward);
-               this.cbx_territory_type.dataProvider = this._gdRewardProvider.concat();
-               this.lbl_title.text = uiApi.getText("ui.common.rewards");
+               this.btn_sortConquests.visible = false;
+               this._dataProvider = __allAnomalyAreas;
+               this.showHints(this._hintCategoryFiltersListAnomaly);
+               this.cbxTerritoryType.dataProvider = this._gdAnomalyProvider.concat();
             }
-            this.cbx_territory_type.selectedIndex = 0;
+            this.cbxTerritoryType.selectedIndex = 0;
             this.searchFilter();
             this._lastLayer = ALL_AREAS;
             this.showConquestAreaShapes(ALL_AREAS,false);
@@ -2192,9 +2275,8 @@ package Ankama_Cartography.ui
       
       private function showDungeonFilter(show:Boolean) : void
       {
-         mapViewer.showLayer(this._filterCat[this.btnFilterDungeon],show && !this._rewardMode);
-         mapViewer.showLayer(BONUS_DUNGEONS,show && this._rewardMode && (!this._lastLayer || this._lastLayer == ALL_AREAS || this._lastLayer == BONUS_DUNGEONS));
-         mapViewer.showLayer(MALUS_DUNGEONS,show && this._rewardMode && (!this._lastLayer || this._lastLayer == ALL_AREAS || this._lastLayer == MALUS_DUNGEONS));
+         mapViewer.showLayer(this._filterCat[this.btnFilterDungeon],show && !this._anomalyMode);
+         mapViewer.showLayer(BONUS_DUNGEONS,show && this._anomalyMode && (!this._lastLayer || this._lastLayer == ALL_AREAS || this._lastLayer == BONUS_DUNGEONS));
       }
       
       private function showConquestAreaShapes(pLayer:String, show:Boolean = true) : void
@@ -2210,10 +2292,9 @@ package Ankama_Cartography.ui
                showAreaShape(CAPTURABLE_AREAS,show);
                showAreaShape(SABOTAGED_AREAS,show);
             }
-            if(this._rewardMode || !show)
+            if(this._anomalyMode || !show)
             {
                showAreaShape(BONUS_AREAS,show);
-               showAreaShape(MALUS_AREAS,show);
                showAreaShape(ANOMALY_AREAS,show);
             }
          }
@@ -2231,9 +2312,8 @@ package Ankama_Cartography.ui
          this._lastLayer = pLayer;
          var lastAreaShapeDisplayed:Array = __areaShapeDisplayed;
          __areaShapeDisplayed = [];
-         if(pLayer == MALUS_DUNGEONS || pLayer == BONUS_DUNGEONS)
+         if(pLayer == BONUS_DUNGEONS)
          {
-            mapViewer.showLayer(MALUS_DUNGEONS,pLayer == MALUS_DUNGEONS);
             mapViewer.showLayer(BONUS_DUNGEONS,pLayer == BONUS_DUNGEONS);
             for each(layer in lastAreaShapeDisplayed)
             {
@@ -2242,7 +2322,6 @@ package Ankama_Cartography.ui
          }
          else
          {
-            mapViewer.showLayer(MALUS_DUNGEONS,pLayer == ALL_AREAS);
             mapViewer.showLayer(BONUS_DUNGEONS,pLayer == ALL_AREAS);
             this.showConquestAreaShapes(pLayer);
             nb = lastAreaShapeDisplayed.length;
@@ -2280,7 +2359,8 @@ package Ankama_Cartography.ui
          var uri:String = null;
          var areaGroup:AreaGroup = null;
          var dungeonId:int = 0;
-         var iconUri:* = null;
+         var iconUri:String = null;
+         var iconPath:String = null;
          var dungeon:Dungeon = null;
          var pos:MapPosition = null;
          var legend:* = null;
@@ -2296,20 +2376,13 @@ package Ankama_Cartography.ui
          {
             uri = "icon_simple_chest_uri";
          }
-         var currentAreaInfo:AreaInfo = new AreaInfo(subArea.name,infoType,uri,__allRewardAreas,subArea,_textCss,"bonus",percent,hasAnomaly);
-         this.addAreaInfo(__allRewardAreas,currentAreaInfo);
-         var color:int = uiApi.me().getConstant(!!hasAnomaly ? "anomaly_areas_color" : (percent > 0 ? "bonus_areas_color" : "malus_areas_color"));
+         var currentAreaInfo:AreaInfo = new AreaInfo(subArea.name,infoType,uri,__allAnomalyAreas,subArea,_textCss,"bonus",percent,hasAnomaly);
+         this.addAreaInfo(__allAnomalyAreas,currentAreaInfo);
+         var color:int = uiApi.me().getConstant(!!hasAnomaly ? "anomaly_areas_color" : (percent >= 50 ? "bonus_areas_color" : "malus_areas_color"));
          switch(infoType)
          {
             case "subarea":
-               if(percent > 0)
-               {
-                  areaGroup = __bonusAreas;
-               }
-               else
-               {
-                  areaGroup = __malusAreas;
-               }
+               areaGroup = __bonusAreas;
                if(hasAnomaly)
                {
                   this.addAreaInfo(areaGroup,currentAreaInfo);
@@ -2325,16 +2398,15 @@ package Ankama_Cartography.ui
                dungeonId = mapApi.isDungeonSubArea(subArea.id);
                if(dungeonId != -1)
                {
-                  if(percent > 0)
+                  iconPath = percent >= 50 ? "texture/map/filterDungeon_On_Green.png" : "texture/map/filterDungeon_On.png";
+                  areaGroup = __bonusDungeon;
+                  if(hasAnomaly)
                   {
-                     areaGroup = __bonusDungeon;
-                     iconUri = sysApi.getConfigEntry("config.ui.skin") + "texture/map/filterDungeon_On_Green.png";
+                     this.addAreaInfo(areaGroup,currentAreaInfo);
+                     areaGroup = __anomalyAreas;
+                     iconPath = "texture/map/filterSpiral_On.png";
                   }
-                  else
-                  {
-                     areaGroup = __malusDungeon;
-                     iconUri = sysApi.getConfigEntry("config.ui.skin") + "texture/map/filterDungeon_On.png";
-                  }
+                  iconUri = sysApi.getConfigEntry("config.ui.skin") + iconPath;
                   this.addAreaInfo(areaGroup,currentAreaInfo);
                   dungeon = dataApi.getDungeon(dungeonId);
                   pos = mapApi.getMapPositionById(dungeon.entranceMapId);
@@ -2347,28 +2419,24 @@ package Ankama_Cartography.ui
          }
       }
       
-      private function updateRewardSubarea() : void
+      private function updateAnomalySubarea() : void
       {
          var subInfo:AnomalySubareaInformation = null;
          var group:AreaGroup = null;
          var subArea:SubArea = null;
          var dungeonId:int = 0;
          var infoType:String = null;
-         if(!__allRewardAreas)
+         if(!__allAnomalyAreas)
          {
-            this._gdRewardProvider = new Vector.<AreaGroup>(0);
-            __allRewardAreas = new AreaGroup(uiApi.getText("ui.map.allTerritories"),"areaShape","icon_simple_chest_uri",ALL_AREAS,"all_areas_color");
-            __bonusAreas = new AreaGroup(uiApi.getText("ui.common.territory") + " (" + uiApi.getText("ui.common.bonus") + ")","areaShape","icon_simple_chest_uri",BONUS_AREAS,"capturable_areas_color");
-            __malusAreas = new AreaGroup(uiApi.getText("ui.common.territory") + " (" + uiApi.getText("ui.common.malus") + ")","areaShape","icon_simple_chest_uri",MALUS_AREAS,"normal_areas_color");
-            __bonusDungeon = new AreaGroup(uiApi.getText("ui.map.dungeon") + " (" + uiApi.getText("ui.common.bonus") + ")","dungeon","icon_simple_dungeon_uri",BONUS_DUNGEONS,"capturable_areas_color");
-            __malusDungeon = new AreaGroup(uiApi.getText("ui.map.dungeon") + " (" + uiApi.getText("ui.common.malus") + ")","dungeon","icon_simple_dungeon_uri",MALUS_DUNGEONS,"normal_areas_color");
-            __anomalyAreas = new AreaGroup(uiApi.getText("ui.common.anomalies"),"areaShape","icon_simple_anomaly_uri",ANOMALY_AREAS,"normal_areas_color");
-            this._gdRewardProvider.push(__allRewardAreas);
-            this._gdRewardProvider.push(__bonusAreas);
-            this._gdRewardProvider.push(__malusAreas);
-            this._gdRewardProvider.push(__bonusDungeon);
-            this._gdRewardProvider.push(__malusDungeon);
-            this._gdRewardProvider.push(__anomalyAreas);
+            this._gdAnomalyProvider = new Vector.<AreaGroup>(0);
+            __allAnomalyAreas = new AreaGroup(uiApi.getText("ui.map.allTerritories"),"areaShape","icon_simple_chest_uri",ALL_AREAS,"all_areas_color");
+            __bonusAreas = new AreaGroup(uiApi.getText("ui.common.territory"),"areaShape","icon_simple_chest_uri",BONUS_AREAS,"capturable_areas_color","normal_areas_color");
+            __bonusDungeon = new AreaGroup(uiApi.getText("ui.map.dungeon"),"dungeon","icon_simple_dungeon_uri",BONUS_DUNGEONS,"capturable_areas_color","normal_areas_color");
+            __anomalyAreas = new AreaGroup(uiApi.getText("ui.common.anomalies"),"areaShape","icon_simple_anomaly_uri",ANOMALY_AREAS,"sabotaged_areas_color","sabotaged_areas_color");
+            this._gdAnomalyProvider.push(__allAnomalyAreas);
+            this._gdAnomalyProvider.push(__bonusAreas);
+            this._gdAnomalyProvider.push(__bonusDungeon);
+            this._gdAnomalyProvider.push(__anomalyAreas);
          }
          for each(subInfo in __subAreasInfos)
          {
@@ -2380,11 +2448,11 @@ package Ankama_Cartography.ui
                this.updateRewardSubareaStatus(subArea,subInfo.rewardRate,infoType,subInfo.hasAnomaly);
             }
          }
-         for each(group in this._gdRewardProvider)
+         for each(group in this._gdAnomalyProvider)
          {
             group.children.sort(this.compareSubAreaItem);
          }
-         this._updateRewardAreas = false;
+         this._updateAnomalyAreas = false;
       }
       
       private function updateConquestSubarea(pUpdateConquestModeData:Boolean = true) : void
@@ -2450,11 +2518,11 @@ package Ankama_Cartography.ui
          }
          else
          {
-            if(!this._rewardMode)
+            if(!this._anomalyMode)
             {
                return;
             }
-            grid = this.gdZoneReward;
+            grid = this.gdZoneAnomaly;
          }
          if(this._searchCriteria)
          {
@@ -2498,7 +2566,7 @@ package Ankama_Cartography.ui
          this.btnFilterQuest.selected = pFiltersList[11];
       }
       
-      private function onSortSubarea(pSortType:uint, newDataProvider:Boolean = false) : void
+      private function onSortSubarea(pSortType:uint = 1, newDataProvider:Boolean = false) : void
       {
          var grid:Grid = null;
          var subareaItem:AreaInfo = null;
@@ -2508,11 +2576,11 @@ package Ankama_Cartography.ui
          }
          else
          {
-            if(!this._rewardMode)
+            if(!this._anomalyMode)
             {
                return;
             }
-            grid = this.gdZoneReward;
+            grid = this.gdZoneAnomaly;
          }
          if(pSortType == SORT_BY_VULNERABILITY_DATE)
          {
@@ -2525,36 +2593,88 @@ package Ankama_Cartography.ui
          if(!newDataProvider && this.currentSorting == pSortType)
          {
             grid.dataProvider.reverse();
+            this._isAscending = !this._isAscending;
          }
-         else if(pSortType == SORT_BY_NAME)
+         else
          {
-            utilApi.sortOnString(grid.dataProvider,"label");
-         }
-         else if(pSortType == SORT_BY_VULNERABILITY_DATE)
-         {
-            grid.dataProvider.sortOn(["vulnerabilityDate","sortLabel"],[Array.NUMERIC]);
-         }
-         else if(pSortType == SORT_BY_PERCENT)
-         {
-            grid.dataProvider.sortOn("percent",Array.DESCENDING | Array.NUMERIC);
+            if(this._anomalyMode)
+            {
+               this._isAscending = pSortType != 0 || this._isAscending;
+               if(pSortType == 0)
+               {
+                  var pSortType:uint = this.currentSorting;
+               }
+            }
+            if(pSortType == SORT_BY_NAME)
+            {
+               utilApi.sortOnString(grid.dataProvider,"label");
+            }
+            else if(pSortType == SORT_BY_VULNERABILITY_DATE)
+            {
+               grid.dataProvider.sortOn(["vulnerabilityDate","sortLabel"],[Array.NUMERIC]);
+            }
+            else if(pSortType == SORT_BY_PERCENT)
+            {
+               grid.dataProvider.sortOn("percent",Array.NUMERIC);
+            }
+            else if(pSortType == SORT_BY_LEVEL && this._anomalyMode)
+            {
+               grid.dataProvider.sort(function(area1:AreaInfo, area2:AreaInfo):int
+               {
+                  return area1.data.level - area2.data.level;
+               });
+            }
+            if(!this._isAscending && this._anomalyMode)
+            {
+               grid.dataProvider.reverse();
+            }
          }
          grid.updateItems();
          this.currentSorting = pSortType;
+         this.updateSortingArrows();
+         if(this._anomalyMode)
+         {
+            sysApi.setData(ANOMALY_SORT,this.currentSorting);
+            sysApi.setData(ANOMALY_SORT_ASCENDING,this._isAscending);
+         }
+      }
+      
+      private function updateSortingArrows() : void
+      {
+         this.tx_sortTerritoryByNameDescending.visible = this.tx_sortTerritoryByName.visible = false;
+         if(this._anomalyMode)
+         {
+            this.tx_sortAnomalyByPercentDescending.visible = this.tx_sortAnomalyByLevelDescending.visible = this.tx_sortAnomalyByLevel.visible = this.tx_sortAnomalyByPercent.visible = false;
+         }
+         switch(this.currentSorting)
+         {
+            case SORT_BY_NAME:
+               this.tx_sortTerritoryByName.visible = this._isAscending;
+               this.tx_sortTerritoryByNameDescending.visible = !this._isAscending;
+               break;
+            case SORT_BY_LEVEL:
+               this.tx_sortAnomalyByLevel.visible = this._isAscending;
+               this.tx_sortAnomalyByLevelDescending.visible = !this._isAscending;
+               break;
+            case SORT_BY_PERCENT:
+               this.tx_sortAnomalyByPercent.visible = this._isAscending;
+               this.tx_sortAnomalyByPercentDescending.visible = !this._isAscending;
+         }
       }
       
       public function showOnlyCurrentMapSubareas() : void
       {
-         if(!this._rewardMode)
+         if(!this._anomalyMode)
          {
             return;
          }
          if(!this._showOnlyCurrentMapSubareas)
          {
-            this.gdZoneReward.dataProvider = this._dataProvider.children;
+            this.gdZoneAnomaly.dataProvider = this._dataProvider.children;
          }
          else
          {
-            this.gdZoneReward.dataProvider = this.gdZoneReward.dataProvider.filter(function(area:AreaInfo, index:int, array:Array):Boolean
+            this.gdZoneAnomaly.dataProvider = this.gdZoneAnomaly.dataProvider.filter(function(area:AreaInfo, index:int, array:Array):Boolean
             {
                return area.data.worldmap.id == _currentWorldId;
             });
@@ -2843,6 +2963,26 @@ package Ankama_Cartography.ui
             }
          }
          mapViewer.updateMapElements();
+      }
+      
+      override protected function onAreaListInformation(areasInfo:Vector.<AnomalySubareaInformation>) : void
+      {
+         super.onAreaListInformation(areasInfo);
+         if(this._anomalyMode)
+         {
+            this.updateAnomalySubarea();
+            this.switchTo();
+            this.cbx_territory_type_anomaly.selectedIndex = this.cbx_territory_type_anomaly.selectedIndex;
+            this.showOnlyCurrentMapSubareas();
+            this.anomaly_content.visible = true;
+         }
+      }
+      
+      override public function openNewMap(worldmapInfo:Object, mode:uint, areaInfo:Object, forceReload:Boolean = false) : Boolean
+      {
+         var toReturn:Boolean = super.openNewMap(worldmapInfo,mode,areaInfo,forceReload);
+         this.switchMode();
+         return toReturn;
       }
    }
 }

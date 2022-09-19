@@ -66,9 +66,9 @@ package com.ankamagames.atouin.entities.behaviours.movements
          var newInstance:AnimatedMovementBehavior = null;
          if(!_cache[type])
          {
-            _cache[type] = new Dictionary(true);
+            _cache[type] = [];
          }
-         for(m in _cache[type])
+         for each(m in _cache[type])
          {
             if(AnimatedMovementBehavior(m).speedAdjust == speedAdjust)
             {
@@ -77,7 +77,7 @@ package com.ankamagames.atouin.entities.behaviours.movements
          }
          newInstance = new type() as AnimatedMovementBehavior;
          newInstance.speedAdjust = speedAdjust;
-         _cache[type][newInstance] = true;
+         _cache[type].push(newInstance);
          return newInstance;
       }
       

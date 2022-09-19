@@ -39,7 +39,7 @@ package com.ankamagames.berilia.managers
       
       private static const TOOLTIP_UI_NAME_PREFIX:String = "tooltip_";
       
-      public static const TOOLTIP_STANDAR_NAME:String = "standard";
+      public static const TOOLTIP_STANDARD_NAME:String = "standard";
       
       public static var _tooltipCache:Dictionary = new Dictionary();
       
@@ -132,7 +132,7 @@ package com.ankamagames.berilia.managers
          var c:DisplayObject = null;
          if(name == null)
          {
-            name = TOOLTIP_STANDAR_NAME;
+            name = TOOLTIP_STANDARD_NAME;
          }
          if(name.indexOf(TOOLTIP_UI_NAME_PREFIX) == -1)
          {
@@ -149,7 +149,7 @@ package com.ankamagames.berilia.managers
                TooltipPlacer.removeTooltipPositionByName(name);
             }
             Berilia.getInstance().unloadUi(name);
-            if(name == TOOLTIP_UI_NAME_PREFIX + TOOLTIP_STANDAR_NAME)
+            if(name == TOOLTIP_UI_NAME_PREFIX + TOOLTIP_STANDARD_NAME)
             {
                c = Berilia.getInstance().strataTooltip.getChildByName(name);
                if(c && c.parent && !Berilia.getInstance().getUi(name))

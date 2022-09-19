@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.character.choice
    public class CharacterReplayWithRemodelRequestMessage extends CharacterReplayRequestMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3832;
+      public static const protocolId:uint = 5518;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.character.choice
       
       override public function getMessageId() : uint
       {
-         return 3832;
+         return 5518;
       }
       
       public function initCharacterReplayWithRemodelRequestMessage(characterId:Number = 0, remodel:RemodelingInformation = null) : CharacterReplayWithRemodelRequestMessage

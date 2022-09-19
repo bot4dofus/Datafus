@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.initialization
    public class SetCharacterRestrictionsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7853;
+      public static const protocolId:uint = 9474;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.initialization
       
       override public function getMessageId() : uint
       {
-         return 7853;
+         return 9474;
       }
       
       public function initSetCharacterRestrictionsMessage(actorId:Number = 0, restrictions:ActorRestrictionsInformations = null) : SetCharacterRestrictionsMessage

@@ -3,6 +3,10 @@ package com.ankamagames.dofus.logic.game.fight.managers
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.dofus.datacenter.items.Item;
    import com.ankamagames.dofus.datacenter.items.Weapon;
+   import com.ankamagames.dofus.datacenter.items.criterion.GroupItemCriterion;
+   import com.ankamagames.dofus.datacenter.items.criterion.IItemCriterion;
+   import com.ankamagames.dofus.datacenter.items.criterion.ItemCriterionOperator;
+   import com.ankamagames.dofus.datacenter.items.criterion.StateCriterion;
    import com.ankamagames.dofus.datacenter.spells.Spell;
    import com.ankamagames.dofus.datacenter.spells.SpellLevel;
    import com.ankamagames.dofus.datacenter.spells.SpellState;
@@ -246,12 +250,14 @@ package com.ankamagames.dofus.logic.game.fight.managers
          var apCost:uint = 0;
          var maxCastPerTurn:uint = 0;
          var state:int = 0;
-         var stateRequired:int = 0;
+         var gic:GroupItemCriterion = null;
          var characteristics:CharacterCharacteristicsInformations = null;
          var weapon:Weapon = null;
          var currentState:SpellState = null;
          var weapon2:Weapon = null;
-         var stateReq:SpellState = null;
+         var criterion:GroupItemCriterion = null;
+         var isRequired:Boolean = false;
+         var requiredStateCriterion:IItemCriterion = null;
          var cooldown:int = 0;
          var numberCastOnTarget:uint = 0;
          var spellModifiers:SpellModifiers = null;
@@ -359,21 +365,15 @@ package com.ankamagames.dofus.logic.game.fight.managers
          {
             states = new Array();
          }
-         for each(state in states)
+         var _loc31_:int = 0;
+         var _loc32_:* = states;
+         loop1:
+         while(true)
          {
-            currentState = SpellState.getSpellStateById(state);
-            if(currentState.preventsFight && spellId == 0)
+            for each(state in _loc32_)
             {
-               if(result)
-               {
-                  result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.stateForbidden",[spellName,currentState.name]);
-               }
-               return false;
-            }
-            if(currentState.id == DataEnum.SPELL_STATE_ARCHER && spellId == 0)
-            {
-               weapon2 = Item.getItemById(player.currentWeapon.objectGID) as Weapon;
-               if(weapon2.typeId != DataEnum.ITEM_TYPE_BOW)
+               currentState = SpellState.getSpellStateById(state);
+               if(currentState.preventsFight && spellId == 0)
                {
                   if(result)
                   {
@@ -381,125 +381,139 @@ package com.ankamagames.dofus.logic.game.fight.managers
                   }
                   return false;
                }
+               if(currentState.id == DataEnum.SPELL_STATE_ARCHER && spellId == 0)
+               {
+                  weapon2 = Item.getItemById(player.currentWeapon.objectGID) as Weapon;
+                  if(weapon2.typeId != DataEnum.ITEM_TYPE_BOW)
+                  {
+                     if(result)
+                     {
+                        result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.stateForbidden",[spellName,currentState.name]);
+                     }
+                     return false;
+                  }
+               }
+               if(currentState.preventsSpellCast)
+               {
+                  if(!spellLevel.statesCriterion || spellLevel.statesCriterion == "")
+                  {
+                     if(result)
+                     {
+                        result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.stateForbidden",[spellName,currentState.name]);
+                     }
+                     return false;
+                  }
+                  criterion = new GroupItemCriterion(spellLevel.statesCriterion);
+                  isRequired = false;
+                  for each(requiredStateCriterion in criterion.criteria)
+                  {
+                     if(requiredStateCriterion is StateCriterion && StateCriterion(requiredStateCriterion).operatorText == ItemCriterionOperator.EQUAL)
+                     {
+                        if(int(StateCriterion(requiredStateCriterion).criterionValue) == currentState.id)
+                        {
+                           isRequired = true;
+                           break;
+                        }
+                     }
+                  }
+                  if(!isRequired)
+                  {
+                     break loop1;
+                  }
+               }
             }
-            if(spellLevel.statesForbidden && spellLevel.statesForbidden.indexOf(state) != -1)
+            gic = new GroupItemCriterion(spellLevel.statesCriterion);
+            if(!gic.isRespected)
             {
                if(result)
                {
-                  result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.stateForbidden",[spellName,currentState.name]);
+                  result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.notAvailable",[spellName]);
                }
                return false;
             }
-            if(currentState.preventsSpellCast)
+            if(!spell.bypassSummoningLimit && spellLevel.canSummon && !this.canSummon())
             {
-               if(!(spellLevel.statesRequired || spellLevel.statesAuthorized))
+               if(result)
                {
-                  if(result)
+                  result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.tooManySummon",[spellName]);
+               }
+               return false;
+            }
+            if(spellLevel.canBomb && !this.canBomb())
+            {
+               if(result)
+               {
+                  result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.tooManyBomb",[spellName]);
+               }
+               return false;
+            }
+            if(!player.isFighting)
+            {
+               if(result)
+               {
+                  result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.available",[spellName]);
+               }
+               return true;
+            }
+            var spellCastManager:SpellCastInFightManager = this.getSpellCastManager();
+            var spellManager:SpellManager = spellCastManager.getSpellManagerBySpellId(spellId);
+            if(spellManager == null)
+            {
+               if(result)
+               {
+                  result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.available",[spellName]);
+               }
+               return true;
+            }
+            if(maxCastPerTurn <= spellManager.numberCastThisTurn && maxCastPerTurn > 0)
+            {
+               if(result)
+               {
+                  result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.castPerTurn",[spellName,maxCastPerTurn]);
+               }
+               return false;
+            }
+            if(spellManager.cooldown > 0 || thisSpell.actualCooldown > 0)
+            {
+               cooldown = Math.max(spellManager.cooldown,thisSpell.actualCooldown);
+               if(result)
+               {
+                  if(cooldown == 63)
                   {
-                     result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.stateForbidden",[spellName,currentState.name]);
+                     result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.noCast",[spellName]);
+                  }
+                  else
+                  {
+                     result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.cooldown",[spellName,cooldown]);
                   }
                }
-               if((!spellLevel.statesRequired || spellLevel.statesRequired.length == 0 || spellLevel.statesRequired.indexOf(state) == -1) && (!spellLevel.statesAuthorized || spellLevel.statesAuthorized.length == 0 || spellLevel.statesAuthorized.indexOf(state) == -1))
+               return false;
+            }
+            if(pTargetId != 0)
+            {
+               numberCastOnTarget = spellManager.getCastOnEntity(pTargetId);
+               spellModifiers = SpellModifiersManager.getInstance().getSpellModifiers(this.currentFighterId,spellId);
+               bonus = !!spellModifiers ? Number(spellModifiers.getModifierValue(CharacterSpellModificationTypeEnum.MAX_CAST_PER_TARGET)) : Number(0);
+               if(spellLevel.maxCastPerTarget + bonus <= numberCastOnTarget && spellLevel.maxCastPerTarget > 0)
                {
                   if(result)
                   {
-                     result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.stateForbidden",[spellName,currentState.name]);
+                     result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.castPerTarget",[spellName]);
                   }
                   return false;
                }
-               continue;
-               return false;
             }
-         }
-         for each(stateRequired in spellLevel.statesRequired)
-         {
-            if(states.indexOf(stateRequired) == -1)
-            {
-               stateReq = SpellState.getSpellStateById(stateRequired);
-               if(result)
-               {
-                  result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.stateRequired",[spellName,stateReq.name]);
-               }
-               return false;
-            }
-         }
-         if(!spell.bypassSummoningLimit && spellLevel.canSummon && !this.canSummon())
-         {
-            if(result)
-            {
-               result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.tooManySummon",[spellName]);
-            }
-            return false;
-         }
-         if(spellLevel.canBomb && !this.canBomb())
-         {
-            if(result)
-            {
-               result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.tooManyBomb",[spellName]);
-            }
-            return false;
-         }
-         if(!player.isFighting)
-         {
             if(result)
             {
                result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.available",[spellName]);
             }
             return true;
-         }
-         var spellCastManager:SpellCastInFightManager = this.getSpellCastManager();
-         var spellManager:SpellManager = spellCastManager.getSpellManagerBySpellId(spellId);
-         if(spellManager == null)
-         {
-            if(result)
-            {
-               result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.available",[spellName]);
-            }
-            return true;
-         }
-         if(maxCastPerTurn <= spellManager.numberCastThisTurn && maxCastPerTurn > 0)
-         {
-            if(result)
-            {
-               result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.castPerTurn",[spellName,maxCastPerTurn]);
-            }
-            return false;
-         }
-         if(spellManager.cooldown > 0 || thisSpell.actualCooldown > 0)
-         {
-            cooldown = Math.max(spellManager.cooldown,thisSpell.actualCooldown);
-            if(result)
-            {
-               if(cooldown == 63)
-               {
-                  result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.noCast",[spellName]);
-               }
-               else
-               {
-                  result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.cooldown",[spellName,cooldown]);
-               }
-            }
-            return false;
-         }
-         if(pTargetId != 0)
-         {
-            numberCastOnTarget = spellManager.getCastOnEntity(pTargetId);
-            spellModifiers = SpellModifiersManager.getInstance().getSpellModifiers(this.currentFighterId,spellId);
-            bonus = !!spellModifiers ? Number(spellModifiers.getModifierValue(CharacterSpellModificationTypeEnum.MAX_CAST_PER_TARGET)) : Number(0);
-            if(spellLevel.maxCastPerTarget + bonus <= numberCastOnTarget && spellLevel.maxCastPerTarget > 0)
-            {
-               if(result)
-               {
-                  result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.castPerTarget",[spellName]);
-               }
-               return false;
-            }
          }
          if(result)
          {
-            result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.available",[spellName]);
+            result[0] = I18n.getUiText("ui.fightAutomsg.spellcast.stateForbidden",[spellName,currentState.name]);
          }
-         return true;
+         return false;
       }
       
       public function endFight() : void

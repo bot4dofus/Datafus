@@ -12,14 +12,12 @@ package com.ankamagames.dofus.network.messages.connection
    public class ServersListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 786;
+      public static const protocolId:uint = 7176;
        
       
       private var _isInitialized:Boolean = false;
       
       public var servers:Vector.<GameServerInformations>;
-      
-      public var alreadyConnectedToServerId:uint = 0;
       
       public var canCreateNewCharacter:Boolean = false;
       
@@ -38,13 +36,12 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 786;
+         return 7176;
       }
       
-      public function initServersListMessage(servers:Vector.<GameServerInformations> = null, alreadyConnectedToServerId:uint = 0, canCreateNewCharacter:Boolean = false) : ServersListMessage
+      public function initServersListMessage(servers:Vector.<GameServerInformations> = null, canCreateNewCharacter:Boolean = false) : ServersListMessage
       {
          this.servers = servers;
-         this.alreadyConnectedToServerId = alreadyConnectedToServerId;
          this.canCreateNewCharacter = canCreateNewCharacter;
          this._isInitialized = true;
          return this;
@@ -53,7 +50,6 @@ package com.ankamagames.dofus.network.messages.connection
       override public function reset() : void
       {
          this.servers = new Vector.<GameServerInformations>();
-         this.alreadyConnectedToServerId = 0;
          this.canCreateNewCharacter = false;
          this._isInitialized = false;
       }
@@ -90,11 +86,6 @@ package com.ankamagames.dofus.network.messages.connection
          {
             (this.servers[_i1] as GameServerInformations).serializeAs_GameServerInformations(output);
          }
-         if(this.alreadyConnectedToServerId < 0)
-         {
-            throw new Error("Forbidden value (" + this.alreadyConnectedToServerId + ") on element alreadyConnectedToServerId.");
-         }
-         output.writeVarShort(this.alreadyConnectedToServerId);
          output.writeBoolean(this.canCreateNewCharacter);
       }
       
@@ -113,7 +104,6 @@ package com.ankamagames.dofus.network.messages.connection
             _item1.deserialize(input);
             this.servers.push(_item1);
          }
-         this._alreadyConnectedToServerIdFunc(input);
          this._canCreateNewCharacterFunc(input);
       }
       
@@ -125,7 +115,6 @@ package com.ankamagames.dofus.network.messages.connection
       public function deserializeAsyncAs_ServersListMessage(tree:FuncTree) : void
       {
          this._serverstree = tree.addChild(this._serverstreeFunc);
-         tree.addChild(this._alreadyConnectedToServerIdFunc);
          tree.addChild(this._canCreateNewCharacterFunc);
       }
       
@@ -143,15 +132,6 @@ package com.ankamagames.dofus.network.messages.connection
          var _item:GameServerInformations = new GameServerInformations();
          _item.deserialize(input);
          this.servers.push(_item);
-      }
-      
-      private function _alreadyConnectedToServerIdFunc(input:ICustomDataInput) : void
-      {
-         this.alreadyConnectedToServerId = input.readVarUhShort();
-         if(this.alreadyConnectedToServerId < 0)
-         {
-            throw new Error("Forbidden value (" + this.alreadyConnectedToServerId + ") on element of ServersListMessage.alreadyConnectedToServerId.");
-         }
       }
       
       private function _canCreateNewCharacterFunc(input:ICustomDataInput) : void

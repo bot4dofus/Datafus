@@ -11,6 +11,7 @@ package com.ankamagames.dofus.internalDatacenter.items
    import com.ankamagames.dofus.datacenter.monsters.Companion;
    import com.ankamagames.dofus.datacenter.monsters.Monster;
    import com.ankamagames.dofus.datacenter.monsters.MonsterGrade;
+   import com.ankamagames.dofus.datacenter.optionalFeatures.Modster;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
@@ -136,13 +137,15 @@ package com.ankamagames.dofus.internalDatacenter.items
       
       public var customTextureUri:Uri;
       
+      public var dropPriority:int = 0;
+      
       public function ItemWrapper()
       {
          this.effects = new Vector.<EffectInstance>();
          super();
       }
       
-      public static function create(position:uint, objectUID:uint, objectGID:uint, quantity:uint, newEffects:Vector.<ObjectEffect>, useCache:Boolean = true) : ItemWrapper
+      public static function create(position:uint, objectUID:uint, objectGID:uint, quantity:uint, newEffects:Vector.<ObjectEffect>, useCache:Boolean = true, dropPriority:int = 0) : ItemWrapper
       {
          var item:ItemWrapper = null;
          var effect:EffectInstance = null;
@@ -214,6 +217,7 @@ package com.ankamagames.dofus.internalDatacenter.items
                item.givenExperienceAsSuperFood += (effect as EffectInstanceInteger).value;
             }
          }
+         item.dropPriority = dropPriority;
          return item;
       }
       
@@ -769,6 +773,7 @@ package com.ankamagames.dofus.internalDatacenter.items
          var iconId:String = null;
          var skinItem:Item = null;
          var skinItemm:Item = null;
+         var modster:Modster = null;
          var compId:int = 0;
          var ei:EffectInstance = null;
          var companion:Companion = null;
@@ -806,22 +811,34 @@ package com.ankamagames.dofus.internalDatacenter.items
             skinItemm = Item.getItemById(this._mimicryItemSkinGID);
             iconId = !!skinItemm ? skinItemm.iconId.toString() : "error_on_item_" + this.objectGID + ".png";
          }
-         else if(PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_TEMPORIS && this.isCompanion && pngMode)
-         {
-            for each(ei in item.possibleEffects)
-            {
-               if(ei.effectId == ActionIds.ACTION_SET_COMPANION)
-               {
-                  compId = int(ei.parameter2);
-                  companion = Companion.getCompanionById(compId);
-                  this._uriPngMode = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path") + "companions/square_" + companion.assetId + ".png");
-                  return this._uriPngMode;
-               }
-            }
-         }
          else
          {
-            iconId = !!item ? item.iconId.toString() : "error_on_item_" + this.objectGID + ".png";
+            if(item.typeId == DataEnum.ITEM_TYPE_MODSTER)
+            {
+               modster = Modster.getModsterByScrollId(item.id);
+               if(modster)
+               {
+                  this._uriPngMode = this._uri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path") + "modsters/" + modster.modsterId + ".swf");
+               }
+               return this._uri;
+            }
+            if(PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_TEMPORIS && this.isCompanion && pngMode)
+            {
+               for each(ei in item.possibleEffects)
+               {
+                  if(ei.effectId == ActionIds.ACTION_SET_COMPANION)
+                  {
+                     compId = int(ei.parameter2);
+                     companion = Companion.getCompanionById(compId);
+                     this._uriPngMode = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path") + "companions/square_" + companion.assetId + ".png");
+                     return this._uriPngMode;
+                  }
+               }
+            }
+            else
+            {
+               iconId = !!item ? item.iconId.toString() : "error_on_item_" + this.objectGID + ".png";
+            }
          }
          if(pngMode)
          {

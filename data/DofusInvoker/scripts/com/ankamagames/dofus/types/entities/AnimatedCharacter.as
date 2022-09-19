@@ -584,7 +584,7 @@ package com.ankamagames.dofus.types.entities
                   }
                   if(!isCreatureMode && this.isMounted())
                   {
-                     this._movementBehavior = MountedMovementBehavior.getInstance();
+                     this._movementBehavior = MountedMovementBehavior.getInstance(this.speedAdjust);
                   }
                   else
                   {

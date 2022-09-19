@@ -26,7 +26,7 @@ package com.ankamagames.dofus.kernel.sound.manager
       
       function upFightMusicVolume() : void;
       
-      function playFightMusic(param1:Boolean = false) : void;
+      function playFightMusic(param1:Boolean = false, param2:Boolean = false) : void;
       
       function stopFightMusic() : void;
       

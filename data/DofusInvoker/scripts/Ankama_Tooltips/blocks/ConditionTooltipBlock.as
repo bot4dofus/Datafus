@@ -81,15 +81,8 @@ package Ankama_Tooltips.blocks
                   {
                      criteriaText = "(" + Api.ui.getText("ui.item.target") + ") ";
                   }
-                  if(!criteriaRespected && !itemCrit.isRespected && this._effectCssClass == "requirement")
-                  {
-                     this._effectCssClass = "malus";
-                     criteriaText += tempCriteriaText;
-                  }
-                  else
-                  {
-                     criteriaText += tempCriteriaText;
-                  }
+                  criteriaText += tempCriteriaText;
+                  this._effectCssClass = !!itemCrit.isRespected ? "requirement" : "malus";
                }
                if(criteriaText)
                {

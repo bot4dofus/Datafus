@@ -8,10 +8,10 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightLoot implements INetworkType
    {
       
-      public static const protocolId:uint = 7224;
+      public static const protocolId:uint = 9670;
        
       
-      public var objects:Vector.<uint>;
+      public var objects:Vector.<FightLootObject>;
       
       public var kamas:Number = 0;
       
@@ -19,16 +19,16 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function FightLoot()
       {
-         this.objects = new Vector.<uint>();
+         this.objects = new Vector.<FightLootObject>();
          super();
       }
       
       public function getTypeId() : uint
       {
-         return 7224;
+         return 9670;
       }
       
-      public function initFightLoot(objects:Vector.<uint> = null, kamas:Number = 0) : FightLoot
+      public function initFightLoot(objects:Vector.<FightLootObject> = null, kamas:Number = 0) : FightLoot
       {
          this.objects = objects;
          this.kamas = kamas;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function reset() : void
       {
-         this.objects = new Vector.<uint>();
+         this.objects = new Vector.<FightLootObject>();
          this.kamas = 0;
       }
       
@@ -51,11 +51,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
          output.writeShort(this.objects.length);
          for(var _i1:uint = 0; _i1 < this.objects.length; _i1++)
          {
-            if(this.objects[_i1] < 0)
-            {
-               throw new Error("Forbidden value (" + this.objects[_i1] + ") on element 1 (starting at 1) of objects.");
-            }
-            output.writeVarInt(this.objects[_i1]);
+            (this.objects[_i1] as FightLootObject).serializeAs_FightLootObject(output);
          }
          if(this.kamas < 0 || this.kamas > 9007199254740992)
          {
@@ -71,16 +67,13 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function deserializeAs_FightLoot(input:ICustomDataInput) : void
       {
-         var _val1:uint = 0;
+         var _item1:FightLootObject = null;
          var _objectsLen:uint = input.readUnsignedShort();
          for(var _i1:uint = 0; _i1 < _objectsLen; _i1++)
          {
-            _val1 = input.readVarUhInt();
-            if(_val1 < 0)
-            {
-               throw new Error("Forbidden value (" + _val1 + ") on elements of objects.");
-            }
-            this.objects.push(_val1);
+            _item1 = new FightLootObject();
+            _item1.deserialize(input);
+            this.objects.push(_item1);
          }
          this._kamasFunc(input);
       }
@@ -107,12 +100,9 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       private function _objectsFunc(input:ICustomDataInput) : void
       {
-         var _val:uint = input.readVarUhInt();
-         if(_val < 0)
-         {
-            throw new Error("Forbidden value (" + _val + ") on elements of objects.");
-         }
-         this.objects.push(_val);
+         var _item:FightLootObject = new FightLootObject();
+         _item.deserialize(input);
+         this.objects.push(_item);
       }
       
       private function _kamasFunc(input:ICustomDataInput) : void

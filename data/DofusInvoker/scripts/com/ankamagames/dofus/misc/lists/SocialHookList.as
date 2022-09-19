@@ -168,6 +168,12 @@ package com.ankamagames.dofus.misc.lists
       public static const GuildJoined:String = "GuildJoined";
       
       public static const GuildApplicationIsAnswered:String = "GuildApplicationIsAnsweredMessage";
+      
+      public static const GuildRanksReceived:String = "GuildRanksReceived";
+      
+      public static const OpenGuildRanksAndRights:String = "OpenGuildRanksAndRights";
+      
+      public static const GuildLogbookInformationsReceived:String = "GuildLogbookInformationsReceived";
        
       
       public function SocialHookList()
@@ -259,6 +265,9 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(GuildPlayerApplicationDeleted);
          Hook.createHook(GuildJoined);
          Hook.createHook(GuildApplicationIsAnswered);
+         Hook.createHook(GuildRanksReceived);
+         Hook.createHook(GuildLogbookInformationsReceived);
+         Hook.createHook(OpenGuildRanksAndRights);
       }
    }
 }

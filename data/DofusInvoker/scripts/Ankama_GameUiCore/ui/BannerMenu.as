@@ -15,6 +15,7 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.berilia.utils.BeriliaHookList;
    import com.ankamagames.dofus.datacenter.world.SubArea;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.arena.ArenaRankInfosWrapper;
    import com.ankamagames.dofus.internalDatacenter.userInterface.ButtonWrapper;
    import com.ankamagames.dofus.logic.game.common.actions.CloseInventoryAction;
@@ -121,6 +122,8 @@ package Ankama_GameUiCore.ui
       
       private var _forgettableSpellsActivated:Boolean = false;
       
+      private var _modstersActivated:Boolean = false;
+      
       private var _companionsActivated:Boolean = false;
       
       private var _temporisAchievementProgressActivated:Boolean = false;
@@ -213,12 +216,13 @@ package Ankama_GameUiCore.ui
          var i:int = 0;
          var j:int = 0;
          var unusedIds:Array = null;
-         this._forgettableSpellsActivated = this.configApi.isFeatureWithKeywordEnabled("character.spell.forgettable");
-         this._companionsActivated = this.configApi.isFeatureWithKeywordEnabled("companion.hudButtonAndShortcut");
-         this._temporisAchievementProgressActivated = this.configApi.isFeatureWithKeywordEnabled("temporis.achievementProgress");
+         this._forgettableSpellsActivated = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS);
+         this._modstersActivated = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.MODSTERS);
+         this._companionsActivated = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.COMPANION_HUD_BUTTON_SHORTCUT);
+         this._temporisAchievementProgressActivated = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_ACHIEVEMENT_PROGRESS);
          this._maxBtnIds = !!this._companionsActivated ? uint(21) : uint(20);
          this._serverType = sysApi.getCurrentServer().gameTypeId;
-         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled("server.heroic");
+         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER);
          if(this._forgettableSpellsActivated)
          {
             this._btnSaveKey = "uiBtnOrder2_forgettableSpells";
@@ -321,6 +325,11 @@ package Ankama_GameUiCore.ui
          {
             breachText = this.uiApi.getText("ui.banner.lockBtn.lvl",ProtocolConstantsEnum.MIN_LEVEL_BREACH);
          }
+         if(this._temporisAchievementProgressActivated)
+         {
+            this.addBannerButton(this.ID_BTN_GUIDEBOOK,"btn_progression",this.onGuidebookAction,!!this._temporisAchievementProgressActivated ? this.uiApi.getText("ui.temporis.titleGuidebook") : this.uiApi.getText("ui.guidebook.title"),"openGuidebook");
+            sysApi.addHook(HookList.AreTemporisRewardsAvailable,this.onNewTemporisRewardsAvailable);
+         }
          if(this._companionsActivated)
          {
             this.addBannerButton(this.ID_BTN_COMPANION,"btn_companions",this.onCompanionAction,this.uiApi.getText("ui.companion.companions"),"openCompanions");
@@ -335,10 +344,9 @@ package Ankama_GameUiCore.ui
          this.addBannerButton(this.ID_BTN_OGRINE,"btn_veteran",this.onWebAction,this.uiApi.getText("ui.banner.shopGifts"),"openWebBrowser",this.uiApi.getText("ui.banner.lockBtn.secureMode"));
          this.addBannerButton(this.ID_BTN_ENCYCLOPEDIA,"btn_encyclopedia",this.onBestiaryAction,this.uiApi.getText("ui.encyclopedia.title"),"openBestiary");
          this.addBannerButton(this.ID_BTN_JOB,"btn_job",this.onJobAction,this.uiApi.getText("ui.common.myJobs"),"openBookJob");
-         this.addBannerButton(this.ID_BTN_GUIDEBOOK,"btn_progression",this.onGuidebookAction,!!this._temporisAchievementProgressActivated ? this.uiApi.getText("ui.temporis.titleGuidebook") : this.uiApi.getText("ui.guidebook.title"),"openGuidebook");
-         if(this._temporisAchievementProgressActivated)
+         if(!this._temporisAchievementProgressActivated)
          {
-            sysApi.addHook(HookList.AreTemporisRewardsAvailable,this.onNewTemporisRewardsAvailable);
+            this.addBannerButton(this.ID_BTN_GUIDEBOOK,"btn_progression",this.onGuidebookAction,!!this._temporisAchievementProgressActivated ? this.uiApi.getText("ui.temporis.titleGuidebook") : this.uiApi.getText("ui.guidebook.title"),"openGuidebook");
          }
          this.addBannerButton(this.ID_BTN_SHOP,"btn_shop",this.onShopAction,this.uiApi.getText("ui.common.shop"),"openSell");
          this.addBannerButton(this.ID_BTN_IDOLS,"btn_idols",this.onIdolsAction,this.uiApi.getText("ui.idol.idols"),"openIdols");
@@ -383,6 +391,7 @@ package Ankama_GameUiCore.ui
          {
             slot.allowDrag = false;
          }
+         this.checkConquest();
       }
       
       private function onLoadingFinished() : void
@@ -686,7 +695,7 @@ package Ankama_GameUiCore.ui
             case "openWorldMap":
                if(this.shortcutTimerReady())
                {
-                  sysApi.sendAction(new OpenMapAction([false,true,false]));
+                  sysApi.sendAction(new OpenMapAction([false,true,false,false]));
                }
                return true;
             case "openTitle":
@@ -1094,17 +1103,23 @@ package Ankama_GameUiCore.ui
       
       private function onSpellsAction() : void
       {
+         var uiName:String = null;
          if(this.shortcutTimerReady() && this.getBtnById(this.ID_BTN_SPELL).active)
          {
             if(this._forgettableSpellsActivated)
             {
-               if(!this.uiApi.getUi("forgettableSpellsUi"))
+               uiName = UIEnum.FORGETTABLE_SPELLS_UI;
+               if(this._modstersActivated)
                {
-                  sysApi.sendAction(new OpenForgettableSpellsUiAction([]));
+                  uiName = UIEnum.FORGETTABLE_MODSTERS_UI;
+               }
+               if(!this.uiApi.getUi(uiName))
+               {
+                  sysApi.sendAction(new OpenForgettableSpellsUiAction([false,uiName]));
                }
                else
                {
-                  sysApi.sendAction(new OpenBookAction(["forgettableSpellsUi"]));
+                  sysApi.sendAction(new OpenBookAction([uiName]));
                }
             }
             else
@@ -1485,7 +1500,7 @@ package Ankama_GameUiCore.ui
          {
             return false;
          }
-         if(this.playerApi.getPlayedCharacterInfo().level >= ProtocolConstantsEnum.CHAR_MIN_LEVEL_ARENA && this.configApi.isFeatureWithKeywordEnabled("pvp.kis"))
+         if(this.playerApi.getPlayedCharacterInfo().level >= ProtocolConstantsEnum.CHAR_MIN_LEVEL_ARENA && this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.PVP_KIS))
          {
             active = true;
          }

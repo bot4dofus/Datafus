@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.debug
    public class DumpedEntityStatsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3665;
+      public static const protocolId:uint = 7332;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.debug
       
       override public function getMessageId() : uint
       {
-         return 3665;
+         return 7332;
       }
       
       public function initDumpedEntityStatsMessage(actorId:Number = 0, stats:CharacterCharacteristics = null) : DumpedEntityStatsMessage

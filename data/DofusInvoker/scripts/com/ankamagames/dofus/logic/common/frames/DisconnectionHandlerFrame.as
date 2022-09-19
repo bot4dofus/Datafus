@@ -9,10 +9,8 @@ package com.ankamagames.dofus.logic.common.frames
    import com.ankamagames.dofus.kernel.net.DisconnectionReason;
    import com.ankamagames.dofus.kernel.net.DisconnectionReasonEnum;
    import com.ankamagames.dofus.kernel.sound.SoundManager;
-   import com.ankamagames.dofus.kernel.zaap.ZaapApi;
    import com.ankamagames.dofus.logic.common.actions.OpenPopupAction;
    import com.ankamagames.dofus.logic.common.actions.ResetGameAction;
-   import com.ankamagames.dofus.logic.connection.actions.ShowUpdaterLoginInterfaceAction;
    import com.ankamagames.dofus.logic.connection.managers.AuthentificationManager;
    import com.ankamagames.dofus.logic.game.approach.frames.GameServerApproachFrame;
    import com.ankamagames.dofus.logic.game.spin2.chat.ChatServiceManager;
@@ -39,7 +37,7 @@ package com.ankamagames.dofus.logic.common.frames
       
       private static const CONNECTION_ATTEMPTS_NUMBER:int = 4;
       
-      public static var messagesAfterReset:Array = new Array();
+      public static var messagesAfterReset:Array = [];
        
       
       private var _connectionUnexpectedFailureTimes:Array;
@@ -48,11 +46,9 @@ package com.ankamagames.dofus.logic.common.frames
       
       private var _timer:BenchmarkTimer;
       
-      private var _mustShowLoginInterface:Boolean = false;
-      
       public function DisconnectionHandlerFrame()
       {
-         this._connectionUnexpectedFailureTimes = new Array();
+         this._connectionUnexpectedFailureTimes = [];
          super();
       }
       
@@ -63,7 +59,7 @@ package com.ankamagames.dofus.logic.common.frames
       
       public function resetConnectionAttempts() : void
       {
-         this._connectionUnexpectedFailureTimes = new Array();
+         this._connectionUnexpectedFailureTimes = [];
          StoreDataManager.getInstance().setData(Constants.DATASTORE_MODULE_DEBUG,"connection_fail_times",null);
          this._numberOfAttemptsAlreadyDone = 0;
       }
@@ -77,7 +73,6 @@ package com.ankamagames.dofus.logic.common.frames
       {
          var sccmsg:ServerConnectionClosedMessage = null;
          var wscrmsg:WrongSocketClosureReasonMessage = null;
-         var uscmsg:UnexpectedSocketClosureMessage = null;
          var rgamsg:ResetGameAction = null;
          var commonMod:Object = null;
          var reason:DisconnectionReason = null;
@@ -154,7 +149,6 @@ package com.ankamagames.dofus.logic.common.frames
                Kernel.getInstance().reset([new UnexpectedSocketClosureMessage()]);
                return true;
             case msg is UnexpectedSocketClosureMessage:
-               uscmsg = msg as UnexpectedSocketClosureMessage;
                _log.debug("go hook UnexpectedSocketClosure");
                GameServerApproachFrame.authenticationTicketAccepted = false;
                KernelEventsManager.getInstance().processCallback(HookList.UnexpectedSocketClosure);
@@ -165,7 +159,6 @@ package com.ankamagames.dofus.logic.common.frames
                ChatServiceManager.destroy();
                SoundManager.getInstance().manager.removeAllSounds();
                ConnectionsHandler.closeConnection();
-               ZaapApi.disableZaapLogin();
                GameServerApproachFrame.authenticationTicketAccepted = false;
                if(rgamsg.messageToShow != "")
                {
@@ -188,9 +181,6 @@ package com.ankamagames.dofus.logic.common.frames
                   KernelEventsManager.getInstance().processCallback(HookList.InformationPopup,[(msg as OpenPopupAction).messageToShow]);
                }
                return true;
-            case msg is ShowUpdaterLoginInterfaceAction:
-               this._mustShowLoginInterface = true;
-               return true;
             default:
                return false;
          }
@@ -209,11 +199,6 @@ package com.ankamagames.dofus.logic.common.frames
          {
             Kernel.getWorker().process(AuthentificationManager.getInstance().loginValidationAction);
          }
-      }
-      
-      public function get mustShowLoginInterface() : Boolean
-      {
-         return this._mustShowLoginInterface;
       }
    }
 }

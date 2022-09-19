@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
    public class JobDescription implements INetworkType
    {
       
-      public static const protocolId:uint = 2005;
+      public static const protocolId:uint = 2927;
        
       
       public var jobId:uint = 0;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
       
       public function getTypeId() : uint
       {
-         return 2005;
+         return 2927;
       }
       
       public function initJobDescription(jobId:uint = 0, skills:Vector.<SkillActionDescription> = null) : JobDescription

@@ -19,6 +19,7 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectModifyPricedAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectMoveAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectMoveKamaAction;
+   import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectMoveToTabAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertAllFromInvAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertAllToInvAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertExistingFromInvAction;
@@ -124,6 +125,8 @@ package com.ankamagames.dofus.misc.lists
       public static const ExchangeObjectUseInWorkshop:DofusApiAction = new DofusApiAction("ExchangeObjectUseInWorkshopAction",ExchangeObjectUseInWorkshopAction);
       
       public static const ExchangeRequestOnTaxCollector:DofusApiAction = new DofusApiAction("ExchangeRequestOnTaxCollectorAction",ExchangeRequestOnTaxCollectorAction);
+      
+      public static const ExchangeObjectMoveToTab:DofusApiAction = new DofusApiAction("ExchangeObjectMoveToTabAction",ExchangeObjectMoveToTabAction);
        
       
       public function ApiExchangeActionList()

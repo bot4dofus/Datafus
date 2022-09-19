@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildPaddockBoughtMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6217;
+      public static const protocolId:uint = 2166;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 6217;
+         return 2166;
       }
       
       public function initGuildPaddockBoughtMessage(paddockInfo:PaddockContentInformations = null) : GuildPaddockBoughtMessage

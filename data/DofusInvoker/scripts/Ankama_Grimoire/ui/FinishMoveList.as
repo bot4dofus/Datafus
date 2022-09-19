@@ -7,6 +7,7 @@ package Ankama_Grimoire.ui
    import com.ankamagames.berilia.enums.SelectMethodEnum;
    import com.ankamagames.berilia.enums.UIEnum;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.kernel.sound.enum.SoundTypeEnum;
    import com.ankamagames.dofus.logic.game.roleplay.actions.FinishMoveListRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.FinishMoveSetRequestAction;
@@ -78,7 +79,7 @@ package Ankama_Grimoire.ui
          this.sysApi.addHook(HookList.FinishMoveList,this.onFinishMoveList);
          this.sysApi.addHook(HookList.ConfigPropertyChange,this.onConfigPropertyChange);
          this.sysApi.sendAction(new FinishMoveListRequestAction([]));
-         this._forgettableSpellsActivated = this.configApi.isFeatureWithKeywordEnabled("character.spell.forgettable");
+         this._forgettableSpellsActivated = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS);
       }
       
       public function updateFinishMoveLine(data:*, componentsRef:*, selected:Boolean) : void
@@ -204,6 +205,7 @@ package Ankama_Grimoire.ui
       public function onRollOver(target:GraphicContainer) : void
       {
          var tooltipText:String = null;
+         var uiName:String = null;
          var finishMove:Object = this._btnDataAssoc[target];
          if(finishMove)
          {
@@ -215,9 +217,14 @@ package Ankama_Grimoire.ui
             }
          }
          var strata:int = 0;
-         if(this.configApi.isFeatureWithKeywordEnabled("character.spell.forgettable"))
+         if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS))
          {
-            strata = this.uiApi.getUi(UIEnum.FORGETTABLE_SPELLS_UI).strata - 1;
+            uiName = UIEnum.FORGETTABLE_SPELLS_UI;
+            if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.MODSTERS))
+            {
+               uiName = UIEnum.FORGETTABLE_MODSTERS_UI;
+            }
+            strata = this.uiApi.getUi(uiName).strata - 1;
          }
          else
          {

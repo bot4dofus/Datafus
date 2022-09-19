@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class SymbioticObjectErrorMessage extends ObjectErrorMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8441;
+      public static const protocolId:uint = 3657;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 8441;
+         return 3657;
       }
       
       public function initSymbioticObjectErrorMessage(reason:int = 0, errorCode:int = 0) : SymbioticObjectErrorMessage

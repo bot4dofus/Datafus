@@ -20,6 +20,7 @@ package Ankama_Cartography.ui
    import com.ankamagames.dofus.datacenter.world.SuperArea;
    import com.ankamagames.dofus.datacenter.world.WorldMap;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.conquest.PrismSubAreaWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildHouseWrapper;
@@ -83,11 +84,7 @@ package Ankama_Cartography.ui
       
       protected static const BONUS_AREAS:String = "bonusAreas";
       
-      protected static const MALUS_AREAS:String = "malusAreas";
-      
       protected static const BONUS_DUNGEONS:String = "bonusDungeons";
-      
-      protected static const MALUS_DUNGEONS:String = "malusDungeons";
       
       protected static const ANOMALY_AREAS:String = "anomalyAreas";
       
@@ -197,15 +194,11 @@ package Ankama_Cartography.ui
       
       protected var __vulnerableAreas:AreaGroup;
       
-      protected var __allRewardAreas:AreaGroup;
+      protected var __allAnomalyAreas:AreaGroup;
       
       protected var __bonusDungeon:AreaGroup;
       
-      protected var __malusDungeon:AreaGroup;
-      
       protected var __bonusAreas:AreaGroup;
-      
-      protected var __malusAreas:AreaGroup;
       
       protected var __anomalyAreas:AreaGroup;
       
@@ -507,9 +500,7 @@ package Ankama_Cartography.ui
          mapViewer.addLayer(CAPTURABLE_AREAS);
          mapViewer.addLayer(SABOTAGED_AREAS);
          mapViewer.addLayer(BONUS_AREAS);
-         mapViewer.addLayer(MALUS_AREAS);
          mapViewer.addLayer(BONUS_DUNGEONS);
-         mapViewer.addLayer(MALUS_DUNGEONS);
          mapViewer.addLayer(ANOMALY_AREAS);
          this.__subAreaList = mapApi.getAllSubArea();
          var hints:Array = mapApi.getHints();
@@ -1169,7 +1160,7 @@ package Ankama_Cartography.ui
          {
             return;
          }
-         var sh:Boolean = this.configApi.isFeatureWithKeywordEnabled("server.heroic");
+         var sh:Boolean = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER);
          var mapElemList:Array = mapViewer.getMapElementsByLayer(MAP_LAYER_PRIVATE);
          var nElems:int = mapElemList.length;
          for(var i:int = 0; i < nElems; i++)
@@ -1303,7 +1294,7 @@ package Ankama_Cartography.ui
          this.updateMap();
       }
       
-      private function onAreaListInformation(areasInfo:Vector.<AnomalySubareaInformation>) : void
+      protected function onAreaListInformation(areasInfo:Vector.<AnomalySubareaInformation>) : void
       {
          var subInfo:AnomalySubareaInformation = null;
          var subArea:SubArea = null;
@@ -1321,7 +1312,7 @@ package Ankama_Cartography.ui
                   mapPos = subArea.zaapMapPosition;
                   iconUri = sysApi.getConfigEntry("config.ui.skin") + "texture/map/filterSpiral_On.png";
                   legend = uiApi.getText("ui.zaap.anomaly") + " - " + subArea.name;
-                  mapViewer.addIcon(MAP_LAYER_ANOMALIES,"anomaly_" + subArea.id,iconUri,mapPos.posX,mapPos.posY,1,legend,true,-1,true,true,null,true,false,HintPriorityEnum.FLAGS);
+                  mapViewer.addIcon(MAP_LAYER_ANOMALIES,"anomaly_" + subArea.id,iconUri,mapPos.posX,mapPos.posY,1,legend,false,-1,true,true,null,true,false,HintPriorityEnum.FLAGS);
                }
             }
          }
@@ -1344,7 +1335,7 @@ package Ankama_Cartography.ui
             mapPos = subArea.zaapMapPosition;
             iconUri = sysApi.getConfigEntry("config.ui.skin") + "texture/map/filterSpiral_On.png";
             legend = uiApi.getText("ui.zaap.anomaly") + " - " + subArea.name;
-            mapViewer.addIcon(MAP_LAYER_ANOMALIES,"anomaly_" + subArea.id,iconUri,mapPos.posX,mapPos.posY,1,legend,true,-1,true,true,null,true,false,HintPriorityEnum.FLAGS);
+            mapViewer.addIcon(MAP_LAYER_ANOMALIES,"anomaly_" + subArea.id,iconUri,mapPos.posX,mapPos.posY,1,legend,false,-1,true,true,null,true,false,HintPriorityEnum.FLAGS);
          }
          else if(!open)
          {

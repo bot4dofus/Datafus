@@ -22,7 +22,6 @@ package Ankama_Grimoire.ui
    import com.ankamagames.dofus.kernel.sound.enum.SoundTypeEnum;
    import com.ankamagames.dofus.logic.game.common.actions.craft.JobBookSubscribeRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.jobs.JobCrafterDirectoryDefineSettingsAction;
-   import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.CraftHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
@@ -170,7 +169,7 @@ package Ankama_Grimoire.ui
          this.uiApi.addComponentHook(this.btn_help,ComponentHookList.ON_RELEASE);
          this.uiApi.addShortcutHook("closeUi",this.onShortcut);
          var jobs:Array = this.jobsApi.getKnownJobs();
-         var lastJobOpenedId:int = Grimoire.getInstance().lastJobOpenedId;
+         var lastJobOpenedId:int = oParam != null ? int(int(oParam[0])) : int(Grimoire.getInstance().lastJobOpenedId);
          this._allJobsSubscribed = true;
          for each(kj in jobs)
          {
@@ -577,15 +576,7 @@ package Ankama_Grimoire.ui
                   this.hintsApi.showSubHints(this.currentTabName);
                }
          }
-         if(target.name.indexOf("slot") == 0)
-         {
-            data = this._gridComponentsList[target.name];
-            if(data && !this.sysApi.getOption("displayTooltips","dofus"))
-            {
-               this.sysApi.dispatchHook(ChatHookList.ShowObjectLinked,data);
-            }
-         }
-         else if(target.name.indexOf("chk_subscribe") == 0)
+         if(target.name.indexOf("chk_subscribe") == 0)
          {
             data = this._gridComponentsList[target.name];
             if(data)

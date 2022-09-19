@@ -63,13 +63,21 @@ package com.ankamagames.dofus.logic.game.common.frames
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(EmoticonFrame));
        
       
+      private const HP_REGEN_STEP:uint = 1;
+      
       private var _emotes:Array;
       
       private var _emotesList:Array;
       
       private var _interval:Number;
       
-      private var _hpDelta:Number = 0;
+      private var _hpRegenStartTime:Number = 0;
+      
+      private var _hpRegenRate:uint = 0;
+      
+      private var _hpRegenStartValue:Number = 0;
+      
+      private var _isHpRegen:Boolean = false;
       
       private var _bEmoteOn:Boolean = false;
       
@@ -80,12 +88,7 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       public function get isHpRegen() : Boolean
       {
-         return this._interval !== 0;
-      }
-      
-      public function get hpDelta() : Number
-      {
-         return this._hpDelta;
+         return this._isHpRegen;
       }
       
       public function get priority() : int
@@ -135,6 +138,7 @@ package com.ankamagames.dofus.logic.game.common.frames
       public function process(msg:Message) : Boolean
       {
          var shortcut:ShortcutWrapper = null;
+         var stats:EntityStats = null;
          var elmsg:EmoteListMessage = null;
          var pos:uint = 0;
          var eamsg:EmoteAddMessage = null;
@@ -156,7 +160,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          var errorText:String = null;
          var lprbmsg:LifePointsRegenBeginMessage = null;
          var lpremsg:LifePointsRegenEndMessage = null;
-         var stats:EntityStats = null;
          var id:* = undefined;
          var emoteW:EmoteWrapper = null;
          var i:* = undefined;
@@ -398,13 +401,19 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is LifePointsRegenBeginMessage:
                lprbmsg = msg as LifePointsRegenBeginMessage;
-               this._interval = setInterval(this.interval,lprbmsg.regenRate * 100);
-               this._hpDelta = 0;
+               this._hpRegenRate = lprbmsg.regenRate * 100;
+               this._isHpRegen = true;
+               this._hpRegenStartTime = TimeManager.getInstance().getTimestamp();
+               this.updateHpStartRegenValue();
+               this._interval = setInterval(this.interval,this._hpRegenRate / 2);
                KernelEventsManager.getInstance().processCallback(HookList.LifePointsRegenBegin,null);
                return true;
             case msg is LifePointsRegenEndMessage:
                lpremsg = msg as LifePointsRegenEndMessage;
-               this._hpDelta = 0;
+               this._hpRegenRate = 0;
+               this._hpRegenStartTime = 0;
+               this._hpRegenStartValue = 0;
+               this._isHpRegen = false;
                if(this._bEmoteOn)
                {
                   if(lpremsg.lifePointsGained != 0)
@@ -429,6 +438,35 @@ package com.ankamagames.dofus.logic.game.common.frames
          }
       }
       
+      public function updateHpStartRegenValue(curLife:Number = NaN) : void
+      {
+         var currentLostHp:Stat = null;
+         var currentLostHpDetailed:DetailedStat = null;
+         if(!isNaN(curLife))
+         {
+            this._hpRegenStartValue = curLife;
+            return;
+         }
+         var stats:EntityStats = StatsManager.getInstance().getStats(PlayedCharacterManager.getInstance().id);
+         if(stats !== null)
+         {
+            currentLostHp = stats.getStat(StatIds.CUR_LIFE);
+            if(currentLostHp is DetailedStat)
+            {
+               currentLostHpDetailed = currentLostHp as DetailedStat;
+               this._hpRegenStartValue = currentLostHpDetailed.baseValue;
+            }
+            else if(currentLostHp is Stat)
+            {
+               this._hpRegenStartValue = currentLostHp.totalValue;
+            }
+         }
+         else
+         {
+            this._hpRegenStartValue = 0;
+         }
+      }
+      
       public function pulled() : Boolean
       {
          if(this._interval)
@@ -440,48 +478,61 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       public function interval() : void
       {
-         var stats:EntityStats = null;
-         var currentLostHP:Stat = null;
-         var currentLostHPDetailed:DetailedStat = null;
          var playedCharacterManager:PlayedCharacterManager = PlayedCharacterManager.getInstance();
-         if(stats !== null)
+         if(playedCharacterManager === null)
          {
-            stats = StatsManager.getInstance().getStats(playedCharacterManager.id);
-            if(stats !== null)
-            {
-               currentLostHP = stats.getStat(StatIds.CUR_LIFE);
-               currentLostHPDetailed = null;
-               if(currentLostHP === null)
-               {
-                  currentLostHP = new Stat(StatIds.CUR_LIFE,0);
-               }
-               ++this._hpDelta;
-               if(currentLostHP.totalValue + 1 > 0)
-               {
-                  clearInterval(this._interval);
-                  this._hpDelta = 0;
-                  if(currentLostHP is Stat)
-                  {
-                     stats.setStat(new Stat(currentLostHP.id,0));
-                  }
-                  else if(currentLostHP is DetailedStat)
-                  {
-                     currentLostHPDetailed = currentLostHP as DetailedStat;
-                     stats.setStat(new DetailedStat(currentLostHPDetailed.id,0,currentLostHPDetailed.additionalValue,currentLostHPDetailed.objectsAndMountBonusValue,currentLostHPDetailed.alignGiftBonusValue,currentLostHPDetailed.contextModifValue));
-                  }
-               }
-               else if(currentLostHP is Stat)
-               {
-                  stats.setStat(new Stat(currentLostHP.id,currentLostHP.totalValue + 1));
-               }
-               else if(currentLostHP is DetailedStat)
-               {
-                  currentLostHPDetailed = currentLostHP as DetailedStat;
-                  stats.setStat(new DetailedStat(currentLostHPDetailed.id,currentLostHPDetailed.baseValue + 1,currentLostHPDetailed.additionalValue,currentLostHPDetailed.objectsAndMountBonusValue,currentLostHPDetailed.alignGiftBonusValue,currentLostHPDetailed.contextModifValue));
-               }
-               KernelEventsManager.getInstance().processCallback(HookList.CharacterStatsList,true);
-            }
+            return;
          }
+         var stats:EntityStats = StatsManager.getInstance().getStats(playedCharacterManager.id);
+         if(stats === null)
+         {
+            return;
+         }
+         var currentLostHp:Stat = stats.getStat(StatIds.CUR_LIFE);
+         var currentLostHpDetailed:DetailedStat = null;
+         if(currentLostHp === null)
+         {
+            currentLostHp = new Stat(StatIds.CUR_LIFE,0);
+         }
+         if(currentLostHp.totalValue === 0)
+         {
+            return;
+         }
+         var regenDelta:Number = this.getRegenDelta();
+         if(regenDelta === 0)
+         {
+            return;
+         }
+         if(currentLostHp is DetailedStat)
+         {
+            currentLostHpDetailed = currentLostHp as DetailedStat;
+            stats.setStat(new DetailedStat(currentLostHpDetailed.id,this._hpRegenStartValue + regenDelta,currentLostHpDetailed.additionalValue,currentLostHpDetailed.objectsAndMountBonusValue,currentLostHpDetailed.alignGiftBonusValue,currentLostHpDetailed.contextModifValue));
+         }
+         else if(currentLostHp is Stat)
+         {
+            stats.setStat(new Stat(currentLostHp.id,this._hpRegenStartValue + regenDelta));
+         }
+         KernelEventsManager.getInstance().processCallback(HookList.CharacterStatsList,true);
+      }
+      
+      public function getRegenDelta() : Number
+      {
+         if(this._hpRegenRate === 0 || this._hpRegenStartTime === 0 || this._hpRegenStartValue === 0)
+         {
+            return 0;
+         }
+         var stats:EntityStats = StatsManager.getInstance().getStats(PlayedCharacterManager.getInstance().id);
+         if(stats === null)
+         {
+            return 0;
+         }
+         var regenFactor:Number = (TimeManager.getInstance().getTimestamp() - this._hpRegenStartTime) / this._hpRegenRate;
+         var regenDelta:Number = regenFactor * this.HP_REGEN_STEP;
+         if(this._hpRegenStartValue + regenDelta > 0)
+         {
+            regenDelta = -this._hpRegenStartValue;
+         }
+         return Math.floor(regenDelta);
       }
    }
 }

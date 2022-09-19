@@ -10,6 +10,7 @@ package Ankama_Social.ui
    import com.ankamagames.dofus.datacenter.guild.EmblemSymbol;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
    import com.ankamagames.dofus.internalDatacenter.house.HouseWrapper;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkMapPosition;
    import com.ankamagames.dofus.logic.game.common.actions.HouseTeleportRequestAction;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.SocialHookList;
@@ -137,7 +138,7 @@ package Ankama_Social.ui
             componentsRef.lbl_house.text = data.name;
             componentsRef.tx_illu.uri = data.iconUri;
             componentsRef.lbl_loc.text = data.subareaName;
-            componentsRef.lbl_coord.text = "{map," + int(data.worldX) + "," + int(data.worldY) + "," + data.worldmapId + "}";
+            componentsRef.lbl_coord.text = HyperlinkMapPosition.getLink(int(data.worldX),int(data.worldY),data.worldmapId);
             if(data.houseInstances[0].isLocked)
             {
                componentsRef.tx_isLocked.visible = true;

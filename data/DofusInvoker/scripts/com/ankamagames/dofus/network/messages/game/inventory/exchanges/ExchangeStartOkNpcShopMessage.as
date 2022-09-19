@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartOkNpcShopMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8584;
+      public static const protocolId:uint = 3147;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 8584;
+         return 3147;
       }
       
       public function initExchangeStartOkNpcShopMessage(npcSellerId:Number = 0, tokenId:uint = 0, objectsInfos:Vector.<ObjectItemToSellInNpcShop> = null) : ExchangeStartOkNpcShopMessage
@@ -94,7 +94,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
          {
             throw new Error("Forbidden value (" + this.tokenId + ") on element tokenId.");
          }
-         output.writeVarShort(this.tokenId);
+         output.writeVarInt(this.tokenId);
          output.writeShort(this.objectsInfos.length);
          for(var _i3:uint = 0; _i3 < this.objectsInfos.length; _i3++)
          {
@@ -144,7 +144,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       private function _tokenIdFunc(input:ICustomDataInput) : void
       {
-         this.tokenId = input.readVarUhShort();
+         this.tokenId = input.readVarUhInt();
          if(this.tokenId < 0)
          {
             throw new Error("Forbidden value (" + this.tokenId + ") on element of ExchangeStartOkNpcShopMessage.tokenId.");

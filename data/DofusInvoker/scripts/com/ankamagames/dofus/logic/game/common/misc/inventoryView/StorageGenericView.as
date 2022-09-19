@@ -8,6 +8,7 @@ package com.ankamagames.dofus.logic.game.common.misc.inventoryView
    import com.ankamagames.dofus.logic.game.common.managers.StorageOptionManager;
    import com.ankamagames.dofus.logic.game.common.misc.HookLock;
    import com.ankamagames.dofus.logic.game.common.misc.IStorageView;
+   import com.ankamagames.dofus.misc.lists.InventoryHookList;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import flash.utils.Dictionary;
@@ -328,6 +329,7 @@ package com.ankamagames.dofus.logic.game.common.misc.inventoryView
          var len:int = 0;
          var iw:ItemWrapper = null;
          var sameSort:Boolean = true;
+         this._hookLock.addHook(InventoryHookList.BankObjectNumberUpdate,[]);
          if(this._sortFieldsCache && this._sortFieldsCache.length == this.sortFields().length)
          {
             len = this._sortFieldsCache.length;

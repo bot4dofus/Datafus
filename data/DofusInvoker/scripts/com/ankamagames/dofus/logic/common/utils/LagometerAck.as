@@ -1,6 +1,7 @@
 package com.ankamagames.dofus.logic.common.utils
 {
    import com.ankamagames.dofus.datacenter.feature.OptionalFeature;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.logic.common.managers.FeatureManager;
    import com.ankamagames.dofus.network.messages.game.basic.BasicAckMessage;
    import com.ankamagames.jerakine.network.INetworkMessage;
@@ -20,7 +21,7 @@ package com.ankamagames.dofus.logic.common.utils
       {
          this._msgTimeStack = new Vector.<uint>();
          super();
-         var feature:OptionalFeature = OptionalFeature.getOptionalFeatureByKeyword("system.lagByAck");
+         var feature:OptionalFeature = OptionalFeature.getOptionalFeatureByKeyword(FeatureEnum.LAGOMETER);
          if(feature)
          {
             this._optionId = feature.id;

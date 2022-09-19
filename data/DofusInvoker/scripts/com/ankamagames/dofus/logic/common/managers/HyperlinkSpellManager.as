@@ -1,12 +1,14 @@
 package com.ankamagames.dofus.logic.common.managers
 {
    import com.ankamagames.berilia.enums.StrataEnum;
+   import com.ankamagames.berilia.enums.UIEnum;
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.berilia.managers.TooltipManager;
    import com.ankamagames.berilia.managers.UiModuleManager;
    import com.ankamagames.berilia.types.data.TextTooltipInfo;
    import com.ankamagames.dofus.datacenter.spells.Spell;
    import com.ankamagames.dofus.datacenter.spells.SpellPair;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.actions.OpenForgettableSpellsUiAction;
@@ -117,11 +119,17 @@ package com.ankamagames.dofus.logic.common.managers
       
       public static function showSpellsUI() : void
       {
+         var uiName:String = null;
          var data:Object = {};
          data.forceOpen = true;
-         if(FeatureManager.getInstance().isFeatureWithKeywordEnabled("character.spell.forgettable"))
+         if(FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS))
          {
-            KernelEventsManager.getInstance().processCallback(HookList.OpenBook,"forgettableSpellsUi",data);
+            uiName = UIEnum.FORGETTABLE_SPELLS_UI;
+            if(FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.MODSTERS))
+            {
+               uiName = UIEnum.FORGETTABLE_MODSTERS_UI;
+            }
+            KernelEventsManager.getInstance().processCallback(HookList.OpenBook,uiName,data);
          }
          else
          {
@@ -133,7 +141,8 @@ package com.ankamagames.dofus.logic.common.managers
       
       public static function openForgettableSpellsUi() : void
       {
-         Kernel.getWorker().process(OpenForgettableSpellsUiAction.create());
+         var isModstersFeatureEnable:Boolean = FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.MODSTERS);
+         Kernel.getWorker().process(OpenForgettableSpellsUiAction.create(false,!!isModstersFeatureEnable ? UIEnum.FORGETTABLE_MODSTERS_UI : UIEnum.FORGETTABLE_SPELLS_UI));
       }
    }
 }

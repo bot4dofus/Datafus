@@ -28,6 +28,7 @@ package Ankama_Grimoire.ui
    import com.ankamagames.dofus.datacenter.quest.AchievementObjective;
    import com.ankamagames.dofus.datacenter.quest.AchievementReward;
    import com.ankamagames.dofus.datacenter.spells.Spell;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.appearance.OrnamentWrapper;
    import com.ankamagames.dofus.internalDatacenter.appearance.TitleWrapper;
    import com.ankamagames.dofus.internalDatacenter.communication.EmoteWrapper;
@@ -499,6 +500,7 @@ package Ankama_Grimoire.ui
       
       public function updateCardLine(data:*, componentsRef:*, selected:Boolean, line:uint) : void
       {
+         var achObjective:AchievementObjective = null;
          var objectiveId:int = 0;
          var ach:com.ankamagames.dofus.network.types.game.achievement.Achievement = null;
          var rewards:Array = null;
@@ -518,7 +520,8 @@ package Ankama_Grimoire.ui
             componentsRef.ctr_cardBody.bgColor = 3029565;
             for each(objectiveId in data.objectiveIds)
             {
-               if(AchievementObjective.getAchievementObjectiveById(objectiveId).criterion.indexOf("OA=") != -1)
+               achObjective = AchievementObjective.getAchievementObjectiveById(objectiveId);
+               if(achObjective && achObjective.criterion.indexOf("OA=") != -1)
                {
                   componentsRef.ctr_cardBody.bgColor = 2711404;
                }
@@ -558,7 +561,7 @@ package Ankama_Grimoire.ui
             kamasX = 29;
             giftX = 54;
             xpReward = this.questApi.getAchievementExperienceReward(data);
-            if(xpReward > 0 && this.configApi.isFeatureWithKeywordEnabled("character.xp"))
+            if(xpReward > 0 && this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP))
             {
                this._compHookData[componentsRef.btn_cardXp] = xpReward;
                this.uiApi.addComponentHook(componentsRef.btn_cardXp,ComponentHookList.ON_ROLL_OVER);
@@ -1054,7 +1057,7 @@ package Ankama_Grimoire.ui
                {
                   (compRef.lbl_rewardsKama as Label).visible = (compRef.tx_rewardsKama as TextureBitmap).visible = false;
                }
-               if(data.xp > 0 && this.configApi.isFeatureWithKeywordEnabled("character.xp"))
+               if(data.xp > 0 && this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP))
                {
                   (compRef.tx_rewardsXp as TextureBitmap).visible = (compRef.lbl_rewardsXp as Label).visible = true;
                   (compRef.lbl_rewardsXp as Label).text = this.utilApi.formateIntToString(data.xp);
@@ -2318,12 +2321,10 @@ package Ankama_Grimoire.ui
          for each(ach in finishedAchievements)
          {
             this._catFinishedAchievements[ach.id] = ach;
-            ach.id = null;
          }
          for each(ach in startedAchievements)
          {
             this._catProgressingAchievements[ach.id] = ach;
-            ach.id = null;
          }
          this.updateAchievementGrid(this._currentSelectedCatId);
       }

@@ -15,17 +15,23 @@ package Ankama_Social
    import Ankama_Social.ui.GuildApplications;
    import Ankama_Social.ui.GuildApplyPopup;
    import Ankama_Social.ui.GuildCard;
+   import Ankama_Social.ui.GuildCreateRankPopup;
    import Ankama_Social.ui.GuildCreator;
    import Ankama_Social.ui.GuildDirectory;
    import Ankama_Social.ui.GuildHouses;
    import Ankama_Social.ui.GuildJoinPopup;
+   import Ankama_Social.ui.GuildLogBook;
    import Ankama_Social.ui.GuildMemberRights;
    import Ankama_Social.ui.GuildMembers;
+   import Ankama_Social.ui.GuildNoteEditingPopup;
    import Ankama_Social.ui.GuildPaddock;
    import Ankama_Social.ui.GuildPersonalization;
    import Ankama_Social.ui.GuildPrezAndRecruit;
+   import Ankama_Social.ui.GuildRightsAndRanks;
    import Ankama_Social.ui.GuildTaxCollector;
    import Ankama_Social.ui.HousesList;
+   import Ankama_Social.ui.ModifyGuildRankPopup;
+   import Ankama_Social.ui.RemoveGuildRankPopup;
    import Ankama_Social.ui.SocialBase;
    import Ankama_Social.ui.SocialBulletin;
    import Ankama_Social.ui.Spouse;
@@ -59,6 +65,10 @@ package Ankama_Social
    public class Social extends Sprite
    {
       
+      public static const GUILD_BULLETIN_LAST_VISIT_TIMESTAMP:String = "guildBulletinLastVisitTimestamp";
+      
+      public static const ALLIANCE_BULLETIN_LAST_VISIT_TIMESTAMP:String = "allianceBulletinLastVisitTimestamp";
+      
       private static var _self:Social;
        
       
@@ -84,6 +94,8 @@ package Ankama_Social
       
       protected var guilApplyPopup:GuildApplyPopup;
       
+      protected var guildNoteEditingPopup:GuildNoteEditingPopup;
+      
       protected var guildCard:GuildCard;
       
       protected var allianceCard:AllianceCard;
@@ -106,6 +118,14 @@ package Ankama_Social
       
       protected var guildApplications:GuildApplications;
       
+      protected var guildRightsAndRanks:GuildRightsAndRanks;
+      
+      protected var guildCreateRank:GuildCreateRankPopup;
+      
+      protected var removeGuildRankPopup:RemoveGuildRankPopup;
+      
+      protected var modifyGuildRankPopup:ModifyGuildRankPopup;
+      
       protected var allianceMembers:AllianceMembers;
       
       protected var allianceAreas:AllianceAreas;
@@ -117,6 +137,8 @@ package Ankama_Social
       protected var collectedTaxCollector:CollectedTaxCollector;
       
       protected var topTaxCollectors:TopTaxCollectors;
+      
+      protected var guildLogBook:GuildLogBook;
       
       protected var socialBulletin:SocialBulletin;
       
@@ -216,13 +238,14 @@ package Ankama_Social
          this.sysApi.addHook(HookList.ShowCollectedTaxCollector,this.onShowCollectedTaxCollector);
          this.sysApi.addHook(SocialHookList.ShowTopTaxCollectors,this.onShowTopTaxCollectors);
          this.sysApi.addHook(HookList.LeaveDialog,this.onLeaveDialog);
-         if(!this.sysApi.getData("guildBulletinLastVisitTimestamp"))
+         this.sysApi.addHook(SocialHookList.OpenGuildRanksAndRights,this.onOpenGuildRanksAndRights);
+         if(!this.sysApi.getData(GUILD_BULLETIN_LAST_VISIT_TIMESTAMP))
          {
-            this.sysApi.setData("guildBulletinLastVisitTimestamp",0);
+            this.sysApi.setData(GUILD_BULLETIN_LAST_VISIT_TIMESTAMP,0);
          }
-         if(!this.sysApi.getData("allianceBulletinLastVisitTimestamp"))
+         if(!this.sysApi.getData(ALLIANCE_BULLETIN_LAST_VISIT_TIMESTAMP))
          {
-            this.sysApi.setData("allianceBulletinLastVisitTimestamp",0);
+            this.sysApi.setData(ALLIANCE_BULLETIN_LAST_VISIT_TIMESTAMP,0);
          }
       }
       
@@ -377,7 +400,7 @@ package Ankama_Social
          var guildInfo:GuildWrapper = this.socialApi.getGuild();
          if(guildInfo !== null && !this.uiApi.getUi(UIEnum.GUILD_APPLICATIONS))
          {
-            this.uiApi.loadUi(UIEnum.GUILD_APPLICATIONS,null,{"hasRights":guildInfo.manageGuildApply});
+            this.uiApi.loadUi(UIEnum.GUILD_APPLICATIONS,null);
          }
       }
       
@@ -401,6 +424,10 @@ package Ankama_Social
             this.uiApi.unloadUi(UIEnum.SOCIAL_BASE);
             this.uiApi.unloadUi(UIEnum.GUILD_PREZ_AND_RECRUIT);
             this.uiApi.unloadUi(UIEnum.GUILD_APPLICATIONS);
+            this.uiApi.unloadUi(UIEnum.GUILD_RIGHTS_AND_RANKS);
+            this.uiApi.unloadUi(UIEnum.GUILD_CREATE_RANK);
+            this.uiApi.unloadUi(UIEnum.MODIFY_GUILD_RANK_POPUP);
+            this.uiApi.unloadUi(UIEnum.REMOVE_GUILD_RANK_POPUP);
          }
       }
       
@@ -620,6 +647,11 @@ package Ankama_Social
       private function onLeaveDialog() : void
       {
          this.unloadPopup();
+      }
+      
+      private function onOpenGuildRanksAndRights(rankId:uint) : void
+      {
+         this.uiApi.loadUi(UIEnum.GUILD_RIGHTS_AND_RANKS,UIEnum.GUILD_RIGHTS_AND_RANKS,{"selectedRank":rankId});
       }
    }
 }

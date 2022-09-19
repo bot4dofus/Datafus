@@ -334,7 +334,6 @@ package Ankama_Job.ui
          this._updateTimer.removeEventListener(TimerEvent.TIMER,this.onTimerEvent);
          this._disableRecipiesTimer.removeEventListener(TimerEvent.TIMER,this.onDisableRecipiesTimer);
          this.uiApi.unloadUi("recipesCraft");
-         this.uiApi.unloadUi("itemBoxCraft");
          this.storageApi.removeAllItemMasks("craft");
          this.storageApi.releaseHooks();
          this.sysApi.sendAction(new LeaveDialogRequestAction([]));

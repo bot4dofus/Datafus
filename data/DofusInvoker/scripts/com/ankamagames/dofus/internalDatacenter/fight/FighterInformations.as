@@ -36,6 +36,8 @@ package com.ankamagames.dofus.internalDatacenter.fight
       
       private var _team:String;
       
+      private var _teamId:uint;
+      
       private var _wave:int;
       
       private var _rank:int;
@@ -77,7 +79,8 @@ package com.ankamagames.dofus.internalDatacenter.fight
          }
          this._currentOrientation = fighterInfos.disposition.direction;
          this._isAlive = fighterInfos.spawnInfo.alive;
-         switch(fighterInfos.spawnInfo.teamId)
+         this._teamId = fighterInfos.spawnInfo.teamId;
+         switch(this._teamId)
          {
             case TeamEnum.TEAM_CHALLENGER:
                this._team = "challenger";
@@ -130,6 +133,11 @@ package com.ankamagames.dofus.internalDatacenter.fight
       public function get team() : String
       {
          return this._team;
+      }
+      
+      public function get teamId() : uint
+      {
+         return this._teamId;
       }
       
       public function get wave() : int

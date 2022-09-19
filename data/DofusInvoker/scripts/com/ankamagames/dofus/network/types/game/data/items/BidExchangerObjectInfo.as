@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class BidExchangerObjectInfo implements INetworkType
    {
       
-      public static const protocolId:uint = 461;
+      public static const protocolId:uint = 5017;
        
       
       public var objectUID:uint = 0;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       public function getTypeId() : uint
       {
-         return 461;
+         return 5017;
       }
       
       public function initBidExchangerObjectInfo(objectUID:uint = 0, objectGID:uint = 0, objectType:uint = 0, effects:Vector.<ObjectEffect> = null, prices:Vector.<Number> = null) : BidExchangerObjectInfo
@@ -74,7 +74,7 @@ package com.ankamagames.dofus.network.types.game.data.items
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element objectGID.");
          }
-         output.writeVarShort(this.objectGID);
+         output.writeVarInt(this.objectGID);
          if(this.objectType < 0)
          {
             throw new Error("Forbidden value (" + this.objectType + ") on element objectType.");
@@ -155,7 +155,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       private function _objectGIDFunc(input:ICustomDataInput) : void
       {
-         this.objectGID = input.readVarUhShort();
+         this.objectGID = input.readVarUhInt();
          if(this.objectGID < 0)
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element of BidExchangerObjectInfo.objectGID.");

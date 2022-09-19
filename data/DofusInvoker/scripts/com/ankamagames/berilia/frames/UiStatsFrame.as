@@ -26,7 +26,7 @@ package com.ankamagames.berilia.frames
       
       private static var _dataStoreType:DataStoreType = new DataStoreType("Berilia_ui_stats2",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_ACCOUNT);
       
-      private static const _components:Array = ["login_btn_members","login_btn_lowa","login_gd_shop","login_btn_options","login_grid_cb_connectiontype","characterselection_btn_changeserver","characterheader_btn_subscribe","characterselection_btn_create","charactercreation_btn_breedinfo","charactercreation_btn_previous","serverlistselection_btn_friendsearch","serverlistselection_btn_ckboxmy","bannermap_btn_showentitiestooltips","bannermap_btn_highlightinteractiveelements","bannermap_btn_viewfights","bannermap_btn_showfightpositions"];
+      private static const _components:Array = ["login_btn_options","characterselection_btn_changeserver","characterheader_btn_subscribe","characterselection_btn_create","charactercreation_btn_breedinfo","charactercreation_btn_previous","serverlistselection_btn_friendsearch","serverlistselection_btn_ckboxmy","bannermap_btn_showentitiestooltips","bannermap_btn_highlightinteractiveelements","bannermap_btn_viewfights","bannermap_btn_showfightpositions"];
        
       
       private var _accountServersKey:String;

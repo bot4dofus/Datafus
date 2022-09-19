@@ -8,7 +8,6 @@ package Ankama_Job.ui
    import com.ankamagames.berilia.components.Label;
    import com.ankamagames.berilia.components.Slot;
    import com.ankamagames.berilia.components.Texture;
-   import com.ankamagames.berilia.enums.GridItemSelectMethodEnum;
    import com.ankamagames.berilia.enums.SelectMethodEnum;
    import com.ankamagames.berilia.types.LocationEnum;
    import com.ankamagames.berilia.types.data.ContextMenuData;
@@ -24,7 +23,6 @@ package Ankama_Job.ui
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeReadyCrushAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeRefuseAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.LeaveDialogRequestAction;
-   import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.CraftHookList;
    import com.ankamagames.dofus.misc.lists.ExchangeHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
@@ -573,7 +571,6 @@ package Ankama_Job.ui
       public function onSelectItem(target:GraphicContainer, selectMethod:uint, isNewSelection:Boolean) : void
       {
          var selectedItem:Object = null;
-         var item:Object = null;
          if(target == this.gd_items)
          {
             selectedItem = this.gd_items.selectedItem;
@@ -592,14 +589,6 @@ package Ankama_Job.ui
                case SelectMethodEnum.ALT_DOUBLE_CLICK:
                   this._item = selectedItem;
                   this.modCommon.openQuantityPopup(1,this._item.quantity,this._item.quantity,this.onAltValidQty);
-            }
-         }
-         else if(target.name.indexOf("gd_runes") != -1 || target == this.gd_runes)
-         {
-            if(!this.sysApi.getOption("displayTooltips","dofus") && (selectMethod == GridItemSelectMethodEnum.CLICK || selectMethod == GridItemSelectMethodEnum.MANUAL))
-            {
-               item = (target as Grid).selectedItem;
-               this.sysApi.dispatchHook(ChatHookList.ShowObjectLinked,item);
             }
          }
       }

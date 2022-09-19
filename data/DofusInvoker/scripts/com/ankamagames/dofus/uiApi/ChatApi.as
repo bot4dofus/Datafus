@@ -8,20 +8,25 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.console.moduleLogger.Console;
    import com.ankamagames.dofus.console.moduleLogger.TypeMessage;
    import com.ankamagames.dofus.datacenter.communication.ChatChannel;
+   import com.ankamagames.dofus.internalDatacenter.alterations.AlterationWrapper;
    import com.ankamagames.dofus.internalDatacenter.communication.BasicChatSentence;
    import com.ankamagames.dofus.internalDatacenter.communication.ChatInformationSentence;
    import com.ankamagames.dofus.internalDatacenter.communication.ChatSentenceWithRecipient;
    import com.ankamagames.dofus.internalDatacenter.communication.ChatSentenceWithSource;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkAlterationManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkItemManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowAllianceManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowGuildManager;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkShowGuildRanks;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkShowPlayerMenuManager;
    import com.ankamagames.dofus.logic.game.common.frames.ChatFrame;
    import com.ankamagames.dofus.logic.game.common.managers.ChatAutocompleteNameManager;
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.network.enums.ChatActivableChannelsEnum;
+   import com.ankamagames.dofus.network.types.game.guild.GuildRankMinimalInformation;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.logger.ModuleLogger;
@@ -177,6 +182,21 @@ package com.ankamagames.dofus.uiApi
       public function getAllianceLink(pAlliance:*, pText:String = null, pLinkColor:String = null, pHoverColor:String = null) : String
       {
          return HyperlinkShowAllianceManager.getLink(pAlliance,pText,pLinkColor,pHoverColor);
+      }
+      
+      public function getPlayerLink(pPlayerId:uint, pPlayerName:String, pText:String = null) : String
+      {
+         return HyperlinkShowPlayerMenuManager.getLink(pPlayerId,pPlayerName,pText);
+      }
+      
+      public function getGuildRankLink(pRank:GuildRankMinimalInformation, pText:String = null) : String
+      {
+         return HyperlinkShowGuildRanks.getLink(pRank,pText);
+      }
+      
+      public function getAlterationLink(alteration:AlterationWrapper) : String
+      {
+         return HyperlinkAlterationManager.getLink(alteration);
       }
       
       public function changeCssHandler(val:String) : void

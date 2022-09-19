@@ -10,6 +10,7 @@ package Ankama_Roleplay
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.enums.StrataEnum;
    import com.ankamagames.berilia.enums.UIEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.connection.BasicCharacterWrapper;
    import com.ankamagames.dofus.internalDatacenter.conquest.PrismSubAreaWrapper;
    import com.ankamagames.dofus.internalDatacenter.world.WorldPointWrapper;
@@ -268,7 +269,7 @@ package Ankama_Roleplay
          var character:BasicCharacterWrapper = null;
          var nameText:* = null;
          var spellObtained:* = newSpellWrappers.length > 0;
-         if(spellObtained && pNewLevel <= ProtocolConstantsEnum.MAX_LEVEL && !this.configApi.isFeatureWithKeywordEnabled("character.spell.forgettable"))
+         if(spellObtained && pNewLevel <= ProtocolConstantsEnum.MAX_LEVEL && !this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS))
          {
             uiName = "levelUpWithSpell";
          }

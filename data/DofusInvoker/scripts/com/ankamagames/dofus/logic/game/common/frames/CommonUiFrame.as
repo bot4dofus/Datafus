@@ -147,7 +147,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                TooltipManager.hideAll();
                oma = msg as OpenMapAction;
-               KernelEventsManager.getInstance().processCallback(HookList.OpenMap,oma.ignoreSetting,oma.fromShortcut,oma.conquest);
+               KernelEventsManager.getInstance().processCallback(HookList.OpenMap,oma.ignoreSetting,oma.fromShortcut,oma.conquest,oma.anomaly);
                return true;
                break;
             case msg is OpenInventoryAction:

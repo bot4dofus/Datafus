@@ -6,6 +6,8 @@ package Ankama_Cartography.ui.type
       
       public var label:String;
       
+      public var labelColor:String;
+      
       public var type:String;
       
       public var uri:String;
@@ -18,10 +20,11 @@ package Ankama_Cartography.ui.type
       
       public var expend:Boolean;
       
-      public function AreaGroup(label:String, infoType:String, uri:String, layer:String, colorKey:String = null)
+      public function AreaGroup(label:String, infoType:String, uri:String, layer:String, colorKey:String = null, labelColor:String = null)
       {
          super();
          this.label = label;
+         this.labelColor = labelColor;
          this.type = infoType;
          this.uri = uri;
          this.layer = layer;

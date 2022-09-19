@@ -93,6 +93,16 @@ package Ankama_Web.ui
       
       public var btn_lbl_btn_buyOverlay:Label;
       
+      public var btn_seeMore:ButtonContainer;
+      
+      public var ctr_pack:GraphicContainer;
+      
+      public var gd_pack:Grid;
+      
+      public var btn_closePack:ButtonContainer;
+      
+      public var lbl_pack:Label;
+      
       private var _containsWeapon:Boolean;
       
       private var _direction:int = 3;
@@ -124,6 +134,7 @@ package Ankama_Web.ui
          this.sysApi.addHook(InventoryHookList.AccessoryPreview,this.onAccessoryPreview);
          this.uiApi.addShortcutHook("closeUi",this.onShortcut);
          this.uiApi.addComponentHook(this.gd_setItems,ComponentHookList.ON_SELECT_ITEM);
+         this.uiApi.addComponentHook(this.btn_seeMore,ComponentHookList.ON_RELEASE);
          this._containsWeapon = false;
          for each(itemTmp in params.article.items)
          {
@@ -159,7 +170,19 @@ package Ankama_Web.ui
          {
             this._containsWeapon = true;
          }
-         this.gd_setItems.dataProvider = params.article.items;
+         params.article.items = params.article.items.reverse();
+         var nbSlots:int = Math.floor(this.gd_setItems.width / this.gd_setItems.slotWidth);
+         if(params.article.items.length > nbSlots)
+         {
+            this.gd_pack.dataProvider = params.article.items;
+            this.btn_seeMore.visible = true;
+            this.gd_setItems.width -= this.gd_setItems.slotWidth;
+            this.gd_setItems.dataProvider = params.article.items.slice(0,nbSlots - 1);
+         }
+         else
+         {
+            this.gd_setItems.dataProvider = params.article.items;
+         }
          this.preview();
          this.lbl_description.text = params.article.article.description;
          this.lbl_description.text = StringUtil.trim(this.lbl_description.text);
@@ -341,6 +364,12 @@ package Ankama_Web.ui
                this.sysApi.dispatchHook(ExternalGameHookList.DofusShopCurrentArticle,this._params.article);
                this.sysApi.sendAction(new ShopBuyRequestAction([this._params.article.article.id,1,DofusShopEnum.CURRENCY_OGRINES,0]));
                this.uiApi.unloadUi(this.uiApi.me().name);
+               break;
+            case this.btn_seeMore:
+               this.ctr_pack.visible = true;
+               break;
+            case this.btn_closePack:
+               this.ctr_pack.visible = false;
          }
       }
       

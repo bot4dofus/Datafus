@@ -17,7 +17,6 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.connection.actions.LoginValidationWithTokenAction;
    import com.ankamagames.dofus.logic.connection.actions.NicknameChoiceRequestAction;
    import com.ankamagames.dofus.logic.connection.actions.ServerSelectionAction;
-   import com.ankamagames.dofus.logic.connection.actions.ShowUpdaterLoginInterfaceAction;
    import com.ankamagames.dofus.logic.game.approach.actions.CharacterCreationAction;
    import com.ankamagames.dofus.logic.game.approach.actions.CharacterDeletionAction;
    import com.ankamagames.dofus.logic.game.approach.actions.CharacterDeselectionAction;
@@ -44,6 +43,8 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.ForgettableSpellClientAction;
    import com.ankamagames.dofus.logic.game.common.actions.GameContextQuitAction;
    import com.ankamagames.dofus.logic.game.common.actions.GoToUrlAction;
+   import com.ankamagames.dofus.logic.game.common.actions.GroupTeleportPlayerOfferReplyAction;
+   import com.ankamagames.dofus.logic.game.common.actions.GuildUpdateChestTabRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseBuyAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseGuildRightsChangeAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseGuildRightsViewAction;
@@ -82,8 +83,11 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.PivotCharacterAction;
    import com.ankamagames.dofus.logic.game.common.actions.PlaySoundAction;
    import com.ankamagames.dofus.logic.game.common.actions.RefreshFollowedQuestsOrderAction;
+   import com.ankamagames.dofus.logic.game.common.actions.StartGuildChestContributionAction;
    import com.ankamagames.dofus.logic.game.common.actions.StartZoomAction;
+   import com.ankamagames.dofus.logic.game.common.actions.StopGuildChestContributionAction;
    import com.ankamagames.dofus.logic.game.common.actions.SurveyNotificationAnswerAction;
+   import com.ankamagames.dofus.logic.game.common.actions.TeleportPlayerOfferReplyAction;
    import com.ankamagames.dofus.logic.game.common.actions.ToggleShowUIAction;
    import com.ankamagames.dofus.logic.game.common.actions.alignment.AlignmentWarEffortDonateAction;
    import com.ankamagames.dofus.logic.game.common.actions.alignment.AlignmentWarEffortProgressionRequestAction;
@@ -94,6 +98,7 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.chat.ChatLoadedAction;
    import com.ankamagames.dofus.logic.game.common.actions.chat.ClearChatAction;
    import com.ankamagames.dofus.logic.game.common.actions.chat.PopupWarningCloseRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.exchange.GuildSelectChestTabRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.externalGame.ConsumeCodeAction;
    import com.ankamagames.dofus.logic.game.common.actions.externalGame.ConsumeMultipleKardAction;
    import com.ankamagames.dofus.logic.game.common.actions.externalGame.ConsumeSimpleKardAction;
@@ -112,6 +117,7 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.externalGame.ShopOverlayBuyRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.externalGame.ShopSearchRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.externalGame.UpdateGiftListRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildGetChestTabContributionsRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.PartyAbdicateThroneAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.PartyAcceptInvitationAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.PartyAllFollowMemberAction;
@@ -174,6 +180,7 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.fight.actions.GameFightPlacementSwapPositionsRequestAction;
    import com.ankamagames.dofus.logic.game.fight.actions.GameFightReadyAction;
    import com.ankamagames.dofus.logic.game.fight.actions.GameFightSpellCastAction;
+   import com.ankamagames.dofus.logic.game.fight.actions.GameFightSpellPreviewAction;
    import com.ankamagames.dofus.logic.game.fight.actions.GameFightTurnFinishAction;
    import com.ankamagames.dofus.logic.game.fight.actions.ShowAllNamesAction;
    import com.ankamagames.dofus.logic.game.fight.actions.ShowMountsInFightAction;
@@ -210,6 +217,8 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.roleplay.actions.StatsUpgradeRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.TeleportRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.ZaapRespawnSaveRequestAction;
+   import com.ankamagames.dofus.logic.game.roleplay.actions.alterations.OpenAlterationUiAction;
+   import com.ankamagames.dofus.logic.game.roleplay.actions.alterations.UpdateAlterationFavoriteFlagAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.havenbag.HavenbagClearAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.havenbag.HavenbagEditModeAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.havenbag.HavenbagEnterAction;
@@ -339,6 +348,8 @@ package com.ankamagames.dofus.misc.lists
       public static const GameFightReady:DofusApiAction = new DofusApiAction("GameFightReadyAction",GameFightReadyAction);
       
       public static const GameFightSpellCast:DofusApiAction = new DofusApiAction("GameFightSpellCastAction",GameFightSpellCastAction);
+      
+      public static const GameFightSpellPreview:DofusApiAction = new DofusApiAction("GameFightSpellPreviewAction",GameFightSpellPreviewAction);
       
       public static const GameFightTurnFinish:DofusApiAction = new DofusApiAction("GameFightTurnFinishAction",GameFightTurnFinishAction);
       
@@ -604,8 +615,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const HighlightInteractiveElements:DofusApiAction = new DofusApiAction("HighlightInteractiveElementsAction",HighlightInteractiveElementsAction);
       
-      public static const ShowUpdaterLoginInterface:DofusApiAction = new DofusApiAction("ShowUpdaterLoginInterfaceAction",ShowUpdaterLoginInterfaceAction);
-      
       public static const ThemeListRequest:DofusApiAction = new DofusApiAction("ThemeListRequestAction",ThemeListRequestAction);
       
       public static const ThemeInstallRequest:DofusApiAction = new DofusApiAction("ThemeInstallRequestAction",ThemeInstallRequestAction);
@@ -691,6 +700,24 @@ package com.ankamagames.dofus.misc.lists
       public static const ActivityLockRequest:DofusApiAction = new DofusApiAction("ActivityLockRequestAction",ActivityLockRequestAction);
       
       public static const ActivityHideRequest:DofusApiAction = new DofusApiAction("ActivityHideRequestAction",ActivityHideRequestAction);
+      
+      public static const TeleportPlayerOfferReply:DofusApiAction = new DofusApiAction("TeleportPlayerOfferReplyAction",TeleportPlayerOfferReplyAction);
+      
+      public static const GuildChangeChestTabRequest:DofusApiAction = new DofusApiAction("GuildSelectChestTabRequestAction",GuildSelectChestTabRequestAction);
+      
+      public static const UpdateGuildChestTabStorage:DofusApiAction = new DofusApiAction("GuildUpdateChestTabRequestAction",GuildUpdateChestTabRequestAction);
+      
+      public static const StartGuildChestContribution:DofusApiAction = new DofusApiAction("StartGuildChestContributionAction",StartGuildChestContributionAction);
+      
+      public static const StopGuildChestContribution:DofusApiAction = new DofusApiAction("StopGuildChestContributionAction",StopGuildChestContributionAction);
+      
+      public static const GuildGetChestTabContributionsRequest:DofusApiAction = new DofusApiAction("GuildGetChestTabContributionsRequestAction",GuildGetChestTabContributionsRequestAction);
+      
+      public static const OpenAlterationUi:DofusApiAction = new DofusApiAction("OpenAlterationUiAction",OpenAlterationUiAction);
+      
+      public static const UpdateAlterationFavoriteFlag:DofusApiAction = new DofusApiAction("UpdateAlterationFavoriteFlagAction",UpdateAlterationFavoriteFlagAction);
+      
+      public static const GroupTeleportPlayerOfferReply:DofusApiAction = new DofusApiAction("GroupTeleportPlayerOfferReplyAction",GroupTeleportPlayerOfferReplyAction);
        
       
       public function ApiActionList()

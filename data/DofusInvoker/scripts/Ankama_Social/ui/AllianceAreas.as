@@ -14,6 +14,7 @@ package Ankama_Social.ui
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.PrismHookList;
    import com.ankamagames.dofus.network.enums.CompassTypeEnum;
+   import com.ankamagames.dofus.network.enums.GuildRightsEnum;
    import com.ankamagames.dofus.network.enums.PrismStateEnum;
    import com.ankamagames.dofus.network.types.game.data.items.ObjectItem;
    import com.ankamagames.dofus.uiApi.ConfigApi;
@@ -265,7 +266,7 @@ package Ankama_Social.ui
                sMinutes = "0" + sMinutes;
             }
             componentsRef.lbl_vulneHour.text = sHours + ":" + sMinutes;
-            if((data.state == PrismStateEnum.PRISM_STATE_INVULNERABLE || data.state == PrismStateEnum.PRISM_STATE_NORMAL) && this.socialApi.hasGuildRight(this.playerApi.id(),"setAlliancePrism"))
+            if((data.state == PrismStateEnum.PRISM_STATE_INVULNERABLE || data.state == PrismStateEnum.PRISM_STATE_NORMAL) && this.socialApi.hasGuildRight(this.playerApi.id(),GuildRightsEnum.RIGHT_SET_ALLIANCE_PRISM))
             {
                componentsRef.btn_setHour.visible = true;
                if(!this._compHookData[componentsRef.btn_setHour.name])

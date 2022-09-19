@@ -19,7 +19,7 @@ package
       public static var level:CompressionLevel;
        
       
-      protected var png#2001:ByteArray;
+      protected var png#2027:ByteArray;
       
       public var __impl:PNGEncoder2Impl;
       

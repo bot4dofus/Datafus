@@ -61,9 +61,9 @@ package com.ankamagames.dofus.logic.game.common.frames
                   paramsObject["isSpellSetsUi"] = true;
                }
                NotificationManager.getInstance().closeNotification("FirstForgettableSpellNotif");
-               if(Berilia.getInstance().getUi(FORGETTABLE_SPELLS_UI_NAME) === null)
+               if(Berilia.getInstance().getUi(action.uiName) === null)
                {
-                  KernelEventsManager.getInstance().processCallback(HookList.OpenBook,FORGETTABLE_SPELLS_UI_NAME,paramsObject);
+                  KernelEventsManager.getInstance().processCallback(HookList.OpenBook,action.uiName,paramsObject);
                }
                return true;
                break;

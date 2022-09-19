@@ -8,6 +8,8 @@ package damageCalculation.spellManagement
    {
       
       public static var INVALID_ACTION_ID:int = -1;
+      
+      public static var EMPTY:HaxeSpellEffect = new HaxeSpellEffect(0,1,0,666,0,0,0,0,false,"I","","",0,0,false,0,0);
        
       
       public var zone:SpellZone;

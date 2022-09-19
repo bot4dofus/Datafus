@@ -32,6 +32,8 @@ package Ankama_Tooltips.blockParams
       
       public var fromBuff:Boolean = false;
       
+      public var showTimeLeftFormat:Boolean = false;
+      
       public function EffectsTooltipBlockParameters()
       {
          super();

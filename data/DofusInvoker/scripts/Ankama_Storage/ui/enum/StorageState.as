@@ -43,7 +43,13 @@ package Ankama_Storage.ui.enum
       
       public static const FORGETTABLE_SPELLS_UI_MOD:String = "forgettableSpellsUi";
       
+      public static const FORGETTABLE_MODSTERS_UI_MOD:String = "forgettableModstersUi";
+      
       public static const ITEM_EFFECTS_MODIFIER_UI_MOD:String = "itemEffectsModifier";
+      
+      public static const GUILD_CHEST_STORAGE_MOD:String = "guildChestStorage";
+      
+      public static const GUILD_CHEST_UI_MOD:String = "guildChestUi";
        
       
       public function StorageState()

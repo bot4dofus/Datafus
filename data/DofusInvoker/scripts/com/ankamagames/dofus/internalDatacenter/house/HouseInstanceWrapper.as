@@ -124,7 +124,7 @@ package com.ankamagames.dofus.internalDatacenter.house
          }
          else
          {
-            this.guildIdentity = GuildWrapper.create(guild.guildId,guild.guildName,guild.guildEmblem,0);
+            this.guildIdentity = GuildWrapper.create(guild.guildId,guild.guildName,guild.guildEmblem);
             myGuild = SocialFrame.getInstance().guild;
             this._belongsToMyGuild = myGuild && myGuild.guildId == guild.guildId;
          }

@@ -28,6 +28,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.datacenter.servers.Server;
    import com.ankamagames.dofus.datacenter.world.Area;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.communication.BasicChatSentence;
    import com.ankamagames.dofus.internalDatacenter.communication.ChatBubble;
    import com.ankamagames.dofus.internalDatacenter.communication.ChatInformationSentence;
@@ -47,6 +48,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.common.frames.LoadingModuleFrame;
    import com.ankamagames.dofus.logic.common.managers.AccountManager;
    import com.ankamagames.dofus.logic.common.managers.FeatureManager;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkMapPosition;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowAllianceManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowGuildManager;
    import com.ankamagames.dofus.logic.common.managers.NotificationManager;
@@ -189,8 +191,6 @@ package com.ankamagames.dofus.logic.game.common.frames
       public static const LINK_TLDS:Array = new Array(".com",".edu",".org",".fr",".info",".net",".de",".ja",".uk",".us",".it",".nl",".ru",".es",".pt",".br");
       
       public static const CHAT_FAIL_TEXTS_IDS:Array = [5259,5359,5338,5373];
-      
-      public static const DICE_ROLL_FEATURE_KEYWORD:String = "game.roleplay.diceroll";
       
       private static const SPLIT_CODE:String = String.fromCharCode(65533);
        
@@ -345,7 +345,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                this.process(action);
             }
          }
-         FeatureManager.getInstance().addListenerToFeatureWithKeyword(DICE_ROLL_FEATURE_KEYWORD,this.onFeatureChange);
+         FeatureManager.getInstance().addListenerToFeatureWithKeyword(FeatureEnum.CHAT_DICE_ROLL,this.onFeatureChange);
          return true;
       }
       
@@ -780,7 +780,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   if(!isNaN(posX) && !isNaN(posY) && !isNaN(worldMapId))
                   {
                      replace = false;
-                     content = leftBlock + "{map," + int(posX) + "," + int(posY) + "," + worldMapId + "}" + rightBlock;
+                     content = leftBlock + HyperlinkMapPosition.getLink(int(posX),int(posY),worldMapId) + rightBlock;
                   }
                   if(replace)
                   {
@@ -1663,7 +1663,7 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       public function pulled() : Boolean
       {
-         FeatureManager.getInstance().removeListenerFromFeatureWithKeyword(DICE_ROLL_FEATURE_KEYWORD,this.onFeatureChange);
+         FeatureManager.getInstance().removeListenerFromFeatureWithKeyword(FeatureEnum.CHAT_DICE_ROLL,this.onFeatureChange);
          return true;
       }
       
@@ -1715,7 +1715,7 @@ package com.ankamagames.dofus.logic.game.common.frames
       private function onFeatureChange(featureKeyword:String, featureId:int, isEnabled:Boolean) : void
       {
          var chatConsoleHandler:ConsoleHandler = null;
-         if(featureKeyword === DICE_ROLL_FEATURE_KEYWORD)
+         if(featureKeyword === FeatureEnum.CHAT_DICE_ROLL)
          {
             chatConsoleHandler = ConsolesManager.getConsole("chat");
             if(chatConsoleHandler !== null)

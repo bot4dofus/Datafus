@@ -11,12 +11,12 @@ package com.ankamagames.dofus.network.messages.connection
    public class IdentificationAccountForceMessage extends IdentificationMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2449;
+      public static const protocolId:uint = 8300;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var forcedAccountLogin:String = "";
+      public var forcerAccountLogin:String = "";
       
       public function IdentificationAccountForceMessage()
       {
@@ -30,13 +30,13 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 2449;
+         return 8300;
       }
       
-      public function initIdentificationAccountForceMessage(version:Version = null, lang:String = "", credentials:Vector.<int> = null, serverId:int = 0, autoconnect:Boolean = false, useCertificate:Boolean = false, useLoginToken:Boolean = false, sessionOptionalSalt:Number = 0, failedAttempts:Vector.<uint> = null, forcedAccountLogin:String = "") : IdentificationAccountForceMessage
+      public function initIdentificationAccountForceMessage(version:Version = null, lang:String = "", credentials:Vector.<int> = null, serverId:int = 0, autoconnect:Boolean = false, useCertificate:Boolean = false, useLoginToken:Boolean = false, sessionOptionalSalt:Number = 0, failedAttempts:Vector.<uint> = null, forcerAccountLogin:String = "") : IdentificationAccountForceMessage
       {
          super.initIdentificationMessage(version,lang,credentials,serverId,autoconnect,useCertificate,useLoginToken,sessionOptionalSalt,failedAttempts);
-         this.forcedAccountLogin = forcedAccountLogin;
+         this.forcerAccountLogin = forcerAccountLogin;
          this._isInitialized = true;
          return this;
       }
@@ -44,7 +44,7 @@ package com.ankamagames.dofus.network.messages.connection
       override public function reset() : void
       {
          super.reset();
-         this.forcedAccountLogin = "";
+         this.forcerAccountLogin = "";
          this._isInitialized = false;
       }
       
@@ -76,7 +76,7 @@ package com.ankamagames.dofus.network.messages.connection
       public function serializeAs_IdentificationAccountForceMessage(output:ICustomDataOutput) : void
       {
          super.serializeAs_IdentificationMessage(output);
-         output.writeUTF(this.forcedAccountLogin);
+         output.writeUTF(this.forcerAccountLogin);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -87,7 +87,7 @@ package com.ankamagames.dofus.network.messages.connection
       public function deserializeAs_IdentificationAccountForceMessage(input:ICustomDataInput) : void
       {
          super.deserialize(input);
-         this._forcedAccountLoginFunc(input);
+         this._forcerAccountLoginFunc(input);
       }
       
       override public function deserializeAsync(tree:FuncTree) : void
@@ -98,12 +98,12 @@ package com.ankamagames.dofus.network.messages.connection
       public function deserializeAsyncAs_IdentificationAccountForceMessage(tree:FuncTree) : void
       {
          super.deserializeAsync(tree);
-         tree.addChild(this._forcedAccountLoginFunc);
+         tree.addChild(this._forcerAccountLoginFunc);
       }
       
-      private function _forcedAccountLoginFunc(input:ICustomDataInput) : void
+      private function _forcerAccountLoginFunc(input:ICustomDataInput) : void
       {
-         this.forcedAccountLogin = input.readUTF();
+         this.forcerAccountLogin = input.readUTF();
       }
    }
 }

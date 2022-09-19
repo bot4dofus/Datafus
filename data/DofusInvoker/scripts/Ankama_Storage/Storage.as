@@ -3,12 +3,17 @@ package Ankama_Storage
    import Ankama_Common.Common;
    import Ankama_Storage.ui.BankUi;
    import Ankama_Storage.ui.EquipmentUi;
+   import Ankama_Storage.ui.GuildChestUi;
    import Ankama_Storage.ui.InventoryUi;
    import Ankama_Storage.ui.LivingObject;
    import Ankama_Storage.ui.Mimicry;
    import Ankama_Storage.ui.StorageUi;
+   import Ankama_Storage.ui.UpdateStorageTabUi;
    import Ankama_Storage.ui.WatchEquipmentUi;
    import Ankama_Storage.ui.enum.StorageState;
+   import Ankama_Storage.ui.guild.GuildChestContributePopup;
+   import Ankama_Storage.ui.guild.GuildChestContributions;
+   import Ankama_Storage.ui.guild.UnlockGuildChestUi;
    import Ankama_Storage.util.StorageBehaviorManager;
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.enums.UIEnum;
@@ -19,14 +24,18 @@ package Ankama_Storage
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.InventoryHookList;
    import com.ankamagames.dofus.misc.lists.MountHookList;
+   import com.ankamagames.dofus.misc.lists.SocialHookList;
    import com.ankamagames.dofus.network.enums.CharacterInventoryPositionEnum;
    import com.ankamagames.dofus.network.enums.ClientUITypeEnum;
    import com.ankamagames.dofus.network.enums.ExchangeTypeEnum;
+   import com.ankamagames.dofus.network.types.game.inventory.StorageTabInformation;
+   import com.ankamagames.dofus.uiApi.ChatApi;
    import com.ankamagames.dofus.uiApi.ContextMenuApi;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.InventoryApi;
    import com.ankamagames.dofus.uiApi.JobsApi;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
+   import com.ankamagames.dofus.uiApi.SocialApi;
    import com.ankamagames.dofus.uiApi.SoundApi;
    import com.ankamagames.dofus.uiApi.StorageApi;
    import com.ankamagames.dofus.uiApi.SystemApi;
@@ -47,6 +56,16 @@ package Ankama_Storage
       private var include_mimicry:Mimicry = null;
       
       private var include_WatchEquipmentUi:WatchEquipmentUi = null;
+      
+      private var include_GuildChestUi:GuildChestUi = null;
+      
+      private var include_UpdateStorageTabUi:UpdateStorageTabUi = null;
+      
+      private var include_UnlockGuildChestUi:UnlockGuildChestUi = null;
+      
+      private var include_GuildChestContributions:GuildChestContributions = null;
+      
+      private var include_GuildChestContributePopup:GuildChestContributePopup = null;
       
       [Api(name="ContextMenuApi")]
       public var menuApi:ContextMenuApi;
@@ -69,6 +88,12 @@ package Ankama_Storage
       [Api(name="JobsApi")]
       public var jobsApi:JobsApi;
       
+      [Api(name="SocialApi")]
+      public var socialApi:SocialApi;
+      
+      [Api(name="ChatApi")]
+      public var chatApi:ChatApi;
+      
       [Module(name="Ankama_Common")]
       public var modCommon:Common;
       
@@ -85,6 +110,8 @@ package Ankama_Storage
       private var _weight:uint;
       
       private var _weightMax:uint;
+      
+      private var _storageTab:Vector.<StorageTabInformation>;
       
       public function Storage()
       {
@@ -103,6 +130,8 @@ package Ankama_Storage
          Api.player = this.playerApi;
          Api.inventory = this.inventoryApi;
          Api.jobs = this.jobsApi;
+         Api.social = this.socialApi;
+         Api.chat = this.chatApi;
          this.sysApi.addHook(HookList.OpenInventory,this.onOpenInventory);
          this.sysApi.addHook(HookList.CloseInventory,this.onCloseInventory);
          this.sysApi.addHook(ExchangeHookList.ExchangeStartedType,this.onExchangeStartedType);
@@ -112,9 +141,13 @@ package Ankama_Storage
          this.sysApi.addHook(InventoryHookList.ObjectModified,this.onObjectModified);
          this.sysApi.addHook(InventoryHookList.OpenLivingObject,this.onOpenLivingObject);
          this.sysApi.addHook(ExchangeHookList.ExchangeBankStartedWithStorage,this.onExchangeStartedWithStorage);
+         this.sysApi.addHook(ExchangeHookList.ExchangeBankStartedWithMultiTabStorage,this.onExchangeStartedWithMultiTabStorage);
          this.sysApi.addHook(InventoryHookList.EquipmentObjectMove,this.onEquipmentObjectMove);
          this.sysApi.addHook(MountHookList.MountRiding,this.onMountRiding);
          this.sysApi.addHook(CustomUiHookList.ClientUIOpened,this.onClientUIOpened);
+         this.sysApi.addHook(ExchangeHookList.MultiTabStorage,this.onMultiTabStorage);
+         this.sysApi.addHook(ExchangeHookList.GuildChestTabContribution,this.onGuildChestTabContribution);
+         this.sysApi.addHook(SocialHookList.GuildLeft,this.onGuildLeft);
       }
       
       private function onExchangeStartedType(exchangeType:int) : void
@@ -153,6 +186,45 @@ package Ankama_Storage
                      "maxSlots":maxSlots
                   });
                }
+               break;
+            case ExchangeTypeEnum.GUILD_CHEST:
+               if(!this.uiApi.getUi(UIEnum.GUILD_CHEST_UI))
+               {
+                  this.uiApi.loadUi(UIEnum.GUILD_CHEST_UI,UIEnum.GUILD_CHEST_UI,{
+                     "exchangeType":exchangeType,
+                     "maxSlots":maxSlots
+                  });
+               }
+         }
+      }
+      
+      private function onExchangeStartedWithMultiTabStorage(exchangeType:int, maxSlots:uint, tabNumber:uint) : void
+      {
+         var uiClass:GuildChestUi = null;
+         if(exchangeType == ExchangeTypeEnum.GUILD_CHEST)
+         {
+            if(!this.uiApi.getUi(UIEnum.GUILD_CHEST_UI))
+            {
+               this.uiApi.loadUi(UIEnum.GUILD_CHEST_UI,UIEnum.GUILD_CHEST_UI,{
+                  "exchangeType":exchangeType,
+                  "maxSlots":maxSlots,
+                  "tabNumber":tabNumber,
+                  "tabs":this._storageTab
+               });
+            }
+            else
+            {
+               uiClass = this.uiApi.getUi(UIEnum.GUILD_CHEST_UI).uiClass;
+               if(uiClass)
+               {
+                  uiClass.openNewChestTab({
+                     "exchangeType":exchangeType,
+                     "maxSlots":maxSlots,
+                     "tabNumber":tabNumber,
+                     "tabs":this._storageTab
+                  });
+               }
+            }
          }
       }
       
@@ -326,6 +398,56 @@ package Ankama_Storage
       public function onMountRiding(isRidding:Boolean) : void
       {
          this.soundApi.playSound(SoundTypeEnum.EQUIPMENT_PET);
+      }
+      
+      private function onMultiTabStorage(tabs:Vector.<StorageTabInformation>) : void
+      {
+         var uiClass:GuildChestUi = null;
+         var newTabUnlocked:Boolean = this._storageTab && this._storageTab.length != tabs.length;
+         this._storageTab = tabs;
+         if(this.uiApi.getUi(UIEnum.GUILD_CHEST_UI))
+         {
+            if(newTabUnlocked)
+            {
+               if(this.uiApi.getUi(UIEnum.UNLOCK_GUILD_CHEST))
+               {
+                  this.uiApi.unloadUi(UIEnum.UNLOCK_GUILD_CHEST);
+               }
+               if(this.uiApi.getUi(UIEnum.GUILD_CHEST_CONTRIBUTE_POPUP))
+               {
+                  this.uiApi.unloadUi(UIEnum.GUILD_CHEST_CONTRIBUTE_POPUP);
+               }
+            }
+            uiClass = this.uiApi.getUi(UIEnum.GUILD_CHEST_UI).uiClass;
+            if(uiClass)
+            {
+               uiClass.initTabs(this._storageTab);
+            }
+         }
+      }
+      
+      private function onGuildChestTabContribution(tabNumber:uint, requiredAmount:Number, currentAmount:Number, enrollmentDelay:Number, contributionDelay:Number) : void
+      {
+         var uiClass:UnlockGuildChestUi = null;
+         if(this.uiApi.getUi(UIEnum.UNLOCK_GUILD_CHEST))
+         {
+            uiClass = this.uiApi.getUi(UIEnum.UNLOCK_GUILD_CHEST).uiClass;
+            if(uiClass)
+            {
+               uiClass.updateContribution({
+                  "tabNumber":tabNumber,
+                  "requiredAmount":requiredAmount,
+                  "currentAmount":currentAmount,
+                  "enrollmentDelay":enrollmentDelay,
+                  "contributionDelay":contributionDelay
+               });
+            }
+         }
+      }
+      
+      private function onGuildLeft() : void
+      {
+         this._storageTab = null;
       }
    }
 }

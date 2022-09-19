@@ -3,16 +3,20 @@ package Ankama_Web.ui
    import Ankama_Web.enum.WebTabEnum;
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.components.Texture;
+   import com.ankamagames.berilia.types.LocationEnum;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.utils.ComponentHookList;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.kernel.sound.enum.SoundEnum;
    import com.ankamagames.dofus.misc.lists.ExternalGameHookList;
    import com.ankamagames.dofus.misc.lists.RoleplayHookList;
    import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.network.enums.GameServerTypeEnum;
+   import com.ankamagames.dofus.network.enums.StartupActionObjectTypeEnum;
    import com.ankamagames.dofus.uiApi.ConfigApi;
    import com.ankamagames.dofus.uiApi.DataApi;
+   import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
    import com.ankamagames.dofus.uiApi.SecurityApi;
    import com.ankamagames.dofus.uiApi.SystemApi;
    import com.ankamagames.dofus.uiApi.UiTutoApi;
@@ -57,6 +61,9 @@ package Ankama_Web.ui
       [Api(name="UiTutoApi")]
       public var hintsApi:UiTutoApi;
       
+      [Api(name="PlayedCharacterApi")]
+      public var playerApi:PlayedCharacterApi;
+      
       public var uiCtr:GraphicContainer;
       
       public var btn_close:ButtonContainer;
@@ -77,6 +84,8 @@ package Ankama_Web.ui
       
       public var tx_notifGift:Texture;
       
+      public var tx_warning:Texture;
+      
       public var ctr_linemask:GraphicContainer;
       
       public function WebBase()
@@ -86,20 +95,36 @@ package Ankama_Web.ui
       
       public function main(oParams:* = null) : void
       {
+         var gift:Object = null;
          var lastTab:String = null;
-         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled("server.heroic");
+         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER);
          this.uiApi.me().restoreSnapshotAfterLoading = false;
          this.tx_line.mask = this.ctr_linemask;
          this.uiApi.addShortcutHook("closeUi",this.onShortcut);
-         this.uiApi.addComponentHook(this.btn_tabOgrines,"onRelease");
-         this.uiApi.addComponentHook(this.btn_tabCodesAndGifts,"onRelease");
-         this.uiApi.addComponentHook(this.btn_tabShop,"onRelease");
+         this.uiApi.addComponentHook(this.btn_tabOgrines,ComponentHookList.ON_RELEASE);
+         this.uiApi.addComponentHook(this.btn_tabCodesAndGifts,ComponentHookList.ON_RELEASE);
+         this.uiApi.addComponentHook(this.btn_tabShop,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btn_help,ComponentHookList.ON_RELEASE);
          this.sysApi.addHook(ExternalGameHookList.CodesAndGiftNotificationValue,this.onCodesAndGiftNotificationValue);
+         this.sysApi.addHook(ExternalGameHookList.CodesAndGiftEOSWarning,this.onCodesAndGiftEOSWarning);
          this.sysApi.addHook(RoleplayHookList.GiftsWaitingAllocation,this.onCodesAndGiftNotificationValue);
          this.btn_close.soundId = SoundEnum.CANCEL_BUTTON;
          this.tx_notifGift.visible = this.sysApi.getData("giftNotification");
-         if(this.configApi.isFeatureWithKeywordEnabled("web.shopInClient"))
+         var giftCount:int = 0;
+         for each(gift in this.playerApi.getWaitingGifts())
+         {
+            if(gift.actionType == StartupActionObjectTypeEnum.OBJECT_GIFT)
+            {
+               giftCount++;
+            }
+         }
+         if(giftCount > 0)
+         {
+            this.tx_warning.visible = true;
+            this.uiApi.addComponentHook(this.tx_warning,ComponentHookList.ON_ROLL_OVER);
+            this.uiApi.addComponentHook(this.tx_warning,ComponentHookList.ON_ROLL_OUT);
+         }
+         if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.WEB_SHOP))
          {
             isShopAvailable = true;
          }
@@ -178,6 +203,20 @@ package Ankama_Web.ui
             case this.btn_help:
                this.uiApi.me().childUiRoot.uiClass.showTabHints();
          }
+      }
+      
+      public function onRollOver(target:GraphicContainer) : void
+      {
+         switch(target)
+         {
+            case this.tx_warning:
+               this.uiApi.showTooltip(this.uiApi.textTooltipInfo(this.uiApi.getText("ui.gift.someGiftsWillBeLost")),target,false,"standard",LocationEnum.POINT_RIGHT,LocationEnum.POINT_LEFT,3,null,null,null,"TextInfo");
+         }
+      }
+      
+      public function onRollOut(target:GraphicContainer) : void
+      {
+         this.uiApi.hideTooltip();
       }
       
       public function openTab(uiName:String = null, uiParams:Object = null) : void
@@ -264,6 +303,24 @@ package Ankama_Web.ui
       private function onCodesAndGiftNotificationValue(show:Boolean) : void
       {
          this.tx_notifGift.visible = show;
+      }
+      
+      private function onCodesAndGiftEOSWarning(show:Boolean) : void
+      {
+         if(this.tx_warning.visible != show)
+         {
+            this.tx_warning.visible = show;
+            if(show)
+            {
+               this.uiApi.addComponentHook(this.tx_warning,ComponentHookList.ON_ROLL_OVER);
+               this.uiApi.addComponentHook(this.tx_warning,ComponentHookList.ON_ROLL_OUT);
+            }
+            else
+            {
+               this.uiApi.removeComponentHook(this.tx_warning,ComponentHookList.ON_ROLL_OVER);
+               this.uiApi.removeComponentHook(this.tx_warning,ComponentHookList.ON_ROLL_OUT);
+            }
+         }
       }
    }
 }

@@ -4,6 +4,7 @@ package com.ankama.haapi.client.api
    import com.ankama.haapi.client.model.ShopArticle;
    import com.ankama.haapi.client.model.ShopArticlesList;
    import com.ankama.haapi.client.model.ShopBuyResult;
+   import com.ankama.haapi.client.model.ShopCategoriesList;
    import com.ankama.haapi.client.model.ShopCategory;
    import com.ankama.haapi.client.model.ShopGondolaHead;
    import com.ankama.haapi.client.model.ShopHighlight;
@@ -421,7 +422,7 @@ package com.ankama.haapi.client.api
             throw new ApiError(400,"missing required params : key");
          }
          queryParams["key"] = toPathValue(key);
-         var forceImport_ShopCategory:ShopCategory = undefined;
+         var forceImport_ShopCategoriesList:ShopCategoriesList = undefined;
          var contentTypes:Array = new Array();
          var testFunc:Function = function(item:String, index:int, array:Array):Boolean
          {
@@ -438,7 +439,7 @@ package com.ankama.haapi.client.api
             var requestId:* = getUniqueId();
             _token.requestId = requestId;
             _token.completionEventType = "categories_list_by_key";
-            _token.returnType = "com.ankama.haapi.client.model.ShopCategory";
+            _token.returnType = "com.ankama.haapi.client.model.ShopCategoriesList";
          });
       }
       

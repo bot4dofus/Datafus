@@ -4,10 +4,10 @@ package Ankama_ContextMenu.makers
    import Ankama_ContextMenu.ContextMenu;
    import com.ankamagames.berilia.interfaces.IMenuMaker;
    import com.ankamagames.berilia.utils.BeriliaHookList;
-   import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeRequestOnTaxCollectorAction;
    import com.ankamagames.dofus.logic.game.common.actions.taxCollector.GameRolePlayTaxCollectorFightRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.NpcGenericActionRequestAction;
+   import com.ankamagames.dofus.network.enums.GuildRightsEnum;
    
    public class TaxCollectorMenuMaker implements IMenuMaker
    {
@@ -66,7 +66,7 @@ package Ankama_ContextMenu.makers
          if(Api.social.hasGuild() && Api.social.getGuild().guildId == data.identification.guildIdentity.guildId)
          {
             playerInfos = Api.player.getPlayedCharacterInfo();
-            lDisabled = !(Api.social.hasGuildRight(playerInfos.id,GuildWrapper.COLLECT) || data.identification.callerId == playerInfos.id && Api.social.hasGuildRight(playerInfos.id,GuildWrapper.COLLECT_MY_TAX_COLLECTORS));
+            lDisabled = !(Api.social.hasGuildRight(playerInfos.id,GuildRightsEnum.RIGHT_COLLECT_TAX_COLLECTOR) || data.identification.callerId == playerInfos.id && Api.social.hasGuildRight(playerInfos.id,GuildRightsEnum.RIGHT_COLLECT_OWN_TAX_COLLECTOR));
             menu.push(ContextMenu.static_createContextMenuItemObject(Api.ui.getText("ui.social.CollectTaxCollector"),this.onCollectTaxCollectorClick,[param.entity.id],disabled || lDisabled || dead));
          }
          else

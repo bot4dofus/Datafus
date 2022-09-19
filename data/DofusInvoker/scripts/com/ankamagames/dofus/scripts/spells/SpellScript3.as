@@ -31,7 +31,7 @@ package com.ankamagames.dofus.scripts.spells
          }
          var tmpTargetCell:MapPoint = !!entryPortalCell ? entryPortalCell : targetCell;
          var tmpCasterCell:MapPoint = !!exitPortalCell ? exitPortalCell : casterCell;
-         addCasterSetDirectionStep(tmpTargetCell);
+         addCasterSetDirectionStep(tmpTargetCell,spellFxRunner.castingSpell.spellDirection);
          addCasterAnimationStep();
          if(SpellFxApi.HasSpellParam(spell,"casterGfxId"))
          {

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.friend
    public class FriendSpouseInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 9956;
+      public static const protocolId:uint = 6176;
        
       
       public var spouseAccountId:uint = 0;
@@ -44,7 +44,7 @@ package com.ankamagames.dofus.network.types.game.friend
       
       public function getTypeId() : uint
       {
-         return 9956;
+         return 6176;
       }
       
       public function initFriendSpouseInformations(spouseAccountId:uint = 0, spouseId:Number = 0, spouseName:String = "", spouseLevel:uint = 0, breed:int = 0, sex:int = 0, spouseEntityLook:EntityLook = null, guildInfo:GuildInformations = null, alignmentSide:int = 0) : FriendSpouseInformations

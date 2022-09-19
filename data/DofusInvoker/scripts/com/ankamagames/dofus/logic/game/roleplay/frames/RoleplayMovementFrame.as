@@ -11,6 +11,8 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.logic.common.actions.EmptyStackAction;
+   import com.ankamagames.dofus.logic.common.managers.NotificationManager;
+   import com.ankamagames.dofus.logic.game.common.actions.TeleportPlayerOfferReplyAction;
    import com.ankamagames.dofus.logic.game.common.frames.StackManagementFrame;
    import com.ankamagames.dofus.logic.game.common.managers.MapMovementAdapter;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
@@ -44,12 +46,17 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.messages.game.interactive.InteractiveUseErrorMessage;
    import com.ankamagames.dofus.network.messages.game.interactive.InteractiveUseRequestMessage;
    import com.ankamagames.dofus.network.messages.game.interactive.InteractiveUsedMessage;
+   import com.ankamagames.dofus.network.messages.game.interactive.meeting.TeleportPlayerAnswerMessage;
+   import com.ankamagames.dofus.network.messages.game.interactive.meeting.TeleportPlayerCloseMessage;
+   import com.ankamagames.dofus.network.messages.game.interactive.meeting.TeleportPlayerOfferMessage;
    import com.ankamagames.dofus.network.messages.game.interactive.skill.InteractiveUseWithParamRequestMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeLeaveMessage;
    import com.ankamagames.dofus.network.messages.game.prism.PrismFightDefenderLeaveMessage;
    import com.ankamagames.dofus.network.types.game.interactive.InteractiveElement;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
    import com.ankamagames.dofus.types.entities.RiderBehavior;
+   import com.ankamagames.dofus.types.enums.NotificationTypeEnum;
+   import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.entities.behaviours.IMovementBehavior;
    import com.ankamagames.jerakine.entities.interfaces.IEntity;
    import com.ankamagames.jerakine.entities.interfaces.IMovable;
@@ -76,6 +83,8 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(RoleplayMovementFrame));
       
       private static const CONSECUTIVE_MOVEMENT_DELAY:uint = 250;
+      
+      private static const TELEPORT_PLAYER_OFFER_POPUP_PREFIX:String = "TeleportPlayerOfferPopup_";
        
       
       private var _wantToChangeMap:Number = -1;
@@ -140,6 +149,12 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var emsmsg:EntityMovementStoppedMessage = null;
          var tosmmsg:TeleportOnSameMapMessage = null;
          var teleportedEntity:IEntity = null;
+         var tpomsg:TeleportPlayerOfferMessage = null;
+         var notificationManager:NotificationManager = null;
+         var notifId:uint = 0;
+         var tpcmsg:TeleportPlayerCloseMessage = null;
+         var replyMsg:TeleportPlayerAnswerMessage = null;
+         var tporaction:TeleportPlayerOfferReplyAction = null;
          var gmnmm:GameMapNoMovementMessage = null;
          var newPos:MapPoint = null;
          var player:AnimatedCharacter = null;
@@ -330,9 +345,25 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
             case msg is MapComplementaryInformationsDataMessage:
                this._mapHasAggressiveMonsters = MapComplementaryInformationsDataMessage(msg).hasAggressiveMonsters;
                return false;
-            default:
-               return false;
+            case msg is TeleportPlayerOfferMessage:
+               tpomsg = msg as TeleportPlayerOfferMessage;
+               notificationManager = NotificationManager.getInstance();
+               notifId = notificationManager.prepareNotification(I18n.getUiText("ui.common.invitation"),tpomsg.message,NotificationTypeEnum.INVITATION,TELEPORT_PLAYER_OFFER_POPUP_PREFIX + tpomsg.requesterId.toString() + "_" + tpomsg.mapId.toString());
+               NotificationManager.getInstance().addButtonToNotification(notifId,I18n.getUiText("ui.common.refuse"),"TeleportPlayerOfferReplyAction",[tpomsg.requesterId,false],false);
+               NotificationManager.getInstance().addButtonToNotification(notifId,I18n.getUiText("ui.common.accept"),"TeleportPlayerOfferReplyAction",[tpomsg.requesterId,true],false,130);
+               NotificationManager.getInstance().sendNotification(notifId);
+               return true;
+            case msg is TeleportPlayerCloseMessage:
+               tpcmsg = msg as TeleportPlayerCloseMessage;
+               NotificationManager.getInstance().closeNotification(TELEPORT_PLAYER_OFFER_POPUP_PREFIX + tpcmsg.requesterId.toString() + "_" + tpcmsg.mapId.toString());
+               return true;
+            case msg is TeleportPlayerOfferReplyAction:
+               replyMsg = new TeleportPlayerAnswerMessage();
+               tporaction = msg as TeleportPlayerOfferReplyAction;
+               replyMsg.initTeleportPlayerAnswerMessage(tporaction.isTeleport,tporaction.requesterId);
+               ConnectionsHandler.getConnection().send(replyMsg);
          }
+         return false;
       }
       
       public function pulled() : Boolean

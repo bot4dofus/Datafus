@@ -23,6 +23,7 @@ package com.ankamagames.dofus.misc.utils
    import com.ankamagames.dofus.datacenter.world.SubArea;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkItemManager;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkMapPosition;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowAchievementManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowOrnamentManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowQuestManager;
@@ -323,7 +324,7 @@ package com.ankamagames.dofus.misc.utils
                      }
                      else
                      {
-                        newString = "{map," + int(map.posX) + "," + int(map.posY) + "," + int(map.worldMap) + "}";
+                        newString = HyperlinkMapPosition.getLink(int(map.posX),int(map.posY),int(map.worldMap));
                      }
                   }
                   else

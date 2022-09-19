@@ -13,17 +13,20 @@ package com.ankamagames.dofus.logic.game.common.actions
       
       public var conquest:Boolean;
       
+      public var anomaly:Boolean;
+      
       public function OpenMapAction(params:Array = null)
       {
          super(params);
       }
       
-      public static function create(ignoreSetting:Boolean = false, fromShortcut:Boolean = false, conquest:Boolean = false) : OpenMapAction
+      public static function create(ignoreSetting:Boolean = false, fromShortcut:Boolean = false, conquest:Boolean = false, anomaly:Boolean = false) : OpenMapAction
       {
          var a:OpenMapAction = new OpenMapAction(arguments);
          a.ignoreSetting = ignoreSetting;
          a.fromShortcut = fromShortcut;
          a.conquest = conquest;
+         a.anomaly = anomaly;
          return a;
       }
    }

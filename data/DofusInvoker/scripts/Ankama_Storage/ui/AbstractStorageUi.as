@@ -31,6 +31,7 @@ package Ankama_Storage.ui
    import com.ankamagames.dofus.network.enums.ExchangeTypeEnum;
    import com.ankamagames.dofus.types.enums.ItemCategoryEnum;
    import com.ankamagames.dofus.uiApi.AveragePricesApi;
+   import com.ankamagames.dofus.uiApi.ChatApi;
    import com.ankamagames.dofus.uiApi.ContextMenuApi;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.MapApi;
@@ -122,6 +123,9 @@ package Ankama_Storage.ui
       [Api(name="RoleplayApi")]
       public var rpApi:RoleplayApi;
       
+      [Api(name="ChatApi")]
+      public var chatApi:ChatApi;
+      
       [Module(name="Ankama_Common")]
       public var modCommon:Common;
       
@@ -182,7 +186,7 @@ package Ankama_Storage.ui
       
       protected var _hasSlot:Boolean = false;
       
-      protected var _slotsMax:uint;
+      public var slotsMax:uint;
       
       protected var _ignoreQuestItems:Boolean = false;
       
@@ -191,6 +195,8 @@ package Ankama_Storage.ui
       public var itemWithAssociatedRunesDisplayed:ItemWrapper;
       
       public var subFilterIndex:Object;
+      
+      public var dropErrorText:String;
       
       public var mainCtr:GraphicContainer;
       
@@ -201,6 +207,8 @@ package Ankama_Storage.ui
       public var ctr_window:GraphicContainer;
       
       public var ctr_storageContent:GraphicContainer;
+      
+      public var ctrTotalWeight:GraphicContainer;
       
       public var txBackground:Texture;
       
@@ -358,9 +366,9 @@ package Ankama_Storage.ui
          this.btn_moveAllToLeft.visible = false;
          this.btn_moveAllToRight.visible = false;
          this.btn_closeSearch.visible = false;
-         if(this._hasSlot && this._slotsMax != 0)
+         if(this._hasSlot && this.slotsMax != 0)
          {
-            value = Math.floor(100 * this._inventoryItems.length / this._slotsMax);
+            value = Math.floor(100 * this._inventoryItems.length / this.slotsMax);
             this.tx_weightBar.gotoAndStop = value > 100 ? 100 : value;
          }
          this.switchBehavior(param.storageMod);
@@ -785,7 +793,7 @@ package Ankama_Storage.ui
             case this.tx_weightBar:
                if(this._hasSlot)
                {
-                  text = this.uiApi.getText("ui.common.player.slot",this._slotsMax <= 0 ? "0" : this.utilApi.kamasToString(this._inventoryItems.length,""),this.utilApi.kamasToString(this._slotsMax,""));
+                  text = this.uiApi.getText("ui.common.player.slot",this.slotsMax <= 0 ? "0" : this.utilApi.kamasToString(this._inventoryItems.length,""),this.utilApi.kamasToString(this.slotsMax,""));
                }
                else
                {
@@ -1078,17 +1086,20 @@ package Ankama_Storage.ui
                for(i = 0; i < l; i++)
                {
                   item = inventory[i];
-                  if(this._ignoreQuestItems && !reusingDataProvider)
+                  if(item != null)
                   {
-                     if(item.category == ItemCategoryEnum.QUEST_CATEGORY)
+                     if(this._ignoreQuestItems && !reusingDataProvider)
                      {
-                        continue;
+                        if(item.category == ItemCategoryEnum.QUEST_CATEGORY)
+                        {
+                           continue;
+                        }
                      }
-                  }
-                  if(item.undiatricalName.indexOf(this._searchCriteria) != -1 || item.searchContent.length > 0 && item.searchContent.indexOf(this._searchCriteria) != -1)
-                  {
-                     filteredInventory.push(item);
-                     this.itemsDisplayed.push(item.objectUID);
+                     if(item.undiatricalName.indexOf(this._searchCriteria) != -1 || item.searchContent.length > 0 && item.searchContent.indexOf(this._searchCriteria) != -1)
+                     {
+                        filteredInventory.push(item);
+                        this.itemsDisplayed.push(item.objectUID);
+                     }
                   }
                }
                this.grid.dataProvider = filteredInventory;
@@ -1100,15 +1111,18 @@ package Ankama_Storage.ui
                for(i = 0; i < l; i++)
                {
                   item = this._inventoryItems[i];
-                  if(this._ignoreQuestItems)
+                  if(item != null)
                   {
-                     if(item.category == ItemCategoryEnum.QUEST_CATEGORY)
+                     if(this._ignoreQuestItems)
                      {
-                        continue;
+                        if(item.category == ItemCategoryEnum.QUEST_CATEGORY)
+                        {
+                           continue;
+                        }
+                        filteredInventory.push(item);
                      }
-                     filteredInventory.push(item);
+                     this.itemsDisplayed.push(item.objectUID);
                   }
-                  this.itemsDisplayed.push(item.objectUID);
                }
                if(this._ignoreQuestItems)
                {
@@ -1118,9 +1132,9 @@ package Ankama_Storage.ui
                this._lastSearchCriteria = null;
             }
             this._ignoreQuestItems = false;
-            if(this._hasSlot && this._slotsMax != 0)
+            if(this._hasSlot && this.slotsMax != 0)
             {
-               value = Math.floor(100 * this._inventoryItems.length / this._slotsMax);
+               value = Math.floor(100 * this._inventoryItems.length / this.slotsMax);
                this.tx_weightBar.gotoAndStop = value > 100 ? 100 : value;
             }
             this.updateItemsEstimatedValue();
@@ -1196,10 +1210,7 @@ package Ankama_Storage.ui
          {
             contextMenu.push(this.modContextMenu.createContextMenuSeparatorObject());
          }
-         if(Api.system.getOption("displayTooltips","dofus"))
-         {
-            contextMenu.push(this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.common.tooltip"),null,null,false,[this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.common.name"),this.onTooltipDisplayOption,["header"],disabled,null,itemTooltipSettings.header,false),this.modContextMenu.createContextMenuItemObject(this.uiApi.processText(this.uiApi.getText("ui.common.effects"),"",false),this.onTooltipDisplayOption,["effects"],disabled,null,itemTooltipSettings.effects,false),this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.common.conditions"),this.onTooltipDisplayOption,["conditions"],disabled,null,itemTooltipSettings.conditions,false),this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.common.description"),this.onTooltipDisplayOption,["description"],disabled,null,itemTooltipSettings.description,false),this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.item.averageprice"),this.onTooltipDisplayOption,["averagePrice"],disabled,null,itemTooltipSettings.averagePrice,false)],disabled));
-         }
+         contextMenu.push(this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.common.tooltip"),null,null,false,[this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.common.name"),this.onTooltipDisplayOption,["header"],disabled,null,itemTooltipSettings.header,false),this.modContextMenu.createContextMenuItemObject(this.uiApi.processText(this.uiApi.getText("ui.common.effects"),"",false),this.onTooltipDisplayOption,["effects"],disabled,null,itemTooltipSettings.effects,false),this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.common.conditions"),this.onTooltipDisplayOption,["conditions"],disabled,null,itemTooltipSettings.conditions,false),this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.common.description"),this.onTooltipDisplayOption,["description"],disabled,null,itemTooltipSettings.description,false),this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.item.averageprice"),this.onTooltipDisplayOption,["averagePrice"],disabled,null,itemTooltipSettings.averagePrice,false)],disabled));
          var sortField:int = this.getSortFields()[0];
          var sortMenu:ContextMenuItem = this.modContextMenu.createContextMenuItemObject(this.uiApi.getText("ui.common.sort"),null,null,false,null,disabled);
          var sortMenuChildren:Array = [];

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class HumanOptionObjectUse extends HumanOption implements INetworkType
    {
       
-      public static const protocolId:uint = 1192;
+      public static const protocolId:uint = 2763;
        
       
       public var delayTypeId:uint = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 1192;
+         return 2763;
       }
       
       public function initHumanOptionObjectUse(delayTypeId:uint = 0, delayEndTime:Number = 0, objectGID:uint = 0) : HumanOptionObjectUse
@@ -60,7 +60,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element objectGID.");
          }
-         output.writeVarShort(this.objectGID);
+         output.writeVarInt(this.objectGID);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -109,7 +109,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       private function _objectGIDFunc(input:ICustomDataInput) : void
       {
-         this.objectGID = input.readVarUhShort();
+         this.objectGID = input.readVarUhInt();
          if(this.objectGID < 0)
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element of HumanOptionObjectUse.objectGID.");

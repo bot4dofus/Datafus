@@ -120,11 +120,11 @@ package Ankama_Tooltips.ui
          var icon:EmblemSymbol = this.dataApi.getEmblemSymbol(pSymbolId);
          if(icon.colorizable)
          {
-            this.utilApi.changeColor(pTexture.getChildByName("up"),pColor,0);
+            this.utilApi.changeColor(pTexture,pColor,0);
          }
          else
          {
-            this.utilApi.changeColor(pTexture.getChildByName("up"),pColor,0,true);
+            this.utilApi.changeColor(pTexture,pColor,0,true);
          }
          pTexture.visible = true;
       }

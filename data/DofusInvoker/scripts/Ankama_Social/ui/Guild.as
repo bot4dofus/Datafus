@@ -2,6 +2,7 @@ package Ankama_Social.ui
 {
    import Ankama_Common.Common;
    import Ankama_Grimoire.enum.EnumTab;
+   import Ankama_Social.Social;
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.components.Input;
    import com.ankamagames.berilia.components.Label;
@@ -20,10 +21,13 @@ package Ankama_Social.ui
    import com.ankamagames.dofus.kernel.sound.enum.SoundEnum;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildGetInformationsAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildMotdSetRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.social.StartListenGuildChestStructureAction;
+   import com.ankamagames.dofus.logic.game.common.actions.social.StopListenGuildChestStructureAction;
    import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.misc.lists.SocialHookList;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
    import com.ankamagames.dofus.network.enums.GuildInformationsTypeEnum;
+   import com.ankamagames.dofus.network.enums.GuildRightsEnum;
    import com.ankamagames.dofus.uiApi.ChatApi;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
@@ -96,7 +100,7 @@ package Ankama_Social.ui
       
       public var tx_paddockWarning:Texture;
       
-      public var tx_bulletinWarning:Texture;
+      public var tx_logBookWarning:Texture;
       
       public var ctr_motd:GraphicContainer;
       
@@ -120,7 +124,7 @@ package Ankama_Social.ui
       
       public var btn_members:ButtonContainer;
       
-      public var btn_bulletin:ButtonContainer;
+      public var btn_logBook:ButtonContainer;
       
       public var btn_customization:ButtonContainer;
       
@@ -142,7 +146,7 @@ package Ankama_Social.ui
       public function main(... args) : void
       {
          this.btn_members.soundId = SoundEnum.TAB;
-         this.btn_bulletin.soundId = SoundEnum.TAB;
+         this.btn_logBook.soundId = SoundEnum.TAB;
          this.btn_customization.soundId = SoundEnum.TAB;
          this.btn_taxCollector.soundId = SoundEnum.TAB;
          this.btn_paddock.soundId = SoundEnum.TAB;
@@ -170,20 +174,13 @@ package Ankama_Social.ui
             this.lbl_motd.resizeText();
          }
          this.inp_motd.text = this._guild.motd;
-         if(this._guild.lastNotifiedTimestamp > this.sysApi.getData("guildBulletinLastVisitTimestamp"))
-         {
-            this.tx_bulletinWarning.visible = true;
-         }
-         else
-         {
-            this.tx_bulletinWarning.visible = false;
-         }
+         this.handleLogBookWarning();
          this.tx_emblemBack.dispatchMessages = true;
          this.tx_emblemUp.dispatchMessages = true;
          this.uiApi.addComponentHook(this.tx_emblemBack,ComponentHookList.ON_TEXTURE_READY);
          this.uiApi.addComponentHook(this.tx_emblemUp,ComponentHookList.ON_TEXTURE_READY);
          this.uiApi.addComponentHook(this.btn_members,ComponentHookList.ON_RELEASE);
-         this.uiApi.addComponentHook(this.btn_bulletin,ComponentHookList.ON_RELEASE);
+         this.uiApi.addComponentHook(this.btn_logBook,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btn_customization,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btn_taxCollector,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btn_paddock,ComponentHookList.ON_RELEASE);
@@ -203,8 +200,8 @@ package Ankama_Social.ui
          this.uiApi.addComponentHook(this.btn_motdValid,ComponentHookList.ON_ROLL_OUT);
          this.uiApi.addComponentHook(this.btn_motdExit,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.btn_motdExit,ComponentHookList.ON_ROLL_OUT);
-         this.uiApi.addComponentHook(this.tx_bulletinWarning,ComponentHookList.ON_ROLL_OVER);
-         this.uiApi.addComponentHook(this.tx_bulletinWarning,ComponentHookList.ON_ROLL_OUT);
+         this.uiApi.addComponentHook(this.tx_logBookWarning,ComponentHookList.ON_ROLL_OVER);
+         this.uiApi.addComponentHook(this.tx_logBookWarning,ComponentHookList.ON_ROLL_OUT);
          this.uiApi.addComponentHook(this.btn_recruitmentSettings,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.btn_recruitmentSettings,ComponentHookList.ON_ROLL_OUT);
          this.inp_motd.html = false;
@@ -212,14 +209,17 @@ package Ankama_Social.ui
          this.tx_emblemBack.uri = this._guild.backEmblem.fullSizeIconUri;
          this.tx_emblemUp.uri = this._guild.upEmblem.fullSizeIconUri;
          this.sysApi.sendAction(new GuildGetInformationsAction([GuildInformationsTypeEnum.INFO_RECRUITMENT]));
+         this.sysApi.sendAction(new StartListenGuildChestStructureAction());
          this.btn_directory.softDisabled = this.playerApi.isInKoli();
          this.btn_recruitmentSettings.softDisabled = this.playerApi.isInKoli();
+         this.btn_motdEdit.visible = this.socialApi.hasGuildRight(this.playerApi.id(),GuildRightsEnum.RIGHT_UPDATE_MOTD);
          this.openSelectedTab(args[0][0]);
          this.setUpRecruitmentSettingsButton();
       }
       
       public function unload() : void
       {
+         this.sysApi.sendAction(new StopListenGuildChestStructureAction());
          this.uiApi.hideTooltip();
          this.uiApi.unloadUi("subGuildUi");
       }
@@ -276,9 +276,9 @@ package Ankama_Social.ui
          {
             return EnumTab.GUILD_HOUSES_TAB;
          }
-         if(tab == DataEnum.GUILD_TAB_BULLETIN_ID)
+         if(tab == DataEnum.GUILD_TAB_LOG_BOOK_ID)
          {
-            return EnumTab.GUILD_BULLETIN_TAB;
+            return EnumTab.GUILD_LOG_BOOK_TAB;
          }
          if(tab == DataEnum.GUILD_TAB_DIRECTORY_ID)
          {
@@ -309,9 +309,9 @@ package Ankama_Social.ui
          {
             return this.btn_houses;
          }
-         if(tab == DataEnum.GUILD_TAB_BULLETIN_ID)
+         if(tab == DataEnum.GUILD_TAB_LOG_BOOK_ID)
          {
-            return this.btn_bulletin;
+            return this.btn_logBook;
          }
          if(tab == DataEnum.GUILD_TAB_DIRECTORY_ID)
          {
@@ -339,7 +339,7 @@ package Ankama_Social.ui
       
       private function setUpRecruitmentSettingsButton() : void
       {
-         if(this._guild === null || !this._guild.manageGuildRecruitment || !this._guild.guildRecruitmentInfo)
+         if(this._guild === null || this.socialApi.playerGuildRank.rights.indexOf(GuildRightsEnum.RIGHT_MANAGE_RECRUITMENT) == -1 || !this._guild.guildRecruitmentInfo)
          {
             this.btn_recruitmentSettings.visible = false;
             this.ctr_editPlaceholder.width = 540;
@@ -378,11 +378,11 @@ package Ankama_Social.ui
                icon = this.dataApi.getEmblemSymbol(this._guild.upEmblem.idEmblem);
                if(icon.colorizable)
                {
-                  this.utilApi.changeColor(this.tx_emblemUp.getChildByName("up"),this._guild.upEmblem.color,0);
+                  this.utilApi.changeColor(this.tx_emblemUp,this._guild.upEmblem.color,0);
                }
                else
                {
-                  this.utilApi.changeColor(this.tx_emblemUp.getChildByName("up"),this._guild.upEmblem.color,0,true);
+                  this.utilApi.changeColor(this.tx_emblemUp,this._guild.upEmblem.color,0,true);
                }
          }
       }
@@ -430,21 +430,19 @@ package Ankama_Social.ui
          this.inp_motd.text = this._guild.motd;
       }
       
+      private function handleLogBookWarning() : void
+      {
+         this.tx_logBookWarning.visible = this._guild.lastNotifiedTimestamp > this.sysApi.getData(Social.GUILD_BULLETIN_LAST_VISIT_TIMESTAMP);
+      }
+      
       private function onGuildBulletin() : void
       {
-         if(this._nCurrentTab == DataEnum.GUILD_TAB_BULLETIN_ID)
+         if(this._nCurrentTab == DataEnum.GUILD_TAB_LOG_BOOK_ID)
          {
             return;
          }
          this._guild = this.socialApi.getGuild();
-         if(this._guild.lastNotifiedTimestamp > this.sysApi.getData("guildBulletinLastVisitTimestamp"))
-         {
-            this.tx_bulletinWarning.visible = true;
-         }
-         else
-         {
-            this.tx_bulletinWarning.visible = false;
-         }
+         this.handleLogBookWarning();
       }
       
       public function selectWhichTabHintsToDisplay() : void
@@ -467,15 +465,14 @@ package Ankama_Social.ui
       
       public function onRelease(target:GraphicContainer) : void
       {
-         var escapeText:String = null;
          switch(target)
          {
             case this.btn_members:
                this.openSelectedTab(DataEnum.GUILD_TAB_MEMBERS_ID);
                break;
-            case this.btn_bulletin:
-               this.tx_bulletinWarning.visible = false;
-               this.openSelectedTab(DataEnum.GUILD_TAB_BULLETIN_ID);
+            case this.btn_logBook:
+               this.tx_logBookWarning.visible = false;
+               this.openSelectedTab(DataEnum.GUILD_TAB_LOG_BOOK_ID);
                break;
             case this.btn_customization:
                this.openSelectedTab(DataEnum.GUILD_TAB_PERSONALIZATION_ID);
@@ -500,10 +497,9 @@ package Ankama_Social.ui
                this.switchMotdEditMode(false);
                break;
             case this.btn_motdValid:
-               escapeText = this.chatApi.escapeChatString(this.inp_motd.text);
-               if(escapeText != this._guild.motd)
+               if(this.inp_motd.text != this._guild.motd)
                {
-                  this.sysApi.sendAction(new GuildMotdSetRequestAction([escapeText]));
+                  this.sysApi.sendAction(new GuildMotdSetRequestAction([this.inp_motd.text]));
                }
                this.switchMotdEditMode(false);
                break;
@@ -532,7 +528,7 @@ package Ankama_Social.ui
                tooltipText = this.uiApi.getText("ui.common.creationDate") + this.uiApi.getText("ui.common.colon") + this.timeApi.getDate(this._guild.creationDate * 1000) + " " + this.timeApi.getClock(this._guild.creationDate * 1000);
                break;
             case this.btn_motdEdit:
-               tooltipText = this.uiApi.getText("ui.motd.edit");
+               tooltipText = this.uiApi.getText("ui.motd.editGuild");
                break;
             case this.btn_motdValid:
                tooltipText = this.uiApi.getText("ui.common.validation");
@@ -540,8 +536,8 @@ package Ankama_Social.ui
             case this.btn_motdExit:
                tooltipText = this.uiApi.getText("ui.common.cancel");
                break;
-            case this.tx_bulletinWarning:
-               tooltipText = this.uiApi.getText("ui.motd.bulletinUpdated");
+            case this.tx_logBookWarning:
+               tooltipText = this.uiApi.getText("ui.guild.guildInfos.notif");
                break;
             case this.lbl_motd:
                tooltipText = "";
@@ -556,7 +552,7 @@ package Ankama_Social.ui
                      tooltipText += "\n";
                   }
                   date = this._guild.motdTimestamp * 1000;
-                  tooltipText += this.uiApi.getText("ui.motd.lastModification",this.timeApi.getDate(date,true) + " " + this.timeApi.getClock(date,true,true),this._guild.motdWriterName);
+                  tooltipText += this.uiApi.getText("ui.motd.lastGuildMessageModification",this.timeApi.getDate(date,true) + " " + this.timeApi.getClock(date,true,true),this._guild.motdWriterName);
                }
                break;
             case this.tx_paddockWarning:
@@ -594,16 +590,14 @@ package Ankama_Social.ui
       
       public function onShortcut(s:String) : Boolean
       {
-         var escapeText:String = null;
          switch(s)
          {
             case "validUi":
                if(this.inp_motd.visible && this.inp_motd.haveFocus)
                {
-                  escapeText = this.chatApi.escapeChatString(this.inp_motd.text);
-                  if(escapeText != this._guild.motd)
+                  if(this.inp_motd.text != this._guild.motd)
                   {
-                     this.sysApi.sendAction(new GuildMotdSetRequestAction([escapeText]));
+                     this.sysApi.sendAction(new GuildMotdSetRequestAction([this.inp_motd.text]));
                   }
                   this.switchMotdEditMode(false);
                   return true;

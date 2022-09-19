@@ -1011,6 +1011,8 @@ package com.ankama.dofus.enums
       
       public static var ACTION_FIGHT_SPLASH_RAW_TAKEN_DAMAGE_EARTH:int = 1128;
       
+      public static var K:int = 1129;
+      
       public static var ACTION_CHARACTER_MANA_USE_KILL_LIFE_AIR:int = 1131;
       
       public static var ACTION_CHARACTER_MANA_USE_KILL_LIFE_WATER:int = 1132;
@@ -1330,6 +1332,24 @@ package com.ankama.dofus.enums
       public static var ACTION_SELF_PILOTING:int = 2881;
       
       public static var ACTION_DISTRIBUTE_GAMEACTION:int = 2882;
+      
+      public static var ACTION_SET_TURN_WAITING_TIME:int = 2883;
+      
+      public static var ACTION_CHARACTER_SEND_INFORMATION_TEXT_TO_MAP:int = 2884;
+      
+      public static var ACTION_CHARACTER_SEND_INFORMATION_TEXT_TO_SUBAREA:int = 2885;
+      
+      public static var ACTION_CHARACTER_SEND_INFORMATION_TEXT_TO_AREA:int = 2886;
+      
+      public static var ACTION_CHARACTER_SEND_INFORMATION_TEXT_TO_WORLD:int = 2887;
+      
+      public static var ACTION_UNKNOWN:int = 2888;
+      
+      public static var ACTION_CHARACTER_OPEN_GUILD_STORAGE:int = 2889;
+      
+      public static var ACTION_CHARACTER_ADD_ALTERATION:int = 2892;
+      
+      public static var ACTION_CHARACTER_REMOVE_ALTERATION:int = 2893;
        
       
       public function ActionIds()

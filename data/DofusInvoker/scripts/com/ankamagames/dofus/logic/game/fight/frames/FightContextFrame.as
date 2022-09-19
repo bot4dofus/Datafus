@@ -22,6 +22,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.datacenter.challenges.Challenge;
    import com.ankamagames.dofus.datacenter.monsters.Companion;
    import com.ankamagames.dofus.datacenter.monsters.Monster;
+   import com.ankamagames.dofus.datacenter.monsters.MonsterRace;
    import com.ankamagames.dofus.datacenter.npcs.TaxCollectorFirstname;
    import com.ankamagames.dofus.datacenter.npcs.TaxCollectorName;
    import com.ankamagames.dofus.datacenter.spells.Spell;
@@ -29,6 +30,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.datacenter.world.SubArea;
    import com.ankamagames.dofus.externalnotification.ExternalNotificationManager;
    import com.ankamagames.dofus.externalnotification.enums.ExternalNotificationTypeEnum;
+   import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.internalDatacenter.fight.ChallengeWrapper;
    import com.ankamagames.dofus.internalDatacenter.fight.FightResultEntryWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
@@ -38,6 +40,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.kernel.sound.SoundManager;
    import com.ankamagames.dofus.kernel.sound.enum.UISoundEnum;
+   import com.ankamagames.dofus.logic.common.managers.FeatureManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowCellManager;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.common.actions.ToggleShowUIAction;
@@ -138,7 +141,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
    import com.ankamagames.jerakine.benchmark.BenchmarkTimer;
    import com.ankamagames.jerakine.data.I18n;
-   import com.ankamagames.jerakine.data.XmlConfig;
    import com.ankamagames.jerakine.entities.interfaces.*;
    import com.ankamagames.jerakine.entities.messages.EntityMouseOutMessage;
    import com.ankamagames.jerakine.entities.messages.EntityMouseOverMessage;
@@ -157,13 +159,11 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.jerakine.types.zones.Custom;
    import com.ankamagames.jerakine.utils.display.spellZone.SpellShapeEnum;
    import com.ankamagames.jerakine.utils.memory.WeakReference;
-   import com.hurlant.util.Hex;
    import flash.display.DisplayObject;
    import flash.display.Sprite;
    import flash.events.TimerEvent;
    import flash.filters.ColorMatrixFilter;
    import flash.filters.GlowFilter;
-   import flash.utils.ByteArray;
    import flash.utils.Dictionary;
    import flash.utils.getQualifiedClassName;
    import flash.utils.getTimer;
@@ -173,6 +173,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
    {
       
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(FightContextFrame));
+      
+      private static const FIGHTER_NAME_DEPTH_LIMIT:uint = 2;
       
       public static var preFightIsActive:Boolean = true;
       
@@ -427,44 +429,62 @@ package com.ankamagames.dofus.logic.game.fight.frames
          }
       }
       
-      public function getFighterName(fighterId:Number) : String
+      public function getFighterName(fighterId:Number, depth:uint = 0) : String
       {
          var fighterInfos:GameFightFighterInformations = null;
+         var monsterData:Monster = null;
          var compInfos:GameFightEntityInformation = null;
-         var name:String = null;
          var genericName:String = null;
          var taxInfos:GameFightTaxCollectorInformations = null;
-         var masterName:String = null;
          fighterInfos = this.getFighterInfos(fighterId);
          if(!fighterInfos)
          {
             return "Unknown Fighter";
          }
+         var name:String = null;
+         var masterName:String = null;
          switch(true)
          {
             case fighterInfos is GameFightFighterNamedInformations:
-               return (fighterInfos as GameFightFighterNamedInformations).name;
+               name = (fighterInfos as GameFightFighterNamedInformations).name;
+               break;
             case fighterInfos is GameFightMonsterInformations:
-               return Monster.getMonsterById((fighterInfos as GameFightMonsterInformations).creatureGenericId).name;
+               monsterData = Monster.getMonsterById((fighterInfos as GameFightMonsterInformations).creatureGenericId);
+               if(monsterData !== null)
+               {
+                  if(fighterInfos.stats.summoned && fighterInfos.stats.summoner !== PlayedCharacterManager.getInstance().id && depth < FIGHTER_NAME_DEPTH_LIMIT)
+                  {
+                     masterName = this.getFighterName(fighterInfos.stats.summoner,depth + 1);
+                     name = I18n.getUiText("ui.common.belonging",[monsterData.name,masterName]);
+                  }
+                  else
+                  {
+                     name = monsterData.name;
+                  }
+               }
+               break;
             case fighterInfos is GameFightEntityInformation:
                compInfos = fighterInfos as GameFightEntityInformation;
                genericName = Companion.getCompanionById(compInfos.entityModelId).name;
-               if(compInfos.masterId != PlayedCharacterManager.getInstance().id)
+               if(compInfos.masterId != PlayedCharacterManager.getInstance().id && depth < FIGHTER_NAME_DEPTH_LIMIT)
                {
-                  masterName = this.getFighterName(compInfos.masterId);
+                  masterName = this.getFighterName(compInfos.masterId,depth + 1);
                   name = I18n.getUiText("ui.common.belonging",[genericName,masterName]);
                }
                else
                {
                   name = genericName;
                }
-               return name;
+               break;
             case fighterInfos is GameFightTaxCollectorInformations:
                taxInfos = fighterInfos as GameFightTaxCollectorInformations;
-               return TaxCollectorFirstname.getTaxCollectorFirstnameById(taxInfos.firstNameId).firstname + " " + TaxCollectorName.getTaxCollectorNameById(taxInfos.lastNameId).name;
-            default:
-               return "Unknown Fighter Type";
+               name = TaxCollectorFirstname.getTaxCollectorFirstnameById(taxInfos.firstNameId).firstname + " " + TaxCollectorName.getTaxCollectorNameById(taxInfos.lastNameId).name;
          }
+         if(name === null)
+         {
+            return "Unknown Fighter Type";
+         }
+         return name;
       }
       
       public function getFighterLevel(fighterId:Number) : uint
@@ -541,9 +561,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var challenge:ChallengeWrapper = null;
          var gfsmsg:GameFightStartingMessage = null;
          var TreasurHuntMask:Sprite = null;
+         var playCustom:Boolean = false;
          var mcmsg:CurrentMapMessage = null;
          var wp:WorldPointWrapper = null;
-         var decryptionKey:ByteArray = null;
          var questFrame:QuestFrame = null;
          var gcrmsg:GameContextReadyMessage = null;
          var mlcm:MapsLoadingCompleteMessage = null;
@@ -608,7 +628,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var tsuia:ToggleShowUIAction = null;
          var usma:UpdateSpellModifierAction = null;
          var spellWrapper:SpellWrapper = null;
-         var decryptionKeyString:String = null;
+         var modstersIds:Vector.<uint> = null;
+         var monster:int = 0;
          var gfrwsmsg:GameFightResumeWithSlavesMessage = null;
          var buffTmp:BasicBuff = null;
          var namedTeam:NamedPartyTeam = null;
@@ -616,6 +637,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var buffTmpS:BasicBuff = null;
          var namedTeam2:NamedPartyTeam = null;
          var entity:IEntity = null;
+         var entityInfos:GameFightFighterInformations = null;
          var mi:MarkInstance = null;
          var glyph:Glyph = null;
          var mpWithPortals:Vector.<MapPoint> = null;
@@ -689,7 +711,20 @@ package com.ankamagames.dofus.logic.game.fight.frames
                }
                CurrentPlayedFighterManager.getInstance().currentFighterId = PlayedCharacterManager.getInstance().id;
                CurrentPlayedFighterManager.getInstance().getSpellCastManager().currentTurn = 1;
-               SoundManager.getInstance().manager.playFightMusic(gfsmsg.containsBoss);
+               playCustom = false;
+               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled("character.spell.forgettable.modsters"))
+               {
+                  modstersIds = MonsterRace.getMonsterRaceById(DataEnum.MONSTER_TYPE_OSATOPIA).monsters;
+                  for each(monster in gfsmsg.monsters)
+                  {
+                     if(modstersIds.indexOf(monster) != -1)
+                     {
+                        playCustom = true;
+                        break;
+                     }
+                  }
+               }
+               SoundManager.getInstance().manager.playFightMusic(gfsmsg.containsBoss,playCustom);
                SoundManager.getInstance().manager.playUISound(UISoundEnum.INTRO_FIGHT);
                return true;
             case msg is CurrentMapMessage:
@@ -712,16 +747,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                KernelEventsManager.getInstance().processCallback(HookList.StartZoom,false);
                Atouin.getInstance().initPreDisplay(wp);
                Atouin.getInstance().clearEntities();
-               if(mcmsg.mapKey && mcmsg.mapKey.length)
-               {
-                  decryptionKeyString = XmlConfig.getInstance().getEntry("config.maps.encryptionKey");
-                  if(!decryptionKeyString)
-                  {
-                     decryptionKeyString = mcmsg.mapKey;
-                  }
-                  decryptionKey = Hex.toArray(Hex.fromString(decryptionKeyString));
-               }
-               this._currentMapRenderId = Atouin.getInstance().display(wp,decryptionKey);
+               this._currentMapRenderId = Atouin.getInstance().display(wp);
                _log.info("Ask map render for fight #" + this._currentMapRenderId);
                PlayedCharacterManager.getInstance().currentMap = wp;
                PlayedCharacterManager.getInstance().currentSubArea = SubArea.getSubAreaByMapId(mcmsg.mapId);
@@ -1000,8 +1026,13 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   {
                      if(!(fscf != null && fscf.isTeleportationPreviewEntity(entity.id)))
                      {
-                        cellEntity = entity as AnimatedCharacter;
+                        entityInfos = this._entitiesFrame.getEntityInfos(entity.id) as GameFightFighterInformations;
+                        if(!(entityInfos && entityInfos.stats.invisibilityState == GameActionFightInvisibilityStateEnum.INVISIBLE))
+                        {
+                           cellEntity = entity as AnimatedCharacter;
+                        }
                      }
+                     continue;
                      continue;
                      break;
                   }
@@ -1209,8 +1240,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
                         {
                            winners.push(frew);
                         }
-                        var _loc116_:* = resultIndex++;
-                        results[_loc116_] = frew;
+                        var _loc118_:* = resultIndex++;
+                        results[_loc118_] = frew;
                      }
                      if(frew.id == PlayedCharacterManager.getInstance().id)
                      {
@@ -1955,7 +1986,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
             if(entityId != id)
             {
                entityInfo = this._entitiesFrame.getEntityInfos(entityId) as GameFightFighterInformations;
-               if(entityInfo && (entityInfo.stats.summoner == id || summonerId == entityId || entityInfo.stats.summoner == summonerId && summonerId || entityInfo is GameFightEntityInformation && (entityInfo as GameFightEntityInformation).masterId == id))
+               if(entityInfo && !entityInfo.stats.invisibilityState == GameActionFightInvisibilityStateEnum.INVISIBLE && (entityInfo.stats.summoner == id || summonerId == entityId || entityInfo.stats.summoner == summonerId && summonerId || entityInfo is GameFightEntityInformation && (entityInfo as GameFightEntityInformation).masterId == id))
                {
                   this.highlightAsLinkedEntity(entityId,summonerId == entityId);
                }

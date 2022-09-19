@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class LivingObjectMessageMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2593;
+      public static const protocolId:uint = 7135;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 2593;
+         return 7135;
       }
       
       public function initLivingObjectMessageMessage(msgId:uint = 0, timeStamp:uint = 0, owner:String = "", objectGenericId:uint = 0) : LivingObjectMessageMessage
@@ -100,7 +100,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
          {
             throw new Error("Forbidden value (" + this.objectGenericId + ") on element objectGenericId.");
          }
-         output.writeVarShort(this.objectGenericId);
+         output.writeVarInt(this.objectGenericId);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -154,7 +154,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       private function _objectGenericIdFunc(input:ICustomDataInput) : void
       {
-         this.objectGenericId = input.readVarUhShort();
+         this.objectGenericId = input.readVarUhInt();
          if(this.objectGenericId < 0)
          {
             throw new Error("Forbidden value (" + this.objectGenericId + ") on element of LivingObjectMessageMessage.objectGenericId.");

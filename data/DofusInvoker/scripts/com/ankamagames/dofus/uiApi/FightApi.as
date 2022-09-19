@@ -94,6 +94,21 @@ package com.ankamagames.dofus.uiApi
          return this.getFightFrame().entitiesFrame.getOrdonnedPreFighters();
       }
       
+      public function getFighterInitiative(fighterId:Number) : int
+      {
+         var fighters:Vector.<Number> = this.getFighters();
+         if(fighters === null)
+         {
+            return -1;
+         }
+         var position:Number = fighters.indexOf(fighterId);
+         if(position < 0)
+         {
+            return -1;
+         }
+         return position + 1;
+      }
+      
       public function getMonsterId(id:Number) : int
       {
          var gffi:GameFightFighterInformations = this.getFighterInfos(id);

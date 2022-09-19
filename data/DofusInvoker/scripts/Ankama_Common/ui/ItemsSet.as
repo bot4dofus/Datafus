@@ -150,11 +150,6 @@ package Ankama_Common.ui
          this.displaySet(this.dataApi.getItem(param.item.objectGID).itemSetId);
       }
       
-      public function unload() : void
-      {
-         this.uiApi.unloadUi("itemBoxSet");
-      }
-      
       public function updateEffectLine(data:*, componentsRef:*, selected:Boolean) : void
       {
          var cssClass:String = null;

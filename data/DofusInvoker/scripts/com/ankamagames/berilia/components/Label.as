@@ -292,9 +292,6 @@ package com.ankamagames.berilia.components
       public function set hyperlinkEnabled(bValue:Boolean) : void
       {
          this._hyperlinkEnabled = bValue;
-         mouseEnabled = bValue;
-         mouseChildren = bValue;
-         this._tText.mouseEnabled = bValue;
          if(bValue)
          {
             this._hyperLinks = [];

@@ -1,6 +1,7 @@
 package Ankama_Grimoire.ui.optionalFeatures
 {
    import com.ankamagames.berilia.api.UiApi;
+   import com.ankamagames.berilia.components.Label;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.utils.ComponentHookList;
@@ -27,6 +28,10 @@ package Ankama_Grimoire.ui.optionalFeatures
       
       public var btn_ok:ButtonContainer;
       
+      public var lbl_title:Label;
+      
+      public var lbl_description:Label;
+      
       public function ForgettableSpellsIntroPopUp()
       {
          super();
@@ -39,6 +44,16 @@ package Ankama_Grimoire.ui.optionalFeatures
             throw new Error("You should provide at least the validation callback");
          }
          this._validationCallback = params[0];
+         if(params[1])
+         {
+            this.lbl_title.text = params[1];
+         }
+         if(params[2])
+         {
+            this.lbl_description.text = params[2];
+         }
+         this.lbl_description.fullWidthAndHeight();
+         this.mainCtr.height = this.lbl_description.height + this.lbl_title.height + this.btn_ok.height + Number(this.uiApi.me().getConstant("bottom_margin"));
          this.btn_ok.soundId = SoundEnum.OK_BUTTON;
          this.uiApi.addComponentHook(this.btn_ok,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.mainCtr,ComponentHookList.ON_RELEASE);

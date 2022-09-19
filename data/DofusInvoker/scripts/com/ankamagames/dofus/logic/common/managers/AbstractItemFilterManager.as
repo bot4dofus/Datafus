@@ -15,6 +15,7 @@ package com.ankamagames.dofus.logic.common.managers
    import com.ankamagames.dofus.datacenter.monsters.MonsterDrop;
    import com.ankamagames.dofus.datacenter.mounts.Mount;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.SystemApi;
    import com.ankamagames.jerakine.logger.Log;
@@ -81,6 +82,10 @@ package com.ankamagames.dofus.logic.common.managers
       private const CHARACID_DEBOOST_DEALT_DAMAGE_MELEE:uint = 125;
       
       private const FORGETTABLE_SCROLL_SPELL_TYPE_ID:uint = 223;
+      
+      private const ENCYCLOPEDIA_LIST_UI_NAME:String = "encyclopediaList";
+      
+      private const AUCTION_HOUSE_BUY_UI_NAME:String = "auctionHouseBuy";
       
       protected var _currentUi:UiRootContainer;
       
@@ -577,14 +582,17 @@ package com.ankamagames.dofus.logic.common.managers
             tmpDataMatrix = [];
             for each(subTypeId in subTypeIds)
             {
-               if(!(!FeatureManager.getInstance().isFeatureWithKeywordEnabled("character.spell.forgettable") && subTypeId == this.FORGETTABLE_SCROLL_SPELL_TYPE_ID))
+               if(!(!FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS) && subTypeId == this.FORGETTABLE_SCROLL_SPELL_TYPE_ID || !FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.MODSTERS) && subTypeId == DataEnum.ITEM_TYPE_MODSTER || FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.MODSTERS) && this._currentUi.uiData.name == this.ENCYCLOPEDIA_LIST_UI_NAME && subTypeId == DataEnum.ITEM_TYPE_MODSTER))
                {
                   itemType = this._dataApi.getItemType(subTypeId);
-                  tmp = this._dataApi.queryIntersection(this._allItemsWithCurrentTypeIds,this._dataApi.queryEquals(Item,"typeId",subTypeId));
-                  if(tmp.length > 0)
+                  if(itemType != null)
                   {
-                     isSelected = this._subFilteredTypes.indexOf(itemType.superTypeId) != -1 && this._currentSubIds.indexOf(subTypeId) != -1;
-                     tmpDataMatrix.push(new FilterGridItem(subTypeId,"subCategory",itemType.name,null,isSelected,this._catNumber,subTypeId));
+                     tmp = this._dataApi.queryIntersection(this._allItemsWithCurrentTypeIds,this._dataApi.queryEquals(Item,"typeId",subTypeId));
+                     if(tmp.length > 0)
+                     {
+                        isSelected = this._subFilteredTypes.indexOf(itemType.superTypeId) != -1 && this._currentSubIds.indexOf(subTypeId) != -1;
+                        tmpDataMatrix.push(new FilterGridItem(subTypeId,"subCategory",itemType.name,null,isSelected,this._catNumber,subTypeId));
+                     }
                   }
                }
             }
@@ -739,7 +747,7 @@ package com.ankamagames.dofus.logic.common.managers
             tmpItemType.push(key);
          }
          result.push({"itemType":tmpItemType});
-         if(this._currentUi.uiData.name == "auctionHouseBuy")
+         if(this._currentUi.uiData.name == this.AUCTION_HOUSE_BUY_UI_NAME)
          {
             result = this.addEmptyLine(result,Math.ceil(tmpItemType.length / 4) + 2);
          }

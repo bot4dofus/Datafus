@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameContextBasicSpawnInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 2015;
+      public static const protocolId:uint = 5587;
        
       
       public var teamId:uint = 2;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 2015;
+         return 5587;
       }
       
       public function initGameContextBasicSpawnInformation(teamId:uint = 2, alive:Boolean = false, informations:GameContextActorPositionInformations = null) : GameContextBasicSpawnInformation

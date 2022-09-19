@@ -13,6 +13,16 @@ package com.ankamagames.berilia.enums
       
       public static const INVENTORY_UI:String = "inventory";
       
+      public static const GUILD_CHEST_UI:String = "guildChest";
+      
+      public static const UPDATE_STORAGE_TAB_UI:String = "updateStorageTab";
+      
+      public static const UNLOCK_GUILD_CHEST:String = "unlockGuildChest";
+      
+      public static const GUILD_CHEST_CONTRIBUTIONS:String = "guildChestContributions";
+      
+      public static const GUILD_CHEST_CONTRIBUTE_POPUP:String = "guildChestContributePopup";
+      
       public static const SPECTATOR_UI:String = "spectatorUi";
       
       public static const GRIMOIRE:String = "book";
@@ -31,7 +41,9 @@ package com.ankamagames.berilia.enums
       
       public static const IDOLS_UI:String = "idolsTab";
       
-      public static const BUFF_UI:String = "buffUi";
+      public static const PREVIEWED_ALTERATIONS_UI:String = "previewedAlterationsUi";
+      
+      public static const ALTERATIONS_UI:String = "alterationsUi";
       
       public static const BANNER:String = "banner";
       
@@ -83,6 +95,8 @@ package com.ankamagames.berilia.enums
       
       public static const REWARDS:String = "rewardsUi";
       
+      public static const PRE_GAME_MAIN_MENU:String = "preGameMainMenu";
+      
       public static const FIGHT_RESULT:String = "fightResult";
       
       public static const FIGHT_RESULT_SIMPLE:String = "fightResultSimple";
@@ -92,6 +106,8 @@ package com.ankamagames.berilia.enums
       public static const KIS_INFRACTION_POPUP:String = "KISInfractionPopup";
       
       public static const KIS_PREVENT_SANCTION_POPUP:String = "KISPreventAndSanctionPopup";
+      
+      public static const SLAVE_FIGHT_UI:String = "slaveFightUi";
       
       public static const QUEST_LIST:String = "questList";
       
@@ -111,15 +127,21 @@ package com.ankamagames.berilia.enums
       
       public static const FORGETTABLE_SPELLS_UI:String = "forgettableSpellsUi";
       
+      public static const FORGETTABLE_MODSTERS_UI:String = "forgettableModstersUi";
+      
       public static const FORGETTABLE_SPELL_SET_POP_UP:String = "forgettableSpellSetPopUp";
       
       public static const FORGETTABLE_SPELL_GET_SCROLL_WARNING_POP_UP:String = "forgettableSpellGetScrollWarningPopUp";
+      
+      public static const MODSTER_GET_SCROLL_WARNING_POP_UP:String = "modsterGetScrollWarningPopUp";
       
       public static const FORGETTABLE_SPELLS_INTRO_POP_UP:String = "forgettableSpellsIntroPopUp";
       
       public static const FORGETTABLE_SPELL_SETS_UI:String = "forgettableSpellSetsUi";
       
       public static const FORGETTABLE_SPELL_SET_DELETION_POP_UP:String = "forgettableSpellSetDeletionPopUp";
+      
+      public static const FORGETTABLE_MODSTER_SETS_UI:String = "forgettableModsterSetsUi";
       
       public static const CHINQ_UI:String = "chinqUi";
       
@@ -136,6 +158,16 @@ package com.ankamagames.berilia.enums
       public static const GUILD_JOIN_POPUP:String = "guildJoinPopup";
       
       public static const GUILD_APPLY_POPUP:String = "guildApplyPopup";
+      
+      public static const GUILD_NOTE_EDITING_POPUP:String = "guildNoteEditingPopup";
+      
+      public static const GUILD_RIGHTS_AND_RANKS:String = "guildRightsAndRanks";
+      
+      public static const GUILD_CREATE_RANK:String = "guildCreateRank";
+      
+      public static const REMOVE_GUILD_RANK_POPUP:String = "removeGuildRankPopup";
+      
+      public static const MODIFY_GUILD_RANK_POPUP:String = "modifyGuildRankPopup";
        
       
       public function UIEnum()

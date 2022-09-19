@@ -77,7 +77,7 @@ package Ankama_ContextMenu.makers
          }
          for each(skill in data)
          {
-            isDisabled = disabled || !skill.enabled || dead;
+            isDisabled = disabled || !skill.enabled || !skill.isAvailable || dead;
             params = [param[0],skill.instanceId];
             Api.system.log(2,"skill.id " + skill.id);
             if(skill.id == DataEnum.SKILL_BUY_PADDOCK && currentPaddockInstances)

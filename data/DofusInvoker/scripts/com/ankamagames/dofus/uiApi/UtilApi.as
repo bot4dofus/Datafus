@@ -243,7 +243,7 @@ package com.ankamagames.dofus.uiApi
          {
             return null;
          }
-         var result:* = new (target.constructor as Class)();
+         var result:* = target.slice(0,0);
          var len:uint = target.length;
          var i:uint = 0;
          if(pattern is String)
@@ -431,6 +431,11 @@ package com.ankamagames.dofus.uiApi
       public function sanitizeText(text:String) : String
       {
          return StringUtils.sanitizeText(text);
+      }
+      
+      public function getShortenedStringOfNumber(number:Number) : String
+      {
+         return StringUtils.getShortenedStringOfNumber(number);
       }
    }
 }

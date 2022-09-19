@@ -372,7 +372,14 @@ package com.ankamagames.berilia.components
          if(this._placeholderText && _tText.text == this._placeholderText)
          {
             _tText.text = "";
-            this._placeholderText = null;
+         }
+      }
+      
+      private function addPlaceholder() : void
+      {
+         if(this._placeholderText)
+         {
+            this.placeholderText = this._placeholderText;
          }
       }
       
@@ -386,6 +393,11 @@ package com.ankamagames.berilia.components
       {
          Berilia.getInstance().docMain.stage.focus = null;
          FocusHandler.getInstance().setFocus(null);
+      }
+      
+      public function isPlaceholderActive() : Boolean
+      {
+         return this.alpha == 0.5;
       }
       
       override public function process(msg:Message) : Boolean
@@ -514,6 +526,14 @@ package com.ankamagames.berilia.components
          }
          this._lastTextOnInput = _tText.text;
          this._sendingText = false;
+         if(text.length == 0)
+         {
+            this.addPlaceholder();
+         }
+         else if(text.length != 0 && text != this._placeholderText)
+         {
+            this.removePlaceholderText();
+         }
          if(this._timerFormatDelay)
          {
             this._timerFormatDelay.reset();
@@ -550,6 +570,12 @@ package com.ankamagames.berilia.components
       
       private function onKeyDown(pEvent:KeyboardEvent) : void
       {
+         if((pEvent.keyCode == Keyboard.DELETE || pEvent.keyCode == Keyboard.BACKSPACE) && this.isPlaceholderActive())
+         {
+            pEvent.preventDefault();
+            pEvent.stopImmediatePropagation();
+            return;
+         }
          if(!pEvent.altKey && !pEvent.shiftKey && pEvent.ctrlKey && pEvent.keyCode == Keyboard.Y)
          {
             pEvent.preventDefault();

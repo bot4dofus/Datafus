@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class IdentificationSuccessWithLoginTokenMessage extends IdentificationSuccessMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2204;
+      public static const protocolId:uint = 8626;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,12 +30,12 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 2204;
+         return 8626;
       }
       
-      public function initIdentificationSuccessWithLoginTokenMessage(login:String = "", accountTag:AccountTagInformation = null, accountId:uint = 0, communityId:uint = 0, hasRights:Boolean = false, hasConsoleRight:Boolean = false, secretQuestion:String = "", accountCreation:Number = 0, subscriptionElapsedDuration:Number = 0, subscriptionEndDate:Number = 0, wasAlreadyConnected:Boolean = false, havenbagAvailableRoom:uint = 0, loginToken:String = "") : IdentificationSuccessWithLoginTokenMessage
+      public function initIdentificationSuccessWithLoginTokenMessage(login:String = "", accountTag:AccountTagInformation = null, accountId:uint = 0, communityId:uint = 0, hasRights:Boolean = false, hasConsoleRight:Boolean = false, secretQuestion:String = "", accountCreation:Number = 0, subscriptionElapsedDuration:Number = 0, subscriptionEndDate:Number = 0, wasAlreadyConnected:Boolean = false, havenbagAvailableRoom:uint = 0, isAccountForced:Boolean = false, loginToken:String = "") : IdentificationSuccessWithLoginTokenMessage
       {
-         super.initIdentificationSuccessMessage(login,accountTag,accountId,communityId,hasRights,hasConsoleRight,secretQuestion,accountCreation,subscriptionElapsedDuration,subscriptionEndDate,wasAlreadyConnected,havenbagAvailableRoom);
+         super.initIdentificationSuccessMessage(login,accountTag,accountId,communityId,hasRights,hasConsoleRight,secretQuestion,accountCreation,subscriptionElapsedDuration,subscriptionEndDate,wasAlreadyConnected,havenbagAvailableRoom,isAccountForced);
          this.loginToken = loginToken;
          this._isInitialized = true;
          return this;

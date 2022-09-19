@@ -13,7 +13,6 @@ package Ankama_Storage.ui.behavior
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertAllFromInvAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertExistingFromInvAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeObjectTransfertListFromInvAction;
-   import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.ExchangeHookList;
    
    public class BankBehavior implements IStorageBehavior
@@ -123,10 +122,6 @@ package Ankama_Storage.ui.behavior
                      else if(Api.ui.getUiByName(UIEnum.BANK_UI) != null && item is ItemWrapper && !item.isEquipment)
                      {
                         Api.system.dispatchHook(ExchangeHookList.DisplayAssociatedRunes,null,true);
-                     }
-                     if(!Api.system.getOption("displayTooltips","dofus"))
-                     {
-                        Api.system.dispatchHook(ChatHookList.ShowObjectLinked,item);
                      }
                      break;
                   case SelectMethodEnum.DOUBLE_CLICK:

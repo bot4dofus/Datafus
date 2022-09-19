@@ -68,7 +68,6 @@ package
    import com.ankamagames.tiphon.events.TiphonEvent;
    import com.demonsters.debugger.MonsterDebugger;
    import flash.desktop.NativeApplication;
-   import flash.display.DisplayObject;
    import flash.display.DisplayObjectContainer;
    import flash.display.NativeWindow;
    import flash.display.NativeWindowDisplayState;
@@ -110,15 +109,11 @@ package
       
       private var _worldContainer:Sprite;
       
-      private var _instanceId:uint;
-      
       private var _doOptions:DofusOptions;
       
       private var _initialized:Boolean = false;
       
       private var _windowInitialized:Boolean = false;
-      
-      private var _forcedLang:String;
       
       private var _stageWidth:int;
       
@@ -142,8 +137,8 @@ package
          var version:Array = null;
          super();
          var buildType:String = String("release").replace(/[0-9]/g,"");
-         BuildInfos.VERSION = new Version("2.62.6-release",buildType.toUpperCase() == "LOCAL" ? BuildTypeEnum.INTERNAL : BuildTypeEnum[buildType.toUpperCase()]);
-         BuildInfos.BUILD_DATE = "11-02-2022 14:18";
+         BuildInfos.VERSION = new Version("2.64.7-release",buildType.toUpperCase() == "LOCAL" ? BuildTypeEnum.INTERNAL : BuildTypeEnum[buildType.toUpperCase()]);
+         BuildInfos.BUILD_DATE = "01-08-2022 14:24";
          try
          {
             versionFile = new File(File.applicationDirectory.nativePath + File.separator + "VERSION");
@@ -246,7 +241,7 @@ package
             }
             if(this.stage)
             {
-               this.init(this.stage);
+               this.init();
             }
             try
             {
@@ -404,16 +399,6 @@ package
          return this._doOptions;
       }
       
-      public function get instanceId() : uint
-      {
-         return this._instanceId;
-      }
-      
-      public function get forcedLang() : String
-      {
-         return this._forcedLang;
-      }
-      
       public function setDisplayOptions(opt:DofusOptions) : void
       {
          this.initWindow(opt.getOption("fullScreen"));
@@ -432,14 +417,8 @@ package
          }
       }
       
-      public function init(rootClip:DisplayObject, instanceId:uint = 0, forcedLang:String = null, args:Array = null) : void
+      public function init() : void
       {
-         if(args)
-         {
-            CommandLineArguments.getInstance().setArguments(args);
-         }
-         this._instanceId = instanceId;
-         this._forcedLang = forcedLang;
          var catchMouseEventCtr:Sprite = new Sprite();
          catchMouseEventCtr.name = "catchMouseEventCtr";
          catchMouseEventCtr.graphics.beginFill(0);
@@ -460,7 +439,7 @@ package
          StatisticsManager.getInstance().statsEnabled = true;
          SoundManager.getInstance().manager = new RegSoundManager();
          SoundManager.getInstance().manager.forceSoundsDebugMode = true;
-         this.initKernel(this.stage,rootClip);
+         this.initKernel(this.stage);
          this.initWorld();
          this.initUi();
          stage.nativeWindow.addEventListener(Event.CLOSE,this.onClosed);
@@ -757,9 +736,9 @@ package
          stage.nativeWindow.title = name;
       }
       
-      private function initKernel(stage:Stage, rootClip:DisplayObject) : void
+      private function initKernel(stage:Stage) : void
       {
-         Kernel.getInstance().init(stage,rootClip);
+         Kernel.getInstance().init(stage);
          LangManager.getInstance().handler = Kernel.getWorker();
          FontManager.getInstance().handler = Kernel.getWorker();
          FontManager.getInstance().processCallback = new Callback(KernelEventsManager.getInstance().processCallback,HookList.FontActiveTypeChanged);
@@ -792,7 +771,7 @@ package
          Berilia.getInstance().verboseException = isDebugMode;
          CursorConstant.init();
          UiModuleManager.getInstance().uiModulesScripts = Modules.scripts;
-         Berilia.getInstance().init(this._uiContainer,BuildInfos.VERSION.build);
+         Berilia.getInstance().init(this._uiContainer);
          EntityDisplayer.setAnimationModifier(1,new CustomBreedAnimationModifier());
          EntityDisplayer.setAnimationModifier(2,new CustomBreedAnimationModifier());
          EntityDisplayer.setSkinModifier(1,new BreedSkinModifier());

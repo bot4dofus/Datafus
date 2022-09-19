@@ -15,12 +15,12 @@ package
       override protected function getContent() : Object
       {
          return {
-            "invalidTarget":"Invalid target specified.",
-            "charsInvalid":"Error for filter \'{0}\': The following characters are not valid: []~$^&/(){}<>+=_-`!@#%?,:;\'\".",
-            "charPlacement":"Error for filter \'{0}\': \'*\' must be the right most character.",
             "levelLimit":"Logging level cannot be set to LogEventLevel.ALL.",
+            "invalidLen":"Categories must be at least one character in length.",
+            "charsInvalid":"Error for filter \'{0}\': The following characters are not valid: []~$^&/(){}<>+=_-`!@#%?,:;\'\".",
+            "invalidTarget":"Invalid target specified.",
             "invalidChars":"Categories can not contain any of the following characters: []`~,!@#$%*^&()]{}+=|\';?><./\".",
-            "invalidLen":"Categories must be at least one character in length."
+            "charPlacement":"Error for filter \'{0}\': \'*\' must be the right most character."
          };
       }
    }

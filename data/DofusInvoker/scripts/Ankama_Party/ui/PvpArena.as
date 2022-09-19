@@ -614,7 +614,26 @@ package Ankama_Party.ui
       
       public function onArenaUpdateRank(soloInfos:ArenaRankInfosWrapper, groupInfos:ArenaRankInfosWrapper = null, duelInfos:ArenaRankInfosWrapper = null) : void
       {
-         this.tx_3v3SoloLeagueIcon.uri = this.uiApi.createUri(this.uiApi.me().getConstant("arenaIcon") + soloInfos.leagueIconId);
+         if(soloInfos)
+         {
+            this.tx_3v3SoloLeagueIcon.visible = true;
+            this.tx_3v3SoloLeagueIcon.uri = this.uiApi.createUri(this.uiApi.me().getConstant("arenaIcon") + soloInfos.leagueIconId);
+         }
+         else
+         {
+            this.tx_3v3SoloLeagueIcon.visible = false;
+            this.tx_3v3SoloLeagueIcon.uri = null;
+         }
+         if(groupInfos)
+         {
+            this.tx_3v3TeamLeagueIcon.visible = true;
+            this.tx_3v3TeamLeagueIcon.uri = this.uiApi.createUri(this.uiApi.me().getConstant("arenaIcon") + groupInfos.leagueIconId);
+         }
+         else
+         {
+            this.tx_3v3TeamLeagueIcon.visible = false;
+            this.tx_3v3TeamLeagueIcon.uri = null;
+         }
          if(!soloInfos || soloInfos.leagueId <= 0)
          {
             this.lbl_3v3SoloLeagueName.text = this.uiApi.getText("ui.party.arena.noLeague");
@@ -655,7 +674,6 @@ package Ankama_Party.ui
          {
             this.lbl_3v3SoloVictoryRatioValue.text = soloInfos.todayVictoryCount + "/" + soloInfos.todayFightCount;
          }
-         this.tx_3v3TeamLeagueIcon.uri = this.uiApi.createUri(this.uiApi.me().getConstant("arenaIcon") + groupInfos.leagueIconId);
          if(!groupInfos || groupInfos.leagueId <= 0)
          {
             this.lbl_3v3TeamLeagueName.text = this.uiApi.getText("ui.party.arena.noLeague");

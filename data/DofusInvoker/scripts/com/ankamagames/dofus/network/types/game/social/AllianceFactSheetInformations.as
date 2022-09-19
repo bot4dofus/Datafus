@@ -10,10 +10,16 @@ package com.ankamagames.dofus.network.types.game.social
    public class AllianceFactSheetInformations extends AllianceInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 9654;
+      public static const protocolId:uint = 4963;
        
       
       public var creationDate:uint = 0;
+      
+      public var nbGuilds:uint = 0;
+      
+      public var nbMembers:uint = 0;
+      
+      public var nbSubarea:uint = 0;
       
       public function AllianceFactSheetInformations()
       {
@@ -22,13 +28,16 @@ package com.ankamagames.dofus.network.types.game.social
       
       override public function getTypeId() : uint
       {
-         return 9654;
+         return 4963;
       }
       
-      public function initAllianceFactSheetInformations(allianceId:uint = 0, allianceTag:String = "", allianceName:String = "", allianceEmblem:GuildEmblem = null, creationDate:uint = 0) : AllianceFactSheetInformations
+      public function initAllianceFactSheetInformations(allianceId:uint = 0, allianceTag:String = "", allianceName:String = "", allianceEmblem:GuildEmblem = null, creationDate:uint = 0, nbGuilds:uint = 0, nbMembers:uint = 0, nbSubarea:uint = 0) : AllianceFactSheetInformations
       {
          super.initAllianceInformations(allianceId,allianceTag,allianceName,allianceEmblem);
          this.creationDate = creationDate;
+         this.nbGuilds = nbGuilds;
+         this.nbMembers = nbMembers;
+         this.nbSubarea = nbSubarea;
          return this;
       }
       
@@ -36,6 +45,9 @@ package com.ankamagames.dofus.network.types.game.social
       {
          super.reset();
          this.creationDate = 0;
+         this.nbGuilds = 0;
+         this.nbMembers = 0;
+         this.nbSubarea = 0;
       }
       
       override public function serialize(output:ICustomDataOutput) : void
@@ -51,6 +63,21 @@ package com.ankamagames.dofus.network.types.game.social
             throw new Error("Forbidden value (" + this.creationDate + ") on element creationDate.");
          }
          output.writeInt(this.creationDate);
+         if(this.nbGuilds < 0)
+         {
+            throw new Error("Forbidden value (" + this.nbGuilds + ") on element nbGuilds.");
+         }
+         output.writeVarShort(this.nbGuilds);
+         if(this.nbMembers < 0)
+         {
+            throw new Error("Forbidden value (" + this.nbMembers + ") on element nbMembers.");
+         }
+         output.writeVarShort(this.nbMembers);
+         if(this.nbSubarea < 0)
+         {
+            throw new Error("Forbidden value (" + this.nbSubarea + ") on element nbSubarea.");
+         }
+         output.writeVarShort(this.nbSubarea);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -62,6 +89,9 @@ package com.ankamagames.dofus.network.types.game.social
       {
          super.deserialize(input);
          this._creationDateFunc(input);
+         this._nbGuildsFunc(input);
+         this._nbMembersFunc(input);
+         this._nbSubareaFunc(input);
       }
       
       override public function deserializeAsync(tree:FuncTree) : void
@@ -73,6 +103,9 @@ package com.ankamagames.dofus.network.types.game.social
       {
          super.deserializeAsync(tree);
          tree.addChild(this._creationDateFunc);
+         tree.addChild(this._nbGuildsFunc);
+         tree.addChild(this._nbMembersFunc);
+         tree.addChild(this._nbSubareaFunc);
       }
       
       private function _creationDateFunc(input:ICustomDataInput) : void
@@ -81,6 +114,33 @@ package com.ankamagames.dofus.network.types.game.social
          if(this.creationDate < 0)
          {
             throw new Error("Forbidden value (" + this.creationDate + ") on element of AllianceFactSheetInformations.creationDate.");
+         }
+      }
+      
+      private function _nbGuildsFunc(input:ICustomDataInput) : void
+      {
+         this.nbGuilds = input.readVarUhShort();
+         if(this.nbGuilds < 0)
+         {
+            throw new Error("Forbidden value (" + this.nbGuilds + ") on element of AllianceFactSheetInformations.nbGuilds.");
+         }
+      }
+      
+      private function _nbMembersFunc(input:ICustomDataInput) : void
+      {
+         this.nbMembers = input.readVarUhShort();
+         if(this.nbMembers < 0)
+         {
+            throw new Error("Forbidden value (" + this.nbMembers + ") on element of AllianceFactSheetInformations.nbMembers.");
+         }
+      }
+      
+      private function _nbSubareaFunc(input:ICustomDataInput) : void
+      {
+         this.nbSubarea = input.readVarUhShort();
+         if(this.nbSubarea < 0)
+         {
+            throw new Error("Forbidden value (" + this.nbSubarea + ") on element of AllianceFactSheetInformations.nbSubarea.");
          }
       }
    }

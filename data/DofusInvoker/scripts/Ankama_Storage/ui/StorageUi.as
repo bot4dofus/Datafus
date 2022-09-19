@@ -324,6 +324,16 @@ package Ankama_Storage.ui
          }
       }
       
+      override protected function onDropEnd(src:Object, target:Object) : void
+      {
+         if(target is GraphicContainer && (target as GraphicContainer).getUi() == uiApi.me() && dropErrorText)
+         {
+            chatApi.sendErrorOnChat(dropErrorText);
+            dropErrorText = "";
+         }
+         super.onDropEnd(src,target);
+      }
+      
       override public function getButtonFromCategory(category:int) : ButtonContainer
       {
          switch(category)

@@ -20,6 +20,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceInvitationAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceKickRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceMotdSetRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceSummaryRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.SetEnableAVARequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.prism.PrismAttackRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.prism.PrismFightJoinLeaveRequestAction;
@@ -72,6 +73,8 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.alliance.AllianceMotdSetErrorMessage;
    import com.ankamagames.dofus.network.messages.game.alliance.AllianceMotdSetRequestMessage;
    import com.ankamagames.dofus.network.messages.game.alliance.KohUpdateMessage;
+   import com.ankamagames.dofus.network.messages.game.alliance.summary.AllianceSummaryMessage;
+   import com.ankamagames.dofus.network.messages.game.alliance.summary.AllianceSummaryRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.CurrentMapMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.npc.AlliancePrismDialogQuestionMessage;
    import com.ankamagames.dofus.network.messages.game.prism.PrismAttackRequestMessage;
@@ -101,6 +104,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.types.game.prism.AlliancePrismInformation;
    import com.ankamagames.dofus.network.types.game.prism.PrismGeolocalizedInformation;
    import com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo;
+   import com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations;
    import com.ankamagames.dofus.network.types.game.social.GuildInsiderFactSheetInformations;
    import com.ankamagames.dofus.types.enums.EntityIconEnum;
    import com.ankamagames.dofus.types.enums.NotificationTypeEnum;
@@ -254,6 +258,11 @@ package com.ankamagames.dofus.logic.game.common.frames
          var nbAllianceMembers:int = 0;
          var afsocialFrame:SocialFrame = null;
          var afemsg:AllianceFactsErrorMessage = null;
+         var asra:AllianceSummaryRequestAction = null;
+         var asrmsg:AllianceSummaryRequestMessage = null;
+         var asmsg:AllianceSummaryMessage = null;
+         var allianceWrapper:AllianceWrapper = null;
+         var allAlliancesInDirectory:Vector.<AllianceWrapper> = null;
          var acgra:AllianceChangeGuildRightsAction = null;
          var acgrmsg:AllianceChangeGuildRightsMessage = null;
          var aiira:AllianceInsiderInfoRequestAction = null;
@@ -326,6 +335,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var pid:Number = NaN;
          var usasmsg:UpdateSelfAgressableStatusMessage = null;
          var giai:GuildInAllianceInformations = null;
+         var alliFactInfo:AllianceFactSheetInformations = null;
          var gifsi:GuildInsiderFactSheetInformations = null;
          var insPrism:PrismSubareaEmptyInfo = null;
          var p:SocialEntityInFightWrapper = null;
@@ -586,6 +596,25 @@ package com.ankamagames.dofus.logic.game.common.frames
             case msg is AllianceFactsErrorMessage:
                afemsg = msg as AllianceFactsErrorMessage;
                KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,I18n.getUiText("ui.alliance.doesntExistAnymore"),ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,TimeManager.getInstance().getTimestamp());
+               return true;
+            case msg is AllianceSummaryRequestAction:
+               asra = msg as AllianceSummaryRequestAction;
+               asrmsg = new AllianceSummaryRequestMessage();
+               asrmsg.initAllianceSummaryRequestMessage(asra.offset,asra.count,asra.nameFilter,asra.tagFilter,asra.playerNameFilter,asra.sortType,asra.sortDescending);
+               ConnectionsHandler.getConnection().send(asrmsg);
+               return true;
+            case msg is AllianceSummaryMessage:
+               asmsg = msg as AllianceSummaryMessage;
+               allAlliancesInDirectory = new Vector.<AllianceWrapper>(0);
+               for each(alliFactInfo in asmsg.alliances)
+               {
+                  allianceWrapper = AllianceWrapper.getFromNetwork(alliFactInfo);
+                  if(allianceWrapper)
+                  {
+                     allAlliancesInDirectory.push(allianceWrapper);
+                  }
+               }
+               KernelEventsManager.getInstance().processCallback(HookList.AlliancesReceived,allAlliancesInDirectory,asmsg.offset,asmsg.count,asmsg.total);
                return true;
             case msg is AllianceChangeGuildRightsAction:
                acgra = msg as AllianceChangeGuildRightsAction;
@@ -957,7 +986,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                this._alliance.bulletinWriterId = abomsg.memberId;
                this._alliance.bulletinWriterName = abomsg.memberName;
                this._alliance.bulletinTimestamp = abomsg.timestamp;
-               this._alliance.lastNotifiedTimestamp = abomsg.lastNotifiedTimestamp;
+               this._alliance.lastNotifiedTimestamp = abomsg.lastNotifiedTimestamp * 1000;
                KernelEventsManager.getInstance().processCallback(SocialHookList.AllianceBulletin);
                return true;
             case msg is AllianceBulletinSetErrorMessage:

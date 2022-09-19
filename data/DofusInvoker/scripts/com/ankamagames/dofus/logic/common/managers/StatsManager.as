@@ -170,19 +170,16 @@ package com.ankamagames.dofus.logic.common.managers
                }
                entityStat = new Stat(rawStat.characteristicId,(rawStat as CharacterCharacteristicValue).total);
             }
-            if(entityStat.id === StatIds.CUR_LIFE)
+            emoticonFrame = Kernel.getWorker().getFrame(EmoticonFrame) as EmoticonFrame;
+            if(entityStat.id === StatIds.CUR_LIFE && emoticonFrame !== null && emoticonFrame.isHpRegen)
             {
-               emoticonFrame = Kernel.getWorker().getFrame(EmoticonFrame) as EmoticonFrame;
-               if(emoticonFrame !== null && emoticonFrame.isHpRegen)
+               if(entityStat is DetailedStat)
                {
-                  if(entityStat is Stat)
-                  {
-                     entityStat.totalValue += emoticonFrame.hpDelta;
-                  }
-                  else if(entityStat is DetailedStat)
-                  {
-                     (entityStat as DetailedStat).baseValue += emoticonFrame.hpDelta;
-                  }
+                  emoticonFrame.updateHpStartRegenValue((entityStat as DetailedStat).baseValue);
+               }
+               else if(entityStat is Stat)
+               {
+                  emoticonFrame.updateHpStartRegenValue(entityStat.totalValue);
                }
             }
             entityStats.setStat(entityStat,false);

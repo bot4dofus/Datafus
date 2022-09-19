@@ -40,7 +40,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.datacenter.npcs.TaxCollectorFirstname;
    import com.ankamagames.dofus.datacenter.npcs.TaxCollectorName;
    import com.ankamagames.dofus.datacenter.world.Area;
-   import com.ankamagames.dofus.datacenter.world.MapPosition;
    import com.ankamagames.dofus.datacenter.world.SubArea;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.internalDatacenter.breach.BreachBranchWrapper;
@@ -399,7 +398,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var amcmsg:AdjacentMapClickMessage = null;
          var playedEntity:IEntity = null;
          var currentSubarea:SubArea = null;
-         var mapPos:MapPosition = null;
          var target2:Rectangle = null;
          var tooltipData:TextTooltipInfo = null;
          var objectsUnder:Array = null;
@@ -602,11 +600,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                   if(PlayerManager.getInstance().isBasicAccount() && !neighborSubarea.basicAccountAllowed)
                   {
                      text3 = I18n.getUiText("ui.payzone.payzone");
-                  }
-                  mapPos = MapPosition.getMapPositionById(neighborId);
-                  if(mapPos.showNameOnFingerpost && mapPos.name)
-                  {
-                     text = I18n.getUiText("ui.common.toward",[mapPos.name]);
                   }
                   if(text && text != "")
                   {
@@ -853,7 +846,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                         grtci = infos as GameRolePlayTaxCollectorInformations;
                         guildtcinfos = grtci.identification.guildIdentity;
                         allianceInfos = grtci.identification is TaxCollectorStaticExtendedInformations ? (grtci.identification as TaxCollectorStaticExtendedInformations).allianceIdentity : null;
-                        gwtc = GuildWrapper.create(guildtcinfos.guildId,guildtcinfos.guildName,guildtcinfos.guildEmblem,0);
+                        gwtc = GuildWrapper.create(guildtcinfos.guildId,guildtcinfos.guildName,guildtcinfos.guildEmblem);
                         awtc = !!allianceInfos ? AllianceWrapper.create(allianceInfos.allianceId,allianceInfos.allianceTag,allianceInfos.allianceName,allianceInfos.allianceEmblem) : null;
                         infos = new TaxCollectorTooltipInformation(TaxCollectorName.getTaxCollectorNameById((infos as GameRolePlayTaxCollectorInformations).identification.lastNameId).name,TaxCollectorFirstname.getTaxCollectorFirstnameById((infos as GameRolePlayTaxCollectorInformations).identification.firstNameId).firstname,gwtc,awtc,(infos as GameRolePlayTaxCollectorInformations).taxCollectorAttack,emomsg.checkSuperposition,grtci.disposition.cellId);
                         cacheName = "TaxCollectorCache";
@@ -1402,7 +1395,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                if(infosIe)
                {
                   target = iemovmsg.sprite.getRect(StageShareManager.stage);
-                  TooltipManager.show(infosIe,new Rectangle(target.right,int(target.y + target.height - AtouinConstants.CELL_HEIGHT),0,0),UiModuleManager.getInstance().getModule("Ankama_Tooltips"),false,TooltipManager.TOOLTIP_STANDAR_NAME,LocationEnum.POINT_BOTTOMLEFT,LocationEnum.POINT_TOP,0,true,ttMaker,null,null,tooltipCacheName);
+                  TooltipManager.show(infosIe,new Rectangle(target.right,int(target.y + target.height - AtouinConstants.CELL_HEIGHT),0,0),UiModuleManager.getInstance().getModule("Ankama_Tooltips"),false,TooltipManager.TOOLTIP_STANDARD_NAME,LocationEnum.POINT_BOTTOMLEFT,LocationEnum.POINT_TOP,0,true,ttMaker,null,null,tooltipCacheName);
                }
                return true;
                break;

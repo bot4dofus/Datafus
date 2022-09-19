@@ -60,7 +60,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.network.messages.game.context.roleplay.MapComplementaryInformationsDataInHouseMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.MapComplementaryInformationsDataMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.MapComplementaryInformationsWithCoordsMessage;
-   import com.ankamagames.dofus.network.messages.game.context.roleplay.MapRewardRateMessage;
+   import com.ankamagames.dofus.network.messages.game.context.roleplay.SubareaRewardRateMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.anomaly.AnomalyStateMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.breach.MapComplementaryInformationsBreachMessage;
    import com.ankamagames.dofus.network.types.game.context.EntityDispositionInformations;
@@ -275,7 +275,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var scmsg:ShowCellMessage = null;
          var mcidmsg:MapComplementaryInformationsDataMessage = null;
          var taimsg:AnomalyStateMessage = null;
-         var mrrmsg:MapRewardRateMessage = null;
+         var srrmsg:SubareaRewardRateMessage = null;
          var gafccmsg:GameActionFightCarryCharacterMessage = null;
          var gaftcmsg:GameActionFightThrowCharacterMessage = null;
          var gafdcmsg:GameActionFightDropCharacterMessage = null;
@@ -435,6 +435,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                return true;
             case msg is RemoveEntityAction:
                fighterRemovedId = RemoveEntityAction(msg).actorId;
+               KernelEventsManager.getInstance().processCallback(FightHookList.FighterRemoved,fighterRemovedId);
                this._entitiesNumber[fighterRemovedId] = null;
                removeActor(fighterRemovedId);
                KernelEventsManager.getInstance().processCallback(FightHookList.UpdatePreFightersList,fighterRemovedId);
@@ -539,9 +540,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
                taimsg = msg as AnomalyStateMessage;
                KernelEventsManager.getInstance().processCallback(HookList.AnomalyState,taimsg.open,taimsg.closingTime,taimsg.subAreaId);
                return true;
-            case msg is MapRewardRateMessage:
-               mrrmsg = msg as MapRewardRateMessage;
-               KernelEventsManager.getInstance().processCallback(HookList.MapRewardRate,mrrmsg.totalRate,mrrmsg.mapRate,mrrmsg.subAreaRate);
+            case msg is SubareaRewardRateMessage:
+               srrmsg = msg as SubareaRewardRateMessage;
+               KernelEventsManager.getInstance().processCallback(HookList.MapRewardRate,srrmsg.subAreaRate);
                return true;
             case msg is GameActionFightCarryCharacterMessage:
                gafccmsg = msg as GameActionFightCarryCharacterMessage;

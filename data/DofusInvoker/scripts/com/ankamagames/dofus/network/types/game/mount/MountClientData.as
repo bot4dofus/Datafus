@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.mount
    public class MountClientData implements INetworkType
    {
       
-      public static const protocolId:uint = 9874;
+      public static const protocolId:uint = 2265;
        
       
       public var id:Number = 0;
@@ -97,7 +97,7 @@ package com.ankamagames.dofus.network.types.game.mount
       
       public function getTypeId() : uint
       {
-         return 9874;
+         return 2265;
       }
       
       public function initMountClientData(id:Number = 0, model:uint = 0, ancestor:Vector.<uint> = null, behaviors:Vector.<uint> = null, name:String = "", sex:Boolean = false, ownerId:uint = 0, experience:Number = 0, experienceForLevel:Number = 0, experienceForNextLevel:Number = 0, level:uint = 0, isRideable:Boolean = false, maxPods:uint = 0, isWild:Boolean = false, stamina:uint = 0, staminaMax:uint = 0, maturity:uint = 0, maturityForAdult:uint = 0, energy:uint = 0, energyMax:uint = 0, serenity:int = 0, aggressivityMax:int = 0, serenityMax:uint = 0, love:uint = 0, loveMax:uint = 0, fecondationTime:int = 0, isFecondationReady:Boolean = false, boostLimiter:uint = 0, boostMax:Number = 0, reproductionCount:int = 0, reproductionCountMax:uint = 0, harnessGID:uint = 0, useHarnessColors:Boolean = false, effectList:Vector.<ObjectEffectInteger> = null) : MountClientData
@@ -318,7 +318,7 @@ package com.ankamagames.dofus.network.types.game.mount
          {
             throw new Error("Forbidden value (" + this.harnessGID + ") on element harnessGID.");
          }
-         output.writeVarShort(this.harnessGID);
+         output.writeVarInt(this.harnessGID);
          output.writeShort(this.effectList.length);
          for(var _i34:uint = 0; _i34 < this.effectList.length; _i34++)
          {
@@ -686,7 +686,7 @@ package com.ankamagames.dofus.network.types.game.mount
       
       private function _harnessGIDFunc(input:ICustomDataInput) : void
       {
-         this.harnessGID = input.readVarUhShort();
+         this.harnessGID = input.readVarUhInt();
          if(this.harnessGID < 0)
          {
             throw new Error("Forbidden value (" + this.harnessGID + ") on element of MountClientData.harnessGID.");

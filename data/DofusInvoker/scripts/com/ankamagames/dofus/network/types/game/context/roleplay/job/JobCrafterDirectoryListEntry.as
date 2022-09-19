@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
    public class JobCrafterDirectoryListEntry implements INetworkType
    {
       
-      public static const protocolId:uint = 3897;
+      public static const protocolId:uint = 1594;
        
       
       public var playerInfo:JobCrafterDirectoryEntryPlayerInfo;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
       
       public function getTypeId() : uint
       {
-         return 3897;
+         return 1594;
       }
       
       public function initJobCrafterDirectoryListEntry(playerInfo:JobCrafterDirectoryEntryPlayerInfo = null, jobInfo:JobCrafterDirectoryEntryJobInfo = null) : JobCrafterDirectoryListEntry

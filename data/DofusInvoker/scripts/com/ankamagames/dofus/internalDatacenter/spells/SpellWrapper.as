@@ -13,11 +13,13 @@ package com.ankamagames.dofus.internalDatacenter.spells
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.WeaponWrapper;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
+   import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.common.managers.InventoryManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.spell.SpellModifier;
    import com.ankamagames.dofus.logic.game.common.spell.SpellModifiers;
+   import com.ankamagames.dofus.logic.game.fight.frames.FightContextFrame;
    import com.ankamagames.dofus.logic.game.fight.managers.CurrentPlayedFighterManager;
    import com.ankamagames.dofus.logic.game.fight.managers.SpellModifiersManager;
    import com.ankamagames.dofus.network.enums.CharacterSpellModificationTypeEnum;
@@ -51,6 +53,8 @@ package com.ankamagames.dofus.internalDatacenter.spells
       
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(SpellWrapper));
       
+      public static const INFINITE_VALUE:uint = 63;
+      
       public static const BASE_DAMAGE_EFFECT_IDS:Array = [100,96,97,98,99,92,93,94,95,1012,1013,1014,1015,1016];
        
       
@@ -65,6 +69,8 @@ package com.ankamagames.dofus.internalDatacenter.spells
       private var _spellLevel:SpellLevel;
       
       private var _spell:Spell;
+      
+      private var _isActiveOutsideTurn:Boolean = false;
       
       public var id:uint = 0;
       
@@ -89,16 +95,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
          super();
       }
       
-      private static function getEntityId() : Number
-      {
-         if(PlayedCharacterApi.getInstance().isInFight())
-         {
-            return CurrentPlayedFighterManager.getInstance().currentFighterId;
-         }
-         return PlayedCharacterManager.getInstance().id;
-      }
-      
-      public static function create(spellID:uint, spellLevel:int = 0, useCache:Boolean = true, playerId:Number = 0, variantActivated:Boolean = false, areModifiers:Boolean = true) : SpellWrapper
+      public static function create(spellID:uint, spellLevel:int = 0, useCache:Boolean = true, playerId:Number = 0, variantActivated:Boolean = false, areModifiers:Boolean = true, isActiveOutsideTurn:Boolean = false) : SpellWrapper
       {
          var spell:SpellWrapper = null;
          if(spellID == 0)
@@ -170,6 +167,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
             spell._spellLevel = spellData.getSpellLevel(spell.spellLevel);
          }
          spell.setSpellEffects(areModifiers);
+         spell._isActiveOutsideTurn = isActiveOutsideTurn;
          return spell;
       }
       
@@ -476,6 +474,12 @@ package com.ankamagames.dofus.internalDatacenter.spells
          {
             return true;
          }
+         var fightContextFrame:FightContextFrame = Kernel.getWorker().getFrame(FightContextFrame) as FightContextFrame;
+         var isForceActive:Boolean = this._isActiveOutsideTurn && fightContextFrame !== null && fightContextFrame.battleFrame.currentPlayerId !== this.playerId;
+         if(isForceActive)
+         {
+            return true;
+         }
          return Boolean(CurrentPlayedFighterManager.getInstance().canCastThisSpell(this.spellId,this.spellLevel));
       }
       
@@ -514,14 +518,14 @@ package com.ankamagames.dofus.internalDatacenter.spells
          {
             currentCriticalHitProbability = this.getCriticalHitProbability();
          }
-         var spellModifier:SpellModifier = SpellModifiersManager.getInstance().getSpellModifier(getEntityId(),this.id,CharacterSpellModificationTypeEnum.CRITICAL_HIT_BONUS);
+         var spellModifier:SpellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.CRITICAL_HIT_BONUS);
          if(spellModifier !== null)
          {
             currentCriticalHitProbability = currentCriticalHitProbability > 0 ? Number(currentCriticalHitProbability - spellModifier.totalValue) : Number(0);
          }
          if(!isNaN(currentCriticalHitProbability))
          {
-            entityId = getEntityId();
+            entityId = this.getEntityId();
             stats = null;
             if(!isNaN(entityId))
             {
@@ -545,7 +549,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
       public function get maximalRangeWithBoosts() : int
       {
          var rangeBonus:Number = NaN;
-         var entityId:Number = getEntityId();
+         var entityId:Number = this.getEntityId();
          var stats:EntityStats = StatsManager.getInstance().getStats(entityId);
          var spellModifiers:SpellModifiers = SpellModifiersManager.getInstance().getSpellModifiers(entityId,this.id);
          var boostableRange:Boolean = this.spellLevelInfos.rangeCanBeBoosted;
@@ -684,7 +688,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
                return this.getCriticalHitProbability();
             case "maxCastPerTurn":
                numberToReturn = this.spellLevelInfos["maxCastPerTurn"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(getEntityId(),this.id,CharacterSpellModificationTypeEnum.MAX_CAST_PER_TURN);
+               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.MAX_CAST_PER_TURN);
                if(spellModifier !== null)
                {
                   numberToReturn += spellModifier.contextModifValue + spellModifier.objectsAndMountBonusValue;
@@ -692,7 +696,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
                return numberToReturn;
             case "range":
                numberToReturn = this.spellLevelInfos["range"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(getEntityId(),this.id,CharacterSpellModificationTypeEnum.RANGE_MAX);
+               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.RANGE_MAX);
                if(spellModifier !== null)
                {
                   numberToReturn += spellModifier.contextModifValue + spellModifier.objectsAndMountBonusValue;
@@ -700,7 +704,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
                return numberToReturn;
             case "minRange":
                numberToReturn = this.spellLevelInfos["minRange"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(getEntityId(),this.id,CharacterSpellModificationTypeEnum.RANGE_MIN);
+               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.RANGE_MIN);
                if(spellModifier !== null)
                {
                   numberToReturn += spellModifier.contextModifValue + spellModifier.objectsAndMountBonusValue;
@@ -708,7 +712,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
                return numberToReturn;
             case "maxCastPerTarget":
                numberToReturn = this.spellLevelInfos["maxCastPerTarget"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(getEntityId(),this.id,CharacterSpellModificationTypeEnum.MAX_CAST_PER_TARGET);
+               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.MAX_CAST_PER_TARGET);
                if(spellModifier !== null)
                {
                   numberToReturn += spellModifier.contextModifValue + spellModifier.objectsAndMountBonusValue;
@@ -716,7 +720,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
                return numberToReturn;
             case "castInLine":
                booleanToReturn = this.spellLevelInfos["castInLine"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(getEntityId(),this.id,CharacterSpellModificationTypeEnum.CAST_LINE);
+               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.CAST_LINE);
                if(spellModifier !== null)
                {
                   booleanToReturn = booleanToReturn && spellModifier.totalValue === 0;
@@ -726,7 +730,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
                return this.spellLevelInfos["castInDiagonal"];
             case "castTestLos":
                booleanToReturn = this.spellLevelInfos["castTestLos"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(getEntityId(),this.id,CharacterSpellModificationTypeEnum.LOS);
+               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.LOS);
                if(spellModifier !== null)
                {
                   booleanToReturn = booleanToReturn && spellModifier.totalValue === 0;
@@ -734,7 +738,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
                return booleanToReturn;
             case "rangeCanBeBoosted":
                booleanToReturn = this.spellLevelInfos["rangeCanBeBoosted"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(getEntityId(),this.id,CharacterSpellModificationTypeEnum.RANGEABLE);
+               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.RANGEABLE);
                if(spellModifier !== null)
                {
                   booleanToReturn = booleanToReturn || spellModifier.totalValue > 0;
@@ -742,7 +746,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
                return booleanToReturn;
             case "apCost":
                numberToReturn = this.spellLevelInfos["apCost"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(getEntityId(),this.id,CharacterSpellModificationTypeEnum.AP_COST);
+               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.AP_COST);
                if(spellModifier !== null)
                {
                   numberToReturn += -(spellModifier.contextModifValue + spellModifier.objectsAndMountBonusValue + spellModifier.baseValue + spellModifier.additionalValue + spellModifier.alignGiftBonusValue);
@@ -750,7 +754,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
                return numberToReturn;
             case "minCastInterval":
                numberToReturn = this.spellLevelInfos["minCastInterval"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(getEntityId(),this.id,CharacterSpellModificationTypeEnum.CAST_INTERVAL);
+               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.CAST_INTERVAL);
                if(spellModifier !== null)
                {
                   numberToReturn += -(spellModifier.contextModifValue + spellModifier.objectsAndMountBonusValue + spellModifier.baseValue + spellModifier.additionalValue + spellModifier.alignGiftBonusValue);
@@ -760,10 +764,8 @@ package com.ankamagames.dofus.internalDatacenter.spells
                return this.id == 0;
             case "isDefaultSpellWeapon":
                return this.id == 0 && !PlayedCharacterManager.getInstance().currentWeapon;
-            case "statesRequired":
-               return this.spellLevelInfos.statesRequired;
-            case "statesForbidden":
-               return this.spellLevelInfos.statesForbidden;
+            case "statesCriterion":
+               return this.spellLevelInfos.statesCriterion;
             default:
                return;
          }
@@ -772,6 +774,19 @@ package com.ankamagames.dofus.internalDatacenter.spells
       override flash_proxy function callProperty(name:*, ... rest) : *
       {
          return null;
+      }
+      
+      private function getEntityId() : Number
+      {
+         if(!isNaN(this.playerId) && this.playerId !== 0)
+         {
+            return this.playerId;
+         }
+         if(PlayedCharacterApi.getInstance().isInFight())
+         {
+            return CurrentPlayedFighterManager.getInstance().currentFighterId;
+         }
+         return PlayedCharacterManager.getInstance().id;
       }
       
       private function getWeaponProperty(name:*, item:ItemWrapper = null) : *
@@ -901,7 +916,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
          for each(effectInstance in this._spellLevel.effects)
          {
             effectInstance = effectInstance.clone();
-            entityId = getEntityId();
+            entityId = this.getEntityId();
             if(areModifiers && (effectInstance.category == DataEnum.ACTION_TYPE_DAMAGES && BASE_DAMAGE_EFFECT_IDS.indexOf(effectInstance.effectId) != -1))
             {
                damageBaseSpellModifier = SpellModifiersManager.getInstance().getSpellModifier(entityId,this.id,CharacterSpellModificationTypeEnum.BASE_DAMAGE);

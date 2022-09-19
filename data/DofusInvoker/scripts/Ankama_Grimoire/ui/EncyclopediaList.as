@@ -20,6 +20,7 @@ package Ankama_Grimoire.ui
    import com.ankamagames.dofus.datacenter.mounts.Mount;
    import com.ankamagames.dofus.datacenter.world.SubArea;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.modules.utils.ItemTooltipSettings;
@@ -610,7 +611,7 @@ package Ankama_Grimoire.ui
          tmpItem = this.dataApi.getItemWrapper(itemId);
          if((!tmpItem.hasOwnProperty("etheral") || !tmpItem.etheral) && tmpItem.visible)
          {
-            if(tmpItem.typeId == DataEnum.ITEM_TYPE_COMPANION && this.etheralCompanion(tmpItem))
+            if(tmpItem.typeId == DataEnum.ITEM_TYPE_COMPANION && this.etheralCompanion(tmpItem) || tmpItem.typeId == DataEnum.ITEM_TYPE_MODSTER)
             {
                return null;
             }
@@ -654,7 +655,7 @@ package Ankama_Grimoire.ui
                   "iconOverPath":"icon_hammer_over.png"
                });
             }
-            if(this.configApi.isFeatureWithKeywordEnabled("temporis.drops") && (tmpItem.dropMonsterIds.length > 0 || tmpItem.dropTemporisMonsterIds && tmpItem.dropTemporisMonsterIds.length > 0))
+            if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_DROPS) && (tmpItem.dropMonsterIds.length > 0 || tmpItem.dropTemporisMonsterIds && tmpItem.dropTemporisMonsterIds.length > 0))
             {
                item.obtaining.push({
                   "id":2,
@@ -1181,7 +1182,7 @@ package Ankama_Grimoire.ui
                      itemData = {};
                      itemData.monsterId = 0;
                      itemData.monsterSearch = obtainigData.item.name;
-                     if(this.configApi.isFeatureWithKeywordEnabled("temporis.drops") && obtainigData.item.dropTemporisMonsterIds)
+                     if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_DROPS) && obtainigData.item.dropTemporisMonsterIds)
                      {
                         itemData.monsterIdsList = obtainigData.item.dropMonsterIds.concat(obtainigData.item.dropTemporisMonsterIds);
                      }

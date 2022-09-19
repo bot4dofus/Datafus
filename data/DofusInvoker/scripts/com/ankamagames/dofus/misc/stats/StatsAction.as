@@ -2,8 +2,6 @@ package com.ankamagames.dofus.misc.stats
 {
    import by.blooddy.crypto.MD5;
    import by.blooddy.crypto.serialization.JSON;
-   import com.ankamagames.berilia.Berilia;
-   import com.ankamagames.berilia.types.graphic.UiRootContainer;
    import com.ankamagames.dofus.logic.connection.managers.AuthentificationManager;
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.dofus.misc.utils.HaapiKeyManager;
@@ -59,16 +57,7 @@ package com.ankamagames.dofus.misc.stats
       
       public static function getUserId() : String
       {
-         var loginUi:UiRootContainer = null;
          var login:String = AuthentificationManager.getInstance().username;
-         if(!login)
-         {
-            loginUi = Berilia.getInstance().getUi("login");
-            if(loginUi && loginUi.uiClass)
-            {
-               login = loginUi.uiClass.cbx_login.input.text;
-            }
-         }
          if(login)
          {
             return "user-" + MD5.hash(login);

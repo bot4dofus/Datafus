@@ -4,6 +4,7 @@ package Ankama_Tooltips.blocks
    import Ankama_Tooltips.blockParams.EffectsTooltipBlockParameters;
    import com.ankama.dofus.enums.ActionIds;
    import com.ankamagames.dofus.datacenter.effects.EffectInstance;
+   import com.ankamagames.dofus.datacenter.effects.instances.EffectInstanceDate;
    import com.ankamagames.dofus.datacenter.effects.instances.EffectInstanceDice;
    import com.ankamagames.dofus.datacenter.effects.instances.EffectInstanceInteger;
    import com.ankamagames.dofus.datacenter.effects.instances.EffectInstanceMinMax;
@@ -17,6 +18,7 @@ package Ankama_Tooltips.blocks
    import com.ankamagames.dofus.internalDatacenter.stats.DetailedStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
    import com.ankamagames.dofus.internalDatacenter.stats.Stat;
+   import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import damageCalculation.tools.StatIds;
    
    public class HtmlEffectsTooltipBlock extends AbstractTooltipBlock
@@ -47,6 +49,8 @@ package Ankama_Tooltips.blocks
       
       private var _showLabel:Boolean;
       
+      private var _showTimeLeftFormat:Boolean = false;
+      
       private var _showDuration:Boolean;
       
       private var _length:int;
@@ -75,6 +79,7 @@ package Ankama_Tooltips.blocks
          this._length = params.length;
          this._showLabel = params.showLabel;
          this._showDuration = params.showDuration;
+         this._showTimeLeftFormat = params.showTimeLeftFormat;
          this._splitDamageAndEffects = params.splitDamageAndEffects;
          this._customli = params.customli;
          if(params.itemTheoreticalEffects)
@@ -105,9 +110,10 @@ package Ankama_Tooltips.blocks
       public function onAllChunkLoaded() : void
       {
          var ei:EffectInstance = null;
+         var effect:EffectInstance = null;
          var effectsPart:_EffectPart = null;
          var currentCategory:int = 0;
-         var exotic:* = false;
+         var bestMatch:EffectInstance = null;
          var effectList:Array = null;
          var i:int = 0;
          _content = "";
@@ -119,6 +125,11 @@ package Ankama_Tooltips.blocks
          var category:Array = [];
          var effectsByEffectId:Array = [];
          var effects:Array = [];
+         var theoreticalEffectsCopy:Array = [];
+         if(this._itemTheoreticalEffects)
+         {
+            theoreticalEffectsCopy = this._itemTheoreticalEffects.concat([]);
+         }
          for each(ei in this._effect)
          {
             if(!(ei.category == -1 || !ei.visibleInTooltip))
@@ -147,18 +158,30 @@ package Ankama_Tooltips.blocks
                   {
                      if(this._itemTheoreticalEffects)
                      {
-                        exotic = this._itemTheoreticalEffects[ei.effectId] == null;
-                        if(exotic && ei.showInSet)
+                        if(ei.showInSet)
                         {
                            if(ei.category == DataEnum.ACTION_TYPE_DAMAGES)
                            {
-                              this._exoticDamage.push(ei);
+                              bestMatch = null;
+                              for each(effect in theoreticalEffectsCopy[ei.effectId])
+                              {
+                                 if(ei is EffectInstanceMinMax && effect is EffectInstanceDice && (effect as EffectInstanceDice).diceNum == (ei as EffectInstanceMinMax).min && (effect as EffectInstanceDice).diceSide == (ei as EffectInstanceMinMax).max || ei is EffectInstanceInteger && effect is EffectInstanceDice && (effect as EffectInstanceDice).diceNum == (ei as EffectInstanceInteger).value && (effect as EffectInstanceDice).parameter1 == null)
+                                 {
+                                    bestMatch = effect;
+                                 }
+                              }
+                              if(!bestMatch)
+                              {
+                                 this._exoticDamage.push(ei);
+                                 continue;
+                              }
+                              theoreticalEffectsCopy[ei.effectId].removeAt(theoreticalEffectsCopy[ei.effectId].indexOf(bestMatch));
                            }
-                           else
+                           else if(this._itemTheoreticalEffects[ei.effectId] == null)
                            {
                               this._exoticEffects.push(ei);
+                              continue;
                            }
-                           continue;
                         }
                      }
                      effects.push(ei);
@@ -297,6 +320,11 @@ package Ankama_Tooltips.blocks
       
       private function processEffect(effectsPart:_EffectPart, ei:Object, chunk:String, chunkArgs:Object = null, showSubEffect:Boolean = true) : String
       {
+         var timeLeft:String = null;
+         var timeManager:TimeManager = null;
+         var dateEffect:EffectInstanceDate = null;
+         var date:Date = null;
+         var utcNow:Number = NaN;
          var spell:SpellWrapper = null;
          var theoreticalEffect:* = undefined;
          var theoreticalDesc:String = null;
@@ -343,18 +371,41 @@ package Ankama_Tooltips.blocks
          }
          var content:String = "";
          var description:String = "";
-         if(ei.effectId == ActionIds.ACTION_CAST_STARTING_SPELL)
+         if(this._showTimeLeftFormat)
          {
-            spell = Api.data.getSpellWrapper(ei.diceNum,ei.diceSide);
-            description += spell.spell.description;
+            timeLeft = null;
+            timeManager = TimeManager.getInstance();
+            if(ei is EffectInstanceDate)
+            {
+               dateEffect = ei as EffectInstanceDate;
+               date = new Date(dateEffect.year - timeManager.dofusTimeYearLag,dateEffect.month - 1,dateEffect.day,dateEffect.hour,dateEffect.minute);
+               timeLeft = timeManager.getShortDuration(date.getTime());
+            }
+            else if(ei is EffectInstanceDice && ei.effectId == ActionIds.ACTION_ITEM_EXPIRATION)
+            {
+               utcNow = timeManager.getUtcTimestamp();
+               timeLeft = timeManager.getShortDuration(utcNow + ei.value * 60 * 1000);
+            }
+            if(timeLeft)
+            {
+               description = Api.ui.getText("ui.common.timeLeft",[timeLeft]);
+            }
          }
-         else if(this._showTheoreticalEffects)
+         if(!description)
          {
-            description += !!ei.showInSet ? ei.theoreticalDescriptionForTooltip : ei.theoreticalDescription;
-         }
-         else
-         {
-            description += !!ei.showInSet ? ei.descriptionForTooltip : ei.description;
+            if(ei.effectId == ActionIds.ACTION_CAST_STARTING_SPELL)
+            {
+               spell = Api.data.getSpellWrapper(ei.diceNum,ei.diceSide);
+               description += spell.spell.description;
+            }
+            else if(this._showTheoreticalEffects)
+            {
+               description += !!ei.showInSet ? ei.theoreticalDescriptionForTooltip : ei.theoreticalDescription;
+            }
+            else
+            {
+               description += !!ei.showInSet ? ei.descriptionForTooltip : ei.description;
+            }
          }
          if(!description || description == "null")
          {

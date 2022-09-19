@@ -276,6 +276,10 @@ class DeserializeUtil
       }
       if(data.hasOwnProperty("length"))
       {
+         if(data is String)
+         {
+            return data;
+         }
          resultArray = new Array();
          for each(resultObject in data)
          {

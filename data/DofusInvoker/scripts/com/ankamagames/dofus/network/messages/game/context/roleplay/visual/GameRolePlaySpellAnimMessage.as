@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.visual
    public class GameRolePlaySpellAnimMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8430;
+      public static const protocolId:uint = 9549;
        
       
       private var _isInitialized:Boolean = false;
@@ -23,6 +23,8 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.visual
       public var spellId:uint = 0;
       
       public var spellLevel:int = 0;
+      
+      public var direction:int = 0;
       
       public function GameRolePlaySpellAnimMessage()
       {
@@ -36,15 +38,16 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.visual
       
       override public function getMessageId() : uint
       {
-         return 8430;
+         return 9549;
       }
       
-      public function initGameRolePlaySpellAnimMessage(casterId:Number = 0, targetCellId:uint = 0, spellId:uint = 0, spellLevel:int = 0) : GameRolePlaySpellAnimMessage
+      public function initGameRolePlaySpellAnimMessage(casterId:Number = 0, targetCellId:uint = 0, spellId:uint = 0, spellLevel:int = 0, direction:int = 0) : GameRolePlaySpellAnimMessage
       {
          this.casterId = casterId;
          this.targetCellId = targetCellId;
          this.spellId = spellId;
          this.spellLevel = spellLevel;
+         this.direction = direction;
          this._isInitialized = true;
          return this;
       }
@@ -55,6 +58,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.visual
          this.targetCellId = 0;
          this.spellId = 0;
          this.spellLevel = 0;
+         this.direction = 0;
          this._isInitialized = false;
       }
       
@@ -105,6 +109,11 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.visual
             throw new Error("Forbidden value (" + this.spellLevel + ") on element spellLevel.");
          }
          output.writeShort(this.spellLevel);
+         if(this.direction < -1 || this.direction > 8)
+         {
+            throw new Error("Forbidden value (" + this.direction + ") on element direction.");
+         }
+         output.writeShort(this.direction);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -118,6 +127,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.visual
          this._targetCellIdFunc(input);
          this._spellIdFunc(input);
          this._spellLevelFunc(input);
+         this._directionFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -131,6 +141,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.visual
          tree.addChild(this._targetCellIdFunc);
          tree.addChild(this._spellIdFunc);
          tree.addChild(this._spellLevelFunc);
+         tree.addChild(this._directionFunc);
       }
       
       private function _casterIdFunc(input:ICustomDataInput) : void
@@ -166,6 +177,15 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.visual
          if(this.spellLevel < 1 || this.spellLevel > 32767)
          {
             throw new Error("Forbidden value (" + this.spellLevel + ") on element of GameRolePlaySpellAnimMessage.spellLevel.");
+         }
+      }
+      
+      private function _directionFunc(input:ICustomDataInput) : void
+      {
+         this.direction = input.readShort();
+         if(this.direction < -1 || this.direction > 8)
+         {
+            throw new Error("Forbidden value (" + this.direction + ") on element of GameRolePlaySpellAnimMessage.direction.");
          }
       }
    }

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.objects
    public class ObjectGroundListAddedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6617;
+      public static const protocolId:uint = 859;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.objects
       
       override public function getMessageId() : uint
       {
-         return 6617;
+         return 859;
       }
       
       public function initObjectGroundListAddedMessage(cells:Vector.<uint> = null, referenceIds:Vector.<uint> = null) : ObjectGroundListAddedMessage
@@ -99,7 +99,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.objects
             {
                throw new Error("Forbidden value (" + this.referenceIds[_i2] + ") on element 2 (starting at 1) of referenceIds.");
             }
-            output.writeVarShort(this.referenceIds[_i2]);
+            output.writeVarInt(this.referenceIds[_i2]);
          }
       }
       
@@ -125,7 +125,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.objects
          var _referenceIdsLen:uint = input.readUnsignedShort();
          for(var _i2:uint = 0; _i2 < _referenceIdsLen; _i2++)
          {
-            _val2 = input.readVarUhShort();
+            _val2 = input.readVarUhInt();
             if(_val2 < 0)
             {
                throw new Error("Forbidden value (" + _val2 + ") on elements of referenceIds.");
@@ -175,7 +175,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.objects
       
       private function _referenceIdsFunc(input:ICustomDataInput) : void
       {
-         var _val:uint = input.readVarUhShort();
+         var _val:uint = input.readVarUhInt();
          if(_val < 0)
          {
             throw new Error("Forbidden value (" + _val + ") on elements of referenceIds.");

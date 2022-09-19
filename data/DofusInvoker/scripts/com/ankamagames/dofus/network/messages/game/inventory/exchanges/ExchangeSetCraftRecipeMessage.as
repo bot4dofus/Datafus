@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeSetCraftRecipeMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1333;
+      public static const protocolId:uint = 6822;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 1333;
+         return 6822;
       }
       
       public function initExchangeSetCraftRecipeMessage(objectGID:uint = 0) : ExchangeSetCraftRecipeMessage
@@ -77,7 +77,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element objectGID.");
          }
-         output.writeVarShort(this.objectGID);
+         output.writeVarInt(this.objectGID);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -102,7 +102,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       private function _objectGIDFunc(input:ICustomDataInput) : void
       {
-         this.objectGID = input.readVarUhShort();
+         this.objectGID = input.readVarUhInt();
          if(this.objectGID < 0)
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element of ExchangeSetCraftRecipeMessage.objectGID.");

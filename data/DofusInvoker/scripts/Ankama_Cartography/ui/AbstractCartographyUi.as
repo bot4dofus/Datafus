@@ -624,7 +624,7 @@ package Ankama_Cartography.ui
          var nb:int = elements.length;
          if(display)
          {
-            if(layer == "malusAreas")
+            if(layer == "bonusAreas")
             {
                this.showAreaShape("anomalyAreas",display);
             }
@@ -633,7 +633,10 @@ package Ankama_Cartography.ui
                this.__areaShapeDisplayed.push(layer);
                for(i = 0; i < nb; i++)
                {
-                  this.mapViewer.areaShapeColorTransform(elements[i],100,1,1,1,1);
+                  if(elements[i] is MapAreaShape)
+                  {
+                     this.mapViewer.areaShapeColorTransform(elements[i],100,1,1,1,1);
+                  }
                }
             }
          }
@@ -642,7 +645,10 @@ package Ankama_Cartography.ui
             nb = elements.length;
             for(i = 0; i < nb; i++)
             {
-               this.mapViewer.areaShapeColorTransform(elements[i],100,1,1,1,0);
+               if(elements[i] is MapAreaShape)
+               {
+                  this.mapViewer.areaShapeColorTransform(elements[i],100,1,1,1,0);
+               }
             }
          }
       }

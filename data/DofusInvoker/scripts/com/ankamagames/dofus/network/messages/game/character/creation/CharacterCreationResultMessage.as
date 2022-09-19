@@ -11,12 +11,14 @@ package com.ankamagames.dofus.network.messages.game.character.creation
    public class CharacterCreationResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 110;
+      public static const protocolId:uint = 5313;
        
       
       private var _isInitialized:Boolean = false;
       
       public var result:uint = 1;
+      
+      public var reason:uint = 1;
       
       public function CharacterCreationResultMessage()
       {
@@ -30,12 +32,13 @@ package com.ankamagames.dofus.network.messages.game.character.creation
       
       override public function getMessageId() : uint
       {
-         return 110;
+         return 5313;
       }
       
-      public function initCharacterCreationResultMessage(result:uint = 1) : CharacterCreationResultMessage
+      public function initCharacterCreationResultMessage(result:uint = 1, reason:uint = 1) : CharacterCreationResultMessage
       {
          this.result = result;
+         this.reason = reason;
          this._isInitialized = true;
          return this;
       }
@@ -43,6 +46,7 @@ package com.ankamagames.dofus.network.messages.game.character.creation
       override public function reset() : void
       {
          this.result = 1;
+         this.reason = 1;
          this._isInitialized = false;
       }
       
@@ -74,6 +78,7 @@ package com.ankamagames.dofus.network.messages.game.character.creation
       public function serializeAs_CharacterCreationResultMessage(output:ICustomDataOutput) : void
       {
          output.writeByte(this.result);
+         output.writeByte(this.reason);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -84,6 +89,7 @@ package com.ankamagames.dofus.network.messages.game.character.creation
       public function deserializeAs_CharacterCreationResultMessage(input:ICustomDataInput) : void
       {
          this._resultFunc(input);
+         this._reasonFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -94,6 +100,7 @@ package com.ankamagames.dofus.network.messages.game.character.creation
       public function deserializeAsyncAs_CharacterCreationResultMessage(tree:FuncTree) : void
       {
          tree.addChild(this._resultFunc);
+         tree.addChild(this._reasonFunc);
       }
       
       private function _resultFunc(input:ICustomDataInput) : void
@@ -102,6 +109,15 @@ package com.ankamagames.dofus.network.messages.game.character.creation
          if(this.result < 0)
          {
             throw new Error("Forbidden value (" + this.result + ") on element of CharacterCreationResultMessage.result.");
+         }
+      }
+      
+      private function _reasonFunc(input:ICustomDataInput) : void
+      {
+         this.reason = input.readByte();
+         if(this.reason < 0)
+         {
+            throw new Error("Forbidden value (" + this.reason + ") on element of CharacterCreationResultMessage.reason.");
          }
       }
    }

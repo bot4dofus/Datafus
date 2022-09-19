@@ -292,7 +292,7 @@ package com.ankamagames.berilia.managers
          }
          Shortcut.reset();
          Berilia.getInstance().reset();
-         Berilia.getInstance().init(Berilia.getInstance().docMain,Berilia.getInstance().applicationVersion);
+         Berilia.getInstance().init(Berilia.getInstance().docMain);
          ApiBinder.reset();
          UiPerformanceManager.getInstance().reset();
          TextureBase.clearCache();

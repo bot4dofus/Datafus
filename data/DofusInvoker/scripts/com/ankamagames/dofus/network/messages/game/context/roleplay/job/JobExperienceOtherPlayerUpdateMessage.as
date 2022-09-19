@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.job
    public class JobExperienceOtherPlayerUpdateMessage extends JobExperienceUpdateMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5477;
+      public static const protocolId:uint = 9963;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.job
       
       override public function getMessageId() : uint
       {
-         return 5477;
+         return 9963;
       }
       
       public function initJobExperienceOtherPlayerUpdateMessage(experiencesUpdate:JobExperience = null, playerId:Number = 0) : JobExperienceOtherPlayerUpdateMessage

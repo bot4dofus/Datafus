@@ -7,6 +7,7 @@ package Ankama_Tooltips.ui
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.dofus.datacenter.arena.ArenaLeague;
    import com.ankamagames.dofus.datacenter.guild.EmblemSymbol;
+   import com.ankamagames.dofus.internalDatacenter.guild.EmblemWrapper;
    import com.ankamagames.dofus.network.enums.AlignmentSideEnum;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMerchantInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.HumanInformations;
@@ -197,6 +198,10 @@ package Ankama_Tooltips.ui
          var maxLabel:Label = null;
          var backgroundWidth:int = 0;
          var alignmentInfos:Object = null;
+         var emblemBackWrapper:EmblemWrapper = null;
+         var emblemUpWrapper:EmblemWrapper = null;
+         var allianceEmblemBackWrapper:EmblemWrapper = null;
+         var allianceEmblemUpWrapper:EmblemWrapper = null;
          var guildDec:Number = NaN;
          this._zoom = oParam.zoom;
          this.uiApi.me().mouseEnabled = this.uiApi.me().mouseChildren = false;
@@ -283,8 +288,10 @@ package Ankama_Tooltips.ui
                this.uiApi.addComponentHook(this.tx_AllianceEmblemBack,"onTextureReady");
                this.uiApi.addComponentHook(this.tx_AllianceEmblemUp,"onTextureReady");
             }
-            this.tx_emblemBack.uri = this.uiApi.createUri(this.uiApi.me().getConstant("emblems") + "back/" + this._guildInformations.guildEmblem.backgroundShape + ".swf",true);
-            this.tx_emblemUp.uri = this.uiApi.createUri(this.uiApi.me().getConstant("emblems") + "up/" + this._guildInformations.guildEmblem.symbolShape + ".swf",true);
+            emblemBackWrapper = EmblemWrapper.create(this._guildInformations.guildEmblem.backgroundShape,EmblemWrapper.BACK,this._guildInformations.guildEmblem.backgroundColor);
+            emblemUpWrapper = EmblemWrapper.create(this._guildInformations.guildEmblem.symbolShape,EmblemWrapper.UP,this._guildInformations.guildEmblem.symbolColor);
+            this.tx_emblemBack.uri = emblemBackWrapper.fullSizeIconUri;
+            this.tx_emblemUp.uri = emblemUpWrapper.fullSizeIconUri;
             this.tx_emblemBack.x = 2;
             this.tx_emblemUp.x = 10;
             this.tx_emblemUp.y = 8;
@@ -332,11 +339,13 @@ package Ankama_Tooltips.ui
                this._allianceEmblemIconColor = this._allianceInformations.allianceEmblem.symbolColor;
                if(this._allianceInformations.allianceEmblem.backgroundShape != this._guildInformations.guildEmblem.backgroundShape)
                {
-                  this.tx_AllianceEmblemBack.uri = this.uiApi.createUri(this.uiApi.me().getConstant("emblems") + "backalliance/" + this._allianceInformations.allianceEmblem.backgroundShape + ".swf",true);
+                  allianceEmblemBackWrapper = EmblemWrapper.create(this._allianceInformations.allianceEmblem.backgroundShape,EmblemWrapper.BACK,this._allianceInformations.allianceEmblem.backgroundColor);
+                  this.tx_AllianceEmblemBack.uri = allianceEmblemBackWrapper.fullSizeIconUri;
                }
                if(this._allianceInformations.allianceEmblem.symbolShape != this._guildInformations.guildEmblem.symbolShape)
                {
-                  this.tx_AllianceEmblemUp.uri = this.uiApi.createUri(this.uiApi.me().getConstant("emblems") + "up/" + this._allianceInformations.allianceEmblem.symbolShape + ".swf",true);
+                  allianceEmblemUpWrapper = EmblemWrapper.create(this._allianceInformations.allianceEmblem.symbolShape,EmblemWrapper.UP,this._allianceInformations.allianceEmblem.symbolColor);
+                  this.tx_AllianceEmblemUp.uri = allianceEmblemUpWrapper.fullSizeIconUri;
                }
                this.tx_AllianceEmblemBack.y = this.tx_emblemBack.y;
                this.tx_AllianceEmblemUp.y = this.tx_emblemUp.y;
@@ -551,11 +560,11 @@ package Ankama_Tooltips.ui
          var icon:EmblemSymbol = this.dataApi.getEmblemSymbol(pSymbolId);
          if(icon.colorizable)
          {
-            this.utilApi.changeColor(pTexture.getChildByName("up"),pColor,0);
+            this.utilApi.changeColor(pTexture,pColor,0);
          }
          else
          {
-            this.utilApi.changeColor(pTexture.getChildByName("up"),pColor,0,true);
+            this.utilApi.changeColor(pTexture,pColor,0,true);
          }
          pTexture.visible = true;
       }
@@ -563,6 +572,8 @@ package Ankama_Tooltips.ui
       public function onTextureReady(target:GraphicContainer) : void
       {
          var uiBounds:Rectangle = null;
+         var allianceEmblemBackWrapper:EmblemWrapper = null;
+         var allianceEmblemUpWrapper:EmblemWrapper = null;
          var displayOmegaBottom:Boolean = false;
          var koliRankBounds:* = undefined;
          var bounds:* = undefined;
@@ -580,7 +591,8 @@ package Ankama_Tooltips.ui
                this.updateEmblemBack(this.tx_emblemBack,this._colorBack);
                if(this._allianceInformations && this._allianceInformations.allianceEmblem.backgroundShape == this._guildInformations.guildEmblem.backgroundShape)
                {
-                  this.tx_AllianceEmblemBack.uri = this.uiApi.createUri(this.uiApi.me().getConstant("emblems") + "backalliance/" + this._allianceInformations.allianceEmblem.backgroundShape + ".swf",true);
+                  allianceEmblemBackWrapper = EmblemWrapper.create(this._allianceInformations.allianceEmblem.backgroundShape,EmblemWrapper.BACK,this._allianceInformations.allianceEmblem.backgroundColor);
+                  this.tx_AllianceEmblemBack.uri = allianceEmblemBackWrapper.fullSizeIconUri;
                }
                break;
             case this.tx_emblemUp:
@@ -591,7 +603,8 @@ package Ankama_Tooltips.ui
                this.updateEmblemUp(this.tx_emblemUp,this._colorUp,this._guildInformations.guildEmblem.symbolShape);
                if(this._allianceInformations && this._allianceInformations.allianceEmblem.symbolShape == this._guildInformations.guildEmblem.symbolShape)
                {
-                  this.tx_AllianceEmblemUp.uri = this.uiApi.createUri(this.uiApi.me().getConstant("emblems") + "up/" + this._allianceInformations.allianceEmblem.symbolShape + ".swf",true);
+                  allianceEmblemUpWrapper = EmblemWrapper.create(this._allianceInformations.allianceEmblem.symbolShape,EmblemWrapper.UP,this._allianceInformations.allianceEmblem.symbolColor);
+                  this.tx_AllianceEmblemUp.uri = allianceEmblemUpWrapper.fullSizeIconUri;
                }
                break;
             case this.tx_AllianceEmblemBack:

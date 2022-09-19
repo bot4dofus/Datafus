@@ -28,6 +28,14 @@ package com.ankamagames.dofus.logic.common.managers
          super();
       }
       
+      public static function getLink(pPlayerId:uint, pPlayerName:String, pText:String = null, plinkColor:String = null, phoverColor:String = null) : String
+      {
+         var linkColor:String = !!plinkColor ? ",linkColor:" + plinkColor : "";
+         var hoverColor:String = !!phoverColor ? ",hoverColor:" + phoverColor : "";
+         var text:String = !!pText ? "::" + pText : "";
+         return "{player," + pPlayerName + "," + pPlayerId + linkColor + hoverColor + text + "}";
+      }
+      
       public static function showPlayerMenu(playerName:String, playerId:Number = 0, timestamp:Number = 0, fingerprint:String = null, chan:uint = 0, accountId:uint = 0) : void
       {
          var playerInfo:GameRolePlayCharacterInformations = null;

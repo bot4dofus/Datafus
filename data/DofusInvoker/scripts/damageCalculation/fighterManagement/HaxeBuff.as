@@ -189,6 +189,20 @@ package damageCalculation.fighterManagement
             }
             return false;
          }
+         if(param1.newStateId == 250)
+         {
+            if(int(effect.triggers.indexOf("ION")) != -1 || int(effect.triggers.indexOf("OEION")) != -1)
+            {
+               return true;
+            }
+         }
+         if(param1.lostStateId == 250)
+         {
+            if(int(effect.triggers.indexOf("IOFF")) != -1 || int(effect.triggers.indexOf("OEIOFF")) != -1)
+            {
+               return true;
+            }
+         }
          if(!!param1.isPushed && int(effect.triggers.indexOf("P")) != -1)
          {
             return true;
@@ -217,7 +231,7 @@ package damageCalculation.fighterManagement
          {
             return true;
          }
-         if(param1.rangeStolen > 0 && int(effect.triggers.indexOf("R")) != -1)
+         if(param1.rangeLoss > 0 && int(effect.triggers.indexOf("R")) != -1)
          {
             return true;
          }
@@ -327,14 +341,29 @@ package damageCalculation.fighterManagement
       
       public function shouldBeTriggeredOnCaster(param1:EffectOutput, param2:RunningEffect, param3:HaxeFighter, param4:Boolean, param5:FightContext = undefined) : Boolean
       {
-         var _loc9_:* = null as DamageRange;
+         var _loc8_:* = null as DamageRange;
          if(!param3.isAlive())
          {
+            if(int(effect.triggers.indexOf("K")) != -1)
+            {
+               return true;
+            }
+            if(!!param2.getSpell().isWeapon && int(effect.triggers.indexOf("KWW")) != -1)
+            {
+               return true;
+            }
+            if(!param2.getSpell().isWeapon && int(effect.triggers.indexOf("KWS")) != -1)
+            {
+               return true;
+            }
             return false;
          }
+         if(param1.movement != null && param5.map.isCellWalkable(param1.movement.newPosition) && int(effect.triggers.indexOf("PO")) != -1)
+         {
+            return true;
+         }
          var _loc6_:HaxeSpell = param2.getSpell();
-         var _loc7_:HaxeSpellEffect = param2.getSpellEffect();
-         var _loc8_:HaxeFighter = param2.getCaster();
+         var _loc7_:HaxeFighter = param2.getCaster();
          if(!!param1.attemptedApTheft && int(effect.triggers.indexOf("CAPA")) != -1)
          {
             return true;
@@ -343,14 +372,28 @@ package damageCalculation.fighterManagement
          {
             return true;
          }
+         if(param1.newStateId == 250)
+         {
+            if(int(effect.triggers.indexOf("ION")) != -1 || int(effect.triggers.indexOf("CION")) != -1)
+            {
+               return true;
+            }
+         }
+         if(param1.lostStateId == 250)
+         {
+            if(int(effect.triggers.indexOf("IOFF")) != -1 || int(effect.triggers.indexOf("CIOFF")) != -1)
+            {
+               return true;
+            }
+         }
          if(param1.damageRange != null)
          {
             if(!!param1.damageRange.isCritical && int(effect.triggers.indexOf("CC")) != -1)
             {
                return true;
             }
-            _loc9_ = param1.damageRange;
-            if(!(_loc9_.min == 0 && _loc9_.max == 0))
+            _loc8_ = param1.damageRange;
+            if(!(_loc8_.min == 0 && _loc8_.max == 0))
             {
                if(param1.damageRange.isHeal)
                {
@@ -396,7 +439,7 @@ package damageCalculation.fighterManagement
                      }
                      break;
                }
-               if(_loc8_.teamId == param3.teamId)
+               if(_loc7_.teamId == param3.teamId)
                {
                   if(int(effect.triggers.indexOf("CDBA")) != -1)
                   {
@@ -432,7 +475,7 @@ package damageCalculation.fighterManagement
             }
             if(!param1.damageRange.isCollision)
             {
-               return Boolean(shouldBeTriggeredOnCasterDamage(param2,_loc8_,param4));
+               return Boolean(shouldBeTriggeredOnCasterDamage(param2,_loc7_,param4));
             }
          }
          return false;

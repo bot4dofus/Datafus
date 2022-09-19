@@ -9,7 +9,7 @@ package com.ankamagames.tiphon.sequence
    {
        
       
-      private var _nDirection:uint;
+      private var _nDirection:int;
       
       private var _target:TiphonSprite;
       
@@ -25,7 +25,7 @@ package com.ankamagames.tiphon.sequence
       
       override public function start() : void
       {
-         if(this._target as IEntity && (this._target as IEntity).position && this._cellToTarget)
+         if(this._target as IEntity && (this._target as IEntity).position && this._cellToTarget && this._nDirection == -1)
          {
             if((this._target as IEntity).position.cellId == this._cellToTarget.cellId)
             {

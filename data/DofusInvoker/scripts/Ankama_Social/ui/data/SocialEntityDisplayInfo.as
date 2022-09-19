@@ -2,6 +2,7 @@ package Ankama_Social.ui.data
 {
    import Ankama_Social.Api;
    import com.ankamagames.dofus.datacenter.world.SubArea;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.conquest.PrismSubAreaWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.SocialEntityInFightWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.TaxCollectorWrapper;
@@ -152,7 +153,7 @@ package Ankama_Social.ui.data
             return;
          }
          this.podsAndXp = "";
-         if(Api.config.isFeatureWithKeywordEnabled("server.heroic"))
+         if(Api.config.isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER))
          {
             if(data.pods != 0)
             {

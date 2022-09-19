@@ -7,7 +7,7 @@ package com.ankamagames.dofus.logic.game.common.actions.guild
    {
        
       
-      public var playerId:uint = 0;
+      public var playerId:Number = 0;
       
       public var isAccepted:Boolean = false;
       
@@ -16,7 +16,7 @@ package com.ankamagames.dofus.logic.game.common.actions.guild
          super(params);
       }
       
-      public static function create(playerId:uint, isAccepted:Boolean) : GuildApplicationReplyAction
+      public static function create(playerId:Number, isAccepted:Boolean) : GuildApplicationReplyAction
       {
          var action:GuildApplicationReplyAction = new GuildApplicationReplyAction(arguments);
          action.isAccepted = isAccepted;

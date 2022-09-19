@@ -11,6 +11,7 @@ package Ankama_Grimoire.ui
    import com.ankamagames.dofus.datacenter.progression.ActivitySuggestion;
    import com.ankamagames.dofus.datacenter.progression.ActivitySuggestionsCategory;
    import com.ankamagames.dofus.datacenter.world.Area;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkMapPosition;
    import com.ankamagames.dofus.logic.game.common.actions.ActivityHideRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.ActivityLockRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.ActivitySuggestionsRequestAction;
@@ -269,7 +270,7 @@ package Ankama_Grimoire.ui
             }
             if(data.startLocation)
             {
-               componentsRef.lbl_cardStartingPoint.htmlText = "{map," + data.startLocation.posX + "," + data.startLocation.posY + "," + (data.startLocation.worldMap > 0 ? data.startLocation.worldMap : data.startLocation.subArea.area.worldmap.id) + "," + data.startLocation.subArea.name + " }";
+               componentsRef.lbl_cardStartingPoint.htmlText = HyperlinkMapPosition.getLink(data.startLocation.posX,data.startLocation.posY,data.startLocation.worldMap > 0 ? int(data.startLocation.worldMap) : int(data.startLocation.subArea.area.worldmap.id),data.startLocation.subArea.name);
             }
             else
             {

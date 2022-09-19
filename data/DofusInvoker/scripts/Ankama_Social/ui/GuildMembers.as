@@ -8,11 +8,14 @@ package Ankama_Social.ui
    import com.ankamagames.berilia.components.Texture;
    import com.ankamagames.berilia.enums.StrataEnum;
    import com.ankamagames.berilia.enums.UIEnum;
+   import com.ankamagames.berilia.types.LocationEnum;
+   import com.ankamagames.berilia.types.data.GridItem;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.utils.ComponentHookList;
    import com.ankamagames.dofus.datacenter.communication.Smiley;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildApplicationWrapper;
+   import com.ankamagames.dofus.internalDatacenter.guild.GuildNoteWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildRecruitmentDataWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildApplicationsRequestAction;
@@ -27,19 +30,22 @@ package Ankama_Social.ui
    import com.ankamagames.dofus.network.enums.GuildApplicationStateEnum;
    import com.ankamagames.dofus.network.enums.GuildInformationsTypeEnum;
    import com.ankamagames.dofus.network.enums.GuildRecruitmentTypeEnum;
+   import com.ankamagames.dofus.network.enums.GuildRightsEnum;
    import com.ankamagames.dofus.network.enums.PlayerStateEnum;
-   import com.ankamagames.dofus.network.types.game.character.status.PlayerStatus;
    import com.ankamagames.dofus.network.types.game.character.status.PlayerStatusExtended;
    import com.ankamagames.dofus.network.types.game.guild.GuildMember;
+   import com.ankamagames.dofus.network.types.game.guild.GuildRankInformation;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
    import com.ankamagames.dofus.uiApi.SocialApi;
    import com.ankamagames.dofus.uiApi.SystemApi;
    import com.ankamagames.dofus.uiApi.UiTutoApi;
    import com.ankamagames.dofus.uiApi.UtilApi;
+   import com.ankamagames.jerakine.benchmark.BenchmarkTimer;
    import com.ankamagames.jerakine.types.Uri;
    import com.ankamagames.jerakine.types.enums.DataStoreEnum;
    import com.ankamagames.jerakine.utils.misc.StringUtils;
+   import flash.events.TimerEvent;
    import flash.utils.Dictionary;
    import flashx.textLayout.formats.TextAlign;
    
@@ -47,8 +53,6 @@ package Ankama_Social.ui
    {
       
       private static var _showOfflineMembers:Boolean = false;
-      
-      public static var playerRights:uint;
        
       
       [Api(name="SystemApi")]
@@ -76,8 +80,6 @@ package Ankama_Social.ui
       public var modCommon:Common;
       
       private const DATA_SORT_MEMBERS:String = "sortGuildMembers";
-      
-      private const SORT_ARROW_OFFSET:uint = 8;
       
       private const SORT_ORDER:String = "rankOrder";
       
@@ -115,6 +117,12 @@ package Ankama_Social.ui
       
       private var _guildApplicationTotal:int = 0;
       
+      private var _currentHoveredEditNoteBtn:ButtonContainer = null;
+      
+      private var _notesTimer:BenchmarkTimer = null;
+      
+      private var _lockedNotes:Vector.<GuildNoteWrapper>;
+      
       public var gd_list:Grid;
       
       public var btn_showOfflineMembers:ButtonContainer;
@@ -142,6 +150,10 @@ package Ankama_Social.ui
       public var btn_tabState:ButtonContainer;
       
       public var btn_seeGuildApplications:ButtonContainer;
+      
+      public var btn_guildRights:ButtonContainer;
+      
+      public var btn_lbl_btn_guildRights:Label;
       
       public var tx_status:Texture;
       
@@ -176,6 +188,7 @@ package Ankama_Social.ui
             "descending":false
          };
          this._interactiveComponentsList = new Dictionary(true);
+         this._lockedNotes = new Vector.<GuildNoteWrapper>();
          super();
       }
       
@@ -187,6 +200,7 @@ package Ankama_Social.ui
          this.sysApi.addHook(SocialHookList.GuildMembershipUpdated,this.onGuildMembershipUpdated);
          this.sysApi.addHook(SocialHookList.GuildApplicationsReceived,this.onApplications);
          this.sysApi.addHook(SocialHookList.GuildApplicationUpdated,this.onUpdatedApplication);
+         this.sysApi.addHook(SocialHookList.GuildRanksReceived,this.onGuildRankReceived);
          this.uiApi.addComponentHook(this.btn_showOfflineMembers,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btn_warnWhenMemberIsOnline,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btn_resetSearch,ComponentHookList.ON_RELEASE);
@@ -211,6 +225,7 @@ package Ankama_Social.ui
          this.btn_showOfflineMembers.selected = _showOfflineMembers;
          this.btn_warnWhenMemberIsOnline.selected = this.socialApi.getWarnOnMemberConnec();
          this.setGuildApplicationsButton(false);
+         this.updateGuildRightsButton();
          if(!this.playerApi.isInKoli())
          {
             if(this.uiApi.getUi(UIEnum.GUILD_APPLICATIONS) === null)
@@ -223,6 +238,7 @@ package Ankama_Social.ui
       
       public function unload() : void
       {
+         this.destroyNotesTimer();
          if(!this.playerApi.isInKoli() && this.uiApi.getUi(UIEnum.GUILD_APPLICATIONS) === null)
          {
             this.sysApi.sendAction(GuildSetApplicationUpdatesRequestAction.create(false));
@@ -251,12 +267,41 @@ package Ankama_Social.ui
          }
       }
       
-      public function updateGuildMemberLine(data:*, components:*, selected:Boolean) : void
+      private function disableEditNoteBtn() : void
       {
-         var memberInfo:Object = null;
-         var displayRightsMember:Boolean = false;
+         if(this._currentHoveredEditNoteBtn === null)
+         {
+            return;
+         }
+         this._currentHoveredEditNoteBtn.visible = false;
+         this._currentHoveredEditNoteBtn = null;
+      }
+      
+      private function enableEditNoteBtn(editNoteBtn:ButtonContainer) : void
+      {
+         if(editNoteBtn == null || this._currentHoveredEditNoteBtn === editNoteBtn)
+         {
+            return;
+         }
+         this.disableEditNoteBtn();
+         this._currentHoveredEditNoteBtn = editNoteBtn;
+         this._currentHoveredEditNoteBtn.visible = true;
+      }
+      
+      public function updateGuildMemberLine(data:MemberWrapper, components:*, selected:Boolean) : void
+      {
+         var memberInfo:GuildMember = null;
          var selfPlayerItem:* = false;
+         var maxPlayerNameWidth:Number = NaN;
+         var maxNoteWidth:Number = NaN;
          var smiley:Smiley = null;
+         var lastData:MemberWrapper = this._interactiveComponentsList[components.btn_rights.name];
+         delete this._interactiveComponentsList[components.btn_editNote.name];
+         this.uiApi.removeComponentHook(components.btn_editNote,ComponentHookList.ON_ROLL_OVER);
+         this.uiApi.removeComponentHook(components.btn_editNote,ComponentHookList.ON_ROLL_OUT);
+         this.uiApi.removeComponentHook(components.btn_editNote,ComponentHookList.ON_RELEASE);
+         this.uiApi.removeComponentHook(components.btn_memberLine,ComponentHookList.ON_ROLL_OVER);
+         this.uiApi.removeComponentHook(components.btn_memberLine,ComponentHookList.ON_ROLL_OUT);
          if(!this._interactiveComponentsList[components.btn_kick.name])
          {
             this.uiApi.addComponentHook(components.btn_kick,ComponentHookList.ON_RELEASE);
@@ -320,20 +365,75 @@ package Ankama_Social.ui
          if(data != null)
          {
             memberInfo = data.member;
-            displayRightsMember = data.displayRightsMember || this.isBoss(playerRights) || this.manageGuildBoosts(playerRights) || this.manageRanks(playerRights) || this.manageRights(playerRights) || this.manageLightRights(playerRights) || this.manageXPContribution(playerRights);
             selfPlayerItem = this.playerApi.id() == memberInfo.id;
-            components.lbl_rank.text = data.rankName;
+            if(data.note !== null)
+            {
+               components.lbl_note.text = data.note.text;
+               components.lbl_note.fullWidth();
+               maxNoteWidth = Number(this.uiApi.me().getConstant("note_width"));
+               if(components.lbl_note.width > maxNoteWidth)
+               {
+                  components.lbl_note.width = maxNoteWidth;
+               }
+            }
+            if(this.playerApi.id() === memberInfo.id || this.hasRight(GuildRightsEnum.RIGHT_MANAGE_MEMBERS_NOTE))
+            {
+               components.btn_editNote.visible = this._currentHoveredEditNoteBtn !== null && this._currentHoveredEditNoteBtn === components.btn_editNote;
+               if(data.note !== null)
+               {
+                  components.btn_editNote.x = components.lbl_note.x + components.lbl_note.width + Number(this.uiApi.me().getConstant("note_margin_x"));
+                  this._interactiveComponentsList[data.note.playerId] = components.btn_editNote;
+                  this.setEditNoteButtonState(components.btn_editNote,data.note.isEditable);
+               }
+               else
+               {
+                  if(data.note.playerId in this._interactiveComponentsList)
+                  {
+                     delete this._interactiveComponentsList[data.note.playerId];
+                  }
+                  components.btn_editNote.x = components.lbl_note.x;
+               }
+               components.btn_editNote.y = Number(this.uiApi.me().getConstant("note_margin_y"));
+               this._interactiveComponentsList[components.btn_editNote.name] = data;
+               this.uiApi.addComponentHook(components.btn_editNote,ComponentHookList.ON_ROLL_OVER);
+               this.uiApi.addComponentHook(components.btn_editNote,ComponentHookList.ON_ROLL_OUT);
+               if(!this.playerApi.isInKoli())
+               {
+                  this.uiApi.addComponentHook(components.btn_editNote,ComponentHookList.ON_RELEASE);
+               }
+               this._interactiveComponentsList[memberInfo.id] = components.btn_editNote;
+               this.uiApi.addComponentHook(components.btn_memberLine,ComponentHookList.ON_ROLL_OVER);
+               this.uiApi.addComponentHook(components.btn_memberLine,ComponentHookList.ON_ROLL_OUT);
+            }
+            else
+            {
+               components.btn_editNote.visible = false;
+               delete this._interactiveComponentsList[data.note.playerId];
+               delete this._interactiveComponentsList[components.btn_editNote.name];
+               delete this._interactiveComponentsList[memberInfo.id];
+               this.uiApi.removeComponentHook(components.btn_editNote,ComponentHookList.ON_ROLL_OVER);
+               this.uiApi.removeComponentHook(components.btn_editNote,ComponentHookList.ON_ROLL_OUT);
+               this.uiApi.removeComponentHook(components.btn_editNote,ComponentHookList.ON_RELEASE);
+               this.uiApi.removeComponentHook(components.btn_memberLine,ComponentHookList.ON_ROLL_OVER);
+               this.uiApi.removeComponentHook(components.btn_memberLine,ComponentHookList.ON_ROLL_OUT);
+            }
+            components.tx_rank.uri = this.uiApi.createUri(this.uiApi.me().getConstant("ranks_uri") + data.rank.gfxId + ".png");
+            components.lbl_rank.text = data.rank.name;
             components.lbl_XPP.text = memberInfo.experienceGivenPercent + "%";
-            components.lbl_XP.text = this.utilApi.kamasToString(memberInfo.givenExperience,"");
+            this._interactiveComponentsList[components.lbl_XP.name] = this.utilApi.kamasToString(memberInfo.givenExperience,"");
+            this.uiApi.addComponentHook(components.lbl_XP,ComponentHookList.ON_ROLL_OVER);
+            this.uiApi.addComponentHook(components.lbl_XP,ComponentHookList.ON_ROLL_OUT);
+            components.lbl_XP.text = this.utilApi.getShortenedStringOfNumber(memberInfo.givenExperience);
             components.tx_mood.uri = null;
             components.tx_fight.uri = null;
-            components.tx_status.uri = null;
-            components.tx_lvl.uri = null;
             if(memberInfo.level > ProtocolConstantsEnum.MAX_LEVEL)
             {
                components.lbl_lvl.cssClass = "darkboldcenter";
                components.lbl_lvl.text = memberInfo.level - ProtocolConstantsEnum.MAX_LEVEL;
-               components.tx_lvl.uri = this._bgPrestigeUri;
+               if(components.tx_lvl.uri != this._bgPrestigeUri)
+               {
+                  components.tx_lvl.uri = this._bgPrestigeUri;
+               }
                this.uiApi.addComponentHook(components.tx_lvl,ComponentHookList.ON_ROLL_OVER);
                this.uiApi.addComponentHook(components.tx_lvl,ComponentHookList.ON_ROLL_OUT);
             }
@@ -343,17 +443,20 @@ package Ankama_Social.ui
                this.uiApi.removeComponentHook(components.tx_lvl,ComponentHookList.ON_ROLL_OUT);
                components.lbl_lvl.cssClass = "boldcenter";
                components.lbl_lvl.text = memberInfo.level;
-               components.tx_lvl.uri = this._bgLevelUri;
+               if(components.tx_lvl.uri != this._bgLevelUri)
+               {
+                  components.tx_lvl.uri = this._bgLevelUri;
+               }
             }
             components.tx_slotHead.visible = true;
-            components.tx_head.uri = this.uiApi.createUri(this.uiApi.me().getConstant("heads") + data.breed + "" + data.sex + ".png");
-            if(data.achievementPoints == -1)
+            components.tx_head.uri = this.uiApi.createUri(this.uiApi.me().getConstant("heads") + memberInfo.breed + "" + data.sex + ".png");
+            if(memberInfo.achievementPoints == -1)
             {
                components.lbl_achievement.text = "-";
             }
             else
             {
-               components.lbl_achievement.text = StringUtils.kamasToString(data.achievementPoints,"");
+               components.lbl_achievement.text = StringUtils.kamasToString(memberInfo.achievementPoints,"");
             }
             if(memberInfo.connected != PlayerStateEnum.NOT_CONNECTED && memberInfo.moodSmileyId != 0)
             {
@@ -404,27 +507,25 @@ package Ankama_Social.ui
             {
                components.tx_havenbag.visible = false;
             }
-            components.tx_status.uri = this.socialApi.getStatusIcon(memberInfo.status.statusId);
-            if(data.displayBanMember)
+            if(lastData && lastData.member.status.statusId != memberInfo.status.statusId || components.tx_status.uri == null)
             {
-               components.btn_kick.visible = true;
+               components.tx_status.uri = this.socialApi.getStatusIcon(memberInfo.status.statusId);
             }
-            else
+            components.btn_kick.visible = data.displayBanMember || selfPlayerItem;
+            components.btn_rights.visible = data.canAssignRanks || data.canManageXp;
+            components.lbl_playerName.fullWidth();
+            maxPlayerNameWidth = Number(this.uiApi.me().getConstant("playerName_width"));
+            if(components.lbl_playerName.width > maxPlayerNameWidth)
             {
-               components.btn_kick.visible = selfPlayerItem;
-            }
-            if(displayRightsMember)
-            {
-               components.btn_rights.visible = true;
-            }
-            else
-            {
-               components.btn_rights.visible = selfPlayerItem;
+               components.lbl_playerName.width = maxPlayerNameWidth;
             }
          }
          else
          {
             components.lbl_playerName.text = "";
+            components.lbl_note.text = "";
+            components.lbl_rank.text = "";
+            components.tx_rank.uri = null;
             components.lbl_rank.text = "";
             components.tx_lvl.uri = null;
             components.lbl_lvl.text = "";
@@ -440,6 +541,16 @@ package Ankama_Social.ui
             components.btn_kick.visible = false;
             components.tx_status.uri = null;
             components.lbl_achievement.text = "";
+            components.btn_editNote.visible = false;
+            delete this._interactiveComponentsList[components.lbl_XP.name];
+            this.uiApi.removeComponentHook(components.lbl_XP,ComponentHookList.ON_ROLL_OVER);
+            this.uiApi.removeComponentHook(components.lbl_XP,ComponentHookList.ON_ROLL_OUT);
+            delete this._interactiveComponentsList[components.btn_editNote.name];
+            this.uiApi.removeComponentHook(components.btn_editNote,ComponentHookList.ON_ROLL_OVER);
+            this.uiApi.removeComponentHook(components.btn_editNote,ComponentHookList.ON_ROLL_OUT);
+            this.uiApi.removeComponentHook(components.btn_editNote,ComponentHookList.ON_RELEASE);
+            this.uiApi.removeComponentHook(components.btn_memberLine,ComponentHookList.ON_ROLL_OVER);
+            this.uiApi.removeComponentHook(components.btn_memberLine,ComponentHookList.ON_ROLL_OUT);
          }
          this.sysApi.addHook(SocialHookList.GuildRecruitmentDataReceived,this.onRecruitmentData);
       }
@@ -449,20 +560,27 @@ package Ankama_Social.ui
          this.setGuildApplicationsButton(this._guildApplicationTotal > 0);
       }
       
-      private function popupDeletePlayer(data:Object) : void
+      private function popupDeletePlayer(data:MemberWrapper) : void
       {
          var text:String = null;
          var quitButton:String = null;
          var cancelButton:String = null;
          if(data.isBoss && !data.isAlone)
          {
-            this.modCommon.openPopup(this.uiApi.getText("ui.popup.warning"),this.uiApi.getText("ui.social.guildBossCantBeBann"),[this.uiApi.getText("ui.common.ok")]);
+            this.modCommon.openPopup(this.uiApi.getText("ui.popup.warning"),this.uiApi.getText("ui.social.guildBossCantBeBann",data.rank.name),[this.uiApi.getText("ui.common.ok")]);
          }
          else
          {
             if(this.playerApi.id() == data.member.id)
             {
-               text = this.uiApi.getText("ui.social.doUDeleteYou");
+               if(data.isAlone)
+               {
+                  text = this.uiApi.getText("ui.social.doUDeleteYouWarningGuildChest");
+               }
+               else
+               {
+                  text = this.uiApi.getText("ui.social.doUDeleteYou");
+               }
                quitButton = this.uiApi.getText("ui.guild.quit");
                cancelButton = this.uiApi.getText("ui.guild.stay");
             }
@@ -488,104 +606,31 @@ package Ankama_Social.ui
          this._memberIdWaitingForKick = 0;
       }
       
-      private function displayMemberRights(data:Object) : void
+      private function displayMemberRights(data:MemberWrapper) : void
       {
          if(this.uiApi.getUi("guildMemberRights") != null)
          {
             this.uiApi.unloadUi("guildMemberRights");
          }
-         var manageOtherPlayersRights:Boolean = this.isBoss(playerRights) || this.manageGuildBoosts(playerRights) || this.manageRights(playerRights) || this.manageLightRights(playerRights);
-         var lightManage:Boolean = this.manageLightRights(playerRights) && !this.isBoss(playerRights) && !this.manageRights(playerRights);
          this.uiApi.loadUi("guildMemberRights","guildMemberRights",{
             "memberInfo":data.member,
-            "displayRightsMember":manageOtherPlayersRights,
-            "allowToManageRank":data.manageRanks,
-            "manageXPContribution":data.manageXPContribution,
-            "manageMyXPContribution":data.manageMyXPContribution,
+            "myRank":this.socialApi.playerGuildRank,
+            "allowToManageRank":this.hasRight(GuildRightsEnum.RIGHT_ASSIGN_RANKS),
+            "manageXPContribution":this.hasRight(GuildRightsEnum.RIGHT_MANAGE_ALL_XP_CONTRIBUTION),
+            "manageMyXPContribution":this.hasRight(GuildRightsEnum.RIGHT_MANAGE_SELF_XP_CONTRIBUTION),
             "selfPlayerItem":this.playerApi.id() == data.member.id,
-            "iamBoss":this.isBoss(playerRights),
-            "rightsToChange":lightManage
-         },StrataEnum.STRATA_TOP);
+            "iamBoss":this.socialApi.playerGuildRank.order == 0
+         },StrataEnum.STRATA_HIGH);
       }
       
-      private function isBoss(pPlayerRights:uint) : Boolean
+      private function manageRanks(pPlayerRights:Vector.<uint>) : Boolean
       {
-         return (1 & pPlayerRights) > 0;
+         return pPlayerRights && pPlayerRights.indexOf(GuildRightsEnum.RIGHT_MANAGE_RANKS_AND_RIGHTS) != -1;
       }
       
-      private function manageGuildBoosts(pPlayerRights:uint) : Boolean
+      public function manageGuildApply(pPlayerRights:Vector.<uint>) : Boolean
       {
-         return this.isBoss(pPlayerRights) || (2 & pPlayerRights) > 0;
-      }
-      
-      private function manageRights(pPlayerRights:uint) : Boolean
-      {
-         return this.isBoss(pPlayerRights) || (4 & pPlayerRights) > 0;
-      }
-      
-      private function inviteNewMembers(pPlayerRights:uint) : Boolean
-      {
-         return this.isBoss(pPlayerRights) || (8 & pPlayerRights) > 0;
-      }
-      
-      private function banMembers(pPlayerRights:uint) : Boolean
-      {
-         return this.isBoss(pPlayerRights) || (16 & pPlayerRights) > 0;
-      }
-      
-      private function manageXPContribution(pPlayerRights:uint) : Boolean
-      {
-         return this.isBoss(pPlayerRights) || (32 & pPlayerRights) > 0;
-      }
-      
-      private function manageRanks(pPlayerRights:uint) : Boolean
-      {
-         return this.isBoss(pPlayerRights) || (64 & pPlayerRights) > 0;
-      }
-      
-      private function manageMyXpContribution(pPlayerRights:uint) : Boolean
-      {
-         return this.isBoss(pPlayerRights) || (128 & pPlayerRights) > 0;
-      }
-      
-      private function hireTaxCollector(pPlayerRights:uint) : Boolean
-      {
-         return this.isBoss(pPlayerRights) || (256 & pPlayerRights) > 0;
-      }
-      
-      private function collect(pPlayerRights:uint) : Boolean
-      {
-         return this.isBoss(pPlayerRights) || (512 & pPlayerRights) > 0;
-      }
-      
-      private function manageLightRights(pPlayerRights:uint) : Boolean
-      {
-         return this.isBoss(pPlayerRights) || (1024 & pPlayerRights) > 0;
-      }
-      
-      private function useFarms(pPlayerRights:uint) : Boolean
-      {
-         return this.isBoss(pPlayerRights) || (4096 & pPlayerRights) > 0;
-      }
-      
-      private function organizeFarms(pPlayerRights:uint) : Boolean
-      {
-         return this.isBoss(pPlayerRights) || (8192 & pPlayerRights) > 0;
-      }
-      
-      private function takeOthersRidesInFarm(pPlayerRights:uint) : Boolean
-      {
-         return this.isBoss(pPlayerRights) || (16384 & pPlayerRights) > 0;
-      }
-      
-      private function manageRecruitment(pPlayerRights:uint) : Boolean
-      {
-         return this.isBoss(pPlayerRights) || (4194304 & pPlayerRights) > 0;
-      }
-      
-      public function manageGuildApply(pPlayerRights:uint) : Boolean
-      {
-         return this.isBoss(pPlayerRights) || (8388608 & pPlayerRights) > 0;
+         return pPlayerRights && pPlayerRights.indexOf(GuildRightsEnum.RIGHT_MANAGE_APPLY_AND_INVITATION) != -1;
       }
       
       private function searchMember() : void
@@ -621,20 +666,44 @@ package Ankama_Social.ui
             case this.SORT_NAME:
                if(this._sortingParams.descending)
                {
-                  return members.sortOn(this._sortingParams.sortType,Array.CASEINSENSITIVE | Array.DESCENDING);
+                  return members.sort(this.sortByName,Array.CASEINSENSITIVE | Array.DESCENDING);
                }
-               return members.sortOn(this._sortingParams.sortType,Array.CASEINSENSITIVE);
+               return members.sort(this.sortByName,Array.CASEINSENSITIVE);
                break;
             case this.SORT_ORDER:
+               if(this._sortingParams.descending)
+               {
+                  return members.sort(this.sortByOrder,Array.NUMERIC | Array.DESCENDING | Array.CASEINSENSITIVE);
+               }
+               return members.sort(this.sortByOrder,Array.NUMERIC | Array.CASEINSENSITIVE);
+               break;
             case this.SORT_LEVEL:
+               if(this._sortingParams.descending)
+               {
+                  return members.sort(this.sortByLevel,Array.NUMERIC | Array.DESCENDING | Array.CASEINSENSITIVE);
+               }
+               return members.sort(this.sortByLevel,Array.NUMERIC | Array.CASEINSENSITIVE);
+               break;
             case this.SORT_XP:
+               if(this._sortingParams.descending)
+               {
+                  return members.sort(this.sortByXp,Array.NUMERIC | Array.DESCENDING | Array.CASEINSENSITIVE);
+               }
+               return members.sort(this.sortByXp,Array.NUMERIC | Array.CASEINSENSITIVE);
+               break;
             case this.SORT_XPP:
+               if(this._sortingParams.descending)
+               {
+                  return members.sort(this.sortByXpp,Array.NUMERIC | Array.DESCENDING | Array.CASEINSENSITIVE);
+               }
+               return members.sort(this.sortByXpp,Array.NUMERIC | Array.CASEINSENSITIVE);
+               break;
             case this.SORT_ACHIEVEMENT:
                if(this._sortingParams.descending)
                {
-                  return members.sortOn([this._sortingParams.sortType,this.SORT_NAME],[Array.NUMERIC | Array.DESCENDING,Array.CASEINSENSITIVE]);
+                  return members.sort(this.sortByAchievement,Array.NUMERIC | Array.DESCENDING | Array.CASEINSENSITIVE);
                }
-               return members.sortOn([this._sortingParams.sortType,this.SORT_NAME],[Array.NUMERIC,Array.CASEINSENSITIVE]);
+               return members.sort(this.sortByAchievement,Array.NUMERIC | Array.CASEINSENSITIVE);
                break;
             case this.SORT_STATUS:
                if(this._sortingParams.descending)
@@ -681,36 +750,139 @@ package Ankama_Social.ui
          this.tx_sortDown.visible = !this._bDescendingSort;
          this.tx_sortUp.visible = this._bDescendingSort;
          var pos:int = 0;
+         var sortArrowOffset:Number = Number(this.uiApi.me().getConstant("sort_arrow_offset"));
          switch(btn_lbl_target.textFormat.align)
          {
             case TextAlign.LEFT:
             case TextAlign.JUSTIFY:
-               pos = target.anchorX + btn_lbl_target.textWidth + this.SORT_ARROW_OFFSET + 3;
+               pos = target.anchorX + btn_lbl_target.textWidth + sortArrowOffset + 3;
                break;
             case TextAlign.CENTER:
-               pos = target.anchorX + btn_lbl_target.width / 2 + btn_lbl_target.textWidth / 2 + this.SORT_ARROW_OFFSET;
+               pos = target.anchorX + btn_lbl_target.width / 2 + btn_lbl_target.textWidth / 2 + sortArrowOffset;
                break;
             case TextAlign.RIGHT:
-               pos = target.anchorX + btn_lbl_target.width + this.SORT_ARROW_OFFSET;
+               pos = target.anchorX + btn_lbl_target.width + sortArrowOffset;
          }
          this.tx_sortDown.x = this.tx_sortUp.x = pos;
       }
       
-      private function sortByStatus(member1:Object, member2:Object) : int
+      private function sortByStatus(member1:MemberWrapper, member2:MemberWrapper) : int
       {
-         var firstStatus:int = (member1.status as PlayerStatus).statusId;
-         var secondStatus:int = (member2.status as PlayerStatus).statusId;
+         var firstStatus:int = member1.member.status.statusId;
+         var secondStatus:int = member2.member.status.statusId;
          firstStatus = firstStatus != 0 ? int(firstStatus) : 1000;
          secondStatus = secondStatus != 0 ? int(secondStatus) : 1000;
-         if(firstStatus > secondStatus)
+         var sortResult:int = this.sortBase(firstStatus,secondStatus);
+         if(sortResult == 0)
+         {
+            return this.secondSort(member1,member2,this.sortByName);
+         }
+         return sortResult;
+      }
+      
+      private function sortByName(member1:MemberWrapper, member2:MemberWrapper) : int
+      {
+         return this.sortBase(member1.member.name,member2.member.name);
+      }
+      
+      private function sortByOrder(member1:MemberWrapper, member2:MemberWrapper) : int
+      {
+         var sortResult:int = this.sortBase(member1.rank.order,member2.rank.order);
+         if(sortResult == 0)
+         {
+            return this.secondSort(member1,member2,this.sortByName);
+         }
+         return sortResult;
+      }
+      
+      private function sortByLevel(member1:MemberWrapper, member2:MemberWrapper) : int
+      {
+         var sortResult:int = this.sortBase(member1.member.level,member2.member.level);
+         if(sortResult == 0)
+         {
+            return this.secondSort(member1,member2,this.sortByName);
+         }
+         return sortResult;
+      }
+      
+      private function sortByXp(member1:MemberWrapper, member2:MemberWrapper) : int
+      {
+         var sortResult:int = this.sortBase(member1.member.givenExperience,member2.member.givenExperience);
+         if(sortResult == 0)
+         {
+            return this.secondSort(member1,member2,this.sortByName);
+         }
+         return sortResult;
+      }
+      
+      private function sortByXpp(member1:MemberWrapper, member2:MemberWrapper) : int
+      {
+         var sortResult:int = this.sortBase(member1.member.experienceGivenPercent,member2.member.experienceGivenPercent);
+         if(sortResult == 0)
+         {
+            return this.secondSort(member1,member2,this.sortByName);
+         }
+         return sortResult;
+      }
+      
+      private function sortByAchievement(member1:MemberWrapper, member2:MemberWrapper) : int
+      {
+         var sortResult:int = this.sortBase(member1.member.achievementPoints,member2.member.achievementPoints);
+         if(sortResult == 0)
+         {
+            return this.secondSort(member1,member2,this.sortByName);
+         }
+         return sortResult;
+      }
+      
+      private function secondSort(member1:MemberWrapper, member2:MemberWrapper, sortFunc:Function) : int
+      {
+         if(this._bDescendingSort)
+         {
+            return sortFunc(member2,member1);
+         }
+         return sortFunc(member1,member2);
+      }
+      
+      public function sortBase(first:*, second:*) : int
+      {
+         if(first > second)
          {
             return 1;
          }
-         if(firstStatus < secondStatus)
+         if(first < second)
          {
             return -1;
          }
          return 0;
+      }
+      
+      private function updateGuildRightsButton() : void
+      {
+         if(this.manageRanks(this.socialApi.playerGuildRank.rights))
+         {
+            this.btn_lbl_btn_guildRights.text = this.uiApi.getText("ui.guild.manageRanks");
+         }
+         else
+         {
+            this.btn_lbl_btn_guildRights.text = this.uiApi.getText("ui.guild.seeRanks");
+         }
+         this.btn_guildRights.softDisabled = this.playerApi.isInKoli();
+         if(this.btn_guildRights.softDisabled)
+         {
+            this.uiApi.addComponentHook(this.btn_guildRights,ComponentHookList.ON_ROLL_OVER);
+            this.uiApi.addComponentHook(this.btn_guildRights,ComponentHookList.ON_ROLL_OUT);
+         }
+         else
+         {
+            this.uiApi.removeComponentHook(this.btn_guildRights,ComponentHookList.ON_ROLL_OVER);
+            this.uiApi.removeComponentHook(this.btn_guildRights,ComponentHookList.ON_ROLL_OUT);
+         }
+      }
+      
+      private function hasRight(rightId:uint) : Boolean
+      {
+         return this.socialApi.playerGuildRank.rights.indexOf(rightId) != -1;
       }
       
       private function onApplications(applicationDescrs:Vector.<GuildApplicationWrapper>, offset:uint, limit:uint, total:uint) : void
@@ -745,10 +917,6 @@ package Ankama_Social.ui
          var connected:int = 0;
          for each(member in this._membersList)
          {
-            if(member.id == this.playerApi.id())
-            {
-               playerRights = member.rights;
-            }
             totalLevels += member.level;
             if(member.connected || _showOfflineMembers)
             {
@@ -762,9 +930,10 @@ package Ankama_Social.ui
          this.gd_list.dataProvider = this.sortMembers(listDisplayed);
          this.lbl_membersLevel.text = this.uiApi.getText("ui.social.guildAvgMembersLevel") + this.uiApi.getText("ui.common.colon") + int(totalLevels / totalMembers);
          this.lbl_membersNumber.text = this.uiApi.getText("ui.social.guildMembers") + this.uiApi.getText("ui.common.colon") + connected + " / " + totalMembers;
+         this.updateGuildRightsButton();
       }
       
-      public function onGuildInformationsMemberUpdate(memberInfo:Object) : void
+      public function onGuildInformationsMemberUpdate(memberInfo:GuildMember) : void
       {
          var member:GuildMember = null;
          var index:int = 0;
@@ -777,7 +946,7 @@ package Ankama_Social.ui
                index = 0;
                for(i = 0; i < this.gd_list.dataProvider.length; i++)
                {
-                  if(this.gd_list.dataProvider[i].id == memberInfo.id)
+                  if(this.gd_list.dataProvider[i].member.id == memberInfo.id)
                   {
                      index = i;
                   }
@@ -791,7 +960,7 @@ package Ankama_Social.ui
       private function onGuildMembershipUpdated(hasGuild:Boolean) : void
       {
          var listDisplayed:Array = null;
-         var member:Object = null;
+         var member:MemberWrapper = null;
          if(hasGuild)
          {
             listDisplayed = [];
@@ -811,46 +980,109 @@ package Ankama_Social.ui
          }
       }
       
-      private function createMemberObject(member:Object, isAlone:Boolean) : Object
+      private function onGuildRankReceived(ranks:Vector.<GuildRankInformation>) : void
       {
-         var guild:Object = this.socialApi.getGuild();
-         var memberObject:Object = {};
-         memberObject.id = member.id;
-         memberObject.member = member;
-         memberObject.manageXPContribution = guild.manageXPContribution;
-         memberObject.manageMyXPContribution = guild.manageMyXpContribution;
-         memberObject.manageRanks = guild.manageRanks;
-         memberObject.displayBanMember = guild.banMembers;
-         memberObject.displayRightsMember = guild.manageRights;
-         memberObject.displayLightRightsMember = guild.manageLightRights;
-         memberObject.name = member.name;
-         memberObject.breed = member.breed;
-         var rank:Object = this.dataApi.getRankName(member.rank);
-         memberObject.isBoss = member.rank == 1;
-         memberObject.rankName = rank.name;
-         memberObject.rankOrder = rank.order;
-         memberObject.level = member.level;
-         memberObject.XP = member.givenExperience;
-         memberObject.XPP = member.experienceGivenPercent;
-         memberObject.state = member.connected;
-         memberObject.sex = !!member.sex ? 1 : 0;
-         memberObject.isAlone = isAlone;
-         memberObject.achievementPoints = member.achievementPoints;
-         memberObject.status = member.status;
-         memberObject.havenBagShared = member.havenBagShared;
-         return memberObject;
+         this.gd_list.updateItems();
       }
       
-      private function updateMemberObjectWithMyRights(member:Object) : Object
+      private function createMemberObject(member:GuildMember, isAlone:Boolean) : Object
       {
-         var guild:Object = this.socialApi.getGuild();
-         member.manageXPContribution = guild.manageXPContribution;
-         member.manageMyXPContribution = guild.manageMyXpContribution;
-         member.manageRanks = guild.manageRanks;
-         member.displayBanMember = guild.banMembers;
-         member.displayRightsMember = guild.manageRights;
-         member.displayLightRightsMember = guild.manageLightRights;
+         var memberWrapper:MemberWrapper = new MemberWrapper();
+         var rank:GuildRankInformation = this.socialApi.socialFrame.getGuildRankById(member.rankId);
+         var playedCharacterRank:GuildRankInformation = this.socialApi.playerGuildRank;
+         memberWrapper.rank = rank;
+         memberWrapper.member = member;
+         memberWrapper.displayBanMember = this.hasRight(GuildRightsEnum.RIGHT_KICK_MEMBER) && playedCharacterRank.order < rank.order;
+         memberWrapper.canManageXp = this.hasRight(GuildRightsEnum.RIGHT_MANAGE_SELF_XP_CONTRIBUTION) && member.id == this.playerApi.id() || playedCharacterRank.order < rank.order && this.hasRight(GuildRightsEnum.RIGHT_MANAGE_ALL_XP_CONTRIBUTION);
+         memberWrapper.canAssignRanks = playedCharacterRank.order < rank.order && this.hasRight(GuildRightsEnum.RIGHT_ASSIGN_RANKS);
+         memberWrapper.sex = !!member.sex ? 1 : 0;
+         memberWrapper.isAlone = isAlone;
+         memberWrapper.name = member.name;
+         memberWrapper.note = GuildNoteWrapper.wrap(member.id,member.note);
+         this.listenToGuildNote(memberWrapper.note);
+         return memberWrapper;
+      }
+      
+      private function listenToGuildNote(note:GuildNoteWrapper) : void
+      {
+         if(note.isEditable)
+         {
+            return;
+         }
+         this.createNotesTimer();
+         this.addLockedNote(note);
+      }
+      
+      private function addLockedNote(note:GuildNoteWrapper) : void
+      {
+         var lockedNote:GuildNoteWrapper = null;
+         var index:uint = 0;
+         var count:uint = this._lockedNotes.length;
+         var insertIndex:int = count;
+         while(index < count)
+         {
+            lockedNote = this._lockedNotes[index];
+            if(lockedNote.editDate >= note.editDate)
+            {
+               insertIndex = index;
+            }
+            index++;
+         }
+         if(note.playerId in this._interactiveComponentsList)
+         {
+            this.setEditNoteButtonState(this._interactiveComponentsList[note.playerId],false);
+         }
+         if(insertIndex > count - 1)
+         {
+            this._lockedNotes.push(note);
+         }
+         else
+         {
+            this._lockedNotes.insertAt(insertIndex,note);
+         }
+      }
+      
+      private function setEditNoteButtonState(noteButton:ButtonContainer, isEditable:Boolean) : void
+      {
+         if(isEditable && !this.playerApi.isInKoli())
+         {
+            this.uiApi.addComponentHook(noteButton,ComponentHookList.ON_RELEASE);
+            noteButton.useHandCursor = true;
+            return;
+         }
+         this.uiApi.removeComponentHook(noteButton,ComponentHookList.ON_RELEASE);
+         noteButton.useHandCursor = false;
+      }
+      
+      private function updateMemberObjectWithMyRights(member:MemberWrapper) : MemberWrapper
+      {
+         var playedCharacterRank:GuildRankInformation = this.socialApi.playerGuildRank;
+         member.displayBanMember = this.hasRight(GuildRightsEnum.RIGHT_KICK_MEMBER) && playedCharacterRank.order < member.rank.order;
+         member.canManageXp = this.hasRight(GuildRightsEnum.RIGHT_MANAGE_SELF_XP_CONTRIBUTION) && member.member.id == this.playerApi.id() || playedCharacterRank.order < member.rank.order && this.hasRight(GuildRightsEnum.RIGHT_MANAGE_ALL_XP_CONTRIBUTION);
+         member.canAssignRanks = playedCharacterRank.order < member.rank.order && this.hasRight(GuildRightsEnum.RIGHT_ASSIGN_RANKS);
          return member;
+      }
+      
+      private function createNotesTimer() : void
+      {
+         if(this._notesTimer !== null)
+         {
+            return;
+         }
+         this._notesTimer = new BenchmarkTimer(1000,0,"GuildMembers._notesTimer");
+         this._notesTimer.addEventListener(TimerEvent.TIMER,this.onNotesTimer);
+         this._notesTimer.start();
+      }
+      
+      private function destroyNotesTimer() : void
+      {
+         if(this._notesTimer === null)
+         {
+            return;
+         }
+         this._notesTimer.stop();
+         this._notesTimer.removeEventListener(TimerEvent.TIMER,this.onNotesTimer);
+         this._notesTimer = null;
       }
       
       public function showTabHints() : void
@@ -860,8 +1092,7 @@ package Ankama_Social.ui
       
       public function onRelease(target:GraphicContainer) : void
       {
-         var data:Object = null;
-         var data2:Object = null;
+         var data:MemberWrapper = null;
          if(target == this.btn_showOfflineMembers)
          {
             _showOfflineMembers = this.btn_showOfflineMembers.selected;
@@ -913,11 +1144,11 @@ package Ankama_Social.ui
             }
             if(this._bDescendingSort)
             {
-               this.gd_list.sortOn(this.SORT_NAME,Array.CASEINSENSITIVE | Array.DESCENDING);
+               this.gd_list.dataProvider = this.gd_list.dataProvider.sort(this.sortByName,Array.CASEINSENSITIVE | Array.DESCENDING);
             }
             else
             {
-               this.gd_list.sortOn(this.SORT_NAME,Array.CASEINSENSITIVE);
+               this.gd_list.dataProvider = this.gd_list.dataProvider.sort(this.sortByName,Array.CASEINSENSITIVE);
             }
             this.updateSortArrow(target);
             this._sortingParams.sortType = this.SORT_NAME;
@@ -936,11 +1167,11 @@ package Ankama_Social.ui
             }
             if(this._bDescendingSort)
             {
-               this.gd_list.sortArrayOn([this.SORT_ORDER,this.SORT_NAME],[Array.NUMERIC | Array.DESCENDING,Array.CASEINSENSITIVE]);
+               this.gd_list.dataProvider = this.gd_list.dataProvider.sort(this.sortByOrder,Array.NUMERIC | Array.DESCENDING | Array.CASEINSENSITIVE);
             }
             else
             {
-               this.gd_list.sortArrayOn([this.SORT_ORDER,this.SORT_NAME],[Array.NUMERIC,Array.CASEINSENSITIVE]);
+               this.gd_list.dataProvider = this.gd_list.dataProvider.sort(this.sortByOrder,Array.NUMERIC | Array.CASEINSENSITIVE);
             }
             this.updateSortArrow(target);
             this._sortingParams.sortType = this.SORT_ORDER;
@@ -959,11 +1190,11 @@ package Ankama_Social.ui
             }
             if(this._bDescendingSort)
             {
-               this.gd_list.sortArrayOn([this.SORT_LEVEL,this.SORT_NAME],[Array.NUMERIC | Array.DESCENDING,Array.CASEINSENSITIVE]);
+               this.gd_list.dataProvider = this.gd_list.dataProvider.sort(this.sortByLevel,Array.NUMERIC | Array.DESCENDING | Array.CASEINSENSITIVE);
             }
             else
             {
-               this.gd_list.sortArrayOn([this.SORT_LEVEL,this.SORT_NAME],[Array.NUMERIC,Array.CASEINSENSITIVE]);
+               this.gd_list.dataProvider = this.gd_list.dataProvider.sort(this.sortByLevel,Array.NUMERIC | Array.CASEINSENSITIVE);
             }
             this.updateSortArrow(target);
             this._sortingParams.sortType = this.SORT_LEVEL;
@@ -982,11 +1213,11 @@ package Ankama_Social.ui
             }
             if(this._bDescendingSort)
             {
-               this.gd_list.sortArrayOn([this.SORT_XP,this.SORT_NAME],[Array.NUMERIC | Array.DESCENDING,Array.CASEINSENSITIVE]);
+               this.gd_list.dataProvider = this.gd_list.dataProvider.sort(this.sortByXp,Array.NUMERIC | Array.DESCENDING | Array.CASEINSENSITIVE);
             }
             else
             {
-               this.gd_list.sortArrayOn([this.SORT_XP,this.SORT_NAME],[Array.NUMERIC,Array.CASEINSENSITIVE]);
+               this.gd_list.dataProvider = this.gd_list.dataProvider.sort(this.sortByXp,Array.NUMERIC | Array.CASEINSENSITIVE);
             }
             this.updateSortArrow(target);
             this._sortingParams.sortType = this.SORT_XP;
@@ -1005,11 +1236,11 @@ package Ankama_Social.ui
             }
             if(this._bDescendingSort)
             {
-               this.gd_list.sortArrayOn([this.SORT_XPP,this.SORT_NAME],[Array.NUMERIC | Array.DESCENDING,Array.CASEINSENSITIVE]);
+               this.gd_list.dataProvider = this.gd_list.dataProvider.sort(this.sortByXpp,Array.NUMERIC | Array.DESCENDING | Array.CASEINSENSITIVE);
             }
             else
             {
-               this.gd_list.sortArrayOn([this.SORT_XPP,this.SORT_NAME],[Array.NUMERIC,Array.CASEINSENSITIVE]);
+               this.gd_list.dataProvider = this.gd_list.dataProvider.sort(this.sortByXpp,Array.NUMERIC | Array.CASEINSENSITIVE);
             }
             this.updateSortArrow(target);
             this._sortingParams.sortType = this.SORT_XPP;
@@ -1028,11 +1259,11 @@ package Ankama_Social.ui
             }
             if(this._bDescendingSort)
             {
-               this.gd_list.sortArrayOn([this.SORT_ACHIEVEMENT,this.SORT_NAME],[Array.NUMERIC | Array.DESCENDING,Array.CASEINSENSITIVE]);
+               this.gd_list.dataProvider = this.gd_list.dataProvider.sort(this.sortByAchievement,Array.NUMERIC | Array.DESCENDING | Array.CASEINSENSITIVE);
             }
             else
             {
-               this.gd_list.sortArrayOn([this.SORT_ACHIEVEMENT,this.SORT_NAME],[Array.NUMERIC,Array.CASEINSENSITIVE]);
+               this.gd_list.dataProvider = this.gd_list.dataProvider.sort(this.sortByAchievement,Array.NUMERIC | Array.CASEINSENSITIVE);
             }
             this.updateSortArrow(target);
             this._sortingParams.sortType = this.SORT_ACHIEVEMENT;
@@ -1047,7 +1278,18 @@ package Ankama_Social.ui
          {
             if(!this.uiApi.getUi(UIEnum.GUILD_APPLICATIONS))
             {
-               this.uiApi.loadUi(UIEnum.GUILD_APPLICATIONS,null,{"hasRights":this.manageGuildApply(playerRights)});
+               this.uiApi.loadUi(UIEnum.GUILD_APPLICATIONS,null);
+            }
+         }
+         else if(target == this.btn_guildRights)
+         {
+            if(!this.uiApi.getUi(UIEnum.GUILD_RIGHTS_AND_RANKS))
+            {
+               this.uiApi.loadUi(UIEnum.GUILD_RIGHTS_AND_RANKS,UIEnum.GUILD_RIGHTS_AND_RANKS);
+            }
+            else
+            {
+               this.uiApi.unloadUi(UIEnum.GUILD_RIGHTS_AND_RANKS);
             }
          }
          else if(target.name.indexOf("btn_rights") != -1)
@@ -1057,36 +1299,53 @@ package Ankama_Social.ui
          }
          else if(target.name.indexOf("btn_kick") != -1)
          {
-            data2 = this._interactiveComponentsList[target.name];
-            this.popupDeletePlayer(data2);
+            data = this._interactiveComponentsList[target.name] as MemberWrapper;
+            this.popupDeletePlayer(data);
          }
          else if(target.name.indexOf("tx_state") != -1 || target.name.indexOf("tx_mood") != -1 || target.name.indexOf("tx_fight") != -1)
          {
             data = this._interactiveComponentsList[target.name];
             if(data.member.connected == PlayerStateEnum.GAME_TYPE_FIGHT)
             {
-               this.sysApi.sendAction(new GameFightSpectatePlayerRequestAction([data.id]));
+               this.sysApi.sendAction(new GameFightSpectatePlayerRequestAction([data.member.id]));
             }
          }
          else if(target.name.indexOf("tx_havenbag") != -1)
          {
             data = this._interactiveComponentsList[target.name];
-            this.sysApi.sendAction(new HavenbagEnterAction([data.id]));
+            this.sysApi.sendAction(new HavenbagEnterAction([data.member.id]));
+         }
+         else if(target.name.indexOf("btn_editNote") !== -1)
+         {
+            if(target.name in this._interactiveComponentsList && target.name in this._interactiveComponentsList)
+            {
+               data = this._interactiveComponentsList[target.name];
+               if(!data.note.isEditable)
+               {
+                  return;
+               }
+               this.uiApi.loadUi(UIEnum.GUILD_NOTE_EDITING_POPUP,UIEnum.GUILD_NOTE_EDITING_POPUP,{
+                  "guildMember":data.member,
+                  "note":data.note
+               });
+            }
          }
       }
       
       public function onRollOver(target:GraphicContainer) : void
       {
          var tooltipText:String = null;
-         var data:Object = null;
+         var data:MemberWrapper = null;
          var playerId:Number = NaN;
+         var member:MemberWrapper = null;
          var memberInfo:Object = null;
          var months:int = 0;
          var days:int = 0;
          var argText:String = null;
          var memberStatusInfo:Object = null;
-         var point:uint = 6;
-         var relPoint:uint = 0;
+         var note:GuildNoteWrapper = null;
+         var point:uint = LocationEnum.POINT_BOTTOMLEFT;
+         var relPoint:uint = LocationEnum.POINT_TOPLEFT;
          if(target == this.btn_tabXPP)
          {
             tooltipText = this.uiApi.getText("ui.guild.XPPercent");
@@ -1110,14 +1369,33 @@ package Ankama_Social.ui
                tooltipText = this.uiApi.getText("ui.guild.noApplicationsAvailable");
             }
          }
+         else if(target == this.btn_guildRights)
+         {
+            if(this.btn_guildRights.softDisabled && this.playerApi.isInKoli())
+            {
+               tooltipText = this.uiApi.getText("ui.guild.rightsNotAvailableInKoli");
+            }
+         }
          else if(target.name.indexOf("btn_rights") != -1)
          {
-            tooltipText = this.uiApi.getText("ui.social.guildManageRights");
+            member = this._interactiveComponentsList[target.name];
+            if(member.canAssignRanks && member.canManageXp)
+            {
+               tooltipText = this.uiApi.getText("ui.guild.managePlayerRankAndXP");
+            }
+            else if(member.canManageXp)
+            {
+               tooltipText = this.uiApi.getText("ui.guild.managePlayerXP");
+            }
+            else if(member.canAssignRanks)
+            {
+               tooltipText = this.uiApi.getText("ui.guild.managePlayerRank");
+            }
          }
          else if(target.name.indexOf("btn_kick") != -1)
          {
             tooltipText = this.uiApi.getText("ui.charsel.characterDelete");
-            playerId = this._interactiveComponentsList[target.name].id;
+            playerId = this._interactiveComponentsList[target.name].member.id;
             if(playerId === this.playerApi.id())
             {
                tooltipText = this.uiApi.getText("ui.guild.quitGuild");
@@ -1175,12 +1453,14 @@ package Ankama_Social.ui
          }
          else if(target.name.indexOf("tx_lvl") != -1)
          {
+            point = LocationEnum.POINT_BOTTOM;
+            relPoint = LocationEnum.POINT_TOP;
             tooltipText = this.uiApi.getText("ui.tooltip.OmegaLevel");
          }
          else if(target.name.indexOf("tx_head") != -1)
          {
             data = this._interactiveComponentsList[target.name];
-            tooltipText = this.dataApi.getBreed(data.breed).name;
+            tooltipText = this.dataApi.getBreed(data.member.breed).name;
          }
          else if(target.name.indexOf("tx_status") != -1)
          {
@@ -1202,6 +1482,43 @@ package Ankama_Social.ui
                }
             }
          }
+         else if(target.name.indexOf("btn_editNote") !== -1 && target.name in this._interactiveComponentsList)
+         {
+            if(this.playerApi.isInKoli())
+            {
+               tooltipText = this.uiApi.getText("ui.guild.note.editDuringPvPImpossible");
+            }
+            else
+            {
+               data = this._interactiveComponentsList[target.name];
+               note = data.note;
+               if(!note.isEditable)
+               {
+                  tooltipText = this.uiApi.getText("ui.guild.note.lockDelay",Math.round(GuildNoteWrapper.MIN_EDIT_DELAY / 1000));
+               }
+               else
+               {
+                  playerId = data.member.id;
+                  if(!isNaN(playerId))
+                  {
+                     if(playerId === this.playerApi.id())
+                     {
+                        tooltipText = this.uiApi.getText("ui.guild.note.editMyNote");
+                     }
+                     else
+                     {
+                        tooltipText = this.uiApi.getText("ui.guild.note.editNote");
+                     }
+                  }
+               }
+            }
+         }
+         else if(target.name.indexOf("lbl_XP") !== -1)
+         {
+            point = LocationEnum.POINT_BOTTOM;
+            relPoint = LocationEnum.POINT_TOP;
+            tooltipText = this._interactiveComponentsList[target.name];
+         }
          if(tooltipText)
          {
             this.uiApi.showTooltip(this.uiApi.textTooltipInfo(tooltipText),target,false,"standard",point,relPoint,3,null,null,null,"TextInfo");
@@ -1211,6 +1528,16 @@ package Ankama_Social.ui
       public function onRollOut(target:GraphicContainer) : void
       {
          this.uiApi.hideTooltip();
+      }
+      
+      public function onItemRollOver(target:Grid, item:GridItem) : void
+      {
+         this.disableEditNoteBtn();
+         if(item.data === null)
+         {
+            return;
+         }
+         this.enableEditNoteBtn(this._interactiveComponentsList[item.data.member.id]);
       }
       
       public function onChange(target:Input) : void
@@ -1230,5 +1557,67 @@ package Ankama_Social.ui
                }
          }
       }
+      
+      private function onNotesTimer(event:TimerEvent) : void
+      {
+         var note:GuildNoteWrapper = null;
+         var index:int = this._lockedNotes.length - 1;
+         while(index >= 0)
+         {
+            note = this._lockedNotes[index];
+            if(!note.isEditable)
+            {
+               break;
+            }
+            this._lockedNotes.pop();
+            index--;
+            if(note.playerId in this._interactiveComponentsList)
+            {
+               this.setEditNoteButtonState(this._interactiveComponentsList[note.playerId],true);
+            }
+         }
+         if(this._lockedNotes.length > 0)
+         {
+            return;
+         }
+         this.destroyNotesTimer();
+      }
+   }
+}
+
+import com.ankamagames.dofus.internalDatacenter.guild.GuildNoteWrapper;
+import com.ankamagames.dofus.network.types.game.guild.GuildMember;
+import com.ankamagames.dofus.network.types.game.guild.GuildRankInformation;
+
+class MemberWrapper
+{
+    
+   
+   public var displayBanMember:Boolean = false;
+   
+   public var canAssignRanks:Boolean = false;
+   
+   public var canManageXp:Boolean = false;
+   
+   public var member:GuildMember;
+   
+   public var note:GuildNoteWrapper = null;
+   
+   public var rank:GuildRankInformation;
+   
+   public var sex:int;
+   
+   public var isAlone:Boolean = false;
+   
+   public var name:String;
+   
+   function MemberWrapper()
+   {
+      super();
+   }
+   
+   public function get isBoss() : Boolean
+   {
+      return this.rank.order == 0;
    }
 }

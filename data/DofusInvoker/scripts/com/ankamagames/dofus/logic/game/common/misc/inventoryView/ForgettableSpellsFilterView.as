@@ -19,7 +19,7 @@ package com.ankamagames.dofus.logic.game.common.misc.inventoryView
       
       private var _parent:IStorageView;
       
-      private var _isHideLearnedSpells:Boolean = false;
+      protected var _isHideLearnedSpells:Boolean = false;
       
       public function ForgettableSpellsFilterView(hookLock:HookLock, parentView:IStorageView, allowedTypes:Vector.<uint>, isHideLearnedSpells:Boolean)
       {
@@ -81,7 +81,7 @@ package com.ankamagames.dofus.logic.game.common.misc.inventoryView
          return this._parent;
       }
       
-      private function isItemFiltered(scrollId:int) : Boolean
+      protected function isItemFiltered(scrollId:int) : Boolean
       {
          var playerForgettableSpells:Dictionary = null;
          if(!this._isHideLearnedSpells)

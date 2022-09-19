@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.interactive
    public class InteractiveMapUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8375;
+      public static const protocolId:uint = 1613;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.interactive
       
       override public function getMessageId() : uint
       {
-         return 8375;
+         return 1613;
       }
       
       public function initInteractiveMapUpdateMessage(interactiveElements:Vector.<InteractiveElement> = null) : InteractiveMapUpdateMessage

@@ -153,11 +153,11 @@ package com.ankamagames.dofus.logic.game.common.managers
       
       public var waitingGifts:Array;
       
-      public var speedAjust:int = 0;
-      
       public var applicationInfo:GuildApplicationInformation;
       
       public var guildApplicationInfo:GuildInformations;
+      
+      public var guildChestLastContributionDate:Number = -1;
       
       public function PlayedCharacterManager()
       {

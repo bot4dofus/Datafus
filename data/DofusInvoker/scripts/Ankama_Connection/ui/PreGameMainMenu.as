@@ -4,8 +4,11 @@ package Ankama_Connection.ui
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
+   import com.ankamagames.berilia.utils.ComponentHookList;
    import com.ankamagames.dofus.logic.common.actions.QuitGameAction;
    import com.ankamagames.dofus.logic.common.actions.ResetGameAction;
+   import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
+   import com.ankamagames.dofus.network.enums.BuildTypeEnum;
    import com.ankamagames.dofus.uiApi.SystemApi;
    
    public class PreGameMainMenu
@@ -38,15 +41,18 @@ package Ankama_Connection.ui
       
       public function main(args:Object) : void
       {
-         this.uiApi.addComponentHook(this.btnClose,"onRelease");
-         this.uiApi.addComponentHook(this.btnOptions,"onRelease");
-         this.uiApi.addComponentHook(this.btnDisconnect,"onRelease");
-         this.uiApi.addComponentHook(this.btnQuitGame,"onRelease");
-         this.uiApi.addComponentHook(this.btnCancel,"onRelease");
-         if(this.uiApi.getUi("login"))
+         this.uiApi.addComponentHook(this.btnClose,ComponentHookList.ON_RELEASE);
+         this.uiApi.addComponentHook(this.btnOptions,ComponentHookList.ON_RELEASE);
+         this.uiApi.addComponentHook(this.btnQuitGame,ComponentHookList.ON_RELEASE);
+         this.uiApi.addComponentHook(this.btnCancel,ComponentHookList.ON_RELEASE);
+         var displayDisconnectButton:* = this.sysApi.getCurrentVersion().buildType >= BuildTypeEnum.TESTING;
+         if(displayDisconnectButton)
          {
-            this.btnDisconnect.disabled = true;
+            this.uiApi.addComponentHook(this.btnDisconnect,ComponentHookList.ON_RELEASE);
          }
+         this.btnDisconnect.visible = displayDisconnectButton;
+         this.btnQuitGame.y = !!displayDisconnectButton ? Number(this.btnDisconnect.y * 2) : Number(60);
+         this.btnCancel.y = !!displayDisconnectButton ? Number(156) : Number(120);
       }
       
       public function onRelease(target:GraphicContainer) : void
@@ -85,7 +91,7 @@ package Ankama_Connection.ui
       
       public function onShortcut(s:String) : Boolean
       {
-         if(s == "closeUi")
+         if(s == ShortcutHookListEnum.CLOSE_UI)
          {
             this.uiApi.unloadUi(this.uiApi.me().name);
          }

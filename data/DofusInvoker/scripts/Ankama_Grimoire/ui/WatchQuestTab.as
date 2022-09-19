@@ -25,6 +25,7 @@ package Ankama_Grimoire.ui
    import com.ankamagames.dofus.datacenter.quest.QuestObjective;
    import com.ankamagames.dofus.datacenter.quest.QuestStep;
    import com.ankamagames.dofus.datacenter.world.MapPosition;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.appearance.TitleWrapper;
    import com.ankamagames.dofus.internalDatacenter.communication.EmoteWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
@@ -339,7 +340,6 @@ package Ankama_Grimoire.ui
             this._lockSearchTimer.stop();
             this._lockSearchTimer = null;
          }
-         this.uiApi.unloadUi("itemBox_" + this.uiApi.me().name);
          this.uiApi.hideTooltip();
       }
       
@@ -1087,7 +1087,7 @@ package Ankama_Grimoire.ui
          {
             this.lbl_rewardsKama.visible = this.tx_rewardsKama.visible = false;
          }
-         if(xp > 0 && this.configApi.isFeatureWithKeywordEnabled("character.xp"))
+         if(xp > 0 && this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP))
          {
             this.tx_rewardsXp.visible = this.lbl_rewardsXp.visible = true;
             this.lbl_rewardsXp.text = this.utilApi.formateIntToString(xp);

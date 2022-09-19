@@ -26,6 +26,8 @@ package com.ankamagames.dofus.kernel.sound.manager
       
       private var _hasBoss:Boolean;
       
+      private var _playCustom:Boolean;
+      
       private var _fightMusicsId:Array;
       
       private var _fightMusicBalanceManager:BalanceManager;
@@ -33,6 +35,8 @@ package com.ankamagames.dofus.kernel.sound.manager
       private var _fightMusicPlaylist:Playlist;
       
       private var _bossMusicPlaylist:Playlist;
+      
+      private var _customMusicPlaylist:Playlist;
       
       public function FightMusicManager()
       {
@@ -43,6 +47,11 @@ package com.ankamagames.dofus.kernel.sound.manager
       public function set hasBoss(boss:Boolean) : void
       {
          this._hasBoss = boss;
+      }
+      
+      public function set playCustom(playCustom:Boolean) : void
+      {
+         this._playCustom = playCustom;
       }
       
       public function prepareFightMusic() : void
@@ -66,7 +75,12 @@ package com.ankamagames.dofus.kernel.sound.manager
          }
          var fightSongs:Array = new Array();
          var playlist:Playlist = null;
-         if(this._hasBoss && this._bossMusicPlaylist)
+         if(this._playCustom && this._customMusicPlaylist)
+         {
+            fightSongs = this.createPlaylistSounds(this._customMusicPlaylist);
+            playlist = this._customMusicPlaylist;
+         }
+         else if(this._hasBoss && this._bossMusicPlaylist)
          {
             fightSongs = this.createPlaylistSounds(this._bossMusicPlaylist);
             playlist = this._bossMusicPlaylist;
@@ -103,6 +117,11 @@ package com.ankamagames.dofus.kernel.sound.manager
          {
             _log.info("Ni musique de combat, ni musique de boss ???");
          }
+      }
+      
+      public function setCustomFightSounds(customPlaylist:Playlist) : void
+      {
+         this._customMusicPlaylist = customPlaylist;
       }
       
       public function selectValidSounds() : void

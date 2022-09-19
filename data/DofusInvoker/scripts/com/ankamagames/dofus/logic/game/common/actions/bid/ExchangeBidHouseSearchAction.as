@@ -11,19 +11,19 @@ package com.ankamagames.dofus.logic.game.common.actions.bid
       
       public var follow:Boolean = false;
       
-      public var genId:uint;
+      public var objectGID:uint;
       
       public function ExchangeBidHouseSearchAction(params:Array = null)
       {
          super(params);
       }
       
-      public static function create(pType:uint, pGenId:uint, follow:Boolean = false) : ExchangeBidHouseSearchAction
+      public static function create(pType:uint, pObjectGID:uint, follow:Boolean = false) : ExchangeBidHouseSearchAction
       {
          var a:ExchangeBidHouseSearchAction = new ExchangeBidHouseSearchAction(arguments);
          a.type = pType;
+         a.objectGID = pObjectGID;
          a.follow = follow;
-         a.genId = pGenId;
          return a;
       }
    }

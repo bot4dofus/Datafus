@@ -560,7 +560,7 @@ package Ankama_Social.ui
                break;
             case this.tx_guildLogo:
                icon = this.dataApi.getEmblemSymbol(guildInfo.upEmblem.idEmblem);
-               this.utilApi.changeColor(this.tx_guildLogo.getChildByName("up"),guildInfo.upEmblem.color,0,!icon.colorizable);
+               this.utilApi.changeColor(this.tx_guildLogo,guildInfo.upEmblem.color,0,!icon.colorizable);
          }
       }
       
@@ -651,7 +651,7 @@ package Ankama_Social.ui
             case this.btn_save:
                if(!this.isSavePossible())
                {
-                  tooltipText = this.uiApi.getText("ui.guild.recruitment.tooManyCharacters");
+                  tooltipText = this.uiApi.getText("ui.common.tooManyCharacters");
                }
                break;
             case this.tx_recruitmentWarning:

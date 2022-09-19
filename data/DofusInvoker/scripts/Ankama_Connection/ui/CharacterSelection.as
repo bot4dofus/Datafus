@@ -13,15 +13,18 @@ package Ankama_Connection.ui
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.utils.ComponentHookList;
    import com.ankamagames.dofus.datacenter.servers.Server;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.connection.BasicCharacterWrapper;
    import com.ankamagames.dofus.kernel.sound.enum.SoundEnum;
    import com.ankamagames.dofus.kernel.sound.enum.SoundTypeEnum;
    import com.ankamagames.dofus.logic.game.approach.actions.CharacterDeletionAction;
    import com.ankamagames.dofus.logic.game.approach.actions.CharacterReplayRequestAction;
    import com.ankamagames.dofus.logic.game.approach.actions.CharacterSelectionAction;
+   import com.ankamagames.dofus.misc.lists.ExternalGameHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
    import com.ankamagames.dofus.network.enums.GameServerTypeEnum;
+   import com.ankamagames.dofus.network.enums.StartupActionObjectTypeEnum;
    import com.ankamagames.dofus.network.types.connection.GameServerInformations;
    import com.ankamagames.dofus.uiApi.ConfigApi;
    import com.ankamagames.dofus.uiApi.ConnectionApi;
@@ -85,8 +88,6 @@ package Ankama_Connection.ui
       
       private var _interactiveComponentsList:Dictionary;
       
-      private var _cbProvider:Array;
-      
       private var _askedToDeleteCharacterId:Number = 0;
       
       private var _lockPopup:String;
@@ -141,6 +142,8 @@ package Ankama_Connection.ui
       
       public var tx_bonusXpCreation:Texture;
       
+      public var tx_warning:Texture;
+      
       public var btn_play:ButtonContainer;
       
       public var btn_create:ButtonContainer;
@@ -154,13 +157,13 @@ package Ankama_Connection.ui
       public function CharacterSelection()
       {
          this._interactiveComponentsList = new Dictionary(true);
-         this._cbProvider = [];
          super();
       }
       
       public function main(charaList:Vector.<BasicCharacterWrapper>) : void
       {
-         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled("server.heroic");
+         var gift:Object = null;
+         this._serverHeroicActivated = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER);
          this.soundApi.switchIntroMusic(false);
          this.btn_create.soundId = SoundEnum.OK_BUTTON;
          this.btn_play.isMute = true;
@@ -169,6 +172,7 @@ package Ankama_Connection.ui
          this.sysApi.addHook(HookList.CharacterImpossibleSelection,this.onCharacterImpossibleSelection);
          this.sysApi.addHook(HookList.GiftAssigned,this.onGiftAssigned);
          this.sysApi.addHook(HookList.CharacterCanBeCreated,this.onCharacterCanBeCreated);
+         this.sysApi.addHook(ExternalGameHookList.CodesAndGiftEOSWarning,this.onCodesAndGiftEOSWarning);
          this.uiApi.addComponentHook(this.gd_character,ComponentHookList.ON_SELECT_ITEM);
          this.uiApi.addComponentHook(this.tx_bonusXp,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.addComponentHook(this.tx_bonusXp,ComponentHookList.ON_ROLL_OUT);
@@ -192,6 +196,20 @@ package Ankama_Connection.ui
          this.ed_chara.clearSubEntities = false;
          this.ed_chara.handCursor = true;
          this.ctr_articles.visible = this.sysApi.getGiftList().length > 0;
+         var giftCount:int = 0;
+         for each(gift in this.sysApi.getGiftList())
+         {
+            if(gift.actionType == StartupActionObjectTypeEnum.OBJECT_GIFT)
+            {
+               giftCount++;
+            }
+         }
+         if(giftCount > 0)
+         {
+            this.tx_warning.visible = true;
+            this.uiApi.addComponentHook(this.tx_warning,ComponentHookList.ON_ROLL_OVER);
+            this.uiApi.addComponentHook(this.tx_warning,ComponentHookList.ON_ROLL_OUT);
+         }
          this.onCharactersListUpdated(charaList);
       }
       
@@ -569,6 +587,24 @@ package Ankama_Connection.ui
          this.gd_character.updateItems();
       }
       
+      private function onCodesAndGiftEOSWarning(show:Boolean) : void
+      {
+         if(this.tx_warning.visible != show)
+         {
+            this.tx_warning.visible = show;
+            if(show)
+            {
+               this.uiApi.addComponentHook(this.tx_warning,ComponentHookList.ON_ROLL_OVER);
+               this.uiApi.addComponentHook(this.tx_warning,ComponentHookList.ON_ROLL_OUT);
+            }
+            else
+            {
+               this.uiApi.removeComponentHook(this.tx_warning,ComponentHookList.ON_ROLL_OVER);
+               this.uiApi.removeComponentHook(this.tx_warning,ComponentHookList.ON_ROLL_OUT);
+            }
+         }
+      }
+      
       public function onPopupClose() : void
       {
       }
@@ -592,6 +628,9 @@ package Ankama_Connection.ui
          {
             case this.btn_articles:
                tooltipText = this.uiApi.getText("ui.charsel.newGift");
+               break;
+            case this.tx_warning:
+               tooltipText = this.uiApi.getText("ui.gift.someGiftsWillBeLost");
                break;
             case this.btn_play:
                if(this._selectedChar.unusable)

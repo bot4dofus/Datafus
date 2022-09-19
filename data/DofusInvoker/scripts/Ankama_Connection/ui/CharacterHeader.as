@@ -12,6 +12,7 @@ package Ankama_Connection.ui
    import com.ankamagames.berilia.utils.ComponentHookList;
    import com.ankamagames.dofus.datacenter.servers.Server;
    import com.ankamagames.dofus.datacenter.servers.ServerGameType;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.kernel.sound.enum.SoundEnum;
    import com.ankamagames.dofus.logic.common.actions.ChangeCharacterAction;
    import com.ankamagames.dofus.logic.common.actions.ChangeServerAction;
@@ -285,7 +286,7 @@ package Ankama_Connection.ui
          {
             this._selectedServerType = this.cb_mode.selectedItem.type;
             this.sysApi.log(2,"Mode choisi : " + this.cb_mode.selectedItem.label + " : " + this._selectedServerType + "      select method " + selectMethod);
-            if(this.configApi.isFeatureWithKeywordEnabled("server.heroic") && !this._isSuscribed)
+            if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER) && !this._isSuscribed)
             {
                text = this.uiApi.getText("ui.sersel.sucriberOnly");
             }

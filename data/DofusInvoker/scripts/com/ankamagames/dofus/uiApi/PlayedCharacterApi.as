@@ -751,5 +751,10 @@ package com.ankamagames.dofus.uiApi
       {
          return PlayedCharacterManager.getInstance().isInKoli;
       }
+      
+      public function guildChestLastContributionDate() : Number
+      {
+         return PlayedCharacterManager.getInstance().guildChestLastContributionDate;
+      }
    }
 }

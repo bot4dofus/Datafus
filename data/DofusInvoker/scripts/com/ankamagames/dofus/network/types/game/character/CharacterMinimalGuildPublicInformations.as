@@ -1,5 +1,6 @@
 package com.ankamagames.dofus.network.types.game.character
 {
+   import com.ankamagames.dofus.network.types.game.guild.GuildRankPublicInformation;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
    import com.ankamagames.jerakine.network.INetworkType;
@@ -8,22 +9,25 @@ package com.ankamagames.dofus.network.types.game.character
    public class CharacterMinimalGuildPublicInformations extends CharacterMinimalInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 393;
+      public static const protocolId:uint = 8384;
        
       
-      public var rank:uint = 0;
+      public var rank:GuildRankPublicInformation;
+      
+      private var _ranktree:FuncTree;
       
       public function CharacterMinimalGuildPublicInformations()
       {
+         this.rank = new GuildRankPublicInformation();
          super();
       }
       
       override public function getTypeId() : uint
       {
-         return 393;
+         return 8384;
       }
       
-      public function initCharacterMinimalGuildPublicInformations(id:Number = 0, name:String = "", level:uint = 0, rank:uint = 0) : CharacterMinimalGuildPublicInformations
+      public function initCharacterMinimalGuildPublicInformations(id:Number = 0, name:String = "", level:uint = 0, rank:GuildRankPublicInformation = null) : CharacterMinimalGuildPublicInformations
       {
          super.initCharacterMinimalInformations(id,name,level);
          this.rank = rank;
@@ -33,7 +37,7 @@ package com.ankamagames.dofus.network.types.game.character
       override public function reset() : void
       {
          super.reset();
-         this.rank = 0;
+         this.rank = new GuildRankPublicInformation();
       }
       
       override public function serialize(output:ICustomDataOutput) : void
@@ -44,11 +48,7 @@ package com.ankamagames.dofus.network.types.game.character
       public function serializeAs_CharacterMinimalGuildPublicInformations(output:ICustomDataOutput) : void
       {
          super.serializeAs_CharacterMinimalInformations(output);
-         if(this.rank < 0)
-         {
-            throw new Error("Forbidden value (" + this.rank + ") on element rank.");
-         }
-         output.writeVarInt(this.rank);
+         this.rank.serializeAs_GuildRankPublicInformation(output);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -59,7 +59,8 @@ package com.ankamagames.dofus.network.types.game.character
       public function deserializeAs_CharacterMinimalGuildPublicInformations(input:ICustomDataInput) : void
       {
          super.deserialize(input);
-         this._rankFunc(input);
+         this.rank = new GuildRankPublicInformation();
+         this.rank.deserialize(input);
       }
       
       override public function deserializeAsync(tree:FuncTree) : void
@@ -70,16 +71,13 @@ package com.ankamagames.dofus.network.types.game.character
       public function deserializeAsyncAs_CharacterMinimalGuildPublicInformations(tree:FuncTree) : void
       {
          super.deserializeAsync(tree);
-         tree.addChild(this._rankFunc);
+         this._ranktree = tree.addChild(this._ranktreeFunc);
       }
       
-      private function _rankFunc(input:ICustomDataInput) : void
+      private function _ranktreeFunc(input:ICustomDataInput) : void
       {
-         this.rank = input.readVarUhInt();
-         if(this.rank < 0)
-         {
-            throw new Error("Forbidden value (" + this.rank + ") on element of CharacterMinimalGuildPublicInformations.rank.");
-         }
+         this.rank = new GuildRankPublicInformation();
+         this.rank.deserializeAsync(this._ranktree);
       }
    }
 }

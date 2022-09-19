@@ -15,7 +15,7 @@ package com.ankamagames.dofus.scripts.spells
       {
          super(spellFxRunner);
          var target:MapPoint = FxApi.GetCurrentTargetedCell(runner);
-         addCasterSetDirectionStep(target);
+         addCasterSetDirectionStep(target,spellFxRunner.castingSpell.spellDirection);
          var animName:String = "AnimArme";
          if(SpellFxApi.IsCriticalFail(spell))
          {

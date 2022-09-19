@@ -14,8 +14,8 @@ package com.ankamagames.dofus.console
    import com.ankamagames.dofus.console.debug.MiscInstructionHandler;
    import com.ankamagames.dofus.console.debug.TiphonInstructionHandler;
    import com.ankamagames.dofus.datacenter.communication.Emoticon;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.logic.common.managers.FeatureManager;
-   import com.ankamagames.dofus.logic.game.common.frames.ChatFrame;
    import com.ankamagames.dofus.network.enums.BuildTypeEnum;
    import com.ankamagames.jerakine.console.ConsoleHandler;
    import com.ankamagames.jerakine.console.ConsoleInstructionRegistar;
@@ -56,7 +56,7 @@ package com.ankamagames.dofus.console
             console.addHandler(["celebration"],new MiscInstructionHandler());
          }
          console.addHandler(["away",I18n.getUiText("ui.chat.status.away").toLocaleLowerCase(),I18n.getUiText("ui.chat.status.solo").toLocaleLowerCase(),I18n.getUiText("ui.chat.status.private").toLocaleLowerCase(),I18n.getUiText("ui.chat.status.availiable").toLocaleLowerCase(),"release"],new StatusInstructionHandler());
-         if(FeatureManager.getInstance().isFeatureWithKeywordEnabled(ChatFrame.DICE_ROLL_FEATURE_KEYWORD))
+         if(FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.CHAT_DICE_ROLL))
          {
             console.addHandler([DieRollInstructionHandler.ROLL_COMMAND],new DieRollInstructionHandler());
          }

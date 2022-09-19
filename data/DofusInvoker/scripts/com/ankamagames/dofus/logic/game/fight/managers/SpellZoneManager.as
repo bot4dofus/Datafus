@@ -102,7 +102,7 @@ package com.ankamagames.dofus.logic.game.fight.managers
          }
       }
       
-      public function getSpellZone(spell:*, ignoreShapeA:Boolean = false, ignoreMaxSize:Boolean = true, spellImpactCell:int = 0, casterCell:int = 0, pForPreview:Boolean = true) : IZone
+      public function getSpellZone(spell:*, ignoreShapeA:Boolean = false, ignoreMaxSize:Boolean = true, spellImpactCell:int = 0, casterCell:int = 0, pForPreview:Boolean = true, casterId:Number = NaN) : IZone
       {
          var stopAtTarget:uint = 0;
          var finalZone:IZone = null;
@@ -145,7 +145,7 @@ package com.ankamagames.dofus.logic.game.fight.managers
             shape = spell.shape;
             ray = spell.ray;
          }
-         finalZone = this.getZone(shape,ray,minRay,ignoreShapeA,stopAtTarget,!(spell is SpellWrapper));
+         finalZone = this.getZone(shape,ray,minRay,ignoreShapeA,stopAtTarget,!(spell is SpellWrapper),casterId);
          var direction:uint = MapPoint.fromCellId(casterCell).advancedOrientationTo(MapPoint.fromCellId(spellImpactCell));
          finalZone.direction = direction;
          if(pForPreview && spell.hasOwnProperty("additionalEffectsZones") && spell.additionalEffectsZones && spell.additionalEffectsZones.length)
@@ -169,13 +169,13 @@ package com.ankamagames.dofus.logic.game.fight.managers
                for each(entityId in entitiesIds)
                {
                   entityInfos = entitiesFrame.getEntityInfos(entityId) as GameFightFighterInformations;
-                  if(entityInfos.spawnInfo.alive && this.checkZone(entityInfos,shape,zonesCells) && DamageUtil.verifySpellEffectMask(CurrentPlayedFighterManager.getInstance().currentFighterId,entityId,effect,spellImpactCell))
+                  if(entityInfos.spawnInfo.alive && this.checkZone(entityInfos,shape,zonesCells) && DamageUtil.verifySpellEffectMask(casterId,entityId,effect,spellImpactCell))
                   {
                      if(effectZone.zoneShape == SpellShapeEnum.X && (isNaN(effectZone.zoneSize as Number) || !effectZone.zoneSize) && (isNaN(effectZone.zoneMinSize as Number) || !effectZone.zoneMinSize))
                      {
                         effectZone.zoneMinSize = 1;
                      }
-                     additionalZone = this.getZone(effectZone.zoneShape,uint(effectZone.zoneSize),uint(effectZone.zoneMinSize),ignoreShapeA,uint(effectZone.zoneStopAtTarget));
+                     additionalZone = this.getZone(effectZone.zoneShape,uint(effectZone.zoneSize),uint(effectZone.zoneMinSize),ignoreShapeA,uint(effectZone.zoneStopAtTarget),false,casterId);
                      additionalZone.direction = direction;
                      additionalZoneCells = additionalZoneCells.concat(additionalZone.getCells(entityInfos.disposition.cellId));
                   }
@@ -186,7 +186,7 @@ package com.ankamagames.dofus.logic.game.fight.managers
          return finalZone;
       }
       
-      public function getZone(pShape:uint, pZoneSize:uint, pMinZoneSize:uint, pIgnoreShapeA:Boolean = false, pStopAtTarget:uint = 0, pIsWeapon:Boolean = false) : IZone
+      public function getZone(pShape:uint, pZoneSize:uint, pMinZoneSize:uint, pIgnoreShapeA:Boolean = false, pStopAtTarget:uint = 0, pIsWeapon:Boolean = false, entityId:Number = NaN) : IZone
       {
          var l:Line = null;
          var casterInfos:GameContextActorInformations = null;
@@ -204,7 +204,7 @@ package com.ankamagames.dofus.logic.game.fight.managers
                return new Line(pZoneSize,DataMapProvider.getInstance());
             case SpellShapeEnum.l:
                l = new Line(pZoneSize,DataMapProvider.getInstance());
-               casterInfos = FightEntitiesFrame.getCurrentInstance().getEntityInfos(CurrentPlayedFighterManager.getInstance().currentFighterId);
+               casterInfos = FightEntitiesFrame.getCurrentInstance().getEntityInfos(!!isNaN(entityId) ? Number(CurrentPlayedFighterManager.getInstance().currentFighterId) : Number(entityId));
                l.minRadius = pMinZoneSize;
                l.fromCaster = true;
                l.stopAtTarget = pStopAtTarget == 1 ? true : false;

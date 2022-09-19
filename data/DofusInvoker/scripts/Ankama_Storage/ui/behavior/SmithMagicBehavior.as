@@ -11,7 +11,6 @@ package Ankama_Storage.ui.behavior
    import com.ankamagames.dofus.logic.game.common.actions.CloseInventoryAction;
    import com.ankamagames.dofus.misc.lists.ExchangeHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
-   import com.ankamagames.dofus.misc.lists.InventoryHookList;
    import flash.utils.getTimer;
    
    public class SmithMagicBehavior implements IStorageBehavior
@@ -103,12 +102,6 @@ package Ankama_Storage.ui.behavior
                item = this._storage.grid.selectedItem;
                switch(selectMethod)
                {
-                  case SelectMethodEnum.CLICK:
-                     if(!Api.system.getOption("displayTooltips","dofus"))
-                     {
-                        Api.system.dispatchHook(InventoryHookList.ObjectSelected,{"data":item});
-                     }
-                     break;
                   case SelectMethodEnum.DOUBLE_CLICK:
                      if(Api.inventory.getItem(item.objectUID))
                      {

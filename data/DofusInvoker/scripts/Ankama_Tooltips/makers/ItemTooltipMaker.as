@@ -13,8 +13,10 @@ package Ankama_Tooltips.makers
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.interfaces.ITooltipMaker;
    import com.ankamagames.berilia.types.tooltip.Tooltip;
+   import com.ankamagames.dofus.datacenter.alterations.Alteration;
    import com.ankamagames.dofus.datacenter.effects.EffectInstance;
    import com.ankamagames.dofus.datacenter.idols.Idol;
+   import com.ankamagames.dofus.datacenter.items.Item;
    import com.ankamagames.dofus.datacenter.items.RandomDropGroup;
    import com.ankamagames.dofus.datacenter.items.RandomDropItem;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
@@ -43,8 +45,12 @@ package Ankama_Tooltips.makers
       public function createTooltip(data:*, param:Object) : Tooltip
       {
          var eff:* = undefined;
+         var showTimeLeftFormat:Boolean = false;
          var effectsTooltipBlockParams:EffectsTooltipBlockParameters = null;
          var effect:* = undefined;
+         var effectInstance:EffectInstance = null;
+         var alterationData:Alteration = null;
+         var alterationEffect:EffectInstance = null;
          var randomDropGroup:RandomDropGroup = null;
          var group:Array = null;
          var playerSetInfo:Object = null;
@@ -218,6 +224,23 @@ package Ankama_Tooltips.makers
          {
             this._effects.push(eff);
          }
+         showTimeLeftFormat = false;
+         if(this._itemData is Item)
+         {
+            for each(effectInstance in this._itemData.possibleEffects)
+            {
+               if(effectInstance.baseEffectId === DataEnum.BASE_EFFECT_ADD_ALTERATION)
+               {
+                  showTimeLeftFormat = true;
+                  alterationData = Alteration.getAlterationById(effectInstance.parameter0 as Number);
+                  for each(alterationEffect in alterationData.possibleEffects)
+                  {
+                     this._effects.push(alterationEffect.clone());
+                  }
+                  break;
+               }
+            }
+         }
          if(this._effects.length && _param.effects || theoreticalEffects && theoreticalEffects.length)
          {
             this._effects.sort(this.compareEffectsOrder);
@@ -226,6 +249,7 @@ package Ankama_Tooltips.makers
             effectsTooltipBlockParams.showTheoreticalEffects = showTheoretical;
             effectsTooltipBlockParams.addTheoreticalEffects = _param.addTheoreticalEffects;
             effectsTooltipBlockParams.itemTheoreticalEffects = theoreticalEffects;
+            effectsTooltipBlockParams.showTimeLeftFormat = showTimeLeftFormat;
             if(param && (param.hasOwnProperty("effects") && param.effects || param.hasOwnProperty("damages") && param.damages || param.hasOwnProperty("specialEffects") && param.specialEffects))
             {
                if(param.hasOwnProperty("damages"))

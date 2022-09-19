@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.storage
    public class StorageKamasUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4689;
+      public static const protocolId:uint = 7774;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.storage
       
       override public function getMessageId() : uint
       {
-         return 4689;
+         return 7774;
       }
       
       public function initStorageKamasUpdateMessage(kamasTotal:Number = 0) : StorageKamasUpdateMessage

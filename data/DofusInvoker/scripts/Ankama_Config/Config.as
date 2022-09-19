@@ -135,7 +135,7 @@ package Ankama_Config
          this.addItem("support");
       }
       
-      private function onAuthentificationStart(mustDisplaySteamLogin:Boolean) : void
+      private function onAuthentificationStart() : void
       {
          this.gameApproachInit();
       }

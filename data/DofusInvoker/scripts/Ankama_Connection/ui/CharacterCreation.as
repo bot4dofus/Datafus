@@ -24,9 +24,9 @@ package Ankama_Connection.ui
    import com.ankamagames.dofus.datacenter.breeds.BreedRole;
    import com.ankamagames.dofus.datacenter.breeds.BreedRoleByBreed;
    import com.ankamagames.dofus.datacenter.breeds.Head;
-   import com.ankamagames.dofus.datacenter.communication.NamingRule;
    import com.ankamagames.dofus.datacenter.optionalFeatures.CustomModeBreedSpell;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
    import com.ankamagames.dofus.kernel.sound.enum.LookTypeSoundEnum;
    import com.ankamagames.dofus.kernel.sound.enum.SoundEnum;
@@ -38,6 +38,7 @@ package Ankama_Connection.ui
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.modules.utils.SpellTooltipSettings;
    import com.ankamagames.dofus.network.enums.CharacterCreationResultEnum;
+   import com.ankamagames.dofus.network.enums.NameComplianceResultEnum;
    import com.ankamagames.dofus.uiApi.ColorApi;
    import com.ankamagames.dofus.uiApi.ConfigApi;
    import com.ankamagames.dofus.uiApi.DataApi;
@@ -54,9 +55,11 @@ package Ankama_Connection.ui
    import flash.display.DisplayObjectContainer;
    import flash.events.Event;
    import flash.events.TextEvent;
+   import flash.events.TimerEvent;
    import flash.filters.GlowFilter;
    import flash.geom.ColorTransform;
    import flash.utils.Dictionary;
+   import flash.utils.Timer;
    
    public class CharacterCreation
    {
@@ -75,7 +78,11 @@ package Ankama_Connection.ui
       
       private static const TYPE_REGENDER:String = "regender";
       
-      private static const MAX_CLASS_SPELLS:uint = 3;
+      private static const MAX_CLASS_SPELLS:uint = 4;
+      
+      private static const CHARACTER_NAME_MIN_LENGTH:uint = 2;
+      
+      private static const CHARACTER_NAME_MAX_LENGTH:uint = 20;
        
       
       public var output:Object;
@@ -112,8 +119,6 @@ package Ankama_Connection.ui
       
       [Api(name="SoundApi")]
       public var soundApi:SoundApi;
-      
-      private var _namingRule:NamingRule;
       
       private var _nameArrayByBreedAndGender:Array;
       
@@ -210,6 +215,8 @@ package Ankama_Connection.ui
       private var _skipChange:Boolean;
       
       private var _limitedActiveAndPassiveSpellsActivated:Boolean = false;
+      
+      private var _helpTooltipTimer:Timer;
       
       public var lbl_screen_title:Label;
       
@@ -407,7 +414,7 @@ package Ankama_Connection.ui
       
       public var slot_passiveSpellForPassiveAndActiveMode:Slot;
       
-      public var blk_spellsBlockForPassiveAndActiveMode:GraphicContainer;
+      public var tx_background_blk_spellsBlockForPassiveAndActiveMode:TextureBitmap;
       
       public var ctr_activeSpellsForPassiveAndActiveMode:GraphicContainer;
       
@@ -418,6 +425,8 @@ package Ankama_Connection.ui
       public var slot_activeSpellForPassiveAndActiveMode_1:Slot;
       
       public var slot_activeSpellForPassiveAndActiveMode_2:Slot;
+      
+      public var slot_activeSpellForPassiveAndActiveMode_3:Slot;
       
       public var tx_passiveSpellForPassiveAndActiveMode:Texture;
       
@@ -439,6 +448,7 @@ package Ankama_Connection.ui
       {
          var role:BreedRole = null;
          var value:int = 0;
+         var breeds:Array = null;
          var breed:Breed = null;
          var head:Head = null;
          var colorI:* = undefined;
@@ -463,7 +473,7 @@ package Ankama_Connection.ui
          var breedtemp:int = 0;
          var stateText:String = null;
          var stateParams:Array = null;
-         this._limitedActiveAndPassiveSpellsActivated = this.configApi.isFeatureWithKeywordEnabled("character.spell.breed.limitedActiveAndPassiveSpells");
+         this._limitedActiveAndPassiveSpellsActivated = this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_BREED_LIMITED_ACTIVE_PASSIVE_SPELLS);
          this.ctr_breedInfos.visible = false;
          this.ctr_hexaColor.visible = false;
          this.texta_breedInfo.hideScroll = true;
@@ -513,6 +523,7 @@ package Ankama_Connection.ui
          this.uiApi.addComponentHook(this.videoPlayerSmall,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btn_left,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btn_right,ComponentHookList.ON_RELEASE);
+         this.input_name.maxChars = CHARACTER_NAME_MAX_LENGTH;
          this._complexityTextures = [];
          this._complexityTextures.push(this.tx_breedComplexity_0);
          this._complexityTextures.push(this.tx_breedComplexity_1);
@@ -543,15 +554,6 @@ package Ankama_Connection.ui
          this._cinematicsUri = this.sysApi.getConfigEntry("config.gfx.path.cinematic");
          this.btn_generateName.y = 8;
          this.btn_generateName.x = 345;
-         if(this.sysApi.getPlayerManager().hasRights)
-         {
-            this._namingRule = this.sysApi.getCurrentServer().community.namingRuleAdmin;
-         }
-         else
-         {
-            this._namingRule = this.sysApi.getCurrentServer().community.namingRulePlayerName;
-         }
-         this.input_name.maxChars = this._namingRule.maxLength;
          this._aTx_color = new Array(this.tx_color0,this.tx_color1,this.tx_color2,this.tx_color3,this.tx_color4);
          this._aColors = new Array(-1,-1,-1,-1,-1);
          this._aColorsBase = [-1,-1,-1,-1,-1];
@@ -564,6 +566,7 @@ package Ankama_Connection.ui
          this._aBreeds = [];
          this._aRolesByBreedId = [];
          this._maxBreedRoles = 0;
+         breeds = this.dataApi.getBreeds();
          for each(breed in this.dataApi.getBreeds())
          {
             if(breed.complexity == 1)
@@ -1590,6 +1593,8 @@ package Ankama_Connection.ui
          this.uiApi.removeComponentHook(this.slot_activeSpellForPassiveAndActiveMode_1,ComponentHookList.ON_ROLL_OUT);
          this.uiApi.removeComponentHook(this.slot_activeSpellForPassiveAndActiveMode_2,ComponentHookList.ON_ROLL_OVER);
          this.uiApi.removeComponentHook(this.slot_activeSpellForPassiveAndActiveMode_2,ComponentHookList.ON_ROLL_OUT);
+         this.uiApi.removeComponentHook(this.slot_activeSpellForPassiveAndActiveMode_3,ComponentHookList.ON_ROLL_OVER);
+         this.uiApi.removeComponentHook(this.slot_activeSpellForPassiveAndActiveMode_3,ComponentHookList.ON_ROLL_OUT);
          var breedSpells:Array = this.playerApi.getCustomModeBreedSpellList(this._breed);
          if(breedSpells === null)
          {
@@ -1626,16 +1631,16 @@ package Ankama_Connection.ui
             this.slot_passiveSpellForPassiveAndActiveMode.data = passiveSpell;
             if(areActiveSpells)
             {
-               this.lbl_passiveSpellForPassiveAndActiveMode.x = this.blk_spellsBlockForPassiveAndActiveMode.x + (this.tx_spellSeparatorForPassiveAndActiveMode.x - this.blk_spellsBlockForPassiveAndActiveMode.x) / 2 - this.lbl_passiveSpellForPassiveAndActiveMode.width / 2;
-               this.slot_passiveSpellForPassiveAndActiveMode.x = this.blk_spellsBlockForPassiveAndActiveMode.x + (this.tx_spellSeparatorForPassiveAndActiveMode.x - this.blk_spellsBlockForPassiveAndActiveMode.x) / 2 - this.slot_passiveSpellForPassiveAndActiveMode.width / 2;
-               this.tx_passiveSpellForPassiveAndActiveMode.x = this.blk_spellsBlockForPassiveAndActiveMode.x + (this.tx_spellSeparatorForPassiveAndActiveMode.x - this.blk_spellsBlockForPassiveAndActiveMode.x) / 2 - this.tx_passiveSpellForPassiveAndActiveMode.width / 2;
-               this.lbl_activeSpellsForPassiveAndActiveMode.x = this.tx_spellSeparatorForPassiveAndActiveMode.x + this.tx_spellSeparatorForPassiveAndActiveMode.width + (this.blk_spellsBlockForPassiveAndActiveMode.x + this.blk_spellsBlockForPassiveAndActiveMode.width - this.tx_spellSeparatorForPassiveAndActiveMode.x) / 2 - this.lbl_activeSpellsForPassiveAndActiveMode.width / 2;
+               this.lbl_passiveSpellForPassiveAndActiveMode.x = this.tx_background_blk_spellsBlockForPassiveAndActiveMode.x + (this.tx_spellSeparatorForPassiveAndActiveMode.x - this.tx_background_blk_spellsBlockForPassiveAndActiveMode.x) / 2 - this.lbl_passiveSpellForPassiveAndActiveMode.width / 2;
+               this.slot_passiveSpellForPassiveAndActiveMode.x = this.tx_background_blk_spellsBlockForPassiveAndActiveMode.x + (this.tx_spellSeparatorForPassiveAndActiveMode.x - this.tx_background_blk_spellsBlockForPassiveAndActiveMode.x) / 2 - this.slot_passiveSpellForPassiveAndActiveMode.width / 2;
+               this.tx_passiveSpellForPassiveAndActiveMode.x = this.tx_background_blk_spellsBlockForPassiveAndActiveMode.x + (this.tx_spellSeparatorForPassiveAndActiveMode.x - this.tx_background_blk_spellsBlockForPassiveAndActiveMode.x) / 2 - this.tx_passiveSpellForPassiveAndActiveMode.width / 2;
+               this.lbl_activeSpellsForPassiveAndActiveMode.x = this.tx_spellSeparatorForPassiveAndActiveMode.x + this.tx_spellSeparatorForPassiveAndActiveMode.width + (this.tx_background_blk_spellsBlockForPassiveAndActiveMode.x + this.tx_background_blk_spellsBlockForPassiveAndActiveMode.width - this.tx_spellSeparatorForPassiveAndActiveMode.x) / 2 - this.lbl_activeSpellsForPassiveAndActiveMode.width / 2;
             }
             else
             {
-               this.lbl_passiveSpellForPassiveAndActiveMode.x = this.blk_spellsBlockForPassiveAndActiveMode.x + this.blk_spellsBlockForPassiveAndActiveMode.width / 2 - this.lbl_passiveSpellForPassiveAndActiveMode.width / 2;
-               this.slot_passiveSpellForPassiveAndActiveMode.x = this.blk_spellsBlockForPassiveAndActiveMode.x + this.blk_spellsBlockForPassiveAndActiveMode.width / 2 - this.slot_passiveSpellForPassiveAndActiveMode.width / 2;
-               this.tx_passiveSpellForPassiveAndActiveMode.x = this.blk_spellsBlockForPassiveAndActiveMode.x + this.blk_spellsBlockForPassiveAndActiveMode.width / 2 - this.tx_passiveSpellForPassiveAndActiveMode.width / 2;
+               this.lbl_passiveSpellForPassiveAndActiveMode.x = this.tx_background_blk_spellsBlockForPassiveAndActiveMode.x + this.tx_background_blk_spellsBlockForPassiveAndActiveMode.width / 2 - this.lbl_passiveSpellForPassiveAndActiveMode.width / 2;
+               this.slot_passiveSpellForPassiveAndActiveMode.x = this.tx_background_blk_spellsBlockForPassiveAndActiveMode.x + this.tx_background_blk_spellsBlockForPassiveAndActiveMode.width / 2 - this.slot_passiveSpellForPassiveAndActiveMode.width / 2;
+               this.tx_passiveSpellForPassiveAndActiveMode.x = this.tx_background_blk_spellsBlockForPassiveAndActiveMode.x + this.tx_background_blk_spellsBlockForPassiveAndActiveMode.width / 2 - this.tx_passiveSpellForPassiveAndActiveMode.width / 2;
             }
             this.uiApi.addComponentHook(this.slot_passiveSpellForPassiveAndActiveMode,ComponentHookList.ON_ROLL_OVER);
             this.uiApi.addComponentHook(this.slot_passiveSpellForPassiveAndActiveMode,ComponentHookList.ON_ROLL_OUT);
@@ -1644,14 +1649,13 @@ package Ankama_Connection.ui
          else
          {
             this.ctr_passiveSpellForPassiveAndActiveMode.visible = false;
-            this.lbl_activeSpellsForPassiveAndActiveMode.x = this.blk_spellsBlockForPassiveAndActiveMode.x + this.blk_spellsBlockForPassiveAndActiveMode.width / 2 - this.lbl_activeSpellsForPassiveAndActiveMode.width / 2;
+            this.lbl_activeSpellsForPassiveAndActiveMode.x = this.tx_background_blk_spellsBlockForPassiveAndActiveMode.x + this.tx_background_blk_spellsBlockForPassiveAndActiveMode.width / 2 - this.lbl_activeSpellsForPassiveAndActiveMode.width / 2;
          }
          if(areActiveSpells)
          {
             this.ctr_activeSpellsForPassiveAndActiveMode.visible = true;
             this.tx_spellSeparatorForPassiveAndActiveMode.visible = true;
             this.lbl_activeSpellsForPassiveAndActiveMode.visible = true;
-            this.ctr_activeSpellsForPassiveAndActiveMode.visible = true;
             minX = this.slot_activeSpellForPassiveAndActiveMode_0.x;
             currentActiveSpellSlot = null;
             maxSize = Math.min(activeSpells.length,MAX_CLASS_SPELLS);
@@ -1674,11 +1678,11 @@ package Ankama_Connection.ui
                if(isPassiveSpell)
                {
                   this.tx_spellSeparatorForPassiveAndActiveMode.visible = true;
-                  this.ctr_activeSpellsForPassiveAndActiveMode.x = this.tx_spellSeparatorForPassiveAndActiveMode.x + this.tx_spellSeparatorForPassiveAndActiveMode.width + (this.blk_spellsBlockForPassiveAndActiveMode.x + this.blk_spellsBlockForPassiveAndActiveMode.width - this.tx_spellSeparatorForPassiveAndActiveMode.x) / 2 - containerWidth / 2;
+                  this.ctr_activeSpellsForPassiveAndActiveMode.x = this.tx_spellSeparatorForPassiveAndActiveMode.x + this.tx_spellSeparatorForPassiveAndActiveMode.width + (this.tx_background_blk_spellsBlockForPassiveAndActiveMode.x + this.tx_background_blk_spellsBlockForPassiveAndActiveMode.width - this.tx_spellSeparatorForPassiveAndActiveMode.x) / 2 - containerWidth / 2;
                }
                else
                {
-                  this.ctr_activeSpellsForPassiveAndActiveMode.x = this.blk_spellsBlockForPassiveAndActiveMode.x + this.blk_spellsBlockForPassiveAndActiveMode.width / 2 - containerWidth / 2;
+                  this.ctr_activeSpellsForPassiveAndActiveMode.x = this.tx_background_blk_spellsBlockForPassiveAndActiveMode.x + this.tx_background_blk_spellsBlockForPassiveAndActiveMode.width / 2 - containerWidth / 2;
                   this.tx_spellSeparatorForPassiveAndActiveMode.visible = false;
                }
                for(index = maxSize; index < MAX_CLASS_SPELLS; index++)
@@ -1850,7 +1854,6 @@ package Ankama_Connection.ui
       
       private function createCharacter() : void
       {
-         var reason:String = null;
          var remodelErrorText:String = null;
          var ic:int = 0;
          var nbSimilarColors:int = 0;
@@ -1861,11 +1864,9 @@ package Ankama_Connection.ui
          {
             return;
          }
-         var nameError:uint = 0;
          if(this._activeModules.indexOf(TYPE_CREATE) != -1 || this._activeModules.indexOf(TYPE_RENAME) != -1)
          {
             this._name = this.input_name.text;
-            nameError = this.verifName();
          }
          if(!this._name || this._name == "" || this._name == this.uiApi.getText("ui.charcrea.titleRename"))
          {
@@ -1874,10 +1875,9 @@ package Ankama_Connection.ui
             this.btn_next.disabled = false;
             return;
          }
-         if(nameError > 0)
+         if(this._name.length < CHARACTER_NAME_MIN_LENGTH || this._name.length > CHARACTER_NAME_MAX_LENGTH)
          {
-            reason = this.uiApi.getText("ui.popup.charcrea.invalidName") + "\n\n" + this.uiApi.getText("ui.charcrea.invalidNameReason" + nameError);
-            this.modCommon.openPopup(this.uiApi.getText("ui.common.error"),reason,[this.uiApi.getText("ui.common.ok")]);
+            this.modCommon.openPopup(this.uiApi.getText("ui.common.error"),this.uiApi.getText("ui.charcrea.invalidNameReason" + NameComplianceResultEnum.ERROR_NAME_BAD_LENGTH),[this.uiApi.getText("ui.common.ok")],[this.showHelpTooltip]);
             this._bRequestCreation = false;
             this.btn_next.disabled = false;
             return;
@@ -1920,7 +1920,6 @@ package Ankama_Connection.ui
             }
             if(remodelErrorText != "")
             {
-               reason = this.uiApi.getText("ui.charcrea.invalidNameReason" + nameError);
                this.modCommon.openPopup(this.uiApi.getText("ui.common.error"),remodelErrorText,[this.uiApi.getText("ui.common.ok")]);
                this._bRequestCreation = false;
                this.btn_next.disabled = false;
@@ -1942,6 +1941,20 @@ package Ankama_Connection.ui
             }
             this.sysApi.sendAction(new CharacterRemodelSelectionAction([0,this._gender != 0,this._breed,this._head,this._name,vectColors]));
          }
+      }
+      
+      private function showHelpTooltip() : void
+      {
+         this._helpTooltipTimer = new Timer(20,1);
+         this._helpTooltipTimer.addEventListener(TimerEvent.TIMER,this.onShowHelpTooltip);
+         this._helpTooltipTimer.start();
+      }
+      
+      private function onShowHelpTooltip(te:TimerEvent) : void
+      {
+         this._helpTooltipTimer.reset();
+         this._helpTooltipTimer.removeEventListener(TimerEvent.TIMER,this.onShowHelpTooltip);
+         this.uiApi.showTooltip(this.uiApi.textTooltipInfo(this.uiApi.getText("ui.charcrea.nameRules.tooltip")),this.tx_nameRules,false,"standard",7,1,3,null,null,null);
       }
       
       private function changeColor(obj:Object, color:Number = 16777215) : void
@@ -2029,35 +2042,6 @@ package Ankama_Connection.ui
          }
          this.colorizeCharacter();
          this.saveCharacterModifications();
-      }
-      
-      private function verifName() : uint
-      {
-         if(this._name.length < this._namingRule.minLength)
-         {
-            this.sysApi.log(8,this._name + " trop court");
-            return 1;
-         }
-         if(this._name.length > this._namingRule.maxLength)
-         {
-            this.sysApi.log(8,this._name + " trop long");
-            return 1;
-         }
-         if(this._name.charAt(this._name.length - 1) == "-")
-         {
-            return 8;
-         }
-         if(this._name == this._initialName)
-         {
-            return 0;
-         }
-         var regexp:RegExp = new RegExp(this._namingRule.regexp,"g");
-         if(!regexp.test(this._name))
-         {
-            this.sysApi.log(8,this._name + " ne respecte pas les regles : " + this._namingRule.regexp);
-            return 2;
-         }
-         return 0;
       }
       
       private function pickColor(index:uint) : void
@@ -2361,6 +2345,11 @@ package Ankama_Connection.ui
                {
                   this.input_name.text = "";
                }
+               if(this.sysApi.getSetData("isFirstPseudo",true,DataStoreEnum.BIND_COMPUTER))
+               {
+                  this.sysApi.setData("isFirstPseudo",false,DataStoreEnum.BIND_COMPUTER);
+                  this.showHelpTooltip();
+               }
          }
          if(target != this.input_name && this.input_name && this.input_name.text.length == 0)
          {
@@ -2566,6 +2555,7 @@ package Ankama_Connection.ui
             case this.slot_activeSpellForPassiveAndActiveMode_0:
             case this.slot_activeSpellForPassiveAndActiveMode_1:
             case this.slot_activeSpellForPassiveAndActiveMode_2:
+            case this.slot_activeSpellForPassiveAndActiveMode_3:
                spellWrapper = this._componentsList[target.name];
                if(spellWrapper === null)
                {
@@ -2710,7 +2700,7 @@ package Ankama_Connection.ui
          return false;
       }
       
-      public function onCharacterCreationResult(result:int) : void
+      public function onCharacterCreationResult(result:int, reason:int) : void
       {
          if(result > 0)
          {
@@ -2718,11 +2708,7 @@ package Ankama_Connection.ui
             switch(result)
             {
                case CharacterCreationResultEnum.ERR_INVALID_NAME:
-                  this.modCommon.openPopup(this.uiApi.getText("ui.common.error"),this.uiApi.getText("ui.popup.charcrea.invalidName"),[this.uiApi.getText("ui.common.ok")]);
-                  break;
-               case CharacterCreationResultEnum.ERR_NAME_ALREADY_EXISTS:
-                  this.modCommon.openPopup(this.uiApi.getText("ui.common.error"),this.uiApi.getText("ui.popup.charcrea.nameAlreadyExist"),[this.uiApi.getText("ui.common.ok")]);
-                  this.sysApi.log(16,"Ce nom existe deja.");
+                  this.modCommon.openPopup(this.uiApi.getText("ui.common.error"),this.uiApi.getText("ui.charcrea.invalidNameReason" + reason),[this.uiApi.getText("ui.common.ok")],[this.showHelpTooltip]);
                   break;
                case CharacterCreationResultEnum.ERR_NOT_ALLOWED:
                   this.modCommon.openPopup(this.uiApi.getText("ui.common.error"),this.uiApi.getText("ui.popup.charcrea.notSubscriber"),[this.uiApi.getText("ui.common.ok")]);
@@ -2736,7 +2722,7 @@ package Ankama_Connection.ui
                   this.modCommon.openPopup(this.uiApi.getText("ui.common.error"),this.uiApi.getText("ui.popup.charcrea.noReason"),[this.uiApi.getText("ui.common.ok")]);
                   this.sysApi.log(16,"Echec sans raison");
                   break;
-               case CharacterCreationResultEnum.ERR_RESTRICED_ZONE:
+               case CharacterCreationResultEnum.ERR_RESTRICTED_ZONE:
                   this.modCommon.openPopup(this.uiApi.getText("ui.common.error"),this.uiApi.getText("ui.charSel.deletionErrorUnsecureMode"),[this.uiApi.getText("ui.common.ok")]);
                   this.sysApi.log(16,"Vous ne pouvez pas créer de personnage en mode Unsecure");
                   break;
@@ -2768,6 +2754,11 @@ package Ankama_Connection.ui
       
       public function onCharacterNameSuggestioned(characterName:String) : void
       {
+         if(characterName == "")
+         {
+            this.modCommon.openPopup(this.uiApi.getText("ui.common.error"),this.uiApi.getText("ui.charcrea.invalidNameReason" + NameComplianceResultEnum.ERROR_SERVICE_UNAVAILABLE),[this.uiApi.getText("ui.common.ok")]);
+            return;
+         }
          this.input_name.text = characterName;
       }
       
@@ -2781,11 +2772,6 @@ package Ankama_Connection.ui
       
       public function onChange(target:Object) : void
       {
-         var startIndex:int = 0;
-         var numChars:int = 0;
-         var i:int = 0;
-         var lastCharacter:String = null;
-         var regexp:RegExp = null;
          if(this._skipChange)
          {
             this._skipChange = false;
@@ -2797,42 +2783,6 @@ package Ankama_Connection.ui
          }
          if(this.input_name.text.length > 0 && this.input_name.text != this.uiApi.getText("ui.charcrea.titleRename"))
          {
-            if(this._namingRule.id == 1 || this._namingRule.id == 3)
-            {
-               startIndex = Math.max(0,!!this._lastInputText ? Number(this.input_name.textfield.caretIndex - Math.abs(this.input_name.text.length - this._lastInputText.length)) : Number(0));
-               numChars = Math.abs(this.input_name.text.length - (!!this._lastInputText ? this._lastInputText.length : 0));
-               for(i = startIndex; i < startIndex + numChars; i++)
-               {
-                  lastCharacter = this.input_name.text.charAt(i);
-                  if(lastCharacter == "")
-                  {
-                     break;
-                  }
-                  regexp = i > 1 ? new RegExp(/[A-Za-zА-ЯЁа-яё\-]/) : new RegExp(/[A-Za-zА-ЯЁа-яё]/);
-                  if(!regexp.test(lastCharacter) || this.utilApi.noAccent(lastCharacter) != lastCharacter || lastCharacter == " " || i > 0 && lastCharacter.toLowerCase() != lastCharacter && this.input_name.text.charAt(i - 1) != "-" || this.input_name.text.length > 1 && lastCharacter == "-" && (this.input_name.text.charAt(i - 1) == "-" || this.input_name.text.charAt(i + 1) == "-") || this.input_name.text.length > 2 && lastCharacter == "-" && this.input_name.text.substr(0,i).indexOf("-") != this.input_name.text.substr(0,i).lastIndexOf("-") || new RegExp(/([A-Za-zА-ЯЁа-яё])\1{2}/i).test(this.input_name.text))
-                  {
-                     this._skipChange = true;
-                     if(i == 0)
-                     {
-                        this.input_name.text = this.input_name.text.substr(numChars);
-                     }
-                     else if(i == this.input_name.length - numChars)
-                     {
-                        this.input_name.text = this.input_name.text.substr(0,i);
-                     }
-                     else
-                     {
-                        this.input_name.text = this.input_name.text.substr(0,i) + this.input_name.text.substr(i + numChars);
-                     }
-                     this.input_name.textfield.setSelection(startIndex,startIndex);
-                     return;
-                  }
-               }
-               if(this._lastInputText && this._lastInputText.length > this.input_name.text.length && this._lastInputText.charAt(startIndex + 1) == "-" && this._lastInputText.charAt(startIndex + 2).toLowerCase() != this._lastInputText.charAt(startIndex + 2))
-               {
-                  this.input_name.text = this.input_name.text.substr(0,startIndex + 1) + this.input_name.text.charAt(startIndex + 1).toLowerCase() + this.input_name.text.substr(startIndex + 2);
-               }
-            }
             if(!this._nameArrayByBreedAndGender[this._breed])
             {
                this._nameArrayByBreedAndGender[this._breed] = [];

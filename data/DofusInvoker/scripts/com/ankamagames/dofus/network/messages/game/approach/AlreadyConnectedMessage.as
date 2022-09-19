@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.approach
    public class AlreadyConnectedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5949;
+      public static const protocolId:uint = 3963;
        
       
       public function AlreadyConnectedMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       override public function getMessageId() : uint
       {
-         return 5949;
+         return 3963;
       }
       
       public function initAlreadyConnectedMessage() : AlreadyConnectedMessage

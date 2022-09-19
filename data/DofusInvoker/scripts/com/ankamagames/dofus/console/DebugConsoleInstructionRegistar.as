@@ -3,6 +3,7 @@ package com.ankamagames.dofus.console
    import com.ankamagames.dofus.console.chat.ChatServiceInstructionHandler;
    import com.ankamagames.dofus.console.common.LatencyInstructionHandler;
    import com.ankamagames.dofus.console.debug.ActionsInstructionHandler;
+   import com.ankamagames.dofus.console.debug.AlterationInstructionHandler;
    import com.ankamagames.dofus.console.debug.BenchmarkInstructionHandler;
    import com.ankamagames.dofus.console.debug.CinematicInstructionHandler;
    import com.ankamagames.dofus.console.debug.ClearSceneInstructionHandler;
@@ -66,6 +67,7 @@ package com.ankamagames.dofus.console
          console.addHandler("jptest",new FontInstructionHandler());
          console.addHandler(["aping","ping"],new LatencyInstructionHandler());
          console.addHandler(["cinematic"],new CinematicInstructionHandler());
+         console.addHandler(["searchalteration"],new AlterationInstructionHandler());
          console.addHandler(["friendlist","friendinvite","friend","msg","mystatus","myactivity","friendgroup","listactivities"],new ChatServiceInstructionHandler());
          console.addHandler(["framelist","framepriority"],new FrameInstructionHandler());
          console.addHandler(["addmovingcharacter","switchupdatemode","setanimation","playemote","setdirection","memorylog","bot-spectator","bot-fight","tiphon-error","fps","fpsmanager","tacticmode","chainteleport"],new BenchmarkInstructionHandler());

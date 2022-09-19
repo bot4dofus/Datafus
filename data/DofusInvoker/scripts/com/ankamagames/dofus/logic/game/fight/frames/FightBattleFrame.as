@@ -123,7 +123,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private var _newDeadTurnsList:Vector.<Number>;
       
-      private var _turnsList:Vector.<Number>;
+      private var _fightersList:Vector.<Number>;
       
       private var _deadTurnsList:Vector.<Number>;
       
@@ -194,12 +194,13 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       public function get fightersList() : Vector.<Number>
       {
-         return this._turnsList;
+         return this._fightersList;
       }
       
-      public function set fightersList(turnList:Vector.<Number>) : void
+      public function set fightersList(fightersList:Vector.<Number>) : void
       {
-         this._turnsList = turnList;
+         this._fightersList = fightersList;
+         KernelEventsManager.getInstance().processCallback(FightHookList.FightersInitiative);
       }
       
       public function get deadFightersList() : Vector.<Number>
@@ -394,7 +395,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                {
                   this._masterId = sscmsg.masterId;
                   this._slaveId = sscmsg.slaveId;
-                  if(!this._currentPlayerId && this._turnsList.indexOf(this._masterId) > this._turnsList.indexOf(this._slaveId))
+                  if(!this._currentPlayerId && this._fightersList.indexOf(this._masterId) > this._fightersList.indexOf(this._slaveId))
                   {
                      this.prepareNextPlayableCharacter(this._masterId);
                   }
@@ -425,6 +426,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   this._slaveId = 0;
                }
                this._playingSlaveEntity = gftsmsg.id == this._slaveId;
+               KernelEventsManager.getInstance().processCallback(FightHookList.SlaveTurnStart,gftsmsg.id,this._playingSlaveEntity);
                this._turnFrame.turnDuration = gftsmsg.waitTime * 100;
                isResumeMessage = msg is GameFightTurnResumeMessage;
                if(!isResumeMessage)
@@ -770,7 +772,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          this._battleResults = null;
          this._newTurnsList = null;
          this._newDeadTurnsList = null;
-         this._turnsList = null;
+         this.fightersList = null;
          this._deadTurnsList = null;
          this._sequenceFrames = null;
          this._playingSlaveEntity = false;
@@ -845,21 +847,21 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var slaveIdx:int = 0;
          var currentCharacterIdx:int = 0;
          var currentPlayedCharacterId:Number = CurrentPlayedFighterManager.getInstance().currentFighterId;
-         if(!this._slaveId || !this._turnsList)
+         if(!this._slaveId || !this._fightersList)
          {
             return currentPlayedCharacterId;
          }
-         for(var i:int = 0; i < this._turnsList.length; i++)
+         for(var i:int = 0; i < this._fightersList.length; i++)
          {
-            if(this._turnsList[i] == this._masterId)
+            if(this._fightersList[i] == this._masterId)
             {
                masterIdx = i;
             }
-            else if(this._turnsList[i] == this._slaveId)
+            else if(this._fightersList[i] == this._slaveId)
             {
                slaveIdx = i;
             }
-            if(this._turnsList[i] == this._currentPlayerId)
+            if(this._fightersList[i] == this._currentPlayerId)
             {
                currentCharacterIdx = i;
             }
@@ -1105,7 +1107,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private function updateTurnsList(turnsList:Vector.<Number>, deadTurnsList:Vector.<Number>) : void
       {
-         this._turnsList = turnsList;
+         this.fightersList = turnsList;
          this._deadTurnsList = deadTurnsList;
          KernelEventsManager.getInstance().processCallback(HookList.FightersListUpdated);
          if(Dofus.getInstance().options.getOption("orderFighters") && Kernel.getWorker().getFrame(FightEntitiesFrame))

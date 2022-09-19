@@ -7,6 +7,7 @@ package Ankama_Grimoire.ui
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.utils.ComponentHookList;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.uiApi.BindsApi;
    import com.ankamagames.dofus.uiApi.ConfigApi;
@@ -45,6 +46,8 @@ package Ankama_Grimoire.ui
       
       public var btn_help:ButtonContainer;
       
+      public var btn_tabCollection:ButtonContainer;
+      
       public var btn_tabTemporis:ButtonContainer;
       
       public var btn_tabGameGuide:ButtonContainer;
@@ -52,6 +55,8 @@ package Ankama_Grimoire.ui
       public var btn_tabGameProgress:ButtonContainer;
       
       public var lbl_title:Label;
+      
+      public var lbl_btn_tabCollection:Label;
       
       public var lbl_btn_tabTemporis:Label;
       
@@ -79,8 +84,13 @@ package Ankama_Grimoire.ui
          this.uiApi.addShortcutHook("closeUi",this.onShortcut);
          this.lbl_btn_tabGameProgress.text = this.uiApi.getText("ui.guidebook.gameProgress");
          this.lbl_btn_tabGameGuide.text = this.uiApi.getText("ui.guidebook.gameGuide");
-         if(this.configApi.isFeatureWithKeywordEnabled("temporis.achievementProgress"))
+         if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_ACHIEVEMENT_PROGRESS))
          {
+            this.btn_tabCollection.visible = true;
+            this.uiApi.addComponentHook(this.btn_tabCollection,ComponentHookList.ON_RELEASE);
+            this.uiApi.addComponentHook(this.btn_tabCollection,ComponentHookList.ON_ROLL_OVER);
+            this.uiApi.addComponentHook(this.btn_tabCollection,ComponentHookList.ON_ROLL_OUT);
+            this.lbl_btn_tabCollection.text = this.uiApi.getText("ui.collection.title");
             this.btn_tabTemporis.visible = this.tx_tabTemporisWarning.visible = true;
             this.uiApi.addComponentHook(this.btn_tabTemporis,ComponentHookList.ON_RELEASE);
             this.uiApi.addComponentHook(this.btn_tabTemporis,ComponentHookList.ON_ROLL_OVER);
@@ -100,9 +110,10 @@ package Ankama_Grimoire.ui
          }
          else
          {
+            this.btn_tabCollection.visible = false;
             this.btn_tabTemporis.visible = this.tx_tabTemporisWarning.visible = false;
             this.lbl_title.text = this.uiApi.getText("ui.guidebook.title");
-            deltaX = this.btn_tabTemporis.width / 2;
+            deltaX = this.btn_tabTemporis.width / 2 + this.btn_tabCollection.width / 2;
             this.btn_tabGameGuide.x -= deltaX;
             this.btn_tabGameProgress.x -= deltaX;
          }
@@ -134,7 +145,7 @@ package Ankama_Grimoire.ui
          {
             this.uiApi.unloadUi("subGuideUi");
          }
-         if(!this.configApi.isFeatureWithKeywordEnabled("temporis.achievementProgress") && tab == EnumTab.TEMPORIS_TAB)
+         if(!this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_ACHIEVEMENT_PROGRESS) && (tab == EnumTab.TEMPORIS_TAB || tab == EnumTab.COLLECTION_TAB))
          {
             this._currentTabUi = EnumTab.GUIDEBOOK_GAME_SUGGESTION;
          }
@@ -174,6 +185,9 @@ package Ankama_Grimoire.ui
          var returnButton:ButtonContainer = null;
          switch(tab)
          {
+            case EnumTab.COLLECTION_TAB:
+               returnButton = this.btn_tabCollection;
+               break;
             case EnumTab.TEMPORIS_TAB:
                returnButton = this.btn_tabTemporis;
                break;
@@ -190,6 +204,9 @@ package Ankama_Grimoire.ui
       {
          switch(target)
          {
+            case this.btn_tabCollection:
+               this.openTab(EnumTab.COLLECTION_TAB);
+               break;
             case this.btn_tabTemporis:
                this.openTab(EnumTab.TEMPORIS_TAB);
                break;

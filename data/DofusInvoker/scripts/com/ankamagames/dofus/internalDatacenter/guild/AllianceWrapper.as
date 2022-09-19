@@ -8,7 +8,6 @@ package com.ankamagames.dofus.internalDatacenter.guild
    import com.ankamagames.dofus.network.types.game.context.roleplay.BasicNamedAllianceInformations;
    import com.ankamagames.dofus.network.types.game.guild.GuildEmblem;
    import com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations;
-   import com.ankamagames.dofus.network.types.game.social.AllianceVersatileInformations;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
    import flash.utils.Dictionary;
@@ -101,10 +100,6 @@ package com.ankamagames.dofus.internalDatacenter.guild
          {
             return getFromBasicAllianceInformations(BasicAllianceInformations(o));
          }
-         if(o is AllianceVersatileInformations)
-         {
-            return getFromAllianceVersatileInformations(AllianceVersatileInformations(o));
-         }
          if(o is AllianceFactsMessage)
          {
             return getFromAllianceFactsMessage(AllianceFactsMessage(o));
@@ -123,7 +118,7 @@ package com.ankamagames.dofus.internalDatacenter.guild
          if(o.guilds && o.guilds.length > 0)
          {
             aw.leadingGuildId = o.guilds[0].guildId;
-            if(SocialFrame.getInstance().hasGuild && SocialFrame.getInstance().guild.guildId == o.guilds[0].guildId && SocialFrame.getInstance().guild.hasRight("isBoss"))
+            if(SocialFrame.getInstance().hasGuild && SocialFrame.getInstance().guild.guildId == o.guilds[0].guildId && SocialFrame.getInstance().playerGuildRank.order == 0)
             {
                aw._memberRightsNumber = AllianceRightsBitEnum.ALLIANCE_RIGHT_BOSS;
             }
@@ -137,25 +132,6 @@ package com.ankamagames.dofus.internalDatacenter.guild
          {
             aw.nbMembers += o.guilds[i].nbMembers;
          }
-         return aw;
-      }
-      
-      private static function getFromAllianceVersatileInformations(o:AllianceVersatileInformations) : AllianceWrapper
-      {
-         var aw:AllianceWrapper = null;
-         if(_ref[o.allianceId])
-         {
-            aw = _ref[o.allianceId];
-         }
-         else
-         {
-            aw = new AllianceWrapper();
-            _ref[o.allianceId] = aw;
-         }
-         aw.allianceId = o.allianceId;
-         aw.nbMembers = o.nbMembers;
-         aw.nbGuilds = o.nbGuilds;
-         aw.nbSubareas = o.nbSubarea;
          return aw;
       }
       
@@ -186,7 +162,10 @@ package com.ankamagames.dofus.internalDatacenter.guild
          }
          if(o is AllianceFactSheetInformations)
          {
+            aw.nbGuilds = AllianceFactSheetInformations(o).nbGuilds;
+            aw.nbMembers = AllianceFactSheetInformations(o).nbMembers;
             aw.creationDate = AllianceFactSheetInformations(o).creationDate;
+            aw.nbSubareas = AllianceFactSheetInformations(o).nbSubarea;
          }
          return aw;
       }
@@ -213,7 +192,7 @@ package com.ankamagames.dofus.internalDatacenter.guild
          if(guilds && guilds.length > 0)
          {
             item.leadingGuildId = guilds[0].guildId;
-            if(SocialFrame.getInstance().hasGuild && SocialFrame.getInstance().guild.guildId == guilds[0].guildId && SocialFrame.getInstance().guild.hasRight("isBoss"))
+            if(SocialFrame.getInstance().hasGuild && SocialFrame.getInstance().guild.guildId == guilds[0].guildId && SocialFrame.getInstance().playerGuildRank.order == 0)
             {
                item._memberRightsNumber = AllianceRightsBitEnum.ALLIANCE_RIGHT_BOSS;
             }
@@ -320,7 +299,7 @@ package com.ankamagames.dofus.internalDatacenter.guild
          if(guilds && guilds.length > 0)
          {
             this.leadingGuildId = guilds[0].guildId;
-            if(SocialFrame.getInstance().hasGuild && SocialFrame.getInstance().guild.guildId == guilds[0].guildId && SocialFrame.getInstance().guild.hasRight("isBoss"))
+            if(SocialFrame.getInstance().hasGuild && SocialFrame.getInstance().guild.guildId == guilds[0].guildId && SocialFrame.getInstance().playerGuildRank.order == 0)
             {
                this._memberRightsNumber = AllianceRightsBitEnum.ALLIANCE_RIGHT_BOSS;
             }

@@ -6,7 +6,6 @@ package com.ankamagames.atouin.data
    import com.ankamagames.atouin.data.map.Fixture;
    import com.ankamagames.atouin.data.map.Layer;
    import com.ankamagames.atouin.data.map.Map;
-   import flash.utils.ByteArray;
    import flash.utils.IDataInput;
    
    public class DefaultMap extends Map
@@ -35,7 +34,7 @@ package com.ankamagames.atouin.data
          }
       }
       
-      override public function fromRaw(raw:IDataInput, decryptionKey:ByteArray = null) : void
+      override public function fromRaw(raw:IDataInput) : void
       {
       }
       

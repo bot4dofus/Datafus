@@ -81,11 +81,11 @@ package Ankama_Tooltips.ui
                icon = this.dataApi.getEmblemSymbol(this._alliance.upEmblem.idEmblem);
                if(icon.colorizable)
                {
-                  this.utilApi.changeColor(this.tx_AllianceEmblemUp.getChildByName("up"),this._alliance.upEmblem.color,0);
+                  this.utilApi.changeColor(this.tx_AllianceEmblemUp,this._alliance.upEmblem.color,0);
                }
                else
                {
-                  this.utilApi.changeColor(this.tx_AllianceEmblemUp.getChildByName("up"),this._alliance.upEmblem.color,0,true);
+                  this.utilApi.changeColor(this.tx_AllianceEmblemUp,this._alliance.upEmblem.color,0,true);
                }
                this.tx_AllianceEmblemUp.visible = true;
          }

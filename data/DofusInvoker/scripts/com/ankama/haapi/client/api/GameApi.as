@@ -52,6 +52,8 @@ package com.ankama.haapi.client.api
       
       public static const sendEvent_GameEnum_102:String = "102";
       
+      public static const sendEvent_GameEnum_106:String = "106";
+      
       public static const sendEvents_GameEnum_1:String = "1";
       
       public static const sendEvents_GameEnum_3:String = "3";

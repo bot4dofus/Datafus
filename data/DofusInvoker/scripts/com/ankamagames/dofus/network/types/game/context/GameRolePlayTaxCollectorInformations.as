@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.context
    public class GameRolePlayTaxCollectorInformations extends GameRolePlayActorInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 5071;
+      public static const protocolId:uint = 7488;
        
       
       public var identification:TaxCollectorStaticInformations;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.types.game.context
       
       override public function getTypeId() : uint
       {
-         return 5071;
+         return 7488;
       }
       
       public function initGameRolePlayTaxCollectorInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, identification:TaxCollectorStaticInformations = null, guildLevel:uint = 0, taxCollectorAttack:int = 0) : GameRolePlayTaxCollectorInformations

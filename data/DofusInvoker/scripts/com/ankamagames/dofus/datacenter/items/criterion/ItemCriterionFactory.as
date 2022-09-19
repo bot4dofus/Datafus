@@ -66,6 +66,9 @@ package com.ankamagames.dofus.datacenter.items.criterion
             case "Eu":
                criterion = new RuneByBreakingItemCriterion(pServerCriterionForm);
                break;
+            case "GM":
+               criterion = new GuildMasterItemCriterion(pServerCriterionForm);
+               break;
             case "Kd":
                criterion = new ArenaDuelRankCriterion(pServerCriterionForm);
                break;
@@ -249,6 +252,15 @@ package com.ankamagames.dofus.datacenter.items.criterion
                break;
             case "Sy":
                criterion = new CommunityItemCriterion(pServerCriterionForm);
+               break;
+            case "HS":
+               criterion = new StateCriterion(pServerCriterionForm);
+               break;
+            case "HA":
+               criterion = new AlterationCriterion(pServerCriterionForm);
+               break;
+            case "OS":
+               criterion = new OnlySetCriterion(pServerCriterionForm);
                break;
             default:
                _log.warn("Criterion \'" + s + "\' unknow or unused (" + pServerCriterionForm + ")");

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.modificator
    public class AreaFightModificatorUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4779;
+      public static const protocolId:uint = 5646;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.modificator
       
       override public function getMessageId() : uint
       {
-         return 4779;
+         return 5646;
       }
       
       public function initAreaFightModificatorUpdateMessage(spellPairId:int = 0) : AreaFightModificatorUpdateMessage

@@ -28,15 +28,15 @@ package com.ankamagames.dofus.internalDatacenter.guild
          return new GuildApplicationWrapper(playerData,info.applyText,info.creationDate);
       }
       
-      public function get playerId() : uint
+      public function get playerId() : Number
       {
-         return this.playerData !== null ? uint(this.playerData.playerId) : uint(0);
+         return this.playerData !== null ? Number(this.playerData.playerId) : Number(0);
       }
       
       public function unwrap() : GuildApplicationInformation
       {
          var registerInfo:ApplicationPlayerInformation = new ApplicationPlayerInformation();
-         if(this.playerData !== null)
+         if(this.playerData === null)
          {
             registerInfo = new ApplicationPlayerInformation();
          }

@@ -10,7 +10,6 @@ package Ankama_Storage.ui.behavior
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
-   import com.ankamagames.dofus.misc.lists.InventoryHookList;
    import com.ankamagames.dofus.types.enums.ItemCategoryEnum;
    
    public class ItemEffectsModifierBehavior implements IStorageBehavior
@@ -115,12 +114,6 @@ package Ankama_Storage.ui.behavior
                myItem = Api.data.getItemWrapper(item.objectGID,item.position,item.objectUID,1,item.effectsList);
                switch(selectMethod)
                {
-                  case SelectMethodEnum.CLICK:
-                     if(!Api.system.getOption("displayTooltips","dofus"))
-                     {
-                        Api.system.dispatchHook(InventoryHookList.ObjectSelected,{"data":myItem});
-                     }
-                     break;
                   case SelectMethodEnum.DOUBLE_CLICK:
                   case SelectMethodEnum.CTRL_DOUBLE_CLICK:
                   case SelectMethodEnum.ALT_DOUBLE_CLICK:

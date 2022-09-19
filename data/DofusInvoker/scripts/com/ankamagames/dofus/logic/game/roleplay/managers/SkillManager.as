@@ -7,9 +7,11 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.common.managers.NotificationManager;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
+   import com.ankamagames.dofus.logic.game.common.frames.SocialFrame;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayEntitiesFrame;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
+   import com.ankamagames.dofus.network.enums.GuildRightsEnum;
    import com.ankamagames.dofus.network.types.game.interactive.InteractiveElement;
    import com.ankamagames.dofus.network.types.game.interactive.InteractiveElementNamedSkill;
    import com.ankamagames.dofus.network.types.game.interactive.InteractiveElementSkill;
@@ -51,6 +53,23 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
             _self = new SkillManager();
          }
          return _self;
+      }
+      
+      private static function isSkillAvailable(skill:Skill) : Boolean
+      {
+         if(!skill)
+         {
+            return false;
+         }
+         if(skill.id === DataEnum.SKILL_BUY_PADDOCK && (!SocialFrame.getInstance().playerGuildRank || SocialFrame.getInstance().playerGuildRank.rights.indexOf(GuildRightsEnum.RIGHT_BUY_FARM) === -1))
+         {
+            return false;
+         }
+         if(skill.id === DataEnum.SKILL_SELL_PADDOCK && (!SocialFrame.getInstance().playerGuildRank || SocialFrame.getInstance().playerGuildRank.order !== 0))
+         {
+            return false;
+         }
+         return true;
       }
       
       public function isDoorCursorSkill(id:int) : Boolean
@@ -163,23 +182,26 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
          {
             _skillsWithoutMenu = [DataEnum.SKILL_SIGN_FREE_TEXT,DataEnum.SKILL_SIGN_HINT,DataEnum.SKILL_SIGN_SUBAREA];
          }
+         var skillObj:Skill = null;
          for each(enabledSkill in ie.element.enabledSkills)
          {
             if(_skillsWithoutMenu.indexOf(enabledSkill.skillId) == -1)
             {
+               skillObj = Skill.getSkillById(enabledSkill.skillId);
                if(enabledSkill is InteractiveElementNamedSkill)
                {
                   skillNameStr = SkillName.getSkillNameById((enabledSkill as InteractiveElementNamedSkill).nameId).name;
                }
-               else
+               else if(skillObj)
                {
-                  skillNameStr = Skill.getSkillById(enabledSkill.skillId).name;
+                  skillNameStr = skillObj.name;
                }
                skills.push({
                   "id":enabledSkill.skillId,
                   "instanceId":enabledSkill.skillInstanceUid,
                   "name":skillNameStr,
-                  "enabled":true
+                  "enabled":true,
+                  "isAvailable":isSkillAvailable(skillObj)
                });
             }
          }
@@ -187,6 +209,7 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
          {
             if(_skillsWithoutMenu.indexOf(disabledSkill.skillId) == -1)
             {
+               skillObj = Skill.getSkillById(disabledSkill.skillId);
                if(disabledSkill is InteractiveElementNamedSkill)
                {
                   skillNameStr = SkillName.getSkillNameById((disabledSkill as InteractiveElementNamedSkill).nameId).name;
@@ -209,7 +232,8 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
                      "id":disabledSkill.skillId,
                      "instanceId":disabledSkill.skillInstanceUid,
                      "name":skillNameStr,
-                     "enabled":false
+                     "enabled":false,
+                     "isAvailable":isSkillAvailable(skillObj)
                   });
                }
             }

@@ -89,7 +89,6 @@ package Ankama_Storage.ui
       
       override public function unload() : void
       {
-         uiApi.unloadUi("itemBox");
          uiApi.unloadUi("itemsList");
          super.unload();
       }

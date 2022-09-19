@@ -62,6 +62,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.jerakine.entities.messages.EntityMouseOverMessage;
    import com.ankamagames.jerakine.handlers.messages.mouse.MouseClickMessage;
    import com.ankamagames.jerakine.handlers.messages.mouse.MouseRightClickMessage;
+   import com.ankamagames.jerakine.interfaces.ISlotData;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.managers.OptionManager;
@@ -131,7 +132,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
       private static var _currentTargetIsTargetable:Boolean;
        
       
-      private var _spellLevel:Object;
+      private var _spellWrapper:Object;
+      
+      private var _entityId:Number;
       
       private var _spellId:uint;
       
@@ -151,7 +154,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private var _isInfiniteTarget:Boolean;
       
-      private var _usedWrapper;
+      private var _usedWrapper:ISlotData;
       
       private var _targetingThroughPortal:Boolean;
       
@@ -167,45 +170,53 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private var _fightContextFrame:FightContextFrame;
       
-      public function FightSpellCastFrame(spellId:uint)
+      public function FightSpellCastFrame(entityId:Number, spellId:uint, spellWrapper:SpellWrapper = null)
       {
-         var i:SpellWrapper = null;
+         var playedEntitySpellWrappers:Array = null;
+         var playedEntitySpellWrapper:SpellWrapper = null;
          var weapon:WeaponWrapper = null;
          super();
+         this._entityId = entityId;
          this._spellId = spellId;
+         this._spellWrapper = spellWrapper;
          this._cursorData = new LinkedCursorData();
          this._cursorData.sprite = new FORBIDDEN_CURSOR();
          this._cursorData.sprite.cacheAsBitmap = true;
          this._cursorData.offset = new Point(14,14);
          this._cancelTimer = new BenchmarkTimer(50,0,"FightSpellCastFrame._cancelTimer");
          this._cancelTimer.addEventListener(TimerEvent.TIMER,this.cancelCast);
-         if(spellId || !PlayedCharacterManager.getInstance().currentWeapon)
+         var playedCharacterManager:PlayedCharacterManager = PlayedCharacterManager.getInstance();
+         if(this._spellWrapper === null && this._entityId === CurrentPlayedFighterManager.getInstance().currentFighterId)
          {
-            for each(i in PlayedCharacterManager.getInstance().spellsInventory)
+            if(spellId || !playedCharacterManager.currentWeapon)
             {
-               if(i.spellId == this._spellId)
+               playedEntitySpellWrappers = playedCharacterManager.spellsInventory;
+               for each(playedEntitySpellWrapper in playedEntitySpellWrappers)
                {
-                  this._spellLevel = i;
+                  if(playedEntitySpellWrapper.spellId == this._spellId)
+                  {
+                     this._spellWrapper = playedEntitySpellWrapper;
+                  }
                }
             }
-         }
-         else
-         {
-            weapon = PlayedCharacterManager.getInstance().currentWeapon;
-            this._spellLevel = {
-               "effects":weapon.effects,
-               "castTestLos":weapon.castTestLos,
-               "castInLine":weapon.castInLine,
-               "castInDiagonal":weapon.castInDiagonal,
-               "minRange":weapon.minRange,
-               "range":weapon.range,
-               "apCost":weapon.apCost,
-               "needFreeCell":false,
-               "needTakenCell":false,
-               "needFreeTrapCell":false,
-               "name":weapon.name,
-               "playerId":PlayedCharacterManager.getInstance().id
-            };
+            else
+            {
+               weapon = playedCharacterManager.currentWeapon;
+               this._spellWrapper = {
+                  "effects":weapon.effects,
+                  "castTestLos":weapon.castTestLos,
+                  "castInLine":weapon.castInLine,
+                  "castInDiagonal":weapon.castInDiagonal,
+                  "minRange":weapon.minRange,
+                  "range":weapon.range,
+                  "apCost":weapon.apCost,
+                  "needFreeCell":false,
+                  "needTakenCell":false,
+                  "needFreeTrapCell":false,
+                  "name":weapon.name,
+                  "playerId":playedCharacterManager.id
+               };
+            }
          }
          this._clearTargetTimer = new BenchmarkTimer(50,1,"FightSpellCastFrame._clearTargetTimer");
          this._clearTargetTimer.addEventListener(TimerEvent.TIMER,this.onClearTarget);
@@ -256,6 +267,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var actorInfos:GameContextActorInformations = null;
          var fighterInfos:GameFightFighterInformations = null;
          var character:AnimatedCharacter = null;
+         var playedCharacterManager:PlayedCharacterManager = null;
          Atouin.getInstance().options.addEventListener(PropertyChangeEvent.PROPERTY_CHANGED,this.onPropertyChanged);
          this._fightContextFrame = Kernel.getWorker().getFrame(FightContextFrame) as FightContextFrame;
          var fef:FightEntitiesFrame = Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame;
@@ -264,7 +276,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          {
             fighterInfos = actorInfos as GameFightFighterInformations;
             character = DofusEntities.getEntity(fighterInfos.contextualId) as AnimatedCharacter;
-            if(character && fighterInfos.contextualId != CurrentPlayedFighterManager.getInstance().currentFighterId && fighterInfos.stats.invisibilityState == GameActionFightInvisibilityStateEnum.DETECTED)
+            if(character && fighterInfos.contextualId != this._entityId && fighterInfos.stats.invisibilityState == GameActionFightInvisibilityStateEnum.DETECTED)
             {
                character.setCanSeeThrough(true);
                character.setCanWalkThrough(false);
@@ -275,18 +287,16 @@ package com.ankamagames.dofus.logic.game.fight.frames
          this._lastTargetStatus = true;
          if(this._spellId == 0)
          {
-            if(PlayedCharacterManager.getInstance().currentWeapon)
-            {
-               this._usedWrapper = PlayedCharacterManager.getInstance().currentWeapon;
-            }
-            else
-            {
-               this._usedWrapper = SpellWrapper.create(0,1,false,PlayedCharacterManager.getInstance().id);
-            }
+            playedCharacterManager = PlayedCharacterManager.getInstance();
+            this._usedWrapper = playedCharacterManager.id === this._entityId && playedCharacterManager.currentWeapon ? playedCharacterManager.currentWeapon : SpellWrapper.create(0,1,false,this._entityId);
          }
          else
          {
-            this._usedWrapper = SpellWrapper.getSpellWrapperById(this._spellId,CurrentPlayedFighterManager.getInstance().currentFighterId);
+            this._usedWrapper = SpellWrapper.getSpellWrapperById(this._spellId,this._entityId);
+            if(this._usedWrapper === null)
+            {
+               this._usedWrapper = this._spellWrapper.clone();
+            }
          }
          KernelEventsManager.getInstance().processCallback(HookList.CastSpellMode,this._usedWrapper);
          this.drawRange();
@@ -298,12 +308,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
       {
          var conmsg:CellOverMessage = null;
          var comsg:CellOutMessage = null;
-         var cellEntity:IEntity = null;
          var emomsg:EntityMouseOverMessage = null;
          var teoa:TimelineEntityOverAction = null;
          var timelineEntity:IEntity = null;
-         var teouta:TimelineEntityOutAction = null;
-         var outEntity:IEntity = null;
          var ccmsg:CellClickMessage = null;
          var ecmsg:EntityClickMessage = null;
          var teica:TimelineEntityClickAction = null;
@@ -319,7 +326,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
                return false;
             case msg is CellOutMessage:
                comsg = msg as CellOutMessage;
-               cellEntity = EntitiesManager.getInstance().getEntityOnCell(comsg.cellId,AnimatedCharacter);
                this.removeTeleportationPreview();
                this.removeSummoningPreview();
                this.clearTarget();
@@ -339,8 +345,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
                }
                return false;
             case msg is TimelineEntityOutAction:
-               teouta = msg as TimelineEntityOutAction;
-               outEntity = DofusEntities.getEntity(teouta.targetId);
                this.removeTeleportationPreview();
                this.removeSummoningPreview();
                return false;
@@ -398,7 +402,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
             {
                fighterInfos = actorInfos as GameFightFighterInformations;
                character = DofusEntities.getEntity(actorInfos.contextualId) as AnimatedCharacter;
-               if(character && actorInfos.contextualId != CurrentPlayedFighterManager.getInstance().currentFighterId && fighterInfos.stats.invisibilityState == GameActionFightInvisibilityStateEnum.VISIBLE)
+               if(character && actorInfos.contextualId != this._entityId && fighterInfos.stats.invisibilityState == GameActionFightInvisibilityStateEnum.VISIBLE)
                {
                   character.setCanSeeThrough(false);
                   character.setCanWalkThrough(false);
@@ -418,7 +422,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          this.removeTeleportationPreview(true);
          try
          {
-            KernelEventsManager.getInstance().processCallback(HookList.CancelCastSpell,SpellWrapper.getSpellWrapperById(this._spellId,CurrentPlayedFighterManager.getInstance().currentFighterId));
+            KernelEventsManager.getInstance().processCallback(HookList.CancelCastSpell,this._spellWrapper);
          }
          catch(e:Error)
          {
@@ -515,16 +519,16 @@ package com.ankamagames.dofus.logic.game.fight.frames
             }
             if(!this._targetSelection.zone || this._targetSelection.zone is Custom)
             {
-               entityInfo = FightEntitiesFrame.getCurrentInstance().getEntityInfos(this._spellLevel.playerId);
+               entityInfo = FightEntitiesFrame.getCurrentInstance().getEntityInfos(this._entityId);
                if(entityInfo)
                {
                   cellId = entityInfo.disposition.cellId;
-                  spellZone = SpellZoneManager.getInstance().getSpellZone(this._spellLevel,true,ignoreMaxSize,target,cellId);
+                  spellZone = SpellZoneManager.getInstance().getSpellZone(this._spellWrapper,true,ignoreMaxSize,target,cellId,true,this._entityId);
                   this._spellmaximumRange = spellZone.radius;
                   this._targetSelection.zone = spellZone;
                }
             }
-            currentFighterId = CurrentPlayedFighterManager.getInstance().currentFighterId;
+            currentFighterId = this._entityId;
             entityInfos = FightEntitiesFrame.getCurrentInstance().getEntityInfos(currentFighterId) as GameFightFighterInformations;
             if(entityInfos)
             {
@@ -621,20 +625,21 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var mp:MapPoint = null;
          var cellFromLine:Point = null;
          var cellsWithLosOk:Vector.<uint> = null;
-         if(this._spellLevel == null)
+         var usedSpellWrapper:SpellWrapper = null;
+         if(this._spellWrapper == null)
          {
             return;
          }
-         var currentFighterId:Number = CurrentPlayedFighterManager.getInstance().currentFighterId;
+         var currentFighterId:Number = this._entityId;
          var entityInfos:GameFightFighterInformations = FightEntitiesFrame.getCurrentInstance().getEntityInfos(currentFighterId) as GameFightFighterInformations;
          var origin:uint = entityInfos.disposition.cellId;
          var playerStats:EntityStats = CurrentPlayedFighterManager.getInstance().getStats();
-         var range:int = this._spellLevel.range;
-         var minRange:int = this._spellLevel.minRange;
+         var range:int = this._spellWrapper.range;
+         var minRange:int = this._spellWrapper.minRange;
          var spellShape:uint = this.getSpellShape();
-         var castInLine:Boolean = this._spellLevel.castInLine || spellShape == SpellShapeEnum.l;
+         var castInLine:Boolean = this._spellWrapper.castInLine || spellShape == SpellShapeEnum.l;
          var mpWithPortals:Vector.<MapPoint> = MarkedCellsManager.getInstance().getMarksMapPoint(GameActionMarkTypeEnum.PORTAL);
-         if(!castInLine && !this._spellLevel.castInDiagonal && !this._spellLevel.castTestLos && range == 63)
+         if(!castInLine && !this._spellWrapper.castInDiagonal && !this._spellWrapper.castTestLos && range == 63)
          {
             this._isInfiniteTarget = true;
             if(mpWithPortals == null || mpWithPortals.length < 2)
@@ -646,7 +651,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          {
             this._isInfiniteTarget = false;
          }
-         if(this._spellLevel["rangeCanBeBoosted"])
+         if(this._spellWrapper["rangeCanBeBoosted"])
          {
             range += playerStats.getStatTotalValue(StatIds.RANGE) - playerStats.getStatAdditionalValue(StatIds.RANGE);
          }
@@ -663,7 +668,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          rangeSelection.renderer = this.createZoneRenderer(RANGE_COLOR,PlacementStrataEnums.STRATA_AREA);
          rangeSelection.color = RANGE_COLOR;
          rangeSelection.alpha = true;
-         if(castInLine && this._spellLevel.castInDiagonal)
+         if(castInLine && this._spellWrapper.castInDiagonal)
          {
             shapePlus = new Cross(minRange,range,DataMapProvider.getInstance());
             shapePlus.allDirections = true;
@@ -673,7 +678,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          {
             rangeSelection.zone = new Cross(minRange,range,DataMapProvider.getInstance());
          }
-         else if(this._spellLevel.castInDiagonal)
+         else if(this._spellWrapper.castInDiagonal)
          {
             shapePlus = new Cross(minRange,range,DataMapProvider.getInstance());
             shapePlus.diagonal = true;
@@ -691,7 +696,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
             losSelection.color = LOS_COLOR;
          }
          var allCells:Vector.<uint> = rangeSelection.zone.getCells(origin);
-         if(!this._spellLevel.castTestLos)
+         if(!this._spellWrapper.castTestLos)
          {
             losSelection.zone = new Custom(allCells);
          }
@@ -723,7 +728,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   this._targetingThroughPortal = true;
                   if(this.isValidCell(cAfterPortal,true))
                   {
-                     if(this._spellLevel.castTestLos)
+                     if(this._spellWrapper.castTestLos)
                      {
                         entryMarkPortal = MarkedCellsManager.getInstance().getMarkAtCellId(c,GameActionMarkTypeEnum.PORTAL);
                         teamPortals = MarkedCellsManager.getInstance().getMarksMapPoint(GameActionMarkTypeEnum.PORTAL,entryMarkPortal.teamId);
@@ -764,11 +769,12 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var losSelectionCells:Vector.<uint> = losSelection.zone.getCells(origin);
          for each(selectionCellId in losSelectionCells)
          {
+            usedSpellWrapper = this._usedWrapper as SpellWrapper;
             if(portalUsableCells.indexOf(selectionCellId) != -1)
             {
                losCells.push(selectionCellId);
             }
-            else if(this._usedWrapper is SpellWrapper && this._usedWrapper.spellLevelInfos && (this._usedWrapper.spellLevelInfos.needFreeCell && this.cellHasEntity(selectionCellId) || this._usedWrapper.spellLevelInfos.needFreeTrapCell && MarkedCellsManager.getInstance().cellHasTrap(selectionCellId)))
+            else if(usedSpellWrapper !== null && usedSpellWrapper.spellLevelInfos && (usedSpellWrapper.spellLevelInfos.needFreeCell && this.cellHasEntity(selectionCellId) || usedSpellWrapper.spellLevelInfos.needFreeTrapCell && MarkedCellsManager.getInstance().cellHasTrap(selectionCellId)))
             {
                untargetableCells.push(selectionCellId);
             }
@@ -846,8 +852,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var entId:Number = NaN;
          var entity:AnimatedCharacter = null;
          var entitiesIds:Vector.<Number> = this._fightContextFrame.entitiesFrame.getEntitiesIdsList();
-         var showDamages:Boolean = this._spellLevel && OptionManager.getOptionManager("dofus").getOption("showDamagesPreview") == true && FightSpellCastFrame.isCurrentTargetTargetable();
-         var showMove:Boolean = this._spellLevel && OptionManager.getOptionManager("dofus").getOption("showMovePreview") == true && FightSpellCastFrame.isCurrentTargetTargetable();
+         var showDamages:Boolean = this._spellWrapper && OptionManager.getOptionManager("dofus").getOption("showDamagesPreview") && FightSpellCastFrame.isCurrentTargetTargetable();
+         var showMove:Boolean = this._spellWrapper && OptionManager.getOptionManager("dofus").getOption("showMovePreview") && FightSpellCastFrame.isCurrentTargetTargetable();
          if(showDamages || showMove)
          {
             result = this.damagePreview();
@@ -919,7 +925,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          }
          if(showDamages && limitedParams && limitedParams.length > 0)
          {
-            EnterFrameDispatcher.worker.addForeachTreatment(this,this.displayEntityTooltipTreatment,[this._spellLevel,this._currentCell],limitedParams);
+            EnterFrameDispatcher.worker.addForeachTreatment(this,this.displayEntityTooltipTreatment,[this._spellWrapper,this._currentCell],limitedParams);
          }
          else
          {
@@ -944,12 +950,12 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var cursor:ListNode = null;
          var params:Object = null;
          var currentEffect:EffectOutput = null;
-         var affectedFighters:Array = DamagePreview.computePreview(this._fightContextFrame,this._spellLevel,CurrentPlayedFighterManager.getInstance().currentFighterId,this._currentCell);
+         var affectedFighters:Array = DamagePreview.computePreview(this._fightContextFrame,this._spellWrapper,this._entityId,this._currentCell);
          var movedFighters:Vector.<HaxeFighter> = new Vector.<HaxeFighter>();
          var summonedFighters:Vector.<HaxeFighter> = new Vector.<HaxeFighter>();
          var paramsToShow:Vector.<Object> = new Vector.<Object>();
          var currentCharacterIsXelor:Boolean = false;
-         var entityInfos:GameContextActorInformations = this._fightContextFrame.entitiesFrame.getEntityInfos(CurrentPlayedFighterManager.getInstance().currentFighterId);
+         var entityInfos:GameContextActorInformations = this._fightContextFrame.entitiesFrame.getEntityInfos(this._entityId);
          if(entityInfos is GameFightCharacterInformations)
          {
             infos = GameFightCharacterInformations(entityInfos);
@@ -1073,9 +1079,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var newTargetPoint:MapPoint = null;
          var entryVector:Vector.<uint> = null;
          var exitVector:Vector.<uint> = null;
-         if(this._spellLevel && this._spellLevel.effects)
+         if(this._spellWrapper && this._spellWrapper.effects)
          {
-            for each(effect in this._spellLevel.effects)
+            for each(effect in this._spellWrapper.effects)
             {
                if(effect.effectId == ActionIds.ACTION_FIGHT_DISABLE_PORTAL)
                {
@@ -1083,7 +1089,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                }
             }
          }
-         var currentFighterId:Number = CurrentPlayedFighterManager.getInstance().currentFighterId;
+         var currentFighterId:Number = this._entityId;
          var entityInfos:GameFightFighterInformations = FightEntitiesFrame.getCurrentInstance().getEntityInfos(currentFighterId) as GameFightFighterInformations;
          if(!entityInfos)
          {
@@ -1148,9 +1154,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var spell:SpellWrapper = null;
          for each(spell in PlayedCharacterManager.getInstance().spellsInventory)
          {
-            if(spell.spellId == this._spellLevel.spellId && spell.apCost != this._spellLevel.apCost)
+            if(spell.spellId == this._spellWrapper.spellId && spell.apCost != this._spellWrapper.apCost)
             {
-               this._spellLevel.apCost = spell.apCost;
+               this._spellWrapper.apCost = spell.apCost;
             }
          }
          return CurrentPlayedFighterManager.getInstance().getStats().getStatTotalValue(StatIds.ACTION_POINTS);
@@ -1173,7 +1179,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
             return;
          }
          var apCurrent:int = this.checkSpellCostAndPlayerAp();
-         if(apCurrent < this._spellLevel.apCost)
+         if(apCurrent < this._spellWrapper.apCost)
          {
             return;
          }
@@ -1209,11 +1215,11 @@ package com.ankamagames.dofus.logic.game.fight.frames
             }
             if(this._spellId == 0)
             {
-               spellName = this._spellLevel.name;
+               spellName = this._spellWrapper.name;
             }
             else
             {
-               spellName = "{spell," + this._spellId + "," + this._spellLevel.spellLevel + "}";
+               spellName = "{spell," + this._spellId + "," + this._spellWrapper.spellLevel + "}";
             }
             if(SelectionManager.getInstance().isInside(cell,SELECTION_RANGE))
             {
@@ -1232,7 +1238,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
             ConnectionsHandler.getConnection().send(ccmmsg);
             return;
          }
-         if(forceCheckForRange && this._spellLevel.maximalRange < 63)
+         if(forceCheckForRange && this._spellWrapper.maximalRange < 63)
          {
             if(cell == 0 && targetId != 0)
             {
@@ -1257,7 +1263,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
             this.cancelCast();
             return;
          }
-         if(targetId != 0 && !FightEntitiesFrame.getCurrentInstance().entityIsIllusion(targetId) && !(this._fightTeleportationPreview && this._fightTeleportationPreview.isPreview(targetId)) && CurrentPlayedFighterManager.getInstance().canCastThisSpell(this._spellId,this._spellLevel.spellLevel,targetId))
+         if(targetId != 0 && !FightEntitiesFrame.getCurrentInstance().entityIsIllusion(targetId) && !(this._fightTeleportationPreview && this._fightTeleportationPreview.isPreview(targetId)) && CurrentPlayedFighterManager.getInstance().canCastThisSpell(this._spellId,this._spellWrapper.spellLevel,targetId))
          {
             gafcotrmsg = new GameActionFightCastOnTargetRequestMessage();
             gafcotrmsg.initGameActionFightCastOnTargetRequestMessage(this._spellId,targetId);
@@ -1360,6 +1366,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var spellLevel:SpellLevel = null;
          var entities:Array = null;
          var entity:IEntity = null;
+         var playedFighterManager:CurrentPlayedFighterManager = null;
          var isGlyph:* = false;
          var valid:Boolean = false;
          if(!CellUtil.isValidCellIndex(cell))
@@ -1375,15 +1382,16 @@ package com.ankamagames.dofus.logic.game.fight.frames
          {
             return true;
          }
-         if(this._spellId && this._spellLevel)
+         if(this._spellId && this._spellWrapper)
          {
-            spellLevel = this._spellLevel.spellLevelInfos;
+            spellLevel = this._spellWrapper.spellLevelInfos;
             entities = EntitiesManager.getInstance().getEntitiesOnCell(cell);
             for each(entity in entities)
             {
                if(!(this.isTeleportationPreviewEntity(entity.id) || this.isSummoningPreviewEntity(entity.id)))
                {
-                  if(!CurrentPlayedFighterManager.getInstance().canCastThisSpell(this._spellLevel.spellId,this._spellLevel.spellLevel,entity.id))
+                  playedFighterManager = CurrentPlayedFighterManager.getInstance();
+                  if(playedFighterManager.currentFighterId === this._entityId && !CurrentPlayedFighterManager.getInstance().canCastThisSpell(this._spellWrapper.spellId,this._spellWrapper.spellLevel,entity.id))
                   {
                      return false;
                   }
@@ -1392,7 +1400,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   {
                      return false;
                   }
-                  if(this._spellLevel.needFreeCell && !isGlyph)
+                  if(this._spellWrapper.needFreeCell && !isGlyph)
                   {
                      return false;
                   }
@@ -1424,7 +1432,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var spellEffect:EffectInstance = null;
          var size:uint = 0;
          var minSize:uint = 0;
-         for each(spellEffect in this._spellLevel.effects)
+         for each(spellEffect in this._spellWrapper.effects)
          {
             if(spellEffect.zoneShape != 0 && (spellEffect.zoneSize > size || spellEffect.zoneSize == size && (spellEffect.zoneShape == SpellShapeEnum.P || spellEffect.zoneMinSize < minSize)))
             {

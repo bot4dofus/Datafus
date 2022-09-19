@@ -37,7 +37,6 @@ package com.ankamagames.atouin
    import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.geom.Rectangle;
-   import flash.utils.ByteArray;
    import flash.utils.getQualifiedClassName;
    
    public class Atouin
@@ -415,9 +414,9 @@ package com.ankamagames.atouin
          MapDisplayManager.getInstance().capture();
       }
       
-      public function display(wpMap:WorldPoint, decryptionKey:ByteArray = null, displayWorld:Boolean = true) : uint
+      public function display(wpMap:WorldPoint, displayWorld:Boolean = true) : uint
       {
-         return MapDisplayManager.getInstance().display(wpMap,false,decryptionKey,true,displayWorld);
+         return MapDisplayManager.getInstance().display(wpMap,false,true,displayWorld);
       }
       
       public function getEntity(id:Number) : IEntity

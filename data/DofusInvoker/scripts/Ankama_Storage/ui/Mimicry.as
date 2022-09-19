@@ -16,7 +16,6 @@ package Ankama_Storage.ui
    import com.ankamagames.dofus.logic.game.common.actions.livingObject.MimicryObjectFeedAndAssociateRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.LeaveDialogRequestAction;
    import com.ankamagames.dofus.misc.lists.HookList;
-   import com.ankamagames.dofus.misc.lists.InventoryHookList;
    import com.ankamagames.dofus.misc.lists.LivingObjectHookList;
    import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.uiApi.ContextMenuApi;
@@ -113,7 +112,6 @@ package Ankama_Storage.ui
          this.sysApi.addHook(LivingObjectHookList.MimicryObjectPreview,this.onMimicryObjectPreview);
          this.sysApi.addHook(LivingObjectHookList.MimicryObjectAssociated,this.onMimicryObjectAssociated);
          this.sysApi.addHook(HookList.DoubleClickItemInventory,this.onDoubleClickItemInventory);
-         this.sysApi.addHook(InventoryHookList.ObjectSelected,this.onObjectSelected);
          this.uiApi.addShortcutHook(ShortcutHookListEnum.CLOSE_UI,this.onShortCut);
          this.uiApi.addComponentHook(this.btn_ok,ComponentHookList.ON_RELEASE);
          this.uiApi.addComponentHook(this.btn_close,ComponentHookList.ON_RELEASE);
@@ -154,7 +152,6 @@ package Ankama_Storage.ui
          {
             this.uiApi.unloadUi(this._popupName);
          }
-         this.uiApi.unloadUi("itemBoxMimicry");
          this._updateTimer.stop();
          this._updateTimer.removeEventListener(TimerEvent.TIMER,this.onTimerEvent);
          this._updateTimer = null;
@@ -368,12 +365,6 @@ package Ankama_Storage.ui
                break;
             case this.btn_ok:
                this.validAssociation();
-               break;
-            default:
-               if(target.name.indexOf("slot") != -1 && (target as Slot).data)
-               {
-                  this.onObjectSelected(target);
-               }
          }
       }
       
@@ -436,14 +427,6 @@ package Ankama_Storage.ui
             return true;
          }
          return false;
-      }
-      
-      public function onObjectSelected(item:Object) : void
-      {
-         if(!this.sysApi.getOption("displayTooltips","dofus"))
-         {
-            this.lbl_previewItem.visible = false;
-         }
       }
       
       public function onRightClick(target:GraphicContainer) : void

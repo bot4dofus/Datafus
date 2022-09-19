@@ -487,9 +487,25 @@ package com.ankamagames.dofus.uiApi
          StorageOptionManager.getInstance().enableForgettableSpellsFilter(vtypes,isHideLearnedSpells);
       }
       
+      public function enableForgettableModstersFilter(allowedTypes:Object, isHideLearnedSpells:Boolean) : void
+      {
+         var entry:uint = 0;
+         var vtypes:Vector.<uint> = new Vector.<uint>();
+         for each(entry in allowedTypes)
+         {
+            vtypes.push(entry);
+         }
+         StorageOptionManager.getInstance().enableForgettableModstersFilter(vtypes,isHideLearnedSpells);
+      }
+      
       public function disableForgettableSpellsFilter() : void
       {
          StorageOptionManager.getInstance().disableForgettableSpellsFilter();
+      }
+      
+      public function disableForgettableModstersFilter() : void
+      {
+         StorageOptionManager.getInstance().disableForgettableModstersFilter();
       }
       
       public function enableBankAssociatedRunesFilter(item:ItemWrapper) : void

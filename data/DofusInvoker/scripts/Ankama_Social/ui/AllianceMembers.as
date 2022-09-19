@@ -8,6 +8,7 @@ package Ankama_Social.ui
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.utils.ComponentHookList;
    import com.ankamagames.dofus.datacenter.guild.EmblemSymbol;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildFactSheetWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
@@ -133,7 +134,7 @@ package Ankama_Social.ui
          {
             this.btn_ava.softDisabled = true;
          }
-         if(this.configApi.isFeatureWithKeywordEnabled("server.conf.alignmentWar"))
+         if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.ALIGNMENT_WAR))
          {
             this._avaEnabled = false;
             this.btn_ava.softDisabled = true;
@@ -211,7 +212,7 @@ package Ankama_Social.ui
                this.utilApi.changeColor(components.tx_emblemUp,data.upEmblem.color,0,true);
             }
             components.tx_leader.visible = data.allianceLeader;
-            if(this._myGuild.guildId == this._myAlliance.leadingGuildId && this.socialApi.hasGuildRight(this.playerApi.id(),"isBoss"))
+            if(this._myGuild.guildId == this._myAlliance.leadingGuildId && this.socialApi.hasGuildRank(this.playerApi.id(),0))
             {
                components.btn_kick.visible = true;
                components.btn_giveLeadership.visible = this._myGuild.guildId != data.guildId;
@@ -219,7 +220,7 @@ package Ankama_Social.ui
             else
             {
                components.btn_giveLeadership.visible = false;
-               components.btn_kick.visible = this._myGuild.guildId == data.guildId && this.socialApi.hasGuildRight(this.playerApi.id(),"isBoss");
+               components.btn_kick.visible = this._myGuild.guildId == data.guildId && this.socialApi.hasGuildRank(this.playerApi.id(),0);
             }
          }
          else
@@ -410,14 +411,14 @@ package Ankama_Social.ui
             {
                tooltipText += "\n" + this.uiApi.getText("ui.error.cantDoInFight");
             }
-            if(this.configApi.isFeatureWithKeywordEnabled("server.conf.alignmentWar"))
+            if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.ALIGNMENT_WAR))
             {
                tooltipText = this.uiApi.getText("ui.temporis.avaDisable");
             }
          }
          else if(target.name.indexOf("tx_leader") != -1)
          {
-            tooltipText = this.uiApi.getText("ui.guild.right.leader");
+            tooltipText = this.uiApi.getText("ui.alliance.right.leader");
          }
          else if(target.name.indexOf("lbl_members") != -1)
          {
@@ -477,11 +478,11 @@ package Ankama_Social.ui
             icon = this.dataApi.getEmblemSymbol(this._compsTxEmblem[target.name].upEmblem.idEmblem);
             if(icon.colorizable)
             {
-               this.utilApi.changeColor(target.getChildByName("up"),this._compsTxEmblem[target.name].upEmblem.color,0);
+               this.utilApi.changeColor(target,this._compsTxEmblem[target.name].upEmblem.color,0);
             }
             else
             {
-               this.utilApi.changeColor(target.getChildByName("up"),this._compsTxEmblem[target.name].upEmblem.color,0,true);
+               this.utilApi.changeColor(target,this._compsTxEmblem[target.name].upEmblem.color,0,true);
             }
          }
       }

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightStartingMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2951;
+      public static const protocolId:uint = 1557;
        
       
       private var _isInitialized:Boolean = false;
@@ -26,8 +26,13 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       public var containsBoss:Boolean = false;
       
+      public var monsters:Vector.<int>;
+      
+      private var _monsterstree:FuncTree;
+      
       public function GameFightStartingMessage()
       {
+         this.monsters = new Vector.<int>();
          super();
       }
       
@@ -38,16 +43,17 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 2951;
+         return 1557;
       }
       
-      public function initGameFightStartingMessage(fightType:uint = 0, fightId:uint = 0, attackerId:Number = 0, defenderId:Number = 0, containsBoss:Boolean = false) : GameFightStartingMessage
+      public function initGameFightStartingMessage(fightType:uint = 0, fightId:uint = 0, attackerId:Number = 0, defenderId:Number = 0, containsBoss:Boolean = false, monsters:Vector.<int> = null) : GameFightStartingMessage
       {
          this.fightType = fightType;
          this.fightId = fightId;
          this.attackerId = attackerId;
          this.defenderId = defenderId;
          this.containsBoss = containsBoss;
+         this.monsters = monsters;
          this._isInitialized = true;
          return this;
       }
@@ -59,6 +65,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
          this.attackerId = 0;
          this.defenderId = 0;
          this.containsBoss = false;
+         this.monsters = new Vector.<int>();
          this._isInitialized = false;
       }
       
@@ -106,6 +113,11 @@ package com.ankamagames.dofus.network.messages.game.context.fight
          }
          output.writeDouble(this.defenderId);
          output.writeBoolean(this.containsBoss);
+         output.writeShort(this.monsters.length);
+         for(var _i6:uint = 0; _i6 < this.monsters.length; _i6++)
+         {
+            output.writeInt(this.monsters[_i6]);
+         }
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -115,11 +127,18 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       public function deserializeAs_GameFightStartingMessage(input:ICustomDataInput) : void
       {
+         var _val6:int = 0;
          this._fightTypeFunc(input);
          this._fightIdFunc(input);
          this._attackerIdFunc(input);
          this._defenderIdFunc(input);
          this._containsBossFunc(input);
+         var _monstersLen:uint = input.readUnsignedShort();
+         for(var _i6:uint = 0; _i6 < _monstersLen; _i6++)
+         {
+            _val6 = input.readInt();
+            this.monsters.push(_val6);
+         }
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -134,6 +153,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
          tree.addChild(this._attackerIdFunc);
          tree.addChild(this._defenderIdFunc);
          tree.addChild(this._containsBossFunc);
+         this._monsterstree = tree.addChild(this._monsterstreeFunc);
       }
       
       private function _fightTypeFunc(input:ICustomDataInput) : void
@@ -175,6 +195,21 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       private function _containsBossFunc(input:ICustomDataInput) : void
       {
          this.containsBoss = input.readBoolean();
+      }
+      
+      private function _monsterstreeFunc(input:ICustomDataInput) : void
+      {
+         var length:uint = input.readUnsignedShort();
+         for(var i:uint = 0; i < length; i++)
+         {
+            this._monsterstree.addChild(this._monstersFunc);
+         }
+      }
+      
+      private function _monstersFunc(input:ICustomDataInput) : void
+      {
+         var _val:int = input.readInt();
+         this.monsters.push(_val);
       }
    }
 }

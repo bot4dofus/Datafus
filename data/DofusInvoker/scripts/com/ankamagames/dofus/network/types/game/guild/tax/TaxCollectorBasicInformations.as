@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.guild.tax
    public class TaxCollectorBasicInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1488;
+      public static const protocolId:uint = 7639;
        
       
       public var firstNameId:uint = 0;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.types.game.guild.tax
       
       public function getTypeId() : uint
       {
-         return 1488;
+         return 7639;
       }
       
       public function initTaxCollectorBasicInformations(firstNameId:uint = 0, lastNameId:uint = 0, worldX:int = 0, worldY:int = 0, mapId:Number = 0, subAreaId:uint = 0) : TaxCollectorBasicInformations

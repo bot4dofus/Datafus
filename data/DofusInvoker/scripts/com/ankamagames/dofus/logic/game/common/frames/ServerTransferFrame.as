@@ -1,5 +1,6 @@
 package com.ankamagames.dofus.logic.game.common.frames
 {
+   import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionType;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
@@ -8,6 +9,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.connection.managers.AuthentificationManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.misc.KoliseumMessageRouter;
+   import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.network.messages.game.approach.AuthenticationTicketAcceptedMessage;
    import com.ankamagames.dofus.network.messages.game.approach.AuthenticationTicketMessage;
    import com.ankamagames.dofus.network.messages.game.approach.HelloGameMessage;
@@ -137,6 +139,7 @@ package com.ankamagames.dofus.logic.game.common.frames
       private function onGameRolePlayArenaSwitchToFightServerMessage(msg:GameRolePlayArenaSwitchToFightServerMessage) : Boolean
       {
          var port:uint = 0;
+         KernelEventsManager.getInstance().processCallback(HookList.KISConnectingServer);
          this._connexionPorts = new Array();
          for each(port in msg.ports)
          {

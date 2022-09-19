@@ -24,13 +24,9 @@ package
       
       function get options() : DofusOptions;
       
-      function get instanceId() : uint;
-      
-      function get forcedLang() : String;
-      
       function setDisplayOptions(param1:DofusOptions) : void;
       
-      function init(param1:DisplayObject, param2:uint = 0, param3:String = null, param4:Array = null) : void;
+      function init() : void;
       
       function quit(param1:int = 0) : void;
       

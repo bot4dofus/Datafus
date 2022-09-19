@@ -32,6 +32,12 @@ package com.ankamagames.dofus.logic.common.managers
          super();
       }
       
+      public static function getLink(posX:int, posY:int, worldMapId:int, elementName:String = "", pText:String = null) : String
+      {
+         var text:String = !!pText ? "::" + pText : "";
+         return "{map," + posX + "," + posY + "," + worldMapId + (elementName != "" ? "," + elementName : "") + text + "}";
+      }
+      
       public static function showPosition(posX:int, posY:int, worldMapId:int, elementName:String = "") : void
       {
          KernelEventsManager.getInstance().processCallback(HookList.AddMapFlag,"flag_chat_" + posX + "_" + posY + "_" + elementName,(elementName != "" ? unescape(elementName) : I18n.getUiText("ui.cartography.chatFlag") + " ") + "(" + posX + "," + posY + ")",worldMapId,posX,posY,16737792,true);
@@ -109,7 +115,7 @@ package com.ankamagames.dofus.logic.common.managers
                   }
                   else
                   {
-                     processedText += "{map," + currentPositionX + "," + currentPositionY + "," + 1 + "::" + rawText.substr(currentLeftSeparatorPos,currentRightSeparatorPos - currentLeftSeparatorPos + 1) + "}";
+                     processedText += getLink(currentPositionX,currentPositionY,1,"",rawText.substr(currentLeftSeparatorPos,currentRightSeparatorPos - currentLeftSeparatorPos + 1));
                   }
                }
                if(currentRightSeparatorPos >= rawText.length - 1)

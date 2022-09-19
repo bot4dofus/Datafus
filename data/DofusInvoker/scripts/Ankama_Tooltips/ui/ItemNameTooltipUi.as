@@ -1,7 +1,6 @@
 package Ankama_Tooltips.ui
 {
    import Ankama_ContextMenu.ContextMenu;
-   import Ankama_Tooltips.Api;
    import com.ankamagames.berilia.api.UiApi;
    import com.ankamagames.berilia.components.Label;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
@@ -72,7 +71,7 @@ package Ankama_Tooltips.ui
             _shortcutColor = _shortcutColor.replace("0x","#");
          }
          this._param = oParam;
-         var displayItemToolTip:Boolean = this.sysApi.getOption("itemTooltipDelay","dofus") != -1 && (this._param.makerParam.hasOwnProperty("nameOnly") && !this._param.makerParam.nameOnly || (!this._param.makerParam.hasOwnProperty("nameOnly") && Api.system.getOption("displayTooltips","dofus") || this._alwaysShowTooltipModuleException.indexOf(this._param.tooltip.uiModuleName) != -1));
+         var displayItemToolTip:Boolean = this.sysApi.getOption("itemTooltipDelay","dofus") != -1 && (this._param.makerParam.hasOwnProperty("nameOnly") && !this._param.makerParam.nameOnly || (!this._param.makerParam.hasOwnProperty("nameOnly") || this._alwaysShowTooltipModuleException.indexOf(this._param.tooltip.uiModuleName) != -1));
          var text:String = "";
          if(this._param.data != null && this._param.data is Item)
          {

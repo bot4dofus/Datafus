@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
    public class NpcGenericActionRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1598;
+      public static const protocolId:uint = 9875;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
       
       override public function getMessageId() : uint
       {
-         return 1598;
+         return 9875;
       }
       
       public function initNpcGenericActionRequestMessage(npcId:int = 0, npcActionId:uint = 0, npcMapId:Number = 0) : NpcGenericActionRequestMessage

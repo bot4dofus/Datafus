@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.prism
    public class PrismSetSabotagedRefusedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5200;
+      public static const protocolId:uint = 4345;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function getMessageId() : uint
       {
-         return 5200;
+         return 4345;
       }
       
       public function initPrismSetSabotagedRefusedMessage(subAreaId:uint = 0, reason:int = 0) : PrismSetSabotagedRefusedMessage

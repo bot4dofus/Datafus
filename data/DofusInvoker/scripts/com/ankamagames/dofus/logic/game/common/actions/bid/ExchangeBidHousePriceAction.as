@@ -7,17 +7,17 @@ package com.ankamagames.dofus.logic.game.common.actions.bid
    {
        
       
-      public var genId:uint;
+      public var objectGID:uint;
       
       public function ExchangeBidHousePriceAction(params:Array = null)
       {
          super(params);
       }
       
-      public static function create(pGid:uint) : ExchangeBidHousePriceAction
+      public static function create(pObjectGID:uint) : ExchangeBidHousePriceAction
       {
          var a:ExchangeBidHousePriceAction = new ExchangeBidHousePriceAction(arguments);
-         a.genId = pGid;
+         a.objectGID = pObjectGID;
          return a;
       }
    }

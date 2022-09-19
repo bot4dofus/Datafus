@@ -20,10 +20,12 @@ package Ankama_Grimoire.ui
    import com.ankamagames.dofus.datacenter.idols.Idol;
    import com.ankamagames.dofus.datacenter.monsters.Monster;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.people.PartyMemberWrapper;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
    import com.ankamagames.dofus.kernel.sound.enum.SoundEnum;
+   import com.ankamagames.dofus.logic.common.managers.FeatureManager;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.common.actions.CloseIdolsAction;
    import com.ankamagames.dofus.logic.game.common.actions.IdolSelectRequestAction;
@@ -263,6 +265,8 @@ package Ankama_Grimoire.ui
       
       public var lbl_tabScorePreset:Label;
       
+      public var ctr_noIdolBonus:GraphicContainer;
+      
       public function IdolsTab()
       {
          super();
@@ -325,6 +329,8 @@ package Ankama_Grimoire.ui
          this.btn_label_btn_showAll.textfield.autoSize = TextFieldAutoSize.LEFT;
          this.btn_label_btn_showSynergyScore.textfield.autoSize = TextFieldAutoSize.LEFT;
          this.btn_showSynergyScore.x = this.btn_showAll.x + this.btn_showAll.width + 30;
+         var featureManager:FeatureManager = FeatureManager.getInstance();
+         this.ctr_noIdolBonus.visible = !featureManager.isFeatureWithKeywordEnabled(FeatureEnum.IDOL_DROP_BONUS) && !featureManager.isFeatureWithKeywordEnabled(FeatureEnum.IDOL_XP_BONUS);
          this._searchText = this.uiApi.getText("ui.common.search.input");
          this.inp_search.text = this._searchText;
          this._activeIdolsIds = new Vector.<int>(0);
@@ -1047,6 +1053,10 @@ package Ankama_Grimoire.ui
       
       private function computeExpBonusWithWisdom(pBonus:uint) : uint
       {
+         if(!FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.IDOL_XP_BONUS))
+         {
+            return 0;
+         }
          var stats:EntityStats = StatsManager.getInstance().getStats(this.playerApi.id());
          var wisdom:int = stats !== null ? int(stats.getStatTotalValue(StatIds.WISDOM)) : 0;
          var level:int = this.playerApi.getPlayedCharacterInfo().level;
@@ -1059,6 +1069,10 @@ package Ankama_Grimoire.ui
       
       private function computeLootBonusWithProspecting(pBonus:uint) : uint
       {
+         if(!FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.IDOL_DROP_BONUS))
+         {
+            return 0;
+         }
          var stats:EntityStats = StatsManager.getInstance().getStats(this.playerApi.id());
          var pp:int = stats !== null ? int(stats.getStatTotalValue(StatIds.MAGIC_FIND)) : 0;
          var level:int = this.playerApi.getPlayedCharacterInfo().level;

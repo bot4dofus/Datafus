@@ -21,6 +21,7 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.dofus.datacenter.effects.instances.EffectInstanceDate;
    import com.ankamagames.dofus.datacenter.items.IncarnationLevel;
    import com.ankamagames.dofus.datacenter.servers.Server;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.fight.FighterInformations;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
    import com.ankamagames.dofus.internalDatacenter.jobs.KnownJobWrapper;
@@ -1095,7 +1096,7 @@ package Ankama_GameUiCore.ui
          switch(this._roundGaugeType)
          {
             case XP_GAUGE:
-               if(!this.configApi.isFeatureWithKeywordEnabled("character.xp"))
+               if(!this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP))
                {
                   this.setXp(this.playerApi.getPlayedCharacterInfo().level,0,ProtocolConstantsEnum.MAX_LEVEL,this.playerApi.getPlayedCharacterInfo().level);
                }
@@ -1676,7 +1677,7 @@ package Ankama_GameUiCore.ui
                if(!this._bIsSpectator)
                {
                   server = sysApi.getCurrentServer();
-                  if(this.configApi.isFeatureWithKeywordEnabled("server.heroic") && this.fightApi.getFightType() != FightTypeEnum.FIGHT_TYPE_CHALLENGE || server.gameTypeId == 4 && (this.fightApi.getFightType() == FightTypeEnum.FIGHT_TYPE_MXvM || this.fightApi.getFightType() == FightTypeEnum.FIGHT_TYPE_PvM))
+                  if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER) && this.fightApi.getFightType() != FightTypeEnum.FIGHT_TYPE_CHALLENGE || server.gameTypeId == 4 && (this.fightApi.getFightType() == FightTypeEnum.FIGHT_TYPE_MXvM || this.fightApi.getFightType() == FightTypeEnum.FIGHT_TYPE_PvM))
                   {
                      giveUp = this.uiApi.getText("ui.popup.hardcoreGiveup");
                   }
@@ -1868,7 +1869,7 @@ package Ankama_GameUiCore.ui
                if(this._roundGaugeType != POD_GAUGE && this._roundLevel > 0)
                {
                   levelValueTxt = this.uiApi.getText("ui.common.colon") + this._roundLevel;
-                  if(!this.configApi.isFeatureWithKeywordEnabled("character.xp"))
+                  if(!this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP))
                   {
                      levelValueTxt += "/" + ProtocolConstantsEnum.MAX_LEVEL;
                   }
@@ -1917,7 +1918,7 @@ package Ankama_GameUiCore.ui
                   {
                      tooltipText += "\n" + this.uiApi.getText("ui.common.remaining") + this.uiApi.getText("ui.common.colon") + this.utilApi.kamasToString(this._roundRemainingValue,this.uiApi.getText("ui.common.weight"));
                   }
-                  else if(this._roundGaugeType != XP_GAUGE || this.configApi.isFeatureWithKeywordEnabled("character.xp"))
+                  else if(this._roundGaugeType != XP_GAUGE || this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP))
                   {
                      tooltipText += "\n" + this.uiApi.getText("ui.banner.percentDone",this._roundPercent);
                      if(this._roundGaugeType == HONOUR_GAUGE)
@@ -1933,7 +1934,7 @@ package Ankama_GameUiCore.ui
                      }
                   }
                }
-               if(this.configApi.isFeatureWithKeywordEnabled("character.xp") && this._roundGaugeType == XP_GAUGE && this.playerApi.characteristics().experienceBonusLimit > 0 && this.playerApi.characteristics().experience < this.playerApi.characteristics().experienceBonusLimit)
+               if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP) && this._roundGaugeType == XP_GAUGE && this.playerApi.characteristics().experienceBonusLimit > 0 && this.playerApi.characteristics().experience < this.playerApi.characteristics().experienceBonusLimit)
                {
                   tooltipText += "\n<i>" + this.uiApi.getText("ui.help.xpBonus",2) + "</i>";
                }

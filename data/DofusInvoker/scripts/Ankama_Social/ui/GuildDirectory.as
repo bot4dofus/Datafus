@@ -47,6 +47,7 @@ package Ankama_Social.ui
    import com.ankamagames.jerakine.utils.misc.StringUtils;
    import flash.events.Event;
    import flash.events.TimerEvent;
+   import flash.ui.MouseCursor;
    import flash.utils.Dictionary;
    import flash.utils.clearTimeout;
    import flash.utils.setTimeout;
@@ -665,11 +666,11 @@ package Ankama_Social.ui
             icon = this.dataApi.getEmblemSymbol(guildWrapper.upEmblem.idEmblem);
             if(icon.colorizable)
             {
-               this.utilApi.changeColor(target.getChildByName("up"),guildWrapper.upEmblem.color,0);
+               this.utilApi.changeColor(target,guildWrapper.upEmblem.color,0);
             }
             else
             {
-               this.utilApi.changeColor(target.getChildByName("up"),guildWrapper.upEmblem.color,0,true);
+               this.utilApi.changeColor(target,guildWrapper.upEmblem.color,0,true);
             }
          }
       }
@@ -1432,6 +1433,7 @@ package Ankama_Social.ui
                {
                   tooltipText = this.uiApi.getText("ui.charSel.deletionErrorUnsecureMode");
                }
+               this.sysApi.setMouseCursor(MouseCursor.BUTTON);
                break;
             case this.btn_cancelApp:
                if(this.secureApi.SecureModeisActive())
@@ -1549,6 +1551,7 @@ package Ankama_Social.ui
             this._currentGuildRollOver.state = StatesEnum.STATE_NORMAL;
             this.hideDetailsLabel();
          }
+         this.sysApi.setMouseCursor(MouseCursor.AUTO);
       }
       
       public function onChange(target:Input) : void

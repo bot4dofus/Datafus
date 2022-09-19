@@ -169,11 +169,6 @@ package Ankama_TradeCenter.ui
          }
       }
       
-      override public function unload() : void
-      {
-         super.unload();
-      }
-      
       override public function onChange(target:GraphicContainer) : void
       {
          var itemQuantityInInventory:uint = 0;

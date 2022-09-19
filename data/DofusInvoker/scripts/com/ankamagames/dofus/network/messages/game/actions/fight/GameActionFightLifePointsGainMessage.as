@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightLifePointsGainMessage extends AbstractGameActionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6777;
+      public static const protocolId:uint = 7276;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 6777;
+         return 7276;
       }
       
       public function initGameActionFightLifePointsGainMessage(actionId:uint = 0, sourceId:Number = 0, targetId:Number = 0, delta:uint = 0) : GameActionFightLifePointsGainMessage

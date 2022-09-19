@@ -28,6 +28,7 @@ package Ankama_Grimoire.ui
    import com.ankamagames.dofus.datacenter.monsters.MonsterRace;
    import com.ankamagames.dofus.datacenter.world.SubArea;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.people.PartyMemberWrapper;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
@@ -47,6 +48,7 @@ package Ankama_Grimoire.ui
    import com.ankamagames.dofus.uiApi.PartyApi;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
    import com.ankamagames.dofus.uiApi.RoleplayApi;
+   import com.ankamagames.dofus.uiApi.SecurityApi;
    import com.ankamagames.dofus.uiApi.SystemApi;
    import com.ankamagames.dofus.uiApi.TooltipApi;
    import com.ankamagames.dofus.uiApi.UiTutoApi;
@@ -133,6 +135,9 @@ package Ankama_Grimoire.ui
       
       [Api(name="LuaApi")]
       public var luaApi:LuaApi;
+      
+      [Api(name="SecurityApi")]
+      public var securityApi:SecurityApi;
       
       [Module(name="Ankama_ContextMenu")]
       public var modContextMenu:ContextMenu;
@@ -877,7 +882,7 @@ package Ankama_Grimoire.ui
                {
                   compRef.lbl_drops.text = "";
                }
-               if(this.configApi.isFeatureWithKeywordEnabled("temporis.drops"))
+               if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_DROPS))
                {
                   this.getMonsterEquipmentDrops(this._selectedAndOpenedMonsterId);
                   compRef.btn_openEquipmentTab.visible = false;
@@ -905,7 +910,7 @@ package Ankama_Grimoire.ui
                }
                rareTexture = this.uiApi.createUri(this._uriRareDrop);
                okTexture = this.uiApi.createUri(this._uriOkDrop);
-               if(this.configApi.isFeatureWithKeywordEnabled("temporis.drops") && (this._monsterEquipmentDrops && this._monsterEquipmentDrops.length > 0))
+               if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_DROPS) && (this._monsterEquipmentDrops && this._monsterEquipmentDrops.length > 0))
                {
                   compRef.gd_drops.x = 55;
                   compRef.gd_drops.width = 695;
@@ -927,7 +932,7 @@ package Ankama_Grimoire.ui
                   else
                   {
                      slot.visible = true;
-                     if(data.dropsList[i] && data.dropsList[i].hasCriteria && (!this.configApi.isFeatureWithKeywordEnabled("temporis.drops") || !temporisCriteriaRegex.test(data.dropsList[i].criteria)))
+                     if(data.dropsList[i] && data.dropsList[i].hasCriteria && (!this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_DROPS) || !temporisCriteriaRegex.test(data.dropsList[i].criteria)))
                      {
                         slot.forcedBackGroundIconUri = this.uiApi.createUri(this._uriSpecialSlot);
                      }
@@ -1021,6 +1026,7 @@ package Ankama_Grimoire.ui
          var monsters:Array = [];
          this._selectedAndOpenedMonsterId = 0;
          var vectoruint:Vector.<uint> = new Vector.<uint>();
+         var modsters:Vector.<uint> = this.dataApi.queryEquals(Monster,"race",DataEnum.MONSTER_TYPE_OSATOPIA);
          if(!this._monstersListToDisplay || this._monstersListToDisplay.length == 0)
          {
             if(!this._searchCriteria)
@@ -1029,7 +1035,7 @@ package Ankama_Grimoire.ui
                {
                   for each(id in category.monsters)
                   {
-                     if(id)
+                     if(id && modsters.indexOf(id) == -1)
                      {
                         vectoruint.push(id);
                      }
@@ -1095,7 +1101,10 @@ package Ankama_Grimoire.ui
                }
                for each(id in result)
                {
-                  vectoruint.push(id);
+                  if(id && modsters.indexOf(id) == -1)
+                  {
+                     vectoruint.push(id);
+                  }
                }
                tempMonstersSorted = this.dataApi.querySort(Monster,vectoruint,["isBoss","isMiniBoss","name"],[false,true,true]);
                for each(id in tempMonstersSorted)
@@ -1148,7 +1157,10 @@ package Ankama_Grimoire.ui
          {
             for each(id in this._monstersListToDisplay)
             {
-               vectoruint.push(id);
+               if(id && modsters.indexOf(id) == -1)
+               {
+                  vectoruint.push(id);
+               }
             }
             tempMonstersSorted = this.dataApi.querySort(Monster,vectoruint,["isBoss","isMiniBoss","name"],[false,true,true]);
             for each(id in tempMonstersSorted)
@@ -1243,17 +1255,17 @@ package Ankama_Grimoire.ui
          {
             for each(drop in monster.drops)
             {
-               if(this.btn_displayCriteriaDrop.selected || !drop.hasCriteria)
+               if((drop.conditions === null || drop.conditions.isRespected || !drop.hiddenIfInvalidCriteria) && (this.btn_displayCriteriaDrop.selected || !drop.hasCriteria))
                {
                   drops.push(drop);
                }
             }
-            if(this.configApi.isFeatureWithKeywordEnabled("temporis.drops"))
+            if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_DROPS))
             {
                this._dropTemporisItemResult = null;
                for each(drop in monster.temporisDrops)
                {
-                  if(this.btn_displayCriteriaDrop.selected || !drop.hasCriteria)
+                  if((drop.conditions === null || drop.conditions.isRespected || !drop.hiddenIfInvalidCriteria) && (this.btn_displayCriteriaDrop.selected || !drop.hasCriteria))
                   {
                      drops.push(drop);
                   }
@@ -1555,10 +1567,9 @@ package Ankama_Grimoire.ui
          var idol:Idol = null;
          var i:int = 0;
          var dropPercentageWithMonsterAndAlmanaxBonuses:Number = NaN;
-         var dropPercentageWithoutIdolsBonus:Number = NaN;
          var monsterLevelForGivenGrade:uint = 0;
          var ratioMonsterLevelToPlayersGroupLevel:Number = NaN;
-         var idolsDropBonus:Number = NaN;
+         var coefLevelBalance:Number = NaN;
          var partyMembers:Vector.<PartyMemberWrapper> = null;
          var member:PartyMemberWrapper = null;
          if(minGrade < 1)
@@ -1578,9 +1589,10 @@ package Ankama_Grimoire.ui
             maxGrade = 5;
          }
          var isInParty:* = this.partyApi.getPartyMembers().length > 0;
+         var shieldDropBonus:Number = this.sysApi.getPlayerManager().isSafe || this.securityApi.SecureModeisActive() ? Number(1.05) : Number(1);
          var idolsList:Vector.<uint> = !!isInParty ? this.playerApi.getPartyIdols() : this.playerApi.getSoloIdols();
          var numIdols:uint = idolsList.length;
-         var idolsLootBonusPercent:Number = 0;
+         var idolScore:int = 0;
          this._currentIdols = new Vector.<int>();
          for(i = 0; i < numIdols; i++)
          {
@@ -1594,10 +1606,11 @@ package Ankama_Grimoire.ui
          for(i = 0; i < numIdols; i++)
          {
             idol = this.dataApi.getIdol(this._currentIdols[i]);
-            idolsLootBonusPercent += Math.round(idol.dropBonus * this.getIdolCoeff(idol)) / 100;
+            idolScore += idol.dropBonus * this.getIdolCoeff(idol);
          }
          var playerStats:EntityStats = StatsManager.getInstance().getStats(this.playerApi.id());
          var myProspection:int = 0;
+         var myLevel:int = Math.min(this.playerApi.getPlayedCharacterInfo().level,ProtocolConstantsEnum.MAX_LEVEL);
          if(playerStats !== null)
          {
             myProspection = playerStats.getStatTotalValue(StatIds.MAGIC_FIND) - playerStats.getStatAdditionalValue(StatIds.MAGIC_FIND);
@@ -1606,13 +1619,9 @@ package Ankama_Grimoire.ui
          {
             myProspection = 100;
          }
-         var monsterAndAlmanaxDropBoostMultiplier:Number = this.roleplayApi.getMonsterDropBoostMultiplier(monster.id) * this.roleplayApi.getAlmanaxMonsterDropChanceBonusMultiplier(monster.id);
-         var highestLevelFromThePlayersGroup:uint = 0;
-         if(!isInParty)
-         {
-            highestLevelFromThePlayersGroup = this.playerApi.getPlayedCharacterInfo().level;
-         }
-         else
+         var almanaxDropBoostMultiplier:Number = this.roleplayApi.getAlmanaxMonsterDropChanceBonusMultiplier(monster.id);
+         var highestLevelFromThePlayersGroup:uint = myLevel;
+         if(isInParty)
          {
             partyMembers = this.partyApi.getPartyMembers();
             for each(member in partyMembers)
@@ -1627,8 +1636,9 @@ package Ankama_Grimoire.ui
          {
             highestLevelFromThePlayersGroup = ProtocolConstantsEnum.MAX_LEVEL;
          }
-         var bonusFromGroupsHighestLevel:Number = (highestLevelFromThePlayersGroup * 0.5 + 100) / 100;
-         var idolsAndGroupLevelDropBonus:Number = bonusFromGroupsHighestLevel * idolsLootBonusPercent;
+         var coefLevelCharacterAndAverageLevelMonster:Number = 0;
+         var coefLevelMaxCharacterAndAverageMonsterLevel:Number = 0;
+         var coefLevelCharacterAndLevelMaxCharacter:Number = myLevel / highestLevelFromThePlayersGroup;
          var basicDropPercentageMinGrade:Number = 0;
          if(data["percentDropForGrade" + minGrade] > 0 && data["percentDropForGrade" + minGrade] < MINIMAL_DROP_PERCENTAGE_BEFORE_CALCULATIONS)
          {
@@ -1638,12 +1648,15 @@ package Ankama_Grimoire.ui
          {
             basicDropPercentageMinGrade = this.addSpecificCoeff(data,minGrade);
          }
-         dropPercentageWithMonsterAndAlmanaxBonuses = basicDropPercentageMinGrade * monsterAndAlmanaxDropBoostMultiplier;
-         dropPercentageWithoutIdolsBonus = this.getRound(dropPercentageWithMonsterAndAlmanaxBonuses * myProspection / 100);
+         var res:Number = 1;
+         res *= almanaxDropBoostMultiplier;
+         res *= shieldDropBonus;
          monsterLevelForGivenGrade = monster.grades[minGrade - 1].hiddenLevel > 0 ? uint(monster.grades[minGrade - 1].hiddenLevel) : uint(monster.grades[minGrade - 1].level);
-         ratioMonsterLevelToPlayersGroupLevel = Math.pow(monsterLevelForGivenGrade / highestLevelFromThePlayersGroup,2);
-         idolsDropBonus = this.getRound(dropPercentageWithMonsterAndAlmanaxBonuses * ratioMonsterLevelToPlayersGroupLevel * idolsAndGroupLevelDropBonus);
-         var finalDropPercentageForMinGrade:Number = this.getRound(dropPercentageWithoutIdolsBonus + idolsDropBonus);
+         coefLevelMaxCharacterAndAverageMonsterLevel = Math.min(2,monsterLevelForGivenGrade / highestLevelFromThePlayersGroup);
+         coefLevelCharacterAndAverageLevelMonster = Math.min(1,monsterLevelForGivenGrade / myLevel);
+         coefLevelBalance = coefLevelCharacterAndLevelMaxCharacter * (coefLevelCharacterAndAverageLevelMonster + coefLevelMaxCharacterAndAverageMonsterLevel) / 2;
+         res *= Math.max(1,(myProspection + idolScore) * coefLevelBalance / 100);
+         var finalDropPercentageForMinGrade:Number = this.getRound(basicDropPercentageMinGrade * res);
          var basicDropPercentageMaxGrade:Number = 0;
          if(data["percentDropForGrade" + maxGrade] > 0 && data["percentDropForGrade" + maxGrade] < MINIMAL_DROP_PERCENTAGE_BEFORE_CALCULATIONS)
          {
@@ -1653,12 +1666,15 @@ package Ankama_Grimoire.ui
          {
             basicDropPercentageMaxGrade = this.addSpecificCoeff(data,maxGrade);
          }
-         dropPercentageWithMonsterAndAlmanaxBonuses = basicDropPercentageMaxGrade * monsterAndAlmanaxDropBoostMultiplier;
-         dropPercentageWithoutIdolsBonus = this.getRound(dropPercentageWithMonsterAndAlmanaxBonuses * myProspection / 100);
+         res = 1;
+         res *= almanaxDropBoostMultiplier;
+         res *= shieldDropBonus;
          monsterLevelForGivenGrade = monster.grades[maxGrade - 1].hiddenLevel > 0 ? uint(monster.grades[maxGrade - 1].hiddenLevel) : uint(monster.grades[maxGrade - 1].level);
-         ratioMonsterLevelToPlayersGroupLevel = Math.pow(monsterLevelForGivenGrade / highestLevelFromThePlayersGroup,2);
-         idolsDropBonus = this.getRound(dropPercentageWithMonsterAndAlmanaxBonuses * ratioMonsterLevelToPlayersGroupLevel * idolsAndGroupLevelDropBonus);
-         var finalDropPercentageForMaxGrade:Number = this.getRound(dropPercentageWithoutIdolsBonus + idolsDropBonus);
+         coefLevelMaxCharacterAndAverageMonsterLevel = Math.min(2,monsterLevelForGivenGrade / highestLevelFromThePlayersGroup);
+         coefLevelCharacterAndAverageLevelMonster = Math.min(1,monsterLevelForGivenGrade / myLevel);
+         coefLevelBalance = coefLevelCharacterAndLevelMaxCharacter * (coefLevelCharacterAndAverageLevelMonster + coefLevelMaxCharacterAndAverageMonsterLevel) / 2;
+         res *= Math.max(1,(myProspection + idolScore) * coefLevelBalance / 100);
+         var finalDropPercentageForMaxGrade:Number = this.getRound(basicDropPercentageMaxGrade * res);
          if(finalDropPercentageForMinGrade > 100)
          {
             finalDropPercentageForMinGrade = 100;
@@ -1686,7 +1702,7 @@ package Ankama_Grimoire.ui
          var specificCoeff:MonsterDropCoefficient = data.getSpecificDropCoeffByGrade(1);
          if(!specificCoeff)
          {
-            return this.getRound(data["percentDropForGrade1"]);
+            return this.getRound(data[dropPercentForGrade]);
          }
          specificCoeff = data.getSpecificDropCoeffByGrade(grade);
          if(specificCoeff)
@@ -2009,7 +2025,7 @@ package Ankama_Grimoire.ui
             currentMonster = this.dataApi.getMonsterFromId(this._ctrSlotDrop[target.name]);
             filteredEquipmentDrop = this._monsterEquipmentDrops.filter(this.filterEquipmentDrops);
             text = "<b>" + this.uiApi.getText("ui.encyclopedia.seeEquipmentInRange",filteredEquipmentDrop[0].level,filteredEquipmentDrop[filteredEquipmentDrop.length - 1].level) + "</b>";
-            if(this.configApi.isFeatureWithKeywordEnabled("temporis.drops") && currentMonster.temporisDrops && currentMonster.temporisDrops.length > 0)
+            if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_DROPS) && currentMonster.temporisDrops && currentMonster.temporisDrops.length > 0)
             {
                this._dropTemporisItemResult = this.computeDropPercentage(currentMonster,0,currentMonster.grades.length,currentMonster.temporisDrops[0]);
                if(this._dropTemporisItemResult)
@@ -2150,7 +2166,7 @@ package Ankama_Grimoire.ui
       
       private function getRound(value:Number) : Number
       {
-         return Number(Math.round(value * 1000) / 1000);
+         return Number(Math.round(value * 100) / 100);
       }
       
       private function getMonsterEquipmentDrops(monsterId:uint) : void

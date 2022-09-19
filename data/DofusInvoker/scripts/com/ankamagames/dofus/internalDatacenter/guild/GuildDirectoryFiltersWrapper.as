@@ -49,70 +49,70 @@ package com.ankamagames.dofus.internalDatacenter.guild
       
       public function formatForData() : Object
       {
-         var _loc2_:uint = 0;
-         var _loc3_:int = 0;
-         var _loc1_:Object = {};
-         _loc1_.ambianceFilters = "";
-         _loc1_.interestFilters = "";
-         _loc1_.playtimeFilters = "";
-         _loc1_.languageFilters = "";
-         _loc1_.recruitmentType = "";
-         for each(_loc2_ in this.criterionFilter)
+         var filterId:uint = 0;
+         var i:int = 0;
+         var params:Object = {};
+         params.ambianceFilters = "";
+         params.interestFilters = "";
+         params.playtimeFilters = "";
+         params.languageFilters = "";
+         params.recruitmentType = "";
+         for each(filterId in this.criterionFilter)
          {
-            switch(GuildTag.getGuildTagById(_loc2_).typeId)
+            switch(GuildTag.getGuildTagById(filterId).typeId)
             {
                case TAG_TYPE_GOAL:
-                  _loc1_.interestFilters += _loc2_ + ",";
+                  params.interestFilters += filterId + ",";
                   break;
                case TAG_TYPE_ATMOSPHERE:
-                  _loc1_.ambianceFilters += _loc2_ + ",";
+                  params.ambianceFilters += filterId + ",";
                   break;
                case TAG_TYPE_LOGIN_HABITS:
-                  _loc1_.playtimeFilters += _loc2_ + ",";
+                  params.playtimeFilters += filterId + ",";
                   break;
             }
          }
-         for(_loc3_ = 0; _loc3_ < this.languagesFilter.length; _loc3_++)
+         for(i = 0; i < this.languagesFilter.length; i++)
          {
-            _loc1_.languageFilters += this.languagesFilter[_loc3_] + "" + (_loc3_ < this.languagesFilter.length - 1 ? "," : "");
+            params.languageFilters += this.languagesFilter[i] + "" + (i < this.languagesFilter.length - 1 ? "," : "");
          }
-         for(_loc3_ = 0; _loc3_ < this.recruitmentTypeFilter.length; _loc3_++)
+         for(var j:int = 0; j < this.recruitmentTypeFilter.length; j++)
          {
-            _loc1_.recruitmentType += this.recruitmentTypeFilter[_loc3_] + "" + (_loc3_ < this.recruitmentTypeFilter.length - 1 ? "," : "");
+            params.recruitmentType += this.recruitmentTypeFilter[j] + "" + (j < this.recruitmentTypeFilter.length - 1 ? "," : "");
          }
-         if(_loc1_.interestFilters.length > 0)
+         if(params.interestFilters.length > 0)
          {
-            _loc1_.interestFilters = _loc1_.interestFilters.substr(0,_loc1_.interestFilters.length - 1);
+            params.interestFilters = params.interestFilters.substr(0,params.interestFilters.length - 1);
          }
-         if(_loc1_.ambianceFilters.length > 0)
+         if(params.ambianceFilters.length > 0)
          {
-            _loc1_.ambianceFilters = _loc1_.ambianceFilters.substr(0,_loc1_.ambianceFilters.length - 1);
+            params.ambianceFilters = params.ambianceFilters.substr(0,params.ambianceFilters.length - 1);
          }
-         if(_loc1_.playtimeFilters.length > 0)
+         if(params.playtimeFilters.length > 0)
          {
-            _loc1_.playtimeFilters = _loc1_.playtimeFilters.substr(0,_loc1_.playtimeFilters.length - 1);
+            params.playtimeFilters = params.playtimeFilters.substr(0,params.playtimeFilters.length - 1);
          }
-         _loc1_.guildLevelMinMax = this.minLevelFilter + "-" + this.maxLevelFilter;
-         _loc1_.playerLevelMinMax = this.minPlayerLevelFilter + "-" + this.maxPlayerLevelFilter;
-         _loc1_.achievementMinMax = this.minSuccessFilter + "-" + this.maxSuccessFilter;
-         _loc1_.searchName = this.nameFilter;
-         _loc1_.lastSort = "";
+         params.guildLevelMinMax = this.minLevelFilter + "-" + this.maxLevelFilter;
+         params.playerLevelMinMax = this.minPlayerLevelFilter + "-" + this.maxPlayerLevelFilter;
+         params.achievementMinMax = this.minSuccessFilter + "-" + this.maxSuccessFilter;
+         params.searchName = this.nameFilter;
+         params.lastSort = "";
          switch(this.sortType)
          {
             case GuildSummarySortEnum.SORT_BY_LAST_ACTIVITY:
-               _loc1_.lastSort = "Last activity - ";
+               params.lastSort = "Last activity - ";
                break;
             case GuildSummarySortEnum.SORT_BY_LEVEL:
-               _loc1_.lastSort = "Level - ";
+               params.lastSort = "Level - ";
                break;
             case GuildSummarySortEnum.SORT_BY_NAME:
-               _loc1_.lastSort = "Name - ";
+               params.lastSort = "Name - ";
                break;
             case GuildSummarySortEnum.SORT_BY_NB_MEMBERS:
-               _loc1_.lastSort = "Nb members - ";
+               params.lastSort = "Nb members - ";
          }
-         _loc1_.lastSort += !!this.sortDescending ? "DESC" : "ASC";
-         return _loc1_;
+         params.lastSort += !!this.sortDescending ? "DESC" : "ASC";
+         return params;
       }
    }
 }

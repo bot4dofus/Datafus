@@ -28,6 +28,7 @@ package Ankama_Grimoire.ui.optionalFeatures
    import com.ankamagames.dofus.datacenter.spells.Spell;
    import com.ankamagames.dofus.datacenter.world.SubArea;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.items.BuildWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ShortcutWrapper;
@@ -39,6 +40,7 @@ package Ankama_Grimoire.ui.optionalFeatures
    import com.ankamagames.dofus.logic.game.common.actions.OpenInventoryAction;
    import com.ankamagames.dofus.logic.game.common.actions.chat.ChatTextOutputAction;
    import com.ankamagames.dofus.logic.game.fight.actions.GameFightSpellCastAction;
+   import com.ankamagames.dofus.logic.game.fight.managers.CurrentPlayedFighterManager;
    import com.ankamagames.dofus.logic.game.roleplay.actions.ShortcutBarAddRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.ShortcutBarRemoveRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.ShortcutBarSwapRequestAction;
@@ -53,6 +55,7 @@ package Ankama_Grimoire.ui.optionalFeatures
    import com.ankamagames.dofus.network.enums.ShortcutBarEnum;
    import com.ankamagames.dofus.network.types.game.data.items.ForgettableSpellItem;
    import com.ankamagames.dofus.network.types.game.presets.SpellForPreset;
+   import com.ankamagames.dofus.uiApi.BindsApi;
    import com.ankamagames.dofus.uiApi.ConfigApi;
    import com.ankamagames.dofus.uiApi.ContextMenuApi;
    import com.ankamagames.dofus.uiApi.DataApi;
@@ -91,8 +94,6 @@ package Ankama_Grimoire.ui.optionalFeatures
       };
       
       private static const BTN_HELP_OFFSET:int = -30;
-      
-      private static const STORAGE_STATE_MOD:String = "forgettableSpellsUi";
       
       private static const STORAGE_MIN_SPELL_LEVEL_FILTER:String = "forgettableSpellsUiMinSpellLevelFilter";
       
@@ -221,13 +222,16 @@ package Ankama_Grimoire.ui.optionalFeatures
       [Api(name="UtilApi")]
       public var utilApi:UtilApi;
       
+      [Api(name="BindsApi")]
+      public var bindsApi:BindsApi;
+      
       [Module(name="Ankama_Cartography")]
       public var ankamaCartography:Cartography;
       
       [Module(name="Ankama_ContextMenu")]
       public var ankamaContextMenu:ContextMenu;
       
-      private var _currentTabName:String = null;
+      protected var _currentTabName:String = null;
       
       private var _currentActiveSpellsIndex:Number = 0;
       
@@ -245,21 +249,21 @@ package Ankama_Grimoire.ui.optionalFeatures
       
       private var _activeSpells:Array = null;
       
-      private var _forgettableSpells:Array;
+      protected var _forgettableSpells:Array;
       
-      private var _filteredForgettableSpells:Array = null;
+      protected var _filteredForgettableSpells:Array = null;
       
-      private var _equippedForgettableSpells:Array = null;
+      protected var _equippedForgettableSpells:Array = null;
       
-      private var _commonSpells:Array;
+      protected var _commonSpells:Array;
       
-      private var _filteredCommonSpells:Array = null;
+      protected var _filteredCommonSpells:Array = null;
       
-      private var _commonSpellPriorities:Object = null;
+      protected var _commonSpellPriorities:Object = null;
       
       private var _obtainingFiltersDescr:Object;
       
-      private var _currentSearchText:String = "";
+      protected var _currentSearchText:String = "";
       
       private var _currentSpellLevelFilterMinLevel:uint = 0;
       
@@ -269,11 +273,9 @@ package Ankama_Grimoire.ui.optionalFeatures
       
       private var _searchSpellText:String = null;
       
-      private var _isSearchInputFilled:Boolean = false;
+      protected var _isSearchInputFilled:Boolean = false;
       
-      private var _isSearchInputReady:Boolean = false;
-      
-      private var _isSearchPlaceholderReset:Boolean = false;
+      protected var _isSearchInputReady:Boolean = false;
       
       private var _isSpellNameSortAscendingType:Boolean = true;
       
@@ -281,7 +283,7 @@ package Ankama_Grimoire.ui.optionalFeatures
       
       private var _currentLearnedSpellsFilter:uint = 0;
       
-      private var _currentSort:String = "sortSpellsByLevel";
+      protected var _currentSort:String = "sortSpellsByLevel";
       
       private var _areActiveSpellsAlterable:Boolean = true;
       
@@ -289,7 +291,7 @@ package Ankama_Grimoire.ui.optionalFeatures
       
       private var _hasProcessedDrop:Boolean = false;
       
-      private var _componentsDictionary:Dictionary;
+      protected var _componentsDictionary:Dictionary;
       
       private var _weaponSpellType:String = null;
       
@@ -299,7 +301,7 @@ package Ankama_Grimoire.ui.optionalFeatures
       
       private var _activeSpellType:String = null;
       
-      private var _learnedForgettableSpellsCount:uint = 0;
+      protected var _learnedForgettableSpellsCount:uint = 0;
       
       private var _forgettableSpellsCount:uint = 0;
       
@@ -347,6 +349,8 @@ package Ankama_Grimoire.ui.optionalFeatures
       
       public var ctr_finishMoves:GraphicContainer;
       
+      public var ctr_spellLevelFilter:GraphicContainer;
+      
       public var ctr_obtainingFilters:GraphicContainer;
       
       public var ctr_topFilters:GraphicContainer;
@@ -377,6 +381,8 @@ package Ankama_Grimoire.ui.optionalFeatures
       
       public var lbl_shareForgettableSpells:Label;
       
+      public var lbl_spellLevelFilter:Label;
+      
       public var lbl_spellLevelFilterFrom:Label;
       
       public var lbl_spellLevelFilterTo:Label;
@@ -384,6 +390,10 @@ package Ankama_Grimoire.ui.optionalFeatures
       public var lbl_forgettableIsSpellEquippedHeader:Label;
       
       public var lbl_learnedSpells:Label;
+      
+      public var lbl_seeMySpellSets:Label;
+      
+      public var btn_lbl_btn_saveAsASpellSet:Label;
       
       public var tx_spellIsDroppable:Texture;
       
@@ -415,13 +425,6 @@ package Ankama_Grimoire.ui.optionalFeatures
          super();
       }
       
-      private static function fitCenteredSortableLabelHeader(label:Label) : void
-      {
-         var currentWidth:Number = label.width;
-         label.fullWidth();
-         label.x += (currentWidth - label.width) / 2;
-      }
-      
       public function set currentTabName(currentTabName:String) : void
       {
          this._currentTabName = currentTabName;
@@ -449,7 +452,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          return maxForgettableSpellsNumber < 0 || this._equippedForgettableSpells.length < maxForgettableSpellsNumber;
       }
       
-      private function set currentFilteredSpells(filteredSpells:Array) : void
+      protected function set currentFilteredSpells(filteredSpells:Array) : void
       {
          if(this._currentTabName === FORGETTABLE_SPELLS_TAB_NAME)
          {
@@ -461,7 +464,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
       }
       
-      private function get currentFilteredSpells() : Array
+      protected function get currentFilteredSpells() : Array
       {
          if(this._currentTabName === FORGETTABLE_SPELLS_TAB_NAME)
          {
@@ -482,7 +485,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          return null;
       }
       
-      private function set currentSpells(currentSpells:Array) : void
+      protected function set currentSpells(currentSpells:Array) : void
       {
          if(this._currentTabName === FORGETTABLE_SPELLS_TAB_NAME)
          {
@@ -494,7 +497,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
       }
       
-      private function get currentSpells() : Array
+      protected function get currentSpells() : Array
       {
          if(this._currentTabName === FORGETTABLE_SPELLS_TAB_NAME)
          {
@@ -518,6 +521,15 @@ package Ankama_Grimoire.ui.optionalFeatures
             return this.gd_commonSpells;
          }
          return null;
+      }
+      
+      protected function set currentSpellGridDataProvider(dataProvider:Array) : void
+      {
+         if(this._currentTabName === FORGETTABLE_SPELLS_TAB_NAME)
+         {
+            this.beforeForgettableSpellsDataProvider();
+         }
+         this.currentSpellGrid.dataProvider = dataProvider;
       }
       
       private function get defaultMinSpellLevelFilter() : uint
@@ -570,7 +582,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          return spellSort;
       }
       
-      private function get defaultLearnedSpellFilter() : uint
+      protected function get defaultLearnedSpellFilter() : uint
       {
          var toReturn:Number = Number(this.systemApi.getData(STORAGE_LEARNED_SPELLS_LEVEL_FILTER));
          if(isNaN(toReturn) || toReturn !== LEARNED_SPELLS_FILTER_ALL && toReturn !== LEARNED_SPELLS_FILTER_LEARNED && toReturn !== LEARNED_SPELLS_FILTER_UNLEARNED)
@@ -636,8 +648,8 @@ package Ankama_Grimoire.ui.optionalFeatures
          this.lbl_spellLevelFilterFrom.fullWidth();
          this.lbl_spellLevelFilterTo.fullWidth();
          this.fitSortableLabelHeaders();
-         this._searchSpellText = this.uiApi.getText("ui.temporis.searchSpell");
-         this.inp_spellLevelSearch.text = this._searchSpellText;
+         this._searchSpellText = this.searchInputPlaceholder;
+         this.inp_spellLevelSearch.placeholderText = this._searchSpellText;
          this.gd_activeSpells.autoSelectMode = 0;
          (this.gd_activeSpells.renderer as SlotGridRenderer).processDropFunction = this.processActiveSpellDrop;
          (this.gd_activeSpells.renderer as SlotGridRenderer).dropValidatorFunction = this.activeSpellDropValidator;
@@ -659,7 +671,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          this.currentTabName = FORGETTABLE_SPELLS_TAB_NAME;
          this.gd_forgettableSpells.mouseClickEnabled = false;
          this.gd_commonSpells.mouseClickEnabled = false;
-         this.systemApi.sendAction(new OpenInventoryAction([STORAGE_STATE_MOD,UIEnum.INVENTORY_UI]));
+         this.systemApi.sendAction(new OpenInventoryAction([this.storageStateMod,UIEnum.INVENTORY_UI]));
          var isFirstTimeTmp:* = this.systemApi.getData(STORAGE_IS_FIRST_TIME);
          if(isFirstTimeTmp !== null && isFirstTimeTmp is Boolean)
          {
@@ -671,16 +683,16 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
          if(this._isFirstTime)
          {
-            this.uiApi.loadUi(UIEnum.FORGETTABLE_SPELLS_INTRO_POP_UP,UIEnum.FORGETTABLE_SPELLS_INTRO_POP_UP,[this.validateFirstTime]);
+            this.uiApi.loadUi(UIEnum.FORGETTABLE_SPELLS_INTRO_POP_UP,UIEnum.FORGETTABLE_SPELLS_INTRO_POP_UP,[this.validateFirstTime,this.spellsIntroPopupTitle,this.spellsIntroPopupDesc]);
          }
-         var hasCommonSpellsTabBeenOpenedOnceTmp:* = this.systemApi.getData(STORAGE_HAS_COMMON_SPELLS_TAB_BEEN_OPENED_ONCE);
+         var hasCommonSpellsTabBeenOpenedOnceTmp:* = this.systemApi.getData(this.commonSpellsDataStorageName);
          if(hasCommonSpellsTabBeenOpenedOnceTmp !== null && hasCommonSpellsTabBeenOpenedOnceTmp is Boolean)
          {
             this._hasCommonSpellsTabBeenOpenedOnce = Boolean(hasCommonSpellsTabBeenOpenedOnceTmp);
          }
          else
          {
-            this.systemApi.setData(STORAGE_HAS_COMMON_SPELLS_TAB_BEEN_OPENED_ONCE,this._hasCommonSpellsTabBeenOpenedOnce);
+            this.systemApi.setData(this.commonSpellsDataStorageName,this._hasCommonSpellsTabBeenOpenedOnce);
          }
          this.tx_commonSpellsWarning.visible = !this._hasCommonSpellsTabBeenOpenedOnce;
          var btn_helpGraphicElement:GraphicElement = this.uiApi.me().getElementById(this.btn_help.name);
@@ -991,9 +1003,9 @@ package Ankama_Grimoire.ui.optionalFeatures
          components.lbl_commonSpellType.text = spellDescr.spellType;
       }
       
-      private function setSaveSpellSetButton() : void
+      protected function setSaveSpellSetButton() : void
       {
-         this.btn_saveAsASpellSet.disabled = this.inventoryApi.getBuildNumber(2) >= ProtocolConstantsEnum.MAX_PRESET_COUNT;
+         this.btn_saveAsASpellSet.disabled = this.inventoryApi.getBuildNumber(2) >= this.presetLimit;
       }
       
       private function getSpellSetsWithSpell(spellId:int) : Array
@@ -1153,11 +1165,10 @@ package Ankama_Grimoire.ui.optionalFeatures
          this.systemApi.goToUrl(this.uiApi.getText("ui.link.shareTemporisSpells") + sortedActiveForgettableSpells.toString());
       }
       
-      private function handleSearchInput() : void
+      protected function handleSearchInput() : void
       {
-         if(!this._isSearchInputReady || this._isSearchPlaceholderReset)
+         if(!this._isSearchInputReady || this.inp_spellLevelSearch.isPlaceholderActive())
          {
-            this._isSearchPlaceholderReset = false;
             return;
          }
          var searchText:String = this.inp_spellLevelSearch.lastTextOnInput;
@@ -1172,12 +1183,22 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
       }
       
-      private function fitSortableLabelHeaders() : void
+      protected function fitCenteredSortableLabelHeader(label:Label) : void
+      {
+         var currentWidth:Number = label.width;
+         label.fullWidth();
+         label.x += (currentWidth - label.width) / 2;
+      }
+      
+      protected function fitSortableLabelHeaders() : void
       {
          this.lbl_forgettableSpellsNameHeader.fullWidth();
          this.lbl_commonSpellsNameHeader.fullWidth();
-         fitCenteredSortableLabelHeader(this.lbl_forgettableSpellsLevelHeader);
-         fitCenteredSortableLabelHeader(this.lbl_commonSpellsLevelHeader);
+         if(this.lbl_forgettableSpellsLevelHeader)
+         {
+            this.fitCenteredSortableLabelHeader(this.lbl_forgettableSpellsLevelHeader);
+         }
+         this.fitCenteredSortableLabelHeader(this.lbl_commonSpellsLevelHeader);
       }
       
       private function resetFilters() : void
@@ -1193,7 +1214,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
       }
       
-      private function sortBySpellName(firstSpell:Object, secondSpell:Object) : Number
+      protected function sortBySpellName(firstSpell:Object, secondSpell:Object, forceAscending:Boolean = false) : Number
       {
          var firstSpellPriority:int = 0;
          var secondSpellPriority:int = 0;
@@ -1217,11 +1238,11 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
          if(firstSpell.spellName > secondSpell.spellName)
          {
-            return !!this._isSpellNameSortAscendingType ? Number(1) : Number(-1);
+            return this._isSpellNameSortAscendingType || forceAscending ? Number(1) : Number(-1);
          }
          if(firstSpell.spellName < secondSpell.spellName)
          {
-            return !!this._isSpellNameSortAscendingType ? Number(-1) : Number(1);
+            return this._isSpellNameSortAscendingType || forceAscending ? Number(-1) : Number(1);
          }
          return 0;
       }
@@ -1282,14 +1303,20 @@ package Ankama_Grimoire.ui.optionalFeatures
          this.tx_spellIsUnknown.uri = this.uiApi.createUri(this.uiApi.me().getConstant("texture") + OBTAINING_ICONS_MAP[OBTAINING_SPELL_IS_UNKNOWN] + "_over.png");
       }
       
-      private function resetSortButtons() : void
+      protected function resetSortButtons() : void
       {
          this.tx_sortForgettableSpellsByNameDescending.visible = false;
          this.tx_sortForgettableSpellsByNameAscending.visible = false;
          this.tx_sortCommonSpellsByNameDescending.visible = false;
          this.tx_sortCommonSpellsByNameAscending.visible = false;
-         this.tx_sortForgettableSpellsByLevelDescending.visible = false;
-         this.tx_sortForgettableSpellsByLevelAscending.visible = false;
+         if(this.tx_sortForgettableSpellsByLevelDescending)
+         {
+            this.tx_sortForgettableSpellsByLevelDescending.visible = false;
+         }
+         if(this.tx_sortForgettableSpellsByLevelAscending)
+         {
+            this.tx_sortForgettableSpellsByLevelAscending.visible = false;
+         }
       }
       
       private function applySpellNameSort() : void
@@ -1337,7 +1364,7 @@ package Ankama_Grimoire.ui.optionalFeatures
             }
          }
          this.currentSpells.sort(this.sortBySpellName);
-         this.currentSpellGrid.dataProvider = spellsToProvide;
+         this.currentSpellGridDataProvider = spellsToProvide;
       }
       
       private function applySpellLevelSort() : void
@@ -1350,9 +1377,12 @@ package Ankama_Grimoire.ui.optionalFeatures
          var spellsToProvide:Array = null;
          if(this._isSpellLevelSortAscendingType)
          {
-            this.tx_sortForgettableSpellsByLevelAscending.visible = true;
+            if(this.tx_sortForgettableSpellsByLevelAscending)
+            {
+               this.tx_sortForgettableSpellsByLevelAscending.visible = true;
+            }
          }
-         else
+         else if(this.tx_sortForgettableSpellsByLevelDescending)
          {
             this.tx_sortForgettableSpellsByLevelDescending.visible = true;
          }
@@ -1366,10 +1396,10 @@ package Ankama_Grimoire.ui.optionalFeatures
             spellsToProvide = this._forgettableSpells;
          }
          this.currentSpells.sort(this.sortBySpellLevel);
-         this.currentSpellGrid.dataProvider = spellsToProvide;
+         this.currentSpellGridDataProvider = spellsToProvide;
       }
       
-      private function applySort() : void
+      protected function applySort() : void
       {
          if(this._currentTabName === COMMON_SPELLS_TAB_NAME || this._currentSort === SPELL_NAME_SORT_TYPE)
          {
@@ -1399,10 +1429,10 @@ package Ankama_Grimoire.ui.optionalFeatures
          this.applyLearnedSpellsFilter();
          this.applySpellLevelFilter();
          this.applyObtainingFilter();
-         this.currentSpellGrid.dataProvider = this.currentFilteredSpells;
+         this.currentSpellGridDataProvider = this.currentFilteredSpells;
       }
       
-      private function applyLearnedSpellsFilter(isUpdateDataProvider:Boolean = false) : void
+      protected function applyLearnedSpellsFilter(isUpdateDataProvider:Boolean = false) : void
       {
          if(this._currentTabName !== FORGETTABLE_SPELLS_TAB_NAME && this._currentTabName !== COMMON_SPELLS_TAB_NAME || this._currentLearnedSpellsFilter === LEARNED_SPELLS_FILTER_ALL)
          {
@@ -1429,7 +1459,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          this.currentFilteredSpells = filteredSpells;
          if(isUpdateDataProvider)
          {
-            this.currentSpellGrid.dataProvider = this.currentFilteredSpells;
+            this.currentSpellGridDataProvider = this.currentFilteredSpells;
          }
       }
       
@@ -1456,7 +1486,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
          if(isUpdateDataProvider)
          {
-            this.currentSpellGrid.dataProvider = filteredSpells;
+            this.currentSpellGridDataProvider = filteredSpells;
          }
       }
       
@@ -1493,7 +1523,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
          if(isUpdateDataProvider)
          {
-            this.currentSpellGrid.dataProvider = filteredSpells;
+            this.currentSpellGridDataProvider = filteredSpells;
          }
       }
       
@@ -1512,7 +1542,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          this.currentFilteredSpells = filteredSpells;
          if(isUpdateDataProvider)
          {
-            this.currentSpellGrid.dataProvider = this.currentFilteredSpells;
+            this.currentSpellGridDataProvider = this.currentFilteredSpells;
          }
       }
       
@@ -1534,7 +1564,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          this.applySort();
       }
       
-      private function updateLearnedSpellsFilter(learnedSpellsValue:uint) : void
+      protected function updateLearnedSpellsFilter(learnedSpellsValue:uint) : void
       {
          var oldValue:uint = this._currentLearnedSpellsFilter;
          this._currentLearnedSpellsFilter = learnedSpellsValue;
@@ -1647,36 +1677,20 @@ package Ankama_Grimoire.ui.optionalFeatures
          {
             return;
          }
-         this.updateSearchPlaceholder();
+         this.resetSearchPlaceholder();
       }
       
-      private function updateSearchPlaceholder(isPlaceholder:Boolean = true) : void
+      private function resetSearchPlaceholder() : void
       {
-         this._isSearchPlaceholderReset = true;
-         if(isPlaceholder)
-         {
-            this._currentSearchText = null;
-            this.inp_spellLevelSearch.text = this._searchSpellText;
-         }
-         else
-         {
-            this.inp_spellLevelSearch.text = "";
-         }
-      }
-      
-      private function handleSearchClick() : void
-      {
-         if(!this._isSearchInputFilled)
-         {
-            this.updateSearchPlaceholder(false);
-         }
+         this.inp_spellLevelSearch.text = "";
       }
       
       private function resetSearchBar(isReapplyFilterPipeline:Boolean = true) : void
       {
          this._isSearchInputReady = false;
          this._isSearchInputFilled = false;
-         this.updateSearchPlaceholder();
+         this._currentSearchText = null;
+         this.resetSearchPlaceholder();
          if(isReapplyFilterPipeline)
          {
             this.applyFilterPipeline();
@@ -1694,16 +1708,16 @@ package Ankama_Grimoire.ui.optionalFeatures
       {
          if(!this.uiApi.getUi(UIEnum.FORGETTABLE_SPELL_SET_POP_UP))
          {
-            this.uiApi.loadUi(UIEnum.FORGETTABLE_SPELL_SET_POP_UP,UIEnum.FORGETTABLE_SPELL_SET_POP_UP,[ForgettableSpellSetPopUp.ACTION_CREATE_SPELL_SET]);
+            this.uiApi.loadUi(UIEnum.FORGETTABLE_SPELL_SET_POP_UP,UIEnum.FORGETTABLE_SPELL_SET_POP_UP,[ForgettableSpellSetPopUp.ACTION_CREATE_SPELL_SET,null,this.uiApi.me().name]);
          }
       }
       
       public function getSpellSets(presetId:int = -1) : void
       {
-         var forgettableSpellSetUi:UiRootContainer = this.uiApi.getUi(UIEnum.FORGETTABLE_SPELL_SETS_UI);
+         var forgettableSpellSetUi:UiRootContainer = this.uiApi.getUi(this.spellSetUiName);
          if(forgettableSpellSetUi === null)
          {
-            this.uiApi.loadUi(UIEnum.FORGETTABLE_SPELL_SETS_UI,UIEnum.FORGETTABLE_SPELL_SETS_UI,[presetId]);
+            this.uiApi.loadUi(this.spellSetUiName,this.spellSetUiName,[presetId]);
          }
          else
          {
@@ -1726,7 +1740,7 @@ package Ankama_Grimoire.ui.optionalFeatures
             }
             else if(target.selectedItem.active)
             {
-               this.systemApi.sendAction(new GameFightSpellCastAction([currentSpellShortcut.id,this.gd_activeSpells.selectedIndex + 1]));
+               this.systemApi.sendAction(GameFightSpellCastAction.create(CurrentPlayedFighterManager.getInstance().currentFighterId,currentSpellShortcut.id,this.gd_activeSpells.selectedIndex + 1));
             }
          }
       }
@@ -1798,7 +1812,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          if(!this._hasCommonSpellsTabBeenOpenedOnce)
          {
             this._hasCommonSpellsTabBeenOpenedOnce = true;
-            this.systemApi.setData(STORAGE_HAS_COMMON_SPELLS_TAB_BEEN_OPENED_ONCE,this._hasCommonSpellsTabBeenOpenedOnce);
+            this.systemApi.setData(this.commonSpellsDataStorageName,this._hasCommonSpellsTabBeenOpenedOnce);
             this.tx_commonSpellsWarning.visible = false;
          }
          this.refreshCommonSpellsList();
@@ -1819,7 +1833,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
       }
       
-      private function refreshForgettableSpellsList() : void
+      protected function refreshForgettableSpellsList() : void
       {
          var forgettableSpell:ForgettableSpell = null;
          var forgettableSpellItem:ForgettableSpellItem = null;
@@ -1867,12 +1881,18 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
          var maxForgettableSpellsCount:int = this.playedCharacterApi.getPlayerMaxForgettableSpellsNumber();
          var isMaxForgettableSpellsCountHeaderVisible:* = maxForgettableSpellsCount >= 0;
-         if(isMaxForgettableSpellsCountHeaderVisible)
+         if(isMaxForgettableSpellsCountHeaderVisible && this.lbl_forgettableIsSpellEquippedHeader)
          {
             this.lbl_forgettableIsSpellEquippedHeader.text = this._equippedForgettableSpells.length + "/" + maxForgettableSpellsCount;
          }
-         this.lbl_forgettableIsSpellEquippedHeader.visible = isMaxForgettableSpellsCountHeaderVisible;
-         this.lbl_learnedSpells.text = this.uiApi.getText("ui.temporis.learnedSpellsRatio",this._learnedForgettableSpellsCount,this._forgettableSpellsCount);
+         if(this.lbl_forgettableIsSpellEquippedHeader)
+         {
+            this.lbl_forgettableIsSpellEquippedHeader.visible = isMaxForgettableSpellsCountHeaderVisible;
+         }
+         if(this.lbl_learnedSpells)
+         {
+            this.lbl_learnedSpells.text = this.uiApi.getText("ui.temporis.learnedSpellsRatio",this._learnedForgettableSpellsCount,this._forgettableSpellsCount);
+         }
          var toMoveIndex:Number = this.gd_forgettableSpells.scrollBarV !== null ? Number(this.gd_forgettableSpells.scrollBarV.value) : Number(-1);
          this.gd_forgettableSpells.dataProvider = this._forgettableSpells;
          this.applyFilterPipeline();
@@ -1895,7 +1915,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
          var obtainingDescr:Object = {};
          var isObtainingAMystery:Boolean = true;
-         if(itemWrapper.dropMonsterIds.length > 0 || this.configApi.isFeatureWithKeywordEnabled("temporis.drops") && itemWrapper.dropTemporisMonsterIds && itemWrapper.dropTemporisMonsterIds.length > 0)
+         if(itemWrapper.dropMonsterIds.length > 0 || this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_DROPS) && itemWrapper.dropTemporisMonsterIds && itemWrapper.dropTemporisMonsterIds.length > 0)
          {
             obtainingDescr[OBTAINING_SPELL_IS_DROPPABLE] = {
                "iconGreyPath":OBTAINING_ICONS_MAP[OBTAINING_SPELL_IS_DROPPABLE] + "_grey.png",
@@ -2067,7 +2087,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
       }
       
-      private function showSpellTooltip(data:Object, target:Object, fromUI:uint) : void
+      protected function showSpellTooltip(data:Object, target:Object, fromUI:uint) : void
       {
          var point:uint = 0;
          var relativePoint:uint = 0;
@@ -2097,7 +2117,7 @@ package Ankama_Grimoire.ui.optionalFeatures
             point = LocationEnum.POINT_LEFT;
             relativePoint = LocationEnum.POINT_RIGHT;
             offset = 3;
-            spellWrapper = data.spellWrapper;
+            spellWrapper = data is SpellWrapper ? data as SpellWrapper : data.spellWrapper;
          }
          if(spellWrapper === null)
          {
@@ -2241,17 +2261,19 @@ package Ankama_Grimoire.ui.optionalFeatures
       private function getScrollFromForgettableSpell(spellDescr:Object, isForce:Boolean = false) : void
       {
          var spellSetsUsed:Array = null;
-         var isSpellUsed:* = false;
+         var isSpellUsedInPreset:* = false;
+         var isSpellUsedInActiveSet:* = false;
          if(!isForce)
          {
             spellSetsUsed = this.getSpellSetsWithSpell(spellDescr.spellId);
-            isSpellUsed = spellSetsUsed.length > 0;
+            isSpellUsedInPreset = spellSetsUsed.length > 0;
+            isSpellUsedInActiveSet = this._activeSpellIds.indexOf(spellDescr.spellId) != -1;
          }
-         if(isSpellUsed && !isForce)
+         if((isSpellUsedInPreset || isSpellUsedInActiveSet) && !isForce)
          {
-            if(!this.uiApi.getUi(UIEnum.FORGETTABLE_SPELL_GET_SCROLL_WARNING_POP_UP))
+            if(!this.uiApi.getUi(this.getScrollWarningUiName))
             {
-               this.uiApi.loadUi(UIEnum.FORGETTABLE_SPELL_GET_SCROLL_WARNING_POP_UP,UIEnum.FORGETTABLE_SPELL_GET_SCROLL_WARNING_POP_UP,[spellDescr,spellSetsUsed,this.getScrollFromForgettableSpell]);
+               this.uiApi.loadUi(this.getScrollWarningUiName,this.getScrollWarningUiName,[spellDescr,spellSetsUsed,isSpellUsedInActiveSet,this.getScrollFromForgettableSpell,this.selfUiName]);
             }
          }
          else
@@ -2260,7 +2282,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
       }
       
-      private function isSpellScrollAvailable(scrollId:int) : Boolean
+      protected function isSpellScrollAvailable(scrollId:int) : Boolean
       {
          var inventoryContent:Vector.<ItemWrapper> = this.dataApi.getInventoryViewContent(STORAGE_CONSUMABLES_VIEW) as Vector.<ItemWrapper>;
          if(inventoryContent === null)
@@ -2322,7 +2344,29 @@ package Ankama_Grimoire.ui.optionalFeatures
                return false;
             }
          }
-         return data is SpellWrapper || data is ShortcutWrapper && data.realItem is SpellWrapper;
+         var spellWrapper:SpellWrapper = null;
+         var targetSpellWrapper:SpellWrapper = null;
+         if(data is SpellWrapper)
+         {
+            spellWrapper = data as SpellWrapper;
+         }
+         else if(data is ShortcutWrapper && data.realItem is SpellWrapper)
+         {
+            spellWrapper = data.realItem as SpellWrapper;
+         }
+         if(target.data is ShortcutWrapper && target.data.realItem is SpellWrapper)
+         {
+            targetSpellWrapper = target.data.realItem as SpellWrapper;
+         }
+         else if(target.data is SpellWrapper)
+         {
+            targetSpellWrapper = target.data;
+         }
+         if(this._currentTabName == FORGETTABLE_SPELLS_TAB_NAME && this._equippedForgettableSpells.length >= this.playedCharacterApi.getPlayerMaxForgettableSpellsNumber() && !this.isSpellActive(spellWrapper.spellId))
+         {
+            return targetSpellWrapper != null && this.playedCharacterApi.isForgettableSpell(targetSpellWrapper.id) == this.playedCharacterApi.isForgettableSpell(spellWrapper.id);
+         }
+         return spellWrapper != null;
       }
       
       private function processActiveSpellDrop(target:Object, data:Object, source:Object) : void
@@ -2396,7 +2440,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          switch(target)
          {
             case this.mainCtr:
-               forgettableSpellSetUi = this.uiApi.getUi(UIEnum.FORGETTABLE_SPELL_SETS_UI);
+               forgettableSpellSetUi = this.uiApi.getUi(this.spellSetUiName);
                if(forgettableSpellSetUi !== null)
                {
                   forgettableSpellSetUi.setOnTop();
@@ -2428,9 +2472,6 @@ package Ankama_Grimoire.ui.optionalFeatures
             case this.btn_finishMoves:
                this.currentTabName = FINISH_MOVES_TAB_NAME;
                this.hintsApi.uiTutoTabLaunch();
-               break;
-            case this.inp_spellLevelSearch:
-               this.handleSearchClick();
                break;
             case this.btn_clearSearchText:
                this.resetSearchBar();
@@ -2610,7 +2651,7 @@ package Ankama_Grimoire.ui.optionalFeatures
                case -1:
                   if(target.name.indexOf("btn_getForgettableSpellScroll") !== -1)
                   {
-                     this.uiApi.showTooltip(this.uiApi.textTooltipInfo(this.uiApi.getText("ui.temporis.getScrollFromTemporisSpell")),target,false,TOOLTIP_UI_NAME,LocationEnum.POINT_BOTTOM,LocationEnum.POINT_TOP,3,null,null,null,"TextInfo");
+                     this.uiApi.showTooltip(this.uiApi.textTooltipInfo(this.uiApi.getText(this.getScrollBtnOverTextKey)),target,false,TOOLTIP_UI_NAME,LocationEnum.POINT_BOTTOM,LocationEnum.POINT_TOP,3,null,null,null,"TextInfo");
                      break;
                   }
                   break;
@@ -2847,9 +2888,9 @@ package Ankama_Grimoire.ui.optionalFeatures
       public function onUiLoaded(name:String) : void
       {
          var forgettableSpellSetUi:UiRootContainer = null;
-         if(name === UIEnum.STORAGE_UI)
+         if(name === UIEnum.INVENTORY_UI)
          {
-            forgettableSpellSetUi = this.uiApi.getUi(UIEnum.FORGETTABLE_SPELL_SETS_UI);
+            forgettableSpellSetUi = this.uiApi.getUi(this.spellSetUiName);
             if(forgettableSpellSetUi !== null)
             {
                forgettableSpellSetUi.setOnTop();
@@ -2865,6 +2906,60 @@ package Ankama_Grimoire.ui.optionalFeatures
       public function onPresetError(reasonText:String) : void
       {
          this.setSaveSpellSetButton();
+      }
+      
+      protected function get storageStateMod() : String
+      {
+         return "forgettableSpellsUi";
+      }
+      
+      protected function get searchInputPlaceholder() : String
+      {
+         return this.uiApi.getText("ui.temporis.searchSpell");
+      }
+      
+      protected function beforeForgettableSpellsDataProvider() : void
+      {
+      }
+      
+      protected function get getScrollBtnOverTextKey() : String
+      {
+         return "ui.temporis.getScrollFromTemporisSpell";
+      }
+      
+      protected function get spellSetUiName() : String
+      {
+         return UIEnum.FORGETTABLE_SPELL_SETS_UI;
+      }
+      
+      protected function get presetLimit() : int
+      {
+         return ProtocolConstantsEnum.MAX_FORGETTABLE_SPELLS_PRESET_COUNT;
+      }
+      
+      protected function get spellsIntroPopupDesc() : String
+      {
+         return this.uiApi.getText("ui.temporis.spellsUiIntroPopupDescription");
+      }
+      
+      protected function get spellsIntroPopupTitle() : String
+      {
+         return this.uiApi.getText("ui.temporis.spellsUiIntroPopupTitle");
+      }
+      
+      protected function get selfUiName() : String
+      {
+         return UIEnum.FORGETTABLE_SPELLS_UI;
+      }
+      
+      protected function get getScrollWarningUiName() : String
+      {
+         return UIEnum.FORGETTABLE_SPELL_GET_SCROLL_WARNING_POP_UP;
+      }
+      
+      protected function get commonSpellsDataStorageName() : String
+      {
+         return STORAGE_HAS_COMMON_SPELLS_TAB_BEEN_OPENED_ONCE;
       }
    }
 }

@@ -8,6 +8,7 @@ package Ankama_CharacterSheet.ui
    import com.ankamagames.berilia.components.Texture;
    import com.ankamagames.berilia.enums.GridItemSelectMethodEnum;
    import com.ankamagames.berilia.enums.StrataEnum;
+   import com.ankamagames.berilia.enums.UIEnum;
    import com.ankamagames.berilia.types.data.GridItem;
    import com.ankamagames.berilia.types.graphic.ButtonContainer;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
@@ -16,6 +17,7 @@ package Ankama_CharacterSheet.ui
    import com.ankamagames.dofus.datacenter.characteristics.Characteristic;
    import com.ankamagames.dofus.datacenter.characteristics.CharacteristicCategory;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
    import com.ankamagames.dofus.internalDatacenter.house.HouseWrapper;
@@ -642,7 +644,7 @@ package Ankama_CharacterSheet.ui
          else
          {
             parsedStat = this.uiApi.getText("ui.common.base") + " (" + this.uiApi.getText("ui.charaSheet.natural") + " + " + this.uiApi.getText("ui.charaSheet.additionnal") + ")" + this.uiApi.getText("ui.common.colon") + stat.base + "+" + stat.additionnal + "\n" + this.uiApi.getText("ui.common.equipement") + this.uiApi.getText("ui.common.colon") + stat.stuff + "\n" + this.uiApi.getText("ui.charaSheet.temporaryBonus") + this.uiApi.getText("ui.common.colon") + stat.boost;
-            if(this.configApi.isFeatureWithKeywordEnabled("server.conf.alignmentWar"))
+            if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.ALIGNMENT_WAR))
             {
                parsedStat += "\n" + this.uiApi.getText("ui.temporis.alignmentGift") + this.uiApi.getText("ui.common.colon") + stat.gift;
             }
@@ -742,7 +744,7 @@ package Ankama_CharacterSheet.ui
          this.pb_xp.barColor = this._xpColor;
          var experienceDelta:Number = this._characterCharacteristics.experienceNextLevelFloor - this._characterCharacteristics.experienceLevelFloor;
          var requiredXp:Number = this._characterCharacteristics.experienceNextLevelFloor - this._characterCharacteristics.experience;
-         if(!this.configApi.isFeatureWithKeywordEnabled("character.xp"))
+         if(!this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP))
          {
             xpPercent = this.playerApi.getPlayedCharacterInfo().level / ProtocolConstantsEnum.MAX_LEVEL;
             this.pb_xp.value = xpPercent;
@@ -1057,6 +1059,7 @@ package Ankama_CharacterSheet.ui
          var side:int = 0;
          var param:Object = null;
          var text:String = null;
+         var uiName:String = null;
          var isRoleplayOrPrefight:Boolean = false;
          if(this.uiApi.getUi("levelUp") && target != this.btn_reset && target.name.indexOf("btn_plus") == -1)
          {
@@ -1099,9 +1102,14 @@ package Ankama_CharacterSheet.ui
             case this.btn_spellBook:
                param = {};
                param.strata = this.uiApi.getUi(this.uiApi.me().name).strata;
-               if(this.configApi.isFeatureWithKeywordEnabled("character.spell.forgettable"))
+               if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS))
                {
-                  this.sysApi.sendAction(new OpenBookAction(["forgettableSpellsUi",param]));
+                  uiName = UIEnum.FORGETTABLE_SPELLS_UI;
+                  if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.MODSTERS))
+                  {
+                     uiName = UIEnum.FORGETTABLE_MODSTERS_UI;
+                  }
+                  this.sysApi.sendAction(new OpenBookAction([uiName,param]));
                }
                else
                {
@@ -1199,7 +1207,7 @@ package Ankama_CharacterSheet.ui
                text = this.uiApi.getText("ui.help.level",ProtocolConstantsEnum.MAX_LEVEL);
                break;
             case this.pb_xp:
-               text = !!this.configApi.isFeatureWithKeywordEnabled("character.xp") ? this._xpInfoText + "\n" + this.uiApi.getText("ui.banner.xpBonus",this.playerApi.getExperienceBonusPercent() + 100) : this._xpInfoText;
+               text = !!this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP) ? this._xpInfoText + "\n" + this.uiApi.getText("ui.banner.xpBonus",this.playerApi.getExperienceBonusPercent() + 100) : this._xpInfoText;
                break;
             case this.pb_energy:
                text = this.utilApi.formateIntToString(this._characterStats.getStatTotalValue(StatIds.ENERGY_POINTS)) + " / " + this.utilApi.formateIntToString(this._characterStats.getStatTotalValue(StatIds.MAX_ENERGY_POINTS));
@@ -1489,11 +1497,11 @@ package Ankama_CharacterSheet.ui
             case this.tx_guildEmblemFront:
                if(this.dataApi.getEmblemSymbol(this._guild.upEmblem.idEmblem).colorizable)
                {
-                  this.utilApi.changeColor(this.tx_guildEmblemFront.getChildByName("up"),this._guild.upEmblem.color,0);
+                  this.utilApi.changeColor(this.tx_guildEmblemFront,this._guild.upEmblem.color,0);
                }
                else
                {
-                  this.utilApi.changeColor(this.tx_guildEmblemFront.getChildByName("up"),this._guild.upEmblem.color,0,true);
+                  this.utilApi.changeColor(this.tx_guildEmblemFront,this._guild.upEmblem.color,0,true);
                }
                break;
             case this.tx_allianceEmblemBack:
@@ -1502,11 +1510,11 @@ package Ankama_CharacterSheet.ui
             case this.tx_allianceEmblemFront:
                if(this.dataApi.getEmblemSymbol(this._alliance.upEmblem.idEmblem).colorizable)
                {
-                  this.utilApi.changeColor(this.tx_allianceEmblemFront.getChildByName("up"),this._alliance.upEmblem.color,0);
+                  this.utilApi.changeColor(this.tx_allianceEmblemFront,this._alliance.upEmblem.color,0);
                }
                else
                {
-                  this.utilApi.changeColor(this.tx_allianceEmblemFront.getChildByName("up"),this._alliance.upEmblem.color,0,true);
+                  this.utilApi.changeColor(this.tx_allianceEmblemFront,this._alliance.upEmblem.color,0,true);
                }
          }
       }

@@ -10,6 +10,7 @@ package Ankama_GameUiCore.ui
    import com.ankamagames.berilia.utils.ComponentHookList;
    import com.ankamagames.dofus.datacenter.quest.Achievement;
    import com.ankamagames.dofus.datacenter.quest.AchievementCategory;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.appearance.OrnamentWrapper;
    import com.ankamagames.dofus.internalDatacenter.appearance.TitleWrapper;
    import com.ankamagames.dofus.internalDatacenter.communication.EmoteWrapper;
@@ -306,7 +307,7 @@ package Ankama_GameUiCore.ui
          var rewards:AchievementRewardsWrapper = this.questApi.getAchievementReward(ach,rewardable.finishedlevel);
          reward.rewardData = rewards;
          reward.kamas = this.questApi.getAchievementKamasReward(ach,rewardable.finishedlevel);
-         if(this.configApi.isFeatureWithKeywordEnabled("character.xp"))
+         if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP))
          {
             reward.xp = this.questApi.getAchievementExperienceReward(ach,rewardable.finishedlevel);
          }
@@ -471,7 +472,7 @@ package Ankama_GameUiCore.ui
             "point":LocationEnum.POINT_BOTTOM,
             "relativePoint":LocationEnum.POINT_TOP
          };
-         if(this.configApi.isFeatureWithKeywordEnabled("character.xp"))
+         if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP))
          {
             if(target.name.indexOf("btn_acceptOne") != -1)
             {

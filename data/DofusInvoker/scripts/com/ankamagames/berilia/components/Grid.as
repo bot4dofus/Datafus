@@ -910,12 +910,13 @@ package com.ankamagames.berilia.components
                if(currenItem.index == this._nSelectedIndex)
                {
                   this._renderer.update(this._dataProvider[currenItem.index],index,currenItem.container,true);
+                  currenItem.data = this._dataProvider[currenItem.index];
                }
-               else
+               else if(currenItem.index < this._dataProvider.length)
                {
                   this._renderer.update(this._dataProvider[currenItem.index],index,currenItem.container,false);
+                  currenItem.data = this._dataProvider[currenItem.index];
                }
-               currenItem.data = this._dataProvider[currenItem.index];
             }
          }
          this.finalize();

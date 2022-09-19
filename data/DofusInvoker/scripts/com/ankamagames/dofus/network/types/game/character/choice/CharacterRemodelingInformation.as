@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.character.choice
    public class CharacterRemodelingInformation extends AbstractCharacterInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 5402;
+      public static const protocolId:uint = 6464;
        
       
       public var name:String = "";
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.types.game.character.choice
       
       override public function getTypeId() : uint
       {
-         return 5402;
+         return 6464;
       }
       
       public function initCharacterRemodelingInformation(id:Number = 0, name:String = "", breed:int = 0, sex:Boolean = false, cosmeticId:uint = 0, colors:Vector.<int> = null) : CharacterRemodelingInformation

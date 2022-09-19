@@ -29,6 +29,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
    import com.ankamagames.dofus.logic.game.fight.actions.GameFightSpellCastAction;
+   import com.ankamagames.dofus.logic.game.fight.actions.GameFightSpellPreviewAction;
    import com.ankamagames.dofus.logic.game.fight.actions.GameFightTurnFinishAction;
    import com.ankamagames.dofus.logic.game.fight.managers.CurrentPlayedFighterManager;
    import com.ankamagames.dofus.logic.game.fight.miscs.FightReachableCellsMaker;
@@ -261,7 +262,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
       public function process(msg:Message) : Boolean
       {
          var conmsg:CellOverMessage = null;
-         var gfsca:GameFightSpellCastAction = null;
          var bf:FightBattleFrame = null;
          var playerInformation:GameFightFighterInformations = null;
          var ccmsg:CellClickMessage = null;
@@ -270,6 +270,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var entitiesFrame:FightEntitiesFrame = null;
          var playerInfos:GameFightFighterInformations = null;
          var imE:IMovable = null;
+         var gfscaction:GameFightSpellCastAction = null;
+         var gfspaction:GameFightSpellPreviewAction = null;
          var scrmsg:ShowCellRequestMessage = null;
          var text:String = null;
          var ccmmsg:ChatClientMultiMessage = null;
@@ -287,7 +289,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                }
                return false;
             case msg is GameFightSpellCastAction:
-               gfsca = msg as GameFightSpellCastAction;
+            case msg is GameFightSpellPreviewAction:
                if(this._spellCastFrame != null)
                {
                   Kernel.getWorker().removeFrame(this._spellCastFrame);
@@ -301,7 +303,16 @@ package com.ankamagames.dofus.logic.game.fight.frames
                playerInformation = FightEntitiesFrame.getCurrentInstance().getEntityInfos(this._currentFighterId) as GameFightFighterInformations;
                if(bf && bf.turnsCount <= 1 || playerInformation && playerInformation.spawnInfo.alive)
                {
-                  Kernel.getWorker().addFrame(this._spellCastFrame = new FightSpellCastFrame(gfsca.spellId));
+                  if(msg is GameFightSpellCastAction)
+                  {
+                     gfscaction = msg as GameFightSpellCastAction;
+                     Kernel.getWorker().addFrame(this._spellCastFrame = new FightSpellCastFrame(gfscaction.entityId,gfscaction.spellId));
+                  }
+                  else if(msg is GameFightSpellPreviewAction)
+                  {
+                     gfspaction = msg as GameFightSpellPreviewAction;
+                     Kernel.getWorker().addFrame(this._spellCastFrame = new FightSpellCastFrame(gfspaction.entityId,gfspaction.spellWrapper.id,gfspaction.spellWrapper));
+                  }
                }
                return true;
             case msg is CellClickMessage:

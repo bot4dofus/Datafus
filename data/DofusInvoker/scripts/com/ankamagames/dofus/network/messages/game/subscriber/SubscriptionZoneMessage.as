@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.subscriber
    public class SubscriptionZoneMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3082;
+      public static const protocolId:uint = 4681;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.subscriber
       
       override public function getMessageId() : uint
       {
-         return 3082;
+         return 4681;
       }
       
       public function initSubscriptionZoneMessage(active:Boolean = false) : SubscriptionZoneMessage

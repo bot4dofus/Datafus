@@ -69,6 +69,185 @@ package com.ankamagames.dofus.logic.shield
          return _self;
       }
       
+      private static function getUsername() : String
+      {
+         return AuthentificationManager.getInstance().username.toLowerCase();
+      }
+      
+      private static function getCertifFolder(version:uint, useCustomSharedObjectFolder:Boolean = false, useMacApplicationDirectory:Boolean = false) : File
+      {
+         var f:File = null;
+         var parentDir:String = null;
+         var tmp:Array = null;
+         if(!useCustomSharedObjectFolder)
+         {
+            if(SystemManager.getSingleton().os == OperatingSystem.MAC_OS && useMacApplicationDirectory)
+            {
+               parentDir = File.userDirectory.resolvePath("Library/Preferences").nativePath;
+            }
+            else
+            {
+               tmp = File.applicationStorageDirectory.nativePath.split(File.separator);
+               tmp.pop();
+               tmp.pop();
+               parentDir = tmp.join(File.separator);
+            }
+         }
+         else
+         {
+            parentDir = CustomSharedObject.getCustomSharedObjectDirectory();
+         }
+         if(version == 1)
+         {
+            f = new File(parentDir + File.separator + "AnkamaCertificates/");
+         }
+         if(version == 2)
+         {
+            f = new File(parentDir + File.separator + "AnkamaCertificates/v2-RELEASE");
+         }
+         f.createDirectory();
+         return f;
+      }
+      
+      private static function addCertificate(id:uint, content:String) : Boolean
+      {
+         var cert:ShieldCertifcate = null;
+         var f:File = null;
+         var fs:FileStream = null;
+         _log.debug("ADD CERTIFICATE");
+         cert = new ShieldCertifcate();
+         cert.id = id;
+         cert.content = content;
+         cert.secureLevel = ShieldSecureLevel.MEDIUM;
+         try
+         {
+            _log.debug("ADD CERTIFICATE :: TRY");
+            f = getCertifFolder(2);
+            f = f.resolvePath(MD5.hash(getUsername()));
+            fs = new FileStream();
+            fs.open(f,FileMode.WRITE);
+            fs.writeBytes(cert.serialize());
+            fs.close();
+            return true;
+         }
+         catch(e:Error)
+         {
+            try
+            {
+               _log.debug("ADD CERTIFICATE :: FALLBACK");
+               f = getCertifFolder(2,true);
+               f = f.resolvePath(MD5.hash(getUsername()));
+               fs = new FileStream();
+               fs.open(f,FileMode.WRITE);
+               fs.writeBytes(cert.serialize());
+               fs.close();
+               return true;
+            }
+            catch(e:Error)
+            {
+               _log.debug("ADD CERTIFICATE :: ERROR");
+               ErrorManager.addError("Error writing certificate file at " + f.nativePath,e);
+               return false;
+            }
+         }
+      }
+      
+      private static function getCertificateFile() : File
+      {
+         var found:Boolean = false;
+         var userName:String = null;
+         var fileName:String = null;
+         var f:File = null;
+         try
+         {
+            found = false;
+            userName = getUsername();
+            fileName = MD5.hash(userName);
+            f = getCertifFolder(2).resolvePath(fileName);
+            if(!f.exists)
+            {
+               f = getCertifFolder(2,false,true).resolvePath(fileName);
+            }
+            else
+            {
+               found = true;
+               _log.debug("CERTIF FOUND IN V2-RELEASE : " + f.nativePath);
+            }
+            if(!found)
+            {
+               if(!f.exists)
+               {
+                  f = getCertifFolder(1).resolvePath(fileName);
+               }
+               else
+               {
+                  found = true;
+                  _log.debug("CERTIF FOUND IN MAC APPLICATION DIRECTORY" + f.nativePath);
+               }
+            }
+            if(!found)
+            {
+               if(!f.exists)
+               {
+                  f = getCertifFolder(1,false,true).resolvePath(fileName);
+               }
+               else
+               {
+                  found = true;
+                  _log.debug("CERTIF FOUND IN V1" + f.nativePath);
+               }
+            }
+            if(!found)
+            {
+               if(!f.exists)
+               {
+                  f = getCertifFolder(2,true).resolvePath(fileName);
+               }
+               else
+               {
+                  found = true;
+                  _log.debug("CERTIF FOUND IN V1 ON MAC" + f.nativePath);
+               }
+            }
+            if(!found)
+            {
+               if(!f.exists)
+               {
+                  f = getCertifFolder(1,true).resolvePath(fileName);
+               }
+               else
+               {
+                  found = true;
+                  _log.debug("CERTIF FOUND IN CUSTOM SHARED OBJECTS V2" + f.nativePath);
+               }
+            }
+            if(!found && f.exists)
+            {
+               found = true;
+               _log.debug("CERTIF FOUND IN CUSTOM SHARED OBJECTS V1" + f.nativePath);
+            }
+            if(!found)
+            {
+               _log.debug("CERTIF NOT FOUND");
+            }
+            if(f.exists)
+            {
+               return f;
+            }
+         }
+         catch(e:Error)
+         {
+            _log.error("Erreur lors de la recherche du certifcat : " + e.message);
+         }
+         return null;
+      }
+      
+      private static function migrationSuccess(result:Object) : void
+      {
+         _log.debug("MIGRATION SUCCESS");
+         addCertificate(result.id,result.certificate);
+      }
+      
       public function get active() : Boolean
       {
          return this._active;
@@ -106,89 +285,6 @@ package com.ankamagames.dofus.logic.shield
          });
       }
       
-      private function getUsername() : String
-      {
-         return AuthentificationManager.getInstance().username.toLowerCase().split("|")[0];
-      }
-      
-      private function getCertifFolder(version:uint, useCustomSharedObjectFolder:Boolean = false, useMacApplicationDirectory:Boolean = false) : File
-      {
-         var f:File = null;
-         var parentDir:String = null;
-         var tmp:Array = null;
-         if(!useCustomSharedObjectFolder)
-         {
-            if(SystemManager.getSingleton().os == OperatingSystem.MAC_OS && useMacApplicationDirectory)
-            {
-               parentDir = File.userDirectory.resolvePath("Library/Preferences").nativePath;
-            }
-            else
-            {
-               tmp = File.applicationStorageDirectory.nativePath.split(File.separator);
-               tmp.pop();
-               tmp.pop();
-               parentDir = tmp.join(File.separator);
-            }
-         }
-         else
-         {
-            parentDir = CustomSharedObject.getCustomSharedObjectDirectory();
-         }
-         if(version == 1)
-         {
-            f = new File(parentDir + File.separator + "AnkamaCertificates/");
-         }
-         if(version == 2)
-         {
-            f = new File(parentDir + File.separator + "AnkamaCertificates/v2-RELEASE");
-         }
-         f.createDirectory();
-         return f;
-      }
-      
-      private function addCertificate(id:uint, content:String) : Boolean
-      {
-         var cert:ShieldCertifcate = null;
-         var f:File = null;
-         var fs:FileStream = null;
-         _log.debug("ADD CERTIFICATE");
-         cert = new ShieldCertifcate();
-         cert.id = id;
-         cert.content = content;
-         cert.secureLevel = ShieldSecureLevel.MEDIUM;
-         try
-         {
-            _log.debug("ADD CERTIFICATE :: TRY");
-            f = this.getCertifFolder(2);
-            f = f.resolvePath(MD5.hash(this.getUsername()));
-            fs = new FileStream();
-            fs.open(f,FileMode.WRITE);
-            fs.writeBytes(cert.serialize());
-            fs.close();
-            return true;
-         }
-         catch(e:Error)
-         {
-            try
-            {
-               _log.debug("ADD CERTIFICATE :: FALLBACK");
-               f = getCertifFolder(2,true);
-               f = f.resolvePath(MD5.hash(getUsername()));
-               fs = new FileStream();
-               fs.open(f,FileMode.WRITE);
-               fs.writeBytes(cert.serialize());
-               fs.close();
-               return true;
-            }
-            catch(e:Error)
-            {
-               _log.debug("ADD CERTIFICATE :: ERROR");
-               ErrorManager.addError("Error writing certificate file at " + f.nativePath,e);
-               return false;
-            }
-         }
-      }
-      
       public function checkMigrate() : void
       {
          if(!this._hasV1Certif)
@@ -197,96 +293,6 @@ package com.ankamagames.dofus.logic.shield
          }
          var certif:TrustCertificate = this.retreiveCertificate();
          this.migrate(certif.id,certif.hash);
-      }
-      
-      private function getCertificateFile() : File
-      {
-         var found:Boolean = false;
-         var userName:String = null;
-         var fileName:String = null;
-         var f:File = null;
-         try
-         {
-            found = false;
-            userName = this.getUsername();
-            fileName = MD5.hash(userName);
-            f = this.getCertifFolder(2).resolvePath(fileName);
-            if(!f.exists)
-            {
-               f = this.getCertifFolder(2,false,true).resolvePath(fileName);
-            }
-            else
-            {
-               found = true;
-               _log.debug("CERTIF FOUND IN V2-RELEASE : " + f.nativePath);
-            }
-            if(!found)
-            {
-               if(!f.exists)
-               {
-                  f = this.getCertifFolder(1).resolvePath(fileName);
-               }
-               else
-               {
-                  found = true;
-                  _log.debug("CERTIF FOUND IN MAC APPLICATION DIRECTORY" + f.nativePath);
-               }
-            }
-            if(!found)
-            {
-               if(!f.exists)
-               {
-                  f = this.getCertifFolder(1,false,true).resolvePath(fileName);
-               }
-               else
-               {
-                  found = true;
-                  _log.debug("CERTIF FOUND IN V1" + f.nativePath);
-               }
-            }
-            if(!found)
-            {
-               if(!f.exists)
-               {
-                  f = this.getCertifFolder(2,true).resolvePath(fileName);
-               }
-               else
-               {
-                  found = true;
-                  _log.debug("CERTIF FOUND IN V1 ON MAC" + f.nativePath);
-               }
-            }
-            if(!found)
-            {
-               if(!f.exists)
-               {
-                  f = this.getCertifFolder(1,true).resolvePath(fileName);
-               }
-               else
-               {
-                  found = true;
-                  _log.debug("CERTIF FOUND IN CUSTOM SHARED OBJECTS V2" + f.nativePath);
-               }
-            }
-            if(!found && f.exists)
-            {
-               found = true;
-               _log.debug("CERTIF FOUND IN CUSTOM SHARED OBJECTS V1" + f.nativePath);
-            }
-            if(!found)
-            {
-               _log.debug("CERTIF NOT FOUND");
-            }
-            if(f.exists)
-            {
-               return f;
-            }
-         }
-         catch(e:Error)
-         {
-            _log.error("Erreur lors de la recherche du certifcat : " + e.message);
-         }
-         return null;
       }
       
       public function retreiveCertificate() : TrustCertificate
@@ -298,7 +304,7 @@ package com.ankamagames.dofus.logic.shield
          try
          {
             this._hasV1Certif = false;
-            f = this.getCertificateFile();
+            f = getCertificateFile();
             if(f)
             {
                fs = new FileStream();
@@ -336,17 +342,11 @@ package com.ankamagames.dofus.logic.shield
          });
       }
       
-      private function migrationSuccess(result:Object) : void
-      {
-         _log.debug("MIGRATION SUCCESS");
-         this.addCertificate(result.id,result.certificate);
-      }
-      
       private function onValidateCodeSuccess(e:ApiClientEvent) : void
       {
          if(e.response.payload.id && e.response.payload.encodedCertificate)
          {
-            this.addCertificate(e.response.payload.id,e.response.payload.encodedCertificate);
+            addCertificate(e.response.payload.id,e.response.payload.encodedCertificate);
          }
          this._validateCodeCallback();
       }

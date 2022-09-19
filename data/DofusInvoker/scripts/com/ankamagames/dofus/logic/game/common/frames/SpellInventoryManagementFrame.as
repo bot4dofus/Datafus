@@ -7,6 +7,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.datacenter.spells.Spell;
    import com.ankamagames.dofus.datacenter.spells.SpellLevel;
    import com.ankamagames.dofus.datacenter.spells.SpellVariant;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
@@ -156,7 +157,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          {
             case msg is SpellListMessage:
                slmsg = msg as SpellListMessage;
-               alternativeBreedSpells = FeatureManager.getInstance().isFeatureWithKeywordEnabled("character.spell.breed.alternative");
+               alternativeBreedSpells = FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_BREED_SPELL_ALTERNATIVE);
                playerId = PlayedCharacterManager.getInstance().id;
                this._fullSpellList[playerId] = new Array();
                idsList = new Array();
@@ -510,7 +511,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var spellVariant:SpellVariant = null;
          var spellIdInVector:Vector.<uint> = null;
          var variants:Array = null;
-         if(FeatureManager.getInstance().isFeatureWithKeywordEnabled("character.spell.breed.alternative"))
+         if(FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_BREED_SPELL_ALTERNATIVE))
          {
             return generateCurrentCustomModeBreedSpells();
          }
@@ -574,7 +575,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var spellIdInVector:Vector.<uint> = null;
          var variants:Array = null;
          var playerBreedId:int = PlayedCharacterManager.getInstance().infos.breed;
-         var _isForgettableSpellsUi:Boolean = FeatureManager.getInstance().isFeatureWithKeywordEnabled("character.spell.forgettable");
+         var _isForgettableSpellsUi:Boolean = FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS);
          if(_isForgettableSpellsUi)
          {
             breedSpellsId = CustomModeBreedSpell.getCustomModeBreedSpellIds(playerBreedId);

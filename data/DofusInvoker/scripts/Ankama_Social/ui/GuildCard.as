@@ -13,9 +13,9 @@ package Ankama_Social.ui
    import com.ankamagames.berilia.utils.BeriliaHookList;
    import com.ankamagames.berilia.utils.ComponentHookList;
    import com.ankamagames.dofus.datacenter.guild.EmblemSymbol;
+   import com.ankamagames.dofus.datacenter.guild.GuildRank;
    import com.ankamagames.dofus.datacenter.guild.GuildTag;
    import com.ankamagames.dofus.datacenter.guild.GuildTagsType;
-   import com.ankamagames.dofus.datacenter.guild.RankName;
    import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildDirectoryFiltersWrapper;
    import com.ankamagames.dofus.internalDatacenter.guild.GuildFactSheetWrapper;
@@ -26,6 +26,7 @@ package Ankama_Social.ui
    import com.ankamagames.dofus.network.enums.GuildRecruitmentTypeEnum;
    import com.ankamagames.dofus.network.types.game.character.CharacterMinimalGuildPublicInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations;
+   import com.ankamagames.dofus.network.types.game.guild.GuildRankPublicInformation;
    import com.ankamagames.dofus.network.types.game.guild.application.GuildApplicationInformation;
    import com.ankamagames.dofus.uiApi.ChatApi;
    import com.ankamagames.dofus.uiApi.DataApi;
@@ -268,19 +269,10 @@ package Ankama_Social.ui
       
       public function updateMemberLine(data:*, components:*, selected:Boolean) : void
       {
-         var rankName:RankName = null;
          if(data != null)
          {
             components.lbl_memberName.text = "{player," + data.name + "," + data.id + "::" + data.name + "}";
-            rankName = this.dataApi.getRankName(data.rank);
-            if(rankName != null)
-            {
-               components.lbl_memberRank.text = rankName.name;
-            }
-            else
-            {
-               components.lbl_memberRank.text = this.EMPTY_TEXT;
-            }
+            components.lbl_memberRank.text = this.getRankName(data.rank);
             if(data.level > ProtocolConstantsEnum.MAX_LEVEL)
             {
                components.lbl_memberLvl.cssClass = "darkboldcenter";
@@ -334,7 +326,7 @@ package Ankama_Social.ui
                alliance = this.socialApi.getAlliance();
                if(alliance)
                {
-                  if(this._myGuild.guildId == alliance.leadingGuildId && this.socialApi.hasGuildRight(this.playerApi.id(),"isBoss"))
+                  if(this._myGuild.guildId == alliance.leadingGuildId && this.socialApi.hasGuildRank(this.playerApi.id(),0))
                   {
                      this.btn_inviteInAlliance.visible = true;
                   }
@@ -357,6 +349,7 @@ package Ankama_Social.ui
             this.gd_members.dataProvider = new Vector.<CharacterMinimalGuildPublicInformations>();
          }
          this.lbl_guildTitle.text = this._data.guildRecruitmentInfo.recruitmentTitle;
+         this.lbl_guildDescription.resetScroll = true;
          this.lbl_guildDescription.text = this._data.guildRecruitmentInfo.recruitmentText != "" ? this._data.guildRecruitmentInfo.recruitmentText : this.uiApi.getText("ui.guild.noDescription");
          this.lbl_guildTags.htmlText = this.processTagsText(this._data.guildRecruitmentInfo.selectedCriteria);
          this.lbl_minLevel.htmlText = "<b><font color=\'#e0e0de\'>" + this.uiApi.getText("ui.guild.recruitement.minimumLevelHeader") + (!!this._data.guildRecruitmentInfo.isMinLevelRequired ? " (" + this.uiApi.getText("ui.common.mandatory").toLowerCase() + ")" : "") + this.uiApi.getText("ui.common.colon") + "</font></b> " + (this._data.guildRecruitmentInfo.minLevel > 1 ? this._data.guildRecruitmentInfo.minLevel : this.EMPTY_TEXT);
@@ -394,6 +387,17 @@ package Ankama_Social.ui
             return false;
          }
          return true;
+      }
+      
+      private function getRankName(rank:GuildRankPublicInformation) : String
+      {
+         var guildRank:GuildRank = null;
+         if(rank.id == 1 || rank.id == 4)
+         {
+            guildRank = this.dataApi.getGuildRank(rank.id);
+            return guildRank.name;
+         }
+         return this.uiApi.getText("ui.guild.guildMember");
       }
       
       public function onRelease(target:GraphicContainer) : void
@@ -560,11 +564,11 @@ package Ankama_Social.ui
             icon = this.dataApi.getEmblemSymbol(this._data.upEmblem.idEmblem);
             if(icon.colorizable)
             {
-               this.utilApi.changeColor(target.getChildByName("up"),this._data.upEmblem.color,0);
+               this.utilApi.changeColor(target,this._data.upEmblem.color,0);
             }
             else
             {
-               this.utilApi.changeColor(target.getChildByName("up"),this._data.upEmblem.color,0,true);
+               this.utilApi.changeColor(target,this._data.upEmblem.color,0,true);
             }
          }
       }
@@ -601,13 +605,13 @@ package Ankama_Social.ui
       
       public function sortPlayersByRank(a:CharacterMinimalGuildPublicInformations, b:CharacterMinimalGuildPublicInformations) : int
       {
-         var rankNameA:RankName = this.dataApi.getRankName(a.rank);
-         var rankNameB:RankName = this.dataApi.getRankName(b.rank);
-         if(rankNameA.order > rankNameB.order)
+         var rankOrderA:uint = a.rank.order;
+         var rankOrderB:uint = b.rank.order;
+         if(rankOrderA > rankOrderB)
          {
             return !!this._descendingSort ? -1 : 1;
          }
-         if(rankNameA.order < rankNameB.order)
+         if(rankOrderA < rankOrderB)
          {
             return !!this._descendingSort ? 1 : -1;
          }

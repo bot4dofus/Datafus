@@ -31,6 +31,20 @@ package com.ankamagames.jerakine.utils.misc
          return s.split(">").join("&gt;");
       }
       
+      public static function unescape(str:String) : String
+      {
+         var pattern:RegExp = /&amp;/g;
+         str = str.replace(pattern,"&");
+         pattern = /&#123;/g;
+         str = str.replace(pattern,"{");
+         pattern = /&#125;/g;
+         str = str.replace(pattern,"}");
+         pattern = /&lt;/g;
+         str = str.replace(pattern,"<");
+         pattern = /&gt;/g;
+         return str.replace(pattern,">");
+      }
+      
       public static function convertLatinToUtf(str:String) : String
       {
          var b:ByteArray = new ByteArray();
@@ -608,6 +622,58 @@ package com.ankamagames.jerakine.utils.misc
             toReturn = "0" + toReturn;
          }
          return toReturn;
+      }
+      
+      public static function getShortenedStringOfNumber(number:Number) : String
+      {
+         var absNumber:Number = Math.abs(number);
+         var shortenedNumber:Number = Number.NaN;
+         var shortenedNumberStr:String = null;
+         var suffixKey:String = null;
+         if(absNumber < 999)
+         {
+            shortenedNumber = number;
+         }
+         else if(absNumber < 999999)
+         {
+            shortenedNumber = number / 1000;
+            suffixKey = "ui.number.thousandsShortNumber";
+         }
+         else if(absNumber < 999999999)
+         {
+            shortenedNumber = number / 1000000;
+            suffixKey = "ui.number.millionsShortNumber";
+         }
+         else if(absNumber < 999999999999)
+         {
+            shortenedNumber = number / 1000000000;
+            suffixKey = "ui.number.billionsShortNumber";
+         }
+         else
+         {
+            if(absNumber >= 999999999999999)
+            {
+               return null;
+            }
+            shortenedNumber = number / 1000000000000;
+            suffixKey = "ui.number.trillionsShortNumber";
+         }
+         shortenedNumberStr = shortenedNumber.toFixed(1);
+         var trailingZeroIndex:int = shortenedNumberStr.lastIndexOf(".0");
+         if(trailingZeroIndex !== -1)
+         {
+            shortenedNumberStr = shortenedNumberStr.substring(0,trailingZeroIndex);
+         }
+         var separator:String = I18n.getUiText("ui.number.separator");
+         if("." !== separator)
+         {
+            shortenedNumberStr = shortenedNumberStr.replace(".",separator);
+         }
+         if(suffixKey !== null)
+         {
+            shortenedNumberStr = I18n.getUiText(suffixKey,[shortenedNumberStr]);
+         }
+         return shortenedNumberStr;
       }
    }
 }

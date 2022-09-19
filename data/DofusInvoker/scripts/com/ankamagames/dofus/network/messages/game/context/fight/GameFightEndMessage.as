@@ -14,7 +14,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightEndMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5098;
+      public static const protocolId:uint = 4357;
        
       
       private var _isInitialized:Boolean = false;
@@ -47,7 +47,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 5098;
+         return 4357;
       }
       
       public function initGameFightEndMessage(duration:uint = 0, rewardRate:int = 0, lootShareLimitMalus:int = 0, results:Vector.<FightResultListEntry> = null, namedPartyTeamsOutcomes:Vector.<NamedPartyTeamWithOutcome> = null) : GameFightEndMessage

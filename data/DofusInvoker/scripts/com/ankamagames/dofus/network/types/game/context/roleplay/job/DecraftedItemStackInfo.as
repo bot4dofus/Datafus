@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
    public class DecraftedItemStackInfo implements INetworkType
    {
       
-      public static const protocolId:uint = 8215;
+      public static const protocolId:uint = 1461;
        
       
       public var objectUID:uint = 0;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
       
       public function getTypeId() : uint
       {
-         return 8215;
+         return 1461;
       }
       
       public function initDecraftedItemStackInfo(objectUID:uint = 0, bonusMin:Number = 0, bonusMax:Number = 0, runesId:Vector.<uint> = null, runesQty:Vector.<uint> = null) : DecraftedItemStackInfo
@@ -77,7 +77,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
             {
                throw new Error("Forbidden value (" + this.runesId[_i4] + ") on element 4 (starting at 1) of runesId.");
             }
-            output.writeVarShort(this.runesId[_i4]);
+            output.writeVarInt(this.runesId[_i4]);
          }
          output.writeShort(this.runesQty.length);
          for(var _i5:uint = 0; _i5 < this.runesQty.length; _i5++)
@@ -105,7 +105,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
          var _runesIdLen:uint = input.readUnsignedShort();
          for(var _i4:uint = 0; _i4 < _runesIdLen; _i4++)
          {
-            _val4 = input.readVarUhShort();
+            _val4 = input.readVarUhInt();
             if(_val4 < 0)
             {
                throw new Error("Forbidden value (" + _val4 + ") on elements of runesId.");
@@ -168,7 +168,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
       
       private function _runesIdFunc(input:ICustomDataInput) : void
       {
-         var _val:uint = input.readVarUhShort();
+         var _val:uint = input.readVarUhInt();
          if(_val < 0)
          {
             throw new Error("Forbidden value (" + _val + ") on elements of runesId.");

@@ -158,7 +158,6 @@ package Ankama_Common.ui
       public function unload() : void
       {
          this.uiApi.hideTooltip();
-         this.uiApi.unloadUi("itemBoxFood");
       }
       
       private function onConfirmFeed(qty:Number = 1) : void
@@ -360,7 +359,6 @@ package Ankama_Common.ui
             else
             {
                this.ctr_quantity.visible = false;
-               this.uiApi.unloadUi("itemBoxFood");
             }
          }
       }

@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class HumanOptionFollowers extends HumanOption implements INetworkType
    {
       
-      public static const protocolId:uint = 77;
+      public static const protocolId:uint = 6730;
        
       
       public var followingCharactersLook:Vector.<IndexedEntityLook>;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 77;
+         return 6730;
       }
       
       public function initHumanOptionFollowers(followingCharactersLook:Vector.<IndexedEntityLook> = null) : HumanOptionFollowers

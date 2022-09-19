@@ -6,7 +6,6 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.berilia.managers.UiModuleManager;
    import com.ankamagames.dofus.BuildInfos;
    import com.ankamagames.dofus.Constants;
-   import com.ankamagames.dofus.internalDatacenter.connection.SubscriberGift;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.kernel.net.DisconnectionReasonEnum;
@@ -35,7 +34,6 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.misc.stats.StatisticsManager;
    import com.ankamagames.dofus.network.enums.BuildTypeEnum;
    import com.ankamagames.dofus.network.messages.connection.HelloConnectMessage;
-   import com.ankamagames.dofus.network.messages.connection.IdentificationAccountForceMessage;
    import com.ankamagames.dofus.network.messages.connection.IdentificationFailedBannedMessage;
    import com.ankamagames.dofus.network.messages.connection.IdentificationFailedForBadVersionMessage;
    import com.ankamagames.dofus.network.messages.connection.IdentificationFailedMessage;
@@ -49,7 +47,6 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.network.messages.security.ClientKeyMessage;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.data.XmlConfig;
-   import com.ankamagames.jerakine.json.JSONDecoder;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.managers.OptionManager;
@@ -58,20 +55,13 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.jerakine.messages.Message;
    import com.ankamagames.jerakine.network.ServerConnection;
    import com.ankamagames.jerakine.network.messages.ServerConnectionFailedMessage;
-   import com.ankamagames.jerakine.resources.ResourceType;
    import com.ankamagames.jerakine.resources.adapters.impl.SignedFileAdapter;
-   import com.ankamagames.jerakine.resources.events.ResourceErrorEvent;
-   import com.ankamagames.jerakine.resources.events.ResourceLoadedEvent;
-   import com.ankamagames.jerakine.resources.loaders.IResourceLoader;
-   import com.ankamagames.jerakine.resources.loaders.ResourceLoaderFactory;
-   import com.ankamagames.jerakine.resources.loaders.ResourceLoaderType;
    import com.ankamagames.jerakine.types.DataStoreType;
    import com.ankamagames.jerakine.types.enums.DataStoreEnum;
    import com.ankamagames.jerakine.types.enums.Priority;
    import com.ankamagames.jerakine.utils.crypto.Base64;
    import com.ankamagames.jerakine.utils.crypto.Signature;
    import com.ankamagames.jerakine.utils.system.CommandLineArguments;
-   import flash.system.LoaderContext;
    import flash.utils.ByteArray;
    import flash.utils.getQualifiedClassName;
    import flash.utils.getTimer;
@@ -90,10 +80,6 @@ package com.ankamagames.dofus.logic.connection.frames
       private static var _connexionHosts:Array = [];
        
       
-      private var _loader:IResourceLoader;
-      
-      private var _contextLoader:LoaderContext;
-      
       private var _dispatchModuleHook:Boolean;
       
       private var _connexionSequence:Array;
@@ -102,8 +88,6 @@ package com.ankamagames.dofus.logic.connection.frames
       
       private var _lastLoginHash:String;
       
-      private var _currentLogIsForced:Boolean = false;
-      
       private var _zaapApi:ZaapApi;
       
       public function AuthentificationFrame(dispatchModuleHook:Boolean = true)
@@ -111,11 +95,6 @@ package com.ankamagames.dofus.logic.connection.frames
          this.commonMod = UiModuleManager.getInstance().getModule("Ankama_Common").mainClass;
          super();
          this._dispatchModuleHook = dispatchModuleHook;
-         this._contextLoader = new LoaderContext();
-         this._contextLoader.checkPolicyFile = true;
-         this._loader = ResourceLoaderFactory.getLoader(ResourceLoaderType.SERIAL_LOADER);
-         this._loader.addEventListener(ResourceErrorEvent.ERROR,this.onLoadError);
-         this._loader.addEventListener(ResourceLoadedEvent.LOADED,this.onLoad);
          this._zaapApi = new ZaapApi(this);
       }
       
@@ -148,7 +127,6 @@ package com.ankamagames.dofus.logic.connection.frames
       
       public function pushed() : Boolean
       {
-         var dhf:DisconnectionHandlerFrame = null;
          var f:Frame = null;
          var className:String = null;
          var split:Array = null;
@@ -167,8 +145,7 @@ package com.ankamagames.dofus.logic.connection.frames
                }
                Kernel.getWorker().removeFrame(Kernel.getWorker().getFrame(ProtectPishingFrame));
             }
-            dhf = Kernel.getWorker().getFrame(DisconnectionHandlerFrame) as DisconnectionHandlerFrame;
-            KernelEventsManager.getInstance().processCallback(HookList.AuthentificationStart,dhf.mustShowLoginInterface);
+            KernelEventsManager.getInstance().processCallback(HookList.AuthentificationStart);
          }
          return true;
       }
@@ -176,7 +153,6 @@ package com.ankamagames.dofus.logic.connection.frames
       public function process(msg:Message) : Boolean
       {
          var lvwta:LoginValidationWithTokenAction = null;
-         var dst:DataStoreType = null;
          var lva:LoginValidationAction = null;
          var ports:String = null;
          var connexionPorts:Array = null;
@@ -228,7 +204,6 @@ package com.ankamagames.dofus.logic.connection.frames
          {
             case msg is LoginValidationWithTokenAction:
                lvwta = msg as LoginValidationWithTokenAction;
-               dst = new DataStoreType(CONNEXION_MODULE_NAME,true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_COMPUTER);
                if(BuildInfos.BUILD_TYPE >= BuildTypeEnum.INTERNAL && !lvwta.host)
                {
                   KernelEventsManager.getInstance().processCallback(HookList.DisplayHostSelection);
@@ -300,7 +275,7 @@ package com.ankamagames.dofus.logic.connection.frames
                {
                   connexionHosts.push(randomHost.host);
                }
-               defaultPort = uint(StoreDataManager.getInstance().getData(Constants.DATASTORE_COMPUTER_OPTIONS,"defaultConnectionPort"));
+               defaultPort = OptionManager.getOptionManager("dofus").getOption("connectionPort");
                this._connexionSequence = [];
                firstConnexionSequence = [];
                for each(host in connexionHosts)
@@ -387,7 +362,6 @@ package com.ankamagames.dofus.logic.connection.frames
                AuthentificationManager.getInstance().setSalt(hcmsg.salt);
                AuthentificationManager.getInstance().initAESKey();
                iMsg = AuthentificationManager.getInstance().getIdentificationMessage();
-               this._currentLogIsForced = iMsg is IdentificationAccountForceMessage;
                _log.info("Current version : " + iMsg.version.major + "." + iMsg.version.minor + "." + iMsg.version.code + "." + iMsg.version.build);
                dhf = Kernel.getWorker().getFrame(DisconnectionHandlerFrame) as DisconnectionHandlerFrame;
                time = Math.round(getTimer() / 1000);
@@ -418,6 +392,7 @@ package com.ankamagames.dofus.logic.connection.frames
                return true;
             case msg is IdentificationSuccessMessage:
                ismsg = IdentificationSuccessMessage(msg);
+               AuthentificationManager.getInstance().isAccountForced = ismsg.isAccountForced;
                updateInformationDisplayed = StoreDataManager.getInstance().getData(new DataStoreType("ComputerModule_Ankama_Connection",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_COMPUTER),"updateInformationDisplayed");
                currentVersion = BuildInfos.VERSION.major.toString() + "-" + BuildInfos.VERSION.minor.toString();
                if(updateInformationDisplayed != currentVersion)
@@ -443,7 +418,6 @@ package com.ankamagames.dofus.logic.connection.frames
                PlayerManager.getInstance().secretQuestion = ismsg.secretQuestion;
                PlayerManager.getInstance().accountCreation = ismsg.accountCreation;
                PlayerManager.getInstance().wasAlreadyConnected = ismsg.wasAlreadyConnected;
-               DataStoreType.ACCOUNT_ID = ismsg.accountId.toString();
                StoreDataManager.getInstance().setData(Constants.DATASTORE_COMPUTER_OPTIONS,"lastAccountId",ismsg.accountId);
                try
                {
@@ -476,10 +450,9 @@ package com.ankamagames.dofus.logic.connection.frames
                {
                   StoreUserDataManager.getInstance().gatherUserData();
                }
-               Kernel.getWorker().removeFrame(this);
                Kernel.getWorker().addFrame(new ChangeCharacterFrame());
                Kernel.getWorker().addFrame(new ServerSelectionFrame());
-               KernelEventsManager.getInstance().processCallback(HookList.IdentificationSuccess,!!ismsg.login ? ismsg.login : "",this._currentLogIsForced);
+               KernelEventsManager.getInstance().processCallback(HookList.IdentificationSuccess);
                KernelEventsManager.getInstance().processCallback(HookList.SubscriptionEndDateUpdate);
                if(StatisticsManager.getInstance().statsEnabled)
                {
@@ -549,8 +522,6 @@ package com.ankamagames.dofus.logic.connection.frames
       public function pulled() : Boolean
       {
          Berilia.getInstance().unloadUi("Login");
-         this._loader.removeEventListener(ResourceErrorEvent.ERROR,this.onLoadError);
-         this._loader.removeEventListener(ResourceLoadedEvent.LOADED,this.onLoad);
          return true;
       }
       
@@ -572,45 +543,6 @@ package com.ankamagames.dofus.logic.connection.frames
             lvwta = LoginValidationWithTicketAction.create(username,value,true);
             this.process(lvwta);
          }
-      }
-      
-      private function onLoad(e:ResourceLoadedEvent) : void
-      {
-         var jsonArray:* = undefined;
-         var gift:* = undefined;
-         var jdsonD:JSONDecoder = null;
-         var subGift:SubscriberGift = null;
-         var subGiftList:Array = [];
-         if(e.resourceType == ResourceType.RESOURCE_JSON)
-         {
-            jsonArray = e.resource;
-         }
-         else
-         {
-            try
-            {
-               jdsonD = new JSONDecoder(e.resource,true);
-               jsonArray = jdsonD.getValue();
-            }
-            catch(error:Error)
-            {
-               _log.error("Cannot read Json " + e.uri + "(" + error.message + ")");
-               return;
-            }
-         }
-         var i:int = 0;
-         for each(gift in jsonArray)
-         {
-            i++;
-            subGift = new SubscriberGift(gift.article_name,gift.article_price,gift.article_pricecrossed,gift.article_visual,gift["new"],gift.promo,gift.redirect,gift.title,gift.url);
-            subGiftList.push(subGift);
-         }
-         KernelEventsManager.getInstance().processCallback(HookList.SubscribersList,subGiftList);
-      }
-      
-      private function onLoadError(e:ResourceErrorEvent) : void
-      {
-         _log.error("Cannot load xml " + e.uri + "(" + e.errorMsg + ")");
       }
    }
 }

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
    public class CharacterCharacteristicDetailed extends CharacterCharacteristic implements INetworkType
    {
       
-      public static const protocolId:uint = 9089;
+      public static const protocolId:uint = 7776;
        
       
       public var base:int = 0;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       
       override public function getTypeId() : uint
       {
-         return 9089;
+         return 7776;
       }
       
       public function initCharacterCharacteristicDetailed(characteristicId:int = 0, base:int = 0, additional:int = 0, objectsAndMountBonus:int = 0, alignGiftBonus:int = 0, contextModif:int = 0) : CharacterCharacteristicDetailed
@@ -60,11 +60,11 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       public function serializeAs_CharacterCharacteristicDetailed(output:ICustomDataOutput) : void
       {
          super.serializeAs_CharacterCharacteristic(output);
-         output.writeVarShort(this.base);
-         output.writeVarShort(this.additional);
-         output.writeVarShort(this.objectsAndMountBonus);
-         output.writeVarShort(this.alignGiftBonus);
-         output.writeVarShort(this.contextModif);
+         output.writeVarInt(this.base);
+         output.writeVarInt(this.additional);
+         output.writeVarInt(this.objectsAndMountBonus);
+         output.writeVarInt(this.alignGiftBonus);
+         output.writeVarInt(this.contextModif);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -99,27 +99,27 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       
       private function _baseFunc(input:ICustomDataInput) : void
       {
-         this.base = input.readVarShort();
+         this.base = input.readVarInt();
       }
       
       private function _additionalFunc(input:ICustomDataInput) : void
       {
-         this.additional = input.readVarShort();
+         this.additional = input.readVarInt();
       }
       
       private function _objectsAndMountBonusFunc(input:ICustomDataInput) : void
       {
-         this.objectsAndMountBonus = input.readVarShort();
+         this.objectsAndMountBonus = input.readVarInt();
       }
       
       private function _alignGiftBonusFunc(input:ICustomDataInput) : void
       {
-         this.alignGiftBonus = input.readVarShort();
+         this.alignGiftBonus = input.readVarInt();
       }
       
       private function _contextModifFunc(input:ICustomDataInput) : void
       {
-         this.contextModif = input.readVarShort();
+         this.contextModif = input.readVarInt();
       }
    }
 }

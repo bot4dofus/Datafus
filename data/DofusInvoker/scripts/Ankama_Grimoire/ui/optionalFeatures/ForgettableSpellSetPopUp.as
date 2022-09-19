@@ -24,6 +24,7 @@ package Ankama_Grimoire.ui.optionalFeatures
    import com.ankamagames.dofus.network.enums.SavablePresetTypeEnum;
    import com.ankamagames.dofus.uiApi.ChatApi;
    import com.ankamagames.dofus.uiApi.DataApi;
+   import com.ankamagames.dofus.uiApi.InventoryApi;
    import com.ankamagames.dofus.uiApi.SoundApi;
    import com.ankamagames.dofus.uiApi.SystemApi;
    
@@ -50,6 +51,9 @@ package Ankama_Grimoire.ui.optionalFeatures
       [Api(name="UiApi")]
       public var uiApi:UiApi;
       
+      [Api(name="InventoryApi")]
+      public var inventoryApi:InventoryApi;
+      
       private var _actionId:uint;
       
       private var _spellSetDescr:Object;
@@ -67,6 +71,8 @@ package Ankama_Grimoire.ui.optionalFeatures
       private var _oldSpellSetName:String = null;
       
       private var _oldSpellSetIconId:Number = NaN;
+      
+      private var _currentUiName:String;
       
       public var btn_close:ButtonContainer;
       
@@ -111,6 +117,7 @@ package Ankama_Grimoire.ui.optionalFeatures
             throw new Error("You should provide at least the action ID");
          }
          this._actionId = params[0];
+         this._currentUiName = params[2];
          var spellSetIcons:Array = [];
          for each(spellSetIcon in this.dataApi.getPresetIcons())
          {
@@ -126,17 +133,17 @@ package Ankama_Grimoire.ui.optionalFeatures
             this._spellSetDescr = params[1];
             this._oldSpellSetName = this._spellSetDescr.spellSetName;
             this._oldSpellSetIconId = this._spellSetDescr.spellSetIconId;
-            this.lbl_title.text = this.uiApi.getText("ui.temporis.editSpellSet");
+            this.lbl_title.text = this._currentUiName == UIEnum.FORGETTABLE_MODSTERS_UI ? this.uiApi.getText("ui.temporis.modsters.team.edit") : this.uiApi.getText("ui.temporis.editSpellSet");
             this.btn_createSpellSet.visible = false;
             this.btn_editSpellSet.visible = true;
-            this.btn_deleteSpellSet.visible = true;
+            this.btn_deleteSpellSet.visible = this.lbl_deleteSpellSet.visible = this._currentUiName != UIEnum.FORGETTABLE_MODSTERS_UI;
             this.lbl_deleteSpellSet.x = this.btn_deleteSpellSet.x;
             this.lbl_deleteSpellSet.width = this.btn_deleteSpellSet.width;
          }
          else
          {
             this._spellSetDescr = {};
-            this.lbl_title.text = this.uiApi.getText("ui.temporis.createSpellSet");
+            this.lbl_title.text = this._currentUiName == UIEnum.FORGETTABLE_MODSTERS_UI ? this.uiApi.getText("ui.temporis.modsters.team.create") : this.uiApi.getText("ui.temporis.createSpellSet");
             this.btn_createSpellSet.visible = true;
             this.btn_editSpellSet.visible = false;
             this.lbl_deleteSpellSet.visible = false;
@@ -144,7 +151,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          }
          if(!this._spellSetDescr.hasOwnProperty("spellSetName"))
          {
-            this._spellSetDescr.spellSetName = "";
+            this._spellSetDescr.spellSetName = this.uiApi.getText("ui.temporis.modsters.team.placeholderName",this.inventoryApi.getBuilds(2).length + 1);
          }
          if(!this._spellSetDescr.hasOwnProperty("spellSetIconId"))
          {
@@ -153,7 +160,7 @@ package Ankama_Grimoire.ui.optionalFeatures
          this.inp_spellSetName.text = this._spellSetDescr.spellSetName;
          this.updateSpellSetIconOrderFromId(this._spellSetDescr.spellSetIconId);
          this.updateSpellSetIcon(this._spellSetDescr.spellSetIconId);
-         var parentUi:UiRootContainer = this.uiApi.getUi(UIEnum.FORGETTABLE_SPELLS_UI);
+         var parentUi:UiRootContainer = this.uiApi.getUi(this._currentUiName);
          var childUi:UiRootContainer = this.uiApi.getUi(UIEnum.FORGETTABLE_SPELL_SET_POP_UP);
          if(parentUi !== null && childUi !== null)
          {

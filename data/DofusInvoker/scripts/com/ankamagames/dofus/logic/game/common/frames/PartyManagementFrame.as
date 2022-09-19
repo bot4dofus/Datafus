@@ -11,7 +11,10 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.internalDatacenter.people.PartyMemberWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkMapPosition;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkShowPlayerMenuManager;
    import com.ankamagames.dofus.logic.common.managers.NotificationManager;
+   import com.ankamagames.dofus.logic.game.common.actions.GroupTeleportPlayerOfferReplyAction;
    import com.ankamagames.dofus.logic.game.common.actions.breach.BreachInvitationAnswerAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.ArenaFightAnswerAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.ArenaRegisterAction;
@@ -129,6 +132,9 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.context.roleplay.party.breach.PartyMemberInBreachFightMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.party.entity.PartyEntityUpdateLightMessage;
    import com.ankamagames.dofus.network.messages.game.dialog.LeaveDialogRequestMessage;
+   import com.ankamagames.dofus.network.messages.game.interactive.meeting.GroupTeleportPlayerAnswerMessage;
+   import com.ankamagames.dofus.network.messages.game.interactive.meeting.GroupTeleportPlayerCloseMessage;
+   import com.ankamagames.dofus.network.messages.game.interactive.meeting.GroupTeleportPlayerOfferMessage;
    import com.ankamagames.dofus.network.messages.game.interactive.meeting.TeleportBuddiesMessage;
    import com.ankamagames.dofus.network.messages.game.interactive.meeting.TeleportBuddiesRequestedMessage;
    import com.ankamagames.dofus.network.messages.game.interactive.meeting.TeleportToBuddyAnswerMessage;
@@ -166,6 +172,8 @@ package com.ankamagames.dofus.logic.game.common.frames
    {
       
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(PartyManagementFrame));
+      
+      private static const GROUP_TELEPORT_PLAYER_OFFER_POPUP_PREFIX:String = "GroupTeleportPlayerOfferPopup_";
        
       
       private var _playerNameInvited:String;
@@ -525,6 +533,12 @@ package com.ankamagames.dofus.logic.game.common.frames
          var biaa:BreachInvitationAnswerAction = null;
          var biam:BreachInvitationAnswerMessage = null;
          var bicmsg:BreachInvitationCloseMessage = null;
+         var gtpomsg:GroupTeleportPlayerOfferMessage = null;
+         var notificationManager:NotificationManager = null;
+         var notifId:uint = 0;
+         var gtpcmsg:GroupTeleportPlayerCloseMessage = null;
+         var replyMsg:GroupTeleportPlayerAnswerMessage = null;
+         var gtporaction:GroupTeleportPlayerOfferReplyAction = null;
          var piarmsg:PartyInvitationArenaRequestMessage = null;
          var player_PIARMSG:PlayerSearchCharacterNameInformation = null;
          var pirmsg:PartyInvitationRequestMessage = null;
@@ -2099,9 +2113,25 @@ package com.ankamagames.dofus.logic.game.common.frames
                bicmsg = msg as BreachInvitationCloseMessage;
                NotificationManager.getInstance().closeNotification("breachInvit_" + bicmsg.host.id);
                return true;
-            default:
-               return false;
+            case msg is GroupTeleportPlayerOfferMessage:
+               gtpomsg = msg as GroupTeleportPlayerOfferMessage;
+               notificationManager = NotificationManager.getInstance();
+               notifId = notificationManager.prepareNotification(I18n.getUiText("ui.common.invitation"),I18n.getUiText("ui.teleport.groupTeleportMessage",[HyperlinkShowPlayerMenuManager.getLink(gtpomsg.requesterId,gtpomsg.requesterName),HyperlinkMapPosition.getLink(gtpomsg.worldX,gtpomsg.worldY,gtpomsg.mapId)]),NotificationTypeEnum.INVITATION,GROUP_TELEPORT_PLAYER_OFFER_POPUP_PREFIX + gtpomsg.requesterId.toString() + "_" + gtpomsg.mapId.toString());
+               NotificationManager.getInstance().addButtonToNotification(notifId,I18n.getUiText("ui.common.refuse"),"GroupTeleportPlayerOfferReplyAction",[gtpomsg.requesterId,false],false);
+               NotificationManager.getInstance().addButtonToNotification(notifId,I18n.getUiText("ui.common.accept"),"GroupTeleportPlayerOfferReplyAction",[gtpomsg.requesterId,true],false,130);
+               NotificationManager.getInstance().sendNotification(notifId);
+               return true;
+            case msg is GroupTeleportPlayerCloseMessage:
+               gtpcmsg = msg as GroupTeleportPlayerCloseMessage;
+               NotificationManager.getInstance().closeNotification(GROUP_TELEPORT_PLAYER_OFFER_POPUP_PREFIX + gtpcmsg.requesterId.toString() + "_" + gtpcmsg.mapId.toString());
+               return true;
+            case msg is GroupTeleportPlayerOfferReplyAction:
+               replyMsg = new GroupTeleportPlayerAnswerMessage();
+               gtporaction = msg as GroupTeleportPlayerOfferReplyAction;
+               replyMsg.initGroupTeleportPlayerAnswerMessage(gtporaction.isTeleport,gtporaction.requesterId);
+               ConnectionsHandler.getConnection().send(replyMsg);
          }
+         return false;
       }
       
       private function cleanPartyFightNotifications() : void

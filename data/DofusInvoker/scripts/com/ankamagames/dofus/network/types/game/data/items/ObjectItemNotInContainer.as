@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class ObjectItemNotInContainer extends Item implements INetworkType
    {
       
-      public static const protocolId:uint = 8362;
+      public static const protocolId:uint = 6595;
        
       
       public var objectGID:uint = 0;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       override public function getTypeId() : uint
       {
-         return 8362;
+         return 6595;
       }
       
       public function initObjectItemNotInContainer(objectGID:uint = 0, effects:Vector.<ObjectEffect> = null, objectUID:uint = 0, quantity:uint = 0) : ObjectItemNotInContainer
@@ -63,7 +63,7 @@ package com.ankamagames.dofus.network.types.game.data.items
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element objectGID.");
          }
-         output.writeVarShort(this.objectGID);
+         output.writeVarInt(this.objectGID);
          output.writeShort(this.effects.length);
          for(var _i2:uint = 0; _i2 < this.effects.length; _i2++)
          {
@@ -121,7 +121,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       private function _objectGIDFunc(input:ICustomDataInput) : void
       {
-         this.objectGID = input.readVarUhShort();
+         this.objectGID = input.readVarUhInt();
          if(this.objectGID < 0)
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element of ObjectItemNotInContainer.objectGID.");

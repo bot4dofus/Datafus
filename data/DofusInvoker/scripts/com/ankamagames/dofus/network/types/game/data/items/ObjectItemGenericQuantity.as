@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class ObjectItemGenericQuantity extends Item implements INetworkType
    {
       
-      public static const protocolId:uint = 7873;
+      public static const protocolId:uint = 2339;
        
       
       public var objectGID:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       override public function getTypeId() : uint
       {
-         return 7873;
+         return 2339;
       }
       
       public function initObjectItemGenericQuantity(objectGID:uint = 0, quantity:uint = 0) : ObjectItemGenericQuantity
@@ -50,7 +50,7 @@ package com.ankamagames.dofus.network.types.game.data.items
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element objectGID.");
          }
-         output.writeVarShort(this.objectGID);
+         output.writeVarInt(this.objectGID);
          if(this.quantity < 0)
          {
             throw new Error("Forbidden value (" + this.quantity + ") on element quantity.");
@@ -84,7 +84,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       private function _objectGIDFunc(input:ICustomDataInput) : void
       {
-         this.objectGID = input.readVarUhShort();
+         this.objectGID = input.readVarUhInt();
          if(this.objectGID < 0)
          {
             throw new Error("Forbidden value (" + this.objectGID + ") on element of ObjectItemGenericQuantity.objectGID.");

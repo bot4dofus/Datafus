@@ -536,7 +536,7 @@ package Ankama_Tutorial.ui
          this.lbl_title_message.selectable = this._currentTips.type == NotificationTypeEnum.ERROR;
          this.lbl_message.selectable = this._currentTips.type == NotificationTypeEnum.ERROR;
          this.lbl_title_message.fixedWidth = true;
-         this.lbl_title_message.width = 200;
+         this.lbl_title_message.width = 240;
          this.lbl_message.fullSize(300);
          this.ctr_background_message.height = this.lbl_message.textHeight + this.lbl_title_message.y + this.lbl_title_message.textHeight + PADDING_BOTTOM + BACKGROUND_MESSAGE_GEIGHT_ADDITION;
          this.slide(this.ctr_text,this.ctr_text.x,CTR_TEXT_MARGIN_TOP + this._tipsList.indexOf(this._currentTips) * NOTIFICATION_HEIGHT,0);

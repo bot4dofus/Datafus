@@ -21,6 +21,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.datacenter.houses.HavenbagTheme;
    import com.ankamagames.dofus.datacenter.items.Item;
    import com.ankamagames.dofus.datacenter.monsters.Monster;
+   import com.ankamagames.dofus.datacenter.optionalFeatures.Modster;
    import com.ankamagames.dofus.datacenter.quest.Quest;
    import com.ankamagames.dofus.datacenter.sounds.SoundAnimation;
    import com.ankamagames.dofus.datacenter.sounds.SoundBones;
@@ -40,6 +41,8 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowCellManager;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkZaapPosition;
+   import com.ankamagames.dofus.logic.common.managers.NotificationManager;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.common.actions.StartZoomAction;
    import com.ankamagames.dofus.logic.game.common.actions.breach.BreachTeleportRequestAction;
@@ -105,7 +108,8 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.messages.game.context.roleplay.MapComplementaryInformationsWithCoordsMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.MapFightCountMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.MapInformationsRequestMessage;
-   import com.ankamagames.dofus.network.messages.game.context.roleplay.MapRewardRateMessage;
+   import com.ankamagames.dofus.network.messages.game.context.roleplay.SubareaRewardRateMessage;
+   import com.ankamagames.dofus.network.messages.game.context.roleplay.anomaly.AnomalyOpenedMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.anomaly.AnomalyStateMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.anomaly.MapComplementaryInformationsAnomalyMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.breach.BreachEnterMessage;
@@ -154,6 +158,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.types.game.context.roleplay.HumanOptionFollowers;
    import com.ankamagames.dofus.network.types.game.context.roleplay.HumanOptionObjectUse;
    import com.ankamagames.dofus.network.types.game.context.roleplay.HumanOptionSkillUse;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.HumanOptionSpeedMultiplier;
    import com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupLightInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.npc.MapNpcQuestInfo;
@@ -171,6 +176,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.types.entities.RoleplayObjectEntity;
    import com.ankamagames.dofus.types.enums.AnimationEnum;
    import com.ankamagames.dofus.types.enums.EntityIconEnum;
+   import com.ankamagames.dofus.types.enums.NotificationTypeEnum;
    import com.ankamagames.jerakine.benchmark.BenchmarkTimer;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.entities.interfaces.IDisplayable;
@@ -180,6 +186,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.jerakine.enum.OptionEnum;
    import com.ankamagames.jerakine.managers.LangManager;
    import com.ankamagames.jerakine.managers.OptionManager;
+   import com.ankamagames.jerakine.managers.StoreDataManager;
    import com.ankamagames.jerakine.messages.Frame;
    import com.ankamagames.jerakine.messages.Message;
    import com.ankamagames.jerakine.resources.events.ResourceErrorEvent;
@@ -192,7 +199,9 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.jerakine.sequencer.SerialSequencer;
    import com.ankamagames.jerakine.types.ASwf;
    import com.ankamagames.jerakine.types.Callback;
+   import com.ankamagames.jerakine.types.DataStoreType;
    import com.ankamagames.jerakine.types.Uri;
+   import com.ankamagames.jerakine.types.enums.DataStoreEnum;
    import com.ankamagames.jerakine.types.enums.DirectionsEnum;
    import com.ankamagames.jerakine.types.events.PropertyChangeEvent;
    import com.ankamagames.jerakine.types.positions.MapPoint;
@@ -213,6 +222,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.TimerEvent;
+   import flash.filters.GlowFilter;
    import flash.geom.Rectangle;
    import flash.utils.Dictionary;
    import flash.utils.clearTimeout;
@@ -420,7 +430,9 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var smumsg:StatedMapUpdateMessage = null;
          var stackFrame:StackManagementFrame = null;
          var taimsg:AnomalyStateMessage = null;
-         var mrrmsg:MapRewardRateMessage = null;
+         var aomsg:AnomalyOpenedMessage = null;
+         var dataStoreType:DataStoreType = null;
+         var srrmsg:SubareaRewardRateMessage = null;
          var btrmsg:BreachTeleportRequestMessage = null;
          var btrespmsg:BreachTeleportResponseMessage = null;
          var bemsg:BreachEnterMessage = null;
@@ -526,6 +538,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var mo:MapObstacle = null;
          var mciamsg:MapComplementaryInformationsAnomalyMessage = null;
          var partyManagementFrame:PartyManagementFrame = null;
+         var anomalyNid:uint = 0;
          var doorsLength:int = 0;
          var humi:HumanInformations = null;
          var infos:GameRolePlayHumanoidInformations = null;
@@ -711,7 +724,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                            KernelEventsManager.getInstance().processCallback(HookList.PlayedCharacterLookChange,ac.look);
                            this.dispatchPlayerNewLook = false;
                         }
-                        ac.speedAdjust = PlayedCharacterManager.getInstance().speedAjust;
                      }
                      character = actor1 as GameRolePlayCharacterInformations;
                      if(character)
@@ -886,7 +898,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                if(msg is MapComplementaryInformationsAnomalyMessage)
                {
                   mciamsg = msg as MapComplementaryInformationsAnomalyMessage;
-                  KernelEventsManager.getInstance().processCallback(HookList.AnomalyMapInfos,mciamsg.level,mciamsg.closingTime);
+                  KernelEventsManager.getInstance().processCallback(HookList.AnomalyMapInfos,SubArea.getSubAreaById(mciamsg.subAreaId).level,mciamsg.closingTime);
                   PlayedCharacterManager.getInstance().isInAnomaly = true;
                }
                else if(PlayedCharacterManager.getInstance().isInAnomaly)
@@ -926,10 +938,19 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                taimsg = msg as AnomalyStateMessage;
                KernelEventsManager.getInstance().processCallback(HookList.AnomalyState,taimsg.open,taimsg.closingTime,taimsg.subAreaId);
                return true;
-            case msg is MapRewardRateMessage:
-               mrrmsg = msg as MapRewardRateMessage;
-               this._mapTotalRewardRate = mrrmsg.totalRate;
-               KernelEventsManager.getInstance().processCallback(HookList.MapRewardRate,mrrmsg.totalRate,mrrmsg.mapRate,mrrmsg.subAreaRate);
+            case msg is AnomalyOpenedMessage:
+               aomsg = msg as AnomalyOpenedMessage;
+               dataStoreType = new DataStoreType("Module_Ankama_Cartography",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_CHARACTER);
+               if(StoreDataManager.getInstance().getData(dataStoreType,"anomalynotificationdata"))
+               {
+                  anomalyNid = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.anomaly.name"),I18n.getUiText("ui.anomaly.notification",[HyperlinkZaapPosition.getLink(aomsg.subAreaId)]),NotificationTypeEnum.SERVER_INFORMATION,"anomaly_" + aomsg.subAreaId,false,false);
+                  NotificationManager.getInstance().sendNotification(anomalyNid);
+               }
+               return true;
+            case msg is SubareaRewardRateMessage:
+               srrmsg = msg as SubareaRewardRateMessage;
+               this._mapTotalRewardRate = srrmsg.subAreaRate;
+               KernelEventsManager.getInstance().processCallback(HookList.MapRewardRate,srrmsg.subAreaRate);
                return true;
             case msg is BreachTeleportRequestAction:
                btrmsg = new BreachTeleportRequestMessage();
@@ -2034,6 +2055,9 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                      case option is HumanOptionAlliance:
                         this.addConquestIcon(infos.contextualId,option as HumanOptionAlliance);
                         break;
+                     case option is HumanOptionSpeedMultiplier:
+                        ac.speedAdjust = 10 * (option.speedMultiplier - 1);
+                        break;
                   }
                }
                pets = ac.look.getSubEntitiesFromCategory(SubEntityBindingPointCategoryEnum.HOOK_POINT_CATEGORY_PET_FOLLOWER);
@@ -2258,13 +2282,36 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       
       private function addObject(pObjectUID:uint, pCellId:uint) : void
       {
+         var objectUri:Uri = null;
+         var modster:Modster = null;
+         var innerGlow:GlowFilter = null;
+         var outerGlow:GlowFilter = null;
          if(this._objectsByCellId && this._objectsByCellId[pCellId])
          {
             _log.error("To add an object on the ground, the destination cell must be empty.");
             return;
          }
-         var objectUri:Uri = new Uri(LangManager.getInstance().getEntry("config.gfx.path.item.vector") + Item.getItemById(pObjectUID).iconId + ".swf");
          var objectEntity:IInteractive = new RoleplayObjectEntity(pObjectUID,MapPoint.fromCellId(pCellId));
+         var item:Item = Item.getItemById(pObjectUID);
+         if(item && item.typeId == DataEnum.ITEM_TYPE_MODSTER)
+         {
+            modster = Modster.getModsterByScrollId(item.id);
+            if(modster)
+            {
+               objectUri = new Uri(LangManager.getInstance().getEntry("config.gfx.path") + "modsters/" + modster.modsterId + ".swf");
+            }
+            else
+            {
+               objectUri = new Uri(LangManager.getInstance().getEntry("config.gfx.path.item.vector") + item.iconId + ".swf");
+            }
+            innerGlow = new GlowFilter(0,1,3,3,3);
+            outerGlow = new GlowFilter(16777215,0.6,6,6,4);
+            (objectEntity as RoleplayObjectEntity).filters = [innerGlow,outerGlow];
+         }
+         else
+         {
+            objectUri = new Uri(LangManager.getInstance().getEntry("config.gfx.path.item.vector") + item.iconId + ".swf");
+         }
          (objectEntity as IDisplayable).display();
          var groundObject:GameContextActorInformations = new GroundObject(Item.getItemById(pObjectUID));
          groundObject.contextualId = objectEntity.id;
@@ -2352,7 +2399,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       private function removeFight(fightId:uint) : void
       {
          var team:FightTeam = null;
-         var entity:Object = null;
          var fight:Fight = this._fights[fightId];
          if(fight == null)
          {
@@ -2360,7 +2406,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          }
          for each(team in fight.teams)
          {
-            entity = _entities[team.teamEntity.id];
             _log.debug("suppression de la team " + team.teamEntity.id);
             Kernel.getWorker().process(new EntityMouseOutMessage(team.teamEntity as IInteractive));
             (team.teamEntity as IDisplayable).remove();

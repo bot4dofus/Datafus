@@ -16,6 +16,7 @@ package Ankama_Roleplay.ui
    import com.ankamagames.berilia.utils.BeriliaHookList;
    import com.ankamagames.dofus.datacenter.appearance.Ornament;
    import com.ankamagames.dofus.datacenter.spells.SpellLevel;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.modules.utils.SpellTooltipSettings;
@@ -246,7 +247,7 @@ package Ankama_Roleplay.ui
                   "text":this.dataApi.getEmoticon(22).name
                });
             }
-            if(pParam.spellObtained && !this.configApi.isFeatureWithKeywordEnabled("character.spell.forgettable"))
+            if(pParam.spellObtained && !this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS))
             {
                spellWrapper = pParam.newSpellWrappers[0];
                maxSpellLevel = this.dataApi.getSpellLevel(pParam.newSpellWrappers[0].spell.spellLevels[pParam.newSpellWrappers[0].spellLevel - 1]).minPlayerLevel;
@@ -334,6 +335,7 @@ package Ankama_Roleplay.ui
       
       public function unload() : void
       {
+         var uiName:String = null;
          if(this.uiApi.getUi("levelUpGod"))
          {
             this.uiApi.unloadUi("levelUpGod");
@@ -355,11 +357,16 @@ package Ankama_Roleplay.ui
                this.sysApi.dispatchHook(BeriliaHookList.CloseLevelUpUiTutorial);
             }
          }
-         if(this.configApi.isFeatureWithKeywordEnabled("character.spell.forgettable"))
+         if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS))
          {
-            if(this.uiApi.getUi(UIEnum.FORGETTABLE_SPELLS_UI))
+            uiName = UIEnum.FORGETTABLE_SPELLS_UI;
+            if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.MODSTERS))
             {
-               this.uiApi.setUiStrata(UIEnum.FORGETTABLE_SPELLS_UI,StrataEnum.STRATA_MEDIUM);
+               uiName = UIEnum.FORGETTABLE_MODSTERS_UI;
+            }
+            if(this.uiApi.getUi(uiName))
+            {
+               this.uiApi.setUiStrata(uiName,StrataEnum.STRATA_MEDIUM);
             }
          }
          else if(this.uiApi.getUi("spellBase"))

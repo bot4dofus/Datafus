@@ -8,6 +8,7 @@ package Ankama_Tooltips.ui
    import com.ankamagames.dofus.datacenter.guild.EmblemSymbol;
    import com.ankamagames.dofus.datacenter.jobs.Skill;
    import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
+   import com.ankamagames.dofus.internalDatacenter.guild.EmblemWrapper;
    import com.ankamagames.dofus.uiApi.DataApi;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
    import com.ankamagames.dofus.uiApi.SocialApi;
@@ -116,6 +117,8 @@ package Ankama_Tooltips.ui
          var topBlock:GraphicContainer = null;
          var topBlockBg:GraphicContainer = null;
          var emblemMiddle:Number = NaN;
+         var allianceEmblemBackWrapper:EmblemWrapper = null;
+         var allianceEmblemUpWrapper:EmblemWrapper = null;
          var hasSubArea:* = pSubArea != null;
          this.ctr_additionalInfoBg.visible = this.lbl_additionalInfo.visible = false;
          if(pMapElementText)
@@ -183,8 +186,10 @@ package Ankama_Tooltips.ui
                this.ctr_allianceBg.height = Math.max(this.tx_emblemBack.height,this.lbl_allianceName.textHeight) + 7 * 2;
                this.tx_emblemBack.dispatchMessages = this.tx_emblemUp.dispatchMessages = true;
                this._currentAlliance = pAlliance;
-               this.tx_emblemBack.uri = this.uiApi.createUri(this.sysApi.getConfigEntry("config.gfx.path.emblem_icons.large") + "backalliance/" + pAlliance.backEmblem.idEmblem + ".swf");
-               this.tx_emblemUp.uri = this.uiApi.createUri(this.sysApi.getConfigEntry("config.gfx.path.emblem_icons.large") + "up/" + pAlliance.upEmblem.idEmblem + ".swf");
+               allianceEmblemBackWrapper = EmblemWrapper.create(pAlliance.backEmblem.idEmblem,EmblemWrapper.BACK,pAlliance.backEmblem.color);
+               this.tx_emblemBack.uri = allianceEmblemBackWrapper.fullSizeIconUri;
+               allianceEmblemUpWrapper = EmblemWrapper.create(pAlliance.upEmblem.idEmblem,EmblemWrapper.UP,pAlliance.upEmblem.color);
+               this.tx_emblemUp.uri = allianceEmblemUpWrapper.fullSizeIconUri;
             }
             topBlock = this.ctr_subAreaInfo;
             topBlockBg = this.ctr_subAreaInfoBg;
@@ -310,7 +315,7 @@ package Ankama_Tooltips.ui
                break;
             case this.tx_emblemUp:
                icon = this.dataApi.getEmblemSymbol(this._currentAlliance.upEmblem.idEmblem);
-               this.utilApi.changeColor(this.tx_emblemUp.getChildByName("up"),this._currentAlliance.upEmblem.color,0,!icon.colorizable);
+               this.utilApi.changeColor(this.tx_emblemUp,this._currentAlliance.upEmblem.color,0,!icon.colorizable);
          }
       }
       

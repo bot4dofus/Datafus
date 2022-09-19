@@ -22,11 +22,11 @@ package Ankama_Tutorial.ui
    import com.ankamagames.berilia.utils.ComponentHookList;
    import com.ankamagames.dofus.datacenter.quest.Quest;
    import com.ankamagames.dofus.datacenter.quest.QuestStep;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.logic.game.common.actions.quest.GuidedModeQuitRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.GuidedModeReturnRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.QuestInfosRequestAction;
-   import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.CraftHookList;
    import com.ankamagames.dofus.misc.lists.ExchangeHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
@@ -326,7 +326,7 @@ package Ankama_Tutorial.ui
          }
          var maxSteps:int = steps.length;
          this.pb_progressBar.value = stepCount / maxSteps;
-         if(step.experienceReward > 0 && this.configApi.isFeatureWithKeywordEnabled("character.xp"))
+         if(step.experienceReward > 0 && this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.CHARACTER_XP))
          {
             this.lbl_expRewardValue.text = step.experienceReward.toString();
             this.lbl_expRewardValue.visible = true;
@@ -402,12 +402,6 @@ package Ankama_Tutorial.ui
                break;
             case this.btn_close_ctr_quest:
                this._popupName = this.modCommon.openPopup(this.uiApi.getText("ui.tutorial.tutorial"),this.uiApi.getText("ui.tutorial.closeTutorialPopup"),[this.uiApi.getText("ui.common.yes"),this.uiApi.getText("ui.common.no")],[this.onCloseTutorial,this.nullFunction],this.onCloseTutorial,this.nullFunction);
-               break;
-            case this.slot_reward1:
-               if(!this.sysApi.getOption("displayTooltips","dofus"))
-               {
-                  this.sysApi.dispatchHook(ChatHookList.ShowObjectLinked,this.slot_reward1.data);
-               }
          }
       }
       

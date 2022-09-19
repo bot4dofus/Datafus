@@ -52,9 +52,7 @@ package Ankama_Common.ui
             this.btn_primary.width = this.btn_lbl_btn_primary.width + Number(uiApi.me().getConstant("primary_button_margin")) * 2;
             this.btn_texture_btn_primary.width = this.btn_primary.width;
             this.btn_lbl_btn_primary.width = this.btn_primary.width;
-            lbl_content.fullWidthAndHeight(0,20);
-            this.height += lbl_content.y + lbl_content.height - lbl_title_popup.y + Number(uiApi.me().getConstant("bottom_margin"));
-            this.popup.height = this.height;
+            this.computePopupHeight();
             uiApi.me().render();
             return;
          }
@@ -64,6 +62,13 @@ package Ankama_Common.ui
       override public function unload() : void
       {
          soundApi.playSound(SoundTypeEnum.CLOSE_WINDOW);
+      }
+      
+      protected function computePopupHeight() : void
+      {
+         lbl_content.fullWidthAndHeight(0,20);
+         this.height += lbl_content.y + lbl_content.height - lbl_title_popup.y + Number(uiApi.me().getConstant("bottom_margin"));
+         this.popup.height = this.height;
       }
    }
 }

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.presets
    public class ItemForPreset implements INetworkType
    {
       
-      public static const protocolId:uint = 4107;
+      public static const protocolId:uint = 5749;
        
       
       public var position:uint = 63;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.presets
       
       public function getTypeId() : uint
       {
-         return 4107;
+         return 5749;
       }
       
       public function initItemForPreset(position:uint = 63, objGid:uint = 0, objUid:uint = 0) : ItemForPreset
@@ -54,7 +54,7 @@ package com.ankamagames.dofus.network.types.game.presets
          {
             throw new Error("Forbidden value (" + this.objGid + ") on element objGid.");
          }
-         output.writeVarShort(this.objGid);
+         output.writeVarInt(this.objGid);
          if(this.objUid < 0)
          {
             throw new Error("Forbidden value (" + this.objUid + ") on element objUid.");
@@ -97,7 +97,7 @@ package com.ankamagames.dofus.network.types.game.presets
       
       private function _objGidFunc(input:ICustomDataInput) : void
       {
-         this.objGid = input.readVarUhShort();
+         this.objGid = input.readVarUhInt();
          if(this.objGid < 0)
          {
             throw new Error("Forbidden value (" + this.objGid + ") on element of ItemForPreset.objGid.");

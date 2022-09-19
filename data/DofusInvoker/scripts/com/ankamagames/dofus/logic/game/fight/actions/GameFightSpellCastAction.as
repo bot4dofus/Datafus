@@ -7,6 +7,8 @@ package com.ankamagames.dofus.logic.game.fight.actions
    {
        
       
+      public var entityId:Number = 1.7976931348623157E308;
+      
       public var spellId:uint;
       
       public var slot:int;
@@ -16,9 +18,10 @@ package com.ankamagames.dofus.logic.game.fight.actions
          super(params);
       }
       
-      public static function create(spellId:uint, slot:int) : GameFightSpellCastAction
+      public static function create(entityId:Number, spellId:uint, slot:int) : GameFightSpellCastAction
       {
          var a:GameFightSpellCastAction = new GameFightSpellCastAction(arguments);
+         a.entityId = entityId;
          a.spellId = spellId;
          a.slot = slot;
          return a;

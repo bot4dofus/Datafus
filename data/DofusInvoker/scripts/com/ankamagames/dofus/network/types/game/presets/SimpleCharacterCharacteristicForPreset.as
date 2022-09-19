@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.presets
    public class SimpleCharacterCharacteristicForPreset implements INetworkType
    {
       
-      public static const protocolId:uint = 7495;
+      public static const protocolId:uint = 1231;
        
       
       public var keyword:String = "";
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.presets
       
       public function getTypeId() : uint
       {
-         return 7495;
+         return 1231;
       }
       
       public function initSimpleCharacterCharacteristicForPreset(keyword:String = "", base:int = 0, additionnal:int = 0) : SimpleCharacterCharacteristicForPreset
@@ -50,8 +50,8 @@ package com.ankamagames.dofus.network.types.game.presets
       public function serializeAs_SimpleCharacterCharacteristicForPreset(output:ICustomDataOutput) : void
       {
          output.writeUTF(this.keyword);
-         output.writeVarShort(this.base);
-         output.writeVarShort(this.additionnal);
+         output.writeVarInt(this.base);
+         output.writeVarInt(this.additionnal);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -85,12 +85,12 @@ package com.ankamagames.dofus.network.types.game.presets
       
       private function _baseFunc(input:ICustomDataInput) : void
       {
-         this.base = input.readVarShort();
+         this.base = input.readVarInt();
       }
       
       private function _additionnalFunc(input:ICustomDataInput) : void
       {
-         this.additionnal = input.readVarShort();
+         this.additionnal = input.readVarInt();
       }
    }
 }

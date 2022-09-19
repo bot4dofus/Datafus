@@ -166,7 +166,6 @@ package Ankama_Storage.ui
       {
          this._delayDoubleClickTimer.removeEventListener(TimerEvent.TIMER_COMPLETE,this.onDelayDoubleClickTimer);
          this._delayDoubleClickTimer = null;
-         uiApi.unloadUi("itemBox");
          uiApi.unloadUi("itemsList");
          uiApi.unloadUi(this._popupName);
          uiApi.unloadUi("quantityPopup");

@@ -1,5 +1,6 @@
 package com.ankamagames.dofus.logic.game.common.frames
 {
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.logic.common.managers.FeatureManager;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
@@ -122,7 +123,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var now:Date = null;
          var lastUpdateHour:String = null;
          var featureManager:FeatureManager = FeatureManager.getInstance();
-         if(!featureManager || !featureManager.isFeatureWithKeywordEnabled("trade.averagePricesAutoUpdate"))
+         if(!featureManager || !featureManager.isFeatureWithKeywordEnabled(FeatureEnum.TRADE_AVERAGE_PRICE_AUTO_UPDATE))
          {
             return false;
          }

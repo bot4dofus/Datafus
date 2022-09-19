@@ -20,6 +20,7 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
    import com.ankamagames.dofus.externalnotification.enums.ExternalNotificationTypeEnum;
    import com.ankamagames.dofus.internalDatacenter.world.WorldPointWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkMapPosition;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
@@ -156,7 +157,7 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
             return;
          }
          this._routeCalculating = true;
-         var destMapName:* = "{map," + this._destinationMapPosition.posX + "," + this._destinationMapPosition.posY + "," + this._destinationMapPosition.worldMap + "} (" + this._destinationMapPosition.subArea.name + ")";
+         var destMapName:* = HyperlinkMapPosition.getLink(this._destinationMapPosition.posX,this._destinationMapPosition.posY,this._destinationMapPosition.worldMap) + " (" + this._destinationMapPosition.subArea.name + ")";
          var commonMod:Object = UiModuleManager.getInstance().getModule("Ankama_Common").mainClass;
          this._popupName = commonMod.openPopup(I18n.getUiText("ui.mountTrip.trip"),I18n.getUiText("ui.mountTrip.searchingRoute",[destMapName]),[I18n.getUiText("ui.common.ok"),I18n.getUiText("ui.common.cancel")],[null,this.onAbortTripByPopup],null,null,null,false,true);
          _log.debug("Calcul de l\'itinéraire vers " + mapId + " en cours...");
@@ -277,7 +278,7 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
             this.onStartTripByPopup();
             return;
          }
-         var destMapName:* = "{map," + this._destinationMapPosition.posX + "," + this._destinationMapPosition.posY + "," + this._destinationMapPosition.worldMap + "} (" + this._destinationMapPosition.subArea.name + ")";
+         var destMapName:* = HyperlinkMapPosition.getLink(this._destinationMapPosition.posX,this._destinationMapPosition.posY,this._destinationMapPosition.worldMap) + " (" + this._destinationMapPosition.subArea.name + ")";
          var currentRouteText:String = I18n.getUiText("ui.mountTrip.routeFound",[destMapName,path.length]);
          if(PlayedCharacterManager.getInstance().mount)
          {

@@ -69,6 +69,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.jerakine.messages.Frame;
    import com.ankamagames.jerakine.messages.Message;
    import com.ankamagames.jerakine.types.enums.Priority;
+   import flash.utils.Dictionary;
    
    public class CraftFrame implements Frame
    {
@@ -95,8 +96,6 @@ package com.ankamagames.dofus.logic.game.common.frames
       private var _lastComponentList:Array;
       
       public var bagList:Array;
-      
-      private var _recipes:Array;
       
       private var _skillId:int;
       
@@ -327,12 +326,14 @@ package com.ankamagames.dofus.logic.game.common.frames
          var successS:Boolean = false;
          var resultType:String = null;
          var deltas:Array = null;
-         var newEffects:Vector.<ObjectEffect> = null;
          var effect:EffectInstance = null;
-         var sameEffectsCount:Array = null;
          var baseEffect:EffectInstance = null;
          var oldEffect:ObjectEffect = null;
          var newEffect:ObjectEffect = null;
+         var compareTheoreticalAndNewEffects:Dictionary = null;
+         var compareOldAndNewEffects:Dictionary = null;
+         var oldEffects:Array = null;
+         var newEffects:Vector.<ObjectEffect> = null;
          var residualMagicText:String = null;
          var shortenedText:String = null;
          var ecrwodmsg:ExchangeCraftResultWithObjectDescMessage = null;
@@ -345,8 +346,8 @@ package com.ankamagames.dofus.logic.game.common.frames
          var effectInteger:EffectInstanceInteger = null;
          var effectDice:EffectInstanceDice = null;
          var reallyNew:Boolean = false;
-         var effectValue:int = 0;
          var alreadyDone:Boolean = false;
+         var effectValue:int = 0;
          var effectMinMax:EffectInstanceMinMax = null;
          var wasEffectPresentBefore:Boolean = false;
          var craftComponentListText:String = null;
@@ -398,13 +399,28 @@ package com.ankamagames.dofus.logic.game.common.frames
                      successS = false;
                      resultType = "";
                      deltas = [];
+                     compareTheoreticalAndNewEffects = new Dictionary();
+                     compareOldAndNewEffects = new Dictionary();
+                     oldEffects = [];
                      newEffects = ecrmwodmsg.objectInfo.effects;
-                     sameEffectsCount = [];
                      if(this._smithMagicOldObject)
                      {
+                        for each(baseEffect in this._smithMagicOldObject.possibleEffects)
+                        {
+                           if(compareTheoreticalAndNewEffects[baseEffect.effectId] == null)
+                           {
+                              compareTheoreticalAndNewEffects[baseEffect.effectId] = 0;
+                           }
+                           ++compareTheoreticalAndNewEffects[baseEffect.effectId];
+                        }
                         for each(oldEffect in this._smithMagicOldObject.effectsList)
                         {
-                           sameEffectsCount.push(oldEffect);
+                           if(compareOldAndNewEffects[oldEffect.actionId] == null)
+                           {
+                              compareOldAndNewEffects[oldEffect.actionId] = 0;
+                           }
+                           ++compareOldAndNewEffects[oldEffect.actionId];
+                           oldEffects.push(oldEffect);
                            if(oldEffect is ObjectEffectInteger || oldEffect is ObjectEffectDice)
                            {
                               sameEffectExists = false;
@@ -528,15 +544,26 @@ package com.ankamagames.dofus.logic.game.common.frames
                      }
                      for each(newEffect in newEffects)
                      {
+                        if(compareOldAndNewEffects[newEffect.actionId] != null)
+                        {
+                           --compareOldAndNewEffects[newEffect.actionId];
+                        }
                         reallyNew = true;
+                        alreadyDone = false;
                         for each(baseEffect in this._smithMagicOldObject.possibleEffects)
                         {
                            if(newEffect is ObjectEffectInteger || newEffect is ObjectEffectMinMax)
                            {
-                              if(newEffect.actionId == baseEffect.effectId)
+                              if(baseEffect.effectId == newEffect.actionId)
                               {
-                                 reallyNew = false;
-                                 break;
+                                 if(--compareTheoreticalAndNewEffects[baseEffect.effectId] >= 0)
+                                 {
+                                    reallyNew = false;
+                                 }
+                                 if(compareOldAndNewEffects[newEffect.actionId] >= 0)
+                                 {
+                                    alreadyDone = true;
+                                 }
                               }
                            }
                            else
@@ -548,15 +575,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                         {
                            if(newEffect is ObjectEffectMinMax)
                            {
-                              alreadyDone = false;
-                              for each(oldEffect in sameEffectsCount)
-                              {
-                                 if(oldEffect.actionId == newEffect.actionId)
-                                 {
-                                    alreadyDone = true;
-                                    break;
-                                 }
-                              }
                               if(alreadyDone)
                               {
                                  continue;
@@ -571,15 +589,26 @@ package com.ankamagames.dofus.logic.game.common.frames
                            }
                            else if(newEffect is ObjectEffectInteger)
                            {
+                              if(alreadyDone)
+                              {
+                                 continue;
+                              }
                               effectInteger = new EffectInstanceInteger();
                               effectInteger.effectId = newEffect.actionId;
                               effectValue = int.MAX_VALUE;
-                              for each(oldEffect in sameEffectsCount)
+                              if(compareTheoreticalAndNewEffects[newEffect.actionId] < 0)
                               {
-                                 if(oldEffect.actionId == newEffect.actionId)
+                                 effectValue = ObjectEffectInteger(newEffect).value;
+                              }
+                              else
+                              {
+                                 for each(oldEffect in oldEffects)
                                  {
-                                    effectValue = ObjectEffectInteger(newEffect).value - ObjectEffectInteger(oldEffect).value;
-                                    break;
+                                    if(oldEffect.actionId == newEffect.actionId)
+                                    {
+                                       effectValue = ObjectEffectInteger(newEffect).value - ObjectEffectInteger(oldEffect).value;
+                                       break;
+                                    }
                                  }
                               }
                               if(effectValue != int.MAX_VALUE)
@@ -933,7 +962,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          }
          playerExchangeCraftList.componentList.push(pItemWrapper);
          this.sendUpdateHook(playerExchangeCraftList);
-         if(this._craftType != 0 && pItemWrapper.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_RUNE && pItemWrapper.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_TRANSCENDANCE_RUNE && pItemWrapper.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_CORRUPTION_RUNE && pItemWrapper.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_POTION && pItemWrapper.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_ORB && pItemWrapper.objectGID != DataEnum.ITEM_GID_SIGNATURE_RUNE)
+         if(this._craftType != 0 && pItemWrapper.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_RUNE && pItemWrapper.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_TRANSCENDANCE_RUNE && pItemWrapper.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_CORRUPTION_RUNE && pItemWrapper.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_POTION && pItemWrapper.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_ORB && pItemWrapper.typeId != DataEnum.ITEM_TYPE_SMITHMAGIC_CARVING && pItemWrapper.objectGID != DataEnum.ITEM_GID_SIGNATURE_RUNE)
          {
             this._smithMagicOldObject = pItemWrapper.clone();
          }

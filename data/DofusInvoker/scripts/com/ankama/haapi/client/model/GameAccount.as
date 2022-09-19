@@ -24,6 +24,8 @@ package com.ankama.haapi.client.model
       
       public var login_ip:String = null;
       
+      public var type:String = null;
+      
       public function GameAccount()
       {
          super();
@@ -41,7 +43,8 @@ package com.ankama.haapi.client.model
          str += " (ban_end_date: " + this.ban_end_date + ")";
          str += " (added_date: " + this.added_date + ")";
          str += " (login_date: " + this.login_date + ")";
-         return str + (" (login_ip: " + this.login_ip + ")");
+         str += " (login_ip: " + this.login_ip + ")";
+         return str + (" (type: " + this.type + ")");
       }
    }
 }

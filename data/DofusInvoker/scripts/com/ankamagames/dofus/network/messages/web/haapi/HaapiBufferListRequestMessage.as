@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.web.haapi
    public class HaapiBufferListRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9520;
+      public static const protocolId:uint = 7038;
        
       
       public function HaapiBufferListRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.web.haapi
       
       override public function getMessageId() : uint
       {
-         return 9520;
+         return 7038;
       }
       
       public function initHaapiBufferListRequestMessage() : HaapiBufferListRequestMessage

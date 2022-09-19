@@ -7,7 +7,7 @@ package com.ankamagames.dofus.logic.game.common.actions.bid
    {
        
       
-      public var id:uint;
+      public var objectGID:uint;
       
       public var follow:Boolean;
       
@@ -16,10 +16,10 @@ package com.ankamagames.dofus.logic.game.common.actions.bid
          super(params);
       }
       
-      public static function create(pId:uint, pFollow:Boolean = false) : ExchangeBidHouseListAction
+      public static function create(pObjectGID:uint, pFollow:Boolean = false) : ExchangeBidHouseListAction
       {
          var a:ExchangeBidHouseListAction = new ExchangeBidHouseListAction(arguments);
-         a.id = pId;
+         a.objectGID = pObjectGID;
          a.follow = pFollow;
          return a;
       }

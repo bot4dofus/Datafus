@@ -11,6 +11,7 @@ package Ankama_Grimoire.ui
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.dofus.datacenter.alignments.AlignmentRank;
    import com.ankamagames.dofus.datacenter.alignments.AlignmentSide;
+   import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.kernel.sound.enum.SoundTypeEnum;
    import com.ankamagames.dofus.logic.game.common.actions.alignment.SetEnablePVPRequestAction;
    import com.ankamagames.dofus.misc.lists.HookList;
@@ -134,7 +135,7 @@ package Ankama_Grimoire.ui
          this.ctr_entity.mask = mask;
          this.tx_wing.visible = false;
          this.soundApi.playSound(SoundTypeEnum.OPEN_WINDOW);
-         if(this.configApi.isFeatureWithKeywordEnabled("server.conf.alignmentWar"))
+         if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.ALIGNMENT_WAR))
          {
             this.btn_pvp.disabled = true;
             this.uiApi.loadUi("alignmentWarEffortTab");
@@ -210,7 +211,7 @@ package Ankama_Grimoire.ui
                this._listRanksID[numBtn] = -1;
                numBtn++;
             }
-            if(this.configApi.isFeatureWithKeywordEnabled("server.heroic"))
+            if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER))
             {
                this.btn_pvp.softDisabled = true;
             }
@@ -335,7 +336,7 @@ package Ankama_Grimoire.ui
          }
          else if(target == this.btn_pvp && this.btn_pvp.softDisabled)
          {
-            if(this.configApi.isFeatureWithKeywordEnabled("server.conf.alignmentWar"))
+            if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.ALIGNMENT_WAR))
             {
                textTooltip = this.uiApi.getText("ui.grimoire.alignment.hardcore");
             }
@@ -376,7 +377,7 @@ package Ankama_Grimoire.ui
       
       public function unload() : void
       {
-         if(this.configApi.isFeatureWithKeywordEnabled("server.conf.alignmentWar"))
+         if(this.configApi.isFeatureWithKeywordEnabled(FeatureEnum.ALIGNMENT_WAR))
          {
             this.uiApi.unloadUi("alignmentWarEffortTab");
             this.uiApi.unloadUi("alignmentGiftsTab");

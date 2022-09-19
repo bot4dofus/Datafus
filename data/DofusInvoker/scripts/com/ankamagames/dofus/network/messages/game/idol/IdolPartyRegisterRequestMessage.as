@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.idol
    public class IdolPartyRegisterRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 868;
+      public static const protocolId:uint = 3609;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.idol
       
       override public function getMessageId() : uint
       {
-         return 868;
+         return 3609;
       }
       
       public function initIdolPartyRegisterRequestMessage(register:Boolean = false) : IdolPartyRegisterRequestMessage

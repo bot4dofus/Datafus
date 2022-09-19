@@ -956,93 +956,96 @@ package Ankama_TradeCenter.ui
          for each(typeId in this.sellerDescriptor.types)
          {
             itemType = dataApi.getItemType(typeId);
-            superTypeId = itemType.superTypeId;
-            if(superTypeId == DataEnum.ITEM_SUPERTYPE_CERTIFICATE || typeId == DataEnum.ITEM_TYPE_LIVING_OBJECT)
+            if(itemType != null)
             {
-               if(!allTypes[DataEnum.ITEM_SUPERTYPE_PET])
+               superTypeId = itemType.superTypeId;
+               if(superTypeId == DataEnum.ITEM_SUPERTYPE_CERTIFICATE || typeId == DataEnum.ITEM_TYPE_LIVING_OBJECT)
                {
-                  allTypes[DataEnum.ITEM_SUPERTYPE_PET] = [];
+                  if(!allTypes[DataEnum.ITEM_SUPERTYPE_PET])
+                  {
+                     allTypes[DataEnum.ITEM_SUPERTYPE_PET] = [];
+                  }
+                  if(allTypes[DataEnum.ITEM_SUPERTYPE_PET].indexOf(superTypeId) == -1)
+                  {
+                     allTypes[DataEnum.ITEM_SUPERTYPE_PET].push(superTypeId);
+                  }
                }
-               if(allTypes[DataEnum.ITEM_SUPERTYPE_PET].indexOf(superTypeId) == -1)
+               else if(superTypeId == DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT)
                {
-                  allTypes[DataEnum.ITEM_SUPERTYPE_PET].push(superTypeId);
+                  if(!allTypes[DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT])
+                  {
+                     allTypes[DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT] = [];
+                  }
+                  if(allTypes[DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT].indexOf(superTypeId) == -1)
+                  {
+                     allTypes[DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT].push(superTypeId);
+                  }
                }
-            }
-            else if(superTypeId == DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT)
-            {
-               if(!allTypes[DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT])
+               else if(typeId == DataEnum.ITEM_TYPE_CATCHING_NET)
                {
-                  allTypes[DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT] = [];
+                  if(!allTypes[DataEnum.ITEM_SUPERTYPE_CATCHING_ITEMS])
+                  {
+                     allTypes[DataEnum.ITEM_SUPERTYPE_CATCHING_ITEMS] = [];
+                  }
+                  if(allTypes[DataEnum.ITEM_SUPERTYPE_CATCHING_ITEMS].indexOf(superTypeId) == -1)
+                  {
+                     allTypes[DataEnum.ITEM_SUPERTYPE_CATCHING_ITEMS].push(superTypeId);
+                  }
                }
-               if(allTypes[DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT].indexOf(superTypeId) == -1)
+               else if(superTypeId == DataEnum.ITEM_SUPERTYPE_PET_GHOST || typeId == DataEnum.ITEM_TYPE_RECEIPT)
                {
-                  allTypes[DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT].push(superTypeId);
+                  if(!allTypes[DataEnum.ITEM_SUPERTYPE_PET_GHOST])
+                  {
+                     allTypes[DataEnum.ITEM_SUPERTYPE_PET_GHOST] = [];
+                  }
+                  if(allTypes[DataEnum.ITEM_SUPERTYPE_PET_GHOST].indexOf(superTypeId) == -1)
+                  {
+                     allTypes[DataEnum.ITEM_SUPERTYPE_PET_GHOST].push(superTypeId);
+                  }
                }
-            }
-            else if(typeId == DataEnum.ITEM_TYPE_CATCHING_NET)
-            {
-               if(!allTypes[DataEnum.ITEM_SUPERTYPE_CATCHING_ITEMS])
+               else if(typeId == DataEnum.ITEM_TYPE_PET_POTION || typeId == DataEnum.ITEM_TYPE_PETSMOUNT_POTION || typeId == DataEnum.ITEM_TYPE_MOUNT_POTION || typeId == DataEnum.ITEM_TYPE_PET_EGG || typeId == DataEnum.ITEM_TYPE_BREEDING_ITEM)
                {
-                  allTypes[DataEnum.ITEM_SUPERTYPE_CATCHING_ITEMS] = [];
+                  if(!allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE])
+                  {
+                     allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE] = [];
+                  }
+                  if(allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE].indexOf(superTypeId) == -1)
+                  {
+                     allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE].push(superTypeId);
+                  }
                }
-               if(allTypes[DataEnum.ITEM_SUPERTYPE_CATCHING_ITEMS].indexOf(superTypeId) == -1)
+               else if(typeId == DataEnum.ITEM_TYPE_CEREMONIAL_ITEMS)
                {
-                  allTypes[DataEnum.ITEM_SUPERTYPE_CATCHING_ITEMS].push(superTypeId);
+                  if(!allTypes[DataEnum.ITEM_SUPERTYPE_COSTUME])
+                  {
+                     allTypes[DataEnum.ITEM_SUPERTYPE_COSTUME] = [];
+                  }
+                  if(allTypes[DataEnum.ITEM_SUPERTYPE_COSTUME].indexOf(superTypeId) == -1)
+                  {
+                     allTypes[DataEnum.ITEM_SUPERTYPE_COSTUME].push(superTypeId);
+                  }
                }
-            }
-            else if(superTypeId == DataEnum.ITEM_SUPERTYPE_PET_GHOST || typeId == DataEnum.ITEM_TYPE_RECEIPT)
-            {
-               if(!allTypes[DataEnum.ITEM_SUPERTYPE_PET_GHOST])
+               else if(typeId == DataEnum.ITEM_TYPE_SOULSTONE || typeId == DataEnum.ITEM_TYPE_EMPTY_SOULSTONE)
                {
-                  allTypes[DataEnum.ITEM_SUPERTYPE_PET_GHOST] = [];
+                  if(!allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE])
+                  {
+                     allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE] = [];
+                  }
+                  if(allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE].indexOf(superTypeId) == -1)
+                  {
+                     allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE].push(superTypeId);
+                  }
                }
-               if(allTypes[DataEnum.ITEM_SUPERTYPE_PET_GHOST].indexOf(superTypeId) == -1)
+               else
                {
-                  allTypes[DataEnum.ITEM_SUPERTYPE_PET_GHOST].push(superTypeId);
-               }
-            }
-            else if(typeId == DataEnum.ITEM_TYPE_PET_POTION || typeId == DataEnum.ITEM_TYPE_PETSMOUNT_POTION || typeId == DataEnum.ITEM_TYPE_MOUNT_POTION || typeId == DataEnum.ITEM_TYPE_PET_EGG || typeId == DataEnum.ITEM_TYPE_BREEDING_ITEM)
-            {
-               if(!allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE])
-               {
-                  allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE] = [];
-               }
-               if(allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE].indexOf(superTypeId) == -1)
-               {
-                  allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE].push(superTypeId);
-               }
-            }
-            else if(typeId == DataEnum.ITEM_TYPE_CEREMONIAL_ITEMS)
-            {
-               if(!allTypes[DataEnum.ITEM_SUPERTYPE_COSTUME])
-               {
-                  allTypes[DataEnum.ITEM_SUPERTYPE_COSTUME] = [];
-               }
-               if(allTypes[DataEnum.ITEM_SUPERTYPE_COSTUME].indexOf(superTypeId) == -1)
-               {
-                  allTypes[DataEnum.ITEM_SUPERTYPE_COSTUME].push(superTypeId);
-               }
-            }
-            else if(typeId == DataEnum.ITEM_TYPE_SOULSTONE || typeId == DataEnum.ITEM_TYPE_EMPTY_SOULSTONE)
-            {
-               if(!allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE])
-               {
-                  allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE] = [];
-               }
-               if(allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE].indexOf(superTypeId) == -1)
-               {
-                  allTypes[DataEnum.ITEM_SUPERTYPE_CONSUMABLE].push(superTypeId);
-               }
-            }
-            else
-            {
-               if(!allTypes[superTypeId])
-               {
-                  allTypes[superTypeId] = [];
-               }
-               if(allTypes[superTypeId].indexOf(superTypeId) == -1)
-               {
-                  allTypes[superTypeId].push(superTypeId);
+                  if(!allTypes[superTypeId])
+                  {
+                     allTypes[superTypeId] = [];
+                  }
+                  if(allTypes[superTypeId].indexOf(superTypeId) == -1)
+                  {
+                     allTypes[superTypeId].push(superTypeId);
+                  }
                }
             }
          }
