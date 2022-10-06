@@ -604,6 +604,15 @@
 			"activationCriterions": "null"
 		},
 		{
+			"id": 112,
+			"keyword": "temporis.drops",
+			"isClient": true,
+			"isServer": false,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": true,
+			"activationCriterions": "SC=5&ST=7"
+		},
+		{
 			"id": 139,
 			"keyword": "server.conf.bonus.save",
 			"isClient": false,
@@ -640,21 +649,21 @@
 			"activationCriterions": "null"
 		},
 		{
-			"id": 112,
-			"keyword": "temporis.drops",
-			"isClient": true,
-			"isServer": false,
-			"isActivationOnLaunch": false,
-			"isActivationOnServerConnection": true,
-			"activationCriterions": "SC=5&ST=7"
-		},
-		{
 			"id": 144,
 			"keyword": "fight.slave.actionbars",
 			"isClient": true,
 			"isServer": false,
 			"isActivationOnLaunch": false,
 			"isActivationOnServerConnection": true,
+			"activationCriterions": ""
+		},
+		{
+			"id": 148,
+			"keyword": "misc.expedition",
+			"isClient": true,
+			"isServer": true,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": false,
 			"activationCriterions": ""
 		}
 	]

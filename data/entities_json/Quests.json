@@ -29515,7 +29515,7 @@
 				2829
 			],
 			"isPartyQuest": false,
-			"startCriterion": "PL>149&Qf=2149&PO=23597",
+			"startCriterion": "PL>149&Qf=2149&HA=88",
 			"followable": true
 		},
 		{
@@ -30436,7 +30436,7 @@
 			"categoryId": 16,
 			"repeatType": 0,
 			"repeatLimit": 1,
-			"isDungeonQuest": false,
+			"isDungeonQuest": true,
 			"levelMin": 110,
 			"levelMax": 110,
 			"stepIds": [

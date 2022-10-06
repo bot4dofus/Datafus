@@ -248,7 +248,7 @@
 		},
 		{
 			"resultId": 84,
-			"resultNameId": 537558,
+			"resultNameId": 966868,
 			"resultTypeId": 1,
 			"resultLevel": 8,
 			"ingredientIds": [
@@ -9129,7 +9129,7 @@
 		{
 			"resultId": 1697,
 			"resultNameId": 41141,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 1,
 			"ingredientIds": [
 				885,
@@ -9147,7 +9147,7 @@
 		{
 			"resultId": 1698,
 			"resultNameId": 248948,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 6,
 			"ingredientIds": [
 				301,
@@ -9167,7 +9167,7 @@
 		{
 			"resultId": 1699,
 			"resultNameId": 208876,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 10,
 			"ingredientIds": [
 				388,
@@ -9225,7 +9225,7 @@
 		{
 			"resultId": 1702,
 			"resultNameId": 248950,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 15,
 			"ingredientIds": [
 				881,
@@ -9245,7 +9245,7 @@
 		{
 			"resultId": 1703,
 			"resultNameId": 248949,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 20,
 			"ingredientIds": [
 				384,
@@ -9269,7 +9269,7 @@
 		{
 			"resultId": 1704,
 			"resultNameId": 248952,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 20,
 			"ingredientIds": [
 				1670,
@@ -9295,7 +9295,7 @@
 		{
 			"resultId": 1705,
 			"resultNameId": 564023,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 40,
 			"ingredientIds": [
 				1141,
@@ -9317,7 +9317,7 @@
 		{
 			"resultId": 1707,
 			"resultNameId": 208875,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 60,
 			"ingredientIds": [
 				2528,
@@ -15335,7 +15335,7 @@
 		{
 			"resultId": 6501,
 			"resultNameId": 31735,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 60,
 			"ingredientIds": [
 				14460,
@@ -18397,7 +18397,7 @@
 		{
 			"resultId": 6830,
 			"resultNameId": 52305,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 70,
 			"ingredientIds": [
 				1663,
@@ -18653,7 +18653,7 @@
 		{
 			"resultId": 6916,
 			"resultNameId": 53181,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 16,
 			"ingredientIds": [
 				307,
@@ -20619,7 +20619,7 @@
 		{
 			"resultId": 7108,
 			"resultNameId": 49497,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 27,
 			"ingredientIds": [
 				364,
@@ -25481,7 +25481,7 @@
 		{
 			"resultId": 7888,
 			"resultNameId": 208664,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 69,
 			"ingredientIds": [
 				25817,
@@ -26823,7 +26823,7 @@
 		{
 			"resultId": 8131,
 			"resultNameId": 248951,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 18,
 			"ingredientIds": [
 				288,
@@ -28805,7 +28805,7 @@
 			"resultLevel": 125,
 			"ingredientIds": [
 				21265,
-				11280,
+				16212,
 				8358,
 				8356,
 				8363,
@@ -28813,7 +28813,7 @@
 			],
 			"quantities": [
 				4,
-				1,
+				2,
 				3,
 				21,
 				11,
@@ -28939,7 +28939,7 @@
 			"resultLevel": 128,
 			"ingredientIds": [
 				21265,
-				11280,
+				16212,
 				8358,
 				8367,
 				8363,
@@ -28947,7 +28947,7 @@
 			],
 			"quantities": [
 				2,
-				1,
+				2,
 				5,
 				10,
 				15,
@@ -39790,7 +39790,7 @@
 		},
 		{
 			"resultId": 10613,
-			"resultNameId": 42251,
+			"resultNameId": 963077,
 			"resultTypeId": 78,
 			"resultLevel": 45,
 			"ingredientIds": [
@@ -39806,7 +39806,7 @@
 		},
 		{
 			"resultId": 10615,
-			"resultNameId": 38267,
+			"resultNameId": 963082,
 			"resultTypeId": 78,
 			"resultLevel": 20,
 			"ingredientIds": [
@@ -39822,7 +39822,7 @@
 		},
 		{
 			"resultId": 10616,
-			"resultNameId": 38269,
+			"resultNameId": 963081,
 			"resultTypeId": 78,
 			"resultLevel": 25,
 			"ingredientIds": [
@@ -40851,7 +40851,7 @@
 		{
 			"resultId": 10971,
 			"resultNameId": 31361,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 20,
 			"ingredientIds": [
 				886,
@@ -41426,7 +41426,7 @@
 				11325,
 				11327,
 				11323,
-				313,
+				446,
 				7016
 			],
 			"quantities": [
@@ -48790,7 +48790,7 @@
 		},
 		{
 			"resultId": 12351,
-			"resultNameId": 30541,
+			"resultNameId": 967405,
 			"resultTypeId": 84,
 			"resultLevel": 150,
 			"ingredientIds": [
@@ -49399,7 +49399,7 @@
 		{
 			"resultId": 12414,
 			"resultNameId": 49537,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 50,
 			"ingredientIds": [
 				12436,
@@ -52164,12 +52164,16 @@
 			"ingredientIds": [
 				444,
 				365,
-				448
+				448,
+				7032,
+				445
 			],
 			"quantities": [
-				6,
+				2,
 				1,
-				1
+				1,
+				4,
+				6
 			],
 			"jobId": 26,
 			"skillId": 23,
@@ -52645,7 +52649,7 @@
 		{
 			"resultId": 12856,
 			"resultNameId": 98147,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 85,
 			"ingredientIds": [
 				12832,
@@ -53943,7 +53947,7 @@
 		{
 			"resultId": 13262,
 			"resultNameId": 241161,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 80,
 			"ingredientIds": [
 				2549,
@@ -54683,7 +54687,7 @@
 		{
 			"resultId": 13584,
 			"resultNameId": 483283,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 127,
 			"ingredientIds": [
 				13608,
@@ -67315,60 +67319,6 @@
 			"tooltipExpirationDate": NaN
 		},
 		{
-			"resultId": 14993,
-			"resultNameId": 350133,
-			"resultTypeId": 126,
-			"resultLevel": 1,
-			"ingredientIds": [
-				14996,
-				12738
-			],
-			"quantities": [
-				5,
-				1
-			],
-			"jobId": 1,
-			"skillId": 245,
-			"changeVersion": "null",
-			"tooltipExpirationDate": NaN
-		},
-		{
-			"resultId": 14994,
-			"resultNameId": 375800,
-			"resultTypeId": 126,
-			"resultLevel": 1,
-			"ingredientIds": [
-				14997,
-				12738
-			],
-			"quantities": [
-				5,
-				1
-			],
-			"jobId": 1,
-			"skillId": 245,
-			"changeVersion": "null",
-			"tooltipExpirationDate": NaN
-		},
-		{
-			"resultId": 14995,
-			"resultNameId": 375796,
-			"resultTypeId": 126,
-			"resultLevel": 1,
-			"ingredientIds": [
-				14998,
-				12738
-			],
-			"quantities": [
-				5,
-				1
-			],
-			"jobId": 1,
-			"skillId": 245,
-			"changeVersion": "null",
-			"tooltipExpirationDate": NaN
-		},
-		{
 			"resultId": 15009,
 			"resultNameId": 375986,
 			"resultTypeId": 10,
@@ -69061,7 +69011,7 @@
 			"resultLevel": 100,
 			"ingredientIds": [
 				15230,
-				313,
+				7032,
 				420,
 				15168,
 				15166,
@@ -69121,7 +69071,7 @@
 				11102,
 				11107,
 				15228,
-				11110,
+				23903,
 				15179,
 				15180,
 				15177,
@@ -69131,7 +69081,7 @@
 				1,
 				7,
 				1,
-				7,
+				1,
 				1,
 				1,
 				1,
@@ -91253,7 +91203,7 @@
 		{
 			"resultId": 19591,
 			"resultNameId": 746208,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 200,
 			"ingredientIds": [
 				19403,
@@ -94568,7 +94518,7 @@
 		},
 		{
 			"resultId": 20611,
-			"resultNameId": 778269,
+			"resultNameId": 963089,
 			"resultTypeId": 211,
 			"resultLevel": 32,
 			"ingredientIds": [
@@ -94586,7 +94536,7 @@
 		},
 		{
 			"resultId": 20612,
-			"resultNameId": 778271,
+			"resultNameId": 963090,
 			"resultTypeId": 211,
 			"resultLevel": 32,
 			"ingredientIds": [
@@ -94604,7 +94554,7 @@
 		},
 		{
 			"resultId": 20613,
-			"resultNameId": 778273,
+			"resultNameId": 963091,
 			"resultTypeId": 211,
 			"resultLevel": 42,
 			"ingredientIds": [
@@ -94622,7 +94572,7 @@
 		},
 		{
 			"resultId": 20614,
-			"resultNameId": 778275,
+			"resultNameId": 963092,
 			"resultTypeId": 211,
 			"resultLevel": 42,
 			"ingredientIds": [
@@ -94640,7 +94590,7 @@
 		},
 		{
 			"resultId": 20615,
-			"resultNameId": 778277,
+			"resultNameId": 963093,
 			"resultTypeId": 211,
 			"resultLevel": 42,
 			"ingredientIds": [
@@ -94658,7 +94608,7 @@
 		},
 		{
 			"resultId": 20616,
-			"resultNameId": 778279,
+			"resultNameId": 963094,
 			"resultTypeId": 211,
 			"resultLevel": 42,
 			"ingredientIds": [
@@ -95000,7 +94950,7 @@
 		},
 		{
 			"resultId": 20635,
-			"resultNameId": 778317,
+			"resultNameId": 963083,
 			"resultTypeId": 211,
 			"resultLevel": 30,
 			"ingredientIds": [
@@ -95018,7 +94968,7 @@
 		},
 		{
 			"resultId": 20636,
-			"resultNameId": 778319,
+			"resultNameId": 963084,
 			"resultTypeId": 211,
 			"resultLevel": 30,
 			"ingredientIds": [
@@ -95036,7 +94986,7 @@
 		},
 		{
 			"resultId": 20637,
-			"resultNameId": 778321,
+			"resultNameId": 963085,
 			"resultTypeId": 211,
 			"resultLevel": 30,
 			"ingredientIds": [
@@ -95054,7 +95004,7 @@
 		},
 		{
 			"resultId": 20638,
-			"resultNameId": 778323,
+			"resultNameId": 963086,
 			"resultTypeId": 211,
 			"resultLevel": 30,
 			"ingredientIds": [
@@ -95072,7 +95022,7 @@
 		},
 		{
 			"resultId": 20639,
-			"resultNameId": 778325,
+			"resultNameId": 963088,
 			"resultTypeId": 211,
 			"resultLevel": 30,
 			"ingredientIds": [
@@ -95869,7 +95819,7 @@
 		{
 			"resultId": 20983,
 			"resultNameId": 789861,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 130,
 			"ingredientIds": [
 				20940,
@@ -96227,7 +96177,7 @@
 		{
 			"resultId": 21230,
 			"resultNameId": 802817,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 200,
 			"ingredientIds": [
 				21209,
@@ -99157,7 +99107,7 @@
 		{
 			"resultId": 23253,
 			"resultNameId": 843123,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 126,
 			"ingredientIds": [
 				7308,
@@ -99719,7 +99669,7 @@
 		{
 			"resultId": 23272,
 			"resultNameId": 843182,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 132,
 			"ingredientIds": [
 				7292,
@@ -99749,7 +99699,7 @@
 		{
 			"resultId": 23273,
 			"resultNameId": 843184,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 140,
 			"ingredientIds": [
 				7299,
@@ -100175,7 +100125,7 @@
 		{
 			"resultId": 23618,
 			"resultNameId": 855443,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 154,
 			"ingredientIds": [
 				7404,
@@ -100475,7 +100425,7 @@
 		{
 			"resultId": 23628,
 			"resultNameId": 856073,
-			"resultTypeId": 81,
+			"resultTypeId": 17,
 			"resultLevel": 165,
 			"ingredientIds": [
 				7403,
@@ -104024,7 +103974,7 @@
 		},
 		{
 			"resultId": 27125,
-			"resultNameId": 959206,
+			"resultNameId": 959268,
 			"resultTypeId": 226,
 			"resultLevel": 20,
 			"ingredientIds": [
@@ -104044,7 +103994,7 @@
 		},
 		{
 			"resultId": 27126,
-			"resultNameId": 959203,
+			"resultNameId": 959265,
 			"resultTypeId": 226,
 			"resultLevel": 30,
 			"ingredientIds": [
@@ -104066,7 +104016,7 @@
 		},
 		{
 			"resultId": 27127,
-			"resultNameId": 959201,
+			"resultNameId": 959263,
 			"resultTypeId": 226,
 			"resultLevel": 40,
 			"ingredientIds": [
@@ -104088,7 +104038,7 @@
 		},
 		{
 			"resultId": 27128,
-			"resultNameId": 961379,
+			"resultNameId": 961682,
 			"resultTypeId": 226,
 			"resultLevel": 50,
 			"ingredientIds": [
@@ -104110,7 +104060,7 @@
 		},
 		{
 			"resultId": 27129,
-			"resultNameId": 959197,
+			"resultNameId": 959258,
 			"resultTypeId": 226,
 			"resultLevel": 60,
 			"ingredientIds": [
@@ -104132,7 +104082,7 @@
 		},
 		{
 			"resultId": 27130,
-			"resultNameId": 959195,
+			"resultNameId": 959256,
 			"resultTypeId": 226,
 			"resultLevel": 70,
 			"ingredientIds": [
@@ -104156,7 +104106,7 @@
 		},
 		{
 			"resultId": 27131,
-			"resultNameId": 959193,
+			"resultNameId": 959254,
 			"resultTypeId": 226,
 			"resultLevel": 80,
 			"ingredientIds": [
@@ -104180,7 +104130,7 @@
 		},
 		{
 			"resultId": 27132,
-			"resultNameId": 959191,
+			"resultNameId": 959252,
 			"resultTypeId": 226,
 			"resultLevel": 90,
 			"ingredientIds": [
@@ -104204,7 +104154,7 @@
 		},
 		{
 			"resultId": 27133,
-			"resultNameId": 959189,
+			"resultNameId": 959250,
 			"resultTypeId": 226,
 			"resultLevel": 100,
 			"ingredientIds": [
@@ -104230,7 +104180,7 @@
 		},
 		{
 			"resultId": 27134,
-			"resultNameId": 959187,
+			"resultNameId": 959248,
 			"resultTypeId": 226,
 			"resultLevel": 100,
 			"ingredientIds": [
@@ -104256,7 +104206,7 @@
 		},
 		{
 			"resultId": 27135,
-			"resultNameId": 959185,
+			"resultNameId": 959246,
 			"resultTypeId": 226,
 			"resultLevel": 100,
 			"ingredientIds": [
@@ -104282,7 +104232,7 @@
 		},
 		{
 			"resultId": 27136,
-			"resultNameId": 959183,
+			"resultNameId": 959244,
 			"resultTypeId": 226,
 			"resultLevel": 100,
 			"ingredientIds": [
@@ -104308,7 +104258,7 @@
 		},
 		{
 			"resultId": 27137,
-			"resultNameId": 959181,
+			"resultNameId": 959242,
 			"resultTypeId": 226,
 			"resultLevel": 110,
 			"ingredientIds": [
@@ -104334,7 +104284,7 @@
 		},
 		{
 			"resultId": 27138,
-			"resultNameId": 959179,
+			"resultNameId": 959240,
 			"resultTypeId": 226,
 			"resultLevel": 110,
 			"ingredientIds": [
@@ -104360,7 +104310,7 @@
 		},
 		{
 			"resultId": 27139,
-			"resultNameId": 959177,
+			"resultNameId": 959238,
 			"resultTypeId": 226,
 			"resultLevel": 120,
 			"ingredientIds": [
@@ -104386,7 +104336,7 @@
 		},
 		{
 			"resultId": 27140,
-			"resultNameId": 959175,
+			"resultNameId": 959236,
 			"resultTypeId": 226,
 			"resultLevel": 120,
 			"ingredientIds": [
@@ -104412,7 +104362,7 @@
 		},
 		{
 			"resultId": 27141,
-			"resultNameId": 959173,
+			"resultNameId": 959234,
 			"resultTypeId": 226,
 			"resultLevel": 130,
 			"ingredientIds": [
@@ -104440,7 +104390,7 @@
 		},
 		{
 			"resultId": 27142,
-			"resultNameId": 959171,
+			"resultNameId": 959232,
 			"resultTypeId": 226,
 			"resultLevel": 130,
 			"ingredientIds": [
@@ -104468,7 +104418,7 @@
 		},
 		{
 			"resultId": 27143,
-			"resultNameId": 959169,
+			"resultNameId": 959230,
 			"resultTypeId": 226,
 			"resultLevel": 140,
 			"ingredientIds": [
@@ -104496,7 +104446,7 @@
 		},
 		{
 			"resultId": 27144,
-			"resultNameId": 959167,
+			"resultNameId": 959228,
 			"resultTypeId": 226,
 			"resultLevel": 140,
 			"ingredientIds": [
@@ -104524,7 +104474,7 @@
 		},
 		{
 			"resultId": 27145,
-			"resultNameId": 959165,
+			"resultNameId": 959226,
 			"resultTypeId": 226,
 			"resultLevel": 150,
 			"ingredientIds": [
@@ -104554,7 +104504,7 @@
 		},
 		{
 			"resultId": 27146,
-			"resultNameId": 959163,
+			"resultNameId": 959224,
 			"resultTypeId": 226,
 			"resultLevel": 150,
 			"ingredientIds": [
@@ -104584,7 +104534,7 @@
 		},
 		{
 			"resultId": 27147,
-			"resultNameId": 959161,
+			"resultNameId": 959222,
 			"resultTypeId": 226,
 			"resultLevel": 160,
 			"ingredientIds": [
@@ -104614,7 +104564,7 @@
 		},
 		{
 			"resultId": 27148,
-			"resultNameId": 959159,
+			"resultNameId": 959220,
 			"resultTypeId": 226,
 			"resultLevel": 160,
 			"ingredientIds": [
@@ -104644,7 +104594,7 @@
 		},
 		{
 			"resultId": 27149,
-			"resultNameId": 959157,
+			"resultNameId": 959218,
 			"resultTypeId": 226,
 			"resultLevel": 170,
 			"ingredientIds": [
@@ -104674,7 +104624,7 @@
 		},
 		{
 			"resultId": 27150,
-			"resultNameId": 959155,
+			"resultNameId": 959216,
 			"resultTypeId": 226,
 			"resultLevel": 170,
 			"ingredientIds": [
@@ -104704,7 +104654,7 @@
 		},
 		{
 			"resultId": 27151,
-			"resultNameId": 959153,
+			"resultNameId": 959214,
 			"resultTypeId": 226,
 			"resultLevel": 180,
 			"ingredientIds": [
@@ -104734,7 +104684,7 @@
 		},
 		{
 			"resultId": 27152,
-			"resultNameId": 959151,
+			"resultNameId": 959212,
 			"resultTypeId": 226,
 			"resultLevel": 180,
 			"ingredientIds": [
@@ -104764,7 +104714,7 @@
 		},
 		{
 			"resultId": 27153,
-			"resultNameId": 959149,
+			"resultNameId": 959210,
 			"resultTypeId": 226,
 			"resultLevel": 190,
 			"ingredientIds": [
@@ -104794,7 +104744,7 @@
 		},
 		{
 			"resultId": 27154,
-			"resultNameId": 959147,
+			"resultNameId": 959208,
 			"resultTypeId": 226,
 			"resultLevel": 200,
 			"ingredientIds": [

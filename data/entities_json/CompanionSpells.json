@@ -2585,6 +2585,42 @@
 			"spellId": 4984,
 			"companionId": 17,
 			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1163,
+			"spellId": 4208,
+			"companionId": 55,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1164,
+			"spellId": 4209,
+			"companionId": 55,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1165,
+			"spellId": 4210,
+			"companionId": 55,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1166,
+			"spellId": 4202,
+			"companionId": 55,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1167,
+			"spellId": 4204,
+			"companionId": 55,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1168,
+			"spellId": 4207,
+			"companionId": 55,
+			"gradeByLevel": "1,1"
 		}
 	]
 }

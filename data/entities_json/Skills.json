@@ -2597,7 +2597,9 @@
 				26804,
 				26871,
 				26872,
-				26873
+				26873,
+				27372,
+				27405
 			],
 			"interactiveId": 90,
 			"range": 1,
@@ -2905,7 +2907,8 @@
 				24306,
 				24307,
 				24308,
-				24309
+				24309,
+				27413
 			],
 			"interactiveId": 27,
 			"range": 1,
@@ -5602,26 +5605,6 @@
 			"levelMin": 1
 		},
 		{
-			"id": 169,
-			"nameId": 60209,
-			"parentJobId": 63,
-			"isForgemagus": true,
-			"modifiableItemTypeIds": [
-				0
-			],
-			"gatheredRessourceItem": -1,
-			"craftableItemIds": [],
-			"interactiveId": 117,
-			"range": 1,
-			"useRangeInClient": false,
-			"useAnimation": "AnimCueillir0",
-			"cursor": 0,
-			"elementActionId": 2,
-			"availableInHouse": false,
-			"clientDisplay": true,
-			"levelMin": 1
-		},
-		{
 			"id": 170,
 			"nameId": 60251,
 			"parentJobId": 1,
@@ -5991,7 +5974,12 @@
 				26333,
 				26680,
 				26805,
-				26806
+				26806,
+				27373,
+				27374,
+				27404,
+				27407,
+				27440
 			],
 			"interactiveId": 122,
 			"range": 1,
@@ -7524,11 +7512,7 @@
 			"isForgemagus": false,
 			"modifiableItemTypeIds": [],
 			"gatheredRessourceItem": -1,
-			"craftableItemIds": [
-				14993,
-				14994,
-				14995
-			],
+			"craftableItemIds": [],
 			"interactiveId": 93,
 			"range": 1,
 			"useRangeInClient": false,

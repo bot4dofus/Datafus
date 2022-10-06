@@ -438,42 +438,6 @@
 			"communityId": 12,
 			"restrictedToLanguages": [],
 			"monoAccount": false
-		},
-		{
-			"id": 900,
-			"nameId": 918267,
-			"commentId": 918268,
-			"openingDate": 1207177200000.0,
-			"language": "en",
-			"populationId": 0,
-			"gameTypeId": 0,
-			"communityId": 100,
-			"restrictedToLanguages": [],
-			"monoAccount": false
-		},
-		{
-			"id": 901,
-			"nameId": 918269,
-			"commentId": 918270,
-			"openingDate": 1355270400000.0,
-			"language": "en",
-			"populationId": 0,
-			"gameTypeId": 0,
-			"communityId": 100,
-			"restrictedToLanguages": [],
-			"monoAccount": false
-		},
-		{
-			"id": 902,
-			"nameId": 918265,
-			"commentId": 918266,
-			"openingDate": 1355270400000.0,
-			"language": "en",
-			"populationId": 0,
-			"gameTypeId": 2,
-			"communityId": 100,
-			"restrictedToLanguages": [],
-			"monoAccount": false
 		}
 	]
 }

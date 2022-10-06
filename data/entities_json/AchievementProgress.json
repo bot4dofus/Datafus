@@ -39,6 +39,11 @@
 			"id": 5,
 			"name": "Temporis 7",
 			"seasonId": 24
+		},
+		{
+			"id": 6,
+			"name": "Exp\u00e9dition 1",
+			"seasonId": 25
 		}
 	]
 }

@@ -2175,6 +2175,43 @@
 			],
 			"creatureBoneId": 3941,
 			"visibility": "SC=5&ST=6"
+		},
+		{
+			"id": 55,
+			"nameId": 970155,
+			"look": "{7063}",
+			"webDisplay": true,
+			"descriptionId": 970157,
+			"startingSpellLevelId": 21708,
+			"assetId": 6,
+			"characteristics": [
+				1145,
+				1146,
+				1147,
+				1148,
+				1149,
+				1150,
+				1151,
+				1152,
+				1153,
+				1154,
+				1155,
+				1156,
+				1157,
+				1158,
+				1159,
+				1160
+			],
+			"spells": [
+				1163,
+				1164,
+				1165,
+				1166,
+				1167,
+				1168
+			],
+			"creatureBoneId": 2605,
+			"visibility": "null"
 		}
 	]
 }

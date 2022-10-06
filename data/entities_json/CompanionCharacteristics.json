@@ -16123,6 +16123,254 @@
 					1.0
 				]
 			]
+		},
+		{
+			"id": 1145,
+			"caracId": 0,
+			"companionId": 55,
+			"order": 0,
+			"statPerLevelRange": [
+				[
+					1.0,
+					55.0
+				],
+				[
+					50.0,
+					5.0
+				],
+				[
+					100.0,
+					10.0
+				],
+				[
+					150.0,
+					20.0
+				],
+				[
+					200.0,
+					40.0
+				]
+			]
+		},
+		{
+			"id": 1146,
+			"caracId": 1,
+			"companionId": 55,
+			"order": 1,
+			"statPerLevelRange": [
+				[
+					1.0,
+					6.0
+				],
+				[
+					200.0,
+					0.029
+				]
+			]
+		},
+		{
+			"id": 1147,
+			"caracId": 23,
+			"companionId": 55,
+			"order": 2,
+			"statPerLevelRange": [
+				[
+					1.0,
+					3.0
+				],
+				[
+					200.0,
+					0.017
+				]
+			]
+		},
+		{
+			"id": 1148,
+			"caracId": 19,
+			"companionId": 55,
+			"order": 3,
+			"statPerLevelRange": [
+				[
+					200.0,
+					0.02
+				]
+			]
+		},
+		{
+			"id": 1149,
+			"caracId": 16,
+			"companionId": 55,
+			"order": 4,
+			"statPerLevelRange": [
+				[
+					1.0,
+					0.2
+				],
+				[
+					50.0,
+					0.2
+				],
+				[
+					100.0,
+					0.4
+				],
+				[
+					150.0,
+					0.6
+				],
+				[
+					200.0,
+					0.8
+				]
+			]
+		},
+		{
+			"id": 1150,
+			"caracId": 25,
+			"companionId": 55,
+			"order": 5,
+			"statPerLevelRange": [
+				[
+					1.0,
+					3.0
+				],
+				[
+					50.0,
+					3.0
+				],
+				[
+					100.0,
+					5.0
+				],
+				[
+					150.0,
+					7.0
+				],
+				[
+					200.0,
+					9.0
+				]
+			]
+		},
+		{
+			"id": 1151,
+			"caracId": 27,
+			"companionId": 55,
+			"order": 6,
+			"statPerLevelRange": [
+				[
+					200.0,
+					0.4
+				]
+			]
+		},
+		{
+			"id": 1152,
+			"caracId": 28,
+			"companionId": 55,
+			"order": 7,
+			"statPerLevelRange": [
+				[
+					200.0,
+					0.3
+				]
+			]
+		},
+		{
+			"id": 1153,
+			"caracId": 78,
+			"companionId": 55,
+			"order": 8,
+			"statPerLevelRange": [
+				[
+					200.0,
+					0.375
+				]
+			]
+		},
+		{
+			"id": 1154,
+			"caracId": 79,
+			"companionId": 55,
+			"order": 9,
+			"statPerLevelRange": [
+				[
+					200.0,
+					0.15
+				]
+			]
+		},
+		{
+			"id": 1155,
+			"caracId": 33,
+			"companionId": 55,
+			"order": 10,
+			"statPerLevelRange": [
+				[
+					1.0,
+					12.0
+				]
+			]
+		},
+		{
+			"id": 1156,
+			"caracId": 34,
+			"companionId": 55,
+			"order": 11,
+			"statPerLevelRange": [
+				[
+					1.0,
+					12.0
+				]
+			]
+		},
+		{
+			"id": 1157,
+			"caracId": 35,
+			"companionId": 55,
+			"order": 12,
+			"statPerLevelRange": [
+				[
+					1.0,
+					12.0
+				]
+			]
+		},
+		{
+			"id": 1158,
+			"caracId": 36,
+			"companionId": 55,
+			"order": 13,
+			"statPerLevelRange": [
+				[
+					1.0,
+					12.0
+				]
+			]
+		},
+		{
+			"id": 1159,
+			"caracId": 37,
+			"companionId": 55,
+			"order": 14,
+			"statPerLevelRange": [
+				[
+					1.0,
+					12.0
+				]
+			]
+		},
+		{
+			"id": 1160,
+			"caracId": 48,
+			"companionId": 55,
+			"order": 15,
+			"statPerLevelRange": [
+				[
+					1.0,
+					100.0
+				]
+			]
 		}
 	]
 }

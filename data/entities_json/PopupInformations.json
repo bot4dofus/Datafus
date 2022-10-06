@@ -134,7 +134,7 @@
 					"actionValue": "OpenGuidebookAction:gameGuide|140|popup"
 				}
 			],
-			"criterion": "PL>19&(SC!5|ST!5)",
+			"criterion": "PL>19&(SC!5)",
 			"cacheType": 2,
 			"autoTrigger": true
 		},
@@ -495,7 +495,7 @@
 			"id": 36,
 			"parentId": 5,
 			"titleId": 956336,
-			"descriptionId": 959146,
+			"descriptionId": 959160,
 			"illuName": "fr_feature_temporalanomalies.jpg",
 			"buttons": [
 				{
@@ -519,6 +519,26 @@
 			"illuName": "fr_temporis_7_osatopia.jpg",
 			"buttons": [],
 			"criterion": "SC=5&ST=7&Pm=154010883",
+			"cacheType": 1,
+			"autoTrigger": true
+		},
+		{
+			"id": 38,
+			"parentId": 5,
+			"titleId": 968719,
+			"descriptionId": 968720,
+			"illuName": "fr_feature_expeditions.jpg",
+			"buttons": [
+				{
+					"id": 38,
+					"popupId": 38,
+					"type": 0,
+					"textId": 968721,
+					"actionType": 1,
+					"actionValue": "OpenBookAction:expeditionTab"
+				}
+			],
+			"criterion": "PL>159&ST=8&So=148",
 			"cacheType": 1,
 			"autoTrigger": true
 		}

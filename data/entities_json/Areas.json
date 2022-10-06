@@ -425,10 +425,10 @@
 			"containHouses": false,
 			"containPaddocks": false,
 			"bounds": {
-				"x": 0,
-				"y": 0,
-				"width": 1,
-				"height": 1
+				"x": -1,
+				"y": -1,
+				"width": 2,
+				"height": 2
 			},
 			"worldmapId": 0,
 			"hasWorldMap": false,

@@ -144,17 +144,6 @@
 			"rewardId": 351
 		},
 		{
-			"id": 90,
-			"monsterId": 3137,
-			"category": 3,
-			"apparitionCriterion": "null",
-			"accessCriterion": "null",
-			"incompatibleBosses": [
-				90
-			],
-			"rewardId": 4294967295
-		},
-		{
 			"id": 164,
 			"monsterId": 6218,
 			"category": 4,
@@ -284,6 +273,7 @@
 				143,
 				144,
 				168,
+				65,
 				164,
 				105
 			],
@@ -478,17 +468,6 @@
 				150
 			],
 			"rewardId": 63
-		},
-		{
-			"id": 39,
-			"monsterId": 568,
-			"category": 4,
-			"apparitionCriterion": "Wf>129",
-			"accessCriterion": "OA=44",
-			"incompatibleBosses": [
-				39
-			],
-			"rewardId": 45
 		},
 		{
 			"id": 57,
@@ -813,17 +792,6 @@
 			"accessCriterion": "OA=430",
 			"incompatibleBosses": [
 				66
-			],
-			"rewardId": 4294967295
-		},
-		{
-			"id": 94,
-			"monsterId": 3232,
-			"category": 2,
-			"apparitionCriterion": "Wf>49",
-			"accessCriterion": "OA=28",
-			"incompatibleBosses": [
-				94
 			],
 			"rewardId": 4294967295
 		},
@@ -1193,18 +1161,6 @@
 			"rewardId": 13
 		},
 		{
-			"id": 93,
-			"monsterId": 3208,
-			"category": 3,
-			"apparitionCriterion": "Wf>79",
-			"accessCriterion": "OA=68",
-			"incompatibleBosses": [
-				93,
-				119
-			],
-			"rewardId": 18
-		},
-		{
 			"id": 45,
 			"monsterId": 792,
 			"category": 2,
@@ -1272,17 +1228,6 @@
 				30
 			],
 			"rewardId": 36
-		},
-		{
-			"id": 40,
-			"monsterId": 605,
-			"category": 4,
-			"apparitionCriterion": "Wf>139",
-			"accessCriterion": "OA=42",
-			"incompatibleBosses": [
-				40
-			],
-			"rewardId": 49
 		},
 		{
 			"id": 53,
@@ -1552,17 +1497,6 @@
 				164
 			],
 			"rewardId": 37
-		},
-		{
-			"id": 41,
-			"monsterId": 612,
-			"category": 4,
-			"apparitionCriterion": "Wf>119",
-			"accessCriterion": "OA=70",
-			"incompatibleBosses": [
-				41
-			],
-			"rewardId": 30
 		},
 		{
 			"id": 150,
@@ -1980,29 +1914,6 @@
 			"rewardId": 62
 		},
 		{
-			"id": 35,
-			"monsterId": 423,
-			"category": 5,
-			"apparitionCriterion": "Wf>169&BI=1",
-			"accessCriterion": "OA=24",
-			"incompatibleBosses": [
-				35
-			],
-			"rewardId": 58
-		},
-		{
-			"id": 130,
-			"monsterId": 4264,
-			"category": 5,
-			"apparitionCriterion": "Wf>159&BI=1",
-			"accessCriterion": "OA=1416",
-			"incompatibleBosses": [
-				130,
-				113
-			],
-			"rewardId": 44
-		},
-		{
 			"id": 141,
 			"monsterId": 4882,
 			"category": 6,
@@ -2144,6 +2055,10 @@
 				150,
 				81,
 				107,
+				61,
+				62,
+				63,
+				64,
 				110,
 				132,
 				168,
@@ -2272,7 +2187,8 @@
 			"incompatibleBosses": [
 				104,
 				112,
-				150
+				150,
+				164
 			],
 			"rewardId": 81
 		},
@@ -2286,6 +2202,7 @@
 				138,
 				152,
 				123,
+				164,
 				26,
 				38,
 				19,

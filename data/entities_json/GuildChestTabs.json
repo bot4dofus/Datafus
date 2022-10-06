@@ -49,18 +49,6 @@
 	],
 	"data": [
 		{
-			"tabId": 6,
-			"nameId": 948848,
-			"index": 1,
-			"gfxId": 76,
-			"serverType": 5,
-			"cost": 0,
-			"seniority": 0,
-			"openRight": 8,
-			"dropRight": 24,
-			"takeRight": 23
-		},
-		{
 			"tabId": 4,
 			"nameId": 948847,
 			"index": 1,
@@ -68,6 +56,18 @@
 			"serverType": -1,
 			"cost": 0,
 			"seniority": 30,
+			"openRight": 8,
+			"dropRight": 24,
+			"takeRight": 23
+		},
+		{
+			"tabId": 6,
+			"nameId": 948848,
+			"index": 1,
+			"gfxId": 76,
+			"serverType": 5,
+			"cost": 0,
+			"seniority": 0,
 			"openRight": 8,
 			"dropRight": 24,
 			"takeRight": 23

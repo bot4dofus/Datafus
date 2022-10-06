@@ -2298,10 +2298,38 @@
 		},
 		{
 			"id": 349,
-			"nameMaleId": 959058,
-			"nameFemaleId": 959059,
+			"nameMaleId": 959071,
+			"nameFemaleId": 959072,
 			"visible": true,
 			"categoryId": 7
+		},
+		{
+			"id": 350,
+			"nameMaleId": 968473,
+			"nameFemaleId": 968474,
+			"visible": true,
+			"categoryId": 1
+		},
+		{
+			"id": 351,
+			"nameMaleId": 968903,
+			"nameFemaleId": 968905,
+			"visible": true,
+			"categoryId": 7
+		},
+		{
+			"id": 352,
+			"nameMaleId": 968907,
+			"nameFemaleId": 968909,
+			"visible": true,
+			"categoryId": 7
+		},
+		{
+			"id": 353,
+			"nameMaleId": 970223,
+			"nameFemaleId": 970224,
+			"visible": true,
+			"categoryId": 1
 		}
 	]
 }

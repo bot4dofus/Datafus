@@ -3896,8 +3896,8 @@
 		},
 		{
 			"id": 277,
-			"nameId": 959883,
-			"shortcutId": 959884,
+			"nameId": 959952,
+			"shortcutId": 959953,
 			"order": 508100,
 			"defaultAnim": "touitcheur",
 			"persistancy": false,
@@ -3911,8 +3911,8 @@
 		},
 		{
 			"id": 278,
-			"nameId": 961879,
-			"shortcutId": 961878,
+			"nameId": 962491,
+			"shortcutId": 961970,
 			"order": 508200,
 			"defaultAnim": "Hecate",
 			"persistancy": false,
@@ -3920,14 +3920,14 @@
 			"aura": false,
 			"anims": [],
 			"cooldown": 2840,
-			"duration": 2840,
+			"duration": 28400,
 			"weight": 0,
 			"spellLevelId": 0
 		},
 		{
 			"id": 279,
-			"nameId": 961996,
-			"shortcutId": 961997,
+			"nameId": 963775,
+			"shortcutId": 963776,
 			"order": 508300,
 			"defaultAnim": "Pouchecot",
 			"persistancy": false,
@@ -3941,8 +3941,8 @@
 		},
 		{
 			"id": 280,
-			"nameId": 962064,
-			"shortcutId": 962065,
+			"nameId": 967298,
+			"shortcutId": 967299,
 			"order": 508400,
 			"defaultAnim": "Raval",
 			"persistancy": false,
@@ -3951,6 +3951,21 @@
 			"anims": [],
 			"cooldown": 10000,
 			"duration": 9600,
+			"weight": 0,
+			"spellLevelId": 0
+		},
+		{
+			"id": 281,
+			"nameId": 968450,
+			"shortcutId": 968449,
+			"order": 508500,
+			"defaultAnim": "Etendardmercenaire",
+			"persistancy": false,
+			"eight_directions": false,
+			"aura": false,
+			"anims": [],
+			"cooldown": 1000,
+			"duration": 1000,
 			"weight": 0,
 			"spellLevelId": 0
 		}

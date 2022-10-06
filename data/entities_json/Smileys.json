@@ -46,10 +46,10 @@
 			"gfxId": "smiley_1",
 			"forPlayers": true,
 			"triggers": [
-				"(:",
-				":)",
 				":-)",
-				"(-:"
+				"(-:",
+				"(:",
+				":)"
 			],
 			"referenceId": 0,
 			"categoryId": 2
@@ -69,8 +69,8 @@
 			"gfxId": "smiley_40",
 			"forPlayers": true,
 			"triggers": [
-				":-(",
-				":("
+				":(",
+				":-("
 			],
 			"referenceId": 0,
 			"categoryId": 3
@@ -92,8 +92,8 @@
 			"gfxId": "smiley_5",
 			"forPlayers": true,
 			"triggers": [
-				"xD",
-				"x-D"
+				"x-D",
+				"xD"
 			],
 			"referenceId": 0,
 			"categoryId": 2
@@ -133,9 +133,9 @@
 			"gfxId": "smiley_9",
 			"forPlayers": true,
 			"triggers": [
-				":-P",
 				":-p",
 				":p",
+				":-P",
 				":P"
 			],
 			"referenceId": 0,
@@ -195,9 +195,9 @@
 			"gfxId": "smiley_15",
 			"forPlayers": true,
 			"triggers": [
+				"$_$",
 				"K_K",
-				"\u20ac_\u20ac",
-				"$_$"
+				"\u20ac_\u20ac"
 			],
 			"referenceId": 0,
 			"categoryId": 2
@@ -217,8 +217,8 @@
 			"gfxId": "smiley_3",
 			"forPlayers": true,
 			"triggers": [
-				":D",
-				":-D"
+				":-D",
+				":D"
 			],
 			"referenceId": 0,
 			"categoryId": 2
@@ -229,9 +229,9 @@
 			"gfxId": "smiley_16",
 			"forPlayers": true,
 			"triggers": [
+				";D",
 				";-D",
-				"O_<",
-				";D"
+				"O_<"
 			],
 			"referenceId": 0,
 			"categoryId": 2
@@ -338,8 +338,8 @@
 			"gfxId": "smiley_27",
 			"forPlayers": true,
 			"triggers": [
-				"~_~",
-				"(~_~)"
+				"(~_~)",
+				"~_~"
 			],
 			"referenceId": 0,
 			"categoryId": 3
@@ -372,10 +372,10 @@
 			"gfxId": "smiley_30",
 			"forPlayers": true,
 			"triggers": [
-				":-/",
-				":/",
 				":-\\",
-				":\\"
+				":\\",
+				":/",
+				":-/"
 			],
 			"referenceId": 0,
 			"categoryId": 3
@@ -404,10 +404,10 @@
 			"gfxId": "smiley_33",
 			"forPlayers": true,
 			"triggers": [
-				">:/",
 				">:\\",
-				">:-\\",
-				">:-/"
+				">:-/",
+				">:/",
+				">:-\\"
 			],
 			"referenceId": 0,
 			"categoryId": 3
@@ -770,8 +770,8 @@
 			"gfxId": "smiley_71",
 			"forPlayers": true,
 			"triggers": [
-				"\u00f4_O",
 				"oO",
+				"\u00f4_O",
 				"o_O"
 			],
 			"referenceId": 0,
@@ -783,8 +783,8 @@
 			"gfxId": "smiley_72",
 			"forPlayers": true,
 			"triggers": [
-				"(>_<)",
-				">_<"
+				">_<",
+				"(>_<)"
 			],
 			"referenceId": 0,
 			"categoryId": 2
@@ -1976,6 +1976,150 @@
 			"triggers": [],
 			"referenceId": 63,
 			"categoryId": 3
+		},
+		{
+			"id": 228,
+			"order": 0,
+			"gfxId": "smiley_228",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 1,
+			"categoryId": 2
+		},
+		{
+			"id": 229,
+			"order": 0,
+			"gfxId": "smiley_229",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 8,
+			"categoryId": 2
+		},
+		{
+			"id": 230,
+			"order": 0,
+			"gfxId": "smiley_230",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 29,
+			"categoryId": 3
+		},
+		{
+			"id": 231,
+			"order": 0,
+			"gfxId": "smiley_231",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 36,
+			"categoryId": 3
+		},
+		{
+			"id": 232,
+			"order": 0,
+			"gfxId": "smiley_232",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 41,
+			"categoryId": 1
+		},
+		{
+			"id": 233,
+			"order": 0,
+			"gfxId": "smiley_233",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 22,
+			"categoryId": 1
+		},
+		{
+			"id": 234,
+			"order": 0,
+			"gfxId": "smiley_234",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 13,
+			"categoryId": 2
+		},
+		{
+			"id": 235,
+			"order": 0,
+			"gfxId": "smiley_235",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 53,
+			"categoryId": 3
+		},
+		{
+			"id": 236,
+			"order": 0,
+			"gfxId": "smiley_236",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 33,
+			"categoryId": 3
+		},
+		{
+			"id": 237,
+			"order": 0,
+			"gfxId": "smiley_237",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 1,
+			"categoryId": 2
+		},
+		{
+			"id": 238,
+			"order": 0,
+			"gfxId": "smiley_238",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 77,
+			"categoryId": 1
+		},
+		{
+			"id": 239,
+			"order": 0,
+			"gfxId": "smiley_239",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 22,
+			"categoryId": 3
+		},
+		{
+			"id": 240,
+			"order": 0,
+			"gfxId": "smiley_240",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 23,
+			"categoryId": 2
+		},
+		{
+			"id": 241,
+			"order": 0,
+			"gfxId": "smiley_241",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 13,
+			"categoryId": 2
+		},
+		{
+			"id": 242,
+			"order": 0,
+			"gfxId": "smiley_242",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 8,
+			"categoryId": 2
+		},
+		{
+			"id": 243,
+			"order": 0,
+			"gfxId": "smiley_243",
+			"forPlayers": true,
+			"triggers": [],
+			"referenceId": 99,
+			"categoryId": 2
 		}
 	]
 }
