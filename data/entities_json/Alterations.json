@@ -4461,7 +4461,7 @@
 		{
 			"id": 129,
 			"nameId": 969621,
-			"descriptionId": 969622,
+			"descriptionId": 970288,
 			"categoryId": 20,
 			"iconId": 42243,
 			"isVisible": true,
@@ -4498,7 +4498,7 @@
 		{
 			"id": 130,
 			"nameId": 969623,
-			"descriptionId": 969624,
+			"descriptionId": 970289,
 			"categoryId": 20,
 			"iconId": 42244,
 			"isVisible": true,
@@ -4560,7 +4560,7 @@
 		{
 			"id": 131,
 			"nameId": 969627,
-			"descriptionId": 969626,
+			"descriptionId": 970290,
 			"categoryId": 20,
 			"iconId": 42245,
 			"isVisible": true,

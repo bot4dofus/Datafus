@@ -3968,6 +3968,21 @@
 			"duration": 1000,
 			"weight": 0,
 			"spellLevelId": 0
+		},
+		{
+			"id": 282,
+			"nameId": 970254,
+			"shortcutId": 970256,
+			"order": 508600,
+			"defaultAnim": "Maimane",
+			"persistancy": false,
+			"eight_directions": false,
+			"aura": false,
+			"anims": [],
+			"cooldown": 5000,
+			"duration": 4960,
+			"weight": 0,
+			"spellLevelId": 0
 		}
 	]
 }
