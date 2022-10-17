@@ -35,6 +35,10 @@ jobs:
       - name: A2 - Build .json
         run: |
             python src/A2.py data/DofusInvoker/scripts/com/ data/events.json
+
+      - name: A3 - Build .properties
+        run: |
+            python src/A3.py data/events.json data/events.properties
       
       - name: Get latest Dofus version
         run: |
@@ -48,6 +52,6 @@ jobs:
       - name: Commit and push
         uses: EndBug/add-and-commit@v7
         with:
-          add: '["data/DofusInvoker/", "data/events.json"]'
+          add: '["data/DofusInvoker/", "data/events.json", "data/events.properties"]'
           message: 'Flow A - Update version ${{ env.VERSION }}'
           push: true
