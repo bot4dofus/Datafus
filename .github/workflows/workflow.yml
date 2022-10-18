@@ -27,7 +27,8 @@ jobs:
           echo E = ${{ github.event.commits[0].modified }}
           echo F = ${{ github.event.commits[0].modified[0] }}
           echo G = ${{ github.event.commits[0].modified[*] }}
-          echo H = ${{ contains(github.event.commits[*].modified[*], 'data/DofusInvoker.swf') }}
+          echo H = ${{ contains(github.event.commits[0].modified[*], '.github/workflows/workflow.yml') }}
+          echo I = ${{ contains(github.event.commits[*].modified[*], 'data/DofusInvoker.swf') }}
 
   Flow_A_:
     runs-on: ubuntu-latest
