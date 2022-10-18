@@ -22,6 +22,8 @@ jobs:
           echo ${{ github.event }}
           echo ${{ github.event.commits[*] }}
           echo ${{ github.event.commits[*].modified[*] }}
+          echo ${{ github.event.commits[] }}
+          echo ${{ github.event.commits[][modified] }}
           echo ${{ contains(github.event.commits[*].modified[*], 'data/DofusInvoker.swf') }}
 
   Flow_A_:
