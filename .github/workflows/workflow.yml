@@ -7,7 +7,7 @@ on:
       - 'data/DofusInvoker.swf'
       - 'data/d2o/*'
       - 'data/d2i/*'
-      - '*'
+      - '.github/workflows/workflow.yml'
     branches:
       - master
 
