@@ -12,6 +12,18 @@ on:
 
 jobs:
 
+  Flow_Test_:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo Test
+        run: |
+          echo "This is Flow Test"
+          echo ${{ github.event }}
+          echo ${{ github.event.commits[*] }}
+          echo ${{ github.event.commits[*].modified[*] }}
+          echo ${{ contains(github.event.commits[*].modified[*], 'data/DofusInvoker.swf') }}
+
   Flow_A_:
     runs-on: ubuntu-latest
     if: (github.event_name == 'workflow_dispatch') || contains(github.event.commits[*].modified[*], 'data/DofusInvoker.swf')
