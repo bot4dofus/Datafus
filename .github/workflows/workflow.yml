@@ -19,13 +19,14 @@ jobs:
       - name: Echo Test
         run: |
           echo "This is Flow Test"
-          echo ${{ github.event }}
-          echo ${{ github.event.commits[*] }}
-          echo ${{ github.event.commits[*].modified[*] }}
-          echo ${{ github.event.commits[0].modified.length }}
-          echo ${{ github.event.commits[0].modified }}
-          echo ${{ github.event.commits[0].modified[0] }}
-          echo ${{ contains(github.event.commits[*].modified[*], 'data/DofusInvoker.swf') }}
+          echo A = ${{ github.event }}
+          echo B = ${{ github.event.commits[*] }}
+          echo C = ${{ github.event.commits[*].modified[*] }}
+          echo D = ${{ github.event.commits[0].modified.length }}
+          echo E = ${{ github.event.commits[0].modified }}
+          echo F = ${{ github.event.commits[0].modified[0] }}
+          echo G = ${{ github.event.commits[0].modified[*] }}
+          echo H = ${{ contains(github.event.commits[*].modified[*], 'data/DofusInvoker.swf') }}
 
   Flow_A_:
     runs-on: ubuntu-latest
