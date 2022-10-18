@@ -7,101 +7,73 @@ on:
       - 'data/DofusInvoker.swf'
       - 'data/d2o/*'
       - 'data/d2i/*'
-      - '.github/workflows/workflow.yml'
     branches:
       - master
 
 jobs:
-  Flow_Test_:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-    
-      - name: Echo Test
-        run: |
-          echo "This is Flow Test"
-          echo A = ${{ github.event }}
-          echo B = ${{ github.event.commits[*] }}
-          echo C = ${{ github.event.commits[*].modified[*] }}
-          echo D = ${{ github.event.commits[0].modified.length }}
-          echo E = ${{ github.event.commits[0].modified }}
-          echo F = ${{ github.event.commits[0].modified[0] }}
-          echo G = ${{ github.event.commits[0].modified[*] }}
-          echo H = ${{ contains(github.event.commits[0].modified[*], '.github/workflows/workflow.yml') }}
-          echo I = ${{ contains(github.event.commits[*].modified[*], 'data/DofusInvoker.swf') }}
-
-  Flow_Test1_:
+  Job_A:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Filter path 1
+      - name: Filter Job A
         uses: dorny/paths-filter@v2
-        id: changes
+        id: filter
         with:
           filters: |
-            src:
-              - '.github/workflows/workflow.yml'
-    
-      - name: Echo Test 1
-        if: steps.changes.outputs.src == 'true'
-        run: |
-          echo "This is Flow Test 1"
+            dofus_invoker:
+              - 'data/DofusInvoker.swf'
 
-  Flow_Test2_:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Filter path 2
-        uses: dorny/paths-filter@v2
-        id: changes
-        with:
-          filters: |
-            src:
-              - 'data/**'
-    
-      - name: Echo Test 2
-        if: steps.changes.outputs.src == 'true'
-        run: |
-          echo "This is Flow Test 2"
-
-  Flow_A_:
-    runs-on: ubuntu-latest
-    if: (github.event_name == 'workflow_dispatch') || contains(github.event.commits[*].modified[*], 'data/DofusInvoker.swf')
-
-    steps:
       - name: Echo A
+        if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
           echo "This is Flow A"
 
-  Flow_B_:
+  Job_B:
     runs-on: ubuntu-latest
-    if: (github.event_name == 'workflow_dispatch') || contains(github.event.commits[*].modified[*], 'data/d2o')
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Filter Job C
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            d2o:
+              - 'data/d2o/*'
+
       - name: Echo B
+        if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
           echo "This is Flow B"
 
-  Flow_C_:
+  Job_C:
     runs-on: ubuntu-latest
-    if: (github.event_name == 'workflow_dispatch') || contains(github.event.commits[*].modified[*], 'data/d2i')
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Filter Job C
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            d2i:
+              - 'data/d2i/*'
+
       - name: Echo C
+        if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
           echo "This is Flow C"
 
   Publish_:
     runs-on: ubuntu-latest
-    needs: [Flow_A_, Flow_B_, Flow_C_]
+    needs: [Job_A, Job_B, Job_C]
 
     steps:
       - name: Echo Publish
