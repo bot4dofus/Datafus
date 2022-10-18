@@ -13,22 +13,39 @@ on:
 
 jobs:
 
-  Flow_Test_:
+  Flow_Test1_:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Echo Test
+      - name: Filter path 1
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            src:
+              - '.github/workflows/workflow.yml'
+    
+      - name: Echo Test 1
+        if: steps.changes.outputs.src == 'true'
         run: |
-          echo "This is Flow Test"
-          echo A = ${{ github.event }}
-          echo B = ${{ github.event.commits[*] }}
-          echo C = ${{ github.event.commits[*].modified[*] }}
-          echo D = ${{ github.event.commits[0].modified.length }}
-          echo E = ${{ github.event.commits[0].modified }}
-          echo F = ${{ github.event.commits[0].modified[0] }}
-          echo G = ${{ github.event.commits[0].modified[*] }}
-          echo H = ${{ contains(github.event.commits[0].modified[*], '.github/workflows/workflow.yml') }}
-          echo I = ${{ contains(github.event.commits[*].modified[*], 'data/DofusInvoker.swf') }}
+          echo "This is Flow Test 1"
+
+  Flow_Test2_:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Filter path 2
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            src:
+              - 'data/**'
+    
+      - name: Echo Test 2
+        if: steps.changes.outputs.src == 'true'
+        run: |
+          echo "This is Flow Test 2"
 
   Flow_A_:
     runs-on: ubuntu-latest
