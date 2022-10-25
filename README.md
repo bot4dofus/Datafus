@@ -1,11 +1,8 @@
 <p align="center">
   <img width="100%" src="https://github.com/LucBerge/Datafus/raw/master/images/banner_tags.drawio.svg" />
 </p>
-  
-![Job A](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Job%20A/master?label=Job%20A)
-![Job B](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Job%20B/master?label=Job%20B)
-![Job C](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Job%20C/master?label=Job%20C)
-![Publish](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Publish/master?label=Publish)
+
+[![Workflow](https://img.shields.io/github/workflow/status/bot4dofus/Datafus/Workflow)](https://github.com/bot4dofus/Datafus/actions/workflows/workflow.yml)
 [![Release](https://img.shields.io/github/v/release/LucBerge/Datafus)](https://github.com/LucBerge/Datafus/releases)
 [![License](https://img.shields.io/github/license/LucBerge/Datafus)](https://github.com/LucBerge/Datafus/blob/master/LICENSE)
   
@@ -24,7 +21,7 @@ Datafus builds the dofus database by extracting the Dofus files. The objectives 
 
 If you need the data in local for your project, you can download it in the [release section](https://github.com/LucBerge/Datafus/releases/latest).
 
-## Flows
+## Workflow
 
 <p align="center">
   <img width="80%" src="https://github.com/LucBerge/Datafus/raw/master/images/Flows.drawio.svg" />
