@@ -1330,17 +1330,6 @@
 			"order": 17,
 			"scaleFormulaId": 0,
 			"upgradable": false
-		},
-		{
-			"id": 148,
-			"keyword": "damageFactor",
-			"nameId": 928610,
-			"asset": "",
-			"categoryId": 4,
-			"visible": false,
-			"order": 18,
-			"scaleFormulaId": 0,
-			"upgradable": false
 		}
 	]
 }

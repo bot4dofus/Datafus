@@ -64664,28 +64664,28 @@
 			"achievementId": 5715,
 			"order": 1,
 			"nameId": 960647,
-			"criterion": "EH>801,0"
+			"criterion": "EH>801,0&OO=12587"
 		},
 		{
 			"id": 12589,
 			"achievementId": 5715,
 			"order": 2,
 			"nameId": 960648,
-			"criterion": "EH>802,0"
+			"criterion": "EH>802,0&OO=12588"
 		},
 		{
 			"id": 12590,
 			"achievementId": 5715,
 			"order": 3,
 			"nameId": 960649,
-			"criterion": "EH>803,0"
+			"criterion": "EH>803,0&OO=12589"
 		},
 		{
 			"id": 12591,
 			"achievementId": 5715,
 			"order": 4,
 			"nameId": 960650,
-			"criterion": "EH>804,0"
+			"criterion": "EH>804,0&OO=12590"
 		},
 		{
 			"id": 12592,
