@@ -2,9 +2,10 @@
   <img width="100%" src="https://github.com/LucBerge/Datafus/raw/master/images/banner_tags.drawio.svg" />
 </p>
   
-![Flow A](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Flow%20A/master?label=Flow%20A)
-![Flow B](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Flow%20B/master?label=Flow%20B)
-![Flow C](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Flow%20C/master?label=Flow%20C)
+![Job A](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Job%20A/master?label=Job%20A)
+![Job B](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Job%20B/master?label=Job%20B)
+![Job C](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Job%20C/master?label=Job%20C)
+![Publish](https://img.shields.io/github/workflow/status/LucBerge/Datafus/Publish/master?label=Publish)
 [![Release](https://img.shields.io/github/v/release/LucBerge/Datafus)](https://github.com/LucBerge/Datafus/releases)
 [![License](https://img.shields.io/github/license/LucBerge/Datafus)](https://github.com/LucBerge/Datafus/blob/master/LICENSE)
   
