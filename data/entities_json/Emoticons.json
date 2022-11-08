@@ -3983,6 +3983,21 @@
 			"duration": 4960,
 			"weight": 0,
 			"spellLevelId": 0
+		},
+		{
+			"id": 283,
+			"nameId": 970352,
+			"shortcutId": 970315,
+			"order": 508700,
+			"defaultAnim": "Brumaire",
+			"persistancy": false,
+			"eight_directions": false,
+			"aura": false,
+			"anims": [],
+			"cooldown": 10000,
+			"duration": 8500,
+			"weight": 0,
+			"spellLevelId": 0
 		}
 	]
 }
