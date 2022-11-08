@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.finishmoves
    public class FinishMoveListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3003;
+      public static const protocolId:uint = 8317;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.finishmoves
       
       override public function getMessageId() : uint
       {
-         return 3003;
+         return 8317;
       }
       
       public function initFinishMoveListMessage(finishMoves:Vector.<FinishMoveInformations> = null) : FinishMoveListMessage

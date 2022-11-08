@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.house
    public class HouseInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1082;
+      public static const protocolId:uint = 8100;
        
       
       public var houseId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.house
       
       public function getTypeId() : uint
       {
-         return 1082;
+         return 8100;
       }
       
       public function initHouseInformations(houseId:uint = 0, modelId:uint = 0) : HouseInformations

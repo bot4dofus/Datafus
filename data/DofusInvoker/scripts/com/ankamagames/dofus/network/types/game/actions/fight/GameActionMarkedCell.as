@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.actions.fight
    public class GameActionMarkedCell implements INetworkType
    {
       
-      public static const protocolId:uint = 8580;
+      public static const protocolId:uint = 322;
        
       
       public var cellId:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.actions.fight
       
       public function getTypeId() : uint
       {
-         return 8580;
+         return 322;
       }
       
       public function initGameActionMarkedCell(cellId:uint = 0, zoneSize:int = 0, cellColor:int = 0, cellsType:int = 0) : GameActionMarkedCell

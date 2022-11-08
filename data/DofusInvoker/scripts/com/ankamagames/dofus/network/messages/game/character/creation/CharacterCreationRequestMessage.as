@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.character.creation
    public class CharacterCreationRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9913;
+      public static const protocolId:uint = 3449;
        
       
       private var _isInitialized:Boolean = false;
@@ -44,7 +44,7 @@ package com.ankamagames.dofus.network.messages.game.character.creation
       
       override public function getMessageId() : uint
       {
-         return 9913;
+         return 3449;
       }
       
       public function initCharacterCreationRequestMessage(name:String = "", breed:int = 0, sex:Boolean = false, colors:Vector.<int> = null, cosmeticId:uint = 0) : CharacterCreationRequestMessage
@@ -148,7 +148,7 @@ package com.ankamagames.dofus.network.messages.game.character.creation
       private function _breedFunc(input:ICustomDataInput) : void
       {
          this.breed = input.readByte();
-         if(this.breed < PlayableBreedEnum.Feca || this.breed > PlayableBreedEnum.Ouginak)
+         if(this.breed < PlayableBreedEnum.Feca || this.breed > PlayableBreedEnum.Forgelance)
          {
             throw new Error("Forbidden value (" + this.breed + ") on element of CharacterCreationRequestMessage.breed.");
          }

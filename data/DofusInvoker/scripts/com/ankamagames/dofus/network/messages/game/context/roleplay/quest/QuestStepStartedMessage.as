@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
    public class QuestStepStartedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5629;
+      public static const protocolId:uint = 1261;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
       
       override public function getMessageId() : uint
       {
-         return 5629;
+         return 1261;
       }
       
       public function initQuestStepStartedMessage(questId:uint = 0, stepId:uint = 0) : QuestStepStartedMessage

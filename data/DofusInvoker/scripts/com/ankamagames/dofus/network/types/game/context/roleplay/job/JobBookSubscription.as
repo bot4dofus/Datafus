@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
    public class JobBookSubscription implements INetworkType
    {
       
-      public static const protocolId:uint = 5624;
+      public static const protocolId:uint = 8668;
        
       
       public var jobId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
       
       public function getTypeId() : uint
       {
-         return 5624;
+         return 8668;
       }
       
       public function initJobBookSubscription(jobId:uint = 0, subscribed:Boolean = false) : JobBookSubscription

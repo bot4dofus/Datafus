@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightCastRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5836;
+      public static const protocolId:uint = 403;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 5836;
+         return 403;
       }
       
       public function initGameActionFightCastRequestMessage(spellId:uint = 0, cellId:int = 0) : GameActionFightCastRequestMessage

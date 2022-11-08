@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.purchasable
    public class PurchasableDialogMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6476;
+      public static const protocolId:uint = 7035;
        
       
       private var _isInitialized:Boolean = false;
@@ -39,7 +39,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.purchasable
       
       override public function getMessageId() : uint
       {
-         return 6476;
+         return 7035;
       }
       
       public function initPurchasableDialogMessage(buyOrSell:Boolean = false, purchasableId:Number = 0, purchasableInstanceId:uint = 0, secondHand:Boolean = false, price:Number = 0) : PurchasableDialogMessage

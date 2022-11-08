@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildModificationStartedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1924;
+      public static const protocolId:uint = 4188;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 1924;
+         return 4188;
       }
       
       public function initGuildModificationStartedMessage(canChangeName:Boolean = false, canChangeEmblem:Boolean = false) : GuildModificationStartedMessage

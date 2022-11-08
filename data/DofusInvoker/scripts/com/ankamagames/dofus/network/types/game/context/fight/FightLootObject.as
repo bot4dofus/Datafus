@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightLootObject implements INetworkType
    {
       
-      public static const protocolId:uint = 8149;
+      public static const protocolId:uint = 6606;
        
       
       public var objectId:int = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 8149;
+         return 6606;
       }
       
       public function initFightLootObject(objectId:int = 0, quantity:int = 0, priorityHint:int = 0) : FightLootObject

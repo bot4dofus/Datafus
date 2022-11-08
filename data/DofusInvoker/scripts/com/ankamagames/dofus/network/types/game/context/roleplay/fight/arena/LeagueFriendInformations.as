@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
    public class LeagueFriendInformations extends AbstractContactInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1569;
+      public static const protocolId:uint = 895;
        
       
       public var playerId:Number = 0;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
       
       override public function getTypeId() : uint
       {
-         return 1569;
+         return 895;
       }
       
       public function initLeagueFriendInformations(accountId:uint = 0, accountTag:AccountTagInformation = null, playerId:Number = 0, playerName:String = "", breed:int = 0, sex:Boolean = false, level:uint = 0, leagueId:int = 0, totalLeaguePoints:int = 0, ladderPosition:int = 0) : LeagueFriendInformations
@@ -146,7 +146,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
       private function _breedFunc(input:ICustomDataInput) : void
       {
          this.breed = input.readByte();
-         if(this.breed < PlayableBreedEnum.Feca || this.breed > PlayableBreedEnum.Ouginak)
+         if(this.breed < PlayableBreedEnum.Feca || this.breed > PlayableBreedEnum.Forgelance)
          {
             throw new Error("Forbidden value (" + this.breed + ") on element of LeagueFriendInformations.breed.");
          }

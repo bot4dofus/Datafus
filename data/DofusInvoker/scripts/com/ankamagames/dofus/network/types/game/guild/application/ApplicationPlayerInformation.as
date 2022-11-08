@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.guild.application
    public class ApplicationPlayerInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 5249;
+      public static const protocolId:uint = 3215;
        
       
       public var playerId:Number = 0;
@@ -41,7 +41,7 @@ package com.ankamagames.dofus.network.types.game.guild.application
       
       public function getTypeId() : uint
       {
-         return 5249;
+         return 3215;
       }
       
       public function initApplicationPlayerInformation(playerId:Number = 0, playerName:String = "", breed:int = 0, sex:Boolean = false, level:uint = 0, accountId:uint = 0, accountTag:String = "", accountNickname:String = "", status:PlayerStatus = null) : ApplicationPlayerInformation
@@ -155,7 +155,7 @@ package com.ankamagames.dofus.network.types.game.guild.application
       private function _breedFunc(input:ICustomDataInput) : void
       {
          this.breed = input.readByte();
-         if(this.breed < PlayableBreedEnum.Feca || this.breed > PlayableBreedEnum.Ouginak)
+         if(this.breed < PlayableBreedEnum.Feca || this.breed > PlayableBreedEnum.Forgelance)
          {
             throw new Error("Forbidden value (" + this.breed + ") on element of ApplicationPlayerInformation.breed.");
          }

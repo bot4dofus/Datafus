@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class Item implements INetworkType
    {
       
-      public static const protocolId:uint = 6716;
+      public static const protocolId:uint = 454;
        
       
       public function Item()
@@ -18,7 +18,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       public function getTypeId() : uint
       {
-         return 6716;
+         return 454;
       }
       
       public function initItem() : Item

@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameEntitiesDispositionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1380;
+      public static const protocolId:uint = 3214;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 1380;
+         return 3214;
       }
       
       public function initGameEntitiesDispositionMessage(dispositions:Vector.<IdentifiedEntityDispositionInformations> = null) : GameEntitiesDispositionMessage

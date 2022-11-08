@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class RecycleResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2340;
+      public static const protocolId:uint = 9258;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 2340;
+         return 9258;
       }
       
       public function initRecycleResultMessage(nuggetsForPrism:uint = 0, nuggetsForPlayer:uint = 0) : RecycleResultMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.spell
    public class SpellVariantActivationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1416;
+      public static const protocolId:uint = 4548;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.spell
       
       override public function getMessageId() : uint
       {
-         return 1416;
+         return 4548;
       }
       
       public function initSpellVariantActivationMessage(spellId:uint = 0, result:Boolean = false) : SpellVariantActivationMessage

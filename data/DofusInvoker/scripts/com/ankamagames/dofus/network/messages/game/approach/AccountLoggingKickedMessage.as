@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.approach
    public class AccountLoggingKickedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9648;
+      public static const protocolId:uint = 2649;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       override public function getMessageId() : uint
       {
-         return 9648;
+         return 2649;
       }
       
       public function initAccountLoggingKickedMessage(days:uint = 0, hours:uint = 0, minutes:uint = 0) : AccountLoggingKickedMessage

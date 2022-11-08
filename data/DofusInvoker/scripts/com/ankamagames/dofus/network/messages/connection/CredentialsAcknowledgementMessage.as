@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class CredentialsAcknowledgementMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7065;
+      public static const protocolId:uint = 5801;
        
       
       public function CredentialsAcknowledgementMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 7065;
+         return 5801;
       }
       
       public function initCredentialsAcknowledgementMessage() : CredentialsAcknowledgementMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.chat.smiley
    public class ChatSmileyMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2263;
+      public static const protocolId:uint = 6979;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.chat.smiley
       
       override public function getMessageId() : uint
       {
-         return 2263;
+         return 6979;
       }
       
       public function initChatSmileyMessage(entityId:Number = 0, smileyId:uint = 0, accountId:uint = 0) : ChatSmileyMessage

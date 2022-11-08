@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.initialization
    public class CharacterLoadingCompleteMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6169;
+      public static const protocolId:uint = 4239;
        
       
       public function CharacterLoadingCompleteMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.initialization
       
       override public function getMessageId() : uint
       {
-         return 6169;
+         return 4239;
       }
       
       public function initCharacterLoadingCompleteMessage() : CharacterLoadingCompleteMessage

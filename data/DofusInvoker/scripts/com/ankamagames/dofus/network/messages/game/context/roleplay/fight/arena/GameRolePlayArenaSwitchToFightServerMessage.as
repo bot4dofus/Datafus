@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
    public class GameRolePlayArenaSwitchToFightServerMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2504;
+      public static const protocolId:uint = 7758;
        
       
       private var _isInitialized:Boolean = false;
@@ -20,16 +20,14 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       public var ports:Vector.<uint>;
       
-      public var ticket:Vector.<int>;
+      [Transient]
+      public var token:String = "";
       
       private var _portstree:FuncTree;
-      
-      private var _tickettree:FuncTree;
       
       public function GameRolePlayArenaSwitchToFightServerMessage()
       {
          this.ports = new Vector.<uint>();
-         this.ticket = new Vector.<int>();
          super();
       }
       
@@ -40,14 +38,14 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       override public function getMessageId() : uint
       {
-         return 2504;
+         return 7758;
       }
       
-      public function initGameRolePlayArenaSwitchToFightServerMessage(address:String = "", ports:Vector.<uint> = null, ticket:Vector.<int> = null) : GameRolePlayArenaSwitchToFightServerMessage
+      public function initGameRolePlayArenaSwitchToFightServerMessage(address:String = "", ports:Vector.<uint> = null, token:String = "") : GameRolePlayArenaSwitchToFightServerMessage
       {
          this.address = address;
          this.ports = ports;
-         this.ticket = ticket;
+         this.token = token;
          this._isInitialized = true;
          return this;
       }
@@ -56,7 +54,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       {
          this.address = "";
          this.ports = new Vector.<uint>();
-         this.ticket = new Vector.<int>();
+         this.token = "";
          this._isInitialized = false;
       }
       
@@ -101,11 +99,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
             }
             output.writeVarShort(this.ports[_i2]);
          }
-         output.writeVarInt(this.ticket.length);
-         for(var _i3:uint = 0; _i3 < this.ticket.length; _i3++)
-         {
-            output.writeByte(this.ticket[_i3]);
-         }
+         output.writeUTF(this.token);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -116,7 +110,6 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       public function deserializeAs_GameRolePlayArenaSwitchToFightServerMessage(input:ICustomDataInput) : void
       {
          var _val2:uint = 0;
-         var _val3:int = 0;
          this._addressFunc(input);
          var _portsLen:uint = input.readUnsignedShort();
          for(var _i2:uint = 0; _i2 < _portsLen; _i2++)
@@ -128,12 +121,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
             }
             this.ports.push(_val2);
          }
-         var _ticketLen:uint = input.readVarInt();
-         for(var _i3:uint = 0; _i3 < _ticketLen; _i3++)
-         {
-            _val3 = input.readByte();
-            this.ticket.push(_val3);
-         }
+         this._tokenFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -145,7 +133,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       {
          tree.addChild(this._addressFunc);
          this._portstree = tree.addChild(this._portstreeFunc);
-         this._tickettree = tree.addChild(this._tickettreeFunc);
+         tree.addChild(this._tokenFunc);
       }
       
       private function _addressFunc(input:ICustomDataInput) : void
@@ -172,19 +160,9 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
          this.ports.push(_val);
       }
       
-      private function _tickettreeFunc(input:ICustomDataInput) : void
+      private function _tokenFunc(input:ICustomDataInput) : void
       {
-         var length:uint = input.readVarInt();
-         for(var i:uint = 0; i < length; i++)
-         {
-            this._tickettree.addChild(this._ticketFunc);
-         }
-      }
-      
-      private function _ticketFunc(input:ICustomDataInput) : void
-      {
-         var _val:int = input.readByte();
-         this.ticket.push(_val);
+         this.token = input.readUTF();
       }
    }
 }

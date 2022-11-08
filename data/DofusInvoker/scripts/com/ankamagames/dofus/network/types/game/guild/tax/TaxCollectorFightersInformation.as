@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.guild.tax
    public class TaxCollectorFightersInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 9488;
+      public static const protocolId:uint = 6077;
        
       
       public var collectorId:Number = 0;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.types.game.guild.tax
       
       public function getTypeId() : uint
       {
-         return 9488;
+         return 6077;
       }
       
       public function initTaxCollectorFightersInformation(collectorId:Number = 0, allyCharactersInformations:Vector.<CharacterMinimalPlusLookInformations> = null, enemyCharactersInformations:Vector.<CharacterMinimalPlusLookInformations> = null) : TaxCollectorFightersInformation

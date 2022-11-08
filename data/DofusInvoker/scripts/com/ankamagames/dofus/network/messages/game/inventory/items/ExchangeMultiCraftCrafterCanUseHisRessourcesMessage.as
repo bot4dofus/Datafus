@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class ExchangeMultiCraftCrafterCanUseHisRessourcesMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6232;
+      public static const protocolId:uint = 314;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 6232;
+         return 314;
       }
       
       public function initExchangeMultiCraftCrafterCanUseHisRessourcesMessage(allowed:Boolean = false) : ExchangeMultiCraftCrafterCanUseHisRessourcesMessage

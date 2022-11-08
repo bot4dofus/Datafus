@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class SpouseStatusMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1875;
+      public static const protocolId:uint = 1837;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 1875;
+         return 1837;
       }
       
       public function initSpouseStatusMessage(hasSpouse:Boolean = false) : SpouseStatusMessage

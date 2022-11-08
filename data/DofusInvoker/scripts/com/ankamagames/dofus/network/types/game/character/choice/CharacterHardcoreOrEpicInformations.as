@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.character.choice
    public class CharacterHardcoreOrEpicInformations extends CharacterBaseInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 9829;
+      public static const protocolId:uint = 4055;
        
       
       public var deathState:uint = 0;
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.types.game.character.choice
       
       override public function getTypeId() : uint
       {
-         return 9829;
+         return 4055;
       }
       
       public function initCharacterHardcoreOrEpicInformations(id:Number = 0, name:String = "", level:uint = 0, entityLook:EntityLook = null, breed:int = 0, sex:Boolean = false, deathState:uint = 0, deathCount:uint = 0, deathMaxLevel:uint = 0) : CharacterHardcoreOrEpicInformations

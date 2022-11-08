@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.prism
    public class PrismFightAddedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3116;
+      public static const protocolId:uint = 3527;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function getMessageId() : uint
       {
-         return 3116;
+         return 3527;
       }
       
       public function initPrismFightAddedMessage(fight:PrismFightersInformation = null) : PrismFightAddedMessage

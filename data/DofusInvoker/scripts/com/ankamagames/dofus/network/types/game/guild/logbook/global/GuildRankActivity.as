@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
    public class GuildRankActivity extends GuildLogbookEntryBasicInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 9683;
+      public static const protocolId:uint = 6210;
        
       
       public var rankActivityType:uint = 0;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
       
       override public function getTypeId() : uint
       {
-         return 9683;
+         return 6210;
       }
       
       public function initGuildRankActivity(id:uint = 0, date:Number = 0, rankActivityType:uint = 0, guildRankMinimalInfos:GuildRankMinimalInformation = null) : GuildRankActivity

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
    public class GuildDeleteApplicationRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9859;
+      public static const protocolId:uint = 4677;
        
       
       public function GuildDeleteApplicationRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       override public function getMessageId() : uint
       {
-         return 9859;
+         return 4677;
       }
       
       public function initGuildDeleteApplicationRequestMessage() : GuildDeleteApplicationRequestMessage

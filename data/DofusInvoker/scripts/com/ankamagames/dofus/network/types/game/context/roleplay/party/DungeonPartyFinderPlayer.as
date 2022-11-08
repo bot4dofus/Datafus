@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
    public class DungeonPartyFinderPlayer implements INetworkType
    {
       
-      public static const protocolId:uint = 2868;
+      public static const protocolId:uint = 1089;
        
       
       public var playerId:Number = 0;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
       
       public function getTypeId() : uint
       {
-         return 2868;
+         return 1089;
       }
       
       public function initDungeonPartyFinderPlayer(playerId:Number = 0, playerName:String = "", breed:int = 0, sex:Boolean = false, level:uint = 0) : DungeonPartyFinderPlayer
@@ -118,7 +118,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
       private function _breedFunc(input:ICustomDataInput) : void
       {
          this.breed = input.readByte();
-         if(this.breed < PlayableBreedEnum.Feca || this.breed > PlayableBreedEnum.Ouginak)
+         if(this.breed < PlayableBreedEnum.Feca || this.breed > PlayableBreedEnum.Forgelance)
          {
             throw new Error("Forbidden value (" + this.breed + ") on element of DungeonPartyFinderPlayer.breed.");
          }

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.interactive
    public class InteractiveUseEndedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5165;
+      public static const protocolId:uint = 4908;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.interactive
       
       override public function getMessageId() : uint
       {
-         return 5165;
+         return 4908;
       }
       
       public function initInteractiveUseEndedMessage(elemId:uint = 0, skillId:uint = 0) : InteractiveUseEndedMessage

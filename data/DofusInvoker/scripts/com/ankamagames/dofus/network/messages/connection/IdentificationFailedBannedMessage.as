@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class IdentificationFailedBannedMessage extends IdentificationFailedMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6866;
+      public static const protocolId:uint = 46;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 6866;
+         return 46;
       }
       
       public function initIdentificationFailedBannedMessage(reason:uint = 99, banEndDate:Number = 0) : IdentificationFailedBannedMessage

@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.character.restriction
    public class ActorRestrictionsInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 3391;
+      public static const protocolId:uint = 9952;
        
       
       public var cantBeAggressed:Boolean = false;
@@ -59,7 +59,7 @@ package com.ankamagames.dofus.network.types.game.character.restriction
       
       public function getTypeId() : uint
       {
-         return 3391;
+         return 9952;
       }
       
       public function initActorRestrictionsInformations(cantBeAggressed:Boolean = false, cantBeChallenged:Boolean = false, cantTrade:Boolean = false, cantBeAttackedByMutant:Boolean = false, cantRun:Boolean = false, forceSlowWalk:Boolean = false, cantMinimize:Boolean = false, cantMove:Boolean = false, cantAggress:Boolean = false, cantChallenge:Boolean = false, cantExchange:Boolean = false, cantAttack:Boolean = false, cantChat:Boolean = false, cantBeMerchant:Boolean = false, cantUseObject:Boolean = false, cantUseTaxCollector:Boolean = false, cantUseInteractive:Boolean = false, cantSpeakToNPC:Boolean = false, cantChangeZone:Boolean = false, cantAttackMonster:Boolean = false) : ActorRestrictionsInformations

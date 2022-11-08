@@ -41,6 +41,8 @@ package com.ankamagames.dofus.network.enums
       
       public static const Ouginak:int = 18;
       
+      public static const Forgelance:int = 20;
+      
       public static const SUMMONED:int = -1;
       
       public static const MONSTER:int = -2;

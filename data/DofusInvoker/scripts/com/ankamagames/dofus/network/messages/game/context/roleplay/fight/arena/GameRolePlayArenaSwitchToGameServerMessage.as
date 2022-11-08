@@ -11,22 +11,20 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
    public class GameRolePlayArenaSwitchToGameServerMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2400;
+      public static const protocolId:uint = 1047;
        
       
       private var _isInitialized:Boolean = false;
       
       public var validToken:Boolean = false;
       
-      public var ticket:Vector.<int>;
+      [Transient]
+      public var token:String = "";
       
       public var homeServerId:int = 0;
       
-      private var _tickettree:FuncTree;
-      
       public function GameRolePlayArenaSwitchToGameServerMessage()
       {
-         this.ticket = new Vector.<int>();
          super();
       }
       
@@ -37,13 +35,13 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       override public function getMessageId() : uint
       {
-         return 2400;
+         return 1047;
       }
       
-      public function initGameRolePlayArenaSwitchToGameServerMessage(validToken:Boolean = false, ticket:Vector.<int> = null, homeServerId:int = 0) : GameRolePlayArenaSwitchToGameServerMessage
+      public function initGameRolePlayArenaSwitchToGameServerMessage(validToken:Boolean = false, token:String = "", homeServerId:int = 0) : GameRolePlayArenaSwitchToGameServerMessage
       {
          this.validToken = validToken;
-         this.ticket = ticket;
+         this.token = token;
          this.homeServerId = homeServerId;
          this._isInitialized = true;
          return this;
@@ -52,7 +50,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       override public function reset() : void
       {
          this.validToken = false;
-         this.ticket = new Vector.<int>();
+         this.token = "";
          this.homeServerId = 0;
          this._isInitialized = false;
       }
@@ -85,11 +83,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       public function serializeAs_GameRolePlayArenaSwitchToGameServerMessage(output:ICustomDataOutput) : void
       {
          output.writeBoolean(this.validToken);
-         output.writeVarInt(this.ticket.length);
-         for(var _i2:uint = 0; _i2 < this.ticket.length; _i2++)
-         {
-            output.writeByte(this.ticket[_i2]);
-         }
+         output.writeUTF(this.token);
          output.writeShort(this.homeServerId);
       }
       
@@ -100,14 +94,8 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       public function deserializeAs_GameRolePlayArenaSwitchToGameServerMessage(input:ICustomDataInput) : void
       {
-         var _val2:int = 0;
          this._validTokenFunc(input);
-         var _ticketLen:uint = input.readVarInt();
-         for(var _i2:uint = 0; _i2 < _ticketLen; _i2++)
-         {
-            _val2 = input.readByte();
-            this.ticket.push(_val2);
-         }
+         this._tokenFunc(input);
          this._homeServerIdFunc(input);
       }
       
@@ -119,7 +107,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       public function deserializeAsyncAs_GameRolePlayArenaSwitchToGameServerMessage(tree:FuncTree) : void
       {
          tree.addChild(this._validTokenFunc);
-         this._tickettree = tree.addChild(this._tickettreeFunc);
+         tree.addChild(this._tokenFunc);
          tree.addChild(this._homeServerIdFunc);
       }
       
@@ -128,19 +116,9 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
          this.validToken = input.readBoolean();
       }
       
-      private function _tickettreeFunc(input:ICustomDataInput) : void
+      private function _tokenFunc(input:ICustomDataInput) : void
       {
-         var length:uint = input.readVarInt();
-         for(var i:uint = 0; i < length; i++)
-         {
-            this._tickettree.addChild(this._ticketFunc);
-         }
-      }
-      
-      private function _ticketFunc(input:ICustomDataInput) : void
-      {
-         var _val:int = input.readByte();
-         this.ticket.push(_val);
+         this.token = input.readUTF();
       }
       
       private function _homeServerIdFunc(input:ICustomDataInput) : void

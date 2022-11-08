@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.friend
    public class IgnoredOnlineInformations extends IgnoredInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 4298;
+      public static const protocolId:uint = 911;
        
       
       public var playerId:Number = 0;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.friend
       
       override public function getTypeId() : uint
       {
-         return 4298;
+         return 911;
       }
       
       public function initIgnoredOnlineInformations(accountId:uint = 0, accountTag:AccountTagInformation = null, playerId:Number = 0, playerName:String = "", breed:int = 0, sex:Boolean = false) : IgnoredOnlineInformations
@@ -113,7 +113,7 @@ package com.ankamagames.dofus.network.types.game.friend
       private function _breedFunc(input:ICustomDataInput) : void
       {
          this.breed = input.readByte();
-         if(this.breed < PlayableBreedEnum.Feca || this.breed > PlayableBreedEnum.Ouginak)
+         if(this.breed < PlayableBreedEnum.Feca || this.breed > PlayableBreedEnum.Forgelance)
          {
             throw new Error("Forbidden value (" + this.breed + ") on element of IgnoredOnlineInformations.breed.");
          }

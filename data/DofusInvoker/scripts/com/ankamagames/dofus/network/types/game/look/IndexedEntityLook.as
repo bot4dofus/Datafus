@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.look
    public class IndexedEntityLook implements INetworkType
    {
       
-      public static const protocolId:uint = 3771;
+      public static const protocolId:uint = 5822;
        
       
       public var look:EntityLook;
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.types.game.look
       
       public function getTypeId() : uint
       {
-         return 3771;
+         return 5822;
       }
       
       public function initIndexedEntityLook(look:EntityLook = null, index:uint = 0) : IndexedEntityLook

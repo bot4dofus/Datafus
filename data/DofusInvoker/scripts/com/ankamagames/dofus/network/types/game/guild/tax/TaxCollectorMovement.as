@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.guild.tax
    public class TaxCollectorMovement implements INetworkType
    {
       
-      public static const protocolId:uint = 7087;
+      public static const protocolId:uint = 3370;
        
       
       public var movementType:uint = 0;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.types.game.guild.tax
       
       public function getTypeId() : uint
       {
-         return 7087;
+         return 3370;
       }
       
       public function initTaxCollectorMovement(movementType:uint = 0, basicInfos:TaxCollectorBasicInformations = null, playerId:Number = 0, playerName:String = "") : TaxCollectorMovement

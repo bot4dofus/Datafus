@@ -6,7 +6,6 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.logic.common.managers.NotificationManager;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
-   import com.ankamagames.dofus.logic.connection.managers.AuthentificationManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.misc.KoliseumMessageRouter;
    import com.ankamagames.dofus.misc.lists.HookList;
@@ -150,7 +149,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          {
             this._originePlayerId = PlayedCharacterManager.getInstance().id;
          }
-         this._newServerLoginTicket = AuthentificationManager.getInstance().decodeWithAES(msg.ticket).toString();
+         this._newServerLoginTicket = msg.token;
          ConnectionsHandler.connectToKoliServer(msg.address,msg.ports[0]);
          return true;
       }

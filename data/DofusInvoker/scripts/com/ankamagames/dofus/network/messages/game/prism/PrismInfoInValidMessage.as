@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.prism
    public class PrismInfoInValidMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6178;
+      public static const protocolId:uint = 1886;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function getMessageId() : uint
       {
-         return 6178;
+         return 1886;
       }
       
       public function initPrismInfoInValidMessage(reason:uint = 0) : PrismInfoInValidMessage

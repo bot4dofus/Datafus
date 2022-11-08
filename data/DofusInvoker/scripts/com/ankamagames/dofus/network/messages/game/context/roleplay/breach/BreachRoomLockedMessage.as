@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach
    public class BreachRoomLockedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8024;
+      public static const protocolId:uint = 3879;
        
       
       public function BreachRoomLockedMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach
       
       override public function getMessageId() : uint
       {
-         return 8024;
+         return 3879;
       }
       
       public function initBreachRoomLockedMessage() : BreachRoomLockedMessage

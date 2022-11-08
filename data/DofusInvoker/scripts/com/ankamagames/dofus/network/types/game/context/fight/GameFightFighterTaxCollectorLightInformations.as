@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameFightFighterTaxCollectorLightInformations extends GameFightFighterLightInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 4561;
+      public static const protocolId:uint = 5273;
        
       
       public var firstNameId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 4561;
+         return 5273;
       }
       
       public function initGameFightFighterTaxCollectorLightInformations(id:Number = 0, wave:uint = 0, level:uint = 0, breed:int = 0, sex:Boolean = false, alive:Boolean = false, firstNameId:uint = 0, lastNameId:uint = 0) : GameFightFighterTaxCollectorLightInformations

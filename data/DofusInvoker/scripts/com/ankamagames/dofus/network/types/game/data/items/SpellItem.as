@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class SpellItem extends Item implements INetworkType
    {
       
-      public static const protocolId:uint = 5286;
+      public static const protocolId:uint = 1609;
        
       
       public var spellId:int = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       override public function getTypeId() : uint
       {
-         return 5286;
+         return 1609;
       }
       
       public function initSpellItem(spellId:int = 0, spellLevel:int = 0) : SpellItem

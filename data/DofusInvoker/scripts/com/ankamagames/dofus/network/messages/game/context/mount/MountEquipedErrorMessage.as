@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountEquipedErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9130;
+      public static const protocolId:uint = 413;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 9130;
+         return 413;
       }
       
       public function initMountEquipedErrorMessage(errorType:uint = 0) : MountEquipedErrorMessage

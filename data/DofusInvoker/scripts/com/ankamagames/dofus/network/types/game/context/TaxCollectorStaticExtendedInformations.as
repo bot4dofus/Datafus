@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.context
    public class TaxCollectorStaticExtendedInformations extends TaxCollectorStaticInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1156;
+      public static const protocolId:uint = 3048;
        
       
       public var allianceIdentity:AllianceInformations;
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.types.game.context
       
       override public function getTypeId() : uint
       {
-         return 1156;
+         return 3048;
       }
       
       public function initTaxCollectorStaticExtendedInformations(firstNameId:uint = 0, lastNameId:uint = 0, guildIdentity:GuildInformations = null, callerId:Number = 0, allianceIdentity:AllianceInformations = null) : TaxCollectorStaticExtendedInformations

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyDeletedMessage extends AbstractPartyMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4955;
+      public static const protocolId:uint = 4569;
        
       
       private var _isInitialized:Boolean = false;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 4955;
+         return 4569;
       }
       
       public function initPartyDeletedMessage(partyId:uint = 0) : PartyDeletedMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class StopToListenRunningFightRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9360;
+      public static const protocolId:uint = 7218;
        
       
       public function StopToListenRunningFightRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 9360;
+         return 7218;
       }
       
       public function initStopToListenRunningFightRequestMessage() : StopToListenRunningFightRequestMessage

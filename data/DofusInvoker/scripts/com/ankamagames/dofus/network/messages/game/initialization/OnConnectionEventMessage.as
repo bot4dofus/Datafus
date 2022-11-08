@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.initialization
    public class OnConnectionEventMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9657;
+      public static const protocolId:uint = 902;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.initialization
       
       override public function getMessageId() : uint
       {
-         return 9657;
+         return 902;
       }
       
       public function initOnConnectionEventMessage(eventType:uint = 0) : OnConnectionEventMessage

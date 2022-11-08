@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.zaap
    public class ZaapRespawnSaveRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8128;
+      public static const protocolId:uint = 2040;
        
       
       public function ZaapRespawnSaveRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.zaap
       
       override public function getMessageId() : uint
       {
-         return 8128;
+         return 2040;
       }
       
       public function initZaapRespawnSaveRequestMessage() : ZaapRespawnSaveRequestMessage

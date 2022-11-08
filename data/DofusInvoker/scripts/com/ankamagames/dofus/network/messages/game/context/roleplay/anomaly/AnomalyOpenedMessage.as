@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.anomaly
    public class AnomalyOpenedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 63;
+      public static const protocolId:uint = 6804;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.anomaly
       
       override public function getMessageId() : uint
       {
-         return 63;
+         return 6804;
       }
       
       public function initAnomalyOpenedMessage(subAreaId:uint = 0) : AnomalyOpenedMessage

@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class UpdateMountCharacteristicsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5459;
+      public static const protocolId:uint = 5572;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 5459;
+         return 5572;
       }
       
       public function initUpdateMountCharacteristicsMessage(rideId:int = 0, boostToUpdateList:Vector.<UpdateMountCharacteristic> = null) : UpdateMountCharacteristicsMessage

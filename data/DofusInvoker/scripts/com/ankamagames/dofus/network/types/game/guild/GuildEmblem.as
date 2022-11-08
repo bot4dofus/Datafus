@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.guild
    public class GuildEmblem implements INetworkType
    {
       
-      public static const protocolId:uint = 9960;
+      public static const protocolId:uint = 1463;
        
       
       public var symbolShape:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.guild
       
       public function getTypeId() : uint
       {
-         return 9960;
+         return 1463;
       }
       
       public function initGuildEmblem(symbolShape:uint = 0, symbolColor:int = 0, backgroundShape:uint = 0, backgroundColor:int = 0) : GuildEmblem

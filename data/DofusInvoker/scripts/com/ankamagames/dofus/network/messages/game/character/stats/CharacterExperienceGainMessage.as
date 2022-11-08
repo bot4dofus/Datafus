@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.stats
    public class CharacterExperienceGainMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2004;
+      public static const protocolId:uint = 2719;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.character.stats
       
       override public function getMessageId() : uint
       {
-         return 2004;
+         return 2719;
       }
       
       public function initCharacterExperienceGainMessage(experienceCharacter:Number = 0, experienceMount:Number = 0, experienceGuild:Number = 0, experienceIncarnation:Number = 0) : CharacterExperienceGainMessage

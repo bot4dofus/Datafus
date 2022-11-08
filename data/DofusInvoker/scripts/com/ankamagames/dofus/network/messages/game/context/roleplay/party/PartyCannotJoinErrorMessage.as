@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyCannotJoinErrorMessage extends AbstractPartyMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6009;
+      public static const protocolId:uint = 6991;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 6009;
+         return 6991;
       }
       
       public function initPartyCannotJoinErrorMessage(partyId:uint = 0, reason:uint = 0) : PartyCannotJoinErrorMessage

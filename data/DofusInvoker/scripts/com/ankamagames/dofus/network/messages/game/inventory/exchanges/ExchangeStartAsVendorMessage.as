@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartAsVendorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1789;
+      public static const protocolId:uint = 6688;
        
       
       public function ExchangeStartAsVendorMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 1789;
+         return 6688;
       }
       
       public function initExchangeStartAsVendorMessage() : ExchangeStartAsVendorMessage

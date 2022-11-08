@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class WrapperObjectErrorMessage extends SymbioticObjectErrorMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7501;
+      public static const protocolId:uint = 2404;
        
       
       private var _isInitialized:Boolean = false;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 7501;
+         return 2404;
       }
       
       public function initWrapperObjectErrorMessage(reason:int = 0, errorCode:int = 0) : WrapperObjectErrorMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.spell.forgettable
    public class ForgettableSpellEquipmentSlotsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6712;
+      public static const protocolId:uint = 8265;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.character.spell.forgettable
       
       override public function getMessageId() : uint
       {
-         return 6712;
+         return 8265;
       }
       
       public function initForgettableSpellEquipmentSlotsMessage(quantity:int = 0) : ForgettableSpellEquipmentSlotsMessage

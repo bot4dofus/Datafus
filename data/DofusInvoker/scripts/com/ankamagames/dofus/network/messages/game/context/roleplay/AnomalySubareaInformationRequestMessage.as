@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class AnomalySubareaInformationRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6462;
+      public static const protocolId:uint = 5479;
        
       
       public function AnomalySubareaInformationRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 6462;
+         return 5479;
       }
       
       public function initAnomalySubareaInformationRequestMessage() : AnomalySubareaInformationRequestMessage

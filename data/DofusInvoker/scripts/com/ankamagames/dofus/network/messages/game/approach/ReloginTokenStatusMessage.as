@@ -11,20 +11,18 @@ package com.ankamagames.dofus.network.messages.game.approach
    public class ReloginTokenStatusMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9030;
+      public static const protocolId:uint = 5145;
        
       
       private var _isInitialized:Boolean = false;
       
       public var validToken:Boolean = false;
       
-      public var ticket:Vector.<int>;
-      
-      private var _tickettree:FuncTree;
+      [Transient]
+      public var token:String = "";
       
       public function ReloginTokenStatusMessage()
       {
-         this.ticket = new Vector.<int>();
          super();
       }
       
@@ -35,13 +33,13 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       override public function getMessageId() : uint
       {
-         return 9030;
+         return 5145;
       }
       
-      public function initReloginTokenStatusMessage(validToken:Boolean = false, ticket:Vector.<int> = null) : ReloginTokenStatusMessage
+      public function initReloginTokenStatusMessage(validToken:Boolean = false, token:String = "") : ReloginTokenStatusMessage
       {
          this.validToken = validToken;
-         this.ticket = ticket;
+         this.token = token;
          this._isInitialized = true;
          return this;
       }
@@ -49,7 +47,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       override public function reset() : void
       {
          this.validToken = false;
-         this.ticket = new Vector.<int>();
+         this.token = "";
          this._isInitialized = false;
       }
       
@@ -81,11 +79,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       public function serializeAs_ReloginTokenStatusMessage(output:ICustomDataOutput) : void
       {
          output.writeBoolean(this.validToken);
-         output.writeVarInt(this.ticket.length);
-         for(var _i2:uint = 0; _i2 < this.ticket.length; _i2++)
-         {
-            output.writeByte(this.ticket[_i2]);
-         }
+         output.writeUTF(this.token);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -95,14 +89,8 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       public function deserializeAs_ReloginTokenStatusMessage(input:ICustomDataInput) : void
       {
-         var _val2:int = 0;
          this._validTokenFunc(input);
-         var _ticketLen:uint = input.readVarInt();
-         for(var _i2:uint = 0; _i2 < _ticketLen; _i2++)
-         {
-            _val2 = input.readByte();
-            this.ticket.push(_val2);
-         }
+         this._tokenFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -113,7 +101,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       public function deserializeAsyncAs_ReloginTokenStatusMessage(tree:FuncTree) : void
       {
          tree.addChild(this._validTokenFunc);
-         this._tickettree = tree.addChild(this._tickettreeFunc);
+         tree.addChild(this._tokenFunc);
       }
       
       private function _validTokenFunc(input:ICustomDataInput) : void
@@ -121,19 +109,9 @@ package com.ankamagames.dofus.network.messages.game.approach
          this.validToken = input.readBoolean();
       }
       
-      private function _tickettreeFunc(input:ICustomDataInput) : void
+      private function _tokenFunc(input:ICustomDataInput) : void
       {
-         var length:uint = input.readVarInt();
-         for(var i:uint = 0; i < length; i++)
-         {
-            this._tickettree.addChild(this._ticketFunc);
-         }
-      }
-      
-      private function _ticketFunc(input:ICustomDataInput) : void
-      {
-         var _val:int = input.readByte();
-         this.ticket.push(_val);
+         this.token = input.readUTF();
       }
    }
 }

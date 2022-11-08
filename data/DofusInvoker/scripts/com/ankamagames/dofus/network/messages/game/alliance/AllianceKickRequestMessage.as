@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceKickRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3702;
+      public static const protocolId:uint = 6690;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 3702;
+         return 6690;
       }
       
       public function initAllianceKickRequestMessage(kickedId:uint = 0) : AllianceKickRequestMessage

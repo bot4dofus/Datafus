@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionUpdateEffectTriggerCountMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 711;
+      public static const protocolId:uint = 4597;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 711;
+         return 4597;
       }
       
       public function initGameActionUpdateEffectTriggerCountMessage(targetIds:Vector.<GameFightEffectTriggerCount> = null) : GameActionUpdateEffectTriggerCountMessage

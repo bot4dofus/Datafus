@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.chat
    public class ChatServerCopyMessage extends ChatAbstractServerMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6898;
+      public static const protocolId:uint = 603;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.chat
       
       override public function getMessageId() : uint
       {
-         return 6898;
+         return 603;
       }
       
       public function initChatServerCopyMessage(channel:uint = 0, content:String = "", timestamp:uint = 0, fingerprint:String = "", receiverId:Number = 0, receiverName:String = "") : ChatServerCopyMessage

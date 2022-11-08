@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.wtf
    public class ClientYouAreDrunkMessage extends DebugInClientMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2445;
+      public static const protocolId:uint = 9688;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.messages.wtf
       
       override public function getMessageId() : uint
       {
-         return 2445;
+         return 9688;
       }
       
       public function initClientYouAreDrunkMessage(level:uint = 0, message:String = "") : ClientYouAreDrunkMessage

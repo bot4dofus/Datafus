@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.interactive
    public class InteractiveElementSkill implements INetworkType
    {
       
-      public static const protocolId:uint = 1464;
+      public static const protocolId:uint = 6496;
        
       
       public var skillId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.interactive
       
       public function getTypeId() : uint
       {
-         return 1464;
+         return 6496;
       }
       
       public function initInteractiveElementSkill(skillId:uint = 0, skillInstanceUid:uint = 0) : InteractiveElementSkill

@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class IdentificationSuccessMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 734;
+      public static const protocolId:uint = 7076;
        
       
       private var _isInitialized:Boolean = false;
@@ -60,7 +60,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 734;
+         return 7076;
       }
       
       public function initIdentificationSuccessMessage(login:String = "", accountTag:AccountTagInformation = null, accountId:uint = 0, communityId:uint = 0, hasRights:Boolean = false, hasConsoleRight:Boolean = false, secretQuestion:String = "", accountCreation:Number = 0, subscriptionElapsedDuration:Number = 0, subscriptionEndDate:Number = 0, wasAlreadyConnected:Boolean = false, havenbagAvailableRoom:uint = 0, isAccountForced:Boolean = false) : IdentificationSuccessMessage

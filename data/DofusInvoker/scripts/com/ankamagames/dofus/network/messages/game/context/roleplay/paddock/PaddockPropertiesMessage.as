@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
    public class PaddockPropertiesMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8294;
+      public static const protocolId:uint = 6911;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
       
       override public function getMessageId() : uint
       {
-         return 8294;
+         return 6911;
       }
       
       public function initPaddockPropertiesMessage(properties:PaddockInstancesInformations = null) : PaddockPropertiesMessage

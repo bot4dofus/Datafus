@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class HumanOptionObjectUse extends HumanOption implements INetworkType
    {
       
-      public static const protocolId:uint = 6890;
+      public static const protocolId:uint = 9917;
        
       
       public var delayTypeId:uint = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 6890;
+         return 9917;
       }
       
       public function initHumanOptionObjectUse(delayTypeId:uint = 0, delayEndTime:Number = 0, objectGID:uint = 0) : HumanOptionObjectUse

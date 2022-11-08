@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.guild
    public class HavenBagFurnitureInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 5802;
+      public static const protocolId:uint = 2126;
        
       
       public var cellId:uint = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.guild
       
       public function getTypeId() : uint
       {
-         return 5802;
+         return 2126;
       }
       
       public function initHavenBagFurnitureInformation(cellId:uint = 0, funitureId:int = 0, orientation:uint = 0) : HavenBagFurnitureInformation

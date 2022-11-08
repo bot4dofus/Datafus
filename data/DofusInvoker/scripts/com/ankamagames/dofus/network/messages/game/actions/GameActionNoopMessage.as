@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions
    public class GameActionNoopMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1568;
+      public static const protocolId:uint = 3774;
        
       
       public function GameActionNoopMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.actions
       
       override public function getMessageId() : uint
       {
-         return 1568;
+         return 3774;
       }
       
       public function initGameActionNoopMessage() : GameActionNoopMessage

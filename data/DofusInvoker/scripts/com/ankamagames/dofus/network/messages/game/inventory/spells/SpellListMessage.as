@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.spells
    public class SpellListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3351;
+      public static const protocolId:uint = 6854;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.spells
       
       override public function getMessageId() : uint
       {
-         return 3351;
+         return 6854;
       }
       
       public function initSpellListMessage(spellPrevisualization:Boolean = false, spells:Vector.<SpellItem> = null) : SpellListMessage

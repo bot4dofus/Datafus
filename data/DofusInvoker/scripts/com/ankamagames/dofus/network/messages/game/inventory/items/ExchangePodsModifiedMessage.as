@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class ExchangePodsModifiedMessage extends ExchangeObjectMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9160;
+      public static const protocolId:uint = 334;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 9160;
+         return 334;
       }
       
       public function initExchangePodsModifiedMessage(remote:Boolean = false, currentWeight:uint = 0, maxWeight:uint = 0) : ExchangePodsModifiedMessage

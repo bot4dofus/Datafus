@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class GameRolePlayShowMultipleActorsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7415;
+      public static const protocolId:uint = 6327;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 7415;
+         return 6327;
       }
       
       public function initGameRolePlayShowMultipleActorsMessage(informationsList:Vector.<GameRolePlayActorInformations> = null) : GameRolePlayShowMultipleActorsMessage

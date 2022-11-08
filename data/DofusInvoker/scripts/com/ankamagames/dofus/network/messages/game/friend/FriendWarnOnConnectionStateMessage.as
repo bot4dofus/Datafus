@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class FriendWarnOnConnectionStateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4353;
+      public static const protocolId:uint = 6424;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 4353;
+         return 6424;
       }
       
       public function initFriendWarnOnConnectionStateMessage(enable:Boolean = false) : FriendWarnOnConnectionStateMessage

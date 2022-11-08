@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightResultTaxCollectorListEntry extends FightResultFighterListEntry implements INetworkType
    {
       
-      public static const protocolId:uint = 2626;
+      public static const protocolId:uint = 9330;
        
       
       public var level:uint = 0;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 2626;
+         return 9330;
       }
       
       public function initFightResultTaxCollectorListEntry(outcome:uint = 0, wave:uint = 0, rewards:FightLoot = null, id:Number = 0, alive:Boolean = false, level:uint = 0, guildInfo:BasicGuildInformations = null, experienceForGuild:int = 0) : FightResultTaxCollectorListEntry

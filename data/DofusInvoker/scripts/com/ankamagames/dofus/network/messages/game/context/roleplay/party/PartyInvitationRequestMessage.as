@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyInvitationRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 920;
+      public static const protocolId:uint = 8477;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 920;
+         return 8477;
       }
       
       public function initPartyInvitationRequestMessage(target:AbstractPlayerSearchInformation = null) : PartyInvitationRequestMessage

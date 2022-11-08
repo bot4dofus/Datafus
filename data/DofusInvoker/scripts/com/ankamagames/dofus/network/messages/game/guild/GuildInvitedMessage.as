@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.messages.game.guild
 {
-   import com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildInvitedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6176;
+      public static const protocolId:uint = 3830;
        
       
       private var _isInitialized:Boolean = false;
@@ -21,13 +21,13 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       public var recruterName:String = "";
       
-      public var guildInfo:BasicGuildInformations;
+      public var guildInfo:GuildInformations;
       
       private var _guildInfotree:FuncTree;
       
       public function GuildInvitedMessage()
       {
-         this.guildInfo = new BasicGuildInformations();
+         this.guildInfo = new GuildInformations();
          super();
       }
       
@@ -38,10 +38,10 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 6176;
+         return 3830;
       }
       
-      public function initGuildInvitedMessage(recruterId:Number = 0, recruterName:String = "", guildInfo:BasicGuildInformations = null) : GuildInvitedMessage
+      public function initGuildInvitedMessage(recruterId:Number = 0, recruterName:String = "", guildInfo:GuildInformations = null) : GuildInvitedMessage
       {
          this.recruterId = recruterId;
          this.recruterName = recruterName;
@@ -54,7 +54,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       {
          this.recruterId = 0;
          this.recruterName = "";
-         this.guildInfo = new BasicGuildInformations();
+         this.guildInfo = new GuildInformations();
          this._isInitialized = false;
       }
       
@@ -91,7 +91,7 @@ package com.ankamagames.dofus.network.messages.game.guild
          }
          output.writeVarLong(this.recruterId);
          output.writeUTF(this.recruterName);
-         this.guildInfo.serializeAs_BasicGuildInformations(output);
+         this.guildInfo.serializeAs_GuildInformations(output);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -103,7 +103,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       {
          this._recruterIdFunc(input);
          this._recruterNameFunc(input);
-         this.guildInfo = new BasicGuildInformations();
+         this.guildInfo = new GuildInformations();
          this.guildInfo.deserialize(input);
       }
       
@@ -135,7 +135,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       private function _guildInfotreeFunc(input:ICustomDataInput) : void
       {
-         this.guildInfo = new BasicGuildInformations();
+         this.guildInfo = new GuildInformations();
          this.guildInfo.deserializeAsync(this._guildInfotree);
       }
    }

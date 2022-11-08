@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild.tax
    public class GuildFightPlayersEnemyRemoveMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8840;
+      public static const protocolId:uint = 8467;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.guild.tax
       
       override public function getMessageId() : uint
       {
-         return 8840;
+         return 8467;
       }
       
       public function initGuildFightPlayersEnemyRemoveMessage(fightId:Number = 0, playerId:Number = 0) : GuildFightPlayersEnemyRemoveMessage

@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.shortcut
    public class ShortcutBarAddRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6422;
+      public static const protocolId:uint = 1534;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.game.shortcut
       
       override public function getMessageId() : uint
       {
-         return 6422;
+         return 1534;
       }
       
       public function initShortcutBarAddRequestMessage(barType:uint = 0, shortcut:Shortcut = null) : ShortcutBarAddRequestMessage

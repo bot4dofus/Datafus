@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class ObjectJobAddedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8715;
+      public static const protocolId:uint = 9591;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 8715;
+         return 9591;
       }
       
       public function initObjectJobAddedMessage(jobId:uint = 0) : ObjectJobAddedMessage

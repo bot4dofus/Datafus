@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.basic
    public class TextInformationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1224;
+      public static const protocolId:uint = 8942;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.game.basic
       
       override public function getMessageId() : uint
       {
-         return 1224;
+         return 8942;
       }
       
       public function initTextInformationMessage(msgType:uint = 0, msgId:uint = 0, parameters:Vector.<String> = null) : TextInformationMessage

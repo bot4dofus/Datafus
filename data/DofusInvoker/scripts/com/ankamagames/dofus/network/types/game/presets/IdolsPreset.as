@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.presets
    public class IdolsPreset extends Preset implements INetworkType
    {
       
-      public static const protocolId:uint = 2551;
+      public static const protocolId:uint = 4104;
        
       
       public var iconId:uint = 0;
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.types.game.presets
       
       override public function getTypeId() : uint
       {
-         return 2551;
+         return 4104;
       }
       
       public function initIdolsPreset(id:int = 0, iconId:uint = 0, idolIds:Vector.<uint> = null) : IdolsPreset

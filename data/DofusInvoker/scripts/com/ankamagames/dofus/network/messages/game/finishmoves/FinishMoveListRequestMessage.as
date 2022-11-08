@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.finishmoves
    public class FinishMoveListRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4672;
+      public static const protocolId:uint = 3414;
        
       
       public function FinishMoveListRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.finishmoves
       
       override public function getMessageId() : uint
       {
-         return 4672;
+         return 3414;
       }
       
       public function initFinishMoveListRequestMessage() : FinishMoveListRequestMessage

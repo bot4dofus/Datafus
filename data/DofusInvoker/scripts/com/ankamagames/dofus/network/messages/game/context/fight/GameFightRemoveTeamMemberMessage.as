@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightRemoveTeamMemberMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3338;
+      public static const protocolId:uint = 2278;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 3338;
+         return 2278;
       }
       
       public function initGameFightRemoveTeamMemberMessage(fightId:uint = 0, teamId:uint = 2, charId:Number = 0) : GameFightRemoveTeamMemberMessage

@@ -209,7 +209,7 @@ package com.ankamagames.dofus.logic.common.frames
                rtsmsg = ReloginTokenStatusMessage(msg);
                if(rtsmsg.validToken)
                {
-                  this._token = AuthentificationManager.getInstance().decodeWithAES(rtsmsg.ticket).toString();
+                  this._token = rtsmsg.token;
                   AuthentificationManager.getInstance().tokenMode = true;
                   AuthentificationManager.getInstance().nextToken = this._token;
                }

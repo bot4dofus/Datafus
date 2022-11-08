@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeMountFreeFromPaddockMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1265;
+      public static const protocolId:uint = 2354;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 1265;
+         return 2354;
       }
       
       public function initExchangeMountFreeFromPaddockMessage(name:String = "", worldX:int = 0, worldY:int = 0, liberator:String = "") : ExchangeMountFreeFromPaddockMessage

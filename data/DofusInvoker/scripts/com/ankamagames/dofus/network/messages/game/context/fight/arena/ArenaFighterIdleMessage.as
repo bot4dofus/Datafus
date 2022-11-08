@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.arena
    public class ArenaFighterIdleMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8778;
+      public static const protocolId:uint = 7833;
        
       
       public function ArenaFighterIdleMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.arena
       
       override public function getMessageId() : uint
       {
-         return 8778;
+         return 7833;
       }
       
       public function initArenaFighterIdleMessage() : ArenaFighterIdleMessage
