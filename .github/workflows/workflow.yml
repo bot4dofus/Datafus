@@ -165,6 +165,10 @@ jobs:
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
+      - name: Create zip file
+        run: |
+            zip -r data.zip data/events.json data/events.properties data/entities_json/ data/translations_json/
+
       - name: Publish release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
@@ -173,9 +177,4 @@ jobs:
           prerelease: false
           title: ${{ env.VERSION }}
           files: |
-            ./data/events.json
-            ./data/events.properties
-            ./data/events_java/*
-            ./data/entities_json/*
-            ./data/entities_java/*
-            ./data/translations_json/*
+            ./data.zip
