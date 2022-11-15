@@ -10626,6 +10626,21 @@
 			"textId": 967085
 		},
 		{
+			"typeId": 1,
+			"messageId": 668,
+			"textId": 967798
+		},
+		{
+			"typeId": 1,
+			"messageId": 669,
+			"textId": 967799
+		},
+		{
+			"typeId": 1,
+			"messageId": 670,
+			"textId": 967800
+		},
+		{
 			"typeId": 2,
 			"messageId": 86,
 			"textId": 289371
