@@ -36,6 +36,10 @@ package com.ankamagames.dofus.network.enums
       public static const OCCUPIED_CELL:uint = 15;
       
       public static const FREE_CELL:uint = 16;
+      
+      public static const SET_RANGE_MAX:uint = 17;
+      
+      public static const SET_RANGE_MIN:uint = 18;
        
       
       public function CharacterSpellModificationTypeEnum()

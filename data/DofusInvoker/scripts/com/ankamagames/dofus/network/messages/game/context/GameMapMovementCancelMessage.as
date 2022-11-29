@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameMapMovementCancelMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4121;
+      public static const protocolId:uint = 1960;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 4121;
+         return 1960;
       }
       
       public function initGameMapMovementCancelMessage(cellId:uint = 0) : GameMapMovementCancelMessage

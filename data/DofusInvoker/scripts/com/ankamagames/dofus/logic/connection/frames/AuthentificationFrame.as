@@ -45,6 +45,7 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.network.messages.connection.register.NicknameRefusedMessage;
    import com.ankamagames.dofus.network.messages.connection.register.NicknameRegistrationMessage;
    import com.ankamagames.dofus.network.messages.security.ClientKeyMessage;
+   import com.ankamagames.dofus.network.messages.subscription.AccountSubscriptionElapsedDurationMessage;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.data.XmlConfig;
    import com.ankamagames.jerakine.logger.Log;
@@ -390,6 +391,9 @@ package com.ankamagames.dofus.logic.connection.frames
                   ConnectionsHandler.getConnection().send(flashKeyMsg);
                }
                return true;
+            case msg is AccountSubscriptionElapsedDurationMessage:
+               PlayerManager.getInstance().subscriptionDurationElapsed = (msg as AccountSubscriptionElapsedDurationMessage).subscriptionElapsedDuration;
+               return true;
             case msg is IdentificationSuccessMessage:
                ismsg = IdentificationSuccessMessage(msg);
                AuthentificationManager.getInstance().isAccountForced = ismsg.isAccountForced;
@@ -414,8 +418,6 @@ package com.ankamagames.dofus.logic.connection.frames
                PlayerManager.getInstance().nickname = ismsg.accountTag.nickname;
                PlayerManager.getInstance().tag = ismsg.accountTag.tagNumber;
                PlayerManager.getInstance().subscriptionEndDate = ismsg.subscriptionEndDate;
-               PlayerManager.getInstance().subscriptionDurationElapsed = ismsg.subscriptionElapsedDuration;
-               PlayerManager.getInstance().secretQuestion = ismsg.secretQuestion;
                PlayerManager.getInstance().accountCreation = ismsg.accountCreation;
                PlayerManager.getInstance().wasAlreadyConnected = ismsg.wasAlreadyConnected;
                StoreDataManager.getInstance().setData(Constants.DATASTORE_COMPUTER_OPTIONS,"lastAccountId",ismsg.accountId);

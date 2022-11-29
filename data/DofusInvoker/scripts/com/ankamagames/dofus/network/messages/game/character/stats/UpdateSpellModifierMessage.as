@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.character.stats
    public class UpdateSpellModifierMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1158;
+      public static const protocolId:uint = 7570;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.character.stats
       
       override public function getMessageId() : uint
       {
-         return 1158;
+         return 7570;
       }
       
       public function initUpdateSpellModifierMessage(actorId:Number = 0, spellModifier:CharacterSpellModification = null) : UpdateSpellModifierMessage

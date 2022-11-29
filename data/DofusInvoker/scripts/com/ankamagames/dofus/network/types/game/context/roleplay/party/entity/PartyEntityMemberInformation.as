@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party.entity
    public class PartyEntityMemberInformation extends PartyEntityBaseInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 2153;
+      public static const protocolId:uint = 3304;
        
       
       public var initiative:uint = 0;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party.entity
       
       override public function getTypeId() : uint
       {
-         return 2153;
+         return 3304;
       }
       
       public function initPartyEntityMemberInformation(indexId:uint = 0, entityModelId:uint = 0, entityLook:EntityLook = null, initiative:uint = 0, lifePoints:uint = 0, maxLifePoints:uint = 0, prospecting:uint = 0, regenRate:uint = 0) : PartyEntityMemberInformation

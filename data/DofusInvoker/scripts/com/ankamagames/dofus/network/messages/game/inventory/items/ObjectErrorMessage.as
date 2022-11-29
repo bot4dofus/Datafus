@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class ObjectErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 869;
+      public static const protocolId:uint = 9434;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 869;
+         return 9434;
       }
       
       public function initObjectErrorMessage(reason:int = 0) : ObjectErrorMessage

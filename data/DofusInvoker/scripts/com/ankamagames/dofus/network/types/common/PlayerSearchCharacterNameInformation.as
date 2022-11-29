@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.common
    public class PlayerSearchCharacterNameInformation extends AbstractPlayerSearchInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 2582;
+      public static const protocolId:uint = 5825;
        
       
       public var name:String = "";
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.common
       
       override public function getTypeId() : uint
       {
-         return 2582;
+         return 5825;
       }
       
       public function initPlayerSearchCharacterNameInformation(name:String = "") : PlayerSearchCharacterNameInformation

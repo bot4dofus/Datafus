@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyMemberEjectedMessage extends PartyMemberRemoveMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1319;
+      public static const protocolId:uint = 2520;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 1319;
+         return 2520;
       }
       
       public function initPartyMemberEjectedMessage(partyId:uint = 0, leavingPlayerId:Number = 0, kickerId:Number = 0) : PartyMemberEjectedMessage

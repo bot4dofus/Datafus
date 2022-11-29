@@ -100,9 +100,6 @@ package com.ankamagames.dofus.misc.stats.ui
                         break;
                      case CharacterCreationResultEnum.ERR_RESTRICTED_ZONE:
                         errorMsg = I18n.getUiText("ui.charSel.deletionErrorUnsecureMode");
-                        break;
-                     case CharacterCreationResultEnum.ERR_INCONSISTENT_COMMUNITY:
-                        errorMsg = I18n.getUiText("ui.popup.charcrea.wrongCommunity");
                   }
                   this._action2.setParam("create_error",errorMsg.substr(0,100));
                }

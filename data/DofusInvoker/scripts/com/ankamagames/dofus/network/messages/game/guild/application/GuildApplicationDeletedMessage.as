@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
    public class GuildApplicationDeletedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 930;
+      public static const protocolId:uint = 5616;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       override public function getMessageId() : uint
       {
-         return 930;
+         return 5616;
       }
       
       public function initGuildApplicationDeletedMessage(deleted:Boolean = false) : GuildApplicationDeletedMessage

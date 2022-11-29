@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild.tax
    public class GuildFightPlayersHelpersLeaveMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7948;
+      public static const protocolId:uint = 8214;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.guild.tax
       
       override public function getMessageId() : uint
       {
-         return 7948;
+         return 8214;
       }
       
       public function initGuildFightPlayersHelpersLeaveMessage(fightId:Number = 0, playerId:Number = 0) : GuildFightPlayersHelpersLeaveMessage

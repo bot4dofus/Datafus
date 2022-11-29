@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceInsiderInfoRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4124;
+      public static const protocolId:uint = 8582;
        
       
       public function AllianceInsiderInfoRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 4124;
+         return 8582;
       }
       
       public function initAllianceInsiderInfoRequestMessage() : AllianceInsiderInfoRequestMessage

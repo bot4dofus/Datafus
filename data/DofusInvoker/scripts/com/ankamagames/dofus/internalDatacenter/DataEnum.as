@@ -261,13 +261,9 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const SERVER_COMMUNITY_FRENCH_SPEAKING:int = 0;
       
-      public static const SERVER_COMMUNITY_ENGLISH_SPEAKING:int = 1;
+      public static const SERVER_COMMUNITY_INTERNATIONAL:int = 2;
       
-      public static const SERVER_COMMUNITY_INTERNATIONAL_ALL_EXCEPT_FRENCH:int = 2;
-      
-      public static const SERVER_COMMUNITY_SPANISH_SPEAKING:int = 4;
-      
-      public static const SERVER_COMMUNITY_INTERNATIONAL_ALL:int = 12;
+      public static const SERVER_COMMUNITY_GLOBAL:int = 12;
       
       public static const SERVER_COMMUNITY_BETA:int = 100;
       

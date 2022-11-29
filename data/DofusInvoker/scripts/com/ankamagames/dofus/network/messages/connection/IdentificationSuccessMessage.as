@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class IdentificationSuccessMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7076;
+      public static const protocolId:uint = 6729;
        
       
       private var _isInitialized:Boolean = false;
@@ -31,11 +31,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       public var hasConsoleRight:Boolean = false;
       
-      public var secretQuestion:String = "";
-      
       public var accountCreation:Number = 0;
-      
-      public var subscriptionElapsedDuration:Number = 0;
       
       public var subscriptionEndDate:Number = 0;
       
@@ -60,10 +56,10 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 7076;
+         return 6729;
       }
       
-      public function initIdentificationSuccessMessage(login:String = "", accountTag:AccountTagInformation = null, accountId:uint = 0, communityId:uint = 0, hasRights:Boolean = false, hasConsoleRight:Boolean = false, secretQuestion:String = "", accountCreation:Number = 0, subscriptionElapsedDuration:Number = 0, subscriptionEndDate:Number = 0, wasAlreadyConnected:Boolean = false, havenbagAvailableRoom:uint = 0, isAccountForced:Boolean = false) : IdentificationSuccessMessage
+      public function initIdentificationSuccessMessage(login:String = "", accountTag:AccountTagInformation = null, accountId:uint = 0, communityId:uint = 0, hasRights:Boolean = false, hasConsoleRight:Boolean = false, accountCreation:Number = 0, subscriptionEndDate:Number = 0, wasAlreadyConnected:Boolean = false, havenbagAvailableRoom:uint = 0, isAccountForced:Boolean = false) : IdentificationSuccessMessage
       {
          this.login = login;
          this.accountTag = accountTag;
@@ -71,9 +67,7 @@ package com.ankamagames.dofus.network.messages.connection
          this.communityId = communityId;
          this.hasRights = hasRights;
          this.hasConsoleRight = hasConsoleRight;
-         this.secretQuestion = secretQuestion;
          this.accountCreation = accountCreation;
-         this.subscriptionElapsedDuration = subscriptionElapsedDuration;
          this.subscriptionEndDate = subscriptionEndDate;
          this.wasAlreadyConnected = wasAlreadyConnected;
          this.havenbagAvailableRoom = havenbagAvailableRoom;
@@ -89,9 +83,7 @@ package com.ankamagames.dofus.network.messages.connection
          this.communityId = 0;
          this.hasRights = false;
          this.hasConsoleRight = false;
-         this.secretQuestion = "";
          this.accountCreation = 0;
-         this.subscriptionElapsedDuration = 0;
          this.subscriptionEndDate = 0;
          this.wasAlreadyConnected = false;
          this.havenbagAvailableRoom = 0;
@@ -144,17 +136,11 @@ package com.ankamagames.dofus.network.messages.connection
             throw new Error("Forbidden value (" + this.communityId + ") on element communityId.");
          }
          output.writeByte(this.communityId);
-         output.writeUTF(this.secretQuestion);
          if(this.accountCreation < 0 || this.accountCreation > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.accountCreation + ") on element accountCreation.");
          }
          output.writeDouble(this.accountCreation);
-         if(this.subscriptionElapsedDuration < 0 || this.subscriptionElapsedDuration > 9007199254740992)
-         {
-            throw new Error("Forbidden value (" + this.subscriptionElapsedDuration + ") on element subscriptionElapsedDuration.");
-         }
-         output.writeDouble(this.subscriptionElapsedDuration);
          if(this.subscriptionEndDate < 0 || this.subscriptionEndDate > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.subscriptionEndDate + ") on element subscriptionEndDate.");
@@ -180,9 +166,7 @@ package com.ankamagames.dofus.network.messages.connection
          this.accountTag.deserialize(input);
          this._accountIdFunc(input);
          this._communityIdFunc(input);
-         this._secretQuestionFunc(input);
          this._accountCreationFunc(input);
-         this._subscriptionElapsedDurationFunc(input);
          this._subscriptionEndDateFunc(input);
          this._havenbagAvailableRoomFunc(input);
       }
@@ -199,9 +183,7 @@ package com.ankamagames.dofus.network.messages.connection
          this._accountTagtree = tree.addChild(this._accountTagtreeFunc);
          tree.addChild(this._accountIdFunc);
          tree.addChild(this._communityIdFunc);
-         tree.addChild(this._secretQuestionFunc);
          tree.addChild(this._accountCreationFunc);
-         tree.addChild(this._subscriptionElapsedDurationFunc);
          tree.addChild(this._subscriptionEndDateFunc);
          tree.addChild(this._havenbagAvailableRoomFunc);
       }
@@ -244,26 +226,12 @@ package com.ankamagames.dofus.network.messages.connection
          }
       }
       
-      private function _secretQuestionFunc(input:ICustomDataInput) : void
-      {
-         this.secretQuestion = input.readUTF();
-      }
-      
       private function _accountCreationFunc(input:ICustomDataInput) : void
       {
          this.accountCreation = input.readDouble();
          if(this.accountCreation < 0 || this.accountCreation > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.accountCreation + ") on element of IdentificationSuccessMessage.accountCreation.");
-         }
-      }
-      
-      private function _subscriptionElapsedDurationFunc(input:ICustomDataInput) : void
-      {
-         this.subscriptionElapsedDuration = input.readDouble();
-         if(this.subscriptionElapsedDuration < 0 || this.subscriptionElapsedDuration > 9007199254740992)
-         {
-            throw new Error("Forbidden value (" + this.subscriptionElapsedDuration + ") on element of IdentificationSuccessMessage.subscriptionElapsedDuration.");
          }
       }
       

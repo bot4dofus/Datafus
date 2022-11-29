@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeRequestOnShopStockMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9540;
+      public static const protocolId:uint = 3270;
        
       
       public function ExchangeRequestOnShopStockMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 9540;
+         return 3270;
       }
       
       public function initExchangeRequestOnShopStockMessage() : ExchangeRequestOnShopStockMessage

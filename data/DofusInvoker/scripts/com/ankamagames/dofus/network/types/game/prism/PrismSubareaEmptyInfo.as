@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.prism
    public class PrismSubareaEmptyInfo implements INetworkType
    {
       
-      public static const protocolId:uint = 323;
+      public static const protocolId:uint = 2290;
        
       
       public var subAreaId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.prism
       
       public function getTypeId() : uint
       {
-         return 323;
+         return 2290;
       }
       
       public function initPrismSubareaEmptyInfo(subAreaId:uint = 0, allianceId:uint = 0) : PrismSubareaEmptyInfo

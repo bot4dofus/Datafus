@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeBidSearchOkMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8517;
+      public static const protocolId:uint = 2251;
        
       
       public function ExchangeBidSearchOkMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 8517;
+         return 2251;
       }
       
       public function initExchangeBidSearchOkMessage() : ExchangeBidSearchOkMessage

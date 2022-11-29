@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightPauseMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4240;
+      public static const protocolId:uint = 1068;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 4240;
+         return 1068;
       }
       
       public function initGameFightPauseMessage(isPaused:Boolean = false) : GameFightPauseMessage

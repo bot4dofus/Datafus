@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.interactive
    public class StatedMapUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1052;
+      public static const protocolId:uint = 2340;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.interactive
       
       override public function getMessageId() : uint
       {
-         return 1052;
+         return 2340;
       }
       
       public function initStatedMapUpdateMessage(statedElements:Vector.<StatedElement> = null) : StatedMapUpdateMessage

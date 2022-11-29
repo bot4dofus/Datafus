@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.social
    public class ContactLookErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2826;
+      public static const protocolId:uint = 5515;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.social
       
       override public function getMessageId() : uint
       {
-         return 2826;
+         return 5515;
       }
       
       public function initContactLookErrorMessage(requestId:uint = 0) : ContactLookErrorMessage

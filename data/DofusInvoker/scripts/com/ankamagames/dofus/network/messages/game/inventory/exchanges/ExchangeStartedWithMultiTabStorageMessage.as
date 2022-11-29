@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartedWithMultiTabStorageMessage extends ExchangeStartedMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 387;
+      public static const protocolId:uint = 1996;
        
       
       private var _isInitialized:Boolean = false;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 387;
+         return 1996;
       }
       
       public function initExchangeStartedWithMultiTabStorageMessage(exchangeType:int = 0, storageMaxSlot:uint = 0, tabNumber:uint = 0) : ExchangeStartedWithMultiTabStorageMessage

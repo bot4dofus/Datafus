@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character.guild.note
    public class PlayerNote implements INetworkType
    {
       
-      public static const protocolId:uint = 5149;
+      public static const protocolId:uint = 5139;
        
       
       public var content:String = "";
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.character.guild.note
       
       public function getTypeId() : uint
       {
-         return 5149;
+         return 5139;
       }
       
       public function initPlayerNote(content:String = "", lastEditDate:Number = 0) : PlayerNote

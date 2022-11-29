@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.handshake
    public class ProtocolRequired extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 950;
+      public static const protocolId:uint = 8552;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.handshake
       
       override public function getMessageId() : uint
       {
-         return 950;
+         return 8552;
       }
       
       public function initProtocolRequired(version:String = "") : ProtocolRequired

@@ -115,6 +115,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
    import com.ankamagames.dofus.network.messages.game.character.creation.CharacterNameSuggestionRequestMessage;
    import com.ankamagames.dofus.network.messages.game.character.creation.CharacterNameSuggestionSuccessMessage;
    import com.ankamagames.dofus.network.messages.game.character.deletion.CharacterDeletionErrorMessage;
+   import com.ankamagames.dofus.network.messages.game.character.deletion.CharacterDeletionPrepareMessage;
    import com.ankamagames.dofus.network.messages.game.character.deletion.CharacterDeletionRequestMessage;
    import com.ankamagames.dofus.network.messages.game.character.replay.CharacterReplayRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.GameContextCreateRequestMessage;
@@ -289,6 +290,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
          var ccmsg:CharacterCreationRequestMessage = null;
          var colors:Vector.<int> = null;
          var ccrmsg:CharacterCreationResultMessage = null;
+         var cdpmsg:CharacterDeletionPrepareMessage = null;
          var cda:CharacterDeletionAction = null;
          var cdrmsg:CharacterDeletionRequestMessage = null;
          var cdemsg:CharacterDeletionErrorMessage = null;
@@ -566,6 +568,10 @@ package com.ankamagames.dofus.logic.game.approach.frames
             case msg is CharacterCreationResultMessage:
                ccrmsg = msg as CharacterCreationResultMessage;
                this._kernel.processCallback(HookList.CharacterCreationResult,ccrmsg.result,ccrmsg.reason);
+               return true;
+            case msg is CharacterDeletionPrepareMessage:
+               cdpmsg = msg as CharacterDeletionPrepareMessage;
+               this._kernel.processCallback(HookList.CharacterDeletion,cdpmsg.characterId,cdpmsg.characterName,cdpmsg.secretQuestion,cdpmsg.needSecretAnswer);
                return true;
             case msg is CharacterDeletionAction:
                cda = msg as CharacterDeletionAction;

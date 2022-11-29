@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeMoneyMovementInformationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6158;
+      public static const protocolId:uint = 2194;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 6158;
+         return 2194;
       }
       
       public function initExchangeMoneyMovementInformationMessage(limit:Number = 0) : ExchangeMoneyMovementInformationMessage

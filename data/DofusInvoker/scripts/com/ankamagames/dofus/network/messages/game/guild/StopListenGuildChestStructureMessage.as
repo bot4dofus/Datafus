@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class StopListenGuildChestStructureMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1494;
+      public static const protocolId:uint = 4142;
        
       
       public function StopListenGuildChestStructureMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 1494;
+         return 4142;
       }
       
       public function initStopListenGuildChestStructureMessage() : StopListenGuildChestStructureMessage

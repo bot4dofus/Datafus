@@ -71,7 +71,8 @@ package com.ankamagames.dofus.uiApi
          var serverInfo:GameServerInformations = null;
          var availableServers:Array = null;
          var playerCommunityServers:Vector.<ServerWrapper> = new Vector.<ServerWrapper>();
-         var fallbackServers:Vector.<ServerWrapper> = new Vector.<ServerWrapper>();
+         var internationalServers:Vector.<ServerWrapper> = new Vector.<ServerWrapper>();
+         var globalServers:Vector.<ServerWrapper> = new Vector.<ServerWrapper>();
          var isReleaseBuild:* = BuildInfos.BUILD_TYPE == BuildTypeEnum.RELEASE;
          var playerCommunityId:int = PlayerManager.getInstance().communityId;
          for each(serverInfo in this.serverSelectionFrame.servers)
@@ -87,20 +88,31 @@ package com.ankamagames.dofus.uiApi
             }
             else if(server.gameTypeId == serverTypeId && this.serverIsOnlineAndNotFull(serverInfo))
             {
-               if(server.communityId == playerCommunityId || server.communityId == DataEnum.SERVER_COMMUNITY_ENGLISH_SPEAKING && playerCommunityId == DataEnum.SERVER_COMMUNITY_INTERNATIONAL_ALL_EXCEPT_FRENCH)
+               if(server.communityId == playerCommunityId)
                {
                   playerCommunityServers.push(ServerWrapper.create(server,serverInfo));
                }
-               else if(server.communityId == DataEnum.SERVER_COMMUNITY_INTERNATIONAL_ALL_EXCEPT_FRENCH)
+               else if(server.communityId == DataEnum.SERVER_COMMUNITY_INTERNATIONAL)
                {
-                  fallbackServers.push(ServerWrapper.create(server,serverInfo));
+                  internationalServers.push(ServerWrapper.create(server,serverInfo));
+               }
+               else
+               {
+                  globalServers.push(ServerWrapper.create(server,serverInfo));
                }
             }
          }
          availableServers = this.getLowestPopulationServers(playerCommunityServers);
          if(availableServers.length == 0)
          {
-            availableServers = this.getLowestPopulationServers(fallbackServers);
+            if(internationalServers.length == 0)
+            {
+               availableServers = this.getLowestPopulationServers(globalServers);
+            }
+            else
+            {
+               availableServers = this.getLowestPopulationServers(internationalServers);
+            }
          }
          if(availableServers.length > 0)
          {

@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
    public class GuildUnlockNewTabActivity extends GuildLogbookEntryBasicInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 1415;
+      public static const protocolId:uint = 4586;
        
       
       public function GuildUnlockNewTabActivity()
@@ -19,7 +19,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
       
       override public function getTypeId() : uint
       {
-         return 1415;
+         return 4586;
       }
       
       public function initGuildUnlockNewTabActivity(id:uint = 0, date:Number = 0) : GuildUnlockNewTabActivity

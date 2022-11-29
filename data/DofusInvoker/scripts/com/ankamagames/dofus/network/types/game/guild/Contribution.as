@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.guild
    public class Contribution implements INetworkType
    {
       
-      public static const protocolId:uint = 5925;
+      public static const protocolId:uint = 1328;
        
       
       public var contributorId:Number = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.guild
       
       public function getTypeId() : uint
       {
-         return 5925;
+         return 1328;
       }
       
       public function initContribution(contributorId:Number = 0, contributorName:String = "", amount:Number = 0) : Contribution

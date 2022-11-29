@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.prism
    public class PrismInfoJoinLeaveRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9379;
+      public static const protocolId:uint = 3125;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function getMessageId() : uint
       {
-         return 9379;
+         return 3125;
       }
       
       public function initPrismInfoJoinLeaveRequestMessage(join:Boolean = false) : PrismInfoJoinLeaveRequestMessage

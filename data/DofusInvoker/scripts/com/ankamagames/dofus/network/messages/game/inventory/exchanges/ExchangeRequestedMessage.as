@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeRequestedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4172;
+      public static const protocolId:uint = 4527;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 4172;
+         return 4527;
       }
       
       public function initExchangeRequestedMessage(exchangeType:int = 0) : ExchangeRequestedMessage

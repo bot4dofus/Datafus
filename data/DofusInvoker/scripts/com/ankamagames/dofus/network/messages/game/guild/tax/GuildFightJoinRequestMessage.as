@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild.tax
    public class GuildFightJoinRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6440;
+      public static const protocolId:uint = 2712;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.guild.tax
       
       override public function getMessageId() : uint
       {
-         return 6440;
+         return 2712;
       }
       
       public function initGuildFightJoinRequestMessage(taxCollectorId:Number = 0) : GuildFightJoinRequestMessage

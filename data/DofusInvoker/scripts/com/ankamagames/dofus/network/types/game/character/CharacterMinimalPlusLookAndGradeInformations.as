@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.character
    public class CharacterMinimalPlusLookAndGradeInformations extends CharacterMinimalPlusLookInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1566;
+      public static const protocolId:uint = 8828;
        
       
       public var grade:uint = 0;
@@ -21,7 +21,7 @@ package com.ankamagames.dofus.network.types.game.character
       
       override public function getTypeId() : uint
       {
-         return 1566;
+         return 8828;
       }
       
       public function initCharacterMinimalPlusLookAndGradeInformations(id:Number = 0, name:String = "", level:uint = 0, entityLook:EntityLook = null, breed:int = 0, grade:uint = 0) : CharacterMinimalPlusLookAndGradeInformations

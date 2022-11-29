@@ -31,8 +31,6 @@ package com.ankamagames.dofus.logic.common.managers
       
       public var subscriptionEndDate:Number;
       
-      public var secretQuestion:String;
-      
       public var adminStatus:int;
       
       public var passkey:String;

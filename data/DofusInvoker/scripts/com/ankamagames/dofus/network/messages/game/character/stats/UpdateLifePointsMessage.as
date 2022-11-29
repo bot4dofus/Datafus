@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.stats
    public class UpdateLifePointsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5083;
+      public static const protocolId:uint = 2766;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.character.stats
       
       override public function getMessageId() : uint
       {
-         return 5083;
+         return 2766;
       }
       
       public function initUpdateLifePointsMessage(lifePoints:uint = 0, maxLifePoints:uint = 0) : UpdateLifePointsMessage

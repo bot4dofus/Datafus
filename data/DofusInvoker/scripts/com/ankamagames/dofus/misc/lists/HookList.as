@@ -91,6 +91,8 @@ package com.ankamagames.dofus.misc.lists
       
       public static const CharacterDeletionError:String = "CharacterDeletionError";
       
+      public static const CharacterDeletion:String = "CharacterDeletion";
+      
       public static const CharacterCreationResult:String = "CharacterCreationResult";
       
       public static const CharacterImpossibleSelection:String = "CharacterImpossibleSelection";
@@ -606,6 +608,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(CharacterLevelUp);
          Hook.createHook(CharacterNameSuggestioned);
          Hook.createHook(CharacterDeletionError);
+         Hook.createHook(CharacterDeletion);
          Hook.createHook(CharacterCreationResult);
          Hook.createHook(CharacterImpossibleSelection);
          Hook.createHook(ConnectionTimerStart);

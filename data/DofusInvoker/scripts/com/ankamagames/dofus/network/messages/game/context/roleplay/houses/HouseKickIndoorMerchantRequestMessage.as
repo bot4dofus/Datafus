@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses
    public class HouseKickIndoorMerchantRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7940;
+      public static const protocolId:uint = 6118;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses
       
       override public function getMessageId() : uint
       {
-         return 7940;
+         return 6118;
       }
       
       public function initHouseKickIndoorMerchantRequestMessage(cellId:uint = 0) : HouseKickIndoorMerchantRequestMessage

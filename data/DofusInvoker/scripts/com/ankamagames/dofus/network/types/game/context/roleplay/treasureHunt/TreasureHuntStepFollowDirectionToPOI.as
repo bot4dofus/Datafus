@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt
    public class TreasureHuntStepFollowDirectionToPOI extends TreasureHuntStep implements INetworkType
    {
       
-      public static const protocolId:uint = 3670;
+      public static const protocolId:uint = 8072;
        
       
       public var direction:uint = 1;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt
       
       override public function getTypeId() : uint
       {
-         return 3670;
+         return 8072;
       }
       
       public function initTreasureHuntStepFollowDirectionToPOI(direction:uint = 1, poiLabelId:uint = 0) : TreasureHuntStepFollowDirectionToPOI

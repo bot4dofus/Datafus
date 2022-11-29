@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightTriggerGlyphTrapMessage extends AbstractGameActionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7768;
+      public static const protocolId:uint = 7836;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 7768;
+         return 7836;
       }
       
       public function initGameActionFightTriggerGlyphTrapMessage(actionId:uint = 0, sourceId:Number = 0, markId:int = 0, markImpactCell:uint = 0, triggeringCharacterId:Number = 0, triggeredSpellId:uint = 0) : GameActionFightTriggerGlyphTrapMessage

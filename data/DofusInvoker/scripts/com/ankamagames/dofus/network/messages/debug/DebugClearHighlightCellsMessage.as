@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.debug
    public class DebugClearHighlightCellsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4162;
+      public static const protocolId:uint = 4905;
        
       
       public function DebugClearHighlightCellsMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.debug
       
       override public function getMessageId() : uint
       {
-         return 4162;
+         return 4905;
       }
       
       public function initDebugClearHighlightCellsMessage() : DebugClearHighlightCellsMessage

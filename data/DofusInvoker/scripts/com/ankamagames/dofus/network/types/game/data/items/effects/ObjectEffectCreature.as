@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
    public class ObjectEffectCreature extends ObjectEffect implements INetworkType
    {
       
-      public static const protocolId:uint = 9687;
+      public static const protocolId:uint = 8531;
        
       
       public var monsterFamilyId:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
       
       override public function getTypeId() : uint
       {
-         return 9687;
+         return 8531;
       }
       
       public function initObjectEffectCreature(actionId:uint = 0, monsterFamilyId:uint = 0) : ObjectEffectCreature

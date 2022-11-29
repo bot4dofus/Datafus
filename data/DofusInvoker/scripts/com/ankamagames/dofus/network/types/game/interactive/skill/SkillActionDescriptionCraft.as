@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.interactive.skill
    public class SkillActionDescriptionCraft extends SkillActionDescription implements INetworkType
    {
       
-      public static const protocolId:uint = 8945;
+      public static const protocolId:uint = 6452;
        
       
       public var probability:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.interactive.skill
       
       override public function getTypeId() : uint
       {
-         return 8945;
+         return 6452;
       }
       
       public function initSkillActionDescriptionCraft(skillId:uint = 0, probability:uint = 0) : SkillActionDescriptionCraft

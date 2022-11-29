@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions
    public class AbstractGameActionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1925;
+      public static const protocolId:uint = 2592;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.actions
       
       override public function getMessageId() : uint
       {
-         return 1925;
+         return 2592;
       }
       
       public function initAbstractGameActionMessage(actionId:uint = 0, sourceId:Number = 0) : AbstractGameActionMessage

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.inventory
    public class UpdatedStorageTabInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 3407;
+      public static const protocolId:uint = 5765;
        
       
       public var name:String = "";
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.types.game.inventory
       
       public function getTypeId() : uint
       {
-         return 3407;
+         return 5765;
       }
       
       public function initUpdatedStorageTabInformation(name:String = "", tabNumber:uint = 0, picto:uint = 0, dropTypeLimitation:Vector.<uint> = null) : UpdatedStorageTabInformation

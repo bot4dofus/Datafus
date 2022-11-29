@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.presets
    public class FullStatsPreset extends Preset implements INetworkType
    {
       
-      public static const protocolId:uint = 6627;
+      public static const protocolId:uint = 3040;
        
       
       public var stats:Vector.<CharacterCharacteristicForPreset>;
@@ -23,7 +23,7 @@ package com.ankamagames.dofus.network.types.game.presets
       
       override public function getTypeId() : uint
       {
-         return 6627;
+         return 3040;
       }
       
       public function initFullStatsPreset(id:int = 0, stats:Vector.<CharacterCharacteristicForPreset> = null) : FullStatsPreset

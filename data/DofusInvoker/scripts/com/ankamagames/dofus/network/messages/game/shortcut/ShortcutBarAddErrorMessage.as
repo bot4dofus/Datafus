@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.shortcut
    public class ShortcutBarAddErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5132;
+      public static const protocolId:uint = 3177;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.shortcut
       
       override public function getMessageId() : uint
       {
-         return 5132;
+         return 3177;
       }
       
       public function initShortcutBarAddErrorMessage(error:uint = 0) : ShortcutBarAddErrorMessage

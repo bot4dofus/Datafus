@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class MapRunningFightListRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6402;
+      public static const protocolId:uint = 3670;
        
       
       public function MapRunningFightListRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 6402;
+         return 3670;
       }
       
       public function initMapRunningFightListRequestMessage() : MapRunningFightListRequestMessage
