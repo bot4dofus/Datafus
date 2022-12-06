@@ -4732,7 +4732,7 @@
 		},
 		{
 			"id": 470,
-			"nameId": 715378,
+			"nameId": 980787,
 			"categoryId": 2,
 			"repeatType": -1,
 			"repeatLimit": 1,
@@ -4743,7 +4743,7 @@
 				995
 			],
 			"isPartyQuest": false,
-			"startCriterion": "PL>8&((Pm=69207040&(Qc=715|Qo=4594))|(Pm=183765002&(Qc=458|Qo=3147))|(Pm=183762944&(Qc=461|Qo=3164))|(Pm=183769090&(Qc=466|Qo=3174))|(Pm=67109888&(Qc=708|Qo=4571))|(Pm=17048578&(Qc=464|Qo=3170))|(Pm=183763974&(Qc=462|Qo=3166))|(Pm=183764994&(Qc=469|Qo=3180))|(Pm=183767050&(Qc=463|Qo=3168))|(Pm=183763980&(Qc=468|Qo=3178))|(Pm=183768076&(Qc=465|Qo=3172))|(Pm=183768066&(Qc=467|Qo=3176))|(Pm=183762956&(Qc=460|Qo=3162))|(Pm=183766020&(Qc=459|Qo=3160))|(Pm=96471552&(Qc=940|Qo=5719))|(Pm=148636161&(Qc=1617|Qo=9510))|(Pm=163053570&(Qc=1679|Qo=10322))|(Pm=177210626&(Qc=1843|Qo=12178)))",
+			"startCriterion": "PL>8&((Pm=69207040&(Qc=715|Qo=4594))|(Pm=183765002&(Qc=458|Qo=3147))|(Pm=183762944&(Qc=461|Qo=3164))|(Pm=183769090&(Qc=466|Qo=3174))|(Pm=67109888&(Qc=708|Qo=4571))|(Pm=17048578&(Qc=464|Qo=3170))|(Pm=183763974&(Qc=462|Qo=3166))|(Pm=183764994&(Qc=469|Qo=3180))|(Pm=183767050&(Qc=463|Qo=3168))|(Pm=183763980&(Qc=468|Qo=3178))|(Pm=183768076&(Qc=465|Qo=3172))|(Pm=183768066&(Qc=467|Qo=3176))|(Pm=183762956&(Qc=460|Qo=3162))|(Pm=183766020&(Qc=459|Qo=3160))|(Pm=96471552&(Qc=940|Qo=5719))|(Pm=148636161&(Qc=1617|Qo=9510))|(Pm=163053570&(Qc=1679|Qo=10322))|(Pm=177210626&(Qc=1843|Qo=12178))|(Pm=226493185&(Qc=2469|Qo=18677)))",
 			"followable": true
 		},
 		{
@@ -26763,7 +26763,7 @@
 				2632
 			],
 			"isPartyQuest": false,
-			"startCriterion": "(Qf=1841&PG=18&Pm=83886090)|(Qf=1677&PG=17&Pm=191106052)|(Qf=1615&PG=16&Pm=192414724)|(Qf=938&PG=15&Pm=188743681)|(Qf=716&PG=14&Pm=188746759)|(Qf=704&PG=13&Pm=192414728)|(Qf=1974&PG=12&Pm=191106050)|(Qf=1973&PG=11&Pm=192939018)|(Qf=1972&PG=10&Pm=188743686)|(Qf=1971&PG=9&Pm=188744198)|(Qf=1970&PG=8&Pm=191105024)|(Qf=1969&PG=7&Pm=192417798)|(Qf=1968&PG=6&Pm=192413696)|(Qf=1967&PG=5&Pm=191104000)|(Qf=1966&PG=4&Pm=188744710)|(Qf=1965&PG=3&Pm=188743685)|(Qf=1964&PG=2&Pm=188744199)|(Qf=1963&PG=1&Pm=188745223)",
+			"startCriterion": "(Qf=1841&PG=18&Pm=83886090)|(Qf=1677&PG=17&Pm=191106052)|(Qf=1615&PG=16&Pm=192414724)|(Qf=938&PG=15&Pm=188743681)|(Qf=716&PG=14&Pm=188746759)|(Qf=704&PG=13&Pm=192414728)|(Qf=1974&PG=12&Pm=191106050)|(Qf=1973&PG=11&Pm=192939018)|(Qf=1972&PG=10&Pm=188743686)|(Qf=1971&PG=9&Pm=188744198)|(Qf=1970&PG=8&Pm=191105024)|(Qf=1969&PG=7&Pm=192417798)|(Qf=1968&PG=6&Pm=192413696)|(Qf=1967&PG=5&Pm=191104000)|(Qf=1966&PG=4&Pm=188744710)|(Qf=1965&PG=3&Pm=188743685)|(Qf=1964&PG=2&Pm=188744199)|(Qf=1963&PG=1&Pm=188745223)|(Qf=2470&PG=20&Pm=224920576)",
 			"followable": true
 		},
 		{
@@ -30860,6 +30860,310 @@
 			],
 			"isPartyQuest": false,
 			"startCriterion": "SC=5&ST=7",
+			"followable": true
+		},
+		{
+			"id": 2463,
+			"nameId": 970411,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 50,
+			"levelMax": 50,
+			"stepIds": [
+				3119
+			],
+			"isPartyQuest": false,
+			"startCriterion": "PL>39",
+			"followable": true
+		},
+		{
+			"id": 2464,
+			"nameId": 970412,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 50,
+			"levelMax": 50,
+			"stepIds": [
+				3122
+			],
+			"isPartyQuest": false,
+			"startCriterion": "PL>39&Qf=2463",
+			"followable": true
+		},
+		{
+			"id": 2465,
+			"nameId": 970413,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 50,
+			"levelMax": 50,
+			"stepIds": [
+				3123
+			],
+			"isPartyQuest": false,
+			"startCriterion": "PL>39&Qf=2464",
+			"followable": true
+		},
+		{
+			"id": 2466,
+			"nameId": 970414,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 50,
+			"levelMax": 50,
+			"stepIds": [
+				3124
+			],
+			"isPartyQuest": false,
+			"startCriterion": "PL>39&Qf=2465",
+			"followable": true
+		},
+		{
+			"id": 2467,
+			"nameId": 970471,
+			"categoryId": 4,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 30,
+			"levelMax": 30,
+			"stepIds": [
+				3121
+			],
+			"isPartyQuest": false,
+			"startCriterion": "Qf=1958&PG=20&PZ=1",
+			"followable": true
+		},
+		{
+			"id": 2468,
+			"nameId": 971399,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 50,
+			"levelMax": 50,
+			"stepIds": [
+				3125
+			],
+			"isPartyQuest": false,
+			"startCriterion": "PL>39&Qf=2466",
+			"followable": true
+		},
+		{
+			"id": 2469,
+			"nameId": 971853,
+			"categoryId": 2,
+			"repeatType": 1,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 9,
+			"levelMax": 200,
+			"stepIds": [
+				3126
+			],
+			"isPartyQuest": false,
+			"startCriterion": "PL>8",
+			"followable": true
+		},
+		{
+			"id": 2470,
+			"nameId": 972154,
+			"categoryId": 4,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 20,
+			"levelMax": 20,
+			"stepIds": [
+				3127
+			],
+			"isPartyQuest": false,
+			"startCriterion": "Qf=2009&PG=20",
+			"followable": true
+		},
+		{
+			"id": 2471,
+			"nameId": 973449,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 190,
+			"levelMax": 190,
+			"stepIds": [
+				3128
+			],
+			"isPartyQuest": false,
+			"startCriterion": "PL>169&Qf=2468",
+			"followable": true
+		},
+		{
+			"id": 2472,
+			"nameId": 982336,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": true,
+			"levelMin": 190,
+			"levelMax": 190,
+			"stepIds": [
+				3130
+			],
+			"isPartyQuest": false,
+			"startCriterion": "Qf=2471",
+			"followable": true
+		},
+		{
+			"id": 2473,
+			"nameId": 980679,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 190,
+			"levelMax": 190,
+			"stepIds": [
+				3129
+			],
+			"isPartyQuest": false,
+			"startCriterion": "Qf=2472",
+			"followable": true
+		},
+		{
+			"id": 2474,
+			"nameId": 973165,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 190,
+			"levelMax": 190,
+			"stepIds": [
+				3131
+			],
+			"isPartyQuest": true,
+			"startCriterion": "Qf=2473",
+			"followable": true
+		},
+		{
+			"id": 2475,
+			"nameId": 984138,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": true,
+			"levelMin": 200,
+			"levelMax": 200,
+			"stepIds": [
+				3132
+			],
+			"isPartyQuest": false,
+			"startCriterion": "PL>179&Qf=2474",
+			"followable": true
+		},
+		{
+			"id": 2477,
+			"nameId": 979594,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 200,
+			"levelMax": 200,
+			"stepIds": [
+				3134
+			],
+			"isPartyQuest": true,
+			"startCriterion": "Qf=2475",
+			"followable": true
+		},
+		{
+			"id": 2478,
+			"nameId": 981547,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 200,
+			"levelMax": 200,
+			"stepIds": [
+				3135
+			],
+			"isPartyQuest": true,
+			"startCriterion": "Qf=2475",
+			"followable": true
+		},
+		{
+			"id": 2479,
+			"nameId": 984196,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 200,
+			"levelMax": 200,
+			"stepIds": [
+				3136
+			],
+			"isPartyQuest": true,
+			"startCriterion": "Qf=2478",
+			"followable": true
+		},
+		{
+			"id": 2480,
+			"nameId": 984470,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 200,
+			"levelMax": 200,
+			"stepIds": [
+				3137
+			],
+			"isPartyQuest": true,
+			"startCriterion": "Qf=2479",
+			"followable": true
+		},
+		{
+			"id": 2481,
+			"nameId": 982190,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 200,
+			"levelMax": 200,
+			"stepIds": [
+				3138
+			],
+			"isPartyQuest": true,
+			"startCriterion": "Qf=2480",
+			"followable": true
+		},
+		{
+			"id": 2482,
+			"nameId": 982686,
+			"categoryId": 53,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 200,
+			"levelMax": 200,
+			"stepIds": [
+				3139
+			],
+			"isPartyQuest": true,
+			"startCriterion": "PL>179",
 			"followable": true
 		}
 	]

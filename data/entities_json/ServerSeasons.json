@@ -25,6 +25,10 @@
 					"type": -4
 				},
 				{
+					"name": "resetDate",
+					"type": -4
+				},
+				{
 					"name": "flagObjectId",
 					"type": -1
 				}
@@ -38,6 +42,7 @@
 			"information": "Temporis I",
 			"beginning": 1524610800000.0,
 			"closure": 1532991600000.0,
+			"resetDate": -3600000.0,
 			"flagObjectId": 20763
 		},
 		{
@@ -46,6 +51,7 @@
 			"information": "Temporis II : Fake news",
 			"beginning": 1533078000000.0,
 			"closure": 1548720000000.0,
+			"resetDate": -3600000.0,
 			"flagObjectId": 20763
 		},
 		{
@@ -54,6 +60,7 @@
 			"information": "Temporis II : La revanche du drop",
 			"beginning": 1548720000000.0,
 			"closure": 1554850800000.0,
+			"resetDate": -3600000.0,
 			"flagObjectId": 20763
 		},
 		{
@@ -62,6 +69,7 @@
 			"information": "Temporis III : Fake news",
 			"beginning": 1563231600000.0,
 			"closure": 1569884400000.0,
+			"resetDate": -3600000.0,
 			"flagObjectId": 20763
 		},
 		{
@@ -70,6 +78,7 @@
 			"information": "Temporis IV : L'av\u00e8nement des Parchomanciens",
 			"beginning": 1579737600000.0,
 			"closure": 1596236400000.0,
+			"resetDate": -3600000.0,
 			"flagObjectId": 20763
 		},
 		{
@@ -78,6 +87,7 @@
 			"information": "Temporis V : Ecaflip City",
 			"beginning": 1612137600000.0,
 			"closure": 1625612400000.0,
+			"resetDate": -3600000.0,
 			"flagObjectId": 20763
 		},
 		{
@@ -86,6 +96,7 @@
 			"information": "Temporis VI : L'av\u00e8nement des Recommanciens",
 			"beginning": 1625698800000.0,
 			"closure": 1640995200000.0,
+			"resetDate": -3600000.0,
 			"flagObjectId": 20763
 		},
 		{
@@ -94,14 +105,16 @@
 			"information": "Temporis VII",
 			"beginning": 1642636800000.0,
 			"closure": 1661986800000.0,
+			"resetDate": -3600000.0,
 			"flagObjectId": 20763
 		},
 		{
 			"uid": 25,
 			"seasonNumber": 8,
 			"information": "Exp\u00e9dition I : Mercenaire",
-			"beginning": 1664233200000.0,
+			"beginning": 1661986800000.0,
 			"closure": 1670284800000.0,
+			"resetDate": 1689289200000.0,
 			"flagObjectId": 27427
 		}
 	]

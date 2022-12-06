@@ -3924,8 +3924,16 @@
 			"id": 497,
 			"skinId": 4535,
 			"iconId": 408,
-			"order": 0,
+			"order": 495000,
 			"categoryId": 5,
+			"colorizable": true
+		},
+		{
+			"id": 498,
+			"skinId": 4832,
+			"iconId": 499,
+			"order": 496000,
+			"categoryId": 2,
 			"colorizable": true
 		}
 	]

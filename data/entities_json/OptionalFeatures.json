@@ -100,15 +100,6 @@
 			"activationCriterions": "null"
 		},
 		{
-			"id": 40,
-			"keyword": "misc.havenBag",
-			"isClient": true,
-			"isServer": true,
-			"isActivationOnLaunch": false,
-			"isActivationOnServerConnection": false,
-			"activationCriterions": "null"
-		},
-		{
 			"id": 50,
 			"keyword": "social.guild",
 			"isClient": true,
@@ -350,6 +341,15 @@
 			"isActivationOnLaunch": false,
 			"isActivationOnServerConnection": false,
 			"activationCriterions": "null"
+		},
+		{
+			"id": 40,
+			"keyword": "misc.havenBag",
+			"isClient": true,
+			"isServer": true,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": false,
+			"activationCriterions": ""
 		},
 		{
 			"id": 92,
@@ -665,6 +665,15 @@
 			"isActivationOnLaunch": false,
 			"isActivationOnServerConnection": false,
 			"activationCriterions": ""
+		},
+		{
+			"id": 149,
+			"keyword": "game.feature.merchant",
+			"isClient": true,
+			"isServer": true,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": false,
+			"activationCriterions": "null"
 		}
 	]
 }

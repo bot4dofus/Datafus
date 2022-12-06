@@ -969,10 +969,10 @@
 			"containHouses": false,
 			"containPaddocks": false,
 			"bounds": {
-				"x": 0,
-				"y": -58,
-				"width": 43,
-				"height": 59
+				"x": -32,
+				"y": -70,
+				"width": 75,
+				"height": 71
 			},
 			"worldmapId": 0,
 			"hasWorldMap": false,
@@ -1037,6 +1037,22 @@
 				"y": 0,
 				"width": 8,
 				"height": 23
+			},
+			"worldmapId": 0,
+			"hasWorldMap": false,
+			"hasSuggestion": true
+		},
+		{
+			"id": 93,
+			"nameId": 973483,
+			"superAreaId": 0,
+			"containHouses": false,
+			"containPaddocks": false,
+			"bounds": {
+				"x": 0,
+				"y": -88,
+				"width": 40,
+				"height": 89
 			},
 			"worldmapId": 0,
 			"hasWorldMap": false,

@@ -698,6 +698,27 @@
 				"0.25"
 			],
 			"visibleOnMap": true
+		},
+		{
+			"id": 31,
+			"nameId": 980753,
+			"origineX": -6953,
+			"origineY": 13663,
+			"mapWidth": 257.5,
+			"mapHeight": 185.0,
+			"viewableEverywhere": false,
+			"minScale": 0.5,
+			"maxScale": 1.0,
+			"startScale": 1.0,
+			"totalWidth": 2840,
+			"totalHeight": 2881,
+			"zoom": [
+				"1",
+				"0.75",
+				"0.5",
+				"0.25"
+			],
+			"visibleOnMap": true
 		}
 	]
 }

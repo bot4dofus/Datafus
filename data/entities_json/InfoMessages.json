@@ -6088,7 +6088,7 @@
 		{
 			"typeId": 0,
 			"messageId": 1240,
-			"textId": 854601
+			"textId": 980433
 		},
 		{
 			"typeId": 0,
@@ -7421,6 +7421,276 @@
 			"textId": 967534
 		},
 		{
+			"typeId": 0,
+			"messageId": 1509,
+			"textId": 974298
+		},
+		{
+			"typeId": 0,
+			"messageId": 1510,
+			"textId": 974299
+		},
+		{
+			"typeId": 0,
+			"messageId": 1511,
+			"textId": 976971
+		},
+		{
+			"typeId": 0,
+			"messageId": 1512,
+			"textId": 974301
+		},
+		{
+			"typeId": 0,
+			"messageId": 1513,
+			"textId": 974302
+		},
+		{
+			"typeId": 0,
+			"messageId": 1514,
+			"textId": 974305
+		},
+		{
+			"typeId": 0,
+			"messageId": 1515,
+			"textId": 975110
+		},
+		{
+			"typeId": 0,
+			"messageId": 1516,
+			"textId": 975113
+		},
+		{
+			"typeId": 0,
+			"messageId": 1517,
+			"textId": 975114
+		},
+		{
+			"typeId": 0,
+			"messageId": 1518,
+			"textId": 975115
+		},
+		{
+			"typeId": 0,
+			"messageId": 1519,
+			"textId": 975186
+		},
+		{
+			"typeId": 0,
+			"messageId": 1520,
+			"textId": 975187
+		},
+		{
+			"typeId": 0,
+			"messageId": 1521,
+			"textId": 975193
+		},
+		{
+			"typeId": 0,
+			"messageId": 1522,
+			"textId": 975200
+		},
+		{
+			"typeId": 0,
+			"messageId": 1523,
+			"textId": 975201
+		},
+		{
+			"typeId": 0,
+			"messageId": 1524,
+			"textId": 975539
+		},
+		{
+			"typeId": 0,
+			"messageId": 1525,
+			"textId": 975627
+		},
+		{
+			"typeId": 0,
+			"messageId": 1526,
+			"textId": 976265
+		},
+		{
+			"typeId": 0,
+			"messageId": 1527,
+			"textId": 976642
+		},
+		{
+			"typeId": 0,
+			"messageId": 1528,
+			"textId": 976835
+		},
+		{
+			"typeId": 0,
+			"messageId": 1529,
+			"textId": 976904
+		},
+		{
+			"typeId": 0,
+			"messageId": 1532,
+			"textId": 977148
+		},
+		{
+			"typeId": 0,
+			"messageId": 1533,
+			"textId": 977364
+		},
+		{
+			"typeId": 0,
+			"messageId": 1534,
+			"textId": 977496
+		},
+		{
+			"typeId": 0,
+			"messageId": 1535,
+			"textId": 977851
+		},
+		{
+			"typeId": 0,
+			"messageId": 1536,
+			"textId": 977858
+		},
+		{
+			"typeId": 0,
+			"messageId": 1537,
+			"textId": 977859
+		},
+		{
+			"typeId": 0,
+			"messageId": 1538,
+			"textId": 978675
+		},
+		{
+			"typeId": 0,
+			"messageId": 1539,
+			"textId": 979969
+		},
+		{
+			"typeId": 0,
+			"messageId": 1540,
+			"textId": 981707
+		},
+		{
+			"typeId": 0,
+			"messageId": 1541,
+			"textId": 981708
+		},
+		{
+			"typeId": 0,
+			"messageId": 1542,
+			"textId": 982725
+		},
+		{
+			"typeId": 0,
+			"messageId": 1543,
+			"textId": 982726
+		},
+		{
+			"typeId": 0,
+			"messageId": 1544,
+			"textId": 982727
+		},
+		{
+			"typeId": 0,
+			"messageId": 1545,
+			"textId": 982728
+		},
+		{
+			"typeId": 0,
+			"messageId": 1546,
+			"textId": 982729
+		},
+		{
+			"typeId": 0,
+			"messageId": 1547,
+			"textId": 982730
+		},
+		{
+			"typeId": 0,
+			"messageId": 1548,
+			"textId": 982731
+		},
+		{
+			"typeId": 0,
+			"messageId": 1549,
+			"textId": 982732
+		},
+		{
+			"typeId": 0,
+			"messageId": 1550,
+			"textId": 982733
+		},
+		{
+			"typeId": 0,
+			"messageId": 1551,
+			"textId": 983620
+		},
+		{
+			"typeId": 0,
+			"messageId": 1552,
+			"textId": 984278
+		},
+		{
+			"typeId": 0,
+			"messageId": 1553,
+			"textId": 983679
+		},
+		{
+			"typeId": 0,
+			"messageId": 1554,
+			"textId": 983680
+		},
+		{
+			"typeId": 0,
+			"messageId": 1555,
+			"textId": 984040
+		},
+		{
+			"typeId": 0,
+			"messageId": 1556,
+			"textId": 984236
+		},
+		{
+			"typeId": 0,
+			"messageId": 1557,
+			"textId": 984237
+		},
+		{
+			"typeId": 0,
+			"messageId": 1558,
+			"textId": 984268
+		},
+		{
+			"typeId": 0,
+			"messageId": 1559,
+			"textId": 984419
+		},
+		{
+			"typeId": 0,
+			"messageId": 1560,
+			"textId": 985401
+		},
+		{
+			"typeId": 0,
+			"messageId": 1561,
+			"textId": 985398
+		},
+		{
+			"typeId": 0,
+			"messageId": 1562,
+			"textId": 985399
+		},
+		{
+			"typeId": 0,
+			"messageId": 1563,
+			"textId": 985400
+		},
+		{
+			"typeId": 0,
+			"messageId": 1564,
+			"textId": 984987
+		},
+		{
 			"typeId": 1,
 			"messageId": 1,
 			"textId": 714591
@@ -7843,7 +8113,7 @@
 		{
 			"typeId": 1,
 			"messageId": 89,
-			"textId": 936626
+			"textId": 977547
 		},
 		{
 			"typeId": 1,
@@ -9368,7 +9638,7 @@
 		{
 			"typeId": 1,
 			"messageId": 413,
-			"textId": 322568
+			"textId": 973709
 		},
 		{
 			"typeId": 1,
@@ -10639,6 +10909,66 @@
 			"typeId": 1,
 			"messageId": 670,
 			"textId": 967800
+		},
+		{
+			"typeId": 1,
+			"messageId": 671,
+			"textId": 979826
+		},
+		{
+			"typeId": 1,
+			"messageId": 672,
+			"textId": 979827
+		},
+		{
+			"typeId": 1,
+			"messageId": 673,
+			"textId": 979830
+		},
+		{
+			"typeId": 1,
+			"messageId": 674,
+			"textId": 979833
+		},
+		{
+			"typeId": 1,
+			"messageId": 675,
+			"textId": 979834
+		},
+		{
+			"typeId": 1,
+			"messageId": 676,
+			"textId": 980470
+		},
+		{
+			"typeId": 1,
+			"messageId": 677,
+			"textId": 979844
+		},
+		{
+			"typeId": 1,
+			"messageId": 678,
+			"textId": 979846
+		},
+		{
+			"typeId": 1,
+			"messageId": 679,
+			"textId": 979847
+		},
+		{
+			"typeId": 1,
+			"messageId": 680,
+			"textId": 979848
+		},
+		{
+			"typeId": 1,
+			"messageId": 681,
+			"textId": 979851
+		},
+		{
+			"typeId": 1,
+			"messageId": 682,
+			"textId": 979850
 		},
 		{
 			"typeId": 2,

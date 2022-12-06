@@ -2627,6 +2627,150 @@
 			"gender": 0,
 			"label": "VIII",
 			"order": 7
+		},
+		{
+			"id": 294,
+			"skins": "3090",
+			"assetId": "200_1",
+			"breed": 20,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 295,
+			"skins": "3091",
+			"assetId": "200_2",
+			"breed": 20,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 296,
+			"skins": "3095",
+			"assetId": "200_3",
+			"breed": 20,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 297,
+			"skins": "3098",
+			"assetId": "200_4",
+			"breed": 20,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 298,
+			"skins": "3103",
+			"assetId": "200_5",
+			"breed": 20,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 299,
+			"skins": "3104",
+			"assetId": "200_6",
+			"breed": 20,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 300,
+			"skins": "3105",
+			"assetId": "200_7",
+			"breed": 20,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 301,
+			"skins": "3124",
+			"assetId": "200_8",
+			"breed": 20,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 302,
+			"skins": "3106",
+			"assetId": "201_1",
+			"breed": 20,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 303,
+			"skins": "3108",
+			"assetId": "201_2",
+			"breed": 20,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 304,
+			"skins": "3112",
+			"assetId": "201_3",
+			"breed": 20,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 305,
+			"skins": "3115",
+			"assetId": "201_4",
+			"breed": 20,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 306,
+			"skins": "3143",
+			"assetId": "201_5",
+			"breed": 20,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 307,
+			"skins": "3121",
+			"assetId": "201_6",
+			"breed": 20,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 308,
+			"skins": "3122",
+			"assetId": "201_7",
+			"breed": 20,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 309,
+			"skins": "3123",
+			"assetId": "201_8",
+			"breed": 20,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
 		}
 	]
 }

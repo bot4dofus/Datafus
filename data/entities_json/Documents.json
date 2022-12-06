@@ -1801,6 +1801,18 @@
 			"clientProperties": "null"
 		},
 		{
+			"id": 335,
+			"typeId": 1,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 375525,
+			"authorId": 375527,
+			"subTitleId": 375526,
+			"contentId": 375528,
+			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
+			"clientProperties": "null"
+		},
+		{
 			"id": 347,
 			"typeId": 2,
 			"showTitle": true,
@@ -2413,18 +2425,6 @@
 			"clientProperties": "null"
 		},
 		{
-			"id": 335,
-			"typeId": 1,
-			"showTitle": true,
-			"showBackgroundImage": true,
-			"titleId": 375525,
-			"authorId": 375527,
-			"subTitleId": 375526,
-			"contentId": 375528,
-			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
-			"clientProperties": "null"
-		},
-		{
 			"id": 150,
 			"typeId": 1,
 			"showTitle": true,
@@ -2653,6 +2653,18 @@
 			"clientProperties": "null"
 		},
 		{
+			"id": 403,
+			"typeId": 2,
+			"showTitle": false,
+			"showBackgroundImage": false,
+			"titleId": 482025,
+			"authorId": 482027,
+			"subTitleId": 482026,
+			"contentId": 482028,
+			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
+			"clientProperties": "null"
+		},
+		{
 			"id": 71,
 			"typeId": 2,
 			"showTitle": true,
@@ -2773,6 +2785,18 @@
 			"clientProperties": ""
 		},
 		{
+			"id": 324,
+			"typeId": 1,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 375481,
+			"authorId": 375483,
+			"subTitleId": 375482,
+			"contentId": 375484,
+			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class7 {\n\tfont-weight: bold;\n}\n.document_content2_fr-class5 {\n\tfont-size: 20pt;\n\tfont-weight: bold;\n}\n.document_content2_fr-class6 {\n\tfont-style: italic;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
+			"clientProperties": "null"
+		},
+		{
 			"id": 229,
 			"typeId": 2,
 			"showTitle": true,
@@ -2795,18 +2819,6 @@
 			"contentId": 841563,
 			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class5 {\n\tfont-weight: bold;\n}\n.document_content2_fr-class6 {\n\tfont-style: italic;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
 			"clientProperties": ""
-		},
-		{
-			"id": 383,
-			"typeId": 2,
-			"showTitle": true,
-			"showBackgroundImage": true,
-			"titleId": 419938,
-			"authorId": 419940,
-			"subTitleId": 419939,
-			"contentId": 507692,
-			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\ttext-decoration: underline;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}",
-			"clientProperties": "null"
 		},
 		{
 			"id": 231,
@@ -2902,30 +2914,6 @@
 			"subTitleId": 375486,
 			"contentId": 378054,
 			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class7 {\n\tfont-weight: bold;\n}\n.document_content2_fr-class5 {\n\tfont-size: 20pt;\n\tfont-weight: bold;\n}\n.document_content2_fr-class6 {\n\tfont-style: italic;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
-			"clientProperties": "null"
-		},
-		{
-			"id": 324,
-			"typeId": 1,
-			"showTitle": true,
-			"showBackgroundImage": true,
-			"titleId": 375481,
-			"authorId": 375483,
-			"subTitleId": 375482,
-			"contentId": 375484,
-			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class7 {\n\tfont-weight: bold;\n}\n.document_content2_fr-class5 {\n\tfont-size: 20pt;\n\tfont-weight: bold;\n}\n.document_content2_fr-class6 {\n\tfont-style: italic;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
-			"clientProperties": "null"
-		},
-		{
-			"id": 364,
-			"typeId": 1,
-			"showTitle": true,
-			"showBackgroundImage": true,
-			"titleId": 375589,
-			"authorId": 375591,
-			"subTitleId": 375590,
-			"contentId": 840903,
-			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class7 {\r\n\tlist-style-type: circle;\r\n}\r\n.document_content2_fr-class12 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class11 {\r\n\tfont-style: italic;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n",
 			"clientProperties": "null"
 		},
 		{
@@ -3181,6 +3169,18 @@
 			"clientProperties": "null"
 		},
 		{
+			"id": 383,
+			"typeId": 2,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 419938,
+			"authorId": 419940,
+			"subTitleId": 419939,
+			"contentId": 507692,
+			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\ttext-decoration: underline;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}",
+			"clientProperties": "null"
+		},
+		{
 			"id": 368,
 			"typeId": 2,
 			"showTitle": true,
@@ -3285,18 +3285,6 @@
 			"authorId": 482019,
 			"subTitleId": 482018,
 			"contentId": 482020,
-			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
-			"clientProperties": "null"
-		},
-		{
-			"id": 403,
-			"typeId": 2,
-			"showTitle": false,
-			"showBackgroundImage": false,
-			"titleId": 482025,
-			"authorId": 482027,
-			"subTitleId": 482026,
-			"contentId": 482028,
 			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
 			"clientProperties": "null"
 		},
@@ -3433,6 +3421,18 @@
 			"clientProperties": "null"
 		},
 		{
+			"id": 455,
+			"typeId": 2,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 594416,
+			"authorId": 594418,
+			"subTitleId": 594417,
+			"contentId": 594419,
+			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\ttext-decoration: underline;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}",
+			"clientProperties": ""
+		},
+		{
 			"id": 426,
 			"typeId": 2,
 			"showTitle": true,
@@ -3442,18 +3442,6 @@
 			"subTitleId": 554639,
 			"contentId": 554641,
 			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\tfont-style: italic;\r\n}\r\n.document_content2_fr-class9 {\r\n\tfont-style: italic;\r\n\tfont-weight: bold;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}",
-			"clientProperties": "null"
-		},
-		{
-			"id": 366,
-			"typeId": 2,
-			"showTitle": true,
-			"showBackgroundImage": true,
-			"titleId": 376150,
-			"authorId": 376152,
-			"subTitleId": 376151,
-			"contentId": 621178,
-			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\ttext-decoration: underline;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}",
 			"clientProperties": "null"
 		},
 		{
@@ -3577,6 +3565,18 @@
 			"clientProperties": ""
 		},
 		{
+			"id": 366,
+			"typeId": 2,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 376150,
+			"authorId": 376152,
+			"subTitleId": 376151,
+			"contentId": 621178,
+			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\ttext-decoration: underline;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}",
+			"clientProperties": "null"
+		},
+		{
 			"id": 458,
 			"typeId": 2,
 			"showTitle": true,
@@ -3681,18 +3681,6 @@
 			"authorId": 594378,
 			"subTitleId": 594377,
 			"contentId": 674095,
-			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\ttext-decoration: underline;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}",
-			"clientProperties": ""
-		},
-		{
-			"id": 455,
-			"typeId": 2,
-			"showTitle": true,
-			"showBackgroundImage": true,
-			"titleId": 594416,
-			"authorId": 594418,
-			"subTitleId": 594417,
-			"contentId": 594419,
 			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\ttext-decoration: underline;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}",
 			"clientProperties": ""
 		},
@@ -4249,6 +4237,18 @@
 			"clientProperties": "titleOffsetY=14;hideTitleDecoration=true;buttonType=1;btnX=928;btnY=239"
 		},
 		{
+			"id": 444,
+			"typeId": 2,
+			"showTitle": false,
+			"showBackgroundImage": false,
+			"titleId": 751134,
+			"authorId": 559208,
+			"subTitleId": 559207,
+			"contentId": 751135,
+			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n",
+			"clientProperties": "fullscreen=true"
+		},
+		{
 			"id": 515,
 			"typeId": 1,
 			"showTitle": true,
@@ -4259,18 +4259,6 @@
 			"contentId": 905029,
 			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tfont-weight: normal;\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-style: normal;\r\n\ttext-decoration: none;\r\n\ttext-align: justify;\r\n\tlist-style-type: none;\r\n\tfont-size: 18pt;\r\n}\r\na {\r\n\ttext-decoration: underline;\r\n\tcolor: #0000FF;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class5 {\r\n\ttext-align: center;\r\n}\r\n.document_content2_fr-class6 {\r\n\tfont-style: italic;\r\n}\r\nol {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n\tlist-style-type: square;\r\n}\r\n",
 			"clientProperties": ""
-		},
-		{
-			"id": 418,
-			"typeId": 2,
-			"showTitle": true,
-			"showBackgroundImage": false,
-			"titleId": 554630,
-			"authorId": 554632,
-			"subTitleId": 554631,
-			"contentId": 752030,
-			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
-			"clientProperties": "titleOffsetY=130;hideTitleDecoration=true;buttonType=1;btnX=1111"
 		},
 		{
 			"id": 516,
@@ -4391,18 +4379,6 @@
 			"contentId": 846673,
 			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\ttext-decoration: underline;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}",
 			"clientProperties": ""
-		},
-		{
-			"id": 444,
-			"typeId": 2,
-			"showTitle": false,
-			"showBackgroundImage": false,
-			"titleId": 751134,
-			"authorId": 559208,
-			"subTitleId": 559207,
-			"contentId": 751135,
-			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n",
-			"clientProperties": "fullscreen=true"
 		},
 		{
 			"id": 525,
@@ -4907,6 +4883,18 @@
 			"contentId": 754517,
 			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
 			"clientProperties": ""
+		},
+		{
+			"id": 418,
+			"typeId": 2,
+			"showTitle": true,
+			"showBackgroundImage": false,
+			"titleId": 554630,
+			"authorId": 554632,
+			"subTitleId": 554631,
+			"contentId": 752030,
+			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
+			"clientProperties": "titleOffsetY=130;hideTitleDecoration=true;buttonType=1;btnX=1111"
 		},
 		{
 			"id": 376,
@@ -5461,6 +5449,18 @@
 			"clientProperties": "null"
 		},
 		{
+			"id": 661,
+			"typeId": 2,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 982437,
+			"authorId": 982439,
+			"subTitleId": 982438,
+			"contentId": 982436,
+			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class5 {\n\tfont-style: italic;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
+			"clientProperties": ""
+		},
+		{
 			"id": 568,
 			"typeId": 1,
 			"showTitle": true,
@@ -5581,16 +5581,16 @@
 			"clientProperties": "null"
 		},
 		{
-			"id": 592,
-			"typeId": 1,
+			"id": 251,
+			"typeId": 2,
 			"showTitle": true,
 			"showBackgroundImage": true,
-			"titleId": 801665,
-			"authorId": 801667,
-			"subTitleId": 801666,
-			"contentId": 801761,
-			"contentCSS": "",
-			"clientProperties": ""
+			"titleId": 2001,
+			"authorId": 495340,
+			"subTitleId": 495339,
+			"contentId": 916535,
+			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tfont-style: normal;\n\ttext-decoration: none;\n\tcolor: #000000;\n\tfont-weight: normal;\n\tfont-size: 18pt;\n\ttext-align: justify;\n\tlist-style-type: none;\n\tfont-family: Verdana, Geneva, sans-serif;\n}\na {\n\ttext-decoration: underline;\n\tcolor: #0000FF;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class5 {\n\tfont-weight: bold;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
+			"clientProperties": "null"
 		},
 		{
 			"id": 578,
@@ -5701,18 +5701,6 @@
 			"clientProperties": ""
 		},
 		{
-			"id": 251,
-			"typeId": 2,
-			"showTitle": true,
-			"showBackgroundImage": true,
-			"titleId": 2001,
-			"authorId": 495340,
-			"subTitleId": 495339,
-			"contentId": 916535,
-			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tfont-style: normal;\n\ttext-decoration: none;\n\tcolor: #000000;\n\tfont-weight: normal;\n\tfont-size: 18pt;\n\ttext-align: justify;\n\tlist-style-type: none;\n\tfont-family: Verdana, Geneva, sans-serif;\n}\na {\n\ttext-decoration: underline;\n\tcolor: #0000FF;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class5 {\n\tfont-weight: bold;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
-			"clientProperties": "null"
-		},
-		{
 			"id": 591,
 			"typeId": 1,
 			"showTitle": true,
@@ -5746,6 +5734,18 @@
 			"subTitleId": 789623,
 			"contentId": 790413,
 			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class7 {\r\n\tfont-style: italic;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\tlist-style-type: circle;\r\n}\r\n.document_content2_fr-class8 {\r\n\ttext-align: center;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n",
+			"clientProperties": ""
+		},
+		{
+			"id": 592,
+			"typeId": 1,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 801665,
+			"authorId": 801667,
+			"subTitleId": 801666,
+			"contentId": 801761,
+			"contentCSS": "",
 			"clientProperties": ""
 		},
 		{
@@ -5866,18 +5866,6 @@
 			"subTitleId": 820894,
 			"contentId": 822211,
 			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class7 {\r\n\tfont-style: italic;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\tlist-style-type: circle;\r\n}\r\n.document_content2_fr-class8 {\r\n\ttext-align: center;\r\n}\r\n.document_content2_fr-class9 {\r\n\tlist-style-type: decimal-leading-zero;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}",
-			"clientProperties": ""
-		},
-		{
-			"id": 636,
-			"typeId": 1,
-			"showTitle": true,
-			"showBackgroundImage": true,
-			"titleId": 844834,
-			"authorId": 844831,
-			"subTitleId": 844830,
-			"contentId": 847096,
-			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class5 {\n\tfont-weight: bold;\n}\n.document_content2_fr-class6 {\n\tfont-style: italic;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
 			"clientProperties": ""
 		},
 		{
@@ -6097,6 +6085,18 @@
 			"clientProperties": ""
 		},
 		{
+			"id": 658,
+			"typeId": 2,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 980170,
+			"authorId": 974314,
+			"subTitleId": 974313,
+			"contentId": 981128,
+			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class7 {\r\n\tfont-style: italic;\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-style: italic;\r\n}\r\n.document_content2_fr-class6 {\r\n\tfont-weight: bold;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n",
+			"clientProperties": ""
+		},
+		{
 			"id": 100,
 			"typeId": 2,
 			"showTitle": true,
@@ -6107,6 +6107,18 @@
 			"contentId": 891328,
 			"contentCSS": ".document_content2_it-class10 {\n\ttext-decoration: underline;\n}\nli {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\n.document_content2_it-class9 {\n\tfont-weight: bold;\n}\n.document_content2_de-class9 {\n\tfont-weight: bold;\n}\n.document_content2_fr-class9 {\n\tfont-weight: bold;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_de-class10 {\n\ttext-decoration: underline;\n}\n.document_content2_fr-class10 {\n\ttext-decoration: underline;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
 			"clientProperties": "null"
+		},
+		{
+			"id": 636,
+			"typeId": 1,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 844834,
+			"authorId": 844831,
+			"subTitleId": 844830,
+			"contentId": 847096,
+			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class5 {\n\tfont-weight: bold;\n}\n.document_content2_fr-class6 {\n\tfont-style: italic;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
+			"clientProperties": ""
 		},
 		{
 			"id": 635,
@@ -6169,6 +6181,18 @@
 			"clientProperties": ""
 		},
 		{
+			"id": 364,
+			"typeId": 1,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 375589,
+			"authorId": 375591,
+			"subTitleId": 375590,
+			"contentId": 974511,
+			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class7 {\r\n\tlist-style-type: circle;\r\n}\r\n.document_content2_fr-class12 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class11 {\r\n\tfont-style: italic;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n",
+			"clientProperties": "null"
+		},
+		{
 			"id": 637,
 			"typeId": 2,
 			"showTitle": true,
@@ -6178,6 +6202,90 @@
 			"subTitleId": 847531,
 			"contentId": 866600,
 			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\ttext-decoration: underline;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}",
+			"clientProperties": ""
+		},
+		{
+			"id": 660,
+			"typeId": 2,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 978641,
+			"authorId": 978643,
+			"subTitleId": 978642,
+			"contentId": 978660,
+			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\tfont-style: italic;\r\n}\r\n.document_content2_fr-class9 {\r\n\tfont-style: italic;\r\n\tfont-weight: bold;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}",
+			"clientProperties": ""
+		},
+		{
+			"id": 664,
+			"typeId": 1,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 981535,
+			"authorId": 981537,
+			"subTitleId": 981536,
+			"contentId": 982663,
+			"contentCSS": "body {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\n.document_content2_es-class12 {\n\tfont-style: italic;\n}\n.document_content2_es-class9 {\n\tfont-style: italic;\n\tfont-weight: bold;\n}\n.document_content2_es-class10 {\n\tfont-weight: bold;\n}\n.document_content2_es-class11 {\n\tlist-style-type: circle;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\n.document_content2_fr-class12 {\n\tfont-style: italic;\n}\n.document_content2_fr-class11 {\n\tlist-style-type: circle;\n}\n.document_content2_fr-class10 {\n\tfont-weight: bold;\n}\nli {\n\ttext-indent: 12pt;\n}\n.document_content2_fr-class9 {\n\tfont-style: italic;\n\tfont-weight: bold;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
+			"clientProperties": ""
+		},
+		{
+			"id": 663,
+			"typeId": 1,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 979742,
+			"authorId": 982932,
+			"subTitleId": 983851,
+			"contentId": 983307,
+			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class5 {\n\tfont-weight: bold;\n}\n.document_content2_fr-class6 {\n\tfont-style: italic;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
+			"clientProperties": ""
+		},
+		{
+			"id": 662,
+			"typeId": 1,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 983308,
+			"authorId": 983309,
+			"subTitleId": 979739,
+			"contentId": 983310,
+			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class5 {\n\tfont-weight: bold;\n}\n.document_content2_fr-class6 {\n\tfont-style: italic;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
+			"clientProperties": ""
+		},
+		{
+			"id": 665,
+			"typeId": 2,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 983724,
+			"authorId": 983726,
+			"subTitleId": 983725,
+			"contentId": 983727,
+			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class7 {\n\tfont-style: italic;\n}\n.document_content2_fr-class5 {\n\tfont-weight: bold;\n}\n.document_content2_fr-class6 {\n\tlist-style-type: circle;\n}\n.document_content2_fr-class8 {\n\tlist-style-type: circle;\n}\n.document_content2_fr-class9 {\n\tlist-style-type: decimal-leading-zero;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}",
+			"clientProperties": ""
+		},
+		{
+			"id": 666,
+			"typeId": 2,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 983855,
+			"authorId": 983830,
+			"subTitleId": 983829,
+			"contentId": 983856,
+			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class5 {\n\tfont-weight: bold;\n}\n.document_content2_fr-class6 {\n\tfont-style: italic;\n}\n.document_content2_fr-class9 {\n\tfont-style: italic;\n\tfont-weight: bold;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}",
+			"clientProperties": ""
+		},
+		{
+			"id": 667,
+			"typeId": 2,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 983852,
+			"authorId": 983834,
+			"subTitleId": 983833,
+			"contentId": 983854,
+			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class5 {\n\tfont-weight: bold;\n}\n.document_content2_fr-class6 {\n\tfont-style: italic;\n}\n.document_content2_fr-class9 {\n\tfont-style: italic;\n\tfont-weight: bold;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}",
 			"clientProperties": ""
 		}
 	]

@@ -886,8 +886,8 @@
 			"eight_directions": false,
 			"aura": false,
 			"anims": [
-				"1;10,20,30,40,50,60,70,80,90,100,110,120,1405,1437,1663,3179,3285,3498;Win_0",
-				"1;11,21,31,41,51,61,71,81,91,101,111,121,1407,1438,1664,3180,3286,3499;Win_1"
+				"1;10,20,30,40,50,60,70,80,90,100,110,120,1405,1437,1663,3179,3285,3498,3221;Win_0",
+				"1;11,21,31,41,51,61,71,81,91,101,111,121,1407,1438,1664,3180,3286,3499,3633;Win_1"
 			],
 			"cooldown": 3000,
 			"duration": 3000,
@@ -3919,7 +3919,7 @@
 			"eight_directions": false,
 			"aura": false,
 			"anims": [],
-			"cooldown": 2840,
+			"cooldown": 28400,
 			"duration": 28400,
 			"weight": 0,
 			"spellLevelId": 0
@@ -3956,8 +3956,8 @@
 		},
 		{
 			"id": 281,
-			"nameId": 968450,
-			"shortcutId": 968449,
+			"nameId": 968384,
+			"shortcutId": 968383,
 			"order": 508500,
 			"defaultAnim": "Etendardmercenaire",
 			"persistancy": false,
@@ -3971,8 +3971,8 @@
 		},
 		{
 			"id": 282,
-			"nameId": 970254,
-			"shortcutId": 970256,
+			"nameId": 972247,
+			"shortcutId": 972249,
 			"order": 508600,
 			"defaultAnim": "Maimane",
 			"persistancy": false,
@@ -3986,8 +3986,8 @@
 		},
 		{
 			"id": 283,
-			"nameId": 970352,
-			"shortcutId": 970315,
+			"nameId": 977677,
+			"shortcutId": 977475,
 			"order": 508700,
 			"defaultAnim": "Brumaire",
 			"persistancy": false,
@@ -3996,6 +3996,21 @@
 			"anims": [],
 			"cooldown": 10000,
 			"duration": 8500,
+			"weight": 0,
+			"spellLevelId": 0
+		},
+		{
+			"id": 284,
+			"nameId": 985351,
+			"shortcutId": 985352,
+			"order": 508800,
+			"defaultAnim": "Knight",
+			"persistancy": false,
+			"eight_directions": false,
+			"aura": false,
+			"anims": [],
+			"cooldown": 3000,
+			"duration": 3000,
 			"weight": 0,
 			"spellLevelId": 0
 		}

@@ -1282,7 +1282,7 @@
 			"id": 234,
 			"nameId": 423445,
 			"actionId": 0,
-			"displayTooltip": true
+			"displayTooltip": false
 		},
 		{
 			"id": 235,
@@ -2241,6 +2241,42 @@
 		{
 			"id": 399,
 			"nameId": 954182,
+			"actionId": 0,
+			"displayTooltip": false
+		},
+		{
+			"id": 400,
+			"nameId": 980081,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 401,
+			"nameId": 980082,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 402,
+			"nameId": 980744,
+			"actionId": 0,
+			"displayTooltip": false
+		},
+		{
+			"id": 403,
+			"nameId": 980793,
+			"actionId": 0,
+			"displayTooltip": false
+		},
+		{
+			"id": 404,
+			"nameId": 980794,
+			"actionId": 0,
+			"displayTooltip": false
+		},
+		{
+			"id": 405,
+			"nameId": 980795,
 			"actionId": 0,
 			"displayTooltip": false
 		}

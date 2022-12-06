@@ -2768,6 +2768,32 @@
 			"mimickable": false,
 			"craftXpRatio": -1,
 			"evolutiveTypeId": 0
+		},
+		{
+			"id": 271,
+			"nameId": 969912,
+			"superTypeId": 2,
+			"categoryId": 0,
+			"isInEncyclopedia": true,
+			"plural": false,
+			"gender": 1,
+			"rawZone": "L3,25,10",
+			"mimickable": true,
+			"craftXpRatio": -1,
+			"evolutiveTypeId": 0
+		},
+		{
+			"id": 272,
+			"nameId": 973129,
+			"superTypeId": 14,
+			"categoryId": 3,
+			"isInEncyclopedia": false,
+			"plural": false,
+			"gender": 0,
+			"rawZone": "null",
+			"mimickable": false,
+			"craftXpRatio": -1,
+			"evolutiveTypeId": 0
 		}
 	]
 }

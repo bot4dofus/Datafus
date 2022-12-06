@@ -215,7 +215,7 @@
 				}
 			],
 			"criterion": "PL>9",
-			"cacheType": 2,
+			"cacheType": 1,
 			"autoTrigger": false
 		},
 		{
@@ -525,15 +525,15 @@
 		{
 			"id": 38,
 			"parentId": 5,
-			"titleId": 968719,
-			"descriptionId": 968720,
+			"titleId": 969512,
+			"descriptionId": 969513,
 			"illuName": "fr_feature_expeditions.jpg",
 			"buttons": [
 				{
 					"id": 38,
 					"popupId": 38,
 					"type": 0,
-					"textId": 968721,
+					"textId": 969514,
 					"actionType": 1,
 					"actionValue": "OpenBookAction:expeditionTab"
 				}
