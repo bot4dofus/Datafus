@@ -25,7 +25,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
       override protected function getCriterion() : int
       {
          var serverSeason:ServerSeason = ServerSeason.getCurrentSeason();
-         return serverSeason != null ? int(serverSeason.seasonNumber) : 0;
+         return serverSeason != null && !serverSeason.isFinished() ? int(serverSeason.seasonNumber) : 0;
       }
       
       override public function get isRespected() : Boolean

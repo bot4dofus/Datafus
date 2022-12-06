@@ -1439,7 +1439,7 @@ package com.ankamagames.dofus.logic.game.common.frames
             case msg is GuildInvitedMessage:
                gimsg = msg as GuildInvitedMessage;
                Kernel.getWorker().addFrame(this._guildDialogFrame);
-               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInvited,gimsg.guildInfo.guildId,gimsg.guildInfo.guildName,gimsg.recruterId,gimsg.recruterName);
+               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInvited,gimsg.guildInfo,gimsg.recruterId,gimsg.recruterName);
                return true;
             case msg is GuildInvitationStateRecruterMessage:
                gisrermsg = msg as GuildInvitationStateRecruterMessage;

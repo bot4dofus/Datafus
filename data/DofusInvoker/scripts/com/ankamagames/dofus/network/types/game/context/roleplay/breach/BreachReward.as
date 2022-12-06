@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.breach
    public class BreachReward implements INetworkType
    {
       
-      public static const protocolId:uint = 5994;
+      public static const protocolId:uint = 1621;
        
       
       public var id:uint = 0;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.breach
       
       public function getTypeId() : uint
       {
-         return 5994;
+         return 1621;
       }
       
       public function initBreachReward(id:uint = 0, buyLocks:Vector.<uint> = null, buyCriterion:String = "", remainingQty:int = 0, price:uint = 0) : BreachReward

@@ -36,6 +36,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.jerakine.types.enums.Priority;
    import com.ankamagames.jerakine.types.positions.MapPoint;
    import com.ankamagames.jerakine.types.zones.Cross;
+   import com.ankamagames.jerakine.utils.display.spellZone.SpellShapeEnum;
    import com.ankamagames.tiphon.display.TiphonSprite;
    import flash.display.Sprite;
    import flash.geom.Point;
@@ -224,7 +225,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                this._targetSelection = new Selection();
                this._targetSelection.renderer = new ZoneDARenderer(PlacementStrataEnums.STRATA_NO_Z_ORDER);
                this._targetSelection.color = TARGET_COLOR;
-               this._targetSelection.zone = new Cross(0,0,DataMapProvider.getInstance());
+               this._targetSelection.zone = new Cross(SpellShapeEnum.UNKNOWN,0,0,DataMapProvider.getInstance());
                SelectionManager.getInstance().addSelection(this._targetSelection,SELECTION_TARGET);
             }
             entity = DofusEntities.getEntity(PlayedCharacterManager.getInstance().id);

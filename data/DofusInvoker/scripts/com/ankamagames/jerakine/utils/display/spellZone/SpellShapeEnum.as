@@ -52,6 +52,12 @@ package com.ankamagames.jerakine.utils.display.spellZone
       public static const empty:uint = 32;
       
       public static const l:uint = 108;
+      
+      public static const R:uint = 82;
+      
+      public static const F:uint = 70;
+      
+      public static const UNKNOWN:uint = 0;
        
       
       public function SpellShapeEnum()

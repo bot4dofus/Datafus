@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.atlas.compass
    public class CompassResetMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5042;
+      public static const protocolId:uint = 4969;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.atlas.compass
       
       override public function getMessageId() : uint
       {
-         return 5042;
+         return 4969;
       }
       
       public function initCompassResetMessage(type:uint = 0) : CompassResetMessage

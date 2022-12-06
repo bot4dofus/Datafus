@@ -417,11 +417,6 @@ package com.ankamagames.dofus.kernel
          }
          StatsManager.getInstance().reset();
          SpellModifiersManager.getInstance().reset();
-         if(Constants.EVENT_MODE)
-         {
-            _log.error("eventmode : quit");
-            Dofus.getInstance().reboot();
-         }
          if(!autoRetry)
          {
             AuthentificationManager.getInstance().destroy();

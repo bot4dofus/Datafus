@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.basic
    public class BasicAckMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9617;
+      public static const protocolId:uint = 4644;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.basic
       
       override public function getMessageId() : uint
       {
-         return 9617;
+         return 4644;
       }
       
       public function initBasicAckMessage(seq:uint = 0, lastPacketId:uint = 0) : BasicAckMessage

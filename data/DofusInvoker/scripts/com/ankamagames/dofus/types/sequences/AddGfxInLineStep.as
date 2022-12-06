@@ -12,7 +12,7 @@ package com.ankamagames.dofus.types.sequences
    import com.ankamagames.jerakine.sequencer.AbstractSequencable;
    import com.ankamagames.jerakine.types.positions.MapPoint;
    import com.ankamagames.jerakine.types.zones.Cross;
-   import com.ankamagames.jerakine.types.zones.IZone;
+   import com.ankamagames.jerakine.types.zones.DisplayZone;
    import com.ankamagames.jerakine.types.zones.Line;
    import com.ankamagames.jerakine.types.zones.Lozenge;
    import com.ankamagames.jerakine.utils.display.Dofus2Line;
@@ -55,7 +55,7 @@ package com.ankamagames.dofus.types.sequences
       
       private var _cells:Array;
       
-      private var _zone:IZone;
+      private var _zone:DisplayZone;
       
       public function AddGfxInLineStep(gfxId:uint, castingSpell:CastingSpell, startCell:MapPoint, endCell:MapPoint, yOffset:int, mode:uint = 0, minScale:Number = 0, maxScale:Number = 0, addOnStartCell:Boolean = false, addOnEndCell:Boolean = false, useSpellZone:Boolean = false, useOnlyAddedCells:Boolean = false, showUnder:Boolean = false, startEntity:IEntity = null)
       {
@@ -93,28 +93,27 @@ package com.ankamagames.dofus.types.sequences
             switch(shape)
             {
                case SpellShapeEnum.X:
-                  this._zone = new Cross(0,ray,DataMapProvider.getInstance());
+                  this._zone = new Cross(shape,0,ray,DataMapProvider.getInstance());
                   break;
                case SpellShapeEnum.L:
-                  this._zone = new Line(ray,DataMapProvider.getInstance());
+                  this._zone = new Line(shape,0,ray,DataMapProvider.getInstance());
                   break;
                case SpellShapeEnum.T:
-                  shapeT = new Cross(0,ray,DataMapProvider.getInstance());
-                  shapeT.onlyPerpendicular = true;
+                  shapeT = new Cross(shape,0,ray,DataMapProvider.getInstance());
                   this._zone = shapeT;
                   break;
                case SpellShapeEnum.D:
-                  this._zone = new Cross(0,ray,DataMapProvider.getInstance());
+                  this._zone = new Cross(shape,0,ray,DataMapProvider.getInstance());
                   break;
                case SpellShapeEnum.C:
-                  this._zone = new Lozenge(0,ray,DataMapProvider.getInstance());
+                  this._zone = new Lozenge(shape,0,ray,DataMapProvider.getInstance());
                   break;
                case SpellShapeEnum.O:
-                  this._zone = new Cross(ray - 1,ray,DataMapProvider.getInstance());
+                  this._zone = new Cross(shape,ray - 1,ray,DataMapProvider.getInstance());
                   break;
                case SpellShapeEnum.P:
                default:
-                  this._zone = new Cross(0,0,DataMapProvider.getInstance());
+                  this._zone = new Cross(shape,0,0,DataMapProvider.getInstance());
             }
          }
       }

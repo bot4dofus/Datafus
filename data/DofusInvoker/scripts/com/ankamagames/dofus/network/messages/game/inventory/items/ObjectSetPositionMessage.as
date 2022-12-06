@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class ObjectSetPositionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8018;
+      public static const protocolId:uint = 4064;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 8018;
+         return 4064;
       }
       
       public function initObjectSetPositionMessage(objectUID:uint = 0, position:uint = 63, quantity:uint = 0) : ObjectSetPositionMessage

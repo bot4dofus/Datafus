@@ -6,34 +6,35 @@ package com.ankamagames.dofus.logic.game.fight.managers
    import com.ankamagames.atouin.types.Selection;
    import com.ankamagames.atouin.utils.DataMapProvider;
    import com.ankamagames.dofus.datacenter.effects.EffectInstance;
-   import com.ankamagames.dofus.internalDatacenter.spells.EffectZone;
+   import com.ankamagames.dofus.datacenter.spells.EffectZone;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
    import com.ankamagames.dofus.logic.game.fight.miscs.DamageUtil;
+   import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayEntitiesFrame;
    import com.ankamagames.dofus.network.types.game.context.GameContextActorInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations;
+   import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
    import com.ankamagames.jerakine.interfaces.IDestroyable;
-   import com.ankamagames.jerakine.logger.Log;
-   import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.types.Color;
    import com.ankamagames.jerakine.types.positions.MapPoint;
    import com.ankamagames.jerakine.types.zones.Cone;
    import com.ankamagames.jerakine.types.zones.Cross;
    import com.ankamagames.jerakine.types.zones.Custom;
+   import com.ankamagames.jerakine.types.zones.DisplayZone;
+   import com.ankamagames.jerakine.types.zones.Fork;
    import com.ankamagames.jerakine.types.zones.HalfLozenge;
-   import com.ankamagames.jerakine.types.zones.IZone;
    import com.ankamagames.jerakine.types.zones.Line;
    import com.ankamagames.jerakine.types.zones.Lozenge;
+   import com.ankamagames.jerakine.types.zones.Rectangle;
    import com.ankamagames.jerakine.types.zones.Square;
    import com.ankamagames.jerakine.utils.display.spellZone.SpellShapeEnum;
    import com.ankamagames.jerakine.utils.errors.SingletonError;
-   import flash.utils.getQualifiedClassName;
+   import mapTools.MapDirection;
+   import mapTools.MapTools;
    
    public class SpellZoneManager implements IDestroyable
    {
-      
-      private static var _log:Logger = Log.getLogger(getQualifiedClassName(SpellZoneManager));
       
       private static var _self:SpellZoneManager;
       
@@ -77,23 +78,41 @@ package com.ankamagames.dofus.logic.game.fight.managers
             this._targetSelection = new Selection();
             this._targetSelection.renderer = new ZoneDARenderer(PlacementStrataEnums.STRATA_AREA);
             this._targetSelection.color = ZONE_COLOR;
-            this._targetSelection.zone = this.getSpellZone(this._spellWrapper,false,true,targetCellId,(Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame).getEntityInfos(casterId).disposition.cellId);
+            this._targetSelection.zone = this.getSpellZone(this._spellWrapper,false,true,targetCellId,sourceCellId);
             this._targetSelection.zone.direction = MapPoint.fromCellId(sourceCellId).advancedOrientationTo(MapPoint.fromCellId(targetCellId),false);
             SelectionManager.getInstance().addSelection(this._targetSelection,SELECTION_ZONE);
             SelectionManager.getInstance().update(SELECTION_ZONE,targetCellId);
          }
          else
          {
-            this.removeTarget();
+            this.removeSpellZone();
          }
       }
       
-      public function removeSpellZone() : void
+      public function getPreferredPreviewZone(spell:SpellWrapper, isWholeMapShapeIgnored:Boolean = false, isInfiniteSizeIgnored:Boolean = true, isTooltipFilter:Boolean = false, outputPortalCell:int = -1) : DisplayZone
       {
-         this.removeTarget();
+         var effect:EffectInstance = null;
+         var currentZone:DisplayZone = null;
+         var currentSurface:uint = 0;
+         var biggestZone:DisplayZone = null;
+         var lastSurface:uint = 0;
+         for each(effect in spell.effects)
+         {
+            if(!(effect.zoneShape === SpellShapeEnum.UNKNOWN || isTooltipFilter && !effect.visibleInTooltip))
+            {
+               currentZone = this.getZone(effect.zoneShape,uint(effect.zoneSize),uint(effect.zoneMinSize),isWholeMapShapeIgnored,uint(effect.zoneStopAtTarget),!(spell is SpellWrapper),spell.getEntityId(),outputPortalCell);
+               currentSurface = currentZone.surface;
+               if((!isInfiniteSizeIgnored || !currentZone.isInfinite) && currentSurface > lastSurface)
+               {
+                  biggestZone = currentZone;
+                  lastSurface = currentSurface;
+               }
+            }
+         }
+         return biggestZone;
       }
       
-      private function removeTarget() : void
+      public function removeSpellZone() : void
       {
          var s:Selection = SelectionManager.getInstance().getSelection(SELECTION_ZONE);
          if(s)
@@ -102,166 +121,188 @@ package com.ankamagames.dofus.logic.game.fight.managers
          }
       }
       
-      public function getSpellZone(spell:*, ignoreShapeA:Boolean = false, ignoreMaxSize:Boolean = true, spellImpactCell:int = 0, casterCell:int = 0, pForPreview:Boolean = true, casterId:Number = NaN) : IZone
+      public function getSpellZone(spell:*, isWholeMapShapeIgnored:Boolean = false, isInfiniteSizeIgnored:Boolean = true, spellImpactCell:int = 0, casterCell:int = 0, isPreview:Boolean = true, casterId:Number = NaN, portalCell:Number = -1) : DisplayZone
       {
-         var stopAtTarget:uint = 0;
-         var finalZone:IZone = null;
-         var effectZone:EffectZone = null;
-         var fx:EffectInstance = null;
+         var finalZone:DisplayZone = null;
+         var oppositeDirection:uint = 0;
+         var distance:int = 0;
          var entitiesFrame:FightEntitiesFrame = null;
          var entitiesIds:Vector.<Number> = null;
          var zonesCells:Vector.<uint> = null;
-         var effect:EffectInstance = null;
-         var additionalZone:IZone = null;
          var additionalZoneCells:Vector.<uint> = null;
+         var isDefaultZoneDisplayed:Boolean = false;
+         var effectZone:EffectZone = null;
+         var finalZoneCells:Vector.<uint> = null;
+         var relatedEffect:EffectInstance = null;
+         var displayedZone:DisplayZone = null;
+         var isActivationMaskEmpty:* = false;
+         var activationZone:DisplayZone = null;
          var entityId:Number = NaN;
-         var entityInfos:GameFightFighterInformations = null;
-         var shape:uint = 88;
-         var ray:uint = 0;
-         var minRay:uint = 0;
-         if(pForPreview && spell.default_zone)
+         var casterEffect:EffectInstance = null;
+         var casterPos:int = 0;
+         var entityInfo:GameFightFighterInformations = null;
+         var direction:uint = portalCell === MapTools.INVALID_CELL_ID ? uint(MapPoint.fromCellId(casterCell).advancedOrientationTo(MapPoint.fromCellId(spellImpactCell))) : uint(MapPoint.fromCellId(casterCell).advancedOrientationTo(MapPoint.fromCellId(portalCell)));
+         var outputPortalCell:int = MapTools.INVALID_CELL_ID;
+         if(portalCell !== MapTools.INVALID_CELL_ID)
          {
-            effectZone = new EffectZone(spell.default_zone,null);
-            shape = effectZone.zoneShape;
-            ray = uint(effectZone.zoneSize);
-            minRay = uint(effectZone.zoneMinSize);
-            stopAtTarget = uint(effectZone.zoneStopAtTarget);
-         }
-         else if(!spell.hasOwnProperty("shape"))
-         {
-            for each(fx in spell.effects)
+            oppositeDirection = MapDirection.getOppositeDirection(direction);
+            distance = MapTools.getDistance(portalCell,casterCell);
+            outputPortalCell = spellImpactCell;
+            while(distance > 0)
             {
-               if(fx.zoneShape != 0 && (!ignoreMaxSize || fx.zoneSize < 63) && (fx.zoneSize > ray || fx.zoneSize == ray && (shape == SpellShapeEnum.P || fx.zoneMinSize < minRay)))
-               {
-                  shape = fx.zoneShape;
-                  ray = uint(fx.zoneSize);
-                  minRay = uint(fx.zoneMinSize);
-                  stopAtTarget = uint(fx.zoneStopAtTarget);
-               }
+               outputPortalCell = MapTools.getNextCellByDirection(outputPortalCell,oppositeDirection);
+               distance--;
             }
+         }
+         if(isPreview && spell.defaultPreviewZone)
+         {
+            finalZone = this.getZone(spell.effectZone.activationZoneShape,spell.effectZone.activationZoneSize,spell.effectZone.activationZoneMinSize,isWholeMapShapeIgnored,spell.effectZone.activationZoneStopAtTarget,!(spell is SpellWrapper),casterId,outputPortalCell);
          }
          else
          {
-            shape = spell.shape;
-            ray = spell.ray;
+            finalZone = this.getPreferredPreviewZone(spell,isWholeMapShapeIgnored,isInfiniteSizeIgnored,false,outputPortalCell);
          }
-         finalZone = this.getZone(shape,ray,minRay,ignoreShapeA,stopAtTarget,!(spell is SpellWrapper),casterId);
-         var direction:uint = MapPoint.fromCellId(casterCell).advancedOrientationTo(MapPoint.fromCellId(spellImpactCell));
+         if(finalZone === null)
+         {
+            finalZone = this.getZone(SpellShapeEnum.X,0,0,isWholeMapShapeIgnored,0,!(spell is SpellWrapper),casterId,outputPortalCell);
+         }
          finalZone.direction = direction;
-         if(pForPreview && spell.hasOwnProperty("additionalEffectsZones") && spell.additionalEffectsZones && spell.additionalEffectsZones.length)
+         if(isPreview && spell.previewZones !== null && spell.previewZones.length > 0)
          {
             entitiesFrame = Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame;
-            if(!entitiesFrame)
+            if(entitiesFrame === null)
             {
                return finalZone;
             }
             entitiesIds = entitiesFrame.getEntitiesIdsList();
             zonesCells = finalZone.getCells(spellImpactCell);
-            effect = new EffectInstance();
             additionalZoneCells = new Vector.<uint>(0);
-            for each(effectZone in spell.additionalEffectsZones)
+            isDefaultZoneDisplayed = true;
+            for each(effectZone in spell.previewZones)
             {
-               effect.targetMask = effectZone.targetMask;
-               effect.zoneShape = effectZone.zoneShape;
-               effect.zoneSize = effectZone.zoneSize;
-               effect.zoneMinSize = effectZone.zoneMinSize;
-               effect.zoneStopAtTarget = effectZone.zoneStopAtTarget;
-               for each(entityId in entitiesIds)
+               if(effectZone.isDisplayZone)
                {
-                  entityInfos = entitiesFrame.getEntityInfos(entityId) as GameFightFighterInformations;
-                  if(entityInfos.spawnInfo.alive && this.checkZone(entityInfos,shape,zonesCells) && DamageUtil.verifySpellEffectMask(casterId,entityId,effect,spellImpactCell))
+                  relatedEffect = new EffectInstance();
+                  relatedEffect.targetMask = effectZone.activationMask;
+                  relatedEffect.zoneShape = effectZone.activationZoneShape;
+                  relatedEffect.zoneSize = effectZone.activationZoneSize;
+                  relatedEffect.zoneMinSize = effectZone.activationZoneMinSize;
+                  relatedEffect.zoneStopAtTarget = effectZone.activationZoneStopAtTarget;
+                  if(effectZone.casterMask)
                   {
-                     if(effectZone.zoneShape == SpellShapeEnum.X && (isNaN(effectZone.zoneSize as Number) || !effectZone.zoneSize) && (isNaN(effectZone.zoneMinSize as Number) || !effectZone.zoneMinSize))
+                     casterEffect = relatedEffect.clone();
+                     casterEffect.targetMask = effectZone.casterMask;
+                     casterPos = (Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame).getLastKnownEntityPosition(casterId);
+                     if(!DamageUtil.verifySpellEffectMask(casterId,casterId,casterEffect,casterPos))
                      {
-                        effectZone.zoneMinSize = 1;
+                        continue;
                      }
-                     additionalZone = this.getZone(effectZone.zoneShape,uint(effectZone.zoneSize),uint(effectZone.zoneMinSize),ignoreShapeA,uint(effectZone.zoneStopAtTarget),false,casterId);
-                     additionalZone.direction = direction;
-                     additionalZoneCells = additionalZoneCells.concat(additionalZone.getCells(entityInfos.disposition.cellId));
+                  }
+                  displayedZone = this.getZone(effectZone.displayZoneShape,effectZone.displayZoneSize,effectZone.displayZoneMinSize,isWholeMapShapeIgnored,effectZone.displayZoneStopAtTarget,false,casterId,outputPortalCell == MapTools.INVALID_CELL_ID ? int(casterCell) : int(outputPortalCell));
+                  displayedZone.direction = direction;
+                  isActivationMaskEmpty = !relatedEffect.targetMask;
+                  if(isActivationMaskEmpty)
+                  {
+                     additionalZoneCells = additionalZoneCells.concat(displayedZone.getCells(spellImpactCell));
+                     if(isDefaultZoneDisplayed && effectZone.isDefaultPreviewZoneHidden)
+                     {
+                        isDefaultZoneDisplayed = false;
+                     }
+                  }
+                  (activationZone = this.getZone(effectZone.activationZoneShape,effectZone.activationZoneSize,effectZone.activationZoneMinSize,isWholeMapShapeIgnored,effectZone.activationZoneStopAtTarget)).direction = direction;
+                  for each(entityId in entitiesIds)
+                  {
+                     entityInfo = entitiesFrame.getEntityInfos(entityId) as GameFightFighterInformations;
+                     if(entityInfo.spawnInfo.alive && this.checkZone(entityInfo,relatedEffect.zoneShape,activationZone.getCells(spellImpactCell)) && (isActivationMaskEmpty || DamageUtil.verifySpellEffectMask(casterId,entityId,relatedEffect,spellImpactCell)))
+                     {
+                        additionalZoneCells = additionalZoneCells.concat(displayedZone.getCells(entityInfo.disposition.cellId));
+                        if(isDefaultZoneDisplayed && effectZone.isDefaultPreviewZoneHidden)
+                        {
+                           isDefaultZoneDisplayed = false;
+                        }
+                     }
                   }
                }
             }
-            return new Custom(!additionalZoneCells.length ? zonesCells : zonesCells.concat(additionalZoneCells));
+            finalZoneCells = !!isDefaultZoneDisplayed ? zonesCells : new Vector.<uint>(0);
+            if(additionalZoneCells.length > 0)
+            {
+               finalZoneCells = finalZoneCells.concat(additionalZoneCells);
+            }
+            return new Custom(finalZoneCells);
          }
          return finalZone;
       }
       
-      public function getZone(pShape:uint, pZoneSize:uint, pMinZoneSize:uint, pIgnoreShapeA:Boolean = false, pStopAtTarget:uint = 0, pIsWeapon:Boolean = false, entityId:Number = NaN) : IZone
+      public function getZone(shape:uint, size:uint, alternativeSize:uint, isWholeMapShapeIgnored:Boolean = false, isZoneStopAtTarget:uint = 0, isWeapon:Boolean = false, entityId:Number = NaN, entityCellId:int = -1) : DisplayZone
       {
-         var l:Line = null;
-         var casterInfos:GameContextActorInformations = null;
+         var casterId:Number = NaN;
+         var casterInfo:GameContextActorInformations = null;
          var shapeT:Cross = null;
-         var shapeW:Square = null;
-         var shapePlus:Cross = null;
-         var shapeSharp:Cross = null;
-         var shapeStar:Cross = null;
-         var shapeMinus:Cross = null;
-         switch(pShape)
+         var roleplayEntitiesFrame:RoleplayEntitiesFrame = null;
+         switch(shape)
          {
             case SpellShapeEnum.X:
-               return new Cross(pMinZoneSize,pIsWeapon || pZoneSize ? uint(pZoneSize) : (!!pMinZoneSize ? uint(pMinZoneSize) : uint(pZoneSize)),DataMapProvider.getInstance());
+               return new Cross(shape,alternativeSize,isWeapon || size ? uint(size) : (!!alternativeSize ? uint(alternativeSize) : uint(size)),DataMapProvider.getInstance());
             case SpellShapeEnum.L:
-               return new Line(pZoneSize,DataMapProvider.getInstance());
+               return new Line(shape,0,size,DataMapProvider.getInstance());
             case SpellShapeEnum.l:
-               l = new Line(pZoneSize,DataMapProvider.getInstance());
-               casterInfos = FightEntitiesFrame.getCurrentInstance().getEntityInfos(!!isNaN(entityId) ? Number(CurrentPlayedFighterManager.getInstance().currentFighterId) : Number(entityId));
-               l.minRadius = pMinZoneSize;
-               l.fromCaster = true;
-               l.stopAtTarget = pStopAtTarget == 1 ? true : false;
-               l.casterCellId = casterInfos.disposition.cellId;
-               return l;
+               casterId = !!isNaN(entityId) ? Number(CurrentPlayedFighterManager.getInstance().currentFighterId) : Number(entityId);
+               if(PlayedCharacterApi.getInstance().isInFight())
+               {
+                  casterInfo = FightEntitiesFrame.getCurrentInstance().getEntityInfos(casterId);
+               }
+               else
+               {
+                  roleplayEntitiesFrame = Kernel.getWorker().getFrame(RoleplayEntitiesFrame) as RoleplayEntitiesFrame;
+                  casterInfo = roleplayEntitiesFrame.getEntityInfos(casterId);
+               }
+               return new Line(shape,alternativeSize,size,DataMapProvider.getInstance(),true,isZoneStopAtTarget === 1,entityCellId !== -1 ? uint(entityCellId) : uint(casterInfo.disposition.cellId));
             case SpellShapeEnum.T:
-               shapeT = new Cross(0,pZoneSize,DataMapProvider.getInstance());
-               shapeT.onlyPerpendicular = true;
-               return shapeT;
+               return new Cross(shape,0,size,DataMapProvider.getInstance());
             case SpellShapeEnum.D:
-               return new Cross(0,pZoneSize,DataMapProvider.getInstance());
+               return new Cross(shape,0,size,DataMapProvider.getInstance());
             case SpellShapeEnum.C:
-               return new Lozenge(pMinZoneSize,pZoneSize,DataMapProvider.getInstance());
+               return new Lozenge(shape,alternativeSize,size,DataMapProvider.getInstance());
             case SpellShapeEnum.O:
-               return new Lozenge(pZoneSize,pZoneSize,DataMapProvider.getInstance());
+               return new Lozenge(shape,size,size,DataMapProvider.getInstance());
             case SpellShapeEnum.Q:
-               return new Cross(!!pMinZoneSize ? uint(pMinZoneSize) : uint(1),!!pZoneSize ? uint(pZoneSize) : uint(1),DataMapProvider.getInstance());
+               return new Cross(shape,!!alternativeSize ? uint(alternativeSize) : uint(1),!!size ? uint(size) : uint(1),DataMapProvider.getInstance());
             case SpellShapeEnum.V:
-               return new Cone(0,pZoneSize,DataMapProvider.getInstance());
+               return new Cone(0,size,DataMapProvider.getInstance());
             case SpellShapeEnum.W:
-               shapeW = new Square(0,pZoneSize,DataMapProvider.getInstance());
-               shapeW.diagonalFree = true;
-               return shapeW;
+               return new Square(0,size,true,DataMapProvider.getInstance());
             case SpellShapeEnum.plus:
-               shapePlus = new Cross(0,!!pZoneSize ? uint(pZoneSize) : uint(1),DataMapProvider.getInstance());
-               shapePlus.diagonal = true;
-               return shapePlus;
+               return new Cross(shape,0,!!size ? uint(size) : uint(1),DataMapProvider.getInstance(),true);
             case SpellShapeEnum.sharp:
-               shapeSharp = new Cross(pMinZoneSize,pZoneSize,DataMapProvider.getInstance());
-               shapeSharp.diagonal = true;
-               return shapeSharp;
+               return new Cross(shape,alternativeSize,size,DataMapProvider.getInstance(),true);
             case SpellShapeEnum.slash:
-               return new Line(pZoneSize,DataMapProvider.getInstance());
+               return new Line(shape,0,size,DataMapProvider.getInstance());
             case SpellShapeEnum.star:
-               shapeStar = new Cross(0,pZoneSize,DataMapProvider.getInstance());
-               shapeStar.allDirections = true;
-               return shapeStar;
+               return new Cross(shape,0,size,DataMapProvider.getInstance(),false,true);
             case SpellShapeEnum.minus:
-               shapeMinus = new Cross(0,pZoneSize,DataMapProvider.getInstance());
-               shapeMinus.onlyPerpendicular = true;
-               shapeMinus.diagonal = true;
-               return shapeMinus;
+               return new Cross(shape,0,size,DataMapProvider.getInstance(),true);
             case SpellShapeEnum.G:
-               return new Square(0,pZoneSize,DataMapProvider.getInstance());
+               return new Square(0,size,false,DataMapProvider.getInstance());
             case SpellShapeEnum.I:
-               return new Lozenge(pZoneSize,63,DataMapProvider.getInstance());
+               return new Lozenge(shape,size,63,DataMapProvider.getInstance());
             case SpellShapeEnum.U:
-               return new HalfLozenge(0,pZoneSize,DataMapProvider.getInstance());
+               return new HalfLozenge(0,size,DataMapProvider.getInstance());
             case SpellShapeEnum.A:
             case SpellShapeEnum.a:
-               if(!pIgnoreShapeA)
+               if(!isWholeMapShapeIgnored)
                {
-                  return new Lozenge(0,63,DataMapProvider.getInstance());
+                  return new Lozenge(shape,0,63,DataMapProvider.getInstance());
                }
+               return new Cross(shape,0,0,DataMapProvider.getInstance());
+               break;
+            case SpellShapeEnum.R:
+               return new Rectangle(alternativeSize,size,DataMapProvider.getInstance());
+            case SpellShapeEnum.F:
+               return new Fork(size,DataMapProvider.getInstance());
             case SpellShapeEnum.P:
          }
-         return new Cross(0,0,DataMapProvider.getInstance());
+         return new Cross(shape,0,0,DataMapProvider.getInstance());
       }
       
       private function checkZone(pEntityInfos:GameFightFighterInformations, pShape:int, pCells:Vector.<uint>) : Boolean

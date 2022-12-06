@@ -6,6 +6,7 @@ package com.ankamagames.dofus.console.debug
    import com.ankamagames.atouin.utils.DataMapProvider;
    import com.ankamagames.jerakine.console.ConsoleHandler;
    import com.ankamagames.jerakine.console.ConsoleInstructionHandler;
+   import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.map.IDataMapProvider;
    import com.ankamagames.jerakine.map.LosDetector;
    import com.ankamagames.jerakine.pathfinding.Pathfinding;
@@ -14,6 +15,7 @@ package com.ankamagames.dofus.console.debug
    import com.ankamagames.jerakine.types.zones.Custom;
    import com.ankamagames.jerakine.types.zones.Lozenge;
    import com.ankamagames.jerakine.utils.display.Dofus2Line;
+   import com.ankamagames.jerakine.utils.display.spellZone.SpellShapeEnum;
    import mapTools.MapTools;
    
    public class IAInstructionHandler implements ConsoleInstructionHandler
@@ -69,7 +71,7 @@ package com.ankamagames.dofus.console.debug
                   cellPoint = MapPoint.fromCellId(cell);
                   range = uint(args[1]);
                   cellsSelection = new Selection();
-                  lozenge = new Lozenge(0,range,map);
+                  lozenge = new Lozenge(SpellShapeEnum.UNKNOWN,0,range,map);
                   cells = lozenge.getCells(cell);
                   cellsSelection.renderer = new ZoneDARenderer();
                   cellsSelection.color = new Color(26112);
@@ -156,6 +158,15 @@ package com.ankamagames.dofus.console.debug
          }
       }
       
+      public function getArgs(cmd:String) : Array
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return [];
+      }
+      
       public function getHelp(cmd:String) : String
       {
          switch(cmd)
@@ -169,8 +180,26 @@ package com.ankamagames.dofus.console.debug
             case "debugcellsinline":
                return "Display all cells of line between two cellIds. No argument will clear the selection if any.";
             default:
-               return "Unknown command";
+               return "No help for command \'" + cmd + "\'";
          }
+      }
+      
+      public function getMan(cmd:String) : String
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return I18n.getUiText("ui.chat.console.noMan",[cmd]);
+      }
+      
+      public function getExamples(cmd:String) : String
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return I18n.getUiText("ui.chat.console.noExample",[cmd]);
       }
       
       public function getParamPossibilities(cmd:String, paramIndex:uint = 0, currentParams:Array = null) : Array

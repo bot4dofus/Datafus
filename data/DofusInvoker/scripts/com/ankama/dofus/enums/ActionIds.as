@@ -705,6 +705,10 @@ package com.ankama.dofus.enums
       
       public static var ACTION_CHARACTER_RESTORE_RESPAWN_MAP:int = 796;
       
+      public static var ACTION_BOOST_VISIBLE_TARGET_ON_CELL_ON:int = 798;
+      
+      public static var ACTION_BOOST_VISIBLE_TARGET_ON_CELL_OFF:int = 799;
+      
       public static var ACTION_ITEM_CHANGE_DURATION:int = 805;
       
       public static var ACTION_ITEM_PETS_SHAPE:int = 806;
@@ -1374,6 +1378,36 @@ package com.ankama.dofus.enums
       public static var ACTION_ITEM_TELEPORT_GROUP_TO_ME:int = 2895;
       
       public static var ACTION_FIGHT_SPLASH_RAW_TAKEN_DAMAGE_WORST_ELEMENT:int = 2896;
+      
+      public static var ACTION_CHARACTER_LIMIT_STATS:int = 2897;
+      
+      public static var ACTION_MULTIPLY_VICTORY_POINTS_AVA:int = 2898;
+      
+      public static var ACTION_MULTIPLY_DEFEAT_POINTS_AVA:int = 2899;
+      
+      public static var ACTION_SEE_ALLIES_ROLE_AVA:int = 2900;
+      
+      public static var ACTION_SEE_OPPONENT_ROLE_AVA:int = 2901;
+      
+      public static var ACTION_TEAM_POINTS_LOST_AVA:int = 2902;
+      
+      public static var ACTION_STORE_POINTS_AVA:int = 2903;
+      
+      public static var ACTION_SPEND_POINTS_AVA:int = 2904;
+      
+      public static var ACTION_SET_SPELL_RANGE_MAX:int = 2905;
+      
+      public static var ACTION_SET_SPELL_RANGE_MIN:int = 2906;
+      
+      public static var ACTION_ADD_PRISM_CRISTAL:int = 2907;
+      
+      public static var ACTION_BOOST_PORTAL_FREE_CELL_OFF:int = 2908;
+      
+      public static var ACTION_BOOST_PORTAL_PROJECTION_ON:int = 2909;
+      
+      public static var ACTION_BOOST_PORTAL_PROJECTION_OFF:int = 2910;
+      
+      public static var ACTION_BOOST_PORTAL_FREE_CELL_ON:int = 2911;
        
       
       public function ActionIds()

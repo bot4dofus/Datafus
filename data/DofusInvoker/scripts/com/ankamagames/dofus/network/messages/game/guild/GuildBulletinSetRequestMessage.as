@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildBulletinSetRequestMessage extends SocialNoticeSetRequestMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6785;
+      public static const protocolId:uint = 6761;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 6785;
+         return 6761;
       }
       
       public function initGuildBulletinSetRequestMessage(content:String = "", notifyMembers:Boolean = false) : GuildBulletinSetRequestMessage

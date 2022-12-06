@@ -6,6 +6,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
    import com.ankamagames.berilia.managers.SlotDataHolderManager;
    import com.ankamagames.dofus.datacenter.effects.EffectInstance;
    import com.ankamagames.dofus.datacenter.effects.instances.EffectInstanceDice;
+   import com.ankamagames.dofus.datacenter.spells.EffectZone;
    import com.ankamagames.dofus.datacenter.spells.Spell;
    import com.ankamagames.dofus.datacenter.spells.SpellLevel;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
@@ -85,8 +86,6 @@ package com.ankamagames.dofus.internalDatacenter.spells
       public var playerId:Number;
       
       public var versionNum:int;
-      
-      public var additionalEffectsZones:Vector.<EffectZone>;
       
       private var _actualCooldown:uint = 0;
       
@@ -259,6 +258,15 @@ package com.ankamagames.dofus.internalDatacenter.spells
          _cache = [];
       }
       
+      public function get previewZones() : Vector.<EffectZone>
+      {
+         if(this._spellLevel === null)
+         {
+            return null;
+         }
+         return this._spellLevel.previewZones;
+      }
+      
       public function set actualCooldown(u:uint) : void
       {
          this._actualCooldown = u;
@@ -309,6 +317,16 @@ package com.ankamagames.dofus.internalDatacenter.spells
             return spellModifier.totalValue > 0;
          }
          return this.spellLevelInfos["needTakenCell"];
+      }
+      
+      public function get needVisibleEntityWithModifiers() : Boolean
+      {
+         var spellModifier:SpellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.VISIBLE_TARGET);
+         if(spellModifier !== null)
+         {
+            return spellModifier.totalValue > 0;
+         }
+         return this.spellLevelInfos["needVisibleEntity"];
       }
       
       public function get minimalRange() : uint
@@ -566,7 +584,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
          return 0;
       }
       
-      public function get maximalRangeWithBoosts() : int
+      public function get maxRange() : int
       {
          var rangeBonus:Number = NaN;
          var entityId:Number = this.getEntityId();
@@ -576,6 +594,10 @@ package com.ankamagames.dofus.internalDatacenter.spells
          var finalRange:Number = this.maximalRange;
          if(spellModifiers !== null)
          {
+            if(spellModifiers.hasModifier(CharacterSpellModificationTypeEnum.SET_RANGE_MAX))
+            {
+               return spellModifiers.getModifierValue(CharacterSpellModificationTypeEnum.SET_RANGE_MAX);
+            }
             if(!boostableRange)
             {
                if(spellModifiers.hasModifier(CharacterSpellModificationTypeEnum.RANGEABLE))
@@ -644,6 +666,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
          var booleanToReturn:Boolean = false;
          var build:BuildWrapper = null;
          var iw:ItemWrapper = null;
+         var spellModifiers:SpellModifiers = null;
          if(isAttribute(name))
          {
             return this[name];
@@ -695,7 +718,8 @@ package com.ankamagames.dofus.internalDatacenter.spells
             case "name":
             case "description":
             case "variants":
-            case "default_zone":
+            case "defaultPreviewZone":
+            case "effectZone":
                return this.spell[name];
             case "spellBreed":
             case "needFreeCell":
@@ -715,19 +739,22 @@ package com.ankamagames.dofus.internalDatacenter.spells
                }
                return numberToReturn;
             case "range":
-               numberToReturn = this.spellLevelInfos["range"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.RANGE_MAX);
-               if(spellModifier !== null)
-               {
-                  numberToReturn += spellModifier.contextModifValue + spellModifier.objectsAndMountBonusValue;
-               }
-               return numberToReturn;
+            case "maxRange":
+               return this.maxRange;
             case "minRange":
                numberToReturn = this.spellLevelInfos["minRange"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.RANGE_MIN);
-               if(spellModifier !== null)
+               spellModifiers = SpellModifiersManager.getInstance().getSpellModifiers(this.getEntityId(),this.id);
+               if(spellModifiers !== null)
                {
-                  numberToReturn += spellModifier.contextModifValue + spellModifier.objectsAndMountBonusValue;
+                  if(spellModifiers.hasModifier(CharacterSpellModificationTypeEnum.SET_RANGE_MIN))
+                  {
+                     return spellModifiers.getModifierValue(CharacterSpellModificationTypeEnum.SET_RANGE_MIN);
+                  }
+                  if(spellModifiers.hasModifier(CharacterSpellModificationTypeEnum.RANGE_MIN))
+                  {
+                     spellModifier = spellModifiers.getModifier(CharacterSpellModificationTypeEnum.RANGE_MIN);
+                     numberToReturn += spellModifier.contextModifValue + spellModifier.objectsAndMountBonusValue;
+                  }
                }
                return numberToReturn;
             case "maxCastPerTarget":
@@ -796,7 +823,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
          return null;
       }
       
-      private function getEntityId() : Number
+      public function getEntityId() : Number
       {
          if(!isNaN(this.playerId) && this.playerId !== 0)
          {
@@ -838,6 +865,8 @@ package com.ankamagames.dofus.internalDatacenter.spells
             case "useParamCache":
             case "needTakenCell":
             case "needTakenCellWithModifiers":
+            case "needVisibleEntity":
+            case "needVisibleEntityWithModifiers":
             case "rangeCanBeBoosted":
                return false;
             case "isSpellWeapon":
@@ -930,7 +959,6 @@ package com.ankamagames.dofus.internalDatacenter.spells
          var damageSpellModifier:SpellModifier = null;
          var healSpellModifier:SpellModifier = null;
          var modif:int = 0;
-         var len:uint = 0;
          var entityId:Number = NaN;
          var effectInstanceDice:EffectInstanceDice = null;
          this.effects = new Vector.<EffectInstance>();
@@ -992,15 +1020,6 @@ package com.ankamagames.dofus.internalDatacenter.spells
                }
             }
             this.criticalEffect.push(effectInstance);
-         }
-         len = this._spellLevel.additionalEffectsZones.length;
-         if(len > 0)
-         {
-            this.additionalEffectsZones = new Vector.<EffectZone>(0);
-         }
-         for(var j:int = 0; j < len; j += 2)
-         {
-            this.additionalEffectsZones.push(new EffectZone(this._spellLevel.additionalEffectsZones[j],this._spellLevel.additionalEffectsZones[j + 1]));
          }
       }
    }

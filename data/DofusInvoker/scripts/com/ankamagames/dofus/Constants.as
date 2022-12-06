@@ -38,6 +38,8 @@ package com.ankamagames.dofus
       
       public static const ADMIN_MODULE:Array = new Array("Ankama_Admin");
       
+      public static const DATASTORE_PREVENTION_POPUP:DataStoreType = new DataStoreType("Dofus_PreventionPopup",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_ACCOUNT);
+      
       public static const DETERMINIST_TACKLE:Boolean = true;
        
       

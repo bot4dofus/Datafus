@@ -250,11 +250,6 @@ package com.ankamagames.dofus.uiApi
          return XmlConfig.getInstance().getEntry(sKey);
       }
       
-      public function isEventMode() : Boolean
-      {
-         return Constants.EVENT_MODE;
-      }
-      
       public function isCharacterCreationAllowed() : Boolean
       {
          return Constants.CHARACTER_CREATION_ALLOWED;

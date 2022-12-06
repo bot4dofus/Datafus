@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightUpdateTeamMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4425;
+      public static const protocolId:uint = 6345;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 4425;
+         return 6345;
       }
       
       public function initGameFightUpdateTeamMessage(fightId:uint = 0, team:FightTeamInformations = null) : GameFightUpdateTeamMessage

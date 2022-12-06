@@ -1113,7 +1113,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   StoreDataManager.getInstance().setData(characterDst,STORAGE_NEW_TEMPORIS_REWARD,true);
                   KernelEventsManager.getInstance().processCallback(HookList.AreTemporisRewardsAvailable,true);
                }
-               if(finishedAchievement.category.visible)
+               if(finishedAchievement.category.visible || finishedAchievement.category.id === EXPEDITION_ACHIEVEMENT_CATEGORY_ID)
                {
                   for each(achievementId in this._finishedCharacterAchievementIds)
                   {
@@ -1457,7 +1457,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          for each(achievedAchievement in this._achievementsList.finishedAchievements)
          {
             ach = Achievement.getAchievementById(achievedAchievement.id);
-            if(ach != null && ach && ach.category && ach.category.visible)
+            if(ach != null && ach && ach.category && (ach.category.visible || ach.category.id == EXPEDITION_ACHIEVEMENT_CATEGORY_ID))
             {
                if(achievedAchievement is AchievementAchievedRewardable && this._rewardableAchievements.indexOf(achievedAchievement) === -1)
                {

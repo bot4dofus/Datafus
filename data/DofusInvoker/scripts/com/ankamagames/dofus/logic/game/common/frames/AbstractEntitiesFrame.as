@@ -134,6 +134,8 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       protected var _isShowIconsChanged:Boolean = false;
       
+      private var ARCH_MONSTERS:String = "archmonsters";
+      
       public function AbstractEntitiesFrame()
       {
          this._customBreedAnimationModifier = new CustomBreedAnimationModifier();
@@ -966,183 +968,182 @@ package com.ankamagames.dofus.logic.game.common.frames
          var turnsRemaining:Number = NaN;
          var i:Number = NaN;
          var parent:DisplayObjectContainer = null;
-         if(!this._showIcons && !this._isShowIconsChanged)
-         {
-            return;
-         }
          var entitiesToDelete:Array = [];
          for(entityId in this._entitiesIconsNames)
          {
-            ei = this._entitiesIcons[entityId];
-            if(!this._showIcons)
+            if(!(!this._showIcons && !this._isShowIconsChanged && this._entitiesIconsNames[entityId][0] != this.ARCH_MONSTERS))
             {
-               if(ei)
-               {
-                  ei.visible = false;
-               }
-            }
-            else
-            {
-               if(this._isShowIconsChanged)
+               ei = this._entitiesIcons[entityId];
+               if(!this._showIcons && this._entitiesIconsNames[entityId][0] != this.ARCH_MONSTERS)
                {
                   if(ei)
                   {
-                     ei.visible = true;
+                     ei.visible = false;
                   }
-               }
-               entity = DofusEntities.getEntity(entityId) as AnimatedCharacter;
-               if(!entity)
-               {
-                  entitiesToDelete.push(entityId);
                }
                else
                {
-                  isCarried = !!this._carriedEntities[entity.id];
-                  baseCarrier = null;
-                  if(isCarried)
+                  if(this._isShowIconsChanged)
                   {
-                     currentLoopCount = 0;
-                     if(this._carriedEntities[entity.id])
+                     if(ei)
                      {
-                        currentCarrier = entity;
-                        while(this._carriedEntities[currentCarrier.id] && currentLoopCount < MAX_LOOP_COUNT)
-                        {
-                           currentCarrier = this._carriedEntities[currentCarrier.id];
-                           currentLoopCount++;
-                        }
-                        baseCarrierTmp = currentCarrier as TiphonSprite;
+                        ei.visible = true;
                      }
-                     else
-                     {
-                        baseCarrierTmp = entity.parentSprite as TiphonSprite;
-                        while(baseCarrierTmp.parent is TiphonSprite && currentLoopCount < MAX_LOOP_COUNT)
-                        {
-                           baseCarrierTmp = baseCarrierTmp.parent as TiphonSprite;
-                           currentLoopCount++;
-                        }
-                     }
-                     if(currentLoopCount === MAX_LOOP_COUNT)
-                     {
-                     }
-                     baseCarrier = baseCarrierTmp as AnimatedCharacter;
-                     isCarried = Boolean(isCarried && baseCarrier !== null);
                   }
-                  targetBounds = null;
-                  if(this._updateAllIcons || entity.getAnimation() && entity.getAnimation().indexOf(AnimationEnum.ANIM_STATIQUE) == -1 || !this._entitiesIcons[entityId] || this._entitiesIcons[entityId].needUpdate)
+                  entity = DofusEntities.getEntity(entityId) as AnimatedCharacter;
+                  if(!entity)
                   {
-                     if(this._entitiesIcons[entityId] && this._entitiesIcons[entityId].rendering)
-                     {
-                        continue;
-                     }
-                     targetBounds = this.getIconEntityBounds(entity,false);
+                     entitiesToDelete.push(entityId);
                   }
-                  if(targetBounds)
+                  else
                   {
-                     if(!ei)
+                     isCarried = !!this._carriedEntities[entity.id];
+                     baseCarrier = null;
+                     if(isCarried)
                      {
-                        this._entitiesIcons[entityId] = new EntityIcon(entity);
-                        ei = this._entitiesIcons[entityId];
-                        if(entityId in this._pendingCarriedEntities)
+                        currentLoopCount = 0;
+                        if(this._carriedEntities[entity.id])
                         {
-                           this.addCarrier(this._pendingCarriedEntities[entityId].carrierEntity,this._pendingCarriedEntities[entityId].carriedEntity);
-                           delete this._pendingCarriedEntities[entityId];
-                        }
-                     }
-                     newIcon = false;
-                     for(iconCat in this._entitiesIconsNames[entityId])
-                     {
-                        for each(iconName in this._entitiesIconsNames[entityId][iconCat])
-                        {
-                           if(iconCat != EntityIconEnum.TURN_REMAINING)
+                           currentCarrier = entity;
+                           while(this._carriedEntities[currentCarrier.id] && currentLoopCount < MAX_LOOP_COUNT)
                            {
-                              if(!ei.hasIcon(iconName))
-                              {
-                                 newIcon = true;
-                                 if(iconCat == EntityIconEnum.FIGHT_STATE_CATEGORY)
-                                 {
-                                    turnsRemaining = -1;
-                                    if(!!this._entitiesIconsNames[entityId][EntityIconEnum.TURN_REMAINING] && this._entitiesIconsNames[entityId][EntityIconEnum.TURN_REMAINING][iconName])
-                                    {
-                                       turnsRemaining = this._entitiesIconsNames[entityId][EntityIconEnum.TURN_REMAINING][iconName];
-                                    }
-                                    ei.addIcon(ICONS_FILEPATH_STATE + "" + iconName,iconName,this._entitiesIconsOffsets[iconName],turnsRemaining);
-                                 }
-                                 else if(iconCat == EntityIconEnum.AGGRO_CATEGORY)
-                                 {
-                                    ei.addIcon(ICONS_FILEPATH + "" + iconName,iconName,this._entitiesIconsOffsets[iconName]);
-                                 }
-                                 else
-                                 {
-                                    ei.addIcon(ICONS_FILEPATH_CONQUEST + "" + iconName,iconName,this._entitiesIconsOffsets[iconName]);
-                                 }
-                              }
+                              currentCarrier = this._carriedEntities[currentCarrier.id];
+                              currentLoopCount++;
+                           }
+                           baseCarrierTmp = currentCarrier as TiphonSprite;
+                        }
+                        else
+                        {
+                           baseCarrierTmp = entity.parentSprite as TiphonSprite;
+                           while(baseCarrierTmp.parent is TiphonSprite && currentLoopCount < MAX_LOOP_COUNT)
+                           {
+                              baseCarrierTmp = baseCarrierTmp.parent as TiphonSprite;
+                              currentLoopCount++;
                            }
                         }
-                     }
-                     if(!newIcon)
-                     {
-                        if(!(!(entityId in this._entitiesIcons) || !entity))
+                        if(currentLoopCount === MAX_LOOP_COUNT)
                         {
-                           entityAnimation = entity.getAnimation();
-                           if(this._entitiesIcons[entityId].needUpdate && !entity.isMoving && entityAnimation !== null && entityAnimation.indexOf(AnimationEnum.ANIM_STATIQUE) == 0 && !this._entitiesIcons[entityId].isPickUpAnimation && !isCarried)
+                        }
+                        baseCarrier = baseCarrierTmp as AnimatedCharacter;
+                        isCarried = Boolean(isCarried && baseCarrier !== null);
+                     }
+                     targetBounds = null;
+                     if(this._updateAllIcons || entity.getAnimation() && entity.getAnimation().indexOf(AnimationEnum.ANIM_STATIQUE) == -1 || !this._entitiesIcons[entityId] || this._entitiesIcons[entityId].needUpdate)
+                     {
+                        if(this._entitiesIcons[entityId] && this._entitiesIcons[entityId].rendering)
+                        {
+                           continue;
+                        }
+                        targetBounds = this.getIconEntityBounds(entity,false);
+                     }
+                     if(targetBounds)
+                     {
+                        if(!ei)
+                        {
+                           this._entitiesIcons[entityId] = new EntityIcon(entity);
+                           ei = this._entitiesIcons[entityId];
+                           if(entityId in this._pendingCarriedEntities)
                            {
-                              this._entitiesIcons[entityId].needUpdate = false;
+                              this.addCarrier(this._pendingCarriedEntities[entityId].carrierEntity,this._pendingCarriedEntities[entityId].carriedEntity);
+                              delete this._pendingCarriedEntities[entityId];
                            }
-                           else if(isCarried || this._entitiesIcons[entityId].isPickUpAnimation)
+                        }
+                        newIcon = false;
+                        for(iconCat in this._entitiesIconsNames[entityId])
+                        {
+                           for each(iconName in this._entitiesIconsNames[entityId][iconCat])
                            {
-                              this._entitiesIcons[entityId].needUpdate = true;
-                              if(baseCarrier !== null && baseCarrier.id in this._entitiesIcons)
+                              if(iconCat != EntityIconEnum.TURN_REMAINING)
                               {
-                                 this._entitiesIcons[baseCarrier.id].needUpdate = true;
-                              }
-                           }
-                           eiParent = this.getEntityIconParent(entity);
-                           if(!entity || !eiParent || !entity.displayed)
-                           {
-                              if(ei.parent)
-                              {
-                                 ei.parent.removeChild(ei);
-                              }
-                           }
-                           else
-                           {
-                              eiParent.addChildAt(ei,eiParent.numChildren);
-                              if(entity.rendered)
-                              {
-                                 if(!isCarried)
+                                 if(!ei.hasIcon(iconName))
                                  {
-                                    ei.place(targetBounds);
-                                 }
-                                 else
-                                 {
-                                    i = 0;
-                                    parent = entity.parent;
-                                    while(i < MAX_LOOP_COUNT && parent !== null && !(parent is AnimatedCharacter))
+                                    newIcon = true;
+                                    if(iconCat == EntityIconEnum.FIGHT_STATE_CATEGORY)
                                     {
-                                       parent = parent.parent;
+                                       turnsRemaining = -1;
+                                       if(!!this._entitiesIconsNames[entityId][EntityIconEnum.TURN_REMAINING] && this._entitiesIconsNames[entityId][EntityIconEnum.TURN_REMAINING][iconName])
+                                       {
+                                          turnsRemaining = this._entitiesIconsNames[entityId][EntityIconEnum.TURN_REMAINING][iconName];
+                                       }
+                                       ei.addIcon(ICONS_FILEPATH_STATE + "" + iconName,iconName,this._entitiesIconsOffsets[iconName],turnsRemaining);
                                     }
-                                    if(parent is AnimatedCharacter)
+                                    else if(iconCat == EntityIconEnum.AGGRO_CATEGORY)
                                     {
-                                       ei.place(targetBounds,baseCarrier,this._entitiesIcons[(parent as AnimatedCharacter).id]);
+                                       ei.addIcon(ICONS_FILEPATH + "" + iconName,iconName,this._entitiesIconsOffsets[iconName]);
                                     }
                                     else
                                     {
-                                       ei.place(targetBounds,baseCarrier);
+                                       ei.addIcon(ICONS_FILEPATH_CONQUEST + "" + iconName,iconName,this._entitiesIconsOffsets[iconName]);
                                     }
+                                 }
+                              }
+                           }
+                        }
+                        if(!newIcon)
+                        {
+                           if(!(!(entityId in this._entitiesIcons) || !entity))
+                           {
+                              entityAnimation = entity.getAnimation();
+                              if(this._entitiesIcons[entityId].needUpdate && !entity.isMoving && entityAnimation !== null && entityAnimation.indexOf(AnimationEnum.ANIM_STATIQUE) == 0 && !this._entitiesIcons[entityId].isPickUpAnimation && !isCarried)
+                              {
+                                 this._entitiesIcons[entityId].needUpdate = false;
+                              }
+                              else if(isCarried || this._entitiesIcons[entityId].isPickUpAnimation)
+                              {
+                                 this._entitiesIcons[entityId].needUpdate = true;
+                                 if(baseCarrier !== null && baseCarrier.id in this._entitiesIcons)
+                                 {
+                                    this._entitiesIcons[baseCarrier.id].needUpdate = true;
+                                 }
+                              }
+                              eiParent = this.getEntityIconParent(entity);
+                              if(!entity || !eiParent || !entity.displayed)
+                              {
+                                 if(ei.parent)
+                                 {
+                                    ei.parent.removeChild(ei);
                                  }
                               }
                               else
                               {
-                                 ei.rendering = true;
-                                 entity.addEventListener(TiphonEvent.RENDER_SUCCEED,this.updateIconAfterRender);
-                              }
-                              if(!entity.hasEventListener(TiphonEvent.ANIMATION_PICKUP_END))
-                              {
-                                 entity.addEventListener(TiphonEvent.ANIMATION_PICKUP_END,this.onAnimationPickupEnd);
-                              }
-                              if(!entity.hasEventListener(TiphonEvent.ANIMATION_PICKUP_START))
-                              {
-                                 entity.addEventListener(TiphonEvent.ANIMATION_PICKUP_START,this.onAnimationPickupStart);
+                                 eiParent.addChildAt(ei,eiParent.numChildren);
+                                 if(entity.rendered)
+                                 {
+                                    if(!isCarried)
+                                    {
+                                       ei.place(targetBounds);
+                                    }
+                                    else
+                                    {
+                                       i = 0;
+                                       parent = entity.parent;
+                                       while(i < MAX_LOOP_COUNT && parent !== null && !(parent is AnimatedCharacter))
+                                       {
+                                          parent = parent.parent;
+                                       }
+                                       if(parent is AnimatedCharacter)
+                                       {
+                                          ei.place(targetBounds,baseCarrier,this._entitiesIcons[(parent as AnimatedCharacter).id]);
+                                       }
+                                       else
+                                       {
+                                          ei.place(targetBounds,baseCarrier);
+                                       }
+                                    }
+                                 }
+                                 else
+                                 {
+                                    ei.rendering = true;
+                                    entity.addEventListener(TiphonEvent.RENDER_SUCCEED,this.updateIconAfterRender);
+                                 }
+                                 if(!entity.hasEventListener(TiphonEvent.ANIMATION_PICKUP_END))
+                                 {
+                                    entity.addEventListener(TiphonEvent.ANIMATION_PICKUP_END,this.onAnimationPickupEnd);
+                                 }
+                                 if(!entity.hasEventListener(TiphonEvent.ANIMATION_PICKUP_START))
+                                 {
+                                    entity.addEventListener(TiphonEvent.ANIMATION_PICKUP_START,this.onAnimationPickupStart);
+                                 }
                               }
                            }
                         }

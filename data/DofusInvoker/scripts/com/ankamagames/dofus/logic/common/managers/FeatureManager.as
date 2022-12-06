@@ -35,11 +35,6 @@ package com.ankamagames.dofus.logic.common.managers
          return _singleton;
       }
       
-      public function get enabledFeatureIds() : Vector.<int>
-      {
-         return this._enabledFeatureIds;
-      }
-      
       public function resetEnabledFeatures() : void
       {
          _log.info("Resetting enabled features");

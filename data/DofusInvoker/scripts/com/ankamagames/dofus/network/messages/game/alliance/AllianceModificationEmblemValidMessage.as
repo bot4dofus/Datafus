@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceModificationEmblemValidMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5150;
+      public static const protocolId:uint = 6102;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 5150;
+         return 6102;
       }
       
       public function initAllianceModificationEmblemValidMessage(Alliancemblem:GuildEmblem = null) : AllianceModificationEmblemValidMessage

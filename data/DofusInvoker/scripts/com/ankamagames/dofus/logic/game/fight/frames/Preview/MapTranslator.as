@@ -4,7 +4,9 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
    import com.ankamagames.atouin.utils.DataMapProvider;
    import com.ankamagames.dofus.datacenter.effects.instances.EffectInstanceDice;
    import com.ankamagames.dofus.datacenter.spells.Spell;
+   import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
    import com.ankamagames.dofus.kernel.Kernel;
+   import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.fight.frames.FightContextFrame;
    import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
    import com.ankamagames.dofus.logic.game.fight.managers.LinkedCellsManager;
@@ -90,11 +92,16 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
       public function getEveryFighterId() : Array
       {
          var entityId:Number = NaN;
+         var stats:EntityStats = null;
          var fightEntities:Vector.<Number> = (Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame).getEntitiesIdsList();
          var fighters:Array = [];
          for each(entityId in fightEntities)
          {
-            fighters.push(entityId);
+            stats = StatsManager.getInstance().getStats(entityId);
+            if(!(stats === null || stats.getHealthPoints() === 0))
+            {
+               fighters.push(entityId);
+            }
          }
          return fighters;
       }
@@ -102,14 +109,19 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
       public function getFightersInitialPositions() : List
       {
          var infos:GameContextActorInformations = null;
+         var stats:EntityStats = null;
          var positions:List = new List();
          var fightEntities:Dictionary = (Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame).entities;
          for each(infos in fightEntities)
          {
-            positions.add({
-               "id":infos.contextualId,
-               "cell":infos.disposition.cellId
-            });
+            stats = StatsManager.getInstance().getStats(infos.contextualId);
+            if(!(stats === null || stats.getHealthPoints() === 0))
+            {
+               positions.add({
+                  "id":infos.contextualId,
+                  "cell":infos.disposition.cellId
+               });
+            }
          }
          return positions;
       }

@@ -46,15 +46,17 @@ package com.ankamagames.dofus.datacenter.spells
       
       public var useParamCache:Boolean = true;
       
-      public var verbose_cast:Boolean;
+      public var verboseCast:Boolean;
       
-      public var default_zone:String;
+      public var defaultPreviewZone:String;
       
       public var bypassSummoningLimit:Boolean;
       
       public var canAlwaysTriggerSpells:Boolean;
       
       public var adminName:String;
+      
+      private var _effectZone:EffectZone = null;
       
       private var _name:String;
       
@@ -78,6 +80,16 @@ package com.ankamagames.dofus.datacenter.spells
       public static function getSpells() : Array
       {
          return GameData.getObjects(MODULE);
+      }
+      
+      public function get effectZone() : EffectZone
+      {
+         if(this._effectZone === null)
+         {
+            this._effectZone = new EffectZone();
+            this._effectZone.rawActivationZone = this.defaultPreviewZone;
+         }
+         return this._effectZone;
       }
       
       public function get name() : String

@@ -193,14 +193,41 @@ package com.ankamagames.dofus.logic.game.fight.managers
             _log.error("Tried to delete spell " + spellKey + " modifiers for entity with ID " + entityKey + ", but no spells modifier stats were found. Aborting");
             return false;
          }
-         var spellModifiers:SpellModifiers = this._entitiesMap[entityKey];
-         if(!spellModifiers || !(spellKey in spellModifiers))
+         var spellsModifiers:Dictionary = this._entitiesMap[entityKey];
+         if(!(spellKey in spellsModifiers))
          {
-            _log.error("Tried to delete spell " + spellKey + " modifiers for entity with ID " + entityKey + ", but none were found. Aborting");
+            _log.error("Tried to delete spell " + spellKey + " modifiers for entity with ID " + entityKey + ", but no spells modifier stats were found. Aborting");
             return false;
          }
-         delete spellModifiers[spellKey];
+         delete spellsModifiers[spellKey];
          _log.info("Spell " + spellKey + " modifiers for entity with ID " + entityKey + " deleted");
+         return true;
+      }
+      
+      public function deleteSpellModifier(entityId:Number, spellId:Number, modifierId:Number) : Boolean
+      {
+         var entityKey:String = entityId.toString();
+         var spellKey:String = spellId.toString();
+         var modifierKey:String = modifierId.toString();
+         if(!(entityKey in this._entitiesMap))
+         {
+            _log.error("Tried to delete spell " + spellKey + " modifier " + modifierKey + " for entity with ID " + entityKey + ", but no spells modifier stats were found. Aborting");
+            return false;
+         }
+         var spellsModifiers:Dictionary = this._entitiesMap[entityKey];
+         if(!(spellKey in spellsModifiers))
+         {
+            _log.error("Tried to delete spell " + spellKey + " modifier " + modifierKey + " for entity with ID " + entityKey + ", but no spells modifier stats were found. Aborting");
+            return false;
+         }
+         var spellModifiers:SpellModifiers = spellsModifiers[spellKey];
+         if(!spellModifiers.hasModifier(modifierId))
+         {
+            _log.error("Tried to delete spell " + spellKey + " modifier " + modifierKey + " for entity with ID " + entityKey + ", but no modifier was found. Aborting");
+            return false;
+         }
+         spellModifiers.deleteModifier(modifierId);
+         _log.info("Spell " + spellKey + " modifier " + modifierKey + " for entity with ID " + entityKey + " deleted");
          return true;
       }
       

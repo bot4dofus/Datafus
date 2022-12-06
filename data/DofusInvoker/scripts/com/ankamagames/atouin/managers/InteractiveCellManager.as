@@ -28,6 +28,7 @@ package com.ankamagames.atouin.managers
    import com.ankamagames.jerakine.types.positions.MapPoint;
    import com.ankamagames.jerakine.types.zones.Lozenge;
    import com.ankamagames.jerakine.utils.display.StageShareManager;
+   import com.ankamagames.jerakine.utils.display.spellZone.SpellShapeEnum;
    import com.ankamagames.jerakine.utils.errors.SingletonError;
    import flash.display.DisplayObject;
    import flash.display.Sprite;
@@ -479,7 +480,7 @@ package com.ankamagames.atouin.managers
                sel = new Selection();
                sel.color = new Color(_cellColor);
                sel.renderer = new ZoneDARenderer();
-               sel.zone = new Lozenge(0,0,DataMapProvider.getInstance());
+               sel.zone = new Lozenge(SpellShapeEnum.UNKNOWN,0,0,DataMapProvider.getInstance());
                SelectionManager.getInstance().addSelection(sel,"infoOverCell",cellId);
             }
             else

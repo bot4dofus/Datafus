@@ -51,6 +51,12 @@ package com.ankamagames.dofus.datacenter.spells
       
       public var needFreeTrapCell:Boolean;
       
+      public var needVisibleEntity:Boolean;
+      
+      public var needCellWithoutPortal:Boolean;
+      
+      public var portalProjectionForbidden:Boolean;
+      
       public var rangeCanBeBoosted:Boolean;
       
       public var maxStack:int;
@@ -79,7 +85,7 @@ package com.ankamagames.dofus.datacenter.spells
       
       public var criticalEffect:Vector.<EffectInstanceDice>;
       
-      public var additionalEffectsZones:Vector.<String>;
+      public var previewZones:Vector.<EffectZone>;
       
       private var _spell:Spell;
       

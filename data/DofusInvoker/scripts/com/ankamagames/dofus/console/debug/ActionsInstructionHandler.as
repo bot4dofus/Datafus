@@ -7,6 +7,7 @@ package com.ankamagames.dofus.console.debug
    import com.ankamagames.dofus.misc.utils.DofusApiAction;
    import com.ankamagames.jerakine.console.ConsoleHandler;
    import com.ankamagames.jerakine.console.ConsoleInstructionHandler;
+   import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.handlers.messages.Action;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
@@ -165,19 +166,46 @@ package com.ankamagames.dofus.console.debug
          }
       }
       
+      public function getArgs(cmd:String) : Array
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return [];
+      }
+      
       public function getHelp(cmd:String) : String
       {
          switch(cmd)
          {
             case "sendaction":
-               return "Send an actions to the worker.";
+               return "Send an action to the worker.";
             case "sendhook":
                return "Send a hook to the worker.";
             case "listactions":
                return "List all valid actions.";
             default:
-               return "Unknown command \'" + cmd + "\'.";
+               return "No help for command \'" + cmd + "\'";
          }
+      }
+      
+      public function getMan(cmd:String) : String
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return I18n.getUiText("ui.chat.console.noMan",[cmd]);
+      }
+      
+      public function getExamples(cmd:String) : String
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return I18n.getUiText("ui.chat.console.noExample",[cmd]);
       }
       
       public function getParamPossibilities(cmd:String, paramIndex:uint = 0, currentParams:Array = null) : Array

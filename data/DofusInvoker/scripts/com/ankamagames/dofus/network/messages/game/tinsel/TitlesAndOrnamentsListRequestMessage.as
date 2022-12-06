@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.tinsel
    public class TitlesAndOrnamentsListRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3451;
+      public static const protocolId:uint = 3457;
        
       
       public function TitlesAndOrnamentsListRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.tinsel
       
       override public function getMessageId() : uint
       {
-         return 3451;
+         return 3457;
       }
       
       public function initTitlesAndOrnamentsListRequestMessage() : TitlesAndOrnamentsListRequestMessage

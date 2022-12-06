@@ -9,6 +9,7 @@ package com.ankamagames.dofus.console.chat
    import com.ankamagames.dofus.network.enums.PlayerLifeStatusEnum;
    import com.ankamagames.jerakine.console.ConsoleHandler;
    import com.ankamagames.jerakine.console.ConsoleInstructionHandler;
+   import com.ankamagames.jerakine.data.I18n;
    
    public class EmoteInstructionHandler implements ConsoleInstructionHandler
    {
@@ -32,9 +33,36 @@ package com.ankamagames.dofus.console.chat
          }
       }
       
+      public function getArgs(cmd:String) : Array
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return [];
+      }
+      
       public function getHelp(cmd:String) : String
       {
          return null;
+      }
+      
+      public function getMan(cmd:String) : String
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return I18n.getUiText("ui.chat.console.noMan",[cmd]);
+      }
+      
+      public function getExamples(cmd:String) : String
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return I18n.getUiText("ui.chat.console.noExample",[cmd]);
       }
       
       private function getEmoteId(cmd:String) : uint

@@ -60,7 +60,7 @@ package com.ankamagames.dofus.logic.game.fight.steps
          var seq:SerialSequencer = null;
          var bubble:ChatBubble = null;
          var fighterEntity:IDisplayable = null;
-         if(Spell.getSpellById(this._spellId).verbose_cast && this._verboseCast)
+         if(Spell.getSpellById(this._spellId).verboseCast && this._verboseCast)
          {
             FightEventsHelper.sendFightEvent(FightEventEnum.FIGHTER_CASTED_SPELL,[this._fighterId,this._cellId,this._sourceCellId,this._spellId,this._spellRank,this._critical],0,castingSpellId,false);
          }

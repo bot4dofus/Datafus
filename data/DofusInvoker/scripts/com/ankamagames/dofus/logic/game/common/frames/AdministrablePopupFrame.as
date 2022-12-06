@@ -1,5 +1,7 @@
 package com.ankamagames.dofus.logic.game.common.frames
 {
+   import com.ankamagames.dofus.Constants;
+   import com.ankamagames.dofus.datacenter.popup.PopupInformation;
    import com.ankamagames.dofus.logic.common.managers.PopupManager;
    import com.ankamagames.dofus.network.messages.game.character.stats.CharacterLevelUpMessage;
    import com.ankamagames.dofus.network.messages.game.context.mount.MountSetMessage;
@@ -7,6 +9,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.initialization.SetCharacterRestrictionsMessage;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
+   import com.ankamagames.jerakine.managers.StoreDataManager;
    import com.ankamagames.jerakine.messages.Frame;
    import com.ankamagames.jerakine.messages.Message;
    import com.ankamagames.jerakine.types.enums.Priority;
@@ -17,10 +20,16 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(AdministrablePopupFrame));
       
+      private static const POPUP_PHISHING_PREVENTION_ID:uint = 15;
+      
       private static const POPUP_MOUNT_ID:uint = 19;
+      
+      private static const THIRTY_DAYS:uint = 2592000000;
        
       
       private var _popupManager:PopupManager;
+      
+      private var _justConnected:Boolean = true;
       
       public function AdministrablePopupFrame()
       {
@@ -40,6 +49,9 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       public function process(msg:Message) : Boolean
       {
+         var now:Number = NaN;
+         var lastPrevention:Number = NaN;
+         var popupInfo:PopupInformation = null;
          switch(true)
          {
             case msg is SetCharacterRestrictionsMessage:
@@ -47,6 +59,19 @@ package com.ankamagames.dofus.logic.game.common.frames
                {
                   this._popupManager.getAllPopup();
                   this._popupManager.checkPopupToDisplay();
+               }
+               if(this._justConnected)
+               {
+                  this._justConnected = false;
+                  now = new Date().getTime();
+                  lastPrevention = StoreDataManager.getInstance().getSetData(Constants.DATASTORE_PREVENTION_POPUP,"lastPhishingPrevention",now);
+                  if(now - lastPrevention > THIRTY_DAYS)
+                  {
+                     popupInfo = PopupInformation.getPopupInformationById(POPUP_PHISHING_PREVENTION_ID);
+                     StoreDataManager.getInstance().setData(Constants.DATASTORE_PREVENTION_POPUP,"lastPhishingPrevention",now);
+                     PopupManager.getInstance().preparePopup(popupInfo);
+                     PopupManager.getInstance().checkPopupToDisplay(POPUP_PHISHING_PREVENTION_ID);
+                  }
                }
                return true;
             case msg is CharacterLevelUpMessage:

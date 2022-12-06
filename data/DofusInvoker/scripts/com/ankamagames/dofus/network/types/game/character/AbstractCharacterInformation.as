@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character
    public class AbstractCharacterInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 5595;
+      public static const protocolId:uint = 7441;
        
       
       public var id:Number = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.character
       
       public function getTypeId() : uint
       {
-         return 5595;
+         return 7441;
       }
       
       public function initAbstractCharacterInformation(id:Number = 0) : AbstractCharacterInformation

@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class IgnoredDeleteResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9174;
+      public static const protocolId:uint = 4427;
        
       
       private var _isInitialized:Boolean = false;
@@ -39,7 +39,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 9174;
+         return 4427;
       }
       
       public function initIgnoredDeleteResultMessage(success:Boolean = false, tag:AccountTagInformation = null, session:Boolean = false) : IgnoredDeleteResultMessage

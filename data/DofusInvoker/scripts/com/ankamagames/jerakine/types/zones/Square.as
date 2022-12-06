@@ -1,19 +1,28 @@
 package com.ankamagames.jerakine.types.zones
 {
    import com.ankamagames.jerakine.map.IDataMapProvider;
+   import com.ankamagames.jerakine.utils.display.spellZone.SpellShapeEnum;
    
    public class Square extends ZRectangle
    {
        
       
-      public function Square(nMinRadius:uint, nRadius:uint, dataMapProvider:IDataMapProvider)
+      public function Square(minRadius:uint, size:uint, isDiagonalFree:Boolean, dataMapProvider:IDataMapProvider)
       {
-         super(nMinRadius,nRadius,nRadius,dataMapProvider);
+         super(minRadius,size,size,isDiagonalFree,dataMapProvider);
+         if(isDiagonalFree)
+         {
+            _shape = SpellShapeEnum.W;
+         }
+         else
+         {
+            _shape = SpellShapeEnum.G;
+         }
       }
       
-      override public function get surface() : uint
+      public function get length() : uint
       {
-         return Math.pow(radius * 2 + 1,2);
+         return _width;
       }
    }
 }

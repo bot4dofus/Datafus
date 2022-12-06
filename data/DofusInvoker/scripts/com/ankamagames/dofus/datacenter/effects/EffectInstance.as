@@ -3,6 +3,7 @@ package com.ankamagames.dofus.datacenter.effects
    import com.ankama.dofus.enums.ActionIds;
    import com.ankamagames.dofus.datacenter.alignments.AlignmentSide;
    import com.ankamagames.dofus.datacenter.appearance.Title;
+   import com.ankamagames.dofus.datacenter.characteristics.Characteristic;
    import com.ankamagames.dofus.datacenter.communication.Emoticon;
    import com.ankamagames.dofus.datacenter.documents.Document;
    import com.ankamagames.dofus.datacenter.effects.instances.EffectInstanceInteger;
@@ -565,6 +566,12 @@ package com.ankamagames.dofus.datacenter.effects
          return !!o ? o.name : UNKNOWN_NAME;
       }
       
+      private function getStatName(id:int) : String
+      {
+         var o:Characteristic = Characteristic.getCharacteristicById(id);
+         return !!o ? o.name : UNKNOWN_NAME;
+      }
+      
       private function parseZone() : void
       {
          var params:Array = null;
@@ -656,6 +663,7 @@ package com.ankamagames.dofus.datacenter.effects
          var currentMapping:CharacterXPMapping = null;
          var nextMapping:CharacterXPMapping = null;
          var text:String = null;
+         var statName:String = null;
          var currentLevelXP:Number = NaN;
          var nextLevelXP:Number = NaN;
          var i:uint = 0;
@@ -731,6 +739,8 @@ package com.ankamagames.dofus.datacenter.effects
                case ActionIds.ACTION_DEBOOST_SPELL_RANGE_MAX:
                case ActionIds.ACTION_DEBOOST_SPELL_RANGE_MIN:
                case ActionIds.ACTION_CASTER_EXECUTE_SPELL:
+               case ActionIds.ACTION_SET_SPELL_RANGE_MAX:
+               case ActionIds.ACTION_SET_SPELL_RANGE_MIN:
                   aTmp[0] = this.getSpellName(aTmp[0]);
                   spellModif = true;
                   break;
@@ -1036,6 +1046,11 @@ package com.ankamagames.dofus.datacenter.effects
                   aTmp[5] = "m";
                   aTmp[6] = aTmp[1] != null ? false : Math.abs(aTmp[0]) == 1;
                   aTmp[7] = aTmp[1] != null ? false : aTmp[0] == 0;
+                  break;
+               case ActionIds.ACTION_CHARACTER_LIMIT_STATS:
+                  statName = this.getStatName(aTmp[1] as int);
+                  aTmp[1] = aTmp[0];
+                  aTmp[0] = statName;
             }
             if(forTooltip && aTmp)
             {

@@ -448,7 +448,7 @@ package com.ankamagames.dofus.logic.game.fight.managers
             }
             i++;
          }
-         if(!sameBuff || buff.actionId === ActionIds.ACTION_CHARACTER_BOOST_THRESHOLD)
+         if(!sameBuff || buff.actionId === ActionIds.ACTION_CHARACTER_BOOST_THRESHOLD || buff.actionId === ActionIds.ACTION_SET_SPELL_RANGE_MAX || buff.actionId === ActionIds.ACTION_SET_SPELL_RANGE_MIN)
          {
             this._buffs[buff.targetId].push(buff);
          }

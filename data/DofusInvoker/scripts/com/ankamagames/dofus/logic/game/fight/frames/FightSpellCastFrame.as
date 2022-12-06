@@ -75,7 +75,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.jerakine.types.positions.MapPoint;
    import com.ankamagames.jerakine.types.zones.Cross;
    import com.ankamagames.jerakine.types.zones.Custom;
-   import com.ankamagames.jerakine.types.zones.IZone;
+   import com.ankamagames.jerakine.types.zones.DisplayZone;
+   import com.ankamagames.jerakine.types.zones.Line;
    import com.ankamagames.jerakine.types.zones.Lozenge;
    import com.ankamagames.jerakine.utils.display.Dofus2Line;
    import com.ankamagames.jerakine.utils.display.EnterFrameDispatcher;
@@ -91,6 +92,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import flash.utils.Dictionary;
    import flash.utils.getQualifiedClassName;
    import haxe.ds._List.ListNode;
+   import mapTools.MapTools;
    import tools.BreedEnum;
    import tools.enumeration.GameActionMarkTypeEnum;
    
@@ -159,8 +161,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
       private var _targetingThroughPortal:Boolean;
       
       private var _clearTargetTimer:BenchmarkTimer;
-      
-      private var _spellmaximumRange:uint;
       
       private var _fightTeleportationPreview:FightTeleportationPreview;
       
@@ -450,14 +450,17 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       public function refreshTarget(force:Boolean = false) : void
       {
+         var spellZone:DisplayZone = null;
+         var lineZone:Line = null;
          var currentFighterId:Number = NaN;
          var entityInfos:GameFightFighterInformations = null;
          var renderer:IFightZoneRenderer = null;
          var ignoreMaxSize:Boolean = false;
          var spellShape:uint = 0;
          var entityInfo:GameContextActorInformations = null;
+         var spellWrapper:SpellWrapper = null;
          var cellId:int = 0;
-         var spellZone:IZone = null;
+         var portalCell:int = 0;
          var updateStrata:Boolean = false;
          if(this._clearTargetTimer.running)
          {
@@ -515,19 +518,39 @@ package com.ankamagames.dofus.logic.game.fight.frames
                {
                   ignoreMaxSize = false;
                }
-               this._targetCenterSelection.zone = new Cross(0,0,DataMapProvider.getInstance());
+               this._targetCenterSelection.zone = new Cross(SpellShapeEnum.UNKNOWN,0,0,DataMapProvider.getInstance());
                SelectionManager.getInstance().addSelection(this._targetCenterSelection,SELECTION_CENTER_TARGET);
                SelectionManager.getInstance().addSelection(this._targetSelection,SELECTION_TARGET);
             }
-            if(!this._targetSelection.zone || this._targetSelection.zone is Custom)
+            spellZone = null;
+            lineZone = this._targetSelection.zone as Line;
+            if(!this._targetSelection.zone || this._targetSelection.zone is Custom || lineZone !== null && lineZone.isFromCaster)
             {
                entityInfo = FightEntitiesFrame.getCurrentInstance().getEntityInfos(this._entityId);
                if(entityInfo)
                {
-                  cellId = entityInfo.disposition.cellId;
-                  spellZone = SpellZoneManager.getInstance().getSpellZone(this._spellWrapper,true,ignoreMaxSize,target,cellId,true,this._entityId);
-                  this._spellmaximumRange = spellZone.radius;
-                  this._targetSelection.zone = spellZone;
+                  spellWrapper = null;
+                  if(this._spellWrapper is SpellWrapper)
+                  {
+                     spellWrapper = this._spellWrapper as SpellWrapper;
+                  }
+                  else if(this._spellWrapper !== null)
+                  {
+                     spellWrapper = new SpellWrapper();
+                     spellWrapper.effects = this._spellWrapper.effects;
+                     spellWrapper.playerId = !!this._spellWrapper.hasOwnProperty("playerId") ? Number(this._spellWrapper.playerId) : Number(0);
+                  }
+                  if(spellWrapper !== null)
+                  {
+                     cellId = entityInfo.disposition.cellId;
+                     portalCell = !!this._targetingThroughPortal ? int(FightContextFrame.currentCell) : int(MapTools.INVALID_CELL_ID);
+                     spellZone = SpellZoneManager.getInstance().getSpellZone(spellWrapper,true,ignoreMaxSize,target,cellId,true,this._entityId,portalCell);
+                     this._targetSelection.zone = spellZone;
+                  }
+                  else
+                  {
+                     this._targetSelection.zone = new Cross(SpellShapeEnum.P,0,0,DataMapProvider.getInstance());
+                  }
                }
             }
             currentFighterId = this._entityId;
@@ -544,7 +567,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                }
             }
             renderer = this._targetSelection.renderer as IFightZoneRenderer;
-            if(Atouin.getInstance().options.getOption("transparentOverlayMode") && this._spellmaximumRange != 63)
+            if(Atouin.getInstance().options.getOption("transparentOverlayMode") && (spellZone === null || !spellZone.isInfinite))
             {
                renderer.currentStrata = PlacementStrataEnums.STRATA_NO_Z_ORDER;
                SelectionManager.getInstance().update(SELECTION_TARGET,target,true);
@@ -654,10 +677,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
          {
             this._isInfiniteTarget = false;
          }
-         if(this._spellWrapper["rangeCanBeBoosted"])
-         {
-            range += playerStats.getStatTotalValue(StatIds.RANGE) - playerStats.getStatAdditionalValue(StatIds.RANGE);
-         }
          if(range < minRange)
          {
             range = minRange;
@@ -673,23 +692,21 @@ package com.ankamagames.dofus.logic.game.fight.frames
          rangeSelection.alpha = true;
          if(castInLine && this._spellWrapper.castInDiagonal)
          {
-            shapePlus = new Cross(minRange,range,DataMapProvider.getInstance());
-            shapePlus.allDirections = true;
+            shapePlus = new Cross(SpellShapeEnum.UNKNOWN,minRange,range,DataMapProvider.getInstance(),false,true);
             rangeSelection.zone = shapePlus;
          }
          else if(castInLine)
          {
-            rangeSelection.zone = new Cross(minRange,range,DataMapProvider.getInstance());
+            rangeSelection.zone = new Cross(SpellShapeEnum.UNKNOWN,minRange,range,DataMapProvider.getInstance());
          }
          else if(this._spellWrapper.castInDiagonal)
          {
-            shapePlus = new Cross(minRange,range,DataMapProvider.getInstance());
-            shapePlus.diagonal = true;
+            shapePlus = new Cross(SpellShapeEnum.UNKNOWN,minRange,range,DataMapProvider.getInstance(),true);
             rangeSelection.zone = shapePlus;
          }
          else
          {
-            rangeSelection.zone = new Lozenge(minRange,range,DataMapProvider.getInstance());
+            rangeSelection.zone = new Lozenge(SpellShapeEnum.UNKNOWN,minRange,range,DataMapProvider.getInstance());
          }
          var untargetableCells:Vector.<uint> = new Vector.<uint>();
          var losSelection:Selection = new Selection();
@@ -778,7 +795,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
             {
                losCells.push(selectionCellId);
             }
-            else if(usedSpellWrapper !== null && usedSpellWrapper.spellLevelInfos && (usedSpellWrapper.needFreeCellWithModifiers && isTakenCell || usedSpellWrapper.spellLevelInfos.needFreeTrapCell && MarkedCellsManager.getInstance().cellHasTrap(selectionCellId)))
+            else if(usedSpellWrapper !== null && usedSpellWrapper.spellLevelInfos && (usedSpellWrapper.needFreeCellWithModifiers && isTakenCell || usedSpellWrapper.needVisibleEntityWithModifiers && !isTakenCell || usedSpellWrapper.spellLevelInfos.needFreeTrapCell && MarkedCellsManager.getInstance().cellHasTrap(selectionCellId)))
             {
                untargetableCells.push(selectionCellId);
             }
@@ -1432,18 +1449,27 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private function getSpellShape() : uint
       {
-         var spellShape:uint = 0;
-         var spellEffect:EffectInstance = null;
-         var size:uint = 0;
-         var minSize:uint = 0;
-         for each(spellEffect in this._spellWrapper.effects)
+         var spellWrapper:SpellWrapper = null;
+         if(this._spellWrapper is SpellWrapper)
          {
-            if(spellEffect.zoneShape != 0 && (spellEffect.zoneSize > size || spellEffect.zoneSize == size && (spellEffect.zoneShape == SpellShapeEnum.P || spellEffect.zoneMinSize < minSize)))
-            {
-               spellShape = spellEffect.zoneShape;
-            }
+            spellWrapper = this._spellWrapper as SpellWrapper;
          }
-         return spellShape;
+         else if(this._spellWrapper !== null)
+         {
+            spellWrapper = new SpellWrapper();
+            spellWrapper.effects = this._spellWrapper.effects;
+            spellWrapper.playerId = !!this._spellWrapper.hasOwnProperty("playerId") ? Number(this._spellWrapper.playerId) : Number(0);
+         }
+         if(spellWrapper === null)
+         {
+            return SpellShapeEnum.UNKNOWN;
+         }
+         var spellZone:DisplayZone = SpellZoneManager.getInstance().getPreferredPreviewZone(spellWrapper,false,false,false);
+         if(spellZone === null)
+         {
+            return SpellShapeEnum.UNKNOWN;
+         }
+         return spellZone.shape;
       }
       
       private function createZoneRenderer(color:Color, strata:uint = 90) : IFightZoneRenderer

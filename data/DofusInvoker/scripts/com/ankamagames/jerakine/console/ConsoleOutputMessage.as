@@ -16,7 +16,8 @@ package com.ankamagames.jerakine.console
       {
          super();
          this._consoleId = consoleId;
-         this._text = text;
+         var nnbspExp:RegExp = / /g;
+         this._text = text.replace(nnbspExp," ");
          this._type = type;
       }
       

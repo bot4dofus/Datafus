@@ -33,6 +33,7 @@ package com.ankamagames.jerakine.console
          this._displayExecutionTime = displayExecutionTime;
          this._hideCommandsWithoutHelp = hideCommandsWithoutHelp;
          this._handlers["help"] = this;
+         this._handlers["man"] = this;
       }
       
       public function get handlers() : Dictionary
@@ -110,6 +111,7 @@ package com.ankamagames.jerakine.console
          var _loc5_:String = null;
          var _loc6_:String = null;
          var _loc7_:ConsoleInstructionHandler = null;
+         var _loc8_:ConsoleInstructionHandler = null;
          switch(param2)
          {
             case "help":
@@ -143,7 +145,73 @@ package com.ankamagames.jerakine.console
                      param1.output(I18n.getUiText("ui.console.unknownCommand",[param3[0]]));
                   }
                }
+               break;
+            case "man":
+               if(param3.length == 0)
+               {
+                  param1.output(this.getMan("generalMan"));
+               }
+               else
+               {
+                  _loc8_ = this._handlers[param3[0]];
+                  if(_loc8_)
+                  {
+                     this.showMan(param1,_loc8_,param3[0]);
+                  }
+                  else
+                  {
+                     param1.output(I18n.getUiText("ui.console.unknownCommand",[param3[0]]));
+                  }
+               }
          }
+      }
+      
+      public function showMan(console:ConsoleHandler, h:ConsoleInstructionHandler, cmd:String) : void
+      {
+         console.output("<b><u>Manual for command /" + cmd + "</u></b>:\n");
+         console.output("<b><font color=\'#E7B000\'>" + cmd + this.showArgs(h.getArgs(cmd),false) + "</font></b>" + "\n");
+         console.output(h.getMan(cmd));
+         console.output(this.showArgs(h.getArgs(cmd),true) + "\n");
+         console.output("<b><u>Examples:</u></b>\n" + h.getExamples(cmd) + "\n");
+      }
+      
+      public function getArgs(cmd:String) : Array
+      {
+         var argList:Array = new Array();
+         switch(cmd)
+         {
+            case "help":
+               argList.push("[CommandName] : the name of the command you need help with.");
+               break;
+            case "man":
+               argList.push("[CommandName] : the name of the command you need the manual from.");
+         }
+         return argList;
+      }
+      
+      public function showArgs(argList:Array, b:Boolean) : String
+      {
+         var catchArgsRE:RegExp = null;
+         var argsStr:String = null;
+         var arg:String = null;
+         if(argList.length > 0)
+         {
+            catchArgsRE = /\S+/;
+            argsStr = "";
+            for each(arg in argList)
+            {
+               if(b)
+               {
+                  argsStr += "\n\t- " + arg;
+               }
+               else
+               {
+                  argsStr += " " + arg.match(catchArgsRE)[0];
+               }
+            }
+            return argsStr;
+         }
+         return " (no arguments given for this command)";
       }
       
       public function getHelp(cmd:String) : String
@@ -152,6 +220,8 @@ package com.ankamagames.jerakine.console
          {
             case "help":
                return I18n.getUiText("ui.console.displayhelp");
+            case "man":
+               return I18n.getUiText("ui.console.displayManual");
             default:
                return I18n.getUiText("ui.chat.console.noHelp",[cmd]);
          }
@@ -165,6 +235,32 @@ package com.ankamagames.jerakine.console
             return cih.getHelp(sCmd);
          }
          return null;
+      }
+      
+      public function getMan(cmd:String) : String
+      {
+         switch(cmd)
+         {
+            case "help":
+               return I18n.getUiText("ui.console.displayhelp");
+            case "man":
+               return I18n.getUiText("ui.console.displayManual");
+            case "generalMan":
+               return "Welcome to this manual. Nothing here for now, but work is in good progress ... I guess ?";
+            default:
+               return I18n.getUiText("ui.chat.console.noManual",[cmd]);
+         }
+      }
+      
+      public function getExamples(cmd:String) : String
+      {
+         switch(cmd)
+         {
+            case "help":
+               return "<font color=\'#E7B000\'>/help search </font>\n" + "search: Generic search function, param : [Class] [Property] [Filter]";
+            default:
+               return I18n.getUiText("ui.chat.console.noExample",[cmd]);
+         }
       }
       
       public function getParamPossibilities(cmd:String, paramIndex:uint = 0, currentParams:Array = null) : Array

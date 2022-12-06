@@ -5,7 +5,6 @@ package com.ankamagames.dofus.misc.stats
    import com.ankamagames.berilia.Berilia;
    import com.ankamagames.berilia.types.event.UiRenderEvent;
    import com.ankamagames.berilia.types.event.UiUnloadEvent;
-   import com.ankamagames.dofus.BuildInfos;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
@@ -19,7 +18,6 @@ package com.ankamagames.dofus.misc.stats
    import com.ankamagames.dofus.misc.stats.ui.AuctionBetaStats;
    import com.ankamagames.dofus.misc.stats.ui.BakNavigationStats;
    import com.ankamagames.dofus.misc.stats.ui.BannerStats;
-   import com.ankamagames.dofus.misc.stats.ui.BuildVersionStats;
    import com.ankamagames.dofus.misc.stats.ui.CartographyStats;
    import com.ankamagames.dofus.misc.stats.ui.CharacterCreationStats;
    import com.ankamagames.dofus.misc.stats.ui.ChinqStats;
@@ -44,7 +42,6 @@ package com.ankamagames.dofus.misc.stats
    import com.ankamagames.dofus.misc.utils.HaapiKeyManager;
    import com.ankamagames.dofus.misc.utils.events.AccountSessionReadyEvent;
    import com.ankamagames.dofus.misc.utils.events.GameSessionReadyEvent;
-   import com.ankamagames.dofus.network.enums.BuildTypeEnum;
    import com.ankamagames.jerakine.data.XmlConfig;
    import com.ankamagames.jerakine.interfaces.IDestroyable;
    import com.ankamagames.jerakine.logger.Log;
@@ -57,7 +54,6 @@ package com.ankamagames.dofus.misc.stats
    import com.ankamagames.jerakine.utils.misc.DeviceUtils;
    import com.ankamagames.jerakine.utils.system.SystemManager;
    import flash.events.EventDispatcher;
-   import flash.filesystem.File;
    import flash.globalization.DateTimeFormatter;
    import flash.utils.Dictionary;
    import flash.utils.getQualifiedClassName;
@@ -149,18 +145,7 @@ package com.ankamagames.dofus.misc.stats
          HaapiKeyManager.getInstance().removeEventListener(GameSessionReadyEvent.READY,this.onGameSessionReady);
          this.setGameSessionId(HaapiKeyManager.getInstance().getGameSessionId());
          new SessionStartStats();
-         if((BuildInfos.BUILD_TYPE == BuildTypeEnum.RELEASE || BuildInfos.BUILD_TYPE == BuildTypeEnum.DRAFT) && this.zipFileExists())
-         {
-            BuildVersionStats.createAndSendStat();
-         }
          this.sendPendingEvents();
-      }
-      
-      public function zipFileExists() : Boolean
-      {
-         _log.debug("searching zipVersion file in directory : " + File.applicationDirectory.nativePath);
-         var zaapFile:File = File.applicationDirectory.resolvePath(File.applicationDirectory.nativePath + File.separator + "zipVersion");
-         return zaapFile.exists;
       }
       
       private function onAccountSessionReady(event:AccountSessionReadyEvent) : void

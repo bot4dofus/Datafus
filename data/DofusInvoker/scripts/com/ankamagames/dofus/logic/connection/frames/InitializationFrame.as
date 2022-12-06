@@ -1227,7 +1227,6 @@ package com.ankamagames.dofus.logic.connection.frames
                Skin.addAlternativeSkin(skin.id,skin.lowDefId);
             }
             _log.info("Initialization frame end");
-            Constants.EVENT_MODE = LangManager.getInstance().getEntry("config.eventMode") == "true";
             Constants.EVENT_MODE_PARAM = LangManager.getInstance().getEntry("config.eventModeParams");
             Constants.CHARACTER_CREATION_ALLOWED = LangManager.getInstance().getEntry("config.characterCreationAllowed") == "true";
             Constants.FORCE_MAXIMIZED_WINDOW = LangManager.getInstance().getEntry("config.autoMaximize") == "true";
@@ -1239,12 +1238,12 @@ package com.ankamagames.dofus.logic.connection.frames
             Kernel.getWorker().addFrame(new AuthentificationFrame());
             Kernel.getWorker().addFrame(new QueueFrame());
             Kernel.getWorker().addFrame(new GameStartingFrame());
+            enableFeaturesFromConf();
+            enableLaunchFeatures();
             if(!ZaapApi.isConnected())
             {
                KernelEventsManager.getInstance().processCallback(HookList.ZaapConnectionFailed);
             }
-            enableFeaturesFromConf();
-            enableLaunchFeatures();
          }
       }
       

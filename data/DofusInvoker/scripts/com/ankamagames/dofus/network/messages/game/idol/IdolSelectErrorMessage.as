@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.idol
    public class IdolSelectErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8060;
+      public static const protocolId:uint = 7505;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.game.idol
       
       override public function getMessageId() : uint
       {
-         return 8060;
+         return 7505;
       }
       
       public function initIdolSelectErrorMessage(reason:uint = 0, idolId:uint = 0, activate:Boolean = false, party:Boolean = false) : IdolSelectErrorMessage

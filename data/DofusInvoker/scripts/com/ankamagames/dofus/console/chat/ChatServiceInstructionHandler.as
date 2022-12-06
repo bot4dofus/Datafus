@@ -10,6 +10,7 @@ package com.ankamagames.dofus.console.chat
    import com.ankamagames.dofus.logic.game.spin2.chat.data.GameActivities;
    import com.ankamagames.jerakine.console.ConsoleHandler;
    import com.ankamagames.jerakine.console.ConsoleInstructionHandler;
+   import com.ankamagames.jerakine.data.I18n;
    import flash.utils.Dictionary;
    
    public class ChatServiceInstructionHandler implements ConsoleInstructionHandler
@@ -200,16 +201,25 @@ package com.ankamagames.dofus.console.chat
          }
       }
       
+      public function getArgs(cmd:String) : Array
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return [];
+      }
+      
       public function getHelp(cmd:String) : String
       {
          switch(cmd)
          {
             case "friendinvite":
-               return "\n/friendinvite userId|userName\n/friendinvite process inviterId recipientId Accepted|Rejected|Canceled\n/friendinvite process all Accepted|Rejected|Canceled";
+               return "\n/friendinvite userId|userName" + "\n/friendinvite process inviterId recipientId Accepted|Rejected|Canceled" + "\n/friendinvite process all Accepted|Rejected|Canceled";
             case "friend":
-               return "\n/friend list\n/friend delete userId|userName|all\n/friend update userId|userName groupName";
+               return "\n/friend list" + "\n/friend delete userId|userName|all" + "\n/friend update userId|userName groupName";
             case "friendgroup":
-               return "\n/friendgroup create groupName\n/friendgroup delete groupName";
+               return "\n/friendgroup create groupName" + "\n/friendgroup delete groupName";
             case "msg":
                return "/msg userId|userName hello spin world !!!";
             case "mystatus":
@@ -219,10 +229,28 @@ package com.ankamagames.dofus.console.chat
             case "listactivities":
                return "/listactivities";
             case "blockuser":
-               return "\n/blockuser add|delete userId\n/blockuser list";
+               return "\n/blockuser add|delete userId" + "\n/blockuser list";
             default:
-               return "";
+               return "No help for command \'" + cmd + "\'";
          }
+      }
+      
+      public function getMan(cmd:String) : String
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return I18n.getUiText("ui.chat.console.noMan",[cmd]);
+      }
+      
+      public function getExamples(cmd:String) : String
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return I18n.getUiText("ui.chat.console.noExample",[cmd]);
       }
       
       public function getParamPossibilities(cmd:String, paramIndex:uint = 0, currentParams:Array = null) : Array

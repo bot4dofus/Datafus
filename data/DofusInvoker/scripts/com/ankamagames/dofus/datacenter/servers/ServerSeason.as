@@ -23,6 +23,8 @@ package com.ankamagames.dofus.datacenter.servers
       
       public var closure:Number;
       
+      public var resetDate:Number;
+      
       public var flagObjectId:uint;
       
       public function ServerSeason()
@@ -52,12 +54,26 @@ package com.ankamagames.dofus.datacenter.servers
          var currentDate:Number = timeManager.getTimestamp();
          for each(season in allSeason)
          {
-            if(currentDate >= season.beginning && currentDate <= season.closure)
+            if(season.resetDate <= season.closure)
+            {
+               if(currentDate >= season.beginning && currentDate <= season.closure)
+               {
+                  return season;
+               }
+            }
+            else if(currentDate >= season.beginning && currentDate <= season.resetDate)
             {
                return season;
             }
          }
          return null;
+      }
+      
+      public function isFinished() : Boolean
+      {
+         var timeManager:TimeManager = TimeManager.getInstance();
+         var currentDate:Number = timeManager.getTimestamp();
+         return currentDate > this.closure;
       }
    }
 }

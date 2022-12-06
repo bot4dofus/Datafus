@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.secure
    public class TrustCertificate implements INetworkType
    {
       
-      public static const protocolId:uint = 1184;
+      public static const protocolId:uint = 429;
        
       
       public var id:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.secure
       
       public function getTypeId() : uint
       {
-         return 1184;
+         return 429;
       }
       
       public function initTrustCertificate(id:uint = 0, hash:String = "") : TrustCertificate

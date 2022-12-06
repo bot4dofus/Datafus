@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
    public class RefreshFollowedQuestsOrderRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1659;
+      public static const protocolId:uint = 5420;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
       
       override public function getMessageId() : uint
       {
-         return 1659;
+         return 5420;
       }
       
       public function initRefreshFollowedQuestsOrderRequestMessage(quests:Vector.<uint> = null) : RefreshFollowedQuestsOrderRequestMessage

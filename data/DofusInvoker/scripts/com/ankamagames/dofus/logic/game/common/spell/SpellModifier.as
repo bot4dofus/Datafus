@@ -89,6 +89,14 @@ package com.ankamagames.dofus.logic.game.common.spell
                return CharacterSpellModificationTypeEnum.OCCUPIED_CELL;
             case ActionIds.ACTION_DEBOOST_OCCUPIED_CELL:
                return CharacterSpellModificationTypeEnum.OCCUPIED_CELL;
+            case ActionIds.ACTION_SET_SPELL_RANGE_MAX:
+               return CharacterSpellModificationTypeEnum.SET_RANGE_MAX;
+            case ActionIds.ACTION_SET_SPELL_RANGE_MIN:
+               return CharacterSpellModificationTypeEnum.SET_RANGE_MIN;
+            case ActionIds.ACTION_BOOST_VISIBLE_TARGET_ON_CELL_ON:
+               return CharacterSpellModificationTypeEnum.VISIBLE_TARGET;
+            case ActionIds.ACTION_BOOST_VISIBLE_TARGET_ON_CELL_OFF:
+               return CharacterSpellModificationTypeEnum.VISIBLE_TARGET;
             default:
                return CharacterSpellModificationTypeEnum.INVALID_MODIFICATION;
          }
@@ -177,6 +185,12 @@ package com.ankamagames.dofus.logic.game.common.spell
                return "occupied cell";
             case CharacterSpellModificationTypeEnum.FREE_CELL:
                return "free cell";
+            case CharacterSpellModificationTypeEnum.SET_RANGE_MAX:
+               return "set range max";
+            case CharacterSpellModificationTypeEnum.SET_RANGE_MIN:
+               return "set range min";
+            case CharacterSpellModificationTypeEnum.VISIBLE_TARGET:
+               return "visible target";
             default:
                return UNKNOWN_MODIFIER_NAME;
          }

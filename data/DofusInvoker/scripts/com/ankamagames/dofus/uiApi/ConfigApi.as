@@ -162,12 +162,6 @@ package com.ankamagames.dofus.uiApi
          return featureManager !== null && featureManager.enableFeatureWithKeyword(featureKeyword);
       }
       
-      public function enableFeature(feature:OptionalFeature) : Boolean
-      {
-         var featureManager:FeatureManager = FeatureManager.getInstance();
-         return featureManager !== null && featureManager.enableFeature(feature);
-      }
-      
       public function disableFeatureWithId(featureId:int) : Boolean
       {
          var featureManager:FeatureManager = FeatureManager.getInstance();

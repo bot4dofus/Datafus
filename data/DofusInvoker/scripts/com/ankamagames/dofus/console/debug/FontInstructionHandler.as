@@ -5,6 +5,7 @@ package com.ankamagames.dofus.console.debug
    import com.ankamagames.jerakine.benchmark.BenchmarkTimer;
    import com.ankamagames.jerakine.console.ConsoleHandler;
    import com.ankamagames.jerakine.console.ConsoleInstructionHandler;
+   import com.ankamagames.jerakine.data.I18n;
    import flash.events.TimerEvent;
    import flash.utils.Timer;
    
@@ -50,6 +51,15 @@ package com.ankamagames.dofus.console.debug
          (event.currentTarget as Timer).removeEventListener(TimerEvent.TIMER_COMPLETE,this.endTimer);
       }
       
+      public function getArgs(cmd:String) : Array
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return [];
+      }
+      
       public function getHelp(cmd:String) : String
       {
          switch(cmd)
@@ -57,8 +67,26 @@ package com.ankamagames.dofus.console.debug
             case "jptest":
                return "test japanese characters set";
             default:
-               return "Unknown command";
+               return "No help for command \'" + cmd + "\'";
          }
+      }
+      
+      public function getMan(cmd:String) : String
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return I18n.getUiText("ui.chat.console.noMan",[cmd]);
+      }
+      
+      public function getExamples(cmd:String) : String
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return I18n.getUiText("ui.chat.console.noExample",[cmd]);
       }
       
       public function getParamPossibilities(cmd:String, paramIndex:uint = 0, currentParams:Array = null) : Array

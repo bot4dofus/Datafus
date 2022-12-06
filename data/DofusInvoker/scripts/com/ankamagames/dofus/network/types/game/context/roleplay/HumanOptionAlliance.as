@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class HumanOptionAlliance extends HumanOption implements INetworkType
    {
       
-      public static const protocolId:uint = 4551;
+      public static const protocolId:uint = 6815;
        
       
       public var allianceInformations:AllianceInformations;
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 4551;
+         return 6815;
       }
       
       public function initHumanOptionAlliance(allianceInformations:AllianceInformations = null, aggressable:uint = 0) : HumanOptionAlliance

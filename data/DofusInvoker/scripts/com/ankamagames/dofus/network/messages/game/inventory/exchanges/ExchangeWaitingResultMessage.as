@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeWaitingResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3941;
+      public static const protocolId:uint = 134;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 3941;
+         return 134;
       }
       
       public function initExchangeWaitingResultMessage(bwait:Boolean = false) : ExchangeWaitingResultMessage

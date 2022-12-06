@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class GameRolePlayMerchantInformations extends GameRolePlayNamedActorInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 2148;
+      public static const protocolId:uint = 3744;
        
       
       public var sellType:uint = 0;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 2148;
+         return 3744;
       }
       
       public function initGameRolePlayMerchantInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, name:String = "", sellType:uint = 0, options:Vector.<HumanOption> = null) : GameRolePlayMerchantInformations

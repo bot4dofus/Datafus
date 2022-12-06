@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach
    public class BreachTeleportRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8016;
+      public static const protocolId:uint = 2639;
        
       
       public function BreachTeleportRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach
       
       override public function getMessageId() : uint
       {
-         return 8016;
+         return 2639;
       }
       
       public function initBreachTeleportRequestMessage() : BreachTeleportRequestMessage

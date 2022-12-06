@@ -22,6 +22,7 @@ package com.ankamagames.dofus.datacenter.effects.instances
          o.rawZone = rawZone;
          o.effectUid = effectUid;
          o.effectId = effectId;
+         o.baseEffectId = baseEffectId;
          o.order = order;
          o.duration = duration;
          o.delay = delay;

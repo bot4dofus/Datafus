@@ -36,6 +36,8 @@ package com.ankamagames.dofus.internalDatacenter.house
       
       public var isLocked:Boolean;
       
+      public var isAdminLocked:Boolean;
+      
       public var guildIdentity:GuildWrapper;
       
       public var indexOfThisInstanceForTheOwner:int = -1;
@@ -67,6 +69,7 @@ package com.ankamagames.dofus.internalDatacenter.house
          houseInstance.isOnSale = instanceInformations.price > 0;
          houseInstance.isSaleLocked = instanceInformations.isSaleLocked;
          houseInstance.isLocked = instanceInformations.isLocked;
+         houseInstance.isAdminLocked = instanceInformations.isAdminLocked;
          houseInstance.indexOfThisInstanceForTheOwner = indexOfThisInstanceForTheOwner;
          if(instanceInformations is HouseGuildedInformations)
          {
@@ -87,6 +90,7 @@ package com.ankamagames.dofus.internalDatacenter.house
          houseInstance.price = houseInside.houseInfos.price;
          houseInstance.isOnSale = houseInside.houseInfos.price > 0;
          houseInstance.isLocked = houseInside.houseInfos.isLocked;
+         houseInstance.isAdminLocked = houseInside.houseInfos.isAdminLocked;
          if(houseInside.houseInfos is HouseGuildedInformations)
          {
             hgi = houseInside.houseInfos as HouseGuildedInformations;
@@ -106,6 +110,7 @@ package com.ankamagames.dofus.internalDatacenter.house
          houseInstance.price = houseOwned.houseInfos.price;
          houseInstance.isOnSale = houseOwned.houseInfos.price > 0;
          houseInstance.isLocked = houseOwned.houseInfos.isLocked;
+         houseInstance.isAdminLocked = houseOwned.houseInfos.isAdminLocked;
          if(houseOwned.houseInfos is HouseGuildedInformations)
          {
             hgi = houseOwned.houseInfos as HouseGuildedInformations;

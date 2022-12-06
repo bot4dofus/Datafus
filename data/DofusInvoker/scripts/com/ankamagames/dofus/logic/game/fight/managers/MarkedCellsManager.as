@@ -27,6 +27,7 @@ package com.ankamagames.dofus.logic.game.fight.managers
    import com.ankamagames.jerakine.types.zones.Cross;
    import com.ankamagames.jerakine.types.zones.Custom;
    import com.ankamagames.jerakine.types.zones.Lozenge;
+   import com.ankamagames.jerakine.utils.display.spellZone.SpellShapeEnum;
    import com.ankamagames.jerakine.utils.errors.SingletonError;
    import flash.utils.Dictionary;
    import flash.utils.getQualifiedClassName;
@@ -117,11 +118,11 @@ package com.ankamagames.dofus.logic.game.fight.managers
                }
                if(markedCell.cellsType == GameActionMarkCellsTypeEnum.CELLS_CROSS)
                {
-                  s.zone = new Cross(0,markedCell.zoneSize,DataMapProvider.getInstance());
+                  s.zone = new Cross(SpellShapeEnum.UNKNOWN,0,markedCell.zoneSize,DataMapProvider.getInstance());
                }
                else if(markedCell.zoneSize > 0)
                {
-                  s.zone = new Lozenge(0,markedCell.zoneSize,DataMapProvider.getInstance());
+                  s.zone = new Lozenge(SpellShapeEnum.UNKNOWN,0,markedCell.zoneSize,DataMapProvider.getInstance());
                }
                else
                {

@@ -754,7 +754,7 @@ package com.ankamagames.dofus.logic.game.fight.managers
          var avgX:int = zonesMaxX - zonesMinX;
          var avgY:int = Math.abs(zonesMinY) + Math.abs(zonesMaxY);
          var centerCellId:int = CellIdConverter.coordToCellId(avgX / 2 + zonesMinX,avgY / 2 + zonesMinY);
-         var l:ZRectangle = new ZRectangle(0,avgX / 2,avgY / 2,null);
+         var l:ZRectangle = new ZRectangle(0,avgX / 2,avgY / 2,false,null);
          var collideCells:Vector.<uint> = l.getCells(centerCellId);
          if(this._debugMode && this._showFightZone)
          {

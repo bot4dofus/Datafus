@@ -65,6 +65,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.jerakine.types.zones.Cross;
    import com.ankamagames.jerakine.types.zones.Custom;
    import com.ankamagames.jerakine.utils.display.KeyPoll;
+   import com.ankamagames.jerakine.utils.display.spellZone.SpellShapeEnum;
    import com.ankamagames.jerakine.utils.pattern.PatternDecoder;
    import damageCalculation.tools.StatIds;
    import flash.display.Sprite;
@@ -817,7 +818,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                {
                   orientation++;
                }
-               this._movementTargetSelection.zone = new Cross(0,0,DataMapProvider.getInstance());
+               this._movementTargetSelection.zone = new Cross(SpellShapeEnum.UNKNOWN,0,0,DataMapProvider.getInstance());
                ZoneClipRenderer(this._movementTargetSelection.renderer).clipNames = ["pathEnd_" + orientation];
             }
             ZoneClipRenderer(this._movementTargetSelection.renderer).currentStrata = !!Atouin.getInstance().options.getOption("transparentOverlayMode") ? uint(PlacementStrataEnums.STRATA_NO_Z_ORDER) : uint(PlacementStrataEnums.STRATA_AREA);

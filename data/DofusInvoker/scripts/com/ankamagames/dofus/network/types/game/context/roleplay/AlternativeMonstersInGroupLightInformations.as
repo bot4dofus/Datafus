@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class AlternativeMonstersInGroupLightInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 2119;
+      public static const protocolId:uint = 9311;
        
       
       public var playerCount:int = 0;
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       public function getTypeId() : uint
       {
-         return 2119;
+         return 9311;
       }
       
       public function initAlternativeMonstersInGroupLightInformations(playerCount:int = 0, monsters:Vector.<MonsterInGroupLightInformations> = null) : AlternativeMonstersInGroupLightInformations

@@ -1,58 +1,28 @@
 package com.ankamagames.jerakine.types.zones
 {
-   import com.ankamagames.jerakine.logger.Log;
-   import com.ankamagames.jerakine.logger.Logger;
-   import flash.utils.getQualifiedClassName;
+   import com.ankamagames.jerakine.map.IDataMapProvider;
+   import com.ankamagames.jerakine.utils.display.spellZone.SpellShapeEnum;
    
-   public class Custom implements IZone
+   public class Custom extends DisplayZone
    {
-      
-      protected static const _log:Logger = Log.getLogger(getQualifiedClassName(Custom));
        
       
-      private var _aCells:Vector.<uint>;
+      private var _cells:Vector.<uint>;
       
-      public function Custom(cells:Vector.<uint>)
+      public function Custom(cells:Vector.<uint>, dataMapProvider:IDataMapProvider = null)
       {
-         super();
-         this._aCells = cells;
+         super(SpellShapeEnum.UNKNOWN,0,0,dataMapProvider);
+         this._cells = cells;
       }
       
-      public function get radius() : uint
+      override public function get surface() : uint
       {
-         return null;
+         return this._cells.length;
       }
       
-      public function set radius(n:uint) : void
+      override public function getCells(cellId:uint = 0) : Vector.<uint>
       {
-      }
-      
-      public function get surface() : uint
-      {
-         return this._aCells.length;
-      }
-      
-      public function set minRadius(r:uint) : void
-      {
-      }
-      
-      public function get minRadius() : uint
-      {
-         return null;
-      }
-      
-      public function set direction(d:uint) : void
-      {
-      }
-      
-      public function get direction() : uint
-      {
-         return null;
-      }
-      
-      public function getCells(cellId:uint = 0) : Vector.<uint>
-      {
-         return this._aCells;
+         return this._cells;
       }
    }
 }

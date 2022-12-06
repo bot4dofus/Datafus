@@ -201,17 +201,20 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
          }
          var needFreeCell:Boolean = false;
          var needTakenCell:Boolean = false;
+         var needVisibleEntity:Boolean = false;
          if(spellWrapper !== null)
          {
             needFreeCell = spellWrapper.needFreeCellWithModifiers;
             needTakenCell = spellWrapper.needTakenCellWithModifiers;
+            needVisibleEntity = spellWrapper.needVisibleEntityWithModifiers;
          }
          else if(spell is SpellLevel)
          {
             needFreeCell = (spell as SpellLevel).needFreeCell;
             needTakenCell = (spell as SpellLevel).needTakenCell;
+            needVisibleEntity = (spell as SpellLevel).needVisibleEntity;
          }
-         return new HaxeSpell(!!isWeapon ? 0 : int(spell.spellId),translatedEffects,translatedCriticalEffects,spellLevel,canAlwaysTriggerSpells,isWeapon,spell.minRange,spell.range,spell.criticalHitProbability,needFreeCell,needTakenCell,spell is SpellLevel ? int((spell as SpellLevel).maxStack) : -1);
+         return new HaxeSpell(!!isWeapon ? 0 : int(spell.spellId),translatedEffects,translatedCriticalEffects,spellLevel,canAlwaysTriggerSpells,isWeapon,spell.minRange,spell.range,spell.criticalHitProbability,needFreeCell,needTakenCell,needVisibleEntity,spell is SpellLevel ? int((spell as SpellLevel).maxStack) : -1);
       }
       
       private static function loadEffectArray(spell:Object, sourceEffects:Vector.<EffectInstance>, isWeapon:Boolean, isCritical:Boolean) : Array

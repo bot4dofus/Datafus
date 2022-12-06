@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightTurnStartPlayingMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5203;
+      public static const protocolId:uint = 9088;
        
       
       public function GameFightTurnStartPlayingMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 5203;
+         return 9088;
       }
       
       public function initGameFightTurnStartPlayingMessage() : GameFightTurnStartPlayingMessage

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.house
    public class HouseInstanceInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 2394;
+      public static const protocolId:uint = 5383;
        
       
       public var instanceId:uint = 0;
@@ -27,6 +27,8 @@ package com.ankamagames.dofus.network.types.game.house
       
       public var isSaleLocked:Boolean = false;
       
+      public var isAdminLocked:Boolean = false;
+      
       private var _ownerTagtree:FuncTree;
       
       public function HouseInstanceInformations()
@@ -37,10 +39,10 @@ package com.ankamagames.dofus.network.types.game.house
       
       public function getTypeId() : uint
       {
-         return 2394;
+         return 5383;
       }
       
-      public function initHouseInstanceInformations(instanceId:uint = 0, secondHand:Boolean = false, isLocked:Boolean = false, ownerTag:AccountTagInformation = null, hasOwner:Boolean = false, price:Number = 0, isSaleLocked:Boolean = false) : HouseInstanceInformations
+      public function initHouseInstanceInformations(instanceId:uint = 0, secondHand:Boolean = false, isLocked:Boolean = false, ownerTag:AccountTagInformation = null, hasOwner:Boolean = false, price:Number = 0, isSaleLocked:Boolean = false, isAdminLocked:Boolean = false) : HouseInstanceInformations
       {
          this.instanceId = instanceId;
          this.secondHand = secondHand;
@@ -49,6 +51,7 @@ package com.ankamagames.dofus.network.types.game.house
          this.hasOwner = hasOwner;
          this.price = price;
          this.isSaleLocked = isSaleLocked;
+         this.isAdminLocked = isAdminLocked;
          return this;
       }
       
@@ -60,6 +63,7 @@ package com.ankamagames.dofus.network.types.game.house
          this.ownerTag = new AccountTagInformation();
          this.price = 0;
          this.isSaleLocked = false;
+         this.isAdminLocked = false;
       }
       
       public function serialize(output:ICustomDataOutput) : void
@@ -74,6 +78,7 @@ package com.ankamagames.dofus.network.types.game.house
          _box0 = BooleanByteWrapper.setFlag(_box0,1,this.isLocked);
          _box0 = BooleanByteWrapper.setFlag(_box0,2,this.hasOwner);
          _box0 = BooleanByteWrapper.setFlag(_box0,3,this.isSaleLocked);
+         _box0 = BooleanByteWrapper.setFlag(_box0,4,this.isAdminLocked);
          output.writeByte(_box0);
          if(this.instanceId < 0)
          {
@@ -122,6 +127,7 @@ package com.ankamagames.dofus.network.types.game.house
          this.isLocked = BooleanByteWrapper.getFlag(_box0,1);
          this.hasOwner = BooleanByteWrapper.getFlag(_box0,2);
          this.isSaleLocked = BooleanByteWrapper.getFlag(_box0,3);
+         this.isAdminLocked = BooleanByteWrapper.getFlag(_box0,4);
       }
       
       private function _instanceIdFunc(input:ICustomDataInput) : void

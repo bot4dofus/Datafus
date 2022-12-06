@@ -49,6 +49,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.network.messages.game.actions.sequence.SequenceEndMessage;
    import com.ankamagames.dofus.network.messages.game.actions.sequence.SequenceStartMessage;
    import com.ankamagames.dofus.network.messages.game.character.stats.CharacterStatsListMessage;
+   import com.ankamagames.dofus.network.messages.game.character.stats.RemoveSpellModifierMessage;
    import com.ankamagames.dofus.network.messages.game.character.stats.UpdateSpellModifierMessage;
    import com.ankamagames.dofus.network.messages.game.context.GameContextDestroyMessage;
    import com.ankamagames.dofus.network.messages.game.context.fight.GameFightEndMessage;
@@ -314,6 +315,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var maxEndRescue:uint = 0;
          var gfpmsg:GameFightPauseMessage = null;
          var usmmsg:UpdateSpellModifierMessage = null;
+         var rsmmsg:RemoveSpellModifierMessage = null;
          var fighter:GameFightFighterInformations = null;
          var effectTrigger:GameFightEffectTriggerCount = null;
          var buffTriggered:BasicBuff = null;
@@ -737,6 +739,10 @@ package com.ankamagames.dofus.logic.game.fight.frames
             case msg is UpdateSpellModifierMessage:
                usmmsg = msg as UpdateSpellModifierMessage;
                SpellModifiersManager.getInstance().setRawSpellModifier(usmmsg.actorId,usmmsg.spellModifier);
+               return true;
+            case msg is RemoveSpellModifierMessage:
+               rsmmsg = msg as RemoveSpellModifierMessage;
+               SpellModifiersManager.getInstance().deleteSpellModifier(rsmmsg.actorId,rsmmsg.spellId,rsmmsg.modificationType);
                return true;
             default:
                return false;

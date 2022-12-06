@@ -1448,6 +1448,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var sb:StateBuff = null;
          var step:AbstractSequencable = null;
          var actionId:int = 0;
+         var targetBuffs:Array = null;
+         var oldBuff:BasicBuff = null;
          if(GameDebugManager.getInstance().buffsDebugActivated)
          {
             e = Effect.getEffectById(gaftbmsg.actionId);
@@ -1489,6 +1491,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          }
          var buffEffect:AbstractFightDispellableEffect = gaftbmsg.effect;
          var buff:BasicBuff = BuffManager.makeBuffFromEffect(buffEffect,myCastingSpell,gaftbmsg.actionId);
+         var targetId:Number = gaftbmsg.effect.targetId;
          if(buff is StateBuff)
          {
             sb = buff as StateBuff;
@@ -1523,11 +1526,25 @@ package com.ankamagames.dofus.logic.game.fight.frames
                {
                   buff.effect.visibleInBuffUi = true;
                }
-               this.pushStep(new FightTemporaryBoostStep(gaftbmsg.effect.targetId,buff.effect.description,buff.effect.duration,buff.effect.durationString,buff.effect.visibleInFightLog,buff));
+               if(actionId === ActionIds.ACTION_SET_SPELL_RANGE_MAX || actionId === ActionIds.ACTION_SET_SPELL_RANGE_MIN)
+               {
+                  targetBuffs = BuffManager.getInstance().getAllBuff(gaftbmsg.effect.targetId);
+                  if(targetBuffs !== null)
+                  {
+                     for each(oldBuff in targetBuffs)
+                     {
+                        if(oldBuff.effect.effectUid === buff.effect.effectUid)
+                        {
+                           this.pushStep(new FightDispellEffectStep(targetId,oldBuff.id));
+                        }
+                     }
+                  }
+               }
+               this.pushStep(new FightTemporaryBoostStep(targetId,buff.effect.description,buff.effect.duration,buff.effect.durationString,buff.effect.visibleInFightLog,buff));
             }
             if(actionId == ActionIds.ACTION_CHARACTER_BOOST_SHIELD)
             {
-               this.pushStep(new FightShieldPointsVariationStep(gaftbmsg.effect.targetId,(buff as StatBuff).delta,ElementEnum.ELEMENT_NONE));
+               this.pushStep(new FightShieldPointsVariationStep(targetId,(buff as StatBuff).delta,ElementEnum.ELEMENT_NONE));
             }
          }
          this.pushStep(new FightDisplayBuffStep(buff));

@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.chat
    public class ChatClientPrivateMessage extends ChatAbstractClientMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6507;
+      public static const protocolId:uint = 398;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.chat
       
       override public function getMessageId() : uint
       {
-         return 6507;
+         return 398;
       }
       
       public function initChatClientPrivateMessage(content:String = "", receiver:AbstractPlayerSearchInformation = null) : ChatClientPrivateMessage

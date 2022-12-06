@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.shortcut
    public class ShortcutSpell extends Shortcut implements INetworkType
    {
       
-      public static const protocolId:uint = 7472;
+      public static const protocolId:uint = 8571;
        
       
       public var spellId:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.shortcut
       
       override public function getTypeId() : uint
       {
-         return 7472;
+         return 8571;
       }
       
       public function initShortcutSpell(slot:uint = 0, spellId:uint = 0) : ShortcutSpell

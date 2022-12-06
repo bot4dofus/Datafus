@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt
    public class TreasureHuntFlag implements INetworkType
    {
       
-      public static const protocolId:uint = 7446;
+      public static const protocolId:uint = 1394;
        
       
       public var mapId:Number = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt
       
       public function getTypeId() : uint
       {
-         return 7446;
+         return 1394;
       }
       
       public function initTreasureHuntFlag(mapId:Number = 0, state:uint = 0) : TreasureHuntFlag

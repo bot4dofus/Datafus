@@ -5,7 +5,7 @@ package com.ankamagames.atouin.types
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.types.Color;
-   import com.ankamagames.jerakine.types.zones.IZone;
+   import com.ankamagames.jerakine.types.zones.DisplayZone;
    import flash.utils.getQualifiedClassName;
    
    public class Selection
@@ -18,7 +18,7 @@ package com.ankamagames.atouin.types
       
       public var renderer:IZoneRenderer;
       
-      public var zone:IZone;
+      public var zone:DisplayZone;
       
       public var cells:Vector.<uint>;
       

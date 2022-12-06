@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightResultFighterListEntry extends FightResultListEntry implements INetworkType
    {
       
-      public static const protocolId:uint = 8625;
+      public static const protocolId:uint = 8547;
        
       
       public var id:Number = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 8625;
+         return 8547;
       }
       
       public function initFightResultFighterListEntry(outcome:uint = 0, wave:uint = 0, rewards:FightLoot = null, id:Number = 0, alive:Boolean = false) : FightResultFighterListEntry

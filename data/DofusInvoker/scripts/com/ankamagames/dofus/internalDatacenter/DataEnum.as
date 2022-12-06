@@ -5,6 +5,8 @@ package com.ankamagames.dofus.internalDatacenter
    public class DataEnum implements IDataCenter
    {
       
+      public static const BREED_ECAFLIP:int = 6;
+      
       public static const BREED_PANDAWA:int = 12;
       
       public static const BREED_ROGUE:int = 13;
@@ -525,9 +527,11 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const BASE_EFFECT_CATEGORY_GOOD_THING:uint = 83;
       
-      public static const BASE_EFFECT_CATEGORY_TIME_OF_USE:uint = 477;
+      public static const BASE_EFFECT_CATEGORY_TIME_OF_USE_MINUTES:uint = 477;
       
       public static const BASE_EFFECT_ADD_ALTERATION:uint = 493;
+      
+      public static const BASE_EFFECT_CATEGORY_TIME_OF_USE_HOURS:uint = 510;
       
       public static const ACHIEVEMENT_CAT_MODSTERS_HIDDEN:uint = 130;
        

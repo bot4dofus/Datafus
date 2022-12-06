@@ -189,11 +189,6 @@ package com.ankamagames.dofus.logic.connection.frames
          var tmpHost:String = null;
          var randomHost:Object = null;
          var port:uint = 0;
-         var rawParam:String = null;
-         var params:Array = null;
-         var tmp:Array = null;
-         var param:String = null;
-         var tmp2:Array = null;
          var retryConnInfo:Object = null;
          var i:int = 0;
          var elapsedSeconds:Number = NaN;
@@ -310,29 +305,6 @@ package com.ankamagames.dofus.logic.connection.frames
                   }
                }
                this._connexionSequence = firstConnexionSequence.concat(this._connexionSequence);
-               if(Constants.EVENT_MODE)
-               {
-                  rawParam = Constants.EVENT_MODE_PARAM;
-                  if(rawParam && rawParam.charAt(0) != "!")
-                  {
-                     rawParam = Base64.decode(rawParam);
-                     params = [];
-                     tmp = rawParam.split(",");
-                     for each(param in tmp)
-                     {
-                        tmp2 = param.split(":");
-                        params[tmp2[0]] = tmp2[1];
-                     }
-                     if(params["login"])
-                     {
-                        lva.username = params["login"];
-                     }
-                     if(params["password"])
-                     {
-                        lva.password = params["password"];
-                     }
-                  }
-               }
                AuthentificationManager.getInstance().setValidationAction(lva);
                connInfo = this._connexionSequence.shift();
                ConnectionsHandler.connectToLoginServer(connInfo.host,connInfo.port);

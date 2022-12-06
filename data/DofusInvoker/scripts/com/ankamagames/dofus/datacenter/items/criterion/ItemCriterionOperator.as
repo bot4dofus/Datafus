@@ -13,7 +13,11 @@ package com.ankamagames.dofus.datacenter.items.criterion
       
       public static const DIFFERENT:String = "!";
       
-      public static const OPERATORS_LIST:Array = [SUPERIOR,INFERIOR,EQUAL,DIFFERENT,"#","~","s","S","e","E","v","i","X","/"];
+      public static const EQUIPPED:String = "E";
+      
+      public static const NOT_EQUIPPED:String = "X";
+      
+      public static const OPERATORS_LIST:Array = [SUPERIOR,INFERIOR,EQUAL,DIFFERENT,EQUIPPED,NOT_EQUIPPED,"#","~","s","S","e","v","i","/"];
        
       
       private var _operator:String;

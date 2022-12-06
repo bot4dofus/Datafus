@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.presets
    public class InvalidPresetsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2757;
+      public static const protocolId:uint = 9117;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.presets
       
       override public function getMessageId() : uint
       {
-         return 2757;
+         return 9117;
       }
       
       public function initInvalidPresetsMessage(presetIds:Vector.<uint> = null) : InvalidPresetsMessage

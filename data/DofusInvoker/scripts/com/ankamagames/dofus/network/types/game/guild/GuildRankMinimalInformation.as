@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.guild
    public class GuildRankMinimalInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 7815;
+      public static const protocolId:uint = 9298;
        
       
       public var id:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.guild
       
       public function getTypeId() : uint
       {
-         return 7815;
+         return 9298;
       }
       
       public function initGuildRankMinimalInformation(id:uint = 0, name:String = "") : GuildRankMinimalInformation

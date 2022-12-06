@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.job
    public class JobMultiCraftAvailableSkillsMessage extends JobAllowMultiCraftRequestMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5045;
+      public static const protocolId:uint = 3080;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.job
       
       override public function getMessageId() : uint
       {
-         return 5045;
+         return 3080;
       }
       
       public function initJobMultiCraftAvailableSkillsMessage(enabled:Boolean = false, playerId:Number = 0, skills:Vector.<uint> = null) : JobMultiCraftAvailableSkillsMessage

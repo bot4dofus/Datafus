@@ -5,6 +5,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
    import com.ankamagames.dofus.logic.game.common.managers.InventoryManager;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
+   import com.ankamagames.jerakine.utils.pattern.PatternDecoder;
    
    public class ObjectItemCriterion extends ItemCriterion implements IDataCenter
    {
@@ -31,6 +32,9 @@ package com.ankamagames.dofus.datacenter.items.criterion
       override public function get isRespected() : Boolean
       {
          var iw:ItemWrapper = null;
+         var equippedItems:Vector.<ItemWrapper> = null;
+         var equipped:Boolean = false;
+         var item:ItemWrapper = null;
          var itemQuantity:uint = 0;
          for each(iw in InventoryManager.getInstance().realInventory)
          {
@@ -40,23 +44,37 @@ package com.ankamagames.dofus.datacenter.items.criterion
                break;
             }
          }
-         if(_operator.text == ItemCriterionOperator.EQUAL)
+         switch(_operator.text)
          {
-            return this._criterionValueQuantity == -1 ? itemQuantity > 0 : itemQuantity == this._criterionValueQuantity;
+            case ItemCriterionOperator.EQUAL:
+               return this._criterionValueQuantity == -1 ? itemQuantity > 0 : itemQuantity == this._criterionValueQuantity;
+            case ItemCriterionOperator.DIFFERENT:
+               return this._criterionValueQuantity == -1 ? itemQuantity == 0 : itemQuantity != this._criterionValueQuantity;
+            case ItemCriterionOperator.SUPERIOR:
+               return itemQuantity > Math.max(this._criterionValueQuantity,0);
+            case ItemCriterionOperator.INFERIOR:
+               return itemQuantity < Math.max(this._criterionValueQuantity,1);
+            case ItemCriterionOperator.EQUIPPED:
+            case ItemCriterionOperator.NOT_EQUIPPED:
+               equippedItems = InventoryManager.getInstance().inventory.getView("equipment").content;
+               equipped = false;
+               for each(item in equippedItems)
+               {
+                  if(item != null && iw.objectGID == item.objectGID)
+                  {
+                     equipped = true;
+                     break;
+                  }
+               }
+               if(_operator.text == ItemCriterionOperator.EQUIPPED)
+               {
+                  return equipped;
+               }
+               return !equipped;
+               break;
+            default:
+               return false;
          }
-         if(_operator.text == ItemCriterionOperator.DIFFERENT)
-         {
-            return this._criterionValueQuantity == -1 ? itemQuantity == 0 : itemQuantity != this._criterionValueQuantity;
-         }
-         if(_operator.text == ItemCriterionOperator.SUPERIOR)
-         {
-            return itemQuantity > Math.max(this._criterionValueQuantity,0);
-         }
-         if(_operator.text == ItemCriterionOperator.INFERIOR)
-         {
-            return itemQuantity < Math.max(this._criterionValueQuantity,1);
-         }
-         return false;
       }
       
       override public function get text() : String
@@ -92,7 +110,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
                }
                else
                {
-                  readableCriterion = I18n.getUiText("ui.common.doPossessQuantityOrMore",[this._criterionValueQuantity + 1,objectName]);
+                  readableCriterion = PatternDecoder.combine(I18n.getUiText("ui.common.doPossessQuantityOrMore",[this._criterionValueQuantity + 1,objectName]),"n",this._criterionValueQuantity == 1,this._criterionValueQuantity == 0);
                }
                break;
             case ItemCriterionOperator.INFERIOR:
@@ -102,8 +120,14 @@ package com.ankamagames.dofus.datacenter.items.criterion
                }
                else
                {
-                  readableCriterion = I18n.getUiText("ui.common.doPossessQuantityOrLess",[this._criterionValueQuantity - 1,objectName]);
+                  readableCriterion = PatternDecoder.combine(I18n.getUiText("ui.common.doPossessQuantityOrLess",[this._criterionValueQuantity - 1,objectName]),"n",this._criterionValueQuantity == 1,this._criterionValueQuantity == 0);
                }
+               break;
+            case ItemCriterionOperator.EQUIPPED:
+               readableCriterion = I18n.getUiText("ui.common.doEquip",[objectName]);
+               break;
+            case ItemCriterionOperator.NOT_EQUIPPED:
+               readableCriterion = I18n.getUiText("ui.common.doNotEquip",[objectName]);
          }
          return readableCriterion;
       }

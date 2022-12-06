@@ -4,6 +4,7 @@ package com.ankamagames.dofus.console.debug
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.jerakine.console.ConsoleHandler;
    import com.ankamagames.jerakine.console.ConsoleInstructionHandler;
+   import com.ankamagames.jerakine.data.I18n;
    
    public class CinematicInstructionHandler implements ConsoleInstructionHandler
    {
@@ -28,6 +29,15 @@ package com.ankamagames.dofus.console.debug
          }
       }
       
+      public function getArgs(cmd:String) : Array
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return [];
+      }
+      
       public function getHelp(cmd:String) : String
       {
          switch(cmd)
@@ -35,8 +45,26 @@ package com.ankamagames.dofus.console.debug
             case "cinematic":
                return "Play cinematic for given id";
             default:
-               return "Unknown command";
+               return "No help for command \'" + cmd + "\'";
          }
+      }
+      
+      public function getMan(cmd:String) : String
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return I18n.getUiText("ui.chat.console.noMan",[cmd]);
+      }
+      
+      public function getExamples(cmd:String) : String
+      {
+         var _loc2_:* = cmd;
+         switch(0)
+         {
+         }
+         return I18n.getUiText("ui.chat.console.noExample",[cmd]);
       }
       
       public function getParamPossibilities(cmd:String, paramIndex:uint = 0, currentParams:Array = null) : Array

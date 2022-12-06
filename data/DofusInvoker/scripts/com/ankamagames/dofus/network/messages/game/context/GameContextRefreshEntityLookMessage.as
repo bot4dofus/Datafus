@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameContextRefreshEntityLookMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4138;
+      public static const protocolId:uint = 3848;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 4138;
+         return 3848;
       }
       
       public function initGameContextRefreshEntityLookMessage(id:Number = 0, look:EntityLook = null) : GameContextRefreshEntityLookMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.chat.channel
    public class EnabledChannelsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7605;
+      public static const protocolId:uint = 9386;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.chat.channel
       
       override public function getMessageId() : uint
       {
-         return 7605;
+         return 9386;
       }
       
       public function initEnabledChannelsMessage(channels:Vector.<uint> = null, disallowed:Vector.<uint> = null) : EnabledChannelsMessage

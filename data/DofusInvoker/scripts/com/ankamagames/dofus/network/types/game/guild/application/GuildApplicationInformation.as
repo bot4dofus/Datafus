@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.guild.application
    public class GuildApplicationInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 6360;
+      public static const protocolId:uint = 8441;
        
       
       public var playerInfo:ApplicationPlayerInformation;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.types.game.guild.application
       
       public function getTypeId() : uint
       {
-         return 6360;
+         return 8441;
       }
       
       public function initGuildApplicationInformation(playerInfo:ApplicationPlayerInformation = null, applyText:String = "", creationDate:Number = 0) : GuildApplicationInformation
