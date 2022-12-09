@@ -51531,6 +51531,36 @@
 			"tooltipExpirationDate": NaN
 		},
 		{
+			"resultId": 12706,
+			"resultNameId": 982578,
+			"resultTypeId": 151,
+			"resultLevel": 150,
+			"ingredientIds": [
+				845,
+				16001,
+				2516,
+				11243,
+				12705,
+				12728,
+				12733,
+				12740
+			],
+			"quantities": [
+				1,
+				1,
+				2,
+				1,
+				1,
+				1,
+				1,
+				2
+			],
+			"jobId": 60,
+			"skillId": 201,
+			"changeVersion": "2.57",
+			"tooltipExpirationDate": 1625090400000.0
+		},
+		{
 			"resultId": 12707,
 			"resultNameId": 34125,
 			"resultTypeId": 151,
