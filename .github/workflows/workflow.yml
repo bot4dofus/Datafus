@@ -33,24 +33,29 @@ jobs:
           python-version: 3.8
 
       - name: Setup Java
+        if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
 
       - name: A1 - Extract DofusInvoker.swf
+        if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
           chmod +x src/A1.sh
           src/A1.sh data/DofusInvoker.swf data/DofusInvoker/
 
       - name: A2 - Build .json
+        if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
             python src/A2.py data/DofusInvoker/scripts/com/ data/events.json
 
       - name: A3 - Build .properties
+        if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
             python src/A3.py data/events.json data/events.properties
 
       - name: Get latest Dofus version
+        if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
           chmod +x devscript/latest-dofus-version.sh
           export DOFUS_VERSION=$(devscript/latest-dofus-version.sh)
@@ -60,6 +65,7 @@ jobs:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - name: Commit and push
+        if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         uses: EndBug/add-and-commit@v7
         with:
           add: '["data/DofusInvoker/", "data/events.json", "data/events.properties"]'
@@ -88,10 +94,12 @@ jobs:
           python-version: 3.8
 
       - name: B1 - Build .json
+        if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
             python src/B1.py data/d2o/ data/entities_json/
 
       - name: Get latest Dofus version
+        if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
           chmod +x devscript/latest-dofus-version.sh
           export DOFUS_VERSION=$(devscript/latest-dofus-version.sh)
@@ -101,6 +109,7 @@ jobs:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - name: Commit and push
+        if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
         uses: EndBug/add-and-commit@v7
         with:
           add: '["data/entities_json/"]'
@@ -129,10 +138,12 @@ jobs:
           python-version: 3.8
 
       - name: C1 - Build .json
+        if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
             python src/C1.py data/d2i/ data/translations_json/
 
       - name: Get latest Dofus version
+        if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
           chmod +x devscript/latest-dofus-version.sh
           export DOFUS_VERSION=$(devscript/latest-dofus-version.sh)
@@ -142,6 +153,7 @@ jobs:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - name: Commit and push
+        if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
         uses: EndBug/add-and-commit@v7
         with:
           add: '["data/translations_json/"]'
