@@ -108305,6 +108305,22 @@
 			"spellsReward": [],
 			"titlesReward": [],
 			"ornamentsReward": []
+		},
+		{
+			"id": 9242,
+			"achievementId": 5934,
+			"criteria": "null",
+			"kamasRatio": 0.0,
+			"experienceRatio": 0.0,
+			"kamasScaleWithPlayerLevel": false,
+			"itemsReward": [],
+			"itemsQuantityReward": [],
+			"emotesReward": [],
+			"spellsReward": [],
+			"titlesReward": [],
+			"ornamentsReward": [
+				163
+			]
 		}
 	]
 }

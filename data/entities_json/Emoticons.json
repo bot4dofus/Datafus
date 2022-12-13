@@ -4013,6 +4013,21 @@
 			"duration": 3000,
 			"weight": 0,
 			"spellLevelId": 0
+		},
+		{
+			"id": 285,
+			"nameId": 985482,
+			"shortcutId": 985701,
+			"order": 508900,
+			"defaultAnim": "Djaul",
+			"persistancy": false,
+			"eight_directions": false,
+			"aura": false,
+			"anims": [],
+			"cooldown": 10720,
+			"duration": 10720,
+			"weight": 0,
+			"spellLevelId": 0
 		}
 	]
 }

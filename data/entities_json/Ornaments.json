@@ -1175,6 +1175,14 @@
 			"assetId": 162,
 			"iconId": 4,
 			"order": 154
+		},
+		{
+			"id": 163,
+			"nameId": 985509,
+			"visible": true,
+			"assetId": 163,
+			"iconId": 3,
+			"order": 155
 		}
 	]
 }

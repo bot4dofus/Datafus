@@ -26443,7 +26443,7 @@
 				2578
 			],
 			"isPartyQuest": false,
-			"startCriterion": "PL>49&((Pm=183764992&PG=1)|(Pm=183765004&PG=9)|(Pm=183766016&PG=6)|(Pm=148637185&PG=16)|(Pm=183763968&PG=7)|(Pm=17048576&PG=3)|(Pm=163054594&PG=17)|(Pm=183762952&PG=8)|(Pm=183762946&PG=2)|(Pm=177209344&PG=18)|(Pm=183769088&PG=12)|(Pm=67108864&PG=13)|(Pm=183767052&PG=11)|(Pm=183768078&PG=10)|(Pm=183768064&PG=4)|(Pm=96470528&PG=15)|(Pm=183763982&PG=5)|(Pm=69208064&PG=14))",
+			"startCriterion": "PL>49&((Pm=183764992&PG=1)|(Pm=183765004&PG=9)|(Pm=183766016&PG=6)|(Pm=148637185&PG=16)|(Pm=183763968&PG=7)|(Pm=17048576&PG=3)|(Pm=163054594&PG=17)|(Pm=183762952&PG=8)|(Pm=183762946&PG=2)|(Pm=177209344&PG=18)|(Pm=183769088&PG=12)|(Pm=67108864&PG=13)|(Pm=183767052&PG=11)|(Pm=183768078&PG=10)|(Pm=183768064&PG=4)|(Pm=96470528&PG=15)|(Pm=183763982&PG=5)|(Pm=69208064&PG=14)|(Pm=226492929&PG=20))",
 			"followable": true
 		},
 		{
@@ -31034,7 +31034,7 @@
 			"stepIds": [
 				3129
 			],
-			"isPartyQuest": false,
+			"isPartyQuest": true,
 			"startCriterion": "Qf=2472",
 			"followable": true
 		},
@@ -31147,7 +31147,7 @@
 				3138
 			],
 			"isPartyQuest": true,
-			"startCriterion": "Qf=2480",
+			"startCriterion": "Qf=2480&(Qa=2477|Qf=2477)",
 			"followable": true
 		},
 		{
