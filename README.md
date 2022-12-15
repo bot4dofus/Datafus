@@ -2,7 +2,7 @@
   <img width="100%" src="https://github.com/LucBerge/Datafus/raw/master/images/banner_tags.drawio.svg" />
 </p>
 
-[![Workflow](https://img.shields.io/github/workflow/status/bot4dofus/Datafus/Workflow)](https://github.com/bot4dofus/Datafus/actions/workflows/workflow.yml)
+[![Workflow](https://img.shields.io/github/actions/workflow/status/LucBerge/Datafus/workflow.yml?branch=master)](https://github.com/bot4dofus/Datafus/actions/workflows/workflow.yml)
 [![Release](https://img.shields.io/github/v/release/LucBerge/Datafus)](https://github.com/LucBerge/Datafus/releases)
 [![License](https://img.shields.io/github/license/LucBerge/Datafus)](https://github.com/LucBerge/Datafus/blob/master/LICENSE)
   
