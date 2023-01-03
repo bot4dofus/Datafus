@@ -107,31 +107,6 @@
 			"rewardId": 4294967295
 		},
 		{
-			"id": 161,
-			"monsterId": 6256,
-			"category": 4,
-			"apparitionCriterion": "Wf>129",
-			"accessCriterion": "OA=3020",
-			"incompatibleBosses": [
-				161,
-				108,
-				163,
-				129
-			],
-			"rewardId": 352
-		},
-		{
-			"id": 153,
-			"monsterId": 5806,
-			"category": 6,
-			"apparitionCriterion": "Wf>219",
-			"accessCriterion": "OA=2106",
-			"incompatibleBosses": [
-				153
-			],
-			"rewardId": 318
-		},
-		{
 			"id": 162,
 			"monsterId": 6326,
 			"category": 4,
@@ -394,19 +369,6 @@
 				177
 			],
 			"rewardId": 361
-		},
-		{
-			"id": 176,
-			"monsterId": 7210,
-			"category": 6,
-			"apparitionCriterion": "Wf>229",
-			"accessCriterion": "OA=5809",
-			"incompatibleBosses": [
-				176,
-				157,
-				138
-			],
-			"rewardId": 363
 		},
 		{
 			"id": 178,
@@ -2118,18 +2080,6 @@
 			"rewardId": 82
 		},
 		{
-			"id": 48,
-			"monsterId": 800,
-			"category": 2,
-			"apparitionCriterion": "Wf>49",
-			"accessCriterion": "OA=50",
-			"incompatibleBosses": [
-				48,
-				164
-			],
-			"rewardId": 8
-		},
-		{
 			"id": 107,
 			"monsterId": 3409,
 			"category": 6,
@@ -2332,6 +2282,56 @@
 				72
 			],
 			"rewardId": 41
+		},
+		{
+			"id": 48,
+			"monsterId": 800,
+			"category": 2,
+			"apparitionCriterion": "Wf>49&(Sv=8000,0)",
+			"accessCriterion": "OA=50",
+			"incompatibleBosses": [
+				48,
+				164
+			],
+			"rewardId": 8
+		},
+		{
+			"id": 176,
+			"monsterId": 7210,
+			"category": 6,
+			"apparitionCriterion": "Wf>229&(Sv=8110,0)",
+			"accessCriterion": "OA=5809",
+			"incompatibleBosses": [
+				176,
+				157,
+				138
+			],
+			"rewardId": 363
+		},
+		{
+			"id": 153,
+			"monsterId": 5806,
+			"category": 6,
+			"apparitionCriterion": "Wf>219&(Sv=8137,0)",
+			"accessCriterion": "OA=2106",
+			"incompatibleBosses": [
+				153
+			],
+			"rewardId": 318
+		},
+		{
+			"id": 161,
+			"monsterId": 6256,
+			"category": 4,
+			"apparitionCriterion": "Wf>129&(Sv=8065,0)",
+			"accessCriterion": "OA=3020",
+			"incompatibleBosses": [
+				161,
+				108,
+				163,
+				129
+			],
+			"rewardId": 352
 		}
 	]
 }
