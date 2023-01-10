@@ -380,14 +380,6 @@ package com.ankamagames.dofus.logic.game.fight.types
                finalStr += randomGroup.toString() + "\n";
             }
          }
-         if(this.telefrag)
-         {
-            finalStr += SpellState.getSpellStateById(DataEnum.SPELL_STATE_TELEFRAG_ALLY).name;
-         }
-         else if(finalStr.charAt(finalStr.length - 1) == "\n")
-         {
-            finalStr = finalStr.substring(0,finalStr.length - 1);
-         }
          return finalStr;
       }
    }
