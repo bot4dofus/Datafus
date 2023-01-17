@@ -74,6 +74,7 @@ jobs:
 
   Job_B:
     runs-on: ubuntu-latest
+    needs: [Job_A]
 
     steps:
       - name: Checkout repository
@@ -118,6 +119,7 @@ jobs:
 
   Job_C:
     runs-on: ubuntu-latest
+    needs: [Job_B]
 
     steps:
       - name: Checkout repository
