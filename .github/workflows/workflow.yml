@@ -66,7 +66,7 @@ jobs:
 
       - name: Commit and push
         if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
-        uses: EndBug/add-and-commit@v7
+        uses: EndBug/add-and-commit@v9
         with:
           add: '["data/DofusInvoker/", "data/events.json", "data/events.properties"]'
           message: 'Job A - Update version ${{ env.VERSION }}'
@@ -110,7 +110,7 @@ jobs:
 
       - name: Commit and push
         if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
-        uses: EndBug/add-and-commit@v7
+        uses: EndBug/add-and-commit@v9
         with:
           add: '["data/entities_json/"]'
           message: 'Job B - Update version ${{ env.VERSION }}'
@@ -154,7 +154,7 @@ jobs:
 
       - name: Commit and push
         if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
-        uses: EndBug/add-and-commit@v7
+        uses: EndBug/add-and-commit@v9
         with:
           add: '["data/translations_json/"]'
           message: 'Job C - Update version ${{ env.VERSION }}'
