@@ -1,5 +1,6 @@
 DOFUS=$USERPROFILE/AppData/Local/Ankama/Dofus
 DOFUS=$((echo $DOFUS) | sed -r 's/[\]+/\//g')
+VERSION=$(bash latest-dofus-version.sh)
 
 git pull
 
@@ -25,6 +26,6 @@ git add ../data/
 git status
 read -p "The following files will be commited. Press enter to continue. Press Ctrl+C to abort."
 
-git commit -m "Update files"
+git commit -m "Update Dofus files for version \"$VERSION\""
 git push
 read -p "Press enter to continue."
