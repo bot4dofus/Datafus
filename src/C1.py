@@ -9,16 +9,14 @@ def save_file(file_name, data):
         json.dump(data, f, indent='\t', ensure_ascii=False)
 
 
-class D2IReader():
+class DofusFileReader():
 
-    FORMAT = b'D2I'
-
-    def __init__(self, file):
+    def __init__(self, file, file_format):
         self.file = file
+        self.file_format = file_format
 
     def readBytes(self, f, size):
-        r = f.read(size)
-        return r
+        return f.read(size)
 
     def readInt(self, f):
         r = struct.unpack('>i', self.readBytes(f, 4))
@@ -45,6 +43,14 @@ class D2IReader():
         string = self.readUtf(f)
         f.seek(previousLocation)
         return string
+
+
+class D2IReader(DofusFileReader):
+
+    FORMAT = b'D2I'
+
+    def __init__(self, file):
+        super().__init__(file, self.FORMAT)
 
     def read(self):
         data = {}
