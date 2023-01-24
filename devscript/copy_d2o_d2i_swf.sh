@@ -1,6 +1,7 @@
 DOFUS=$USERPROFILE/AppData/Local/Ankama/Dofus
 DOFUS=$((echo $DOFUS) | sed -r 's/[\]+/\//g')
 VERSION=$(bash latest-dofus-version.sh)
+COMMIT_MESSAGE="Update Dofus files for version \"$VERSION\""
 
 git pull
 
@@ -24,8 +25,8 @@ cp $DOFUS/DofusInvoker.swf ../data/DofusInvoker.swf
 
 git add ../data/
 git status
-read -p "The following files will be commited. Press enter to continue. Press Ctrl+C to abort."
+read -p "Those files will be commited with the following message: $COMMIT_MESSAGE. Press enter to continue. Press Ctrl+C to abort."
 
-git commit -m "Update Dofus files for version \"$VERSION\""
+git commit -m "$COMMIT_MESSAGE"
 git push
 read -p "Press enter to continue."
