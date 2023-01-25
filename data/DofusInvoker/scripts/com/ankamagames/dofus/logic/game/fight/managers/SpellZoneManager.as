@@ -11,8 +11,6 @@ package com.ankamagames.dofus.logic.game.fight.managers
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
    import com.ankamagames.dofus.logic.game.fight.miscs.DamageUtil;
-   import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayEntitiesFrame;
-   import com.ankamagames.dofus.network.types.game.context.GameContextActorInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
    import com.ankamagames.jerakine.interfaces.IDestroyable;
@@ -237,9 +235,8 @@ package com.ankamagames.dofus.logic.game.fight.managers
       public function getZone(shape:uint, size:uint, alternativeSize:uint, isWholeMapShapeIgnored:Boolean = false, isZoneStopAtTarget:uint = 0, isWeapon:Boolean = false, entityId:Number = NaN, entityCellId:int = -1) : DisplayZone
       {
          var casterId:Number = NaN;
-         var casterInfo:GameContextActorInformations = null;
+         var casterInfoCellId:int = 0;
          var shapeT:Cross = null;
-         var roleplayEntitiesFrame:RoleplayEntitiesFrame = null;
          switch(shape)
          {
             case SpellShapeEnum.X:
@@ -248,16 +245,12 @@ package com.ankamagames.dofus.logic.game.fight.managers
                return new Line(shape,0,size,DataMapProvider.getInstance());
             case SpellShapeEnum.l:
                casterId = !!isNaN(entityId) ? Number(CurrentPlayedFighterManager.getInstance().currentFighterId) : Number(entityId);
+               casterInfoCellId = 0;
                if(PlayedCharacterApi.getInstance().isInFight())
                {
-                  casterInfo = FightEntitiesFrame.getCurrentInstance().getEntityInfos(casterId);
+                  casterInfoCellId = FightEntitiesFrame.getCurrentInstance().getEntityInfos(casterId).disposition.cellId;
                }
-               else
-               {
-                  roleplayEntitiesFrame = Kernel.getWorker().getFrame(RoleplayEntitiesFrame) as RoleplayEntitiesFrame;
-                  casterInfo = roleplayEntitiesFrame.getEntityInfos(casterId);
-               }
-               return new Line(shape,alternativeSize,size,DataMapProvider.getInstance(),true,isZoneStopAtTarget === 1,entityCellId !== -1 ? uint(entityCellId) : uint(casterInfo.disposition.cellId));
+               return new Line(shape,alternativeSize,size,DataMapProvider.getInstance(),true,isZoneStopAtTarget === 1,entityCellId !== -1 ? uint(entityCellId) : uint(casterInfoCellId));
             case SpellShapeEnum.T:
                return new Cross(shape,0,size,DataMapProvider.getInstance());
             case SpellShapeEnum.D:
