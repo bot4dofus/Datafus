@@ -149,6 +149,7 @@ jobs:
           export DOFUS_VERSION=$(devscript/latest-dofus-version.sh)
           echo The current Dofus version is $DOFUS_VERSION
           echo "::set-env name=VERSION::$DOFUS_VERSION"
+          echo "::set-env name=TAG::${DOFUS_VERSION// /_}"
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
@@ -167,7 +168,7 @@ jobs:
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: ${{ env.VERSION }}
+          automatic_release_tag: ${{ env.TAG }}
           prerelease: false
           title: ${{ env.VERSION }}
           files: |
