@@ -1,0 +1,40 @@
+{
+	"def": [
+		{
+			"memberName": "PointOfInterestCategory",
+			"packageName": "com.ankamagames.dofus.datacenter.quest.treasureHunt",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "actionLabelId",
+					"type": -5
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 1,
+			"actionLabelId": 0
+		},
+		{
+			"id": 2,
+			"actionLabelId": 0
+		},
+		{
+			"id": 3,
+			"actionLabelId": 0
+		},
+		{
+			"id": 4,
+			"actionLabelId": 0
+		},
+		{
+			"id": 5,
+			"actionLabelId": 0
+		}
+	]
+}

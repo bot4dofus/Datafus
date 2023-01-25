@@ -1,0 +1,204 @@
+{
+	"def": [
+		{
+			"memberName": "RankName",
+			"packageName": "com.ankamagames.dofus.datacenter.guild",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "order",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 0,
+			"nameId": 2173,
+			"order": 999
+		},
+		{
+			"id": 1,
+			"nameId": 408747,
+			"order": 1
+		},
+		{
+			"id": 2,
+			"nameId": 2182,
+			"order": 2
+		},
+		{
+			"id": 3,
+			"nameId": 2204,
+			"order": 3
+		},
+		{
+			"id": 4,
+			"nameId": 2201,
+			"order": 4
+		},
+		{
+			"id": 5,
+			"nameId": 2174,
+			"order": 5
+		},
+		{
+			"id": 6,
+			"nameId": 2202,
+			"order": 6
+		},
+		{
+			"id": 7,
+			"nameId": 2192,
+			"order": 200
+		},
+		{
+			"id": 8,
+			"nameId": 2190,
+			"order": 7
+		},
+		{
+			"id": 9,
+			"nameId": 2184,
+			"order": 8
+		},
+		{
+			"id": 10,
+			"nameId": 2187,
+			"order": 9
+		},
+		{
+			"id": 11,
+			"nameId": 2176,
+			"order": 10
+		},
+		{
+			"id": 12,
+			"nameId": 2196,
+			"order": 11
+		},
+		{
+			"id": 13,
+			"nameId": 2193,
+			"order": 104
+		},
+		{
+			"id": 14,
+			"nameId": 2177,
+			"order": 150
+		},
+		{
+			"id": 15,
+			"nameId": 2195,
+			"order": 110
+		},
+		{
+			"id": 16,
+			"nameId": 2178,
+			"order": 100
+		},
+		{
+			"id": 17,
+			"nameId": 2172,
+			"order": 98
+		},
+		{
+			"id": 18,
+			"nameId": 2199,
+			"order": 97
+		},
+		{
+			"id": 19,
+			"nameId": 2180,
+			"order": 96
+		},
+		{
+			"id": 20,
+			"nameId": 2185,
+			"order": 95
+		},
+		{
+			"id": 21,
+			"nameId": 2186,
+			"order": 93
+		},
+		{
+			"id": 22,
+			"nameId": 2200,
+			"order": 94
+		},
+		{
+			"id": 23,
+			"nameId": 2188,
+			"order": 92
+		},
+		{
+			"id": 24,
+			"nameId": 2179,
+			"order": 91
+		},
+		{
+			"id": 25,
+			"nameId": 2194,
+			"order": 90
+		},
+		{
+			"id": 26,
+			"nameId": 2191,
+			"order": 89
+		},
+		{
+			"id": 27,
+			"nameId": 2175,
+			"order": 88
+		},
+		{
+			"id": 28,
+			"nameId": 2198,
+			"order": 87
+		},
+		{
+			"id": 29,
+			"nameId": 2207,
+			"order": 86
+		},
+		{
+			"id": 30,
+			"nameId": 2183,
+			"order": 85
+		},
+		{
+			"id": 31,
+			"nameId": 2181,
+			"order": 84
+		},
+		{
+			"id": 32,
+			"nameId": 2203,
+			"order": 120
+		},
+		{
+			"id": 33,
+			"nameId": 2205,
+			"order": 82
+		},
+		{
+			"id": 34,
+			"nameId": 2197,
+			"order": 103
+		},
+		{
+			"id": 35,
+			"nameId": 2206,
+			"order": 105
+		}
+	]
+}

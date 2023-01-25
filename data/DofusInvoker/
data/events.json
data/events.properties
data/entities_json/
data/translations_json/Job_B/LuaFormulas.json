@@ -1,0 +1,109 @@
+{
+	"def": [
+		{
+			"memberName": "LuaFormula",
+			"packageName": "com.ankamagames.dofus.datacenter.misc",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "formulaName",
+					"type": -3
+				},
+				{
+					"name": "luaFormula",
+					"type": -3
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 2,
+			"formulaName": "monster_xp",
+			"luaFormula": "function params()\r\n   return {\"monster_level\", \"monster_is_boss\"}\r\nend\r\n\r\nfunction getEXP(level, boss)\r\n  if level < 200 then\r\n    if boss then\r\n        return math.floor(((level * 100 + math.pow(level, 1.75) * 2) * level * 0.1) * 1.2 * 0.5)\r\n     else\r\n        return level * 100 + math.pow(level, 2) * 2\r\n     end\r\n  else\r\n    if boss then\r\n      return math.floor(500000*(1+(level-200)/100))\r\n    else\r\n      return math.floor(100000*(1+(level-200)/100))\r\n    end\r\n  end\r\nend\r\n\r\nfunction main()\r\n  return getEXP(monster_level, monster_is_boss)\r\nend"
+		},
+		{
+			"id": 3,
+			"formulaName": "monster_pm",
+			"luaFormula": "function params()\r\n   return {\"monster_level\", \"monster_grade_hidden_level\", \"stat_base\", \"monster_grade_level\"}\r\nend\r\n\r\nfunction main()\r\n   --By pass for monsters with 0 pm remains 0 pm : no scale but remains boostable, -1pm remains -1pm : no scale, no boostable)\r\n   if stat_base == -1 then\r\n      return stat_base\r\n   end\r\n   local original_lvl;\r\n\r\n   if monster_grade_hidden_level == 0 then\r\n      original_lvl = monster_grade_level\r\n   else\r\n      original_lvl = monster_grade_hidden_level\r\n   end\r\n\r\n   return stat_base + math.floor(math.pow((monster_level - original_lvl) / 70 , 0.77))\r\n   -- return stat_base + math.floor(monster_level/100)\r\nend"
+		},
+		{
+			"id": 4,
+			"formulaName": "monster_life",
+			"luaFormula": "local monsterLifeCoef = 1.625\r\nlocal monsterLifeSignificativeNumbers = 2\t\r\n\r\nfunction params()\r\n   return {\"monster_level\", \"stat_ratio\"}\r\nend\r\n\r\nfunction roundToNearest(n, decimalCount)\r\n   decimalCount = decimalCount or 0\r\n   local offset = math.pow(10, decimalCount)\r\n   local res = n * offset\r\n   if res % 1 >= 0.5 then\r\n      res = math.ceil(res)\r\n   else\r\n     res = math.floor(res)\r\n   end\r\n   return res / offset\r\nend\r\n\r\nfunction roundToSignificantFigures(num, n)\r\n   if num == 0 then\r\n      return 0\r\n   end\r\n   local d = math.ceil(math.log(math.abs(num)) / math.log(10))\r\n   if d <= n then\r\n      return num\r\n   end\r\n   local power = math.floor(d - n)\r\n   local magnitude = math.floor(math.pow(10, power))\r\n   return roundToNearest(num / magnitude) * magnitude\r\nend\r\n\r\nfunction main()\r\n   if stat_ratio == nil then\r\n      return 0\r\n   end\r\n\r\n   return math.max(1, roundToSignificantFigures(math.floor(stat_ratio * math.pow(monster_level, monsterLifeCoef)), monsterLifeSignificativeNumbers))\r\nend"
+		},
+		{
+			"id": 5,
+			"formulaName": "monster_stat",
+			"luaFormula": "function params()\r\n   return {\"monster_level\", \"stat_ratio\", \"stat_base\"}\r\nend\r\n\r\nfunction main()\r\n   if stat_ratio == nil then\r\n      return 0\r\n   end\r\n\r\n   return math.floor(7 + (math.pow(monster_level, 1.26) * stat_ratio))\r\nend"
+		},
+		{
+			"id": 12,
+			"formulaName": "monster_po",
+			"luaFormula": "function params()\r\n   return {\"monster_level\", \"monster_grade_hidden_level\", \"stat_base\", \"monster_grade_level\"}\r\nend\r\n\r\nfunction main()\r\n   local original_lvl;\r\n\r\n   if monster_grade_hidden_level == 0 then\r\n      original_lvl = monster_grade_level\r\n   else\r\n      original_lvl = monster_grade_hidden_level\r\n   end\r\n\r\n   return stat_base + math.floor(math.pow((monster_level - original_lvl ) / 70 , 0.77))\r\nend"
+		},
+		{
+			"id": 46,
+			"formulaName": "jobs_earned_levels_to_carriable_weight_bonus",
+			"luaFormula": "function params()\r\n   return {\"sum_of_jobs_earned_levels\"}\r\nend\r\n\r\nfunction main()\r\n   local cw = 0;\r\n\r\n   local weight_per_level = 12;\r\n   local levels_per_step = 200;\r\n\r\n   for i=1,sum_of_jobs_earned_levels do\r\n      cw = cw + weight_per_level\r\n      if i % levels_per_step == 0 and weight_per_level > 1 then\r\n         weight_per_level = weight_per_level - 1\r\n      end\r\n   end\r\n\r\n   return cw\r\nend\r\n"
+		},
+		{
+			"id": 56,
+			"formulaName": "infinite_breach_room_score_to_border",
+			"luaFormula": "function params()\r\n   return {\"ib_floor\",\"ib_room_absolute_score\", \"ib_room_relative_score\"}\r\nend\r\n\r\nfunction main()\r\n   return math.max(0, math.min(2, math.floor(ib_room_relative_score / 25)))\r\nend"
+		},
+		{
+			"id": 69,
+			"formulaName": "infinite_breach_exp_multiplier",
+			"luaFormula": "--\r\n-- Coefficient d'exp\u00e9rience finale en fonction du score de la salle.\r\n-- @author : Robin Starbender Nicolet\r\n--\r\n\r\nfunction params()\r\n   return {\"ib_floor\",\"ib_room_absolute_score\", \"ib_room_relative_score\"}\r\nend\r\n\r\nfunction main()\r\n  return 1 + ib_room_relative_score / 100\r\nend"
+		},
+		{
+			"id": 70,
+			"formulaName": "monster_hidden_level",
+			"luaFormula": "function params()\r\n   return {\"monster_level\", \"monster_grade_hidden_level\", \"monster_grade_level\"}\r\nend\r\n\r\nfunction main()\r\n   return math.min( 220, monster_level)\r\nend"
+		},
+		{
+			"id": 74,
+			"formulaName": "experience_to_character_level",
+			"luaFormula": "function params()\r\n   return {\"experience\"}\r\nend\r\n\r\n\r\nexperiencePerLevel = {0,110,650,1500,2800,4800,7300,10500,14500,19200,25200,32600,41000,50500,61000,75000,91000,115000,142000,171000,202000,235000,270000,310000,353000,398500,448000,503000,561000,621600,687000,755000,829000,910000,1000000,1100000,1240000,1400000,1580000,1780000,2000000,2250000,2530000,2850000,3200000,3570000,3960000,4400000,4860000,5350000,5860000,6390000,6950000,7530000,8130000,8765100,9420000,10150000,10894000,11655000,12450000,13278000,14138000,15171000,16251000,17377000,18553000,19778000,21055000,22385000,23769000,25209000,26707000,28264000,29882000,31563000,33307000,35118000,36997000,38945000,40965000,43059000,45229000,47476000,49803000,52211000,54704000,57284000,59952000,62712000,65565000,68514000,71561000,74710000,77963000,81323000,84792000,88374000,92071000,95886000,99823000,103885000,108075000,112396000,116853000,121447000,126184000,131066000,136098000,141283000,146626000,152130000,157800000,163640000,169655000,175848000,182225000,188791000,195550000,202507000,209667000,217037000,224620000,232424000,240452000,248712000,257209000,265949000,274939000,284186000,293694000,303473000,313527000,323866000,334495000,345423000,356657000,368206000,380076000,392278000,404818000,417706000,430952000,444564000,458551000,472924000,487693000,502867000,518458000,534476000,550933000,567839000,585206000,603047000,621374000,640199000,659536000,679398000,699798000,720751000,742272000,764374000,787074000,810387000,834329000,858917000,884167000,910098000,936727000,964073000,992154000,1020991000,1050603000,1081010000,1112235000,1144298000,1177222000,1211030000,1245745000,1281393000,1317997000,1355584000,1404179000,1463811000,1534506000,1616294000,1709205000,1813267000,1928513000,2054975000,2192686000,2341679000,2501990000,2673655000,2856710000,3051194000,3257146000,3474606000,3703616000,5555424000}\r\n\r\nfunction expToLevel(exp)\r\n  local level = 1;\r\n  \r\n  for i=2,200 do\r\n    if exp >= experiencePerLevel[i] then\r\n      level = i;\r\n    end\r\n  end\r\n  \r\n  return level;\r\nend\r\n\r\nfunction expToOmega(exp)    \r\n  local omega = -1;\r\n  local expNextOmega = 0;\r\n  \r\n  while expNextOmega <= exp do   \r\n    omega = omega + 1\r\n    expNextOmega = expNextOmega + 50000000 * math.pow(1.01, omega) \r\n  end\r\n  \r\n  return omega\r\nend\r\n\r\nfunction main()\r\n  \r\n  local exp = experience;\r\n  \r\n  local level = expToLevel(exp);\r\n  \r\n  if level == 200 then\r\n    exp = exp - experiencePerLevel[level];\r\n    level = level + expToOmega(exp);\r\n  end\r\n  \r\n  return level;\r\nend"
+		},
+		{
+			"id": 76,
+			"formulaName": "t5_tempoken_to_experience",
+			"luaFormula": "function params()\r\n   return {\"tempoken\"}\r\nend\r\n\r\nfunction main()\r\n   return math.floor( 3800 * math.pow(tempoken, 1.7))\r\nend"
+		},
+		{
+			"id": 77,
+			"formulaName": "character_level_to_experience",
+			"luaFormula": "function params()\r\n   return {\"level\"}\r\nend\r\n\r\nexperiencePerLevel = {0,110,650,1500,2800,4800,7300,10500,14500,19200,25200,32600,41000,50500,61000,75000,91000,115000,142000,171000,202000,235000,270000,310000,353000,398500,448000,503000,561000,621600,687000,755000,829000,910000,1000000,1100000,1240000,1400000,1580000,1780000,2000000,2250000,2530000,2850000,3200000,3570000,3960000,4400000,4860000,5350000,5860000,6390000,6950000,7530000,8130000,8765100,9420000,10150000,10894000,11655000,12450000,13278000,14138000,15171000,16251000,17377000,18553000,19778000,21055000,22385000,23769000,25209000,26707000,28264000,29882000,31563000,33307000,35118000,36997000,38945000,40965000,43059000,45229000,47476000,49803000,52211000,54704000,57284000,59952000,62712000,65565000,68514000,71561000,74710000,77963000,81323000,84792000,88374000,92071000,95886000,99823000,103885000,108075000,112396000,116853000,121447000,126184000,131066000,136098000,141283000,146626000,152130000,157800000,163640000,169655000,175848000,182225000,188791000,195550000,202507000,209667000,217037000,224620000,232424000,240452000,248712000,257209000,265949000,274939000,284186000,293694000,303473000,313527000,323866000,334495000,345423000,356657000,368206000,380076000,392278000,404818000,417706000,430952000,444564000,458551000,472924000,487693000,502867000,518458000,534476000,550933000,567839000,585206000,603047000,621374000,640199000,659536000,679398000,699798000,720751000,742272000,764374000,787074000,810387000,834329000,858917000,884167000,910098000,936727000,964073000,992154000,1020991000,1050603000,1081010000,1112235000,1144298000,1177222000,1211030000,1245745000,1281393000,1317997000,1355584000,1404179000,1463811000,1534506000,1616294000,1709205000,1813267000,1928513000,2054975000,2192686000,2341679000,2501990000,2673655000,2856710000,3051194000,3257146000,3474606000,3703616000,5555424000}\r\n\r\n\r\nfunction main()\r\n  \r\n  local l = math.max(1, math.min(level, 200));\r\n  local o = math.max(0, level - 200);\r\n  \r\n  local experience = experiencePerLevel[l];\r\n  \r\n  if o > 0 then\r\n    for i=0,o-1 do\r\n      experience = experience + 50000000 * math.pow(1.01, i);\r\n    end\r\n  end\r\n  \r\n  return experience;\r\nend"
+		},
+		{
+			"id": 78,
+			"formulaName": "seasonExperienceConversion_5",
+			"luaFormula": "function params()\r\n   return {\"item_quantity_20763\"}\r\nend\r\n\r\nfunction main()\r\n   return math.floor( 3800 * math.pow(item_quantity_20763, 1.7))\r\nend"
+		},
+		{
+			"id": 79,
+			"formulaName": "t6_tempoken_to_experience",
+			"luaFormula": "function params()\r\n   return {\"tempoken\"}\r\nend\r\n\r\nfunction main()\r\n   return math.floor( 3785 * math.pow(tempoken, 1.74))\r\nend"
+		},
+		{
+			"id": 80,
+			"formulaName": "seasonExperienceConversion_6",
+			"luaFormula": "function params()\r\n   return {\"item_quantity_20763\"}\r\nend\r\n\r\nfunction main()\r\n   return math.floor( 3785 * math.pow(item_quantity_20763, 1.74))\r\nend"
+		},
+		{
+			"id": 83,
+			"formulaName": "seasonExperienceConversion_7",
+			"luaFormula": "function params()\r\n   return {\"item_quantity_20763\"}\r\nend\r\n\r\nfunction main()\r\n   return math.floor( 3785 * math.pow(item_quantity_20763, 1.74))\r\nend"
+		},
+		{
+			"id": 84,
+			"formulaName": "t7_tempoken_to_experience",
+			"luaFormula": "function params()\r\n   return {\"tempoken\"}\r\nend\r\n\r\nfunction main()\r\n   return math.floor( 3785 * math.pow(tempoken, 1.74))\r\nend"
+		}
+	]
+}

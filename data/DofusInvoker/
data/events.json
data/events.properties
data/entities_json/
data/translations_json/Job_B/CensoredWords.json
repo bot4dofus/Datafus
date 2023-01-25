@@ -1,0 +1,2377 @@
+{
+	"def": [
+		{
+			"memberName": "CensoredWord",
+			"packageName": "com.ankamagames.dofus.datacenter.communication",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "listId",
+					"type": -1
+				},
+				{
+					"name": "language",
+					"type": -3
+				},
+				{
+					"name": "word",
+					"type": -3
+				},
+				{
+					"name": "deepLooking",
+					"type": -2
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 2,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0436\u043e\u043f\u043e\u0435\u0431",
+			"deepLooking": false
+		},
+		{
+			"id": 9,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0434\u0440\u044e\u0447\u0438\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 15,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u043f\u0438\u0441\u044c\u043a\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 18,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043c\u0443\u0434\u043b\u043e",
+			"deepLooking": false
+		},
+		{
+			"id": 21,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u304a\u3081\u3053",
+			"deepLooking": false
+		},
+		{
+			"id": 60,
+			"listId": 0,
+			"language": "de",
+			"word": "fluch",
+			"deepLooking": false
+		},
+		{
+			"id": 62,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0442\u044a\u0435\u0431\u0438\u0441\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 65,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30af\u30bd",
+			"deepLooking": false
+		},
+		{
+			"id": 76,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u75f4",
+			"deepLooking": false
+		},
+		{
+			"id": 77,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0433\u0430\u0432\u043d",
+			"deepLooking": false
+		},
+		{
+			"id": 91,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043d\u0430\u0434\u0440\u043e\u0447\u0438\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 102,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u4e5e\u98df",
+			"deepLooking": false
+		},
+		{
+			"id": 107,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0443\u0447\u0430\u0440\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 109,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u7cbe\u5b50",
+			"deepLooking": false
+		},
+		{
+			"id": 120,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0431\u0441\u043e\u0441\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 128,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u3061\u3083\u3093\u3053\u308d",
+			"deepLooking": false
+		},
+		{
+			"id": 137,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff71\uff85\uff99",
+			"deepLooking": false
+		},
+		{
+			"id": 146,
+			"listId": 0,
+			"language": "de",
+			"word": "irre",
+			"deepLooking": false
+		},
+		{
+			"id": 153,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0435\u0431\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 158,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff8b\uff9e\uff6f\uff81",
+			"deepLooking": false
+		},
+		{
+			"id": 167,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043c\u0443\u0434\u0430\u043a",
+			"deepLooking": false
+		},
+		{
+			"id": 169,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u0437\u0434\u0435\u043d\u044b\u0448",
+			"deepLooking": false
+		},
+		{
+			"id": 175,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0431\u043b\u044f\u0434\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 184,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u043f\u0438\u0437\u0434\u0435\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 188,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0440\u0438\u0435\u0431\u0430\u0446\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 202,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0441\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 212,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043a\u043e\u043a\u0430\u0438\u043d",
+			"deepLooking": false
+		},
+		{
+			"id": 216,
+			"listId": 0,
+			"language": "de",
+			"word": "anarch",
+			"deepLooking": false
+		},
+		{
+			"id": 269,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff81\uff9d\uff7a",
+			"deepLooking": false
+		},
+		{
+			"id": 282,
+			"listId": 0,
+			"language": "ru",
+			"word": "x\u0443\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 284,
+			"listId": 0,
+			"language": "de",
+			"word": "transe",
+			"deepLooking": false
+		},
+		{
+			"id": 296,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u3061\u3093\u304b\u3059",
+			"deepLooking": false
+		},
+		{
+			"id": 301,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0432\u044b\u0434\u0440\u043e\u0447\u0438\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 356,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0442\u044a\u0435\u0431\u0430\u0446\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 399,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u5fc3\u969c\u8005",
+			"deepLooking": false
+		},
+		{
+			"id": 407,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043c\u0438\u043d\u0435\u0442",
+			"deepLooking": false
+		},
+		{
+			"id": 417,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0431\u043b\u0435\u0432",
+			"deepLooking": false
+		},
+		{
+			"id": 438,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u0437\u0434\u044e\u043a",
+			"deepLooking": false
+		},
+		{
+			"id": 479,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30d5\u30a1\u30c3\u30af",
+			"deepLooking": false
+		},
+		{
+			"id": 486,
+			"listId": 0,
+			"language": "de",
+			"word": "fatz",
+			"deepLooking": false
+		},
+		{
+			"id": 493,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0442\u044a\u0435\u0431\u0430\u0442",
+			"deepLooking": false
+		},
+		{
+			"id": 505,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff52\uff4d\uff54",
+			"deepLooking": false
+		},
+		{
+			"id": 510,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0443\u043a\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 516,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u59e6",
+			"deepLooking": false
+		},
+		{
+			"id": 518,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0432\u0437\u0434\u0440\u043e\u0447\u043d\u0443\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 529,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0431\u043b\u044e\u044e",
+			"deepLooking": false
+		},
+		{
+			"id": 531,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u3041\u3047\u308a\u3041",
+			"deepLooking": false
+		},
+		{
+			"id": 532,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0431\u043b\u044f\u0434",
+			"deepLooking": false
+		},
+		{
+			"id": 542,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0431\u043b\u044e\u0435",
+			"deepLooking": false
+		},
+		{
+			"id": 545,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0431\u043b\u044e\u0432",
+			"deepLooking": false
+		},
+		{
+			"id": 546,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0440\u0438\u0435\u0431\u0430\u0442\u0441\u043e",
+			"deepLooking": false
+		},
+		{
+			"id": 561,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u99ac\u9e7f",
+			"deepLooking": false
+		},
+		{
+			"id": 565,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u043e\u0441\u0443\u043d\u0438\u0448\u043a\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 567,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0442\u043f\u0438\u0437\u0434\u0438\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 581,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30bb\u30f3\u30ba\u30ea",
+			"deepLooking": false
+		},
+		{
+			"id": 595,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0432\u0441\u043e\u0441\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 605,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u307e\u3093\u3053",
+			"deepLooking": false
+		},
+		{
+			"id": 609,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u534a\u5cf6\u4eba",
+			"deepLooking": false
+		},
+		{
+			"id": 613,
+			"listId": 0,
+			"language": "de",
+			"word": "abschaum",
+			"deepLooking": false
+		},
+		{
+			"id": 620,
+			"listId": 0,
+			"language": "de",
+			"word": "lutsche",
+			"deepLooking": false
+		},
+		{
+			"id": 624,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0431\u0437\u0434\u043d\u0443\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 631,
+			"listId": 0,
+			"language": "de",
+			"word": "spritz",
+			"deepLooking": false
+		},
+		{
+			"id": 633,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0445\u0435\u0440",
+			"deepLooking": false
+		},
+		{
+			"id": 636,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0431\u043a\u043e\u043d\u0447\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 637,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0445\u0438\u0442\u0440\u043e\u0432\u044b\u0435\u0431\u0430\u043d\u044b\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 648,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30ec\u30a4\u30d7",
+			"deepLooking": false
+		},
+		{
+			"id": 670,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0435\u0431\u0430\u043d\u0430\u0432\u0440\u043e\u0442",
+			"deepLooking": false
+		},
+		{
+			"id": 708,
+			"listId": 0,
+			"language": "de",
+			"word": "dumm",
+			"deepLooking": false
+		},
+		{
+			"id": 720,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff75\uff85\uff86\uff70",
+			"deepLooking": false
+		},
+		{
+			"id": 723,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u5c60\u6bba",
+			"deepLooking": false
+		},
+		{
+			"id": 730,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u4f4e\u80fd",
+			"deepLooking": false
+		},
+		{
+			"id": 735,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0431\u043b\u0435\u0432\u0430\u043d\u0443\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 744,
+			"listId": 0,
+			"language": "de",
+			"word": "bohr",
+			"deepLooking": false
+		},
+		{
+			"id": 761,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0445\u043d\u044f",
+			"deepLooking": false
+		},
+		{
+			"id": 767,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u6bba\u3059",
+			"deepLooking": false
+		},
+		{
+			"id": 775,
+			"listId": 0,
+			"language": "ja",
+			"word": "R.M.T",
+			"deepLooking": false
+		},
+		{
+			"id": 776,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0442\u0435\u0431\u0430\u0446\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 795,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043c\u0430\u043d\u0434\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 820,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0445\u0443\u0435",
+			"deepLooking": false
+		},
+		{
+			"id": 824,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0445\u0443\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 825,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0445\u0443\u0438",
+			"deepLooking": false
+		},
+		{
+			"id": 837,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff8c\uff67\uff6f\uff78",
+			"deepLooking": false
+		},
+		{
+			"id": 838,
+			"listId": 0,
+			"language": "de",
+			"word": "schwanzl",
+			"deepLooking": false
+		},
+		{
+			"id": 849,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u7cbe\u795e\u7570\u5e38",
+			"deepLooking": false
+		},
+		{
+			"id": 856,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u81ea\u6170",
+			"deepLooking": false
+		},
+		{
+			"id": 863,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30ea\u30f3\u30c1",
+			"deepLooking": false
+		},
+		{
+			"id": 864,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u7cde",
+			"deepLooking": false
+		},
+		{
+			"id": 866,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0448\u043c\u0430\u043b\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 911,
+			"listId": 0,
+			"language": "de",
+			"word": "kr\u00fcppel",
+			"deepLooking": false
+		},
+		{
+			"id": 924,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0441\u044b\u043a\u0443\u043d\u0438\u0448\u043a\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 934,
+			"listId": 0,
+			"language": "ja",
+			"word": "RMT",
+			"deepLooking": false
+		},
+		{
+			"id": 938,
+			"listId": 0,
+			"language": "de",
+			"word": "kack",
+			"deepLooking": false
+		},
+		{
+			"id": 940,
+			"listId": 0,
+			"language": "ja",
+			"word": "B\uff2f\uff34",
+			"deepLooking": false
+		},
+		{
+			"id": 945,
+			"listId": 0,
+			"language": "de",
+			"word": "ges\u00e4",
+			"deepLooking": false
+		},
+		{
+			"id": 968,
+			"listId": 0,
+			"language": "ja",
+			"word": "bot",
+			"deepLooking": false
+		},
+		{
+			"id": 970,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff42\uff4f\uff54",
+			"deepLooking": false
+		},
+		{
+			"id": 979,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30a6\u30f3\u30c1",
+			"deepLooking": false
+		},
+		{
+			"id": 985,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0441\u044b\u043a\u043b\u043e",
+			"deepLooking": false
+		},
+		{
+			"id": 988,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043b\u043e\u0431\u043e\u043a",
+			"deepLooking": false
+		},
+		{
+			"id": 991,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30a6\u30f3\u30b3",
+			"deepLooking": false
+		},
+		{
+			"id": 994,
+			"listId": 0,
+			"language": "de",
+			"word": "jud",
+			"deepLooking": false
+		},
+		{
+			"id": 1002,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff32\uff2d\uff34",
+			"deepLooking": false
+		},
+		{
+			"id": 1004,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0434\u0440\u043e\u0447\u0438\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1016,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0443\u0447\u0435\u043d\u044b\u0448",
+			"deepLooking": false
+		},
+		{
+			"id": 1020,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30bb\u30c3\u30af\u30b9",
+			"deepLooking": false
+		},
+		{
+			"id": 1023,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0448\u043b\u044e\u0445\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 1041,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u0437\u0434\u0435\u0446",
+			"deepLooking": false
+		},
+		{
+			"id": 1054,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0443\u0447\u0435\u043d\u043e\u043a",
+			"deepLooking": false
+		},
+		{
+			"id": 1089,
+			"listId": 0,
+			"language": "de",
+			"word": "parasit",
+			"deepLooking": false
+		},
+		{
+			"id": 1098,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0441\u044b\u043a\u0443\u043d",
+			"deepLooking": false
+		},
+		{
+			"id": 1105,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0434\u043e\u043b\u0431\u043e\u0435\u0431",
+			"deepLooking": false
+		},
+		{
+			"id": 1129,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0436\u0435\u043f\u0430\u0435\u0431",
+			"deepLooking": false
+		},
+		{
+			"id": 1139,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0435\u0431\u043b\u0438\u0432\u044b\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 1161,
+			"listId": 0,
+			"language": "de",
+			"word": "kraut",
+			"deepLooking": false
+		},
+		{
+			"id": 1163,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0437\u0430\u0435\u0431\u0438\u0441\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1166,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0433\u0430\u043d\u0434\u043e\u043d",
+			"deepLooking": false
+		},
+		{
+			"id": 1170,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0432\u043f\u0435\u043d\u0434\u044e\u0440\u0438\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1173,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0442\u044a\u0435\u0431\u0430\u0442\u044c\u0441\u044f",
+			"deepLooking": false
+		},
+		{
+			"id": 1178,
+			"listId": 0,
+			"language": "de",
+			"word": "depp",
+			"deepLooking": false
+		},
+		{
+			"id": 1183,
+			"listId": 0,
+			"language": "de",
+			"word": "lecken",
+			"deepLooking": false
+		},
+		{
+			"id": 1185,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0445\u0438\u0442\u0440\u043e\u0432\u044b\u0435\u0431\u0430\u043d\u043d\u044b\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 1187,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0431\u043b\u044f\u0445\u0430\u043c\u0443\u0445\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 1202,
+			"listId": 0,
+			"language": "de",
+			"word": "derb",
+			"deepLooking": false
+		},
+		{
+			"id": 1236,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff7e\uff9d\uff7d\uff9e\uff98",
+			"deepLooking": false
+		},
+		{
+			"id": 1244,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0445\u0443\u0435\u043d\u044b\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 1247,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0435\u0437\u0434",
+			"deepLooking": false
+		},
+		{
+			"id": 1248,
+			"listId": 0,
+			"language": "de",
+			"word": "hirn",
+			"deepLooking": false
+		},
+		{
+			"id": 1255,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0432\u043f\u0438\u043d\u0434\u044e\u0440\u0438\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1259,
+			"listId": 0,
+			"language": "ja",
+			"word": "SEX",
+			"deepLooking": false
+		},
+		{
+			"id": 1262,
+			"listId": 0,
+			"language": "de",
+			"word": "mongo",
+			"deepLooking": false
+		},
+		{
+			"id": 1281,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0437\u0430\u0434\u0440\u043e\u0442",
+			"deepLooking": false
+		},
+		{
+			"id": 1295,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0435\u0431\u0442\u0432\u043e\u044e\u043c\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1306,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30d3\u30c3\u30c1",
+			"deepLooking": false
+		},
+		{
+			"id": 1338,
+			"listId": 0,
+			"language": "de",
+			"word": "kot",
+			"deepLooking": false
+		},
+		{
+			"id": 1342,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0440\u043e\u0435\u0431\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1350,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0442\u043f\u0438\u0437\u0436\u0435\u043d\u044b\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 1360,
+			"listId": 0,
+			"language": "de",
+			"word": "bl\u00f6d",
+			"deepLooking": false
+		},
+		{
+			"id": 1363,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0437\u0430\u0435\u0431\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1364,
+			"listId": 0,
+			"language": "de",
+			"word": "luder",
+			"deepLooking": false
+		},
+		{
+			"id": 1371,
+			"listId": 0,
+			"language": "de",
+			"word": "scheiss",
+			"deepLooking": false
+		},
+		{
+			"id": 1372,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0431\u043b\u0438\u0430\u0434\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1376,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0437\u0430\u0435\u0431\u0430\u0442\u043e",
+			"deepLooking": false
+		},
+		{
+			"id": 1378,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30c1\u30e3\u30f3\u30b3\u30ed",
+			"deepLooking": false
+		},
+		{
+			"id": 1385,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0437\u0430\u0435\u0431\u0430\u0442\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 1386,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0442\u0440\u0430\u0445\u043e\u0436\u043e\u043f",
+			"deepLooking": false
+		},
+		{
+			"id": 1401,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043d\u0430\u043a\u043e\u043d\u0447\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1402,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u0434\u0430\u0440\u0430\u0441",
+			"deepLooking": false
+		},
+		{
+			"id": 1404,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u043f\u0435\u0440\u043c\u043e\u0433\u043b\u043e\u0442",
+			"deepLooking": false
+		},
+		{
+			"id": 1413,
+			"listId": 0,
+			"language": "ja",
+			"word": "BOT",
+			"deepLooking": false
+		},
+		{
+			"id": 1415,
+			"listId": 0,
+			"language": "ja",
+			"word": "fuck",
+			"deepLooking": false
+		},
+		{
+			"id": 1417,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u043f\u0438\u0437\u0434\u0438\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1431,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u043d\u0434\u043e\u0441",
+			"deepLooking": false
+		},
+		{
+			"id": 1462,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0445\u0443\u0435\u043d\u0441\u043a\u0438\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 1472,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0430\u0445\u0443\u0435\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1483,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0435\u0431\u0443\u043d\u044c\u043a\u043e",
+			"deepLooking": false
+		},
+		{
+			"id": 1493,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30c1\u30f3\u30dd",
+			"deepLooking": false
+		},
+		{
+			"id": 1495,
+			"listId": 0,
+			"language": "ru",
+			"word": "xy\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 1508,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30b8\u30e3\u30c3\u30d7",
+			"deepLooking": false
+		},
+		{
+			"id": 1525,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u305b\u3093\u305a\u308a",
+			"deepLooking": false
+		},
+		{
+			"id": 1538,
+			"listId": 0,
+			"language": "de",
+			"word": "fuck",
+			"deepLooking": false
+		},
+		{
+			"id": 1553,
+			"listId": 0,
+			"language": "de",
+			"word": "muschi",
+			"deepLooking": false
+		},
+		{
+			"id": 1556,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0445\u0443\u0435\u043d\u043d\u044b\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 1557,
+			"listId": 0,
+			"language": "de",
+			"word": "saug",
+			"deepLooking": false
+		},
+		{
+			"id": 1586,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30c1\u30f3\u30b3",
+			"deepLooking": false
+		},
+		{
+			"id": 1607,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u975e\u4eba",
+			"deepLooking": false
+		},
+		{
+			"id": 1624,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u9670\u6bdb",
+			"deepLooking": false
+		},
+		{
+			"id": 1625,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30c1\u30fc\u30c8",
+			"deepLooking": false
+		},
+		{
+			"id": 1627,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30ad\u30c1\u30ac\u30a4",
+			"deepLooking": false
+		},
+		{
+			"id": 1630,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043d\u0430\u0435\u0431\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1640,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0435\u0431\u0443\u043d",
+			"deepLooking": false
+		},
+		{
+			"id": 1658,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0436\u043e\u043f",
+			"deepLooking": false
+		},
+		{
+			"id": 1666,
+			"listId": 0,
+			"language": "de",
+			"word": "piss",
+			"deepLooking": false
+		},
+		{
+			"id": 1669,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0434\u0435\u0440\u044c\u043c",
+			"deepLooking": false
+		},
+		{
+			"id": 1685,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0435\u0431\u0430\u043d\u044c\u043a\u043e",
+			"deepLooking": false
+		},
+		{
+			"id": 1691,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0431\u043e\u0441\u0440\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1701,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u0434\u0430\u0440\u043a\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 1710,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0430\u0434\u043e\u043d\u0430\u043a",
+			"deepLooking": false
+		},
+		{
+			"id": 1746,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043d\u0430\u0445\u0443\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 1750,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u51e6\u5973",
+			"deepLooking": false
+		},
+		{
+			"id": 1766,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0435\u0431\u043b\u043e",
+			"deepLooking": false
+		},
+		{
+			"id": 1794,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043d\u0430\u0441\u0441\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1800,
+			"listId": 0,
+			"language": "de",
+			"word": "schwul",
+			"deepLooking": false
+		},
+		{
+			"id": 1806,
+			"listId": 0,
+			"language": "de",
+			"word": "furz",
+			"deepLooking": false
+		},
+		{
+			"id": 1831,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0442\u044a\u0435\u0431\u0430\u0442\u0441\u044f",
+			"deepLooking": false
+		},
+		{
+			"id": 1843,
+			"listId": 0,
+			"language": "de",
+			"word": "doof",
+			"deepLooking": false
+		},
+		{
+			"id": 1855,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0448\u0432\u0430\u043b\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 1883,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u043f\u0435\u0440\u043c\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 1888,
+			"listId": 0,
+			"language": "de",
+			"word": "bollern",
+			"deepLooking": false
+		},
+		{
+			"id": 1893,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u5c3b\u7a74",
+			"deepLooking": false
+		},
+		{
+			"id": 1896,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0436\u043e\u043f\u043e\u0440\u044b\u043b\u044b\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 1902,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0441\u0443\u0447\u0430\u0440\u0438\u0432\u0448\u0438\u0439\u0441\u044f",
+			"deepLooking": false
+		},
+		{
+			"id": 1910,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0430\u0434\u043e\u043d\u043e\u043a",
+			"deepLooking": false
+		},
+		{
+			"id": 1918,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u963f\u5446",
+			"deepLooking": false
+		},
+		{
+			"id": 1926,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30db\u30e2\u30bb\u30af\u30b7\u30e3\u30eb",
+			"deepLooking": false
+		},
+		{
+			"id": 1927,
+			"listId": 0,
+			"language": "ja",
+			"word": "aeria",
+			"deepLooking": false
+		},
+		{
+			"id": 1934,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff75\uff92\uff7a",
+			"deepLooking": false
+		},
+		{
+			"id": 1964,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u6c0f\u306d",
+			"deepLooking": false
+		},
+		{
+			"id": 1979,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0445\u0443\u0435\u043d",
+			"deepLooking": false
+		},
+		{
+			"id": 1999,
+			"listId": 0,
+			"language": "de",
+			"word": "loch",
+			"deepLooking": false
+		},
+		{
+			"id": 2001,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30c1\u30e7\u30f3\u30b3",
+			"deepLooking": false
+		},
+		{
+			"id": 2002,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0437\u0430\u043b\u0443\u043f\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 2021,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043c\u0443\u0434\u0438\u043b\u043a\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 2026,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0433\u043e\u043c\u043e\u0441\u0435\u043a",
+			"deepLooking": false
+		},
+		{
+			"id": 2039,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0445y\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 2043,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043c\u0443\u0434\u0438\u043b\u043a\u043e",
+			"deepLooking": false
+		},
+		{
+			"id": 2050,
+			"listId": 0,
+			"language": "de",
+			"word": "dreck",
+			"deepLooking": false
+		},
+		{
+			"id": 2077,
+			"listId": 0,
+			"language": "de",
+			"word": "wichs",
+			"deepLooking": false
+		},
+		{
+			"id": 2094,
+			"listId": 0,
+			"language": "de",
+			"word": "dildo",
+			"deepLooking": false
+		},
+		{
+			"id": 2095,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0442\u0441\u0430\u0441\u044b\u0432\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 2104,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0448\u0430\u043b\u0430\u0432\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 2108,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0448\u043b\u044e\u0448\u043a\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 2117,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0443\u043a\u0438\u043d ",
+			"deepLooking": false
+		},
+		{
+			"id": 2120,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0432\u0430\u0433\u0438\u043d\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 2132,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u043e\u0442\u0430\u0441\u043a\u0443\u0448\u043a\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 2133,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0435\u043b\u0434\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 2135,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0443\u0447\u0435\u043d\u044b\u0448\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 2144,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0432\u043b\u0430\u0433\u0430\u043b\u0438\u0449\u0435",
+			"deepLooking": false
+		},
+		{
+			"id": 2165,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0434\u0440\u043e\u0447",
+			"deepLooking": false
+		},
+		{
+			"id": 2183,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u0437\u0434\u0430\u0442\u044b\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 2188,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u3046\u3093\u3053",
+			"deepLooking": false
+		},
+		{
+			"id": 2193,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043c\u0443\u0434\u0430\u0431\u043b\u044f\u0446\u043a\u0430\u044f \u043f\u0438\u0437\u0434\u0430\u043f\u0440\u043e\u0435\u0431\u0438\u043d\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 2197,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043d\u0430\u0441\u0440\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 2199,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u6deb\u58f2",
+			"deepLooking": false
+		},
+		{
+			"id": 2216,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043d\u0430\u0445\u0443\u0439\u043d\u0438\u043a",
+			"deepLooking": false
+		},
+		{
+			"id": 2224,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0436\u0435\u043f\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 2238,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u3046\u3093\u3061",
+			"deepLooking": false
+		},
+		{
+			"id": 2246,
+			"listId": 0,
+			"language": "de",
+			"word": "fett",
+			"deepLooking": false
+		},
+		{
+			"id": 2250,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u9bae\u4eba",
+			"deepLooking": false
+		},
+		{
+			"id": 2255,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u0437\u0434\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 2263,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u043e\u0442\u0430\u0441\u043a\u0443\u0445\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 2299,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u0437\u0434\u0438\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 2302,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0445\u0443\u0435\u0441\u043e\u0441",
+			"deepLooking": false
+		},
+		{
+			"id": 2312,
+			"listId": 0,
+			"language": "de",
+			"word": "hoden",
+			"deepLooking": false
+		},
+		{
+			"id": 2319,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u0437\u0434\u0430\u0431\u043e\u043b",
+			"deepLooking": false
+		},
+		{
+			"id": 2334,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0433\u043e\u0432\u043d",
+			"deepLooking": false
+		},
+		{
+			"id": 2342,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30a2\u30a8\u30ea\u30a2",
+			"deepLooking": false
+		},
+		{
+			"id": 2348,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30aa\u30e1\u30b3",
+			"deepLooking": false
+		},
+		{
+			"id": 2389,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0442\u0441\u043e\u0441",
+			"deepLooking": false
+		},
+		{
+			"id": 2399,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0442\u0434\u0440\u044e\u0447\u0438\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 2431,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30a2\u30ca\u30eb",
+			"deepLooking": false
+		},
+		{
+			"id": 2443,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0430\u0445\u0443\u0435",
+			"deepLooking": false
+		},
+		{
+			"id": 2446,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u3058\u3083\u3063\u3077",
+			"deepLooking": false
+		},
+		{
+			"id": 2496,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u3069\u3082\u308a",
+			"deepLooking": false
+		},
+		{
+			"id": 2499,
+			"listId": 0,
+			"language": "de",
+			"word": "japs",
+			"deepLooking": false
+		},
+		{
+			"id": 2501,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0436\u043e\u043f\u043e",
+			"deepLooking": false
+		},
+		{
+			"id": 2505,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0435\u043d\u0438\u0441",
+			"deepLooking": false
+		},
+		{
+			"id": 2506,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0436\u043e\u043f\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 2508,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u690d\u7269\u4eba\u9593",
+			"deepLooking": false
+		},
+		{
+			"id": 2512,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0446\u0443\u043a\u043e",
+			"deepLooking": false
+		},
+		{
+			"id": 2513,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0445\u0443\u0435\u044e",
+			"deepLooking": false
+		},
+		{
+			"id": 2519,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u043e\u0441\u0443\u043d\u043e\u043a",
+			"deepLooking": false
+		},
+		{
+			"id": 2524,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30cf\u30f3\u30bb\u30f3\u75c5",
+			"deepLooking": false
+		},
+		{
+			"id": 2532,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0435\u0440\u0434\u0435\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 2545,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff81\uff9d\uff8e\uff9f",
+			"deepLooking": false
+		},
+		{
+			"id": 2559,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff8f\uff9d\uff7a",
+			"deepLooking": false
+		},
+		{
+			"id": 2577,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u6c17\u9055\u3044",
+			"deepLooking": false
+		},
+		{
+			"id": 2588,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u58f2\u6625",
+			"deepLooking": false
+		},
+		{
+			"id": 2595,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043a\u043e\u043d\u0447\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 2596,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u0437\u0434",
+			"deepLooking": false
+		},
+		{
+			"id": 2599,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u304d\u3061\u304c\u3044",
+			"deepLooking": false
+		},
+		{
+			"id": 2603,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u5317\u9bae",
+			"deepLooking": false
+		},
+		{
+			"id": 2628,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043a\u043e\u043d\u0434\u043e\u043c",
+			"deepLooking": false
+		},
+		{
+			"id": 2649,
+			"listId": 0,
+			"language": "de",
+			"word": "suck",
+			"deepLooking": false
+		},
+		{
+			"id": 2690,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30ec\u30ba\u30d3\u30a2\u30f3",
+			"deepLooking": false
+		},
+		{
+			"id": 2712,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30aa\u30ca\u30cb\u30fc",
+			"deepLooking": false
+		},
+		{
+			"id": 2716,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0442\u0434\u0440\u044e\u0447\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 2731,
+			"listId": 0,
+			"language": "de",
+			"word": "kakerl",
+			"deepLooking": false
+		},
+		{
+			"id": 2744,
+			"listId": 0,
+			"language": "de",
+			"word": "g\u00fclle",
+			"deepLooking": false
+		},
+		{
+			"id": 2758,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0431\u0434\u0440\u044e\u0447\u0438\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 2762,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0432\u0440\u043e\u0442\u043c\u043d\u0435\u043d\u043e\u0433\u0438",
+			"deepLooking": false
+		},
+		{
+			"id": 2781,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u043f\u0435\u0440\u043c",
+			"deepLooking": false
+		},
+		{
+			"id": 2782,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0435\u0431\u0430\u043b\u044c\u043d\u0438\u043a",
+			"deepLooking": false
+		},
+		{
+			"id": 2797,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0440\u0430\u043b",
+			"deepLooking": false
+		},
+		{
+			"id": 2798,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0440\u0430\u043a",
+			"deepLooking": false
+		},
+		{
+			"id": 2801,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0440\u0430\u043d",
+			"deepLooking": false
+		},
+		{
+			"id": 2803,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0440\u0430\u0442",
+			"deepLooking": false
+		},
+		{
+			"id": 2818,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u0437\u0434\u0435\u043d\u044b\u0448\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 2825,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0437\u0430\u043f\u0438\u0437\u0434\u0438\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 2836,
+			"listId": 0,
+			"language": "de",
+			"word": "fasch",
+			"deepLooking": false
+		},
+		{
+			"id": 2887,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff71\uff74\uff98\uff71",
+			"deepLooking": false
+		},
+		{
+			"id": 2911,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043a\u043b\u0438\u0442\u043e\u0440",
+			"deepLooking": false
+		},
+		{
+			"id": 2912,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff71\uff8e",
+			"deepLooking": false
+		},
+		{
+			"id": 2929,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff7e\uff6f\uff78\uff7d",
+			"deepLooking": false
+		},
+		{
+			"id": 2934,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30af\u30ed\u30f3\u30dc",
+			"deepLooking": false
+		},
+		{
+			"id": 2947,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0439\u043e\u0431",
+			"deepLooking": false
+		},
+		{
+			"id": 2955,
+			"listId": 0,
+			"language": "de",
+			"word": "fotz",
+			"deepLooking": false
+		},
+		{
+			"id": 2959,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u904b\u55b6",
+			"deepLooking": false
+		},
+		{
+			"id": 2963,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u3061\u3093\u307d",
+			"deepLooking": false
+		},
+		{
+			"id": 2964,
+			"listId": 0,
+			"language": "de",
+			"word": "dirn",
+			"deepLooking": false
+		},
+		{
+			"id": 2973,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u0434\u043e\u0440",
+			"deepLooking": false
+		},
+		{
+			"id": 2984,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u3061\u3093\u3053",
+			"deepLooking": false
+		},
+		{
+			"id": 3051,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0440\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 3052,
+			"listId": 0,
+			"language": "de",
+			"word": "po",
+			"deepLooking": false
+		},
+		{
+			"id": 3059,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0435\u0431\u0430\u043d\u044b\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 3076,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30ea\u30a2\u30eb\u30de\u30cd\u30fc\u30c8\u30ec\u30fc\u30c9",
+			"deepLooking": false
+		},
+		{
+			"id": 3125,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30c1\u30f3\u30ab\u30b9",
+			"deepLooking": false
+		},
+		{
+			"id": 3129,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0431\u043b\u0435\u0432\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 3131,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30de\u30f3\u30b3",
+			"deepLooking": false
+		},
+		{
+			"id": 3154,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u3046\u3093\u3048\u3044",
+			"deepLooking": false
+		},
+		{
+			"id": 3165,
+			"listId": 0,
+			"language": "ja",
+			"word": "G.M",
+			"deepLooking": false
+		},
+		{
+			"id": 3168,
+			"listId": 0,
+			"language": "de",
+			"word": "pups",
+			"deepLooking": false
+		},
+		{
+			"id": 3169,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u90e8\u843d",
+			"deepLooking": false
+		},
+		{
+			"id": 3180,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0441\u0440\u0430\u043a\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 3183,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0446\u0435\u043b\u043a\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 3190,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043e\u0442\u044a\u0435\u0431\u0438\u0441",
+			"deepLooking": false
+		},
+		{
+			"id": 3200,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0442\u0438\u0442\u044c\u043a\u0438",
+			"deepLooking": false
+		},
+		{
+			"id": 3203,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u5305\u830e",
+			"deepLooking": false
+		},
+		{
+			"id": 3239,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0435\u0434\u0435\u0440",
+			"deepLooking": false
+		},
+		{
+			"id": 3257,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff8e\uff93\uff7e\uff78\uff7c\uff6c\uff99",
+			"deepLooking": false
+		},
+		{
+			"id": 3268,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0432\u044b\u0435\u0431\u0430\u0442\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 3277,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30ea\u30a2\u30eb\u30fb\u30de\u30cd\u30fc\u30fb\u30c8\u30ec\u30fc\u30c9",
+			"deepLooking": false
+		},
+		{
+			"id": 3278,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0435\u0431\u044b\u0440\u044c",
+			"deepLooking": false
+		},
+		{
+			"id": 3299,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u3042\u3048\u308a\u3042",
+			"deepLooking": false
+		},
+		{
+			"id": 3309,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0435\u0431\u0443\u0447\u0438\u0439",
+			"deepLooking": false
+		},
+		{
+			"id": 3335,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0433\u043e\u0432\u043d\u043e\u0435\u0434",
+			"deepLooking": false
+		},
+		{
+			"id": 3384,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0433\u043e\u043c\u0438\u043a",
+			"deepLooking": false
+		},
+		{
+			"id": 3404,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0430\u0434\u043b\u0430",
+			"deepLooking": false
+		},
+		{
+			"id": 3406,
+			"listId": 0,
+			"language": "de",
+			"word": "bums",
+			"deepLooking": false
+		},
+		{
+			"id": 3426,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0437\u0430\u043b\u0443\u043f",
+			"deepLooking": false
+		},
+		{
+			"id": 3461,
+			"listId": 0,
+			"language": "it",
+			"word": "lichen",
+			"deepLooking": false
+		},
+		{
+			"id": 3471,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u52c3\u8d77",
+			"deepLooking": false
+		},
+		{
+			"id": 3526,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0433\u043e\u043d\u0434\u043e\u043d",
+			"deepLooking": false
+		},
+		{
+			"id": 3537,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0435\u0431\u043b\u0430\u043d",
+			"deepLooking": false
+		},
+		{
+			"id": 3538,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043a\u043e\u043a\u043e\u0438\u043d",
+			"deepLooking": false
+		},
+		{
+			"id": 3557,
+			"listId": 0,
+			"language": "ja",
+			"word": "AERIA",
+			"deepLooking": false
+		},
+		{
+			"id": 3558,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30d5\u30eb\u30c1\u30f3",
+			"deepLooking": false
+		},
+		{
+			"id": 3569,
+			"listId": 0,
+			"language": "de",
+			"word": "riemen",
+			"deepLooking": false
+		},
+		{
+			"id": 3573,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff98\uff71\uff99\uff8f\uff88\uff70\uff84\uff9a\uff70\uff84\uff9e",
+			"deepLooking": false
+		},
+		{
+			"id": 3583,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u0434\u0435\u0440",
+			"deepLooking": false
+		},
+		{
+			"id": 3599,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u6b7b\u306d",
+			"deepLooking": false
+		},
+		{
+			"id": 3612,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u043f\u0438\u0434\u0430\u0440",
+			"deepLooking": false
+		},
+		{
+			"id": 3614,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u30a2\u30db",
+			"deepLooking": false
+		},
+		{
+			"id": 3618,
+			"listId": 0,
+			"language": "ja",
+			"word": "\u3042\u306a\u308b",
+			"deepLooking": false
+		},
+		{
+			"id": 3667,
+			"listId": 0,
+			"language": "ja",
+			"word": "\uff81\uff70\uff84",
+			"deepLooking": false
+		},
+		{
+			"id": 3677,
+			"listId": 0,
+			"language": "ru",
+			"word": "\u0432\u043f\u0438\u0437\u0434\u0443",
+			"deepLooking": false
+		}
+	]
+}
