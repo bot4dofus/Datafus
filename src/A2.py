@@ -84,7 +84,7 @@ class ActionScriptReader:
 class NetworkActionScriptReader:
 
     ACTION_SCRIPT_FORMAT = ".as"
-    INTERFACE_TO_IMPLEMENT = "INetworkMessage"
+    INTERFACE_TO_IMPLEMENT = set(["INetworkMessage", "INetworkType"])
 
     def __init__(self, folder):
         self.folder = folder
@@ -111,7 +111,7 @@ class NetworkActionScriptReader:
             result = reader.parse()
 
             # If the class implements the wanted class
-            if(self.INTERFACE_TO_IMPLEMENT in result['interfaces']):
+            if(self.INTERFACE_TO_IMPLEMENT & set(result['interfaces'])):
                 class_name = result['class_name']
                 result.pop('class_name')
                 results[class_name] = result
