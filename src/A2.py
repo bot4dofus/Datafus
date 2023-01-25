@@ -1,98 +1,122 @@
 #!/usr/bin/env python
-# -*- coding: cp1252 -*-
+# -*- coding: utf8 -*-
 
 import sys
 import os
 import re
 import json
 
-ACTION_SCRIPT_FORMAT = ".as"
-SUPER_CLASS = "NetworkMessage"
 
-CLASS_REGEX = "[\s]*public class (\w+) extends (\w+)"
-ID_REGEX = "[\s]*public static const protocolId:uint = ([0-9]+);"
-READER_REGEX = "[\s]*public var (\w+):([a-zA-Z0-9\.<>]+)(.*);"
+class ActionScriptReader:
 
+    types_to_fix = ["uint", "int"]
+    class_pattern = re.compile(r"public\sclass\s(\w+)\s(?:extends\s(\w+)\s)?(?:implements\s([\w,\s]+))?")
+    protocolId_pattern = re.compile(r"public\sstatic\sconst\sprotocolId:\w+\s=\s(\d+);")
+    attribute_pattern = re.compile(r"public\svar\s(\w+):([\w.<>]+)(?:\s=\s(.*))?;")
 
-def list_files(search_folder, format=ACTION_SCRIPT_FORMAT):
-    print("Searching " + format + " files...")
+    def __init__(self, file_name):
+        self.file_name = file_name
+        self.class_name = ""
+        self.superclass = ""
+        self.interfaces = []
+        self.protocolId = ""
+        self.attributes = {}
 
-    result = []
-    for root, dirs, files in os.walk(search_folder):
-        for name in files:
-            if name.endswith((format)):
-                result.append(root + '/' + name)
-                
-    print(str(len(result)) + " files found !")
-    return result
+    def parse(self):
 
+        with open(self.file_name, "r", encoding="utf8") as f:
 
-def build_json(files):
-    print("Building json...")
+            first_function_reached = False
+            attributs_to_fix = []
 
-    all_classes = {}
-    # For each file
-    for file in files:
-        # Open the file
-        f = open(file, encoding="utf-8")
-        # For each line of the file
-        for line in f.readlines():
+            lines = f.readlines()
+            for line in lines:
 
-            # Search regex
-            class_match = re.match(CLASS_REGEX, line)
-            # If regex match
-            if(class_match):
-                # Add the class to the dict
-                all_classes[class_match.groups()[0]] = {
-                    'file': file,
-                    'superclass': class_match.groups()[1],
-                    'attributs': {}
-                }
-                break
+                class_match = self.class_pattern.search(line)
+                if class_match:
+                    self.class_name = class_match.group(1)
+                    self.superclass = class_match.group(2)
+                    self.interfaces = class_match.group(3)
+                    if self.interfaces:
+                        self.interfaces = self.interfaces.split(',')
+                        self.interfaces = [x.strip() for x in self.interfaces]
+                    else:
+                        self.interfaces = []
+                    continue
 
-    network_classes = {}
-    # For each class
-    for class_name in all_classes.keys():
-        # If subclass of NetworkMessage
-        if(is_subclass_of(all_classes, class_name)):
-            network_classes[class_name] = all_classes[class_name]
+                protocolId_match = self.protocolId_pattern.search(line)
+                if protocolId_match:
+                    self.protocolId = protocolId_match.group(1)
+                    continue
 
-    # For each class
-    for class_name in network_classes.keys():
-        # Open the file
-        f = open(network_classes[class_name]['file'], encoding="utf-8")
-        # For each line of the file
-        for line in f.readlines():
+                attribute_match = self.attribute_pattern.search(line)
+                if attribute_match:
+                    self.attributes[attribute_match.group(1)] = attribute_match.group(2)
+                    continue
 
-            # If line contains "protocolId"
-            if("protocolId" in line):
-                # Search regex
-                id_match = re.match(ID_REGEX, line)
-                # If regex match
-                if(id_match):
-                    # Save if
-                    network_classes[class_name]['id'] = id_match.groups()[0]
+                if "function" in line and not first_function_reached:
+                    first_function_reached = True
+                    attributs_to_fix = [key for key, value in self.attributes.items() if value in self.types_to_fix]
+                    if len(attributs_to_fix) == 0:
+                        break
 
-            # Else
-            else:
-                # Search regex
-                reader_match = re.match(READER_REGEX, line)
-                # If regex match
-                if(reader_match):
-                    # Save attribut
-                    network_classes[class_name]['attributs'][reader_match.groups()[0]] = reader_match.groups()[1]
+                if len(attributs_to_fix):
+                    write_method_pattern = re.compile(rf"output.write(\w+)\(this.{attributs_to_fix[0]}\);")
+                    write_method_match = write_method_pattern.search(line)
 
-    print(str(len(network_classes)) + " events found !")
-    return network_classes
+                    if write_method_match:
+                        self.attributes[attributs_to_fix[0]] = write_method_match.group(1)
+                        attributs_to_fix.pop(0)
+
+                        if len(attributs_to_fix) == 0:
+                            break
+
+        return {
+            'file': self.file_name,
+            'id': self.protocolId,
+            'class_name': self.class_name,
+            'superclass': self.superclass,
+            'interfaces': self.interfaces,
+            'attributes': self.attributes
+        }
 
 
-def is_subclass_of(dict, subclass, superclass=SUPER_CLASS):
-    if(subclass in dict):
-        if(dict[subclass]['superclass'] == superclass):
-            return True
-        else:
-            return is_subclass_of(dict, dict[subclass]['superclass'])
-    return False
+class NetworkActionScriptReader:
+
+    ACTION_SCRIPT_FORMAT = ".as"
+    INTERFACE_TO_IMPLEMENT = "INetworkMessage"
+
+    def __init__(self, folder):
+        self.folder = folder
+        self.files = self.list_files(folder)
+
+    def list_files(self, search_folder, format=ACTION_SCRIPT_FORMAT):
+        print("Searching " + format + " files...")
+
+        result = []
+        for root, dirs, files in os.walk(search_folder):
+            for name in files:
+                if name.endswith((format)):
+                    result.append(root + '/' + name)
+
+        print(str(len(result)) + " files found !")
+        return result
+
+    def parse(self):
+        print("Parsing files")
+        
+        results = {}
+        for file in self.files:
+            reader = ActionScriptReader(file)
+            result = reader.parse()
+
+            # If the class implements the wanted class
+            if(self.INTERFACE_TO_IMPLEMENT in result['interfaces']):
+                class_name = result['class_name']
+                result.pop('class_name')
+                results[class_name] = result
+
+        return results
 
 
 def save_json(file_name, data):
@@ -101,15 +125,15 @@ def save_json(file_name, data):
     file = open(file_name, 'w')
     file.write(json.dumps(data, indent='\t'))
     file.close()
-    
+
     print("Json saved !")
 
 
 def main(search_folder, output_file):
     # List all the action script files
-    files = list_files(search_folder)
+    reader = NetworkActionScriptReader(search_folder)
     # Build the dict
-    data = build_json(files)
+    data = reader.parse()
     # Save dict
     save_json(output_file, data)
 
