@@ -53,7 +53,7 @@ jobs:
         if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
             python src/A3.py data/events.json data/events.properties
-      
+
       - name: Upload files
         if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         uses: actions/upload-artifact@v3
@@ -89,7 +89,7 @@ jobs:
         if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
             python src/B1.py data/d2o/ data/entities_json/
-      
+
       - name: Upload files
         if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
         uses: actions/upload-artifact@v3
@@ -123,7 +123,7 @@ jobs:
         if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
             python src/C1.py data/d2i/ data/translations_json/
-      
+
       - name: Upload files
         if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
         uses: actions/upload-artifact@v3
@@ -139,16 +139,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-    
+
       - name: Download files
         uses: actions/download-artifact@v3
-        with:
-          path: |
-            data/DofusInvoker/
-            data/events.json
-            data/events.properties
-            data/entities_json/
-            data/translations_json/
 
       - name: Get latest Dofus version
         run: |
