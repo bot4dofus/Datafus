@@ -9,7 +9,7 @@ import json
 
 class ActionScriptReader:
 
-    types_to_fix = ["uint", "int"]
+    types_to_fix = ["uint", "int", "Number"]
     class_pattern = re.compile(r"public\sclass\s(\w+)\s(?:extends\s(\w+)\s)?(?:implements\s([\w,\s]+))?")
     protocolId_pattern = re.compile(r"public\sstatic\sconst\sprotocolId:\w+\s=\s(\d+);")
     attribute_pattern = re.compile(r"public\svar\s(\w+):([\w.<>]+)(?:\s=\s(.*))?;")
