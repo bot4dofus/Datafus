@@ -145,10 +145,20 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Download files
+      - name: Download files Job A
         uses: actions/download-artifact@v3
         with:
-          path: data/
+          name: Job_A
+
+      - name: Download files Job B
+        uses: actions/download-artifact@v3
+        with:
+          name: Job_B
+
+      - name: Download files Job C
+        uses: actions/download-artifact@v3
+        with:
+          name: Job_C
 
       - name: Get latest Dofus version
         run: |
