@@ -1,15 +1,14 @@
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
 import xml.etree.ElementTree as ET
-
-RSS_FLUX = "https://www.dofus.com/fr/rss/changelog.xml"
 
 
 class DofusVersionReader:
 
+    RSS_FLUX = "https://www.dofus.com/fr/rss/changelog.xml"
+    HEADERS = {
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+    }
     SUCCESS_CODE = 200
-
-    def __init__(self, url):
-        self.url = url
 
     def is_version(self, version):
         try:
@@ -20,7 +19,8 @@ class DofusVersionReader:
 
     def get_version(self):
 
-        changelog = urlopen(self.url)
+        req = Request(self.RSS_FLUX, None, self.HEADERS)
+        changelog = urlopen(req)
 
         if (changelog.getcode() != self.SUCCESS_CODE):
             raise Exception("HTTP request failed")
@@ -46,7 +46,7 @@ class DofusVersionReader:
 
 
 def main():
-    reader = DofusVersionReader(RSS_FLUX)
+    reader = DofusVersionReader()
     print(reader.get_version())
 
 
