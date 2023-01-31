@@ -147,18 +147,21 @@ jobs:
 
       - name: Download files Job A
         uses: actions/download-artifact@v3
+        continue-on-error: true
         with:
           name: Job_A
           path: data/
 
       - name: Download files Job B
         uses: actions/download-artifact@v3
+        continue-on-error: true
         with:
           name: Job_B
           path: data/entities_json/
 
       - name: Download files Job C
         uses: actions/download-artifact@v3
+        continue-on-error: true
         with:
           name: Job_C
           path: data/translations_json/
