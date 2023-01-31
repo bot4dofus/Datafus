@@ -36,7 +36,8 @@ jobs:
         if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         uses: actions/setup-java@v3
         with:
-          java-version: 1.8
+          distribution: 'temurin'
+          java-version: '17'
 
       - name: A1 - Extract DofusInvoker.swf
         if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
