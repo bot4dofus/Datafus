@@ -1,10 +1,12 @@
-import requests
+from urllib.request import urlopen
 import xml.etree.ElementTree as ET
 
 RSS_FLUX = "https://www.dofus.com/fr/rss/changelog.xml"
 
 
 class DofusVersionReader:
+
+    SUCCESS_CODE = 200
 
     def __init__(self, url):
         self.url = url
@@ -18,12 +20,12 @@ class DofusVersionReader:
 
     def get_version(self):
 
-        changelog = requests.get(self.url)
+        changelog = urlopen(self.url)
 
-        if (changelog.status_code != 200):
+        if (changelog.getcode() != self.SUCCESS_CODE):
             raise Exception("HTTP request failed")
 
-        root = ET.fromstring(changelog.text)
+        root = ET.fromstring(changelog.read())
         versions = []
 
         for item in root.findall("./channel/item"):
