@@ -96485,7 +96485,7 @@
 		{
 			"id": 8489,
 			"achievementId": 5200,
-			"criteria": "Ob!802",
+			"criteria": "Ob!5200",
 			"kamasRatio": 0.0,
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
@@ -96531,7 +96531,7 @@
 		{
 			"id": 8492,
 			"achievementId": 5201,
-			"criteria": "Ob!803",
+			"criteria": "Ob!5201",
 			"kamasRatio": 0.0,
 			"experienceRatio": 0.0,
 			"kamasScaleWithPlayerLevel": false,
