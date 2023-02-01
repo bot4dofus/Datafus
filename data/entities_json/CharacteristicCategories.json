@@ -1,0 +1,123 @@
+{
+	"def": [
+		{
+			"memberName": "CharacteristicCategory",
+			"packageName": "com.ankamagames.dofus.datacenter.characteristics",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "order",
+					"type": -1
+				},
+				{
+					"name": "characteristicIds",
+					"type": -99,
+					"vectorTypes": {
+						"name": "Vector.<uint>",
+						"type": -6
+					}
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 2,
+			"nameId": 506905,
+			"order": 1,
+			"characteristicIds": [
+				1,
+				23,
+				19,
+				11,
+				14,
+				13,
+				10,
+				15,
+				25,
+				18,
+				12
+			]
+		},
+		{
+			"id": 3,
+			"nameId": 506906,
+			"order": 2,
+			"characteristicIds": [
+				82,
+				27,
+				83,
+				28,
+				49,
+				79,
+				78,
+				44,
+				26,
+				48
+			]
+		},
+		{
+			"id": 4,
+			"nameId": 506910,
+			"order": 3,
+			"characteristicIds": [
+				16,
+				86,
+				92,
+				88,
+				89,
+				90,
+				91,
+				50,
+				31,
+				70,
+				69,
+				84,
+				123,
+				122,
+				120,
+				125,
+				147,
+				148
+			]
+		},
+		{
+			"id": 5,
+			"nameId": 506908,
+			"order": 4,
+			"characteristicIds": [
+				58,
+				37,
+				54,
+				33,
+				55,
+				34,
+				56,
+				35,
+				57,
+				36,
+				87,
+				85,
+				141,
+				142,
+				121,
+				124
+			]
+		},
+		{
+			"id": 6,
+			"nameId": 846625,
+			"order": 5,
+			"characteristicIds": [
+				75
+			]
+		}
+	]
+}

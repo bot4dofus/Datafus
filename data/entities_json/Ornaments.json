@@ -1,0 +1,1188 @@
+{
+	"def": [
+		{
+			"memberName": "Ornament",
+			"packageName": "com.ankamagames.dofus.datacenter.appearance",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "visible",
+					"type": -2
+				},
+				{
+					"name": "assetId",
+					"type": -1
+				},
+				{
+					"name": "iconId",
+					"type": -1
+				},
+				{
+					"name": "order",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 13,
+			"nameId": 292132,
+			"visible": true,
+			"assetId": 1,
+			"iconId": 0,
+			"order": 1
+		},
+		{
+			"id": 14,
+			"nameId": 292128,
+			"visible": true,
+			"assetId": 2,
+			"iconId": 1,
+			"order": 2
+		},
+		{
+			"id": 15,
+			"nameId": 292138,
+			"visible": true,
+			"assetId": 3,
+			"iconId": 2,
+			"order": 3
+		},
+		{
+			"id": 16,
+			"nameId": 292135,
+			"visible": true,
+			"assetId": 4,
+			"iconId": 0,
+			"order": 4
+		},
+		{
+			"id": 17,
+			"nameId": 292104,
+			"visible": true,
+			"assetId": 5,
+			"iconId": 1,
+			"order": 5
+		},
+		{
+			"id": 18,
+			"nameId": 292105,
+			"visible": true,
+			"assetId": 6,
+			"iconId": 2,
+			"order": 6
+		},
+		{
+			"id": 19,
+			"nameId": 292103,
+			"visible": true,
+			"assetId": 7,
+			"iconId": 0,
+			"order": 7
+		},
+		{
+			"id": 22,
+			"nameId": 292109,
+			"visible": true,
+			"assetId": 10,
+			"iconId": 0,
+			"order": 10
+		},
+		{
+			"id": 23,
+			"nameId": 292107,
+			"visible": true,
+			"assetId": 11,
+			"iconId": 0,
+			"order": 11
+		},
+		{
+			"id": 24,
+			"nameId": 292119,
+			"visible": true,
+			"assetId": 12,
+			"iconId": 1,
+			"order": 12
+		},
+		{
+			"id": 25,
+			"nameId": 292117,
+			"visible": true,
+			"assetId": 13,
+			"iconId": 1,
+			"order": 13
+		},
+		{
+			"id": 26,
+			"nameId": 292115,
+			"visible": true,
+			"assetId": 14,
+			"iconId": 0,
+			"order": 14
+		},
+		{
+			"id": 27,
+			"nameId": 292113,
+			"visible": true,
+			"assetId": 15,
+			"iconId": 0,
+			"order": 15
+		},
+		{
+			"id": 28,
+			"nameId": 292122,
+			"visible": true,
+			"assetId": 16,
+			"iconId": 0,
+			"order": 16
+		},
+		{
+			"id": 29,
+			"nameId": 292123,
+			"visible": true,
+			"assetId": 17,
+			"iconId": 1,
+			"order": 17
+		},
+		{
+			"id": 30,
+			"nameId": 292140,
+			"visible": true,
+			"assetId": 18,
+			"iconId": 1,
+			"order": 18
+		},
+		{
+			"id": 31,
+			"nameId": 292133,
+			"visible": true,
+			"assetId": 21,
+			"iconId": 2,
+			"order": 19
+		},
+		{
+			"id": 32,
+			"nameId": 292130,
+			"visible": true,
+			"assetId": 19,
+			"iconId": 0,
+			"order": 20
+		},
+		{
+			"id": 33,
+			"nameId": 292139,
+			"visible": true,
+			"assetId": 20,
+			"iconId": 1,
+			"order": 21
+		},
+		{
+			"id": 34,
+			"nameId": 292136,
+			"visible": true,
+			"assetId": 22,
+			"iconId": 0,
+			"order": 22
+		},
+		{
+			"id": 35,
+			"nameId": 292125,
+			"visible": true,
+			"assetId": 23,
+			"iconId": 1,
+			"order": 23
+		},
+		{
+			"id": 36,
+			"nameId": 292124,
+			"visible": true,
+			"assetId": 24,
+			"iconId": 0,
+			"order": 24
+		},
+		{
+			"id": 37,
+			"nameId": 292127,
+			"visible": true,
+			"assetId": 25,
+			"iconId": 1,
+			"order": 25
+		},
+		{
+			"id": 38,
+			"nameId": 292126,
+			"visible": true,
+			"assetId": 26,
+			"iconId": 2,
+			"order": 26
+		},
+		{
+			"id": 39,
+			"nameId": 292686,
+			"visible": true,
+			"assetId": 28,
+			"iconId": 0,
+			"order": 27
+		},
+		{
+			"id": 40,
+			"nameId": 292121,
+			"visible": true,
+			"assetId": 29,
+			"iconId": 1,
+			"order": 28
+		},
+		{
+			"id": 41,
+			"nameId": 292120,
+			"visible": true,
+			"assetId": 30,
+			"iconId": 2,
+			"order": 29
+		},
+		{
+			"id": 42,
+			"nameId": 292118,
+			"visible": true,
+			"assetId": 31,
+			"iconId": 0,
+			"order": 30
+		},
+		{
+			"id": 43,
+			"nameId": 292116,
+			"visible": true,
+			"assetId": 32,
+			"iconId": 1,
+			"order": 31
+		},
+		{
+			"id": 44,
+			"nameId": 292114,
+			"visible": true,
+			"assetId": 33,
+			"iconId": 2,
+			"order": 32
+		},
+		{
+			"id": 45,
+			"nameId": 292112,
+			"visible": true,
+			"assetId": 34,
+			"iconId": 0,
+			"order": 33
+		},
+		{
+			"id": 46,
+			"nameId": 292111,
+			"visible": true,
+			"assetId": 35,
+			"iconId": 0,
+			"order": 34
+		},
+		{
+			"id": 47,
+			"nameId": 292110,
+			"visible": true,
+			"assetId": 36,
+			"iconId": 1,
+			"order": 35
+		},
+		{
+			"id": 48,
+			"nameId": 292108,
+			"visible": true,
+			"assetId": 37,
+			"iconId": 2,
+			"order": 36
+		},
+		{
+			"id": 49,
+			"nameId": 292106,
+			"visible": true,
+			"assetId": 38,
+			"iconId": 2,
+			"order": 111
+		},
+		{
+			"id": 50,
+			"nameId": 292131,
+			"visible": true,
+			"assetId": 39,
+			"iconId": 3,
+			"order": 112
+		},
+		{
+			"id": 51,
+			"nameId": 292134,
+			"visible": true,
+			"assetId": 40,
+			"iconId": 2,
+			"order": 113
+		},
+		{
+			"id": 52,
+			"nameId": 292137,
+			"visible": true,
+			"assetId": 42,
+			"iconId": 0,
+			"order": 37
+		},
+		{
+			"id": 53,
+			"nameId": 641433,
+			"visible": true,
+			"assetId": 43,
+			"iconId": 1,
+			"order": 38
+		},
+		{
+			"id": 55,
+			"nameId": 292683,
+			"visible": true,
+			"assetId": 45,
+			"iconId": 4,
+			"order": 40
+		},
+		{
+			"id": 56,
+			"nameId": 337713,
+			"visible": true,
+			"assetId": 46,
+			"iconId": 5,
+			"order": 41
+		},
+		{
+			"id": 57,
+			"nameId": 339013,
+			"visible": true,
+			"assetId": 47,
+			"iconId": 2,
+			"order": 42
+		},
+		{
+			"id": 58,
+			"nameId": 431117,
+			"visible": true,
+			"assetId": 49,
+			"iconId": 2,
+			"order": 43
+		},
+		{
+			"id": 59,
+			"nameId": 431116,
+			"visible": true,
+			"assetId": 50,
+			"iconId": 16,
+			"order": 44
+		},
+		{
+			"id": 60,
+			"nameId": 431115,
+			"visible": true,
+			"assetId": 48,
+			"iconId": 3,
+			"order": 45
+		},
+		{
+			"id": 61,
+			"nameId": 470125,
+			"visible": true,
+			"assetId": 51,
+			"iconId": 17,
+			"order": 46
+		},
+		{
+			"id": 62,
+			"nameId": 554452,
+			"visible": true,
+			"assetId": 59,
+			"iconId": 7,
+			"order": 47
+		},
+		{
+			"id": 63,
+			"nameId": 554450,
+			"visible": true,
+			"assetId": 62,
+			"iconId": 7,
+			"order": 48
+		},
+		{
+			"id": 64,
+			"nameId": 565513,
+			"visible": true,
+			"assetId": 65,
+			"iconId": 7,
+			"order": 49
+		},
+		{
+			"id": 65,
+			"nameId": 589535,
+			"visible": true,
+			"assetId": 78,
+			"iconId": 7,
+			"order": 50
+		},
+		{
+			"id": 66,
+			"nameId": 582947,
+			"visible": true,
+			"assetId": 90,
+			"iconId": 7,
+			"order": 51
+		},
+		{
+			"id": 67,
+			"nameId": 554455,
+			"visible": true,
+			"assetId": 61,
+			"iconId": 7,
+			"order": 52
+		},
+		{
+			"id": 68,
+			"nameId": 554453,
+			"visible": true,
+			"assetId": 64,
+			"iconId": 7,
+			"order": 53
+		},
+		{
+			"id": 69,
+			"nameId": 565511,
+			"visible": true,
+			"assetId": 67,
+			"iconId": 7,
+			"order": 54
+		},
+		{
+			"id": 70,
+			"nameId": 589536,
+			"visible": true,
+			"assetId": 80,
+			"iconId": 7,
+			"order": 55
+		},
+		{
+			"id": 71,
+			"nameId": 582950,
+			"visible": true,
+			"assetId": 91,
+			"iconId": 7,
+			"order": 56
+		},
+		{
+			"id": 72,
+			"nameId": 554451,
+			"visible": true,
+			"assetId": 60,
+			"iconId": 7,
+			"order": 57
+		},
+		{
+			"id": 73,
+			"nameId": 554449,
+			"visible": true,
+			"assetId": 63,
+			"iconId": 7,
+			"order": 58
+		},
+		{
+			"id": 74,
+			"nameId": 565514,
+			"visible": true,
+			"assetId": 66,
+			"iconId": 7,
+			"order": 59
+		},
+		{
+			"id": 75,
+			"nameId": 589539,
+			"visible": true,
+			"assetId": 79,
+			"iconId": 7,
+			"order": 60
+		},
+		{
+			"id": 76,
+			"nameId": 582949,
+			"visible": true,
+			"assetId": 92,
+			"iconId": 7,
+			"order": 61
+		},
+		{
+			"id": 77,
+			"nameId": 554454,
+			"visible": true,
+			"assetId": 68,
+			"iconId": 6,
+			"order": 62
+		},
+		{
+			"id": 78,
+			"nameId": 554456,
+			"visible": true,
+			"assetId": 71,
+			"iconId": 6,
+			"order": 63
+		},
+		{
+			"id": 79,
+			"nameId": 565508,
+			"visible": true,
+			"assetId": 74,
+			"iconId": 6,
+			"order": 64
+		},
+		{
+			"id": 80,
+			"nameId": 589537,
+			"visible": true,
+			"assetId": 81,
+			"iconId": 6,
+			"order": 65
+		},
+		{
+			"id": 81,
+			"nameId": 582952,
+			"visible": true,
+			"assetId": 93,
+			"iconId": 6,
+			"order": 66
+		},
+		{
+			"id": 82,
+			"nameId": 556494,
+			"visible": true,
+			"assetId": 70,
+			"iconId": 6,
+			"order": 67
+		},
+		{
+			"id": 83,
+			"nameId": 556495,
+			"visible": true,
+			"assetId": 73,
+			"iconId": 6,
+			"order": 68
+		},
+		{
+			"id": 84,
+			"nameId": 565515,
+			"visible": true,
+			"assetId": 76,
+			"iconId": 6,
+			"order": 69
+		},
+		{
+			"id": 85,
+			"nameId": 589540,
+			"visible": true,
+			"assetId": 83,
+			"iconId": 6,
+			"order": 70
+		},
+		{
+			"id": 86,
+			"nameId": 589110,
+			"visible": true,
+			"assetId": 94,
+			"iconId": 6,
+			"order": 71
+		},
+		{
+			"id": 87,
+			"nameId": 554457,
+			"visible": true,
+			"assetId": 69,
+			"iconId": 6,
+			"order": 72
+		},
+		{
+			"id": 88,
+			"nameId": 554458,
+			"visible": true,
+			"assetId": 72,
+			"iconId": 6,
+			"order": 73
+		},
+		{
+			"id": 89,
+			"nameId": 565509,
+			"visible": true,
+			"assetId": 75,
+			"iconId": 6,
+			"order": 74
+		},
+		{
+			"id": 90,
+			"nameId": 589538,
+			"visible": true,
+			"assetId": 82,
+			"iconId": 6,
+			"order": 75
+		},
+		{
+			"id": 91,
+			"nameId": 582954,
+			"visible": true,
+			"assetId": 95,
+			"iconId": 6,
+			"order": 76
+		},
+		{
+			"id": 92,
+			"nameId": 554460,
+			"visible": true,
+			"assetId": 57,
+			"iconId": 3,
+			"order": 77
+		},
+		{
+			"id": 93,
+			"nameId": 565512,
+			"visible": true,
+			"assetId": 58,
+			"iconId": 3,
+			"order": 78
+		},
+		{
+			"id": 94,
+			"nameId": 554463,
+			"visible": true,
+			"assetId": 52,
+			"iconId": 0,
+			"order": 79
+		},
+		{
+			"id": 95,
+			"nameId": 554464,
+			"visible": true,
+			"assetId": 53,
+			"iconId": 1,
+			"order": 80
+		},
+		{
+			"id": 96,
+			"nameId": 796969,
+			"visible": true,
+			"assetId": 54,
+			"iconId": 1,
+			"order": 81
+		},
+		{
+			"id": 97,
+			"nameId": 796970,
+			"visible": true,
+			"assetId": 55,
+			"iconId": 2,
+			"order": 82
+		},
+		{
+			"id": 98,
+			"nameId": 554459,
+			"visible": true,
+			"assetId": 56,
+			"iconId": 3,
+			"order": 83
+		},
+		{
+			"id": 99,
+			"nameId": 565510,
+			"visible": true,
+			"assetId": 77,
+			"iconId": 15,
+			"order": 84
+		},
+		{
+			"id": 100,
+			"nameId": 611058,
+			"visible": true,
+			"assetId": 84,
+			"iconId": 12,
+			"order": 85
+		},
+		{
+			"id": 101,
+			"nameId": 649469,
+			"visible": true,
+			"assetId": 85,
+			"iconId": 13,
+			"order": 86
+		},
+		{
+			"id": 102,
+			"nameId": 657628,
+			"visible": true,
+			"assetId": 86,
+			"iconId": 2,
+			"order": 87
+		},
+		{
+			"id": 103,
+			"nameId": 698268,
+			"visible": true,
+			"assetId": 87,
+			"iconId": 14,
+			"order": 88
+		},
+		{
+			"id": 107,
+			"nameId": 711571,
+			"visible": true,
+			"assetId": 88,
+			"iconId": 15,
+			"order": 92
+		},
+		{
+			"id": 108,
+			"nameId": 881400,
+			"visible": true,
+			"assetId": 108,
+			"iconId": 3,
+			"order": 93
+		},
+		{
+			"id": 109,
+			"nameId": 724164,
+			"visible": true,
+			"assetId": 109,
+			"iconId": 8,
+			"order": 94
+		},
+		{
+			"id": 110,
+			"nameId": 740122,
+			"visible": true,
+			"assetId": 89,
+			"iconId": 11,
+			"order": 95
+		},
+		{
+			"id": 111,
+			"nameId": 745652,
+			"visible": true,
+			"assetId": 110,
+			"iconId": 18,
+			"order": 96
+		},
+		{
+			"id": 112,
+			"nameId": 745654,
+			"visible": true,
+			"assetId": 111,
+			"iconId": 18,
+			"order": 97
+		},
+		{
+			"id": 113,
+			"nameId": 745655,
+			"visible": true,
+			"assetId": 112,
+			"iconId": 18,
+			"order": 98
+		},
+		{
+			"id": 114,
+			"nameId": 745656,
+			"visible": true,
+			"assetId": 113,
+			"iconId": 10,
+			"order": 99
+		},
+		{
+			"id": 115,
+			"nameId": 745658,
+			"visible": true,
+			"assetId": 114,
+			"iconId": 10,
+			"order": 100
+		},
+		{
+			"id": 116,
+			"nameId": 745659,
+			"visible": true,
+			"assetId": 115,
+			"iconId": 10,
+			"order": 101
+		},
+		{
+			"id": 117,
+			"nameId": 745660,
+			"visible": true,
+			"assetId": 116,
+			"iconId": 19,
+			"order": 102
+		},
+		{
+			"id": 118,
+			"nameId": 745661,
+			"visible": true,
+			"assetId": 117,
+			"iconId": 19,
+			"order": 103
+		},
+		{
+			"id": 119,
+			"nameId": 745662,
+			"visible": true,
+			"assetId": 118,
+			"iconId": 19,
+			"order": 104
+		},
+		{
+			"id": 120,
+			"nameId": 745663,
+			"visible": true,
+			"assetId": 119,
+			"iconId": 9,
+			"order": 105
+		},
+		{
+			"id": 121,
+			"nameId": 745668,
+			"visible": true,
+			"assetId": 120,
+			"iconId": 9,
+			"order": 106
+		},
+		{
+			"id": 122,
+			"nameId": 745671,
+			"visible": true,
+			"assetId": 121,
+			"iconId": 9,
+			"order": 107
+		},
+		{
+			"id": 123,
+			"nameId": 745678,
+			"visible": true,
+			"assetId": 122,
+			"iconId": 8,
+			"order": 108
+		},
+		{
+			"id": 124,
+			"nameId": 745679,
+			"visible": true,
+			"assetId": 123,
+			"iconId": 8,
+			"order": 109
+		},
+		{
+			"id": 125,
+			"nameId": 745680,
+			"visible": true,
+			"assetId": 124,
+			"iconId": 8,
+			"order": 110
+		},
+		{
+			"id": 126,
+			"nameId": 761501,
+			"visible": true,
+			"assetId": 125,
+			"iconId": 2,
+			"order": 115
+		},
+		{
+			"id": 127,
+			"nameId": 766724,
+			"visible": true,
+			"assetId": 127,
+			"iconId": 0,
+			"order": 116
+		},
+		{
+			"id": 128,
+			"nameId": 766726,
+			"visible": true,
+			"assetId": 128,
+			"iconId": 1,
+			"order": 117
+		},
+		{
+			"id": 129,
+			"nameId": 766728,
+			"visible": true,
+			"assetId": 129,
+			"iconId": 2,
+			"order": 118
+		},
+		{
+			"id": 130,
+			"nameId": 766730,
+			"visible": true,
+			"assetId": 130,
+			"iconId": 9,
+			"order": 119
+		},
+		{
+			"id": 131,
+			"nameId": 766732,
+			"visible": true,
+			"assetId": 131,
+			"iconId": 12,
+			"order": 120
+		},
+		{
+			"id": 132,
+			"nameId": 766734,
+			"visible": true,
+			"assetId": 132,
+			"iconId": 3,
+			"order": 121
+		},
+		{
+			"id": 133,
+			"nameId": 767158,
+			"visible": true,
+			"assetId": 126,
+			"iconId": 4,
+			"order": 122
+		},
+		{
+			"id": 134,
+			"nameId": 776993,
+			"visible": true,
+			"assetId": 133,
+			"iconId": 4,
+			"order": 123
+		},
+		{
+			"id": 135,
+			"nameId": 777042,
+			"visible": true,
+			"assetId": 134,
+			"iconId": 4,
+			"order": 124
+		},
+		{
+			"id": 136,
+			"nameId": 793180,
+			"visible": true,
+			"assetId": 136,
+			"iconId": 4,
+			"order": 125
+		},
+		{
+			"id": 137,
+			"nameId": 801838,
+			"visible": true,
+			"assetId": 135,
+			"iconId": 3,
+			"order": 126
+		},
+		{
+			"id": 138,
+			"nameId": 815563,
+			"visible": false,
+			"assetId": 138,
+			"iconId": 4,
+			"order": 127
+		},
+		{
+			"id": 139,
+			"nameId": 819336,
+			"visible": true,
+			"assetId": 139,
+			"iconId": 20,
+			"order": 128
+		},
+		{
+			"id": 140,
+			"nameId": 819337,
+			"visible": true,
+			"assetId": 140,
+			"iconId": 20,
+			"order": 129
+		},
+		{
+			"id": 141,
+			"nameId": 819338,
+			"visible": true,
+			"assetId": 141,
+			"iconId": 20,
+			"order": 130
+		},
+		{
+			"id": 142,
+			"nameId": 819339,
+			"visible": true,
+			"assetId": 142,
+			"iconId": 20,
+			"order": 131
+		},
+		{
+			"id": 143,
+			"nameId": 819340,
+			"visible": true,
+			"assetId": 143,
+			"iconId": 20,
+			"order": 132
+		},
+		{
+			"id": 144,
+			"nameId": 819341,
+			"visible": true,
+			"assetId": 144,
+			"iconId": 20,
+			"order": 133
+		},
+		{
+			"id": 145,
+			"nameId": 819351,
+			"visible": true,
+			"assetId": 145,
+			"iconId": 20,
+			"order": 134
+		},
+		{
+			"id": 146,
+			"nameId": 819352,
+			"visible": true,
+			"assetId": 146,
+			"iconId": 20,
+			"order": 135
+		},
+		{
+			"id": 147,
+			"nameId": 819353,
+			"visible": true,
+			"assetId": 147,
+			"iconId": 20,
+			"order": 136
+		},
+		{
+			"id": 148,
+			"nameId": 819354,
+			"visible": true,
+			"assetId": 148,
+			"iconId": 20,
+			"order": 137
+		},
+		{
+			"id": 149,
+			"nameId": 819355,
+			"visible": true,
+			"assetId": 149,
+			"iconId": 20,
+			"order": 138
+		},
+		{
+			"id": 150,
+			"nameId": 819356,
+			"visible": true,
+			"assetId": 150,
+			"iconId": 20,
+			"order": 139
+		},
+		{
+			"id": 151,
+			"nameId": 819357,
+			"visible": true,
+			"assetId": 151,
+			"iconId": 20,
+			"order": 140
+		},
+		{
+			"id": 152,
+			"nameId": 822932,
+			"visible": true,
+			"assetId": 152,
+			"iconId": 6,
+			"order": 141
+		},
+		{
+			"id": 153,
+			"nameId": 822933,
+			"visible": true,
+			"assetId": 153,
+			"iconId": 20,
+			"order": 142
+		},
+		{
+			"id": 154,
+			"nameId": 822934,
+			"visible": true,
+			"assetId": 154,
+			"iconId": 1,
+			"order": 143
+		},
+		{
+			"id": 155,
+			"nameId": 822935,
+			"visible": true,
+			"assetId": 155,
+			"iconId": 3,
+			"order": 144
+		},
+		{
+			"id": 156,
+			"nameId": 848723,
+			"visible": true,
+			"assetId": 156,
+			"iconId": 15,
+			"order": 145
+		},
+		{
+			"id": 157,
+			"nameId": 880489,
+			"visible": true,
+			"assetId": 157,
+			"iconId": 21,
+			"order": 146
+		},
+		{
+			"id": 158,
+			"nameId": 880488,
+			"visible": true,
+			"assetId": 158,
+			"iconId": 8,
+			"order": 147
+		},
+		{
+			"id": 159,
+			"nameId": 924605,
+			"visible": true,
+			"assetId": 159,
+			"iconId": 13,
+			"order": 151
+		},
+		{
+			"id": 161,
+			"nameId": 956185,
+			"visible": true,
+			"assetId": 161,
+			"iconId": 3,
+			"order": 153
+		},
+		{
+			"id": 162,
+			"nameId": 968659,
+			"visible": true,
+			"assetId": 162,
+			"iconId": 4,
+			"order": 154
+		},
+		{
+			"id": 163,
+			"nameId": 985509,
+			"visible": true,
+			"assetId": 163,
+			"iconId": 3,
+			"order": 155
+		}
+	]
+}

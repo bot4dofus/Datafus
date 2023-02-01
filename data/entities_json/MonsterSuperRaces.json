@@ -1,0 +1,168 @@
+{
+	"def": [
+		{
+			"memberName": "MonsterSuperRace",
+			"packageName": "com.ankamagames.dofus.datacenter.monsters",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 1,
+			"nameId": 7420
+		},
+		{
+			"id": 2,
+			"nameId": 7418
+		},
+		{
+			"id": 3,
+			"nameId": 7410
+		},
+		{
+			"id": 4,
+			"nameId": 7408
+		},
+		{
+			"id": 5,
+			"nameId": 658230
+		},
+		{
+			"id": 6,
+			"nameId": 7421
+		},
+		{
+			"id": 7,
+			"nameId": 7405
+		},
+		{
+			"id": 8,
+			"nameId": 7407
+		},
+		{
+			"id": 9,
+			"nameId": 7403
+		},
+		{
+			"id": 10,
+			"nameId": 7419
+		},
+		{
+			"id": 11,
+			"nameId": 7409
+		},
+		{
+			"id": 12,
+			"nameId": 7417
+		},
+		{
+			"id": 13,
+			"nameId": 7413
+		},
+		{
+			"id": 14,
+			"nameId": 961919
+		},
+		{
+			"id": 15,
+			"nameId": 7412
+		},
+		{
+			"id": 16,
+			"nameId": 7404
+		},
+		{
+			"id": 17,
+			"nameId": 7411
+		},
+		{
+			"id": 18,
+			"nameId": 518729
+		},
+		{
+			"id": 19,
+			"nameId": 7401
+		},
+		{
+			"id": 20,
+			"nameId": 933879
+		},
+		{
+			"id": 21,
+			"nameId": 7416
+		},
+		{
+			"id": 22,
+			"nameId": 909626
+		},
+		{
+			"id": 24,
+			"nameId": 281204
+		},
+		{
+			"id": 25,
+			"nameId": 305659
+		},
+		{
+			"id": 26,
+			"nameId": 332013
+		},
+		{
+			"id": 27,
+			"nameId": 332014
+		},
+		{
+			"id": 28,
+			"nameId": 332012
+		},
+		{
+			"id": 29,
+			"nameId": 518738
+		},
+		{
+			"id": 30,
+			"nameId": 698088
+		},
+		{
+			"id": 34,
+			"nameId": 783482
+		},
+		{
+			"id": 35,
+			"nameId": 783547
+		},
+		{
+			"id": 37,
+			"nameId": 800405
+		},
+		{
+			"id": 38,
+			"nameId": 818242
+		},
+		{
+			"id": 41,
+			"nameId": 897188
+		},
+		{
+			"id": 43,
+			"nameId": 948204
+		},
+		{
+			"id": 44,
+			"nameId": 976865
+		},
+		{
+			"id": 45,
+			"nameId": 965928
+		}
+	]
+}

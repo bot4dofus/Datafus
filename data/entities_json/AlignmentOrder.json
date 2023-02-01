@@ -1,0 +1,74 @@
+{
+	"def": [
+		{
+			"memberName": "AlignmentOrder",
+			"packageName": "com.ankamagames.dofus.datacenter.alignments",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "sideId",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 0,
+			"nameId": 93,
+			"sideId": 0
+		},
+		{
+			"id": 1,
+			"nameId": 91,
+			"sideId": 1
+		},
+		{
+			"id": 2,
+			"nameId": 517270,
+			"sideId": 1
+		},
+		{
+			"id": 3,
+			"nameId": 90,
+			"sideId": 1
+		},
+		{
+			"id": 4,
+			"nameId": 517269,
+			"sideId": 1
+		},
+		{
+			"id": 5,
+			"nameId": 309774,
+			"sideId": 2
+		},
+		{
+			"id": 6,
+			"nameId": 517271,
+			"sideId": 2
+		},
+		{
+			"id": 7,
+			"nameId": 96,
+			"sideId": 2
+		},
+		{
+			"id": 8,
+			"nameId": 517268,
+			"sideId": 2
+		},
+		{
+			"id": 9,
+			"nameId": 97,
+			"sideId": 3
+		}
+	]
+}

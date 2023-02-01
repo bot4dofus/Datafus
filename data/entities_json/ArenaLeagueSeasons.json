@@ -1,0 +1,88 @@
+{
+	"def": [
+		{
+			"memberName": "ArenaLeagueSeason",
+			"packageName": "com.ankamagames.dofus.datacenter.arena",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 8,
+			"nameId": 836948
+		},
+		{
+			"id": 9,
+			"nameId": 858708
+		},
+		{
+			"id": 12,
+			"nameId": 901578
+		},
+		{
+			"id": 10,
+			"nameId": 873816
+		},
+		{
+			"id": 11,
+			"nameId": 897383
+		},
+		{
+			"id": 13,
+			"nameId": 918119
+		},
+		{
+			"id": 1,
+			"nameId": 766823
+		},
+		{
+			"id": 14,
+			"nameId": 928154
+		},
+		{
+			"id": 15,
+			"nameId": 937557
+		},
+		{
+			"id": 16,
+			"nameId": 953434
+		},
+		{
+			"id": 17,
+			"nameId": 966839
+		},
+		{
+			"id": 3,
+			"nameId": 779708
+		},
+		{
+			"id": 4,
+			"nameId": 789226
+		},
+		{
+			"id": 5,
+			"nameId": 806228
+		},
+		{
+			"id": 6,
+			"nameId": 814648
+		},
+		{
+			"id": 7,
+			"nameId": 817883
+		},
+		{
+			"id": 18,
+			"nameId": 981967
+		}
+	]
+}

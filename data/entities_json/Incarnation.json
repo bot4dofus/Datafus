@@ -1,0 +1,305 @@
+{
+	"def": [
+		{
+			"memberName": "Incarnation",
+			"packageName": "com.ankamagames.dofus.datacenter.items",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "lookMale",
+					"type": -3
+				},
+				{
+					"name": "lookFemale",
+					"type": -3
+				},
+				{
+					"name": "maleBoneId",
+					"type": -1
+				},
+				{
+					"name": "femaleBoneId",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 2,
+			"lookMale": "{1004|||130}",
+			"lookFemale": "{1004|||130}",
+			"maleBoneId": 1004,
+			"femaleBoneId": 1004
+		},
+		{
+			"id": 3,
+			"lookMale": "{1064|||130}",
+			"lookFemale": "{1064|||130}",
+			"maleBoneId": 1064,
+			"femaleBoneId": 1064
+		},
+		{
+			"id": 4,
+			"lookMale": "{1065|||130}",
+			"lookFemale": "{1065|||130}",
+			"maleBoneId": 1065,
+			"femaleBoneId": 1065
+		},
+		{
+			"id": 5,
+			"lookMale": "{1066|||130}",
+			"lookFemale": "{1066|||130}",
+			"maleBoneId": 1066,
+			"femaleBoneId": 1066
+		},
+		{
+			"id": 6,
+			"lookMale": "{1067|||130}",
+			"lookFemale": "{1067|||130}",
+			"maleBoneId": 1067,
+			"femaleBoneId": 1067
+		},
+		{
+			"id": 30,
+			"lookMale": "{707|||150}",
+			"lookFemale": "{707|||150}",
+			"maleBoneId": 707,
+			"femaleBoneId": 707
+		},
+		{
+			"id": 31,
+			"lookMale": "{136|||150}",
+			"lookFemale": "{136|||150}",
+			"maleBoneId": 136,
+			"femaleBoneId": 136
+		},
+		{
+			"id": 32,
+			"lookMale": "{473|||140}",
+			"lookFemale": "{473|||140}",
+			"maleBoneId": 473,
+			"femaleBoneId": 473
+		},
+		{
+			"id": 33,
+			"lookMale": "{254}",
+			"lookFemale": "{254}",
+			"maleBoneId": 254,
+			"femaleBoneId": 254
+		},
+		{
+			"id": 40,
+			"lookMale": "{281|||115}",
+			"lookFemale": "{281|||115}",
+			"maleBoneId": 281,
+			"femaleBoneId": 281
+		},
+		{
+			"id": 41,
+			"lookMale": "{288|||120}",
+			"lookFemale": "{288|||120}",
+			"maleBoneId": 288,
+			"femaleBoneId": 288
+		},
+		{
+			"id": 42,
+			"lookMale": "{6877||1=11764720,3=8721945,5=5574286}",
+			"lookFemale": "{6877||1=11764720,3=8721945,5=5574286}",
+			"maleBoneId": 6877,
+			"femaleBoneId": 6877
+		},
+		{
+			"id": 43,
+			"lookMale": "{362|||90}",
+			"lookFemale": "{362|||90}",
+			"maleBoneId": 362,
+			"femaleBoneId": 362
+		},
+		{
+			"id": 44,
+			"lookMale": "{68|||90}",
+			"lookFemale": "{68|||90}",
+			"maleBoneId": 68,
+			"femaleBoneId": 68
+		},
+		{
+			"id": 45,
+			"lookMale": "{69}",
+			"lookFemale": "{69}",
+			"maleBoneId": 69,
+			"femaleBoneId": 69
+		},
+		{
+			"id": 46,
+			"lookMale": "{337}",
+			"lookFemale": "{337}",
+			"maleBoneId": 337,
+			"femaleBoneId": 337
+		},
+		{
+			"id": 47,
+			"lookMale": "{78}",
+			"lookFemale": "{78}",
+			"maleBoneId": 78,
+			"femaleBoneId": 78
+		},
+		{
+			"id": 48,
+			"lookMale": "{81|||120}",
+			"lookFemale": "{81|||120}",
+			"maleBoneId": 81,
+			"femaleBoneId": 81
+		},
+		{
+			"id": 49,
+			"lookMale": "{1099|||120}",
+			"lookFemale": "{1099|||120}",
+			"maleBoneId": 1099,
+			"femaleBoneId": 1099
+		},
+		{
+			"id": 50,
+			"lookMale": "{436|||110}",
+			"lookFemale": "{436|||110}",
+			"maleBoneId": 436,
+			"femaleBoneId": 436
+		},
+		{
+			"id": 51,
+			"lookMale": "{429|||110}",
+			"lookFemale": "{429|||110}",
+			"maleBoneId": 429,
+			"femaleBoneId": 429
+		},
+		{
+			"id": 52,
+			"lookMale": "{424|||130}",
+			"lookFemale": "{424|||130}",
+			"maleBoneId": 424,
+			"femaleBoneId": 424
+		},
+		{
+			"id": 58,
+			"lookMale": "{445|||120}",
+			"lookFemale": "{445|||120}",
+			"maleBoneId": 445,
+			"femaleBoneId": 445
+		},
+		{
+			"id": 62,
+			"lookMale": "{321}",
+			"lookFemale": "{321}",
+			"maleBoneId": 321,
+			"femaleBoneId": 321
+		},
+		{
+			"id": 63,
+			"lookMale": "{550}",
+			"lookFemale": "{550}",
+			"maleBoneId": 550,
+			"femaleBoneId": 550
+		},
+		{
+			"id": 64,
+			"lookMale": "{422}",
+			"lookFemale": "{422}",
+			"maleBoneId": 422,
+			"femaleBoneId": 422
+		},
+		{
+			"id": 65,
+			"lookMale": "{307}",
+			"lookFemale": "{307}",
+			"maleBoneId": 307,
+			"femaleBoneId": 307
+		},
+		{
+			"id": 66,
+			"lookMale": "{426}",
+			"lookFemale": "{426}",
+			"maleBoneId": 426,
+			"femaleBoneId": 426
+		},
+		{
+			"id": 67,
+			"lookMale": "{1485|||160}",
+			"lookFemale": "{1485|||160}",
+			"maleBoneId": 1485,
+			"femaleBoneId": 1485
+		},
+		{
+			"id": 68,
+			"lookMale": "{1487|||160}",
+			"lookFemale": "{1487|||160}",
+			"maleBoneId": 1487,
+			"femaleBoneId": 1487
+		},
+		{
+			"id": 69,
+			"lookMale": "{1488|||160}",
+			"lookFemale": "{1488|||160}",
+			"maleBoneId": 1488,
+			"femaleBoneId": 1488
+		},
+		{
+			"id": 70,
+			"lookMale": "{1486|||160}",
+			"lookFemale": "{1486|||160}",
+			"maleBoneId": 1486,
+			"femaleBoneId": 1486
+		},
+		{
+			"id": 71,
+			"lookMale": "{462|||90}",
+			"lookFemale": "{462|||90}",
+			"maleBoneId": 462,
+			"femaleBoneId": 462
+		},
+		{
+			"id": 72,
+			"lookMale": "{471|||90}",
+			"lookFemale": "{471|||90}",
+			"maleBoneId": 471,
+			"femaleBoneId": 471
+		},
+		{
+			"id": 73,
+			"lookMale": "{1163}",
+			"lookFemale": "{1163}",
+			"maleBoneId": 1163,
+			"femaleBoneId": 1163
+		},
+		{
+			"id": 74,
+			"lookMale": "{378|||100}",
+			"lookFemale": "{378|||100}",
+			"maleBoneId": 378,
+			"femaleBoneId": 378
+		},
+		{
+			"id": 75,
+			"lookMale": "{600|||100}",
+			"lookFemale": "{600|||100}",
+			"maleBoneId": 600,
+			"femaleBoneId": 600
+		},
+		{
+			"id": 76,
+			"lookMale": "{593|||90}",
+			"lookFemale": "{593|||90}",
+			"maleBoneId": 593,
+			"femaleBoneId": 593
+		},
+		{
+			"id": 77,
+			"lookMale": "{1830}",
+			"lookFemale": "{1830}",
+			"maleBoneId": 1830,
+			"femaleBoneId": 1830
+		}
+	]
+}

@@ -1,0 +1,3476 @@
+{
+	"def": [
+		{
+			"memberName": "SpellVariant",
+			"packageName": "com.ankamagames.dofus.datacenter.spells",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "breedId",
+					"type": -1
+				},
+				{
+					"name": "spellIds",
+					"type": -99,
+					"vectorTypes": {
+						"name": "Vector.<uint>",
+						"type": -6
+					}
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 12,
+			"breedId": 9,
+			"spellIds": [
+				13055,
+				13069
+			]
+		},
+		{
+			"id": 13,
+			"breedId": 9,
+			"spellIds": [
+				13047,
+				13068
+			]
+		},
+		{
+			"id": 14,
+			"breedId": 9,
+			"spellIds": [
+				13050,
+				13070
+			]
+		},
+		{
+			"id": 15,
+			"breedId": 9,
+			"spellIds": [
+				13051,
+				13072
+			]
+		},
+		{
+			"id": 16,
+			"breedId": 9,
+			"spellIds": [
+				13058,
+				13073
+			]
+		},
+		{
+			"id": 17,
+			"breedId": 9,
+			"spellIds": [
+				13053,
+				13074
+			]
+		},
+		{
+			"id": 18,
+			"breedId": 9,
+			"spellIds": [
+				13054,
+				13075
+			]
+		},
+		{
+			"id": 19,
+			"breedId": 9,
+			"spellIds": [
+				13066,
+				13076
+			]
+		},
+		{
+			"id": 20,
+			"breedId": 9,
+			"spellIds": [
+				13056,
+				13077
+			]
+		},
+		{
+			"id": 21,
+			"breedId": 9,
+			"spellIds": [
+				13057,
+				13078
+			]
+		},
+		{
+			"id": 22,
+			"breedId": 9,
+			"spellIds": [
+				13052,
+				13079
+			]
+		},
+		{
+			"id": 23,
+			"breedId": 9,
+			"spellIds": [
+				13059,
+				13080
+			]
+		},
+		{
+			"id": 25,
+			"breedId": 9,
+			"spellIds": [
+				13062,
+				13082
+			]
+		},
+		{
+			"id": 26,
+			"breedId": 9,
+			"spellIds": [
+				13061,
+				13083
+			]
+		},
+		{
+			"id": 27,
+			"breedId": 9,
+			"spellIds": [
+				13064,
+				13084
+			]
+		},
+		{
+			"id": 28,
+			"breedId": 9,
+			"spellIds": [
+				13049,
+				13071
+			]
+		},
+		{
+			"id": 29,
+			"breedId": 9,
+			"spellIds": [
+				13063,
+				13085
+			]
+		},
+		{
+			"id": 31,
+			"breedId": 9,
+			"spellIds": [
+				13065,
+				13086
+			]
+		},
+		{
+			"id": 32,
+			"breedId": 9,
+			"spellIds": [
+				13067,
+				13088
+			]
+		},
+		{
+			"id": 33,
+			"breedId": 6,
+			"spellIds": [
+				12842,
+				12863
+			]
+		},
+		{
+			"id": 34,
+			"breedId": 6,
+			"spellIds": [
+				12848,
+				12864
+			]
+		},
+		{
+			"id": 35,
+			"breedId": 6,
+			"spellIds": [
+				12841,
+				12866
+			]
+		},
+		{
+			"id": 36,
+			"breedId": 6,
+			"spellIds": [
+				14310,
+				14311
+			]
+		},
+		{
+			"id": 37,
+			"breedId": 6,
+			"spellIds": [
+				12844,
+				12865
+			]
+		},
+		{
+			"id": 38,
+			"breedId": 6,
+			"spellIds": [
+				12840,
+				12871
+			]
+		},
+		{
+			"id": 39,
+			"breedId": 6,
+			"spellIds": [
+				12856,
+				12869
+			]
+		},
+		{
+			"id": 40,
+			"breedId": 6,
+			"spellIds": [
+				12852,
+				12867
+			]
+		},
+		{
+			"id": 41,
+			"breedId": 6,
+			"spellIds": [
+				12858,
+				12870
+			]
+		},
+		{
+			"id": 42,
+			"breedId": 6,
+			"spellIds": [
+				12846,
+				12872
+			]
+		},
+		{
+			"id": 43,
+			"breedId": 6,
+			"spellIds": [
+				12850,
+				12868
+			]
+		},
+		{
+			"id": 44,
+			"breedId": 6,
+			"spellIds": [
+				12855,
+				12873
+			]
+		},
+		{
+			"id": 45,
+			"breedId": 6,
+			"spellIds": [
+				12845,
+				12874
+			]
+		},
+		{
+			"id": 46,
+			"breedId": 6,
+			"spellIds": [
+				12847,
+				12875
+			]
+		},
+		{
+			"id": 47,
+			"breedId": 6,
+			"spellIds": [
+				12843,
+				12876
+			]
+		},
+		{
+			"id": 48,
+			"breedId": 6,
+			"spellIds": [
+				12854,
+				12877
+			]
+		},
+		{
+			"id": 49,
+			"breedId": 6,
+			"spellIds": [
+				12857,
+				12878
+			]
+		},
+		{
+			"id": 50,
+			"breedId": 6,
+			"spellIds": [
+				12861,
+				12883
+			]
+		},
+		{
+			"id": 51,
+			"breedId": 6,
+			"spellIds": [
+				12851,
+				12880
+			]
+		},
+		{
+			"id": 52,
+			"breedId": 6,
+			"spellIds": [
+				12853,
+				12881
+			]
+		},
+		{
+			"id": 75,
+			"breedId": 7,
+			"spellIds": [
+				13169,
+				13202
+			]
+		},
+		{
+			"id": 76,
+			"breedId": 7,
+			"spellIds": [
+				13176,
+				13200
+			]
+		},
+		{
+			"id": 77,
+			"breedId": 7,
+			"spellIds": [
+				13171,
+				13201
+			]
+		},
+		{
+			"id": 78,
+			"breedId": 7,
+			"spellIds": [
+				13172,
+				13203
+			]
+		},
+		{
+			"id": 79,
+			"breedId": 7,
+			"spellIds": [
+				13175,
+				13204
+			]
+		},
+		{
+			"id": 80,
+			"breedId": 7,
+			"spellIds": [
+				13173,
+				13205
+			]
+		},
+		{
+			"id": 81,
+			"breedId": 7,
+			"spellIds": [
+				14511,
+				13210
+			]
+		},
+		{
+			"id": 82,
+			"breedId": 7,
+			"spellIds": [
+				13180,
+				13207
+			]
+		},
+		{
+			"id": 83,
+			"breedId": 7,
+			"spellIds": [
+				13177,
+				13208
+			]
+		},
+		{
+			"id": 84,
+			"breedId": 7,
+			"spellIds": [
+				13181,
+				13209
+			]
+		},
+		{
+			"id": 85,
+			"breedId": 7,
+			"spellIds": [
+				13174,
+				14446
+			]
+		},
+		{
+			"id": 86,
+			"breedId": 7,
+			"spellIds": [
+				13185,
+				13216
+			]
+		},
+		{
+			"id": 87,
+			"breedId": 7,
+			"spellIds": [
+				13170,
+				13206
+			]
+		},
+		{
+			"id": 88,
+			"breedId": 7,
+			"spellIds": [
+				13183,
+				13212
+			]
+		},
+		{
+			"id": 89,
+			"breedId": 7,
+			"spellIds": [
+				13182,
+				13213
+			]
+		},
+		{
+			"id": 90,
+			"breedId": 7,
+			"spellIds": [
+				13179,
+				13214
+			]
+		},
+		{
+			"id": 91,
+			"breedId": 7,
+			"spellIds": [
+				13168,
+				13215
+			]
+		},
+		{
+			"id": 92,
+			"breedId": 7,
+			"spellIds": [
+				13178,
+				13211
+			]
+		},
+		{
+			"id": 93,
+			"breedId": 7,
+			"spellIds": [
+				13184,
+				13217
+			]
+		},
+		{
+			"id": 94,
+			"breedId": 7,
+			"spellIds": [
+				13186,
+				13218
+			]
+		},
+		{
+			"id": 95,
+			"breedId": 7,
+			"spellIds": [
+				13189,
+				13220
+			]
+		},
+		{
+			"id": 96,
+			"breedId": 3,
+			"spellIds": [
+				13338,
+				13363
+			]
+		},
+		{
+			"id": 97,
+			"breedId": 3,
+			"spellIds": [
+				13336,
+				13367
+			]
+		},
+		{
+			"id": 98,
+			"breedId": 3,
+			"spellIds": [
+				13328,
+				13354
+			]
+		},
+		{
+			"id": 99,
+			"breedId": 3,
+			"spellIds": [
+				13331,
+				14273
+			]
+		},
+		{
+			"id": 100,
+			"breedId": 3,
+			"spellIds": [
+				14278,
+				13360
+			]
+		},
+		{
+			"id": 101,
+			"breedId": 3,
+			"spellIds": [
+				13342,
+				13356
+			]
+		},
+		{
+			"id": 102,
+			"breedId": 3,
+			"spellIds": [
+				13334,
+				13357
+			]
+		},
+		{
+			"id": 103,
+			"breedId": 3,
+			"spellIds": [
+				13340,
+				13352
+			]
+		},
+		{
+			"id": 104,
+			"breedId": 3,
+			"spellIds": [
+				13332,
+				13359
+			]
+		},
+		{
+			"id": 105,
+			"breedId": 3,
+			"spellIds": [
+				13364,
+				13372
+			]
+		},
+		{
+			"id": 106,
+			"breedId": 3,
+			"spellIds": [
+				13344,
+				13361
+			]
+		},
+		{
+			"id": 107,
+			"breedId": 3,
+			"spellIds": [
+				13339,
+				13362
+			]
+		},
+		{
+			"id": 108,
+			"breedId": 3,
+			"spellIds": [
+				13365,
+				13358
+			]
+		},
+		{
+			"id": 109,
+			"breedId": 3,
+			"spellIds": [
+				13337,
+				13329
+			]
+		},
+		{
+			"id": 110,
+			"breedId": 3,
+			"spellIds": [
+				13335,
+				13355
+			]
+		},
+		{
+			"id": 111,
+			"breedId": 3,
+			"spellIds": [
+				13366,
+				13353
+			]
+		},
+		{
+			"id": 112,
+			"breedId": 3,
+			"spellIds": [
+				13343,
+				13330
+			]
+		},
+		{
+			"id": 113,
+			"breedId": 3,
+			"spellIds": [
+				13349,
+				14274
+			]
+		},
+		{
+			"id": 114,
+			"breedId": 3,
+			"spellIds": [
+				13346,
+				13369
+			]
+		},
+		{
+			"id": 115,
+			"breedId": 3,
+			"spellIds": [
+				13333,
+				13368
+			]
+		},
+		{
+			"id": 116,
+			"breedId": 3,
+			"spellIds": [
+				13345,
+				13370
+			]
+		},
+		{
+			"id": 117,
+			"breedId": 1,
+			"spellIds": [
+				12977,
+				13008
+			]
+		},
+		{
+			"id": 118,
+			"breedId": 1,
+			"spellIds": [
+				12978,
+				13007
+			]
+		},
+		{
+			"id": 119,
+			"breedId": 1,
+			"spellIds": [
+				12981,
+				13009
+			]
+		},
+		{
+			"id": 120,
+			"breedId": 1,
+			"spellIds": [
+				12976,
+				13010
+			]
+		},
+		{
+			"id": 121,
+			"breedId": 1,
+			"spellIds": [
+				12994,
+				13011
+			]
+		},
+		{
+			"id": 122,
+			"breedId": 1,
+			"spellIds": [
+				12979,
+				13016
+			]
+		},
+		{
+			"id": 123,
+			"breedId": 1,
+			"spellIds": [
+				12992,
+				13013
+			]
+		},
+		{
+			"id": 124,
+			"breedId": 1,
+			"spellIds": [
+				12993,
+				13014
+			]
+		},
+		{
+			"id": 125,
+			"breedId": 1,
+			"spellIds": [
+				12984,
+				13015
+			]
+		},
+		{
+			"id": 126,
+			"breedId": 1,
+			"spellIds": [
+				12995,
+				13012
+			]
+		},
+		{
+			"id": 127,
+			"breedId": 1,
+			"spellIds": [
+				12983,
+				13017
+			]
+		},
+		{
+			"id": 128,
+			"breedId": 1,
+			"spellIds": [
+				12986,
+				13018
+			]
+		},
+		{
+			"id": 129,
+			"breedId": 1,
+			"spellIds": [
+				12988,
+				13019
+			]
+		},
+		{
+			"id": 130,
+			"breedId": 1,
+			"spellIds": [
+				12980,
+				13020
+			]
+		},
+		{
+			"id": 131,
+			"breedId": 1,
+			"spellIds": [
+				12987,
+				13021
+			]
+		},
+		{
+			"id": 132,
+			"breedId": 1,
+			"spellIds": [
+				12989,
+				13022
+			]
+		},
+		{
+			"id": 133,
+			"breedId": 1,
+			"spellIds": [
+				12990,
+				13023
+			]
+		},
+		{
+			"id": 134,
+			"breedId": 1,
+			"spellIds": [
+				12997,
+				13027
+			]
+		},
+		{
+			"id": 135,
+			"breedId": 1,
+			"spellIds": [
+				12991,
+				13024
+			]
+		},
+		{
+			"id": 136,
+			"breedId": 1,
+			"spellIds": [
+				12985,
+				13025
+			]
+		},
+		{
+			"id": 137,
+			"breedId": 1,
+			"spellIds": [
+				14434,
+				14436
+			]
+		},
+		{
+			"id": 138,
+			"breedId": 17,
+			"spellIds": [
+				13668,
+				13711
+			]
+		},
+		{
+			"id": 139,
+			"breedId": 17,
+			"spellIds": [
+				13669,
+				13709
+			]
+		},
+		{
+			"id": 140,
+			"breedId": 17,
+			"spellIds": [
+				13670,
+				13710
+			]
+		},
+		{
+			"id": 141,
+			"breedId": 17,
+			"spellIds": [
+				13666,
+				13708
+			]
+		},
+		{
+			"id": 142,
+			"breedId": 17,
+			"spellIds": [
+				13667,
+				13712
+			]
+		},
+		{
+			"id": 144,
+			"breedId": 17,
+			"spellIds": [
+				13674,
+				13725
+			]
+		},
+		{
+			"id": 145,
+			"breedId": 17,
+			"spellIds": [
+				13679,
+				13715
+			]
+		},
+		{
+			"id": 146,
+			"breedId": 17,
+			"spellIds": [
+				13696,
+				13716
+			]
+		},
+		{
+			"id": 147,
+			"breedId": 17,
+			"spellIds": [
+				13680,
+				13718
+			]
+		},
+		{
+			"id": 148,
+			"breedId": 17,
+			"spellIds": [
+				13676,
+				13717
+			]
+		},
+		{
+			"id": 149,
+			"breedId": 17,
+			"spellIds": [
+				13695,
+				13719
+			]
+		},
+		{
+			"id": 150,
+			"breedId": 17,
+			"spellIds": [
+				13682,
+				13720
+			]
+		},
+		{
+			"id": 151,
+			"breedId": 17,
+			"spellIds": [
+				13681,
+				13721
+			]
+		},
+		{
+			"id": 152,
+			"breedId": 17,
+			"spellIds": [
+				13701,
+				13727
+			]
+		},
+		{
+			"id": 153,
+			"breedId": 17,
+			"spellIds": [
+				13677,
+				13723
+			]
+		},
+		{
+			"id": 154,
+			"breedId": 17,
+			"spellIds": [
+				13684,
+				13724
+			]
+		},
+		{
+			"id": 155,
+			"breedId": 17,
+			"spellIds": [
+				13678,
+				13714
+			]
+		},
+		{
+			"id": 156,
+			"breedId": 17,
+			"spellIds": [
+				13675,
+				13726
+			]
+		},
+		{
+			"id": 157,
+			"breedId": 17,
+			"spellIds": [
+				13697,
+				13722
+			]
+		},
+		{
+			"id": 158,
+			"breedId": 17,
+			"spellIds": [
+				13683,
+				13728
+			]
+		},
+		{
+			"id": 159,
+			"breedId": 8,
+			"spellIds": [
+				13126,
+				13135
+			]
+		},
+		{
+			"id": 160,
+			"breedId": 8,
+			"spellIds": [
+				13108,
+				13148
+			]
+		},
+		{
+			"id": 161,
+			"breedId": 8,
+			"spellIds": [
+				13107,
+				13143
+			]
+		},
+		{
+			"id": 162,
+			"breedId": 8,
+			"spellIds": [
+				14676,
+				13130
+			]
+		},
+		{
+			"id": 163,
+			"breedId": 8,
+			"spellIds": [
+				13110,
+				13115
+			]
+		},
+		{
+			"id": 164,
+			"breedId": 8,
+			"spellIds": [
+				13119,
+				13138
+			]
+		},
+		{
+			"id": 165,
+			"breedId": 8,
+			"spellIds": [
+				13136,
+				13142
+			]
+		},
+		{
+			"id": 166,
+			"breedId": 8,
+			"spellIds": [
+				13116,
+				13137
+			]
+		},
+		{
+			"id": 167,
+			"breedId": 8,
+			"spellIds": [
+				13123,
+				13117
+			]
+		},
+		{
+			"id": 168,
+			"breedId": 8,
+			"spellIds": [
+				13124,
+				13156
+			]
+		},
+		{
+			"id": 169,
+			"breedId": 8,
+			"spellIds": [
+				13113,
+				13140
+			]
+		},
+		{
+			"id": 170,
+			"breedId": 8,
+			"spellIds": [
+				13109,
+				13141
+			]
+		},
+		{
+			"id": 172,
+			"breedId": 8,
+			"spellIds": [
+				13118,
+				14677
+			]
+		},
+		{
+			"id": 173,
+			"breedId": 8,
+			"spellIds": [
+				14818,
+				13133
+			]
+		},
+		{
+			"id": 174,
+			"breedId": 8,
+			"spellIds": [
+				13121,
+				13144
+			]
+		},
+		{
+			"id": 175,
+			"breedId": 8,
+			"spellIds": [
+				13122,
+				13145
+			]
+		},
+		{
+			"id": 176,
+			"breedId": 8,
+			"spellIds": [
+				13120,
+				13112
+			]
+		},
+		{
+			"id": 177,
+			"breedId": 8,
+			"spellIds": [
+				13125,
+				13146
+			]
+		},
+		{
+			"id": 178,
+			"breedId": 8,
+			"spellIds": [
+				13111,
+				13131
+			]
+		},
+		{
+			"id": 179,
+			"breedId": 8,
+			"spellIds": [
+				13106,
+				13139
+			]
+		},
+		{
+			"id": 180,
+			"breedId": 2,
+			"spellIds": [
+				13998,
+				12618
+			]
+		},
+		{
+			"id": 181,
+			"breedId": 2,
+			"spellIds": [
+				12548,
+				14021
+			]
+		},
+		{
+			"id": 182,
+			"breedId": 2,
+			"spellIds": [
+				12615,
+				14017
+			]
+		},
+		{
+			"id": 183,
+			"breedId": 2,
+			"spellIds": [
+				12549,
+				12600
+			]
+		},
+		{
+			"id": 184,
+			"breedId": 2,
+			"spellIds": [
+				12555,
+				12604
+			]
+		},
+		{
+			"id": 185,
+			"breedId": 2,
+			"spellIds": [
+				12606,
+				14008
+			]
+		},
+		{
+			"id": 186,
+			"breedId": 2,
+			"spellIds": [
+				12557,
+				12608
+			]
+		},
+		{
+			"id": 187,
+			"breedId": 2,
+			"spellIds": [
+				12601,
+				14018
+			]
+		},
+		{
+			"id": 188,
+			"breedId": 2,
+			"spellIds": [
+				14022,
+				14023
+			]
+		},
+		{
+			"id": 189,
+			"breedId": 2,
+			"spellIds": [
+				12560,
+				12609
+			]
+		},
+		{
+			"id": 190,
+			"breedId": 2,
+			"spellIds": [
+				14006,
+				12559
+			]
+		},
+		{
+			"id": 191,
+			"breedId": 2,
+			"spellIds": [
+				12563,
+				12614
+			]
+		},
+		{
+			"id": 192,
+			"breedId": 2,
+			"spellIds": [
+				14028,
+				12619
+			]
+		},
+		{
+			"id": 193,
+			"breedId": 2,
+			"spellIds": [
+				12554,
+				14009
+			]
+		},
+		{
+			"id": 194,
+			"breedId": 2,
+			"spellIds": [
+				12551,
+				12612
+			]
+		},
+		{
+			"id": 195,
+			"breedId": 2,
+			"spellIds": [
+				14019,
+				14020
+			]
+		},
+		{
+			"id": 196,
+			"breedId": 2,
+			"spellIds": [
+				12550,
+				14015
+			]
+		},
+		{
+			"id": 197,
+			"breedId": 2,
+			"spellIds": [
+				12605,
+				14016
+			]
+		},
+		{
+			"id": 198,
+			"breedId": 2,
+			"spellIds": [
+				18535,
+				18656
+			]
+		},
+		{
+			"id": 199,
+			"breedId": 2,
+			"spellIds": [
+				14026,
+				14025
+			]
+		},
+		{
+			"id": 200,
+			"breedId": 2,
+			"spellIds": [
+				14007,
+				12617
+			]
+		},
+		{
+			"id": 201,
+			"breedId": 12,
+			"spellIds": [
+				12781,
+				12815
+			]
+		},
+		{
+			"id": 202,
+			"breedId": 12,
+			"spellIds": [
+				12803,
+				12805
+			]
+		},
+		{
+			"id": 203,
+			"breedId": 12,
+			"spellIds": [
+				12804,
+				12780
+			]
+		},
+		{
+			"id": 204,
+			"breedId": 12,
+			"spellIds": [
+				12783,
+				12806
+			]
+		},
+		{
+			"id": 206,
+			"breedId": 12,
+			"spellIds": [
+				12782,
+				12786
+			]
+		},
+		{
+			"id": 207,
+			"breedId": 12,
+			"spellIds": [
+				12787,
+				12810
+			]
+		},
+		{
+			"id": 208,
+			"breedId": 12,
+			"spellIds": [
+				12794,
+				14309
+			]
+		},
+		{
+			"id": 209,
+			"breedId": 12,
+			"spellIds": [
+				12790,
+				12814
+			]
+		},
+		{
+			"id": 210,
+			"breedId": 12,
+			"spellIds": [
+				12777,
+				12826
+			]
+		},
+		{
+			"id": 211,
+			"breedId": 12,
+			"spellIds": [
+				12789,
+				12813
+			]
+		},
+		{
+			"id": 212,
+			"breedId": 12,
+			"spellIds": [
+				12799,
+				12824
+			]
+		},
+		{
+			"id": 213,
+			"breedId": 12,
+			"spellIds": [
+				12791,
+				12807
+			]
+		},
+		{
+			"id": 214,
+			"breedId": 12,
+			"spellIds": [
+				12808,
+				12821
+			]
+		},
+		{
+			"id": 215,
+			"breedId": 12,
+			"spellIds": [
+				12792,
+				12816
+			]
+		},
+		{
+			"id": 217,
+			"breedId": 12,
+			"spellIds": [
+				12785,
+				12819
+			]
+		},
+		{
+			"id": 218,
+			"breedId": 12,
+			"spellIds": [
+				12788,
+				12820
+			]
+		},
+		{
+			"id": 220,
+			"breedId": 12,
+			"spellIds": [
+				12823,
+				14307
+			]
+		},
+		{
+			"id": 221,
+			"breedId": 12,
+			"spellIds": [
+				12793,
+				12809
+			]
+		},
+		{
+			"id": 243,
+			"breedId": 11,
+			"spellIds": [
+				12737,
+				12760
+			]
+		},
+		{
+			"id": 244,
+			"breedId": 11,
+			"spellIds": [
+				12744,
+				12765
+			]
+		},
+		{
+			"id": 245,
+			"breedId": 11,
+			"spellIds": [
+				12746,
+				12724
+			]
+		},
+		{
+			"id": 246,
+			"breedId": 11,
+			"spellIds": [
+				12733,
+				12749
+			]
+		},
+		{
+			"id": 247,
+			"breedId": 11,
+			"spellIds": [
+				12736,
+				12763
+			]
+		},
+		{
+			"id": 248,
+			"breedId": 11,
+			"spellIds": [
+				12745,
+				12729
+			]
+		},
+		{
+			"id": 249,
+			"breedId": 11,
+			"spellIds": [
+				12756,
+				12726
+			]
+		},
+		{
+			"id": 250,
+			"breedId": 11,
+			"spellIds": [
+				12761,
+				14011
+			]
+		},
+		{
+			"id": 251,
+			"breedId": 11,
+			"spellIds": [
+				12738,
+				12754
+			]
+		},
+		{
+			"id": 252,
+			"breedId": 11,
+			"spellIds": [
+				12734,
+				12750
+			]
+		},
+		{
+			"id": 253,
+			"breedId": 11,
+			"spellIds": [
+				12731,
+				12751
+			]
+		},
+		{
+			"id": 254,
+			"breedId": 11,
+			"spellIds": [
+				12739,
+				12764
+			]
+		},
+		{
+			"id": 255,
+			"breedId": 11,
+			"spellIds": [
+				12723,
+				12752
+			]
+		},
+		{
+			"id": 256,
+			"breedId": 11,
+			"spellIds": [
+				12728,
+				12757
+			]
+		},
+		{
+			"id": 257,
+			"breedId": 11,
+			"spellIds": [
+				12759,
+				12762
+			]
+		},
+		{
+			"id": 258,
+			"breedId": 11,
+			"spellIds": [
+				12743,
+				14000
+			]
+		},
+		{
+			"id": 260,
+			"breedId": 11,
+			"spellIds": [
+				12727,
+				12755
+			]
+		},
+		{
+			"id": 261,
+			"breedId": 11,
+			"spellIds": [
+				12732,
+				12725
+			]
+		},
+		{
+			"id": 262,
+			"breedId": 11,
+			"spellIds": [
+				12730,
+				12747
+			]
+		},
+		{
+			"id": 263,
+			"breedId": 11,
+			"spellIds": [
+				12735,
+				12758
+			]
+		},
+		{
+			"id": 264,
+			"breedId": 10,
+			"spellIds": [
+				13564,
+				13515
+			]
+		},
+		{
+			"id": 265,
+			"breedId": 10,
+			"spellIds": [
+				13519,
+				13560
+			]
+		},
+		{
+			"id": 266,
+			"breedId": 10,
+			"spellIds": [
+				13516,
+				13559
+			]
+		},
+		{
+			"id": 267,
+			"breedId": 10,
+			"spellIds": [
+				14393,
+				14396
+			]
+		},
+		{
+			"id": 268,
+			"breedId": 10,
+			"spellIds": [
+				13561,
+				13526
+			]
+		},
+		{
+			"id": 269,
+			"breedId": 10,
+			"spellIds": [
+				13528,
+				13563
+			]
+		},
+		{
+			"id": 270,
+			"breedId": 10,
+			"spellIds": [
+				13533,
+				13562
+			]
+		},
+		{
+			"id": 271,
+			"breedId": 10,
+			"spellIds": [
+				13525,
+				13565
+			]
+		},
+		{
+			"id": 272,
+			"breedId": 10,
+			"spellIds": [
+				13530,
+				13566
+			]
+		},
+		{
+			"id": 273,
+			"breedId": 10,
+			"spellIds": [
+				13567,
+				13522
+			]
+		},
+		{
+			"id": 274,
+			"breedId": 10,
+			"spellIds": [
+				13514,
+				13568
+			]
+		},
+		{
+			"id": 275,
+			"breedId": 10,
+			"spellIds": [
+				13532,
+				13569
+			]
+		},
+		{
+			"id": 276,
+			"breedId": 10,
+			"spellIds": [
+				13524,
+				13570
+			]
+		},
+		{
+			"id": 277,
+			"breedId": 10,
+			"spellIds": [
+				13531,
+				13571
+			]
+		},
+		{
+			"id": 278,
+			"breedId": 10,
+			"spellIds": [
+				13529,
+				13572
+			]
+		},
+		{
+			"id": 279,
+			"breedId": 10,
+			"spellIds": [
+				13573,
+				13523
+			]
+		},
+		{
+			"id": 280,
+			"breedId": 10,
+			"spellIds": [
+				13527,
+				13574
+			]
+		},
+		{
+			"id": 281,
+			"breedId": 10,
+			"spellIds": [
+				13534,
+				13579
+			]
+		},
+		{
+			"id": 282,
+			"breedId": 10,
+			"spellIds": [
+				13517,
+				13576
+			]
+		},
+		{
+			"id": 283,
+			"breedId": 10,
+			"spellIds": [
+				13521,
+				13577
+			]
+		},
+		{
+			"id": 284,
+			"breedId": 10,
+			"spellIds": [
+				13518,
+				13575
+			]
+		},
+		{
+			"id": 285,
+			"breedId": 4,
+			"spellIds": [
+				12913,
+				12930
+			]
+		},
+		{
+			"id": 286,
+			"breedId": 4,
+			"spellIds": [
+				12906,
+				12935
+			]
+		},
+		{
+			"id": 287,
+			"breedId": 4,
+			"spellIds": [
+				12902,
+				12932
+			]
+		},
+		{
+			"id": 288,
+			"breedId": 4,
+			"spellIds": [
+				12907,
+				12933
+			]
+		},
+		{
+			"id": 289,
+			"breedId": 4,
+			"spellIds": [
+				12914,
+				12922
+			]
+		},
+		{
+			"id": 290,
+			"breedId": 4,
+			"spellIds": [
+				12904,
+				12939
+			]
+		},
+		{
+			"id": 291,
+			"breedId": 4,
+			"spellIds": [
+				12915,
+				12936
+			]
+		},
+		{
+			"id": 292,
+			"breedId": 4,
+			"spellIds": [
+				12916,
+				12937
+			]
+		},
+		{
+			"id": 293,
+			"breedId": 4,
+			"spellIds": [
+				12920,
+				12938
+			]
+		},
+		{
+			"id": 294,
+			"breedId": 4,
+			"spellIds": [
+				12919,
+				12942
+			]
+		},
+		{
+			"id": 295,
+			"breedId": 4,
+			"spellIds": [
+				12948,
+				12943
+			]
+		},
+		{
+			"id": 296,
+			"breedId": 4,
+			"spellIds": [
+				12910,
+				14314
+			]
+		},
+		{
+			"id": 297,
+			"breedId": 4,
+			"spellIds": [
+				12909,
+				12940
+			]
+		},
+		{
+			"id": 298,
+			"breedId": 4,
+			"spellIds": [
+				12918,
+				12911
+			]
+		},
+		{
+			"id": 299,
+			"breedId": 4,
+			"spellIds": [
+				12908,
+				12945
+			]
+		},
+		{
+			"id": 300,
+			"breedId": 4,
+			"spellIds": [
+				12903,
+				14741
+			]
+		},
+		{
+			"id": 301,
+			"breedId": 4,
+			"spellIds": [
+				12917,
+				14742
+			]
+		},
+		{
+			"id": 302,
+			"breedId": 4,
+			"spellIds": [
+				14312,
+				14313
+			]
+		},
+		{
+			"id": 303,
+			"breedId": 4,
+			"spellIds": [
+				12941,
+				12905
+			]
+		},
+		{
+			"id": 304,
+			"breedId": 4,
+			"spellIds": [
+				12934,
+				12950
+			]
+		},
+		{
+			"id": 305,
+			"breedId": 4,
+			"spellIds": [
+				12921,
+				12949
+			]
+		},
+		{
+			"id": 306,
+			"breedId": 15,
+			"spellIds": [
+				13823,
+				13858
+			]
+		},
+		{
+			"id": 307,
+			"breedId": 15,
+			"spellIds": [
+				13827,
+				13857
+			]
+		},
+		{
+			"id": 308,
+			"breedId": 15,
+			"spellIds": [
+				13829,
+				13859
+			]
+		},
+		{
+			"id": 309,
+			"breedId": 15,
+			"spellIds": [
+				13832,
+				13860
+			]
+		},
+		{
+			"id": 310,
+			"breedId": 15,
+			"spellIds": [
+				13822,
+				13861
+			]
+		},
+		{
+			"id": 311,
+			"breedId": 15,
+			"spellIds": [
+				13834,
+				13862
+			]
+		},
+		{
+			"id": 312,
+			"breedId": 15,
+			"spellIds": [
+				13819,
+				13863
+			]
+		},
+		{
+			"id": 313,
+			"breedId": 15,
+			"spellIds": [
+				13830,
+				13864
+			]
+		},
+		{
+			"id": 314,
+			"breedId": 15,
+			"spellIds": [
+				13821,
+				13824
+			]
+		},
+		{
+			"id": 315,
+			"breedId": 15,
+			"spellIds": [
+				13820,
+				13866
+			]
+		},
+		{
+			"id": 316,
+			"breedId": 15,
+			"spellIds": [
+				13826,
+				13867
+			]
+		},
+		{
+			"id": 317,
+			"breedId": 15,
+			"spellIds": [
+				13838,
+				13868
+			]
+		},
+		{
+			"id": 318,
+			"breedId": 15,
+			"spellIds": [
+				13831,
+				13869
+			]
+		},
+		{
+			"id": 319,
+			"breedId": 15,
+			"spellIds": [
+				13837,
+				13870
+			]
+		},
+		{
+			"id": 320,
+			"breedId": 15,
+			"spellIds": [
+				13836,
+				13871
+			]
+		},
+		{
+			"id": 321,
+			"breedId": 15,
+			"spellIds": [
+				13865,
+				13872
+			]
+		},
+		{
+			"id": 322,
+			"breedId": 15,
+			"spellIds": [
+				13835,
+				13873
+			]
+		},
+		{
+			"id": 323,
+			"breedId": 15,
+			"spellIds": [
+				13849,
+				13877
+			]
+		},
+		{
+			"id": 324,
+			"breedId": 15,
+			"spellIds": [
+				13825,
+				13874
+			]
+		},
+		{
+			"id": 325,
+			"breedId": 15,
+			"spellIds": [
+				13828,
+				13875
+			]
+		},
+		{
+			"id": 326,
+			"breedId": 15,
+			"spellIds": [
+				13833,
+				14306
+			]
+		},
+		{
+			"id": 327,
+			"breedId": 5,
+			"spellIds": [
+				13249,
+				13282
+			]
+		},
+		{
+			"id": 328,
+			"breedId": 5,
+			"spellIds": [
+				13244,
+				13283
+			]
+		},
+		{
+			"id": 329,
+			"breedId": 5,
+			"spellIds": [
+				13242,
+				13281
+			]
+		},
+		{
+			"id": 330,
+			"breedId": 5,
+			"spellIds": [
+				13254,
+				13284
+			]
+		},
+		{
+			"id": 331,
+			"breedId": 5,
+			"spellIds": [
+				13243,
+				13285
+			]
+		},
+		{
+			"id": 332,
+			"breedId": 5,
+			"spellIds": [
+				13253,
+				13286
+			]
+		},
+		{
+			"id": 333,
+			"breedId": 5,
+			"spellIds": [
+				13287,
+				13258
+			]
+		},
+		{
+			"id": 334,
+			"breedId": 5,
+			"spellIds": [
+				13245,
+				13288
+			]
+		},
+		{
+			"id": 335,
+			"breedId": 5,
+			"spellIds": [
+				13261,
+				13289
+			]
+		},
+		{
+			"id": 336,
+			"breedId": 5,
+			"spellIds": [
+				13259,
+				13290
+			]
+		},
+		{
+			"id": 337,
+			"breedId": 5,
+			"spellIds": [
+				13246,
+				13291
+			]
+		},
+		{
+			"id": 338,
+			"breedId": 5,
+			"spellIds": [
+				13257,
+				13292
+			]
+		},
+		{
+			"id": 339,
+			"breedId": 5,
+			"spellIds": [
+				13251,
+				13293
+			]
+		},
+		{
+			"id": 340,
+			"breedId": 5,
+			"spellIds": [
+				13248,
+				13294
+			]
+		},
+		{
+			"id": 341,
+			"breedId": 5,
+			"spellIds": [
+				13250,
+				13295
+			]
+		},
+		{
+			"id": 342,
+			"breedId": 5,
+			"spellIds": [
+				13247,
+				14650
+			]
+		},
+		{
+			"id": 343,
+			"breedId": 5,
+			"spellIds": [
+				13255,
+				13297
+			]
+		},
+		{
+			"id": 344,
+			"breedId": 5,
+			"spellIds": [
+				13256,
+				13298
+			]
+		},
+		{
+			"id": 345,
+			"breedId": 5,
+			"spellIds": [
+				13252,
+				13299
+			]
+		},
+		{
+			"id": 346,
+			"breedId": 5,
+			"spellIds": [
+				13260,
+				14651
+			]
+		},
+		{
+			"id": 347,
+			"breedId": 5,
+			"spellIds": [
+				13262,
+				13301
+			]
+		},
+		{
+			"id": 348,
+			"breedId": 14,
+			"spellIds": [
+				13405,
+				13407
+			]
+		},
+		{
+			"id": 349,
+			"breedId": 14,
+			"spellIds": [
+				13389,
+				13420
+			]
+		},
+		{
+			"id": 350,
+			"breedId": 14,
+			"spellIds": [
+				13387,
+				13406
+			]
+		},
+		{
+			"id": 351,
+			"breedId": 14,
+			"spellIds": [
+				13386,
+				13409
+			]
+		},
+		{
+			"id": 352,
+			"breedId": 14,
+			"spellIds": [
+				13403,
+				13410
+			]
+		},
+		{
+			"id": 353,
+			"breedId": 14,
+			"spellIds": [
+				13388,
+				13414
+			]
+		},
+		{
+			"id": 354,
+			"breedId": 14,
+			"spellIds": [
+				13394,
+				13415
+			]
+		},
+		{
+			"id": 355,
+			"breedId": 14,
+			"spellIds": [
+				13395,
+				14682
+			]
+		},
+		{
+			"id": 356,
+			"breedId": 14,
+			"spellIds": [
+				13398,
+				13411
+			]
+		},
+		{
+			"id": 357,
+			"breedId": 14,
+			"spellIds": [
+				13400,
+				13412
+			]
+		},
+		{
+			"id": 358,
+			"breedId": 14,
+			"spellIds": [
+				13392,
+				13393
+			]
+		},
+		{
+			"id": 359,
+			"breedId": 14,
+			"spellIds": [
+				13397,
+				13417
+			]
+		},
+		{
+			"id": 360,
+			"breedId": 14,
+			"spellIds": [
+				13402,
+				13426
+			]
+		},
+		{
+			"id": 361,
+			"breedId": 14,
+			"spellIds": [
+				13401,
+				13418
+			]
+		},
+		{
+			"id": 362,
+			"breedId": 14,
+			"spellIds": [
+				13391,
+				13419
+			]
+		},
+		{
+			"id": 363,
+			"breedId": 14,
+			"spellIds": [
+				13408,
+				13422
+			]
+		},
+		{
+			"id": 364,
+			"breedId": 14,
+			"spellIds": [
+				13399,
+				13404
+			]
+		},
+		{
+			"id": 365,
+			"breedId": 14,
+			"spellIds": [
+				18650,
+				18651
+			]
+		},
+		{
+			"id": 366,
+			"breedId": 14,
+			"spellIds": [
+				13396,
+				13423
+			]
+		},
+		{
+			"id": 368,
+			"breedId": 14,
+			"spellIds": [
+				13390,
+				14681
+			]
+		},
+		{
+			"id": 369,
+			"breedId": 17,
+			"spellIds": [
+				13672,
+				13713
+			]
+		},
+		{
+			"id": 370,
+			"breedId": 6,
+			"spellIds": [
+				12849,
+				12879
+			]
+		},
+		{
+			"id": 371,
+			"breedId": 18,
+			"spellIds": [
+				13770,
+				13806
+			]
+		},
+		{
+			"id": 372,
+			"breedId": 18,
+			"spellIds": [
+				13748,
+				13786
+			]
+		},
+		{
+			"id": 373,
+			"breedId": 18,
+			"spellIds": [
+				13756,
+				13787
+			]
+		},
+		{
+			"id": 374,
+			"breedId": 18,
+			"spellIds": [
+				13760,
+				13788
+			]
+		},
+		{
+			"id": 375,
+			"breedId": 18,
+			"spellIds": [
+				13768,
+				13789
+			]
+		},
+		{
+			"id": 376,
+			"breedId": 18,
+			"spellIds": [
+				13754,
+				13790
+			]
+		},
+		{
+			"id": 377,
+			"breedId": 18,
+			"spellIds": [
+				13769,
+				13791
+			]
+		},
+		{
+			"id": 378,
+			"breedId": 18,
+			"spellIds": [
+				13774,
+				13792
+			]
+		},
+		{
+			"id": 379,
+			"breedId": 18,
+			"spellIds": [
+				13757,
+				13793
+			]
+		},
+		{
+			"id": 380,
+			"breedId": 18,
+			"spellIds": [
+				13763,
+				13794
+			]
+		},
+		{
+			"id": 381,
+			"breedId": 18,
+			"spellIds": [
+				13755,
+				13795
+			]
+		},
+		{
+			"id": 382,
+			"breedId": 18,
+			"spellIds": [
+				13765,
+				13796
+			]
+		},
+		{
+			"id": 383,
+			"breedId": 18,
+			"spellIds": [
+				13771,
+				13797
+			]
+		},
+		{
+			"id": 384,
+			"breedId": 18,
+			"spellIds": [
+				13772,
+				13798
+			]
+		},
+		{
+			"id": 385,
+			"breedId": 18,
+			"spellIds": [
+				13766,
+				13799
+			]
+		},
+		{
+			"id": 386,
+			"breedId": 18,
+			"spellIds": [
+				13762,
+				13800
+			]
+		},
+		{
+			"id": 387,
+			"breedId": 18,
+			"spellIds": [
+				13781,
+				13801
+			]
+		},
+		{
+			"id": 388,
+			"breedId": 18,
+			"spellIds": [
+				13758,
+				13802
+			]
+		},
+		{
+			"id": 389,
+			"breedId": 18,
+			"spellIds": [
+				13773,
+				13803
+			]
+		},
+		{
+			"id": 390,
+			"breedId": 18,
+			"spellIds": [
+				13753,
+				13804
+			]
+		},
+		{
+			"id": 391,
+			"breedId": 18,
+			"spellIds": [
+				13749,
+				13805
+			]
+		},
+		{
+			"id": 413,
+			"breedId": 14,
+			"spellIds": [
+				13421,
+				13425
+			]
+		},
+		{
+			"id": 416,
+			"breedId": 11,
+			"spellIds": [
+				12741,
+				12740
+			]
+		},
+		{
+			"id": 417,
+			"breedId": 11,
+			"spellIds": [
+				12748,
+				12753
+			]
+		},
+		{
+			"id": 418,
+			"breedId": 2,
+			"spellIds": [
+				12564,
+				14010
+			]
+		},
+		{
+			"id": 419,
+			"breedId": 3,
+			"spellIds": [
+				13347,
+				13371
+			]
+		},
+		{
+			"id": 420,
+			"breedId": 12,
+			"spellIds": [
+				12784,
+				12811
+			]
+		},
+		{
+			"id": 421,
+			"breedId": 15,
+			"spellIds": [
+				14308,
+				13876
+			]
+		},
+		{
+			"id": 422,
+			"breedId": 4,
+			"spellIds": [
+				12931,
+				12947
+			]
+		},
+		{
+			"id": 423,
+			"breedId": 6,
+			"spellIds": [
+				12859,
+				12882
+			]
+		},
+		{
+			"id": 424,
+			"breedId": 17,
+			"spellIds": [
+				14341,
+				14342
+			]
+		},
+		{
+			"id": 425,
+			"breedId": 18,
+			"spellIds": [
+				14321,
+				14357
+			]
+		},
+		{
+			"id": 427,
+			"breedId": 10,
+			"spellIds": [
+				13578,
+				13520
+			]
+		},
+		{
+			"id": 428,
+			"breedId": 1,
+			"spellIds": [
+				12982,
+				13026
+			]
+		},
+		{
+			"id": 429,
+			"breedId": 7,
+			"spellIds": [
+				13187,
+				13219
+			]
+		},
+		{
+			"id": 430,
+			"breedId": 9,
+			"spellIds": [
+				23510,
+				13087
+			]
+		},
+		{
+			"id": 431,
+			"breedId": 16,
+			"spellIds": [
+				14574,
+				14604
+			]
+		},
+		{
+			"id": 432,
+			"breedId": 16,
+			"spellIds": [
+				14575,
+				14602
+			]
+		},
+		{
+			"id": 433,
+			"breedId": 16,
+			"spellIds": [
+				14584,
+				14603
+			]
+		},
+		{
+			"id": 434,
+			"breedId": 16,
+			"spellIds": [
+				14583,
+				14605
+			]
+		},
+		{
+			"id": 435,
+			"breedId": 16,
+			"spellIds": [
+				14579,
+				14606
+			]
+		},
+		{
+			"id": 436,
+			"breedId": 16,
+			"spellIds": [
+				14582,
+				14607
+			]
+		},
+		{
+			"id": 437,
+			"breedId": 16,
+			"spellIds": [
+				14588,
+				14608
+			]
+		},
+		{
+			"id": 438,
+			"breedId": 16,
+			"spellIds": [
+				14580,
+				14609
+			]
+		},
+		{
+			"id": 439,
+			"breedId": 16,
+			"spellIds": [
+				14581,
+				14590
+			]
+		},
+		{
+			"id": 440,
+			"breedId": 16,
+			"spellIds": [
+				14577,
+				14611
+			]
+		},
+		{
+			"id": 441,
+			"breedId": 16,
+			"spellIds": [
+				14585,
+				14612
+			]
+		},
+		{
+			"id": 442,
+			"breedId": 16,
+			"spellIds": [
+				14592,
+				14613
+			]
+		},
+		{
+			"id": 443,
+			"breedId": 16,
+			"spellIds": [
+				14587,
+				14614
+			]
+		},
+		{
+			"id": 444,
+			"breedId": 16,
+			"spellIds": [
+				14576,
+				14637
+			]
+		},
+		{
+			"id": 445,
+			"breedId": 16,
+			"spellIds": [
+				14589,
+				14616
+			]
+		},
+		{
+			"id": 446,
+			"breedId": 16,
+			"spellIds": [
+				14615,
+				14617
+			]
+		},
+		{
+			"id": 447,
+			"breedId": 16,
+			"spellIds": [
+				14593,
+				14618
+			]
+		},
+		{
+			"id": 448,
+			"breedId": 16,
+			"spellIds": [
+				14591,
+				14622
+			]
+		},
+		{
+			"id": 449,
+			"breedId": 16,
+			"spellIds": [
+				14610,
+				14595
+			]
+		},
+		{
+			"id": 450,
+			"breedId": 16,
+			"spellIds": [
+				14594,
+				14619
+			]
+		},
+		{
+			"id": 451,
+			"breedId": 16,
+			"spellIds": [
+				14638,
+				14620
+			]
+		},
+		{
+			"id": 452,
+			"breedId": 16,
+			"spellIds": [
+				14596,
+				14621
+			]
+		},
+		{
+			"id": 453,
+			"breedId": 5,
+			"spellIds": [
+				13296,
+				13300
+			]
+		},
+		{
+			"id": 454,
+			"breedId": 8,
+			"spellIds": [
+				13134,
+				13147
+			]
+		},
+		{
+			"id": 455,
+			"breedId": 14,
+			"spellIds": [
+				13424,
+				13385
+			]
+		},
+		{
+			"id": 456,
+			"breedId": 8,
+			"spellIds": [
+				13114,
+				13132
+			]
+		},
+		{
+			"id": 457,
+			"breedId": 13,
+			"spellIds": [
+				13432,
+				13470
+			]
+		},
+		{
+			"id": 458,
+			"breedId": 13,
+			"spellIds": [
+				13444,
+				13471
+			]
+		},
+		{
+			"id": 459,
+			"breedId": 13,
+			"spellIds": [
+				13435,
+				13474
+			]
+		},
+		{
+			"id": 460,
+			"breedId": 13,
+			"spellIds": [
+				13434,
+				13472
+			]
+		},
+		{
+			"id": 461,
+			"breedId": 13,
+			"spellIds": [
+				13433,
+				13475
+			]
+		},
+		{
+			"id": 462,
+			"breedId": 13,
+			"spellIds": [
+				13437,
+				13480
+			]
+		},
+		{
+			"id": 463,
+			"breedId": 13,
+			"spellIds": [
+				13440,
+				13469
+			]
+		},
+		{
+			"id": 464,
+			"breedId": 13,
+			"spellIds": [
+				13439,
+				13487
+			]
+		},
+		{
+			"id": 465,
+			"breedId": 13,
+			"spellIds": [
+				13436,
+				13478
+			]
+		},
+		{
+			"id": 466,
+			"breedId": 13,
+			"spellIds": [
+				13429,
+				13490
+			]
+		},
+		{
+			"id": 467,
+			"breedId": 13,
+			"spellIds": [
+				14415,
+				13483
+			]
+		},
+		{
+			"id": 468,
+			"breedId": 13,
+			"spellIds": [
+				13477,
+				13488
+			]
+		},
+		{
+			"id": 469,
+			"breedId": 13,
+			"spellIds": [
+				13431,
+				13476
+			]
+		},
+		{
+			"id": 470,
+			"breedId": 13,
+			"spellIds": [
+				13442,
+				14414
+			]
+		},
+		{
+			"id": 471,
+			"breedId": 13,
+			"spellIds": [
+				13445,
+				14412
+			]
+		},
+		{
+			"id": 472,
+			"breedId": 13,
+			"spellIds": [
+				13438,
+				13449
+			]
+		},
+		{
+			"id": 473,
+			"breedId": 13,
+			"spellIds": [
+				13441,
+				13479
+			]
+		},
+		{
+			"id": 474,
+			"breedId": 13,
+			"spellIds": [
+				13450,
+				13489
+			]
+		},
+		{
+			"id": 475,
+			"breedId": 13,
+			"spellIds": [
+				13446,
+				13484
+			]
+		},
+		{
+			"id": 476,
+			"breedId": 13,
+			"spellIds": [
+				13473,
+				14411
+			]
+		},
+		{
+			"id": 477,
+			"breedId": 13,
+			"spellIds": [
+				13443,
+				13482
+			]
+		},
+		{
+			"id": 478,
+			"breedId": 13,
+			"spellIds": [
+				13491,
+				13486
+			]
+		},
+		{
+			"id": 481,
+			"breedId": 19,
+			"spellIds": [
+				18646,
+				22312
+			]
+		},
+		{
+			"id": 482,
+			"breedId": 9,
+			"spellIds": [
+				23499,
+				23508
+			]
+		},
+		{
+			"id": 483,
+			"breedId": 9,
+			"spellIds": [
+				13060,
+				14636
+			]
+		},
+		{
+			"id": 484,
+			"breedId": 19,
+			"spellIds": [
+				24006,
+				350
+			]
+		},
+		{
+			"id": 485,
+			"breedId": 19,
+			"spellIds": [
+				364,
+				24007
+			]
+		},
+		{
+			"id": 486,
+			"breedId": 19,
+			"spellIds": [
+				366,
+				24010
+			]
+		},
+		{
+			"id": 487,
+			"breedId": 19,
+			"spellIds": [
+				24011,
+				24013
+			]
+		},
+		{
+			"id": 488,
+			"breedId": 19,
+			"spellIds": [
+				24015,
+				24016
+			]
+		},
+		{
+			"id": 489,
+			"breedId": 19,
+			"spellIds": [
+				369,
+				24017
+			]
+		},
+		{
+			"id": 490,
+			"breedId": 19,
+			"spellIds": [
+				367,
+				24022
+			]
+		},
+		{
+			"id": 491,
+			"breedId": 19,
+			"spellIds": [
+				370,
+				24027
+			]
+		},
+		{
+			"id": 492,
+			"breedId": 19,
+			"spellIds": [
+				373,
+				24028
+			]
+		},
+		{
+			"id": 493,
+			"breedId": 19,
+			"spellIds": [
+				368,
+				24029
+			]
+		},
+		{
+			"id": 494,
+			"breedId": 19,
+			"spellIds": [
+				3506,
+				24030
+			]
+		},
+		{
+			"id": 495,
+			"breedId": 19,
+			"spellIds": [
+				24032,
+				24034
+			]
+		},
+		{
+			"id": 496,
+			"breedId": 12,
+			"spellIds": [
+				24038,
+				12817
+			]
+		},
+		{
+			"id": 497,
+			"breedId": 12,
+			"spellIds": [
+				12796,
+				12797
+			]
+		},
+		{
+			"id": 498,
+			"breedId": 12,
+			"spellIds": [
+				12798,
+				24039
+			]
+		},
+		{
+			"id": 521,
+			"breedId": 20,
+			"spellIds": [
+				23432,
+				23729
+			]
+		},
+		{
+			"id": 522,
+			"breedId": 20,
+			"spellIds": [
+				23719,
+				23263
+			]
+		},
+		{
+			"id": 523,
+			"breedId": 20,
+			"spellIds": [
+				23801,
+				23828
+			]
+		},
+		{
+			"id": 524,
+			"breedId": 20,
+			"spellIds": [
+				23747,
+				23392
+			]
+		},
+		{
+			"id": 525,
+			"breedId": 20,
+			"spellIds": [
+				23734,
+				23720
+			]
+		},
+		{
+			"id": 526,
+			"breedId": 20,
+			"spellIds": [
+				23824,
+				23401
+			]
+		},
+		{
+			"id": 527,
+			"breedId": 20,
+			"spellIds": [
+				23393,
+				23755
+			]
+		},
+		{
+			"id": 528,
+			"breedId": 20,
+			"spellIds": [
+				23736,
+				23742
+			]
+		},
+		{
+			"id": 529,
+			"breedId": 20,
+			"spellIds": [
+				23330,
+				23841
+			]
+		},
+		{
+			"id": 530,
+			"breedId": 20,
+			"spellIds": [
+				23754,
+				23434
+			]
+		},
+		{
+			"id": 531,
+			"breedId": 20,
+			"spellIds": [
+				23741,
+				23731
+			]
+		},
+		{
+			"id": 532,
+			"breedId": 20,
+			"spellIds": [
+				23391,
+				23743
+			]
+		},
+		{
+			"id": 533,
+			"breedId": 20,
+			"spellIds": [
+				23726,
+				23753
+			]
+		},
+		{
+			"id": 534,
+			"breedId": 20,
+			"spellIds": [
+				23823,
+				23829
+			]
+		},
+		{
+			"id": 535,
+			"breedId": 20,
+			"spellIds": [
+				23750,
+				24219
+			]
+		},
+		{
+			"id": 536,
+			"breedId": 20,
+			"spellIds": [
+				23314,
+				23838
+			]
+		},
+		{
+			"id": 537,
+			"breedId": 20,
+			"spellIds": [
+				23735,
+				23756
+			]
+		},
+		{
+			"id": 538,
+			"breedId": 20,
+			"spellIds": [
+				23826,
+				23319
+			]
+		},
+		{
+			"id": 539,
+			"breedId": 20,
+			"spellIds": [
+				23268,
+				23738
+			]
+		},
+		{
+			"id": 540,
+			"breedId": 20,
+			"spellIds": [
+				23386,
+				23842
+			]
+		},
+		{
+			"id": 541,
+			"breedId": 20,
+			"spellIds": [
+				23723,
+				23396
+			]
+		},
+		{
+			"id": 542,
+			"breedId": 20,
+			"spellIds": [
+				23834,
+				23846
+			]
+		}
+	]
+}
