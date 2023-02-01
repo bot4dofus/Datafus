@@ -1,0 +1,319 @@
+{
+	"def": [
+		{
+			"memberName": "AlignmentEffect",
+			"packageName": "com.ankamagames.dofus.datacenter.alignments",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "characteristicId",
+					"type": -1
+				},
+				{
+					"name": "descriptionId",
+					"type": -5
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 1,
+			"characteristicId": 19,
+			"descriptionId": 44
+		},
+		{
+			"id": 2,
+			"characteristicId": 44,
+			"descriptionId": 59
+		},
+		{
+			"id": 3,
+			"characteristicId": 16,
+			"descriptionId": 43
+		},
+		{
+			"id": 4,
+			"characteristicId": 11,
+			"descriptionId": 31
+		},
+		{
+			"id": 6,
+			"characteristicId": 15,
+			"descriptionId": 57
+		},
+		{
+			"id": 7,
+			"characteristicId": 10,
+			"descriptionId": 58
+		},
+		{
+			"id": 8,
+			"characteristicId": 14,
+			"descriptionId": 45
+		},
+		{
+			"id": 9,
+			"characteristicId": 13,
+			"descriptionId": 56
+		},
+		{
+			"id": 10,
+			"characteristicId": 18,
+			"descriptionId": 38
+		},
+		{
+			"id": 11,
+			"characteristicId": 1,
+			"descriptionId": 40
+		},
+		{
+			"id": 12,
+			"characteristicId": 23,
+			"descriptionId": 32
+		},
+		{
+			"id": 13,
+			"characteristicId": 12,
+			"descriptionId": 55
+		},
+		{
+			"id": 14,
+			"characteristicId": 27,
+			"descriptionId": 61
+		},
+		{
+			"id": 15,
+			"characteristicId": 28,
+			"descriptionId": 65
+		},
+		{
+			"id": 16,
+			"characteristicId": 45,
+			"descriptionId": 42
+		},
+		{
+			"id": 17,
+			"characteristicId": 33,
+			"descriptionId": 36
+		},
+		{
+			"id": 18,
+			"characteristicId": 34,
+			"descriptionId": 35
+		},
+		{
+			"id": 19,
+			"characteristicId": 35,
+			"descriptionId": 34
+		},
+		{
+			"id": 20,
+			"characteristicId": 36,
+			"descriptionId": 27
+		},
+		{
+			"id": 21,
+			"characteristicId": 37,
+			"descriptionId": 29
+		},
+		{
+			"id": 22,
+			"characteristicId": 47,
+			"descriptionId": 53
+		},
+		{
+			"id": 23,
+			"characteristicId": 51,
+			"descriptionId": 52
+		},
+		{
+			"id": 24,
+			"characteristicId": 54,
+			"descriptionId": 51
+		},
+		{
+			"id": 25,
+			"characteristicId": 55,
+			"descriptionId": 49
+		},
+		{
+			"id": 26,
+			"characteristicId": 56,
+			"descriptionId": 47
+		},
+		{
+			"id": 27,
+			"characteristicId": 57,
+			"descriptionId": 39
+		},
+		{
+			"id": 28,
+			"characteristicId": 58,
+			"descriptionId": 37
+		},
+		{
+			"id": 29,
+			"characteristicId": 59,
+			"descriptionId": 64
+		},
+		{
+			"id": 30,
+			"characteristicId": 60,
+			"descriptionId": 63
+		},
+		{
+			"id": 31,
+			"characteristicId": 61,
+			"descriptionId": 62
+		},
+		{
+			"id": 32,
+			"characteristicId": 62,
+			"descriptionId": 33
+		},
+		{
+			"id": 33,
+			"characteristicId": 63,
+			"descriptionId": 60
+		},
+		{
+			"id": 34,
+			"characteristicId": 64,
+			"descriptionId": 28
+		},
+		{
+			"id": 35,
+			"characteristicId": 65,
+			"descriptionId": 50
+		},
+		{
+			"id": 36,
+			"characteristicId": 66,
+			"descriptionId": 48
+		},
+		{
+			"id": 37,
+			"characteristicId": 67,
+			"descriptionId": 46
+		},
+		{
+			"id": 38,
+			"characteristicId": 68,
+			"descriptionId": 30
+		},
+		{
+			"id": 39,
+			"characteristicId": 49,
+			"descriptionId": 41
+		},
+		{
+			"id": 40,
+			"characteristicId": 48,
+			"descriptionId": 54
+		},
+		{
+			"id": 41,
+			"characteristicId": 82,
+			"descriptionId": 806680
+		},
+		{
+			"id": 42,
+			"characteristicId": 83,
+			"descriptionId": 806681
+		},
+		{
+			"id": 43,
+			"characteristicId": 79,
+			"descriptionId": 806682
+		},
+		{
+			"id": 44,
+			"characteristicId": 78,
+			"descriptionId": 806683
+		},
+		{
+			"id": 45,
+			"characteristicId": 26,
+			"descriptionId": 806684
+		},
+		{
+			"id": 46,
+			"characteristicId": 91,
+			"descriptionId": 806685
+		},
+		{
+			"id": 47,
+			"characteristicId": 90,
+			"descriptionId": 806686
+		},
+		{
+			"id": 48,
+			"characteristicId": 89,
+			"descriptionId": 806689
+		},
+		{
+			"id": 49,
+			"characteristicId": 88,
+			"descriptionId": 806690
+		},
+		{
+			"id": 50,
+			"characteristicId": 86,
+			"descriptionId": 806691
+		},
+		{
+			"id": 51,
+			"characteristicId": 84,
+			"descriptionId": 806692
+		},
+		{
+			"id": 52,
+			"characteristicId": 113,
+			"descriptionId": 806693
+		},
+		{
+			"id": 53,
+			"characteristicId": 112,
+			"descriptionId": 806694
+		},
+		{
+			"id": 54,
+			"characteristicId": 116,
+			"descriptionId": 806695
+		},
+		{
+			"id": 55,
+			"characteristicId": 114,
+			"descriptionId": 806696
+		},
+		{
+			"id": 56,
+			"characteristicId": 87,
+			"descriptionId": 806697
+		},
+		{
+			"id": 57,
+			"characteristicId": 85,
+			"descriptionId": 806698
+		},
+		{
+			"id": 58,
+			"characteristicId": 117,
+			"descriptionId": 806739
+		},
+		{
+			"id": 59,
+			"characteristicId": 115,
+			"descriptionId": 806738
+		},
+		{
+			"id": 60,
+			"characteristicId": 40,
+			"descriptionId": 806701
+		}
+	]
+}

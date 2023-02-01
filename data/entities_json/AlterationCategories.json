@@ -1,0 +1,89 @@
+{
+	"def": [
+		{
+			"memberName": "AlterationCategory",
+			"packageName": "com.ankamagames.dofus.datacenter.alterations",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "parentId",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 9,
+			"nameId": 952927,
+			"parentId": 7
+		},
+		{
+			"id": 7,
+			"nameId": 953060,
+			"parentId": 0
+		},
+		{
+			"id": 13,
+			"nameId": 953059,
+			"parentId": 7
+		},
+		{
+			"id": 12,
+			"nameId": 953057,
+			"parentId": 7
+		},
+		{
+			"id": 11,
+			"nameId": 953055,
+			"parentId": 7
+		},
+		{
+			"id": 14,
+			"nameId": 958992,
+			"parentId": 7
+		},
+		{
+			"id": 17,
+			"nameId": 959076,
+			"parentId": 0
+		},
+		{
+			"id": 10,
+			"nameId": 959077,
+			"parentId": 17
+		},
+		{
+			"id": 19,
+			"nameId": 962046,
+			"parentId": 17
+		},
+		{
+			"id": 20,
+			"nameId": 962753,
+			"parentId": 17
+		},
+		{
+			"id": 21,
+			"nameId": 962848,
+			"parentId": 17
+		},
+		{
+			"id": 22,
+			"nameId": 962926,
+			"parentId": 17
+		},
+		{
+			"id": 23,
+			"nameId": 974582,
+			"parentId": 0
+		}
+	]
+}

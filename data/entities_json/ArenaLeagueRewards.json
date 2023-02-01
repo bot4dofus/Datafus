@@ -1,0 +1,6309 @@
+{
+	"def": [
+		{
+			"memberName": "ArenaLeagueReward",
+			"packageName": "com.ankamagames.dofus.datacenter.arena",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "seasonId",
+					"type": -1
+				},
+				{
+					"name": "leagueId",
+					"type": -1
+				},
+				{
+					"name": "titlesRewards",
+					"type": -99,
+					"vectorTypes": {
+						"name": "Vector.<uint>",
+						"type": -6
+					}
+				},
+				{
+					"name": "endSeasonRewards",
+					"type": -2
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 285,
+			"seasonId": 8,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 286,
+			"seasonId": 8,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 287,
+			"seasonId": 8,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 288,
+			"seasonId": 8,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 289,
+			"seasonId": 8,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 290,
+			"seasonId": 8,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 291,
+			"seasonId": 8,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 292,
+			"seasonId": 8,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 293,
+			"seasonId": 8,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 294,
+			"seasonId": 8,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 295,
+			"seasonId": 8,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 296,
+			"seasonId": 8,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 297,
+			"seasonId": 8,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 298,
+			"seasonId": 8,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 299,
+			"seasonId": 8,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 300,
+			"seasonId": 8,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 301,
+			"seasonId": 8,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 302,
+			"seasonId": 8,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 303,
+			"seasonId": 8,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 304,
+			"seasonId": 8,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 305,
+			"seasonId": 8,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 306,
+			"seasonId": 8,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 307,
+			"seasonId": 8,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 308,
+			"seasonId": 8,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 309,
+			"seasonId": 8,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 310,
+			"seasonId": 8,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 311,
+			"seasonId": 8,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 312,
+			"seasonId": 8,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 313,
+			"seasonId": 8,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 314,
+			"seasonId": 8,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 315,
+			"seasonId": 8,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 316,
+			"seasonId": 8,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 317,
+			"seasonId": 8,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 31,
+			"seasonId": 1,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 33,
+			"seasonId": 1,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 34,
+			"seasonId": 1,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 35,
+			"seasonId": 1,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 36,
+			"seasonId": 1,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 37,
+			"seasonId": 1,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 38,
+			"seasonId": 1,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 39,
+			"seasonId": 1,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 40,
+			"seasonId": 1,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 41,
+			"seasonId": 1,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 42,
+			"seasonId": 1,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 43,
+			"seasonId": 1,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 44,
+			"seasonId": 1,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 45,
+			"seasonId": 1,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 46,
+			"seasonId": 1,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 47,
+			"seasonId": 1,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 48,
+			"seasonId": 1,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 49,
+			"seasonId": 1,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 50,
+			"seasonId": 1,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 51,
+			"seasonId": 1,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 52,
+			"seasonId": 1,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 53,
+			"seasonId": 1,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 54,
+			"seasonId": 1,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 55,
+			"seasonId": 1,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 56,
+			"seasonId": 1,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 57,
+			"seasonId": 1,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 58,
+			"seasonId": 1,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 59,
+			"seasonId": 1,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 60,
+			"seasonId": 1,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 61,
+			"seasonId": 1,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 62,
+			"seasonId": 1,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 63,
+			"seasonId": 1,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 64,
+			"seasonId": 1,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 65,
+			"seasonId": 1,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 66,
+			"seasonId": 1,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 67,
+			"seasonId": 1,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 68,
+			"seasonId": 1,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 69,
+			"seasonId": 1,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 70,
+			"seasonId": 1,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 71,
+			"seasonId": 1,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 72,
+			"seasonId": 1,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 318,
+			"seasonId": 8,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 319,
+			"seasonId": 8,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 320,
+			"seasonId": 8,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 321,
+			"seasonId": 8,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 322,
+			"seasonId": 8,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 323,
+			"seasonId": 8,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 324,
+			"seasonId": 8,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 80,
+			"seasonId": 3,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 81,
+			"seasonId": 3,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 82,
+			"seasonId": 3,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 83,
+			"seasonId": 3,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 84,
+			"seasonId": 3,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 85,
+			"seasonId": 3,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 86,
+			"seasonId": 3,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 87,
+			"seasonId": 3,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 88,
+			"seasonId": 3,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 89,
+			"seasonId": 3,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 90,
+			"seasonId": 3,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 91,
+			"seasonId": 3,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 92,
+			"seasonId": 3,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 93,
+			"seasonId": 3,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 94,
+			"seasonId": 3,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 95,
+			"seasonId": 3,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 96,
+			"seasonId": 3,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 97,
+			"seasonId": 3,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 98,
+			"seasonId": 3,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 99,
+			"seasonId": 3,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 100,
+			"seasonId": 3,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 101,
+			"seasonId": 3,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 102,
+			"seasonId": 3,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 103,
+			"seasonId": 3,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 104,
+			"seasonId": 3,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 105,
+			"seasonId": 3,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 106,
+			"seasonId": 3,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 107,
+			"seasonId": 3,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 108,
+			"seasonId": 3,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 109,
+			"seasonId": 3,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 110,
+			"seasonId": 3,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 111,
+			"seasonId": 3,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 112,
+			"seasonId": 3,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 113,
+			"seasonId": 3,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 114,
+			"seasonId": 3,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 115,
+			"seasonId": 3,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 116,
+			"seasonId": 3,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 117,
+			"seasonId": 3,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 118,
+			"seasonId": 3,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 119,
+			"seasonId": 3,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 120,
+			"seasonId": 3,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 121,
+			"seasonId": 4,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 122,
+			"seasonId": 4,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 123,
+			"seasonId": 4,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 124,
+			"seasonId": 4,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 125,
+			"seasonId": 4,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 126,
+			"seasonId": 4,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 127,
+			"seasonId": 4,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 128,
+			"seasonId": 4,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 129,
+			"seasonId": 4,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 130,
+			"seasonId": 4,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 131,
+			"seasonId": 4,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 132,
+			"seasonId": 4,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 133,
+			"seasonId": 4,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 134,
+			"seasonId": 4,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 135,
+			"seasonId": 4,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 136,
+			"seasonId": 4,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 137,
+			"seasonId": 4,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 138,
+			"seasonId": 4,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 139,
+			"seasonId": 4,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 140,
+			"seasonId": 4,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 141,
+			"seasonId": 4,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 142,
+			"seasonId": 4,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 143,
+			"seasonId": 4,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 144,
+			"seasonId": 4,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 145,
+			"seasonId": 4,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 146,
+			"seasonId": 4,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 147,
+			"seasonId": 4,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 148,
+			"seasonId": 4,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 149,
+			"seasonId": 4,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 150,
+			"seasonId": 4,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 151,
+			"seasonId": 4,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 152,
+			"seasonId": 4,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 153,
+			"seasonId": 4,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 154,
+			"seasonId": 4,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 155,
+			"seasonId": 4,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 156,
+			"seasonId": 4,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 157,
+			"seasonId": 4,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 158,
+			"seasonId": 4,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 159,
+			"seasonId": 4,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 160,
+			"seasonId": 4,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 161,
+			"seasonId": 4,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 162,
+			"seasonId": 5,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 163,
+			"seasonId": 5,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 164,
+			"seasonId": 5,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 165,
+			"seasonId": 5,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 166,
+			"seasonId": 5,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 167,
+			"seasonId": 5,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 168,
+			"seasonId": 5,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 169,
+			"seasonId": 5,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 170,
+			"seasonId": 5,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 171,
+			"seasonId": 5,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 172,
+			"seasonId": 5,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 173,
+			"seasonId": 5,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 174,
+			"seasonId": 5,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 175,
+			"seasonId": 5,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 176,
+			"seasonId": 5,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 177,
+			"seasonId": 5,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 178,
+			"seasonId": 5,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 179,
+			"seasonId": 5,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 180,
+			"seasonId": 5,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 181,
+			"seasonId": 5,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 182,
+			"seasonId": 5,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 183,
+			"seasonId": 5,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 184,
+			"seasonId": 5,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 185,
+			"seasonId": 5,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 186,
+			"seasonId": 5,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 187,
+			"seasonId": 5,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 188,
+			"seasonId": 5,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 189,
+			"seasonId": 5,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 190,
+			"seasonId": 5,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 191,
+			"seasonId": 5,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 192,
+			"seasonId": 5,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 193,
+			"seasonId": 5,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 194,
+			"seasonId": 5,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 195,
+			"seasonId": 5,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 196,
+			"seasonId": 5,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 197,
+			"seasonId": 5,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 198,
+			"seasonId": 5,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 199,
+			"seasonId": 5,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 200,
+			"seasonId": 5,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 201,
+			"seasonId": 5,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 202,
+			"seasonId": 5,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 203,
+			"seasonId": 6,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 204,
+			"seasonId": 6,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 205,
+			"seasonId": 6,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 206,
+			"seasonId": 6,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 207,
+			"seasonId": 6,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 208,
+			"seasonId": 6,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 209,
+			"seasonId": 6,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 210,
+			"seasonId": 6,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 211,
+			"seasonId": 6,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 212,
+			"seasonId": 6,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 213,
+			"seasonId": 6,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 214,
+			"seasonId": 6,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 215,
+			"seasonId": 6,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 216,
+			"seasonId": 6,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 217,
+			"seasonId": 6,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 218,
+			"seasonId": 6,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 219,
+			"seasonId": 6,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 220,
+			"seasonId": 6,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 221,
+			"seasonId": 6,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 222,
+			"seasonId": 6,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 223,
+			"seasonId": 6,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 224,
+			"seasonId": 6,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 225,
+			"seasonId": 6,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 226,
+			"seasonId": 6,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 227,
+			"seasonId": 6,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 228,
+			"seasonId": 6,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 229,
+			"seasonId": 6,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 230,
+			"seasonId": 6,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 231,
+			"seasonId": 6,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 232,
+			"seasonId": 6,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 233,
+			"seasonId": 6,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 234,
+			"seasonId": 6,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 235,
+			"seasonId": 6,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 236,
+			"seasonId": 6,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 237,
+			"seasonId": 6,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 238,
+			"seasonId": 6,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 239,
+			"seasonId": 6,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 240,
+			"seasonId": 6,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 241,
+			"seasonId": 6,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 242,
+			"seasonId": 6,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 243,
+			"seasonId": 6,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 244,
+			"seasonId": 7,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 245,
+			"seasonId": 7,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 246,
+			"seasonId": 7,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 247,
+			"seasonId": 7,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 248,
+			"seasonId": 7,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 249,
+			"seasonId": 7,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 250,
+			"seasonId": 7,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 251,
+			"seasonId": 7,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 252,
+			"seasonId": 7,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 253,
+			"seasonId": 7,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 254,
+			"seasonId": 7,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 255,
+			"seasonId": 7,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 256,
+			"seasonId": 7,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 257,
+			"seasonId": 7,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 258,
+			"seasonId": 7,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 259,
+			"seasonId": 7,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 260,
+			"seasonId": 7,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 261,
+			"seasonId": 7,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 262,
+			"seasonId": 7,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 263,
+			"seasonId": 7,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 264,
+			"seasonId": 7,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 265,
+			"seasonId": 7,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 266,
+			"seasonId": 7,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 267,
+			"seasonId": 7,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 268,
+			"seasonId": 7,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 269,
+			"seasonId": 7,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 270,
+			"seasonId": 7,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 271,
+			"seasonId": 7,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 272,
+			"seasonId": 7,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 273,
+			"seasonId": 7,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 274,
+			"seasonId": 7,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 275,
+			"seasonId": 7,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 276,
+			"seasonId": 7,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 277,
+			"seasonId": 7,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 278,
+			"seasonId": 7,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 279,
+			"seasonId": 7,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 280,
+			"seasonId": 7,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 281,
+			"seasonId": 7,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 282,
+			"seasonId": 7,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 283,
+			"seasonId": 7,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 284,
+			"seasonId": 7,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 325,
+			"seasonId": 8,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 326,
+			"seasonId": 9,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 327,
+			"seasonId": 9,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 328,
+			"seasonId": 9,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 329,
+			"seasonId": 9,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 330,
+			"seasonId": 9,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 331,
+			"seasonId": 9,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 332,
+			"seasonId": 9,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 333,
+			"seasonId": 9,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 334,
+			"seasonId": 9,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 335,
+			"seasonId": 9,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 336,
+			"seasonId": 9,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 337,
+			"seasonId": 9,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 338,
+			"seasonId": 9,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 339,
+			"seasonId": 9,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 340,
+			"seasonId": 9,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 341,
+			"seasonId": 9,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 342,
+			"seasonId": 9,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 343,
+			"seasonId": 9,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 344,
+			"seasonId": 9,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 345,
+			"seasonId": 9,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 346,
+			"seasonId": 9,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 347,
+			"seasonId": 9,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 348,
+			"seasonId": 9,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 349,
+			"seasonId": 9,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 350,
+			"seasonId": 9,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 351,
+			"seasonId": 9,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 352,
+			"seasonId": 9,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 353,
+			"seasonId": 9,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 354,
+			"seasonId": 9,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 355,
+			"seasonId": 9,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 356,
+			"seasonId": 9,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 357,
+			"seasonId": 9,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 358,
+			"seasonId": 9,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 359,
+			"seasonId": 9,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 360,
+			"seasonId": 9,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 361,
+			"seasonId": 9,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 362,
+			"seasonId": 9,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 363,
+			"seasonId": 9,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 364,
+			"seasonId": 9,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 365,
+			"seasonId": 9,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 366,
+			"seasonId": 9,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 367,
+			"seasonId": 10,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 368,
+			"seasonId": 10,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 369,
+			"seasonId": 10,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 370,
+			"seasonId": 10,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 371,
+			"seasonId": 10,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 372,
+			"seasonId": 10,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 373,
+			"seasonId": 10,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 374,
+			"seasonId": 10,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 375,
+			"seasonId": 10,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 376,
+			"seasonId": 10,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 377,
+			"seasonId": 10,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 378,
+			"seasonId": 10,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 379,
+			"seasonId": 10,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 380,
+			"seasonId": 10,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 381,
+			"seasonId": 10,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 382,
+			"seasonId": 10,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 383,
+			"seasonId": 10,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 384,
+			"seasonId": 10,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 385,
+			"seasonId": 10,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 386,
+			"seasonId": 10,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 387,
+			"seasonId": 10,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 388,
+			"seasonId": 10,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 389,
+			"seasonId": 10,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 390,
+			"seasonId": 10,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 391,
+			"seasonId": 10,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 392,
+			"seasonId": 10,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 393,
+			"seasonId": 10,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 394,
+			"seasonId": 10,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 395,
+			"seasonId": 10,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 396,
+			"seasonId": 10,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 397,
+			"seasonId": 10,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 398,
+			"seasonId": 10,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 399,
+			"seasonId": 10,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 400,
+			"seasonId": 10,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 401,
+			"seasonId": 10,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 402,
+			"seasonId": 10,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 403,
+			"seasonId": 10,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 404,
+			"seasonId": 10,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 405,
+			"seasonId": 10,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 406,
+			"seasonId": 10,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 407,
+			"seasonId": 10,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 408,
+			"seasonId": 11,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 409,
+			"seasonId": 11,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 410,
+			"seasonId": 11,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 411,
+			"seasonId": 11,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 412,
+			"seasonId": 11,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 413,
+			"seasonId": 11,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 414,
+			"seasonId": 11,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 415,
+			"seasonId": 11,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 416,
+			"seasonId": 11,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 417,
+			"seasonId": 11,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 418,
+			"seasonId": 11,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 419,
+			"seasonId": 11,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 420,
+			"seasonId": 11,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 421,
+			"seasonId": 11,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 422,
+			"seasonId": 11,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 423,
+			"seasonId": 11,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 424,
+			"seasonId": 11,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 425,
+			"seasonId": 11,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 426,
+			"seasonId": 11,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 427,
+			"seasonId": 11,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 428,
+			"seasonId": 11,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 429,
+			"seasonId": 11,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 430,
+			"seasonId": 11,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 431,
+			"seasonId": 11,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 432,
+			"seasonId": 11,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 433,
+			"seasonId": 11,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 434,
+			"seasonId": 11,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 435,
+			"seasonId": 11,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 436,
+			"seasonId": 11,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 437,
+			"seasonId": 11,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 438,
+			"seasonId": 11,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 439,
+			"seasonId": 11,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 440,
+			"seasonId": 11,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 441,
+			"seasonId": 11,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 442,
+			"seasonId": 11,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 443,
+			"seasonId": 11,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 444,
+			"seasonId": 11,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 445,
+			"seasonId": 11,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 446,
+			"seasonId": 11,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 447,
+			"seasonId": 11,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 448,
+			"seasonId": 11,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 449,
+			"seasonId": 12,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 450,
+			"seasonId": 12,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 451,
+			"seasonId": 12,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 452,
+			"seasonId": 12,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 453,
+			"seasonId": 12,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 454,
+			"seasonId": 12,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 455,
+			"seasonId": 12,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 456,
+			"seasonId": 12,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 457,
+			"seasonId": 12,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 458,
+			"seasonId": 12,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 459,
+			"seasonId": 12,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 460,
+			"seasonId": 12,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 461,
+			"seasonId": 12,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 462,
+			"seasonId": 12,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 463,
+			"seasonId": 12,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 464,
+			"seasonId": 12,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 465,
+			"seasonId": 12,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 466,
+			"seasonId": 12,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 467,
+			"seasonId": 12,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 468,
+			"seasonId": 12,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 469,
+			"seasonId": 12,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 470,
+			"seasonId": 12,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 471,
+			"seasonId": 12,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 472,
+			"seasonId": 12,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 473,
+			"seasonId": 12,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 474,
+			"seasonId": 12,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 475,
+			"seasonId": 12,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 476,
+			"seasonId": 12,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 477,
+			"seasonId": 12,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 478,
+			"seasonId": 12,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 479,
+			"seasonId": 12,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 480,
+			"seasonId": 12,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 481,
+			"seasonId": 12,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 482,
+			"seasonId": 12,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 483,
+			"seasonId": 12,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 484,
+			"seasonId": 12,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 485,
+			"seasonId": 12,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 486,
+			"seasonId": 12,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 487,
+			"seasonId": 12,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 488,
+			"seasonId": 12,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 489,
+			"seasonId": 12,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 490,
+			"seasonId": 13,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 491,
+			"seasonId": 13,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 492,
+			"seasonId": 13,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 493,
+			"seasonId": 13,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 494,
+			"seasonId": 13,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 495,
+			"seasonId": 13,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 496,
+			"seasonId": 13,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 497,
+			"seasonId": 13,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 498,
+			"seasonId": 13,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 499,
+			"seasonId": 13,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 500,
+			"seasonId": 13,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 501,
+			"seasonId": 13,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 502,
+			"seasonId": 13,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 503,
+			"seasonId": 13,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 504,
+			"seasonId": 13,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 505,
+			"seasonId": 13,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 506,
+			"seasonId": 13,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 507,
+			"seasonId": 13,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 508,
+			"seasonId": 13,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 509,
+			"seasonId": 13,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 510,
+			"seasonId": 13,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 511,
+			"seasonId": 13,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 512,
+			"seasonId": 13,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 513,
+			"seasonId": 13,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 514,
+			"seasonId": 13,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 515,
+			"seasonId": 13,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 516,
+			"seasonId": 13,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 517,
+			"seasonId": 13,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 518,
+			"seasonId": 13,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 519,
+			"seasonId": 13,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 520,
+			"seasonId": 13,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 521,
+			"seasonId": 13,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 522,
+			"seasonId": 13,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 523,
+			"seasonId": 13,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 524,
+			"seasonId": 13,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 525,
+			"seasonId": 13,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 526,
+			"seasonId": 13,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 527,
+			"seasonId": 13,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 528,
+			"seasonId": 13,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 529,
+			"seasonId": 13,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 530,
+			"seasonId": 13,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 531,
+			"seasonId": 14,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 532,
+			"seasonId": 14,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 533,
+			"seasonId": 14,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 534,
+			"seasonId": 14,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 535,
+			"seasonId": 14,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 536,
+			"seasonId": 14,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 537,
+			"seasonId": 14,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 538,
+			"seasonId": 14,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 539,
+			"seasonId": 14,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 540,
+			"seasonId": 14,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 541,
+			"seasonId": 14,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 542,
+			"seasonId": 14,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 543,
+			"seasonId": 14,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 544,
+			"seasonId": 14,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 545,
+			"seasonId": 14,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 546,
+			"seasonId": 14,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 547,
+			"seasonId": 14,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 548,
+			"seasonId": 14,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 549,
+			"seasonId": 14,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 550,
+			"seasonId": 14,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 551,
+			"seasonId": 14,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 552,
+			"seasonId": 14,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 553,
+			"seasonId": 14,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 554,
+			"seasonId": 14,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 555,
+			"seasonId": 14,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 556,
+			"seasonId": 14,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 557,
+			"seasonId": 14,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 558,
+			"seasonId": 14,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 559,
+			"seasonId": 14,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 560,
+			"seasonId": 14,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 561,
+			"seasonId": 14,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 562,
+			"seasonId": 14,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 563,
+			"seasonId": 14,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 564,
+			"seasonId": 14,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 565,
+			"seasonId": 14,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 566,
+			"seasonId": 14,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 567,
+			"seasonId": 14,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 568,
+			"seasonId": 14,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 569,
+			"seasonId": 14,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 570,
+			"seasonId": 14,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 571,
+			"seasonId": 14,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 572,
+			"seasonId": 15,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 573,
+			"seasonId": 15,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 574,
+			"seasonId": 15,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 575,
+			"seasonId": 15,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 576,
+			"seasonId": 15,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 577,
+			"seasonId": 15,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 578,
+			"seasonId": 15,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 579,
+			"seasonId": 15,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 580,
+			"seasonId": 15,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 581,
+			"seasonId": 15,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 582,
+			"seasonId": 15,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 583,
+			"seasonId": 15,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 584,
+			"seasonId": 15,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 585,
+			"seasonId": 15,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 586,
+			"seasonId": 15,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 587,
+			"seasonId": 15,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 588,
+			"seasonId": 15,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 589,
+			"seasonId": 15,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 590,
+			"seasonId": 15,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 591,
+			"seasonId": 15,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 592,
+			"seasonId": 15,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 593,
+			"seasonId": 15,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 594,
+			"seasonId": 15,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 595,
+			"seasonId": 15,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 596,
+			"seasonId": 15,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 597,
+			"seasonId": 15,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 598,
+			"seasonId": 15,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 599,
+			"seasonId": 15,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 600,
+			"seasonId": 15,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 601,
+			"seasonId": 15,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 602,
+			"seasonId": 15,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 603,
+			"seasonId": 15,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 604,
+			"seasonId": 15,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 605,
+			"seasonId": 15,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 606,
+			"seasonId": 15,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 607,
+			"seasonId": 15,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 608,
+			"seasonId": 15,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 609,
+			"seasonId": 15,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 610,
+			"seasonId": 15,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 611,
+			"seasonId": 15,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 612,
+			"seasonId": 15,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 613,
+			"seasonId": 16,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 614,
+			"seasonId": 16,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 615,
+			"seasonId": 16,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 616,
+			"seasonId": 16,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 617,
+			"seasonId": 16,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 618,
+			"seasonId": 16,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 619,
+			"seasonId": 16,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 620,
+			"seasonId": 16,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 621,
+			"seasonId": 16,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 622,
+			"seasonId": 16,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 623,
+			"seasonId": 16,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 624,
+			"seasonId": 16,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 625,
+			"seasonId": 16,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 626,
+			"seasonId": 16,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 627,
+			"seasonId": 16,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 628,
+			"seasonId": 16,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 629,
+			"seasonId": 16,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 630,
+			"seasonId": 16,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 631,
+			"seasonId": 16,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 632,
+			"seasonId": 16,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 633,
+			"seasonId": 16,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 634,
+			"seasonId": 16,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 635,
+			"seasonId": 16,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 636,
+			"seasonId": 16,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 637,
+			"seasonId": 16,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 638,
+			"seasonId": 16,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 639,
+			"seasonId": 16,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 640,
+			"seasonId": 16,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 641,
+			"seasonId": 16,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 642,
+			"seasonId": 16,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 643,
+			"seasonId": 16,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 644,
+			"seasonId": 16,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 645,
+			"seasonId": 16,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 646,
+			"seasonId": 16,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 647,
+			"seasonId": 16,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 648,
+			"seasonId": 16,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 649,
+			"seasonId": 16,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 650,
+			"seasonId": 16,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 651,
+			"seasonId": 16,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 652,
+			"seasonId": 16,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 653,
+			"seasonId": 16,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 654,
+			"seasonId": 17,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 655,
+			"seasonId": 17,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 656,
+			"seasonId": 17,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 657,
+			"seasonId": 17,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 658,
+			"seasonId": 17,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 659,
+			"seasonId": 17,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 660,
+			"seasonId": 17,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 661,
+			"seasonId": 17,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 662,
+			"seasonId": 17,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 663,
+			"seasonId": 17,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 664,
+			"seasonId": 17,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 665,
+			"seasonId": 17,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 666,
+			"seasonId": 17,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 667,
+			"seasonId": 17,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 668,
+			"seasonId": 17,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 669,
+			"seasonId": 17,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 670,
+			"seasonId": 17,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 671,
+			"seasonId": 17,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 672,
+			"seasonId": 17,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 673,
+			"seasonId": 17,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 674,
+			"seasonId": 17,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 675,
+			"seasonId": 17,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 676,
+			"seasonId": 17,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 677,
+			"seasonId": 17,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 678,
+			"seasonId": 17,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 679,
+			"seasonId": 17,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 680,
+			"seasonId": 17,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 681,
+			"seasonId": 17,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 682,
+			"seasonId": 17,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 683,
+			"seasonId": 17,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 684,
+			"seasonId": 17,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 685,
+			"seasonId": 17,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 686,
+			"seasonId": 17,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 687,
+			"seasonId": 17,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 688,
+			"seasonId": 17,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 689,
+			"seasonId": 17,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 690,
+			"seasonId": 17,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 691,
+			"seasonId": 17,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 692,
+			"seasonId": 17,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 693,
+			"seasonId": 17,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 694,
+			"seasonId": 17,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 695,
+			"seasonId": 18,
+			"leagueId": 6,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 696,
+			"seasonId": 18,
+			"leagueId": 7,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 697,
+			"seasonId": 18,
+			"leagueId": 8,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 698,
+			"seasonId": 18,
+			"leagueId": 9,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 699,
+			"seasonId": 18,
+			"leagueId": 10,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 700,
+			"seasonId": 18,
+			"leagueId": 11,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 701,
+			"seasonId": 18,
+			"leagueId": 12,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 702,
+			"seasonId": 18,
+			"leagueId": 13,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 703,
+			"seasonId": 18,
+			"leagueId": 14,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 704,
+			"seasonId": 18,
+			"leagueId": 15,
+			"titlesRewards": [
+				247
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 705,
+			"seasonId": 18,
+			"leagueId": 16,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 706,
+			"seasonId": 18,
+			"leagueId": 17,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 707,
+			"seasonId": 18,
+			"leagueId": 18,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 708,
+			"seasonId": 18,
+			"leagueId": 20,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 709,
+			"seasonId": 18,
+			"leagueId": 21,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 710,
+			"seasonId": 18,
+			"leagueId": 22,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 711,
+			"seasonId": 18,
+			"leagueId": 23,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 712,
+			"seasonId": 18,
+			"leagueId": 24,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 713,
+			"seasonId": 18,
+			"leagueId": 25,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 714,
+			"seasonId": 18,
+			"leagueId": 26,
+			"titlesRewards": [
+				248
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 715,
+			"seasonId": 18,
+			"leagueId": 27,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 716,
+			"seasonId": 18,
+			"leagueId": 28,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 717,
+			"seasonId": 18,
+			"leagueId": 29,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 718,
+			"seasonId": 18,
+			"leagueId": 30,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 719,
+			"seasonId": 18,
+			"leagueId": 31,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 720,
+			"seasonId": 18,
+			"leagueId": 32,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 721,
+			"seasonId": 18,
+			"leagueId": 33,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 722,
+			"seasonId": 18,
+			"leagueId": 34,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 723,
+			"seasonId": 18,
+			"leagueId": 35,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 724,
+			"seasonId": 18,
+			"leagueId": 36,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 725,
+			"seasonId": 18,
+			"leagueId": 37,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 726,
+			"seasonId": 18,
+			"leagueId": 38,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 727,
+			"seasonId": 18,
+			"leagueId": 39,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 728,
+			"seasonId": 18,
+			"leagueId": 40,
+			"titlesRewards": [
+				250
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 729,
+			"seasonId": 18,
+			"leagueId": 42,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 730,
+			"seasonId": 18,
+			"leagueId": 43,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 731,
+			"seasonId": 18,
+			"leagueId": 44,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 732,
+			"seasonId": 18,
+			"leagueId": 45,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 733,
+			"seasonId": 18,
+			"leagueId": 46,
+			"titlesRewards": [
+				251
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 734,
+			"seasonId": 18,
+			"leagueId": 47,
+			"titlesRewards": [
+				252
+			],
+			"endSeasonRewards": true
+		},
+		{
+			"id": 735,
+			"seasonId": 18,
+			"leagueId": 48,
+			"titlesRewards": [
+				249
+			],
+			"endSeasonRewards": true
+		}
+	]
+}

@@ -1,0 +1,15 @@
+{
+	"def": [
+		{
+			"memberName": "Phoenix",
+			"packageName": "com.ankamagames.dofus.datacenter.world",
+			"fields": [
+				{
+					"name": "mapId",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": []
+}
