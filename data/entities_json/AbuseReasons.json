@@ -1,0 +1,54 @@
+{
+	"def": [
+		{
+			"memberName": "AbuseReasons",
+			"packageName": "com.ankamagames.dofus.datacenter.abuse",
+			"fields": [
+				{
+					"name": "abuseReasonId",
+					"type": -1
+				},
+				{
+					"name": "mask",
+					"type": -1
+				},
+				{
+					"name": "reasonTextId",
+					"type": -5
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"abuseReasonId": 1,
+			"mask": 1,
+			"reasonTextId": 3
+		},
+		{
+			"abuseReasonId": 2,
+			"mask": 3,
+			"reasonTextId": 4
+		},
+		{
+			"abuseReasonId": 3,
+			"mask": 1,
+			"reasonTextId": 1
+		},
+		{
+			"abuseReasonId": 4,
+			"mask": 1,
+			"reasonTextId": 5
+		},
+		{
+			"abuseReasonId": 5,
+			"mask": 1,
+			"reasonTextId": 6
+		},
+		{
+			"abuseReasonId": 6,
+			"mask": 1,
+			"reasonTextId": 2
+		}
+	]
+}

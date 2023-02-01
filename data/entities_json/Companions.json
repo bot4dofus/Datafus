@@ -1,0 +1,551 @@
+{
+	"def": [
+		{
+			"memberName": "Companion",
+			"packageName": "com.ankamagames.dofus.datacenter.monsters",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "look",
+					"type": -3
+				},
+				{
+					"name": "webDisplay",
+					"type": -2
+				},
+				{
+					"name": "descriptionId",
+					"type": -5
+				},
+				{
+					"name": "startingSpellLevelId",
+					"type": -1
+				},
+				{
+					"name": "assetId",
+					"type": -1
+				},
+				{
+					"name": "characteristics",
+					"type": -99,
+					"vectorTypes": {
+						"name": "Vector.<uint>",
+						"type": -6
+					}
+				},
+				{
+					"name": "spells",
+					"type": -99,
+					"vectorTypes": {
+						"name": "Vector.<uint>",
+						"type": -6
+					}
+				},
+				{
+					"name": "creatureBoneId",
+					"type": -1
+				},
+				{
+					"name": "visibility",
+					"type": -3
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 1,
+			"nameId": 346959,
+			"look": "{2478|||90}",
+			"webDisplay": true,
+			"descriptionId": 373851,
+			"startingSpellLevelId": 21708,
+			"assetId": 6,
+			"characteristics": [
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				10,
+				19,
+				20,
+				21,
+				5,
+				9,
+				146,
+				8
+			],
+			"spells": [
+				1117,
+				1118,
+				1119,
+				1120,
+				1115,
+				1116
+			],
+			"creatureBoneId": 2605,
+			"visibility": "null"
+		},
+		{
+			"id": 2,
+			"nameId": 375875,
+			"look": "{2493}",
+			"webDisplay": true,
+			"descriptionId": 375876,
+			"startingSpellLevelId": 21730,
+			"assetId": 4,
+			"characteristics": [
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				33,
+				34,
+				35,
+				31,
+				32,
+				23,
+				24,
+				36,
+				150,
+				22
+			],
+			"spells": [
+				55,
+				56,
+				57,
+				58,
+				59,
+				60
+			],
+			"creatureBoneId": 2606,
+			"visibility": "null"
+		},
+		{
+			"id": 6,
+			"nameId": 346957,
+			"look": "{2494}",
+			"webDisplay": true,
+			"descriptionId": 373849,
+			"startingSpellLevelId": 21756,
+			"assetId": 1,
+			"characteristics": [
+				99,
+				100,
+				101,
+				102,
+				103,
+				104,
+				105,
+				106,
+				107,
+				108,
+				109,
+				97,
+				110,
+				98,
+				142,
+				147
+			],
+			"spells": [
+				1121,
+				1122,
+				1123,
+				1124,
+				1125,
+				1126
+			],
+			"creatureBoneId": 2609,
+			"visibility": "null"
+		},
+		{
+			"id": 7,
+			"nameId": 375873,
+			"look": "{2492}",
+			"webDisplay": true,
+			"descriptionId": 375874,
+			"startingSpellLevelId": 21719,
+			"assetId": 3,
+			"characteristics": [
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				61,
+				63,
+				65,
+				66,
+				58,
+				59,
+				60,
+				64,
+				62,
+				149,
+				51
+			],
+			"spells": [
+				1127,
+				1128,
+				1129,
+				1130,
+				1131,
+				1132
+			],
+			"creatureBoneId": 2607,
+			"visibility": "null"
+		},
+		{
+			"id": 8,
+			"nameId": 346955,
+			"look": "{2504}",
+			"webDisplay": true,
+			"descriptionId": 373848,
+			"startingSpellLevelId": 21747,
+			"assetId": 2,
+			"characteristics": [
+				69,
+				141,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				81,
+				82,
+				80,
+				67,
+				78,
+				79,
+				145,
+				68
+			],
+			"spells": [
+				43,
+				44,
+				45,
+				46,
+				47,
+				48
+			],
+			"creatureBoneId": 2610,
+			"visibility": "null"
+		},
+		{
+			"id": 9,
+			"nameId": 346953,
+			"look": "{2495|||80}",
+			"webDisplay": true,
+			"descriptionId": 373846,
+			"startingSpellLevelId": 21739,
+			"assetId": 5,
+			"characteristics": [
+				85,
+				86,
+				87,
+				88,
+				89,
+				90,
+				91,
+				92,
+				93,
+				94,
+				95,
+				83,
+				84,
+				143,
+				148,
+				96
+			],
+			"spells": [
+				1133,
+				1134,
+				1135,
+				1136,
+				1137,
+				1138
+			],
+			"creatureBoneId": 2608,
+			"visibility": "null"
+		},
+		{
+			"id": 11,
+			"nameId": 373852,
+			"look": "{2558}",
+			"webDisplay": true,
+			"descriptionId": 373853,
+			"startingSpellLevelId": 0,
+			"assetId": 7,
+			"characteristics": [
+				127,
+				128,
+				129,
+				130,
+				131,
+				132,
+				133,
+				134,
+				135,
+				136,
+				137,
+				139,
+				140,
+				144,
+				126,
+				138
+			],
+			"spells": [
+				62,
+				63,
+				64,
+				65,
+				66,
+				67
+			],
+			"creatureBoneId": 2611,
+			"visibility": "null"
+		},
+		{
+			"id": 12,
+			"nameId": 454337,
+			"look": "{2625|||75}",
+			"webDisplay": true,
+			"descriptionId": 454338,
+			"startingSpellLevelId": 0,
+			"assetId": 8,
+			"characteristics": [
+				155,
+				163,
+				152,
+				153,
+				156,
+				157,
+				158,
+				160,
+				161,
+				162,
+				164,
+				165,
+				166,
+				167,
+				151,
+				154
+			],
+			"spells": [
+				68,
+				69,
+				70,
+				71,
+				72,
+				73
+			],
+			"creatureBoneId": 2656,
+			"visibility": "null"
+		},
+		{
+			"id": 14,
+			"nameId": 454329,
+			"look": "{2704|||90}",
+			"webDisplay": true,
+			"descriptionId": 454330,
+			"startingSpellLevelId": 0,
+			"assetId": 10,
+			"characteristics": [
+				217,
+				218,
+				220,
+				222,
+				223,
+				224,
+				225,
+				227,
+				228,
+				229,
+				230,
+				231,
+				232,
+				219,
+				226,
+				221
+			],
+			"spells": [
+				1139,
+				1140,
+				1141,
+				1142,
+				1143,
+				1144
+			],
+			"creatureBoneId": 2716,
+			"visibility": "null"
+		},
+		{
+			"id": 15,
+			"nameId": 454327,
+			"look": "{2666}",
+			"webDisplay": true,
+			"descriptionId": 454328,
+			"startingSpellLevelId": 0,
+			"assetId": 9,
+			"characteristics": [
+				214,
+				215,
+				216,
+				210,
+				203,
+				200,
+				201,
+				202,
+				205,
+				206,
+				207,
+				208,
+				209,
+				211,
+				212,
+				213,
+				204
+			],
+			"spells": [
+				1145,
+				1146,
+				1147,
+				1148,
+				1149,
+				1150
+			],
+			"creatureBoneId": 2670,
+			"visibility": "null"
+		},
+		{
+			"id": 16,
+			"nameId": 454333,
+			"look": "{2860|||80}",
+			"webDisplay": true,
+			"descriptionId": 454334,
+			"startingSpellLevelId": 0,
+			"assetId": 11,
+			"characteristics": [
+				234,
+				235,
+				236,
+				237,
+				239,
+				240,
+				241,
+				242,
+				244,
+				246,
+				247,
+				248,
+				249,
+				250,
+				251,
+				233,
+				238,
+				245
+			],
+			"spells": [
+				1151,
+				1152,
+				1153,
+				1154,
+				1155,
+				1156
+			],
+			"creatureBoneId": 2894,
+			"visibility": "null"
+		},
+		{
+			"id": 17,
+			"nameId": 469719,
+			"look": "{3018}",
+			"webDisplay": true,
+			"descriptionId": 469720,
+			"startingSpellLevelId": 22955,
+			"assetId": 12,
+			"characteristics": [
+				262,
+				264,
+				265,
+				266,
+				267,
+				253,
+				252,
+				256,
+				263,
+				254,
+				255,
+				257,
+				258,
+				259,
+				260,
+				261
+			],
+			"spells": [
+				1157,
+				1158,
+				1159,
+				1160,
+				1161,
+				1162
+			],
+			"creatureBoneId": 3020,
+			"visibility": "null"
+		},
+		{
+			"id": 55,
+			"nameId": 973640,
+			"look": "{7063}",
+			"webDisplay": true,
+			"descriptionId": 968775,
+			"startingSpellLevelId": 21708,
+			"assetId": 49,
+			"characteristics": [
+				1145,
+				1146,
+				1147,
+				1148,
+				1149,
+				1150,
+				1151,
+				1152,
+				1153,
+				1154,
+				1155,
+				1156,
+				1157,
+				1158,
+				1159,
+				1160
+			],
+			"spells": [
+				1252,
+				1253,
+				1254,
+				1255,
+				1256,
+				1257
+			],
+			"creatureBoneId": 2605,
+			"visibility": "null"
+		}
+	]
+}

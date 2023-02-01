@@ -1,0 +1,268 @@
+{
+	"def": [
+		{
+			"memberName": "PresetIcon",
+			"packageName": "com.ankamagames.dofus.datacenter.items",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "order",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 0,
+			"order": 0
+		},
+		{
+			"id": 21,
+			"order": 1
+		},
+		{
+			"id": 2,
+			"order": 2
+		},
+		{
+			"id": 22,
+			"order": 3
+		},
+		{
+			"id": 23,
+			"order": 4
+		},
+		{
+			"id": 24,
+			"order": 5
+		},
+		{
+			"id": 25,
+			"order": 6
+		},
+		{
+			"id": 1,
+			"order": 7
+		},
+		{
+			"id": 6,
+			"order": 8
+		},
+		{
+			"id": 7,
+			"order": 9
+		},
+		{
+			"id": 8,
+			"order": 10
+		},
+		{
+			"id": 9,
+			"order": 11
+		},
+		{
+			"id": 10,
+			"order": 12
+		},
+		{
+			"id": 11,
+			"order": 13
+		},
+		{
+			"id": 12,
+			"order": 14
+		},
+		{
+			"id": 3,
+			"order": 15
+		},
+		{
+			"id": 4,
+			"order": 16
+		},
+		{
+			"id": 5,
+			"order": 17
+		},
+		{
+			"id": 15,
+			"order": 18
+		},
+		{
+			"id": 17,
+			"order": 19
+		},
+		{
+			"id": 26,
+			"order": 20
+		},
+		{
+			"id": 13,
+			"order": 21
+		},
+		{
+			"id": 14,
+			"order": 22
+		},
+		{
+			"id": 16,
+			"order": 23
+		},
+		{
+			"id": 18,
+			"order": 24
+		},
+		{
+			"id": 19,
+			"order": 25
+		},
+		{
+			"id": 20,
+			"order": 26
+		},
+		{
+			"id": 27,
+			"order": 27
+		},
+		{
+			"id": 28,
+			"order": 28
+		},
+		{
+			"id": 29,
+			"order": 29
+		},
+		{
+			"id": 30,
+			"order": 30
+		},
+		{
+			"id": 31,
+			"order": 31
+		},
+		{
+			"id": 32,
+			"order": 32
+		},
+		{
+			"id": 33,
+			"order": 33
+		},
+		{
+			"id": 34,
+			"order": 34
+		},
+		{
+			"id": 35,
+			"order": 35
+		},
+		{
+			"id": 36,
+			"order": 36
+		},
+		{
+			"id": 37,
+			"order": 37
+		},
+		{
+			"id": 38,
+			"order": 38
+		},
+		{
+			"id": 39,
+			"order": 39
+		},
+		{
+			"id": 40,
+			"order": 40
+		},
+		{
+			"id": 41,
+			"order": 41
+		},
+		{
+			"id": 42,
+			"order": 42
+		},
+		{
+			"id": 43,
+			"order": 43
+		},
+		{
+			"id": 44,
+			"order": 44
+		},
+		{
+			"id": 45,
+			"order": 45
+		},
+		{
+			"id": 46,
+			"order": 46
+		},
+		{
+			"id": 47,
+			"order": 47
+		},
+		{
+			"id": 48,
+			"order": 48
+		},
+		{
+			"id": 49,
+			"order": 49
+		},
+		{
+			"id": 50,
+			"order": 50
+		},
+		{
+			"id": 51,
+			"order": 51
+		},
+		{
+			"id": 52,
+			"order": 52
+		},
+		{
+			"id": 53,
+			"order": 53
+		},
+		{
+			"id": 54,
+			"order": 54
+		},
+		{
+			"id": 55,
+			"order": 55
+		},
+		{
+			"id": 56,
+			"order": 56
+		},
+		{
+			"id": 57,
+			"order": 57
+		},
+		{
+			"id": 58,
+			"order": 58
+		},
+		{
+			"id": 59,
+			"order": 59
+		},
+		{
+			"id": 60,
+			"order": 60
+		},
+		{
+			"id": 61,
+			"order": 61
+		}
+	]
+}

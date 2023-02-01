@@ -1,0 +1,198 @@
+name: Workflow
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/DofusInvoker.swf'
+      - 'data/d2o/*'
+      - 'data/d2i/*'
+    branches:
+      - master
+
+jobs:
+  Job_A:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Filter Job A
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            dofus_invoker:
+              - 'data/DofusInvoker.swf'
+
+      - name: Setup Python
+        if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+
+      - name: Setup Java
+        if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: A1 - Extract DofusInvoker.swf
+        if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
+        run: |
+          chmod +x src/A1.sh
+          src/A1.sh data/DofusInvoker.swf data/DofusInvoker/
+
+      - name: A2 - Build .json
+        if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
+        run: |
+            python src/A2.py data/DofusInvoker/scripts/com/ data/events.json
+
+      - name: A3 - Build .properties
+        if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
+        run: |
+            python src/A3.py data/events.json data/events.properties
+
+      - name: Upload files
+        if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
+        uses: actions/upload-artifact@v3
+        with:
+          name: Job_A
+          path: |
+            data/DofusInvoker/
+            data/events.json
+            data/events.properties
+
+  Job_B:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Filter Job B
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            d2o:
+              - 'data/d2o/*'
+
+      - name: Setup Python
+        if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+
+      - name: B1 - Build .json
+        if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
+        run: |
+            python src/B1.py data/d2o/ data/entities_json/
+
+      - name: Upload files
+        if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
+        uses: actions/upload-artifact@v3
+        with:
+          name: Job_B
+          path: |
+            data/entities_json/
+
+  Job_C:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Filter Job C
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            d2i:
+              - 'data/d2i/*'
+
+      - name: Setup Python
+        if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+
+      - name: C1 - Build .json
+        if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
+        run: |
+            python src/C1.py data/d2i/ data/translations_json/
+
+      - name: Upload files
+        if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
+        uses: actions/upload-artifact@v3
+        with:
+          name: Job_C
+          path: |
+            data/translations_json/
+
+  Publish:
+    runs-on: ubuntu-latest
+    needs: [Job_A, Job_B, Job_C]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+
+      - name: Download files Job A
+        uses: actions/download-artifact@v3
+        continue-on-error: true
+        with:
+          name: Job_A
+          path: data/
+
+      - name: Download files Job B
+        uses: actions/download-artifact@v3
+        continue-on-error: true
+        with:
+          name: Job_B
+          path: data/entities_json/
+
+      - name: Download files Job C
+        uses: actions/download-artifact@v3
+        continue-on-error: true
+        with:
+          name: Job_C
+          path: data/translations_json/
+
+      - name: Get latest Dofus version
+        run: |
+          chmod +x devscript/latest-dofus-version.sh
+          export DOFUS_VERSION=$(python devscript/latest-dofus-version.py)
+          echo The current Dofus version is $DOFUS_VERSION
+          echo "::set-env name=VERSION::$DOFUS_VERSION"
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+      - name: Commit and push
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: '["data/DofusInvoker/", "data/events.json", "data/events.properties", "data/entities_json/", "data/translations_json/"]'
+          message: 'Update version ${{ env.VERSION }}'
+          push: true
+
+      - name: Create zip file
+        run: |
+            zip -r data.zip data/events.json data/events.properties data/entities_json/ data/translations_json/
+
+      - name: Publish release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: ${{ env.VERSION }}
+          prerelease: false
+          title: ${{ env.VERSION }}
+          files: |
+            ./data.zip

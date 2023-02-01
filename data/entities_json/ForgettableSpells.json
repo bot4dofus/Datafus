@@ -1,0 +1,784 @@
+{
+	"def": [
+		{
+			"memberName": "ForgettableSpell",
+			"packageName": "com.ankamagames.dofus.datacenter.optionalFeatures",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "pairId",
+					"type": -1
+				},
+				{
+					"name": "itemId",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 22213,
+			"pairId": 1565,
+			"itemId": 26824
+		},
+		{
+			"id": 22215,
+			"pairId": 1567,
+			"itemId": 26825
+		},
+		{
+			"id": 22229,
+			"pairId": 1566,
+			"itemId": 26826
+		},
+		{
+			"id": 22231,
+			"pairId": 1568,
+			"itemId": 26827
+		},
+		{
+			"id": 22233,
+			"pairId": 1570,
+			"itemId": 26828
+		},
+		{
+			"id": 22240,
+			"pairId": 1572,
+			"itemId": 26829
+		},
+		{
+			"id": 22242,
+			"pairId": 1562,
+			"itemId": 26830
+		},
+		{
+			"id": 22247,
+			"pairId": 1571,
+			"itemId": 26831
+		},
+		{
+			"id": 22249,
+			"pairId": 1563,
+			"itemId": 26832
+		},
+		{
+			"id": 22251,
+			"pairId": 1573,
+			"itemId": 26833
+		},
+		{
+			"id": 22253,
+			"pairId": 1564,
+			"itemId": 26834
+		},
+		{
+			"id": 22258,
+			"pairId": 1578,
+			"itemId": 26835
+		},
+		{
+			"id": 22261,
+			"pairId": 1579,
+			"itemId": 26836
+		},
+		{
+			"id": 22263,
+			"pairId": 1569,
+			"itemId": 26837
+		},
+		{
+			"id": 22265,
+			"pairId": 1581,
+			"itemId": 26838
+		},
+		{
+			"id": 22267,
+			"pairId": 1580,
+			"itemId": 26839
+		},
+		{
+			"id": 22271,
+			"pairId": 1574,
+			"itemId": 26840
+		},
+		{
+			"id": 22273,
+			"pairId": 1575,
+			"itemId": 26841
+		},
+		{
+			"id": 22275,
+			"pairId": 1576,
+			"itemId": 26842
+		},
+		{
+			"id": 22277,
+			"pairId": 1582,
+			"itemId": 26843
+		},
+		{
+			"id": 22288,
+			"pairId": 1583,
+			"itemId": 26844
+		},
+		{
+			"id": 22292,
+			"pairId": 1584,
+			"itemId": 26845
+		},
+		{
+			"id": 22296,
+			"pairId": 1585,
+			"itemId": 26846
+		},
+		{
+			"id": 22298,
+			"pairId": 1586,
+			"itemId": 26847
+		},
+		{
+			"id": 22301,
+			"pairId": 1587,
+			"itemId": 26848
+		},
+		{
+			"id": 22303,
+			"pairId": 1577,
+			"itemId": 26849
+		},
+		{
+			"id": 22306,
+			"pairId": 1588,
+			"itemId": 26850
+		},
+		{
+			"id": 22308,
+			"pairId": 1589,
+			"itemId": 26851
+		},
+		{
+			"id": 22316,
+			"pairId": 1590,
+			"itemId": 26852
+		},
+		{
+			"id": 22321,
+			"pairId": 1591,
+			"itemId": 26853
+		},
+		{
+			"id": 22327,
+			"pairId": 1592,
+			"itemId": 26854
+		},
+		{
+			"id": 22330,
+			"pairId": 1593,
+			"itemId": 26855
+		},
+		{
+			"id": 22337,
+			"pairId": 1594,
+			"itemId": 26856
+		},
+		{
+			"id": 22339,
+			"pairId": 1595,
+			"itemId": 26857
+		},
+		{
+			"id": 22341,
+			"pairId": 1596,
+			"itemId": 26858
+		},
+		{
+			"id": 22353,
+			"pairId": 1597,
+			"itemId": 26859
+		},
+		{
+			"id": 22356,
+			"pairId": 1598,
+			"itemId": 26860
+		},
+		{
+			"id": 22358,
+			"pairId": 1599,
+			"itemId": 26861
+		},
+		{
+			"id": 22360,
+			"pairId": 1600,
+			"itemId": 26862
+		},
+		{
+			"id": 22362,
+			"pairId": 1601,
+			"itemId": 26863
+		},
+		{
+			"id": 22365,
+			"pairId": 1602,
+			"itemId": 26864
+		},
+		{
+			"id": 22367,
+			"pairId": 1603,
+			"itemId": 26865
+		},
+		{
+			"id": 22559,
+			"pairId": 1604,
+			"itemId": 26875
+		},
+		{
+			"id": 22561,
+			"pairId": 1605,
+			"itemId": 26876
+		},
+		{
+			"id": 22563,
+			"pairId": 1606,
+			"itemId": 26877
+		},
+		{
+			"id": 22565,
+			"pairId": 1607,
+			"itemId": 26878
+		},
+		{
+			"id": 22567,
+			"pairId": 1608,
+			"itemId": 26879
+		},
+		{
+			"id": 22569,
+			"pairId": 1609,
+			"itemId": 26880
+		},
+		{
+			"id": 22571,
+			"pairId": 1610,
+			"itemId": 26881
+		},
+		{
+			"id": 22573,
+			"pairId": 1611,
+			"itemId": 26882
+		},
+		{
+			"id": 22575,
+			"pairId": 1612,
+			"itemId": 26883
+		},
+		{
+			"id": 22627,
+			"pairId": 1613,
+			"itemId": 26884
+		},
+		{
+			"id": 22629,
+			"pairId": 1614,
+			"itemId": 26885
+		},
+		{
+			"id": 22642,
+			"pairId": 1615,
+			"itemId": 26886
+		},
+		{
+			"id": 22650,
+			"pairId": 1616,
+			"itemId": 26887
+		},
+		{
+			"id": 22656,
+			"pairId": 1617,
+			"itemId": 26889
+		},
+		{
+			"id": 22672,
+			"pairId": 1618,
+			"itemId": 26890
+		},
+		{
+			"id": 22688,
+			"pairId": 1619,
+			"itemId": 26891
+		},
+		{
+			"id": 22693,
+			"pairId": 1620,
+			"itemId": 26892
+		},
+		{
+			"id": 22697,
+			"pairId": 1621,
+			"itemId": 26893
+		},
+		{
+			"id": 22703,
+			"pairId": 1622,
+			"itemId": 26894
+		},
+		{
+			"id": 22723,
+			"pairId": 1623,
+			"itemId": 26895
+		},
+		{
+			"id": 22739,
+			"pairId": 1624,
+			"itemId": 26896
+		},
+		{
+			"id": 22742,
+			"pairId": 1625,
+			"itemId": 26897
+		},
+		{
+			"id": 22744,
+			"pairId": 1626,
+			"itemId": 26898
+		},
+		{
+			"id": 22748,
+			"pairId": 1627,
+			"itemId": 26899
+		},
+		{
+			"id": 22752,
+			"pairId": 1628,
+			"itemId": 26900
+		},
+		{
+			"id": 22757,
+			"pairId": 1629,
+			"itemId": 26901
+		},
+		{
+			"id": 22759,
+			"pairId": 1630,
+			"itemId": 26902
+		},
+		{
+			"id": 22761,
+			"pairId": 1631,
+			"itemId": 26903
+		},
+		{
+			"id": 22763,
+			"pairId": 1632,
+			"itemId": 26904
+		},
+		{
+			"id": 22765,
+			"pairId": 1633,
+			"itemId": 26905
+		},
+		{
+			"id": 22767,
+			"pairId": 1634,
+			"itemId": 26906
+		},
+		{
+			"id": 22788,
+			"pairId": 1635,
+			"itemId": 26907
+		},
+		{
+			"id": 22793,
+			"pairId": 1636,
+			"itemId": 26908
+		},
+		{
+			"id": 22812,
+			"pairId": 1637,
+			"itemId": 26909
+		},
+		{
+			"id": 22827,
+			"pairId": 1638,
+			"itemId": 26910
+		},
+		{
+			"id": 22832,
+			"pairId": 1639,
+			"itemId": 26911
+		},
+		{
+			"id": 22836,
+			"pairId": 1640,
+			"itemId": 26912
+		},
+		{
+			"id": 22847,
+			"pairId": 1641,
+			"itemId": 26913
+		},
+		{
+			"id": 22851,
+			"pairId": 1642,
+			"itemId": 26914
+		},
+		{
+			"id": 22862,
+			"pairId": 1643,
+			"itemId": 26916
+		},
+		{
+			"id": 22867,
+			"pairId": 1644,
+			"itemId": 26917
+		},
+		{
+			"id": 22871,
+			"pairId": 1645,
+			"itemId": 26918
+		},
+		{
+			"id": 22880,
+			"pairId": 1646,
+			"itemId": 26921
+		},
+		{
+			"id": 22882,
+			"pairId": 1647,
+			"itemId": 26922
+		},
+		{
+			"id": 22884,
+			"pairId": 1648,
+			"itemId": 26923
+		},
+		{
+			"id": 22894,
+			"pairId": 1649,
+			"itemId": 26924
+		},
+		{
+			"id": 22898,
+			"pairId": 1650,
+			"itemId": 26925
+		},
+		{
+			"id": 22902,
+			"pairId": 1651,
+			"itemId": 26926
+		},
+		{
+			"id": 22906,
+			"pairId": 1652,
+			"itemId": 26927
+		},
+		{
+			"id": 22908,
+			"pairId": 1653,
+			"itemId": 26928
+		},
+		{
+			"id": 22919,
+			"pairId": 1654,
+			"itemId": 26929
+		},
+		{
+			"id": 22921,
+			"pairId": 1655,
+			"itemId": 26930
+		},
+		{
+			"id": 22923,
+			"pairId": 1656,
+			"itemId": 26931
+		},
+		{
+			"id": 22926,
+			"pairId": 1657,
+			"itemId": 26932
+		},
+		{
+			"id": 22950,
+			"pairId": 1658,
+			"itemId": 26933
+		},
+		{
+			"id": 22953,
+			"pairId": 1659,
+			"itemId": 26934
+		},
+		{
+			"id": 22956,
+			"pairId": 1660,
+			"itemId": 26935
+		},
+		{
+			"id": 22958,
+			"pairId": 1661,
+			"itemId": 26936
+		},
+		{
+			"id": 22960,
+			"pairId": 1662,
+			"itemId": 26937
+		},
+		{
+			"id": 22966,
+			"pairId": 1663,
+			"itemId": 26938
+		},
+		{
+			"id": 22968,
+			"pairId": 1664,
+			"itemId": 26939
+		},
+		{
+			"id": 22972,
+			"pairId": 1665,
+			"itemId": 26940
+		},
+		{
+			"id": 22977,
+			"pairId": 1666,
+			"itemId": 26941
+		},
+		{
+			"id": 22981,
+			"pairId": 1667,
+			"itemId": 26942
+		},
+		{
+			"id": 22983,
+			"pairId": 1668,
+			"itemId": 26943
+		},
+		{
+			"id": 22987,
+			"pairId": 1669,
+			"itemId": 26944
+		},
+		{
+			"id": 22990,
+			"pairId": 1670,
+			"itemId": 26945
+		},
+		{
+			"id": 22993,
+			"pairId": 1671,
+			"itemId": 26946
+		},
+		{
+			"id": 22995,
+			"pairId": 1672,
+			"itemId": 26947
+		},
+		{
+			"id": 22998,
+			"pairId": 1673,
+			"itemId": 26948
+		},
+		{
+			"id": 23002,
+			"pairId": 1674,
+			"itemId": 26949
+		},
+		{
+			"id": 23004,
+			"pairId": 1675,
+			"itemId": 26950
+		},
+		{
+			"id": 23006,
+			"pairId": 1676,
+			"itemId": 26951
+		},
+		{
+			"id": 23008,
+			"pairId": 1677,
+			"itemId": 26952
+		},
+		{
+			"id": 23010,
+			"pairId": 1678,
+			"itemId": 26953
+		},
+		{
+			"id": 23013,
+			"pairId": 1679,
+			"itemId": 26954
+		},
+		{
+			"id": 23015,
+			"pairId": 1680,
+			"itemId": 26955
+		},
+		{
+			"id": 23017,
+			"pairId": 1681,
+			"itemId": 26956
+		},
+		{
+			"id": 23019,
+			"pairId": 1682,
+			"itemId": 26957
+		},
+		{
+			"id": 23021,
+			"pairId": 1683,
+			"itemId": 26958
+		},
+		{
+			"id": 23029,
+			"pairId": 1684,
+			"itemId": 26959
+		},
+		{
+			"id": 23032,
+			"pairId": 1685,
+			"itemId": 26960
+		},
+		{
+			"id": 23039,
+			"pairId": 1686,
+			"itemId": 26961
+		},
+		{
+			"id": 23046,
+			"pairId": 1687,
+			"itemId": 26962
+		},
+		{
+			"id": 23051,
+			"pairId": 1688,
+			"itemId": 26963
+		},
+		{
+			"id": 23052,
+			"pairId": 1689,
+			"itemId": 26964
+		},
+		{
+			"id": 23057,
+			"pairId": 1690,
+			"itemId": 26965
+		},
+		{
+			"id": 23065,
+			"pairId": 1691,
+			"itemId": 26966
+		},
+		{
+			"id": 23069,
+			"pairId": 1692,
+			"itemId": 26967
+		},
+		{
+			"id": 23072,
+			"pairId": 1693,
+			"itemId": 26968
+		},
+		{
+			"id": 23076,
+			"pairId": 1694,
+			"itemId": 26969
+		},
+		{
+			"id": 23080,
+			"pairId": 1695,
+			"itemId": 26970
+		},
+		{
+			"id": 23082,
+			"pairId": 1696,
+			"itemId": 26971
+		},
+		{
+			"id": 23084,
+			"pairId": 1697,
+			"itemId": 26972
+		},
+		{
+			"id": 23086,
+			"pairId": 1698,
+			"itemId": 26973
+		},
+		{
+			"id": 23090,
+			"pairId": 1699,
+			"itemId": 26974
+		},
+		{
+			"id": 23094,
+			"pairId": 1700,
+			"itemId": 26975
+		},
+		{
+			"id": 23096,
+			"pairId": 1701,
+			"itemId": 26976
+		},
+		{
+			"id": 23098,
+			"pairId": 1702,
+			"itemId": 26977
+		},
+		{
+			"id": 23101,
+			"pairId": 1703,
+			"itemId": 26978
+		},
+		{
+			"id": 23105,
+			"pairId": 1704,
+			"itemId": 26979
+		},
+		{
+			"id": 23107,
+			"pairId": 1705,
+			"itemId": 26980
+		},
+		{
+			"id": 23109,
+			"pairId": 1706,
+			"itemId": 26981
+		},
+		{
+			"id": 23111,
+			"pairId": 1707,
+			"itemId": 26982
+		},
+		{
+			"id": 23114,
+			"pairId": 1708,
+			"itemId": 26983
+		},
+		{
+			"id": 23117,
+			"pairId": 1709,
+			"itemId": 26984
+		},
+		{
+			"id": 23119,
+			"pairId": 1710,
+			"itemId": 26985
+		},
+		{
+			"id": 23125,
+			"pairId": 1711,
+			"itemId": 26986
+		},
+		{
+			"id": 23134,
+			"pairId": 1712,
+			"itemId": 26988
+		},
+		{
+			"id": 23699,
+			"pairId": 1713,
+			"itemId": 27382
+		}
+	]
+}
