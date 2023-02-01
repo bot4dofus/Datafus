@@ -1,0 +1,1244 @@
+{
+	"def": [
+		{
+			"memberName": "Collectable",
+			"packageName": "com.ankamagames.dofus.datacenter.collection",
+			"fields": [
+				{
+					"name": "entityId",
+					"type": -1
+				},
+				{
+					"name": "name",
+					"type": -3
+				},
+				{
+					"name": "typeId",
+					"type": -1
+				},
+				{
+					"name": "gfxId",
+					"type": -1
+				},
+				{
+					"name": "order",
+					"type": -1
+				},
+				{
+					"name": "rarity",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"entityId": 6981,
+			"name": "Carafon",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 1,
+			"rarity": 0
+		},
+		{
+			"entityId": 6982,
+			"name": "Bastortue",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 2,
+			"rarity": 2
+		},
+		{
+			"entityId": 6983,
+			"name": "Volovan",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 3,
+			"rarity": 0
+		},
+		{
+			"entityId": 6984,
+			"name": "Vautouragan",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 4,
+			"rarity": 2
+		},
+		{
+			"entityId": 6985,
+			"name": "T\u00e9tunel",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 5,
+			"rarity": 0
+		},
+		{
+			"entityId": 6986,
+			"name": "Balafrousse",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 6,
+			"rarity": 2
+		},
+		{
+			"entityId": 6987,
+			"name": "Manchouette",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 7,
+			"rarity": 0
+		},
+		{
+			"entityId": 6988,
+			"name": "Manchic",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 8,
+			"rarity": 2
+		},
+		{
+			"entityId": 6989,
+			"name": "Microcher",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 9,
+			"rarity": 0
+		},
+		{
+			"entityId": 6990,
+			"name": "Macrocher",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 10,
+			"rarity": 2
+		},
+		{
+			"entityId": 6991,
+			"name": "Goinfrelon",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 11,
+			"rarity": 0
+		},
+		{
+			"entityId": 6992,
+			"name": "Chacharmant",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 12,
+			"rarity": 1
+		},
+		{
+			"entityId": 6993,
+			"name": "Gifl\u00e9au",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 13,
+			"rarity": 0
+		},
+		{
+			"entityId": 6994,
+			"name": "Galopince",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 14,
+			"rarity": 0
+		},
+		{
+			"entityId": 6995,
+			"name": "Escarpince",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 15,
+			"rarity": 2
+		},
+		{
+			"entityId": 6996,
+			"name": "Mimiduze",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 16,
+			"rarity": 1
+		},
+		{
+			"entityId": 6997,
+			"name": "Cochombre",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 17,
+			"rarity": 1
+		},
+		{
+			"entityId": 6998,
+			"name": "Bandocile",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 18,
+			"rarity": 0
+		},
+		{
+			"entityId": 6999,
+			"name": "Bandominant",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 19,
+			"rarity": 2
+		},
+		{
+			"entityId": 7000,
+			"name": "Sourou\u00efe",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 20,
+			"rarity": 0
+		},
+		{
+			"entityId": 7002,
+			"name": "Pistoufu",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 21,
+			"rarity": 0
+		},
+		{
+			"entityId": 7003,
+			"name": "Boufondu",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 22,
+			"rarity": 1
+		},
+		{
+			"entityId": 7004,
+			"name": "Sporganik",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 23,
+			"rarity": 0
+		},
+		{
+			"entityId": 7005,
+			"name": "Boxelet",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 24,
+			"rarity": 2
+		},
+		{
+			"entityId": 7006,
+			"name": "Grapince",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 25,
+			"rarity": 0
+		},
+		{
+			"entityId": 7007,
+			"name": "Fantogure",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 26,
+			"rarity": 0
+		},
+		{
+			"entityId": 7008,
+			"name": "Rirequin",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 27,
+			"rarity": 1
+		},
+		{
+			"entityId": 7009,
+			"name": "B\u00e9bourjon",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 28,
+			"rarity": 0
+		},
+		{
+			"entityId": 7010,
+			"name": "Boufilou",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 29,
+			"rarity": 2
+		},
+		{
+			"entityId": 7011,
+			"name": "Crapostiche",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 30,
+			"rarity": 0
+		},
+		{
+			"entityId": 7012,
+			"name": "Veuvenin",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 31,
+			"rarity": 0
+		},
+		{
+			"entityId": 7013,
+			"name": "Scaross\u00e9",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 32,
+			"rarity": 1
+		},
+		{
+			"entityId": 7014,
+			"name": "B\u00e9bl\u00e9ro",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 33,
+			"rarity": 0
+		},
+		{
+			"entityId": 7015,
+			"name": "Galbl\u00e9ro",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 34,
+			"rarity": 2
+		},
+		{
+			"entityId": 7016,
+			"name": "Cancrayon",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 35,
+			"rarity": 0
+		},
+		{
+			"entityId": 7017,
+			"name": "Pakparite",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 36,
+			"rarity": 0
+		},
+		{
+			"entityId": 7018,
+			"name": "\u00c9bourifeuille",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 37,
+			"rarity": 1
+		},
+		{
+			"entityId": 7019,
+			"name": "Nwarzo",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 38,
+			"rarity": 1
+		},
+		{
+			"entityId": 7020,
+			"name": "Chinchilarve",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 39,
+			"rarity": 0
+		},
+		{
+			"entityId": 7021,
+			"name": "Pugilarve",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 40,
+			"rarity": 2
+		},
+		{
+			"entityId": 7022,
+			"name": "Affamalle",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 41,
+			"rarity": 0
+		},
+		{
+			"entityId": 7023,
+			"name": "Moulouche",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 42,
+			"rarity": 0
+		},
+		{
+			"entityId": 7029,
+			"name": "Hurlepoil",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 43,
+			"rarity": 1
+		},
+		{
+			"entityId": 7030,
+			"name": "Tig\u00e9pine",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 44,
+			"rarity": 1
+		},
+		{
+			"entityId": 7031,
+			"name": "Alligamin",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 45,
+			"rarity": 0
+		},
+		{
+			"entityId": 7032,
+			"name": "Krokogneur",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 46,
+			"rarity": 2
+		},
+		{
+			"entityId": 7033,
+			"name": "Vibrenard",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 47,
+			"rarity": 0
+		},
+		{
+			"entityId": 7034,
+			"name": "Albinonoss",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 48,
+			"rarity": 0
+		},
+		{
+			"entityId": 7035,
+			"name": "Koalami",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 49,
+			"rarity": 1
+		},
+		{
+			"entityId": 7036,
+			"name": "Koalache",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 50,
+			"rarity": 2
+		},
+		{
+			"entityId": 7037,
+			"name": "Lapouri",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 51,
+			"rarity": 1
+		},
+		{
+			"entityId": 7038,
+			"name": "Pist\u00e9lice",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 52,
+			"rarity": 0
+		},
+		{
+			"entityId": 7039,
+			"name": "Alphan\u00e9",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 53,
+			"rarity": 2
+		},
+		{
+			"entityId": 7040,
+			"name": "Vaudoudou",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 54,
+			"rarity": 0
+		},
+		{
+			"entityId": 7041,
+			"name": "Fourbule",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 55,
+			"rarity": 0
+		},
+		{
+			"entityId": 7042,
+			"name": "Magivr\u00e9e",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 56,
+			"rarity": 1
+		},
+		{
+			"entityId": 7043,
+			"name": "Sapristigre",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 57,
+			"rarity": 1
+		},
+		{
+			"entityId": 7044,
+			"name": "\u00c9migraine",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 58,
+			"rarity": 0
+		},
+		{
+			"entityId": 7045,
+			"name": "Tournesouffre",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 59,
+			"rarity": 2
+		},
+		{
+			"entityId": 7046,
+			"name": "Ma\u00e7ombre",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 60,
+			"rarity": 0
+		},
+		{
+			"entityId": 7047,
+			"name": "Tricotoile",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 61,
+			"rarity": 0
+		},
+		{
+			"entityId": 7048,
+			"name": "Sonikrone",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 62,
+			"rarity": 1
+		},
+		{
+			"entityId": 7049,
+			"name": "Arkantou",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 63,
+			"rarity": 1
+		},
+		{
+			"entityId": 7050,
+			"name": "Mouspique",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 64,
+			"rarity": 0
+		},
+		{
+			"entityId": 7051,
+			"name": "Moustonique",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 65,
+			"rarity": 2
+		},
+		{
+			"entityId": 7052,
+			"name": "V\u00e9n\u00e9corce",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 66,
+			"rarity": 0
+		},
+		{
+			"entityId": 7053,
+			"name": "Aspimouette",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 67,
+			"rarity": 0
+		},
+		{
+			"entityId": 7054,
+			"name": "Sautoxik",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 68,
+			"rarity": 1
+		},
+		{
+			"entityId": 7055,
+			"name": "Darsenik",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 69,
+			"rarity": 2
+		},
+		{
+			"entityId": 7056,
+			"name": "Champisteur",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 70,
+			"rarity": 1
+		},
+		{
+			"entityId": 7057,
+			"name": "Maraboueux",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 71,
+			"rarity": 3
+		},
+		{
+			"entityId": 7058,
+			"name": "Zozotruche",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 72,
+			"rarity": 0
+		},
+		{
+			"entityId": 7059,
+			"name": "Kradotruche",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 73,
+			"rarity": 2
+		},
+		{
+			"entityId": 7060,
+			"name": "Tragicrane",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 74,
+			"rarity": 0
+		},
+		{
+			"entityId": 7061,
+			"name": "Crustank",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 75,
+			"rarity": 0
+		},
+		{
+			"entityId": 7062,
+			"name": "Yitirible",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 76,
+			"rarity": 1
+		},
+		{
+			"entityId": 7063,
+			"name": "Maravkass",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 77,
+			"rarity": 1
+		},
+		{
+			"entityId": 7064,
+			"name": "Styl\u00e9zar",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 78,
+			"rarity": 3
+		},
+		{
+			"entityId": 7065,
+			"name": "Cacturbin",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 79,
+			"rarity": 0
+		},
+		{
+			"entityId": 7066,
+			"name": "Cactueur",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 80,
+			"rarity": 2
+		},
+		{
+			"entityId": 7067,
+			"name": "Scampieuvre",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 81,
+			"rarity": 0
+		},
+		{
+			"entityId": 7068,
+			"name": "Gribzzly",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 82,
+			"rarity": 0
+		},
+		{
+			"entityId": 7069,
+			"name": "Caskoko",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 83,
+			"rarity": 1
+		},
+		{
+			"entityId": 7070,
+			"name": "Sirokoko",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 84,
+			"rarity": 2
+		},
+		{
+			"entityId": 7071,
+			"name": "Salamange",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 85,
+			"rarity": 1
+		},
+		{
+			"entityId": 7072,
+			"name": "Piochef",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 86,
+			"rarity": 3
+		},
+		{
+			"entityId": 7073,
+			"name": "Poltronc",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 87,
+			"rarity": 0
+		},
+		{
+			"entityId": 7074,
+			"name": "Papalmier",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 88,
+			"rarity": 2
+		},
+		{
+			"entityId": 7075,
+			"name": "Grifumeux",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 89,
+			"rarity": 0
+		},
+		{
+			"entityId": 7076,
+			"name": "V\u00e9g\u00e9corce",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 90,
+			"rarity": 0
+		},
+		{
+			"entityId": 7077,
+			"name": "Emeroc",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 91,
+			"rarity": 1
+		},
+		{
+			"entityId": 7078,
+			"name": "Fracanon",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 92,
+			"rarity": 1
+		},
+		{
+			"entityId": 7079,
+			"name": "F\u00e9lion",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 93,
+			"rarity": 3
+		},
+		{
+			"entityId": 7080,
+			"name": "Capuchifon",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 94,
+			"rarity": 0
+		},
+		{
+			"entityId": 7081,
+			"name": "Capuchef",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 95,
+			"rarity": 2
+		},
+		{
+			"entityId": 7082,
+			"name": "\u00c9croursin",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 96,
+			"rarity": 0
+		},
+		{
+			"entityId": 7083,
+			"name": "Dinosseux",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 97,
+			"rarity": 0
+		},
+		{
+			"entityId": 7084,
+			"name": "Hibouscule",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 98,
+			"rarity": 1
+		},
+		{
+			"entityId": 7085,
+			"name": "Hiboulon",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 99,
+			"rarity": 2
+		},
+		{
+			"entityId": 7086,
+			"name": "\u00c9culbute",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 100,
+			"rarity": 1
+		},
+		{
+			"entityId": 7087,
+			"name": "Magmacaque",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 101,
+			"rarity": 3
+		},
+		{
+			"entityId": 7088,
+			"name": "Tronchon",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 102,
+			"rarity": 0
+		},
+		{
+			"entityId": 7089,
+			"name": "Tronfleur",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 103,
+			"rarity": 2
+		},
+		{
+			"entityId": 7090,
+			"name": "Safarieur",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 104,
+			"rarity": 0
+		},
+		{
+			"entityId": 7091,
+			"name": "Dingroin",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 105,
+			"rarity": 0
+		},
+		{
+			"entityId": 7092,
+			"name": "Eph\u00e9bec",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 106,
+			"rarity": 1
+		},
+		{
+			"entityId": 7093,
+			"name": "Gouledogue",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 107,
+			"rarity": 1
+		},
+		{
+			"entityId": 7094,
+			"name": "Rinopoulpe",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 108,
+			"rarity": 3
+		},
+		{
+			"entityId": 7095,
+			"name": "Enflaron",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 109,
+			"rarity": 4
+		},
+		{
+			"entityId": 7096,
+			"name": "Armur\u0153il",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 110,
+			"rarity": 0
+		},
+		{
+			"entityId": 7097,
+			"name": "Cuirass\u0153il",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 111,
+			"rarity": 2
+		},
+		{
+			"entityId": 7098,
+			"name": "Raievolt\u00e9",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 112,
+			"rarity": 0
+		},
+		{
+			"entityId": 7099,
+			"name": "Galibogue",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 113,
+			"rarity": 0
+		},
+		{
+			"entityId": 7100,
+			"name": "Vampichnette",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 114,
+			"rarity": 1
+		},
+		{
+			"entityId": 7101,
+			"name": "Vampirouette",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 115,
+			"rarity": 2
+		},
+		{
+			"entityId": 7102,
+			"name": "Floracine",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 116,
+			"rarity": 1
+		},
+		{
+			"entityId": 7103,
+			"name": "Lycradi",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 117,
+			"rarity": 3
+		},
+		{
+			"entityId": 7104,
+			"name": "Rondonion",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 118,
+			"rarity": 4
+		},
+		{
+			"entityId": 7105,
+			"name": "S\u00e9virus",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 119,
+			"rarity": 0
+		},
+		{
+			"entityId": 7106,
+			"name": "Survirus",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 120,
+			"rarity": 2
+		},
+		{
+			"entityId": 7107,
+			"name": "Dodor\u00e9",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 121,
+			"rarity": 0
+		},
+		{
+			"entityId": 7108,
+			"name": "Kafarmure",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 122,
+			"rarity": 0
+		},
+		{
+			"entityId": 7109,
+			"name": "Gu\u00e9rilard",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 123,
+			"rarity": 1
+		},
+		{
+			"entityId": 7110,
+			"name": "Pugilard",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 124,
+			"rarity": 2
+		},
+		{
+			"entityId": 7111,
+			"name": "Cancrevette",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 125,
+			"rarity": 1
+		},
+		{
+			"entityId": 7112,
+			"name": "Nenufarouche",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 126,
+			"rarity": 3
+		},
+		{
+			"entityId": 7113,
+			"name": "M\u00e9lomask",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 127,
+			"rarity": 4
+		},
+		{
+			"entityId": 7114,
+			"name": "Carniflore",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 128,
+			"rarity": 0
+		},
+		{
+			"entityId": 7115,
+			"name": "Tabal\u00e8ze",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 129,
+			"rarity": 2
+		},
+		{
+			"entityId": 7116,
+			"name": "\u00c9toilusk",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 130,
+			"rarity": 0
+		},
+		{
+			"entityId": 7117,
+			"name": "Assoupli\u00e9",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 131,
+			"rarity": 0
+		},
+		{
+			"entityId": 7118,
+			"name": "Hurluisant",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 132,
+			"rarity": 1
+		},
+		{
+			"entityId": 7119,
+			"name": "Tentasque",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 133,
+			"rarity": 1
+		},
+		{
+			"entityId": 7120,
+			"name": "Rouy\u00e9fan",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 134,
+			"rarity": 3
+		},
+		{
+			"entityId": 7121,
+			"name": "Hyporg",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 135,
+			"rarity": 4
+		},
+		{
+			"entityId": 7122,
+			"name": "Ghettaure",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 136,
+			"rarity": 0
+		},
+		{
+			"entityId": 7123,
+			"name": "Taurdure",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 137,
+			"rarity": 2
+		},
+		{
+			"entityId": 7124,
+			"name": "V\u00e9n\u00e9on",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 138,
+			"rarity": 0
+		},
+		{
+			"entityId": 7125,
+			"name": "Roboxe",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 139,
+			"rarity": 0
+		},
+		{
+			"entityId": 7126,
+			"name": "Cyclopoing",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 140,
+			"rarity": 1
+		},
+		{
+			"entityId": 7127,
+			"name": "Artifilou",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 141,
+			"rarity": 1
+		},
+		{
+			"entityId": 7128,
+			"name": "Javache",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 142,
+			"rarity": 3
+		},
+		{
+			"entityId": 7129,
+			"name": "Valdingume",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 143,
+			"rarity": 4
+		},
+		{
+			"entityId": 7130,
+			"name": "Chachampion",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 144,
+			"rarity": 0
+		},
+		{
+			"entityId": 7131,
+			"name": "Momarto",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 145,
+			"rarity": 0
+		},
+		{
+			"entityId": 7132,
+			"name": "Parazig",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 146,
+			"rarity": 0
+		},
+		{
+			"entityId": 7133,
+			"name": "Lycanin",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 147,
+			"rarity": 1
+		},
+		{
+			"entityId": 7134,
+			"name": "Raca\u00efman",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 148,
+			"rarity": 1
+		},
+		{
+			"entityId": 7135,
+			"name": "Fantoglyf",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 149,
+			"rarity": 3
+		},
+		{
+			"entityId": 7136,
+			"name": "Mutapin",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 150,
+			"rarity": 4
+		},
+		{
+			"entityId": 7137,
+			"name": "Miaou",
+			"typeId": 1,
+			"gfxId": 0,
+			"order": 151,
+			"rarity": 4
+		}
+	]
+}

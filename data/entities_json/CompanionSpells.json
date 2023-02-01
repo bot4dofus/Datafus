@@ -1,0 +1,394 @@
+{
+	"def": [
+		{
+			"memberName": "CompanionSpell",
+			"packageName": "com.ankamagames.dofus.datacenter.monsters",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "spellId",
+					"type": -1
+				},
+				{
+					"name": "companionId",
+					"type": -1
+				},
+				{
+					"name": "gradeByLevel",
+					"type": -3
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 43,
+			"spellId": 4241,
+			"companionId": 8,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 44,
+			"spellId": 4242,
+			"companionId": 8,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 45,
+			"spellId": 4244,
+			"companionId": 8,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 46,
+			"spellId": 4245,
+			"companionId": 8,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 47,
+			"spellId": 4246,
+			"companionId": 8,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 48,
+			"spellId": 4247,
+			"companionId": 8,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 55,
+			"spellId": 4225,
+			"companionId": 2,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1115,
+			"spellId": 4204,
+			"companionId": 1,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1116,
+			"spellId": 4207,
+			"companionId": 1,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1117,
+			"spellId": 4208,
+			"companionId": 1,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1118,
+			"spellId": 4209,
+			"companionId": 1,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1119,
+			"spellId": 4210,
+			"companionId": 1,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1120,
+			"spellId": 4202,
+			"companionId": 1,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1121,
+			"spellId": 4253,
+			"companionId": 6,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1122,
+			"spellId": 4254,
+			"companionId": 6,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1123,
+			"spellId": 4255,
+			"companionId": 6,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1124,
+			"spellId": 4256,
+			"companionId": 6,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1125,
+			"spellId": 4250,
+			"companionId": 6,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1126,
+			"spellId": 4252,
+			"companionId": 6,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1127,
+			"spellId": 4221,
+			"companionId": 7,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1128,
+			"spellId": 4214,
+			"companionId": 7,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1129,
+			"spellId": 4216,
+			"companionId": 7,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1130,
+			"spellId": 4217,
+			"companionId": 7,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1131,
+			"spellId": 4218,
+			"companionId": 7,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1132,
+			"spellId": 4219,
+			"companionId": 7,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1133,
+			"spellId": 4237,
+			"companionId": 9,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1134,
+			"spellId": 4238,
+			"companionId": 9,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1135,
+			"spellId": 4233,
+			"companionId": 9,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1136,
+			"spellId": 4234,
+			"companionId": 9,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1137,
+			"spellId": 4235,
+			"companionId": 9,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1138,
+			"spellId": 4236,
+			"companionId": 9,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1139,
+			"spellId": 4452,
+			"companionId": 14,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1140,
+			"spellId": 4443,
+			"companionId": 14,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1141,
+			"spellId": 4445,
+			"companionId": 14,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1142,
+			"spellId": 4447,
+			"companionId": 14,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1143,
+			"spellId": 4449,
+			"companionId": 14,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1144,
+			"spellId": 4451,
+			"companionId": 14,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1145,
+			"spellId": 4470,
+			"companionId": 15,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1146,
+			"spellId": 4472,
+			"companionId": 15,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1147,
+			"spellId": 4474,
+			"companionId": 15,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1148,
+			"spellId": 4475,
+			"companionId": 15,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1149,
+			"spellId": 4466,
+			"companionId": 15,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1150,
+			"spellId": 4467,
+			"companionId": 15,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1151,
+			"spellId": 4710,
+			"companionId": 16,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1152,
+			"spellId": 4711,
+			"companionId": 16,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1153,
+			"spellId": 4713,
+			"companionId": 16,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1154,
+			"spellId": 4716,
+			"companionId": 16,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1155,
+			"spellId": 4707,
+			"companionId": 16,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1156,
+			"spellId": 4708,
+			"companionId": 16,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1157,
+			"spellId": 4989,
+			"companionId": 17,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1158,
+			"spellId": 4990,
+			"companionId": 17,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1159,
+			"spellId": 4980,
+			"companionId": 17,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1160,
+			"spellId": 4981,
+			"companionId": 17,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1161,
+			"spellId": 4983,
+			"companionId": 17,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1162,
+			"spellId": 4984,
+			"companionId": 17,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1252,
+			"spellId": 4208,
+			"companionId": 55,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1253,
+			"spellId": 4209,
+			"companionId": 55,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1254,
+			"spellId": 4210,
+			"companionId": 55,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1255,
+			"spellId": 4202,
+			"companionId": 55,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1256,
+			"spellId": 4204,
+			"companionId": 55,
+			"gradeByLevel": "1,1"
+		},
+		{
+			"id": 1257,
+			"spellId": 4207,
+			"companionId": 55,
+			"gradeByLevel": "1,1"
+		}
+	]
+}

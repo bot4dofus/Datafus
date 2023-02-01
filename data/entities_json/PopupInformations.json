@@ -1,0 +1,546 @@
+{
+	"def": [
+		{
+			"memberName": "PopupButton",
+			"packageName": "com.ankamagames.dofus.datacenter.popup",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "popupId",
+					"type": -1
+				},
+				{
+					"name": "type",
+					"type": -1
+				},
+				{
+					"name": "textId",
+					"type": -5
+				},
+				{
+					"name": "actionType",
+					"type": -1
+				},
+				{
+					"name": "actionValue",
+					"type": -3
+				}
+			]
+		},
+		{
+			"memberName": "PopupInformation",
+			"packageName": "com.ankamagames.dofus.datacenter.popup",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "parentId",
+					"type": -1
+				},
+				{
+					"name": "titleId",
+					"type": -5
+				},
+				{
+					"name": "descriptionId",
+					"type": -5
+				},
+				{
+					"name": "illuName",
+					"type": -3
+				},
+				{
+					"name": "buttons",
+					"type": -99,
+					"vectorTypes": {
+						"name": "Vector.<com.ankamagames.dofus.datacenter.popup::PopupButton>",
+						"type": 1
+					}
+				},
+				{
+					"name": "criterion",
+					"type": -3
+				},
+				{
+					"name": "cacheType",
+					"type": -1
+				},
+				{
+					"name": "autoTrigger",
+					"type": -2
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 4,
+			"parentId": 5,
+			"titleId": 871808,
+			"descriptionId": 868930,
+			"illuName": "fr_feature_havenbag.jpg",
+			"buttons": [
+				{
+					"id": 18,
+					"popupId": 4,
+					"type": 0,
+					"textId": 869879,
+					"actionType": 1,
+					"actionValue": "OpenGuidebookAction:gameGuide|135|popup"
+				}
+			],
+			"criterion": "PL>9",
+			"cacheType": 2,
+			"autoTrigger": true
+		},
+		{
+			"id": 10,
+			"parentId": 5,
+			"titleId": 870761,
+			"descriptionId": 881403,
+			"illuName": "fr_feature_almanax.jpg",
+			"buttons": [
+				{
+					"id": 19,
+					"popupId": 10,
+					"type": 0,
+					"textId": 870763,
+					"actionType": 1,
+					"actionValue": "OpenGuidebookAction:gameGuide|17|popup"
+				}
+			],
+			"criterion": "PL>19&Qc=954",
+			"cacheType": 2,
+			"autoTrigger": true
+		},
+		{
+			"id": 11,
+			"parentId": 5,
+			"titleId": 880498,
+			"descriptionId": 870770,
+			"illuName": "fr_feature_kolizeum.jpg",
+			"buttons": [
+				{
+					"id": 20,
+					"popupId": 11,
+					"type": 0,
+					"textId": 870771,
+					"actionType": 1,
+					"actionValue": "OpenGuidebookAction:gameGuide|140|popup"
+				}
+			],
+			"criterion": "PL>19&(SC!5)",
+			"cacheType": 2,
+			"autoTrigger": true
+		},
+		{
+			"id": 12,
+			"parentId": 5,
+			"titleId": 871136,
+			"descriptionId": 870781,
+			"illuName": "fr_feature_preset.jpg",
+			"buttons": [
+				{
+					"id": 21,
+					"popupId": 12,
+					"type": 0,
+					"textId": 870782,
+					"actionType": 1,
+					"actionValue": "OpenGuidebookAction:gameGuide|26|popup"
+				}
+			],
+			"criterion": "PL>19",
+			"cacheType": 2,
+			"autoTrigger": true
+		},
+		{
+			"id": 13,
+			"parentId": 5,
+			"titleId": 870805,
+			"descriptionId": 870806,
+			"illuName": "fr_feature_omega.jpg",
+			"buttons": [
+				{
+					"id": 22,
+					"popupId": 13,
+					"type": 0,
+					"textId": 870807,
+					"actionType": 1,
+					"actionValue": "OpenGuidebookAction:gameGuide|172|popup"
+				}
+			],
+			"criterion": "PL>199&(SC!5|ST!5)",
+			"cacheType": 2,
+			"autoTrigger": true
+		},
+		{
+			"id": 14,
+			"parentId": 6,
+			"titleId": 871573,
+			"descriptionId": 871578,
+			"illuName": "fr_prevention_secure.jpg",
+			"buttons": [
+				{
+					"id": 23,
+					"popupId": 14,
+					"type": 0,
+					"textId": 870821,
+					"actionType": 0,
+					"actionValue": "link.copyLink"
+				}
+			],
+			"criterion": "null",
+			"cacheType": 0,
+			"autoTrigger": false
+		},
+		{
+			"id": 15,
+			"parentId": 6,
+			"titleId": 871563,
+			"descriptionId": 871558,
+			"illuName": "fr_prevention_phishing.jpg",
+			"buttons": [
+				{
+					"id": 24,
+					"popupId": 15,
+					"type": 0,
+					"textId": 870875,
+					"actionType": 0,
+					"actionValue": "link.phishingTips"
+				}
+			],
+			"criterion": "PL>9",
+			"cacheType": 1,
+			"autoTrigger": false
+		},
+		{
+			"id": 16,
+			"parentId": 7,
+			"titleId": 871823,
+			"descriptionId": 871828,
+			"illuName": "fr_subscribe_subscribe.jpg",
+			"buttons": [
+				{
+					"id": 25,
+					"popupId": 16,
+					"type": 0,
+					"textId": 870942,
+					"actionType": 1,
+					"actionValue": "OpenWebServiceAction:webShop|[558]"
+				}
+			],
+			"criterion": "(PJ>a,59)&(PZ=0)",
+			"cacheType": 0,
+			"autoTrigger": false
+		},
+		{
+			"id": 18,
+			"parentId": 5,
+			"titleId": 918551,
+			"descriptionId": 918552,
+			"illuName": "fr_feature_idoles.jpg",
+			"buttons": [
+				{
+					"id": 26,
+					"popupId": 18,
+					"type": 0,
+					"textId": 871139,
+					"actionType": 1,
+					"actionValue": "OpenGuidebookAction:gameGuide|138|popup"
+				}
+			],
+			"criterion": "PL>29",
+			"cacheType": 2,
+			"autoTrigger": true
+		},
+		{
+			"id": 19,
+			"parentId": 5,
+			"titleId": 871142,
+			"descriptionId": 871143,
+			"illuName": "fr_feature_mount.jpg",
+			"buttons": [
+				{
+					"id": 27,
+					"popupId": 19,
+					"type": 0,
+					"textId": 871144,
+					"actionType": 1,
+					"actionValue": "OpenGuidebookAction:gameGuide|31|popup"
+				}
+			],
+			"criterion": "(PL>59|(Of=1|Of=2|Of=3|Of=4|Of=5))",
+			"cacheType": 2,
+			"autoTrigger": true
+		},
+		{
+			"id": 21,
+			"parentId": 7,
+			"titleId": 871833,
+			"descriptionId": 871838,
+			"illuName": "fr_subscribe_subscribe.jpg",
+			"buttons": [
+				{
+					"id": 28,
+					"popupId": 21,
+					"type": 0,
+					"textId": 871491,
+					"actionType": 1,
+					"actionValue": "OpenWebServiceAction:webShop|[558]"
+				}
+			],
+			"criterion": "",
+			"cacheType": 0,
+			"autoTrigger": false
+		},
+		{
+			"id": 22,
+			"parentId": 7,
+			"titleId": 871813,
+			"descriptionId": 871818,
+			"illuName": "fr_subscribe_subscribe.jpg",
+			"buttons": [
+				{
+					"id": 29,
+					"popupId": 22,
+					"type": 0,
+					"textId": 871509,
+					"actionType": 1,
+					"actionValue": "OpenWebServiceAction:webShop|[558]"
+				}
+			],
+			"criterion": "",
+			"cacheType": 0,
+			"autoTrigger": false
+		},
+		{
+			"id": 23,
+			"parentId": 8,
+			"titleId": 871583,
+			"descriptionId": 871588,
+			"illuName": "fr_server_serverFusion.jpg",
+			"buttons": [
+				{
+					"id": 30,
+					"popupId": 23,
+					"type": 0,
+					"textId": 871527,
+					"actionType": 0,
+					"actionValue": "popup.serverfusion.link"
+				}
+			],
+			"criterion": "null",
+			"cacheType": 0,
+			"autoTrigger": false
+		},
+		{
+			"id": 24,
+			"parentId": 6,
+			"titleId": 871568,
+			"descriptionId": 871553,
+			"illuName": "fr_prevention_secure.jpg",
+			"buttons": [
+				{
+					"id": 31,
+					"popupId": 24,
+					"type": 0,
+					"textId": 871548,
+					"actionType": 0,
+					"actionValue": "connection.secureMyAccount.link"
+				}
+			],
+			"criterion": "null",
+			"cacheType": 0,
+			"autoTrigger": false
+		},
+		{
+			"id": 26,
+			"parentId": 9,
+			"titleId": 891438,
+			"descriptionId": 891439,
+			"illuName": "fr_temporis_5_ecaflipcity.jpg",
+			"buttons": [],
+			"criterion": "SC=5&ST=5&Pm=154010883",
+			"cacheType": 1,
+			"autoTrigger": true
+		},
+		{
+			"id": 27,
+			"parentId": 9,
+			"titleId": 891894,
+			"descriptionId": 892668,
+			"illuName": "fr_temporis_5_minouki.jpg",
+			"buttons": [],
+			"criterion": "SC=5&ST=5&Pm=212075520",
+			"cacheType": 1,
+			"autoTrigger": true
+		},
+		{
+			"id": 28,
+			"parentId": 9,
+			"titleId": 891962,
+			"descriptionId": 892665,
+			"illuName": "fr_temporis_5_chinq.jpg",
+			"buttons": [],
+			"criterion": "SC=5&ST=5&Pm=212077568",
+			"cacheType": 1,
+			"autoTrigger": true
+		},
+		{
+			"id": 30,
+			"parentId": 5,
+			"titleId": 900259,
+			"descriptionId": 900265,
+			"illuName": "fr_feature_breach.jpg",
+			"buttons": [
+				{
+					"id": 32,
+					"popupId": 30,
+					"type": 0,
+					"textId": 900271,
+					"actionType": 1,
+					"actionValue": "OpenGuidebookAction:gameGuide|180|popup"
+				}
+			],
+			"criterion": "PL>49",
+			"cacheType": 2,
+			"autoTrigger": true
+		},
+		{
+			"id": 31,
+			"parentId": 8,
+			"titleId": 904252,
+			"descriptionId": 904864,
+			"illuName": "fr_server_heroique.jpg",
+			"buttons": [
+				{
+					"id": 33,
+					"popupId": 31,
+					"type": 0,
+					"textId": 904255,
+					"actionType": 0,
+					"actionValue": "link.heroique"
+				}
+			],
+			"criterion": "SC=1",
+			"cacheType": 1,
+			"autoTrigger": true
+		},
+		{
+			"id": 32,
+			"parentId": 5,
+			"titleId": 905286,
+			"descriptionId": 905287,
+			"illuName": "fr_feature_guidesuggestions.jpg",
+			"buttons": [
+				{
+					"id": 34,
+					"popupId": 32,
+					"type": 0,
+					"textId": 905288,
+					"actionType": 1,
+					"actionValue": "OpenGuidebookAction:gameGuide|204|popup"
+				}
+			],
+			"criterion": "PL>14",
+			"cacheType": 2,
+			"autoTrigger": true
+		},
+		{
+			"id": 33,
+			"parentId": 5,
+			"titleId": 910441,
+			"descriptionId": 919500,
+			"illuName": "fr_feature_kolizeumrules.jpg",
+			"buttons": [
+				{
+					"id": 35,
+					"popupId": 33,
+					"type": 0,
+					"textId": 910443,
+					"actionType": 1,
+					"actionValue": "OpenGuidebookAction:gameGuide|140|popup"
+				}
+			],
+			"criterion": "",
+			"cacheType": 1,
+			"autoTrigger": false
+		},
+		{
+			"id": 34,
+			"parentId": 5,
+			"titleId": 913182,
+			"descriptionId": 913183,
+			"illuName": "fr_feature_kolizeumrules.jpg",
+			"buttons": [
+				{
+					"id": 36,
+					"popupId": 34,
+					"type": 0,
+					"textId": 913184,
+					"actionType": 0,
+					"actionValue": "link.devblog.kis"
+				}
+			],
+			"criterion": "",
+			"cacheType": 1,
+			"autoTrigger": false
+		},
+		{
+			"id": 36,
+			"parentId": 5,
+			"titleId": 956336,
+			"descriptionId": 959160,
+			"illuName": "fr_feature_temporalanomalies.jpg",
+			"buttons": [
+				{
+					"id": 37,
+					"popupId": 36,
+					"type": 0,
+					"textId": 956338,
+					"actionType": 1,
+					"actionValue": "OpenGuidebookAction:gameGuide|135|popup"
+				}
+			],
+			"criterion": "PL>49",
+			"cacheType": 2,
+			"autoTrigger": true
+		},
+		{
+			"id": 37,
+			"parentId": 9,
+			"titleId": 958230,
+			"descriptionId": 958231,
+			"illuName": "fr_temporis_7_osatopia.jpg",
+			"buttons": [],
+			"criterion": "SC=5&ST=7&Pm=154010883",
+			"cacheType": 1,
+			"autoTrigger": true
+		},
+		{
+			"id": 38,
+			"parentId": 5,
+			"titleId": 969512,
+			"descriptionId": 969513,
+			"illuName": "fr_feature_expeditions.jpg",
+			"buttons": [
+				{
+					"id": 38,
+					"popupId": 38,
+					"type": 0,
+					"textId": 969514,
+					"actionType": 1,
+					"actionValue": "OpenBookAction:expeditionTab"
+				}
+			],
+			"criterion": "PL>159&ST=8&So=148",
+			"cacheType": 1,
+			"autoTrigger": true
+		}
+	]
+}

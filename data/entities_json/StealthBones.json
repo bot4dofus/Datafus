@@ -1,0 +1,43 @@
+{
+	"def": [
+		{
+			"memberName": "StealthBones",
+			"packageName": "com.ankamagames.dofus.datacenter.interactives",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 761
+		},
+		{
+			"id": 895
+		},
+		{
+			"id": 896
+		},
+		{
+			"id": 897
+		},
+		{
+			"id": 898
+		},
+		{
+			"id": 899
+		},
+		{
+			"id": 900
+		},
+		{
+			"id": 901
+		},
+		{
+			"id": 1124
+		}
+	]
+}

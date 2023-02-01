@@ -1,0 +1,196 @@
+{
+	"def": [
+		{
+			"memberName": "Tips",
+			"packageName": "com.ankamagames.dofus.datacenter.misc",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "descId",
+					"type": -5
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 1,
+			"descId": 756756
+		},
+		{
+			"id": 2,
+			"descId": 65446
+		},
+		{
+			"id": 3,
+			"descId": 65467
+		},
+		{
+			"id": 4,
+			"descId": 544457
+		},
+		{
+			"id": 5,
+			"descId": 65450
+		},
+		{
+			"id": 6,
+			"descId": 65465
+		},
+		{
+			"id": 7,
+			"descId": 65459
+		},
+		{
+			"id": 8,
+			"descId": 601342
+		},
+		{
+			"id": 9,
+			"descId": 65444
+		},
+		{
+			"id": 11,
+			"descId": 65473
+		},
+		{
+			"id": 12,
+			"descId": 345832
+		},
+		{
+			"id": 13,
+			"descId": 424139
+		},
+		{
+			"id": 14,
+			"descId": 202339
+		},
+		{
+			"id": 15,
+			"descId": 65470
+		},
+		{
+			"id": 16,
+			"descId": 65453
+		},
+		{
+			"id": 17,
+			"descId": 280304
+		},
+		{
+			"id": 20,
+			"descId": 65451
+		},
+		{
+			"id": 21,
+			"descId": 227463
+		},
+		{
+			"id": 23,
+			"descId": 65454
+		},
+		{
+			"id": 24,
+			"descId": 281036
+		},
+		{
+			"id": 25,
+			"descId": 377856
+		},
+		{
+			"id": 26,
+			"descId": 332592
+		},
+		{
+			"id": 27,
+			"descId": 723960
+		},
+		{
+			"id": 28,
+			"descId": 280303
+		},
+		{
+			"id": 29,
+			"descId": 65456
+		},
+		{
+			"id": 33,
+			"descId": 65457
+		},
+		{
+			"id": 34,
+			"descId": 202326
+		},
+		{
+			"id": 36,
+			"descId": 769239
+		},
+		{
+			"id": 39,
+			"descId": 424500
+		},
+		{
+			"id": 41,
+			"descId": 87622
+		},
+		{
+			"id": 43,
+			"descId": 65478
+		},
+		{
+			"id": 45,
+			"descId": 335545
+		},
+		{
+			"id": 46,
+			"descId": 94686
+		},
+		{
+			"id": 47,
+			"descId": 138528
+		},
+		{
+			"id": 49,
+			"descId": 94683
+		},
+		{
+			"id": 50,
+			"descId": 94684
+		},
+		{
+			"id": 51,
+			"descId": 144839
+		},
+		{
+			"id": 52,
+			"descId": 100782
+		},
+		{
+			"id": 53,
+			"descId": 108586
+		},
+		{
+			"id": 55,
+			"descId": 108585
+		},
+		{
+			"id": 56,
+			"descId": 322219
+		},
+		{
+			"id": 58,
+			"descId": 520065
+		},
+		{
+			"id": 59,
+			"descId": 556670
+		},
+		{
+			"id": 60,
+			"descId": 718674
+		}
+	]
+}

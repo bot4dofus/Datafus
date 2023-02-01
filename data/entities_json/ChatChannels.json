@@ -1,0 +1,175 @@
+{
+	"def": [
+		{
+			"memberName": "ChatChannel",
+			"packageName": "com.ankamagames.dofus.datacenter.communication",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "descriptionId",
+					"type": -5
+				},
+				{
+					"name": "shortcut",
+					"type": -3
+				},
+				{
+					"name": "shortcutKey",
+					"type": -3
+				},
+				{
+					"name": "isPrivate",
+					"type": -2
+				},
+				{
+					"name": "allowObjects",
+					"type": -2
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 0,
+			"nameId": 809,
+			"descriptionId": 810,
+			"shortcut": "/s",
+			"shortcutKey": "toggleChannelGlobal",
+			"isPrivate": false,
+			"allowObjects": false
+		},
+		{
+			"id": 1,
+			"nameId": 811,
+			"descriptionId": 392559,
+			"shortcut": "/t",
+			"shortcutKey": "toggleChannelTeam",
+			"isPrivate": false,
+			"allowObjects": true
+		},
+		{
+			"id": 2,
+			"nameId": 821,
+			"descriptionId": 822,
+			"shortcut": "/g",
+			"shortcutKey": "toggleChannelGuild",
+			"isPrivate": false,
+			"allowObjects": true
+		},
+		{
+			"id": 3,
+			"nameId": 261952,
+			"descriptionId": 261953,
+			"shortcut": "/a",
+			"shortcutKey": "toggleChannelAlliance",
+			"isPrivate": false,
+			"allowObjects": false
+		},
+		{
+			"id": 4,
+			"nameId": 808,
+			"descriptionId": 392567,
+			"shortcut": "/p",
+			"shortcutKey": "toggleChannelParty",
+			"isPrivate": false,
+			"allowObjects": true
+		},
+		{
+			"id": 5,
+			"nameId": 802,
+			"descriptionId": 803,
+			"shortcut": "/b",
+			"shortcutKey": "toggleChannelSales",
+			"isPrivate": false,
+			"allowObjects": true
+		},
+		{
+			"id": 6,
+			"nameId": 819,
+			"descriptionId": 820,
+			"shortcut": "/r",
+			"shortcutKey": "toggleChannelSeek",
+			"isPrivate": false,
+			"allowObjects": false
+		},
+		{
+			"id": 7,
+			"nameId": 814,
+			"descriptionId": 815,
+			"shortcut": "/i",
+			"shortcutKey": "null",
+			"isPrivate": false,
+			"allowObjects": false
+		},
+		{
+			"id": 8,
+			"nameId": 804,
+			"descriptionId": 392569,
+			"shortcut": "/q",
+			"shortcutKey": "null",
+			"isPrivate": false,
+			"allowObjects": true
+		},
+		{
+			"id": 9,
+			"nameId": 806,
+			"descriptionId": 392571,
+			"shortcut": "/w",
+			"shortcutKey": "null",
+			"isPrivate": true,
+			"allowObjects": true
+		},
+		{
+			"id": 10,
+			"nameId": 807,
+			"descriptionId": 392563,
+			"shortcut": "null",
+			"shortcutKey": "null",
+			"isPrivate": true,
+			"allowObjects": true
+		},
+		{
+			"id": 11,
+			"nameId": 805,
+			"descriptionId": 392561,
+			"shortcut": "null",
+			"shortcutKey": "toggleChannelFight",
+			"isPrivate": true,
+			"allowObjects": true
+		},
+		{
+			"id": 12,
+			"nameId": 817,
+			"descriptionId": 818,
+			"shortcut": "null",
+			"shortcutKey": "toggleChannelAds",
+			"isPrivate": false,
+			"allowObjects": true
+		},
+		{
+			"id": 13,
+			"nameId": 816,
+			"descriptionId": 392565,
+			"shortcut": "/k",
+			"shortcutKey": "toggleChannelArena",
+			"isPrivate": false,
+			"allowObjects": true
+		},
+		{
+			"id": 14,
+			"nameId": 721410,
+			"descriptionId": 721419,
+			"shortcut": "/c",
+			"shortcutKey": "toggleChannelCommunity",
+			"isPrivate": false,
+			"allowObjects": false
+		}
+	]
+}
