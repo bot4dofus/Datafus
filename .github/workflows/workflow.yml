@@ -180,7 +180,7 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: '["data/DofusInvoker/", "data/events.json", "data/events.properties", "data/entities_json/", "data/translations_json/"]'
-          message: 'Update version ${{ env.VERSION }}'
+          message: 'Update Datafus version "${{ env.VERSION }}"'
           push: true
 
       - name: Create zip file
