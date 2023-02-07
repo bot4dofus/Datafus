@@ -1,7 +1,7 @@
 DOFUS=$USERPROFILE/AppData/Local/Ankama/Dofus
 DOFUS=$((echo $DOFUS) | sed -r 's/[\]+/\//g')
 VERSION=$(python latest-dofus-version.py)
-COMMIT_MESSAGE="Update Dofus files for version \"$VERSION\""
+COMMIT_MESSAGE="Update Dofus version \"$VERSION\""
 
 git pull
 
