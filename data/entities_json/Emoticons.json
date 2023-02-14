@@ -4028,6 +4028,21 @@
 			"duration": 10720,
 			"weight": 0,
 			"spellLevelId": 0
+		},
+		{
+			"id": 286,
+			"nameId": 986038,
+			"shortcutId": 986039,
+			"order": 509000,
+			"defaultAnim": "Forgelance",
+			"persistancy": false,
+			"eight_directions": false,
+			"aura": false,
+			"anims": [],
+			"cooldown": 16900,
+			"duration": 12000,
+			"weight": 0,
+			"spellLevelId": 0
 		}
 	]
 }
