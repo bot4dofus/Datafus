@@ -52,6 +52,24 @@ package com.ankamagames.dofus.logic.common.frames
          super();
       }
       
+      public static function reset(resetMessage:String) : *
+      {
+         var tabMsg:Array = null;
+         ChatServiceManager.destroy();
+         SoundManager.getInstance().manager.removeAllSounds();
+         ConnectionsHandler.closeConnection();
+         GameServerApproachFrame.authenticationTicketAccepted = false;
+         if(resetMessage != "")
+         {
+            tabMsg = [OpenPopupAction.create(resetMessage)];
+            Kernel.getInstance().reset(tabMsg);
+         }
+         else
+         {
+            Kernel.getInstance().reset();
+         }
+      }
+      
       public function get priority() : int
       {
          return Priority.LOW;
@@ -76,7 +94,6 @@ package com.ankamagames.dofus.logic.common.frames
          var rgamsg:ResetGameAction = null;
          var commonMod:Object = null;
          var reason:DisconnectionReason = null;
-         var tabMsg:Array = null;
          switch(true)
          {
             case msg is ServerConnectionClosedMessage:
@@ -156,19 +173,7 @@ package com.ankamagames.dofus.logic.common.frames
             case msg is ResetGameAction:
                rgamsg = msg as ResetGameAction;
                _log.fatal("ResetGameAction");
-               ChatServiceManager.destroy();
-               SoundManager.getInstance().manager.removeAllSounds();
-               ConnectionsHandler.closeConnection();
-               GameServerApproachFrame.authenticationTicketAccepted = false;
-               if(rgamsg.messageToShow != "")
-               {
-                  tabMsg = [OpenPopupAction.create(rgamsg.messageToShow)];
-                  Kernel.getInstance().reset(tabMsg);
-               }
-               else
-               {
-                  Kernel.getInstance().reset();
-               }
+               reset(rgamsg.messageToShow);
                return true;
             case msg is OpenPopupAction:
                commonMod = UiModuleManager.getInstance().getModule("Ankama_Common");
