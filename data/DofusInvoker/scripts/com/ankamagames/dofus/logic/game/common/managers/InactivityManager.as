@@ -1,12 +1,15 @@
 package com.ankamagames.dofus.logic.game.common.managers
 {
    import com.ankamagames.berilia.managers.KernelEventsManager;
+   import com.ankamagames.dofus.datacenter.communication.InfoMessage;
    import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.kernel.net.ConnectionType;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
+   import com.ankamagames.dofus.logic.common.frames.DisconnectionHandlerFrame;
    import com.ankamagames.dofus.logic.common.managers.FeatureManager;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.network.messages.common.basic.BasicPingMessage;
+   import com.ankamagames.dofus.uiApi.PopupApi;
    import com.ankamagames.jerakine.benchmark.BenchmarkTimer;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
@@ -22,20 +25,33 @@ package com.ankamagames.dofus.logic.game.common.managers
       
       private static var _self:InactivityManager;
       
-      protected static const _log:Logger = Log.getLogger(getQualifiedClassName(InactivityManager));
-      
       private static const SERVER_INACTIVITY_DELAY:int = 10 * 60 * 1000;
       
       private static const SERVER_INACTIVITY_SPEED_PING_DELAY:int = 5 * 1000;
       
-      private static const INACTIVITY_DELAY:int = 60 * 60 * 1000;
+      private static const INACTIVITY_DELAY:int = 30 * 60 * 1000;
+      
+      private static const INACTIVITY_DELAY_POPUP:int = 20 * 60 * 1000;
+      
+      private static const MESSAGE_TYPE_ID:int = 4;
+      
+      private static const DISCONNECTED_FOR_INACTIVITY_MESSAGE_ID:int = 1;
+      
+      protected static const _log:Logger = Log.getLogger(getQualifiedClassName(InactivityManager));
        
+      
+      [Api(name="PopupApi")]
+      public var popupApi:PopupApi;
       
       private var _isAfk:Boolean;
       
       private var _activityTimer:BenchmarkTimer;
       
+      private var _activityPopupTimer:BenchmarkTimer;
+      
       private var _serverActivityTimer:BenchmarkTimer;
+      
+      private var _paused:Boolean = false;
       
       private var _hasActivity:Boolean = false;
       
@@ -43,6 +59,7 @@ package com.ankamagames.dofus.logic.game.common.managers
       {
          super();
          this._activityTimer = new BenchmarkTimer(INACTIVITY_DELAY,0,"InactivityManager._activityTimer");
+         this._activityPopupTimer = new BenchmarkTimer(INACTIVITY_DELAY_POPUP,0,"InactivityManager._activityPopupTimer");
          this._serverActivityTimer = new BenchmarkTimer(SERVER_INACTIVITY_DELAY,0,"InactivityManager._serverActivityTimer");
          this.resetActivity();
          this.resetServerActivity();
@@ -91,6 +108,8 @@ package com.ankamagames.dofus.logic.game.common.managers
       
       public function stop() : void
       {
+         this._activityPopupTimer.stop();
+         this._activityPopupTimer.removeEventListener(TimerEvent.TIMER,this.onActivityPopupTimerUp);
          this._activityTimer.stop();
          this._activityTimer.removeEventListener(TimerEvent.TIMER,this.onActivityTimerUp);
          this._serverActivityTimer.stop();
@@ -98,20 +117,6 @@ package com.ankamagames.dofus.logic.game.common.managers
          StageShareManager.stage.removeEventListener(KeyboardEvent.KEY_DOWN,this.onActivity);
          StageShareManager.stage.removeEventListener(MouseEvent.CLICK,this.onActivity);
          StageShareManager.stage.removeEventListener(MouseEvent.MOUSE_MOVE,this.onActivity);
-      }
-      
-      public function resetActivity() : void
-      {
-         this._activityTimer.reset();
-         this._activityTimer.start();
-         this._activityTimer.addEventListener(TimerEvent.TIMER,this.onActivityTimerUp);
-      }
-      
-      public function resetServerActivity() : void
-      {
-         this._serverActivityTimer.reset();
-         this._serverActivityTimer.start();
-         this._serverActivityTimer.addEventListener(TimerEvent.TIMER,this.onServerActivityTimerUp);
       }
       
       public function updateServerInactivityDelay() : void
@@ -128,7 +133,33 @@ package com.ankamagames.dofus.logic.game.common.managers
          this.resetServerActivity();
       }
       
-      public function activity() : void
+      public function pause(paused:Boolean) : void
+      {
+         this._paused = paused;
+         this.resetActivity();
+      }
+      
+      private function resetActivity() : void
+      {
+         this._activityPopupTimer.reset();
+         this._activityTimer.reset();
+         if(!this._paused)
+         {
+            this._activityPopupTimer.start();
+            this._activityTimer.start();
+            this._activityPopupTimer.addEventListener(TimerEvent.TIMER,this.onActivityPopupTimerUp);
+            this._activityTimer.addEventListener(TimerEvent.TIMER,this.onActivityTimerUp);
+         }
+      }
+      
+      private function resetServerActivity() : void
+      {
+         this._serverActivityTimer.reset();
+         this._serverActivityTimer.start();
+         this._serverActivityTimer.addEventListener(TimerEvent.TIMER,this.onServerActivityTimerUp);
+      }
+      
+      private function activity() : void
       {
          this.resetActivity();
          this._hasActivity = true;
@@ -144,10 +175,16 @@ package com.ankamagames.dofus.logic.game.common.managers
          this.activity();
       }
       
-      private function onActivityTimerUp(event:Event) : void
+      private function onActivityPopupTimerUp(event:Event) : void
       {
          this._isAfk = true;
          KernelEventsManager.getInstance().processCallback(HookList.InactivityNotification,true);
+      }
+      
+      private function onActivityTimerUp(event:Event) : void
+      {
+         var inactivityMessageText:String = InfoMessage.getInfoMessageById(MESSAGE_TYPE_ID * 10000 + DISCONNECTED_FOR_INACTIVITY_MESSAGE_ID).text;
+         DisconnectionHandlerFrame.reset(inactivityMessageText);
       }
       
       private function onServerActivityTimerUp(event:Event) : void
