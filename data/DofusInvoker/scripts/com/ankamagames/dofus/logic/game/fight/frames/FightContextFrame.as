@@ -48,6 +48,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.logic.game.common.frames.PointCellFrame;
    import com.ankamagames.dofus.logic.game.common.frames.QuestFrame;
    import com.ankamagames.dofus.logic.game.common.frames.SpellInventoryManagementFrame;
+   import com.ankamagames.dofus.logic.game.common.managers.InactivityManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.managers.SpeakingItemManager;
    import com.ankamagames.dofus.logic.game.common.managers.SubhintManager;
@@ -365,6 +366,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       public function pushed() : Boolean
       {
+         InactivityManager.getInstance().pause(true);
          if(!Kernel.beingInReconection && MapDisplayManager.getInstance().getDataMapContainer())
          {
             this._roleplayGridDisplayed = Atouin.getInstance().options.getOption("alwaysShowGrid");
@@ -1552,6 +1554,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          {
             _log.error("Failed to reset uiSavedModificationPresetName!\n" + error.message + "\n" + error.getStackTrace());
          }
+         InactivityManager.getInstance().pause(false);
          return true;
       }
       
