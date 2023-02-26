@@ -7,9 +7,66 @@ import re
 import json
 
 
+class Attribute:
+    TYPES_TO_FIX = ["uint", "int", "Number"]
+
+    def __init__(self, name, script_type):
+        self._name = name
+        self._script_type = script_type
+        self._pattern = re.compile(rf"output.write(\w+)\(this.{name}|this.{name}\s=\snew\s{script_type}\((\d+),")
+
+        if ("Vector" in script_type):
+            number_of_vectors = script_type.count("Vector")
+            self._types = [None for i in range(number_of_vectors)]
+            last_type = script_type[script_type.rfind('<')+1:script_type.find('>')]
+            self._types.append(None if last_type in self.TYPES_TO_FIX else last_type)
+        else:
+            self._types = [None if script_type in self.TYPES_TO_FIX else script_type]
+
+        self._socket_type = None
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def script_type(self):
+        return self._script_type
+
+    @property
+    def pattern(self):
+        return self._pattern
+
+    @property
+    def types(self):
+        return self._types
+
+    @property
+    def socket_type(self):
+        if (self._socket_type is None):
+            self.buildSocketType()
+        return self._socket_type
+
+    def mustBeFixed(self):
+        return None in self._types
+
+    def addType(self, _type):
+        try:
+            index = self._types.index(None)
+            self._types[index] = _type
+            return True
+        except ValueError:
+            return False
+
+    def buildSocketType(self):
+        self._socket_type = str(self._types[0])
+        for i in range(1, len(self._types)):
+            self._socket_type = "Vector.<" + self._socket_type + "," + str(self._types[i]) + ">"
+
+
 class ActionScriptReader:
 
-    types_to_fix = ["uint", "int", "Number"]
+    RESET_FUNCTION = "function reset"
     class_pattern = re.compile(r"public\sclass\s(\w+)\s(?:extends\s(\w+)\s)?(?:implements\s([\w,\s]+))?")
     protocolId_pattern = re.compile(r"public\sstatic\sconst\sprotocolId:\w+\s=\s(\d+);")
     attribute_pattern = re.compile(r"public\svar\s(\w+):([\w.<>]+)(?:\s=\s(.*))?;")
@@ -20,14 +77,13 @@ class ActionScriptReader:
         self.superclass = ""
         self.interfaces = []
         self.protocolId = ""
-        self.attributes = {}
+        self.attributes = []
 
     def parse(self):
 
         with open(self.file_name, "r", encoding="utf8") as f:
 
-            first_function_reached = False
-            attributs_to_fix = []
+            reset_function_reached = False
 
             lines = f.readlines()
             for line in lines:
@@ -51,25 +107,31 @@ class ActionScriptReader:
 
                 attribute_match = self.attribute_pattern.search(line)
                 if attribute_match:
-                    self.attributes[attribute_match.group(1)] = attribute_match.group(2)
+                    self.attributes.append(Attribute(attribute_match.group(1), attribute_match.group(2)))
                     continue
 
-                if "function" in line and not first_function_reached:
-                    first_function_reached = True
-                    attributs_to_fix = [key for key, value in self.attributes.items() if value in self.types_to_fix]
-                    if len(attributs_to_fix) == 0:
-                        break
+                if self.RESET_FUNCTION in line and not reset_function_reached:
+                    reset_function_reached = True
+                    continue
 
-                if len(attributs_to_fix):
-                    write_method_pattern = re.compile(rf"output.write(\w+)\(this.{attributs_to_fix[0]}\);")
-                    write_method_match = write_method_pattern.search(line)
-
-                    if write_method_match:
-                        self.attributes[attributs_to_fix[0]] = write_method_match.group(1)
-                        attributs_to_fix.pop(0)
-
-                        if len(attributs_to_fix) == 0:
-                            break
+                # If reset function reached
+                if reset_function_reached:
+                    # For each attribut
+                    for attribute in self.attributes:
+                        # If must be fixed
+                        if (attribute.mustBeFixed()):
+                            write_method_match = attribute.pattern.search(line)
+                            # If the line match a regex
+                            if write_method_match:
+                                # Get first group
+                                _type = write_method_match.group(1)
+                                # If first group is None
+                                if _type is None:
+                                    # Get second group
+                                    _type = write_method_match.group(2)
+                                # Add the type to the types
+                                attribute.addType(_type)
+                                continue
 
         return {
             'file': self.file_name,
@@ -77,8 +139,15 @@ class ActionScriptReader:
             'class_name': self.class_name,
             'superclass': self.superclass,
             'interfaces': self.interfaces,
-            'attributes': self.attributes
+            'attributes': self.attributesToDict()
         }
+
+    def attributesToDict(self):
+        result = {}
+        # For each attribute
+        for attribute in self.attributes:
+            result[attribute.name] = attribute.socket_type
+        return result
 
 
 class NetworkActionScriptReader:
@@ -104,7 +173,7 @@ class NetworkActionScriptReader:
 
     def parse(self):
         print("Parsing files")
-        
+
         results = {}
         for file in self.files:
             reader = ActionScriptReader(file)
