@@ -61,7 +61,7 @@ class Attribute:
     def buildSocketType(self):
         self._socket_type = str(self._types[0])
         for i in range(1, len(self._types)):
-            self._socket_type = "Vector.<" + self._socket_type + "," + str(self._types[i]) + ">"
+            self._socket_type = "Vector<" + self._socket_type + "," + str(self._types[i]) + ">"
 
 
 class ActionScriptReader:
