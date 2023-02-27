@@ -9,6 +9,7 @@ import json
 
 class Attribute:
     TYPES_TO_FIX = ["uint", "int", "Number"]
+    VECTOR_LIKE_TYPES = ["ByteArray"]
 
     def __init__(self, name, script_type):
         self._name = name
@@ -20,6 +21,8 @@ class Attribute:
             self._types = [None for i in range(number_of_vectors)]
             last_type = script_type[script_type.rfind('<')+1:script_type.find('>')]
             self._types.append(None if last_type in self.TYPES_TO_FIX else last_type)
+        elif script_type in self.VECTOR_LIKE_TYPES:
+            self._types = [None, None]
         else:
             self._types = [None if script_type in self.TYPES_TO_FIX else script_type]
 
