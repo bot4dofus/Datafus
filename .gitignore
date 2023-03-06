@@ -1,3 +1,15 @@
 **/*.pyc
 **/__pycache__
 **/*.log
+#src/U1/.entities
+#src/U1/.objects
+#src/U1/.project
+#src/U1/.screenshots
+#src/U1/.settings
+#src/U1/.templates
+#src/U1/.local
+src/U1/~Main.xaml
+#src/U1/GlobalHandlerX.xaml
+#src/U1/Project_Notebook.xlsx
+src/U1/*.nupkg
+src/U1/tmp
