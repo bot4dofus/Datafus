@@ -1,0 +1,828 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GlobalHandlerX" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uico="http://schemas.uipath.com/workflow/activities/contracts" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="errorInfo" Type="InArgument(uico:ExceptionHandlerArgs)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="result" Type="OutArgument(uico:ErrorAction)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1848,809.333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>GlobalHandlerX</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="54">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Activities.Contracts</x:String>
+      <x:String>System.Xml.XPath</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="62">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Activities.Contracts</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationX</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OmniPage.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
+      <AssemblyReference>UiPath.Orchestrator.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.Presentations</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="476,429.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_77">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,337.333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Flowchart sap2010:Annotation.AnnotationText="This sequence steps in during execution when the project encounters an unmanaged error.&#xA;&#xA;Important: Arguments 'errorInfo' and 'result' should not be removed." DisplayName="GlobalHandlerX" sap:VirtualizedContainerService.HintSize="200,198" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+          <Flowchart.Variables>
+            <Variable x:TypeArguments="x:String" Default="RuntimeExecutionError_Template.html" Modifiers="ReadOnly" Name="TemplateFilePath" />
+            <Variable x:TypeArguments="x:String" Name="ErrorTemplate" />
+            <Variable x:TypeArguments="x:Boolean" Name="SkipIterationFlag" />
+            <Variable x:TypeArguments="s:String[]" sap2010:Annotation.AnnotationText="List of workflow elements where to stop the error propagation. Should contain the repetitive elements, like ForEachSomething activities, but we need to stop the error propagation before reaching the repetitive element, to be able to continue with the next iteration. Last element before the repetitive is a System.Activities.Statements.Sequence, invisible in StudioX designer, but present in the xaml file. &#xA;Top most activity of any StudioX workflow is of type UiPath.Excel.Activities.Business.SequenceX and that one is added as well in the list to prevent the exception to propagate outside of the workflow.&#xA;&#xA;Basically, only the Sequence element should be enough in the list and the SequenceX is added as a fail-safe mechanism. " Default="[{&quot;System.Activities.Statements.Sequence&quot;, &quot;UiPath.Excel.Activities.Business.SequenceX&quot;}]" Modifiers="ReadOnly" Name="RepetitiveElements" />
+            <Variable x:TypeArguments="x:String" Default="RuntimeExecutionError.html" Name="CustomInputContentPath" />
+            <Variable x:TypeArguments="x:String" Name="UserAction" />
+            <Variable x:TypeArguments="x:String" Default="SkipIterationFlag=True" Name="SkipIterationFlagText" />
+            <Variable x:TypeArguments="x:String" Name="ErrorTemplateBackup" />
+            <Variable x:TypeArguments="x:String" Name="cEmptyString">
+              <Variable.Default>
+                <Literal x:TypeArguments="x:String" Value="" />
+              </Variable.Default>
+            </Variable>
+          </Flowchart.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <av:Point x:Key="ShapeLocation">440,2.5</av:Point>
+              <av:Size x:Key="ShapeSize">60,74.6666666666667</av:Size>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              <av:PointCollection x:Key="ConnectorLocation">470,77.5 470,124.5</av:PointCollection>
+              <x:Double x:Key="Height">1171</x:Double>
+              <x:Double x:Key="Width">944</x:Double>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Flowchart.StartNode>
+            <x:Reference>__ReferenceID12</x:Reference>
+          </Flowchart.StartNode>
+          <FlowStep x:Name="__ReferenceID12">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">370,124.5</av:Point>
+                <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">470,177.166666666667 470,225.5</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Error" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[errorInfo.Exception.ToString]" />
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID10">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">370,225.5</av:Point>
+                    <av:Size x:Key="ShapeSize">200,69.3333333333333</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">470,294.833333333333 470,350</av:PointCollection>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Sequence DisplayName="Get template" sap:VirtualizedContainerService.HintSize="200,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ReadTextFile Content="[ErrorTemplate]" DisplayName="Read Error Template" FileName="[TemplateFilePath]" sap:VirtualizedContainerService.HintSize="384,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_6" />
+                  <Assign DisplayName="Assign ErrorTemplateBackup" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_59">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[ErrorTemplateBackup]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[ErrorTemplate]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID1">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <av:Point x:Key="ShapeLocation">339,350</av:Point>
+                        <av:Size x:Key="ShapeSize">262,62</av:Size>
+                        <av:PointCollection x:Key="ConnectorLocation">470,412 470,439.5</av:PointCollection>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Assign Skip Iteration Flag" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Boolean">[SkipIterationFlag]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Boolean">[ErrorTemplate.StartsWith(SkipIterationFlagText)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <FlowStep.Next>
+                      <FlowDecision x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Are we in a Skip Iteration? Then Retrow the exception untill we reach the For Each activity. Else, do the normal exception handling." Condition="[SkipIterationFlag]" DisplayName="Skip Iteration? " sap:VirtualizedContainerService.HintSize="160,215.333333333333" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <av:Point x:Key="ShapeLocation">390,439.5</av:Point>
+                            <av:Size x:Key="ShapeSize">160,215.333333333333</av:Size>
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            <av:PointCollection x:Key="TrueConnector">390,547.166666666667 280.5,547.166666666667 280.5,656.5</av:PointCollection>
+                            <x:String x:Key="TrueLabel">Yes</x:String>
+                            <x:String x:Key="FalseLabel">No</x:String>
+                            <av:PointCollection x:Key="FalseConnector">550,547.166666666667 750,547.166666666667 750,606.04</av:PointCollection>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <FlowDecision.True>
+                          <FlowDecision x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Did we reached the For Each level?" Condition="[RepetitiveElements.Contains(errorInfo.ActivityInfo.TypeName)]" DisplayName="Repetitive structure top level?" sap:VirtualizedContainerService.HintSize="160,132" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <av:Point x:Key="ShapeLocation">200.5,656.5</av:Point>
+                                <av:Size x:Key="ShapeSize">160,132</av:Size>
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                <av:PointCollection x:Key="TrueConnector">200.5,722.5 131,722.5 131,821.5</av:PointCollection>
+                                <av:PointCollection x:Key="FalseConnector">360.5,722.5 480,722.5 480,819</av:PointCollection>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <FlowDecision.True>
+                              <FlowStep x:Name="__ReferenceID4">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">0,821.5</av:Point>
+                                    <av:Size x:Key="ShapeSize">262,124</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">131,945.5 131,981.5</av:PointCollection>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap2010:Annotation.AnnotationText="We reached the Repetitive activity. &#xA;Ignore the error to continue with the next iteration." DisplayName="Assign Result to Ignore" sap:VirtualizedContainerService.HintSize="262,124" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="uico:ErrorAction">[result]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="uico:ErrorAction">[ErrorAction.Ignore]</InArgument>
+                                  </Assign.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Assign>
+                                <FlowStep.Next>
+                                  <FlowStep x:Name="__ReferenceID6">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">31,981.5</av:Point>
+                                        <av:Size x:Key="ShapeSize">200,83.3333333333333</av:Size>
+                                        <av:PointCollection x:Key="ConnectorLocation">131,1064.83333333333 131,1118.93333333333 380,1118.93333333333</av:PointCollection>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:WriteTextFile sap2010:Annotation.AnnotationText="Clear the Skip Iteration Flag" DisplayName="Write Error Template Without flag" FileName="[TemplateFilePath]" sap:VirtualizedContainerService.HintSize="200,83.3333333333333" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[ErrorTemplateBackup.Replace(SkipIterationFlagText, &quot;&quot;)]">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:WriteTextFile>
+                                    <FlowStep.Next>
+                                      <FlowStep x:Name="__ReferenceID0">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <av:Point x:Key="ShapeLocation">380,1093.6</av:Point>
+                                            <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:LogMessage DisplayName="Log Result" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[result.ToString]">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ui:LogMessage>
+                                      </FlowStep>
+                                    </FlowStep.Next>
+                                  </FlowStep>
+                                </FlowStep.Next>
+                              </FlowStep>
+                            </FlowDecision.True>
+                            <FlowDecision.False>
+                              <FlowStep x:Name="__ReferenceID5">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">349,819</av:Point>
+                                    <av:Size x:Key="ShapeSize">262,107.333333333333</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">480,926.333333333333 480,1093.6</av:PointCollection>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap2010:Annotation.AnnotationText="Re-throw the error and this handler will be executed again for the parent element." DisplayName="Assign Result to Continue" sap:VirtualizedContainerService.HintSize="262,107.333333333333" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="uico:ErrorAction">[result]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="uico:ErrorAction">[ErrorAction.Continue]</InArgument>
+                                  </Assign.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Assign>
+                                <FlowStep.Next>
+                                  <x:Reference>__ReferenceID0</x:Reference>
+                                </FlowStep.Next>
+                              </FlowStep>
+                            </FlowDecision.False>
+                          </FlowDecision>
+                        </FlowDecision.True>
+                        <FlowDecision.False>
+                          <FlowStep x:Name="__ReferenceID11">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <av:Point x:Key="ShapeLocation">650,606.04</av:Point>
+                                <av:Size x:Key="ShapeSize">200,69.3333333333333</av:Size>
+                                <av:PointCollection x:Key="ConnectorLocation">750,675.373333333333 750,727</av:PointCollection>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Sequence DisplayName="Template Localization" sap:VirtualizedContainerService.HintSize="200,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_56">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))" Name="LocalizationData" />
+                                <Variable x:TypeArguments="x:String" Name="UICulture" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="Assign Dictionary " sap:VirtualizedContainerService.HintSize="484,64" sap2010:WorkflowViewState.IdRef="Assign_73">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))">[LocalizationData]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))" xml:space="preserve">[New Dictionary(Of String, Dictionary(Of String, String)) From 
+{
+{"en", New Dictionary(Of String, String) From {
+{"[LOCALIZATION_PLACEHOLDER_LINE1]", "Something went wrong with &lt;strong&gt;[ACTIONTYPE_PLACEHOLDER]&lt;/strong&gt;."},
+{"[LOCALIZATION_PLACEHOLDER_LINE2]","Activity &lt;strong&gt;[ACTIVITYNAME_PLACEHOLDER]&lt;/strong&gt; (&lt;strong&gt;[ACTIVITYTYPE_PLACEHOLDER]&lt;/strong&gt;) failed:"},
+{"[LOCALIZATION_PLACEHOLDER_LINE4]","You can find the activity by searching id (press Ctrl + J to jump to activity):"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION1]", "Press &lt;strong&gt;Retry&lt;/strong&gt; to re-execute the activity."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION2]", "Press &lt;strong&gt;Skip&lt;/strong&gt; to continue execution from the next activity."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION3]", "Press &lt;strong&gt;Skip Item&lt;/strong&gt; to continue with the next item."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION4]", "Press &lt;strong&gt;Stop&lt;/strong&gt; to stop the execution of the process."},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON1]", "Stop"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON2]", "Skip Item"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON3]", "Skip"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON4]", "Retry"}
+}},
+{"ja", New Dictionary(Of String, String) From {
+{"[LOCALIZATION_PLACEHOLDER_LINE1]", "&lt;strong&gt;[ACTIONTYPE_PLACEHOLDER]&lt;/strong&gt; にエラーが発生しました。"},
+{"[LOCALIZATION_PLACEHOLDER_LINE2]","&lt;strong&gt;[ACTIVITYNAME_PLACEHOLDER]&lt;/strong&gt; (&lt;strong&gt;[ACTIVITYTYPE_PLACEHOLDER]&lt;/strong&gt;) アクティビティが次の理由で失敗しました。"},
+{"[LOCALIZATION_PLACEHOLDER_LINE4]","You can find the activity by searching id (press Ctrl + J to jump to activity):"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION1]", "アクティビティを再実行するには &lt;strong&gt;[再試行]&lt;/strong&gt; をクリックしてください。"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION2]", "次のアクティビティから実行を続行する場合は &lt;strong&gt;[スキップ]&lt;/strong&gt; をクリックしてください。"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION3]", "次のアイテムを続行する場合は &lt;strong&gt;[アイテムをスキップ]&lt;/strong&gt; をクリックしてください。	"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION4]", "プロセスの実行を停止する場合は &lt;strong&gt;[停止]&lt;/strong&gt; をクリックしてください。"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON1]", "停止"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON2]", "アイテムをスキップ"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON3]", "スキップ"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON4]", "再試行"}
+}},
+{"fr", New Dictionary(Of String, String) From {
+{"[LOCALIZATION_PLACEHOLDER_LINE1]", "Une erreur s’est produite avec &lt;strong&gt;[ACTIONTYPE_PLACEHOLDER]&lt;/strong&gt;."},
+{"[LOCALIZATION_PLACEHOLDER_LINE2]","L’activité &lt;strong&gt;[ACTIVITYNAME_PLACEHOLDER]&lt;/strong&gt; (&lt;strong&gt;[ACTIVITYTYPE_PLACEHOLDER]&lt;/strong&gt;) a échoué :"},
+{"[LOCALIZATION_PLACEHOLDER_LINE4]","You can find the activity by searching id (press Ctrl + J to jump to activity):"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION1]", "Appuyez sur &lt;strong&gt;Réessayer&lt;/strong&gt; pour exécuter à nouveau l’activité."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION2]", "Appuyez sur &lt;strong&gt;Ignorer&lt;/strong&gt; pour poursuivre l’exécution à partir de l’activité suivante."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION3]", "Appuyez sur &lt;strong&gt;Ignorer cet élément&lt;/strong&gt; pour passer à l’élément suivant."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION4]", "Appuyez sur &lt;strong&gt;Annuler&lt;/strong&gt; pour interrompre l’exécution du processus."},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON1]", "Annuler"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON2]", "Ignorer cet élément"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON3]", "Ignorer"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON4]", "Réessayer"}
+}},
+{"ru", New Dictionary(Of String, String) From {
+{"[LOCALIZATION_PLACEHOLDER_LINE1]", "Произошла ошибка &lt;strong&gt;[ACTIONTYPE_PLACEHOLDER]&lt;/strong&gt;."},
+{"[LOCALIZATION_PLACEHOLDER_LINE2]","Сбой действия &lt;strong&gt;[ACTIVITYNAME_PLACEHOLDER]&lt;/strong&gt; (&lt;strong&gt;[ACTIVITYTYPE_PLACEHOLDER]&lt;/strong&gt;):"},
+{"[LOCALIZATION_PLACEHOLDER_LINE4]","You can find the activity by searching id (press Ctrl + J to jump to activity):"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION1]", "Нажмите &lt;strong&gt;Повторить попытку&lt;/strong&gt;, чтобы выполнить действие еще раз."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION2]", "Нажмите &lt;strong&gt;Пропустить&lt;/strong&gt;, чтобы продолжить выполнение со следующего действия."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION3]", "Нажмите &lt;strong&gt;Пропустить элемент&lt;/strong&gt;, чтобы продолжить со следующего элемента."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION4]", "Нажмите &lt;strong&gt;Остановить&lt;/strong&gt;, чтобы остановить выполнение процесса."},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON1]", "Остановить"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON2]", "Пропустить элемент"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON3]", "Пропустить"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON4]", "Повторить попытку"}
+}},
+{"zh-CN", New Dictionary(Of String, String) From {
+{"[LOCALIZATION_PLACEHOLDER_LINE1]", "&lt;strong&gt;[ACTIONTYPE_PLACEHOLDER]&lt;/strong&gt; 出现问题。"},
+{"[LOCALIZATION_PLACEHOLDER_LINE2]","活动&lt;strong&gt;[ACTIVITYNAME_PLACEHOLDER]&lt;/strong&gt; (&lt;strong&gt;[ACTIVITYTYPE_PLACEHOLDER]&lt;/strong&gt;) 失败:"},
+{"[LOCALIZATION_PLACEHOLDER_LINE4]","You can find the activity by searching id (press Ctrl + J to jump to activity):"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION1]", "按&amp;ldquo;重试&amp;rdquo;&lt;strong&gt;&lt;/strong&gt;重新执行活动。"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION2]", "按&amp;ldquo;跳过&amp;rdquo;&lt;strong&gt;&lt;/strong&gt;继续执行下一个活动。"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION3]", "按&amp;ldquo;跳过项目&amp;rdquo;&lt;strong&gt;&lt;/strong&gt;继续处理下一个项目。"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION4]", "按&amp;ldquo;停止&amp;rdquo;&lt;strong&gt;&lt;/strong&gt;停止执行流程。"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON1]", "停止"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON2]", "跳过项目"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON3]", "跳过"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON4]", "重试"}
+}},
+{"de", New Dictionary(Of String, String) From {
+{"[LOCALIZATION_PLACEHOLDER_LINE1]", "Bei &lt;strong&gt;[ACTIONTYPE_PLACEHOLDER]&lt;/strong&gt; ist ein Fehler aufgetreten."},
+{"[LOCALIZATION_PLACEHOLDER_LINE2]","Aktivität &lt;strong&gt;[ACTIVITYNAME_PLACEHOLDER]&lt;/strong&gt; (&lt;strong&gt;[ACTIVITYTYPE_PLACEHOLDER]&lt;/strong&gt;) fehlgeschlagen:"},
+{"[LOCALIZATION_PLACEHOLDER_LINE4]","You can find the activity by searching id (press Ctrl + J to jump to activity):"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION1]", "Drücken Sie &lt;strong&gt;Wiederholen&lt;/strong&gt;, um die Aktivität erneut auszuführen."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION2]", "Drücken Sie &lt;strong&gt;Überspringen&lt;/strong&gt;, um die Ausführung ab der nächsten Aktivität fortzusetzen."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION3]", "Drücken Sie &lt;strong&gt;Element überspringen&lt;/strong&gt;, um mit dem nächsten Element fortzufahren."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION4]", "Drücken Sie &lt;strong&gt;Beenden&lt;/strong&gt;, um die Ausführung des Prozesses zu beenden."},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON1]", "Beenden"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON2]", "Element überspringen"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON3]", "Überspringen"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON4]", "Wiederholen"}
+}},
+{"es", New Dictionary(Of String, String) From {
+{"[LOCALIZATION_PLACEHOLDER_LINE1]", "Se ha producido un error con &lt;strong&gt;[ACTIONTYPE_PLACEHOLDER]&lt;/strong&gt;"},
+{"[LOCALIZATION_PLACEHOLDER_LINE2]","Error en la actividad  &lt;strong&gt;[ACTIVITYNAME_PLACEHOLDER]&lt;/strong&gt; (&lt;strong&gt;[ACTIVITYTYPE_PLACEHOLDER]&lt;/strong&gt;): "},
+{"[LOCALIZATION_PLACEHOLDER_LINE4]","You can find the activity by searching id (press Ctrl + J to jump to activity):"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION1]", "Pulse &lt;strong&gt;Reintentar&lt;/strong&gt; para volver a ejecutar la actividad."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION2]", "Pulse &lt;strong&gt;Omitir&lt;/strong&gt; para continuar con la ejecución de la siguiente actividad."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION3]", "Pulse &lt;strong&gt;Omitir elemento&lt;/strong&gt; para continuar con el siguiente elemento."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION4]", "Pulse &lt;strong&gt;Detener&lt;/strong&gt; para detener la ejecución del proceso."},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON1]", "Detener"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON2]", "Omitir elemento"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON3]", "Omitir"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON4]", "Reintentar"}
+}},
+{"es-MX", New Dictionary(Of String, String) From {
+{"[LOCALIZATION_PLACEHOLDER_LINE1]", "Se ha producido un error con &lt;strong&gt;[ACTIONTYPE_PLACEHOLDER]"},
+{"[LOCALIZATION_PLACEHOLDER_LINE2]","Error en la actividad  &lt;strong&gt;[ACTIVITYNAME_PLACEHOLDER]&lt;/strong&gt; (&lt;strong&gt;[ACTIVITYTYPE_PLACEHOLDER]&lt;/strong&gt;): "},
+{"[LOCALIZATION_PLACEHOLDER_LINE4]","You can find the activity by searching id (press Ctrl + J to jump to activity):"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION1]", "Pulse &lt;strong&gt;Reintentar&lt;/strong&gt; para volver a ejecutar la actividad."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION2]", "Pulse &lt;strong&gt;Omitir&lt;/strong&gt; para continuar con la ejecución de la siguiente actividad."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION3]", "Pulse &lt;strong&gt;Omitir elemento&lt;/strong&gt; para continuar con el siguiente elemento."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION4]", "Pulse &lt;strong&gt;Detener&lt;/strong&gt; para detener la ejecución del proceso."},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON1]", "Detener"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON2]", "Omitir elemento"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON3]", "Omitir"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON4]", "Reintentar"}
+}},
+{"pt", New Dictionary(Of String, String) From {
+{"[LOCALIZATION_PLACEHOLDER_LINE1]", "Ocorreu um erro com &lt;strong&gt;[ACTIONTYPE_PLACEHOLDER]"},
+{"[LOCALIZATION_PLACEHOLDER_LINE2]","Ocorreu uma falha na atividade &lt;strong&gt;[ACTIVITYNAME_PLACEHOLDER]&lt;/strong&gt; (&lt;strong&gt;[ACTIVITYTYPE_PLACEHOLDER]"},
+{"[LOCALIZATION_PLACEHOLDER_LINE4]","You can find the activity by searching id (press Ctrl + J to jump to activity):"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION1]", "Prima &lt;strong&gt;Tentar novamente&lt;/strong&gt; para voltar a executar a atividade atual."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION2]", "Prima &lt;strong&gt;Ignorar&lt;/strong&gt; para continuar a execução a partir da atividade seguinte."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION3]", "Prima &lt;strong&gt;Ignorar item&lt;/strong&gt; para avançar para o item seguinte."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION4]", "Prima &lt;strong&gt;Parar&lt;/strong&gt; para parar a execução do processo."},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON1]", "Parar"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON2]", "Ignorar item"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON3]", "Ignorar"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON4]", "Tentar novamente"}
+}},
+{"pt-BR", New Dictionary(Of String, String) From {
+{"[LOCALIZATION_PLACEHOLDER_LINE1]", "Ocorreu um erro com &lt;strong&gt;[ACTIONTYPE_PLACEHOLDER]"},
+{"[LOCALIZATION_PLACEHOLDER_LINE2]","Atividade &lt;strong&gt;[ACTIVITYNAME_PLACEHOLDER]&lt;/strong&gt; (&lt;strong&gt;[ACTIVITYTYPE_PLACEHOLDER]&lt;/strong&gt;) falhou: "},
+{"[LOCALIZATION_PLACEHOLDER_LINE4]","You can find the activity by searching id (press Ctrl + J to jump to activity):"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION1]", "Pressione &lt;strong&gt;Tentar Novamente&lt;/strong&gt; para executar de novo a atividade."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION2]", "Pressione &lt;strong&gt;Pular&lt;/strong&gt; para continuar a execução a partir da próxima atividade."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION3]", "Pressione &lt;strong&gt;Pular Item&lt;/strong&gt; para retomar o próximo item."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION4]", "Pressione &lt;strong&gt;Parar&lt;/strong&gt; para pausar a execução do processo."},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON1]", "Parar"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON2]", "Pular Item"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON3]", "Pular"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON4]", "Tentar Novamente"}
+}},
+{"ko", New Dictionary(Of String, String) From {
+{"[LOCALIZATION_PLACEHOLDER_LINE1]", "&lt;strong&gt;[ACTIONTYPE_PLACEHOLDER]&lt;/strong&gt;에 문제가 있습니다. "},
+{"[LOCALIZATION_PLACEHOLDER_LINE2]","액티비티 &lt;strong&gt;[ACTIVITYNAME_PLACEHOLDER]&lt;/strong&gt;(&lt;strong&gt;[ACTIVITYTYPE_PLACEHOLDER]&lt;/strong&gt;)에 실패하였습니다. "},
+{"[LOCALIZATION_PLACEHOLDER_LINE4]","You can find the activity by searching id (press Ctrl + J to jump to activity):"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION1]", "현재 액티비티를 다시 실행하려면 &lt;strong&gt;재시도&lt;/strong&gt;를 누르십시오."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION2]", "다음 액티비티에서 실행을 계속하려면 &lt;strong&gt;건너뛰기&lt;/strong&gt;를 누르십시오."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION3]", "다음 항목으로 진행하려면 &lt;strong&gt;항목 건너뛰기&lt;/strong&gt;를 누르십시오."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION4]", "프로세스의 실행을 중지하려면 &lt;strong&gt;중지&lt;/strong&gt;를 누르십시오."},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON1]", "중지"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON2]", "항목 건너뛰기"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON3]", "건너뛰기"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON4]", "재시도"}
+}},
+{"tr", New Dictionary(Of String, String) From {
+{"[LOCALIZATION_PLACEHOLDER_LINE1]", "&lt;strong&gt;[ACTIONTYPE_PLACEHOLDER]&lt;/strong&gt; uygulamasında sorun oldu."},
+{"[LOCALIZATION_PLACEHOLDER_LINE2]","&lt;strong&gt;[ACTIVITYNAME_PLACEHOLDER]&lt;/strong&gt; (&lt;strong&gt;[ACTIVITYTYPE_PLACEHOLDER]&lt;/strong&gt;) etkinliği başarısız oldu:"},
+{"[LOCALIZATION_PLACEHOLDER_LINE4]","You can find the activity by searching id (press Ctrl + J to jump to activity):"},
+{"[LOCALIZATION_PLACEHOLDER_ACTION1]", "Etkinliği tekrar yürütmek için lütfen &lt;strong&gt;Yeniden dene&lt;/strong&gt; düğmesine basın."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION2]", "Sonraki etkinlikten yürütmeye devam etmek için  &lt;strong&gt;Atla&lt;/strong&gt; düğmesine basın."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION3]", "Sonraki öğeyle devam etmek için &lt;strong&gt;Öğeyi Atla&lt;/strong&gt; düğmesine basın."},
+{"[LOCALIZATION_PLACEHOLDER_ACTION4]", "İşlemin yürütülmesini durdurmak için &lt;strong&gt;Durdur&lt;/strong&gt;’a basın."},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON1]", "Durdur"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON2]", "Öğeyi Atla"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON3]", "Atla"},
+{"[LOCALIZATION_PLACEHOLDER_BUTTON4]", "Yeniden dene"}
+}}
+}]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign DisplayName="Assign UI Culture" sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_70">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[UICulture]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[System.Globalization.CultureInfo.CurrentUICulture.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <If sap2010:Annotation.AnnotationText="If the Studio UI Culture (language) is not localized in this handlers, use the English culture as default. This can happen when new languages are added to Studio but the GlobalExceptionHandler localization is not updated." Condition="[Not LocalizationData.ContainsKey(UICulture)]" DisplayName="Default to 'en' UICulture" sap:VirtualizedContainerService.HintSize="484,265" sap2010:WorkflowViewState.IdRef="If_15">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If.Then>
+                                  <Assign DisplayName="Assign &quot;en&quot; to UICulture" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_71">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:String">[UICulture]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:String">en</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </If.Then>
+                              </If>
+                              <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:String)" CurrentIndex="{x:Null}" DisplayName="For Each Localization string" sap:VirtualizedContainerService.HintSize="484,194" sap2010:WorkflowViewState.IdRef="ForEach`1_7" Values="[LocalizationData(UICulture)]">
+                                <ui:ForEach.Body>
+                                  <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:String)">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:String)" Name="pair" />
+                                    </ActivityAction.Argument>
+                                    <Assign DisplayName="Replace placeholder by localized string" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_72">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[ErrorTemplate]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[ErrorTemplate.Replace(pair.Key, pair.Value)]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </ActivityAction>
+                                </ui:ForEach.Body>
+                              </ui:ForEach>
+                            </Sequence>
+                            <FlowStep.Next>
+                              <FlowStep x:Name="__ReferenceID7">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">650,727</av:Point>
+                                    <av:Size x:Key="ShapeSize">200,69.3333333333333</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">750,796.333333333333 750,844</av:PointCollection>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Sequence DisplayName="Prepare the Custom Input Form" sap:VirtualizedContainerService.HintSize="200,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                                  <Sequence.Variables>
+                                    <Variable x:TypeArguments="x:String" Name="ActionType" />
+                                    <Variable x:TypeArguments="x:String" Default="%[ACTIONTYPE_PLACEHOLDER]" Name="placeholderActionType" />
+                                    <Variable x:TypeArguments="x:String" Name="ActivityName" />
+                                    <Variable x:TypeArguments="x:String" Name="ActivityType" />
+                                    <Variable x:TypeArguments="x:String" Name="ProblemDescription" />
+                                    <Variable x:TypeArguments="x:String" Default="%[ACTIVITYTYPE_PLACEHOLDER]" Name="placeholderActivityType" />
+                                    <Variable x:TypeArguments="x:String" Default="%[PROBLEMDESC_PLACEHOLDER]" Name="ProblemDescriptionPlaceholder" />
+                                    <Variable x:TypeArguments="x:String" Default="%[ACTIVITYENCODEDID_PLACEHOLDER]" Name="activityEncodedIdPlaceHolder" />
+                                    <Variable x:TypeArguments="x:String" Name="activityEncodedId" />
+                                    <Variable x:TypeArguments="x:String" Default="%[ACTIVITYNAME_PLACEHOLDER]" Name="placeholderActivityName" />
+                                    <Variable x:TypeArguments="x:Boolean" Default="False" Name="FoundRepetitiveActivity" />
+                                    <Variable x:TypeArguments="x:String" Default="%[SKIPITERATION_VIS_PLACEHOLDER]" Name="placeholderSkipIteration" />
+                                    <Variable x:TypeArguments="x:String" Default="display: none;" Name="cDisplayNone" />
+                                  </Sequence.Variables>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:MultipleAssign DisplayName="Multiple Assign Error Info" sap:VirtualizedContainerService.HintSize="941,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
+                                    <ui:MultipleAssign.AssignOperations>
+                                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_20">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:String">[ActivityName]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:String">[errorInfo.ActivityInfo.Name]</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:String">[ActivityType]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:String">[errorInfo.ActivityInfo.TypeName]</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_22">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:String">[ProblemDescription]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:String">[errorInfo.Exception.Message+Environment.NewLine+if(errorInfo.Exception.InnerException isnot Nothing,errorInfo.Exception.InnerException.Message,cEmptyString)]</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_54">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:String">[activityEncodedId]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:String">[String.Join("0", errorInfo.ActivityInfo.Id.Split("."c).[Select](Function(s) Integer.Parse(s).ToString("X2")))]</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                      </scg:List>
+                                    </ui:MultipleAssign.AssignOperations>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:MultipleAssign>
+                                  <Sequence DisplayName="Multiple Replace ActivityType characters" sap:VirtualizedContainerService.HintSize="376,349" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:Replace BuilderPattern="^(.*)\.(\w+)$" DisplayName="Replace ActivityType characters1" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_4" Input="[ActivityType]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ST&quot;,&quot;OperationName&quot;:&quot;Starts with&quot;,&quot;OperationValue&quot;:&quot;^&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:1,&quot;OperationID&quot;:&quot;ANYTHING&quot;,&quot;OperationName&quot;:&quot;Anything&quot;,&quot;OperationValue&quot;:&quot;.&quot;,&quot;QuantifierFirstValue&quot;:&quot;*&quot;,&quot;QuantifierID&quot;:&quot;ANY&quot;,&quot;QuantifierName&quot;:&quot;Any (0 or more)&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:2,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;\\.&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:3,&quot;OperationID&quot;:&quot;ANYWCHAR&quot;,&quot;OperationName&quot;:&quot;Any word character&quot;,&quot;OperationValue&quot;:&quot;\\w&quot;,&quot;QuantifierFirstValue&quot;:&quot;+&quot;,&quot;QuantifierID&quot;:&quot;OOM&quot;,&quot;QuantifierName&quot;:&quot;At least one (1 or more)&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:4,&quot;OperationID&quot;:&quot;END&quot;,&quot;OperationName&quot;:&quot;Ends with&quot;,&quot;OperationValue&quot;:&quot;$&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="^(.*)\.(\w+)$" RegexOption="IgnoreCase" Replacement="$2" Result="[ActivityType]" />
+                                    <ui:Replace BuilderPattern="([A-Z])" DisplayName="Replace ActivityType characters2" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_5" Input="[ActivityType]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;([A-Z])&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="([A-Z])" RegexOption="None" Replacement=" $1" Result="[ActivityType]" />
+                                    <ui:Replace BuilderPattern="^\s*" DisplayName="Replace ActivityType characters3" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_6" Input="[ActivityType]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ST&quot;,&quot;OperationName&quot;:&quot;Starts with&quot;,&quot;OperationValue&quot;:&quot;^&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:1,&quot;OperationID&quot;:&quot;WHITESP&quot;,&quot;OperationName&quot;:&quot;Whitespace&quot;,&quot;OperationValue&quot;:&quot;\\s&quot;,&quot;QuantifierFirstValue&quot;:&quot;*&quot;,&quot;QuantifierID&quot;:&quot;ANY&quot;,&quot;QuantifierName&quot;:&quot;Any (0 or more)&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="^\s*" RegexOption="IgnoreCase" Replacement="[cEmptyString]" Result="[ActivityType]" />
+                                  </Sequence>
+                                  <ui:MultipleAssign DisplayName="Multiple Assign - Replace Text Info in Custom Input template" sap:VirtualizedContainerService.HintSize="376,253" sap2010:WorkflowViewState.IdRef="MultipleAssign_13">
+                                    <ui:MultipleAssign.AssignOperations>
+                                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                                        <ui:AssignOperation sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AssignOperation_37">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:String">[ErrorTemplate]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:String">[ErrorTemplate.Replace(placeholderActionType, ActionType)]</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_38">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:String">[ErrorTemplate]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:String">[ErrorTemplate.Replace(placeholderActivityName , ActivityName)]</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_39">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:String">[ErrorTemplate]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:String">[ErrorTemplate.Replace(placeholderActivityType, ActivityType)]</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_40">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:String">[ErrorTemplate]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:String">[ErrorTemplate.Replace(ProblemDescriptionPlaceholder, ProblemDescription)]</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_42">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:String">[ErrorTemplate]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:String">[ErrorTemplate.Replace(placeholderSkipIteration, IF(FoundRepetitiveActivity, "", cDisplayNone))]</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_55">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:String">[ErrorTemplate]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:String">[ErrorTemplate.Replace(activityEncodedIdPlaceHolder, activityEncodedId)]</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                      </scg:List>
+                                    </ui:MultipleAssign.AssignOperations>
+                                  </ui:MultipleAssign>
+                                  <ui:WriteTextFile DisplayName="Write Text File: ErrorTemplate" FileName="[CustomInputContentPath]" sap:VirtualizedContainerService.HintSize="376,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_2" Text="[ErrorTemplate]" />
+                                </Sequence>
+                                <FlowStep.Next>
+                                  <FlowStep x:Name="__ReferenceID8">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">650,844</av:Point>
+                                        <av:Size x:Key="ShapeSize">200,114.666666666667</av:Size>
+                                        <av:PointCollection x:Key="ConnectorLocation">750,958.666666666667 750,1004</av:PointCollection>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:CustomInput sap2010:Annotation.AnnotationText="Present the user a dialog with error details and ask for an action: Retry / Stop / Skip." DisplayName="Custom Input - Runtime Execution Error" Height="560" sap:VirtualizedContainerService.HintSize="200,114.666666666667" sap2010:WorkflowViewState.IdRef="CustomInput_1" Result="[UserAction]" URI="[CustomInputContentPath]" Width="1000">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:CustomInput>
+                                    <FlowStep.Next>
+                                      <FlowStep x:Name="__ReferenceID9">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <av:Point x:Key="ShapeLocation">650,1004</av:Point>
+                                            <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                                            <av:PointCollection x:Key="ConnectorLocation">750,1056.66666666667 750,1118.93333333333 580,1118.93333333333</av:PointCollection>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <Switch x:TypeArguments="x:String" DisplayName="Switch Custom Input Result" Expression="[UserAction.Trim]" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+                                          <Switch.Default>
+                                            <Assign sap2010:Annotation.AnnotationText="This case is when the user dismissed the dialog without choosing an action." DisplayName="Assign Abort Default" sap:VirtualizedContainerService.HintSize="262,102" sap2010:WorkflowViewState.IdRef="Assign_57">
+                                              <Assign.To>
+                                                <OutArgument x:TypeArguments="uico:ErrorAction">[result]</OutArgument>
+                                              </Assign.To>
+                                              <Assign.Value>
+                                                <InArgument x:TypeArguments="uico:ErrorAction">[ErrorAction.Abort]</InArgument>
+                                              </Assign.Value>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </Assign>
+                                          </Switch.Default>
+                                          <Sequence x:Key="Stop" DisplayName="Assign Stop" sap:VirtualizedContainerService.HintSize="304,183" sap2010:WorkflowViewState.IdRef="Sequence_76">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <Assign sap2010:Annotation.AnnotationText="User pressed on Stop button." DisplayName="Assign Abort" sap:VirtualizedContainerService.HintSize="262,91" sap2010:WorkflowViewState.IdRef="Assign_115">
+                                              <Assign.To>
+                                                <OutArgument x:TypeArguments="uico:ErrorAction">[result]</OutArgument>
+                                              </Assign.To>
+                                              <Assign.Value>
+                                                <InArgument x:TypeArguments="uico:ErrorAction">[ErrorAction.Abort]</InArgument>
+                                              </Assign.Value>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </Assign>
+                                          </Sequence>
+                                          <Assign x:Key="Retry" sap2010:Annotation.AnnotationText="User pressed on Retry button." DisplayName="Assign Retry" sap:VirtualizedContainerService.HintSize="262,91" sap2010:WorkflowViewState.IdRef="Assign_55">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="uico:ErrorAction">[result]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="uico:ErrorAction">[ErrorAction.Retry]</InArgument>
+                                            </Assign.Value>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </Assign>
+                                          <Assign x:Key="Skip" sap2010:Annotation.AnnotationText="User pressed on Skip button." DisplayName="Assign Ignore" sap:VirtualizedContainerService.HintSize="262,91" sap2010:WorkflowViewState.IdRef="Assign_56">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="uico:ErrorAction">[result]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="uico:ErrorAction">[ErrorAction.Ignore]</InArgument>
+                                            </Assign.Value>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </Assign>
+                                          <Sequence x:Key="SkipIteration" DisplayName="Sequence: SkipIteration" sap:VirtualizedContainerService.HintSize="376,321" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:WriteTextFile DisplayName="WriteTextFile ErrorTemplate" FileName="[TemplateFilePath]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_3" Text="[SkipIterationFlagText+ErrorTemplateBackup]" />
+                                            <Assign DisplayName="Assign Action Continue" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_58">
+                                              <Assign.To>
+                                                <OutArgument x:TypeArguments="uico:ErrorAction">[result]</OutArgument>
+                                              </Assign.To>
+                                              <Assign.Value>
+                                                <InArgument x:TypeArguments="uico:ErrorAction">[ErrorAction.Continue]</InArgument>
+                                              </Assign.Value>
+                                            </Assign>
+                                          </Sequence>
+                                        </Switch>
+                                        <FlowStep.Next>
+                                          <x:Reference>__ReferenceID0</x:Reference>
+                                        </FlowStep.Next>
+                                      </FlowStep>
+                                    </FlowStep.Next>
+                                  </FlowStep>
+                                </FlowStep.Next>
+                              </FlowStep>
+                            </FlowStep.Next>
+                          </FlowStep>
+                        </FlowDecision.False>
+                      </FlowDecision>
+                    </FlowStep.Next>
+                  </FlowStep>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+          <x:Reference>__ReferenceID1</x:Reference>
+          <x:Reference>__ReferenceID2</x:Reference>
+          <x:Reference>__ReferenceID3</x:Reference>
+          <x:Reference>__ReferenceID4</x:Reference>
+          <x:Reference>__ReferenceID5</x:Reference>
+          <x:Reference>__ReferenceID6</x:Reference>
+          <x:Reference>__ReferenceID7</x:Reference>
+          <x:Reference>__ReferenceID8</x:Reference>
+          <x:Reference>__ReferenceID9</x:Reference>
+          <x:Reference>__ReferenceID10</x:Reference>
+          <x:Reference>__ReferenceID11</x:Reference>
+          <x:Reference>__ReferenceID0</x:Reference>
+        </Flowchart>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,165.333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[exception.Message]" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>
