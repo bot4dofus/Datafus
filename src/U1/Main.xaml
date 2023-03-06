@@ -306,7 +306,7 @@
               </If.Else>
             </If>
             <ui:CopyFile ContinueOnError="{x:Null}" Destination="[swf_folder]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="854,154" sap2010:WorkflowViewState.IdRef="CopyFile_3" Overwrite="True" Path="[string.Format(&quot;{0}\AppData\Local\Ankama\Dofus\DofusInvoker.swf&quot;, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile))]" />
-            <ui:ForEachFileX DisplayName="For Each File In Folder" Folder="[string.Format(&quot;{0}\AppData\Local\Ankama\Dofus\data\common&quot;, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile))]" sap:VirtualizedContainerService.HintSize="854,500" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+            <ui:ForEachFileX DisplayName="For Each File In Folder" Filter="*.d2o" Folder="[string.Format(&quot;{0}\AppData\Local\Ankama\Dofus\data\common&quot;, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile))]" sap:VirtualizedContainerService.HintSize="854,500" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
               <ui:ForEachFileX.Body>
                 <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
                   <ActivityAction.Argument1>

@@ -12,7 +12,7 @@ $CALL_PATH = $pwd
 $UIPATH = "$env:LOCALAPPDATA\Programs\UiPath\Studio"
 $PROJECT_FILE = Resolve-Path -Path $args[0]
 $PROJECT_PATH = Split-Path $PROJECT_FILE -Parent
-$VERSION = "1.0.3"
+$VERSION = (Get-Content -Path "$PROJECT_FILE" -Raw | ConvertFrom-Json).projectVersion
 $NUPKG_FILE = "$PROJECT_PATH\U1.$VERSION.nupkg"
 
 Write-Host $UIPATH
