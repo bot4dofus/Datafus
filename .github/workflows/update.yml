@@ -1,0 +1,24 @@
+name: Update
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Job_U:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: U1 - Update Dofus Client
+        shell: pwsh
+        run: |
+          .\src\U1\U1.sh src\U1\project.json data\U1\swf\ data\U1\d2o\ data\U1\d2i\
+
+      - name: Upload files
+        uses: actions/upload-artifact@v3
+        with:
+          name: Job_U
+          path: |
+            data/U1/
