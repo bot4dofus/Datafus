@@ -14,7 +14,7 @@ jobs:
       - name: U1 - Update Dofus Client
         shell: pwsh
         run: |
-          .\src\U1\U1.sh src\U1\project.json data\U1\swf\ data\U1\d2o\ data\U1\d2i\
+          .\src\U1\U1.ps1 src\U1\project.json data\U1\swf\ data\U1\d2o\ data\U1\d2i\
 
       - name: Upload files
         uses: actions/upload-artifact@v3

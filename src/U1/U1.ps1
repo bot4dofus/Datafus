@@ -15,11 +15,20 @@ $PROJECT_PATH = Split-Path $PROJECT_FILE -Parent
 $VERSION = (Get-Content -Path "$PROJECT_FILE" -Raw | ConvertFrom-Json).projectVersion
 $NUPKG_FILE = "$PROJECT_PATH\U1.$VERSION.nupkg"
 
-Write-Host $UIPATH
-Write-Host $PROJECT_FILE
-Write-Host $PROJECT_PATH
-Write-Host $VERSION
-Write-Host $NUPKG_FILE
+Write-Host Uipath: $UIPATH
+Write-Host Project file: $PROJECT_FILE
+Write-Host Project path: $PROJECT_PATH
+Write-Host Version: $VERSION
+Write-Host Nupkg file: $NUPKG_FILE
+
+Write-Host "Creating folder $args[1]"
+md $args[1] -ea 0
+
+Write-Host "Creating folder $args[2]"
+md $args[2] -ea 0
+
+Write-Host "Creating folder $args[3]"
+md $args[3] -ea 0
 
 $SWF_FOLDER = Resolve-Path $args[1]
 $D2O_FOLDER = Resolve-Path $args[2]
@@ -27,10 +36,10 @@ $D2I_FOLDER = Resolve-Path $args[3]
 $INPUT = "{""swf_folder"": '$SWF_FOLDER', ""d2o_folder"": '$D2O_FOLDER', ""d2i_folder"": '$D2I_FOLDER'}"
 $INPUT = $INPUT.replace("\", "//")
 
-Write-Host $SWF_FOLDER
-Write-Host $D2O_FOLDER
-Write-Host $D2I_FOLDER
-Write-Host $INPUT
+Write-Host Swf folder: $SWF_FOLDER
+Write-Host D2o folder: $D2O_FOLDER
+Write-Host D2i folder: $D2I_FOLDER
+Write-Host Input: $INPUT
 
 Set-Location $UIPATH
 .\UiRobot.exe pack "$PROJECT_FILE" -o "$PROJECT_PATH" -v "$VERSION"
