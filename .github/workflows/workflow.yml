@@ -2,6 +2,7 @@ name: Workflow
 
 on:
   workflow_dispatch:
+  repository_dispatch:
   #push:
   #  paths:
   #    - 'data/DofusInvoker.swf'
