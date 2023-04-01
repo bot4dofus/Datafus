@@ -17,6 +17,14 @@ class DofusVersionReader:
         except ValueError:
             return False
 
+    def increment_version(self, version):
+        first_point_index = version.find('.')
+        second_point_index = version.find('.', 2)
+        first_value = version[:first_point_index+1]
+        second_value = int(version[first_point_index+1:second_point_index])
+        new_version = first_value + str(second_value+1)
+        return new_version
+
     def get_version(self):
 
         req = Request(self.RSS_FLUX, None, self.HEADERS)
@@ -26,23 +34,17 @@ class DofusVersionReader:
             raise Exception("HTTP request failed")
 
         root = ET.fromstring(changelog.read())
-        versions = []
+        items = root.findall("./channel/item")
 
-        for item in root.findall("./channel/item"):
-            version = item.find("title").text.split(' ')[-1]
-            versions.append(version)
+        for i in range(len(items)):
+            version = items[i].find("title").text.split(' ')[-1]
 
-            if(len(versions) == 2):
-                break
+            if(self.is_version(version)):
+                if(i != 0):
+                    version = self.increment_version(version)
+                return version
 
-        if (not self.is_version(versions[0])):
-            first_point_index = versions[1].find('.')
-            second_point_index = versions[1].find('.', 2)
-            first_value = versions[1][:first_point_index+1]
-            second_value = int(versions[1][first_point_index+1:second_point_index])
-            versions[0] = first_value + str(second_value+1)
-
-        return versions[0]
+        raise Exception("No version found")
 
 
 def main():
