@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightResultListEntry implements INetworkType
    {
       
-      public static const protocolId:uint = 676;
+      public static const protocolId:uint = 8291;
        
       
       public var outcome:uint = 0;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 676;
+         return 8291;
       }
       
       public function initFightResultListEntry(outcome:uint = 0, wave:uint = 0, rewards:FightLoot = null) : FightResultListEntry

@@ -9,7 +9,6 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.common.actions.HouseGuildRightsViewAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseGuildShareAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseKickAction;
-   import com.ankamagames.dofus.logic.game.common.actions.HouseKickIndoorMerchantAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseLockFromInsideAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseSellAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseSellFromInsideAction;
@@ -20,7 +19,6 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.context.roleplay.houses.AccountHouseMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseBuyRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseBuyResultMessage;
-   import com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseKickIndoorMerchantRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseKickRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseLockFromInsideRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseSellFromInsideRequestMessage;
@@ -103,8 +101,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          var hgsrm:HouseGuildShareRequestMessage = null;
          var hka:HouseKickAction = null;
          var hkrm:HouseKickRequestMessage = null;
-         var hkima:HouseKickIndoorMerchantAction = null;
-         var hkimrm:HouseKickIndoorMerchantRequestMessage = null;
          var lsuhdmsg:LockableStateUpdateHouseDoorMessage = null;
          var lscdmsg:LockableShowCodeDialogMessage = null;
          var lcca:LockableChangeCodeAction = null;
@@ -229,12 +225,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                hkrm = new HouseKickRequestMessage();
                hkrm.initHouseKickRequestMessage(hka.id);
                ConnectionsHandler.getConnection().send(hkrm);
-               return true;
-            case msg is HouseKickIndoorMerchantAction:
-               hkima = msg as HouseKickIndoorMerchantAction;
-               hkimrm = new HouseKickIndoorMerchantRequestMessage();
-               hkimrm.initHouseKickIndoorMerchantRequestMessage(hkima.cellId);
-               ConnectionsHandler.getConnection().send(hkimrm);
                return true;
             case msg is LockableStateUpdateHouseDoorMessage:
                lsuhdmsg = msg as LockableStateUpdateHouseDoorMessage;

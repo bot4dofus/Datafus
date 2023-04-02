@@ -54,7 +54,7 @@ package com.ankamagames.dofus.internalDatacenter.people
          this.guildId = o.guildInfo.guildId;
          if(o.guildInfo.guildName == "#NONAME#")
          {
-            this.guildName = I18n.getUiText("ui.guild.noName");
+            this.guildName = I18n.getUiText("ui.social.noName");
          }
          else
          {

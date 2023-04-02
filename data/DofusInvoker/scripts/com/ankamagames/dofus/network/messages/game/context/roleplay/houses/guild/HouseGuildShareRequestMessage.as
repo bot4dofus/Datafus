@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses.guil
    public class HouseGuildShareRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6884;
+      public static const protocolId:uint = 8809;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses.guil
       
       override public function getMessageId() : uint
       {
-         return 6884;
+         return 8809;
       }
       
       public function initHouseGuildShareRequestMessage(houseId:uint = 0, instanceId:uint = 0, enable:Boolean = false, rights:uint = 0) : HouseGuildShareRequestMessage

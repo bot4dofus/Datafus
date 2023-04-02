@@ -33,7 +33,7 @@ package com.ankamagames.dofus.misc.stats.ui
          this._logBookStatsAction.gameSessionId = HaapiKeyManager.getInstance().getGameSessionId();
          this._logBookStatsAction.setParam("character_account_id",PlayerManager.getInstance().accountId);
          this._logBookStatsAction.setParam("server_id",PlayerManager.getInstance().server.id);
-         this._logBookStatsAction.setParam("guild_id",SocialFrame.getInstance().guild.guildId);
+         this._logBookStatsAction.setParam("guild_id",SocialFrame.getInstance().guild.groupId);
          this._logBookStatsAction.setParam("character_id",PlayedCharacterManager.getInstance().extractedServerCharacterIdFromInterserverCharacterId);
          this._logBookStatsAction.setParam("interface_name",tab);
          this._logBookStatsAction.setParam("ui_scroll",scrollUsed);
@@ -48,7 +48,7 @@ package com.ankamagames.dofus.misc.stats.ui
          this._logBookStatsAction.gameSessionId = HaapiKeyManager.getInstance().getGameSessionId();
          this._logBookStatsAction.setParam("character_account_id",PlayerManager.getInstance().accountId);
          this._logBookStatsAction.setParam("server_id",PlayerManager.getInstance().server.id);
-         this._logBookStatsAction.setParam("guild_id",SocialFrame.getInstance().guild.guildId);
+         this._logBookStatsAction.setParam("guild_id",SocialFrame.getInstance().guild.groupId);
          this._logBookStatsAction.setParam("character_id",PlayedCharacterManager.getInstance().extractedServerCharacterIdFromInterserverCharacterId);
          this._logBookStatsAction.setParam("journal_action_type",this._journalBtnUsed);
          this._logBookStatsAction.send();

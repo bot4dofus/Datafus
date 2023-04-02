@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class DungeonPartyFinderRoomContentMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7629;
+      public static const protocolId:uint = 8881;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 7629;
+         return 8881;
       }
       
       public function initDungeonPartyFinderRoomContentMessage(dungeonId:uint = 0, players:Vector.<DungeonPartyFinderPlayer> = null) : DungeonPartyFinderRoomContentMessage

@@ -11,15 +11,13 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildBulletinSetRequestMessage extends SocialNoticeSetRequestMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6761;
+      public static const protocolId:uint = 3345;
        
       
       private var _isInitialized:Boolean = false;
       
       [Transient]
       public var content:String = "";
-      
-      public var notifyMembers:Boolean = false;
       
       public function GuildBulletinSetRequestMessage()
       {
@@ -33,13 +31,12 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 6761;
+         return 3345;
       }
       
-      public function initGuildBulletinSetRequestMessage(content:String = "", notifyMembers:Boolean = false) : GuildBulletinSetRequestMessage
+      public function initGuildBulletinSetRequestMessage(content:String = "") : GuildBulletinSetRequestMessage
       {
          this.content = content;
-         this.notifyMembers = notifyMembers;
          this._isInitialized = true;
          return this;
       }
@@ -47,7 +44,6 @@ package com.ankamagames.dofus.network.messages.game.guild
       override public function reset() : void
       {
          this.content = "";
-         this.notifyMembers = false;
          this._isInitialized = false;
       }
       
@@ -80,7 +76,6 @@ package com.ankamagames.dofus.network.messages.game.guild
       {
          super.serializeAs_SocialNoticeSetRequestMessage(output);
          output.writeUTF(this.content);
-         output.writeBoolean(this.notifyMembers);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -92,7 +87,6 @@ package com.ankamagames.dofus.network.messages.game.guild
       {
          super.deserialize(input);
          this._contentFunc(input);
-         this._notifyMembersFunc(input);
       }
       
       override public function deserializeAsync(tree:FuncTree) : void
@@ -104,17 +98,11 @@ package com.ankamagames.dofus.network.messages.game.guild
       {
          super.deserializeAsync(tree);
          tree.addChild(this._contentFunc);
-         tree.addChild(this._notifyMembersFunc);
       }
       
       private function _contentFunc(input:ICustomDataInput) : void
       {
          this.content = input.readUTF();
-      }
-      
-      private function _notifyMembersFunc(input:ICustomDataInput) : void
-      {
-         this.notifyMembers = input.readBoolean();
       }
    }
 }

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.common
    public class AccountTagInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 4213;
+      public static const protocolId:uint = 3750;
        
       
       public var nickname:String = "";
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.common
       
       public function getTypeId() : uint
       {
-         return 4213;
+         return 3750;
       }
       
       public function initAccountTagInformation(nickname:String = "", tagNumber:String = "") : AccountTagInformation

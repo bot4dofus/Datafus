@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightResultAdditionalData implements INetworkType
    {
       
-      public static const protocolId:uint = 2387;
+      public static const protocolId:uint = 4417;
        
       
       public function FightResultAdditionalData()
@@ -18,7 +18,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 2387;
+         return 4417;
       }
       
       public function initFightResultAdditionalData() : FightResultAdditionalData

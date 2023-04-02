@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory
    public class ObjectAveragePricesMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4462;
+      public static const protocolId:uint = 6849;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.inventory
       
       override public function getMessageId() : uint
       {
-         return 4462;
+         return 6849;
       }
       
       public function initObjectAveragePricesMessage(ids:Vector.<uint> = null, avgPrices:Vector.<Number> = null) : ObjectAveragePricesMessage

@@ -36,6 +36,8 @@ package com.ankamagames.dofus.logic.game.roleplay.types
       
       private var _turnRemaining:Dictionary;
       
+      private var _scoreValues:Dictionary;
+      
       private var _nbIcons:int;
       
       private var _offsets:Dictionary;
@@ -52,8 +54,19 @@ package com.ankamagames.dofus.logic.game.roleplay.types
          this._entity = pEntity;
          this._icons = new Dictionary(true);
          this._turnRemaining = new Dictionary(true);
+         this._scoreValues = new Dictionary(true);
          this._offsets = new Dictionary(true);
          mouseEnabled = mouseChildren = false;
+      }
+      
+      public function get scoreValues() : Dictionary
+      {
+         return this._scoreValues;
+      }
+      
+      public function get icons() : Dictionary
+      {
+         return this._icons;
       }
       
       public function updateAllTurnRemainingIcons() : void
@@ -75,11 +88,24 @@ package com.ankamagames.dofus.logic.game.roleplay.types
          this._turnRemaining[pIconName].getChildAt(1).text = String(turnRemaining);
       }
       
-      public function addIcon(pIconUri:String, pIconName:String, offset:Point = null, turnRemaining:Number = -1) : void
+      public function updateScoreValue(pIconName:String, scoreValue:int) : void
+      {
+         if(!this._scoreValues[pIconName])
+         {
+            return;
+         }
+         this._scoreValues[pIconName].visible = scoreValue >= 0;
+         this._scoreValues[pIconName].getChildAt(1).text = String(scoreValue);
+      }
+      
+      public function addIcon(pIconUri:String, pIconName:String, offset:Point = null, turnRemaining:Number = -1, scoreValue:int = -1) : void
       {
          var ctr_turnRemaining:GraphicContainer = null;
          var tx_turnRemaining:Texture = null;
          var tl_turnRemaining:Label = null;
+         var ctr_scoreValue:GraphicContainer = null;
+         var tx_scoreValue:Texture = null;
+         var tl_scoreValue:Label = null;
          this._icons[pIconName] = new Texture();
          this._offsets[pIconName] = offset;
          var icon:Texture = this._icons[pIconName];
@@ -110,12 +136,37 @@ package com.ankamagames.dofus.logic.game.roleplay.types
             ctr_turnRemaining.finalize();
             ++this._nbIcons;
          }
+         if(scoreValue >= 0)
+         {
+            ctr_scoreValue = new GraphicContainer();
+            ctr_scoreValue.borderColor = 16711935;
+            tx_scoreValue = new Texture();
+            tx_scoreValue.uri = new Uri(XmlConfig.getInstance().getEntry("config.ui.skin").concat("texture/icon_grey_round.png"));
+            tx_scoreValue.width = 25;
+            tx_scoreValue.height = 25;
+            tl_scoreValue = new Label();
+            tl_scoreValue.text = String(scoreValue);
+            tl_scoreValue.width = 25;
+            tl_scoreValue.height = 25;
+            tl_scoreValue.css = new Uri(XmlConfig.getInstance().getEntry("config.ui.skin") + "css/small2.css");
+            tl_scoreValue.cssClass = "whitecenter";
+            tl_scoreValue.verticalAlign = "center";
+            tx_scoreValue.finalize();
+            tl_scoreValue.finalize();
+            ctr_scoreValue.addChild(tx_scoreValue);
+            ctr_scoreValue.addChild(tl_scoreValue);
+            this._scoreValues[pIconName] = ctr_scoreValue;
+            this._scoreValues[pIconName].visible = scoreValue >= 0;
+            ctr_scoreValue.finalize();
+            ++this._nbIcons;
+         }
          icon.finalize();
       }
       
       public function removeIcon(pIconName:String) : void
       {
          var ctr_turnRemaining:GraphicContainer = null;
+         var ctr_scoreValue:GraphicContainer = null;
          var iconName:* = null;
          var icon:Texture = this._icons[pIconName];
          if(icon)
@@ -128,6 +179,15 @@ package com.ankamagames.dofus.logic.game.roleplay.types
                }
                --this._nbIcons;
                delete this._turnRemaining[pIconName];
+            }
+            if(this._scoreValues[pIconName])
+            {
+               if(getChildByName(this._scoreValues[pIconName].name))
+               {
+                  removeChild(this._scoreValues[pIconName]);
+               }
+               --this._nbIcons;
+               delete this._scoreValues[pIconName];
             }
             if(icon.parent == this)
             {
@@ -146,6 +206,11 @@ package com.ankamagames.dofus.logic.game.roleplay.types
                   {
                      removeChild(ctr_turnRemaining);
                   }
+                  ctr_scoreValue = this._scoreValues[iconName];
+                  if(ctr_scoreValue)
+                  {
+                     removeChild(ctr_scoreValue);
+                  }
                }
                for(iconName in this._icons)
                {
@@ -162,6 +227,17 @@ package com.ankamagames.dofus.logic.game.roleplay.types
                      addChild(icon);
                      this.placeTurnRemainingIcon(icon,ctr_turnRemaining);
                      addChild(ctr_turnRemaining);
+                  }
+                  else
+                  {
+                     addChild(icon);
+                  }
+                  ctr_scoreValue = this._scoreValues[iconName];
+                  if(ctr_scoreValue)
+                  {
+                     addChild(icon);
+                     this.placeScoreValueIcon(icon,ctr_scoreValue);
+                     addChild(ctr_scoreValue);
                   }
                   else
                   {
@@ -318,16 +394,18 @@ package com.ankamagames.dofus.logic.game.roleplay.types
             icon.x += offset.x;
             icon.y += offset.y;
          }
+         addChild(icon);
          var ctr_turnRemaining:GraphicContainer = this._turnRemaining[currentIconName];
          if(ctr_turnRemaining)
          {
-            addChild(icon);
             this.placeTurnRemainingIcon(icon,ctr_turnRemaining);
             addChild(ctr_turnRemaining);
          }
-         else
+         var ctr_scoreValue:GraphicContainer = this._scoreValues[currentIconName];
+         if(ctr_scoreValue)
          {
-            addChild(icon);
+            this.placeScoreValueIcon(icon,ctr_scoreValue);
+            addChild(ctr_scoreValue);
          }
          this.needUpdate = true;
       }
@@ -336,6 +414,12 @@ package com.ankamagames.dofus.logic.game.roleplay.types
       {
          ctr_turnRemaining.x = icon.x + icon.width / 2 - MARGIN_TURN_REMAINING_ICON_X;
          ctr_turnRemaining.y = icon.y - MARGIN_TURN_REMAINING_ICON_Y;
+      }
+      
+      private function placeScoreValueIcon(icon:Texture, ctr_scoreValue:GraphicContainer) : void
+      {
+         ctr_scoreValue.x = icon.x + icon.width / 2 - MARGIN_TURN_REMAINING_ICON_X;
+         ctr_scoreValue.y = icon.y - MARGIN_TURN_REMAINING_ICON_Y;
       }
    }
 }

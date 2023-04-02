@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.logic.connection.frames
 {
-   import by.blooddy.crypto.MD5;
+   import com.adobe.utils.StringUtil;
    import com.ankamagames.berilia.Berilia;
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.berilia.managers.UiModuleManager;
@@ -17,10 +17,12 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.logic.common.frames.ChangeCharacterFrame;
    import com.ankamagames.dofus.logic.common.frames.DisconnectionHandlerFrame;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
+   import com.ankamagames.dofus.logic.connection.actions.ForceAccountAction;
    import com.ankamagames.dofus.logic.connection.actions.LoginValidationAction;
    import com.ankamagames.dofus.logic.connection.actions.LoginValidationWithTicketAction;
    import com.ankamagames.dofus.logic.connection.actions.LoginValidationWithTokenAction;
    import com.ankamagames.dofus.logic.connection.actions.NicknameChoiceRequestAction;
+   import com.ankamagames.dofus.logic.connection.actions.ReleaseAccountAction;
    import com.ankamagames.dofus.logic.connection.managers.AuthentificationManager;
    import com.ankamagames.dofus.logic.connection.managers.StoreUserDataManager;
    import com.ankamagames.dofus.logic.connection.managers.ZaapConnectionManager;
@@ -33,6 +35,9 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.stats.StatisticsManager;
    import com.ankamagames.dofus.network.enums.BuildTypeEnum;
+   import com.ankamagames.dofus.network.messages.connection.ForceAccountErrorMessage;
+   import com.ankamagames.dofus.network.messages.connection.ForceAccountMessage;
+   import com.ankamagames.dofus.network.messages.connection.ForceAccountStatusMessage;
    import com.ankamagames.dofus.network.messages.connection.HelloConnectMessage;
    import com.ankamagames.dofus.network.messages.connection.IdentificationFailedBannedMessage;
    import com.ankamagames.dofus.network.messages.connection.IdentificationFailedForBadVersionMessage;
@@ -40,6 +45,7 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.network.messages.connection.IdentificationMessage;
    import com.ankamagames.dofus.network.messages.connection.IdentificationSuccessMessage;
    import com.ankamagames.dofus.network.messages.connection.IdentificationSuccessWithLoginTokenMessage;
+   import com.ankamagames.dofus.network.messages.connection.ReleaseAccountMessage;
    import com.ankamagames.dofus.network.messages.connection.register.NicknameAcceptedMessage;
    import com.ankamagames.dofus.network.messages.connection.register.NicknameChoiceRequestMessage;
    import com.ankamagames.dofus.network.messages.connection.register.NicknameRefusedMessage;
@@ -64,6 +70,7 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.jerakine.utils.crypto.Signature;
    import com.ankamagames.jerakine.utils.system.CommandLineArguments;
    import flash.utils.ByteArray;
+   import flash.utils.Dictionary;
    import flash.utils.getQualifiedClassName;
    import flash.utils.getTimer;
    
@@ -72,13 +79,13 @@ package com.ankamagames.dofus.logic.connection.frames
       
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(AuthentificationFrame));
       
-      private static const HIDDEN_PORT:uint = 443;
-      
       private static const CONNEXION_MODULE_NAME:String = "ComputerModule_Ankama_Connection";
       
       private static var _lastTicket:String;
       
-      private static var _connexionHosts:Array = [];
+      private static var _allHostsInfos:Dictionary = new Dictionary();
+      
+      private static var _hostChosenByUser:String = "";
        
       
       private var _dispatchModuleHook:Boolean;
@@ -86,8 +93,6 @@ package com.ankamagames.dofus.logic.connection.frames
       private var _connexionSequence:Array;
       
       private var commonMod:Object;
-      
-      private var _lastLoginHash:String;
       
       private var _zaapApi:ZaapApi;
       
@@ -128,9 +133,24 @@ package com.ankamagames.dofus.logic.connection.frames
       
       public function pushed() : Boolean
       {
+         var host:String = null;
+         var field:Array = null;
          var f:Frame = null;
          var className:String = null;
          var split:Array = null;
+         var connectionHostsEntry:String = XmlConfig.getInstance().getEntry("config.connection.host");
+         for each(host in connectionHostsEntry.split("|"))
+         {
+            field = host.split(":");
+            if(field.length == 3)
+            {
+               _allHostsInfos[StringUtil.trim(field[0])] = [StringUtil.trim(field[1]),StringUtil.trim(field[2])];
+            }
+            else
+            {
+               _log.error("Connection server has the wrong format. It won\'t be added to the list : " + host);
+            }
+         }
          this.processInvokeArgs();
          AlmanaxManager.getInstance();
          if(this._dispatchModuleHook)
@@ -155,14 +175,7 @@ package com.ankamagames.dofus.logic.connection.frames
       {
          var lvwta:LoginValidationWithTokenAction = null;
          var lva:LoginValidationAction = null;
-         var ports:String = null;
-         var connexionPorts:Array = null;
-         var connectionHostsEntry:String = null;
-         var connexionHosts:Array = null;
-         var tmpHosts:Array = null;
-         var defaultPort:uint = 0;
-         var firstConnexionSequence:Array = null;
-         var host:String = null;
+         var chosenPort:String = null;
          var connInfo:Object = null;
          var scfMsg:ServerConnectionFailedMessage = null;
          var hcmsg:HelloConnectMessage = null;
@@ -180,15 +193,20 @@ package com.ankamagames.dofus.logic.connection.frames
          var nrfmsg:NicknameRefusedMessage = null;
          var ncra:NicknameChoiceRequestAction = null;
          var ncrmsg:NicknameChoiceRequestMessage = null;
-         var porc:String = null;
+         var faa:ForceAccountAction = null;
+         var famsg:ForceAccountMessage = null;
+         var ramsg:ReleaseAccountMessage = null;
+         var fasmsg:ForceAccountStatusMessage = null;
          var connectionHostsSignatureEntry:String = null;
          var output:ByteArray = null;
          var signedData:ByteArray = null;
+         var hostsIps:String = null;
+         var key:String = null;
          var signature:Signature = null;
          var validHosts:Boolean = false;
-         var tmpHost:String = null;
-         var randomHost:Object = null;
-         var port:uint = 0;
+         var foundHost:Boolean = false;
+         var strKey:String = null;
+         var port:String = null;
          var retryConnInfo:Object = null;
          var i:int = 0;
          var elapsedSeconds:Number = NaN;
@@ -208,25 +226,13 @@ package com.ankamagames.dofus.logic.connection.frames
                {
                   if(lvwta.host)
                   {
-                     _connexionHosts = [lvwta.host];
+                     _hostChosenByUser = lvwta.host;
                   }
                   ZaapConnectionManager.getInstance().requestApiToken();
                }
                return true;
             case msg is LoginValidationAction:
                lva = LoginValidationAction(msg);
-               if(this._lastLoginHash != MD5.hash(lva.username))
-               {
-                  UiModuleManager.getInstance().isDevMode = XmlConfig.getInstance().getEntry("config.dev.mode");
-               }
-               this._lastLoginHash = MD5.hash(lva.username);
-               ports = XmlConfig.getInstance().getEntry("config.connection.port");
-               connexionPorts = [];
-               for each(porc in ports.split(","))
-               {
-                  connexionPorts.push(int(porc));
-               }
-               connectionHostsEntry = XmlConfig.getInstance().getEntry("config.connection.host");
                if(BuildInfos.BUILD_TYPE < BuildTypeEnum.INTERNAL)
                {
                   connectionHostsSignatureEntry = XmlConfig.getInstance().getEntry("config.connection.host.signature");
@@ -242,8 +248,13 @@ package com.ankamagames.dofus.logic.connection.frames
                      KernelEventsManager.getInstance().processCallback(HookList.SelectedServerFailed);
                      return false;
                   }
+                  hostsIps = "";
+                  for(key in _allHostsInfos)
+                  {
+                     hostsIps += _allHostsInfos[key][0];
+                  }
                   signedData.position = signedData.length;
-                  signedData.writeUTFBytes(connectionHostsEntry);
+                  signedData.writeUTFBytes(hostsIps);
                   signedData.position = 0;
                   signature = new Signature(SignedFileAdapter.defaultSignatureKey);
                   validHosts = signature.verify(signedData,output);
@@ -255,56 +266,46 @@ package com.ankamagames.dofus.logic.connection.frames
                      return false;
                   }
                }
-               connexionHosts = !!lva.host ? [lva.host] : (_connexionHosts.length > 0 ? _connexionHosts : connectionHostsEntry.split(","));
-               _connexionHosts = connexionHosts;
-               tmpHosts = [];
-               for each(tmpHost in connexionHosts)
+               if(lva.host != null && lva.host != "")
                {
-                  tmpHosts.push({
-                     "host":tmpHost,
-                     "random":Math.random()
-                  });
+                  _hostChosenByUser = lva.host;
                }
-               tmpHosts.sortOn("random",Array.NUMERIC);
-               connexionHosts = [];
-               for each(randomHost in tmpHosts)
+               if(!_hostChosenByUser)
                {
-                  connexionHosts.push(randomHost.host);
-               }
-               defaultPort = OptionManager.getOptionManager("dofus").getOption("connectionPort");
-               this._connexionSequence = [];
-               firstConnexionSequence = [];
-               for each(host in connexionHosts)
-               {
-                  for each(port in connexionPorts)
+                  foundHost = false;
+                  var _loc3_:int = 0;
+                  var _loc4_:* = _allHostsInfos;
+                  for(strKey in _loc4_)
                   {
-                     if(defaultPort == port)
-                     {
-                        firstConnexionSequence.push({
-                           "host":host,
-                           "port":port
-                        });
-                     }
-                     else
-                     {
-                        this._connexionSequence.push({
-                           "host":host,
-                           "port":port
-                        });
-                     }
+                     _hostChosenByUser = _allHostsInfos[strKey][0];
+                     foundHost = true;
+                  }
+                  if(!foundHost)
+                  {
+                     _log.error("No selectable host, aborting connection.");
+                     Kernel.getInstance().reset();
+                     return true;
                   }
                }
-               if(connexionPorts.indexOf(HIDDEN_PORT) == -1)
+               this._connexionSequence = [];
+               chosenPort = BuildInfos.BUILD_TYPE < BuildTypeEnum.INTERNAL ? OptionManager.getOptionManager("dofus").getOption("connectionPort") : "";
+               for each(port in _allHostsInfos[_hostChosenByUser][1].split(","))
                {
-                  for each(host in connexionHosts)
+                  if(port == chosenPort)
+                  {
+                     this._connexionSequence.unshift({
+                        "host":_allHostsInfos[_hostChosenByUser][0],
+                        "port":uint(port)
+                     });
+                  }
+                  else
                   {
                      this._connexionSequence.push({
-                        "host":host,
-                        "port":HIDDEN_PORT
+                        "host":_allHostsInfos[_hostChosenByUser][0],
+                        "port":uint(port)
                      });
                   }
                }
-               this._connexionSequence = firstConnexionSequence.concat(this._connexionSequence);
                AuthentificationManager.getInstance().setValidationAction(lva);
                connInfo = this._connexionSequence.shift();
                ConnectionsHandler.connectToLoginServer(connInfo.host,connInfo.port);
@@ -314,7 +315,7 @@ package com.ankamagames.dofus.logic.connection.frames
                if(scfMsg.failedConnection == ConnectionsHandler.getConnection().getSubConnection(scfMsg))
                {
                   (ConnectionsHandler.getConnection().mainConnection as ServerConnection).stopConnectionTimeout();
-                  if(this._connexionSequence)
+                  if(this._connexionSequence && this._connexionSequence.length > 0)
                   {
                      retryConnInfo = this._connexionSequence.shift();
                      if(retryConnInfo)
@@ -368,7 +369,6 @@ package com.ankamagames.dofus.logic.connection.frames
                return true;
             case msg is IdentificationSuccessMessage:
                ismsg = IdentificationSuccessMessage(msg);
-               AuthentificationManager.getInstance().isAccountForced = ismsg.isAccountForced;
                updateInformationDisplayed = StoreDataManager.getInstance().getData(new DataStoreType("ComputerModule_Ankama_Connection",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_COMPUTER),"updateInformationDisplayed");
                currentVersion = BuildInfos.VERSION.major.toString() + "-" + BuildInfos.VERSION.minor.toString();
                if(updateInformationDisplayed != currentVersion)
@@ -386,7 +386,7 @@ package com.ankamagames.dofus.logic.connection.frames
                PlayerManager.getInstance().accountId = ismsg.accountId;
                PlayerManager.getInstance().communityId = ismsg.communityId;
                PlayerManager.getInstance().hasRights = ismsg.hasRights;
-               PlayerManager.getInstance().hasConsoleRight = ismsg.hasConsoleRight;
+               PlayerManager.getInstance().hasForceRight = ismsg.hasForceRight;
                PlayerManager.getInstance().nickname = ismsg.accountTag.nickname;
                PlayerManager.getInstance().tag = ismsg.accountTag.tagNumber;
                PlayerManager.getInstance().subscriptionEndDate = ismsg.subscriptionEndDate;
@@ -487,6 +487,26 @@ package com.ankamagames.dofus.logic.connection.frames
                ncrmsg = new NicknameChoiceRequestMessage();
                ncrmsg.initNicknameChoiceRequestMessage(ncra.nickname);
                ConnectionsHandler.getConnection().send(ncrmsg);
+               return true;
+            case msg is ForceAccountAction:
+               faa = ForceAccountAction(msg);
+               famsg = new ForceAccountMessage();
+               famsg.initForceAccountMessage(faa.accountId);
+               ConnectionsHandler.getConnection().send(famsg);
+               return true;
+            case msg is ReleaseAccountAction:
+               ramsg = new ReleaseAccountMessage();
+               ramsg.initReleaseAccountMessage();
+               ConnectionsHandler.getConnection().send(ramsg);
+               return true;
+            case msg is ForceAccountErrorMessage:
+               AuthentificationManager.getInstance().setForceAccountInfos(false,0,"","");
+               KernelEventsManager.getInstance().processCallback(HookList.ForceAccountError);
+               return true;
+            case msg is ForceAccountStatusMessage:
+               fasmsg = ForceAccountStatusMessage(msg);
+               AuthentificationManager.getInstance().setForceAccountInfos(fasmsg.force,fasmsg.forcedAccountId,fasmsg.forcedNickname,fasmsg.forcedTag);
+               KernelEventsManager.getInstance().processCallback(HookList.ForceAccountStatus,fasmsg.force,fasmsg.forcedAccountId,fasmsg.forcedNickname,fasmsg.forcedTag);
                return true;
             default:
                return false;

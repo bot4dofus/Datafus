@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.pvp
    public class SetEnableAVARequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8285;
+      public static const protocolId:uint = 9266;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.pvp
       
       override public function getMessageId() : uint
       {
-         return 8285;
+         return 9266;
       }
       
       public function initSetEnableAVARequestMessage(enable:Boolean = false) : SetEnableAVARequestMessage

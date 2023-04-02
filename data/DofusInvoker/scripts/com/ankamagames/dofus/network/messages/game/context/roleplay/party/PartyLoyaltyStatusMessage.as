@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyLoyaltyStatusMessage extends AbstractPartyMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6394;
+      public static const protocolId:uint = 3939;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 6394;
+         return 3939;
       }
       
       public function initPartyLoyaltyStatusMessage(partyId:uint = 0, loyal:Boolean = false) : PartyLoyaltyStatusMessage

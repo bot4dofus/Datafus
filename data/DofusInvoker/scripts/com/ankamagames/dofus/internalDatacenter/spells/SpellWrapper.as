@@ -329,6 +329,26 @@ package com.ankamagames.dofus.internalDatacenter.spells
          return this.spellLevelInfos["needVisibleEntity"];
       }
       
+      public function get needCellWithoutPortalWithModifiers() : Boolean
+      {
+         var spellModifier:SpellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.PORTAL_FREE_CELL);
+         if(spellModifier !== null)
+         {
+            return spellModifier.totalValue > 0;
+         }
+         return this.spellLevelInfos["needCellWithoutPortal"];
+      }
+      
+      public function get portalProjectionForbiddenWithModifiers() : Boolean
+      {
+         var spellModifier:SpellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.PORTAL_PROJECTION);
+         if(spellModifier !== null)
+         {
+            return spellModifier.totalValue > 0;
+         }
+         return this.spellLevelInfos["portalProjectionForbidden"];
+      }
+      
       public function get minimalRange() : uint
       {
          return this["minRange"];
@@ -867,6 +887,10 @@ package com.ankamagames.dofus.internalDatacenter.spells
             case "needTakenCellWithModifiers":
             case "needVisibleEntity":
             case "needVisibleEntityWithModifiers":
+            case "needCellWithoutPortal":
+            case "needCellWithoutPortalWithModifiers":
+            case "portalProjectionForbidden":
+            case "portalProjectionForbiddenWithModifiers":
             case "rangeCanBeBoosted":
                return false;
             case "isSpellWeapon":
@@ -1016,7 +1040,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
                }
                else if(healSpellModifier)
                {
-                  effectInstance.modificator = damageSpellModifier.totalValue - damageSpellModifier.additionalValue;
+                  effectInstance.modificator = healSpellModifier.totalValue - healSpellModifier.additionalValue;
                }
             }
             this.criticalEffect.push(effectInstance);

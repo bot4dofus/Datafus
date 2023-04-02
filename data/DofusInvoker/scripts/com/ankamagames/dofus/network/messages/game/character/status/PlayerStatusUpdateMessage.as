@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.character.status
    public class PlayerStatusUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5891;
+      public static const protocolId:uint = 9118;
        
       
       private var _isInitialized:Boolean = false;
@@ -39,7 +39,7 @@ package com.ankamagames.dofus.network.messages.game.character.status
       
       override public function getMessageId() : uint
       {
-         return 5891;
+         return 9118;
       }
       
       public function initPlayerStatusUpdateMessage(accountId:uint = 0, playerId:Number = 0, status:PlayerStatus = null) : PlayerStatusUpdateMessage

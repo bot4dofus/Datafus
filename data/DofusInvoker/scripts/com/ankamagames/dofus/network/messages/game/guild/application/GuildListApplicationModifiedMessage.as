@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.messages.game.guild.application
 {
-   import com.ankamagames.dofus.network.types.game.guild.application.GuildApplicationInformation;
+   import com.ankamagames.dofus.network.types.game.social.application.SocialApplicationInformation;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -12,12 +12,12 @@ package com.ankamagames.dofus.network.messages.game.guild.application
    public class GuildListApplicationModifiedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4960;
+      public static const protocolId:uint = 5650;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var apply:GuildApplicationInformation;
+      public var apply:SocialApplicationInformation;
       
       public var state:uint = 0;
       
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       public function GuildListApplicationModifiedMessage()
       {
-         this.apply = new GuildApplicationInformation();
+         this.apply = new SocialApplicationInformation();
          super();
       }
       
@@ -38,10 +38,10 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       override public function getMessageId() : uint
       {
-         return 4960;
+         return 5650;
       }
       
-      public function initGuildListApplicationModifiedMessage(apply:GuildApplicationInformation = null, state:uint = 0, playerId:Number = 0) : GuildListApplicationModifiedMessage
+      public function initGuildListApplicationModifiedMessage(apply:SocialApplicationInformation = null, state:uint = 0, playerId:Number = 0) : GuildListApplicationModifiedMessage
       {
          this.apply = apply;
          this.state = state;
@@ -52,7 +52,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       override public function reset() : void
       {
-         this.apply = new GuildApplicationInformation();
+         this.apply = new SocialApplicationInformation();
          this.playerId = 0;
          this._isInitialized = false;
       }
@@ -84,7 +84,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       public function serializeAs_GuildListApplicationModifiedMessage(output:ICustomDataOutput) : void
       {
-         this.apply.serializeAs_GuildApplicationInformation(output);
+         this.apply.serializeAs_SocialApplicationInformation(output);
          output.writeByte(this.state);
          if(this.playerId < 0 || this.playerId > 9007199254740992)
          {
@@ -100,7 +100,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       public function deserializeAs_GuildListApplicationModifiedMessage(input:ICustomDataInput) : void
       {
-         this.apply = new GuildApplicationInformation();
+         this.apply = new SocialApplicationInformation();
          this.apply.deserialize(input);
          this._stateFunc(input);
          this._playerIdFunc(input);
@@ -120,7 +120,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       private function _applytreeFunc(input:ICustomDataInput) : void
       {
-         this.apply = new GuildApplicationInformation();
+         this.apply = new SocialApplicationInformation();
          this.apply.deserializeAsync(this._applytree);
       }
       

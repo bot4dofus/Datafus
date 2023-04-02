@@ -118,6 +118,10 @@ package com.ankamagames.dofus.logic.common.managers
                {
                   setSubFilters(DataEnum.ITEM_SUPERTYPE_DOFUS_TROPHY,DataEnum.ITEM_SUPERTYPE_DOFUS_TROPHY,_uiApi.getText("ui.encyclopedia.dofusCategory"));
                }
+               if(_currentFilteredIds.length == 0 || _currentFilteredIds.indexOf(DataEnum.ITEM_SUPERTYPE_TAX_COLLECTOR_EQUIPMENT) != -1)
+               {
+                  setSubFilters(DataEnum.ITEM_SUPERTYPE_TAX_COLLECTOR_EQUIPMENT,DataEnum.ITEM_SUPERTYPE_TAX_COLLECTOR_EQUIPMENT,_uiApi.getText("ui.encyclopedia.taxCollectorCategory"));
+               }
                this.addObtainingMethodCategory(_uiApi.getText("ui.encyclopedia.obtainingTitle"),"obtaining");
                break;
             case CONSUMABLE_CATEGORY:

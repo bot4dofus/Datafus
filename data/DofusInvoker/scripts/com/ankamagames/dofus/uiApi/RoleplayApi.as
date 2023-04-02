@@ -165,11 +165,6 @@ package com.ankamagames.dofus.uiApi
          return this.roleplayEntitiesFrame.playersId;
       }
       
-      public function getMerchants() : Array
-      {
-         return this.roleplayEntitiesFrame.merchants;
-      }
-      
       public function getPlayerIsInCurrentMap(playerId:Number) : Boolean
       {
          return this.roleplayEntitiesFrame.playersId.indexOf(playerId) != -1;
@@ -422,7 +417,7 @@ package com.ankamagames.dofus.uiApi
                alternatives.push(this.getMonsterStaticInfos(groups[i]));
             }
             monsterGroupInfos = new GameRolePlayGroupMonsterWaveInformations();
-            (monsterGroupInfos as GameRolePlayGroupMonsterWaveInformations).initGameRolePlayGroupMonsterWaveInformations(0,null,null,mainCreatureStaticInfos,0,0,false,false,false,nbWaves,alternatives);
+            (monsterGroupInfos as GameRolePlayGroupMonsterWaveInformations).initGameRolePlayGroupMonsterWaveInformations(0,null,null,mainCreatureStaticInfos,0,0,false,nbWaves,alternatives);
          }
          else
          {

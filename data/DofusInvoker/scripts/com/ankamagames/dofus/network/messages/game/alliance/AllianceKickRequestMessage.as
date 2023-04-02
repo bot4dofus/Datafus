@@ -11,12 +11,12 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceKickRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4496;
+      public static const protocolId:uint = 3328;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var kickedId:uint = 0;
+      public var kickedId:Number = 0;
       
       public function AllianceKickRequestMessage()
       {
@@ -30,10 +30,10 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 4496;
+         return 3328;
       }
       
-      public function initAllianceKickRequestMessage(kickedId:uint = 0) : AllianceKickRequestMessage
+      public function initAllianceKickRequestMessage(kickedId:Number = 0) : AllianceKickRequestMessage
       {
          this.kickedId = kickedId;
          this._isInitialized = true;
@@ -73,11 +73,11 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       public function serializeAs_AllianceKickRequestMessage(output:ICustomDataOutput) : void
       {
-         if(this.kickedId < 0)
+         if(this.kickedId < -9007199254740992 || this.kickedId > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.kickedId + ") on element kickedId.");
          }
-         output.writeVarInt(this.kickedId);
+         output.writeVarLong(this.kickedId);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -102,8 +102,8 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       private function _kickedIdFunc(input:ICustomDataInput) : void
       {
-         this.kickedId = input.readVarUhInt();
-         if(this.kickedId < 0)
+         this.kickedId = input.readVarLong();
+         if(this.kickedId < -9007199254740992 || this.kickedId > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.kickedId + ") on element of AllianceKickRequestMessage.kickedId.");
          }

@@ -87,8 +87,6 @@ package com.ankamagames.berilia.managers
       
       private var _remainingXmlFilesToParse:int;
       
-      public var isDevMode:Boolean = false;
-      
       private var _uiModulesScripts:Dictionary;
       
       private var _everyModuleNames:Vector.<String>;
@@ -263,8 +261,6 @@ package com.ankamagames.berilia.managers
       
       public function reset() : void
       {
-         var module:UiModule = null;
-         var i:int = 0;
          _log.warn("Reset des modules");
          this._resetState = true;
          if(this._loader)
@@ -276,20 +272,7 @@ package com.ankamagames.berilia.managers
             this._uiFilesLoader.cancel();
          }
          TooltipManager.clearCache();
-         for each(module in this._modules)
-         {
-            if(_lastModulesToUnload.indexOf(module.id) == -1)
-            {
-               this.unloadModule(module.id);
-            }
-         }
-         for(i = 0; i < _lastModulesToUnload.length; i++)
-         {
-            if(this._modules[_lastModulesToUnload[i]])
-            {
-               this.unloadModule(_lastModulesToUnload[i]);
-            }
-         }
+         this.unloadModules();
          Shortcut.reset();
          Berilia.getInstance().reset();
          Berilia.getInstance().init(Berilia.getInstance().docMain);
@@ -305,6 +288,26 @@ package com.ankamagames.berilia.managers
          this._moduleCount = 0;
          this._remainingUiFilesToLoad = 0;
          this._remainingXmlFilesToParse = 0;
+      }
+      
+      public function unloadModules() : void
+      {
+         var module:UiModule = null;
+         var i:int = 0;
+         for each(module in this._modules)
+         {
+            if(_lastModulesToUnload.indexOf(module.id) == -1)
+            {
+               this.unloadModule(module.id);
+            }
+         }
+         for(i = 0; i < _lastModulesToUnload.length; i++)
+         {
+            if(this._modules[_lastModulesToUnload[i]])
+            {
+               this.unloadModule(_lastModulesToUnload[i]);
+            }
+         }
       }
       
       public function loadModule(id:String) : void

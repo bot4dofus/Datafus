@@ -29,6 +29,10 @@ package com.ankamagames.dofus.network.enums
       
       public static const ANONYMOUS_IP_FORBIDDEN:uint = 13;
       
+      public static const INVALID_SHIELD_CERTIFICATE:uint = 14;
+      
+      public static const ALREADY_CONNECTED:uint = 15;
+      
       public static const SERVICE_UNAVAILABLE:uint = 53;
       
       public static const EXTERNAL_ACCOUNT_LINK_REFUSED:uint = 61;

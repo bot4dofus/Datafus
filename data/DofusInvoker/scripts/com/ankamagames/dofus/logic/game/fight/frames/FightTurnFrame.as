@@ -16,8 +16,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.berilia.managers.LinkedCursorSpriteManager;
    import com.ankamagames.berilia.types.data.LinkedCursorData;
+   import com.ankamagames.dofus.internalDatacenter.stats.EntityStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
-   import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
@@ -987,7 +987,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          }
       }
       
-      private function onUpdateMovementPoints(stat:Stat) : void
+      private function onUpdateMovementPoints(stat:EntityStat) : void
       {
          if(stat && stat.entityId === this._currentFighterId && stat.totalValue !== this._lastMP)
          {

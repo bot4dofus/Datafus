@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightOptionsInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 3516;
+      public static const protocolId:uint = 9922;
        
       
       public var isSecret:Boolean = false;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 3516;
+         return 9922;
       }
       
       public function initFightOptionsInformations(isSecret:Boolean = false, isRestrictedToPartyOnly:Boolean = false, isClosed:Boolean = false, isAskingForHelp:Boolean = false) : FightOptionsInformations

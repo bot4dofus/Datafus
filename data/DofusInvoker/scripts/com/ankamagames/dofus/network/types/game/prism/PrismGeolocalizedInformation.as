@@ -6,11 +6,15 @@ package com.ankamagames.dofus.network.types.game.prism
    import com.ankamagames.jerakine.network.INetworkType;
    import com.ankamagames.jerakine.network.utils.FuncTree;
    
-   public class PrismGeolocalizedInformation extends PrismSubareaEmptyInfo implements INetworkType
+   public class PrismGeolocalizedInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 8423;
+      public static const protocolId:uint = 9659;
        
+      
+      public var subAreaId:uint = 0;
+      
+      public var allianceId:uint = 0;
       
       public var worldX:int = 0;
       
@@ -28,14 +32,15 @@ package com.ankamagames.dofus.network.types.game.prism
          super();
       }
       
-      override public function getTypeId() : uint
+      public function getTypeId() : uint
       {
-         return 8423;
+         return 9659;
       }
       
       public function initPrismGeolocalizedInformation(subAreaId:uint = 0, allianceId:uint = 0, worldX:int = 0, worldY:int = 0, mapId:Number = 0, prism:PrismInformation = null) : PrismGeolocalizedInformation
       {
-         super.initPrismSubareaEmptyInfo(subAreaId,allianceId);
+         this.subAreaId = subAreaId;
+         this.allianceId = allianceId;
          this.worldX = worldX;
          this.worldY = worldY;
          this.mapId = mapId;
@@ -43,23 +48,33 @@ package com.ankamagames.dofus.network.types.game.prism
          return this;
       }
       
-      override public function reset() : void
+      public function reset() : void
       {
-         super.reset();
+         this.subAreaId = 0;
+         this.allianceId = 0;
          this.worldX = 0;
          this.worldY = 0;
          this.mapId = 0;
          this.prism = new PrismInformation();
       }
       
-      override public function serialize(output:ICustomDataOutput) : void
+      public function serialize(output:ICustomDataOutput) : void
       {
          this.serializeAs_PrismGeolocalizedInformation(output);
       }
       
       public function serializeAs_PrismGeolocalizedInformation(output:ICustomDataOutput) : void
       {
-         super.serializeAs_PrismSubareaEmptyInfo(output);
+         if(this.subAreaId < 0)
+         {
+            throw new Error("Forbidden value (" + this.subAreaId + ") on element subAreaId.");
+         }
+         output.writeVarShort(this.subAreaId);
+         if(this.allianceId < 0)
+         {
+            throw new Error("Forbidden value (" + this.allianceId + ") on element allianceId.");
+         }
+         output.writeVarInt(this.allianceId);
          if(this.worldX < -255 || this.worldX > 255)
          {
             throw new Error("Forbidden value (" + this.worldX + ") on element worldX.");
@@ -79,34 +94,54 @@ package com.ankamagames.dofus.network.types.game.prism
          this.prism.serialize(output);
       }
       
-      override public function deserialize(input:ICustomDataInput) : void
+      public function deserialize(input:ICustomDataInput) : void
       {
          this.deserializeAs_PrismGeolocalizedInformation(input);
       }
       
       public function deserializeAs_PrismGeolocalizedInformation(input:ICustomDataInput) : void
       {
-         super.deserialize(input);
+         this._subAreaIdFunc(input);
+         this._allianceIdFunc(input);
          this._worldXFunc(input);
          this._worldYFunc(input);
          this._mapIdFunc(input);
-         var _id4:uint = input.readUnsignedShort();
-         this.prism = ProtocolTypeManager.getInstance(PrismInformation,_id4);
+         var _id6:uint = input.readUnsignedShort();
+         this.prism = ProtocolTypeManager.getInstance(PrismInformation,_id6);
          this.prism.deserialize(input);
       }
       
-      override public function deserializeAsync(tree:FuncTree) : void
+      public function deserializeAsync(tree:FuncTree) : void
       {
          this.deserializeAsyncAs_PrismGeolocalizedInformation(tree);
       }
       
       public function deserializeAsyncAs_PrismGeolocalizedInformation(tree:FuncTree) : void
       {
-         super.deserializeAsync(tree);
+         tree.addChild(this._subAreaIdFunc);
+         tree.addChild(this._allianceIdFunc);
          tree.addChild(this._worldXFunc);
          tree.addChild(this._worldYFunc);
          tree.addChild(this._mapIdFunc);
          this._prismtree = tree.addChild(this._prismtreeFunc);
+      }
+      
+      private function _subAreaIdFunc(input:ICustomDataInput) : void
+      {
+         this.subAreaId = input.readVarUhShort();
+         if(this.subAreaId < 0)
+         {
+            throw new Error("Forbidden value (" + this.subAreaId + ") on element of PrismGeolocalizedInformation.subAreaId.");
+         }
+      }
+      
+      private function _allianceIdFunc(input:ICustomDataInput) : void
+      {
+         this.allianceId = input.readVarUhInt();
+         if(this.allianceId < 0)
+         {
+            throw new Error("Forbidden value (" + this.allianceId + ") on element of PrismGeolocalizedInformation.allianceId.");
+         }
       }
       
       private function _worldXFunc(input:ICustomDataInput) : void

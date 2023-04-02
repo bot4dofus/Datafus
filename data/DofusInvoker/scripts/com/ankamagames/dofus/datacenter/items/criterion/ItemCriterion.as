@@ -1,7 +1,7 @@
 package com.ankamagames.dofus.datacenter.items.criterion
 {
+   import com.ankamagames.dofus.internalDatacenter.stats.EntityStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
-   import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.jerakine.data.I18n;
@@ -149,7 +149,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
       protected function getCriterion() : int
       {
          var criterion:int = 0;
-         var stat:Stat = null;
+         var stat:EntityStat = null;
          var player:PlayedCharacterManager = PlayedCharacterManager.getInstance();
          var statsManager:StatsManager = StatsManager.getInstance();
          if(statsManager === null)

@@ -104,6 +104,46 @@
 			"id": 84,
 			"formulaName": "t7_tempoken_to_experience",
 			"luaFormula": "function params()\r\n   return {\"tempoken\"}\r\nend\r\n\r\nfunction main()\r\n   return math.floor( 3785 * math.pow(tempoken, 1.74))\r\nend"
+		},
+		{
+			"id": 85,
+			"formulaName": "limit_time_modification_module",
+			"luaFormula": "function main()\r\n   return 10\r\nend"
+		},
+		{
+			"id": 86,
+			"formulaName": "prism_priority_after_ava",
+			"luaFormula": "function params()\r\n   return {\"number_controlled_territories\"}\r\nend\r\n\r\nfunction main()\r\n   return 600 * number_controlled_territories * monster_level / 4000 / 100;\r\nend"
+		},
+		{
+			"id": 89,
+			"formulaName": "invulnerability_after_setup",
+			"luaFormula": "function params()\r\n   return {\"number_controlled_territories\"}\r\nend\r\n\r\nfunction main()\r\n   return 600 * math.pow(number_controlled_territories + 1,-0.6);\r\nend"
+		},
+		{
+			"id": 90,
+			"formulaName": "durability_variation_prism",
+			"luaFormula": "function params()\r\n   return {\"number_recycled_nuggets\", \"prism_age\",\"durability\"}\r\nend\r\n\r\nfunction main()\r\n   local coeff = 40190 - 190 * math.min(168, prism_age);\r\n   return durability - math.min(durability, number_recycled_nuggets / coeff);\r\nend"
+		},
+		{
+			"id": 91,
+			"formulaName": "banning_time_attack_prism",
+			"luaFormula": "function main()\r\n   return 60\r\nend"
+		},
+		{
+			"id": 94,
+			"formulaName": "guild_max_members",
+			"luaFormula": "function params()\r\n   return {\"guild_level\"}\r\nend\r\n\r\nfunction main()\r\n   return math.floor(150 + guild_level * 0.5);\r\nend"
+		},
+		{
+			"id": 97,
+			"formulaName": "victory_points_fight_koth",
+			"luaFormula": "function params()\r\n   return {\"my_alliance_score\",\"opponent_alliance_score\",\"number_players_my_alliance\",\"number_players_opponent_alliance\",\"total_score_koth\",\"roles_variation\"}\r\nend\r\n\r\n\r\n\r\nfunction main()\r\n\r\n-- Param\u00e8tres\r\n   local default_win_points = 50\r\n   local base_points = 0 --Les points sans l'elactic ni le champion et l'\u00e9claireur\r\n   local elactic_factor = 0\r\n   local delta_teams = 0\r\n\r\n\r\n--Calcul des points de base\r\n   base_points = default_win_points * math.min(number_players_my_alliance,number_players_opponent_alliance);\r\n\r\n\r\n--Calcul du facteur d'\u00e9lasticit\u00e9\r\n   delta_teams = (my_alliance_score - opponent_alliance_score) / (math.max(0.06 * total_score_koth,1))\r\n   elactic_factor = 2 * (1 / (1+math.exp(delta_teams)));\r\n\r\n\r\n--on retourne ces 3 valeurs suivant la formule suivante\r\n   return math.floor((base_points + roles_variation) * elactic_factor);\r\n\r\nend"
+		},
+		{
+			"id": 98,
+			"formulaName": "defeat_points_fight_koth",
+			"luaFormula": "function params()\r\n   return {\"my_alliance_score\",\"opponent_alliance_score\",\"number_players_my_alliance\",\"number_players_opponent_alliance\",\"total_score_koth\",\"roles_variation\"}\r\nend\r\n\r\n\r\n\r\nfunction main()\r\n\r\n-- Param\u00e8tres\r\n   local default_lose_points = -25\r\n   local base_points = 0 --Les points sans l'elactic ni le champion et l'\u00e9claireur\r\n   local elactic_factor = 0\r\n   local delta_teams = 0\r\n\r\n\r\n--Calcul des points de base\r\n   base_points = default_lose_points * math.min(number_players_my_alliance,number_players_opponent_alliance);\r\n\r\n\r\n--Calcul du facteur d'\u00e9lasticit\u00e9\r\n   delta_teams = (opponent_alliance_score - my_alliance_score) / (math.max(0.06 * total_score_koth,1))\r\n   elactic_factor = 2 * (1 / (1+math.exp(delta_teams)));\r\n\r\n\r\n--en retourne ces 3 valeurs suivant la formule suivante\r\n   return math.floor((base_points - roles_variation) * elactic_factor);\r\n\r\nend"
 		}
 	]
 }

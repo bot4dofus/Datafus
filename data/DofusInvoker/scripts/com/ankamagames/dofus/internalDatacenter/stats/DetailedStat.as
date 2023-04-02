@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.internalDatacenter.stats
 {
-   public class DetailedStat extends Stat
+   public class DetailedStat extends EntityStat
    {
        
       

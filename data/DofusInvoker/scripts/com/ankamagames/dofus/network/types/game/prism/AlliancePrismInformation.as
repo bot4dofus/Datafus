@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.types.game.prism
 {
-   import com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformation;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
    import com.ankamagames.jerakine.network.INetworkType;
@@ -9,27 +9,27 @@ package com.ankamagames.dofus.network.types.game.prism
    public class AlliancePrismInformation extends PrismInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 8324;
+      public static const protocolId:uint = 9441;
        
       
-      public var alliance:AllianceInformations;
+      public var alliance:AllianceInformation;
       
       private var _alliancetree:FuncTree;
       
       public function AlliancePrismInformation()
       {
-         this.alliance = new AllianceInformations();
+         this.alliance = new AllianceInformation();
          super();
       }
       
       override public function getTypeId() : uint
       {
-         return 8324;
+         return 9441;
       }
       
-      public function initAlliancePrismInformation(typeId:uint = 0, state:uint = 1, nextVulnerabilityDate:uint = 0, placementDate:uint = 0, rewardTokenCount:uint = 0, alliance:AllianceInformations = null) : AlliancePrismInformation
+      public function initAlliancePrismInformation(state:uint = 1, placementDate:uint = 0, nuggetsCount:uint = 0, durability:uint = 0, alliance:AllianceInformation = null) : AlliancePrismInformation
       {
-         super.initPrismInformation(typeId,state,nextVulnerabilityDate,placementDate,rewardTokenCount);
+         super.initPrismInformation(state,placementDate,nuggetsCount,durability);
          this.alliance = alliance;
          return this;
       }
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.types.game.prism
       override public function reset() : void
       {
          super.reset();
-         this.alliance = new AllianceInformations();
+         this.alliance = new AllianceInformation();
       }
       
       override public function serialize(output:ICustomDataOutput) : void
@@ -48,7 +48,7 @@ package com.ankamagames.dofus.network.types.game.prism
       public function serializeAs_AlliancePrismInformation(output:ICustomDataOutput) : void
       {
          super.serializeAs_PrismInformation(output);
-         this.alliance.serializeAs_AllianceInformations(output);
+         this.alliance.serializeAs_AllianceInformation(output);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -59,7 +59,7 @@ package com.ankamagames.dofus.network.types.game.prism
       public function deserializeAs_AlliancePrismInformation(input:ICustomDataInput) : void
       {
          super.deserialize(input);
-         this.alliance = new AllianceInformations();
+         this.alliance = new AllianceInformation();
          this.alliance.deserialize(input);
       }
       
@@ -76,7 +76,7 @@ package com.ankamagames.dofus.network.types.game.prism
       
       private function _alliancetreeFunc(input:ICustomDataInput) : void
       {
-         this.alliance = new AllianceInformations();
+         this.alliance = new AllianceInformation();
          this.alliance.deserializeAsync(this._alliancetree);
       }
    }

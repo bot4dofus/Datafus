@@ -2,7 +2,7 @@ package com.ankamagames.dofus.logic.common.managers
 {
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.dofus.misc.lists.SocialHookList;
-   import com.ankamagames.dofus.network.types.game.guild.GuildRankMinimalInformation;
+   import com.ankamagames.dofus.network.types.game.rank.RankMinimalInformation;
    import com.ankamagames.jerakine.utils.misc.StringUtils;
    
    public class HyperlinkShowGuildRanks
@@ -14,7 +14,7 @@ package com.ankamagames.dofus.logic.common.managers
          super();
       }
       
-      public static function getLink(rank:GuildRankMinimalInformation, pText:String = null) : String
+      public static function getLink(rank:RankMinimalInformation, pText:String = null) : String
       {
          var text:String = !!pText ? "::" + pText : "";
          return "{rank," + rank.id + "," + rank.name + text + "}";

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses
    public class HouseLockFromInsideRequestMessage extends LockableChangeCodeMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8494;
+      public static const protocolId:uint = 1268;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses
       
       override public function getMessageId() : uint
       {
-         return 8494;
+         return 1268;
       }
       
       public function initHouseLockFromInsideRequestMessage(code:String = "") : HouseLockFromInsideRequestMessage

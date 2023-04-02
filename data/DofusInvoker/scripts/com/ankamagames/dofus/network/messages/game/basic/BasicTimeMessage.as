@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.basic
    public class BasicTimeMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5815;
+      public static const protocolId:uint = 5012;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.basic
       
       override public function getMessageId() : uint
       {
-         return 5815;
+         return 5012;
       }
       
       public function initBasicTimeMessage(timestamp:Number = 0, timezoneOffset:int = 0) : BasicTimeMessage

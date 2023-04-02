@@ -43,6 +43,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowCellManager;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.common.actions.ToggleShowUIAction;
+   import com.ankamagames.dofus.logic.game.common.frames.AllianceFrame;
    import com.ankamagames.dofus.logic.game.common.frames.BreachFrame;
    import com.ankamagames.dofus.logic.game.common.frames.PartyManagementFrame;
    import com.ankamagames.dofus.logic.game.common.frames.PointCellFrame;
@@ -83,6 +84,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.misc.lists.FightHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.TriggerHookList;
+   import com.ankamagames.dofus.network.ProtocolConstantsEnum;
    import com.ankamagames.dofus.network.enums.CharacterSpellModificationTypeEnum;
    import com.ankamagames.dofus.network.enums.FightOutcomeEnum;
    import com.ankamagames.dofus.network.enums.FightTypeEnum;
@@ -506,6 +508,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
                return (fighterInfos as GameFightCharacterInformations).level;
             case fighterInfos is GameFightEntityInformation:
                return (fighterInfos as GameFightEntityInformation).level;
+            case fighterInfos is GameFightTaxCollectorInformations:
+               return ProtocolConstantsEnum.MAX_LEVEL;
             case fighterInfos is GameFightMonsterInformations:
                if(this.fightType == FightTypeEnum.FIGHT_TYPE_BREACH)
                {
@@ -536,8 +540,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
                }
                return (fighterInfos as GameFightMonsterInformations).creatureLevel;
                break;
-            case fighterInfos is GameFightTaxCollectorInformations:
-               return (fighterInfos as GameFightTaxCollectorInformations).level;
             default:
                return 0;
          }
@@ -1112,6 +1114,10 @@ package com.ankamagames.dofus.logic.game.fight.frames
                gflmsg = msg as GameFightLeaveMessage;
                if(gflmsg.charId == PlayedCharacterManager.getInstance().id)
                {
+                  if(Kernel.getWorker().getFrame(AllianceFrame))
+                  {
+                     AllianceFrame.getInstance().currentJoinedFight = null;
+                  }
                   PlayedCharacterManager.getInstance().fightId = -1;
                }
                if(TooltipManager.isVisible("tooltipOverEntity_" + gflmsg.charId))
@@ -1184,6 +1190,10 @@ package com.ankamagames.dofus.logic.game.fight.frames
                SpellWrapper.removeAllSpellWrapperBut(PlayedCharacterManager.getInstance().id,SecureCenter.ACCESS_KEY);
                SpellWrapper.resetAllCoolDown(PlayedCharacterManager.getInstance().id,SecureCenter.ACCESS_KEY);
                SpellModifiersManager.getInstance().destroy();
+               if(Kernel.getWorker().getFrame(AllianceFrame))
+               {
+                  AllianceFrame.getInstance().currentJoinedFight = null;
+               }
                if(gfemsg.results == null)
                {
                   KernelEventsManager.getInstance().processCallback(FightHookList.SpectatorWantLeave);
@@ -1988,7 +1998,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
             if(entityId != id)
             {
                entityInfo = this._entitiesFrame.getEntityInfos(entityId) as GameFightFighterInformations;
-               if(entityInfo && !entityInfo.stats.invisibilityState == GameActionFightInvisibilityStateEnum.INVISIBLE && (entityInfo.stats.summoner == id || summonerId == entityId || entityInfo.stats.summoner == summonerId && summonerId || entityInfo is GameFightEntityInformation && (entityInfo as GameFightEntityInformation).masterId == id))
+               if(entityInfo && entityInfo.stats.invisibilityState != GameActionFightInvisibilityStateEnum.INVISIBLE && (entityInfo.stats.summoner == id || summonerId == entityId || entityInfo.stats.summoner == summonerId && summonerId || entityInfo is GameFightEntityInformation && (entityInfo as GameFightEntityInformation).masterId == id))
                {
                   this.highlightAsLinkedEntity(entityId,summonerId == entityId);
                }

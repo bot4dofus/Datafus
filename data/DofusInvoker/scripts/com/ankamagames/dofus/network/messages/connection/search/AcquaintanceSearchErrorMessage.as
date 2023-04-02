@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection.search
    public class AcquaintanceSearchErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4005;
+      public static const protocolId:uint = 4127;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.connection.search
       
       override public function getMessageId() : uint
       {
-         return 4005;
+         return 4127;
       }
       
       public function initAcquaintanceSearchErrorMessage(reason:uint = 0) : AcquaintanceSearchErrorMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class DungeonPartyFinderAvailableDungeonsRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1731;
+      public static const protocolId:uint = 9652;
        
       
       public function DungeonPartyFinderAvailableDungeonsRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 1731;
+         return 9652;
       }
       
       public function initDungeonPartyFinderAvailableDungeonsRequestMessage() : DungeonPartyFinderAvailableDungeonsRequestMessage

@@ -1,6 +1,7 @@
 package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
 {
-   import com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.BasicAllianceInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.BasicNamedAllianceInformations;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -11,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
    public class TaxCollectorDialogQuestionExtendedMessage extends TaxCollectorDialogQuestionBasicMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4922;
+      public static const protocolId:uint = 7189;
        
       
       private var _isInitialized:Boolean = false;
@@ -20,22 +21,21 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
       
       public var prospecting:uint = 0;
       
-      public var wisdom:uint = 0;
+      public var alliance:BasicNamedAllianceInformations;
       
       public var taxCollectorsCount:uint = 0;
       
       public var taxCollectorAttack:int = 0;
       
-      public var kamas:Number = 0;
-      
-      public var experience:Number = 0;
-      
       public var pods:uint = 0;
       
       public var itemsValue:Number = 0;
       
+      private var _alliancetree:FuncTree;
+      
       public function TaxCollectorDialogQuestionExtendedMessage()
       {
+         this.alliance = new BasicNamedAllianceInformations();
          super();
       }
       
@@ -46,19 +46,17 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
       
       override public function getMessageId() : uint
       {
-         return 4922;
+         return 7189;
       }
       
-      public function initTaxCollectorDialogQuestionExtendedMessage(guildInfo:BasicGuildInformations = null, maxPods:uint = 0, prospecting:uint = 0, wisdom:uint = 0, taxCollectorsCount:uint = 0, taxCollectorAttack:int = 0, kamas:Number = 0, experience:Number = 0, pods:uint = 0, itemsValue:Number = 0) : TaxCollectorDialogQuestionExtendedMessage
+      public function initTaxCollectorDialogQuestionExtendedMessage(allianceInfo:BasicAllianceInformations = null, maxPods:uint = 0, prospecting:uint = 0, alliance:BasicNamedAllianceInformations = null, taxCollectorsCount:uint = 0, taxCollectorAttack:int = 0, pods:uint = 0, itemsValue:Number = 0) : TaxCollectorDialogQuestionExtendedMessage
       {
-         super.initTaxCollectorDialogQuestionBasicMessage(guildInfo);
+         super.initTaxCollectorDialogQuestionBasicMessage(allianceInfo);
          this.maxPods = maxPods;
          this.prospecting = prospecting;
-         this.wisdom = wisdom;
+         this.alliance = alliance;
          this.taxCollectorsCount = taxCollectorsCount;
          this.taxCollectorAttack = taxCollectorAttack;
-         this.kamas = kamas;
-         this.experience = experience;
          this.pods = pods;
          this.itemsValue = itemsValue;
          this._isInitialized = true;
@@ -70,11 +68,8 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
          super.reset();
          this.maxPods = 0;
          this.prospecting = 0;
-         this.wisdom = 0;
-         this.taxCollectorsCount = 0;
+         this.alliance = new BasicNamedAllianceInformations();
          this.taxCollectorAttack = 0;
-         this.kamas = 0;
-         this.experience = 0;
          this.pods = 0;
          this.itemsValue = 0;
          this._isInitialized = false;
@@ -118,27 +113,13 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
             throw new Error("Forbidden value (" + this.prospecting + ") on element prospecting.");
          }
          output.writeVarShort(this.prospecting);
-         if(this.wisdom < 0)
-         {
-            throw new Error("Forbidden value (" + this.wisdom + ") on element wisdom.");
-         }
-         output.writeVarShort(this.wisdom);
+         this.alliance.serializeAs_BasicNamedAllianceInformations(output);
          if(this.taxCollectorsCount < 0)
          {
             throw new Error("Forbidden value (" + this.taxCollectorsCount + ") on element taxCollectorsCount.");
          }
          output.writeByte(this.taxCollectorsCount);
          output.writeInt(this.taxCollectorAttack);
-         if(this.kamas < 0 || this.kamas > 9007199254740992)
-         {
-            throw new Error("Forbidden value (" + this.kamas + ") on element kamas.");
-         }
-         output.writeVarLong(this.kamas);
-         if(this.experience < 0 || this.experience > 9007199254740992)
-         {
-            throw new Error("Forbidden value (" + this.experience + ") on element experience.");
-         }
-         output.writeVarLong(this.experience);
          if(this.pods < 0)
          {
             throw new Error("Forbidden value (" + this.pods + ") on element pods.");
@@ -161,11 +142,10 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
          super.deserialize(input);
          this._maxPodsFunc(input);
          this._prospectingFunc(input);
-         this._wisdomFunc(input);
+         this.alliance = new BasicNamedAllianceInformations();
+         this.alliance.deserialize(input);
          this._taxCollectorsCountFunc(input);
          this._taxCollectorAttackFunc(input);
-         this._kamasFunc(input);
-         this._experienceFunc(input);
          this._podsFunc(input);
          this._itemsValueFunc(input);
       }
@@ -180,11 +160,9 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
          super.deserializeAsync(tree);
          tree.addChild(this._maxPodsFunc);
          tree.addChild(this._prospectingFunc);
-         tree.addChild(this._wisdomFunc);
+         this._alliancetree = tree.addChild(this._alliancetreeFunc);
          tree.addChild(this._taxCollectorsCountFunc);
          tree.addChild(this._taxCollectorAttackFunc);
-         tree.addChild(this._kamasFunc);
-         tree.addChild(this._experienceFunc);
          tree.addChild(this._podsFunc);
          tree.addChild(this._itemsValueFunc);
       }
@@ -207,13 +185,10 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
          }
       }
       
-      private function _wisdomFunc(input:ICustomDataInput) : void
+      private function _alliancetreeFunc(input:ICustomDataInput) : void
       {
-         this.wisdom = input.readVarUhShort();
-         if(this.wisdom < 0)
-         {
-            throw new Error("Forbidden value (" + this.wisdom + ") on element of TaxCollectorDialogQuestionExtendedMessage.wisdom.");
-         }
+         this.alliance = new BasicNamedAllianceInformations();
+         this.alliance.deserializeAsync(this._alliancetree);
       }
       
       private function _taxCollectorsCountFunc(input:ICustomDataInput) : void
@@ -228,24 +203,6 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
       private function _taxCollectorAttackFunc(input:ICustomDataInput) : void
       {
          this.taxCollectorAttack = input.readInt();
-      }
-      
-      private function _kamasFunc(input:ICustomDataInput) : void
-      {
-         this.kamas = input.readVarUhLong();
-         if(this.kamas < 0 || this.kamas > 9007199254740992)
-         {
-            throw new Error("Forbidden value (" + this.kamas + ") on element of TaxCollectorDialogQuestionExtendedMessage.kamas.");
-         }
-      }
-      
-      private function _experienceFunc(input:ICustomDataInput) : void
-      {
-         this.experience = input.readVarUhLong();
-         if(this.experience < 0 || this.experience > 9007199254740992)
-         {
-            throw new Error("Forbidden value (" + this.experience + ") on element of TaxCollectorDialogQuestionExtendedMessage.experience.");
-         }
       }
       
       private function _podsFunc(input:ICustomDataInput) : void

@@ -57,8 +57,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const GiftsWaitingAllocation:String = "GiftsWaitingAllocation";
       
-      public static const MerchantListUpdated:String = "MerchantListUpdated";
-      
       public static const Alterations:String = "Alterations";
       
       public static const AlterationAdded:String = "AlterationAdded";
@@ -105,7 +103,6 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(NpcDialogQuestion);
          Hook.createHook(PortalDialogQuestion);
          Hook.createHook(GiftsWaitingAllocation);
-         Hook.createHook(MerchantListUpdated);
          Hook.createHook(Alterations);
          Hook.createHook(AlterationAdded);
          Hook.createHook(AlterationsUpdated);

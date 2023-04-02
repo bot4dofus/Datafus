@@ -64,6 +64,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.QuestHookList;
+   import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.misc.utils.ParamsDecoder;
    import com.ankamagames.dofus.network.enums.ChatActivableChannelsEnum;
    import com.ankamagames.dofus.network.enums.CompassTypeEnum;
@@ -1057,7 +1058,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   if(finishedAchievement.id == FIRST_TEMPORIS_REWARD_ACHIEVEMENT_ID)
                   {
                      nid = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.temporis.popupFirstRewardTitle"),I18n.getUiText("ui.temporis.popupFirstRewardContent"),NotificationTypeEnum.TUTORIAL,"FirstTemporisRewardNotif");
-                     NotificationManager.getInstance().addButtonToNotification(nid,I18n.getUiText("ui.achievement.rewardsGet"),"OpenGuidebookAction",["temporisTab"]);
+                     NotificationManager.getInstance().addButtonToNotification(nid,I18n.getUiText("ui.achievement.rewardsGet"),"OpenGuideBookAction",["temporisTab"]);
                      NotificationManager.getInstance().sendNotification(nid);
                   }
                }
@@ -1065,7 +1066,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                {
                   if((finishedAchievement.id == 5246 || finishedAchievement.id == 5252 || finishedAchievement.id == 5258 || finishedAchievement.id == 5264) && (!this.achievementIsFinished(5246) && !this.achievementIsFinished(5252) && !this.achievementIsFinished(5258) && !this.achievementIsFinished(5264)))
                   {
-                     shortcut = this.getShortcutBindString("openBookSpell");
+                     shortcut = this.getShortcutBindString(ShortcutHookListEnum.OPEN_SPELLS);
                      if(shortcut != "")
                      {
                         shortcut = " (" + shortcut + ")";
@@ -1073,13 +1074,13 @@ package com.ankamagames.dofus.logic.game.common.frames
                      nid = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.temporis.pushup.equipModsterTitle"),I18n.getUiText("ui.temporis.pushup.equipModsterDescription"),NotificationTypeEnum.TUTORIAL,"FirstModsterTemporisSpellNotif");
                      NotificationManager.getInstance().addButtonToNotification(nid,I18n.getUiText("ui.temporis.pushup.equipModsterButton") + shortcut,"OpenBookAction",["forgettableModstersUi"],true,160);
                      NotificationManager.getInstance().sendNotification(nid);
-                     shortcut = this.getShortcutBindString("openGuidebook");
+                     shortcut = this.getShortcutBindString(ShortcutHookListEnum.OPEN_GUIDEBOOK);
                      if(shortcut != "")
                      {
                         shortcut = " (" + shortcut + ")";
                      }
                      nid = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.temporis.pushup.collectionTitle"),I18n.getUiText("ui.temporis.pushup.collectionDescription"),NotificationTypeEnum.TUTORIAL,"FirstModsterTemporisCollectionNotif");
-                     NotificationManager.getInstance().addButtonToNotification(nid,I18n.getUiText("ui.temporis.pushup.collectionButton") + shortcut,"OpenGuidebookAction",["collectionTab"],true,160);
+                     NotificationManager.getInstance().addButtonToNotification(nid,I18n.getUiText("ui.temporis.pushup.collectionButton") + shortcut,"OpenGuideBookAction",["collectionTab"],true,160);
                      NotificationManager.getInstance().sendNotification(nid);
                   }
                }

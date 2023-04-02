@@ -137,15 +137,17 @@ package com.ankamagames.dofus.network
       
       public static const MAX_OBJECT_EFFECT_STRING_LEN:int = 30;
       
-      public static const MAX_MEMBERS_PER_GUILD:int = 240;
-      
       public static const MAX_GUILD_PER_PAGE:int = 50;
       
       public static const MAX_GUILD_APPLICATION_PER_PAGE:int = 50;
       
       public static const MAX_GUILD_LOGBOOK_ENTRY_PER_TAB:int = 50;
       
+      public static const MAX_MEMBERS_PER_ALLIANCE:int = 250;
+      
       public static const MAX_ALLIANCE_PER_PAGE:int = 50;
+      
+      public static const MAX_ALLIANCE_APPLICATION_PER_PAGE:int = 50;
       
       public static const MAX_ADDITIONNAL_PER_CARAC:int = 100;
       
@@ -171,17 +173,21 @@ package com.ankamagames.dofus.network
       
       public static const MAX_SHORT_VALUE:int = 32767;
       
-      public static const MAX_GUILD_RIGHTS:int = 40;
+      public static const MAX_RIGHTS:int = 40;
       
       public static const MIN_RANK_NAME_LENGTH:int = 1;
       
       public static const MAX_RANK_NAME_LENGTH:int = 24;
       
-      public static const MIN_GUILD_RANKS:int = 2;
+      public static const MIN_RANKS:int = 2;
       
-      public static const MAX_GUILD_RANKS:int = 30;
+      public static const MAX_RANKS:int = 30;
       
       public static const MAX_GUILD_CHEST_TAB_NAME_LEN:int = 12;
+      
+      public static const MAX_TAX_COLLECTOR_ACTIVE_SPELLS:int = 5;
+      
+      public static const MAX_PRISM_CRISTAL_USED:int = 4;
        
       
       public function ProtocolConstantsEnum()

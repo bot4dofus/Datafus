@@ -6,12 +6,6 @@ package com.ankamagames.dofus.internalDatacenter.sales
    
    public class OfflineSaleWrapper implements IDataCenter
    {
-      
-      public static const TYPE_BIDHOUSE:uint = 1;
-      
-      public static const TYPE_MERCHANT:uint = 2;
-      
-      public static const TYPE_UNSOLD:uint = 3;
        
       
       public var index:uint;
@@ -35,11 +29,10 @@ package com.ankamagames.dofus.internalDatacenter.sales
          super();
       }
       
-      public static function create(pIndex:uint, pSaleType:uint, pItemId:uint, pQuantity:uint, pKamas:Number, pDate:uint, pEffects:ObjectEffects) : OfflineSaleWrapper
+      public static function create(pIndex:uint, pItemId:uint, pQuantity:uint, pKamas:Number, pDate:uint, pEffects:ObjectEffects) : OfflineSaleWrapper
       {
          var osw:OfflineSaleWrapper = new OfflineSaleWrapper();
          osw.index = pIndex;
-         osw.type = pSaleType;
          osw.itemId = pItemId;
          osw.itemName = Item.getItemById(osw.itemId).name;
          osw.quantity = pQuantity;

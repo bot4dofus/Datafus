@@ -160,6 +160,7 @@ package com.ankamagames.jerakine.data
             count++;
          }
          this._counter[moduleName] = count;
+         _log.debug(count + " objets in this module");
          var classes:Dictionary = new Dictionary();
          this._classes[moduleName] = classes;
          var classesCount:int = stream.readInt();

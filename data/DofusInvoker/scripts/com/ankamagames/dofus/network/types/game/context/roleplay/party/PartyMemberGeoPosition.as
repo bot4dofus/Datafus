@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
    public class PartyMemberGeoPosition implements INetworkType
    {
       
-      public static const protocolId:uint = 1033;
+      public static const protocolId:uint = 7944;
        
       
       public var memberId:uint = 0;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
       
       public function getTypeId() : uint
       {
-         return 1033;
+         return 7944;
       }
       
       public function initPartyMemberGeoPosition(memberId:uint = 0, worldX:int = 0, worldY:int = 0, mapId:Number = 0, subAreaId:uint = 0) : PartyMemberGeoPosition

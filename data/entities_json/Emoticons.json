@@ -4001,8 +4001,8 @@
 		},
 		{
 			"id": 284,
-			"nameId": 985351,
-			"shortcutId": 985352,
+			"nameId": 985809,
+			"shortcutId": 985810,
 			"order": 508800,
 			"defaultAnim": "Knight",
 			"persistancy": false,
@@ -4016,8 +4016,8 @@
 		},
 		{
 			"id": 285,
-			"nameId": 985482,
-			"shortcutId": 985701,
+			"nameId": 986065,
+			"shortcutId": 986746,
 			"order": 508900,
 			"defaultAnim": "Djaul",
 			"persistancy": false,
@@ -4031,8 +4031,8 @@
 		},
 		{
 			"id": 286,
-			"nameId": 986038,
-			"shortcutId": 986039,
+			"nameId": 997136,
+			"shortcutId": 997137,
 			"order": 509000,
 			"defaultAnim": "Forgelance",
 			"persistancy": false,

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightStealKamaMessage extends AbstractGameActionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7363;
+      public static const protocolId:uint = 1255;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 7363;
+         return 1255;
       }
       
       public function initGameActionFightStealKamaMessage(actionId:uint = 0, sourceId:Number = 0, targetId:Number = 0, amount:Number = 0) : GameActionFightStealKamaMessage

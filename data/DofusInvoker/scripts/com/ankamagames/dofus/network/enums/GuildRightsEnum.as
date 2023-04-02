@@ -19,11 +19,7 @@ package com.ankamagames.dofus.network.enums
       
       public static const RIGHT_OPEN_GUILD_CHEST:uint = 8;
       
-      public static const RIGHT_MANAGE_BOOSTS:uint = 9;
-      
       public static const RIGHT_USE_PADDOCKS:uint = 10;
-      
-      public static const RIGHT_SET_ALLIANCE_PRISM:uint = 11;
       
       public static const RIGHT_KICK_MEMBER:uint = 13;
       
@@ -31,19 +27,9 @@ package com.ankamagames.dofus.network.enums
       
       public static const RIGHT_UPDATE_BULLETIN:uint = 15;
       
-      public static const RIGHT_DEFENSE_PRIORITY:uint = 16;
-      
-      public static const RIGHT_HIRE_TAX_COLLECTOR:uint = 17;
-      
-      public static const RIGHT_COLLECT_TAX_COLLECTOR:uint = 18;
-      
-      public static const RIGHT_COLLECT_OWN_TAX_COLLECTOR:uint = 19;
-      
       public static const RIGHT_MANAGE_PADDOCKS:uint = 20;
       
       public static const RIGHT_MANAGE_OTHER_MOUNTS:uint = 21;
-      
-      public static const RIGHT_TALK_IN_ALLIANCE_CHANNEL:uint = 22;
       
       public static const RIGHT_TAKE_FROM_GUILD_CHEST:uint = 23;
       

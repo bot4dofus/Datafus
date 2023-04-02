@@ -343,7 +343,7 @@
 			"categoryId": 4,
 			"iconId": 44,
 			"colorId": 1,
-			"descriptionId": 275245,
+			"descriptionId": 989151,
 			"defaultEnable": false,
 			"defaultSound": false,
 			"defaultMultiAccount": false,
@@ -675,6 +675,19 @@
 			"defaultNotify": false,
 			"name": "PETSMOUNT_TRAVEL_END",
 			"messageId": 909296
+		},
+		{
+			"id": 56,
+			"categoryId": 4,
+			"iconId": 12,
+			"colorId": 1,
+			"descriptionId": 976821,
+			"defaultEnable": true,
+			"defaultSound": false,
+			"defaultMultiAccount": false,
+			"defaultNotify": false,
+			"name": "ALLIANCE_INVITATION",
+			"messageId": 976815
 		}
 	]
 }

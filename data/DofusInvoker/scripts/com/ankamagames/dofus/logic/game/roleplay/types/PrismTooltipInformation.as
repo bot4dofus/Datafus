@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.logic.game.roleplay.types
 {
-   import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.AllianceWrapper;
    
    public class PrismTooltipInformation
    {

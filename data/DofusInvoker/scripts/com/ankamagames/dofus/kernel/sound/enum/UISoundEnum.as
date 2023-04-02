@@ -105,10 +105,6 @@ package com.ankamagames.dofus.kernel.sound.enum
       
       public static const SCROLL_DOWN:String = "16015";
       
-      public static const CHARACTER_SELECTION_RIGHT:String = "16079";
-      
-      public static const CHARACTER_SELECTION_LEFT:String = "16080";
-      
       public static const DELETE_CHARACTER:String = "16081";
       
       public static const POPUP_YES:String = "16082";
@@ -119,25 +115,13 @@ package com.ankamagames.dofus.kernel.sound.enum
       
       public static const FRIENDS:String = "16085";
       
-      public static const CHARACTER_CREATION:String = "16086";
-      
       public static const BANNER_SPELL_TAB:String = "16087";
       
       public static const BANNER_OBJECT_TAB:String = "16088";
       
-      public static const BANNER_EMOTE_TAB:String = "16089";
-      
-      public static const PLUS_BUTTON:String = "16090";
-      
       public static const STORE_SELL_BUTTON:String = "16099";
       
-      public static const STORE_BUY_BUTTON:String = "16100";
-      
-      public static const VALID_KAMA_EXCHANGE:String = "16101";
-      
-      public static const MERCHANT_SELL_BUTTON:String = "16095";
-      
-      public static const MERCHANT_REMOVE_SELL_BUTTON:String = "16096";
+      public static const DELETE_BUTTON:String = "16110";
       
       public static const DRAG_START:String = "16053";
       
@@ -184,10 +168,6 @@ package com.ankamagames.dofus.kernel.sound.enum
       public static const OPEN_MOUNT_UI:String = "1412505";
       
       public static const EMPTY:String = "0";
-      
-      public static const OPEN_TRANSACTION_WINDOW:String = "16093";
-      
-      public static const CLOSE_TRANSACTION_WINDOW:String = "16094";
       
       public static const LEFT_TO_RIGHT_SWITCH:String = "16097";
       

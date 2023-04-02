@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.internalDatacenter.people
 {
-   import com.ankamagames.dofus.internalDatacenter.guild.EmblemWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.EmblemWrapper;
    import com.ankamagames.dofus.network.types.game.character.status.PlayerStatusExtended;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations;
    import com.ankamagames.dofus.network.types.game.friend.FriendInformations;
@@ -12,8 +12,6 @@ package com.ankamagames.dofus.internalDatacenter.people
    public class FriendWrapper extends SocialCharacterWrapper implements IDataCenter
    {
        
-      
-      private var _item:FriendInformations;
       
       public var moodSmileyId:int = 0;
       
@@ -39,7 +37,6 @@ package com.ankamagames.dofus.internalDatacenter.people
       {
          super(o.accountTag.nickname,o.accountTag.tagNumber,o.accountId);
          e_category = SocialCharacterCategoryEnum.CATEGORY_FRIEND;
-         this._item = o;
          state = o.playerState;
          lastConnection = o.lastConnection;
          achievementPoints = o.achievementPoints;
@@ -55,7 +52,7 @@ package com.ankamagames.dofus.internalDatacenter.people
             sex = !!FriendOnlineInformations(o).sex ? uint(1) : uint(0);
             if(FriendOnlineInformations(o).guildInfo.guildName == "#NONAME#")
             {
-               guildName = I18n.getUiText("ui.guild.noName");
+               guildName = I18n.getUiText("ui.social.noName");
             }
             else
             {

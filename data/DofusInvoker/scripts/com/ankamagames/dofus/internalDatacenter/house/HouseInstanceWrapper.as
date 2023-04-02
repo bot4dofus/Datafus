@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.internalDatacenter.house
 {
-   import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.GuildWrapper;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.common.frames.SocialFrame;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations;
@@ -131,7 +131,7 @@ package com.ankamagames.dofus.internalDatacenter.house
          {
             this.guildIdentity = GuildWrapper.create(guild.guildId,guild.guildName,guild.guildEmblem);
             myGuild = SocialFrame.getInstance().guild;
-            this._belongsToMyGuild = myGuild && myGuild.guildId == guild.guildId;
+            this._belongsToMyGuild = myGuild && myGuild.groupId == guild.guildId;
          }
       }
       

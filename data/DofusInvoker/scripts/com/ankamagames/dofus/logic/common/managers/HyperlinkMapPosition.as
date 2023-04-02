@@ -40,7 +40,7 @@ package com.ankamagames.dofus.logic.common.managers
       
       public static function showPosition(posX:int, posY:int, worldMapId:int, elementName:String = "") : void
       {
-         KernelEventsManager.getInstance().processCallback(HookList.AddMapFlag,"flag_chat_" + posX + "_" + posY + "_" + elementName,(elementName != "" ? unescape(elementName) : I18n.getUiText("ui.cartography.chatFlag") + " ") + "(" + posX + "," + posY + ")",worldMapId,posX,posY,16737792,true);
+         KernelEventsManager.getInstance().processCallback(HookList.AddMapFlag,"flag_chat_" + posX + "_" + posY + "_" + elementName,(elementName != "" ? unescape(elementName) + " " : I18n.getUiText("ui.cartography.chatFlag") + " ") + "(" + posX + "," + posY + ")",worldMapId,posX,posY,16737792,true);
       }
       
       public static function getText(posX:int, posY:int, worldMapId:int, elementName:String = "") : String

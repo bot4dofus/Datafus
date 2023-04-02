@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildMemberOnlineStatusMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3512;
+      public static const protocolId:uint = 7073;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 3512;
+         return 7073;
       }
       
       public function initGuildMemberOnlineStatusMessage(memberId:Number = 0, online:Boolean = false) : GuildMemberOnlineStatusMessage

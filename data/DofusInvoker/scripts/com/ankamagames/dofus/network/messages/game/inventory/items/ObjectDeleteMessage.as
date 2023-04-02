@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class ObjectDeleteMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5494;
+      public static const protocolId:uint = 706;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 5494;
+         return 706;
       }
       
       public function initObjectDeleteMessage(objectUID:uint = 0, quantity:uint = 0) : ObjectDeleteMessage

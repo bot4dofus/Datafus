@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.messages.game.alliance
 {
-   import com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformation;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceMembershipMessage extends AllianceJoinedMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5434;
+      public static const protocolId:uint = 3215;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,12 +28,12 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 5434;
+         return 3215;
       }
       
-      public function initAllianceMembershipMessage(allianceInfo:AllianceInformations = null, enabled:Boolean = false, leadingGuildId:uint = 0) : AllianceMembershipMessage
+      public function initAllianceMembershipMessage(allianceInfo:AllianceInformation = null, rankId:uint = 0) : AllianceMembershipMessage
       {
-         super.initAllianceJoinedMessage(allianceInfo,enabled,leadingGuildId);
+         super.initAllianceJoinedMessage(allianceInfo,rankId);
          this._isInitialized = true;
          return this;
       }

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.delay
    public class GameRolePlayDelayedActionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1811;
+      public static const protocolId:uint = 3302;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.delay
       
       override public function getMessageId() : uint
       {
-         return 1811;
+         return 3302;
       }
       
       public function initGameRolePlayDelayedActionMessage(delayedCharacterId:Number = 0, delayTypeId:uint = 0, delayEndTime:Number = 0) : GameRolePlayDelayedActionMessage

@@ -1,7 +1,7 @@
 package com.ankamagames.dofus.datacenter.items.criterion
 {
-   import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
-   import com.ankamagames.dofus.logic.game.common.frames.AllianceFrame;
+   import com.ankamagames.dofus.internalDatacenter.social.AllianceWrapper;
+   import com.ankamagames.dofus.logic.game.common.frames.SocialFrame;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
    
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
       
       override protected function getCriterion() : int
       {
-         var alliance:AllianceWrapper = AllianceFrame.getInstance().alliance;
+         var alliance:AllianceWrapper = SocialFrame.getInstance().alliance;
          if(alliance)
          {
             return 1;

@@ -13,12 +13,6 @@ package com.ankamagames.dofus.network.enums
       
       public static const INFO_HOUSES:uint = 5;
       
-      public static const INFO_TAX_COLLECTOR_GUILD_ONLY:uint = 6;
-      
-      public static const INFO_TAX_COLLECTOR_ALLIANCE:uint = 7;
-      
-      public static const INFO_TAX_COLLECTOR_LEAVE:uint = 8;
-      
       public static const INFO_RECRUITMENT:uint = 9;
       
       public static const INFO_LOGBOOK:uint = 10;

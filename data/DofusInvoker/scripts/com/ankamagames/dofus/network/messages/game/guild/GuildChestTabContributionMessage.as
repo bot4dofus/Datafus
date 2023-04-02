@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildChestTabContributionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5407;
+      public static const protocolId:uint = 8686;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 5407;
+         return 8686;
       }
       
       public function initGuildChestTabContributionMessage(tabNumber:uint = 0, requiredAmount:Number = 0, currentAmount:Number = 0, chestContributionEnrollmentDelay:Number = 0, chestContributionDelay:Number = 0) : GuildChestTabContributionMessage

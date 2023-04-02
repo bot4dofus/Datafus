@@ -17,7 +17,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.guild.GuildModificationEmblemValidMessage;
    import com.ankamagames.dofus.network.messages.game.guild.GuildModificationNameValidMessage;
    import com.ankamagames.dofus.network.messages.game.guild.GuildModificationValidMessage;
-   import com.ankamagames.dofus.network.types.game.guild.GuildEmblem;
+   import com.ankamagames.dofus.network.types.game.social.SocialEmblem;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.messages.Frame;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.logic.game.common.frames
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(GuildDialogFrame));
        
       
-      private var guildEmblem:GuildEmblem;
+      private var guildEmblem:SocialEmblem;
       
       public function GuildDialogFrame()
       {
@@ -65,7 +65,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          {
             case msg is GuildCreationValidAction:
                gcva = msg as GuildCreationValidAction;
-               this.guildEmblem = new GuildEmblem();
+               this.guildEmblem = new SocialEmblem();
                this.guildEmblem.symbolShape = gcva.upEmblemId;
                this.guildEmblem.symbolColor = gcva.upColorEmblem;
                this.guildEmblem.backgroundShape = gcva.backEmblemId;
@@ -76,7 +76,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is GuildModificationValidAction:
                gmva = msg as GuildModificationValidAction;
-               this.guildEmblem = new GuildEmblem();
+               this.guildEmblem = new SocialEmblem();
                this.guildEmblem.symbolShape = gmva.upEmblemId;
                this.guildEmblem.symbolColor = gmva.upColorEmblem;
                this.guildEmblem.backgroundShape = gmva.backEmblemId;
@@ -93,7 +93,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is GuildModificationEmblemValidAction:
                gmeva = msg as GuildModificationEmblemValidAction;
-               this.guildEmblem = new GuildEmblem();
+               this.guildEmblem = new SocialEmblem();
                this.guildEmblem.symbolShape = gmeva.upEmblemId;
                this.guildEmblem.symbolColor = gmeva.upColorEmblem;
                this.guildEmblem.backgroundShape = gmeva.backEmblemId;

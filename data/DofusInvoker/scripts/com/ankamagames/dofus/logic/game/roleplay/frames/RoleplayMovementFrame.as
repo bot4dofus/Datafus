@@ -26,6 +26,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.misc.lists.TriggerHookList;
    import com.ankamagames.dofus.network.enums.PlayerLifeStatusEnum;
    import com.ankamagames.dofus.network.enums.SubEntityBindingPointCategoryEnum;
+   import com.ankamagames.dofus.network.messages.game.alliance.fight.AllianceFightFighterRemovedMessage;
    import com.ankamagames.dofus.network.messages.game.context.GameCautiousMapMovementMessage;
    import com.ankamagames.dofus.network.messages.game.context.GameCautiousMapMovementRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.GameMapMovementCancelMessage;
@@ -41,7 +42,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.messages.game.context.roleplay.fight.GameRolePlayFightRequestCanceledMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag.EditHavenBagFinishedMessage;
    import com.ankamagames.dofus.network.messages.game.dialog.LeaveDialogMessage;
-   import com.ankamagames.dofus.network.messages.game.guild.tax.GuildFightPlayersHelpersLeaveMessage;
    import com.ankamagames.dofus.network.messages.game.interactive.InteractiveUseEndedMessage;
    import com.ankamagames.dofus.network.messages.game.interactive.InteractiveUseErrorMessage;
    import com.ankamagames.dofus.network.messages.game.interactive.InteractiveUseRequestMessage;
@@ -51,7 +51,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.messages.game.interactive.meeting.TeleportPlayerOfferMessage;
    import com.ankamagames.dofus.network.messages.game.interactive.skill.InteractiveUseWithParamRequestMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeLeaveMessage;
-   import com.ankamagames.dofus.network.messages.game.prism.PrismFightDefenderLeaveMessage;
    import com.ankamagames.dofus.network.types.game.interactive.InteractiveElement;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
    import com.ankamagames.dofus.types.entities.RiderBehavior;
@@ -324,14 +323,8 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                   this._canMove = true;
                }
                return false;
-            case msg is GuildFightPlayersHelpersLeaveMessage:
-               if(GuildFightPlayersHelpersLeaveMessage(msg).playerId == PlayedCharacterManager.getInstance().id)
-               {
-                  this._canMove = true;
-               }
-               return false;
-            case msg is PrismFightDefenderLeaveMessage:
-               if(PrismFightDefenderLeaveMessage(msg).fighterToRemoveId == PlayedCharacterManager.getInstance().id)
+            case msg is AllianceFightFighterRemovedMessage:
+               if(AllianceFightFighterRemovedMessage(msg).fighterId == PlayedCharacterManager.getInstance().id)
                {
                   this._canMove = true;
                }

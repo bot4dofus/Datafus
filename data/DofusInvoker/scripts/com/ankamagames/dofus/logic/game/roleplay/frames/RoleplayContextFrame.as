@@ -3,13 +3,10 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.atouin.Atouin;
    import com.ankamagames.atouin.data.DefaultMap;
    import com.ankamagames.atouin.data.map.Map;
-   import com.ankamagames.atouin.managers.EntitiesManager;
    import com.ankamagames.atouin.managers.MapDisplayManager;
    import com.ankamagames.atouin.messages.MapLoadedMessage;
    import com.ankamagames.atouin.messages.MapLoadingFailedMessage;
    import com.ankamagames.atouin.messages.MapsLoadingCompleteMessage;
-   import com.ankamagames.atouin.utils.DataMapProvider;
-   import com.ankamagames.berilia.Berilia;
    import com.ankamagames.berilia.components.Texture;
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.berilia.managers.TooltipManager;
@@ -24,16 +21,15 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.datacenter.world.SubArea;
    import com.ankamagames.dofus.externalnotification.ExternalNotificationManager;
    import com.ankamagames.dofus.externalnotification.enums.ExternalNotificationTypeEnum;
-   import com.ankamagames.dofus.internalDatacenter.guild.PaddockWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.PaddockWrapper;
    import com.ankamagames.dofus.internalDatacenter.world.WorldPointWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
-   import com.ankamagames.dofus.kernel.net.DisconnectionReasonEnum;
    import com.ankamagames.dofus.kernel.sound.SoundManager;
    import com.ankamagames.dofus.logic.common.actions.ChangeWorldInteractionAction;
-   import com.ankamagames.dofus.logic.common.actions.ResetGameAction;
    import com.ankamagames.dofus.logic.common.managers.NotificationManager;
+   import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.common.actions.InteractiveElementActivationAction;
    import com.ankamagames.dofus.logic.game.common.actions.PivotCharacterAction;
    import com.ankamagames.dofus.logic.game.common.actions.ToggleShowUIAction;
@@ -41,19 +37,16 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.logic.game.common.actions.craft.ExchangePlayerMultiCraftRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangePlayerRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeRequestOnTaxCollectorAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeBuyAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeOnHumanVendorRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeRequestOnShopStockAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeSellAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeShopStockMouvmentAddAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeShopStockMouvmentRemoveAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeShowVendorTaxAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeStartAsVendorRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.LeaveShopStockAction;
+   import com.ankamagames.dofus.logic.game.common.actions.exchange.StartExchangeTaxCollectorEquipmentAction;
    import com.ankamagames.dofus.logic.game.common.actions.mount.LeaveExchangeMountAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.treasureHunt.PortalUseRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.roleplay.GameRolePlayFreeSoulRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.taxCollector.GameRolePlayTaxCollectorFightRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.trade.ExchangeBuyAction;
+   import com.ankamagames.dofus.logic.game.common.actions.trade.ExchangeSellAction;
+   import com.ankamagames.dofus.logic.game.common.actions.trade.ExchangeShopStockMouvmentRemoveAction;
+   import com.ankamagames.dofus.logic.game.common.actions.trade.ExchangeShopStockMovementAddAction;
+   import com.ankamagames.dofus.logic.game.common.actions.trade.LeaveShopStockAction;
    import com.ankamagames.dofus.logic.game.common.frames.AllianceFrame;
    import com.ankamagames.dofus.logic.game.common.frames.BidHouseManagementFrame;
    import com.ankamagames.dofus.logic.game.common.frames.ChatFrame;
@@ -61,13 +54,13 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.logic.game.common.frames.CraftFrame;
    import com.ankamagames.dofus.logic.game.common.frames.EmoticonFrame;
    import com.ankamagames.dofus.logic.game.common.frames.ExchangeManagementFrame;
-   import com.ankamagames.dofus.logic.game.common.frames.HumanVendorManagementFrame;
    import com.ankamagames.dofus.logic.game.common.frames.QuestFrame;
    import com.ankamagames.dofus.logic.game.common.frames.SocialFrame;
    import com.ankamagames.dofus.logic.game.common.frames.SpectatorManagementFrame;
    import com.ankamagames.dofus.logic.game.common.frames.StackManagementFrame;
    import com.ankamagames.dofus.logic.game.common.managers.InventoryManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
+   import com.ankamagames.dofus.logic.game.common.managers.SocialEntitiesManager;
    import com.ankamagames.dofus.logic.game.common.managers.SpeakingItemManager;
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
@@ -98,6 +91,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.enums.FighterRefusedReasonEnum;
    import com.ankamagames.dofus.network.enums.GameContextEnum;
    import com.ankamagames.dofus.network.enums.MountCharacteristicEnum;
+   import com.ankamagames.dofus.network.messages.game.collector.tax.GameRolePlayTaxCollectorFightRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.GameContextDestroyMessage;
    import com.ankamagames.dofus.network.messages.game.context.GameMapChangeOrientationRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.display.DisplayNumericalValuePaddockMessage;
@@ -132,7 +126,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.messages.game.context.roleplay.visual.GameRolePlaySpellAnimMessage;
    import com.ankamagames.dofus.network.messages.game.dialog.LeaveDialogRequestMessage;
    import com.ankamagames.dofus.network.messages.game.guild.ChallengeFightJoinRefusedMessage;
-   import com.ankamagames.dofus.network.messages.game.guild.tax.GameRolePlayTaxCollectorFightRequestMessage;
    import com.ankamagames.dofus.network.messages.game.interactive.zaap.TeleportDestinationsMessage;
    import com.ankamagames.dofus.network.messages.game.interactive.zaap.ZaapDestinationsMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeBuyMessage;
@@ -141,20 +134,13 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeObjectMoveMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeObjectMovePricedMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeOkMultiCraftMessage;
-   import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeOnHumanVendorRequestMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangePlayerMultiCraftRequestMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangePlayerRequestMessage;
-   import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeReplyTaxVendorMessage;
-   import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeRequestOnShopStockMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeRequestOnTaxCollectorMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeRequestedTradeMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeSellMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeSellOkMessage;
-   import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeShopStockStartedMessage;
-   import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeShowVendorTaxMessage;
-   import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartAsVendorMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartOkCraftWithInformationMessage;
-   import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartOkHumanVendorMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartOkNpcShopMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartOkNpcTradeMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartOkRecycleTradeMessage;
@@ -163,7 +149,9 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartedBidSellerMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartedMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartedMountStockMessage;
+   import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartedTaxCollectorEquipmentMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartedTaxCollectorShopMessage;
+   import com.ankamagames.dofus.network.messages.game.inventory.exchanges.StartExchangeTaxCollectorEquipmentMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.items.ObtainedItemMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.items.ObtainedItemWithBonusMessage;
    import com.ankamagames.dofus.network.messages.server.basic.SystemMessageDisplayMessage;
@@ -193,7 +181,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.messages.Frame;
    import com.ankamagames.jerakine.messages.Message;
-   import com.ankamagames.jerakine.network.messages.ExpectedSocketClosureMessage;
    import com.ankamagames.jerakine.sequencer.ISequencable;
    import com.ankamagames.jerakine.sequencer.SerialSequencer;
    import com.ankamagames.jerakine.types.Callback;
@@ -242,8 +229,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       private var _emoticonFrame:EmoticonFrame;
       
       private var _exchangeManagementFrame:ExchangeManagementFrame;
-      
-      private var _humanVendorManagementFrame:HumanVendorManagementFrame;
       
       private var _spectatorManagementFrame:SpectatorManagementFrame;
       
@@ -375,7 +360,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          this._bidHouseManagementFrame = new BidHouseManagementFrame();
          this._estateFrame = new EstateFrame();
          this._craftFrame = new CraftFrame();
-         this._humanVendorManagementFrame = new HumanVendorManagementFrame();
          Kernel.getWorker().addFrame(this._spectatorManagementFrame);
          if(!Kernel.getWorker().contains(EstateFrame))
          {
@@ -425,7 +409,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var erotca:ExchangeRequestOnTaxCollectorAction = null;
          var erotcmsg:ExchangeRequestOnTaxCollectorMessage = null;
          var playerEntity4:IEntity = null;
-         var grptcfra:GameRolePlayTaxCollectorFightRequestAction = null;
          var grptcfrmsg:GameRolePlayTaxCollectorFightRequestMessage = null;
          var ieaa:InteractiveElementActivationAction = null;
          var ieamsg:InteractiveElementActivationMessage = null;
@@ -436,19 +419,11 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var entityNpcLike:Object = null;
          var pura:PortalUseRequestAction = null;
          var purmsg:PortalUseRequestMessage = null;
-         var esvtmsg:ExchangeShowVendorTaxMessage = null;
-         var ertvmsg:ExchangeReplyTaxVendorMessage = null;
-         var ospmsg:ExchangeRequestOnShopStockMessage = null;
-         var eohvra:ExchangeOnHumanVendorRequestAction = null;
-         var playerEntity3:IEntity = null;
-         var eohvrmsg:ExchangeOnHumanVendorRequestMessage = null;
-         var esohvmsg:ExchangeStartOkHumanVendorMessage = null;
-         var esostmsg:ExchangeShopStockStartedMessage = null;
-         var entity:IEntity = null;
-         var esavmsg:ExchangeStartAsVendorMessage = null;
-         var escmsg:ExpectedSocketClosureMessage = null;
          var esmsmsg:ExchangeStartedMountStockMessage = null;
          var estcsm:ExchangeStartedTaxCollectorShopMessage = null;
+         var setcea:StartExchangeTaxCollectorEquipmentAction = null;
+         var setcem:StartExchangeTaxCollectorEquipmentMessage = null;
+         var estcem:ExchangeStartedTaxCollectorEquipmentMessage = null;
          var esonmsg:ExchangeStartOkNpcShopMessage = null;
          var esmsg:ExchangeStartedMessage = null;
          var commonExchangeFrame:CommonExchangeManagementFrame = null;
@@ -470,7 +445,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var channelId:uint = 0;
          var grpamsg:GameRolePlayAggressionMessage = null;
          var ldrmsg:LeaveDialogRequestMessage = null;
-         var essmaa:ExchangeShopStockMouvmentAddAction = null;
+         var essmaa:ExchangeShopStockMovementAddAction = null;
          var eompmsg:ExchangeObjectMovePricedMessage = null;
          var essmra:ExchangeShopStockMouvmentRemoveAction = null;
          var eommsg:ExchangeObjectMoveMessage = null;
@@ -768,7 +743,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                }
                return true;
             case msg is GameRolePlayTaxCollectorFightRequestAction:
-               grptcfra = msg as GameRolePlayTaxCollectorFightRequestAction;
                grptcfrmsg = new GameRolePlayTaxCollectorFightRequestMessage();
                grptcfrmsg.initGameRolePlayTaxCollectorFightRequestMessage();
                ConnectionsHandler.getConnection().send(grptcfrmsg);
@@ -829,12 +803,12 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                      allianceName = (prismEntity.prism as AlliancePrismInformation).alliance.allianceName;
                      if(allianceName == "#NONAME#")
                      {
-                        allianceName = I18n.getUiText("ui.guild.noName");
+                        allianceName = I18n.getUiText("ui.social.noName");
                      }
                   }
-                  else if(AllianceFrame.getInstance().hasAlliance)
+                  else if(SocialFrame.getInstance().hasAlliance)
                   {
-                     allianceName = AllianceFrame.getInstance().alliance.allianceName;
+                     allianceName = SocialFrame.getInstance().alliance.groupName;
                   }
                   KernelEventsManager.getInstance().processCallback(RoleplayHookList.PrismDialogCreation,ndcmsg.mapId,allianceName,EntityLookAdapter.fromNetwork(prismEntity.look));
                }
@@ -891,77 +865,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                }
                this._bidHouseManagementFrame.processExchangeStartedBidSellerMessage(msg as ExchangeStartedBidSellerMessage);
                return true;
-            case msg is ExchangeShowVendorTaxAction:
-               esvtmsg = new ExchangeShowVendorTaxMessage();
-               esvtmsg.initExchangeShowVendorTaxMessage();
-               ConnectionsHandler.getConnection().send(esvtmsg);
-               return true;
-            case msg is ExchangeReplyTaxVendorMessage:
-               ertvmsg = msg as ExchangeReplyTaxVendorMessage;
-               KernelEventsManager.getInstance().processCallback(ExchangeHookList.ExchangeReplyTaxVendor,ertvmsg.totalTaxValue);
-               return true;
-            case msg is ExchangeRequestOnShopStockAction:
-               if(Berilia.getInstance().getUi(FORGETTABLE_SPELLS_UI) || Berilia.getInstance().getUi(FORGETTABLE_MODSTERS_UI))
-               {
-                  return true;
-               }
-               ospmsg = new ExchangeRequestOnShopStockMessage();
-               ospmsg.initExchangeRequestOnShopStockMessage();
-               ConnectionsHandler.getConnection().send(ospmsg);
-               return true;
-               break;
-            case msg is ExchangeOnHumanVendorRequestAction:
-               eohvra = msg as ExchangeOnHumanVendorRequestAction;
-               playerEntity3 = DofusEntities.getEntity(PlayedCharacterManager.getInstance().id);
-               eohvrmsg = new ExchangeOnHumanVendorRequestMessage();
-               eohvrmsg.initExchangeOnHumanVendorRequestMessage(eohvra.humanVendorId,eohvra.humanVendorCell);
-               if((playerEntity3 as IMovable).isMoving)
-               {
-                  this._movementFrame.setFollowingMessage(eohvrmsg);
-                  (playerEntity3 as IMovable).stop();
-               }
-               else
-               {
-                  ConnectionsHandler.getConnection().send(eohvrmsg);
-               }
-               return true;
-            case msg is ExchangeStartOkHumanVendorMessage:
-               esohvmsg = msg as ExchangeStartOkHumanVendorMessage;
-               if(!Kernel.getWorker().contains(HumanVendorManagementFrame))
-               {
-                  Kernel.getWorker().addFrame(this._humanVendorManagementFrame);
-               }
-               this._humanVendorManagementFrame.process(msg);
-               return true;
-            case msg is ExchangeShopStockStartedMessage:
-               esostmsg = msg as ExchangeShopStockStartedMessage;
-               if(!Kernel.getWorker().contains(HumanVendorManagementFrame))
-               {
-                  Kernel.getWorker().addFrame(this._humanVendorManagementFrame);
-               }
-               this._humanVendorManagementFrame.process(msg);
-               return true;
-            case msg is ExchangeStartAsVendorRequestAction:
-               entity = EntitiesManager.getInstance().getEntity(PlayedCharacterManager.getInstance().id);
-               if(entity && !DataMapProvider.getInstance().pointCanStop(entity.position.x,entity.position.y))
-               {
-                  return true;
-               }
-               ConnectionsHandler.connectionGonnaBeClosed(DisconnectionReasonEnum.SWITCHING_TO_HUMAN_VENDOR);
-               esavmsg = new ExchangeStartAsVendorMessage();
-               esavmsg.initExchangeStartAsVendorMessage();
-               ConnectionsHandler.getConnection().send(esavmsg);
-               return true;
-               break;
-            case msg is ExpectedSocketClosureMessage:
-               escmsg = msg as ExpectedSocketClosureMessage;
-               if(escmsg.reason == DisconnectionReasonEnum.SWITCHING_TO_HUMAN_VENDOR)
-               {
-                  Kernel.getWorker().process(new ResetGameAction());
-                  return true;
-               }
-               return false;
-               break;
             case msg is ExchangeStartedMountStockMessage:
                esmsmsg = ExchangeStartedMountStockMessage(msg);
                this.addCommonExchangeFrame(ExchangeTypeEnum.MOUNT);
@@ -984,6 +887,24 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                InventoryManager.getInstance().bankInventory.kamas = estcsm.kamas;
                KernelEventsManager.getInstance().processCallback(ExchangeHookList.ExchangeBankStarted,ExchangeTypeEnum.TAXCOLLECTOR,estcsm.objects,estcsm.kamas);
                this._exchangeManagementFrame.initBankStock(estcsm.objects);
+               return true;
+            case msg is StartExchangeTaxCollectorEquipmentAction:
+               setcea = msg as StartExchangeTaxCollectorEquipmentAction;
+               setcem = new StartExchangeTaxCollectorEquipmentMessage();
+               setcem.initStartExchangeTaxCollectorEquipmentMessage(setcea.uid);
+               ConnectionsHandler.getConnection().send(setcem);
+               return true;
+            case msg is ExchangeStartedTaxCollectorEquipmentMessage:
+               estcem = msg as ExchangeStartedTaxCollectorEquipmentMessage;
+               StatsManager.getInstance().addRawStats(estcem.information.uniqueId,estcem.information.characteristics.characteristics);
+               SocialEntitiesManager.getInstance().addTaxCollector(estcem.information);
+               KernelEventsManager.getInstance().processCallback(SocialHookList.ModifyTaxCollector,estcem.information);
+               this.addCommonExchangeFrame(ExchangeTypeEnum.TAXCOLLECTOR);
+               if(!Kernel.getWorker().contains(ExchangeManagementFrame))
+               {
+                  Kernel.getWorker().addFrame(this._exchangeManagementFrame);
+               }
+               PlayedCharacterManager.getInstance().isInExchange = true;
                return true;
             case msg is ExchangeRequestedTradeMessage:
                this.addCommonExchangeFrame(ExchangeTypeEnum.PLAYER_TRADE);
@@ -1257,8 +1178,8 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                ldrmsg.initLeaveDialogRequestMessage();
                ConnectionsHandler.getConnection().send(ldrmsg);
                return true;
-            case msg is ExchangeShopStockMouvmentAddAction:
-               essmaa = msg as ExchangeShopStockMouvmentAddAction;
+            case msg is ExchangeShopStockMovementAddAction:
+               essmaa = msg as ExchangeShopStockMovementAddAction;
                eompmsg = new ExchangeObjectMovePricedMessage();
                eompmsg.initExchangeObjectMovePricedMessage(essmaa.objectUID,essmaa.quantity,essmaa.price);
                ConnectionsHandler.getConnection().send(eompmsg);

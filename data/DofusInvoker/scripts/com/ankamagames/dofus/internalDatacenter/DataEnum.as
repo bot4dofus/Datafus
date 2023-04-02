@@ -85,6 +85,8 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const ITEM_SUPERTYPE_PET_GHOST:uint = 28;
       
+      public static const ITEM_SUPERTYPE_TAX_COLLECTOR_EQUIPMENT:uint = 69;
+      
       public static const ITEM_TYPE_COLLAR:int = 1;
       
       public static const ITEM_TYPE_BOW:int = 2;
@@ -153,6 +155,8 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const ITEM_TYPE_PET_POTION:uint = 116;
       
+      public static const ITEM_TYPE_PRISM:uint = 112;
+      
       public static const ITEM_TYPE_LIVING_OBJECT:uint = 113;
       
       public static const ITEM_TYPE_MAGIC_WEAPON:uint = 114;
@@ -217,6 +221,22 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const ITEM_TYPE_SMITHMAGIC_CARVING:int = 258;
       
+      public static const ITEM_TYPE_TAX_COLLECTOR_HORSESHOE:int = 273;
+      
+      public static const ITEM_TYPE_TAX_COLLECTOR_CUIRASS:int = 274;
+      
+      public static const ITEM_TYPE_TAX_COLLECTOR_BANNER:int = 275;
+      
+      public static const ITEM_TYPE_TAX_COLLECTOR_DAGGER:int = 276;
+      
+      public static const ITEM_TYPE_TAX_COLLECTOR_TUNIC:int = 277;
+      
+      public static const ITEM_TYPE_TAX_COLLECTOR_CHEST:int = 279;
+      
+      public static const ITEM_TYPE_TAX_COLLECTOR_BAG:int = 280;
+      
+      public static const ITEM_TYPE_INCARNATION_RELIC:int = 284;
+      
       public static const ITEM_TYPE_FORGETTABLE_SPELL_SCROLL:int = 223;
       
       public static const ITEM_TYPE_FORGETTABLE_HIDDEN_SPELL:int = 224;
@@ -248,6 +268,16 @@ package com.ankamagames.dofus.internalDatacenter
       public static const ITEM_GID_CALENDAR_PAGE:int = 13345;
       
       public static const ITEM_GID_TELEPORTATION_MODULE:int = 14552;
+      
+      public static const ITEM_GID_KOKOKO_RECYCLER:int = 17207;
+      
+      public static const ITEM_GID_FAIR_TRADE_RECYCLER:int = 17166;
+      
+      public static const ITEM_GID_COLLECTIVE_RECYCLER:int = 17167;
+      
+      public static const ITEM_GID_PACIFY_CRISTAL:int = 27631;
+      
+      public static const ITEM_GID_INHIB_CRISTAL:int = 27632;
       
       public static const ITEM_GID_NUGGET:int = 14635;
       
@@ -339,6 +369,8 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const SPELL_TYPE_INCARNATION:int = 32;
       
+      public static const SPELL_TYPE_TAX_COLLECTOR:int = 25;
+      
       public static const SPELL_STATE_ROOTED:int = 6;
       
       public static const SPELL_STATE_CARRIED:int = 8;
@@ -389,6 +421,14 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const CHARACTERISTIC_TYPE_PRIMARY:int = 2;
       
+      public static const CHARACTERISTIC_TYPE_SECONDARY:int = 3;
+      
+      public static const CHARACTERISTIC_TYPE_DAMAGE:int = 4;
+      
+      public static const CHARACTERISTIC_TYPE_RESISTANCE:int = 5;
+      
+      public static const CHARACTERISTIC_TYPE_COMBAT:int = 6;
+      
       public static const SHORTCUT_TYPE_ITEM:int = 0;
       
       public static const SHORTCUT_TYPE_PRESET:int = 1;
@@ -417,11 +457,11 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const SOCIAL_TAB_SPOUSE_ID:uint = 3;
       
+      public static const SOCIAL_GROUP_CREATION_SYMBOL_TAB_ID:uint = 0;
+      
+      public static const SOCIAL_GROUP_CREATION_BACKGROUND_TAB_ID:uint = 1;
+      
       public static const GUILD_TAB_MEMBERS_ID:uint = 0;
-      
-      public static const GUILD_TAB_PERSONALIZATION_ID:uint = 1;
-      
-      public static const GUILD_TAB_COLLECTOR_ID:uint = 2;
       
       public static const GUILD_TAB_PADDOCK_ID:uint = 3;
       
@@ -459,9 +499,25 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const ALLIANCE_TAB_FIGHTS_ID:uint = 2;
       
-      public static const ALLIANCE_TAB_BULLETIN_ID:uint = 3;
+      public static const ALLIANCE_TAB_JOURNAL_ID:uint = 3;
       
-      public static const ALLIANCE_TAB_DIRECTORY_ID:uint = 4;
+      public static const ALLIANCE_TAB_TAX_COLLECTOR_ID:uint = 4;
+      
+      public static const ALLIANCE_TAB_NUGGET_ID:uint = 5;
+      
+      public static const ALLIANCE_TAB_DIRECTORY_ID:uint = 6;
+      
+      public static const ALLIANCE_RIGHTS_GROUP_MEMBERS_ID:uint = 1;
+      
+      public static const ALLIANCE_RIGHTS_GROUP_LOGBOOK_ID:uint = 2;
+      
+      public static const ALLIANCE_RIGHTS_GROUP_TAX_COLLECTOR_ID:uint = 3;
+      
+      public static const ALLIANCE_RIGHTS_GROUP_AVA_ID:uint = 4;
+      
+      public static const ALLIANCE_FIGHT_TYPE_TAXCOLLECTOR:uint = 0;
+      
+      public static const ALLIANCE_FIGHT_TYPE_PRISM:uint = 1;
       
       public static const BREACH_REWARD_ADD_BOSS:int = 6;
       

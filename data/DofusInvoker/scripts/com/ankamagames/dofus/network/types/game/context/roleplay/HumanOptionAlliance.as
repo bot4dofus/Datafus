@@ -8,36 +8,36 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class HumanOptionAlliance extends HumanOption implements INetworkType
    {
       
-      public static const protocolId:uint = 6815;
+      public static const protocolId:uint = 2642;
        
       
-      public var allianceInformations:AllianceInformations;
+      public var allianceInformation:AllianceInformation;
       
       public var aggressable:uint = 0;
       
-      private var _allianceInformationstree:FuncTree;
+      private var _allianceInformationtree:FuncTree;
       
       public function HumanOptionAlliance()
       {
-         this.allianceInformations = new AllianceInformations();
+         this.allianceInformation = new AllianceInformation();
          super();
       }
       
       override public function getTypeId() : uint
       {
-         return 6815;
+         return 2642;
       }
       
-      public function initHumanOptionAlliance(allianceInformations:AllianceInformations = null, aggressable:uint = 0) : HumanOptionAlliance
+      public function initHumanOptionAlliance(allianceInformation:AllianceInformation = null, aggressable:uint = 0) : HumanOptionAlliance
       {
-         this.allianceInformations = allianceInformations;
+         this.allianceInformation = allianceInformation;
          this.aggressable = aggressable;
          return this;
       }
       
       override public function reset() : void
       {
-         this.allianceInformations = new AllianceInformations();
+         this.allianceInformation = new AllianceInformation();
       }
       
       override public function serialize(output:ICustomDataOutput) : void
@@ -48,7 +48,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       public function serializeAs_HumanOptionAlliance(output:ICustomDataOutput) : void
       {
          super.serializeAs_HumanOption(output);
-         this.allianceInformations.serializeAs_AllianceInformations(output);
+         this.allianceInformation.serializeAs_AllianceInformation(output);
          output.writeByte(this.aggressable);
       }
       
@@ -60,8 +60,8 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       public function deserializeAs_HumanOptionAlliance(input:ICustomDataInput) : void
       {
          super.deserialize(input);
-         this.allianceInformations = new AllianceInformations();
-         this.allianceInformations.deserialize(input);
+         this.allianceInformation = new AllianceInformation();
+         this.allianceInformation.deserialize(input);
          this._aggressableFunc(input);
       }
       
@@ -73,14 +73,14 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       public function deserializeAsyncAs_HumanOptionAlliance(tree:FuncTree) : void
       {
          super.deserializeAsync(tree);
-         this._allianceInformationstree = tree.addChild(this._allianceInformationstreeFunc);
+         this._allianceInformationtree = tree.addChild(this._allianceInformationtreeFunc);
          tree.addChild(this._aggressableFunc);
       }
       
-      private function _allianceInformationstreeFunc(input:ICustomDataInput) : void
+      private function _allianceInformationtreeFunc(input:ICustomDataInput) : void
       {
-         this.allianceInformations = new AllianceInformations();
-         this.allianceInformations.deserializeAsync(this._allianceInformationstree);
+         this.allianceInformation = new AllianceInformation();
+         this.allianceInformation.deserializeAsync(this._allianceInformationtree);
       }
       
       private function _aggressableFunc(input:ICustomDataInput) : void

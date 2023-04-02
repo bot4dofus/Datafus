@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.alignment.w
    public class AlignmentWarEffortProgressionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1983;
+      public static const protocolId:uint = 6312;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.alignment.w
       
       override public function getMessageId() : uint
       {
-         return 1983;
+         return 6312;
       }
       
       public function initAlignmentWarEffortProgressionMessage(effortProgressions:Vector.<AlignmentWarEffortInformation> = null) : AlignmentWarEffortProgressionMessage

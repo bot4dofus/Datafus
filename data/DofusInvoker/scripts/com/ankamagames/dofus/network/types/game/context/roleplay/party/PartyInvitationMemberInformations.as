@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
    public class PartyInvitationMemberInformations extends CharacterBaseInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 7042;
+      public static const protocolId:uint = 7664;
        
       
       public var worldX:int = 0;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
       
       override public function getTypeId() : uint
       {
-         return 7042;
+         return 7664;
       }
       
       public function initPartyInvitationMemberInformations(id:Number = 0, name:String = "", level:uint = 0, entityLook:EntityLook = null, breed:int = 0, sex:Boolean = false, worldX:int = 0, worldY:int = 0, mapId:Number = 0, subAreaId:uint = 0, entities:Vector.<PartyEntityBaseInformation> = null) : PartyInvitationMemberInformations

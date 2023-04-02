@@ -143,8 +143,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const OPEN_PVP_ARENA:String = "openPvpArena";
       
-      public static const OPEN_SELL:String = "openSell";
-      
       public static const OPEN_MOUNT:String = "openMount";
       
       public static const OPEN_ALMANAX:String = "openAlmanax";

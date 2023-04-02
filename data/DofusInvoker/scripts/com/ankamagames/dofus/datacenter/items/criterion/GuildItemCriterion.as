@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.datacenter.items.criterion
 {
-   import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.GuildWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.frames.SocialFrame;
    import com.ankamagames.jerakine.data.I18n;

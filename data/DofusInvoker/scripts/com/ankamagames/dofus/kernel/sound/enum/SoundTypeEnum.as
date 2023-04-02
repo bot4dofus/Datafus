@@ -101,10 +101,6 @@ package com.ankamagames.dofus.kernel.sound.enum
       
       public static const SOCIAL_OPEN:uint = 49;
       
-      public static const MERCHANT_TRANSFERT_OPEN:uint = 50;
-      
-      public static const MERCHANT_TRANSFERT_CLOSE:uint = 51;
-      
       public static const SWITCH_RIGHT_TO_LEFT:uint = 52;
       
       public static const SWITCH_LEFT_TO_RIGHT:uint = 53;

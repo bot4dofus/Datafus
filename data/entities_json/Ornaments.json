@@ -1178,11 +1178,19 @@
 		},
 		{
 			"id": 163,
-			"nameId": 985509,
+			"nameId": 986195,
 			"visible": true,
 			"assetId": 163,
 			"iconId": 3,
 			"order": 155
+		},
+		{
+			"id": 164,
+			"nameId": 998763,
+			"visible": true,
+			"assetId": 164,
+			"iconId": 23,
+			"order": 156
 		}
 	]
 }

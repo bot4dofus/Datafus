@@ -345,8 +345,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var forceDetailedLogs:Boolean = false;
          var closeCombatWeaponId:uint = 0;
          var fxScriptId:int = 0;
-         var sourceCellId:int = 0;
          var tempCastingSpell:CastingSpell = null;
+         var sourceCellId:int = 0;
          var critical:* = false;
          var entities:Dictionary = null;
          var fighter:GameFightFighterInformations = null;
@@ -474,6 +474,15 @@ package com.ankamagames.dofus.logic.game.fight.frames
                      SpeakingItemManager.getInstance().triggerEvent(SpeakingItemManager.SPEAK_TRIGGER_PLAYER_CLOSE_COMBAT);
                   }
                }
+               tempCastingSpell = new CastingSpell();
+               tempCastingSpell.casterId = gafscmsg.sourceId;
+               tempCastingSpell.spell = Spell.getSpellById(gafscmsg.spellId);
+               tempCastingSpell.spellRank = tempCastingSpell.spell.getSpellLevel(gafscmsg.spellLevel);
+               tempCastingSpell.isCriticalFail = gafscmsg.critical == FightSpellCastCriticalEnum.CRITICAL_FAIL;
+               tempCastingSpell.isCriticalHit = gafscmsg.critical == FightSpellCastCriticalEnum.CRITICAL_HIT;
+               tempCastingSpell.silentCast = gafscmsg.silentCast;
+               tempCastingSpell.portalIds = gafscmsg.portalsIds;
+               tempCastingSpell.portalMapPoints = MarkedCellsManager.getInstance().getMapPointsFromMarkIds(gafscmsg.portalsIds);
                fightEntitiesFrame = FightEntitiesFrame.getCurrentInstance();
                sourceCellId = -1;
                if(fightEntitiesFrame && fightEntitiesFrame.hasEntity(gafscmsg.sourceId))
@@ -484,15 +493,10 @@ package com.ankamagames.dofus.logic.game.fight.frames
                      sourceCellId = fighterInfo.disposition.cellId;
                   }
                }
-               tempCastingSpell = new CastingSpell();
-               tempCastingSpell.casterId = gafscmsg.sourceId;
-               tempCastingSpell.spell = Spell.getSpellById(gafscmsg.spellId);
-               tempCastingSpell.spellRank = tempCastingSpell.spell.getSpellLevel(gafscmsg.spellLevel);
-               tempCastingSpell.isCriticalFail = gafscmsg.critical == FightSpellCastCriticalEnum.CRITICAL_FAIL;
-               tempCastingSpell.isCriticalHit = gafscmsg.critical == FightSpellCastCriticalEnum.CRITICAL_HIT;
-               tempCastingSpell.silentCast = gafscmsg.silentCast;
-               tempCastingSpell.portalIds = gafscmsg.portalsIds;
-               tempCastingSpell.portalMapPoints = MarkedCellsManager.getInstance().getMapPointsFromMarkIds(gafscmsg.portalsIds);
+               if(sourceCellId !== -1 && tempCastingSpell.portalMapPoints.length > 0)
+               {
+                  sourceCellId = tempCastingSpell.portalMapPoints[tempCastingSpell.portalMapPoints.length - 1].cellId;
+               }
                if(GameDebugManager.getInstance().buffsDebugActivated)
                {
                   _log.debug("\r[BUFFS DEBUG] Sort " + tempCastingSpell.spell.name + " (" + gafscmsg.spellId + ") lancé par " + gafscmsg.sourceId + " sur " + gafscmsg.targetId + " (cellule " + gafscmsg.destinationCellId + ")");

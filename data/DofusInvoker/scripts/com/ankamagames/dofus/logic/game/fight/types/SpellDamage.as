@@ -334,6 +334,7 @@ package com.ankamagames.dofus.logic.game.fight.types
          var invulnerableStr:String = null;
          var i:int = 0;
          var randomGroup:SpellDamage = null;
+         var stateText:String = null;
          var finalStr:* = this.random > 0 ? this.random + "% " : "";
          if(this.invulnerableState)
          {
@@ -379,6 +380,15 @@ package com.ankamagames.dofus.logic.game.fight.types
                }
                finalStr += randomGroup.toString() + "\n";
             }
+         }
+         if(this.telefrag)
+         {
+            stateText = SpellState.getSpellStateById(DataEnum.SPELL_STATE_TELEFRAG_ALLY).name;
+            finalStr += stateText.substring(stateText.indexOf("::") + 2,stateText.indexOf("}"));
+         }
+         else if(finalStr.charAt(finalStr.length - 1) == "\n")
+         {
+            finalStr = finalStr.substring(0,finalStr.length - 1);
          }
          return finalStr;
       }

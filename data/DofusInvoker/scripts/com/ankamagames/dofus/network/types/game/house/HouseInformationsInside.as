@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.house
    public class HouseInformationsInside extends HouseInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 5325;
+      public static const protocolId:uint = 9864;
        
       
       public var houseInfos:HouseInstanceInformations;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.house
       
       override public function getTypeId() : uint
       {
-         return 5325;
+         return 9864;
       }
       
       public function initHouseInformationsInside(houseId:uint = 0, modelId:uint = 0, houseInfos:HouseInstanceInformations = null, worldX:int = 0, worldY:int = 0) : HouseInformationsInside

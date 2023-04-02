@@ -94,14 +94,11 @@
 				237,
 				238,
 				239,
-				246,
 				250,
-				262,
 				264,
 				282,
 				285,
 				433,
-				434,
 				556,
 				934,
 				955,
@@ -114,28 +111,16 @@
 				963,
 				964,
 				969,
-				1108,
 				2608,
 				2609,
-				2630,
 				2750,
 				2770,
 				3131,
 				3136,
 				3303,
 				3338,
-				3647,
-				3728,
-				3729,
-				3831,
-				3958,
-				3960,
 				3990,
 				4010,
-				4258,
-				4259,
-				4260,
-				4261,
 				4312,
 				4561,
 				4562,
@@ -152,14 +137,11 @@
 				5099,
 				5107,
 				5108,
-				5109,
 				5116,
 				5125,
 				5126,
 				5127,
 				5128,
-				5129,
-				5130,
 				5131,
 				5132,
 				5133,
@@ -167,15 +149,8 @@
 				5135,
 				5136,
 				5140,
-				5144,
-				5152,
 				5189,
-				5192,
-				5372,
-				6395,
-				7139,
-				7220,
-				7221
+				5372
 			]
 		},
 		{
@@ -3032,7 +3007,12 @@
 				7339,
 				7341,
 				7342,
-				7343
+				7343,
+				7348,
+				7349,
+				7350,
+				7351,
+				7353
 			]
 		},
 		{
@@ -4519,41 +4499,8 @@
 				5818,
 				5862,
 				5902,
-				5909
-			]
-		},
-		{
-			"id": 111,
-			"superRaceId": 28,
-			"nameId": 484440,
-			"aggressiveZoneSize": 0,
-			"aggressiveLevelDiff": 0,
-			"aggressiveImmunityCriterion": "null",
-			"aggressiveAttackDelay": 0,
-			"monsters": [
-				1245,
-				2681,
-				2682,
-				2683,
-				2684,
-				2797,
-				2798,
-				2799,
-				2811,
-				2812,
-				2813,
-				2814,
-				2823,
-				2824,
-				2925,
-				2926,
-				2956,
-				2957,
-				2958,
-				2959,
-				3095,
-				3101,
-				3225
+				5909,
+				6381
 			]
 		},
 		{
@@ -6239,7 +6186,7 @@
 				5844,
 				5845,
 				5846,
-				6381
+				7355
 			]
 		},
 		{
@@ -6254,7 +6201,6 @@
 				5847,
 				5848,
 				5849,
-				5850,
 				6889
 			]
 		},
@@ -6313,8 +6259,7 @@
 			"monsters": [
 				5904,
 				5905,
-				5906,
-				6541
+				5906
 			]
 		},
 		{
@@ -7417,7 +7362,13 @@
 			"aggressiveImmunityCriterion": "null",
 			"aggressiveAttackDelay": 0,
 			"monsters": [
-				7227
+				3647,
+				3728,
+				3729,
+				3831,
+				7345,
+				7346,
+				7347
 			]
 		},
 		{
@@ -7430,6 +7381,115 @@
 			"aggressiveAttackDelay": 0,
 			"monsters": [
 				7222
+			]
+		},
+		{
+			"id": 278,
+			"superRaceId": 28,
+			"nameId": 995209,
+			"aggressiveZoneSize": 0,
+			"aggressiveLevelDiff": 0,
+			"aggressiveImmunityCriterion": "null",
+			"aggressiveAttackDelay": 0,
+			"monsters": [
+				7139
+			]
+		},
+		{
+			"id": 279,
+			"superRaceId": 28,
+			"nameId": 995210,
+			"aggressiveZoneSize": 0,
+			"aggressiveLevelDiff": 0,
+			"aggressiveImmunityCriterion": "null",
+			"aggressiveAttackDelay": 0,
+			"monsters": [
+				434,
+				5192
+			]
+		},
+		{
+			"id": 280,
+			"superRaceId": 28,
+			"nameId": 995211,
+			"aggressiveZoneSize": 0,
+			"aggressiveLevelDiff": 0,
+			"aggressiveImmunityCriterion": "null",
+			"aggressiveAttackDelay": 0,
+			"monsters": [
+				5130
+			]
+		},
+		{
+			"id": 281,
+			"superRaceId": 28,
+			"nameId": 995213,
+			"aggressiveZoneSize": 0,
+			"aggressiveLevelDiff": 0,
+			"aggressiveImmunityCriterion": "null",
+			"aggressiveAttackDelay": 0,
+			"monsters": [
+				4258,
+				4259,
+				4260,
+				4261,
+				5129
+			]
+		},
+		{
+			"id": 282,
+			"superRaceId": 28,
+			"nameId": 995216,
+			"aggressiveZoneSize": 0,
+			"aggressiveLevelDiff": 0,
+			"aggressiveImmunityCriterion": "null",
+			"aggressiveAttackDelay": 0,
+			"monsters": [
+				3958,
+				3960,
+				5144
+			]
+		},
+		{
+			"id": 283,
+			"superRaceId": 28,
+			"nameId": 995217,
+			"aggressiveZoneSize": 0,
+			"aggressiveLevelDiff": 0,
+			"aggressiveImmunityCriterion": "null",
+			"aggressiveAttackDelay": 0,
+			"monsters": [
+				5152
+			]
+		},
+		{
+			"id": 284,
+			"superRaceId": 28,
+			"nameId": 995713,
+			"aggressiveZoneSize": 0,
+			"aggressiveLevelDiff": 0,
+			"aggressiveImmunityCriterion": "null",
+			"aggressiveAttackDelay": 0,
+			"monsters": [
+				5109
+			]
+		},
+		{
+			"id": 285,
+			"superRaceId": 28,
+			"nameId": 995714,
+			"aggressiveZoneSize": 0,
+			"aggressiveLevelDiff": 0,
+			"aggressiveImmunityCriterion": "null",
+			"aggressiveAttackDelay": 0,
+			"monsters": [
+				246,
+				262,
+				1108,
+				2630,
+				6395,
+				7220,
+				7221
 			]
 		}
 	]

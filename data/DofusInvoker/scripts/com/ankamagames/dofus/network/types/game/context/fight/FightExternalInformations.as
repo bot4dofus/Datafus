@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightExternalInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 4041;
+      public static const protocolId:uint = 570;
        
       
       public var fightId:uint = 0;
@@ -40,7 +40,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 4041;
+         return 570;
       }
       
       public function initFightExternalInformations(fightId:uint = 0, fightType:uint = 0, fightStart:uint = 0, fightSpectatorLocked:Boolean = false, fightTeams:Vector.<FightTeamLightInformations> = null, fightTeamsOptions:Vector.<FightOptionsInformations> = null) : FightExternalInformations

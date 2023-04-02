@@ -1,7 +1,7 @@
 package com.ankamagames.dofus.logic.game.fight.steps
 {
+   import com.ankamagames.dofus.internalDatacenter.stats.EntityStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
-   import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
@@ -92,8 +92,8 @@ package com.ankamagames.dofus.logic.game.fight.steps
          BuffManager.getInstance().dispell(dyingEntity.id,false,false,true);
          var impactedTarget:Array = BuffManager.getInstance().removeLinkedBuff(dyingEntity.id,false,true);
          BuffManager.getInstance().reaffectBuffs(dyingEntity.id);
-         fighterStats.setStat(new Stat(StatIds.CUR_PERMANENT_DAMAGE,0));
-         fighterStats.setStat(new Stat(StatIds.CUR_LIFE,-(fighterStats.getMaxHealthPoints() + fighterStats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE))));
+         fighterStats.setStat(new EntityStat(StatIds.CUR_PERMANENT_DAMAGE,0));
+         fighterStats.setStat(new EntityStat(StatIds.CUR_LIFE,-(fighterStats.getMaxHealthPoints() + fighterStats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE))));
          this._deathSubSequence = new SerialSequencer(FightBattleFrame.FIGHT_SEQUENCER_NAME);
          if(dyingEntity is TiphonSprite)
          {

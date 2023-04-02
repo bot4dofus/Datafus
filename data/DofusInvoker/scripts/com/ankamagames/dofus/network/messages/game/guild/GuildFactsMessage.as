@@ -1,7 +1,7 @@
 package com.ankamagames.dofus.network.messages.game.guild
 {
    import com.ankamagames.dofus.network.ProtocolTypeManager;
-   import com.ankamagames.dofus.network.types.game.character.CharacterMinimalGuildPublicInformations;
+   import com.ankamagames.dofus.network.types.game.character.CharacterMinimalSocialPublicInformations;
    import com.ankamagames.dofus.network.types.game.social.GuildFactSheetInformations;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
@@ -14,7 +14,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildFactsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1819;
+      public static const protocolId:uint = 9629;
        
       
       private var _isInitialized:Boolean = false;
@@ -23,9 +23,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       public var creationDate:uint = 0;
       
-      public var nbTaxCollectors:uint = 0;
-      
-      public var members:Vector.<CharacterMinimalGuildPublicInformations>;
+      public var members:Vector.<CharacterMinimalSocialPublicInformations>;
       
       private var _infostree:FuncTree;
       
@@ -34,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       public function GuildFactsMessage()
       {
          this.infos = new GuildFactSheetInformations();
-         this.members = new Vector.<CharacterMinimalGuildPublicInformations>();
+         this.members = new Vector.<CharacterMinimalSocialPublicInformations>();
          super();
       }
       
@@ -45,14 +43,13 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 1819;
+         return 9629;
       }
       
-      public function initGuildFactsMessage(infos:GuildFactSheetInformations = null, creationDate:uint = 0, nbTaxCollectors:uint = 0, members:Vector.<CharacterMinimalGuildPublicInformations> = null) : GuildFactsMessage
+      public function initGuildFactsMessage(infos:GuildFactSheetInformations = null, creationDate:uint = 0, members:Vector.<CharacterMinimalSocialPublicInformations> = null) : GuildFactsMessage
       {
          this.infos = infos;
          this.creationDate = creationDate;
-         this.nbTaxCollectors = nbTaxCollectors;
          this.members = members;
          this._isInitialized = true;
          return this;
@@ -61,8 +58,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       override public function reset() : void
       {
          this.infos = new GuildFactSheetInformations();
-         this.nbTaxCollectors = 0;
-         this.members = new Vector.<CharacterMinimalGuildPublicInformations>();
+         this.members = new Vector.<CharacterMinimalSocialPublicInformations>();
          this._isInitialized = false;
       }
       
@@ -100,15 +96,10 @@ package com.ankamagames.dofus.network.messages.game.guild
             throw new Error("Forbidden value (" + this.creationDate + ") on element creationDate.");
          }
          output.writeInt(this.creationDate);
-         if(this.nbTaxCollectors < 0)
-         {
-            throw new Error("Forbidden value (" + this.nbTaxCollectors + ") on element nbTaxCollectors.");
-         }
-         output.writeVarShort(this.nbTaxCollectors);
          output.writeShort(this.members.length);
-         for(var _i4:uint = 0; _i4 < this.members.length; _i4++)
+         for(var _i3:uint = 0; _i3 < this.members.length; _i3++)
          {
-            (this.members[_i4] as CharacterMinimalGuildPublicInformations).serializeAs_CharacterMinimalGuildPublicInformations(output);
+            (this.members[_i3] as CharacterMinimalSocialPublicInformations).serializeAs_CharacterMinimalSocialPublicInformations(output);
          }
       }
       
@@ -119,18 +110,17 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       public function deserializeAs_GuildFactsMessage(input:ICustomDataInput) : void
       {
-         var _item4:CharacterMinimalGuildPublicInformations = null;
+         var _item3:CharacterMinimalSocialPublicInformations = null;
          var _id1:uint = input.readUnsignedShort();
          this.infos = ProtocolTypeManager.getInstance(GuildFactSheetInformations,_id1);
          this.infos.deserialize(input);
          this._creationDateFunc(input);
-         this._nbTaxCollectorsFunc(input);
          var _membersLen:uint = input.readUnsignedShort();
-         for(var _i4:uint = 0; _i4 < _membersLen; _i4++)
+         for(var _i3:uint = 0; _i3 < _membersLen; _i3++)
          {
-            _item4 = new CharacterMinimalGuildPublicInformations();
-            _item4.deserialize(input);
-            this.members.push(_item4);
+            _item3 = new CharacterMinimalSocialPublicInformations();
+            _item3.deserialize(input);
+            this.members.push(_item3);
          }
       }
       
@@ -143,7 +133,6 @@ package com.ankamagames.dofus.network.messages.game.guild
       {
          this._infostree = tree.addChild(this._infostreeFunc);
          tree.addChild(this._creationDateFunc);
-         tree.addChild(this._nbTaxCollectorsFunc);
          this._memberstree = tree.addChild(this._memberstreeFunc);
       }
       
@@ -163,15 +152,6 @@ package com.ankamagames.dofus.network.messages.game.guild
          }
       }
       
-      private function _nbTaxCollectorsFunc(input:ICustomDataInput) : void
-      {
-         this.nbTaxCollectors = input.readVarUhShort();
-         if(this.nbTaxCollectors < 0)
-         {
-            throw new Error("Forbidden value (" + this.nbTaxCollectors + ") on element of GuildFactsMessage.nbTaxCollectors.");
-         }
-      }
-      
       private function _memberstreeFunc(input:ICustomDataInput) : void
       {
          var length:uint = input.readUnsignedShort();
@@ -183,7 +163,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       private function _membersFunc(input:ICustomDataInput) : void
       {
-         var _item:CharacterMinimalGuildPublicInformations = new CharacterMinimalGuildPublicInformations();
+         var _item:CharacterMinimalSocialPublicInformations = new CharacterMinimalSocialPublicInformations();
          _item.deserialize(input);
          this.members.push(_item);
       }

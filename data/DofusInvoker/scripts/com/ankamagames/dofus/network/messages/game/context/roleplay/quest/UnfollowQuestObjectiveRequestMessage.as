@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
    public class UnfollowQuestObjectiveRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2764;
+      public static const protocolId:uint = 124;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
       
       override public function getMessageId() : uint
       {
-         return 2764;
+         return 124;
       }
       
       public function initUnfollowQuestObjectiveRequestMessage(questId:uint = 0, objectiveId:int = 0) : UnfollowQuestObjectiveRequestMessage

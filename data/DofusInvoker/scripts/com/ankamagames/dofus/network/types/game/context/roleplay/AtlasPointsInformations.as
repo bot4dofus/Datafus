@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class AtlasPointsInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 8644;
+      public static const protocolId:uint = 9185;
        
       
       public var type:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       public function getTypeId() : uint
       {
-         return 8644;
+         return 9185;
       }
       
       public function initAtlasPointsInformations(type:uint = 0, coords:Vector.<MapCoordinatesExtended> = null) : AtlasPointsInformations

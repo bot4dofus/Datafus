@@ -11,15 +11,13 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceBulletinSetRequestMessage extends SocialNoticeSetRequestMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3780;
+      public static const protocolId:uint = 3619;
        
       
       private var _isInitialized:Boolean = false;
       
       [Transient]
       public var content:String = "";
-      
-      public var notifyMembers:Boolean = false;
       
       public function AllianceBulletinSetRequestMessage()
       {
@@ -33,13 +31,12 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 3780;
+         return 3619;
       }
       
-      public function initAllianceBulletinSetRequestMessage(content:String = "", notifyMembers:Boolean = false) : AllianceBulletinSetRequestMessage
+      public function initAllianceBulletinSetRequestMessage(content:String = "") : AllianceBulletinSetRequestMessage
       {
          this.content = content;
-         this.notifyMembers = notifyMembers;
          this._isInitialized = true;
          return this;
       }
@@ -47,7 +44,6 @@ package com.ankamagames.dofus.network.messages.game.alliance
       override public function reset() : void
       {
          this.content = "";
-         this.notifyMembers = false;
          this._isInitialized = false;
       }
       
@@ -80,7 +76,6 @@ package com.ankamagames.dofus.network.messages.game.alliance
       {
          super.serializeAs_SocialNoticeSetRequestMessage(output);
          output.writeUTF(this.content);
-         output.writeBoolean(this.notifyMembers);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -92,7 +87,6 @@ package com.ankamagames.dofus.network.messages.game.alliance
       {
          super.deserialize(input);
          this._contentFunc(input);
-         this._notifyMembersFunc(input);
       }
       
       override public function deserializeAsync(tree:FuncTree) : void
@@ -104,17 +98,11 @@ package com.ankamagames.dofus.network.messages.game.alliance
       {
          super.deserializeAsync(tree);
          tree.addChild(this._contentFunc);
-         tree.addChild(this._notifyMembersFunc);
       }
       
       private function _contentFunc(input:ICustomDataInput) : void
       {
          this.content = input.readUTF();
-      }
-      
-      private function _notifyMembersFunc(input:ICustomDataInput) : void
-      {
-         this.notifyMembers = input.readBoolean();
       }
    }
 }

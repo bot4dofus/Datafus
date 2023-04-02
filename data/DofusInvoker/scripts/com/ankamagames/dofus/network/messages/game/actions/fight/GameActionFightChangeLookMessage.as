@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightChangeLookMessage extends AbstractGameActionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9242;
+      public static const protocolId:uint = 359;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 9242;
+         return 359;
       }
       
       public function initGameActionFightChangeLookMessage(actionId:uint = 0, sourceId:Number = 0, targetId:Number = 0, entityLook:EntityLook = null) : GameActionFightChangeLookMessage
