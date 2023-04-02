@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.zaap
    public class ZaapDestinationsMessage extends TeleportDestinationsMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5649;
+      public static const protocolId:uint = 3725;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.zaap
       
       override public function getMessageId() : uint
       {
-         return 5649;
+         return 3725;
       }
       
       public function initZaapDestinationsMessage(type:uint = 0, destinations:Vector.<TeleportDestination> = null, spawnMapId:Number = 0) : ZaapDestinationsMessage

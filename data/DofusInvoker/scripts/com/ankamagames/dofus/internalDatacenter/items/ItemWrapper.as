@@ -1009,14 +1009,7 @@ package com.ankamagames.dofus.internalDatacenter.items
                this.evolutiveLevel = EffectInstanceDice(effectInstance).value;
             }
          }
-         if(multiUseCheck == 1)
-         {
-            this.isOkForMultiUse = true;
-         }
-         else
-         {
-            this.isOkForMultiUse = false;
-         }
+         this.isOkForMultiUse = multiUseCheck == 1;
       }
       
       public function get itemHoldsLegendaryPower() : Boolean

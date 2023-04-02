@@ -1,9 +1,13 @@
 package com.ankamagames.dofus.internalDatacenter.conquest
 {
-   import com.ankamagames.dofus.internalDatacenter.guild.EmblemWrapper;
-   import com.ankamagames.dofus.network.types.game.guild.GuildEmblem;
+   import com.ankamagames.dofus.internalDatacenter.social.EmblemWrapper;
+   import com.ankamagames.dofus.network.enums.AvaScoreTypeEnum;
+   import com.ankamagames.dofus.network.types.game.alliance.KohAllianceRoleMembers;
+   import com.ankamagames.dofus.network.types.game.alliance.KohScore;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformation;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
+   import flash.utils.Dictionary;
    
    public class AllianceOnTheHillWrapper implements IDataCenter
    {
@@ -19,34 +23,67 @@ package com.ankamagames.dofus.internalDatacenter.conquest
       
       public var backEmblem:EmblemWrapper;
       
-      public var nbMembers:uint = 0;
+      public var memberCount:Number = 0;
       
-      public var roundWeigth:uint = 0;
+      public var roleDescription:Dictionary;
       
-      public var matchScore:uint = 0;
+      public var roundScore:Score;
       
-      public var side:uint = 0;
+      public var cumulScore:Score;
+      
+      public var totalCumulScore:Number = 0;
+      
+      public var matchDominationScore:Number = 0;
+      
+      public var side:Number = 0;
       
       public function AllianceOnTheHillWrapper()
       {
+         this.roleDescription = new Dictionary();
          super();
       }
       
-      public static function create(pAllianceId:uint, pAllianceTag:String, pAllianceName:String, pAllianceEmblem:GuildEmblem, nbMembers:uint, roundWeigth:uint, matchScore:uint, side:uint) : AllianceOnTheHillWrapper
+      public static function create(pAlliance:AllianceInformation, memberCount:uint, listRole:Object, listScore:Object, matchDominationScores:uint, side:uint) : AllianceOnTheHillWrapper
       {
+         var descriptif:KohAllianceRoleMembers = null;
+         var score:KohScore = null;
          var item:AllianceOnTheHillWrapper = new AllianceOnTheHillWrapper();
-         item.allianceId = pAllianceId;
-         item._allianceTag = pAllianceTag;
-         item._allianceName = pAllianceName;
-         if(pAllianceEmblem != null)
+         item.allianceId = pAlliance.allianceId;
+         item._allianceTag = pAlliance.allianceTag;
+         item._allianceName = pAlliance.allianceName;
+         if(pAlliance.allianceEmblem)
          {
-            item.upEmblem = EmblemWrapper.create(pAllianceEmblem.symbolShape,EmblemWrapper.UP,pAllianceEmblem.symbolColor,true);
-            item.backEmblem = EmblemWrapper.create(pAllianceEmblem.backgroundShape,EmblemWrapper.BACK,pAllianceEmblem.backgroundColor,true);
+            item.upEmblem = EmblemWrapper.create(pAlliance.allianceEmblem.symbolShape,EmblemWrapper.UP,pAlliance.allianceEmblem.symbolColor,true);
+            item.backEmblem = EmblemWrapper.create(pAlliance.allianceEmblem.backgroundShape,EmblemWrapper.BACK,pAlliance.allianceEmblem.backgroundColor,true);
          }
-         item.nbMembers = nbMembers;
-         item.roundWeigth = roundWeigth;
-         item.matchScore = matchScore;
+         item.memberCount = memberCount;
+         item.matchDominationScore = matchDominationScores;
          item.side = side;
+         for each(descriptif in listRole)
+         {
+            item.roleDescription[descriptif.roleAvAId] = descriptif.memberCount;
+         }
+         item.roundScore = new Score();
+         item.cumulScore = new Score();
+         for each(score in listScore)
+         {
+            item.totalCumulScore += score.cumulScores;
+            switch(score.avaScoreTypeEnum)
+            {
+               case AvaScoreTypeEnum.AVA_DOMINATION:
+                  item.cumulScore.map = score.cumulScores;
+                  item.roundScore.map = score.roundScores;
+                  break;
+               case AvaScoreTypeEnum.AVA_FIGHT:
+                  item.cumulScore.fight = score.cumulScores;
+                  item.roundScore.fight = score.roundScores;
+                  break;
+               case AvaScoreTypeEnum.AVA_PRISM:
+                  item.cumulScore.prism = score.cumulScores;
+                  item.roundScore.prism = score.roundScores;
+                  break;
+            }
+         }
          return item;
       }
       
@@ -59,36 +96,66 @@ package com.ankamagames.dofus.internalDatacenter.conquest
          return this._allianceTag;
       }
       
-      public function get realAllianceTag() : String
-      {
-         return this._allianceTag;
-      }
-      
       public function get allianceName() : String
       {
          if(this._allianceName == "#NONAME#")
          {
-            return I18n.getUiText("ui.guild.noName");
+            return I18n.getUiText("ui.social.noName");
          }
          return this._allianceName;
       }
       
-      public function get realAllianceName() : String
+      public function update(pAlliance:AllianceInformation, memberCount:uint, listRole:Object, listScore:Object, matchDominationScores:uint, side:uint) : void
       {
-         return this._allianceName;
-      }
-      
-      public function update(pAllianceId:uint, pAllianceTag:String, pAllianceName:String, pAllianceEmblem:GuildEmblem, nbMembers:uint, roundWeigth:uint, matchScore:uint, side:uint) : void
-      {
-         this.allianceId = pAllianceId;
-         this._allianceTag = pAllianceTag;
-         this._allianceName = pAllianceName;
-         this.upEmblem.update(pAllianceEmblem.symbolShape,EmblemWrapper.UP,pAllianceEmblem.symbolColor);
-         this.backEmblem.update(pAllianceEmblem.backgroundShape,EmblemWrapper.BACK,pAllianceEmblem.backgroundColor);
-         this.nbMembers = nbMembers;
-         this.roundWeigth = roundWeigth;
-         this.matchScore = matchScore;
+         var descriptif:KohAllianceRoleMembers = null;
+         var score:KohScore = null;
+         this.allianceId = pAlliance.allianceId;
+         this._allianceTag = pAlliance.allianceTag;
+         this._allianceName = pAlliance.allianceName;
+         this.upEmblem.update(pAlliance.allianceEmblem.symbolShape,EmblemWrapper.UP,pAlliance.allianceEmblem.symbolColor);
+         this.backEmblem.update(pAlliance.allianceEmblem.backgroundShape,EmblemWrapper.BACK,pAlliance.allianceEmblem.backgroundColor);
+         this.memberCount = memberCount;
+         this.matchDominationScore = matchDominationScores;
          this.side = side;
+         for each(descriptif in listRole)
+         {
+            this.roleDescription[descriptif.roleAvAId] = descriptif.memberCount;
+         }
+         for each(score in listScore)
+         {
+            this.totalCumulScore += score.cumulScores;
+            switch(score.avaScoreTypeEnum)
+            {
+               case AvaScoreTypeEnum.AVA_DOMINATION:
+                  this.cumulScore.map = score.cumulScores;
+                  this.roundScore.map = score.roundScores;
+                  break;
+               case AvaScoreTypeEnum.AVA_FIGHT:
+                  this.cumulScore.fight = score.cumulScores;
+                  this.roundScore.fight = score.roundScores;
+                  break;
+               case AvaScoreTypeEnum.AVA_PRISM:
+                  this.cumulScore.prism = score.cumulScores;
+                  this.roundScore.prism = score.roundScores;
+                  break;
+            }
+         }
       }
+   }
+}
+
+class Score
+{
+    
+   
+   public var fight:Number;
+   
+   public var map:Number;
+   
+   public var prism:Number;
+   
+   function Score()
+   {
+      super();
    }
 }

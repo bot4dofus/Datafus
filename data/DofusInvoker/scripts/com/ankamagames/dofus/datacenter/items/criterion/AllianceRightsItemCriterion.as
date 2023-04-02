@@ -1,8 +1,8 @@
 package com.ankamagames.dofus.datacenter.items.criterion
 {
-   import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
-   import com.ankamagames.dofus.logic.game.common.frames.AllianceFrame;
-   import com.ankamagames.dofus.network.enums.AllianceRightsBitEnum;
+   import com.ankamagames.dofus.datacenter.alliance.AllianceRight;
+   import com.ankamagames.dofus.logic.game.common.frames.SocialFrame;
+   import com.ankamagames.dofus.network.types.game.rank.RankInformation;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
    
@@ -17,8 +17,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
       
       override public function get isRespected() : Boolean
       {
-         var hasThisRight:Boolean = false;
-         if(!AllianceFrame.getInstance().hasAlliance)
+         if(!SocialFrame.getInstance().hasAlliance)
          {
             if(_operator.text == ItemCriterionOperator.DIFFERENT)
             {
@@ -26,21 +25,13 @@ package com.ankamagames.dofus.datacenter.items.criterion
             }
             return false;
          }
-         var alliance:AllianceWrapper = AllianceFrame.getInstance().alliance;
-         switch(criterionValue)
-         {
-            case AllianceRightsBitEnum.ALLIANCE_RIGHT_BOSS:
-               hasThisRight = alliance.isBoss;
-               break;
-            default:
-               hasThisRight = true;
-         }
+         var playerRank:RankInformation = SocialFrame.getInstance().playerAllianceRank;
          switch(_operator.text)
          {
             case ItemCriterionOperator.EQUAL:
-               return hasThisRight;
+               return playerRank.rights.indexOf(criterionValue) != -1;
             case ItemCriterionOperator.DIFFERENT:
-               return !hasThisRight;
+               return playerRank.rights.indexOf(criterionValue) == -1;
             default:
                return false;
          }
@@ -49,27 +40,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
       override public function get text() : String
       {
          var readableCriterion:String = null;
-         var readableCriterionValue:String = null;
-         switch(criterionValue)
-         {
-            case AllianceRightsBitEnum.ALLIANCE_RIGHT_BOSS:
-               readableCriterionValue = I18n.getUiText("ui.alliance.right.leader");
-               break;
-            case AllianceRightsBitEnum.ALLIANCE_RIGHT_KICK_GUILDS:
-               readableCriterionValue = I18n.getUiText("ui.social.guildRightsBann");
-               break;
-            case AllianceRightsBitEnum.ALLIANCE_RIGHT_MANAGE_PRISMS:
-               readableCriterionValue = I18n.getUiText("ui.social.guildRightsSetAlliancePrism");
-               break;
-            case AllianceRightsBitEnum.ALLIANCE_RIGHT_MANAGE_RIGHTS:
-               readableCriterionValue = I18n.getUiText("ui.social.guildManageRights");
-               break;
-            case AllianceRightsBitEnum.ALLIANCE_RIGHT_RECRUIT_GUILDS:
-               readableCriterionValue = I18n.getUiText("ui.social.guildRightsInvit");
-               break;
-            case AllianceRightsBitEnum.ALLIANCE_RIGHT_TALK_IN_CHAN:
-               readableCriterionValue = I18n.getUiText("ui.social.guildRightsTalkInAllianceChannel");
-         }
+         var readableCriterionValue:String = AllianceRight.getAllianceRightById(criterionValue as uint).name;
          switch(_operator.text)
          {
             case ItemCriterionOperator.EQUAL:

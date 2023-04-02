@@ -11,7 +11,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeReadyAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeReadyCrushAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeRefuseAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.LeaveShopStockAction;
+   import com.ankamagames.dofus.logic.game.common.actions.trade.LeaveShopStockAction;
    import com.ankamagames.dofus.logic.game.common.managers.InventoryManager;
    import com.ankamagames.dofus.logic.game.common.managers.StorageOptionManager;
    import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayEntitiesFrame;

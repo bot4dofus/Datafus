@@ -45,6 +45,8 @@ package com.ankamagames.dofus.misc.lists
       
       public static const GuildCreationResult:String = "GuildCreationResult";
       
+      public static const GuildModificationResult:String = "GuildModificationResult";
+      
       public static const GuildInvited:String = "GuildInvited";
       
       public static const GuildInvitationStateRecruter:String = "GuildInvitationStateRecruter";
@@ -59,11 +61,7 @@ package com.ankamagames.dofus.misc.lists
       
       public static const GuildLeft:String = "GuildLeft";
       
-      public static const GuildInfosUpgrade:String = "GuildInfosUpgrade";
-      
-      public static const GuildFightEnnemiesListUpdate:String = "GuildFightEnnemiesListUpdate";
-      
-      public static const GuildFightAlliesListUpdate:String = "GuildFightAlliesListUpdate";
+      public static const AllianceFightMemberUpdated:String = "AllianceFightMemberUpdated";
       
       public static const GuildHousesInformation:String = "GuildHousesInformation";
       
@@ -77,6 +75,18 @@ package com.ankamagames.dofus.misc.lists
       
       public static const AllianceTaxCollectorDialogQuestionExtended:String = "AllianceTaxCollectorDialogQuestionExtended";
       
+      public static const TaxCollectorAdded:String = "TaxCollectorAdded";
+      
+      public static const TaxCollectorRemoved:String = "TaxCollectorRemoved";
+      
+      public static const AllianceFightAdded:String = "AllianceFightAdded";
+      
+      public static const AllianceFightRemoved:String = "AllianceFightRemoved";
+      
+      public static const AllianceFightsUpdate:String = "AllianceFightsUpdate";
+      
+      public static const AllianceFightStateUpdate:String = "AllianceFightStateUpdate";
+      
       public static const TaxCollectorDialogQuestionBasic:String = "TaxCollectorDialogQuestionBasic";
       
       public static const TaxCollectorAttackedResult:String = "TaxCollectorAttackedResult";
@@ -84,8 +94,6 @@ package com.ankamagames.dofus.misc.lists
       public static const TaxCollectorError:String = "TaxCollectorError";
       
       public static const TaxCollectorListUpdate:String = "TaxCollectorListUpdate";
-      
-      public static const TaxCollectorUpdate:String = "TaxCollectorUpdate";
       
       public static const TaxCollectorMovementAdd:String = "TaxCollectorMovementAdd";
       
@@ -105,13 +113,11 @@ package com.ankamagames.dofus.misc.lists
       
       public static const GuildHouseRemoved:String = "GuildHouseRemoved";
       
-      public static const GuildTaxCollectorAdd:String = "GuildTaxCollectorAdd";
-      
-      public static const GuildTaxCollectorRemoved:String = "GuildTaxCollectorRemoved";
-      
-      public static const AllianceTaxCollectorRemoved:String = "AllianceTaxCollectorRemoved";
-      
       public static const GuildList:String = "GuildList";
+      
+      public static const AllianceInformationsMembers:String = "AllianceInformationsMembers";
+      
+      public static const AllianceInformationsMemberUpdate:String = "AllianceInformationsMemberUpdate";
       
       public static const AllianceMembershipUpdated:String = "AllianceMembershipUpdated";
       
@@ -119,15 +125,37 @@ package com.ankamagames.dofus.misc.lists
       
       public static const AllianceCreationResult:String = "AllianceCreationResult";
       
+      public static const AllianceModificationResult:String = "AllianceModificationResult";
+      
+      public static const AllianceApplicationsUiRequested:String = "AllianceApplicationsUiRequested";
+      
+      public static const AlliancePrezAndRecruitUiRequested:String = "AlliancePrezAndRecruitUiRequested";
+      
+      public static const AllianceNewApplicationReceived:String = "AllianceNewApplicationReceived";
+      
+      public static const AllianceAreThereApplications:String = "AllianceAreThereApplications";
+      
+      public static const AllianceApplicationsReceived:String = "AllianceApplicationsReceived";
+      
       public static const AllianceInvited:String = "AllianceInvited";
       
       public static const AllianceInvitationStateRecruter:String = "AllianceInvitationStateRecruter";
       
       public static const AllianceInvitationStateRecruted:String = "AllianceInvitationStateRecruted";
       
+      public static const AllianceApplicationUpdated:String = "AllianceApplicationUpdated";
+      
+      public static const AllianceRecruitmentDataReceived:String = "AllianceRecruitmentDataReceived";
+      
+      public static const AlliancePlayerApplicationReceived:String = "AlliancePlayerApplicationReceived";
+      
+      public static const AlliancePlayerApplicationDeleted:String = "AlliancePlayerApplicationDeleted";
+      
       public static const AllianceJoined:String = "AllianceJoined";
       
-      public static const AllianceGuildLeaving:String = "AllianceGuildLeaving";
+      public static const AllianceApplicationIsAnswered:String = "AllianceApplicationIsAnsweredMessage";
+      
+      public static const AllianceMemberLeaving:String = "AllianceMemberLeaving";
       
       public static const AllianceLeft:String = "AllianceLeft";
       
@@ -138,6 +166,10 @@ package com.ankamagames.dofus.misc.lists
       public static const AllianceMotd:String = "AllianceMotd";
       
       public static const AllianceBulletin:String = "AllianceBulletin";
+      
+      public static const NuggetsInformation:String = "NuggetsInformation";
+      
+      public static const NuggetsDistributionRequestSentToServer:String = "NuggetsDistributionRequestSentToServer";
       
       public static const ContactLookById:String = "ContactLookById";
       
@@ -174,6 +206,20 @@ package com.ankamagames.dofus.misc.lists
       public static const OpenGuildRanksAndRights:String = "OpenGuildRanksAndRights";
       
       public static const GuildLogbookInformationsReceived:String = "GuildLogbookInformationsReceived";
+      
+      public static const AllianceRanksReceived:String = "AllianceRanksReceived";
+      
+      public static const ModifyTaxCollector:String = "ModifyTaxCollector";
+      
+      public static const ConsultTaxCollector:String = "ConsultTaxCollector";
+      
+      public static const TaxCollectorEquipmentUpdate:String = "TaxCollectorEquipmentUpdate";
+      
+      public static const TaxCollectorOrderedSpellUpdated:String = "TaxCollectorOrderedSpellUpdated";
+      
+      public static const TaxCollectorPresets:String = "TaxCollectorPresets";
+      
+      public static const TaxCollectorPresetSpellUpdated:String = "TaxCollectorPresetSpellUpdated";
        
       
       public function SocialHookList()
@@ -203,6 +249,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(GuildMembershipUpdated);
          Hook.createHook(GuildCreationStarted);
          Hook.createHook(GuildCreationResult);
+         Hook.createHook(GuildModificationResult);
          Hook.createHook(GuildInvited);
          Hook.createHook(GuildInvitationStateRecruter);
          Hook.createHook(GuildInvitationStateRecruted);
@@ -210,20 +257,20 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(GuildInformationsMemberUpdate);
          Hook.createHook(GuildMemberLeaving);
          Hook.createHook(GuildLeft);
-         Hook.createHook(GuildInfosUpgrade);
-         Hook.createHook(GuildFightEnnemiesListUpdate);
-         Hook.createHook(GuildFightAlliesListUpdate);
+         Hook.createHook(AllianceFightMemberUpdated);
+         Hook.createHook(AllianceFightsUpdate);
+         Hook.createHook(AllianceFightAdded);
+         Hook.createHook(AllianceFightRemoved);
+         Hook.createHook(AllianceFightStateUpdate);
          Hook.createHook(GuildHousesInformation);
          Hook.createHook(GuildHousesUpdate);
          Hook.createHook(TaxCollectorMovement);
          Hook.createHook(AlliancePrismDialogQuestion);
          Hook.createHook(TaxCollectorDialogQuestionExtended);
-         Hook.createHook(AllianceTaxCollectorDialogQuestionExtended);
          Hook.createHook(TaxCollectorDialogQuestionBasic);
          Hook.createHook(TaxCollectorAttackedResult);
          Hook.createHook(TaxCollectorError);
          Hook.createHook(TaxCollectorListUpdate);
-         Hook.createHook(TaxCollectorUpdate);
          Hook.createHook(TaxCollectorMovementAdd);
          Hook.createHook(TaxCollectorMovementRemove);
          Hook.createHook(GuildInformationsFarms);
@@ -233,18 +280,28 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(GuildPaddockRemoved);
          Hook.createHook(GuildHouseAdd);
          Hook.createHook(GuildHouseRemoved);
-         Hook.createHook(GuildTaxCollectorAdd);
-         Hook.createHook(GuildTaxCollectorRemoved);
-         Hook.createHook(AllianceTaxCollectorRemoved);
          Hook.createHook(GuildList);
+         Hook.createHook(AllianceInformationsMembers);
+         Hook.createHook(AllianceInformationsMemberUpdate);
          Hook.createHook(AllianceMembershipUpdated);
          Hook.createHook(AllianceCreationStarted);
          Hook.createHook(AllianceCreationResult);
+         Hook.createHook(AllianceModificationResult);
+         Hook.createHook(AllianceApplicationsUiRequested);
+         Hook.createHook(AlliancePrezAndRecruitUiRequested);
+         Hook.createHook(AllianceAreThereApplications);
+         Hook.createHook(AllianceApplicationsReceived);
+         Hook.createHook(AllianceNewApplicationReceived);
          Hook.createHook(AllianceInvited);
          Hook.createHook(AllianceInvitationStateRecruter);
          Hook.createHook(AllianceInvitationStateRecruted);
+         Hook.createHook(AllianceApplicationUpdated);
+         Hook.createHook(AllianceRecruitmentDataReceived);
+         Hook.createHook(AlliancePlayerApplicationReceived);
+         Hook.createHook(AlliancePlayerApplicationDeleted);
          Hook.createHook(AllianceJoined);
-         Hook.createHook(AllianceGuildLeaving);
+         Hook.createHook(AllianceApplicationIsAnswered);
+         Hook.createHook(AllianceMemberLeaving);
          Hook.createHook(AllianceLeft);
          Hook.createHook(AllianceUpdateInformations);
          Hook.createHook(AllianceList);
@@ -268,6 +325,17 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(GuildRanksReceived);
          Hook.createHook(GuildLogbookInformationsReceived);
          Hook.createHook(OpenGuildRanksAndRights);
+         Hook.createHook(AllianceRanksReceived);
+         Hook.createHook(ModifyTaxCollector);
+         Hook.createHook(ConsultTaxCollector);
+         Hook.createHook(TaxCollectorEquipmentUpdate);
+         Hook.createHook(TaxCollectorAdded);
+         Hook.createHook(TaxCollectorRemoved);
+         Hook.createHook(TaxCollectorOrderedSpellUpdated);
+         Hook.createHook(TaxCollectorPresets);
+         Hook.createHook(TaxCollectorPresetSpellUpdated);
+         Hook.createHook(NuggetsInformation);
+         Hook.createHook(NuggetsDistributionRequestSentToServer);
       }
    }
 }

@@ -163,8 +163,7 @@ package com.ankamagames.berilia.managers
             _log.warn("Won\'t load unofficial theme from " + themeFolder.nativePath);
             return;
          }
-         var isDevMode:* = XmlConfig.getInstance().getBooleanEntry("config.dev.mode") == "true";
-         if(!official && !isDevMode && !ThemeInstallerSecurity.checkSecurity(themeFolder))
+         if(!official && !ThemeInstallerSecurity.checkSecurity(themeFolder))
          {
             Berilia.getInstance().handler.process(new ThemeLoadErrorMessage(themeFolder.name));
             return;

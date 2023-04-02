@@ -15,7 +15,6 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.managers.CharacterDisplacementManager;
-   import com.ankamagames.dofus.logic.game.common.managers.FlagManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayEntitiesFrame;
    import com.ankamagames.dofus.misc.utils.GameDataQuery;
@@ -274,11 +273,6 @@ package com.ankamagames.dofus.uiApi
       public function getMapReference(refId:uint) : MapReference
       {
          return MapReference.getMapReferenceById(refId);
-      }
-      
-      public function getPhoenixsMaps() : Array
-      {
-         return FlagManager.getInstance().phoenixs;
       }
       
       public function isInIncarnam() : Boolean

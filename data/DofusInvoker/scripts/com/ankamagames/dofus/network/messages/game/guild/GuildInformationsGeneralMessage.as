@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildInformationsGeneralMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1416;
+      public static const protocolId:uint = 7808;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,10 +28,6 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       public var creationDate:uint = 0;
       
-      public var nbTotalMembers:uint = 0;
-      
-      public var nbConnectedMembers:uint = 0;
-      
       public function GuildInformationsGeneralMessage()
       {
          super();
@@ -44,10 +40,10 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 1416;
+         return 7808;
       }
       
-      public function initGuildInformationsGeneralMessage(abandonnedPaddock:Boolean = false, level:uint = 0, expLevelFloor:Number = 0, experience:Number = 0, expNextLevelFloor:Number = 0, creationDate:uint = 0, nbTotalMembers:uint = 0, nbConnectedMembers:uint = 0) : GuildInformationsGeneralMessage
+      public function initGuildInformationsGeneralMessage(abandonnedPaddock:Boolean = false, level:uint = 0, expLevelFloor:Number = 0, experience:Number = 0, expNextLevelFloor:Number = 0, creationDate:uint = 0) : GuildInformationsGeneralMessage
       {
          this.abandonnedPaddock = abandonnedPaddock;
          this.level = level;
@@ -55,8 +51,6 @@ package com.ankamagames.dofus.network.messages.game.guild
          this.experience = experience;
          this.expNextLevelFloor = expNextLevelFloor;
          this.creationDate = creationDate;
-         this.nbTotalMembers = nbTotalMembers;
-         this.nbConnectedMembers = nbConnectedMembers;
          this._isInitialized = true;
          return this;
       }
@@ -69,8 +63,6 @@ package com.ankamagames.dofus.network.messages.game.guild
          this.experience = 0;
          this.expNextLevelFloor = 0;
          this.creationDate = 0;
-         this.nbTotalMembers = 0;
-         this.nbConnectedMembers = 0;
          this._isInitialized = false;
       }
       
@@ -127,16 +119,6 @@ package com.ankamagames.dofus.network.messages.game.guild
             throw new Error("Forbidden value (" + this.creationDate + ") on element creationDate.");
          }
          output.writeInt(this.creationDate);
-         if(this.nbTotalMembers < 0)
-         {
-            throw new Error("Forbidden value (" + this.nbTotalMembers + ") on element nbTotalMembers.");
-         }
-         output.writeVarShort(this.nbTotalMembers);
-         if(this.nbConnectedMembers < 0)
-         {
-            throw new Error("Forbidden value (" + this.nbConnectedMembers + ") on element nbConnectedMembers.");
-         }
-         output.writeVarShort(this.nbConnectedMembers);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -152,8 +134,6 @@ package com.ankamagames.dofus.network.messages.game.guild
          this._experienceFunc(input);
          this._expNextLevelFloorFunc(input);
          this._creationDateFunc(input);
-         this._nbTotalMembersFunc(input);
-         this._nbConnectedMembersFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -169,8 +149,6 @@ package com.ankamagames.dofus.network.messages.game.guild
          tree.addChild(this._experienceFunc);
          tree.addChild(this._expNextLevelFloorFunc);
          tree.addChild(this._creationDateFunc);
-         tree.addChild(this._nbTotalMembersFunc);
-         tree.addChild(this._nbConnectedMembersFunc);
       }
       
       private function _abandonnedPaddockFunc(input:ICustomDataInput) : void
@@ -220,24 +198,6 @@ package com.ankamagames.dofus.network.messages.game.guild
          if(this.creationDate < 0)
          {
             throw new Error("Forbidden value (" + this.creationDate + ") on element of GuildInformationsGeneralMessage.creationDate.");
-         }
-      }
-      
-      private function _nbTotalMembersFunc(input:ICustomDataInput) : void
-      {
-         this.nbTotalMembers = input.readVarUhShort();
-         if(this.nbTotalMembers < 0)
-         {
-            throw new Error("Forbidden value (" + this.nbTotalMembers + ") on element of GuildInformationsGeneralMessage.nbTotalMembers.");
-         }
-      }
-      
-      private function _nbConnectedMembersFunc(input:ICustomDataInput) : void
-      {
-         this.nbConnectedMembers = input.readVarUhShort();
-         if(this.nbConnectedMembers < 0)
-         {
-            throw new Error("Forbidden value (" + this.nbConnectedMembers + ") on element of GuildInformationsGeneralMessage.nbConnectedMembers.");
          }
       }
    }

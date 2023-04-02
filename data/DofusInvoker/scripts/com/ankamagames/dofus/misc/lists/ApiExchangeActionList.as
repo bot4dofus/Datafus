@@ -32,15 +32,12 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeReadyCrushAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeRefuseAction;
    import com.ankamagames.dofus.logic.game.common.actions.exchange.ExchangeRequestOnTaxCollectorAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeBuyAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeOnHumanVendorRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeRequestOnShopStockAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeSellAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeShopStockMouvmentAddAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeShopStockMouvmentRemoveAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeShowVendorTaxAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeStartAsVendorRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.LeaveShopStockAction;
+   import com.ankamagames.dofus.logic.game.common.actions.exchange.StartExchangeTaxCollectorEquipmentAction;
+   import com.ankamagames.dofus.logic.game.common.actions.trade.ExchangeBuyAction;
+   import com.ankamagames.dofus.logic.game.common.actions.trade.ExchangeSellAction;
+   import com.ankamagames.dofus.logic.game.common.actions.trade.ExchangeShopStockMouvmentRemoveAction;
+   import com.ankamagames.dofus.logic.game.common.actions.trade.ExchangeShopStockMovementAddAction;
+   import com.ankamagames.dofus.logic.game.common.actions.trade.LeaveShopStockAction;
    import com.ankamagames.dofus.misc.utils.DofusApiAction;
    
    public class ApiExchangeActionList
@@ -74,15 +71,9 @@ package com.ankamagames.dofus.misc.lists
       
       public static const ExchangePlayerRequest:DofusApiAction = new DofusApiAction("ExchangePlayerRequestAction",ExchangePlayerRequestAction);
       
-      public static const ExchangeOnHumanVendorRequest:DofusApiAction = new DofusApiAction("ExchangeOnHumanVendorRequestAction",ExchangeOnHumanVendorRequestAction);
-      
-      public static const ExchangeStartAsVendorRequest:DofusApiAction = new DofusApiAction("ExchangeStartAsVendorRequestAction",ExchangeStartAsVendorRequestAction);
-      
-      public static const ExchangeRequestOnShopStock:DofusApiAction = new DofusApiAction("ExchangeRequestOnShopStockAction",ExchangeRequestOnShopStockAction);
-      
       public static const LeaveShopStock:DofusApiAction = new DofusApiAction("LeaveShopStockAction",LeaveShopStockAction);
       
-      public static const ExchangeShopStockMouvmentAdd:DofusApiAction = new DofusApiAction("ExchangeShopStockMouvmentAddAction",ExchangeShopStockMouvmentAddAction);
+      public static const ExchangeShopStockMovementAdd:DofusApiAction = new DofusApiAction("ExchangeShopStockMovementAddAction",ExchangeShopStockMovementAddAction);
       
       public static const ExchangeShopStockMouvmentRemove:DofusApiAction = new DofusApiAction("ExchangeShopStockMouvmentRemoveAction",ExchangeShopStockMouvmentRemoveAction);
       
@@ -91,8 +82,6 @@ package com.ankamagames.dofus.misc.lists
       public static const ExchangeBuy:DofusApiAction = new DofusApiAction("ExchangeBuyAction",ExchangeBuyAction);
       
       public static const ExchangeSell:DofusApiAction = new DofusApiAction("ExchangeSellAction",ExchangeSellAction);
-      
-      public static const ExchangeShowVendorTax:DofusApiAction = new DofusApiAction("ExchangeShowVendorTaxAction",ExchangeShowVendorTaxAction);
       
       public static const ExchangeBidHouseSearch:DofusApiAction = new DofusApiAction("ExchangeBidHouseSearchAction",ExchangeBidHouseSearchAction);
       
@@ -127,6 +116,8 @@ package com.ankamagames.dofus.misc.lists
       public static const ExchangeRequestOnTaxCollector:DofusApiAction = new DofusApiAction("ExchangeRequestOnTaxCollectorAction",ExchangeRequestOnTaxCollectorAction);
       
       public static const ExchangeObjectMoveToTab:DofusApiAction = new DofusApiAction("ExchangeObjectMoveToTabAction",ExchangeObjectMoveToTabAction);
+      
+      public static const StartExchangeTaxCollectorEquipment:DofusApiAction = new DofusApiAction("StartExchangeTaxCollectorEquipmentAction",StartExchangeTaxCollectorEquipmentAction);
        
       
       public function ApiExchangeActionList()

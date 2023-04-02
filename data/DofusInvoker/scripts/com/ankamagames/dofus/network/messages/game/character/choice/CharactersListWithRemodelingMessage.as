@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.character.choice
    public class CharactersListWithRemodelingMessage extends CharactersListMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4291;
+      public static const protocolId:uint = 522;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,12 +34,12 @@ package com.ankamagames.dofus.network.messages.game.character.choice
       
       override public function getMessageId() : uint
       {
-         return 4291;
+         return 522;
       }
       
-      public function initCharactersListWithRemodelingMessage(characters:Vector.<CharacterBaseInformations> = null, hasStartupActions:Boolean = false, charactersToRemodel:Vector.<CharacterToRemodelInformations> = null) : CharactersListWithRemodelingMessage
+      public function initCharactersListWithRemodelingMessage(characters:Vector.<CharacterBaseInformations> = null, charactersToRemodel:Vector.<CharacterToRemodelInformations> = null) : CharactersListWithRemodelingMessage
       {
-         super.initCharactersListMessage(characters,hasStartupActions);
+         super.initCharactersListMessage(characters);
          this.charactersToRemodel = charactersToRemodel;
          this._isInitialized = true;
          return this;

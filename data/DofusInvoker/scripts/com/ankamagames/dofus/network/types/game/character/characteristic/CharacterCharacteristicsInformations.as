@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
    public class CharacterCharacteristicsInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 9105;
+      public static const protocolId:uint = 1063;
        
       
       public var experience:Number = 0;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       
       public var spellModifications:Vector.<CharacterSpellModification>;
       
-      public var probationTime:uint = 0;
+      public var probationTime:Number = 0;
       
       private var _alignmentInfostree:FuncTree;
       
@@ -49,10 +49,10 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       
       public function getTypeId() : uint
       {
-         return 9105;
+         return 1063;
       }
       
-      public function initCharacterCharacteristicsInformations(experience:Number = 0, experienceLevelFloor:Number = 0, experienceNextLevelFloor:Number = 0, experienceBonusLimit:Number = 0, kamas:Number = 0, alignmentInfos:ActorExtendedAlignmentInformations = null, criticalHitWeapon:uint = 0, characteristics:Vector.<CharacterCharacteristic> = null, spellModifications:Vector.<CharacterSpellModification> = null, probationTime:uint = 0) : CharacterCharacteristicsInformations
+      public function initCharacterCharacteristicsInformations(experience:Number = 0, experienceLevelFloor:Number = 0, experienceNextLevelFloor:Number = 0, experienceBonusLimit:Number = 0, kamas:Number = 0, alignmentInfos:ActorExtendedAlignmentInformations = null, criticalHitWeapon:uint = 0, characteristics:Vector.<CharacterCharacteristic> = null, spellModifications:Vector.<CharacterSpellModification> = null, probationTime:Number = 0) : CharacterCharacteristicsInformations
       {
          this.experience = experience;
          this.experienceLevelFloor = experienceLevelFloor;
@@ -129,11 +129,11 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
          {
             (this.spellModifications[_i9] as CharacterSpellModification).serializeAs_CharacterSpellModification(output);
          }
-         if(this.probationTime < 0)
+         if(this.probationTime < 0 || this.probationTime > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.probationTime + ") on element probationTime.");
          }
-         output.writeInt(this.probationTime);
+         output.writeDouble(this.probationTime);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -286,8 +286,8 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       
       private function _probationTimeFunc(input:ICustomDataInput) : void
       {
-         this.probationTime = input.readInt();
-         if(this.probationTime < 0)
+         this.probationTime = input.readDouble();
+         if(this.probationTime < 0 || this.probationTime > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.probationTime + ") on element of CharacterCharacteristicsInformations.probationTime.");
          }

@@ -7,6 +7,7 @@ package com.ankamagames.dofus.internalDatacenter.fight
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.frames.BreachFrame;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
+   import com.ankamagames.dofus.network.ProtocolConstantsEnum;
    import com.ankamagames.dofus.network.types.game.context.fight.FightResultAdditionalData;
    import com.ankamagames.dofus.network.types.game.context.fight.FightResultExperienceData;
    import com.ankamagames.dofus.network.types.game.context.fight.FightResultFighterListEntry;
@@ -132,7 +133,7 @@ package com.ankamagames.dofus.internalDatacenter.fight
                {
                   tcInfos = infos as GameFightTaxCollectorInformations;
                   this.name = TaxCollectorFirstname.getTaxCollectorFirstnameById(tcInfos.firstNameId).firstname + " " + TaxCollectorName.getTaxCollectorNameById(tcInfos.lastNameId).name;
-                  this.level = tcInfos.level;
+                  this.level = ProtocolConstantsEnum.MAX_LEVEL;
                   this.id = tcInfos.contextualId;
                   this.alive = tcInfos.spawnInfo.alive;
                   this.type = 2;
@@ -194,10 +195,9 @@ package com.ankamagames.dofus.internalDatacenter.fight
                }
                else
                {
-                  this.name = taxCollector.guildInfo.guildName;
+                  this.name = taxCollector.allianceInfo.allianceTag;
                }
-               this.level = taxCollector.level;
-               this.experienceForGuild = taxCollector.experienceForGuild;
+               this.level = ProtocolConstantsEnum.MAX_LEVEL;
                this.id = taxCollector.id;
                this.alive = taxCollector.alive;
                this.type = 2;

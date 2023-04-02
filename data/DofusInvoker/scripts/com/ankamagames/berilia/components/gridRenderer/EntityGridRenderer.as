@@ -24,6 +24,8 @@ package com.ankamagames.berilia.components.gridRenderer
       
       private var _emptyTexture:Uri;
       
+      private var _placeholderTexture:Uri;
+      
       private var _mask:Sprite;
       
       public function EntityGridRenderer(strParams:String)
@@ -32,6 +34,7 @@ package com.ankamagames.berilia.components.gridRenderer
          super();
          var params:Array = !!strParams ? strParams.split(",") : [];
          this._emptyTexture = params[0] && params[0].length ? new Uri(params[0]) : null;
+         this._placeholderTexture = params[1] && params[1].length ? new Uri(params[1]) : null;
          this._mask = new Sprite();
       }
       
@@ -42,10 +45,12 @@ package com.ankamagames.berilia.components.gridRenderer
       
       public function render(data:*, index:uint, selected:Boolean, subIndex:uint = 0) : DisplayObject
       {
+         var background:Texture = null;
          var entDisp:EntityDisplayer = null;
+         var placeholder:Texture = null;
          var ctr:GraphicContainer = new GraphicContainer();
          ctr.mouseEnabled = true;
-         var background:Texture = new Texture();
+         background = new Texture();
          background.width = this._grid.slotWidth;
          background.height = this._grid.slotHeight;
          background.uri = this._emptyTexture;
@@ -71,6 +76,12 @@ package com.ankamagames.berilia.components.gridRenderer
             ctr.addChild(this._mask);
             entDisp.mask = this._mask;
          }
+         else
+         {
+            placeholder = new Texture();
+            this.initPlaceholder(placeholder);
+            ctr.addChild(placeholder);
+         }
          return ctr;
       }
       
@@ -78,12 +89,14 @@ package com.ankamagames.berilia.components.gridRenderer
       {
          var ctr:GraphicContainer = null;
          var ed:EntityDisplayer = null;
+         var placeholder:Texture = null;
          var entDisp:EntityDisplayer = null;
          if(dispObj is GraphicContainer)
          {
             ctr = GraphicContainer(dispObj);
             ctr.mouseEnabled = true;
             ed = ctr.getChildByName("entity") as EntityDisplayer;
+            placeholder = ctr.getChildByName("placeholder") as Texture;
             if(data)
             {
                if(ed)
@@ -112,17 +125,43 @@ package com.ankamagames.berilia.components.gridRenderer
                   ctr.addChild(this._mask);
                   entDisp.mask = this._mask;
                }
-            }
-            else if(ed)
-            {
-               ctr.removeChild(ed);
-               if(this._mask && ctr.getChildByName(this._mask.name))
+               if(placeholder)
                {
-                  ctr.removeChild(this._mask);
+                  ctr.removeChild(placeholder);
+                  placeholder.remove();
                }
-               ed.remove();
+            }
+            else
+            {
+               if(ed)
+               {
+                  ctr.removeChild(ed);
+                  if(this._mask && ctr.getChildByName(this._mask.name))
+                  {
+                     ctr.removeChild(this._mask);
+                  }
+                  ed.remove();
+               }
+               if(!placeholder)
+               {
+                  placeholder = new Texture();
+                  this.initPlaceholder(placeholder);
+                  ctr.addChild(placeholder);
+               }
             }
          }
+      }
+      
+      private function initPlaceholder(placeholder:Texture) : void
+      {
+         placeholder.name = "placeholder";
+         placeholder.width = this._grid.slotWidth - 5;
+         placeholder.height = this._grid.slotHeight - 5;
+         placeholder.x = 2;
+         placeholder.y = 2;
+         placeholder.alpha = 0.5;
+         placeholder.uri = this._placeholderTexture;
+         placeholder.finalize();
       }
       
       public function getDataLength(data:*, selected:Boolean) : uint
@@ -154,6 +193,7 @@ package com.ankamagames.berilia.components.gridRenderer
       {
          this._grid = null;
          this._emptyTexture = null;
+         this._placeholderTexture = null;
          this._mask = null;
       }
       

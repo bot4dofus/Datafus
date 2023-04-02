@@ -15,9 +15,11 @@ package com.ankamagames.dofus.misc.utils.enums
       
       public static const XP_TO_CHARACTER_LEVEL:int = 74;
       
+      public static const CHARACTER_LEVEL_TO_XP:int = 77;
+      
       public static const TEMPOKEN_TO_XP:int = 84;
       
-      public static const CHARACTER_LEVEL_TO_XP:int = 77;
+      public static const MAX_GUILD_MEMBERS:int = 94;
        
       
       public function LuaFormulasEnum()

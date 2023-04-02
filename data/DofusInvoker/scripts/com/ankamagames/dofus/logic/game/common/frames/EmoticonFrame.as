@@ -6,8 +6,8 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.internalDatacenter.communication.EmoteWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ShortcutWrapper;
    import com.ankamagames.dofus.internalDatacenter.stats.DetailedStat;
+   import com.ankamagames.dofus.internalDatacenter.stats.EntityStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
-   import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.logic.common.managers.AccountManager;
@@ -428,8 +428,8 @@ package com.ankamagames.dofus.logic.game.common.frames
                stats = StatsManager.getInstance().getStats(PlayedCharacterManager.getInstance().id);
                if(stats !== null)
                {
-                  stats.setStat(new Stat(StatIds.CUR_LIFE,lpremsg.lifePoints - lpremsg.maxLifePoints - stats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE)));
-                  stats.setStat(new Stat(StatIds.MAX_LIFE,lpremsg.maxLifePoints));
+                  stats.setStat(new EntityStat(StatIds.CUR_LIFE,lpremsg.lifePoints - lpremsg.maxLifePoints - stats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE)));
+                  stats.setStat(new EntityStat(StatIds.MAX_LIFE,lpremsg.maxLifePoints));
                   KernelEventsManager.getInstance().processCallback(HookList.CharacterStatsList);
                }
                return true;
@@ -440,7 +440,7 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       public function updateHpStartRegenValue(curLife:Number = NaN) : void
       {
-         var currentLostHp:Stat = null;
+         var currentLostHp:EntityStat = null;
          var currentLostHpDetailed:DetailedStat = null;
          if(!isNaN(curLife))
          {
@@ -450,13 +450,13 @@ package com.ankamagames.dofus.logic.game.common.frames
          var stats:EntityStats = StatsManager.getInstance().getStats(PlayedCharacterManager.getInstance().id);
          if(stats !== null)
          {
-            currentLostHp = stats.getStat(StatIds.CUR_LIFE);
+            currentLostHp = stats.getStat(StatIds.CUR_LIFE) as EntityStat;
             if(currentLostHp is DetailedStat)
             {
                currentLostHpDetailed = currentLostHp as DetailedStat;
                this._hpRegenStartValue = currentLostHpDetailed.baseValue;
             }
-            else if(currentLostHp is Stat)
+            else if(currentLostHp is EntityStat)
             {
                this._hpRegenStartValue = currentLostHp.totalValue;
             }
@@ -488,11 +488,11 @@ package com.ankamagames.dofus.logic.game.common.frames
          {
             return;
          }
-         var currentLostHp:Stat = stats.getStat(StatIds.CUR_LIFE);
+         var currentLostHp:EntityStat = stats.getStat(StatIds.CUR_LIFE) as EntityStat;
          var currentLostHpDetailed:DetailedStat = null;
          if(currentLostHp === null)
          {
-            currentLostHp = new Stat(StatIds.CUR_LIFE,0);
+            currentLostHp = new EntityStat(StatIds.CUR_LIFE,0);
          }
          if(currentLostHp.totalValue === 0)
          {
@@ -508,9 +508,9 @@ package com.ankamagames.dofus.logic.game.common.frames
             currentLostHpDetailed = currentLostHp as DetailedStat;
             stats.setStat(new DetailedStat(currentLostHpDetailed.id,this._hpRegenStartValue + regenDelta,currentLostHpDetailed.additionalValue,currentLostHpDetailed.objectsAndMountBonusValue,currentLostHpDetailed.alignGiftBonusValue,currentLostHpDetailed.contextModifValue));
          }
-         else if(currentLostHp is Stat)
+         else if(currentLostHp is EntityStat)
          {
-            stats.setStat(new Stat(currentLostHp.id,this._hpRegenStartValue + regenDelta));
+            stats.setStat(new EntityStat(currentLostHp.id,this._hpRegenStartValue + regenDelta));
          }
          KernelEventsManager.getInstance().processCallback(HookList.CharacterStatsList,true);
       }

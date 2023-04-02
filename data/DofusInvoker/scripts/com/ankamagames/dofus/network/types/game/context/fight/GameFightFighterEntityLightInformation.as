@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameFightFighterEntityLightInformation extends GameFightFighterLightInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 9520;
+      public static const protocolId:uint = 2386;
        
       
       public var entityModelId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 9520;
+         return 2386;
       }
       
       public function initGameFightFighterEntityLightInformation(id:Number = 0, wave:uint = 0, level:uint = 0, breed:int = 0, sex:Boolean = false, alive:Boolean = false, entityModelId:uint = 0, masterId:Number = 0) : GameFightFighterEntityLightInformation

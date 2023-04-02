@@ -19,11 +19,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
          var socialFrame:SocialFrame = Kernel.getWorker().getFrame(SocialFrame) as SocialFrame;
          if(!socialFrame.hasGuild)
          {
-            if(_operator.text == ItemCriterionOperator.DIFFERENT)
-            {
-               return true;
-            }
-            return false;
+            return _operator.text == ItemCriterionOperator.DIFFERENT;
          }
          var isBoss:* = socialFrame.playerGuildRank.order == 0;
          switch(_operator.text)

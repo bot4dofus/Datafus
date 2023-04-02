@@ -4,6 +4,11 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.berilia.types.data.UiModule;
    import com.ankamagames.dofus.datacenter.abuse.AbuseReasons;
    import com.ankamagames.dofus.datacenter.alignments.AlignmentSide;
+   import com.ankamagames.dofus.datacenter.alliance.AllianceRank;
+   import com.ankamagames.dofus.datacenter.alliance.AllianceRankNameSuggestion;
+   import com.ankamagames.dofus.datacenter.alliance.AllianceRightGroup;
+   import com.ankamagames.dofus.datacenter.alliance.AllianceTag;
+   import com.ankamagames.dofus.datacenter.alliance.AllianceTagsType;
    import com.ankamagames.dofus.datacenter.almanax.AlmanaxCalendar;
    import com.ankamagames.dofus.datacenter.appearance.Ornament;
    import com.ankamagames.dofus.datacenter.appearance.Title;
@@ -31,9 +36,6 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.datacenter.effects.instances.EffectInstanceInteger;
    import com.ankamagames.dofus.datacenter.externalnotifications.ExternalNotification;
    import com.ankamagames.dofus.datacenter.feature.OptionalFeature;
-   import com.ankamagames.dofus.datacenter.guild.EmblemBackground;
-   import com.ankamagames.dofus.datacenter.guild.EmblemSymbol;
-   import com.ankamagames.dofus.datacenter.guild.EmblemSymbolCategory;
    import com.ankamagames.dofus.datacenter.guild.GuildRank;
    import com.ankamagames.dofus.datacenter.guild.GuildRankNameSuggestion;
    import com.ankamagames.dofus.datacenter.guild.GuildRightGroup;
@@ -86,6 +88,11 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.datacenter.servers.ServerGameType;
    import com.ankamagames.dofus.datacenter.servers.ServerLang;
    import com.ankamagames.dofus.datacenter.servers.ServerSeason;
+   import com.ankamagames.dofus.datacenter.social.EmblemBackground;
+   import com.ankamagames.dofus.datacenter.social.EmblemSymbol;
+   import com.ankamagames.dofus.datacenter.social.EmblemSymbolCategory;
+   import com.ankamagames.dofus.datacenter.social.SocialRightGroup;
+   import com.ankamagames.dofus.datacenter.social.SocialTag;
    import com.ankamagames.dofus.datacenter.spells.FinishMove;
    import com.ankamagames.dofus.datacenter.spells.Spell;
    import com.ankamagames.dofus.datacenter.spells.SpellBomb;
@@ -112,13 +119,13 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.internalDatacenter.appearance.TitleWrapper;
    import com.ankamagames.dofus.internalDatacenter.communication.EmoteWrapper;
    import com.ankamagames.dofus.internalDatacenter.fight.ChallengeWrapper;
-   import com.ankamagames.dofus.internalDatacenter.guild.EmblemWrapper;
    import com.ankamagames.dofus.internalDatacenter.house.HavenbagFurnitureWrapper;
    import com.ankamagames.dofus.internalDatacenter.house.HouseWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.LivingObjectSkinWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ShortcutWrapper;
    import com.ankamagames.dofus.internalDatacenter.jobs.JobWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.EmblemWrapper;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
    import com.ankamagames.dofus.internalDatacenter.taxi.TeleportDestinationWrapper;
    import com.ankamagames.dofus.internalDatacenter.userInterface.ButtonWrapper;
@@ -1491,12 +1498,12 @@ package com.ankamagames.dofus.uiApi
          return GuildTagsType.getGuildTagsTypes();
       }
       
-      public function getGuildTagsFromGuildTagId(guildTagId:int) : Vector.<GuildTag>
+      public function getGuildTagsFromGuildTagId(guildTagId:int) : Vector.<SocialTag>
       {
          return GuildTag.getGuildTagsByTagId(guildTagId);
       }
       
-      public function getGuildRightGroupById(groupId:int) : GuildRightGroup
+      public function getGuildRightGroupById(groupId:int) : SocialRightGroup
       {
          return GuildRightGroup.getGuildRightGroupById(groupId);
       }
@@ -1504,6 +1511,46 @@ package com.ankamagames.dofus.uiApi
       public function getGuildRightGroups() : Array
       {
          return GuildRightGroup.getGuildRightGroups();
+      }
+      
+      public function getAllianceTagById(tagId:uint) : AllianceTag
+      {
+         return AllianceTag.getAllianceTagById(tagId);
+      }
+      
+      public function getAllianceTagsTypeById(typeId:uint) : AllianceTagsType
+      {
+         return AllianceTagsType.getAllianceTagsTypeById(typeId);
+      }
+      
+      public function getAllAllianceTagsType() : Array
+      {
+         return AllianceTagsType.getAllianceTagsTypes();
+      }
+      
+      public function getAllianceTagsFromAllianceTagId(allianceTagId:int) : Vector.<SocialTag>
+      {
+         return AllianceTag.getAllianceTagsByTagId(allianceTagId);
+      }
+      
+      public function getAllianceRightGroupById(groupId:int) : SocialRightGroup
+      {
+         return AllianceRightGroup.getAllianceRightGroupById(groupId);
+      }
+      
+      public function getAllianceRightGroups() : Array
+      {
+         return AllianceRightGroup.getAllianceRightGroups();
+      }
+      
+      public function getAllianceRankNameSuggestions() : Array
+      {
+         return AllianceRankNameSuggestion.getAllianceRankNameSuggestions();
+      }
+      
+      public function getAllianceRank(rankId:uint) : AllianceRank
+      {
+         return AllianceRank.getAllianceRankById(rankId);
       }
    }
 }

@@ -2,8 +2,8 @@ package com.ankamagames.dofus.logic.common.managers
 {
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.dofus.internalDatacenter.stats.DetailedStat;
+   import com.ankamagames.dofus.internalDatacenter.stats.EntityStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
-   import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.internalDatacenter.stats.UsableStat;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.frames.EmoticonFrame;
@@ -149,7 +149,7 @@ package com.ankamagames.dofus.logic.common.managers
          }
          var rawUsableStat:CharacterUsableCharacteristicDetailed = null;
          var rawDetailedStat:CharacterCharacteristicDetailed = null;
-         var entityStat:Stat = null;
+         var entityStat:EntityStat = null;
          for each(rawStat in rawStats)
          {
             if(rawStat is CharacterUsableCharacteristicDetailed)
@@ -168,7 +168,7 @@ package com.ankamagames.dofus.logic.common.managers
                {
                   continue;
                }
-               entityStat = new Stat(rawStat.characteristicId,(rawStat as CharacterCharacteristicValue).total);
+               entityStat = new EntityStat(rawStat.characteristicId,(rawStat as CharacterCharacteristicValue).total);
             }
             emoticonFrame = Kernel.getWorker().getFrame(EmoticonFrame) as EmoticonFrame;
             if(entityStat.id === StatIds.CUR_LIFE && emoticonFrame !== null && emoticonFrame.isHpRegen)
@@ -177,7 +177,7 @@ package com.ankamagames.dofus.logic.common.managers
                {
                   emoticonFrame.updateHpStartRegenValue((entityStat as DetailedStat).baseValue);
                }
-               else if(entityStat is Stat)
+               else if(entityStat is EntityStat)
                {
                   emoticonFrame.updateHpStartRegenValue(entityStat.totalValue);
                }
@@ -279,7 +279,7 @@ package com.ankamagames.dofus.logic.common.managers
          return isListenerRemoved;
       }
       
-      public function fireStatUpdate(stat:Stat, isBulkUpdate:Boolean = true) : void
+      public function fireStatUpdate(stat:EntityStat, isBulkUpdate:Boolean = true) : void
       {
          if(isBulkUpdate)
          {

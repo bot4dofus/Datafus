@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyMemberInStandardFightMessage extends AbstractPartyMemberInFightMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6098;
+      public static const protocolId:uint = 8521;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 6098;
+         return 8521;
       }
       
       public function initPartyMemberInStandardFightMessage(partyId:uint = 0, reason:uint = 0, memberId:Number = 0, memberAccountId:uint = 0, memberName:String = "", fightId:uint = 0, timeBeforeFightStart:int = 0, fightMap:MapCoordinatesExtended = null) : PartyMemberInStandardFightMessage

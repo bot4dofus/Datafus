@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeRequestedTradeMessage extends ExchangeRequestedMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5307;
+      public static const protocolId:uint = 9872;
        
       
       private var _isInitialized:Boolean = false;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 5307;
+         return 9872;
       }
       
       public function initExchangeRequestedTradeMessage(exchangeType:int = 0, source:Number = 0, target:Number = 0) : ExchangeRequestedTradeMessage

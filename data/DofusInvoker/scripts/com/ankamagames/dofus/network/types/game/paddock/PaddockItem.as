@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.paddock
    public class PaddockItem extends ObjectItemInRolePlay implements INetworkType
    {
       
-      public static const protocolId:uint = 1199;
+      public static const protocolId:uint = 6252;
        
       
       public var durability:ItemDurability;
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.types.game.paddock
       
       override public function getTypeId() : uint
       {
-         return 1199;
+         return 6252;
       }
       
       public function initPaddockItem(cellId:uint = 0, objectGID:uint = 0, durability:ItemDurability = null) : PaddockItem

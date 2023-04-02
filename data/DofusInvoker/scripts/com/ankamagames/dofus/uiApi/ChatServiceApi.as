@@ -35,7 +35,11 @@ package com.ankamagames.dofus.uiApi
       
       public function getMessages() : Vector.<ChannelMessage>
       {
-         return this.service.messageBuffer;
+         if(this.service)
+         {
+            return this.service.messageBuffer;
+         }
+         return null;
       }
       
       public function acceptInvite(invite:FriendInvite) : void

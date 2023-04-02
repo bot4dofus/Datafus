@@ -2,8 +2,8 @@ package com.ankamagames.dofus.logic.game.fight.steps
 {
    import com.ankamagames.berilia.managers.TooltipManager;
    import com.ankamagames.berilia.types.LocationEnum;
+   import com.ankamagames.dofus.internalDatacenter.stats.EntityStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
-   import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
    import com.ankamagames.dofus.logic.game.fight.fightEvents.FightEventsHelper;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.logic.game.fight.steps
       
       private var _entityStats:EntityStats = null;
       
-      private var _newShieldStat:Stat = null;
+      private var _newShieldStat:EntityStat = null;
       
       private var _fighterInfo:GameFightFighterInformations = null;
       
@@ -48,7 +48,7 @@ package com.ankamagames.dofus.logic.game.fight.steps
          this._entityStats = StatsManager.getInstance().getStats(_targetId);
          if(this._entityStats !== null)
          {
-            this._newShieldStat = this._entityStats.getStat(StatIds.SHIELD);
+            this._newShieldStat = this._entityStats.getStat(StatIds.SHIELD) as EntityStat;
          }
       }
       

@@ -2,26 +2,20 @@ package com.ankamagames.dofus.internalDatacenter.conquest
 {
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.dofus.datacenter.world.SubArea;
-   import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
-   import com.ankamagames.dofus.kernel.Kernel;
-   import com.ankamagames.dofus.logic.game.common.frames.AllianceFrame;
+   import com.ankamagames.dofus.internalDatacenter.social.AllianceWrapper;
+   import com.ankamagames.dofus.logic.game.common.frames.SocialFrame;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
-   import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.dofus.misc.lists.PrismHookList;
+   import com.ankamagames.dofus.network.enums.AlliancePrismCristalTypeEnum;
+   import com.ankamagames.dofus.network.enums.AlliancePrismModuleTypeEnum;
    import com.ankamagames.dofus.network.types.game.data.items.ObjectItem;
    import com.ankamagames.dofus.network.types.game.prism.AllianceInsiderPrismInformation;
    import com.ankamagames.dofus.network.types.game.prism.AlliancePrismInformation;
    import com.ankamagames.dofus.network.types.game.prism.PrismGeolocalizedInformation;
-   import com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
-   import flash.utils.Dictionary;
    
    public class PrismSubAreaWrapper implements IDataCenter
    {
-      
-      private static var _ref:Dictionary = new Dictionary();
-      
-      private static var _cache:Array = new Array();
        
       
       private var _subAreaId:uint;
@@ -36,115 +30,74 @@ package com.ankamagames.dofus.internalDatacenter.conquest
       
       private var _state:uint = 0;
       
-      private var _nextVulnerabilityDate:uint = 0;
-      
       private var _placementDate:uint = 0;
       
+      private var _durability:uint;
+      
       private var _alliance:AllianceWrapper = null;
-      
-      private var _timeSlotHour:uint = 0;
-      
-      private var _timeSlotQuarter:uint = 0;
-      
-      private var _lastTimeSlotModificationDate:uint = 0;
-      
-      private var _lastTimeSlotModificationAuthorGuildId:uint = 0;
-      
-      private var _lastTimeSlotModificationAuthorId:Number = 0;
-      
-      private var _lastTimeSlotModificationAuthorName:String = "";
       
       private var _isVillage:int = -1;
       
       private var _subAreaName:String = "";
       
-      private var _rewardTokenCount:uint;
+      private var _nuggetsCount:uint;
       
-      private var _modulesObjects:Vector.<ObjectItem>;
+      private var _moduleObject:ObjectItem;
+      
+      private var _moduleType:int = -1;
+      
+      private var _cristalObject:ObjectItem;
+      
+      private var _cristalEndDate:Number;
+      
+      private var _cristalType:int = -1;
+      
+      private var _cristalNumberLeft:uint;
       
       public function PrismSubAreaWrapper()
       {
-         this._modulesObjects = new Vector.<ObjectItem>();
          super();
       }
       
-      public static function reset() : void
+      public static function create(prismInfo:PrismGeolocalizedInformation) : PrismSubAreaWrapper
       {
-         _ref = new Dictionary();
-      }
-      
-      public static function get prismList() : Dictionary
-      {
-         return _ref;
-      }
-      
-      public static function getFromNetwork(msg:PrismSubareaEmptyInfo, currentPlayerAlliance:AllianceWrapper = null) : PrismSubAreaWrapper
-      {
-         var ind:int = 0;
-         var pgi:PrismGeolocalizedInformation = null;
-         var date:Date = null;
          var aipi:AllianceInsiderPrismInformation = null;
-         if(!_ref[msg.subAreaId] || Object(msg).constructor == PrismSubareaEmptyInfo)
+         var prism:PrismSubAreaWrapper = new PrismSubAreaWrapper();
+         prism._subAreaId = prismInfo.subAreaId;
+         prism._mapId = prismInfo.mapId;
+         prism._worldX = prismInfo.worldX;
+         prism._worldY = prismInfo.worldY;
+         prism._state = prismInfo.prism.state;
+         prism._durability = prismInfo.prism.durability;
+         prism._placementDate = prismInfo.prism.placementDate;
+         prism._nuggetsCount = prismInfo.prism.nuggetsCount;
+         if(prismInfo.prism is AllianceInsiderPrismInformation)
          {
-            _ref[msg.subAreaId] = new PrismSubAreaWrapper();
+            aipi = prismInfo.prism as AllianceInsiderPrismInformation;
+            prism._alliance = SocialFrame.getInstance().alliance;
+            prism._moduleObject = aipi.moduleObject;
+            prism._moduleType = aipi.moduleType;
+            prism._cristalObject = aipi.cristalObject;
+            prism._cristalType = aipi.cristalType;
+            prism._cristalEndDate = aipi.cristalEndDate;
+            prism._cristalNumberLeft = aipi.cristalNumberLeft;
          }
-         var prism:PrismSubAreaWrapper = _ref[msg.subAreaId];
-         prism._subAreaId = msg.subAreaId;
-         if(prism._alliance)
+         else
          {
-            ind = prism._alliance.prismIds.indexOf(msg.subAreaId);
-            if(ind != -1)
+            prism._moduleObject = null;
+            prism._moduleType = AlliancePrismModuleTypeEnum.NO_MODULE;
+            prism._cristalObject = null;
+            prism._cristalType = AlliancePrismCristalTypeEnum.NO_CRISTAL;
+            prism._cristalEndDate = 0;
+            prism._cristalNumberLeft = 0;
+            if(prismInfo.prism is AlliancePrismInformation)
             {
-               prism._alliance.prismIds.splice(ind,1);
-            }
-         }
-         if(msg is PrismGeolocalizedInformation)
-         {
-            pgi = msg as PrismGeolocalizedInformation;
-            prism._mapId = pgi.mapId;
-            prism._worldX = pgi.worldX;
-            prism._worldY = pgi.worldY;
-            prism._state = pgi.prism.state;
-            prism._prismType = pgi.prism.typeId;
-            prism._placementDate = pgi.prism.placementDate;
-            prism._nextVulnerabilityDate = pgi.prism.nextVulnerabilityDate;
-            prism._rewardTokenCount = pgi.prism.rewardTokenCount;
-            date = new Date();
-            date.time = prism.nextVulnerabilityDate * 1000 + TimeManager.getInstance().timezoneOffset;
-            prism._timeSlotHour = date.hoursUTC;
-            prism._timeSlotQuarter = Math.round(date.minutesUTC / 15);
-            if(pgi.prism is AllianceInsiderPrismInformation)
-            {
-               aipi = pgi.prism as AllianceInsiderPrismInformation;
-               currentPlayerAlliance.prismIds.push(msg.subAreaId);
-               prism._alliance = currentPlayerAlliance;
-               prism._lastTimeSlotModificationDate = aipi.lastTimeSlotModificationDate;
-               prism._lastTimeSlotModificationAuthorId = aipi.lastTimeSlotModificationAuthorId;
-               prism._lastTimeSlotModificationAuthorName = aipi.lastTimeSlotModificationAuthorName;
-               prism._lastTimeSlotModificationAuthorGuildId = aipi.lastTimeSlotModificationAuthorGuildId;
-               prism._modulesObjects = aipi.modulesObjects;
+               prism._alliance = AllianceWrapper.getFromNetwork(AlliancePrismInformation(prismInfo.prism).alliance);
             }
             else
             {
-               prism._lastTimeSlotModificationDate = 0;
-               prism._lastTimeSlotModificationAuthorId = 0;
-               prism._lastTimeSlotModificationAuthorName = null;
-               prism._lastTimeSlotModificationAuthorGuildId = 0;
-               prism._modulesObjects = new Vector.<ObjectItem>();
-               if(pgi.prism is AlliancePrismInformation)
-               {
-                  prism._alliance = AllianceWrapper.getFromNetwork(AlliancePrismInformation(pgi.prism).alliance);
-                  prism._alliance.prismIds.push(msg.subAreaId);
-               }
-               else
-               {
-                  prism._alliance = null;
-               }
+               prism._alliance = null;
             }
-         }
-         else if(msg.allianceId != 0)
-         {
-            prism._alliance = (Kernel.getWorker().getFrame(AllianceFrame) as AllianceFrame).getAllianceById(msg.allianceId);
          }
          if(PlayedCharacterManager.getInstance().currentSubArea && prism.subAreaId == PlayedCharacterManager.getInstance().currentSubArea.id)
          {
@@ -183,29 +136,44 @@ package com.ankamagames.dofus.internalDatacenter.conquest
          return this._state;
       }
       
-      public function get rewardTokenCount() : uint
+      public function get nuggetsCount() : uint
       {
-         return this._rewardTokenCount;
+         return this._nuggetsCount;
       }
       
-      public function get modulesObjects() : Vector.<ObjectItem>
+      public function get moduleObject() : ObjectItem
       {
-         return this._modulesObjects;
+         return this._moduleObject;
       }
       
-      public function get nextVulnerabilityDate() : uint
+      public function get cristalObject() : ObjectItem
       {
-         return this._nextVulnerabilityDate;
+         return this._cristalObject;
       }
       
-      public function get timeSlotHour() : uint
+      public function get moduleType() : int
       {
-         return this._timeSlotHour;
+         return this._moduleType;
       }
       
-      public function get timeSlotQuarter() : uint
+      public function get cristalType() : int
       {
-         return this._timeSlotQuarter;
+         return this._cristalType;
+      }
+      
+      public function get durability() : uint
+      {
+         return this._durability;
+      }
+      
+      public function get cristalEndDate() : Number
+      {
+         return this._cristalEndDate;
+      }
+      
+      public function get cristalNumberLeft() : uint
+      {
+         return this._cristalNumberLeft;
       }
       
       public function get placementDate() : uint
@@ -216,26 +184,6 @@ package com.ankamagames.dofus.internalDatacenter.conquest
       public function get alliance() : AllianceWrapper
       {
          return this._alliance;
-      }
-      
-      public function get lastTimeSlotModificationDate() : uint
-      {
-         return this._lastTimeSlotModificationDate;
-      }
-      
-      public function get lastTimeSlotModificationAuthorGuildId() : uint
-      {
-         return this._lastTimeSlotModificationAuthorGuildId;
-      }
-      
-      public function get lastTimeSlotModificationAuthorId() : Number
-      {
-         return this._lastTimeSlotModificationAuthorId;
-      }
-      
-      public function get lastTimeSlotModificationAuthorName() : String
-      {
-         return this._lastTimeSlotModificationAuthorName;
       }
       
       public function get isVillage() : Boolean
@@ -258,28 +206,6 @@ package com.ankamagames.dofus.internalDatacenter.conquest
             this._subAreaName = SubArea.getSubAreaById(this.subAreaId).name + " (" + SubArea.getSubAreaById(this.subAreaId).area.name + ")";
          }
          return this._subAreaName;
-      }
-      
-      public function get vulnerabilityHourString() : String
-      {
-         var sHours:String = null;
-         var sMinutes:String = null;
-         var hour:String = "";
-         if(this._nextVulnerabilityDate != 0)
-         {
-            sHours = this._timeSlotHour.toString();
-            if(sHours.length == 1)
-            {
-               sHours = "0" + sHours;
-            }
-            sMinutes = (this._timeSlotQuarter * 15).toString();
-            if(sMinutes.length == 1)
-            {
-               sMinutes = "0" + sMinutes;
-            }
-            hour = sHours + ":" + sMinutes;
-         }
-         return hour;
       }
    }
 }

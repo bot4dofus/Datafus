@@ -23,6 +23,10 @@ package com.ankamagames.dofus.misc.lists
       
       public static const SubscriptionEndDateUpdate:String = "SubscriptionEndDateUpdate";
       
+      public static const ForceAccountStatus:String = "ForceAccountStatus";
+      
+      public static const ForceAccountError:String = "ForceAccountError";
+      
       public static const LoginQueueStart:String = "LoginQueueStart";
       
       public static const LoginQueueStatus:String = "LoginQueueStatus";
@@ -79,8 +83,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const TutorielAvailable:String = "TutorielAvailable";
       
-      public static const BreedsAvailable:String = "BreedsAvailable";
-      
       public static const AccountLinkRequired:String = "AccountLinkRequired";
       
       public static const CharacterStatsList:String = "CharacterStatsList";
@@ -118,6 +120,8 @@ package com.ankamagames.dofus.misc.lists
       public static const SmileysStart:String = "SmileysStart";
       
       public static const UnexpectedSocketClosure:String = "UnexpectedSocketClosure";
+      
+      public static const ConnectionServerNotSelected:String = "ConnectionServerNotSelected";
       
       public static const AlreadyConnected:String = "AlreadyConnected";
       
@@ -529,7 +533,7 @@ package com.ankamagames.dofus.misc.lists
       
       public static const UpdateKnownZaaps:String = "UpdateKnownZaaps";
       
-      public static const OpenGuidebook:String = "OpenGuidebook";
+      public static const OpenGuideBook:String = "OpenGuideBook";
       
       public static const MoveToFeatureDescription:String = "MoveToFeatureDescription";
       
@@ -602,7 +606,6 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(CharactersListUpdated);
          Hook.createHook(CharacterCanBeCreated);
          Hook.createHook(TutorielAvailable);
-         Hook.createHook(BreedsAvailable);
          Hook.createHook(AccountLinkRequired);
          Hook.createHook(CharacterStatsList);
          Hook.createHook(CharacterLevelUp);
@@ -622,6 +625,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(SpellUpdate);
          Hook.createHook(SmileysStart);
          Hook.createHook(UnexpectedSocketClosure);
+         Hook.createHook(ConnectionServerNotSelected);
          Hook.createHook(AlreadyConnected);
          Hook.createHook(CurrentMap);
          Hook.createHook(EntityMouseOver);
@@ -826,7 +830,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(MapDebugWorldGraphSortcutToggle);
          Hook.createHook(SaveCurrentZaap);
          Hook.createHook(UpdateKnownZaaps);
-         Hook.createHook(OpenGuidebook);
+         Hook.createHook(OpenGuideBook);
          Hook.createHook(MoveToFeatureDescription);
          Hook.createHook(RefreshMapQuests);
          Hook.createHook(DisplayWorldmap);
@@ -839,6 +843,8 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(PopupWarningClosed);
          Hook.createHook(GuildsReceived);
          Hook.createHook(AlliancesReceived);
+         Hook.createHook(ForceAccountStatus);
+         Hook.createHook(ForceAccountError);
       }
    }
 }

@@ -27,8 +27,6 @@ package com.ankamagames.dofus.datacenter.world
       
       private static const CAPABILITY_ALLOW_EXCHANGES_BETWEEN_PLAYERS:int = 16;
       
-      private static const CAPABILITY_ALLOW_HUMAN_VENDOR:int = 32;
-      
       private static const CAPABILITY_ALLOW_COLLECTOR:int = 64;
       
       private static const CAPABILITY_ALLOW_SOUL_CAPTURE:int = 128;
@@ -164,11 +162,6 @@ package com.ankamagames.dofus.datacenter.world
       public function get allowExchanges() : Boolean
       {
          return (this.capabilities & CAPABILITY_ALLOW_EXCHANGES_BETWEEN_PLAYERS) != 0;
-      }
-      
-      public function get allowHumanVendor() : Boolean
-      {
-         return (this.capabilities & CAPABILITY_ALLOW_HUMAN_VENDOR) != 0;
       }
       
       public function get allowTaxCollector() : Boolean

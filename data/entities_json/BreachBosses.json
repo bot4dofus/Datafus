@@ -41,15 +41,149 @@
 	],
 	"data": [
 		{
-			"id": 19,
-			"monsterId": 58,
-			"category": 3,
-			"apparitionCriterion": "Sc!8028&Wf>59",
-			"accessCriterion": "OA=60",
+			"id": 117,
+			"monsterId": 3651,
+			"category": 4,
+			"apparitionCriterion": "Sc!8067&Wf>149",
+			"accessCriterion": "OA=1083",
 			"incompatibleBosses": [
-				19
+				78,
+				80,
+				81,
+				84,
+				85,
+				87,
+				103,
+				107,
+				112,
+				117,
+				123,
+				138,
+				143,
+				144,
+				113
 			],
-			"rewardId": 25
+			"rewardId": 39
+		},
+		{
+			"id": 118,
+			"monsterId": 3652,
+			"category": 3,
+			"apparitionCriterion": "Sc!8039&Wf>99",
+			"accessCriterion": "OA=1088",
+			"incompatibleBosses": [
+				78,
+				80,
+				81,
+				84,
+				85,
+				87,
+				103,
+				107,
+				112,
+				118,
+				123,
+				138,
+				143,
+				144,
+				113
+			],
+			"rewardId": 4294967295
+		},
+		{
+			"id": 120,
+			"monsterId": 3752,
+			"category": 5,
+			"apparitionCriterion": "Sc!8106&Wf>179",
+			"accessCriterion": "OA=1118",
+			"incompatibleBosses": [
+				120,
+				113
+			],
+			"rewardId": 51
+		},
+		{
+			"id": 121,
+			"monsterId": 3753,
+			"category": 4,
+			"apparitionCriterion": "Sc!8051&Wf>129",
+			"accessCriterion": "OA=1123",
+			"incompatibleBosses": [
+				121,
+				113
+			],
+			"rewardId": 4294967295
+		},
+		{
+			"id": 124,
+			"monsterId": 3849,
+			"category": 5,
+			"apparitionCriterion": "Sc!8108&Wf>169",
+			"accessCriterion": "OA=1161",
+			"incompatibleBosses": [
+				124,
+				113
+			],
+			"rewardId": 47
+		},
+		{
+			"id": 125,
+			"monsterId": 3852,
+			"category": 4,
+			"apparitionCriterion": "Sc!8058&Wf>119",
+			"accessCriterion": "OA=1166",
+			"incompatibleBosses": [
+				125,
+				113
+			],
+			"rewardId": 4294967295
+		},
+		{
+			"id": 126,
+			"monsterId": 3945,
+			"category": 2,
+			"apparitionCriterion": "Sc!8009&Wf>49",
+			"accessCriterion": "OA=1184",
+			"incompatibleBosses": [
+				126
+			],
+			"rewardId": 9
+		},
+		{
+			"id": 127,
+			"monsterId": 3996,
+			"category": 3,
+			"apparitionCriterion": "Sc!8046&Wf>89",
+			"accessCriterion": "OA=1195",
+			"incompatibleBosses": [
+				78,
+				80,
+				81,
+				84,
+				85,
+				87,
+				103,
+				107,
+				112,
+				123,
+				127,
+				138,
+				143,
+				144,
+				164
+			],
+			"rewardId": 14
+		},
+		{
+			"id": 128,
+			"monsterId": 4051,
+			"category": 2,
+			"apparitionCriterion": "Sc!8010&Wf>49",
+			"accessCriterion": "OA=33",
+			"incompatibleBosses": [
+				128
+			],
+			"rewardId": 4294967295
 		},
 		{
 			"id": 20,
@@ -85,17 +219,6 @@
 			"rewardId": 10
 		},
 		{
-			"id": 24,
-			"monsterId": 121,
-			"category": 4,
-			"apparitionCriterion": "Sc!8064&Wf>119",
-			"accessCriterion": "OA=32",
-			"incompatibleBosses": [
-				24
-			],
-			"rewardId": 4294967295
-		},
-		{
 			"id": 25,
 			"monsterId": 147,
 			"category": 2,
@@ -103,6 +226,525 @@
 			"accessCriterion": "OA=37",
 			"incompatibleBosses": [
 				25
+			],
+			"rewardId": 4294967295
+		},
+		{
+			"id": 32,
+			"monsterId": 257,
+			"category": 4,
+			"apparitionCriterion": "Sc!8052&Wf>139",
+			"accessCriterion": "OA=53",
+			"incompatibleBosses": [
+				32
+			],
+			"rewardId": 34
+		},
+		{
+			"id": 38,
+			"monsterId": 478,
+			"category": 5,
+			"apparitionCriterion": "Sc!8085&Wf>179",
+			"accessCriterion": "OA=52",
+			"incompatibleBosses": [
+				38,
+				78,
+				80,
+				81,
+				84,
+				85,
+				87,
+				103,
+				107,
+				112,
+				123,
+				138,
+				143,
+				144
+			],
+			"rewardId": 15
+		},
+		{
+			"id": 44,
+			"monsterId": 780,
+			"category": 4,
+			"apparitionCriterion": "Sc!8075&Wf>119",
+			"accessCriterion": "OA=69",
+			"incompatibleBosses": [
+				44,
+				170,
+				171
+			],
+			"rewardId": 38
+		},
+		{
+			"id": 54,
+			"monsterId": 939,
+			"category": 4,
+			"apparitionCriterion": "Sc!8071&Wf>109",
+			"accessCriterion": "OA=5194",
+			"incompatibleBosses": [
+				54
+			],
+			"rewardId": 4294967295
+		},
+		{
+			"id": 55,
+			"monsterId": 940,
+			"category": 4,
+			"apparitionCriterion": "Sc!8070&Wf>109",
+			"accessCriterion": "OA=5188",
+			"incompatibleBosses": [
+				55
+			],
+			"rewardId": 4294967295
+		},
+		{
+			"id": 131,
+			"monsterId": 4278,
+			"category": 4,
+			"apparitionCriterion": "Sc!8068&Wf>109",
+			"accessCriterion": "OA=1409",
+			"incompatibleBosses": [
+				78,
+				80,
+				81,
+				84,
+				85,
+				87,
+				103,
+				107,
+				112,
+				123,
+				131,
+				138,
+				143,
+				144,
+				113
+			],
+			"rewardId": 4294967295
+		},
+		{
+			"id": 135,
+			"monsterId": 4609,
+			"category": 4,
+			"apparitionCriterion": "Sc!8056&Wf>129",
+			"accessCriterion": "OA=1536",
+			"incompatibleBosses": [
+				135,
+				89
+			],
+			"rewardId": 32
+		},
+		{
+			"id": 56,
+			"monsterId": 943,
+			"category": 4,
+			"apparitionCriterion": "Sc!8076&Wf>149",
+			"accessCriterion": "OA=47",
+			"incompatibleBosses": [
+				56
+			],
+			"rewardId": 40
+		},
+		{
+			"id": 57,
+			"monsterId": 1027,
+			"category": 2,
+			"apparitionCriterion": "Sc!8007&Wf>49",
+			"accessCriterion": "OA=62",
+			"incompatibleBosses": [
+				57
+			],
+			"rewardId": 4294967295
+		},
+		{
+			"id": 58,
+			"monsterId": 1045,
+			"category": 5,
+			"apparitionCriterion": "Sc!8091&Wf>149",
+			"accessCriterion": "OA=27",
+			"incompatibleBosses": [
+				58
+			],
+			"rewardId": 53
+		},
+		{
+			"id": 59,
+			"monsterId": 1051,
+			"category": 3,
+			"apparitionCriterion": "Sc!8033&Wf>69",
+			"accessCriterion": "OA=26",
+			"incompatibleBosses": [
+				59
+			],
+			"rewardId": 16
+		},
+		{
+			"id": 60,
+			"monsterId": 1071,
+			"category": 4,
+			"apparitionCriterion": "Sc!8074&Wf>109",
+			"accessCriterion": "OA=61",
+			"incompatibleBosses": [
+				60
+			],
+			"rewardId": 28
+		},
+		{
+			"id": 61,
+			"monsterId": 1072,
+			"category": 4,
+			"apparitionCriterion": "Sc!8081&Wf>139",
+			"accessCriterion": "OA=65",
+			"incompatibleBosses": [
+				61
+			],
+			"rewardId": 55
+		},
+		{
+			"id": 63,
+			"monsterId": 1086,
+			"category": 4,
+			"apparitionCriterion": "Sc!8083&Wf>139",
+			"accessCriterion": "OA=65",
+			"incompatibleBosses": [
+				63
+			],
+			"rewardId": 43
+		},
+		{
+			"id": 65,
+			"monsterId": 1159,
+			"category": 5,
+			"apparitionCriterion": "Sc!8100&Wf>179",
+			"accessCriterion": "OA=55",
+			"incompatibleBosses": [
+				65,
+				157,
+				171,
+				170
+			],
+			"rewardId": 67
+		},
+		{
+			"id": 83,
+			"monsterId": 2967,
+			"category": 5,
+			"apparitionCriterion": "Sc!8105&Wf>169",
+			"accessCriterion": "OA=31",
+			"incompatibleBosses": [
+				83,
+				112,
+				150
+			],
+			"rewardId": 63
+		},
+		{
+			"id": 84,
+			"monsterId": 2968,
+			"category": 5,
+			"apparitionCriterion": "Sc!8093&Wf>179",
+			"accessCriterion": "OA=23",
+			"incompatibleBosses": [
+				32,
+				35,
+				84,
+				156,
+				26,
+				38
+			],
+			"rewardId": 66
+		},
+		{
+			"id": 95,
+			"monsterId": 3234,
+			"category": 5,
+			"apparitionCriterion": "Sc!8087&Wf>189",
+			"accessCriterion": "OA=134",
+			"incompatibleBosses": [
+				95
+			],
+			"rewardId": 71
+		},
+		{
+			"id": 103,
+			"monsterId": 3306,
+			"category": 3,
+			"apparitionCriterion": "Sc!8034&Wf>99&Sc=967",
+			"accessCriterion": "OA=1148",
+			"incompatibleBosses": [
+				103,
+				26,
+				38
+			],
+			"rewardId": 4294967295
+		},
+		{
+			"id": 109,
+			"monsterId": 3460,
+			"category": 3,
+			"apparitionCriterion": "Sc!8048&Wf>79",
+			"accessCriterion": "OA=1003",
+			"incompatibleBosses": [
+				109,
+				164
+			],
+			"rewardId": 27
+		},
+		{
+			"id": 110,
+			"monsterId": 3476,
+			"category": 3,
+			"apparitionCriterion": "Sc!8042&Wf>99&Wf<401",
+			"accessCriterion": "OA=1013",
+			"incompatibleBosses": [
+				110,
+				65,
+				105
+			],
+			"rewardId": 31
+		},
+		{
+			"id": 113,
+			"monsterId": 3556,
+			"category": 5,
+			"apparitionCriterion": "Sc!8090&Wf>159",
+			"accessCriterion": "OA=1055",
+			"incompatibleBosses": [
+				113,
+				118,
+				117,
+				116,
+				121,
+				120,
+				119,
+				125,
+				124,
+				123,
+				131,
+				130,
+				129,
+				171,
+				170
+			],
+			"rewardId": 50
+		},
+		{
+			"id": 114,
+			"monsterId": 3564,
+			"category": 5,
+			"apparitionCriterion": "Sc!8099&Wf>189",
+			"accessCriterion": "OA=1040",
+			"incompatibleBosses": [
+				114,
+				77,
+				145,
+				164
+			],
+			"rewardId": 72
+		},
+		{
+			"id": 115,
+			"monsterId": 3618,
+			"category": 4,
+			"apparitionCriterion": "Sc!8060&Wf>129",
+			"accessCriterion": "OA=1061",
+			"incompatibleBosses": [
+				115
+			],
+			"rewardId": 42
+		},
+		{
+			"id": 136,
+			"monsterId": 4621,
+			"category": 3,
+			"apparitionCriterion": "Sc!8040&Wf>79",
+			"accessCriterion": "OA=1529",
+			"incompatibleBosses": [
+				78,
+				80,
+				81,
+				84,
+				85,
+				87,
+				103,
+				107,
+				112,
+				123,
+				136,
+				138,
+				143,
+				144
+			],
+			"rewardId": 61
+		},
+		{
+			"id": 137,
+			"monsterId": 4726,
+			"category": 5,
+			"apparitionCriterion": "Sc!8103&Wf>169",
+			"accessCriterion": "OA=1555",
+			"incompatibleBosses": [
+				137
+			],
+			"rewardId": 52
+		},
+		{
+			"id": 139,
+			"monsterId": 4803,
+			"category": 5,
+			"apparitionCriterion": "Sc!8086&Wf>189",
+			"accessCriterion": "OA=1582",
+			"incompatibleBosses": [
+				106,
+				139
+			],
+			"rewardId": 78
+		},
+		{
+			"id": 140,
+			"monsterId": 4860,
+			"category": 3,
+			"apparitionCriterion": "Sc!8023&Wf>89",
+			"accessCriterion": "OA=1593",
+			"incompatibleBosses": [
+				140
+			],
+			"rewardId": 29
+		},
+		{
+			"id": 150,
+			"monsterId": 5666,
+			"category": 6,
+			"apparitionCriterion": "Sc!8128&Wf>219&Sc=945",
+			"accessCriterion": "OA=2082",
+			"incompatibleBosses": [
+				65,
+				41,
+				150,
+				164
+			],
+			"rewardId": 311
+		},
+		{
+			"id": 151,
+			"monsterId": 5664,
+			"category": 4,
+			"apparitionCriterion": "Sc!8054&Wf>129&Sc=945",
+			"accessCriterion": "OA=2075",
+			"incompatibleBosses": [
+				78,
+				80,
+				81,
+				84,
+				85,
+				87,
+				103,
+				107,
+				112,
+				123,
+				138,
+				143,
+				144,
+				150,
+				151,
+				65,
+				164
+			],
+			"rewardId": 310
+		},
+		{
+			"id": 152,
+			"monsterId": 5653,
+			"category": 3,
+			"apparitionCriterion": "Sc!8041&Wf>59&Sc=945",
+			"accessCriterion": "OA=2072",
+			"incompatibleBosses": [
+				152
+			],
+			"rewardId": 309
+		},
+		{
+			"id": 153,
+			"monsterId": 5806,
+			"category": 6,
+			"apparitionCriterion": "Sc!8137&Wf>219",
+			"accessCriterion": "OA=2106",
+			"incompatibleBosses": [
+				153
+			],
+			"rewardId": 318
+		},
+		{
+			"id": 154,
+			"monsterId": 5823,
+			"category": 3,
+			"apparitionCriterion": "Sc!8026&Wf>69",
+			"accessCriterion": "OA=2128",
+			"incompatibleBosses": [
+				154
+			],
+			"rewardId": 319
+		},
+		{
+			"id": 155,
+			"monsterId": 5819,
+			"category": 3,
+			"apparitionCriterion": "Sc!8036&Wf>99",
+			"accessCriterion": "OA=2115",
+			"incompatibleBosses": [
+				155
+			],
+			"rewardId": 320
+		},
+		{
+			"id": 156,
+			"monsterId": 5990,
+			"category": 6,
+			"apparitionCriterion": "Sc!8126&Wf>239",
+			"accessCriterion": "OA=2278",
+			"incompatibleBosses": [
+				156,
+				143,
+				144,
+				164
+			],
+			"rewardId": 4294967295
+		},
+		{
+			"id": 157,
+			"monsterId": 6014,
+			"category": 6,
+			"apparitionCriterion": "Sc!8118&Wf>239",
+			"accessCriterion": "OA=2264",
+			"incompatibleBosses": [
+				157,
+				65,
+				143,
+				144
+			],
+			"rewardId": 4294967295
+		},
+		{
+			"id": 19,
+			"monsterId": 58,
+			"category": 3,
+			"apparitionCriterion": "Sc!8028&Wf>59",
+			"accessCriterion": "OA=60",
+			"incompatibleBosses": [
+				19
+			],
+			"rewardId": 25
+		},
+		{
+			"id": 24,
+			"monsterId": 121,
+			"category": 4,
+			"apparitionCriterion": "Sc!8064&Wf>119",
+			"accessCriterion": "OA=32",
+			"incompatibleBosses": [
+				24
 			],
 			"rewardId": 4294967295
 		},
@@ -186,17 +828,6 @@
 			"rewardId": 13
 		},
 		{
-			"id": 32,
-			"monsterId": 257,
-			"category": 4,
-			"apparitionCriterion": "Sc!8052&Wf>139",
-			"accessCriterion": "OA=53",
-			"incompatibleBosses": [
-				32
-			],
-			"rewardId": 34
-		},
-		{
 			"id": 33,
 			"monsterId": 289,
 			"category": 4,
@@ -217,6 +848,27 @@
 				34
 			],
 			"rewardId": 12
+		},
+		{
+			"id": 80,
+			"monsterId": 2924,
+			"category": 5,
+			"apparitionCriterion": "Sc!8098&Wf>169",
+			"accessCriterion": "OA=63",
+			"incompatibleBosses": [
+				61,
+				62,
+				63,
+				64,
+				105,
+				80,
+				112,
+				150,
+				26,
+				38,
+				164
+			],
+			"rewardId": 60
 		},
 		{
 			"id": 36,
@@ -241,30 +893,6 @@
 			"rewardId": 4
 		},
 		{
-			"id": 38,
-			"monsterId": 478,
-			"category": 5,
-			"apparitionCriterion": "Sc!8085&Wf>179",
-			"accessCriterion": "OA=52",
-			"incompatibleBosses": [
-				38,
-				78,
-				80,
-				81,
-				84,
-				85,
-				87,
-				103,
-				107,
-				112,
-				123,
-				138,
-				143,
-				144
-			],
-			"rewardId": 15
-		},
-		{
 			"id": 42,
 			"monsterId": 669,
 			"category": 3,
@@ -285,19 +913,6 @@
 				43
 			],
 			"rewardId": 4294967295
-		},
-		{
-			"id": 44,
-			"monsterId": 780,
-			"category": 4,
-			"apparitionCriterion": "Sc!8075&Wf>119",
-			"accessCriterion": "OA=69",
-			"incompatibleBosses": [
-				44,
-				170,
-				171
-			],
-			"rewardId": 38
 		},
 		{
 			"id": 45,
@@ -333,18 +948,6 @@
 			"rewardId": 4294967295
 		},
 		{
-			"id": 48,
-			"monsterId": 800,
-			"category": 2,
-			"apparitionCriterion": "Sc!8000&Wf>49",
-			"accessCriterion": "OA=50",
-			"incompatibleBosses": [
-				48,
-				164
-			],
-			"rewardId": 8
-		},
-		{
 			"id": 49,
 			"monsterId": 827,
 			"category": 5,
@@ -368,18 +971,6 @@
 			"rewardId": 37
 		},
 		{
-			"id": 51,
-			"monsterId": 872,
-			"category": 4,
-			"apparitionCriterion": "Sc!8066&Wf>109&Sc=996",
-			"accessCriterion": "OA=435",
-			"incompatibleBosses": [
-				51,
-				164
-			],
-			"rewardId": 19
-		},
-		{
 			"id": 53,
 			"monsterId": 928,
 			"category": 2,
@@ -389,94 +980,6 @@
 				53
 			],
 			"rewardId": 4294967295
-		},
-		{
-			"id": 54,
-			"monsterId": 939,
-			"category": 4,
-			"apparitionCriterion": "Sc!8071&Wf>109",
-			"accessCriterion": "OA=5194",
-			"incompatibleBosses": [
-				54
-			],
-			"rewardId": 4294967295
-		},
-		{
-			"id": 55,
-			"monsterId": 940,
-			"category": 4,
-			"apparitionCriterion": "Sc!8070&Wf>109",
-			"accessCriterion": "OA=5188",
-			"incompatibleBosses": [
-				55
-			],
-			"rewardId": 4294967295
-		},
-		{
-			"id": 56,
-			"monsterId": 943,
-			"category": 4,
-			"apparitionCriterion": "Sc!8076&Wf>149",
-			"accessCriterion": "OA=47",
-			"incompatibleBosses": [
-				56
-			],
-			"rewardId": 40
-		},
-		{
-			"id": 57,
-			"monsterId": 1027,
-			"category": 2,
-			"apparitionCriterion": "Sc!8007&Wf>49",
-			"accessCriterion": "OA=62",
-			"incompatibleBosses": [
-				57
-			],
-			"rewardId": 4294967295
-		},
-		{
-			"id": 58,
-			"monsterId": 1045,
-			"category": 5,
-			"apparitionCriterion": "Sc!8091&Wf>149",
-			"accessCriterion": "OA=27",
-			"incompatibleBosses": [
-				58
-			],
-			"rewardId": 53
-		},
-		{
-			"id": 59,
-			"monsterId": 1051,
-			"category": 3,
-			"apparitionCriterion": "Sc!8033&Wf>69",
-			"accessCriterion": "OA=26",
-			"incompatibleBosses": [
-				59
-			],
-			"rewardId": 16
-		},
-		{
-			"id": 60,
-			"monsterId": 1071,
-			"category": 4,
-			"apparitionCriterion": "Sc!8074&Wf>109",
-			"accessCriterion": "OA=61",
-			"incompatibleBosses": [
-				60
-			],
-			"rewardId": 28
-		},
-		{
-			"id": 61,
-			"monsterId": 1072,
-			"category": 4,
-			"apparitionCriterion": "Sc!8081&Wf>139",
-			"accessCriterion": "OA=65",
-			"incompatibleBosses": [
-				61
-			],
-			"rewardId": 55
 		},
 		{
 			"id": 62,
@@ -490,17 +993,6 @@
 			"rewardId": 54
 		},
 		{
-			"id": 63,
-			"monsterId": 1086,
-			"category": 4,
-			"apparitionCriterion": "Sc!8083&Wf>139",
-			"accessCriterion": "OA=65",
-			"incompatibleBosses": [
-				63
-			],
-			"rewardId": 43
-		},
-		{
 			"id": 64,
 			"monsterId": 1087,
 			"category": 4,
@@ -510,20 +1002,6 @@
 				64
 			],
 			"rewardId": 4294967295
-		},
-		{
-			"id": 65,
-			"monsterId": 1159,
-			"category": 5,
-			"apparitionCriterion": "Sc!8100&Wf>179",
-			"accessCriterion": "OA=55",
-			"incompatibleBosses": [
-				65,
-				157,
-				171,
-				170
-			],
-			"rewardId": 67
 		},
 		{
 			"id": 66,
@@ -592,17 +1070,6 @@
 			"rewardId": 21
 		},
 		{
-			"id": 72,
-			"monsterId": 1194,
-			"category": 5,
-			"apparitionCriterion": "Sc!8102&Wf>179&Sc=996",
-			"accessCriterion": "OA=440",
-			"incompatibleBosses": [
-				72
-			],
-			"rewardId": 41
-		},
-		{
 			"id": 76,
 			"monsterId": 2848,
 			"category": 5,
@@ -632,20 +1099,6 @@
 			"rewardId": 56
 		},
 		{
-			"id": 78,
-			"monsterId": 2864,
-			"category": 5,
-			"apparitionCriterion": "Sc!8088&Wf>189",
-			"accessCriterion": "OA=20",
-			"incompatibleBosses": [
-				78,
-				80,
-				26,
-				38
-			],
-			"rewardId": 75
-		},
-		{
 			"id": 79,
 			"monsterId": 2877,
 			"category": 4,
@@ -656,27 +1109,6 @@
 				164
 			],
 			"rewardId": 57
-		},
-		{
-			"id": 80,
-			"monsterId": 2924,
-			"category": 5,
-			"apparitionCriterion": "Sc!8098&Wf>169",
-			"accessCriterion": "OA=63",
-			"incompatibleBosses": [
-				61,
-				62,
-				63,
-				64,
-				105,
-				80,
-				112,
-				150,
-				26,
-				38,
-				164
-			],
-			"rewardId": 60
 		},
 		{
 			"id": 81,
@@ -764,35 +1196,6 @@
 			"rewardId": 4294967295
 		},
 		{
-			"id": 83,
-			"monsterId": 2967,
-			"category": 5,
-			"apparitionCriterion": "Sc!8105&Wf>169",
-			"accessCriterion": "OA=31",
-			"incompatibleBosses": [
-				83,
-				112,
-				150
-			],
-			"rewardId": 63
-		},
-		{
-			"id": 84,
-			"monsterId": 2968,
-			"category": 5,
-			"apparitionCriterion": "Sc!8093&Wf>179",
-			"accessCriterion": "OA=23",
-			"incompatibleBosses": [
-				32,
-				35,
-				84,
-				156,
-				26,
-				38
-			],
-			"rewardId": 66
-		},
-		{
 			"id": 85,
 			"monsterId": 2975,
 			"category": 2,
@@ -854,17 +1257,6 @@
 			"rewardId": 4294967295
 		},
 		{
-			"id": 95,
-			"monsterId": 3234,
-			"category": 5,
-			"apparitionCriterion": "Sc!8087&Wf>189",
-			"accessCriterion": "OA=134",
-			"incompatibleBosses": [
-				95
-			],
-			"rewardId": 71
-		},
-		{
 			"id": 96,
 			"monsterId": 3238,
 			"category": 2,
@@ -876,17 +1268,53 @@
 			"rewardId": 11
 		},
 		{
-			"id": 103,
-			"monsterId": 3306,
-			"category": 3,
-			"apparitionCriterion": "Sc!8034&Wf>99&Sc=967",
-			"accessCriterion": "OA=1148",
+			"id": 48,
+			"monsterId": 800,
+			"category": 2,
+			"apparitionCriterion": "Sc!8000&Wf>49",
+			"accessCriterion": "OA=50",
 			"incompatibleBosses": [
-				103,
+				48,
+				164
+			],
+			"rewardId": 8
+		},
+		{
+			"id": 51,
+			"monsterId": 872,
+			"category": 4,
+			"apparitionCriterion": "Sc!8066&Wf>109&Sc=996",
+			"accessCriterion": "OA=435",
+			"incompatibleBosses": [
+				51,
+				164
+			],
+			"rewardId": 19
+		},
+		{
+			"id": 72,
+			"monsterId": 1194,
+			"category": 5,
+			"apparitionCriterion": "Sc!8102&Wf>179&Sc=996",
+			"accessCriterion": "OA=440",
+			"incompatibleBosses": [
+				72
+			],
+			"rewardId": 41
+		},
+		{
+			"id": 78,
+			"monsterId": 2864,
+			"category": 5,
+			"apparitionCriterion": "Sc!8088&Wf>189",
+			"accessCriterion": "OA=20",
+			"incompatibleBosses": [
+				78,
+				80,
 				26,
 				38
 			],
-			"rewardId": 4294967295
+			"rewardId": 75
 		},
 		{
 			"id": 104,
@@ -1061,31 +1489,6 @@
 			"rewardId": 83
 		},
 		{
-			"id": 109,
-			"monsterId": 3460,
-			"category": 3,
-			"apparitionCriterion": "Sc!8048&Wf>79",
-			"accessCriterion": "OA=1003",
-			"incompatibleBosses": [
-				109,
-				164
-			],
-			"rewardId": 27
-		},
-		{
-			"id": 110,
-			"monsterId": 3476,
-			"category": 3,
-			"apparitionCriterion": "Sc!8042&Wf>99&Wf<401",
-			"accessCriterion": "OA=1013",
-			"incompatibleBosses": [
-				110,
-				65,
-				105
-			],
-			"rewardId": 31
-		},
-		{
 			"id": 112,
 			"monsterId": 3534,
 			"category": 6,
@@ -1101,56 +1504,6 @@
 			"rewardId": 82
 		},
 		{
-			"id": 113,
-			"monsterId": 3556,
-			"category": 5,
-			"apparitionCriterion": "Sc!8090&Wf>159",
-			"accessCriterion": "OA=1055",
-			"incompatibleBosses": [
-				113,
-				118,
-				117,
-				116,
-				121,
-				120,
-				119,
-				125,
-				124,
-				123,
-				131,
-				130,
-				129,
-				171,
-				170
-			],
-			"rewardId": 50
-		},
-		{
-			"id": 114,
-			"monsterId": 3564,
-			"category": 5,
-			"apparitionCriterion": "Sc!8099&Wf>189",
-			"accessCriterion": "OA=1040",
-			"incompatibleBosses": [
-				114,
-				77,
-				145,
-				164
-			],
-			"rewardId": 72
-		},
-		{
-			"id": 115,
-			"monsterId": 3618,
-			"category": 4,
-			"apparitionCriterion": "Sc!8060&Wf>129",
-			"accessCriterion": "OA=1061",
-			"incompatibleBosses": [
-				115
-			],
-			"rewardId": 42
-		},
-		{
 			"id": 116,
 			"monsterId": 3648,
 			"category": 6,
@@ -1161,56 +1514,6 @@
 				113
 			],
 			"rewardId": 59
-		},
-		{
-			"id": 117,
-			"monsterId": 3651,
-			"category": 4,
-			"apparitionCriterion": "Sc!8067&Wf>149",
-			"accessCriterion": "OA=1083",
-			"incompatibleBosses": [
-				78,
-				80,
-				81,
-				84,
-				85,
-				87,
-				103,
-				107,
-				112,
-				117,
-				123,
-				138,
-				143,
-				144,
-				113
-			],
-			"rewardId": 39
-		},
-		{
-			"id": 118,
-			"monsterId": 3652,
-			"category": 3,
-			"apparitionCriterion": "Sc!8039&Wf>99",
-			"accessCriterion": "OA=1088",
-			"incompatibleBosses": [
-				78,
-				80,
-				81,
-				84,
-				85,
-				87,
-				103,
-				107,
-				112,
-				118,
-				123,
-				138,
-				143,
-				144,
-				113
-			],
-			"rewardId": 4294967295
 		},
 		{
 			"id": 119,
@@ -1225,30 +1528,6 @@
 				113
 			],
 			"rewardId": 68
-		},
-		{
-			"id": 120,
-			"monsterId": 3752,
-			"category": 5,
-			"apparitionCriterion": "Sc!8106&Wf>179",
-			"accessCriterion": "OA=1118",
-			"incompatibleBosses": [
-				120,
-				113
-			],
-			"rewardId": 51
-		},
-		{
-			"id": 121,
-			"monsterId": 3753,
-			"category": 4,
-			"apparitionCriterion": "Sc!8051&Wf>129",
-			"accessCriterion": "OA=1123",
-			"incompatibleBosses": [
-				121,
-				113
-			],
-			"rewardId": 4294967295
 		},
 		{
 			"id": 123,
@@ -1337,77 +1616,6 @@
 			"rewardId": 64
 		},
 		{
-			"id": 124,
-			"monsterId": 3849,
-			"category": 5,
-			"apparitionCriterion": "Sc!8108&Wf>169",
-			"accessCriterion": "OA=1161",
-			"incompatibleBosses": [
-				124,
-				113
-			],
-			"rewardId": 47
-		},
-		{
-			"id": 125,
-			"monsterId": 3852,
-			"category": 4,
-			"apparitionCriterion": "Sc!8058&Wf>119",
-			"accessCriterion": "OA=1166",
-			"incompatibleBosses": [
-				125,
-				113
-			],
-			"rewardId": 4294967295
-		},
-		{
-			"id": 126,
-			"monsterId": 3945,
-			"category": 2,
-			"apparitionCriterion": "Sc!8009&Wf>49",
-			"accessCriterion": "OA=1184",
-			"incompatibleBosses": [
-				126
-			],
-			"rewardId": 9
-		},
-		{
-			"id": 127,
-			"monsterId": 3996,
-			"category": 3,
-			"apparitionCriterion": "Sc!8046&Wf>89",
-			"accessCriterion": "OA=1195",
-			"incompatibleBosses": [
-				78,
-				80,
-				81,
-				84,
-				85,
-				87,
-				103,
-				107,
-				112,
-				123,
-				127,
-				138,
-				143,
-				144,
-				164
-			],
-			"rewardId": 14
-		},
-		{
-			"id": 128,
-			"monsterId": 4051,
-			"category": 2,
-			"apparitionCriterion": "Sc!8010&Wf>49",
-			"accessCriterion": "OA=33",
-			"incompatibleBosses": [
-				128
-			],
-			"rewardId": 4294967295
-		},
-		{
 			"id": 129,
 			"monsterId": 4263,
 			"category": 6,
@@ -1421,31 +1629,6 @@
 				164
 			],
 			"rewardId": 62
-		},
-		{
-			"id": 131,
-			"monsterId": 4278,
-			"category": 4,
-			"apparitionCriterion": "Sc!8068&Wf>109",
-			"accessCriterion": "OA=1409",
-			"incompatibleBosses": [
-				78,
-				80,
-				81,
-				84,
-				85,
-				87,
-				103,
-				107,
-				112,
-				123,
-				131,
-				138,
-				143,
-				144,
-				113
-			],
-			"rewardId": 4294967295
 		},
 		{
 			"id": 132,
@@ -1497,53 +1680,6 @@
 				164
 			],
 			"rewardId": 86
-		},
-		{
-			"id": 135,
-			"monsterId": 4609,
-			"category": 4,
-			"apparitionCriterion": "Sc!8056&Wf>129",
-			"accessCriterion": "OA=1536",
-			"incompatibleBosses": [
-				135,
-				89
-			],
-			"rewardId": 32
-		},
-		{
-			"id": 136,
-			"monsterId": 4621,
-			"category": 3,
-			"apparitionCriterion": "Sc!8040&Wf>79",
-			"accessCriterion": "OA=1529",
-			"incompatibleBosses": [
-				78,
-				80,
-				81,
-				84,
-				85,
-				87,
-				103,
-				107,
-				112,
-				123,
-				136,
-				138,
-				143,
-				144
-			],
-			"rewardId": 61
-		},
-		{
-			"id": 137,
-			"monsterId": 4726,
-			"category": 5,
-			"apparitionCriterion": "Sc!8103&Wf>169",
-			"accessCriterion": "OA=1555",
-			"incompatibleBosses": [
-				137
-			],
-			"rewardId": 52
 		},
 		{
 			"id": 138,
@@ -1639,29 +1775,6 @@
 				105
 			],
 			"rewardId": 65
-		},
-		{
-			"id": 139,
-			"monsterId": 4803,
-			"category": 5,
-			"apparitionCriterion": "Sc!8086&Wf>189",
-			"accessCriterion": "OA=1582",
-			"incompatibleBosses": [
-				106,
-				139
-			],
-			"rewardId": 78
-		},
-		{
-			"id": 140,
-			"monsterId": 4860,
-			"category": 3,
-			"apparitionCriterion": "Sc!8023&Wf>89",
-			"accessCriterion": "OA=1593",
-			"incompatibleBosses": [
-				140
-			],
-			"rewardId": 29
 		},
 		{
 			"id": 141,
@@ -1901,119 +2014,6 @@
 				114
 			],
 			"rewardId": 73
-		},
-		{
-			"id": 150,
-			"monsterId": 5666,
-			"category": 6,
-			"apparitionCriterion": "Sc!8128&Wf>219&Sc=945",
-			"accessCriterion": "OA=2082",
-			"incompatibleBosses": [
-				65,
-				41,
-				150,
-				164
-			],
-			"rewardId": 311
-		},
-		{
-			"id": 151,
-			"monsterId": 5664,
-			"category": 4,
-			"apparitionCriterion": "Sc!8054&Wf>129&Sc=945",
-			"accessCriterion": "OA=2075",
-			"incompatibleBosses": [
-				78,
-				80,
-				81,
-				84,
-				85,
-				87,
-				103,
-				107,
-				112,
-				123,
-				138,
-				143,
-				144,
-				150,
-				151,
-				65,
-				164
-			],
-			"rewardId": 310
-		},
-		{
-			"id": 152,
-			"monsterId": 5653,
-			"category": 3,
-			"apparitionCriterion": "Sc!8041&Wf>59&Sc=945",
-			"accessCriterion": "OA=2072",
-			"incompatibleBosses": [
-				152
-			],
-			"rewardId": 309
-		},
-		{
-			"id": 153,
-			"monsterId": 5806,
-			"category": 6,
-			"apparitionCriterion": "Sc!8137&Wf>219",
-			"accessCriterion": "OA=2106",
-			"incompatibleBosses": [
-				153
-			],
-			"rewardId": 318
-		},
-		{
-			"id": 154,
-			"monsterId": 5823,
-			"category": 3,
-			"apparitionCriterion": "Sc!8026&Wf>69",
-			"accessCriterion": "OA=2128",
-			"incompatibleBosses": [
-				154
-			],
-			"rewardId": 319
-		},
-		{
-			"id": 155,
-			"monsterId": 5819,
-			"category": 3,
-			"apparitionCriterion": "Sc!8036&Wf>99",
-			"accessCriterion": "OA=2115",
-			"incompatibleBosses": [
-				155
-			],
-			"rewardId": 320
-		},
-		{
-			"id": 156,
-			"monsterId": 5990,
-			"category": 6,
-			"apparitionCriterion": "Sc!8126&Wf>239",
-			"accessCriterion": "OA=2278",
-			"incompatibleBosses": [
-				156,
-				143,
-				144,
-				164
-			],
-			"rewardId": 4294967295
-		},
-		{
-			"id": 157,
-			"monsterId": 6014,
-			"category": 6,
-			"apparitionCriterion": "Sc!8118&Wf>239",
-			"accessCriterion": "OA=2264",
-			"incompatibleBosses": [
-				157,
-				65,
-				143,
-				144
-			],
-			"rewardId": 4294967295
 		},
 		{
 			"id": 158,

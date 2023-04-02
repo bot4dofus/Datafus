@@ -21,6 +21,8 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.datacenter.houses.HavenbagTheme;
    import com.ankamagames.dofus.datacenter.items.Item;
    import com.ankamagames.dofus.datacenter.monsters.Monster;
+   import com.ankamagames.dofus.datacenter.npcs.TaxCollectorFirstname;
+   import com.ankamagames.dofus.datacenter.npcs.TaxCollectorName;
    import com.ankamagames.dofus.datacenter.optionalFeatures.Modster;
    import com.ankamagames.dofus.datacenter.quest.Quest;
    import com.ankamagames.dofus.datacenter.sounds.SoundAnimation;
@@ -31,12 +33,15 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.factories.RolePlayEntitiesFactory;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.internalDatacenter.communication.EmoteWrapper;
+   import com.ankamagames.dofus.internalDatacenter.conquest.KothColorsEnum;
    import com.ankamagames.dofus.internalDatacenter.conquest.PrismSubAreaWrapper;
    import com.ankamagames.dofus.internalDatacenter.house.HouseInstanceWrapper;
    import com.ankamagames.dofus.internalDatacenter.house.HouseWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ShortcutWrapper;
    import com.ankamagames.dofus.internalDatacenter.people.PartyMemberWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.AllianceWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.TaxCollectorWrapper;
    import com.ankamagames.dofus.internalDatacenter.world.WorldPointWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
@@ -45,6 +50,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.logic.common.managers.NotificationManager;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.common.actions.StartZoomAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.KohOverAction;
    import com.ankamagames.dofus.logic.game.common.actions.breach.BreachTeleportRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.mount.PaddockMoveItemRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.mount.PaddockRemoveItemRequestAction;
@@ -56,6 +62,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.logic.game.common.frames.EmoticonFrame;
    import com.ankamagames.dofus.logic.game.common.frames.PartyManagementFrame;
    import com.ankamagames.dofus.logic.game.common.frames.PointCellFrame;
+   import com.ankamagames.dofus.logic.game.common.frames.SocialFrame;
    import com.ankamagames.dofus.logic.game.common.frames.StackManagementFrame;
    import com.ankamagames.dofus.logic.game.common.managers.ChatAutocompleteNameManager;
    import com.ankamagames.dofus.logic.game.common.managers.InventoryManager;
@@ -145,7 +152,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayCharacterInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayGroupMonsterInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayHumanoidInformations;
-   import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMerchantInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayNpcInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayNpcWithQuestInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayPortalInformations;
@@ -169,6 +175,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.types.game.look.EntityLook;
    import com.ankamagames.dofus.network.types.game.look.IndexedEntityLook;
    import com.ankamagames.dofus.network.types.game.paddock.PaddockItem;
+   import com.ankamagames.dofus.network.types.game.pvp.AgressableStatusMessage;
    import com.ankamagames.dofus.scripts.SpellScriptManager;
    import com.ankamagames.dofus.types.data.Follower;
    import com.ankamagames.dofus.types.entities.AnimStatiqueSubEntityBehavior;
@@ -177,6 +184,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.types.enums.AnimationEnum;
    import com.ankamagames.dofus.types.enums.EntityIconEnum;
    import com.ankamagames.dofus.types.enums.NotificationTypeEnum;
+   import com.ankamagames.dofus.uiApi.TimeApi;
    import com.ankamagames.jerakine.benchmark.BenchmarkTimer;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.entities.interfaces.IDisplayable;
@@ -223,6 +231,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import flash.events.Event;
    import flash.events.TimerEvent;
    import flash.filters.GlowFilter;
+   import flash.geom.ColorTransform;
    import flash.geom.Rectangle;
    import flash.utils.Dictionary;
    import flash.utils.clearTimeout;
@@ -255,8 +264,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       
       private var _playersId:Array;
       
-      private var _merchantsList:Array;
-      
       private var _npcList:Dictionary;
       
       private var _housesList:Dictionary;
@@ -268,6 +275,8 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       private var _monstersIds:Vector.<Number>;
       
       private var _allianceFrame:AllianceFrame;
+      
+      private var _socialFrame:SocialFrame;
       
       private var _breachFrame:BreachFrame;
       
@@ -286,6 +295,8 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       private var _aggressions:Vector.<Aggression>;
       
       private var _aggroTimeoutIdsMonsterAssoc:Dictionary;
+      
+      private var _taxCollectorOnCurrentMap:TaxCollectorWrapper;
       
       public function RoleplayEntitiesFrame()
       {
@@ -331,11 +342,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          return this._playersId;
       }
       
-      public function get merchants() : Array
-      {
-         return this._merchantsList;
-      }
-      
       public function get housesInformations() : Dictionary
       {
          return this._housesList;
@@ -366,6 +372,11 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          return this._mapTotalRewardRate;
       }
       
+      public function get taxCollectorOnCurrentMap() : TaxCollectorWrapper
+      {
+         return this._taxCollectorOnCurrentMap;
+      }
+      
       override public function pushed() : Boolean
       {
          var ccFrame:ContextChangeFrame = null;
@@ -373,7 +384,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var mirmsg:MapInformationsRequestMessage = null;
          this.initNewMap();
          this._playersId = new Array();
-         this._merchantsList = new Array();
          this._monstersIds = new Vector.<Number>();
          this._emoteTimesBySprite = new Dictionary();
          _entitiesVisibleNumber = 0;
@@ -407,6 +417,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          Dofus.getInstance().options.addEventListener(PropertyChangeEvent.PROPERTY_CHANGED,this.onPropertyChanged);
          Tiphon.getInstance().options.addEventListener(PropertyChangeEvent.PROPERTY_CHANGED,this.onTiphonPropertyChanged);
          this._allianceFrame = Kernel.getWorker().getFrame(AllianceFrame) as AllianceFrame;
+         this._socialFrame = Kernel.getWorker().getFrame(SocialFrame) as SocialFrame;
          return super.pushed();
       }
       
@@ -460,17 +471,13 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var grprcmsg:GameRolePlayRemoveChallengeMessage = null;
          var gcremsg:GameContextRemoveElementMessage = null;
          var playerCompt:uint = 0;
-         var merchantI:int = 0;
-         var merchantIndex:int = 0;
-         var merchantsCount:int = 0;
          var monsterId:Number = NaN;
          var contextMenu:UiRootContainer = null;
          var gcrmemsg:GameContextRemoveMultipleElementsMessage = null;
          var fakeRemoveElementMessage:GameContextRemoveElementMessage = null;
          var mfcmsg:MapFightCountMessage = null;
          var umpasm:UpdateMapPlayersAgressableStatusMessage = null;
-         var idx:int = 0;
-         var nbPlayersUpdated:int = 0;
+         var asmsg:Vector.<AgressableStatusMessage> = null;
          var playerInfo:GameRolePlayHumanoidInformations = null;
          var playerOption:* = undefined;
          var usasm:UpdateSelfAgressableStatusMessage = null;
@@ -528,6 +535,9 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var time:Date = null;
          var animNameLook:TiphonEntityLook = null;
          var emoteAnimMsg:GameRolePlaySetAnimationMessage = null;
+         var taxCollectorInfo:GameRolePlayTaxCollectorInformations = null;
+         var taxCollector:TaxCollectorWrapper = null;
+         var now:Number = NaN;
          var fightId:int = 0;
          var oldHousesList:Dictionary = null;
          var houseDoorKey:* = undefined;
@@ -561,6 +571,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var rpwf:RoleplayWorldFrame = null;
          var modContextMenu:Object = null;
          var elementId:Number = NaN;
+         var playerMessage:AgressableStatusMessage = null;
          var cell:uint = 0;
          var objectId:uint = 0;
          var item:PaddockItem = null;
@@ -597,6 +608,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                _interactiveElements = mcidmsg.interactiveElements;
                this._fightNumber = mcidmsg.fights.length;
                this._mapTotalRewardRate = 0;
+               this._taxCollectorOnCurrentMap = null;
                TooltipManager.hide();
                if(!(msg is MapComplementaryInformationsBreachMessage))
                {
@@ -725,68 +737,85 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                            this.dispatchPlayerNewLook = false;
                         }
                      }
-                     character = actor1 as GameRolePlayCharacterInformations;
-                     if(character)
+                     if(actor1 is GameRolePlayCharacterInformations)
                      {
-                        emoteId = 0;
-                        emoteStartTime = 0;
-                        for each(option in character.humanoidInfo.options)
+                        character = actor1 as GameRolePlayCharacterInformations;
+                        if(character)
                         {
-                           if(option is HumanOptionEmote)
+                           emoteId = 0;
+                           emoteStartTime = 0;
+                           for each(option in character.humanoidInfo.options)
                            {
-                              emoteId = option.emoteId;
-                              emoteStartTime = option.emoteStartTime;
-                           }
-                           else if(option is HumanOptionObjectUse)
-                           {
-                              dam = new DelayedActionMessage(character.contextualId,option.objectGID,option.delayEndTime);
-                              Kernel.getWorker().process(dam);
-                           }
-                           else if(option is HumanOptionSkillUse)
-                           {
-                              hosu = option as HumanOptionSkillUse;
-                              duration = hosu.skillEndTime - TimeManager.getInstance().getUtcTimestamp();
-                              duration /= 100;
-                              if(duration > 0)
+                              if(option is HumanOptionEmote)
                               {
-                                 iumsg = new InteractiveUsedMessage();
-                                 iumsg.initInteractiveUsedMessage(character.contextualId,hosu.elementId,hosu.skillId,duration);
-                                 Kernel.getWorker().process(iumsg);
+                                 emoteId = option.emoteId;
+                                 emoteStartTime = option.emoteStartTime;
+                              }
+                              else if(option is HumanOptionObjectUse)
+                              {
+                                 dam = new DelayedActionMessage(character.contextualId,option.objectGID,option.delayEndTime);
+                                 Kernel.getWorker().process(dam);
+                              }
+                              else if(option is HumanOptionSkillUse)
+                              {
+                                 hosu = option as HumanOptionSkillUse;
+                                 duration = hosu.skillEndTime - TimeManager.getInstance().getUtcTimestamp();
+                                 duration /= 100;
+                                 if(duration > 0)
+                                 {
+                                    iumsg = new InteractiveUsedMessage();
+                                    iumsg.initInteractiveUsedMessage(character.contextualId,hosu.elementId,hosu.skillId,duration);
+                                    Kernel.getWorker().process(iumsg);
+                                 }
+                              }
+                           }
+                           if(emoteId > 0)
+                           {
+                              emote = Emoticon.getEmoticonById(emoteId);
+                              if(emote && emote.persistancy)
+                              {
+                                 this._currentEmoticon = emote.id;
+                                 if(!emote.aura)
+                                 {
+                                    staticOnly = false;
+                                    time = new Date();
+                                    if(time.getTime() - emoteStartTime >= emote.duration)
+                                    {
+                                       staticOnly = true;
+                                    }
+                                    animNameLook = EntityLookAdapter.fromNetwork(character.look);
+                                    emoteAnimMsg = new GameRolePlaySetAnimationMessage(actor1,emote.getAnimName(animNameLook),emote.spellLevelId,emoteStartTime,!emote.persistancy,emote.eight_directions,staticOnly);
+                                    if(ac.rendered)
+                                    {
+                                       this.process(emoteAnimMsg);
+                                    }
+                                    else
+                                    {
+                                       if(emoteAnimMsg.playStaticOnly)
+                                       {
+                                          ac.visible = false;
+                                       }
+                                       this._waitingEmotesAnims[ac.id] = emoteAnimMsg;
+                                       ac.removeEventListener(TiphonEvent.RENDER_SUCCEED,this.onEntityReadyForEmote);
+                                       ac.addEventListener(TiphonEvent.RENDER_SUCCEED,this.onEntityReadyForEmote);
+                                    }
+                                 }
                               }
                            }
                         }
-                        if(emoteId > 0)
+                     }
+                     else if(actor1 is GameRolePlayTaxCollectorInformations)
+                     {
+                        taxCollectorInfo = actor1 as GameRolePlayTaxCollectorInformations;
+                        if(taxCollectorInfo.taxCollectorAttack > 0)
                         {
-                           emote = Emoticon.getEmoticonById(emoteId);
-                           if(emote && emote.persistancy)
-                           {
-                              this._currentEmoticon = emote.id;
-                              if(!emote.aura)
-                              {
-                                 staticOnly = false;
-                                 time = new Date();
-                                 if(time.getTime() - emoteStartTime >= emote.duration)
-                                 {
-                                    staticOnly = true;
-                                 }
-                                 animNameLook = EntityLookAdapter.fromNetwork(character.look);
-                                 emoteAnimMsg = new GameRolePlaySetAnimationMessage(actor1,emote.getAnimName(animNameLook),emote.spellLevelId,emoteStartTime,!emote.persistancy,emote.eight_directions,staticOnly);
-                                 if(ac.rendered)
-                                 {
-                                    this.process(emoteAnimMsg);
-                                 }
-                                 else
-                                 {
-                                    if(emoteAnimMsg.playStaticOnly)
-                                    {
-                                       ac.visible = false;
-                                    }
-                                    this._waitingEmotesAnims[ac.id] = emoteAnimMsg;
-                                    ac.removeEventListener(TiphonEvent.RENDER_SUCCEED,this.onEntityReadyForEmote);
-                                    ac.addEventListener(TiphonEvent.RENDER_SUCCEED,this.onEntityReadyForEmote);
-                                 }
-                              }
-                           }
+                           taxCollector = new TaxCollectorWrapper();
+                           taxCollector.lastName = TaxCollectorName.getTaxCollectorNameById(taxCollectorInfo.identification.lastNameId).name;
+                           taxCollector.firstName = TaxCollectorFirstname.getTaxCollectorFirstnameById(taxCollectorInfo.identification.firstNameId).firstname;
+                           taxCollector.alliance = AllianceWrapper.getFromNetwork(taxCollectorInfo.identification.allianceIdentity);
+                           now = TimeManager.getInstance().getTimestamp();
+                           taxCollector.attackTimestamp = now + taxCollectorInfo.taxCollectorAttack * TimeApi.MINUTE_TO_MILLISECOND;
+                           this._taxCollectorOnCurrentMap = taxCollector;
                         }
                      }
                   }
@@ -802,12 +831,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                   {
                      ChatAutocompleteNameManager.getInstance().addEntry((actor1 as GameRolePlayCharacterInformations).name,0);
                   }
-                  else if(actor1 is GameRolePlayMerchantInformations)
-                  {
-                     this._merchantsList.push(actor1 as GameRolePlayMerchantInformations);
-                  }
                }
-               this._merchantsList.sortOn("name",Array.CASEINSENSITIVE);
                this.switchPokemonMode();
                thisFightExists = false;
                fightIdsToRemove = new Array();
@@ -1069,12 +1093,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                {
                   ChatAutocompleteNameManager.getInstance().addEntry((grpsamsg.informations as GameRolePlayCharacterInformations).name,0);
                }
-               if(grpsamsg.informations is GameRolePlayMerchantInformations)
-               {
-                  this._merchantsList.push(grpsamsg.informations as GameRolePlayMerchantInformations);
-                  this._merchantsList.sortOn("name",Array.CASEINSENSITIVE);
-                  KernelEventsManager.getInstance().processCallback(RoleplayHookList.MerchantListUpdated);
-               }
                if(grpsamsg.informations is GameRolePlayCharacterInformations && PlayedCharacterManager.getInstance().characteristics.alignmentInfos.aggressable == AggressableStatusEnum.PvP_ENABLED_AGGRESSABLE)
                {
                   rpInfos = grpsamsg.informations as GameRolePlayCharacterInformations;
@@ -1227,22 +1245,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                      playerCompt++;
                   }
                }
-               merchantI = 0;
-               merchantIndex = -1;
-               for(merchantsCount = this._merchantsList.length; merchantI < merchantsCount; )
-               {
-                  if(this._merchantsList[merchantI].contextualId == gcremsg.id)
-                  {
-                     merchantIndex = merchantI;
-                     break;
-                  }
-                  merchantI++;
-               }
-               if(merchantIndex > -1)
-               {
-                  this._merchantsList.splice(merchantIndex,1);
-                  KernelEventsManager.getInstance().processCallback(RoleplayHookList.MerchantListUpdated);
-               }
                monsterId = this._monstersIds.indexOf(gcremsg.id);
                if(monsterId != -1)
                {
@@ -1316,28 +1318,23 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                return true;
             case msg is UpdateMapPlayersAgressableStatusMessage:
                umpasm = msg as UpdateMapPlayersAgressableStatusMessage;
-               nbPlayersUpdated = umpasm.playerIds.length;
-               for(idx = 0; idx < nbPlayersUpdated; idx++)
+               asmsg = umpasm.playerAvAMessages;
+               for each(playerMessage in asmsg)
                {
-                  playerInfo = getEntityInfos(umpasm.playerIds[idx]) as GameRolePlayHumanoidInformations;
+                  playerInfo = getEntityInfos(playerMessage.playerId) as GameRolePlayHumanoidInformations;
                   if(playerInfo)
                   {
                      for each(playerOption in playerInfo.humanoidInfo.options)
                      {
                         if(playerOption is HumanOptionAlliance)
                         {
-                           (playerOption as HumanOptionAlliance).aggressable = umpasm.enable[idx];
+                           (playerOption as HumanOptionAlliance).aggressable = playerMessage.enable;
+                           this.updateConquestIcon(playerMessage.playerId,playerMessage.roleAvAId,playerMessage.pictoScore);
                            break;
                         }
                      }
                   }
-                  if(umpasm.playerIds[idx] == PlayedCharacterManager.getInstance().id)
-                  {
-                     PlayedCharacterManager.getInstance().characteristics.alignmentInfos.aggressable = umpasm.enable[idx];
-                     KernelEventsManager.getInstance().processCallback(PrismHookList.PvpAvaStateChange,umpasm.enable[idx],0);
-                  }
                }
-               this.updateConquestIcons(umpasm.playerIds);
                return true;
             case msg is UpdateSelfAgressableStatusMessage:
                usasm = msg as UpdateSelfAgressableStatusMessage;
@@ -1358,7 +1355,10 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                   PlayedCharacterManager.getInstance().characteristics.alignmentInfos.aggressable = usasm.status;
                }
                KernelEventsManager.getInstance().processCallback(PrismHookList.PvpAvaStateChange,usasm.status,usasm.probationTime);
-               this.updateConquestIcons(PlayedCharacterManager.getInstance().id);
+               this.updateConquestIcon(PlayedCharacterManager.getInstance().id,usasm.roleAvAId,usasm.pictoScore);
+               return true;
+            case msg is KohOverAction:
+               removeCategoryForAllEntities(EntityIconEnum.AVA_CATEGORY);
                return true;
             case msg is ObjectGroundAddedMessage:
                ogamsg = msg as ObjectGroundAddedMessage;
@@ -2023,10 +2023,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                {
                   addEntityIcon(monstersInfos.contextualId,"archmonsters");
                }
-               if(monstersInfos.hasAVARewardToken)
-               {
-                  addEntityIcon(monstersInfos.contextualId,"nugget");
-               }
                break;
             case infos is GameRolePlayHumanoidInformations:
                if(infos.contextualId > 0 && this._playersId && this._playersId.indexOf(infos.contextualId) == -1)
@@ -2052,9 +2048,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                            followersTypes.push(Follower.TYPE_NETWORK);
                         }
                         break;
-                     case option is HumanOptionAlliance:
-                        this.addConquestIcon(infos.contextualId,option as HumanOptionAlliance);
-                        break;
                      case option is HumanOptionSpeedMultiplier:
                         ac.speedAdjust = 10 * (option.speedMultiplier - 1);
                         break;
@@ -2075,16 +2068,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                   {
                      ac.addAnimationModifier(_underWaterAnimationModifier);
                   }
-               }
-               if(_creaturesMode || ac.getAnimation() == AnimationEnum.ANIM_STATIQUE)
-               {
-                  ac.setAnimation(AnimationEnum.ANIM_STATIQUE);
-               }
-               break;
-            case infos is GameRolePlayMerchantInformations:
-               if(ac.look.getBone() == 1)
-               {
-                  ac.addAnimationModifier(_customBreedAnimationModifier);
                }
                if(_creaturesMode || ac.getAnimation() == AnimationEnum.ANIM_STATIQUE)
                {
@@ -2759,53 +2742,31 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          }
       }
       
-      private function updateConquestIcons(pPlayersIds:*) : void
+      private function updateConquestIcon(pPlayerId:Number, pPlayerRoleId:Number = -1, scoreValue:int = -1) : void
       {
-         var playerId:Number = NaN;
          var infos:GameRolePlayHumanoidInformations = null;
          var option:* = undefined;
-         if(pPlayersIds is Vector.<Number> && (pPlayersIds as Vector.<Number>).length > 0)
+         infos = getEntityInfos(pPlayerId) as GameRolePlayHumanoidInformations;
+         if(infos)
          {
-            for each(playerId in pPlayersIds)
+            for each(option in infos.humanoidInfo.options)
             {
-               infos = getEntityInfos(playerId) as GameRolePlayHumanoidInformations;
-               if(infos)
+               if(option is HumanOptionAlliance)
                {
-                  for each(option in infos.humanoidInfo.options)
-                  {
-                     if(option is HumanOptionAlliance)
-                     {
-                        this.addConquestIcon(infos.contextualId,option as HumanOptionAlliance);
-                        break;
-                     }
-                  }
-               }
-            }
-         }
-         else if(pPlayersIds is Number)
-         {
-            infos = getEntityInfos(pPlayersIds) as GameRolePlayHumanoidInformations;
-            if(infos)
-            {
-               for each(option in infos.humanoidInfo.options)
-               {
-                  if(option is HumanOptionAlliance)
-                  {
-                     this.addConquestIcon(infos.contextualId,option as HumanOptionAlliance);
-                     break;
-                  }
+                  this.addConquestIcon(infos.contextualId,option as HumanOptionAlliance,pPlayerRoleId,scoreValue);
+                  break;
                }
             }
          }
       }
       
-      private function addConquestIcon(pEntityId:Number, pHumanOptionAlliance:HumanOptionAlliance) : void
+      private function addConquestIcon(pEntityId:Number, pHumanOptionAlliance:HumanOptionAlliance, pRoleId:Number = -1, scoreValue:int = -1) : void
       {
          var prismInfo:PrismSubAreaWrapper = null;
-         var playerConqueststatus:String = null;
+         var playerConquestIcon:String = null;
          var iconsNames:Vector.<String> = null;
          var iconName:String = null;
-         if(PlayedCharacterManager.getInstance().characteristics.alignmentInfos.aggressable != AggressableStatusEnum.NON_AGGRESSABLE && this._allianceFrame && this._allianceFrame.hasAlliance && pHumanOptionAlliance.aggressable != AggressableStatusEnum.NON_AGGRESSABLE && pHumanOptionAlliance.aggressable != AggressableStatusEnum.PvP_ENABLED_AGGRESSABLE && pHumanOptionAlliance.aggressable != AggressableStatusEnum.PvP_ENABLED_NON_AGGRESSABLE && pHumanOptionAlliance.aggressable != AggressableStatusEnum.AvA_ENABLED_NON_AGGRESSABLE)
+         if(PlayedCharacterManager.getInstance().characteristics.alignmentInfos.aggressable != AggressableStatusEnum.NON_AGGRESSABLE && this._socialFrame && this._socialFrame.hasAlliance && this._allianceFrame)
          {
             prismInfo = this._allianceFrame.getPrismSubAreaById(PlayedCharacterManager.getInstance().currentSubArea.id);
             if(prismInfo && prismInfo.state == PrismStateEnum.PRISM_STATE_VULNERABLE)
@@ -2813,59 +2774,92 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                switch(pHumanOptionAlliance.aggressable)
                {
                   case AggressableStatusEnum.AvA_DISQUALIFIED:
-                     if(pEntityId == PlayedCharacterManager.getInstance().id)
-                     {
-                        playerConqueststatus = "neutral";
-                     }
+                     playerConquestIcon = "neutral";
                      break;
                   case AggressableStatusEnum.AvA_PREQUALIFIED_AGGRESSABLE:
-                     if(pEntityId == PlayedCharacterManager.getInstance().id)
+                     if(pEntityId == PlayedCharacterManager.getInstance().id || pHumanOptionAlliance.allianceInformation.allianceId != this._socialFrame.alliance.allianceId)
                      {
-                        playerConqueststatus = "clock";
+                        playerConquestIcon = "clock";
                      }
                      else
                      {
-                        playerConqueststatus = this.getPlayerConquestStatus(pEntityId,pHumanOptionAlliance.allianceInformations.allianceId,prismInfo.alliance.allianceId);
+                        playerConquestIcon = this.getPlayerConquestIcon(pHumanOptionAlliance.allianceInformation.allianceId,prismInfo.alliance.allianceId,pRoleId);
                      }
                      break;
                   case AggressableStatusEnum.AvA_ENABLED_AGGRESSABLE:
-                     playerConqueststatus = this.getPlayerConquestStatus(pEntityId,pHumanOptionAlliance.allianceInformations.allianceId,prismInfo.alliance.allianceId);
+                     playerConquestIcon = this.getPlayerConquestIcon(pHumanOptionAlliance.allianceInformation.allianceId,prismInfo.alliance.allianceId,pRoleId);
                }
-               if(playerConqueststatus)
+               if(playerConquestIcon)
                {
                   iconsNames = getIconNamesByCategory(pEntityId,EntityIconEnum.AVA_CATEGORY);
-                  if(iconsNames && iconsNames[0] != playerConqueststatus)
+                  if(iconsNames)
                   {
                      iconName = iconsNames[0];
                      iconsNames.length = 0;
                      removeIcon(pEntityId,iconName,true);
                   }
-                  addEntityIcon(pEntityId,playerConqueststatus,EntityIconEnum.AVA_CATEGORY);
+                  addEntityIcon(pEntityId,playerConquestIcon,EntityIconEnum.AVA_CATEGORY,0,0,-1,scoreValue);
                }
             }
          }
-         if(!playerConqueststatus && _entitiesIconsNames[pEntityId] && _entitiesIconsNames[pEntityId][EntityIconEnum.AVA_CATEGORY])
+         if(!playerConquestIcon && _entitiesIconsNames[pEntityId] && _entitiesIconsNames[pEntityId][EntityIconEnum.AVA_CATEGORY])
          {
             removeIconsCategory(pEntityId,EntityIconEnum.AVA_CATEGORY);
          }
       }
       
-      private function getPlayerConquestStatus(pPlayerId:Number, pPlayerAllianceId:int, pPrismAllianceId:int) : String
+      override protected function changeColor(entityId:Number, name:String, color:ColorTransform = null) : void
       {
-         var status:String = null;
-         if(pPlayerId == PlayedCharacterManager.getInstance().id || this._allianceFrame.alliance.allianceId == pPlayerAllianceId)
+         var info:* = undefined;
+         var prismAlliance:uint = 0;
+         var playerAlliance:uint = 0;
+         var entityAlliance:uint = 0;
+         if(name.indexOf("role") == -1)
          {
-            status = "ownTeam";
+            return;
          }
-         else if(pPlayerAllianceId == pPrismAllianceId)
+         for each(info in _entities[entityId].humanoidInfo.options)
          {
-            status = "defender";
+            if(info is HumanOptionAlliance)
+            {
+               entityAlliance = info.allianceInformation.allianceId;
+            }
+         }
+         prismAlliance = this._allianceFrame.getPrismSubAreaById(PlayedCharacterManager.getInstance().currentSubArea.id).alliance.groupId;
+         playerAlliance = this._socialFrame.alliance.groupId;
+         if(prismAlliance == entityAlliance)
+         {
+            super.changeColor(entityId,name,KothColorsEnum.COLOR_DEFENDER_AVA_BLUE);
+         }
+         else if(entityAlliance == playerAlliance)
+         {
+            super.changeColor(entityId,name,KothColorsEnum.COLOR_ATTACKER_AVA_GREEN);
          }
          else
          {
-            status = "forward";
+            super.changeColor(entityId,name,KothColorsEnum.COLOR_ATTACKER_AVA_RED);
          }
-         return status;
+      }
+      
+      private function getPlayerConquestIcon(pPlayerAllianceId:int, pPrismAllianceId:int, pPlayerRoleId:Number) : String
+      {
+         if(pPlayerRoleId == -1)
+         {
+            return null;
+         }
+         var name:* = "role" + pPlayerRoleId.toString();
+         if(pPlayerRoleId == 8)
+         {
+            if(pPlayerAllianceId == pPrismAllianceId)
+            {
+               name += "d";
+            }
+            else
+            {
+               name += "a";
+            }
+         }
+         return name;
       }
       
       private function onTiphonPropertyChanged(event:PropertyChangeEvent) : void

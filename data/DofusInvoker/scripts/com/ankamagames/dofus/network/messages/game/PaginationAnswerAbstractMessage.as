@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game
    public class PaginationAnswerAbstractMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 213;
+      public static const protocolId:uint = 1885;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game
       
       override public function getMessageId() : uint
       {
-         return 213;
+         return 1885;
       }
       
       public function initPaginationAnswerAbstractMessage(offset:Number = 0, count:uint = 0, total:uint = 0) : PaginationAnswerAbstractMessage

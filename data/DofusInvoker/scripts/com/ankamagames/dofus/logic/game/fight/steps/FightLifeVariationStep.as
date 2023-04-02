@@ -1,8 +1,8 @@
 package com.ankamagames.dofus.logic.game.fight.steps
 {
    import com.ankamagames.berilia.managers.TooltipManager;
+   import com.ankamagames.dofus.internalDatacenter.stats.EntityStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
-   import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.managers.SpeakingItemManager;
@@ -90,8 +90,8 @@ package com.ankamagames.dofus.logic.game.fight.steps
          var res:int = stats.getHealthPoints() + this._delta;
          var maxLifePoints:Number = Math.max(1,stats.getMaxHealthPoints() + this._permanentDamages);
          var lifePoints:Number = Math.min(Math.max(0,res),maxLifePoints);
-         stats.setStat(new Stat(StatIds.CUR_PERMANENT_DAMAGE,stats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE) - this._permanentDamages));
-         stats.setStat(new Stat(StatIds.CUR_LIFE,lifePoints - maxLifePoints - stats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE)));
+         stats.setStat(new EntityStat(StatIds.CUR_PERMANENT_DAMAGE,stats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE) - this._permanentDamages));
+         stats.setStat(new EntityStat(StatIds.CUR_LIFE,lifePoints - maxLifePoints - stats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE)));
          if(this._fighterInfo is GameFightCharacterInformations)
          {
             TooltipManager.updateContent("PlayerShortInfos" + this._fighterInfo.contextualId,"tooltipOverEntity_" + this._fighterInfo.contextualId,this._fighterInfo);

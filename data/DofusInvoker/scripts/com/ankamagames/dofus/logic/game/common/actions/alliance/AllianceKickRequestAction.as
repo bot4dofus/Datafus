@@ -7,17 +7,17 @@ package com.ankamagames.dofus.logic.game.common.actions.alliance
    {
        
       
-      public var guildId:uint;
+      public var memberId:Number;
       
       public function AllianceKickRequestAction(params:Array = null)
       {
          super(params);
       }
       
-      public static function create(pGuildId:uint) : AllianceKickRequestAction
+      public static function create(pMemberId:Number) : AllianceKickRequestAction
       {
          var action:AllianceKickRequestAction = new AllianceKickRequestAction(arguments);
-         action.guildId = pGuildId;
+         action.memberId = pMemberId;
          return action;
       }
    }

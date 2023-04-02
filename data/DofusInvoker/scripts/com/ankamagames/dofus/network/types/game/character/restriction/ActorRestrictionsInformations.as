@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.character.restriction
    public class ActorRestrictionsInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 231;
+      public static const protocolId:uint = 4665;
        
       
       public var cantBeAggressed:Boolean = false;
@@ -38,8 +38,6 @@ package com.ankamagames.dofus.network.types.game.character.restriction
       
       public var cantChat:Boolean = false;
       
-      public var cantBeMerchant:Boolean = false;
-      
       public var cantUseObject:Boolean = false;
       
       public var cantUseTaxCollector:Boolean = false;
@@ -59,10 +57,10 @@ package com.ankamagames.dofus.network.types.game.character.restriction
       
       public function getTypeId() : uint
       {
-         return 231;
+         return 4665;
       }
       
-      public function initActorRestrictionsInformations(cantBeAggressed:Boolean = false, cantBeChallenged:Boolean = false, cantTrade:Boolean = false, cantBeAttackedByMutant:Boolean = false, cantRun:Boolean = false, forceSlowWalk:Boolean = false, cantMinimize:Boolean = false, cantMove:Boolean = false, cantAggress:Boolean = false, cantChallenge:Boolean = false, cantExchange:Boolean = false, cantAttack:Boolean = false, cantChat:Boolean = false, cantBeMerchant:Boolean = false, cantUseObject:Boolean = false, cantUseTaxCollector:Boolean = false, cantUseInteractive:Boolean = false, cantSpeakToNPC:Boolean = false, cantChangeZone:Boolean = false, cantAttackMonster:Boolean = false) : ActorRestrictionsInformations
+      public function initActorRestrictionsInformations(cantBeAggressed:Boolean = false, cantBeChallenged:Boolean = false, cantTrade:Boolean = false, cantBeAttackedByMutant:Boolean = false, cantRun:Boolean = false, forceSlowWalk:Boolean = false, cantMinimize:Boolean = false, cantMove:Boolean = false, cantAggress:Boolean = false, cantChallenge:Boolean = false, cantExchange:Boolean = false, cantAttack:Boolean = false, cantChat:Boolean = false, cantUseObject:Boolean = false, cantUseTaxCollector:Boolean = false, cantUseInteractive:Boolean = false, cantSpeakToNPC:Boolean = false, cantChangeZone:Boolean = false, cantAttackMonster:Boolean = false) : ActorRestrictionsInformations
       {
          this.cantBeAggressed = cantBeAggressed;
          this.cantBeChallenged = cantBeChallenged;
@@ -77,7 +75,6 @@ package com.ankamagames.dofus.network.types.game.character.restriction
          this.cantExchange = cantExchange;
          this.cantAttack = cantAttack;
          this.cantChat = cantChat;
-         this.cantBeMerchant = cantBeMerchant;
          this.cantUseObject = cantUseObject;
          this.cantUseTaxCollector = cantUseTaxCollector;
          this.cantUseInteractive = cantUseInteractive;
@@ -102,7 +99,6 @@ package com.ankamagames.dofus.network.types.game.character.restriction
          this.cantExchange = false;
          this.cantAttack = false;
          this.cantChat = false;
-         this.cantBeMerchant = false;
          this.cantUseObject = false;
          this.cantUseTaxCollector = false;
          this.cantUseInteractive = false;
@@ -134,15 +130,14 @@ package com.ankamagames.dofus.network.types.game.character.restriction
          _box1 = BooleanByteWrapper.setFlag(_box1,2,this.cantExchange);
          _box1 = BooleanByteWrapper.setFlag(_box1,3,this.cantAttack);
          _box1 = BooleanByteWrapper.setFlag(_box1,4,this.cantChat);
-         _box1 = BooleanByteWrapper.setFlag(_box1,5,this.cantBeMerchant);
-         _box1 = BooleanByteWrapper.setFlag(_box1,6,this.cantUseObject);
-         _box1 = BooleanByteWrapper.setFlag(_box1,7,this.cantUseTaxCollector);
+         _box1 = BooleanByteWrapper.setFlag(_box1,5,this.cantUseObject);
+         _box1 = BooleanByteWrapper.setFlag(_box1,6,this.cantUseTaxCollector);
+         _box1 = BooleanByteWrapper.setFlag(_box1,7,this.cantUseInteractive);
          output.writeByte(_box1);
          var _box2:uint = 0;
-         _box2 = BooleanByteWrapper.setFlag(_box2,0,this.cantUseInteractive);
-         _box2 = BooleanByteWrapper.setFlag(_box2,1,this.cantSpeakToNPC);
-         _box2 = BooleanByteWrapper.setFlag(_box2,2,this.cantChangeZone);
-         _box2 = BooleanByteWrapper.setFlag(_box2,3,this.cantAttackMonster);
+         _box2 = BooleanByteWrapper.setFlag(_box2,0,this.cantSpeakToNPC);
+         _box2 = BooleanByteWrapper.setFlag(_box2,1,this.cantChangeZone);
+         _box2 = BooleanByteWrapper.setFlag(_box2,2,this.cantAttackMonster);
          output.writeByte(_box2);
       }
       
@@ -183,14 +178,13 @@ package com.ankamagames.dofus.network.types.game.character.restriction
          this.cantExchange = BooleanByteWrapper.getFlag(_box1,2);
          this.cantAttack = BooleanByteWrapper.getFlag(_box1,3);
          this.cantChat = BooleanByteWrapper.getFlag(_box1,4);
-         this.cantBeMerchant = BooleanByteWrapper.getFlag(_box1,5);
-         this.cantUseObject = BooleanByteWrapper.getFlag(_box1,6);
-         this.cantUseTaxCollector = BooleanByteWrapper.getFlag(_box1,7);
+         this.cantUseObject = BooleanByteWrapper.getFlag(_box1,5);
+         this.cantUseTaxCollector = BooleanByteWrapper.getFlag(_box1,6);
+         this.cantUseInteractive = BooleanByteWrapper.getFlag(_box1,7);
          var _box2:uint = input.readByte();
-         this.cantUseInteractive = BooleanByteWrapper.getFlag(_box2,0);
-         this.cantSpeakToNPC = BooleanByteWrapper.getFlag(_box2,1);
-         this.cantChangeZone = BooleanByteWrapper.getFlag(_box2,2);
-         this.cantAttackMonster = BooleanByteWrapper.getFlag(_box2,3);
+         this.cantSpeakToNPC = BooleanByteWrapper.getFlag(_box2,0);
+         this.cantChangeZone = BooleanByteWrapper.getFlag(_box2,1);
+         this.cantAttackMonster = BooleanByteWrapper.getFlag(_box2,2);
       }
    }
 }

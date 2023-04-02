@@ -10,12 +10,10 @@ package com.ankamagames.dofus.network.messages.game.social
    public class BulletinMessage extends SocialNoticeMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3789;
+      public static const protocolId:uint = 1719;
        
       
       private var _isInitialized:Boolean = false;
-      
-      public var lastNotifiedTimestamp:uint = 0;
       
       public function BulletinMessage()
       {
@@ -29,13 +27,12 @@ package com.ankamagames.dofus.network.messages.game.social
       
       override public function getMessageId() : uint
       {
-         return 3789;
+         return 1719;
       }
       
-      public function initBulletinMessage(content:String = "", timestamp:uint = 0, memberId:Number = 0, memberName:String = "", lastNotifiedTimestamp:uint = 0) : BulletinMessage
+      public function initBulletinMessage(content:String = "", timestamp:uint = 0, memberId:Number = 0, memberName:String = "") : BulletinMessage
       {
          super.initSocialNoticeMessage(content,timestamp,memberId,memberName);
-         this.lastNotifiedTimestamp = lastNotifiedTimestamp;
          this._isInitialized = true;
          return this;
       }
@@ -43,7 +40,6 @@ package com.ankamagames.dofus.network.messages.game.social
       override public function reset() : void
       {
          super.reset();
-         this.lastNotifiedTimestamp = 0;
          this._isInitialized = false;
       }
       
@@ -75,11 +71,6 @@ package com.ankamagames.dofus.network.messages.game.social
       public function serializeAs_BulletinMessage(output:ICustomDataOutput) : void
       {
          super.serializeAs_SocialNoticeMessage(output);
-         if(this.lastNotifiedTimestamp < 0)
-         {
-            throw new Error("Forbidden value (" + this.lastNotifiedTimestamp + ") on element lastNotifiedTimestamp.");
-         }
-         output.writeInt(this.lastNotifiedTimestamp);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -90,7 +81,6 @@ package com.ankamagames.dofus.network.messages.game.social
       public function deserializeAs_BulletinMessage(input:ICustomDataInput) : void
       {
          super.deserialize(input);
-         this._lastNotifiedTimestampFunc(input);
       }
       
       override public function deserializeAsync(tree:FuncTree) : void
@@ -101,16 +91,6 @@ package com.ankamagames.dofus.network.messages.game.social
       public function deserializeAsyncAs_BulletinMessage(tree:FuncTree) : void
       {
          super.deserializeAsync(tree);
-         tree.addChild(this._lastNotifiedTimestampFunc);
-      }
-      
-      private function _lastNotifiedTimestampFunc(input:ICustomDataInput) : void
-      {
-         this.lastNotifiedTimestamp = input.readInt();
-         if(this.lastNotifiedTimestamp < 0)
-         {
-            throw new Error("Forbidden value (" + this.lastNotifiedTimestamp + ") on element of BulletinMessage.lastNotifiedTimestamp.");
-         }
       }
    }
 }

@@ -1,6 +1,5 @@
 package com.ankamagames.dofus.internalDatacenter.people
 {
-   import com.ankamagames.dofus.internalDatacenter.guild.EmblemWrapper;
    import com.ankamagames.dofus.network.types.game.character.status.PlayerStatusExtended;
    import com.ankamagames.dofus.network.types.game.friend.AcquaintanceInformation;
    import com.ankamagames.dofus.network.types.game.friend.AcquaintanceOnlineInformation;
@@ -17,19 +16,11 @@ package com.ankamagames.dofus.internalDatacenter.people
       
       public var awayMessage:String = "";
       
-      public var realGuildName:String = "";
-      
       public var guildId:int = 0;
-      
-      public var guildUpEmblem:EmblemWrapper = null;
-      
-      public var guildBackEmblem:EmblemWrapper = null;
       
       public var leagueId:int = 0;
       
       public var ladderPosition:int = 0;
-      
-      public var havenbagShared:Boolean = false;
       
       public function ContactWrapper(o:AcquaintanceInformation)
       {

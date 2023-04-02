@@ -39,8 +39,8 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.sales.OfflineSaleWrapper;
    import com.ankamagames.dofus.internalDatacenter.stats.DetailedStat;
+   import com.ankamagames.dofus.internalDatacenter.stats.EntityStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
-   import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.kernel.sound.SoundManager;
@@ -132,9 +132,9 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristicsInformations;
    import com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations;
    import com.ankamagames.dofus.network.types.game.context.GameContextActorInformations;
-   import com.ankamagames.dofus.network.types.game.context.roleplay.BasicAllianceInformations;
-   import com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformation;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayCharacterInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations;
    import com.ankamagames.dofus.network.types.game.data.items.ObjectItem;
    import com.ankamagames.dofus.network.types.game.data.items.ObjectItemQuantityPriceDateEffects;
    import com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect;
@@ -189,10 +189,6 @@ package com.ankamagames.dofus.logic.game.common.frames
       public static const URL_MATCHER:RegExp = /\b((http|https|ftp):\/\/)?(([^:@ ]*)(:([^@ ]*))?@)?((www\.)?(([a-z0-9\-\.]{2,})(\.[a-z0-9\-]{2,})))(:([0-9]+))?(\/[^\s`!()\[\]{};:'",<>?«»“”‘’#]*)?(\?([^\s`!()\[\]{};:'".,<>?«»“”‘’]*))?(#(.*))?/gi;
       
       public static const LINK_TLDS:Array = new Array(".com",".edu",".org",".fr",".info",".net",".de",".ja",".uk",".us",".it",".nl",".ru",".es",".pt",".br");
-      
-      public static const CHAT_FAIL_TEXTS_IDS:Array = [5259,5359,5338,5373];
-      
-      private static const SPLIT_CODE:String = String.fromCharCode(65533);
        
       
       private var _aChannels:Array;
@@ -226,12 +222,6 @@ package com.ankamagames.dofus.logic.game.common.frames
       private var _offlineSales:Array;
       
       private var _unsoldItems:Dictionary;
-      
-      private var _sendingSplittedContent:Boolean;
-      
-      private var _splittedContent:String = "";
-      
-      private var _splittedContentLength:uint;
       
       private var _numUnsoldItemsLinks:uint;
       
@@ -424,39 +414,8 @@ package com.ankamagames.dofus.logic.game.common.frames
          return this._unsoldItems[pLinkId];
       }
       
-      public function get sendingSplittedContent() : Boolean
-      {
-         return this._sendingSplittedContent;
-      }
-      
-      public function set sendingSplittedContent(pValue:Boolean) : void
-      {
-         this._sendingSplittedContent = pValue;
-      }
-      
-      public function get splittedContent() : String
-      {
-         return this._splittedContent;
-      }
-      
-      public function set splittedContent(pValue:String) : void
-      {
-         this._splittedContent = pValue;
-      }
-      
-      public function get splittedContentLength() : uint
-      {
-         return this._splittedContentLength;
-      }
-      
-      public function set splittedContentLength(pValue:uint) : void
-      {
-         this._splittedContentLength = pValue;
-      }
-      
       public function process(msg:Message) : Boolean
       {
-         var msgContent:String = null;
          var content:String = null;
          var i:int = 0;
          var bwira:BasicWhoIsRequestAction = null;
@@ -468,7 +427,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var pattern:RegExp = null;
          var charTempL:String = null;
          var charTempR:String = null;
-         var splittedContentTab:Vector.<String> = null;
+         var objects:Vector.<ObjectItem> = null;
          var scwomsg:ChatServerWithObjectMessage = null;
          var numItem:int = 0;
          var listItem:Vector.<ItemWrapper> = null;
@@ -489,6 +448,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var param:Array = null;
          var textId:uint = 0;
          var params:Array = null;
+         var msgContent:String = null;
          var timestampf:Number = NaN;
          var comsg:ConsoleOutputMessage = null;
          var consoleTimestamp:Number = NaN;
@@ -583,10 +543,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          var posX:Number = NaN;
          var posY:Number = NaN;
          var worldMapId:Number = NaN;
-         var ok:Boolean = false;
-         var remnant:String = null;
-         var str:String = null;
-         var objects:Vector.<ObjectItem> = null;
          var nb:int = 0;
          var o:int = 0;
          var ccmwomsg:ChatClientMultiWithObjectMessage = null;
@@ -629,6 +585,8 @@ package com.ankamagames.dofus.logic.game.common.frames
          var smileypId:int = 0;
          var smileyW:SmileyWrapper = null;
          var chanId:* = undefined;
+         var guildText:String = null;
+         var allianceText:String = null;
          var socGroup:AbstractSocialGroupInfos = null;
          var parameter:String = null;
          var type:uint = 0;
@@ -699,7 +657,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   variables = I18n.getUiText("ui.chat.variable.stats").split(",");
                   for each(variable in variables)
                   {
-                     content = content.replace(new RegExp(variable,"g"),I18n.getUiText("ui.chat.variable.statsresult",[this.displayCarac(stats.getStat(StatIds.VITALITY)),this.displayCarac(stats.getStat(StatIds.WISDOM)),this.displayCarac(stats.getStat(StatIds.STRENGTH)),this.displayCarac(stats.getStat(StatIds.INTELLIGENCE)),this.displayCarac(stats.getStat(StatIds.CHANCE)),this.displayCarac(stats.getStat(StatIds.AGILITY)),this.displayCarac(stats.getStat(StatIds.INITIATIVE)),this.displayCarac(stats.getStat(StatIds.ACTION_POINTS)),this.displayCarac(stats.getStat(StatIds.MOVEMENT_POINTS))]));
+                     content = content.replace(new RegExp(variable,"g"),I18n.getUiText("ui.chat.variable.statsresult",[this.displayCarac(stats.getStat(StatIds.VITALITY) as EntityStat),this.displayCarac(stats.getStat(StatIds.WISDOM) as EntityStat),this.displayCarac(stats.getStat(StatIds.STRENGTH) as EntityStat),this.displayCarac(stats.getStat(StatIds.INTELLIGENCE) as EntityStat),this.displayCarac(stats.getStat(StatIds.CHANCE) as EntityStat),this.displayCarac(stats.getStat(StatIds.AGILITY) as EntityStat),this.displayCarac(stats.getStat(StatIds.INITIATIVE) as EntityStat),this.displayCarac(stats.getStat(StatIds.ACTION_POINTS) as EntityStat),this.displayCarac(stats.getStat(StatIds.MOVEMENT_POINTS) as EntityStat)]));
                   }
                   variables = I18n.getUiText("ui.chat.variable.area").split(",");
                   for each(variable in variables)
@@ -730,7 +688,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   variables = I18n.getUiText("ui.chat.variable.alliance").split(",");
                   for each(variable in variables)
                   {
-                     content = content.replace(new RegExp(variable,"g"),!!this.allianceFrame.hasAlliance ? HyperlinkShowAllianceManager.getLink(this.allianceFrame.alliance) : I18n.getUiText("ui.chat.variable.allianceError"));
+                     content = content.replace(new RegExp(variable,"g"),!!this.socialFrame.hasAlliance ? HyperlinkShowAllianceManager.getLink(this.socialFrame.alliance) : I18n.getUiText("ui.chat.variable.allianceError"));
                   }
                   variables = I18n.getUiText("ui.chat.variable.achievement").split(",");
                   for each(variable in variables)
@@ -788,96 +746,68 @@ package com.ankamagames.dofus.logic.game.common.frames
                   }
                }
                content = content.split(charTempL).join("[").split(charTempR).join("]");
-               splittedContentTab = new Vector.<String>(0);
-               if(content.length > 256)
+               if(content.length > 512)
                {
-                  while(!ok)
+                  KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,I18n.getUiText("ui.chat.error.11"),ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,this.getTimestamp());
+                  return true;
+               }
+               objects = new Vector.<ObjectItem>();
+               if(!this._aChannels[ch].isPrivate)
+               {
+                  if(ctoa.objects)
                   {
-                     str = content.substr(0,256);
-                     if(str.length == 256)
+                     nb = ctoa.objects.length;
+                     for(o = 0; o < nb; o++)
                      {
-                        remnant = str.substr(255,1);
-                        str = str.substr(0,255) + SPLIT_CODE;
+                        itemWrapper = ctoa.objects[o];
+                        objectItem = new ObjectItem();
+                        objectItem.initObjectItem(itemWrapper.position,itemWrapper.objectGID,itemWrapper.effectsList == null ? new Vector.<ObjectEffect>() : itemWrapper.effectsList,itemWrapper.objectUID,itemWrapper.quantity);
+                        objects.push(objectItem);
                      }
-                     splittedContentTab.push(str);
-                     if(content.length > str.length)
-                     {
-                        content = (!!remnant ? remnant : "") + content.substr(256);
-                     }
-                     else
-                     {
-                        splittedContentTab[splittedContentTab.length - 1] += SPLIT_CODE;
-                        splittedContentTab.push(SPLIT_CODE);
-                        ok = true;
-                     }
+                     ccmwomsg = new ChatClientMultiWithObjectMessage();
+                     ccmwomsg.initChatClientMultiWithObjectMessage(content,ch,objects);
+                     ConnectionsHandler.getConnection().send(ccmwomsg);
+                  }
+                  else
+                  {
+                     ccmmsg = new ChatClientMultiMessage();
+                     ccmmsg.initChatClientMultiMessage(content,ch);
+                     ConnectionsHandler.getConnection().send(ccmmsg);
                   }
                }
                else
                {
-                  splittedContentTab.push(content);
-               }
-               this._splittedContentLength = splittedContentTab.length > 1 ? uint(splittedContentTab.length) : uint(0);
-               this._sendingSplittedContent = this._splittedContentLength > 0;
-               for(i = 0; i < splittedContentTab.length; i++)
-               {
-                  content = splittedContentTab[i];
-                  objects = new Vector.<ObjectItem>();
-                  if(!this._aChannels[ch].isPrivate)
+                  if(ctoa.receiverName.length < 2 || ctoa.receiverName.length > 31)
                   {
-                     if(ctoa.objects)
+                     KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,I18n.getUiText("ui.chat.error.1"),ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,this.getTimestamp());
+                     return true;
+                  }
+                  if(ctoa.objects)
+                  {
+                     objects = new Vector.<ObjectItem>();
+                     nb2 = ctoa.objects.length;
+                     for(jo = 0; jo < nb2; jo++)
                      {
-                        nb = ctoa.objects.length;
-                        for(o = 0; o < nb; o++)
-                        {
-                           itemWrapper = ctoa.objects[o];
-                           objectItem = new ObjectItem();
-                           objectItem.initObjectItem(itemWrapper.position,itemWrapper.objectGID,itemWrapper.effectsList == null ? new Vector.<ObjectEffect>() : itemWrapper.effectsList,itemWrapper.objectUID,itemWrapper.quantity);
-                           objects.push(objectItem);
-                        }
-                        ccmwomsg = new ChatClientMultiWithObjectMessage();
-                        ccmwomsg.initChatClientMultiWithObjectMessage(content,ch,objects);
-                        ConnectionsHandler.getConnection().send(ccmwomsg);
+                        itemWrapper2 = ctoa.objects[jo];
+                        objectItem2 = new ObjectItem();
+                        objectItem2.initObjectItem(itemWrapper2.position,itemWrapper2.objectGID,itemWrapper2.effectsList == null ? new Vector.<ObjectEffect>() : itemWrapper2.effectsList,itemWrapper2.objectUID,itemWrapper2.quantity);
+                        objects.push(objectItem2);
                      }
-                     else
-                     {
-                        ccmmsg = new ChatClientMultiMessage();
-                        ccmmsg.initChatClientMultiMessage(content,ch);
-                        ConnectionsHandler.getConnection().send(ccmmsg);
-                     }
+                     ccpwomsg = new ChatClientPrivateWithObjectMessage();
+                     player_CCPWOMSG = new PlayerSearchCharacterNameInformation().initPlayerSearchCharacterNameInformation(ctoa.receiverName);
+                     ccpwomsg.initChatClientPrivateWithObjectMessage(content,player_CCPWOMSG,objects);
+                     ConnectionsHandler.getConnection().send(ccpwomsg);
                   }
                   else
                   {
-                     if(ctoa.receiverName.length < 2 || ctoa.receiverName.length > 31)
-                     {
-                        KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,I18n.getUiText("ui.chat.error.1"),ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,this.getTimestamp());
-                        return true;
-                     }
-                     if(ctoa.objects)
-                     {
-                        objects = new Vector.<ObjectItem>();
-                        nb2 = ctoa.objects.length;
-                        for(jo = 0; jo < nb2; jo++)
-                        {
-                           itemWrapper2 = ctoa.objects[jo];
-                           objectItem2 = new ObjectItem();
-                           objectItem2.initObjectItem(itemWrapper2.position,itemWrapper2.objectGID,itemWrapper2.effectsList == null ? new Vector.<ObjectEffect>() : itemWrapper2.effectsList,itemWrapper2.objectUID,itemWrapper2.quantity);
-                           objects.push(objectItem2);
-                        }
-                        ccpwomsg = new ChatClientPrivateWithObjectMessage();
-                        player_CCPWOMSG = new PlayerSearchCharacterNameInformation().initPlayerSearchCharacterNameInformation(ctoa.receiverName);
-                        ccpwomsg.initChatClientPrivateWithObjectMessage(content,player_CCPWOMSG,objects);
-                        ConnectionsHandler.getConnection().send(ccpwomsg);
-                     }
-                     else
-                     {
-                        ccpmsg = new ChatClientPrivateMessage();
-                        player_CCPMSG = new PlayerSearchCharacterNameInformation().initPlayerSearchCharacterNameInformation(ctoa.receiverName);
-                        ccpmsg.initChatClientPrivateMessage(content,player_CCPMSG);
-                        ConnectionsHandler.getConnection().send(ccpmsg);
-                     }
+                     ccpmsg = new ChatClientPrivateMessage();
+                     player_CCPMSG = new PlayerSearchCharacterNameInformation().initPlayerSearchCharacterNameInformation(ctoa.receiverName);
+                     ccpmsg.initChatClientPrivateMessage(content,player_CCPMSG);
+                     ConnectionsHandler.getConnection().send(ccpmsg);
                   }
                }
                return true;
+               break;
             case msg is ChatServerWithObjectMessage:
                scwomsg = msg as ChatServerWithObjectMessage;
                AccountManager.getInstance().setAccount(scwomsg.senderName,scwomsg.senderAccountId);
@@ -968,27 +898,11 @@ package com.ankamagames.dofus.logic.game.common.frames
                      this.playAlertSound(PRIVATE_SOUND);
                   }
                }
-               if(csmsg.content.indexOf(SPLIT_CODE) != -1)
-               {
-                  --this._splittedContentLength;
-                  if(csmsg.content.length > 1)
-                  {
-                     this._splittedContent += csmsg.content.substr(0,csmsg.content.length - 1);
-                     return true;
-                  }
-                  msgContent = this._splittedContent;
-                  this._splittedContent = "";
-               }
-               else
-               {
-                  msgContent = csmsg.content;
-                  this._splittedContent = "";
-               }
-               newContent = this.checkCensored(msgContent,csmsg.channel,csmsg.senderAccountId,csmsg.senderName);
+               newContent = this.checkCensored(csmsg.content,csmsg.channel,csmsg.senderAccountId,csmsg.senderName);
                content = newContent[0];
                if(csmsg.channel == ChatChannelsMultiEnum.CHANNEL_ADS)
                {
-                  content = msgContent;
+                  content = csmsg.content;
                }
                if(content.substr(0,6).toLowerCase() == "/think")
                {
@@ -1009,7 +923,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   originServerId = PlayerManager.getInstance().server.id;
                }
                KernelEventsManager.getInstance().processCallback(ChatHookList.ChatServer,csmsg.channel,csmsg.senderId,originServerId,csmsg.prefix,csmsg.senderName,content,this.getRealTimestamp(csmsg.timestamp),csmsg.fingerprint,false);
-               this.saveMessage(csmsg.channel,msgContent,content,this.getRealTimestamp(csmsg.timestamp),csmsg.fingerprint,csmsg.senderId,csmsg.prefix,csmsg.senderName);
+               this.saveMessage(csmsg.channel,csmsg.content,content,this.getRealTimestamp(csmsg.timestamp),csmsg.fingerprint,csmsg.senderId,csmsg.prefix,csmsg.senderName);
                if(Kernel.getWorker().contains(FightBattleFrame) || content.substr(0,3).toLowerCase() == "/me")
                {
                   return true;
@@ -1124,11 +1038,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                msgContent = I18n.getText(textId);
                if(msgContent)
                {
-                  if(CHAT_FAIL_TEXTS_IDS.indexOf(textId) != -1 && !this._sendingSplittedContent && this._splittedContentLength > 0)
-                  {
-                     --this._splittedContentLength;
-                     return true;
-                  }
                   msgContent = ParamsDecoder.applyParams(msgContent,params);
                   timestamp = this.getTimestamp();
                   if(timsg.msgType == TextInformationTypeEnum.TEXT_INFORMATION_ERROR)
@@ -1150,12 +1059,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                   }
                   this.saveMessage(channel,null,msgContent,timestamp);
                   KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,msgContent,channel,timestamp,false);
-                  if(CHAT_FAIL_TEXTS_IDS.indexOf(textId) != -1 && this._sendingSplittedContent)
-                  {
-                     --this._splittedContentLength;
-                     this._sendingSplittedContent = false;
-                     this._splittedContent = "";
-                  }
                }
                else
                {
@@ -1191,20 +1094,15 @@ package com.ankamagames.dofus.logic.game.common.frames
                KernelEventsManager.getInstance().processCallback(ChatHookList.TextActionInformation,taimsg.textKey,params,channel2,timestamp2,false);
                return true;
             case msg is ChatErrorMessage:
-               if(!this._sendingSplittedContent && this._splittedContentLength > 0)
-               {
-                  --this._splittedContentLength;
-                  return true;
-               }
                cemsg = msg as ChatErrorMessage;
                timestampErr = this.getTimestamp();
                switch(cemsg.reason)
                {
+                  case ChatErrorEnum.CHAT_ERROR_RECEIVER_NOT_FOUND:
                   case ChatErrorEnum.CHAT_ERROR_INTERIOR_MONOLOGUE:
-                  case ChatErrorEnum.CHAT_ERROR_INVALID_MAP:
                   case ChatErrorEnum.CHAT_ERROR_NO_GUILD:
                   case ChatErrorEnum.CHAT_ERROR_NO_PARTY:
-                  case ChatErrorEnum.CHAT_ERROR_RECEIVER_NOT_FOUND:
+                  case ChatErrorEnum.CHAT_ERROR_INVALID_MAP:
                   case ChatErrorEnum.CHAT_ERROR_NO_PARTY_ARENA:
                   case ChatErrorEnum.CHAT_ERROR_NO_TEAM:
                   case ChatErrorEnum.CHAT_ERROR_NO_CHANNEL_COMMUNITY:
@@ -1215,14 +1113,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                      contentErr = I18n.getUiText("ui.chat.error.0");
                }
                KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,contentErr,ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,timestampErr);
-               if(this._sendingSplittedContent)
-               {
-                  --this._splittedContentLength;
-                  this._sendingSplittedContent = false;
-                  this._splittedContent = "";
-               }
                return true;
-               break;
             case msg is SaveMessageAction:
                sma = SaveMessageAction(msg);
                this.saveMessage(sma.channel,sma.content,sma.content,sma.timestamp);
@@ -1544,14 +1435,26 @@ package com.ankamagames.dofus.logic.game.common.frames
                {
                   for each(socGroup in bwimsg.socialGroups)
                   {
-                     if(socGroup is BasicGuildInformations)
+                     if(socGroup is GuildInformations)
                      {
-                        text += " " + I18n.getUiText("ui.common.guild") + " " + HyperlinkShowGuildManager.getLink(socGroup as BasicGuildInformations,(socGroup as BasicGuildInformations).guildName);
+                        guildText = I18n.getUiText("ui.common.guild") + " " + HyperlinkShowGuildManager.getLink(socGroup as GuildInformations,(socGroup as GuildInformations).guildName);
                      }
-                     else if(socGroup is BasicAllianceInformations)
+                     else if(socGroup is AllianceInformation)
                      {
-                        text += ", " + I18n.getUiText("ui.common.alliance").toLowerCase() + " " + HyperlinkShowAllianceManager.getLink(socGroup as BasicAllianceInformations,"[" + (socGroup as BasicAllianceInformations).allianceTag + "]");
+                        allianceText = HyperlinkShowAllianceManager.getLink(socGroup as AllianceInformation,(socGroup as AllianceInformation).allianceName + " [" + (socGroup as AllianceInformation).allianceTag + "]");
                      }
+                  }
+                  if(guildText && allianceText)
+                  {
+                     text += " " + guildText + ", " + I18n.getUiText("ui.common.alliance").toLowerCase() + " " + allianceText;
+                  }
+                  else if(guildText)
+                  {
+                     text += " " + guildText;
+                  }
+                  else
+                  {
+                     text += " " + I18n.getUiText("ui.common.alliance") + " " + allianceText;
                   }
                }
                KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,text,ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,this.getTimestamp());
@@ -1629,7 +1532,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                this._unsoldItems[this._numUnsoldItemsLinks] = new Array();
                for(i = 0; i < nbUnsoldLots; i++)
                {
-                  this._unsoldItems[this._numUnsoldItemsLinks].push(OfflineSaleWrapper.create(i + 1,OfflineSaleWrapper.TYPE_UNSOLD,ebhuimsg.items[i].objectGID,ebhuimsg.items[i].quantity,NaN,0,null));
+                  this._unsoldItems[this._numUnsoldItemsLinks].push(OfflineSaleWrapper.create(i + 1,ebhuimsg.items[i].objectGID,ebhuimsg.items[i].quantity,NaN,0,null));
                }
                unsoldItemsMsg = "{offlineSales,1," + this._numUnsoldItemsLinks + "::" + PatternDecoder.combine(I18n.getUiText("ui.sell.unsoldItemsLink",[nbUnsoldLots]),"n",nbUnsoldLots <= 1,nbUnsoldLots == 0) + "}";
                KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,unsoldItemsMsg,ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,this.getTimestamp(),false,true);
@@ -1640,11 +1543,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                this._offlineSales.length = 0;
                for each(soldLot in eosimsg.bidHouseItems)
                {
-                  this._offlineSales.push(OfflineSaleWrapper.create(this._offlineSales.length + 1,OfflineSaleWrapper.TYPE_BIDHOUSE,soldLot.objectGID,soldLot.quantity,soldLot.price,soldLot.date,soldLot.effects));
-               }
-               for each(soldLot in eosimsg.merchantItems)
-               {
-                  this._offlineSales.push(OfflineSaleWrapper.create(this._offlineSales.length + 1,OfflineSaleWrapper.TYPE_MERCHANT,soldLot.objectGID,soldLot.quantity,soldLot.price,soldLot.date,soldLot.effects));
+                  this._offlineSales.push(OfflineSaleWrapper.create(this._offlineSales.length + 1,soldLot.objectGID,soldLot.quantity,soldLot.price,soldLot.date,soldLot.effects));
                }
                totalKamas = 0;
                nbOfflineSales = this._offlineSales.length;
@@ -1740,7 +1639,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          return color.replace("#","0x");
       }
       
-      private function displayCarac(pCarac:Stat) : String
+      private function displayCarac(pCarac:EntityStat) : String
       {
          if(!(pCarac is DetailedStat))
          {

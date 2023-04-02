@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.idol
    public class IdolPartyLostMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6894;
+      public static const protocolId:uint = 7444;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.idol
       
       override public function getMessageId() : uint
       {
-         return 6894;
+         return 7444;
       }
       
       public function initIdolPartyLostMessage(idolId:uint = 0) : IdolPartyLostMessage

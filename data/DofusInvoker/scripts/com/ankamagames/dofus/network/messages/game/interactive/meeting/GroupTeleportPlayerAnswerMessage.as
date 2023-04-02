@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.meeting
    public class GroupTeleportPlayerAnswerMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6708;
+      public static const protocolId:uint = 1055;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.meeting
       
       override public function getMessageId() : uint
       {
-         return 6708;
+         return 1055;
       }
       
       public function initGroupTeleportPlayerAnswerMessage(accept:Boolean = false, requesterId:Number = 0) : GroupTeleportPlayerAnswerMessage

@@ -4,8 +4,8 @@ package com.ankamagames.dofus.logic.game.fight.miscs
    import com.ankamagames.dofus.Constants;
    import com.ankamagames.dofus.datacenter.monsters.Monster;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.stats.EntityStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
-   import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.logic.game.fight.miscs
       {
          var x:int = 0;
          var y:int = 0;
-         var tackleEvadeStat:Stat = null;
+         var tackleEvadeStat:EntityStat = null;
          var evade:int = 0;
          var entities:Array = null;
          var evadePercent:Number = NaN;
@@ -54,7 +54,7 @@ package com.ankamagames.dofus.logic.game.fight.miscs
             }
             x = position.x;
             y = position.y;
-            tackleEvadeStat = stats.getStat(StatIds.TACKLE_EVADE);
+            tackleEvadeStat = stats.getStat(StatIds.TACKLE_EVADE) as EntityStat;
             evade = tackleEvadeStat !== null ? int(tackleEvadeStat.totalValue) : 0;
             if(evade < 0)
             {
@@ -207,9 +207,9 @@ package com.ankamagames.dofus.logic.game.fight.miscs
          var ac:AnimatedCharacter = null;
          var tackling:Boolean = false;
          var stats:EntityStats = StatsManager.getInstance().getStats(pPlayer.contextualId);
-         var tackleEvadeStat:Stat = stats.getStat(StatIds.TACKLE_EVADE);
+         var tackleEvadeStat:EntityStat = stats.getStat(StatIds.TACKLE_EVADE) as EntityStat;
          var evade:int = tackleEvadeStat !== null ? int(tackleEvadeStat.totalValue) : 0;
-         var tackleBlockStat:Stat = stats.getStat(StatIds.TACKLE_BLOCK);
+         var tackleBlockStat:EntityStat = stats.getStat(StatIds.TACKLE_BLOCK) as EntityStat;
          var block:int = tackleBlockStat !== null ? int(tackleBlockStat.totalValue) : 0;
          if(pPlayerPath && canBeTackler(pTackler,pPlayer))
          {

@@ -51,19 +51,17 @@ package com.ankamagames.dofus.network.enums
       
       public static const NPC:int = -4;
       
-      public static const HUMAN_VENDOR:int = -5;
+      public static const TAX_COLLECTOR:int = -5;
       
-      public static const TAX_COLLECTOR:int = -6;
+      public static const MUTANT:int = -6;
       
-      public static const MUTANT:int = -7;
+      public static const MUTANT_IN_DUNGEON:int = -7;
       
-      public static const MUTANT_IN_DUNGEON:int = -8;
+      public static const MOUNT_OUTSIDE:int = -8;
       
-      public static const MOUNT_OUTSIDE:int = -9;
+      public static const PRISM:int = -9;
       
-      public static const PRISM:int = -10;
-      
-      public static const INCARNATION:int = -11;
+      public static const INCARNATION:int = -10;
        
       
       public function BreedEnum()

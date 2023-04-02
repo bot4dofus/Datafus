@@ -52,7 +52,7 @@ package com.ankamagames.dofus.logic.common.frames
          super();
       }
       
-      public static function reset(resetMessage:String) : *
+      public static function reset(resetMessage:String) : void
       {
          var tabMsg:Array = null;
          ChatServiceManager.destroy();
@@ -140,7 +140,7 @@ package com.ankamagames.dofus.logic.common.frames
                         else
                         {
                            _log.trace("The connection closure was expected (reason: " + reason.reason + "). Dispatching the message.");
-                           if(reason.reason == DisconnectionReasonEnum.DISCONNECTED_BY_POPUP || reason.reason == DisconnectionReasonEnum.SWITCHING_TO_HUMAN_VENDOR)
+                           if(reason.reason == DisconnectionReasonEnum.DISCONNECTED_BY_POPUP)
                            {
                               Kernel.getInstance().reset();
                            }

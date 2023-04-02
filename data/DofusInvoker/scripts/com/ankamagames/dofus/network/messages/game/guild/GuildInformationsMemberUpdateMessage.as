@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.messages.game.guild
 {
-   import com.ankamagames.dofus.network.types.game.guild.GuildMember;
+   import com.ankamagames.dofus.network.types.game.guild.GuildMemberInfo;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -12,18 +12,18 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildInformationsMemberUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2081;
+      public static const protocolId:uint = 1825;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var member:GuildMember;
+      public var member:GuildMemberInfo;
       
       private var _membertree:FuncTree;
       
       public function GuildInformationsMemberUpdateMessage()
       {
-         this.member = new GuildMember();
+         this.member = new GuildMemberInfo();
          super();
       }
       
@@ -34,10 +34,10 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 2081;
+         return 1825;
       }
       
-      public function initGuildInformationsMemberUpdateMessage(member:GuildMember = null) : GuildInformationsMemberUpdateMessage
+      public function initGuildInformationsMemberUpdateMessage(member:GuildMemberInfo = null) : GuildInformationsMemberUpdateMessage
       {
          this.member = member;
          this._isInitialized = true;
@@ -46,7 +46,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function reset() : void
       {
-         this.member = new GuildMember();
+         this.member = new GuildMemberInfo();
          this._isInitialized = false;
       }
       
@@ -77,7 +77,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       public function serializeAs_GuildInformationsMemberUpdateMessage(output:ICustomDataOutput) : void
       {
-         this.member.serializeAs_GuildMember(output);
+         this.member.serializeAs_GuildMemberInfo(output);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -87,7 +87,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       public function deserializeAs_GuildInformationsMemberUpdateMessage(input:ICustomDataInput) : void
       {
-         this.member = new GuildMember();
+         this.member = new GuildMemberInfo();
          this.member.deserialize(input);
       }
       
@@ -103,7 +103,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       private function _membertreeFunc(input:ICustomDataInput) : void
       {
-         this.member = new GuildMember();
+         this.member = new GuildMemberInfo();
          this.member.deserializeAsync(this._membertree);
       }
    }

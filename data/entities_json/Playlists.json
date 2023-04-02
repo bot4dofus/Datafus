@@ -1219,7 +1219,7 @@
 			"sounds": [
 				{
 					"id": "20175",
-					"volume": 80,
+					"volume": 100,
 					"soundOrder": 0
 				}
 			],
@@ -3234,7 +3234,7 @@
 			"sounds": [
 				{
 					"id": "20184",
-					"volume": 50,
+					"volume": 8,
 					"soundOrder": 0
 				}
 			],
@@ -4249,12 +4249,12 @@
 			"random": false
 		},
 		{
-			"id": 229,
+			"id": 301,
 			"type": 1,
 			"sounds": [
 				{
-					"id": "20407",
-					"volume": 55,
+					"id": "20176",
+					"volume": 50,
 					"soundOrder": 0
 				}
 			],
@@ -4264,12 +4264,12 @@
 			"random": false
 		},
 		{
-			"id": 301,
+			"id": 229,
 			"type": 1,
 			"sounds": [
 				{
-					"id": "20176",
-					"volume": 50,
+					"id": "20407",
+					"volume": 55,
 					"soundOrder": 0
 				}
 			],

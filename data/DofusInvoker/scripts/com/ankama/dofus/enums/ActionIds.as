@@ -1408,6 +1408,102 @@ package com.ankama.dofus.enums
       public static var ACTION_BOOST_PORTAL_PROJECTION_OFF:int = 2910;
       
       public static var ACTION_BOOST_PORTAL_FREE_CELL_ON:int = 2911;
+      
+      public static var ACTION_SET_SPELL_AP_COST:int = 2913;
+      
+      public static var ACTION_DISABLE_SPELL_RANGEABLE:int = 2914;
+      
+      public static var ACTION_ENABLE_SPELL_NOLINEOFSIGHT:int = 2915;
+      
+      public static var ACTION_SET_SPELL_MAXPERTARGET:int = 2916;
+      
+      public static var ACTION_DEBOOST_SPELL_MAXPERTARGET:int = 2917;
+      
+      public static var ACTION_SET_SPELL_MAXPERTURN:int = 2918;
+      
+      public static var ACTION_DEBOOST_SPELL_MAXPERTURN:int = 2919;
+      
+      public static var ACTION_BOOST_SPELL_CAST_GLOBAL_INTVL:int = 2920;
+      
+      public static var ACTION_DEBOOST_SPELL_CAST_GLOBAL_INTVL:int = 2921;
+      
+      public static var ACTION_SET_SPELL_CAST_GLOBAL_INTVL:int = 2922;
+      
+      public static var ACTION_BOOST_SPELL_MAX_STACK:int = 2923;
+      
+      public static var ACTION_DEBOOST_SPELL_MAX_STACK:int = 2924;
+      
+      public static var ACTION_SET_SPELL_MAX_STACK:int = 2925;
+      
+      public static var ACTION_DEBOOST_SPELL_CRITICAL_HIT:int = 2926;
+      
+      public static var ACTION_SET_SPELL_CRITICAL_HIT:int = 2927;
+      
+      public static var ACTION_DEBOOST_SPELL_HEAL:int = 2928;
+      
+      public static var ACTION_SET_SPELL_HEAL:int = 2929;
+      
+      public static var ACTION_DEBOOST_SPELL_DMG:int = 2930;
+      
+      public static var ACTION_SET_SPELL_DMG:int = 2931;
+      
+      public static var ACTION_ENABLE_SPELL_CASTOUTLINE:int = 2932;
+      
+      public static var ACTION_DISABLE_SPELL_CASTOUTDIAGONAL:int = 2933;
+      
+      public static var ACTION_ENABLE_SPELL_CASTOUTDIAGONAL:int = 2934;
+      
+      public static var ACTION_CASTER_EXECUTE_SPELL_ON_CELL:int = 2960;
+      
+      public static var ACTION_CHARACTER_BOOST_DEALT_HEAL_PERCENT_MULTIPLIER:int = 2971;
+      
+      public static var ACTION_CHARACTER_DEBOOST_DEALT_HEAL_PERCENT_MULTIPLIER:int = 2972;
+      
+      public static var ACTION_FIGHT_CASTER_SPLASH_HEAL:int = 2973;
+      
+      public static var ACTION_FIGHT_SPLASH_RAW_INFLICTED_DAMAGE_AIR:int = 2974;
+      
+      public static var ACTION_FIGHT_SPLASH_RAW_INFLICTED_DAMAGE_WATER:int = 2975;
+      
+      public static var ACTION_FIGHT_SPLASH_RAW_INFLICTED_DAMAGE_FIRE:int = 2976;
+      
+      public static var ACTION_FIGHT_SPLASH_RAW_INFLICTED_DAMAGE_EARTH:int = 2977;
+      
+      public static var ACTION_FIGHT_SPLASH_RAW_INFLICTED_DAMAGE_NEUTRAL:int = 2978;
+      
+      public static var ACTION_FIGHT_SPLASH_RAW_INFLICTED_DAMAGE_BEST_ELEMENT:int = 2979;
+      
+      public static var ACTION_FIGHT_SPLASH_RAW_INFLICTED_DAMAGE_WORST_ELEMENT:int = 2980;
+      
+      public static var ACTION_FIGHT_SPLASH_RAW_INFLICTED_DAMAGE:int = 2981;
+      
+      public static var ACTION_FIGHT_SPLASH_FINAL_INFLICTED_DAMAGE_AIR:int = 2982;
+      
+      public static var ACTION_FIGHT_SPLASH_FINAL_INFLICTED_DAMAGE_WATER:int = 2983;
+      
+      public static var ACTION_FIGHT_SPLASH_FINAL_INFLICTED_DAMAGE_FIRE:int = 2984;
+      
+      public static var ACTION_FIGHT_SPLASH_FINAL_INFLICTED_DAMAGE_EARTH:int = 2985;
+      
+      public static var ACTION_FIGHT_SPLASH_FINAL_INFLICTED_DAMAGE_NEUTRAL:int = 2986;
+      
+      public static var ACTION_FIGHT_SPLASH_FINAL_INFLICTED_DAMAGE_BEST_ELEMENT:int = 2987;
+      
+      public static var ACTION_FIGHT_SPLASH_FINAL_INFLICTED_DAMAGE_WORST_ELEMENT:int = 2988;
+      
+      public static var ACTION_FIGHT_SPLASH_FINAL_INFLICTED_DAMAGE:int = 2989;
+      
+      public static var ACTION_CHARACTER_REDUCE_MAXIMUM_SUMMONED_CREATURES:int = 2990;
+      
+      public static var ACTION_LOCK_PRISM_MODULE:int = 2991;
+      
+      public static var ACTION_CHARACTER_READ_GUIDE:int = 2992;
+      
+      public static var ACTION_CHARACTER_RENAME_INVALID_ALLIANCE:int = 2993;
+      
+      public static var ACTION_REDUCE_PRISM_DURABILITY_REDUCTION:int = 2994;
+      
+      public static var ACTION_TEAM_POINTS_WIN_AVA:int = 2995;
        
       
       public function ActionIds()

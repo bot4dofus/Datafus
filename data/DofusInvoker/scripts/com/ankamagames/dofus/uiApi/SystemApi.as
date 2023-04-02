@@ -8,7 +8,6 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.berilia.managers.ThemeManager;
    import com.ankamagames.berilia.managers.TooltipManager;
-   import com.ankamagames.berilia.managers.UiModuleManager;
    import com.ankamagames.berilia.types.data.Hook;
    import com.ankamagames.berilia.types.data.UiModule;
    import com.ankamagames.berilia.types.graphic.UiRootContainer;
@@ -512,11 +511,6 @@ package com.ankamagames.dofus.uiApi
          return PlayerManager.getInstance().hasRights;
       }
       
-      public function hasConsoleRight() : Boolean
-      {
-         return PlayerManager.getInstance().hasConsoleRight;
-      }
-      
       public function isFightContext() : Boolean
       {
          return Kernel.getWorker().contains(FightContextFrame) || Kernel.getWorker().isBeingAdded(FightContextFrame);
@@ -685,11 +679,6 @@ package com.ankamagames.dofus.uiApi
       public function getMaxZoom() : uint
       {
          return AtouinConstants.MAX_ZOOM;
-      }
-      
-      public function isDevMode() : Boolean
-      {
-         return UiModuleManager.getInstance().isDevMode;
       }
       
       public function getDirectoryContent(path:String = ".") : Array

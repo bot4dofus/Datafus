@@ -13,7 +13,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.common.actions.CloseInventoryAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenArenaAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenBookAction;
-   import com.ankamagames.dofus.logic.game.common.actions.OpenGuidebookAction;
+   import com.ankamagames.dofus.logic.game.common.actions.OpenGuideBookAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenHousesAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenInventoryAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenMainMenuAction;
@@ -45,6 +45,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.enums.TextInformationTypeEnum;
    import com.ankamagames.dofus.network.messages.game.context.fight.GameFightOptionStateUpdateMessage;
    import com.ankamagames.dofus.network.messages.game.context.fight.GameFightOptionToggleMessage;
+   import com.ankamagames.dofus.network.messages.game.context.roleplay.document.OpenGuideBookMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.npc.EntityTalkMessage;
    import com.ankamagames.dofus.network.messages.game.guest.GuestLimitationMessage;
    import com.ankamagames.dofus.network.messages.game.guest.GuestModeMessage;
@@ -89,7 +90,8 @@ package com.ankamagames.dofus.logic.game.common.frames
          var oma:OpenMapAction = null;
          var oia:OpenInventoryAction = null;
          var cia:CloseInventoryAction = null;
-         var oga:OpenGuidebookAction = null;
+         var oga:OpenGuideBookAction = null;
+         var ogbmsg:OpenGuideBookMessage = null;
          var cm:CinematicMessage = null;
          var dsmdmsg:DelayedSystemMessageDisplayMessage = null;
          var smdmsg:SystemMessageDisplayMessage = null;
@@ -173,10 +175,14 @@ package com.ankamagames.dofus.logic.game.common.frames
             case msg is OpenHousesAction:
                KernelEventsManager.getInstance().processCallback(HookList.OpenHouses);
                return true;
-            case msg is OpenGuidebookAction:
-               oga = msg as OpenGuidebookAction;
-               KernelEventsManager.getInstance().processCallback(HookList.OpenGuidebook,oga.tab,oga.params);
+            case msg is OpenGuideBookAction:
+               oga = msg as OpenGuideBookAction;
+               KernelEventsManager.getInstance().processCallback(HookList.OpenGuideBook,oga.tab,oga.params);
                return true;
+            case msg is OpenGuideBookMessage:
+               ogbmsg = msg as OpenGuideBookMessage;
+               KernelEventsManager.getInstance().processCallback(HookList.OpenGuideBook,"gameGuide",[ogbmsg.articleId]);
+               break;
             case msg is CinematicMessage:
                cm = msg as CinematicMessage;
                KernelEventsManager.getInstance().processCallback(HookList.Cinematic,cm.cinematicId,true);
@@ -265,9 +271,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                      break;
                   case SubscriptionRequiredEnum.LIMIT_ON_ITEM:
                      text = I18n.getUiText("ui.payzone.limitItem");
-                     break;
-                  case SubscriptionRequiredEnum.LIMIT_ON_VENDOR:
-                     text = I18n.getUiText("ui.payzone.limitVendor");
                      break;
                   case SubscriptionRequiredEnum.LIMIT_ON_HAVENBAG:
                      text = I18n.getUiText("ui.payzone.limit");
@@ -358,9 +361,8 @@ package com.ankamagames.dofus.logic.game.common.frames
                gfotmsg4.initGameFightOptionToggleMessage(option4);
                ConnectionsHandler.getConnection().send(gfotmsg4);
                return true;
-            default:
-               return false;
          }
+         return false;
       }
       
       public function pushed() : Boolean
@@ -379,7 +381,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          var msgContent:* = null;
          var message:InfoMessage = null;
          var textId:uint = 0;
-         var chatFrame:ChatFrame = null;
          var commonMod:Object = UiModuleManager.getInstance().getModule("Ankama_Common").mainClass;
          var a:Array = new Array();
          for each(i in msg.parameters)
@@ -393,19 +394,7 @@ package com.ankamagames.dofus.logic.game.common.frames
             msgContent = I18n.getText(textId);
             if(msgContent)
             {
-               chatFrame = Kernel.getWorker().getFrame(ChatFrame) as ChatFrame;
-               if(ChatFrame.CHAT_FAIL_TEXTS_IDS.indexOf(textId) != -1 && !chatFrame.sendingSplittedContent && chatFrame.splittedContentLength > 0)
-               {
-                  --chatFrame.splittedContentLength;
-                  return;
-               }
                msgContent = ParamsDecoder.applyParams(msgContent,a);
-               if(ChatFrame.CHAT_FAIL_TEXTS_IDS.indexOf(textId) != -1 && chatFrame.sendingSplittedContent)
-               {
-                  --chatFrame.splittedContentLength;
-                  chatFrame.sendingSplittedContent = false;
-                  chatFrame.splittedContent = "";
-               }
             }
          }
          else

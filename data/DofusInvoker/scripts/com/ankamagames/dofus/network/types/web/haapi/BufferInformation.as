@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.web.haapi
    public class BufferInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 6969;
+      public static const protocolId:uint = 7220;
        
       
       public var id:Number = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.web.haapi
       
       public function getTypeId() : uint
       {
-         return 6969;
+         return 7220;
       }
       
       public function initBufferInformation(id:Number = 0, amount:Number = 0) : BufferInformation

@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.messages.game.alliance
 {
-   import com.ankamagames.dofus.network.types.game.guild.GuildEmblem;
+   import com.ankamagames.dofus.network.types.game.social.SocialEmblem;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceCreationValidMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3155;
+      public static const protocolId:uint = 5903;
        
       
       private var _isInitialized:Boolean = false;
@@ -21,13 +21,13 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       public var allianceTag:String = "";
       
-      public var allianceEmblem:GuildEmblem;
+      public var allianceEmblem:SocialEmblem;
       
       private var _allianceEmblemtree:FuncTree;
       
       public function AllianceCreationValidMessage()
       {
-         this.allianceEmblem = new GuildEmblem();
+         this.allianceEmblem = new SocialEmblem();
          super();
       }
       
@@ -38,10 +38,10 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 3155;
+         return 5903;
       }
       
-      public function initAllianceCreationValidMessage(allianceName:String = "", allianceTag:String = "", allianceEmblem:GuildEmblem = null) : AllianceCreationValidMessage
+      public function initAllianceCreationValidMessage(allianceName:String = "", allianceTag:String = "", allianceEmblem:SocialEmblem = null) : AllianceCreationValidMessage
       {
          this.allianceName = allianceName;
          this.allianceTag = allianceTag;
@@ -54,7 +54,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       {
          this.allianceName = "";
          this.allianceTag = "";
-         this.allianceEmblem = new GuildEmblem();
+         this.allianceEmblem = new SocialEmblem();
          this._isInitialized = false;
       }
       
@@ -87,7 +87,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       {
          output.writeUTF(this.allianceName);
          output.writeUTF(this.allianceTag);
-         this.allianceEmblem.serializeAs_GuildEmblem(output);
+         this.allianceEmblem.serializeAs_SocialEmblem(output);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -99,7 +99,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       {
          this._allianceNameFunc(input);
          this._allianceTagFunc(input);
-         this.allianceEmblem = new GuildEmblem();
+         this.allianceEmblem = new SocialEmblem();
          this.allianceEmblem.deserialize(input);
       }
       
@@ -127,7 +127,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       private function _allianceEmblemtreeFunc(input:ICustomDataInput) : void
       {
-         this.allianceEmblem = new GuildEmblem();
+         this.allianceEmblem = new SocialEmblem();
          this.allianceEmblem.deserializeAsync(this._allianceEmblemtree);
       }
    }

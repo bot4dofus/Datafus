@@ -1,9 +1,10 @@
 package com.ankamagames.dofus.network.messages.game.alliance
 {
    import com.ankamagames.dofus.network.ProtocolTypeManager;
-   import com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo;
-   import com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations;
-   import com.ankamagames.dofus.network.types.game.social.GuildInsiderFactSheetInformations;
+   import com.ankamagames.dofus.network.types.game.alliance.AllianceMemberInfo;
+   import com.ankamagames.dofus.network.types.game.collector.tax.TaxCollectorInformations;
+   import com.ankamagames.dofus.network.types.game.prism.PrismGeolocalizedInformation;
+   import com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformation;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -15,28 +16,33 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceInsiderInfoMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 245;
+      public static const protocolId:uint = 31;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var allianceInfos:AllianceFactSheetInformations;
+      public var allianceInfos:AllianceFactSheetInformation;
       
-      public var guilds:Vector.<GuildInsiderFactSheetInformations>;
+      public var members:Vector.<AllianceMemberInfo>;
       
-      public var prisms:Vector.<PrismSubareaEmptyInfo>;
+      public var prisms:Vector.<PrismGeolocalizedInformation>;
+      
+      public var taxCollectors:Vector.<TaxCollectorInformations>;
       
       private var _allianceInfostree:FuncTree;
       
-      private var _guildstree:FuncTree;
+      private var _memberstree:FuncTree;
       
       private var _prismstree:FuncTree;
       
+      private var _taxCollectorstree:FuncTree;
+      
       public function AllianceInsiderInfoMessage()
       {
-         this.allianceInfos = new AllianceFactSheetInformations();
-         this.guilds = new Vector.<GuildInsiderFactSheetInformations>();
-         this.prisms = new Vector.<PrismSubareaEmptyInfo>();
+         this.allianceInfos = new AllianceFactSheetInformation();
+         this.members = new Vector.<AllianceMemberInfo>();
+         this.prisms = new Vector.<PrismGeolocalizedInformation>();
+         this.taxCollectors = new Vector.<TaxCollectorInformations>();
          super();
       }
       
@@ -47,22 +53,24 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 245;
+         return 31;
       }
       
-      public function initAllianceInsiderInfoMessage(allianceInfos:AllianceFactSheetInformations = null, guilds:Vector.<GuildInsiderFactSheetInformations> = null, prisms:Vector.<PrismSubareaEmptyInfo> = null) : AllianceInsiderInfoMessage
+      public function initAllianceInsiderInfoMessage(allianceInfos:AllianceFactSheetInformation = null, members:Vector.<AllianceMemberInfo> = null, prisms:Vector.<PrismGeolocalizedInformation> = null, taxCollectors:Vector.<TaxCollectorInformations> = null) : AllianceInsiderInfoMessage
       {
          this.allianceInfos = allianceInfos;
-         this.guilds = guilds;
+         this.members = members;
          this.prisms = prisms;
+         this.taxCollectors = taxCollectors;
          this._isInitialized = true;
          return this;
       }
       
       override public function reset() : void
       {
-         this.allianceInfos = new AllianceFactSheetInformations();
-         this.prisms = new Vector.<PrismSubareaEmptyInfo>();
+         this.allianceInfos = new AllianceFactSheetInformation();
+         this.prisms = new Vector.<PrismGeolocalizedInformation>();
+         this.taxCollectors = new Vector.<TaxCollectorInformations>();
          this._isInitialized = false;
       }
       
@@ -93,17 +101,22 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       public function serializeAs_AllianceInsiderInfoMessage(output:ICustomDataOutput) : void
       {
-         this.allianceInfos.serializeAs_AllianceFactSheetInformations(output);
-         output.writeShort(this.guilds.length);
-         for(var _i2:uint = 0; _i2 < this.guilds.length; _i2++)
+         this.allianceInfos.serializeAs_AllianceFactSheetInformation(output);
+         output.writeShort(this.members.length);
+         for(var _i2:uint = 0; _i2 < this.members.length; _i2++)
          {
-            (this.guilds[_i2] as GuildInsiderFactSheetInformations).serializeAs_GuildInsiderFactSheetInformations(output);
+            (this.members[_i2] as AllianceMemberInfo).serializeAs_AllianceMemberInfo(output);
          }
          output.writeShort(this.prisms.length);
          for(var _i3:uint = 0; _i3 < this.prisms.length; _i3++)
          {
-            output.writeShort((this.prisms[_i3] as PrismSubareaEmptyInfo).getTypeId());
-            (this.prisms[_i3] as PrismSubareaEmptyInfo).serialize(output);
+            output.writeShort((this.prisms[_i3] as PrismGeolocalizedInformation).getTypeId());
+            (this.prisms[_i3] as PrismGeolocalizedInformation).serialize(output);
+         }
+         output.writeShort(this.taxCollectors.length);
+         for(var _i4:uint = 0; _i4 < this.taxCollectors.length; _i4++)
+         {
+            (this.taxCollectors[_i4] as TaxCollectorInformations).serializeAs_TaxCollectorInformations(output);
          }
       }
       
@@ -114,25 +127,33 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       public function deserializeAs_AllianceInsiderInfoMessage(input:ICustomDataInput) : void
       {
-         var _item2:GuildInsiderFactSheetInformations = null;
+         var _item2:AllianceMemberInfo = null;
          var _id3:uint = 0;
-         var _item3:PrismSubareaEmptyInfo = null;
-         this.allianceInfos = new AllianceFactSheetInformations();
+         var _item3:PrismGeolocalizedInformation = null;
+         var _item4:TaxCollectorInformations = null;
+         this.allianceInfos = new AllianceFactSheetInformation();
          this.allianceInfos.deserialize(input);
-         var _guildsLen:uint = input.readUnsignedShort();
-         for(var _i2:uint = 0; _i2 < _guildsLen; _i2++)
+         var _membersLen:uint = input.readUnsignedShort();
+         for(var _i2:uint = 0; _i2 < _membersLen; _i2++)
          {
-            _item2 = new GuildInsiderFactSheetInformations();
+            _item2 = new AllianceMemberInfo();
             _item2.deserialize(input);
-            this.guilds.push(_item2);
+            this.members.push(_item2);
          }
          var _prismsLen:uint = input.readUnsignedShort();
          for(var _i3:uint = 0; _i3 < _prismsLen; _i3++)
          {
             _id3 = input.readUnsignedShort();
-            _item3 = ProtocolTypeManager.getInstance(PrismSubareaEmptyInfo,_id3);
+            _item3 = ProtocolTypeManager.getInstance(PrismGeolocalizedInformation,_id3);
             _item3.deserialize(input);
             this.prisms.push(_item3);
+         }
+         var _taxCollectorsLen:uint = input.readUnsignedShort();
+         for(var _i4:uint = 0; _i4 < _taxCollectorsLen; _i4++)
+         {
+            _item4 = new TaxCollectorInformations();
+            _item4.deserialize(input);
+            this.taxCollectors.push(_item4);
          }
       }
       
@@ -144,30 +165,31 @@ package com.ankamagames.dofus.network.messages.game.alliance
       public function deserializeAsyncAs_AllianceInsiderInfoMessage(tree:FuncTree) : void
       {
          this._allianceInfostree = tree.addChild(this._allianceInfostreeFunc);
-         this._guildstree = tree.addChild(this._guildstreeFunc);
+         this._memberstree = tree.addChild(this._memberstreeFunc);
          this._prismstree = tree.addChild(this._prismstreeFunc);
+         this._taxCollectorstree = tree.addChild(this._taxCollectorstreeFunc);
       }
       
       private function _allianceInfostreeFunc(input:ICustomDataInput) : void
       {
-         this.allianceInfos = new AllianceFactSheetInformations();
+         this.allianceInfos = new AllianceFactSheetInformation();
          this.allianceInfos.deserializeAsync(this._allianceInfostree);
       }
       
-      private function _guildstreeFunc(input:ICustomDataInput) : void
+      private function _memberstreeFunc(input:ICustomDataInput) : void
       {
          var length:uint = input.readUnsignedShort();
          for(var i:uint = 0; i < length; i++)
          {
-            this._guildstree.addChild(this._guildsFunc);
+            this._memberstree.addChild(this._membersFunc);
          }
       }
       
-      private function _guildsFunc(input:ICustomDataInput) : void
+      private function _membersFunc(input:ICustomDataInput) : void
       {
-         var _item:GuildInsiderFactSheetInformations = new GuildInsiderFactSheetInformations();
+         var _item:AllianceMemberInfo = new AllianceMemberInfo();
          _item.deserialize(input);
-         this.guilds.push(_item);
+         this.members.push(_item);
       }
       
       private function _prismstreeFunc(input:ICustomDataInput) : void
@@ -182,9 +204,25 @@ package com.ankamagames.dofus.network.messages.game.alliance
       private function _prismsFunc(input:ICustomDataInput) : void
       {
          var _id:uint = input.readUnsignedShort();
-         var _item:PrismSubareaEmptyInfo = ProtocolTypeManager.getInstance(PrismSubareaEmptyInfo,_id);
+         var _item:PrismGeolocalizedInformation = ProtocolTypeManager.getInstance(PrismGeolocalizedInformation,_id);
          _item.deserialize(input);
          this.prisms.push(_item);
+      }
+      
+      private function _taxCollectorstreeFunc(input:ICustomDataInput) : void
+      {
+         var length:uint = input.readUnsignedShort();
+         for(var i:uint = 0; i < length; i++)
+         {
+            this._taxCollectorstree.addChild(this._taxCollectorsFunc);
+         }
+      }
+      
+      private function _taxCollectorsFunc(input:ICustomDataInput) : void
+      {
+         var _item:TaxCollectorInformations = new TaxCollectorInformations();
+         _item.deserialize(input);
+         this.taxCollectors.push(_item);
       }
    }
 }

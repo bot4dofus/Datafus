@@ -29,6 +29,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.common.managers.DebtManager;
    import com.ankamagames.dofus.logic.game.common.managers.InventoryManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
+   import com.ankamagames.dofus.logic.game.common.managers.SocialEntitiesManager;
    import com.ankamagames.dofus.logic.game.common.managers.StorageOptionManager;
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
@@ -86,11 +87,11 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.interactive.zaap.KnownZaapListMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeMoneyMovementInformationMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.items.SetUpdateMessage;
-   import com.ankamagames.dofus.network.messages.game.startup.StartupActionAddMessage;
-   import com.ankamagames.dofus.network.messages.game.startup.StartupActionFinishedMessage;
-   import com.ankamagames.dofus.network.messages.game.startup.StartupActionsAllAttributionMessage;
-   import com.ankamagames.dofus.network.messages.game.startup.StartupActionsListMessage;
-   import com.ankamagames.dofus.network.messages.game.startup.StartupActionsObjetAttributionMessage;
+   import com.ankamagames.dofus.network.messages.game.startup.ConsumeAllGameActionItemMessage;
+   import com.ankamagames.dofus.network.messages.game.startup.ConsumeGameActionItemMessage;
+   import com.ankamagames.dofus.network.messages.game.startup.GameActionItemAddMessage;
+   import com.ankamagames.dofus.network.messages.game.startup.GameActionItemConsumedMessage;
+   import com.ankamagames.dofus.network.messages.game.startup.GameActionItemListMessage;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristicsInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayActorInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayCharacterInformations;
@@ -100,7 +101,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.types.game.context.roleplay.HumanOptionOrnament;
    import com.ankamagames.dofus.network.types.game.data.items.ForgettableSpellItem;
    import com.ankamagames.dofus.network.types.game.data.items.ObjectItemInformationWithQuantity;
-   import com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject;
+   import com.ankamagames.dofus.network.types.game.startup.GameActionItem;
    import com.ankamagames.dofus.types.data.PlayerSetInfo;
    import com.ankamagames.dofus.types.enums.NotificationTypeEnum;
    import com.ankamagames.dofus.types.sequences.AddGfxEntityStep;
@@ -203,17 +204,17 @@ package com.ankamagames.dofus.logic.game.common.frames
          var btmsg:BasicTimeMessage = null;
          var date:Date = null;
          var receptionDelay:int = 0;
-         var salm:StartupActionsListMessage = null;
+         var gailm:GameActionItemListMessage = null;
          var giftList:Array = null;
          var initialGiftCount:uint = 0;
-         var saam:StartupActionAddMessage = null;
+         var gaiam:GameActionItemAddMessage = null;
          var items:Array = null;
          var module:UiModule = null;
          var gar:GiftAssignRequestAction = null;
-         var sao:StartupActionsObjetAttributionMessage = null;
+         var cgaimsg:ConsumeGameActionItemMessage = null;
          var gaara:GiftAssignAllRequestAction = null;
-         var saaamsg:StartupActionsAllAttributionMessage = null;
-         var safm:StartupActionFinishedMessage = null;
+         var cagaimsg:ConsumeAllGameActionItemMessage = null;
+         var gaicmsg:GameActionItemConsumedMessage = null;
          var indexToDelete:int = 0;
          var emmim:ExchangeMoneyMovementInformationMessage = null;
          var dum:DebtsUpdateMessage = null;
@@ -254,7 +255,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var socialFrame2:SocialFrame = null;
          var pmFrame:PartyManagementFrame = null;
          var memberInfo:PartyMemberWrapper = null;
-         var gift:StartupActionAddObject = null;
+         var gift:GameActionItem = null;
          var _items:Array = null;
          var item:ObjectItemInformationWithQuantity = null;
          var obj:Object = null;
@@ -264,6 +265,8 @@ package com.ankamagames.dofus.logic.game.common.frames
          var itema:ObjectItemInformationWithQuantity = null;
          var dataStoreType:DataStoreType = null;
          var giftAction:Object = null;
+         var consumedGift:Object = null;
+         var itemReceived:Object = null;
          var newSpellList:Dictionary = null;
          var ds:DataStoreType = null;
          var nid:uint = 0;
@@ -348,16 +351,16 @@ package com.ankamagames.dofus.logic.game.common.frames
                newSubArea = SubArea.getSubAreaByMapId(mcidmsg.mapId);
                if(PlayedCharacterManager.getInstance().currentSubArea && newSubArea)
                {
-                  if(PrismSubAreaWrapper.prismList[newSubArea.id])
+                  if(SocialEntitiesManager.getInstance().prisms[newSubArea.id])
                   {
-                     prism = PrismSubAreaWrapper.prismList[newSubArea.id];
+                     prism = SocialEntitiesManager.getInstance().prisms[newSubArea.id];
                      if(prism.state == PrismStateEnum.PRISM_STATE_VULNERABLE)
                      {
                         KernelEventsManager.getInstance().processCallback(PrismHookList.KohState,prism);
                         if(Kernel.getWorker().contains(AllianceFrame))
                         {
                            allianceFrame = Kernel.getWorker().getFrame(AllianceFrame) as AllianceFrame;
-                           KernelEventsManager.getInstance().processCallback(AlignmentHookList.KohUpdate,allianceFrame.alliancesOnTheHill,allianceFrame.actualKohInfos.allianceMapWinners,allianceFrame.actualKohInfos.allianceMapWinnerScore,allianceFrame.actualKohInfos.allianceMapMyAllianceScore,allianceFrame.actualKohInfos.nextTickTime);
+                           KernelEventsManager.getInstance().processCallback(AlignmentHookList.KohUpdate,allianceFrame.alliancesOnTheHill,allianceFrame.kohNextTick,allianceFrame.startingAvaTimestamp);
                         }
                      }
                   }
@@ -639,15 +642,15 @@ package com.ankamagames.dofus.logic.game.common.frames
                TimeManager.getInstance().serverTimeLag = btmsg.timestamp + btmsg.timezoneOffset * 60 * 1000 - date.getTime() + receptionDelay;
                TimeManager.getInstance().serverUtcTimeLag = btmsg.timestamp - date.getTime() + receptionDelay;
                return true;
-            case msg is StartupActionsListMessage:
-               salm = msg as StartupActionsListMessage;
+            case msg is GameActionItemListMessage:
+               gailm = msg as GameActionItemListMessage;
                giftList = [];
                initialGiftCount = 0;
                if(PlayedCharacterManager.getInstance().waitingGifts && PlayedCharacterManager.getInstance().waitingGifts.length != 0)
                {
                   initialGiftCount = PlayedCharacterManager.getInstance().waitingGifts.length;
                }
-               for each(gift in salm.actions)
+               for each(gift in gailm.actions)
                {
                   _items = [];
                   for each(item in gift.items)
@@ -659,8 +662,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                      "uid":gift.uid,
                      "title":gift.title,
                      "text":gift.text,
-                     "items":_items,
-                     "actionType":gift.type
+                     "items":_items
                   };
                   giftList.push(obj);
                }
@@ -682,18 +684,18 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                this._giftListInitialized = true;
                return true;
-            case msg is StartupActionAddMessage:
-               saam = msg as StartupActionAddMessage;
+            case msg is GameActionItemAddMessage:
+               gaiam = msg as GameActionItemAddMessage;
                items = [];
-               for each(itema in saam.newAction.items)
+               for each(itema in gaiam.newAction.items)
                {
                   iw = ItemWrapper.create(0,0,itema.objectGID,itema.quantity,itema.effects,false);
                   items.push(iw);
                }
                obj = {
-                  "uid":saam.newAction.uid,
-                  "title":saam.newAction.title,
-                  "text":saam.newAction.text,
+                  "uid":gaiam.newAction.uid,
+                  "title":gaiam.newAction.title,
+                  "text":gaiam.newAction.text,
                   "items":items
                };
                PlayedCharacterManager.getInstance().waitingGifts.push(obj);
@@ -708,22 +710,22 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is GiftAssignRequestAction:
                gar = msg as GiftAssignRequestAction;
-               sao = new StartupActionsObjetAttributionMessage();
-               sao.initStartupActionsObjetAttributionMessage(gar.giftId,gar.characterId);
-               ConnectionsHandler.getConnection().send(sao);
+               cgaimsg = new ConsumeGameActionItemMessage();
+               cgaimsg.initConsumeGameActionItemMessage(gar.giftId,gar.characterId);
+               ConnectionsHandler.getConnection().send(cgaimsg);
                return true;
             case msg is GiftAssignAllRequestAction:
                gaara = msg as GiftAssignAllRequestAction;
-               saaamsg = new StartupActionsAllAttributionMessage();
-               saaamsg.initStartupActionsAllAttributionMessage(gaara.characterId);
-               ConnectionsHandler.getConnection().send(saaamsg);
+               cagaimsg = new ConsumeAllGameActionItemMessage();
+               cagaimsg.initConsumeAllGameActionItemMessage(gaara.characterId);
+               ConnectionsHandler.getConnection().send(cagaimsg);
                return true;
-            case msg is StartupActionFinishedMessage:
-               safm = msg as StartupActionFinishedMessage;
+            case msg is GameActionItemConsumedMessage:
+               gaicmsg = msg as GameActionItemConsumedMessage;
                indexToDelete = -1;
                for each(giftAction in PlayedCharacterManager.getInstance().waitingGifts)
                {
-                  if(giftAction.uid == safm.actionId)
+                  if(giftAction.uid == gaicmsg.actionId)
                   {
                      indexToDelete = PlayedCharacterManager.getInstance().waitingGifts.indexOf(giftAction);
                      break;
@@ -731,12 +733,16 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                if(indexToDelete > -1)
                {
-                  PlayedCharacterManager.getInstance().waitingGifts.splice(indexToDelete,1);
-                  KernelEventsManager.getInstance().processCallback(HookList.GiftAssigned,safm.actionId);
-                  KernelEventsManager.getInstance().processCallback(ExternalGameHookList.CodesAndGiftGiftAssigned,giftAction.items);
+                  consumedGift = PlayedCharacterManager.getInstance().waitingGifts.splice(indexToDelete,1)[0];
+                  KernelEventsManager.getInstance().processCallback(HookList.GiftAssigned,gaicmsg.actionId);
+                  KernelEventsManager.getInstance().processCallback(ExternalGameHookList.CodesAndGiftGiftAssigned,consumedGift.items);
                   if(PlayedCharacterManager.getInstance().waitingGifts.length == 0)
                   {
                      KernelEventsManager.getInstance().processCallback(RoleplayHookList.GiftsWaitingAllocation,false);
+                  }
+                  for each(itemReceived in consumedGift.items)
+                  {
+                     KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,I18n.getUiText("ui.codesAndGift.codes.getReward") + " {item, " + itemReceived.objectGID + "}",ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,TimeManager.getInstance().getTimestamp());
                   }
                }
                return true;

@@ -97,6 +97,14 @@ package com.ankamagames.dofus.logic.game.common.spell
                return CharacterSpellModificationTypeEnum.VISIBLE_TARGET;
             case ActionIds.ACTION_BOOST_VISIBLE_TARGET_ON_CELL_OFF:
                return CharacterSpellModificationTypeEnum.VISIBLE_TARGET;
+            case ActionIds.ACTION_BOOST_PORTAL_PROJECTION_ON:
+               return CharacterSpellModificationTypeEnum.PORTAL_PROJECTION;
+            case ActionIds.ACTION_BOOST_PORTAL_PROJECTION_OFF:
+               return CharacterSpellModificationTypeEnum.PORTAL_PROJECTION;
+            case ActionIds.ACTION_BOOST_PORTAL_FREE_CELL_ON:
+               return CharacterSpellModificationTypeEnum.PORTAL_FREE_CELL;
+            case ActionIds.ACTION_BOOST_PORTAL_FREE_CELL_OFF:
+               return CharacterSpellModificationTypeEnum.PORTAL_FREE_CELL;
             default:
                return CharacterSpellModificationTypeEnum.INVALID_MODIFICATION;
          }
@@ -191,6 +199,10 @@ package com.ankamagames.dofus.logic.game.common.spell
                return "set range min";
             case CharacterSpellModificationTypeEnum.VISIBLE_TARGET:
                return "visible target";
+            case CharacterSpellModificationTypeEnum.PORTAL_PROJECTION:
+               return "portal projection";
+            case CharacterSpellModificationTypeEnum.PORTAL_FREE_CELL:
+               return "portal free cell";
             default:
                return UNKNOWN_MODIFIER_NAME;
          }

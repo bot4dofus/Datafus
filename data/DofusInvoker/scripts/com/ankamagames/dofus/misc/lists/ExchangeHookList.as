@@ -47,29 +47,11 @@ package com.ankamagames.dofus.misc.lists
       
       public static const ExchangeWeight:String = "ExchangeWeight";
       
-      public static const ExchangeStartOkHumanVendor:String = "ExchangeStartOkHumanVendor";
-      
-      public static const ExchangeShopStockStarted:String = "ExchangeShopStockStarted";
-      
       public static const ExchangeShopStockMovementUpdated:String = "ExchangeShopStockMovementUpdated";
-      
-      public static const ExchangeShopStockMouvmentRemoveOk:String = "ExchangeShopStockMouvmentRemoveOk";
-      
-      public static const ExchangeShopStockUpdate:String = "ExchangeShopStockUpdate";
-      
-      public static const ExchangeShopStockAddQuantity:String = "ExchangeShopStockAddQuantity";
-      
-      public static const ExchangeShopStockRemoveQuantity:String = "ExchangeShopStockRemoveQuantity";
       
       public static const ClickItemInventory:String = "ClickItemInventory";
       
       public static const DisplayAssociatedRunes:String = "DisplayAssociatedRunes";
-      
-      public static const ClickItemShopHV:String = "ClickItemShopHV";
-      
-      public static const ExchangeReplyTaxVendor:String = "ExchangeReplyTaxVendor";
-      
-      public static const ExchangeShopStockMovementRemoved:String = "ExchangeShopStockMovementRemoved";
       
       public static const CloseStore:String = "CloseStore";
       
@@ -128,6 +110,8 @@ package com.ankamagames.dofus.misc.lists
       public static const GuildChestLastContribution:String = "GuildChestLastContribution";
       
       public static const GuildChestContributions:String = "GuildChestContributions";
+      
+      public static const ExchangeTaxCollectorEquipments:String = "ExchangeTaxCollectorEquipments";
        
       
       public function ExchangeHookList()
@@ -158,18 +142,9 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(AskExchangeMoveObject);
          Hook.createHook(ExchangeIsReady);
          Hook.createHook(ExchangeWeight);
-         Hook.createHook(ExchangeStartOkHumanVendor);
-         Hook.createHook(ExchangeShopStockStarted);
          Hook.createHook(ExchangeShopStockMovementUpdated);
-         Hook.createHook(ExchangeShopStockMouvmentRemoveOk);
-         Hook.createHook(ExchangeShopStockUpdate);
-         Hook.createHook(ExchangeShopStockAddQuantity);
-         Hook.createHook(ExchangeShopStockRemoveQuantity);
          Hook.createHook(ClickItemInventory);
          Hook.createHook(DisplayAssociatedRunes);
-         Hook.createHook(ClickItemShopHV);
-         Hook.createHook(ExchangeReplyTaxVendor);
-         Hook.createHook(ExchangeShopStockMovementRemoved);
          Hook.createHook(CloseStore);
          Hook.createHook(ClickItemStore);
          Hook.createHook(SellOk);
@@ -199,6 +174,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(GuildChestTabContribution);
          Hook.createHook(GuildChestLastContribution);
          Hook.createHook(GuildChestContributions);
+         Hook.createHook(ExchangeTaxCollectorEquipments);
       }
    }
 }

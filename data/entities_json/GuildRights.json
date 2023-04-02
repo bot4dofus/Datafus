@@ -37,46 +37,10 @@
 			"groupId": 2
 		},
 		{
-			"id": 9,
-			"nameId": 932490,
-			"order": 0,
-			"groupId": 5
-		},
-		{
 			"id": 10,
 			"nameId": 932499,
 			"order": 0,
 			"groupId": 6
-		},
-		{
-			"id": 11,
-			"nameId": 932508,
-			"order": 0,
-			"groupId": 7
-		},
-		{
-			"id": 16,
-			"nameId": 932683,
-			"order": 1,
-			"groupId": 5
-		},
-		{
-			"id": 17,
-			"nameId": 932684,
-			"order": 2,
-			"groupId": 5
-		},
-		{
-			"id": 18,
-			"nameId": 932685,
-			"order": 3,
-			"groupId": 5
-		},
-		{
-			"id": 19,
-			"nameId": 932686,
-			"order": 4,
-			"groupId": 5
 		},
 		{
 			"id": 20,
@@ -89,12 +53,6 @@
 			"nameId": 932688,
 			"order": 2,
 			"groupId": 6
-		},
-		{
-			"id": 22,
-			"nameId": 932689,
-			"order": 1,
-			"groupId": 7
 		},
 		{
 			"id": 25,

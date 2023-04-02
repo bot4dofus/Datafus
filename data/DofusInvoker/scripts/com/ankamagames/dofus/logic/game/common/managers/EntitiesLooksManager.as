@@ -30,7 +30,6 @@ package com.ankamagames.dofus.logic.game.common.managers
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayActorInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayGroupMonsterInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayHumanoidInformations;
-   import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMerchantInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayNpcInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayPrismInformations;
    import com.ankamagames.dofus.network.types.game.look.EntityLook;
@@ -266,9 +265,6 @@ package com.ankamagames.dofus.logic.game.common.managers
                      break;
                   case pInfos is GameRolePlayPrismInformations:
                      look.setBone(CreatureBoneType.getPrismCreatureBone());
-                     break;
-                  case pInfos is GameRolePlayMerchantInformations:
-                     look.setBone(CreatureBoneType.getPlayerMerchantCreatureBone());
                      break;
                   case pInfos is GameRolePlayTaxCollectorInformations:
                   case pInfos is GameFightTaxCollectorInformations:

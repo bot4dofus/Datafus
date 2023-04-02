@@ -12,10 +12,12 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.common.actions.RemoveBehaviorToStackAction;
    import com.ankamagames.dofus.logic.common.actions.ResetGameAction;
    import com.ankamagames.dofus.logic.connection.actions.AcquaintanceSearchAction;
+   import com.ankamagames.dofus.logic.connection.actions.ForceAccountAction;
    import com.ankamagames.dofus.logic.connection.actions.LoginValidationAction;
    import com.ankamagames.dofus.logic.connection.actions.LoginValidationWithTicketAction;
    import com.ankamagames.dofus.logic.connection.actions.LoginValidationWithTokenAction;
    import com.ankamagames.dofus.logic.connection.actions.NicknameChoiceRequestAction;
+   import com.ankamagames.dofus.logic.connection.actions.ReleaseAccountAction;
    import com.ankamagames.dofus.logic.connection.actions.ServerSelectionAction;
    import com.ankamagames.dofus.logic.game.approach.actions.CharacterCreationAction;
    import com.ankamagames.dofus.logic.game.approach.actions.CharacterDeletionAction;
@@ -50,7 +52,6 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.HouseGuildRightsViewAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseGuildShareAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseKickAction;
-   import com.ankamagames.dofus.logic.game.common.actions.HouseKickIndoorMerchantAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseLockFromInsideAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseSellAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseSellFromInsideAction;
@@ -63,11 +64,12 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.NotificationResetAction;
    import com.ankamagames.dofus.logic.game.common.actions.NotificationUpdateFlagAction;
    import com.ankamagames.dofus.logic.game.common.actions.NumericWhoIsRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.OpenAlliancePrezAndRecruitAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenArenaAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenBookAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenCurrentFightAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenForgettableSpellsUiAction;
-   import com.ankamagames.dofus.logic.game.common.actions.OpenGuidebookAction;
+   import com.ankamagames.dofus.logic.game.common.actions.OpenGuideBookAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenGuildPrezAndRecruitAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenHousesAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenIdolsAction;
@@ -93,6 +95,7 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.alignment.AlignmentWarEffortProgressionRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.alignment.CharacterAlignmentWarEffortProgressionRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.alignment.SetEnablePVPRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.KohOverAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.SetEnableAVARequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.chat.ChatCommandAction;
    import com.ankamagames.dofus.logic.game.common.actions.chat.ChatLoadedAction;
@@ -134,14 +137,10 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.party.PartyShowMenuAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.PartyStopFollowingMemberAction;
    import com.ankamagames.dofus.logic.game.common.actions.prism.PrismAttackRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.prism.PrismFightJoinLeaveRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.prism.PrismFightSwapRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.prism.PrismExchangeRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.prism.PrismInfoJoinLeaveRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.prism.PrismModuleExchangeRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.prism.PrismSetSabotagedRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.prism.PrismSettingsRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.prism.PrismUseRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.prism.PrismsListRegisterAction;
+   import com.ankamagames.dofus.logic.game.common.actions.prism.PrismRecycleTradeRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.prism.PrismTeleportRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.AchievementAlmostFinishedDetailedListRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.AchievementDetailedListRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.AchievementDetailsRequestAction;
@@ -260,6 +259,10 @@ package com.ankamagames.dofus.misc.lists
       public static const LoginValidationWithTicket:DofusApiAction = new DofusApiAction("LoginValidationWithTicketAction",LoginValidationWithTicketAction);
       
       public static const LoginValidationWithToken:DofusApiAction = new DofusApiAction("LoginValidationWithTokenAction",LoginValidationWithTokenAction);
+      
+      public static const ForceAccount:DofusApiAction = new DofusApiAction("ForceAccountAction",ForceAccountAction);
+      
+      public static const ReleaseAccount:DofusApiAction = new DofusApiAction("ReleaseAccountAction",ReleaseAccountAction);
       
       public static const NicknameChoiceRequest:DofusApiAction = new DofusApiAction("NicknameChoiceRequestAction",NicknameChoiceRequestAction);
       
@@ -485,8 +488,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const HouseKick:DofusApiAction = new DofusApiAction("HouseKickAction",HouseKickAction);
       
-      public static const HouseKickIndoorMerchant:DofusApiAction = new DofusApiAction("HouseKickIndoorMerchantAction",HouseKickIndoorMerchantAction);
-      
       public static const LockableChangeCode:DofusApiAction = new DofusApiAction("LockableChangeCodeAction",LockableChangeCodeAction);
       
       public static const LockableUseCode:DofusApiAction = new DofusApiAction("LockableUseCodeAction",LockableUseCodeAction);
@@ -533,25 +534,19 @@ package com.ankamagames.dofus.misc.lists
       
       public static const SetEnableAVARequest:DofusApiAction = new DofusApiAction("SetEnableAVARequestAction",SetEnableAVARequestAction);
       
-      public static const PrismSettingsRequest:DofusApiAction = new DofusApiAction("PrismSettingsRequestAction",PrismSettingsRequestAction);
-      
-      public static const PrismFightJoinLeaveRequest:DofusApiAction = new DofusApiAction("PrismFightJoinLeaveRequestAction",PrismFightJoinLeaveRequestAction);
-      
-      public static const PrismFightSwapRequest:DofusApiAction = new DofusApiAction("PrismFightSwapRequestAction",PrismFightSwapRequestAction);
+      public static const KohOver:DofusApiAction = new DofusApiAction("KohOverAction",KohOverAction);
       
       public static const PrismInfoJoinLeaveRequest:DofusApiAction = new DofusApiAction("PrismInfoJoinLeaveRequestAction",PrismInfoJoinLeaveRequestAction);
-      
-      public static const PrismsListRegister:DofusApiAction = new DofusApiAction("PrismsListRegisterAction",PrismsListRegisterAction);
       
       public static const AnomalySubareaInformationRequest:DofusApiAction = new DofusApiAction("AnomalySubareaInformationRequestAction",AnomalySubareaInformationRequestAction);
       
       public static const PrismAttackRequest:DofusApiAction = new DofusApiAction("PrismAttackRequestAction",PrismAttackRequestAction);
       
-      public static const PrismUseRequest:DofusApiAction = new DofusApiAction("PrismUseRequestAction",PrismUseRequestAction);
+      public static const PrismTeleportRequest:DofusApiAction = new DofusApiAction("PrismTeleportRequestAction",PrismTeleportRequestAction);
       
-      public static const PrismModuleExchangeRequest:DofusApiAction = new DofusApiAction("PrismModuleExchangeRequestAction",PrismModuleExchangeRequestAction);
+      public static const PrismRecycleTradeRequest:DofusApiAction = new DofusApiAction("PrismRecycleTradeRequestAction",PrismRecycleTradeRequestAction);
       
-      public static const PrismSetSabotagedRequest:DofusApiAction = new DofusApiAction("PrismSetSabotagedRequestAction",PrismSetSabotagedRequestAction);
+      public static const PrismExchangeRequest:DofusApiAction = new DofusApiAction("PrismExchangeRequestAction",PrismExchangeRequestAction);
       
       public static const ObjectUseOnCell:DofusApiAction = new DofusApiAction("ObjectUseOnCellAction",ObjectUseOnCellAction);
       
@@ -691,9 +686,11 @@ package com.ankamagames.dofus.misc.lists
       
       public static const ForgettableSpellClient:DofusApiAction = new DofusApiAction("ForgettableSpellClientAction",ForgettableSpellClientAction);
       
-      public static const OpenGuidebook:DofusApiAction = new DofusApiAction("OpenGuidebookAction",OpenGuidebookAction);
+      public static const OpenGuideBook:DofusApiAction = new DofusApiAction("OpenGuideBookAction",OpenGuideBookAction);
       
       public static const OpenGuildPrezAndRecruit:DofusApiAction = new DofusApiAction("OpenGuildPrezAndRecruitAction",OpenGuildPrezAndRecruitAction);
+      
+      public static const OpenAlliancePrezAndRecruit:DofusApiAction = new DofusApiAction("OpenAlliancePrezAndRecruitAction",OpenAlliancePrezAndRecruitAction);
       
       public static const ActivitySuggestionsRequest:DofusApiAction = new DofusApiAction("ActivitySuggestionsRequestAction",ActivitySuggestionsRequestAction);
       

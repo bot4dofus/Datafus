@@ -13736,34 +13736,6 @@
 			"synergyIdolsIds": [],
 			"synergyIdolsCoeff": [],
 			"incompatibleMonsters": []
-		},
-		{
-			"id": 108,
-			"description": "null",
-			"categoryId": 1,
-			"itemId": 27411,
-			"groupOnly": false,
-			"score": 0,
-			"experienceBonus": 0,
-			"dropBonus": 0,
-			"spellPairId": 673,
-			"synergyIdolsIds": [],
-			"synergyIdolsCoeff": [],
-			"incompatibleMonsters": []
-		},
-		{
-			"id": 109,
-			"description": "null",
-			"categoryId": 1,
-			"itemId": 27412,
-			"groupOnly": false,
-			"score": 0,
-			"experienceBonus": 0,
-			"dropBonus": 0,
-			"spellPairId": 674,
-			"synergyIdolsIds": [],
-			"synergyIdolsCoeff": [],
-			"incompatibleMonsters": []
 		}
 	]
 }

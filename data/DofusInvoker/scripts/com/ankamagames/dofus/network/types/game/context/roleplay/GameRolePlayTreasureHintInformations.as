@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class GameRolePlayTreasureHintInformations extends GameRolePlayActorInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 2825;
+      public static const protocolId:uint = 2245;
        
       
       public var npcId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 2825;
+         return 2245;
       }
       
       public function initGameRolePlayTreasureHintInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, npcId:uint = 0) : GameRolePlayTreasureHintInformations

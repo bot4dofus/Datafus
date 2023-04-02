@@ -547,9 +547,8 @@ package com.ankamagames.dofus.logic.game.common.frames
             case msg is InventoryWeightMessage:
                iwmsg = msg as InventoryWeightMessage;
                PlayedCharacterManager.getInstance().inventoryWeight = iwmsg.inventoryWeight;
-               PlayedCharacterManager.getInstance().shopWeight = iwmsg.shopWeight;
                PlayedCharacterManager.getInstance().inventoryWeightMax = iwmsg.weightMax;
-               KernelEventsManager.getInstance().processCallback(InventoryHookList.InventoryWeight,iwmsg.inventoryWeight,iwmsg.shopWeight,iwmsg.weightMax);
+               KernelEventsManager.getInstance().processCallback(InventoryHookList.InventoryWeight,iwmsg.inventoryWeight,iwmsg.weightMax);
                InventoryManager.getInstance().inventory.releaseHooks();
                return true;
             case msg is ObjectMovementMessage:

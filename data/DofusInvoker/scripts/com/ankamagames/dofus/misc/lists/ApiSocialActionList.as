@@ -2,20 +2,42 @@ package com.ankamagames.dofus.misc.lists
 {
    import com.ankamagames.dofus.logic.game.common.actions.HouseTeleportRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenSocialAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceAllRanksUpdateRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceApplicationReplyAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceApplicationsRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceAreThereApplicationsAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceBulletinSetRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceChangeGuildRightsAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceChangeMemberRankAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceCreationValidAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceDeleteApplicationRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceFactsRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceGetPlayerApplicationAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceGetRecruitmentInformationAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceInsiderInfoRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceInvitationAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceInvitationAnswerAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceJoinRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceKickRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceListRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceModificationEmblemValidAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceModificationNameAndTagValidAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceModificationValidAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceMotdSetRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceRankCreateRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceRankRemoveRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceRankUpdateRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceRanksRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceRightsUpdateAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceSetApplicationUpdatesRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceSubmitApplicationAction;
    import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceSummaryRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.AllianceUpdateApplicationAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.NuggetDistributionAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.SendAllianceRecruitmentDataAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.StartListenAllianceFightAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.StartListenNuggetsAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.StopListenAllianceFightAction;
+   import com.ankamagames.dofus.logic.game.common.actions.alliance.StopListenNuggetsAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.CreateGuildRankRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildApplicationReplyAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildApplicationsRequestAction;
@@ -26,14 +48,10 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildDeleteApplicationRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFactsRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFarmTeleportRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFightJoinRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFightLeaveRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFightTakePlaceRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildGetInformationsAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildGetPlayerApplicationAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildInvitationAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildInvitationAnswerAction;
-   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildInvitationByNameAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildJoinRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildKickRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildListRequestAction;
@@ -78,7 +96,20 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.social.StatusShareSetAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.StopListenGuildChestStructureAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.WarnOnHardcoreDeathAction;
+   import com.ankamagames.dofus.logic.game.common.actions.socialFight.SocialFightJoinRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.socialFight.SocialFightLeaveRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.socialFight.SocialFightTakePlaceRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.taxCollector.AddTaxCollectorOrderedSpellAction;
+   import com.ankamagames.dofus.logic.game.common.actions.taxCollector.AddTaxCollectorPresetSpellAction;
    import com.ankamagames.dofus.logic.game.common.actions.taxCollector.GameRolePlayTaxCollectorFightRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.taxCollector.MoveTaxCollectorOrderedSpellAction;
+   import com.ankamagames.dofus.logic.game.common.actions.taxCollector.MoveTaxCollectorPresetSpellAction;
+   import com.ankamagames.dofus.logic.game.common.actions.taxCollector.RemoveTaxCollectorOrderedSpellAction;
+   import com.ankamagames.dofus.logic.game.common.actions.taxCollector.RemoveTaxCollectorPresetSpellAction;
+   import com.ankamagames.dofus.logic.game.common.actions.taxCollector.StartListenTaxCollectorPresetsUpdatesAction;
+   import com.ankamagames.dofus.logic.game.common.actions.taxCollector.StartListenTaxCollectorUpdatesAction;
+   import com.ankamagames.dofus.logic.game.common.actions.taxCollector.StopListenTaxCollectorPresetsUpdatesAction;
+   import com.ankamagames.dofus.logic.game.common.actions.taxCollector.StopListenTaxCollectorUpdatesAction;
    import com.ankamagames.dofus.misc.utils.DofusApiAction;
    
    public class ApiSocialActionList
@@ -138,8 +169,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const GuildDeleteApplicationRequest:DofusApiAction = new DofusApiAction("GuildDeleteApplicationRequestAction",GuildDeleteApplicationRequestAction);
       
-      public static const GuildInvitationByName:DofusApiAction = new DofusApiAction("GuildInvitationByNameAction",GuildInvitationByNameAction);
-      
       public static const GuildInvitationAnswer:DofusApiAction = new DofusApiAction("GuildInvitationAnswerAction",GuildInvitationAnswerAction);
       
       public static const GuildJoinRequest:DofusApiAction = new DofusApiAction("GuildJoinRequestAction",GuildJoinRequestAction);
@@ -176,11 +205,11 @@ package com.ankamagames.dofus.misc.lists
       
       public static const GuildBulletinSetRequest:DofusApiAction = new DofusApiAction("GuildBulletinSetRequestAction",GuildBulletinSetRequestAction);
       
-      public static const GuildFightJoinRequest:DofusApiAction = new DofusApiAction("GuildFightJoinRequestAction",GuildFightJoinRequestAction);
+      public static const SocialFightJoinRequest:DofusApiAction = new DofusApiAction("SocialFightJoinRequestAction",SocialFightJoinRequestAction);
       
-      public static const GuildFightTakePlaceRequest:DofusApiAction = new DofusApiAction("GuildFightTakePlaceRequestAction",GuildFightTakePlaceRequestAction);
+      public static const SocialFightLeaveRequest:DofusApiAction = new DofusApiAction("SocialFightLeaveRequestAction",SocialFightLeaveRequestAction);
       
-      public static const GuildFightLeaveRequest:DofusApiAction = new DofusApiAction("GuildFightLeaveRequestAction",GuildFightLeaveRequestAction);
+      public static const SocialFightTakePlaceRequest:DofusApiAction = new DofusApiAction("SocialFightTakePlaceRequestAction",SocialFightTakePlaceRequestAction);
       
       public static const GameRolePlayTaxCollectorFightRequest:DofusApiAction = new DofusApiAction("GameRolePlayTaxCollectorFightRequestAction",GameRolePlayTaxCollectorFightRequestAction);
       
@@ -190,17 +219,29 @@ package com.ankamagames.dofus.misc.lists
       
       public static const AllianceCreationValid:DofusApiAction = new DofusApiAction("AllianceCreationValidAction",AllianceCreationValidAction);
       
+      public static const AllianceGetRecruitmentInformation:DofusApiAction = new DofusApiAction("AllianceGetRecruitmentInformationAction",AllianceGetRecruitmentInformationAction);
+      
       public static const AllianceModificationValid:DofusApiAction = new DofusApiAction("AllianceModificationValidAction",AllianceModificationValidAction);
       
       public static const AllianceModificationNameAndTagValid:DofusApiAction = new DofusApiAction("AllianceModificationNameAndTagValidAction",AllianceModificationNameAndTagValidAction);
       
       public static const AllianceModificationEmblemValid:DofusApiAction = new DofusApiAction("AllianceModificationEmblemValidAction",AllianceModificationEmblemValidAction);
       
+      public static const AllianceDeleteApplicationRequest:DofusApiAction = new DofusApiAction("AllianceDeleteApplicationRequestAction",AllianceDeleteApplicationRequestAction);
+      
       public static const AllianceInvitation:DofusApiAction = new DofusApiAction("AllianceInvitationAction",AllianceInvitationAction);
       
       public static const AllianceInvitationAnswer:DofusApiAction = new DofusApiAction("AllianceInvitationAnswerAction",AllianceInvitationAnswerAction);
       
+      public static const AllianceJoinRequest:DofusApiAction = new DofusApiAction("AllianceJoinRequestAction",AllianceJoinRequestAction);
+      
+      public static const AllianceSubmitApplication:DofusApiAction = new DofusApiAction("AllianceSubmitApplicationAction",AllianceSubmitApplicationAction);
+      
+      public static const AllianceUpdateApplication:DofusApiAction = new DofusApiAction("AllianceUpdateApplicationAction",AllianceUpdateApplicationAction);
+      
       public static const AllianceKickRequest:DofusApiAction = new DofusApiAction("AllianceKickRequestAction",AllianceKickRequestAction);
+      
+      public static const AllianceChangeMemberRank:DofusApiAction = new DofusApiAction("AllianceChangeMemberRankAction",AllianceChangeMemberRankAction);
       
       public static const AllianceFactsRequest:DofusApiAction = new DofusApiAction("AllianceFactsRequestAction",AllianceFactsRequestAction);
       
@@ -208,13 +249,21 @@ package com.ankamagames.dofus.misc.lists
       
       public static const AllianceSummaryRequest:DofusApiAction = new DofusApiAction("AllianceSummaryRequestAction",AllianceSummaryRequestAction);
       
-      public static const AllianceInsiderInfoRequest:DofusApiAction = new DofusApiAction("AllianceInsiderInfoRequestAction",AllianceInsiderInfoRequestAction);
+      public static const AllianceGetPlayerApplicationRequest:DofusApiAction = new DofusApiAction("AllianceGetPlayerApplicationAction",AllianceGetPlayerApplicationAction);
       
-      public static const AllianceChangeGuildRights:DofusApiAction = new DofusApiAction("AllianceChangeGuildRightsAction",AllianceChangeGuildRightsAction);
+      public static const AllianceInsiderInfoRequest:DofusApiAction = new DofusApiAction("AllianceInsiderInfoRequestAction",AllianceInsiderInfoRequestAction);
       
       public static const AllianceMotdSetRequest:DofusApiAction = new DofusApiAction("AllianceMotdSetRequestAction",AllianceMotdSetRequestAction);
       
       public static const AllianceBulletinSetRequest:DofusApiAction = new DofusApiAction("AllianceBulletinSetRequestAction",AllianceBulletinSetRequestAction);
+      
+      public static const AllianceApplicationReply:DofusApiAction = new DofusApiAction("AllianceApplicationReplyAction",AllianceApplicationReplyAction);
+      
+      public static const AllianceAreThereApplications:DofusApiAction = new DofusApiAction("AllianceAreThereApplicationsAction",AllianceAreThereApplicationsAction);
+      
+      public static const AllianceApplicationsRequest:DofusApiAction = new DofusApiAction("AllianceApplicationsRequestAction",AllianceApplicationsRequestAction);
+      
+      public static const AllianceSetApplicationUpdatesRequest:DofusApiAction = new DofusApiAction("AllianceSetApplicationUpdatesRequestAction",AllianceSetApplicationUpdatesRequestAction);
       
       public static const CharacterReport:DofusApiAction = new DofusApiAction("CharacterReportAction",CharacterReportAction);
       
@@ -241,6 +290,50 @@ package com.ankamagames.dofus.misc.lists
       public static const StartListenGuildChestStructure:DofusApiAction = new DofusApiAction("StartListenGuildChestStructureAction",StartListenGuildChestStructureAction);
       
       public static const StopListenGuildChestStructure:DofusApiAction = new DofusApiAction("StopListenGuildChestStructureAction",StopListenGuildChestStructureAction);
+      
+      public static const SendAllianceRecruitmentData:DofusApiAction = new DofusApiAction("SendAllianceRecruitmentDataAction",SendAllianceRecruitmentDataAction);
+      
+      public static const AllianceRanksRequest:DofusApiAction = new DofusApiAction("AllianceRanksRequestAction",AllianceRanksRequestAction);
+      
+      public static const AllianceRankCreateRequest:DofusApiAction = new DofusApiAction("AllianceRankCreateRequestAction",AllianceRankCreateRequestAction);
+      
+      public static const AllianceAllRanksUpdateRequest:DofusApiAction = new DofusApiAction("AllianceAllRanksUpdateRequestAction",AllianceAllRanksUpdateRequestAction);
+      
+      public static const AllianceRankUpdateRequest:DofusApiAction = new DofusApiAction("AllianceRankUpdateRequestAction",AllianceRankUpdateRequestAction);
+      
+      public static const AllianceRankRemoveRequest:DofusApiAction = new DofusApiAction("AllianceRankRemoveRequestAction",AllianceRankRemoveRequestAction);
+      
+      public static const AllianceRightsUpdate:DofusApiAction = new DofusApiAction("AllianceRightsUpdateAction",AllianceRightsUpdateAction);
+      
+      public static const StartListenTaxCollectorUpdates:DofusApiAction = new DofusApiAction("StartListenTaxCollectorUpdatesAction",StartListenTaxCollectorUpdatesAction);
+      
+      public static const StopListenTaxCollectorUpdates:DofusApiAction = new DofusApiAction("StopListenTaxCollectorUpdatesAction",StopListenTaxCollectorUpdatesAction);
+      
+      public static const StartListenAllianceFight:DofusApiAction = new DofusApiAction("StartListenAllianceFightAction",StartListenAllianceFightAction);
+      
+      public static const StartListenNuggets:DofusApiAction = new DofusApiAction("StartListenNuggetsAction",StartListenNuggetsAction);
+      
+      public static const StopListenNuggets:DofusApiAction = new DofusApiAction("StopListenNuggetsAction",StopListenNuggetsAction);
+      
+      public static const NuggetDistribution:DofusApiAction = new DofusApiAction("NuggetDistributionAction",NuggetDistributionAction);
+      
+      public static const StopListenAllianceFight:DofusApiAction = new DofusApiAction("StopListenAllianceFightAction",StopListenAllianceFightAction);
+      
+      public static const AddTaxCollectorOrderedSpell:DofusApiAction = new DofusApiAction("AddTaxCollectorOrderedSpellAction",AddTaxCollectorOrderedSpellAction);
+      
+      public static const RemoveTaxCollectorOrderedSpell:DofusApiAction = new DofusApiAction("RemoveTaxCollectorOrderedSpellAction",RemoveTaxCollectorOrderedSpellAction);
+      
+      public static const MoveTaxCollectorOrderedSpell:DofusApiAction = new DofusApiAction("MoveTaxCollectorOrderedSpellAction",MoveTaxCollectorOrderedSpellAction);
+      
+      public static const AddTaxCollectorPresetSpell:DofusApiAction = new DofusApiAction("AddTaxCollectorPresetSpellAction",AddTaxCollectorPresetSpellAction);
+      
+      public static const RemoveTaxCollectorPresetSpell:DofusApiAction = new DofusApiAction("RemoveTaxCollectorPresetSpellAction",RemoveTaxCollectorPresetSpellAction);
+      
+      public static const MoveTaxCollectorPresetSpell:DofusApiAction = new DofusApiAction("MoveTaxCollectorPresetSpellAction",MoveTaxCollectorPresetSpellAction);
+      
+      public static const StartListenTaxCollectorPresetsUpdates:DofusApiAction = new DofusApiAction("StartListenTaxCollectorPresetsUpdatesAction",StartListenTaxCollectorPresetsUpdatesAction);
+      
+      public static const StopListenTaxCollectorPresetsUpdates:DofusApiAction = new DofusApiAction("StopListenTaxCollectorPresetsUpdatesAction",StopListenTaxCollectorPresetsUpdatesAction);
        
       
       public function ApiSocialActionList()

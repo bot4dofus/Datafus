@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.interactive
    public class StatedElement implements INetworkType
    {
       
-      public static const protocolId:uint = 3190;
+      public static const protocolId:uint = 7215;
        
       
       public var elementId:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.interactive
       
       public function getTypeId() : uint
       {
-         return 3190;
+         return 7215;
       }
       
       public function initStatedElement(elementId:uint = 0, elementCellId:uint = 0, elementState:uint = 0, onCurrentMap:Boolean = false) : StatedElement

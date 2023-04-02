@@ -1,7 +1,6 @@
 package com.ankamagames.dofus.logic.game.roleplay.types
 {
-   import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
-   import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.AllianceWrapper;
    
    public class TaxCollectorTooltipInformation
    {
@@ -11,8 +10,6 @@ package com.ankamagames.dofus.logic.game.roleplay.types
       
       public var firstName:String;
       
-      public var guildIdentity:GuildWrapper;
-      
       public var taxCollectorAttack:int;
       
       public var allianceIdentity:AllianceWrapper;
@@ -21,12 +18,11 @@ package com.ankamagames.dofus.logic.game.roleplay.types
       
       public var cellId:int;
       
-      public function TaxCollectorTooltipInformation(pFirstName:String, pLastName:String, pGuildIdentity:GuildWrapper, pAllianceIdentity:AllianceWrapper, pTaxCollectorAttack:int, pCheckSuperposition:Boolean = false, pCellId:int = -1)
+      public function TaxCollectorTooltipInformation(pFirstName:String, pLastName:String, pAllianceIdentity:AllianceWrapper, pTaxCollectorAttack:int, pCheckSuperposition:Boolean = false, pCellId:int = -1)
       {
          super();
          this.lastName = pLastName;
          this.firstName = pFirstName;
-         this.guildIdentity = pGuildIdentity;
          this.allianceIdentity = pAllianceIdentity;
          this.taxCollectorAttack = pTaxCollectorAttack;
          this.checkSuperposition = pCheckSuperposition;

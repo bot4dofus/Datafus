@@ -4,6 +4,7 @@ package com.ankamagames.dofus.factories
    import com.ankamagames.dofus.internalDatacenter.conquest.PrismSubAreaWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.frames.AllianceFrame;
+   import com.ankamagames.dofus.logic.game.common.frames.SocialFrame;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.network.enums.AlignmentSideEnum;
    import com.ankamagames.dofus.network.enums.FightTypeEnum;
@@ -64,6 +65,7 @@ package com.ankamagames.dofus.factories
       {
          var teamLook:String = null;
          var allianceFrame:AllianceFrame = null;
+         var socialFrame:SocialFrame = null;
          var playerAllianceId:Number = NaN;
          var teamAllianceId:int = 0;
          var prismSubAreaInfo:PrismSubAreaWrapper = null;
@@ -103,13 +105,14 @@ package com.ankamagames.dofus.factories
                break;
             case FightTypeEnum.FIGHT_TYPE_Koh:
                allianceFrame = Kernel.getWorker().getFrame(AllianceFrame) as AllianceFrame;
-               playerAllianceId = !!allianceFrame.hasAlliance ? Number(allianceFrame.alliance.allianceId) : Number(-1);
+               socialFrame = Kernel.getWorker().getFrame(SocialFrame) as SocialFrame;
+               playerAllianceId = !!socialFrame.hasAlliance ? Number(socialFrame.alliance.groupId) : Number(-1);
                if(teamInfos.teamMembers[0] is FightTeamMemberWithAllianceCharacterInformations)
                {
                   teamAllianceId = (teamInfos.teamMembers[0] as FightTeamMemberWithAllianceCharacterInformations).allianceInfos.allianceId;
                }
                prismSubAreaInfo = allianceFrame.getPrismSubAreaById(PlayedCharacterManager.getInstance().currentSubArea.id);
-               prismAllianceId = !!prismSubAreaInfo ? (!!prismSubAreaInfo.alliance ? int(prismSubAreaInfo.alliance.allianceId) : int(playerAllianceId)) : -1;
+               prismAllianceId = !!prismSubAreaInfo ? (!!prismSubAreaInfo.alliance ? int(prismSubAreaInfo.alliance.groupId) : int(playerAllianceId)) : -1;
                if(playerAllianceId != -1 && playerAllianceId == teamAllianceId)
                {
                   teamLook = getTeamLook(teamInfos.teamId,TEAM_CHALLENGER_AVA_ALLY,TEAM_DEFENDER_AVA_ALLY);

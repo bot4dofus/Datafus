@@ -1213,7 +1213,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          {
             _worldPoint = PlayedCharacterManager.getInstance().currentMap;
          }
-         if(!_currentSubAreaId)
+         if(!_currentSubAreaId && PlayedCharacterManager.getInstance().currentSubArea)
          {
             _currentSubAreaId = PlayedCharacterManager.getInstance().currentSubArea.id;
          }

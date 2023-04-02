@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
    public class DecraftedItemStackInfo implements INetworkType
    {
       
-      public static const protocolId:uint = 1657;
+      public static const protocolId:uint = 581;
        
       
       public var objectUID:uint = 0;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
       
       public function getTypeId() : uint
       {
-         return 1657;
+         return 581;
       }
       
       public function initDecraftedItemStackInfo(objectUID:uint = 0, bonusMin:Number = 0, bonusMax:Number = 0, runesId:Vector.<uint> = null, runesQty:Vector.<uint> = null) : DecraftedItemStackInfo

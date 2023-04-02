@@ -28,7 +28,7 @@ package com.ankamagames.dofus.logic.common.managers
       
       public static function openFeatureDescription(featureId:uint) : void
       {
-         KernelEventsManager.getInstance().processCallback(HookList.OpenGuidebook,"gameGuide",[featureId]);
+         KernelEventsManager.getInstance().processCallback(HookList.OpenGuideBook,"gameGuide",[featureId]);
          KernelEventsManager.getInstance().processCallback(StatsHookList.GameGuideArticleSelectionType,featureId,"chatLink");
       }
       

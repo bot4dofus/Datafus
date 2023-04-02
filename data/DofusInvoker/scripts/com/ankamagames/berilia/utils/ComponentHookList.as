@@ -25,6 +25,8 @@ package com.ankamagames.berilia.utils
       
       public static const ON_SELECT_ITEM:String = "onSelectItem";
       
+      public static const ON_SELECT_EMPTY_ITEM:String = "onSelectEmptyItem";
+      
       public static const ON_ITEM_RIGHT_CLICK:String = "onItemRightClick";
       
       public static const ON_ITEM_ROLL_OVER:String = "onItemRollOver";

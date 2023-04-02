@@ -22,7 +22,6 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
    import com.ankamagames.dofus.network.types.game.context.GameContextActorInformations;
    import com.ankamagames.dofus.network.types.game.context.GameRolePlayTaxCollectorInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayCharacterInformations;
-   import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMerchantInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMountInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMutantInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayNpcInformations;
@@ -115,9 +114,6 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
                }
                break;
             case pGameContextActorInformations is GameRolePlayCharacterInformations:
-               menu = MenusFactory.create(pGameContextActorInformations,null,[pEntity]);
-               break;
-            case pGameContextActorInformations is GameRolePlayMerchantInformations:
                menu = MenusFactory.create(pGameContextActorInformations,null,[pEntity]);
                break;
             case pGameContextActorInformations is GameRolePlayNpcInformations:

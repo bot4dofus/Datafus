@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
    public class NamedPartyTeam implements INetworkType
    {
       
-      public static const protocolId:uint = 1488;
+      public static const protocolId:uint = 9030;
        
       
       public var teamId:uint = 2;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
       
       public function getTypeId() : uint
       {
-         return 1488;
+         return 9030;
       }
       
       public function initNamedPartyTeam(teamId:uint = 2, partyName:String = "") : NamedPartyTeam

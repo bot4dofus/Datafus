@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.messages.game.alliance
 {
-   import com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations;
+   import com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformation;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AlliancePartialListMessage extends AllianceListMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4657;
+      public static const protocolId:uint = 8786;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,10 +28,10 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 4657;
+         return 8786;
       }
       
-      public function initAlliancePartialListMessage(alliances:Vector.<AllianceFactSheetInformations> = null) : AlliancePartialListMessage
+      public function initAlliancePartialListMessage(alliances:Vector.<AllianceFactSheetInformation> = null) : AlliancePartialListMessage
       {
          super.initAllianceListMessage(alliances);
          this._isInitialized = true;

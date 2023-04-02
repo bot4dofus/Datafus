@@ -1,6 +1,7 @@
 package com.ankamagames.dofus.console.debug
 {
    import com.ankamagames.dofus.datacenter.characteristics.Characteristic;
+   import com.ankamagames.dofus.internalDatacenter.stats.EntityStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
    import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
@@ -52,7 +53,7 @@ package com.ankamagames.dofus.console.debug
       
       private static const DIFF_SERVER_DETAILED_STAT:String = "Server detailed stat";
       
-      private static const DIFF_STAT:String = "Stat";
+      private static const DIFF_STAT:String = "EntityStat";
       
       private static const DIFF_DETAILED_STAT:String = "Detailed stat";
       
@@ -113,7 +114,7 @@ package com.ankamagames.dofus.console.debug
             }
          }
          var statId:Number = Number.NaN;
-         var stat:Stat = null;
+         var stat:EntityStat = null;
          var currentResult:String = null;
          var resultHeader:* = "Stats diff for entity with ID " + entityId.toString() + " (Client -> Server):\n";
          var result:String = "";
@@ -181,7 +182,7 @@ package com.ankamagames.dofus.console.debug
       private static function handleDumpCommand(consoleHandler:ConsoleHandler, args:Array) : Boolean
       {
          var statId:Number = NaN;
-         var stat:Stat = null;
+         var stat:EntityStat = null;
          if(args.length < 3 || args.length > 4)
          {
             displayError(consoleHandler,ARGUMENT_ERROR,true);
@@ -244,7 +245,7 @@ package com.ankamagames.dofus.console.debug
                displayError(consoleHandler,"The stat ID provided could not be parsed: \"" + args[3] + "\"",true);
                return false;
             }
-            stat = entityStats.getStat(statId);
+            stat = entityStats.getStat(statId) as EntityStat;
             if(stat === null)
             {
                consoleHandler.output("<b>No stat was given with this ID.</b>",ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
@@ -302,7 +303,7 @@ package com.ankamagames.dofus.console.debug
          return true;
       }
       
-      private static function getStatDiff(stat:Stat, serverStat:CharacterCharacteristic) : String
+      private static function getStatDiff(stat:EntityStat, serverStat:CharacterCharacteristic) : String
       {
          var diffSymbol:String = null;
          var diffColor:String = null;

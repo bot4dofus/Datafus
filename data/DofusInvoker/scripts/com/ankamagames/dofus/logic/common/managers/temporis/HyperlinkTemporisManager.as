@@ -3,7 +3,7 @@ package com.ankamagames.dofus.logic.common.managers.temporis
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.actions.OpenBookAction;
-   import com.ankamagames.dofus.logic.game.common.actions.OpenGuidebookAction;
+   import com.ankamagames.dofus.logic.game.common.actions.OpenGuideBookAction;
    import com.ankamagames.dofus.misc.lists.HookList;
    
    public class HyperlinkTemporisManager
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.logic.common.managers.temporis
       
       public static function openTemporisTab() : void
       {
-         Kernel.getWorker().process(OpenGuidebookAction.create("temporisTab"));
+         Kernel.getWorker().process(OpenGuideBookAction.create("temporisTab"));
       }
       
       public static function locatePorisAssistant() : void
