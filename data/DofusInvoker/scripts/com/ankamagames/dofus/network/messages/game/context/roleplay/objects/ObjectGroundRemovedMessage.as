@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.objects
    public class ObjectGroundRemovedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 416;
+      public static const protocolId:uint = 5686;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.objects
       
       override public function getMessageId() : uint
       {
-         return 416;
+         return 5686;
       }
       
       public function initObjectGroundRemovedMessage(cell:uint = 0) : ObjectGroundRemovedMessage

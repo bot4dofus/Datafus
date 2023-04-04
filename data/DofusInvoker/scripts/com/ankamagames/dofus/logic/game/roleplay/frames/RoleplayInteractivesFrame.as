@@ -23,6 +23,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.logic.game.roleplay.messages.InteractiveElementMouseOverMessage;
    import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
+   import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.network.enums.MapObstacleStateEnum;
    import com.ankamagames.dofus.network.enums.PlayerLifeStatusEnum;
    import com.ankamagames.dofus.network.messages.game.context.GameContextDestroyMessage;
@@ -388,7 +389,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                }
                AlwaysAnimatedElementManager.startAnims();
                shortcutsFrame = Kernel.getWorker().getFrame(ShortcutsFrame) as ShortcutsFrame;
-               _highlightInteractiveElements = StageShareManager.isActive && shortcutsFrame.heldShortcuts.indexOf("highlightInteractiveElements") != -1;
+               _highlightInteractiveElements = StageShareManager.isActive && shortcutsFrame.heldShortcuts.indexOf(ShortcutHookListEnum.HIGHLIGHT_INTERACTIVE_ELEMENTS) != -1;
                this.highlightInteractiveElements(_highlightInteractiveElements);
                mousePos = new Point(StageShareManager.stage.mouseX,StageShareManager.stage.mouseY);
                objectsUnder = StageShareManager.stage.getObjectsUnderPoint(mousePos);
@@ -554,7 +555,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                   _highlightInteractiveElements = false;
                   this.highlightInteractiveElements(_highlightInteractiveElements);
                }
-               else if(StageShareManager.isActive && (hliea.fromShortcut && sf.heldShortcuts.indexOf("highlightInteractiveElements") != -1 || this._mouseDown))
+               else if(StageShareManager.isActive && (hliea.fromShortcut && sf.heldShortcuts.indexOf(ShortcutHookListEnum.HIGHLIGHT_INTERACTIVE_ELEMENTS) != -1 || this._mouseDown))
                {
                   _highlightInteractiveElements = true;
                   this.highlightInteractiveElements(_highlightInteractiveElements);
@@ -567,7 +568,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                this._mouseDown = false;
                mum = msg as MouseUpMessage;
                sf = Kernel.getWorker().getFrame(ShortcutsFrame) as ShortcutsFrame;
-               if(sf.heldShortcuts.indexOf("highlightInteractiveElements") == -1 && _highlightInteractiveElements)
+               if(sf.heldShortcuts.indexOf(ShortcutHookListEnum.HIGHLIGHT_INTERACTIVE_ELEMENTS) == -1 && _highlightInteractiveElements)
                {
                   _highlightInteractiveElements = false;
                   this.highlightInteractiveElements(_highlightInteractiveElements);

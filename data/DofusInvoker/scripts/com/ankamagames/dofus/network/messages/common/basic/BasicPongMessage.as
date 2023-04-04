@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.common.basic
    public class BasicPongMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7692;
+      public static const protocolId:uint = 1258;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.common.basic
       
       override public function getMessageId() : uint
       {
-         return 7692;
+         return 1258;
       }
       
       public function initBasicPongMessage(quiet:Boolean = false) : BasicPongMessage

@@ -180,6 +180,7 @@ package com.ankamagames.dofus.misc.utils.errormanager
                break;
             case BuildTypeEnum.TESTING:
             case BuildTypeEnum.INTERNAL:
+            case BuildTypeEnum.DRAFT:
                this.activeSOS();
                this.activeShortcut();
                ErrorManager.showPopup = true;

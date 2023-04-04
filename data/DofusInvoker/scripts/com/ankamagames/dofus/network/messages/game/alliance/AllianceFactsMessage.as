@@ -1,8 +1,8 @@
 package com.ankamagames.dofus.network.messages.game.alliance
 {
    import com.ankamagames.dofus.network.ProtocolTypeManager;
-   import com.ankamagames.dofus.network.types.game.context.roleplay.GuildInAllianceInformations;
-   import com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations;
+   import com.ankamagames.dofus.network.types.game.character.CharacterMinimalSocialPublicInformations;
+   import com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformation;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -14,14 +14,14 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceFactsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5026;
+      public static const protocolId:uint = 341;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var infos:AllianceFactSheetInformations;
+      public var infos:AllianceFactSheetInformation;
       
-      public var guilds:Vector.<GuildInAllianceInformations>;
+      public var members:Vector.<CharacterMinimalSocialPublicInformations>;
       
       public var controlledSubareaIds:Vector.<uint>;
       
@@ -31,14 +31,14 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       private var _infostree:FuncTree;
       
-      private var _guildstree:FuncTree;
+      private var _memberstree:FuncTree;
       
       private var _controlledSubareaIdstree:FuncTree;
       
       public function AllianceFactsMessage()
       {
-         this.infos = new AllianceFactSheetInformations();
-         this.guilds = new Vector.<GuildInAllianceInformations>();
+         this.infos = new AllianceFactSheetInformation();
+         this.members = new Vector.<CharacterMinimalSocialPublicInformations>();
          this.controlledSubareaIds = new Vector.<uint>();
          super();
       }
@@ -50,13 +50,13 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 5026;
+         return 341;
       }
       
-      public function initAllianceFactsMessage(infos:AllianceFactSheetInformations = null, guilds:Vector.<GuildInAllianceInformations> = null, controlledSubareaIds:Vector.<uint> = null, leaderCharacterId:Number = 0, leaderCharacterName:String = "") : AllianceFactsMessage
+      public function initAllianceFactsMessage(infos:AllianceFactSheetInformation = null, members:Vector.<CharacterMinimalSocialPublicInformations> = null, controlledSubareaIds:Vector.<uint> = null, leaderCharacterId:Number = 0, leaderCharacterName:String = "") : AllianceFactsMessage
       {
          this.infos = infos;
-         this.guilds = guilds;
+         this.members = members;
          this.controlledSubareaIds = controlledSubareaIds;
          this.leaderCharacterId = leaderCharacterId;
          this.leaderCharacterName = leaderCharacterName;
@@ -66,7 +66,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function reset() : void
       {
-         this.infos = new AllianceFactSheetInformations();
+         this.infos = new AllianceFactSheetInformation();
          this.controlledSubareaIds = new Vector.<uint>();
          this.leaderCharacterId = 0;
          this.leaderCharacterName = "";
@@ -102,10 +102,10 @@ package com.ankamagames.dofus.network.messages.game.alliance
       {
          output.writeShort(this.infos.getTypeId());
          this.infos.serialize(output);
-         output.writeShort(this.guilds.length);
-         for(var _i2:uint = 0; _i2 < this.guilds.length; _i2++)
+         output.writeShort(this.members.length);
+         for(var _i2:uint = 0; _i2 < this.members.length; _i2++)
          {
-            (this.guilds[_i2] as GuildInAllianceInformations).serializeAs_GuildInAllianceInformations(output);
+            (this.members[_i2] as CharacterMinimalSocialPublicInformations).serializeAs_CharacterMinimalSocialPublicInformations(output);
          }
          output.writeShort(this.controlledSubareaIds.length);
          for(var _i3:uint = 0; _i3 < this.controlledSubareaIds.length; _i3++)
@@ -131,17 +131,17 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       public function deserializeAs_AllianceFactsMessage(input:ICustomDataInput) : void
       {
-         var _item2:GuildInAllianceInformations = null;
+         var _item2:CharacterMinimalSocialPublicInformations = null;
          var _val3:uint = 0;
          var _id1:uint = input.readUnsignedShort();
-         this.infos = ProtocolTypeManager.getInstance(AllianceFactSheetInformations,_id1);
+         this.infos = ProtocolTypeManager.getInstance(AllianceFactSheetInformation,_id1);
          this.infos.deserialize(input);
-         var _guildsLen:uint = input.readUnsignedShort();
-         for(var _i2:uint = 0; _i2 < _guildsLen; _i2++)
+         var _membersLen:uint = input.readUnsignedShort();
+         for(var _i2:uint = 0; _i2 < _membersLen; _i2++)
          {
-            _item2 = new GuildInAllianceInformations();
+            _item2 = new CharacterMinimalSocialPublicInformations();
             _item2.deserialize(input);
-            this.guilds.push(_item2);
+            this.members.push(_item2);
          }
          var _controlledSubareaIdsLen:uint = input.readUnsignedShort();
          for(var _i3:uint = 0; _i3 < _controlledSubareaIdsLen; _i3++)
@@ -165,7 +165,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       public function deserializeAsyncAs_AllianceFactsMessage(tree:FuncTree) : void
       {
          this._infostree = tree.addChild(this._infostreeFunc);
-         this._guildstree = tree.addChild(this._guildstreeFunc);
+         this._memberstree = tree.addChild(this._memberstreeFunc);
          this._controlledSubareaIdstree = tree.addChild(this._controlledSubareaIdstreeFunc);
          tree.addChild(this._leaderCharacterIdFunc);
          tree.addChild(this._leaderCharacterNameFunc);
@@ -174,24 +174,24 @@ package com.ankamagames.dofus.network.messages.game.alliance
       private function _infostreeFunc(input:ICustomDataInput) : void
       {
          var _id:uint = input.readUnsignedShort();
-         this.infos = ProtocolTypeManager.getInstance(AllianceFactSheetInformations,_id);
+         this.infos = ProtocolTypeManager.getInstance(AllianceFactSheetInformation,_id);
          this.infos.deserializeAsync(this._infostree);
       }
       
-      private function _guildstreeFunc(input:ICustomDataInput) : void
+      private function _memberstreeFunc(input:ICustomDataInput) : void
       {
          var length:uint = input.readUnsignedShort();
          for(var i:uint = 0; i < length; i++)
          {
-            this._guildstree.addChild(this._guildsFunc);
+            this._memberstree.addChild(this._membersFunc);
          }
       }
       
-      private function _guildsFunc(input:ICustomDataInput) : void
+      private function _membersFunc(input:ICustomDataInput) : void
       {
-         var _item:GuildInAllianceInformations = new GuildInAllianceInformations();
+         var _item:CharacterMinimalSocialPublicInformations = new CharacterMinimalSocialPublicInformations();
          _item.deserialize(input);
-         this.guilds.push(_item);
+         this.members.push(_item);
       }
       
       private function _controlledSubareaIdstreeFunc(input:ICustomDataInput) : void

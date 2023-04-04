@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.logic.game.common.actions.guild
 {
-   import com.ankamagames.dofus.internalDatacenter.guild.GuildRecruitmentDataWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.GuildRecruitmentDataWrapper;
    import com.ankamagames.dofus.misc.utils.AbstractAction;
    import com.ankamagames.jerakine.handlers.messages.Action;
    

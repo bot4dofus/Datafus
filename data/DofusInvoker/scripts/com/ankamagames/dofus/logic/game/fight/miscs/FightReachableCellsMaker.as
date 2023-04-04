@@ -1,8 +1,8 @@
 package com.ankamagames.dofus.logic.game.fight.miscs
 {
    import com.ankamagames.atouin.managers.EntitiesManager;
+   import com.ankamagames.dofus.internalDatacenter.stats.EntityStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
-   import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
@@ -47,7 +47,7 @@ package com.ankamagames.dofus.logic.game.fight.miscs
          super();
          var entitiesFrame:FightEntitiesFrame = Kernel.getWorker().getFrame(FightEntitiesFrame) as FightEntitiesFrame;
          var stats:EntityStats = StatsManager.getInstance().getStats(infos.contextualId);
-         var movementPoints:Stat = stats.getStat(StatIds.MOVEMENT_POINTS);
+         var movementPoints:EntityStat = stats.getStat(StatIds.MOVEMENT_POINTS) as EntityStat;
          var movementPointsValue:Number = movementPoints !== null ? Number(movementPoints.totalValue) : Number(0);
          this._reachableCells = new Vector.<uint>();
          this._unreachableCells = new Vector.<uint>();

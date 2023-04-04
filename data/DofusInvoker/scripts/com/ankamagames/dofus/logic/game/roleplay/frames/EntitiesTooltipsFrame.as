@@ -15,12 +15,12 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
    import com.ankamagames.dofus.misc.lists.HookList;
+   import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.network.messages.game.context.GameContextRemoveElementMessage;
    import com.ankamagames.dofus.network.messages.game.context.GameContextRemoveMultipleElementsMessage;
    import com.ankamagames.dofus.network.types.game.context.GameRolePlayTaxCollectorInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayCharacterInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayGroupMonsterInformations;
-   import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMerchantInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMutantInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayNpcInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayPortalInformations;
@@ -66,7 +66,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       {
          var shortcutsFrame:ShortcutsFrame = Kernel.getWorker().getFrame(ShortcutsFrame) as ShortcutsFrame;
          this._roleplayWorldFrame = Kernel.getWorker().getFrame(RoleplayWorldFrame) as RoleplayWorldFrame;
-         if(!this._roleplayWorldFrame || this.triggeredByShortcut && shortcutsFrame.heldShortcuts.indexOf("showEntitiesTooltips") == -1)
+         if(!this._roleplayWorldFrame || this.triggeredByShortcut && shortcutsFrame.heldShortcuts.indexOf(ShortcutHookListEnum.SHOW_ENTITIES_TOOLTIPS) == -1)
          {
             return false;
          }
@@ -101,7 +101,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          Berilia.getInstance().removeEventListener(UiRenderEvent.UIRenderComplete,this.onLoadUi);
          Berilia.getInstance().removeEventListener(UiUnloadEvent.UNLOAD_UI_COMPLETE,this.onUnLoadUi);
          var shortcutsFrame:ShortcutsFrame = Kernel.getWorker().getFrame(ShortcutsFrame) as ShortcutsFrame;
-         var shortcutIndex:int = shortcutsFrame.heldShortcuts.indexOf("showEntitiesTooltips");
+         var shortcutIndex:int = shortcutsFrame.heldShortcuts.indexOf(ShortcutHookListEnum.SHOW_ENTITIES_TOOLTIPS);
          if(shortcutIndex != -1)
          {
             shortcutsFrame.heldShortcuts.splice(shortcutIndex,1);
@@ -308,7 +308,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       private function isPlayer(pEntityId:Number) : Boolean
       {
          var entityInfos:* = this._roleplayEntitiesFrame.getEntityInfos(pEntityId);
-         return entityInfos is GameRolePlayCharacterInformations || entityInfos is GameRolePlayMerchantInformations || entityInfos is GameRolePlayMutantInformations;
+         return entityInfos is GameRolePlayCharacterInformations || entityInfos is GameRolePlayMutantInformations;
       }
       
       private function isNpcAndTooltipInvisible(pEntityId:Number) : Boolean

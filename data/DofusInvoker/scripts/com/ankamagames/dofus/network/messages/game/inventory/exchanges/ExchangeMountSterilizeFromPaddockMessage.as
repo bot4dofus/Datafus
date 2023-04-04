@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeMountSterilizeFromPaddockMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8315;
+      public static const protocolId:uint = 878;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 8315;
+         return 878;
       }
       
       public function initExchangeMountSterilizeFromPaddockMessage(name:String = "", worldX:int = 0, worldY:int = 0, sterilizator:String = "") : ExchangeMountSterilizeFromPaddockMessage

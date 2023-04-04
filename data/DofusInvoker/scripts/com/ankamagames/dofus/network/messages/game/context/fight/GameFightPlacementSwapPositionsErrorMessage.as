@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightPlacementSwapPositionsErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 360;
+      public static const protocolId:uint = 8152;
        
       
       public function GameFightPlacementSwapPositionsErrorMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 360;
+         return 8152;
       }
       
       public function initGameFightPlacementSwapPositionsErrorMessage() : GameFightPlacementSwapPositionsErrorMessage

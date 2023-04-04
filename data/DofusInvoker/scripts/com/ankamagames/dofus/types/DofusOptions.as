@@ -59,8 +59,8 @@ package com.ankamagames.dofus.types
          add("toggleEntityIcons",true);
          add("hideDeadFighters",true);
          add("hideSummonedFighters",false);
-         add("mapFilters",4062);
-         add("mapFilters_miniMap",4062);
+         add("mapFilters",4094);
+         add("mapFilters_miniMap",4094);
          add("mapFiltersConquest",288);
          add("mapFiltersAnomaly",1344);
          add("mapFiltersSearch",256);
@@ -74,7 +74,7 @@ package com.ankamagames.dofus.types
          add("notificationsMaxNumber",5);
          add("notificationsPosition",ExternalNotificationPositionEnum.BOTTOM_RIGHT);
          add("creaturesFightMode",false);
-         add("warnOnGuildItemAgression",true);
+         add("warnOnAllianceItemAgression",true);
          add("disableGuildMotd",false);
          add("disableAllianceMotd",false);
          add("zoomOnMouseWheel",true);

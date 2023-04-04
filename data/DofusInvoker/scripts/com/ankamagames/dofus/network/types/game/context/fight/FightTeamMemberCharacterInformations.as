@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightTeamMemberCharacterInformations extends FightTeamMemberInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 9478;
+      public static const protocolId:uint = 6837;
        
       
       public var name:String = "";
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 9478;
+         return 6837;
       }
       
       public function initFightTeamMemberCharacterInformations(id:Number = 0, name:String = "", level:uint = 0) : FightTeamMemberCharacterInformations

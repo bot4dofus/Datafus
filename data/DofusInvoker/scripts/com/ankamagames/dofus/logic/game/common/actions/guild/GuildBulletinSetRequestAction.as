@@ -9,18 +9,15 @@ package com.ankamagames.dofus.logic.game.common.actions.guild
       
       public var content:String;
       
-      public var notifyMembers:Boolean;
-      
       public function GuildBulletinSetRequestAction(params:Array = null)
       {
          super(params);
       }
       
-      public static function create(content:String, notifyMembers:Boolean = true) : GuildBulletinSetRequestAction
+      public static function create(content:String) : GuildBulletinSetRequestAction
       {
          var action:GuildBulletinSetRequestAction = new GuildBulletinSetRequestAction(arguments);
          action.content = content;
-         action.notifyMembers = notifyMembers;
          return action;
       }
    }

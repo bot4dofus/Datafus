@@ -13,6 +13,8 @@ package com.ankamagames.dofus.misc.lists
       
       public static const KohUpdate:String = "KohUpdate";
       
+      public static const KohEnd:String = "KohEnd";
+      
       public static const CharacterAlignmentWarEffortProgressionHook:String = "CharacterAlignmentWarEffortProgressionHook";
       
       public static const AlignmentWarEffortProgressionMessageHook:String = "AlignmentWarEffortProgressionMessageHook";
@@ -31,6 +33,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(AlignmentSubAreasList);
          Hook.createHook(AlignmentAreaUpdate);
          Hook.createHook(KohUpdate);
+         Hook.createHook(KohEnd);
          Hook.createHook(CharacterAlignmentWarEffortProgressionHook);
          Hook.createHook(AlignmentWarEffortProgressionMessageHook);
          Hook.createHook(UpdateWarEffortHook);

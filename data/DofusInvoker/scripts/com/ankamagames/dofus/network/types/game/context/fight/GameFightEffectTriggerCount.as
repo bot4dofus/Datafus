@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameFightEffectTriggerCount implements INetworkType
    {
       
-      public static const protocolId:uint = 6210;
+      public static const protocolId:uint = 7203;
        
       
       public var effectId:uint = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 6210;
+         return 7203;
       }
       
       public function initGameFightEffectTriggerCount(effectId:uint = 0, targetId:Number = 0, count:uint = 0) : GameFightEffectTriggerCount
@@ -63,7 +63,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
          {
             throw new Error("Forbidden value (" + this.count + ") on element count.");
          }
-         output.writeByte(this.count);
+         output.writeShort(this.count);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -110,7 +110,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       private function _countFunc(input:ICustomDataInput) : void
       {
-         this.count = input.readByte();
+         this.count = input.readShort();
          if(this.count < 0)
          {
             throw new Error("Forbidden value (" + this.count + ") on element of GameFightEffectTriggerCount.count.");

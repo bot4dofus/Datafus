@@ -1,13 +1,14 @@
 package com.ankamagames.dofus.logic.connection.managers
 {
    import by.blooddy.crypto.MD5;
+   import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.berilia.managers.UiModuleManager;
    import com.ankamagames.dofus.BuildInfos;
    import com.ankamagames.dofus.logic.connection.actions.LoginValidationAction;
    import com.ankamagames.dofus.logic.connection.actions.LoginValidationWithTicketAction;
    import com.ankamagames.dofus.logic.game.common.frames.ProtectPishingFrame;
    import com.ankamagames.dofus.logic.shield.SecureModeManager;
-   import com.ankamagames.dofus.network.messages.connection.IdentificationAccountForceMessage;
+   import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.network.messages.connection.IdentificationMessage;
    import com.ankamagames.dofus.network.types.secure.TrustCertificate;
    import com.ankamagames.jerakine.data.I18n;
@@ -61,6 +62,12 @@ package com.ankamagames.dofus.logic.connection.managers
       
       public var isAccountForced:Boolean = false;
       
+      public var forcedAccountId:uint = 0;
+      
+      public var forcedAccountNickname:String = "";
+      
+      public var forcedAccountTag:String = "";
+      
       public function AuthentificationManager()
       {
          this._verifyKey = AuthentificationManager__verifyKey;
@@ -80,6 +87,19 @@ package com.ankamagames.dofus.logic.connection.managers
          return _self;
       }
       
+      public function setForceAccountInfos(force:Boolean, id:uint, name:String, tag:String) : void
+      {
+         this.isAccountForced = force;
+         this.forcedAccountId = id;
+         this.forcedAccountNickname = name;
+         this.forcedAccountTag = tag;
+      }
+      
+      public function getForceAccountInfos() : void
+      {
+         KernelEventsManager.getInstance().processCallback(HookList.ForceAccountStatus,this.isAccountForced,this.forcedAccountId,this.forcedAccountNickname,this.forcedAccountTag);
+      }
+      
       public function get gameServerTicket() : String
       {
          return this._gameServerTicket;
@@ -88,11 +108,6 @@ package com.ankamagames.dofus.logic.connection.managers
       public function set gameServerTicket(value:String) : void
       {
          this._gameServerTicket = value;
-      }
-      
-      public function get salt() : String
-      {
-         return this._salt;
       }
       
       public function initAESKey() : void
@@ -186,30 +201,12 @@ package com.ankamagames.dofus.logic.connection.managers
          var imsg:IdentificationMessage = null;
          var token:String = null;
          var buildType:uint = BuildInfos.BUILD_TYPE;
-         if(AuthentificationManager.getInstance().isAccountForced)
-         {
-            imsg = new IdentificationAccountForceMessage();
-         }
-         else
-         {
-            imsg = new IdentificationMessage();
-         }
+         imsg = new IdentificationMessage();
          if(this._lva is LoginValidationWithTicketAction || this.nextToken)
          {
             token = !!this.nextToken ? this.nextToken : LoginValidationWithTicketAction(this._lva).ticket;
             this.nextToken = null;
-            if(imsg is IdentificationAccountForceMessage)
-            {
-               (imsg as IdentificationAccountForceMessage).initIdentificationAccountForceMessage(imsg.version,XmlConfig.getInstance().getEntry("config.lang.current"),this.cipherRsa("   ",token,this._certificate),this._lva.serverId,this._lva.autoSelectServer,this._certificate != null,true,0,null,AuthentificationManager.getInstance().username);
-            }
-            else
-            {
-               imsg.initIdentificationMessage(imsg.version,XmlConfig.getInstance().getEntry("config.lang.current"),this.cipherRsa("   ",token,this._certificate),this._lva.serverId,this._lva.autoSelectServer,this._certificate != null,true);
-            }
-         }
-         else if(imsg is IdentificationAccountForceMessage)
-         {
-            (imsg as IdentificationAccountForceMessage).initIdentificationAccountForceMessage(imsg.version,XmlConfig.getInstance().getEntry("config.lang.current"),this.cipherRsa(this._lva.username,this._lva.password,this._certificate),this._lva.serverId,this._lva.autoSelectServer,this._certificate != null,false,0,null,AuthentificationManager.getInstance().username);
+            imsg.initIdentificationMessage(imsg.version,XmlConfig.getInstance().getEntry("config.lang.current"),this.cipherRsa("   ",token,this._certificate),this._lva.serverId,this._lva.autoSelectServer,this._certificate != null,true);
          }
          else
          {

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.character.alteration
    public class AlterationInfo implements INetworkType
    {
       
-      public static const protocolId:uint = 7259;
+      public static const protocolId:uint = 6861;
        
       
       public var alterationId:uint = 0;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.types.game.character.alteration
       
       public function getTypeId() : uint
       {
-         return 7259;
+         return 6861;
       }
       
       public function initAlterationInfo(alterationId:uint = 0, creationTime:Number = 0, expirationType:uint = 1, expirationValue:Number = 0, effects:Vector.<ObjectEffect> = null) : AlterationInfo

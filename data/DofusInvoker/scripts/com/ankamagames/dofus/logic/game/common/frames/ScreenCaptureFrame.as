@@ -20,6 +20,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.dofus.misc.lists.ChatHookList;
+   import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.network.enums.ChatActivableChannelsEnum;
    import com.ankamagames.dofus.types.enums.NotificationTypeEnum;
    import com.ankamagames.dofus.uiApi.CaptureApi;
@@ -95,10 +96,10 @@ package com.ankamagames.dofus.logic.game.common.frames
          if(!StoreDataManager.getInstance().getData(Constants.DATASTORE_COMPUTER_OPTIONS,"screenshotNotification") && PlayedCharacterManager.getInstance().infos.level >= MIN_LEVEL_NOTIFICATION)
          {
             StoreDataManager.getInstance().setData(Constants.DATASTORE_COMPUTER_OPTIONS,"screenshotNotification",true);
-            b = BindsManager.getInstance().getBindFromShortcut("captureScreen");
-            captureScreenShortcutKey = b && b.key ? b.toString() : Shortcut.getShortcutByName("captureScreen").defaultBind.toString();
-            b = BindsManager.getInstance().getBindFromShortcut("captureScreenWithoutUI");
-            captureScreenWithoutUiShortcutKey = b && b.key ? b.toString() : Shortcut.getShortcutByName("captureScreenWithoutUI").defaultBind.toString();
+            b = BindsManager.getInstance().getBindFromShortcut(ShortcutHookListEnum.CAPTURE_SCREEN);
+            captureScreenShortcutKey = b && b.key ? b.toString() : Shortcut.getShortcutByName(ShortcutHookListEnum.CAPTURE_SCREEN).defaultBind.toString();
+            b = BindsManager.getInstance().getBindFromShortcut(ShortcutHookListEnum.CAPTURE_SCREEN_WITHOUT_UI);
+            captureScreenWithoutUiShortcutKey = b && b.key ? b.toString() : Shortcut.getShortcutByName(ShortcutHookListEnum.CAPTURE_SCREEN_WITHOUT_UI).defaultBind.toString();
             notifId = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.common.screenshot"),I18n.getUiText("ui.common.screenshot.notification",[HtmlManager.addTag(captureScreenShortcutKey,HtmlManager.SPAN,{"color":XmlConfig.getInstance().getEntry("colors.shortcut")}),HtmlManager.addTag(captureScreenWithoutUiShortcutKey,HtmlManager.SPAN,{"color":XmlConfig.getInstance().getEntry("colors.shortcut")})]),NotificationTypeEnum.TUTORIAL);
             NotificationManager.getInstance().sendNotification(notifId);
          }

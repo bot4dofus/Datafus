@@ -40,7 +40,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.types.game.context.GameContextActorInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayActorInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayCharacterInformations;
-   import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMerchantInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.HumanOptionAlliance;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
@@ -351,49 +350,38 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       
       private function gameRolePlayShowActorHandler(grpsamsg:Object) : void
       {
-         var infos:GameRolePlayCharacterInformations = null;
-         var entityId:Number = NaN;
-         var de:DisplayedEntity = null;
-         var allianceTag:* = null;
          var option:* = undefined;
-         if(grpsamsg.informations is GameRolePlayMerchantInformations)
+         var infos:GameRolePlayCharacterInformations = grpsamsg.informations as GameRolePlayCharacterInformations;
+         if(infos == null)
          {
-            this.removeElementHandler(grpsamsg.informations.contextualId);
+            return;
          }
-         else
+         var entityId:Number = infos.contextualId;
+         var de:DisplayedEntity = this.getEntity(entityId);
+         var allianceTag:* = "";
+         for each(option in infos.humanoidInfo.options)
          {
-            infos = grpsamsg.informations as GameRolePlayCharacterInformations;
-            if(infos == null)
+            if(option is HumanOptionAlliance)
             {
-               return;
+               allianceTag = "[" + option.allianceInformation.allianceTag + "]";
             }
-            entityId = infos.contextualId;
-            de = this.getEntity(entityId);
-            allianceTag = "";
-            for each(option in infos.humanoidInfo.options)
+         }
+         if(de)
+         {
+            if(allianceTag != de.allianceName)
             {
-               if(option is HumanOptionAlliance)
-               {
-                  allianceTag = "[" + option.allianceInformations.allianceTag + "]";
-               }
+               this.removeElementHandler(entityId);
+               de = null;
             }
-            if(de)
+            else
             {
-               if(allianceTag != de.allianceName)
-               {
-                  this.removeElementHandler(entityId);
-                  de = null;
-               }
-               else
-               {
-                  de.visible = false;
-                  (DofusEntities.getEntity(entityId) as AnimatedCharacter).addEventListener(TiphonEvent.RENDER_SUCCEED,this.onAnimationEnd);
-               }
+               de.visible = false;
+               (DofusEntities.getEntity(entityId) as AnimatedCharacter).addEventListener(TiphonEvent.RENDER_SUCCEED,this.onAnimationEnd);
             }
-            if(!de)
-            {
-               this.addEntity(entityId,infos.name,allianceTag);
-            }
+         }
+         if(!de)
+         {
+            this.addEntity(entityId,infos.name,allianceTag);
          }
       }
       
@@ -500,7 +488,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                {
                   if(option is HumanOptionAlliance)
                   {
-                     allianceTag = "[" + option.allianceInformations.allianceTag + "]";
+                     allianceTag = "[" + option.allianceInformation.allianceTag + "]";
                   }
                }
                this.addEntity(entityId,entityInfo.name,allianceTag);

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.shortcut
    public class ShortcutSmiley extends Shortcut implements INetworkType
    {
       
-      public static const protocolId:uint = 5066;
+      public static const protocolId:uint = 4289;
        
       
       public var smileyId:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.shortcut
       
       override public function getTypeId() : uint
       {
-         return 5066;
+         return 4289;
       }
       
       public function initShortcutSmiley(slot:uint = 0, smileyId:uint = 0) : ShortcutSmiley

@@ -1,7 +1,7 @@
 package com.ankamagames.dofus.network.types.game.guild.logbook.global
 {
-   import com.ankamagames.dofus.network.types.game.guild.GuildRankMinimalInformation;
    import com.ankamagames.dofus.network.types.game.guild.logbook.GuildLogbookEntryBasicInformation;
+   import com.ankamagames.dofus.network.types.game.rank.RankMinimalInformation;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
    import com.ankamagames.jerakine.network.INetworkType;
@@ -10,27 +10,27 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
    public class GuildRankActivity extends GuildLogbookEntryBasicInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 3613;
+      public static const protocolId:uint = 7516;
        
       
       public var rankActivityType:uint = 0;
       
-      public var guildRankMinimalInfos:GuildRankMinimalInformation;
+      public var guildRankMinimalInfos:RankMinimalInformation;
       
       private var _guildRankMinimalInfostree:FuncTree;
       
       public function GuildRankActivity()
       {
-         this.guildRankMinimalInfos = new GuildRankMinimalInformation();
+         this.guildRankMinimalInfos = new RankMinimalInformation();
          super();
       }
       
       override public function getTypeId() : uint
       {
-         return 3613;
+         return 7516;
       }
       
-      public function initGuildRankActivity(id:uint = 0, date:Number = 0, rankActivityType:uint = 0, guildRankMinimalInfos:GuildRankMinimalInformation = null) : GuildRankActivity
+      public function initGuildRankActivity(id:uint = 0, date:Number = 0, rankActivityType:uint = 0, guildRankMinimalInfos:RankMinimalInformation = null) : GuildRankActivity
       {
          super.initGuildLogbookEntryBasicInformation(id,date);
          this.rankActivityType = rankActivityType;
@@ -42,7 +42,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
       {
          super.reset();
          this.rankActivityType = 0;
-         this.guildRankMinimalInfos = new GuildRankMinimalInformation();
+         this.guildRankMinimalInfos = new RankMinimalInformation();
       }
       
       override public function serialize(output:ICustomDataOutput) : void
@@ -54,7 +54,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
       {
          super.serializeAs_GuildLogbookEntryBasicInformation(output);
          output.writeByte(this.rankActivityType);
-         this.guildRankMinimalInfos.serializeAs_GuildRankMinimalInformation(output);
+         this.guildRankMinimalInfos.serializeAs_RankMinimalInformation(output);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -66,7 +66,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
       {
          super.deserialize(input);
          this._rankActivityTypeFunc(input);
-         this.guildRankMinimalInfos = new GuildRankMinimalInformation();
+         this.guildRankMinimalInfos = new RankMinimalInformation();
          this.guildRankMinimalInfos.deserialize(input);
       }
       
@@ -93,7 +93,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
       
       private function _guildRankMinimalInfostreeFunc(input:ICustomDataInput) : void
       {
-         this.guildRankMinimalInfos = new GuildRankMinimalInformation();
+         this.guildRankMinimalInfos = new RankMinimalInformation();
          this.guildRankMinimalInfos.deserializeAsync(this._guildRankMinimalInfostree);
       }
    }

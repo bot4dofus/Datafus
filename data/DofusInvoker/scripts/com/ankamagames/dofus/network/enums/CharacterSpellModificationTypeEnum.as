@@ -42,6 +42,10 @@ package com.ankamagames.dofus.network.enums
       public static const SET_RANGE_MIN:uint = 18;
       
       public static const VISIBLE_TARGET:uint = 19;
+      
+      public static const PORTAL_FREE_CELL:uint = 20;
+      
+      public static const PORTAL_PROJECTION:uint = 21;
        
       
       public function CharacterSpellModificationTypeEnum()

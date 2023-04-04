@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeSellOkMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5149;
+      public static const protocolId:uint = 1954;
        
       
       public function ExchangeSellOkMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 5149;
+         return 1954;
       }
       
       public function initExchangeSellOkMessage() : ExchangeSellOkMessage

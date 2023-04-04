@@ -26,7 +26,7 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.network.enums.ChatActivableChannelsEnum;
-   import com.ankamagames.dofus.network.types.game.guild.GuildRankMinimalInformation;
+   import com.ankamagames.dofus.network.types.game.rank.RankMinimalInformation;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.logger.ModuleLogger;
@@ -189,7 +189,7 @@ package com.ankamagames.dofus.uiApi
          return HyperlinkShowPlayerMenuManager.getLink(pPlayerId,pPlayerName,pText);
       }
       
-      public function getGuildRankLink(pRank:GuildRankMinimalInformation, pText:String = null) : String
+      public function getGuildRankLink(pRank:RankMinimalInformation, pText:String = null) : String
       {
          return HyperlinkShowGuildRanks.getLink(pRank,pText);
       }

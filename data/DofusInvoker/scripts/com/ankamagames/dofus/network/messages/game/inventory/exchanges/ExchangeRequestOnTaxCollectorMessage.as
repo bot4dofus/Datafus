@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeRequestOnTaxCollectorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7660;
+      public static const protocolId:uint = 1613;
        
       
       public function ExchangeRequestOnTaxCollectorMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 7660;
+         return 1613;
       }
       
       public function initExchangeRequestOnTaxCollectorMessage() : ExchangeRequestOnTaxCollectorMessage

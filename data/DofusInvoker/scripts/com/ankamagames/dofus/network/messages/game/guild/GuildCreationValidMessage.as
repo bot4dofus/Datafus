@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.messages.game.guild
 {
-   import com.ankamagames.dofus.network.types.game.guild.GuildEmblem;
+   import com.ankamagames.dofus.network.types.game.social.SocialEmblem;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -12,20 +12,20 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildCreationValidMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7364;
+      public static const protocolId:uint = 9177;
        
       
       private var _isInitialized:Boolean = false;
       
       public var guildName:String = "";
       
-      public var guildEmblem:GuildEmblem;
+      public var guildEmblem:SocialEmblem;
       
       private var _guildEmblemtree:FuncTree;
       
       public function GuildCreationValidMessage()
       {
-         this.guildEmblem = new GuildEmblem();
+         this.guildEmblem = new SocialEmblem();
          super();
       }
       
@@ -36,10 +36,10 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 7364;
+         return 9177;
       }
       
-      public function initGuildCreationValidMessage(guildName:String = "", guildEmblem:GuildEmblem = null) : GuildCreationValidMessage
+      public function initGuildCreationValidMessage(guildName:String = "", guildEmblem:SocialEmblem = null) : GuildCreationValidMessage
       {
          this.guildName = guildName;
          this.guildEmblem = guildEmblem;
@@ -50,7 +50,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       override public function reset() : void
       {
          this.guildName = "";
-         this.guildEmblem = new GuildEmblem();
+         this.guildEmblem = new SocialEmblem();
          this._isInitialized = false;
       }
       
@@ -82,7 +82,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       public function serializeAs_GuildCreationValidMessage(output:ICustomDataOutput) : void
       {
          output.writeUTF(this.guildName);
-         this.guildEmblem.serializeAs_GuildEmblem(output);
+         this.guildEmblem.serializeAs_SocialEmblem(output);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -93,7 +93,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       public function deserializeAs_GuildCreationValidMessage(input:ICustomDataInput) : void
       {
          this._guildNameFunc(input);
-         this.guildEmblem = new GuildEmblem();
+         this.guildEmblem = new SocialEmblem();
          this.guildEmblem.deserialize(input);
       }
       
@@ -115,7 +115,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       private function _guildEmblemtreeFunc(input:ICustomDataInput) : void
       {
-         this.guildEmblem = new GuildEmblem();
+         this.guildEmblem = new SocialEmblem();
          this.guildEmblem.deserializeAsync(this._guildEmblemtree);
       }
    }

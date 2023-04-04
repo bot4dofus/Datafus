@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountDataErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6076;
+      public static const protocolId:uint = 240;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 6076;
+         return 240;
       }
       
       public function initMountDataErrorMessage(reason:uint = 0) : MountDataErrorMessage

@@ -4,7 +4,7 @@ package com.ankamagames.dofus.misc.stats.ui
    import com.ankamagames.dofus.logic.game.common.actions.bid.BidSwitchToBuyerModeAction;
    import com.ankamagames.dofus.logic.game.common.actions.bid.BidSwitchToSellerModeAction;
    import com.ankamagames.dofus.logic.game.common.actions.bid.ExchangeBidHouseBuyAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeShopStockMouvmentAddAction;
+   import com.ankamagames.dofus.logic.game.common.actions.trade.ExchangeShopStockMovementAddAction;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.misc.lists.ExchangeHookList;
    import com.ankamagames.dofus.misc.stats.IHookStats;
@@ -142,7 +142,7 @@ package com.ankamagames.dofus.misc.stats.ui
          {
             this.switchToSell();
          }
-         else if(pMessage is ExchangeShopStockMouvmentAddAction)
+         else if(pMessage is ExchangeShopStockMovementAddAction)
          {
             this.addSell();
          }

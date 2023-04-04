@@ -1,7 +1,7 @@
 package com.ankamagames.dofus.network.messages.game.prism
 {
    import com.ankamagames.dofus.network.ProtocolTypeManager;
-   import com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo;
+   import com.ankamagames.dofus.network.types.game.prism.PrismGeolocalizedInformation;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -13,18 +13,18 @@ package com.ankamagames.dofus.network.messages.game.prism
    public class PrismsListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8518;
+      public static const protocolId:uint = 8191;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var prisms:Vector.<PrismSubareaEmptyInfo>;
+      public var prisms:Vector.<PrismGeolocalizedInformation>;
       
       private var _prismstree:FuncTree;
       
       public function PrismsListMessage()
       {
-         this.prisms = new Vector.<PrismSubareaEmptyInfo>();
+         this.prisms = new Vector.<PrismGeolocalizedInformation>();
          super();
       }
       
@@ -35,10 +35,10 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function getMessageId() : uint
       {
-         return 8518;
+         return 8191;
       }
       
-      public function initPrismsListMessage(prisms:Vector.<PrismSubareaEmptyInfo> = null) : PrismsListMessage
+      public function initPrismsListMessage(prisms:Vector.<PrismGeolocalizedInformation> = null) : PrismsListMessage
       {
          this.prisms = prisms;
          this._isInitialized = true;
@@ -47,7 +47,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function reset() : void
       {
-         this.prisms = new Vector.<PrismSubareaEmptyInfo>();
+         this.prisms = new Vector.<PrismGeolocalizedInformation>();
          this._isInitialized = false;
       }
       
@@ -81,8 +81,8 @@ package com.ankamagames.dofus.network.messages.game.prism
          output.writeShort(this.prisms.length);
          for(var _i1:uint = 0; _i1 < this.prisms.length; _i1++)
          {
-            output.writeShort((this.prisms[_i1] as PrismSubareaEmptyInfo).getTypeId());
-            (this.prisms[_i1] as PrismSubareaEmptyInfo).serialize(output);
+            output.writeShort((this.prisms[_i1] as PrismGeolocalizedInformation).getTypeId());
+            (this.prisms[_i1] as PrismGeolocalizedInformation).serialize(output);
          }
       }
       
@@ -94,12 +94,12 @@ package com.ankamagames.dofus.network.messages.game.prism
       public function deserializeAs_PrismsListMessage(input:ICustomDataInput) : void
       {
          var _id1:uint = 0;
-         var _item1:PrismSubareaEmptyInfo = null;
+         var _item1:PrismGeolocalizedInformation = null;
          var _prismsLen:uint = input.readUnsignedShort();
          for(var _i1:uint = 0; _i1 < _prismsLen; _i1++)
          {
             _id1 = input.readUnsignedShort();
-            _item1 = ProtocolTypeManager.getInstance(PrismSubareaEmptyInfo,_id1);
+            _item1 = ProtocolTypeManager.getInstance(PrismGeolocalizedInformation,_id1);
             _item1.deserialize(input);
             this.prisms.push(_item1);
          }
@@ -127,7 +127,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       private function _prismsFunc(input:ICustomDataInput) : void
       {
          var _id:uint = input.readUnsignedShort();
-         var _item:PrismSubareaEmptyInfo = ProtocolTypeManager.getInstance(PrismSubareaEmptyInfo,_id);
+         var _item:PrismGeolocalizedInformation = ProtocolTypeManager.getInstance(PrismGeolocalizedInformation,_id);
          _item.deserialize(input);
          this.prisms.push(_item);
       }

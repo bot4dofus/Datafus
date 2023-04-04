@@ -8,18 +8,16 @@ package com.ankamagames.dofus.network.types.game.prism
    public class PrismInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 1566;
+      public static const protocolId:uint = 1874;
        
-      
-      public var typeId:uint = 0;
       
       public var state:uint = 1;
       
-      public var nextVulnerabilityDate:uint = 0;
-      
       public var placementDate:uint = 0;
       
-      public var rewardTokenCount:uint = 0;
+      public var nuggetsCount:uint = 0;
+      
+      public var durability:uint = 0;
       
       public function PrismInformation()
       {
@@ -28,26 +26,24 @@ package com.ankamagames.dofus.network.types.game.prism
       
       public function getTypeId() : uint
       {
-         return 1566;
+         return 1874;
       }
       
-      public function initPrismInformation(typeId:uint = 0, state:uint = 1, nextVulnerabilityDate:uint = 0, placementDate:uint = 0, rewardTokenCount:uint = 0) : PrismInformation
+      public function initPrismInformation(state:uint = 1, placementDate:uint = 0, nuggetsCount:uint = 0, durability:uint = 0) : PrismInformation
       {
-         this.typeId = typeId;
          this.state = state;
-         this.nextVulnerabilityDate = nextVulnerabilityDate;
          this.placementDate = placementDate;
-         this.rewardTokenCount = rewardTokenCount;
+         this.nuggetsCount = nuggetsCount;
+         this.durability = durability;
          return this;
       }
       
       public function reset() : void
       {
-         this.typeId = 0;
          this.state = 1;
-         this.nextVulnerabilityDate = 0;
          this.placementDate = 0;
-         this.rewardTokenCount = 0;
+         this.nuggetsCount = 0;
+         this.durability = 0;
       }
       
       public function serialize(output:ICustomDataOutput) : void
@@ -57,27 +53,22 @@ package com.ankamagames.dofus.network.types.game.prism
       
       public function serializeAs_PrismInformation(output:ICustomDataOutput) : void
       {
-         if(this.typeId < 0)
-         {
-            throw new Error("Forbidden value (" + this.typeId + ") on element typeId.");
-         }
-         output.writeByte(this.typeId);
          output.writeByte(this.state);
-         if(this.nextVulnerabilityDate < 0)
-         {
-            throw new Error("Forbidden value (" + this.nextVulnerabilityDate + ") on element nextVulnerabilityDate.");
-         }
-         output.writeInt(this.nextVulnerabilityDate);
          if(this.placementDate < 0)
          {
             throw new Error("Forbidden value (" + this.placementDate + ") on element placementDate.");
          }
          output.writeInt(this.placementDate);
-         if(this.rewardTokenCount < 0)
+         if(this.nuggetsCount < 0)
          {
-            throw new Error("Forbidden value (" + this.rewardTokenCount + ") on element rewardTokenCount.");
+            throw new Error("Forbidden value (" + this.nuggetsCount + ") on element nuggetsCount.");
          }
-         output.writeVarInt(this.rewardTokenCount);
+         output.writeVarInt(this.nuggetsCount);
+         if(this.durability < 0)
+         {
+            throw new Error("Forbidden value (" + this.durability + ") on element durability.");
+         }
+         output.writeInt(this.durability);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -87,11 +78,10 @@ package com.ankamagames.dofus.network.types.game.prism
       
       public function deserializeAs_PrismInformation(input:ICustomDataInput) : void
       {
-         this._typeIdFunc(input);
          this._stateFunc(input);
-         this._nextVulnerabilityDateFunc(input);
          this._placementDateFunc(input);
-         this._rewardTokenCountFunc(input);
+         this._nuggetsCountFunc(input);
+         this._durabilityFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -101,20 +91,10 @@ package com.ankamagames.dofus.network.types.game.prism
       
       public function deserializeAsyncAs_PrismInformation(tree:FuncTree) : void
       {
-         tree.addChild(this._typeIdFunc);
          tree.addChild(this._stateFunc);
-         tree.addChild(this._nextVulnerabilityDateFunc);
          tree.addChild(this._placementDateFunc);
-         tree.addChild(this._rewardTokenCountFunc);
-      }
-      
-      private function _typeIdFunc(input:ICustomDataInput) : void
-      {
-         this.typeId = input.readByte();
-         if(this.typeId < 0)
-         {
-            throw new Error("Forbidden value (" + this.typeId + ") on element of PrismInformation.typeId.");
-         }
+         tree.addChild(this._nuggetsCountFunc);
+         tree.addChild(this._durabilityFunc);
       }
       
       private function _stateFunc(input:ICustomDataInput) : void
@@ -123,15 +103,6 @@ package com.ankamagames.dofus.network.types.game.prism
          if(this.state < 0)
          {
             throw new Error("Forbidden value (" + this.state + ") on element of PrismInformation.state.");
-         }
-      }
-      
-      private function _nextVulnerabilityDateFunc(input:ICustomDataInput) : void
-      {
-         this.nextVulnerabilityDate = input.readInt();
-         if(this.nextVulnerabilityDate < 0)
-         {
-            throw new Error("Forbidden value (" + this.nextVulnerabilityDate + ") on element of PrismInformation.nextVulnerabilityDate.");
          }
       }
       
@@ -144,12 +115,21 @@ package com.ankamagames.dofus.network.types.game.prism
          }
       }
       
-      private function _rewardTokenCountFunc(input:ICustomDataInput) : void
+      private function _nuggetsCountFunc(input:ICustomDataInput) : void
       {
-         this.rewardTokenCount = input.readVarUhInt();
-         if(this.rewardTokenCount < 0)
+         this.nuggetsCount = input.readVarUhInt();
+         if(this.nuggetsCount < 0)
          {
-            throw new Error("Forbidden value (" + this.rewardTokenCount + ") on element of PrismInformation.rewardTokenCount.");
+            throw new Error("Forbidden value (" + this.nuggetsCount + ") on element of PrismInformation.nuggetsCount.");
+         }
+      }
+      
+      private function _durabilityFunc(input:ICustomDataInput) : void
+      {
+         this.durability = input.readInt();
+         if(this.durability < 0)
+         {
+            throw new Error("Forbidden value (" + this.durability + ") on element of PrismInformation.durability.");
          }
       }
    }

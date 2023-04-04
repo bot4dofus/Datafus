@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.progression.suggestion
    public class ActivityHideRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 990;
+      public static const protocolId:uint = 8093;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.progression.suggestion
       
       override public function getMessageId() : uint
       {
-         return 990;
+         return 8093;
       }
       
       public function initActivityHideRequestMessage(activityId:uint = 0) : ActivityHideRequestMessage

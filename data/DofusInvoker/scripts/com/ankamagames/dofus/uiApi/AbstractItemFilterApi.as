@@ -39,6 +39,11 @@ package com.ankamagames.dofus.uiApi
          this._currentUi = null;
       }
       
+      public function get typeIcons() : Dictionary
+      {
+         return this._currentItemFilter.typeIcons;
+      }
+      
       public function setOpenedCategories(value:Array) : void
       {
          this._currentItemFilter.openedCategories = value;
@@ -165,6 +170,7 @@ package com.ankamagames.dofus.uiApi
          {
             this._currentItemFilter.specificTypes = specificType;
          }
+         this._currentItemFilter.initTypeIcons();
          this._currentItemFilter.setCurrentTypeInfos(defaultTab,currentTypeInfos);
          this._currentItemFilter.resetAllIds();
          if(specificParams != null && specificParams.hasOwnProperty("specificSearchData") && specificParams.specificSearchData)

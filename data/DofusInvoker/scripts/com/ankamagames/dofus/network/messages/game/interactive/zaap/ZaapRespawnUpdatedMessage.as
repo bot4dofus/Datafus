@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.zaap
    public class ZaapRespawnUpdatedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2498;
+      public static const protocolId:uint = 6271;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.zaap
       
       override public function getMessageId() : uint
       {
-         return 2498;
+         return 6271;
       }
       
       public function initZaapRespawnUpdatedMessage(mapId:Number = 0) : ZaapRespawnUpdatedMessage

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class ObjectUseOnCellMessage extends ObjectUseMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8862;
+      public static const protocolId:uint = 5797;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 8862;
+         return 5797;
       }
       
       public function initObjectUseOnCellMessage(objectUID:uint = 0, cells:uint = 0) : ObjectUseOnCellMessage

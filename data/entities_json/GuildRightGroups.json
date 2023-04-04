@@ -1,8 +1,8 @@
 {
 	"def": [
 		{
-			"memberName": "GuildRight",
-			"packageName": "com.ankamagames.dofus.datacenter.guild",
+			"memberName": "SocialRight",
+			"packageName": "com.ankamagames.dofus.datacenter.social",
 			"fields": [
 				{
 					"name": "id",
@@ -39,10 +39,10 @@
 					"type": -1
 				},
 				{
-					"name": "guildRights",
+					"name": "rights",
 					"type": -99,
 					"vectorTypes": {
-						"name": "Vector.<com.ankamagames.dofus.datacenter.guild::GuildRight>",
+						"name": "Vector.<com.ankamagames.dofus.datacenter.social::SocialRight>",
 						"type": 1
 					}
 				}
@@ -54,7 +54,7 @@
 			"id": 1,
 			"nameId": 931782,
 			"order": 0,
-			"guildRights": [
+			"rights": [
 				{
 					"id": 1,
 					"nameId": 933428,
@@ -103,7 +103,7 @@
 			"id": 2,
 			"nameId": 932678,
 			"order": 1,
-			"guildRights": [
+			"rights": [
 				{
 					"id": 4,
 					"nameId": 932679,
@@ -122,7 +122,7 @@
 			"id": 3,
 			"nameId": 932408,
 			"order": 2,
-			"guildRights": [
+			"rights": [
 				{
 					"id": 7,
 					"nameId": 932702,
@@ -138,47 +138,10 @@
 			]
 		},
 		{
-			"id": 5,
-			"nameId": 932426,
-			"order": 3,
-			"guildRights": [
-				{
-					"id": 9,
-					"nameId": 932490,
-					"order": 0,
-					"groupId": 5
-				},
-				{
-					"id": 16,
-					"nameId": 932683,
-					"order": 1,
-					"groupId": 5
-				},
-				{
-					"id": 17,
-					"nameId": 932684,
-					"order": 2,
-					"groupId": 5
-				},
-				{
-					"id": 18,
-					"nameId": 932685,
-					"order": 3,
-					"groupId": 5
-				},
-				{
-					"id": 19,
-					"nameId": 932686,
-					"order": 4,
-					"groupId": 5
-				}
-			]
-		},
-		{
 			"id": 6,
 			"nameId": 932435,
 			"order": 4,
-			"guildRights": [
+			"rights": [
 				{
 					"id": 10,
 					"nameId": 932499,
@@ -206,29 +169,10 @@
 			]
 		},
 		{
-			"id": 7,
-			"nameId": 932444,
-			"order": 5,
-			"guildRights": [
-				{
-					"id": 11,
-					"nameId": 932508,
-					"order": 0,
-					"groupId": 7
-				},
-				{
-					"id": 22,
-					"nameId": 932689,
-					"order": 1,
-					"groupId": 7
-				}
-			]
-		},
-		{
 			"id": 4,
 			"nameId": 948578,
 			"order": 6,
-			"guildRights": [
+			"rights": [
 				{
 					"id": 25,
 					"nameId": 932693,
@@ -238,35 +182,10 @@
 			]
 		},
 		{
-			"id": 9,
-			"nameId": 948558,
-			"order": 7,
-			"guildRights": [
-				{
-					"id": 8,
-					"nameId": 932690,
-					"order": 0,
-					"groupId": 9
-				},
-				{
-					"id": 24,
-					"nameId": 932692,
-					"order": 1,
-					"groupId": 9
-				},
-				{
-					"id": 23,
-					"nameId": 932691,
-					"order": 2,
-					"groupId": 9
-				}
-			]
-		},
-		{
 			"id": 10,
 			"nameId": 948561,
 			"order": 8,
-			"guildRights": [
+			"rights": [
 				{
 					"id": 29,
 					"nameId": 948562,
@@ -288,35 +207,10 @@
 			]
 		},
 		{
-			"id": 11,
-			"nameId": 948565,
-			"order": 9,
-			"guildRights": [
-				{
-					"id": 32,
-					"nameId": 948567,
-					"order": 0,
-					"groupId": 11
-				},
-				{
-					"id": 33,
-					"nameId": 948568,
-					"order": 1,
-					"groupId": 11
-				},
-				{
-					"id": 34,
-					"nameId": 948569,
-					"order": 2,
-					"groupId": 11
-				}
-			]
-		},
-		{
 			"id": 12,
 			"nameId": 948566,
 			"order": 10,
-			"guildRights": [
+			"rights": [
 				{
 					"id": 35,
 					"nameId": 948570,

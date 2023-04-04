@@ -43,19 +43,15 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.datacenter.world.SubArea;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.internalDatacenter.breach.BreachBranchWrapper;
-   import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
-   import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
    import com.ankamagames.dofus.internalDatacenter.house.HouseWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.AllianceWrapper;
    import com.ankamagames.dofus.internalDatacenter.world.WorldPointWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.logic.common.actions.EmptyStackAction;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
-   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildFightJoinRequestAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeOnHumanVendorRequestAction;
    import com.ankamagames.dofus.logic.game.common.frames.AllianceFrame;
    import com.ankamagames.dofus.logic.game.common.frames.BreachFrame;
-   import com.ankamagames.dofus.logic.game.common.frames.SocialFrame;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
    import com.ankamagames.dofus.logic.game.fight.actions.ShowAllNamesAction;
@@ -79,29 +75,22 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.logic.game.roleplay.types.TaxCollectorTooltipInformation;
    import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
-   import com.ankamagames.dofus.misc.lists.SocialHookList;
+   import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.network.enums.PlayerLifeStatusEnum;
    import com.ankamagames.dofus.network.enums.SubEntityBindingPointCategoryEnum;
-   import com.ankamagames.dofus.network.enums.TeamTypeEnum;
    import com.ankamagames.dofus.network.messages.game.context.fight.GameFightJoinRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.MapComplementaryInformationsDataMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.MapFightStartPositionsUpdateMessage;
-   import com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseKickIndoorMerchantRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyInvitationRequestMessage;
-   import com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeOnHumanVendorRequestMessage;
    import com.ankamagames.dofus.network.types.common.PlayerSearchCharacterNameInformation;
    import com.ankamagames.dofus.network.types.game.context.GameContextActorInformations;
    import com.ankamagames.dofus.network.types.game.context.GameRolePlayTaxCollectorInformations;
-   import com.ankamagames.dofus.network.types.game.context.TaxCollectorStaticExtendedInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.FightStartingPositions;
-   import com.ankamagames.dofus.network.types.game.context.fight.FightTeamMemberInformations;
-   import com.ankamagames.dofus.network.types.game.context.fight.FightTeamMemberTaxCollectorInformations;
-   import com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformation;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayActorInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayCharacterInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayGroupMonsterInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayGroupMonsterWaveInformations;
-   import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMerchantInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMutantInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayNamedActorInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayNpcInformations;
@@ -109,7 +98,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayPrismInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayTreasureHintInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GroupMonsterStaticInformations;
-   import com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupLightInformations;
    import com.ankamagames.dofus.network.types.game.interactive.InteractiveElement;
    import com.ankamagames.dofus.network.types.game.interactive.InteractiveElementSkill;
@@ -279,7 +267,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          this.cellClickEnabled = true;
          this.pivotingCharacter = false;
          var shortcutsFrame:ShortcutsFrame = Kernel.getWorker().getFrame(ShortcutsFrame) as ShortcutsFrame;
-         if(shortcutsFrame.heldShortcuts.indexOf("showEntitiesTooltips") != -1 && !Kernel.getWorker().contains(EntitiesTooltipsFrame))
+         if(shortcutsFrame.heldShortcuts.indexOf(ShortcutHookListEnum.SHOW_ENTITIES_TOOLTIPS) != -1 && !Kernel.getWorker().contains(EntitiesTooltipsFrame))
          {
             if(Kernel.getWorker().contains(RoleplayEntitiesFrame))
             {
@@ -411,11 +399,9 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var r2:Rectangle2 = null;
          var p:Point = null;
          var fight:FightTeam = null;
-         var allianceInfos:AllianceInformations = null;
+         var allianceInfos:AllianceInformation = null;
          var levelDiffInfo:int = 0;
          var grtci:GameRolePlayTaxCollectorInformations = null;
-         var guildtcinfos:GuildInformations = null;
-         var gwtc:GuildWrapper = null;
          var awtc:AllianceWrapper = null;
          var npcInfos:GameRolePlayNpcInformations = null;
          var npc:Npc = null;
@@ -444,10 +430,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var teamType:uint = 0;
          var gfjrmsg:GameFightJoinRequestMessage = null;
          var playerEntity3:IEntity = null;
-         var guildId:int = 0;
-         var team:FightTeam = null;
-         var fighter:FightTeamMemberInformations = null;
-         var guild:GuildWrapper = null;
          var playerEntity:IEntity = null;
          var forbiddenCellsIds:Array = null;
          var i:int = 0;
@@ -706,7 +688,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                mcidmsg = msg as MapComplementaryInformationsDataMessage;
                this._fightPositions = mcidmsg.fightStartPositions;
                sf = Kernel.getWorker().getFrame(ShortcutsFrame) as ShortcutsFrame;
-               if(sf.heldShortcuts.indexOf("showFightPositions") != -1 && this._fightPositionsVisible)
+               if(sf.heldShortcuts.indexOf(ShortcutHookListEnum.SHOW_FIGHT_POSITIONS) != -1 && this._fightPositionsVisible)
                {
                   this.showFightPositions();
                }
@@ -825,9 +807,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                         infos = new CharacterTooltipInformation(infos as GameRolePlayCharacterInformations,levelDiffInfo);
                         cacheName = "CharacterCache";
                         break;
-                     case infos is GameRolePlayMerchantInformations:
-                        cacheName = "MerchantCharacterCache";
-                        break;
                      case infos is GameRolePlayMutantInformations:
                         if((infos as GameRolePlayMutantInformations).humanoidInfo.restrictions.cantAttack)
                         {
@@ -844,11 +823,9 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                            return false;
                         }
                         grtci = infos as GameRolePlayTaxCollectorInformations;
-                        guildtcinfos = grtci.identification.guildIdentity;
-                        allianceInfos = grtci.identification is TaxCollectorStaticExtendedInformations ? (grtci.identification as TaxCollectorStaticExtendedInformations).allianceIdentity : null;
-                        gwtc = GuildWrapper.create(guildtcinfos.guildId,guildtcinfos.guildName,guildtcinfos.guildEmblem);
+                        allianceInfos = grtci.identification.allianceIdentity;
                         awtc = !!allianceInfos ? AllianceWrapper.create(allianceInfos.allianceId,allianceInfos.allianceTag,allianceInfos.allianceName,allianceInfos.allianceEmblem) : null;
-                        infos = new TaxCollectorTooltipInformation(TaxCollectorName.getTaxCollectorNameById((infos as GameRolePlayTaxCollectorInformations).identification.lastNameId).name,TaxCollectorFirstname.getTaxCollectorFirstnameById((infos as GameRolePlayTaxCollectorInformations).identification.firstNameId).firstname,gwtc,awtc,(infos as GameRolePlayTaxCollectorInformations).taxCollectorAttack,emomsg.checkSuperposition,grtci.disposition.cellId);
+                        infos = new TaxCollectorTooltipInformation(TaxCollectorName.getTaxCollectorNameById((infos as GameRolePlayTaxCollectorInformations).identification.lastNameId).name,TaxCollectorFirstname.getTaxCollectorFirstnameById((infos as GameRolePlayTaxCollectorInformations).identification.firstNameId).firstname,awtc,(infos as GameRolePlayTaxCollectorInformations).taxCollectorAttack,emomsg.checkSuperposition,grtci.disposition.cellId);
                         cacheName = "TaxCollectorCache";
                         break;
                      case infos is GameRolePlayNpcInformations:
@@ -1098,11 +1075,11 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                      case entityClickInfo is GameRolePlayPrismInformations:
                         prismInfo = entityClickInfo as GameRolePlayPrismInformations;
                         prismName = this._socialApi.getAllianceNameAndTag(prismInfo.prism);
-                        linkParams.elementName = I18n.getUiText("ui.prism.prismInState",[I18n.getUiText("ui.prism.state" + prismInfo.prism.state)]) + " " + LangManager.getInstance().replaceKey(prismName,true) + " ";
+                        linkParams.elementName = I18n.getUiText("ui.prism.prismInState",[I18n.getUiText("ui.prism.state" + prismInfo.prism.state)]) + " " + LangManager.getInstance().replaceKey(prismName,true);
                         break;
                      case entityClickInfo is GameRolePlayTaxCollectorInformations:
                         taxCollectorInfo = entityClickInfo as GameRolePlayTaxCollectorInformations;
-                        linkParams.elementName = I18n.getUiText("ui.guild.taxCollector",[taxCollectorInfo.identification.guildIdentity.guildName]) + " ";
+                        linkParams.elementName = I18n.getUiText("ui.alliance.taxCollector",[taxCollectorInfo.identification.allianceIdentity.allianceName]) + " [" + taxCollectorInfo.identification.allianceIdentity.allianceTag + "]";
                         break;
                      case entityClickInfo is GameRolePlayNpcInformations:
                         linkParams.elementName = Npc.getNpcById((entityClickInfo as GameRolePlayNpcInformations).npcId).name + " ";
@@ -1136,35 +1113,12 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                      return true;
                   }
                }
-               else if(entityClickInfo is GameRolePlayMerchantInformations)
-               {
-                  Kernel.getWorker().process(ExchangeOnHumanVendorRequestAction.create(entityClickInfo.contextualId,entityClickInfo.disposition.cellId));
-                  return true;
-               }
                menuResult = RoleplayManager.getInstance().displayContextualMenu(entityClickInfo,entityc);
                if(this.roleplayContextFrame.entitiesFrame.isFight(entityc.id))
                {
                   fightId = this.roleplayContextFrame.entitiesFrame.getFightId(entityc.id);
                   fightTeamLeader = this.roleplayContextFrame.entitiesFrame.getFightLeaderId(entityc.id);
                   teamType = this.roleplayContextFrame.entitiesFrame.getFightTeamType(entityc.id);
-                  if(teamType == TeamTypeEnum.TEAM_TYPE_TAXCOLLECTOR)
-                  {
-                     team = this.roleplayContextFrame.entitiesFrame.getFightTeam(entityc.id) as FightTeam;
-                     for each(fighter in team.teamInfos.teamMembers)
-                     {
-                        if(fighter is FightTeamMemberTaxCollectorInformations)
-                        {
-                           guildId = (fighter as FightTeamMemberTaxCollectorInformations).guildId;
-                        }
-                     }
-                     guild = (Kernel.getWorker().getFrame(SocialFrame) as SocialFrame).guild;
-                     if(guild && guildId == guild.guildId)
-                     {
-                        KernelEventsManager.getInstance().processCallback(SocialHookList.OpenSocial,1,2);
-                        Kernel.getWorker().process(GuildFightJoinRequestAction.create(PlayedCharacterManager.getInstance().currentMap.mapId));
-                        return true;
-                     }
-                  }
                   gfjrmsg = new GameFightJoinRequestMessage();
                   gfjrmsg.initGameFightJoinRequestMessage(fightTeamLeader,fightId);
                   playerEntity3 = DofusEntities.getEntity(PlayedCharacterManager.getInstance().id);
@@ -1446,7 +1400,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                {
                   this.removeFightPositions();
                }
-               else if(StageShareManager.isActive && (sfpa.fromShortcut && sf.heldShortcuts.indexOf("showFightPositions") != -1 || this._mouseDown))
+               else if(StageShareManager.isActive && (sfpa.fromShortcut && sf.heldShortcuts.indexOf(ShortcutHookListEnum.SHOW_FIGHT_POSITIONS) != -1 || this._mouseDown))
                {
                   this.showFightPositions();
                }
@@ -1458,11 +1412,11 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                this._mouseDown = false;
                mum = msg as MouseUpMessage;
                sf = Kernel.getWorker().getFrame(ShortcutsFrame) as ShortcutsFrame;
-               if(sf.heldShortcuts.indexOf("showEntitiesTooltips") == -1 && Kernel.getWorker().contains(EntitiesTooltipsFrame))
+               if(sf.heldShortcuts.indexOf(ShortcutHookListEnum.SHOW_ENTITIES_TOOLTIPS) == -1 && Kernel.getWorker().contains(EntitiesTooltipsFrame))
                {
                   Kernel.getWorker().removeFrame(_entitiesTooltipsFrame);
                }
-               else if(sf.heldShortcuts.indexOf("showFightPositions") == -1 && this._fightPositionsVisible)
+               else if(sf.heldShortcuts.indexOf(ShortcutHookListEnum.SHOW_FIGHT_POSITIONS) == -1 && this._fightPositionsVisible)
                {
                   this.removeFightPositions();
                }
@@ -1530,7 +1484,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          {
             pEvent.currentTarget.removeEventListener(FramePushedEvent.EVENT_FRAME_PUSHED,this.onFramePushed);
             shortcutsFrame = Kernel.getWorker().getFrame(ShortcutsFrame) as ShortcutsFrame;
-            if(shortcutsFrame.heldShortcuts.indexOf("showEntitiesTooltips") != -1 && !Kernel.getWorker().contains(EntitiesTooltipsFrame))
+            if(shortcutsFrame.heldShortcuts.indexOf(ShortcutHookListEnum.SHOW_ENTITIES_TOOLTIPS) != -1 && !Kernel.getWorker().contains(EntitiesTooltipsFrame))
             {
                Kernel.getWorker().addFrame(_entitiesTooltipsFrame);
             }
@@ -1566,26 +1520,12 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          KernelEventsManager.getInstance().processCallback(ChatHookList.ChatFocus,playerName);
       }
       
-      private function onMerchantPlayerBuyClick(vendorId:Number, vendorCellId:uint) : void
-      {
-         var eohvrmsg:ExchangeOnHumanVendorRequestMessage = new ExchangeOnHumanVendorRequestMessage();
-         eohvrmsg.initExchangeOnHumanVendorRequestMessage(vendorId,vendorCellId);
-         ConnectionsHandler.getConnection().send(eohvrmsg);
-      }
-      
       private function onInviteMenuClicked(playerName:String) : void
       {
          var invitemsg:PartyInvitationRequestMessage = new PartyInvitationRequestMessage();
          var player_INVITEMSG:PlayerSearchCharacterNameInformation = new PlayerSearchCharacterNameInformation().initPlayerSearchCharacterNameInformation(playerName);
          invitemsg.initPartyInvitationRequestMessage(player_INVITEMSG);
          ConnectionsHandler.getConnection().send(invitemsg);
-      }
-      
-      private function onMerchantHouseKickOff(cellId:uint) : void
-      {
-         var kickRequest:HouseKickIndoorMerchantRequestMessage = new HouseKickIndoorMerchantRequestMessage();
-         kickRequest.initHouseKickIndoorMerchantRequestMessage(cellId);
-         ConnectionsHandler.getConnection().send(kickRequest);
       }
       
       private function onWindowDeactivate(pEvent:Event) : void

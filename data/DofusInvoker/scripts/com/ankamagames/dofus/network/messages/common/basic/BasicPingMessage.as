@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.common.basic
    public class BasicPingMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 311;
+      public static const protocolId:uint = 9020;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.common.basic
       
       override public function getMessageId() : uint
       {
-         return 311;
+         return 9020;
       }
       
       public function initBasicPingMessage(quiet:Boolean = false) : BasicPingMessage

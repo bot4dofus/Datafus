@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.messages.game.alliance
 {
-   import com.ankamagames.dofus.network.types.game.guild.GuildEmblem;
+   import com.ankamagames.dofus.network.types.game.social.SocialEmblem;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceModificationValidMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9722;
+      public static const protocolId:uint = 79;
        
       
       private var _isInitialized:Boolean = false;
@@ -21,13 +21,13 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       public var allianceTag:String = "";
       
-      public var Alliancemblem:GuildEmblem;
+      public var allianceEmblem:SocialEmblem;
       
-      private var _Alliancemblemtree:FuncTree;
+      private var _allianceEmblemtree:FuncTree;
       
       public function AllianceModificationValidMessage()
       {
-         this.Alliancemblem = new GuildEmblem();
+         this.allianceEmblem = new SocialEmblem();
          super();
       }
       
@@ -38,14 +38,14 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 9722;
+         return 79;
       }
       
-      public function initAllianceModificationValidMessage(allianceName:String = "", allianceTag:String = "", Alliancemblem:GuildEmblem = null) : AllianceModificationValidMessage
+      public function initAllianceModificationValidMessage(allianceName:String = "", allianceTag:String = "", allianceEmblem:SocialEmblem = null) : AllianceModificationValidMessage
       {
          this.allianceName = allianceName;
          this.allianceTag = allianceTag;
-         this.Alliancemblem = Alliancemblem;
+         this.allianceEmblem = allianceEmblem;
          this._isInitialized = true;
          return this;
       }
@@ -54,7 +54,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       {
          this.allianceName = "";
          this.allianceTag = "";
-         this.Alliancemblem = new GuildEmblem();
+         this.allianceEmblem = new SocialEmblem();
          this._isInitialized = false;
       }
       
@@ -87,7 +87,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       {
          output.writeUTF(this.allianceName);
          output.writeUTF(this.allianceTag);
-         this.Alliancemblem.serializeAs_GuildEmblem(output);
+         this.allianceEmblem.serializeAs_SocialEmblem(output);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -99,8 +99,8 @@ package com.ankamagames.dofus.network.messages.game.alliance
       {
          this._allianceNameFunc(input);
          this._allianceTagFunc(input);
-         this.Alliancemblem = new GuildEmblem();
-         this.Alliancemblem.deserialize(input);
+         this.allianceEmblem = new SocialEmblem();
+         this.allianceEmblem.deserialize(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -112,7 +112,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       {
          tree.addChild(this._allianceNameFunc);
          tree.addChild(this._allianceTagFunc);
-         this._Alliancemblemtree = tree.addChild(this._AlliancemblemtreeFunc);
+         this._allianceEmblemtree = tree.addChild(this._allianceEmblemtreeFunc);
       }
       
       private function _allianceNameFunc(input:ICustomDataInput) : void
@@ -125,10 +125,10 @@ package com.ankamagames.dofus.network.messages.game.alliance
          this.allianceTag = input.readUTF();
       }
       
-      private function _AlliancemblemtreeFunc(input:ICustomDataInput) : void
+      private function _allianceEmblemtreeFunc(input:ICustomDataInput) : void
       {
-         this.Alliancemblem = new GuildEmblem();
-         this.Alliancemblem.deserializeAsync(this._Alliancemblemtree);
+         this.allianceEmblem = new SocialEmblem();
+         this.allianceEmblem.deserializeAsync(this._allianceEmblemtree);
       }
    }
 }

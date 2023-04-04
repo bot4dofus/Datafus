@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
 {
-   import com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.BasicAllianceInformations;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -12,18 +12,18 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
    public class TaxCollectorDialogQuestionBasicMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6527;
+      public static const protocolId:uint = 2113;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var guildInfo:BasicGuildInformations;
+      public var allianceInfo:BasicAllianceInformations;
       
-      private var _guildInfotree:FuncTree;
+      private var _allianceInfotree:FuncTree;
       
       public function TaxCollectorDialogQuestionBasicMessage()
       {
-         this.guildInfo = new BasicGuildInformations();
+         this.allianceInfo = new BasicAllianceInformations();
          super();
       }
       
@@ -34,19 +34,19 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
       
       override public function getMessageId() : uint
       {
-         return 6527;
+         return 2113;
       }
       
-      public function initTaxCollectorDialogQuestionBasicMessage(guildInfo:BasicGuildInformations = null) : TaxCollectorDialogQuestionBasicMessage
+      public function initTaxCollectorDialogQuestionBasicMessage(allianceInfo:BasicAllianceInformations = null) : TaxCollectorDialogQuestionBasicMessage
       {
-         this.guildInfo = guildInfo;
+         this.allianceInfo = allianceInfo;
          this._isInitialized = true;
          return this;
       }
       
       override public function reset() : void
       {
-         this.guildInfo = new BasicGuildInformations();
+         this.allianceInfo = new BasicAllianceInformations();
          this._isInitialized = false;
       }
       
@@ -77,7 +77,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
       
       public function serializeAs_TaxCollectorDialogQuestionBasicMessage(output:ICustomDataOutput) : void
       {
-         this.guildInfo.serializeAs_BasicGuildInformations(output);
+         this.allianceInfo.serializeAs_BasicAllianceInformations(output);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -87,8 +87,8 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
       
       public function deserializeAs_TaxCollectorDialogQuestionBasicMessage(input:ICustomDataInput) : void
       {
-         this.guildInfo = new BasicGuildInformations();
-         this.guildInfo.deserialize(input);
+         this.allianceInfo = new BasicAllianceInformations();
+         this.allianceInfo.deserialize(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -98,13 +98,13 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
       
       public function deserializeAsyncAs_TaxCollectorDialogQuestionBasicMessage(tree:FuncTree) : void
       {
-         this._guildInfotree = tree.addChild(this._guildInfotreeFunc);
+         this._allianceInfotree = tree.addChild(this._allianceInfotreeFunc);
       }
       
-      private function _guildInfotreeFunc(input:ICustomDataInput) : void
+      private function _allianceInfotreeFunc(input:ICustomDataInput) : void
       {
-         this.guildInfo = new BasicGuildInformations();
-         this.guildInfo.deserializeAsync(this._guildInfotree);
+         this.allianceInfo = new BasicAllianceInformations();
+         this.allianceInfo.deserializeAsync(this._allianceInfotree);
       }
    }
 }

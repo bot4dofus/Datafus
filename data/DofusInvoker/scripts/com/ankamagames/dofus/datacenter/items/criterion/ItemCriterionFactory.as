@@ -90,6 +90,9 @@ package com.ankamagames.dofus.datacenter.items.criterion
             case "MK":
                criterion = new MapCharactersItemCriterion(pServerCriterionForm);
                break;
+            case "Mp":
+               criterion = new PrismOnMapStateItemCriterion(pServerCriterionForm);
+               break;
             case "Oa":
                criterion = new AchievementPointsItemCriterion(pServerCriterionForm);
                break;
@@ -116,6 +119,9 @@ package com.ankamagames.dofus.datacenter.items.criterion
                break;
             case "Ow":
                criterion = new AllianceItemCriterion(pServerCriterionForm);
+               break;
+            case "AM":
+               criterion = new AllianceMasterItemCriterion(pServerCriterionForm);
                break;
             case "Ox":
                criterion = new AllianceRightsItemCriterion(pServerCriterionForm);
@@ -246,6 +252,9 @@ package com.ankamagames.dofus.datacenter.items.criterion
                break;
             case "SI":
                criterion = new ServerItemCriterion(pServerCriterionForm);
+               break;
+            case "SL":
+               criterion = new SubareaLevelItemCriterion(pServerCriterionForm);
                break;
             case "ST":
                criterion = new ServerSeasonTemporisCriterion(pServerCriterionForm);

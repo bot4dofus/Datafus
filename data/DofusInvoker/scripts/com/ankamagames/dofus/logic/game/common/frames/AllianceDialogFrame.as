@@ -17,7 +17,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.alliance.AllianceModificationNameAndTagValidMessage;
    import com.ankamagames.dofus.network.messages.game.alliance.AllianceModificationValidMessage;
    import com.ankamagames.dofus.network.messages.game.dialog.LeaveDialogMessage;
-   import com.ankamagames.dofus.network.types.game.guild.GuildEmblem;
+   import com.ankamagames.dofus.network.types.game.social.SocialEmblem;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.messages.Frame;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.logic.game.common.frames
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(AllianceDialogFrame));
        
       
-      private var allianceEmblem:GuildEmblem;
+      private var allianceEmblem:SocialEmblem;
       
       public function AllianceDialogFrame()
       {
@@ -65,7 +65,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          {
             case msg is AllianceCreationValidAction:
                acva = msg as AllianceCreationValidAction;
-               this.allianceEmblem = new GuildEmblem();
+               this.allianceEmblem = new SocialEmblem();
                this.allianceEmblem.symbolShape = acva.upEmblemId;
                this.allianceEmblem.symbolColor = acva.upColorEmblem;
                this.allianceEmblem.backgroundShape = acva.backEmblemId;
@@ -76,7 +76,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is AllianceModificationValidAction:
                amva = msg as AllianceModificationValidAction;
-               this.allianceEmblem = new GuildEmblem();
+               this.allianceEmblem = new SocialEmblem();
                this.allianceEmblem.symbolShape = amva.upEmblemId;
                this.allianceEmblem.symbolColor = amva.upColorEmblem;
                this.allianceEmblem.backgroundShape = amva.backEmblemId;
@@ -93,7 +93,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is AllianceModificationEmblemValidAction:
                ameva = msg as AllianceModificationEmblemValidAction;
-               this.allianceEmblem = new GuildEmblem();
+               this.allianceEmblem = new SocialEmblem();
                this.allianceEmblem.symbolShape = ameva.upEmblemId;
                this.allianceEmblem.symbolColor = ameva.upColorEmblem;
                this.allianceEmblem.backgroundShape = ameva.backEmblemId;

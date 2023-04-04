@@ -4,6 +4,7 @@ package com.ankamagames.dofus.logic.game.roleplay.types
    import com.ankamagames.dofus.datacenter.monsters.Monster;
    import com.ankamagames.dofus.datacenter.npcs.TaxCollectorFirstname;
    import com.ankamagames.dofus.datacenter.npcs.TaxCollectorName;
+   import com.ankamagames.dofus.network.ProtocolConstantsEnum;
    import com.ankamagames.dofus.network.types.game.context.fight.FightTeamMemberCharacterInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.FightTeamMemberEntityInformation;
    import com.ankamagames.dofus.network.types.game.context.fight.FightTeamMemberInformations;
@@ -32,7 +33,6 @@ package com.ankamagames.dofus.logic.game.roleplay.types
          var monster:Monster = null;
          var monsterLevel:uint = 0;
          var monsterName:String = null;
-         var taxCollectorLevel:uint = 0;
          var firstName:String = null;
          var lastName:String = null;
          var taxCollectorName:String = null;
@@ -62,11 +62,10 @@ package com.ankamagames.dofus.logic.game.roleplay.types
                   fighter = new Fighter(fightMemberInfo.id,monsterName,monsterLevel);
                   break;
                case fightMemberInfo is FightTeamMemberTaxCollectorInformations:
-                  taxCollectorLevel = (fightMemberInfo as FightTeamMemberTaxCollectorInformations).level;
                   firstName = TaxCollectorFirstname.getTaxCollectorFirstnameById((fightMemberInfo as FightTeamMemberTaxCollectorInformations).firstNameId).firstname;
                   lastName = TaxCollectorName.getTaxCollectorNameById((fightMemberInfo as FightTeamMemberTaxCollectorInformations).lastNameId).name;
                   taxCollectorName = firstName + " " + lastName;
-                  fighter = new Fighter(fightMemberInfo.id,taxCollectorName,taxCollectorLevel);
+                  fighter = new Fighter(fightMemberInfo.id,taxCollectorName,ProtocolConstantsEnum.MAX_LEVEL);
                   break;
                case fightMemberInfo is FightTeamMemberEntityInformation:
                   companionInfo = fightMemberInfo as FightTeamMemberEntityInformation;

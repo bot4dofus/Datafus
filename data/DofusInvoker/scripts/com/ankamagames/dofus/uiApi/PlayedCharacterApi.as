@@ -52,7 +52,7 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.HumanOptionTitle;
    import com.ankamagames.dofus.network.types.game.data.items.ForgettableSpellItem;
-   import com.ankamagames.dofus.network.types.game.guild.application.GuildApplicationInformation;
+   import com.ankamagames.dofus.network.types.game.social.application.SocialApplicationInformation;
    import com.ankamagames.dofus.types.data.PlayerSetInfo;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
    import com.ankamagames.jerakine.logger.Log;
@@ -360,11 +360,6 @@ package com.ankamagames.dofus.uiApi
       public function inventoryWeight() : uint
       {
          return PlayedCharacterManager.getInstance().inventoryWeight;
-      }
-      
-      public function shopWeight() : uint
-      {
-         return PlayedCharacterManager.getInstance().shopWeight;
       }
       
       public function inventoryWeightMax() : uint
@@ -729,7 +724,7 @@ package com.ankamagames.dofus.uiApi
          return DebtManager.getInstance().getTotalKamaDebt();
       }
       
-      public function getApplicationInfo() : GuildApplicationInformation
+      public function getApplicationInfo() : SocialApplicationInformation
       {
          return PlayedCharacterManager.getInstance().applicationInfo;
       }

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character.status
    public class PlayerStatus implements INetworkType
    {
       
-      public static const protocolId:uint = 6409;
+      public static const protocolId:uint = 4183;
        
       
       public var statusId:uint = 1;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.character.status
       
       public function getTypeId() : uint
       {
-         return 6409;
+         return 4183;
       }
       
       public function initPlayerStatus(statusId:uint = 1) : PlayerStatus

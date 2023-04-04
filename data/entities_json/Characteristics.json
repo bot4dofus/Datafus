@@ -1312,7 +1312,7 @@
 		{
 			"id": 146,
 			"keyword": "unknown",
-			"nameId": 928283,
+			"nameId": 997765,
 			"asset": "",
 			"categoryId": 1,
 			"visible": false,
@@ -1328,6 +1328,17 @@
 			"categoryId": 4,
 			"visible": false,
 			"order": 17,
+			"scaleFormulaId": 0,
+			"upgradable": false
+		},
+		{
+			"id": 156,
+			"keyword": "dealtHealMultiplier",
+			"nameId": 997766,
+			"asset": "",
+			"categoryId": 1,
+			"visible": true,
+			"order": 62,
 			"scaleFormulaId": 0,
 			"upgradable": false
 		}

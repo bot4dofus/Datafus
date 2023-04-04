@@ -12,12 +12,10 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildInvitedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2525;
+      public static const protocolId:uint = 3283;
        
       
       private var _isInitialized:Boolean = false;
-      
-      public var recruterId:Number = 0;
       
       public var recruterName:String = "";
       
@@ -38,12 +36,11 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 2525;
+         return 3283;
       }
       
-      public function initGuildInvitedMessage(recruterId:Number = 0, recruterName:String = "", guildInfo:GuildInformations = null) : GuildInvitedMessage
+      public function initGuildInvitedMessage(recruterName:String = "", guildInfo:GuildInformations = null) : GuildInvitedMessage
       {
-         this.recruterId = recruterId;
          this.recruterName = recruterName;
          this.guildInfo = guildInfo;
          this._isInitialized = true;
@@ -52,7 +49,6 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function reset() : void
       {
-         this.recruterId = 0;
          this.recruterName = "";
          this.guildInfo = new GuildInformations();
          this._isInitialized = false;
@@ -85,11 +81,6 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       public function serializeAs_GuildInvitedMessage(output:ICustomDataOutput) : void
       {
-         if(this.recruterId < 0 || this.recruterId > 9007199254740992)
-         {
-            throw new Error("Forbidden value (" + this.recruterId + ") on element recruterId.");
-         }
-         output.writeVarLong(this.recruterId);
          output.writeUTF(this.recruterName);
          this.guildInfo.serializeAs_GuildInformations(output);
       }
@@ -101,7 +92,6 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       public function deserializeAs_GuildInvitedMessage(input:ICustomDataInput) : void
       {
-         this._recruterIdFunc(input);
          this._recruterNameFunc(input);
          this.guildInfo = new GuildInformations();
          this.guildInfo.deserialize(input);
@@ -114,18 +104,8 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       public function deserializeAsyncAs_GuildInvitedMessage(tree:FuncTree) : void
       {
-         tree.addChild(this._recruterIdFunc);
          tree.addChild(this._recruterNameFunc);
          this._guildInfotree = tree.addChild(this._guildInfotreeFunc);
-      }
-      
-      private function _recruterIdFunc(input:ICustomDataInput) : void
-      {
-         this.recruterId = input.readVarUhLong();
-         if(this.recruterId < 0 || this.recruterId > 9007199254740992)
-         {
-            throw new Error("Forbidden value (" + this.recruterId + ") on element of GuildInvitedMessage.recruterId.");
-         }
       }
       
       private function _recruterNameFunc(input:ICustomDataInput) : void

@@ -178,7 +178,7 @@ package com.ankamagames.dofus.uiApi
                this.playSoundById(UISoundEnum.EQUIP_WRISTBAND);
                break;
             case SoundTypeEnum.EQUIPMENT_CLOTHES:
-               possibleClothIds = new Array(UISoundEnum.EQUIP_CLOTH_1,UISoundEnum.EQUIP_CLOTH_2,UISoundEnum.EQUIP_CLOTH_3,UISoundEnum.EQUIP_CLOTH_4,UISoundEnum.EQUIP_CLOTH_5);
+               possibleClothIds = [UISoundEnum.EQUIP_CLOTH_1,UISoundEnum.EQUIP_CLOTH_2,UISoundEnum.EQUIP_CLOTH_3,UISoundEnum.EQUIP_CLOTH_4,UISoundEnum.EQUIP_CLOTH_5,UISoundEnum.EQUIP_CLOTH_6];
                randomClothId = possibleClothIds[Math.round(Math.random() * (possibleClothIds.length - 1))];
                this.playSoundById(randomClothId);
                break;
@@ -257,12 +257,6 @@ package com.ankamagames.dofus.uiApi
                break;
             case SoundTypeEnum.SOCIAL_OPEN:
                this.playSoundById(UISoundEnum.FRIENDS);
-               break;
-            case SoundTypeEnum.MERCHANT_TRANSFERT_OPEN:
-               this.playSoundById(UISoundEnum.OPEN_TRANSACTION_WINDOW);
-               break;
-            case SoundTypeEnum.MERCHANT_TRANSFERT_CLOSE:
-               this.playSoundById(UISoundEnum.CLOSE_TRANSACTION_WINDOW);
                break;
             case SoundTypeEnum.SWITCH_RIGHT_TO_LEFT:
                this.playSoundById(UISoundEnum.RIGHT_TO_LEFT_SWITCH);

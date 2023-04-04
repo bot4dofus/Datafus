@@ -13,6 +13,7 @@ package com.ankamagames.dofus.logic.game.common.misc
    import com.ankamagames.dofus.network.messages.game.chat.*;
    import com.ankamagames.dofus.network.messages.game.chat.channel.*;
    import com.ankamagames.dofus.network.messages.game.chat.smiley.*;
+   import com.ankamagames.dofus.network.messages.game.collector.tax.*;
    import com.ankamagames.dofus.network.messages.game.context.mount.*;
    import com.ankamagames.dofus.network.messages.game.context.notification.*;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena.GameRolePlayArenaFightAnswerMessage;
@@ -26,7 +27,6 @@ package com.ankamagames.dofus.logic.game.common.misc
    import com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHunt.*;
    import com.ankamagames.dofus.network.messages.game.friend.*;
    import com.ankamagames.dofus.network.messages.game.guild.*;
-   import com.ankamagames.dofus.network.messages.game.guild.tax.*;
    import com.ankamagames.dofus.network.messages.game.house.HouseTeleportRequestMessage;
    import com.ankamagames.dofus.network.messages.game.inventory.*;
    import com.ankamagames.dofus.network.messages.game.inventory.exchanges.*;
@@ -160,7 +160,6 @@ package com.ankamagames.dofus.logic.game.common.misc
             case msg is AllianceInvitationAnswerMessage:
             case msg is AllianceKickRequestMessage:
             case msg is AllianceFactsRequestMessage:
-            case msg is AllianceChangeGuildRightsMessage:
             case msg is AllianceInsiderInfoRequestMessage:
             case msg is AllianceMotdSetRequestMessage:
             case msg is AllianceBulletinSetRequestMessage:
@@ -170,7 +169,6 @@ package com.ankamagames.dofus.logic.game.common.misc
             case msg is GuildModificationValidMessage:
             case msg is GuildCreationValidMessage:
             case msg is GuildInvitationMessage:
-            case msg is GuildInvitationSearchMessage:
             case msg is GuildInvitationAnswerMessage:
             case msg is GuildKickRequestMessage:
             case msg is GuildChangeMemberParametersMessage:
@@ -182,18 +180,7 @@ package com.ankamagames.dofus.logic.game.common.misc
             case msg is GuildBulletinSetRequestMessage:
             case msg is GuildFactsRequestMessage:
             case msg is GameRolePlayTaxCollectorFightRequestMessage:
-            case msg is GuildFightJoinRequestMessage:
-            case msg is GuildFightTakePlaceRequestMessage:
-            case msg is GuildFightLeaveRequestMessage:
-            case msg is PrismFightJoinLeaveRequestMessage:
-            case msg is PrismSetSabotagedRequestMessage:
-            case msg is PrismFightSwapRequestMessage:
-            case msg is PrismInfoJoinLeaveRequestMessage:
-            case msg is PrismUseRequestMessage:
             case msg is PrismAttackRequestMessage:
-            case msg is PrismsListRegisterMessage:
-            case msg is PrismSettingsRequestMessage:
-            case msg is PrismModuleExchangeRequestMessage:
             case msg is QuestListRequestMessage:
             case msg is QuestStartRequestMessage:
             case msg is QuestStepInfoRequestMessage:

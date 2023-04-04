@@ -86,6 +86,22 @@ package com.ankamagames.dofus.uiApi
          return itemList;
       }
       
+      public function getInventoryItemsForType(id:int) : Vector.<ItemWrapper>
+      {
+         var itemList:Vector.<ItemWrapper> = new Vector.<ItemWrapper>();
+         var inventory:Vector.<ItemWrapper> = InventoryManager.getInstance().inventory.getView("storage").content;
+         var itemsCount:int = inventory.length;
+         for(var i:int = 0; i < itemsCount; )
+         {
+            if((inventory[i] as ItemWrapper).typeId == id)
+            {
+               itemList.push(inventory[i]);
+            }
+            i++;
+         }
+         return itemList;
+      }
+      
       public function getLivingObjectFood(itemType:int) : Vector.<ItemWrapper>
       {
          var item:ItemWrapper = null;

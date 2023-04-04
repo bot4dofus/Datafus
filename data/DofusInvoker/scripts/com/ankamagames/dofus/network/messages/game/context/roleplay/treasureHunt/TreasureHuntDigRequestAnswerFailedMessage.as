@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHun
    public class TreasureHuntDigRequestAnswerFailedMessage extends TreasureHuntDigRequestAnswerMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6088;
+      public static const protocolId:uint = 3488;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHun
       
       override public function getMessageId() : uint
       {
-         return 6088;
+         return 3488;
       }
       
       public function initTreasureHuntDigRequestAnswerFailedMessage(questType:uint = 0, result:uint = 0, wrongFlagCount:uint = 0) : TreasureHuntDigRequestAnswerFailedMessage

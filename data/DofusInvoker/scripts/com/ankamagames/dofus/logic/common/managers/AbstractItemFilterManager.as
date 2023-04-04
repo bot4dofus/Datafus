@@ -115,6 +115,8 @@ package com.ankamagames.dofus.logic.common.managers
       
       protected var _currentTypeInfos:Dictionary;
       
+      protected var _typeIcons:Dictionary = null;
+      
       protected var _currentItemIds:Array;
       
       protected var _allItemsWithCurrentTypeIds:Object;
@@ -202,6 +204,11 @@ package com.ankamagames.dofus.logic.common.managers
          this._dataApi = this._currentUi.uiClass.dataApi;
          this._uiApi = this._currentUi.uiClass.uiApi;
          this._sysApi = this._currentUi.uiClass.sysApi;
+      }
+      
+      public function get typeIcons() : Dictionary
+      {
+         return this._typeIcons;
       }
       
       public function set openedCategories(value:Array) : void
@@ -332,6 +339,33 @@ package com.ankamagames.dofus.logic.common.managers
       public function set gdItemList(value:Grid) : void
       {
          this._gd_itemList = value;
+      }
+      
+      public function initTypeIcons() : void
+      {
+         if(this._typeIcons == null)
+         {
+            this._typeIcons = new Dictionary();
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_COLLAR] = "collar";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_WEAPON] = "weapon";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_RING] = "ring";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_BELT] = "belt";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_SHOES] = "shoe";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_CONSUMABLE] = "consumable";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_SHIELD] = "shield";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_RESOURCES] = "resource";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_HELMET] = "helmet";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_CAPE] = "cape";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_PET] = "pet";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_DOFUS_TROPHY] = "dofus";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_MOUNTS] = "pet";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_LIVING_ITEMS] = "costume";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_COMPANION] = "companon";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_MOUNT_EQUIPMENT] = "pet";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_COSTUME] = "costume";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_CERTIFICATE] = "pet";
+            this._typeIcons[DataEnum.ITEM_SUPERTYPE_TAX_COLLECTOR_EQUIPMENT] = "horseshoe";
+         }
       }
       
       public function setCurrentTypeInfos(tabIndex:uint, currentTypeInfos:Dictionary) : void
@@ -764,6 +798,7 @@ package com.ankamagames.dofus.logic.common.managers
          {
             tmpItemType.push(key);
          }
+         tmpItemType.sort(Array.NUMERIC);
          result.push({"itemType":tmpItemType});
          if(this._currentUi.uiData.name == this.AUCTION_HOUSE_BUY_UI_NAME)
          {
@@ -771,7 +806,7 @@ package com.ankamagames.dofus.logic.common.managers
          }
          else
          {
-            result = this.addEmptyLine(result,Math.ceil(tmpItemType.length / 5) + 1);
+            result = this.addEmptyLine(result,Math.ceil(tmpItemType.length / 5) + 2);
          }
          return result;
       }

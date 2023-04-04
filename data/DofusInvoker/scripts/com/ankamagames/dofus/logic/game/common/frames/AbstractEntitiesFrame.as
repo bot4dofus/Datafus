@@ -26,7 +26,6 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightMonsterInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayHumanoidInformations;
-   import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMerchantInformations;
    import com.ankamagames.dofus.network.types.game.interactive.InteractiveElement;
    import com.ankamagames.dofus.network.types.game.look.EntityLook;
    import com.ankamagames.dofus.network.types.game.look.SubEntity;
@@ -69,6 +68,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import flash.display.DisplayObject;
    import flash.display.DisplayObjectContainer;
    import flash.events.Event;
+   import flash.geom.ColorTransform;
    import flash.geom.Point;
    import flash.geom.Rectangle;
    import flash.utils.Dictionary;
@@ -134,7 +134,9 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       protected var _isShowIconsChanged:Boolean = false;
       
-      private var ARCH_MONSTERS:String = "archmonsters";
+      private const ARCH_MONSTERS:String = "archmonsters";
+      
+      private const NUGGET:String = "nugget";
       
       public function AbstractEntitiesFrame()
       {
@@ -318,7 +320,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          var humanoid:GameRolePlayHumanoidInformations = null;
          var characterEntity:AnimatedCharacter = DofusEntities.getEntity(infos.contextualId) as AnimatedCharacter;
          var justCreated:Boolean = true;
-         var merchantCreature:Boolean = this._creaturesMode && infos is GameRolePlayMerchantInformations;
          var playerCreature:Boolean = infos.contextualId == PlayedCharacterManager.getInstance().id && (this._creaturesMode || this._creaturesFightMode);
          var mapPosition:MapPosition = MapPosition.getMapPositionById(PlayedCharacterManager.getInstance().currentMap.mapId);
          if(mapPosition && mapPosition.isUnderWater)
@@ -330,7 +331,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          {
             StatsManager.getInstance().addRawStats(infos.contextualId,(infos as GameFightFighterInformations).stats.characteristics.characteristics);
          }
-         if(!characterEntity || merchantCreature || playerCreature)
+         if(!characterEntity || playerCreature)
          {
             newLook = EntitiesLooksManager.getInstance().getLookFromContextInfos(infos);
          }
@@ -377,14 +378,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          else
          {
             justCreated = false;
-            if(merchantCreature)
-            {
-               characterEntity.look.updateFrom(newLook);
-            }
-            else
-            {
-               this.updateActorLook(infos.contextualId,infos.look,true);
-            }
+            this.updateActorLook(infos.contextualId,infos.look,true);
          }
          if(infos is GameRolePlayHumanoidInformations)
          {
@@ -621,12 +615,13 @@ package com.ankamagames.dofus.logic.game.common.frames
          }
       }
       
-      public function addEntityIcon(pEntityId:Number, pIconName:String, pIconCategory:int = 0, offsetX:Number = 0, offsetY:Number = 0, turnsRemaining:Number = -1) : void
+      public function addEntityIcon(pEntityId:Number, pIconName:String, pIconCategory:int = 0, offsetX:Number = 0, offsetY:Number = 0, turnsRemaining:Number = -1, scoreValue:int = -1) : void
       {
          if(!this._entitiesIconsNames[pEntityId])
          {
             this._entitiesIconsNames[pEntityId] = new Dictionary();
             this._entitiesIconsNames[pEntityId][EntityIconEnum.TURN_REMAINING] = new Dictionary();
+            this._entitiesIconsNames[pEntityId][EntityIconEnum.AVA_SCORE] = new Dictionary();
             this._entitiesIconsCounts[pEntityId] = new Dictionary();
          }
          if(!this._entitiesIconsNames[pEntityId][pIconCategory])
@@ -656,6 +651,10 @@ package com.ankamagames.dofus.logic.game.common.frames
          if(turnsRemaining != -1)
          {
             this._entitiesIconsNames[pEntityId][EntityIconEnum.TURN_REMAINING][pIconName] = turnsRemaining;
+         }
+         if(scoreValue >= 0)
+         {
+            this._entitiesIconsNames[pEntityId][EntityIconEnum.AVA_SCORE][pIconName] = scoreValue;
          }
          EnterFrameDispatcher.addEventListener(this.showIcons,EnterFrameConst.SHOW_ICONS,250);
       }
@@ -843,6 +842,15 @@ package com.ankamagames.dofus.logic.game.common.frames
          }
       }
       
+      public function removeCategoryForAllEntities(pIconCategory:int) : void
+      {
+         var entityId:* = null;
+         for(entityId in this._entitiesIcons)
+         {
+            this.removeIconsCategory(parseInt(entityId),pIconCategory);
+         }
+      }
+      
       public function hasIcon(pEntityId:Number, pIconName:String = null) : Boolean
       {
          var hasIcon:Boolean = false;
@@ -949,6 +957,11 @@ package com.ankamagames.dofus.logic.game.common.frames
          return null;
       }
       
+      private function iconCantBeDisabled(entityId:*) : Boolean
+      {
+         return this._entitiesIconsNames[entityId][0] != this.ARCH_MONSTERS && this._entitiesIconsNames[entityId][0] != this.NUGGET && !this._entitiesIconsNames[entityId][EntityIconEnum.AVA_CATEGORY];
+      }
+      
       protected function showIcons(pEvent:Event = null) : void
       {
          var entityId:* = undefined;
@@ -971,10 +984,10 @@ package com.ankamagames.dofus.logic.game.common.frames
          var entitiesToDelete:Array = [];
          for(entityId in this._entitiesIconsNames)
          {
-            if(!(!this._showIcons && !this._isShowIconsChanged && this._entitiesIconsNames[entityId][0] != this.ARCH_MONSTERS))
+            if(!(!this._showIcons && !this._isShowIconsChanged && this.iconCantBeDisabled(entityId)))
             {
                ei = this._entitiesIcons[entityId];
-               if(!this._showIcons && this._entitiesIconsNames[entityId][0] != this.ARCH_MONSTERS)
+               if(!this._showIcons && this.iconCantBeDisabled(entityId))
                {
                   if(ei)
                   {
@@ -1057,10 +1070,10 @@ package com.ankamagames.dofus.logic.game.common.frames
                               {
                                  if(!ei.hasIcon(iconName))
                                  {
+                                    turnsRemaining = -1;
                                     newIcon = true;
                                     if(iconCat == EntityIconEnum.FIGHT_STATE_CATEGORY)
                                     {
-                                       turnsRemaining = -1;
                                        if(!!this._entitiesIconsNames[entityId][EntityIconEnum.TURN_REMAINING] && this._entitiesIconsNames[entityId][EntityIconEnum.TURN_REMAINING][iconName])
                                        {
                                           turnsRemaining = this._entitiesIconsNames[entityId][EntityIconEnum.TURN_REMAINING][iconName];
@@ -1073,7 +1086,15 @@ package com.ankamagames.dofus.logic.game.common.frames
                                     }
                                     else
                                     {
-                                       ei.addIcon(ICONS_FILEPATH_CONQUEST + "" + iconName,iconName,this._entitiesIconsOffsets[iconName]);
+                                       this.addConquestIcon(entityId,ei,iconName);
+                                    }
+                                 }
+                                 else
+                                 {
+                                    newIcon = false;
+                                    if(iconCat != EntityIconEnum.FIGHT_STATE_CATEGORY && iconCat != EntityIconEnum.AGGRO_CATEGORY)
+                                    {
+                                       this.addConquestIcon(entityId,ei,iconName);
                                     }
                                  }
                               }
@@ -1161,6 +1182,25 @@ package com.ankamagames.dofus.logic.game.common.frames
          }
          this._updateAllIcons = false;
          this._isShowIconsChanged = false;
+      }
+      
+      private function addConquestIcon(entityId:Number, entityIcon:EntityIcon, iconName:String) : void
+      {
+         var scoreValue:int = -1;
+         if(this._entitiesIconsNames[entityId][EntityIconEnum.AVA_SCORE] && this._entitiesIconsNames[entityId][EntityIconEnum.AVA_SCORE][iconName])
+         {
+            scoreValue = this._entitiesIconsNames[entityId][EntityIconEnum.AVA_SCORE][iconName];
+         }
+         if(entityIcon.scoreValues[iconName])
+         {
+            entityIcon.updateScoreValue(iconName,scoreValue);
+         }
+         else
+         {
+            entityIcon.removeIcon(iconName);
+            entityIcon.addIcon(ICONS_FILEPATH_CONQUEST + "" + iconName,iconName,this._entitiesIconsOffsets[iconName],-1,scoreValue);
+         }
+         this.changeColor(entityId,iconName);
       }
       
       public function onDofusOptionsChange(event:PropertyChangeEvent) : void
@@ -1266,6 +1306,11 @@ package com.ankamagames.dofus.logic.game.common.frames
             this._entitiesIcons[entity.id].rendering = false;
             this._entitiesIcons[entity.id].needUpdate = true;
          }
+      }
+      
+      protected function changeColor(entityId:Number, name:String, color:ColorTransform = null) : void
+      {
+         this._entitiesIcons[entityId].icons[name].colorTransform = color;
       }
       
       public function onPlayAnim(e:TiphonEvent) : void

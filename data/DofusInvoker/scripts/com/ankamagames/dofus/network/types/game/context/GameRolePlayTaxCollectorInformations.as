@@ -11,12 +11,10 @@ package com.ankamagames.dofus.network.types.game.context
    public class GameRolePlayTaxCollectorInformations extends GameRolePlayActorInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 7265;
+      public static const protocolId:uint = 3569;
        
       
       public var identification:TaxCollectorStaticInformations;
-      
-      public var guildLevel:uint = 0;
       
       public var taxCollectorAttack:int = 0;
       
@@ -30,14 +28,13 @@ package com.ankamagames.dofus.network.types.game.context
       
       override public function getTypeId() : uint
       {
-         return 7265;
+         return 3569;
       }
       
-      public function initGameRolePlayTaxCollectorInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, identification:TaxCollectorStaticInformations = null, guildLevel:uint = 0, taxCollectorAttack:int = 0) : GameRolePlayTaxCollectorInformations
+      public function initGameRolePlayTaxCollectorInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, identification:TaxCollectorStaticInformations = null, taxCollectorAttack:int = 0) : GameRolePlayTaxCollectorInformations
       {
          super.initGameRolePlayActorInformations(contextualId,disposition,look);
          this.identification = identification;
-         this.guildLevel = guildLevel;
          this.taxCollectorAttack = taxCollectorAttack;
          return this;
       }
@@ -46,7 +43,6 @@ package com.ankamagames.dofus.network.types.game.context
       {
          super.reset();
          this.identification = new TaxCollectorStaticInformations();
-         this.taxCollectorAttack = 0;
       }
       
       override public function serialize(output:ICustomDataOutput) : void
@@ -59,11 +55,6 @@ package com.ankamagames.dofus.network.types.game.context
          super.serializeAs_GameRolePlayActorInformations(output);
          output.writeShort(this.identification.getTypeId());
          this.identification.serialize(output);
-         if(this.guildLevel < 0 || this.guildLevel > 255)
-         {
-            throw new Error("Forbidden value (" + this.guildLevel + ") on element guildLevel.");
-         }
-         output.writeByte(this.guildLevel);
          output.writeInt(this.taxCollectorAttack);
       }
       
@@ -78,7 +69,6 @@ package com.ankamagames.dofus.network.types.game.context
          var _id1:uint = input.readUnsignedShort();
          this.identification = ProtocolTypeManager.getInstance(TaxCollectorStaticInformations,_id1);
          this.identification.deserialize(input);
-         this._guildLevelFunc(input);
          this._taxCollectorAttackFunc(input);
       }
       
@@ -91,7 +81,6 @@ package com.ankamagames.dofus.network.types.game.context
       {
          super.deserializeAsync(tree);
          this._identificationtree = tree.addChild(this._identificationtreeFunc);
-         tree.addChild(this._guildLevelFunc);
          tree.addChild(this._taxCollectorAttackFunc);
       }
       
@@ -100,15 +89,6 @@ package com.ankamagames.dofus.network.types.game.context
          var _id:uint = input.readUnsignedShort();
          this.identification = ProtocolTypeManager.getInstance(TaxCollectorStaticInformations,_id);
          this.identification.deserializeAsync(this._identificationtree);
-      }
-      
-      private function _guildLevelFunc(input:ICustomDataInput) : void
-      {
-         this.guildLevel = input.readUnsignedByte();
-         if(this.guildLevel < 0 || this.guildLevel > 255)
-         {
-            throw new Error("Forbidden value (" + this.guildLevel + ") on element of GameRolePlayTaxCollectorInformations.guildLevel.");
-         }
       }
       
       private function _taxCollectorAttackFunc(input:ICustomDataInput) : void

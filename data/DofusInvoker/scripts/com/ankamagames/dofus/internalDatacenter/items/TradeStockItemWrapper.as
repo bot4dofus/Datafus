@@ -31,17 +31,5 @@ package com.ankamagames.dofus.internalDatacenter.items
          obj.criterion = criterion;
          return obj;
       }
-      
-      public static function createFromObjectItemToSell(object:Object, criterion:GroupItemCriterion = null) : TradeStockItemWrapper
-      {
-         var obj:TradeStockItemWrapper = new TradeStockItemWrapper();
-         var iw:ItemWrapper = ItemWrapper.create(0,object.objectUID,object.objectGID,object.quantity,object.effects,false);
-         var cat:uint = Item.getItemById(object.objectGID).category;
-         obj.itemWrapper = iw;
-         obj.price = object.objectPrice;
-         obj.category = cat;
-         obj.criterion = criterion;
-         return obj;
-      }
    }
 }

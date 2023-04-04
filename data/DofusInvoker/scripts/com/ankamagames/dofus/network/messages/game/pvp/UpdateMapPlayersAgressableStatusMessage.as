@@ -1,5 +1,6 @@
 package com.ankamagames.dofus.network.messages.game.pvp
 {
+   import com.ankamagames.dofus.network.types.game.pvp.AgressableStatusMessage;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -11,23 +12,18 @@ package com.ankamagames.dofus.network.messages.game.pvp
    public class UpdateMapPlayersAgressableStatusMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2700;
+      public static const protocolId:uint = 6550;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var playerIds:Vector.<Number>;
+      public var playerAvAMessages:Vector.<AgressableStatusMessage>;
       
-      public var enable:Vector.<uint>;
-      
-      private var _playerIdstree:FuncTree;
-      
-      private var _enabletree:FuncTree;
+      private var _playerAvAMessagestree:FuncTree;
       
       public function UpdateMapPlayersAgressableStatusMessage()
       {
-         this.playerIds = new Vector.<Number>();
-         this.enable = new Vector.<uint>();
+         this.playerAvAMessages = new Vector.<AgressableStatusMessage>();
          super();
       }
       
@@ -38,21 +34,19 @@ package com.ankamagames.dofus.network.messages.game.pvp
       
       override public function getMessageId() : uint
       {
-         return 2700;
+         return 6550;
       }
       
-      public function initUpdateMapPlayersAgressableStatusMessage(playerIds:Vector.<Number> = null, enable:Vector.<uint> = null) : UpdateMapPlayersAgressableStatusMessage
+      public function initUpdateMapPlayersAgressableStatusMessage(playerAvAMessages:Vector.<AgressableStatusMessage> = null) : UpdateMapPlayersAgressableStatusMessage
       {
-         this.playerIds = playerIds;
-         this.enable = enable;
+         this.playerAvAMessages = playerAvAMessages;
          this._isInitialized = true;
          return this;
       }
       
       override public function reset() : void
       {
-         this.playerIds = new Vector.<Number>();
-         this.enable = new Vector.<uint>();
+         this.playerAvAMessages = new Vector.<AgressableStatusMessage>();
          this._isInitialized = false;
       }
       
@@ -83,19 +77,10 @@ package com.ankamagames.dofus.network.messages.game.pvp
       
       public function serializeAs_UpdateMapPlayersAgressableStatusMessage(output:ICustomDataOutput) : void
       {
-         output.writeShort(this.playerIds.length);
-         for(var _i1:uint = 0; _i1 < this.playerIds.length; _i1++)
+         output.writeShort(this.playerAvAMessages.length);
+         for(var _i1:uint = 0; _i1 < this.playerAvAMessages.length; _i1++)
          {
-            if(this.playerIds[_i1] < 0 || this.playerIds[_i1] > 9007199254740992)
-            {
-               throw new Error("Forbidden value (" + this.playerIds[_i1] + ") on element 1 (starting at 1) of playerIds.");
-            }
-            output.writeVarLong(this.playerIds[_i1]);
-         }
-         output.writeShort(this.enable.length);
-         for(var _i2:uint = 0; _i2 < this.enable.length; _i2++)
-         {
-            output.writeByte(this.enable[_i2]);
+            (this.playerAvAMessages[_i1] as AgressableStatusMessage).serializeAs_AgressableStatusMessage(output);
          }
       }
       
@@ -106,27 +91,13 @@ package com.ankamagames.dofus.network.messages.game.pvp
       
       public function deserializeAs_UpdateMapPlayersAgressableStatusMessage(input:ICustomDataInput) : void
       {
-         var _val1:Number = NaN;
-         var _val2:uint = 0;
-         var _playerIdsLen:uint = input.readUnsignedShort();
-         for(var _i1:uint = 0; _i1 < _playerIdsLen; _i1++)
+         var _item1:AgressableStatusMessage = null;
+         var _playerAvAMessagesLen:uint = input.readUnsignedShort();
+         for(var _i1:uint = 0; _i1 < _playerAvAMessagesLen; _i1++)
          {
-            _val1 = input.readVarUhLong();
-            if(_val1 < 0 || _val1 > 9007199254740992)
-            {
-               throw new Error("Forbidden value (" + _val1 + ") on elements of playerIds.");
-            }
-            this.playerIds.push(_val1);
-         }
-         var _enableLen:uint = input.readUnsignedShort();
-         for(var _i2:uint = 0; _i2 < _enableLen; _i2++)
-         {
-            _val2 = input.readByte();
-            if(_val2 < 0)
-            {
-               throw new Error("Forbidden value (" + _val2 + ") on elements of enable.");
-            }
-            this.enable.push(_val2);
+            _item1 = new AgressableStatusMessage();
+            _item1.deserialize(input);
+            this.playerAvAMessages.push(_item1);
          }
       }
       
@@ -137,46 +108,23 @@ package com.ankamagames.dofus.network.messages.game.pvp
       
       public function deserializeAsyncAs_UpdateMapPlayersAgressableStatusMessage(tree:FuncTree) : void
       {
-         this._playerIdstree = tree.addChild(this._playerIdstreeFunc);
-         this._enabletree = tree.addChild(this._enabletreeFunc);
+         this._playerAvAMessagestree = tree.addChild(this._playerAvAMessagestreeFunc);
       }
       
-      private function _playerIdstreeFunc(input:ICustomDataInput) : void
+      private function _playerAvAMessagestreeFunc(input:ICustomDataInput) : void
       {
          var length:uint = input.readUnsignedShort();
          for(var i:uint = 0; i < length; i++)
          {
-            this._playerIdstree.addChild(this._playerIdsFunc);
+            this._playerAvAMessagestree.addChild(this._playerAvAMessagesFunc);
          }
       }
       
-      private function _playerIdsFunc(input:ICustomDataInput) : void
+      private function _playerAvAMessagesFunc(input:ICustomDataInput) : void
       {
-         var _val:Number = input.readVarUhLong();
-         if(_val < 0 || _val > 9007199254740992)
-         {
-            throw new Error("Forbidden value (" + _val + ") on elements of playerIds.");
-         }
-         this.playerIds.push(_val);
-      }
-      
-      private function _enabletreeFunc(input:ICustomDataInput) : void
-      {
-         var length:uint = input.readUnsignedShort();
-         for(var i:uint = 0; i < length; i++)
-         {
-            this._enabletree.addChild(this._enableFunc);
-         }
-      }
-      
-      private function _enableFunc(input:ICustomDataInput) : void
-      {
-         var _val:uint = input.readByte();
-         if(_val < 0)
-         {
-            throw new Error("Forbidden value (" + _val + ") on elements of enable.");
-         }
-         this.enable.push(_val);
+         var _item:AgressableStatusMessage = new AgressableStatusMessage();
+         _item.deserialize(input);
+         this.playerAvAMessages.push(_item);
       }
    }
 }

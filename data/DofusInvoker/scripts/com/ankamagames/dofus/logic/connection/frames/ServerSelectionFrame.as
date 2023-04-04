@@ -53,8 +53,6 @@ package com.ankamagames.dofus.logic.connection.frames
       
       private var _worker:Worker;
       
-      private var _serverSelectionAction:ServerSelectionAction;
-      
       private var _connexionPorts:Array;
       
       public function ServerSelectionFrame()
@@ -420,18 +418,6 @@ package com.ankamagames.dofus.logic.connection.frames
                gsi.status = newStatus;
             }
          };
-      }
-      
-      private function onValidServerSelection() : void
-      {
-         this.process(this._serverSelectionAction);
-         this._serverSelectionAction = null;
-      }
-      
-      private function onCancelServerSelection() : void
-      {
-         KernelEventsManager.getInstance().processCallback(HookList.SelectedServerRefused,this._serverSelectionAction.serverId,"",this.getSelectableServers());
-         this._serverSelectionAction = null;
       }
    }
 }

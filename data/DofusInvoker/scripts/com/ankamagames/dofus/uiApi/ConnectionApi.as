@@ -8,6 +8,7 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.connection.frames.ServerSelectionFrame;
+   import com.ankamagames.dofus.logic.connection.managers.AuthentificationManager;
    import com.ankamagames.dofus.logic.game.approach.frames.GameServerApproachFrame;
    import com.ankamagames.dofus.network.enums.BuildTypeEnum;
    import com.ankamagames.dofus.network.enums.ServerCompletionEnum;
@@ -145,6 +146,11 @@ package com.ankamagames.dofus.uiApi
       private function serverIsOnlineAndNotFull(serverInfo:GameServerInformations) : Boolean
       {
          return serverInfo.isSelectable && serverInfo.status == ServerStatusEnum.ONLINE && serverInfo.charactersCount < serverInfo.charactersSlots && serverInfo.completion <= ServerCompletionEnum.COMPLETION_HIGH;
+      }
+      
+      public function getForcedAccountInfos() : void
+      {
+         AuthentificationManager.getInstance().getForceAccountInfos();
       }
    }
 }

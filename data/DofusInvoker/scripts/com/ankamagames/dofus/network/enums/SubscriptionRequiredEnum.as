@@ -13,9 +13,7 @@ package com.ankamagames.dofus.network.enums
       
       public static const LIMIT_ON_ITEM:uint = 4;
       
-      public static const LIMIT_ON_VENDOR:uint = 5;
-      
-      public static const LIMIT_ON_HAVENBAG:uint = 6;
+      public static const LIMIT_ON_HAVENBAG:uint = 5;
        
       
       public function SubscriptionRequiredEnum()

@@ -1,50 +1,53 @@
 package com.ankamagames.dofus.network.messages.game.character.choice
 {
+   import com.ankamagames.dofus.network.ProtocolTypeManager;
    import com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
    import com.ankamagames.jerakine.network.INetworkMessage;
+   import com.ankamagames.jerakine.network.NetworkMessage;
    import com.ankamagames.jerakine.network.utils.FuncTree;
    import flash.utils.ByteArray;
    
-   public class CharactersListMessage extends BasicCharactersListMessage implements INetworkMessage
+   public class CharactersListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1159;
+      public static const protocolId:uint = 355;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var hasStartupActions:Boolean = false;
+      public var characters:Vector.<CharacterBaseInformations>;
+      
+      private var _characterstree:FuncTree;
       
       public function CharactersListMessage()
       {
+         this.characters = new Vector.<CharacterBaseInformations>();
          super();
       }
       
       override public function get isInitialized() : Boolean
       {
-         return super.isInitialized && this._isInitialized;
+         return this._isInitialized;
       }
       
       override public function getMessageId() : uint
       {
-         return 1159;
+         return 355;
       }
       
-      public function initCharactersListMessage(characters:Vector.<CharacterBaseInformations> = null, hasStartupActions:Boolean = false) : CharactersListMessage
+      public function initCharactersListMessage(characters:Vector.<CharacterBaseInformations> = null) : CharactersListMessage
       {
-         super.initBasicCharactersListMessage(characters);
-         this.hasStartupActions = hasStartupActions;
+         this.characters = characters;
          this._isInitialized = true;
          return this;
       }
       
       override public function reset() : void
       {
-         super.reset();
-         this.hasStartupActions = false;
+         this.characters = new Vector.<CharacterBaseInformations>();
          this._isInitialized = false;
       }
       
@@ -68,42 +71,65 @@ package com.ankamagames.dofus.network.messages.game.character.choice
          return tree;
       }
       
-      override public function serialize(output:ICustomDataOutput) : void
+      public function serialize(output:ICustomDataOutput) : void
       {
          this.serializeAs_CharactersListMessage(output);
       }
       
       public function serializeAs_CharactersListMessage(output:ICustomDataOutput) : void
       {
-         super.serializeAs_BasicCharactersListMessage(output);
-         output.writeBoolean(this.hasStartupActions);
+         output.writeShort(this.characters.length);
+         for(var _i1:uint = 0; _i1 < this.characters.length; _i1++)
+         {
+            output.writeShort((this.characters[_i1] as CharacterBaseInformations).getTypeId());
+            (this.characters[_i1] as CharacterBaseInformations).serialize(output);
+         }
       }
       
-      override public function deserialize(input:ICustomDataInput) : void
+      public function deserialize(input:ICustomDataInput) : void
       {
          this.deserializeAs_CharactersListMessage(input);
       }
       
       public function deserializeAs_CharactersListMessage(input:ICustomDataInput) : void
       {
-         super.deserialize(input);
-         this._hasStartupActionsFunc(input);
+         var _id1:uint = 0;
+         var _item1:CharacterBaseInformations = null;
+         var _charactersLen:uint = input.readUnsignedShort();
+         for(var _i1:uint = 0; _i1 < _charactersLen; _i1++)
+         {
+            _id1 = input.readUnsignedShort();
+            _item1 = ProtocolTypeManager.getInstance(CharacterBaseInformations,_id1);
+            _item1.deserialize(input);
+            this.characters.push(_item1);
+         }
       }
       
-      override public function deserializeAsync(tree:FuncTree) : void
+      public function deserializeAsync(tree:FuncTree) : void
       {
          this.deserializeAsyncAs_CharactersListMessage(tree);
       }
       
       public function deserializeAsyncAs_CharactersListMessage(tree:FuncTree) : void
       {
-         super.deserializeAsync(tree);
-         tree.addChild(this._hasStartupActionsFunc);
+         this._characterstree = tree.addChild(this._characterstreeFunc);
       }
       
-      private function _hasStartupActionsFunc(input:ICustomDataInput) : void
+      private function _characterstreeFunc(input:ICustomDataInput) : void
       {
-         this.hasStartupActions = input.readBoolean();
+         var length:uint = input.readUnsignedShort();
+         for(var i:uint = 0; i < length; i++)
+         {
+            this._characterstree.addChild(this._charactersFunc);
+         }
+      }
+      
+      private function _charactersFunc(input:ICustomDataInput) : void
+      {
+         var _id:uint = input.readUnsignedShort();
+         var _item:CharacterBaseInformations = ProtocolTypeManager.getInstance(CharacterBaseInformations,_id);
+         _item.deserialize(input);
+         this.characters.push(_item);
       }
    }
 }

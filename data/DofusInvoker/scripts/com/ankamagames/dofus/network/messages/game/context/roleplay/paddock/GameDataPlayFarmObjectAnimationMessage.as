@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
    public class GameDataPlayFarmObjectAnimationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7321;
+      public static const protocolId:uint = 5643;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
       
       override public function getMessageId() : uint
       {
-         return 7321;
+         return 5643;
       }
       
       public function initGameDataPlayFarmObjectAnimationMessage(cellId:Vector.<uint> = null) : GameDataPlayFarmObjectAnimationMessage

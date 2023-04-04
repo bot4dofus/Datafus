@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.types.game.context.roleplay
 {
-   import com.ankamagames.dofus.network.types.game.guild.GuildEmblem;
+   import com.ankamagames.dofus.network.types.game.social.SocialEmblem;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
    import com.ankamagames.jerakine.network.INetworkType;
@@ -9,25 +9,25 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class GuildInformations extends BasicGuildInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 5879;
+      public static const protocolId:uint = 574;
        
       
-      public var guildEmblem:GuildEmblem;
+      public var guildEmblem:SocialEmblem;
       
       private var _guildEmblemtree:FuncTree;
       
       public function GuildInformations()
       {
-         this.guildEmblem = new GuildEmblem();
+         this.guildEmblem = new SocialEmblem();
          super();
       }
       
       override public function getTypeId() : uint
       {
-         return 5879;
+         return 574;
       }
       
-      public function initGuildInformations(guildId:uint = 0, guildName:String = "", guildLevel:uint = 0, guildEmblem:GuildEmblem = null) : GuildInformations
+      public function initGuildInformations(guildId:uint = 0, guildName:String = "", guildLevel:uint = 0, guildEmblem:SocialEmblem = null) : GuildInformations
       {
          super.initBasicGuildInformations(guildId,guildName,guildLevel);
          this.guildEmblem = guildEmblem;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       override public function reset() : void
       {
          super.reset();
-         this.guildEmblem = new GuildEmblem();
+         this.guildEmblem = new SocialEmblem();
       }
       
       override public function serialize(output:ICustomDataOutput) : void
@@ -48,7 +48,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       public function serializeAs_GuildInformations(output:ICustomDataOutput) : void
       {
          super.serializeAs_BasicGuildInformations(output);
-         this.guildEmblem.serializeAs_GuildEmblem(output);
+         this.guildEmblem.serializeAs_SocialEmblem(output);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -59,7 +59,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       public function deserializeAs_GuildInformations(input:ICustomDataInput) : void
       {
          super.deserialize(input);
-         this.guildEmblem = new GuildEmblem();
+         this.guildEmblem = new SocialEmblem();
          this.guildEmblem.deserialize(input);
       }
       
@@ -76,7 +76,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       private function _guildEmblemtreeFunc(input:ICustomDataInput) : void
       {
-         this.guildEmblem = new GuildEmblem();
+         this.guildEmblem = new SocialEmblem();
          this.guildEmblem.deserializeAsync(this._guildEmblemtree);
       }
    }

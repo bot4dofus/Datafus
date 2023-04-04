@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.messages.game.alliance
 {
-   import com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformation;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -12,22 +12,20 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceJoinedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 230;
+      public static const protocolId:uint = 32;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var allianceInfo:AllianceInformations;
+      public var allianceInfo:AllianceInformation;
       
-      public var enabled:Boolean = false;
-      
-      public var leadingGuildId:uint = 0;
+      public var rankId:uint = 0;
       
       private var _allianceInfotree:FuncTree;
       
       public function AllianceJoinedMessage()
       {
-         this.allianceInfo = new AllianceInformations();
+         this.allianceInfo = new AllianceInformation();
          super();
       }
       
@@ -38,22 +36,20 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 230;
+         return 32;
       }
       
-      public function initAllianceJoinedMessage(allianceInfo:AllianceInformations = null, enabled:Boolean = false, leadingGuildId:uint = 0) : AllianceJoinedMessage
+      public function initAllianceJoinedMessage(allianceInfo:AllianceInformation = null, rankId:uint = 0) : AllianceJoinedMessage
       {
          this.allianceInfo = allianceInfo;
-         this.enabled = enabled;
-         this.leadingGuildId = leadingGuildId;
+         this.rankId = rankId;
          this._isInitialized = true;
          return this;
       }
       
       override public function reset() : void
       {
-         this.allianceInfo = new AllianceInformations();
-         this.leadingGuildId = 0;
+         this.allianceInfo = new AllianceInformation();
          this._isInitialized = false;
       }
       
@@ -84,13 +80,12 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       public function serializeAs_AllianceJoinedMessage(output:ICustomDataOutput) : void
       {
-         this.allianceInfo.serializeAs_AllianceInformations(output);
-         output.writeBoolean(this.enabled);
-         if(this.leadingGuildId < 0)
+         this.allianceInfo.serializeAs_AllianceInformation(output);
+         if(this.rankId < 0)
          {
-            throw new Error("Forbidden value (" + this.leadingGuildId + ") on element leadingGuildId.");
+            throw new Error("Forbidden value (" + this.rankId + ") on element rankId.");
          }
-         output.writeVarInt(this.leadingGuildId);
+         output.writeVarInt(this.rankId);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -100,10 +95,9 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       public function deserializeAs_AllianceJoinedMessage(input:ICustomDataInput) : void
       {
-         this.allianceInfo = new AllianceInformations();
+         this.allianceInfo = new AllianceInformation();
          this.allianceInfo.deserialize(input);
-         this._enabledFunc(input);
-         this._leadingGuildIdFunc(input);
+         this._rankIdFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -114,27 +108,21 @@ package com.ankamagames.dofus.network.messages.game.alliance
       public function deserializeAsyncAs_AllianceJoinedMessage(tree:FuncTree) : void
       {
          this._allianceInfotree = tree.addChild(this._allianceInfotreeFunc);
-         tree.addChild(this._enabledFunc);
-         tree.addChild(this._leadingGuildIdFunc);
+         tree.addChild(this._rankIdFunc);
       }
       
       private function _allianceInfotreeFunc(input:ICustomDataInput) : void
       {
-         this.allianceInfo = new AllianceInformations();
+         this.allianceInfo = new AllianceInformation();
          this.allianceInfo.deserializeAsync(this._allianceInfotree);
       }
       
-      private function _enabledFunc(input:ICustomDataInput) : void
+      private function _rankIdFunc(input:ICustomDataInput) : void
       {
-         this.enabled = input.readBoolean();
-      }
-      
-      private function _leadingGuildIdFunc(input:ICustomDataInput) : void
-      {
-         this.leadingGuildId = input.readVarUhInt();
-         if(this.leadingGuildId < 0)
+         this.rankId = input.readVarUhInt();
+         if(this.rankId < 0)
          {
-            throw new Error("Forbidden value (" + this.leadingGuildId + ") on element of AllianceJoinedMessage.leadingGuildId.");
+            throw new Error("Forbidden value (" + this.rankId + ") on element of AllianceJoinedMessage.rankId.");
          }
       }
    }

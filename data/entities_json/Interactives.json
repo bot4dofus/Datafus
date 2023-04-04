@@ -56,7 +56,7 @@
 		},
 		{
 			"id": 13,
-			"nameId": 2662,
+			"nameId": 995385,
 			"actionId": 2,
 			"displayTooltip": true
 		},
@@ -98,7 +98,7 @@
 		},
 		{
 			"id": 26,
-			"nameId": 2640,
+			"nameId": 995387,
 			"actionId": 1,
 			"displayTooltip": true
 		},
@@ -116,7 +116,7 @@
 		},
 		{
 			"id": 29,
-			"nameId": 2580,
+			"nameId": 995408,
 			"actionId": 1,
 			"displayTooltip": true
 		},
@@ -128,7 +128,7 @@
 		},
 		{
 			"id": 31,
-			"nameId": 2666,
+			"nameId": 995392,
 			"actionId": 1,
 			"displayTooltip": true
 		},
@@ -158,7 +158,7 @@
 		},
 		{
 			"id": 37,
-			"nameId": 2603,
+			"nameId": 995388,
 			"actionId": 1,
 			"displayTooltip": true
 		},
@@ -242,13 +242,13 @@
 		},
 		{
 			"id": 52,
-			"nameId": 2590,
+			"nameId": 995382,
 			"actionId": 1,
 			"displayTooltip": true
 		},
 		{
 			"id": 53,
-			"nameId": 2654,
+			"nameId": 995386,
 			"actionId": 1,
 			"displayTooltip": true
 		},
@@ -308,7 +308,7 @@
 		},
 		{
 			"id": 64,
-			"nameId": 2665,
+			"nameId": 995393,
 			"actionId": 1,
 			"displayTooltip": false
 		},
@@ -446,7 +446,7 @@
 		},
 		{
 			"id": 88,
-			"nameId": 2594,
+			"nameId": 995390,
 			"actionId": 2,
 			"displayTooltip": true
 		},
@@ -524,7 +524,7 @@
 		},
 		{
 			"id": 103,
-			"nameId": 2657,
+			"nameId": 995391,
 			"actionId": 2,
 			"displayTooltip": true
 		},
@@ -1282,7 +1282,7 @@
 			"id": 234,
 			"nameId": 423445,
 			"actionId": 0,
-			"displayTooltip": false
+			"displayTooltip": true
 		},
 		{
 			"id": 235,
@@ -1328,7 +1328,7 @@
 		},
 		{
 			"id": 242,
-			"nameId": 469679,
+			"nameId": 995389,
 			"actionId": 0,
 			"displayTooltip": true
 		},
@@ -1870,7 +1870,7 @@
 			"id": 332,
 			"nameId": 826275,
 			"actionId": 0,
-			"displayTooltip": true
+			"displayTooltip": false
 		},
 		{
 			"id": 333,

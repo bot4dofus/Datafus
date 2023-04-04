@@ -6,7 +6,6 @@ package com.ankamagames.dofus.console.moduleLogger
    import com.ankamagames.berilia.types.data.ExtendedStyleSheet;
    import com.ankamagames.dofus.datacenter.communication.ChatChannel;
    import com.ankamagames.dofus.kernel.Kernel;
-   import com.ankamagames.dofus.logic.game.common.frames.AllianceFrame;
    import com.ankamagames.dofus.logic.game.common.frames.ChatFrame;
    import com.ankamagames.dofus.logic.game.common.frames.PartyManagementFrame;
    import com.ankamagames.dofus.logic.game.common.frames.SocialFrame;
@@ -336,7 +335,7 @@ package com.ankamagames.dofus.console.moduleLogger
                partyManagementFrame = Kernel.getWorker().getFrame(PartyManagementFrame) as PartyManagementFrame;
                return partyManagementFrame.arenaPartyMembers.length > 0;
             case ChatActivableChannelsEnum.CHANNEL_ALLIANCE:
-               return AllianceFrame.getInstance().hasAlliance;
+               return SocialFrame.getInstance().hasAlliance;
             case ChatActivableChannelsEnum.CHANNEL_TEAM:
                return PlayedCharacterManager.getInstance().isSpectator || PlayedCharacterManager.getInstance().isFighting;
             default:

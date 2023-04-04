@@ -8,16 +8,14 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightTeamMemberTaxCollectorInformations extends FightTeamMemberInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 8225;
+      public static const protocolId:uint = 9853;
        
       
       public var firstNameId:uint = 0;
       
       public var lastNameId:uint = 0;
       
-      public var level:uint = 0;
-      
-      public var guildId:uint = 0;
+      public var groupId:uint = 0;
       
       public var uid:Number = 0;
       
@@ -28,16 +26,15 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 8225;
+         return 9853;
       }
       
-      public function initFightTeamMemberTaxCollectorInformations(id:Number = 0, firstNameId:uint = 0, lastNameId:uint = 0, level:uint = 0, guildId:uint = 0, uid:Number = 0) : FightTeamMemberTaxCollectorInformations
+      public function initFightTeamMemberTaxCollectorInformations(id:Number = 0, firstNameId:uint = 0, lastNameId:uint = 0, groupId:uint = 0, uid:Number = 0) : FightTeamMemberTaxCollectorInformations
       {
          super.initFightTeamMemberInformations(id);
          this.firstNameId = firstNameId;
          this.lastNameId = lastNameId;
-         this.level = level;
-         this.guildId = guildId;
+         this.groupId = groupId;
          this.uid = uid;
          return this;
       }
@@ -47,8 +44,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
          super.reset();
          this.firstNameId = 0;
          this.lastNameId = 0;
-         this.level = 0;
-         this.guildId = 0;
+         this.groupId = 0;
          this.uid = 0;
       }
       
@@ -70,16 +66,11 @@ package com.ankamagames.dofus.network.types.game.context.fight
             throw new Error("Forbidden value (" + this.lastNameId + ") on element lastNameId.");
          }
          output.writeVarShort(this.lastNameId);
-         if(this.level < 1 || this.level > 200)
+         if(this.groupId < 0)
          {
-            throw new Error("Forbidden value (" + this.level + ") on element level.");
+            throw new Error("Forbidden value (" + this.groupId + ") on element groupId.");
          }
-         output.writeByte(this.level);
-         if(this.guildId < 0)
-         {
-            throw new Error("Forbidden value (" + this.guildId + ") on element guildId.");
-         }
-         output.writeVarInt(this.guildId);
+         output.writeVarInt(this.groupId);
          if(this.uid < 0 || this.uid > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.uid + ") on element uid.");
@@ -97,8 +88,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
          super.deserialize(input);
          this._firstNameIdFunc(input);
          this._lastNameIdFunc(input);
-         this._levelFunc(input);
-         this._guildIdFunc(input);
+         this._groupIdFunc(input);
          this._uidFunc(input);
       }
       
@@ -112,8 +102,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
          super.deserializeAsync(tree);
          tree.addChild(this._firstNameIdFunc);
          tree.addChild(this._lastNameIdFunc);
-         tree.addChild(this._levelFunc);
-         tree.addChild(this._guildIdFunc);
+         tree.addChild(this._groupIdFunc);
          tree.addChild(this._uidFunc);
       }
       
@@ -135,21 +124,12 @@ package com.ankamagames.dofus.network.types.game.context.fight
          }
       }
       
-      private function _levelFunc(input:ICustomDataInput) : void
+      private function _groupIdFunc(input:ICustomDataInput) : void
       {
-         this.level = input.readUnsignedByte();
-         if(this.level < 1 || this.level > 200)
+         this.groupId = input.readVarUhInt();
+         if(this.groupId < 0)
          {
-            throw new Error("Forbidden value (" + this.level + ") on element of FightTeamMemberTaxCollectorInformations.level.");
-         }
-      }
-      
-      private function _guildIdFunc(input:ICustomDataInput) : void
-      {
-         this.guildId = input.readVarUhInt();
-         if(this.guildId < 0)
-         {
-            throw new Error("Forbidden value (" + this.guildId + ") on element of FightTeamMemberTaxCollectorInformations.guildId.");
+            throw new Error("Forbidden value (" + this.groupId + ") on element of FightTeamMemberTaxCollectorInformations.groupId.");
          }
       }
       

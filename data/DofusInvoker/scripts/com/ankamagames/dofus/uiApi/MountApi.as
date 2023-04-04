@@ -3,8 +3,8 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.berilia.interfaces.IApi;
    import com.ankamagames.dofus.datacenter.effects.instances.EffectInstanceMount;
    import com.ankamagames.dofus.datacenter.mounts.Mount;
-   import com.ankamagames.dofus.internalDatacenter.guild.PaddockWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.PaddockWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.frames.InventoryManagementFrame;
    import com.ankamagames.dofus.logic.game.common.frames.MountFrame;

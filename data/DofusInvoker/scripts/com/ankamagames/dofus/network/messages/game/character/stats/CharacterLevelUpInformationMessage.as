@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.character.stats
    public class CharacterLevelUpInformationMessage extends CharacterLevelUpMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5824;
+      public static const protocolId:uint = 7117;
        
       
       private var _isInitialized:Boolean = false;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.network.messages.game.character.stats
       
       override public function getMessageId() : uint
       {
-         return 5824;
+         return 7117;
       }
       
       public function initCharacterLevelUpInformationMessage(newLevel:uint = 0, name:String = "", id:Number = 0) : CharacterLevelUpInformationMessage

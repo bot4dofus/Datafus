@@ -11,7 +11,6 @@ package com.ankamagames.dofus.misc.stats.custom
    import com.ankamagames.dofus.logic.common.actions.ResetGameAction;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.common.actions.OpenIdolsAction;
-   import com.ankamagames.dofus.logic.game.common.actions.humanVendor.ExchangeRequestOnShopStockAction;
    import com.ankamagames.dofus.logic.game.common.actions.mount.MountToggleRidingRequestAction;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.fight.actions.GameFightSpellCastAction;
@@ -24,6 +23,7 @@ package com.ankamagames.dofus.misc.stats.custom
    import com.ankamagames.dofus.logic.game.roleplay.actions.ShowFightPositionsAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.havenbag.HavenbagEnterAction;
    import com.ankamagames.dofus.misc.lists.CustomUiHookList;
+   import com.ankamagames.dofus.misc.lists.ShortcutHookListEnum;
    import com.ankamagames.dofus.misc.stats.IHookStats;
    import com.ankamagames.dofus.misc.stats.IStatsClass;
    import com.ankamagames.dofus.misc.stats.InternalStatisticTypeEnum;
@@ -55,7 +55,6 @@ package com.ankamagames.dofus.misc.stats.custom
          "openBookJob":"jobTab",
          "openMount":"mountInfo",
          "toggleRide":null,
-         "openSell":null,
          "openAlmanax":"questBase",
          "openAchievement":"questBase",
          "fake_1":"subQuestUi",
@@ -114,11 +113,11 @@ package com.ankamagames.dofus.misc.stats.custom
          switch(tabName)
          {
             case "achievementTab":
-               return "openAchievement";
+               return ShortcutHookListEnum.OPEN_ACHIEVEMENT;
             case "questTab":
-               return "openBookQuest";
+               return ShortcutHookListEnum.OPEN_QUESTS;
             case "calendarTab":
-               return "openAlmanax";
+               return ShortcutHookListEnum.OPEN_ALMANAX;
             default:
                return null;
          }
@@ -146,11 +145,11 @@ package com.ankamagames.dofus.misc.stats.custom
          switch(tab)
          {
             case 0:
-               return "openSocialFriends";
+               return ShortcutHookListEnum.OPEN_FRIENDS;
             case 1:
-               return "openSocialGuild";
+               return ShortcutHookListEnum.OPEN_GUILD;
             case 2:
-               return "openSocialAlliance";
+               return ShortcutHookListEnum.OPEN_ALLIANCE;
             default:
                return null;
          }
@@ -167,7 +166,7 @@ package com.ankamagames.dofus.misc.stats.custom
          }
          else if(pHook == CustomUiHookList.FoldAll)
          {
-            this._keyboardShortcut = "foldAll";
+            this._keyboardShortcut = ShortcutHookListEnum.FOLD_ALL;
             this.onNoUiShortcut(this._keyboardShortcut);
          }
          else if(pHook == BeriliaHookList.UiLoading)
@@ -237,44 +236,40 @@ package com.ankamagames.dofus.misc.stats.custom
          {
             if(MountToggleRidingRequestAction(pMessage).isToggle)
             {
-               this.onNoUiShortcut("toggleRide");
+               this.onNoUiShortcut(ShortcutHookListEnum.TOGGLE_RIDE);
             }
-         }
-         else if(pMessage is ExchangeRequestOnShopStockAction)
-         {
-            this.onNoUiShortcut("openSell");
          }
          else if(pMessage is OpenIdolsAction)
          {
-            this.onNoUiShortcut("openIdols");
+            this.onNoUiShortcut(ShortcutHookListEnum.OPEN_IDOLS);
          }
          else if(pMessage is HavenbagEnterAction)
          {
-            this.onToggleShortcut("openHavenbag");
+            this.onToggleShortcut(ShortcutHookListEnum.OPEN_HAVENBAG);
          }
          else if(pMessage is ToggleDematerializationAction)
          {
-            this.onNoUiShortcut("toggleDematerialization");
+            this.onNoUiShortcut(ShortcutHookListEnum.TOGGLE_DEMATERIALIZATION);
          }
          else if(pMessage is ShowAllNamesAction)
          {
-            this.onNoUiShortcut("showAllNames");
+            this.onNoUiShortcut(ShortcutHookListEnum.SHOW_ALL_NAMES);
          }
          else if(pMessage is ToggleEntityIconsAction)
          {
-            this.onToggleShortcut("toggleEntityIcons");
+            this.onToggleShortcut(ShortcutHookListEnum.TOGGLE_ENTITY_ICONS);
          }
          else if(pMessage is ShowEntitiesTooltipsAction)
          {
-            this.onToggleShortcut("showEntitiesTooltips");
+            this.onToggleShortcut(ShortcutHookListEnum.SHOW_ENTITIES_TOOLTIPS);
          }
          else if(pMessage is HighlightInteractiveElementsAction)
          {
-            this.onToggleShortcut("highlightInteractiveElements");
+            this.onToggleShortcut(ShortcutHookListEnum.HIGHLIGHT_INTERACTIVE_ELEMENTS);
          }
          else if(pMessage is ShowFightPositionsAction)
          {
-            this.onToggleShortcut("showFightPositions");
+            this.onToggleShortcut(ShortcutHookListEnum.SHOW_FIGHT_POSITIONS);
          }
          else if(pMessage is GameFightSpellCastAction)
          {

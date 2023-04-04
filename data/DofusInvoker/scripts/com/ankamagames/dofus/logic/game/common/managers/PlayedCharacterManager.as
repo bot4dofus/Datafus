@@ -24,10 +24,11 @@ package com.ankamagames.dofus.logic.game.common.managers
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristicsInformations;
    import com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations;
    import com.ankamagames.dofus.network.types.game.character.restriction.ActorRestrictionsInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformation;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations;
-   import com.ankamagames.dofus.network.types.game.guild.application.GuildApplicationInformation;
    import com.ankamagames.dofus.network.types.game.havenbag.HavenBagRoomPreviewInformation;
    import com.ankamagames.dofus.network.types.game.look.EntityLook;
+   import com.ankamagames.dofus.network.types.game.social.application.SocialApplicationInformation;
    import com.ankamagames.jerakine.interfaces.IDestroyable;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
@@ -84,8 +85,6 @@ package com.ankamagames.dofus.logic.game.common.managers
       public var currentWeapon:WeaponWrapper;
       
       public var inventoryWeight:uint;
-      
-      public var shopWeight:uint;
       
       public var inventoryWeightMax:uint;
       
@@ -153,9 +152,11 @@ package com.ankamagames.dofus.logic.game.common.managers
       
       public var waitingGifts:Array;
       
-      public var applicationInfo:GuildApplicationInformation;
+      public var applicationInfo:SocialApplicationInformation;
       
       public var guildApplicationInfo:GuildInformations;
+      
+      public var allianceApplicationInfo:AllianceInformation;
       
       public var guildChestLastContributionDate:Number = -1;
       
@@ -285,11 +286,6 @@ package com.ankamagames.dofus.logic.game.common.managers
       public function get cantChat() : Boolean
       {
          return this.restrictions.cantChat;
-      }
-      
-      public function get cantBeMerchant() : Boolean
-      {
-         return this.restrictions.cantBeMerchant;
       }
       
       public function get cantUseObject() : Boolean

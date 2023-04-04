@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.idol
    public class Idol implements INetworkType
    {
       
-      public static const protocolId:uint = 1259;
+      public static const protocolId:uint = 4978;
        
       
       public var id:uint = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.idol
       
       public function getTypeId() : uint
       {
-         return 1259;
+         return 4978;
       }
       
       public function initIdol(id:uint = 0, xpBonusPercent:uint = 0, dropBonusPercent:uint = 0) : Idol

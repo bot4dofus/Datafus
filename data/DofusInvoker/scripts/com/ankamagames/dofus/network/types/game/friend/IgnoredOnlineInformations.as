@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.friend
    public class IgnoredOnlineInformations extends IgnoredInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 277;
+      public static const protocolId:uint = 6225;
        
       
       public var playerId:Number = 0;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.friend
       
       override public function getTypeId() : uint
       {
-         return 277;
+         return 6225;
       }
       
       public function initIgnoredOnlineInformations(accountId:uint = 0, accountTag:AccountTagInformation = null, playerId:Number = 0, playerName:String = "", breed:int = 0, sex:Boolean = false) : IgnoredOnlineInformations

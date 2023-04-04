@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
    public class PaddockToSellListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 505;
+      public static const protocolId:uint = 7441;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
       
       override public function getMessageId() : uint
       {
-         return 505;
+         return 7441;
       }
       
       public function initPaddockToSellListMessage(pageIndex:uint = 0, totalPage:uint = 0, paddockList:Vector.<PaddockInformationsForSell> = null) : PaddockToSellListMessage
