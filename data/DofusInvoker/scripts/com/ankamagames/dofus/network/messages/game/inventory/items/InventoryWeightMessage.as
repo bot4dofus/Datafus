@@ -11,14 +11,12 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class InventoryWeightMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5080;
+      public static const protocolId:uint = 3679;
        
       
       private var _isInitialized:Boolean = false;
       
       public var inventoryWeight:uint = 0;
-      
-      public var shopWeight:uint = 0;
       
       public var weightMax:uint = 0;
       
@@ -34,13 +32,12 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 5080;
+         return 3679;
       }
       
-      public function initInventoryWeightMessage(inventoryWeight:uint = 0, shopWeight:uint = 0, weightMax:uint = 0) : InventoryWeightMessage
+      public function initInventoryWeightMessage(inventoryWeight:uint = 0, weightMax:uint = 0) : InventoryWeightMessage
       {
          this.inventoryWeight = inventoryWeight;
-         this.shopWeight = shopWeight;
          this.weightMax = weightMax;
          this._isInitialized = true;
          return this;
@@ -49,7 +46,6 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       override public function reset() : void
       {
          this.inventoryWeight = 0;
-         this.shopWeight = 0;
          this.weightMax = 0;
          this._isInitialized = false;
       }
@@ -86,11 +82,6 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
             throw new Error("Forbidden value (" + this.inventoryWeight + ") on element inventoryWeight.");
          }
          output.writeVarInt(this.inventoryWeight);
-         if(this.shopWeight < 0)
-         {
-            throw new Error("Forbidden value (" + this.shopWeight + ") on element shopWeight.");
-         }
-         output.writeVarInt(this.shopWeight);
          if(this.weightMax < 0)
          {
             throw new Error("Forbidden value (" + this.weightMax + ") on element weightMax.");
@@ -106,7 +97,6 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       public function deserializeAs_InventoryWeightMessage(input:ICustomDataInput) : void
       {
          this._inventoryWeightFunc(input);
-         this._shopWeightFunc(input);
          this._weightMaxFunc(input);
       }
       
@@ -118,7 +108,6 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       public function deserializeAsyncAs_InventoryWeightMessage(tree:FuncTree) : void
       {
          tree.addChild(this._inventoryWeightFunc);
-         tree.addChild(this._shopWeightFunc);
          tree.addChild(this._weightMaxFunc);
       }
       
@@ -128,15 +117,6 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
          if(this.inventoryWeight < 0)
          {
             throw new Error("Forbidden value (" + this.inventoryWeight + ") on element of InventoryWeightMessage.inventoryWeight.");
-         }
-      }
-      
-      private function _shopWeightFunc(input:ICustomDataInput) : void
-      {
-         this.shopWeight = input.readVarUhInt();
-         if(this.shopWeight < 0)
-         {
-            throw new Error("Forbidden value (" + this.shopWeight + ") on element of InventoryWeightMessage.shopWeight.");
          }
       }
       

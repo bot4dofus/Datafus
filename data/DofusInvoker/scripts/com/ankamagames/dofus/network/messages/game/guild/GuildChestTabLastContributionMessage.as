@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildChestTabLastContributionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2135;
+      public static const protocolId:uint = 5576;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 2135;
+         return 5576;
       }
       
       public function initGuildChestTabLastContributionMessage(lastContributionDate:Number = 0) : GuildChestTabLastContributionMessage

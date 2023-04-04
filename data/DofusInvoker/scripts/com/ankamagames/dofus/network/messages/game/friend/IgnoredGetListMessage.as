@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class IgnoredGetListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1190;
+      public static const protocolId:uint = 6954;
        
       
       public function IgnoredGetListMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 1190;
+         return 6954;
       }
       
       public function initIgnoredGetListMessage() : IgnoredGetListMessage

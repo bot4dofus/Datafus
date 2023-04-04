@@ -2,8 +2,8 @@ package com.ankamagames.dofus.logic.game.fight.steps
 {
    import com.ankamagames.atouin.managers.EntitiesManager;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
+   import com.ankamagames.dofus.internalDatacenter.stats.EntityStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
-   import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
@@ -92,15 +92,15 @@ package com.ankamagames.dofus.logic.game.fight.steps
             }
             CurrentPlayedFighterManager.getInstance().getSpellCastManager().resetInitialCooldown(true);
             fighterLifePoints = summonLifePoints === 0 ? Number(summonStats.getMaxHealthPoints() / 2) : Number(summonLifePoints);
-            stats.setStat(new Stat(StatIds.CUR_LIFE,fighterLifePoints - summonStats.getMaxHealthPoints() - summonStats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE)));
+            stats.setStat(new EntityStat(StatIds.CUR_LIFE,fighterLifePoints - summonStats.getMaxHealthPoints() - summonStats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE)));
             if(PlayedCharacterManager.getInstance().id == this._summonInfos.contextualId)
             {
-               StatsManager.getInstance().getStats(PlayedCharacterManager.getInstance().id).setStat(new Stat(StatIds.CUR_LIFE,fighterLifePoints - summonStats.getMaxHealthPoints() - summonStats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE)));
+               StatsManager.getInstance().getStats(PlayedCharacterManager.getInstance().id).setStat(new EntityStat(StatIds.CUR_LIFE,fighterLifePoints - summonStats.getMaxHealthPoints() - summonStats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE)));
             }
          }
          else if(summonLifePoints === 0 && summonStats)
          {
-            summonStats.setStat(new Stat(StatIds.CUR_LIFE,-(summonStats.getMaxHealthPoints() + summonStats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE)) / 2));
+            summonStats.setStat(new EntityStat(StatIds.CUR_LIFE,-(summonStats.getMaxHealthPoints() + summonStats.getStatTotalValue(StatIds.CUR_PERMANENT_DAMAGE)) / 2));
          }
          FightEventsHelper.sendFightEvent(FightEventEnum.FIGHTER_SUMMONED,[this._summonerId,this._summonInfos.contextualId],this._summonInfos.contextualId,castingSpellId);
          executeCallbacks();

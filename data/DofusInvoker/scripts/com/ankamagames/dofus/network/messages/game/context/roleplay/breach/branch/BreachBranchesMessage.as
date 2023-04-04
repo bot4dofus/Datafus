@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach.bran
    public class BreachBranchesMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7075;
+      public static const protocolId:uint = 5384;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach.bran
       
       override public function getMessageId() : uint
       {
-         return 7075;
+         return 5384;
       }
       
       public function initBreachBranchesMessage(branches:Vector.<ExtendedBreachBranch> = null) : BreachBranchesMessage

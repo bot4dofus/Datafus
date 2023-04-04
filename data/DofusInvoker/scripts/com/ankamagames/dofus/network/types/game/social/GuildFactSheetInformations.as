@@ -1,7 +1,6 @@
 package com.ankamagames.dofus.network.types.game.social
 {
    import com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations;
-   import com.ankamagames.dofus.network.types.game.guild.GuildEmblem;
    import com.ankamagames.dofus.network.types.game.guild.recruitment.GuildRecruitmentInformation;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -11,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.social
    public class GuildFactSheetInformations extends GuildInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 558;
+      public static const protocolId:uint = 5257;
        
       
       public var leaderId:Number = 0;
@@ -34,10 +33,10 @@ package com.ankamagames.dofus.network.types.game.social
       
       override public function getTypeId() : uint
       {
-         return 558;
+         return 5257;
       }
       
-      public function initGuildFactSheetInformations(guildId:uint = 0, guildName:String = "", guildLevel:uint = 0, guildEmblem:GuildEmblem = null, leaderId:Number = 0, nbMembers:uint = 0, lastActivityDay:uint = 0, recruitment:GuildRecruitmentInformation = null, nbPendingApply:uint = 0) : GuildFactSheetInformations
+      public function initGuildFactSheetInformations(guildId:uint = 0, guildName:String = "", guildLevel:uint = 0, guildEmblem:SocialEmblem = null, leaderId:Number = 0, nbMembers:uint = 0, lastActivityDay:uint = 0, recruitment:GuildRecruitmentInformation = null, nbPendingApply:uint = 0) : GuildFactSheetInformations
       {
          super.initGuildInformations(guildId,guildName,guildLevel,guildEmblem);
          this.leaderId = leaderId;

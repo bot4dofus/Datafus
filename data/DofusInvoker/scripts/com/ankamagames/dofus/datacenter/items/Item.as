@@ -4,8 +4,11 @@ package com.ankamagames.dofus.datacenter.items
    import com.ankamagames.dofus.datacenter.effects.EffectInstance;
    import com.ankamagames.dofus.datacenter.items.criterion.GroupItemCriterion;
    import com.ankamagames.dofus.datacenter.jobs.Recipe;
+   import com.ankamagames.dofus.datacenter.monsters.Monster;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkMapPosition;
+   import com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect;
    import com.ankamagames.dofus.types.IdAccessors;
    import com.ankamagames.dofus.types.enums.ItemCategoryEnum;
    import com.ankamagames.jerakine.data.CensoredContentManager;
@@ -80,6 +83,8 @@ package com.ankamagames.dofus.datacenter.items
       
       public var appearanceId:uint;
       
+      public var isColorable:Boolean;
+      
       public var secretRecipe:Boolean;
       
       public var dropMonsterIds:Vector.<uint>;
@@ -118,7 +123,9 @@ package com.ankamagames.dofus.datacenter.items
       
       public var isSaleable:Boolean;
       
-      public var nuggetsBySubarea:Vector.<Vector.<Number>>;
+      public var recyclingNuggets:Number;
+      
+      public var favoriteRecyclingSubareas:Vector.<uint>;
       
       public var containerIds:Vector.<uint>;
       
@@ -160,13 +167,15 @@ package com.ankamagames.dofus.datacenter.items
       
       private var _craftXpByJobLevel:Dictionary;
       
-      private var _nuggetsQuantity:Number = 0;
-      
       private var _basicExperienceAsFood:Number = 0;
       
       private var _importantNotice:String = null;
       
       private var _processedImportantNotice:String = null;
+      
+      private const BOSS_BONUS:Number = 5.0;
+      
+      private const CRAFT_BONUS:Number = 1.5;
       
       public function Item()
       {
@@ -445,29 +454,95 @@ package com.ankamagames.dofus.datacenter.items
          return this._craftXpByJobLevel[jobLevel];
       }
       
-      public function get nuggetsQuantity() : Number
-      {
-         var nuggets:Vector.<Number> = null;
-         if(this._nuggetsQuantity == 0)
-         {
-            for each(nuggets in this.nuggetsBySubarea)
-            {
-               this._nuggetsQuantity += nuggets[1];
-            }
-         }
-         return this._nuggetsQuantity;
-      }
-      
       public function get basicExperienceAsFood() : Number
       {
+         var itemWrapper:ItemWrapper = null;
+         var allRessources:Dictionary = null;
+         var recipe:Recipe = null;
+         var nuggets:Number = NaN;
          var experienceInt:int = 0;
          if(this._basicExperienceAsFood == 0)
          {
-            this._basicExperienceAsFood = this.nuggetsQuantity / this.nuggetsBySubarea.length;
+            itemWrapper = ItemWrapper.create(0,0,this.id,1,null,false);
+            allRessources = new Dictionary();
+            allRessources = this.getAllResources(itemWrapper,allRessources);
+            recipe = Recipe.getRecipeByResultId(itemWrapper.objectGID);
+            nuggets = this.getNuggetsQuantity(allRessources,recipe != null);
+            this._basicExperienceAsFood = nuggets;
             experienceInt = Math.floor(this._basicExperienceAsFood * 100000);
             this._basicExperienceAsFood = experienceInt / 100000;
          }
          return this._basicExperienceAsFood;
+      }
+      
+      private function getAllResources(itemWrapper:ItemWrapper, resources:Dictionary) : Dictionary
+      {
+         var iw:ItemWrapper = null;
+         var i:uint = 0;
+         var recipe:Recipe = Recipe.getRecipeByResultId(itemWrapper.objectGID);
+         if(recipe)
+         {
+            for each(iw in recipe.ingredients)
+            {
+               for(i = 0; i < itemWrapper.quantity; i++)
+               {
+                  resources = this.getAllResources(iw,resources);
+               }
+            }
+         }
+         else if(resources[itemWrapper.objectGID] != null)
+         {
+            resources[itemWrapper.objectGID] += itemWrapper.quantity;
+         }
+         else
+         {
+            resources[itemWrapper.objectGID] = itemWrapper.quantity;
+         }
+         return resources;
+      }
+      
+      private function getNuggetsQuantity(resources:Dictionary, isCraft:Boolean) : Number
+      {
+         var item:ItemWrapper = null;
+         var resourceId:* = null;
+         var bonus:Number = NaN;
+         var totalNuggets:Number = 0;
+         for(resourceId in resources)
+         {
+            item = ItemWrapper.create(0,0,int(resourceId),resources[resourceId],new Vector.<ObjectEffect>());
+            if(item)
+            {
+               bonus = this.getBonus(item,isCraft);
+               totalNuggets += item.recyclingNuggets * item.quantity * bonus;
+            }
+         }
+         return totalNuggets;
+      }
+      
+      private function getBonus(itemWrapper:ItemWrapper, isCraft:Boolean) : Number
+      {
+         var bossBonus:Number = !!this.isBossResource(itemWrapper) ? Number(this.BOSS_BONUS) : Number(1);
+         var craftBonus:Number = !!isCraft ? Number(this.CRAFT_BONUS) : Number(1);
+         return bossBonus * craftBonus;
+      }
+      
+      private function isBossResource(itemWrapper:ItemWrapper) : Boolean
+      {
+         var monster:Monster = null;
+         var monsterId:uint = 0;
+         if(itemWrapper.dropMonsterIds.length <= 0)
+         {
+            return false;
+         }
+         for each(monsterId in itemWrapper.dropMonsterIds)
+         {
+            monster = Monster.getMonsterById(monsterId);
+            if(monster && !monster.isBoss)
+            {
+               return false;
+            }
+         }
+         return true;
       }
       
       public function copy(from:Item, to:Item) : void
@@ -494,6 +569,7 @@ package com.ankamagames.dofus.datacenter.items
          to.criteriaTarget = from.criteriaTarget;
          to.hideEffects = from.hideEffects;
          to.appearanceId = from.appearanceId;
+         to.isColorable = from.isColorable;
          to.recipeIds = from.recipeIds;
          to.recipeSlots = from.recipeSlots;
          to.secretRecipe = from.secretRecipe;
@@ -515,7 +591,8 @@ package com.ankamagames.dofus.datacenter.items
          to.craftVisible = from.craftVisible;
          to.craftConditional = from.craftConditional;
          to.craftFeasible = from.craftFeasible;
-         to.nuggetsBySubarea = from.nuggetsBySubarea;
+         to.recyclingNuggets = from.recyclingNuggets;
+         to.favoriteRecyclingSubareas = from.favoriteRecyclingSubareas;
          to.containerIds = from.containerIds;
          to.visibility = from.visibility;
          to.importantNoticeId = from.importantNoticeId;

@@ -12,23 +12,18 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeOfflineSoldItemsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4323;
+      public static const protocolId:uint = 5442;
        
       
       private var _isInitialized:Boolean = false;
       
       public var bidHouseItems:Vector.<ObjectItemQuantityPriceDateEffects>;
       
-      public var merchantItems:Vector.<ObjectItemQuantityPriceDateEffects>;
-      
       private var _bidHouseItemstree:FuncTree;
-      
-      private var _merchantItemstree:FuncTree;
       
       public function ExchangeOfflineSoldItemsMessage()
       {
          this.bidHouseItems = new Vector.<ObjectItemQuantityPriceDateEffects>();
-         this.merchantItems = new Vector.<ObjectItemQuantityPriceDateEffects>();
          super();
       }
       
@@ -39,13 +34,12 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 4323;
+         return 5442;
       }
       
-      public function initExchangeOfflineSoldItemsMessage(bidHouseItems:Vector.<ObjectItemQuantityPriceDateEffects> = null, merchantItems:Vector.<ObjectItemQuantityPriceDateEffects> = null) : ExchangeOfflineSoldItemsMessage
+      public function initExchangeOfflineSoldItemsMessage(bidHouseItems:Vector.<ObjectItemQuantityPriceDateEffects> = null) : ExchangeOfflineSoldItemsMessage
       {
          this.bidHouseItems = bidHouseItems;
-         this.merchantItems = merchantItems;
          this._isInitialized = true;
          return this;
       }
@@ -53,7 +47,6 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       override public function reset() : void
       {
          this.bidHouseItems = new Vector.<ObjectItemQuantityPriceDateEffects>();
-         this.merchantItems = new Vector.<ObjectItemQuantityPriceDateEffects>();
          this._isInitialized = false;
       }
       
@@ -89,11 +82,6 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
          {
             (this.bidHouseItems[_i1] as ObjectItemQuantityPriceDateEffects).serializeAs_ObjectItemQuantityPriceDateEffects(output);
          }
-         output.writeShort(this.merchantItems.length);
-         for(var _i2:uint = 0; _i2 < this.merchantItems.length; _i2++)
-         {
-            (this.merchantItems[_i2] as ObjectItemQuantityPriceDateEffects).serializeAs_ObjectItemQuantityPriceDateEffects(output);
-         }
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -104,20 +92,12 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       public function deserializeAs_ExchangeOfflineSoldItemsMessage(input:ICustomDataInput) : void
       {
          var _item1:ObjectItemQuantityPriceDateEffects = null;
-         var _item2:ObjectItemQuantityPriceDateEffects = null;
          var _bidHouseItemsLen:uint = input.readUnsignedShort();
          for(var _i1:uint = 0; _i1 < _bidHouseItemsLen; _i1++)
          {
             _item1 = new ObjectItemQuantityPriceDateEffects();
             _item1.deserialize(input);
             this.bidHouseItems.push(_item1);
-         }
-         var _merchantItemsLen:uint = input.readUnsignedShort();
-         for(var _i2:uint = 0; _i2 < _merchantItemsLen; _i2++)
-         {
-            _item2 = new ObjectItemQuantityPriceDateEffects();
-            _item2.deserialize(input);
-            this.merchantItems.push(_item2);
          }
       }
       
@@ -129,7 +109,6 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       public function deserializeAsyncAs_ExchangeOfflineSoldItemsMessage(tree:FuncTree) : void
       {
          this._bidHouseItemstree = tree.addChild(this._bidHouseItemstreeFunc);
-         this._merchantItemstree = tree.addChild(this._merchantItemstreeFunc);
       }
       
       private function _bidHouseItemstreeFunc(input:ICustomDataInput) : void
@@ -146,22 +125,6 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
          var _item:ObjectItemQuantityPriceDateEffects = new ObjectItemQuantityPriceDateEffects();
          _item.deserialize(input);
          this.bidHouseItems.push(_item);
-      }
-      
-      private function _merchantItemstreeFunc(input:ICustomDataInput) : void
-      {
-         var length:uint = input.readUnsignedShort();
-         for(var i:uint = 0; i < length; i++)
-         {
-            this._merchantItemstree.addChild(this._merchantItemsFunc);
-         }
-      }
-      
-      private function _merchantItemsFunc(input:ICustomDataInput) : void
-      {
-         var _item:ObjectItemQuantityPriceDateEffects = new ObjectItemQuantityPriceDateEffects();
-         _item.deserialize(input);
-         this.merchantItems.push(_item);
       }
    }
 }

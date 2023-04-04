@@ -9,51 +9,56 @@ package com.ankamagames.dofus.network.types.game.prism
    public class AllianceInsiderPrismInformation extends PrismInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 5890;
+      public static const protocolId:uint = 2656;
        
       
-      public var lastTimeSlotModificationDate:uint = 0;
+      public var moduleObject:ObjectItem;
       
-      public var lastTimeSlotModificationAuthorGuildId:uint = 0;
+      public var moduleType:int = -1;
       
-      public var lastTimeSlotModificationAuthorId:Number = 0;
+      public var cristalObject:ObjectItem;
       
-      public var lastTimeSlotModificationAuthorName:String = "";
+      public var cristalType:int = -1;
       
-      public var modulesObjects:Vector.<ObjectItem>;
+      public var cristalEndDate:Number = 0;
       
-      private var _modulesObjectstree:FuncTree;
+      public var cristalNumberLeft:uint = 0;
+      
+      private var _moduleObjecttree:FuncTree;
+      
+      private var _cristalObjecttree:FuncTree;
       
       public function AllianceInsiderPrismInformation()
       {
-         this.modulesObjects = new Vector.<ObjectItem>();
+         this.moduleObject = new ObjectItem();
+         this.cristalObject = new ObjectItem();
          super();
       }
       
       override public function getTypeId() : uint
       {
-         return 5890;
+         return 2656;
       }
       
-      public function initAllianceInsiderPrismInformation(typeId:uint = 0, state:uint = 1, nextVulnerabilityDate:uint = 0, placementDate:uint = 0, rewardTokenCount:uint = 0, lastTimeSlotModificationDate:uint = 0, lastTimeSlotModificationAuthorGuildId:uint = 0, lastTimeSlotModificationAuthorId:Number = 0, lastTimeSlotModificationAuthorName:String = "", modulesObjects:Vector.<ObjectItem> = null) : AllianceInsiderPrismInformation
+      public function initAllianceInsiderPrismInformation(state:uint = 1, placementDate:uint = 0, nuggetsCount:uint = 0, durability:uint = 0, moduleObject:ObjectItem = null, moduleType:int = -1, cristalObject:ObjectItem = null, cristalType:int = -1, cristalEndDate:Number = 0, cristalNumberLeft:uint = 0) : AllianceInsiderPrismInformation
       {
-         super.initPrismInformation(typeId,state,nextVulnerabilityDate,placementDate,rewardTokenCount);
-         this.lastTimeSlotModificationDate = lastTimeSlotModificationDate;
-         this.lastTimeSlotModificationAuthorGuildId = lastTimeSlotModificationAuthorGuildId;
-         this.lastTimeSlotModificationAuthorId = lastTimeSlotModificationAuthorId;
-         this.lastTimeSlotModificationAuthorName = lastTimeSlotModificationAuthorName;
-         this.modulesObjects = modulesObjects;
+         super.initPrismInformation(state,placementDate,nuggetsCount,durability);
+         this.moduleObject = moduleObject;
+         this.moduleType = moduleType;
+         this.cristalObject = cristalObject;
+         this.cristalType = cristalType;
+         this.cristalEndDate = cristalEndDate;
+         this.cristalNumberLeft = cristalNumberLeft;
          return this;
       }
       
       override public function reset() : void
       {
          super.reset();
-         this.lastTimeSlotModificationDate = 0;
-         this.lastTimeSlotModificationAuthorGuildId = 0;
-         this.lastTimeSlotModificationAuthorId = 0;
-         this.lastTimeSlotModificationAuthorName = "";
-         this.modulesObjects = new Vector.<ObjectItem>();
+         this.moduleObject = new ObjectItem();
+         this.cristalObject = new ObjectItem();
+         this.cristalEndDate = 0;
+         this.cristalNumberLeft = 0;
       }
       
       override public function serialize(output:ICustomDataOutput) : void
@@ -64,27 +69,20 @@ package com.ankamagames.dofus.network.types.game.prism
       public function serializeAs_AllianceInsiderPrismInformation(output:ICustomDataOutput) : void
       {
          super.serializeAs_PrismInformation(output);
-         if(this.lastTimeSlotModificationDate < 0)
+         this.moduleObject.serializeAs_ObjectItem(output);
+         output.writeInt(this.moduleType);
+         this.cristalObject.serializeAs_ObjectItem(output);
+         output.writeInt(this.cristalType);
+         if(this.cristalEndDate < 0 || this.cristalEndDate > 9007199254740992)
          {
-            throw new Error("Forbidden value (" + this.lastTimeSlotModificationDate + ") on element lastTimeSlotModificationDate.");
+            throw new Error("Forbidden value (" + this.cristalEndDate + ") on element cristalEndDate.");
          }
-         output.writeInt(this.lastTimeSlotModificationDate);
-         if(this.lastTimeSlotModificationAuthorGuildId < 0)
+         output.writeDouble(this.cristalEndDate);
+         if(this.cristalNumberLeft < 0)
          {
-            throw new Error("Forbidden value (" + this.lastTimeSlotModificationAuthorGuildId + ") on element lastTimeSlotModificationAuthorGuildId.");
+            throw new Error("Forbidden value (" + this.cristalNumberLeft + ") on element cristalNumberLeft.");
          }
-         output.writeVarInt(this.lastTimeSlotModificationAuthorGuildId);
-         if(this.lastTimeSlotModificationAuthorId < 0 || this.lastTimeSlotModificationAuthorId > 9007199254740992)
-         {
-            throw new Error("Forbidden value (" + this.lastTimeSlotModificationAuthorId + ") on element lastTimeSlotModificationAuthorId.");
-         }
-         output.writeVarLong(this.lastTimeSlotModificationAuthorId);
-         output.writeUTF(this.lastTimeSlotModificationAuthorName);
-         output.writeShort(this.modulesObjects.length);
-         for(var _i5:uint = 0; _i5 < this.modulesObjects.length; _i5++)
-         {
-            (this.modulesObjects[_i5] as ObjectItem).serializeAs_ObjectItem(output);
-         }
+         output.writeInt(this.cristalNumberLeft);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -94,19 +92,15 @@ package com.ankamagames.dofus.network.types.game.prism
       
       public function deserializeAs_AllianceInsiderPrismInformation(input:ICustomDataInput) : void
       {
-         var _item5:ObjectItem = null;
          super.deserialize(input);
-         this._lastTimeSlotModificationDateFunc(input);
-         this._lastTimeSlotModificationAuthorGuildIdFunc(input);
-         this._lastTimeSlotModificationAuthorIdFunc(input);
-         this._lastTimeSlotModificationAuthorNameFunc(input);
-         var _modulesObjectsLen:uint = input.readUnsignedShort();
-         for(var _i5:uint = 0; _i5 < _modulesObjectsLen; _i5++)
-         {
-            _item5 = new ObjectItem();
-            _item5.deserialize(input);
-            this.modulesObjects.push(_item5);
-         }
+         this.moduleObject = new ObjectItem();
+         this.moduleObject.deserialize(input);
+         this._moduleTypeFunc(input);
+         this.cristalObject = new ObjectItem();
+         this.cristalObject.deserialize(input);
+         this._cristalTypeFunc(input);
+         this._cristalEndDateFunc(input);
+         this._cristalNumberLeftFunc(input);
       }
       
       override public function deserializeAsync(tree:FuncTree) : void
@@ -117,59 +111,52 @@ package com.ankamagames.dofus.network.types.game.prism
       public function deserializeAsyncAs_AllianceInsiderPrismInformation(tree:FuncTree) : void
       {
          super.deserializeAsync(tree);
-         tree.addChild(this._lastTimeSlotModificationDateFunc);
-         tree.addChild(this._lastTimeSlotModificationAuthorGuildIdFunc);
-         tree.addChild(this._lastTimeSlotModificationAuthorIdFunc);
-         tree.addChild(this._lastTimeSlotModificationAuthorNameFunc);
-         this._modulesObjectstree = tree.addChild(this._modulesObjectstreeFunc);
+         this._moduleObjecttree = tree.addChild(this._moduleObjecttreeFunc);
+         tree.addChild(this._moduleTypeFunc);
+         this._cristalObjecttree = tree.addChild(this._cristalObjecttreeFunc);
+         tree.addChild(this._cristalTypeFunc);
+         tree.addChild(this._cristalEndDateFunc);
+         tree.addChild(this._cristalNumberLeftFunc);
       }
       
-      private function _lastTimeSlotModificationDateFunc(input:ICustomDataInput) : void
+      private function _moduleObjecttreeFunc(input:ICustomDataInput) : void
       {
-         this.lastTimeSlotModificationDate = input.readInt();
-         if(this.lastTimeSlotModificationDate < 0)
+         this.moduleObject = new ObjectItem();
+         this.moduleObject.deserializeAsync(this._moduleObjecttree);
+      }
+      
+      private function _moduleTypeFunc(input:ICustomDataInput) : void
+      {
+         this.moduleType = input.readInt();
+      }
+      
+      private function _cristalObjecttreeFunc(input:ICustomDataInput) : void
+      {
+         this.cristalObject = new ObjectItem();
+         this.cristalObject.deserializeAsync(this._cristalObjecttree);
+      }
+      
+      private function _cristalTypeFunc(input:ICustomDataInput) : void
+      {
+         this.cristalType = input.readInt();
+      }
+      
+      private function _cristalEndDateFunc(input:ICustomDataInput) : void
+      {
+         this.cristalEndDate = input.readDouble();
+         if(this.cristalEndDate < 0 || this.cristalEndDate > 9007199254740992)
          {
-            throw new Error("Forbidden value (" + this.lastTimeSlotModificationDate + ") on element of AllianceInsiderPrismInformation.lastTimeSlotModificationDate.");
+            throw new Error("Forbidden value (" + this.cristalEndDate + ") on element of AllianceInsiderPrismInformation.cristalEndDate.");
          }
       }
       
-      private function _lastTimeSlotModificationAuthorGuildIdFunc(input:ICustomDataInput) : void
+      private function _cristalNumberLeftFunc(input:ICustomDataInput) : void
       {
-         this.lastTimeSlotModificationAuthorGuildId = input.readVarUhInt();
-         if(this.lastTimeSlotModificationAuthorGuildId < 0)
+         this.cristalNumberLeft = input.readInt();
+         if(this.cristalNumberLeft < 0)
          {
-            throw new Error("Forbidden value (" + this.lastTimeSlotModificationAuthorGuildId + ") on element of AllianceInsiderPrismInformation.lastTimeSlotModificationAuthorGuildId.");
+            throw new Error("Forbidden value (" + this.cristalNumberLeft + ") on element of AllianceInsiderPrismInformation.cristalNumberLeft.");
          }
-      }
-      
-      private function _lastTimeSlotModificationAuthorIdFunc(input:ICustomDataInput) : void
-      {
-         this.lastTimeSlotModificationAuthorId = input.readVarUhLong();
-         if(this.lastTimeSlotModificationAuthorId < 0 || this.lastTimeSlotModificationAuthorId > 9007199254740992)
-         {
-            throw new Error("Forbidden value (" + this.lastTimeSlotModificationAuthorId + ") on element of AllianceInsiderPrismInformation.lastTimeSlotModificationAuthorId.");
-         }
-      }
-      
-      private function _lastTimeSlotModificationAuthorNameFunc(input:ICustomDataInput) : void
-      {
-         this.lastTimeSlotModificationAuthorName = input.readUTF();
-      }
-      
-      private function _modulesObjectstreeFunc(input:ICustomDataInput) : void
-      {
-         var length:uint = input.readUnsignedShort();
-         for(var i:uint = 0; i < length; i++)
-         {
-            this._modulesObjectstree.addChild(this._modulesObjectsFunc);
-         }
-      }
-      
-      private function _modulesObjectsFunc(input:ICustomDataInput) : void
-      {
-         var _item:ObjectItem = new ObjectItem();
-         _item.deserialize(input);
-         this.modulesObjects.push(_item);
       }
    }
 }

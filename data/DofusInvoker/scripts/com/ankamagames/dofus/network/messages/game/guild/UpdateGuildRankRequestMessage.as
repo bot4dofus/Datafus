@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.messages.game.guild
 {
-   import com.ankamagames.dofus.network.types.game.guild.GuildRankInformation;
+   import com.ankamagames.dofus.network.types.game.rank.RankInformation;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -12,18 +12,18 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class UpdateGuildRankRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7592;
+      public static const protocolId:uint = 901;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var rank:GuildRankInformation;
+      public var rank:RankInformation;
       
       private var _ranktree:FuncTree;
       
       public function UpdateGuildRankRequestMessage()
       {
-         this.rank = new GuildRankInformation();
+         this.rank = new RankInformation();
          super();
       }
       
@@ -34,10 +34,10 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 7592;
+         return 901;
       }
       
-      public function initUpdateGuildRankRequestMessage(rank:GuildRankInformation = null) : UpdateGuildRankRequestMessage
+      public function initUpdateGuildRankRequestMessage(rank:RankInformation = null) : UpdateGuildRankRequestMessage
       {
          this.rank = rank;
          this._isInitialized = true;
@@ -46,7 +46,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function reset() : void
       {
-         this.rank = new GuildRankInformation();
+         this.rank = new RankInformation();
          this._isInitialized = false;
       }
       
@@ -77,7 +77,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       public function serializeAs_UpdateGuildRankRequestMessage(output:ICustomDataOutput) : void
       {
-         this.rank.serializeAs_GuildRankInformation(output);
+         this.rank.serializeAs_RankInformation(output);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -87,7 +87,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       public function deserializeAs_UpdateGuildRankRequestMessage(input:ICustomDataInput) : void
       {
-         this.rank = new GuildRankInformation();
+         this.rank = new RankInformation();
          this.rank.deserialize(input);
       }
       
@@ -103,7 +103,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       private function _ranktreeFunc(input:ICustomDataInput) : void
       {
-         this.rank = new GuildRankInformation();
+         this.rank = new RankInformation();
          this.rank.deserializeAsync(this._ranktree);
       }
    }

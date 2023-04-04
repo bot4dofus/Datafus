@@ -1,7 +1,7 @@
 package com.ankamagames.dofus.network.messages.game.alliance.summary
 {
    import com.ankamagames.dofus.network.messages.game.PaginationAnswerAbstractMessage;
-   import com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations;
+   import com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformation;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -12,18 +12,18 @@ package com.ankamagames.dofus.network.messages.game.alliance.summary
    public class AllianceSummaryMessage extends PaginationAnswerAbstractMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9304;
+      public static const protocolId:uint = 7498;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var alliances:Vector.<AllianceFactSheetInformations>;
+      public var alliances:Vector.<AllianceFactSheetInformation>;
       
       private var _alliancestree:FuncTree;
       
       public function AllianceSummaryMessage()
       {
-         this.alliances = new Vector.<AllianceFactSheetInformations>();
+         this.alliances = new Vector.<AllianceFactSheetInformation>();
          super();
       }
       
@@ -34,10 +34,10 @@ package com.ankamagames.dofus.network.messages.game.alliance.summary
       
       override public function getMessageId() : uint
       {
-         return 9304;
+         return 7498;
       }
       
-      public function initAllianceSummaryMessage(offset:Number = 0, count:uint = 0, total:uint = 0, alliances:Vector.<AllianceFactSheetInformations> = null) : AllianceSummaryMessage
+      public function initAllianceSummaryMessage(offset:Number = 0, count:uint = 0, total:uint = 0, alliances:Vector.<AllianceFactSheetInformation> = null) : AllianceSummaryMessage
       {
          super.initPaginationAnswerAbstractMessage(offset,count,total);
          this.alliances = alliances;
@@ -48,7 +48,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.summary
       override public function reset() : void
       {
          super.reset();
-         this.alliances = new Vector.<AllianceFactSheetInformations>();
+         this.alliances = new Vector.<AllianceFactSheetInformation>();
          this._isInitialized = false;
       }
       
@@ -83,7 +83,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.summary
          output.writeShort(this.alliances.length);
          for(var _i1:uint = 0; _i1 < this.alliances.length; _i1++)
          {
-            (this.alliances[_i1] as AllianceFactSheetInformations).serializeAs_AllianceFactSheetInformations(output);
+            (this.alliances[_i1] as AllianceFactSheetInformation).serializeAs_AllianceFactSheetInformation(output);
          }
       }
       
@@ -94,12 +94,12 @@ package com.ankamagames.dofus.network.messages.game.alliance.summary
       
       public function deserializeAs_AllianceSummaryMessage(input:ICustomDataInput) : void
       {
-         var _item1:AllianceFactSheetInformations = null;
+         var _item1:AllianceFactSheetInformation = null;
          super.deserialize(input);
          var _alliancesLen:uint = input.readUnsignedShort();
          for(var _i1:uint = 0; _i1 < _alliancesLen; _i1++)
          {
-            _item1 = new AllianceFactSheetInformations();
+            _item1 = new AllianceFactSheetInformation();
             _item1.deserialize(input);
             this.alliances.push(_item1);
          }
@@ -127,7 +127,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.summary
       
       private function _alliancesFunc(input:ICustomDataInput) : void
       {
-         var _item:AllianceFactSheetInformations = new AllianceFactSheetInformations();
+         var _item:AllianceFactSheetInformation = new AllianceFactSheetInformation();
          _item.deserialize(input);
          this.alliances.push(_item);
       }

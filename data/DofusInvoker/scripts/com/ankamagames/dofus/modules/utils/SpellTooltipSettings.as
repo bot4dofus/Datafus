@@ -18,9 +18,9 @@ package com.ankamagames.dofus.modules.utils
       
       public var unPinnable:Boolean = false;
       
-      public var isCharacterCreation:Boolean = false;
-      
       public var subtitle:String;
+      
+      public var isTheoreticalSwitch:Boolean = true;
       
       public function SpellTooltipSettings()
       {

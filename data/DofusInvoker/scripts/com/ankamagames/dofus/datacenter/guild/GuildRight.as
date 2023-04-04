@@ -1,14 +1,14 @@
 package com.ankamagames.dofus.datacenter.guild
 {
+   import com.ankamagames.dofus.datacenter.social.SocialRight;
    import com.ankamagames.dofus.types.IdAccessors;
    import com.ankamagames.jerakine.data.GameData;
-   import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import flash.utils.getQualifiedClassName;
    
-   public class GuildRight implements IDataCenter
+   public class GuildRight extends SocialRight implements IDataCenter
    {
       
       public static const MODULE:String = "GuildRights";
@@ -18,38 +18,19 @@ package com.ankamagames.dofus.datacenter.guild
       public static var idAccessors:IdAccessors = new IdAccessors(getGuildRightById,getGuildRights);
        
       
-      public var id:int;
-      
-      public var nameId:uint;
-      
-      public var order:int;
-      
-      public var groupId:int;
-      
-      private var _name:String;
-      
       public function GuildRight()
       {
          super();
       }
       
-      public static function getGuildRightById(id:int) : GuildRight
+      public static function getGuildRightById(id:int) : SocialRight
       {
-         return GameData.getObject(MODULE,id) as GuildRight;
+         return GameData.getObject(MODULE,id) as SocialRight;
       }
       
       public static function getGuildRights() : Array
       {
          return GameData.getObjects(MODULE);
-      }
-      
-      public function get name() : String
-      {
-         if(!this._name)
-         {
-            this._name = I18n.getText(this.nameId);
-         }
-         return this._name;
       }
    }
 }

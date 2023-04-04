@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.havenbag
    public class HavenBagRoomPreviewInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 4008;
+      public static const protocolId:uint = 8126;
        
       
       public var roomId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.havenbag
       
       public function getTypeId() : uint
       {
-         return 4008;
+         return 8126;
       }
       
       public function initHavenBagRoomPreviewInformation(roomId:uint = 0, themeId:int = 0) : HavenBagRoomPreviewInformation

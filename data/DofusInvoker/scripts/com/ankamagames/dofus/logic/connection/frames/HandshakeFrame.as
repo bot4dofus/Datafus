@@ -43,39 +43,11 @@ package com.ankamagames.dofus.logic.connection.frames
             Kernel.panic(PanicMessages.MALFORMED_PROTOCOL,[Metadata.PROTOCOL_BUILD,serverVersion]);
             return;
          }
-         var clientHash:String = extractHashFromProtocolVersion(Metadata.PROTOCOL_BUILD);
-         if(!clientHash)
-         {
-            _log.fatal("The client protocol version is malformed: " + Metadata.PROTOCOL_BUILD);
-            Kernel.panic(PanicMessages.MALFORMED_PROTOCOL,[Metadata.PROTOCOL_BUILD,serverVersion]);
-            return;
-         }
-         var serverHash:String = extractHashFromProtocolVersion(serverVersion);
-         if(!serverHash)
-         {
-            _log.fatal("The server protocol version is malformed: " + serverVersion);
-            Kernel.panic(PanicMessages.MALFORMED_PROTOCOL,[Metadata.PROTOCOL_BUILD,serverVersion]);
-            return;
-         }
-         if(clientHash !== serverHash)
+         if(serverVersion !== Metadata.PROTOCOL_BUILD)
          {
             _log.fatal("Protocol mismatch between the client and the server.");
             Kernel.panic(PanicMessages.PROTOCOL_MISMATCH,[Metadata.PROTOCOL_BUILD,serverVersion]);
          }
-      }
-      
-      private static function extractHashFromProtocolVersion(protocolVersion:String) : String
-      {
-         if(!protocolVersion)
-         {
-            return null;
-         }
-         var matches:Array = protocolVersion.split("-");
-         if(matches === null || matches.length < 2)
-         {
-            return null;
-         }
-         return matches[1];
       }
       
       public function get priority() : int

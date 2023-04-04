@@ -83,8 +83,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const CodesAndGiftOpenBoxStats:String = "CodesAndGiftOpenBoxStats";
       
-      public static const CodesAndGiftEOSWarning:String = "CodesAndGiftEOSWarning";
-      
       public static const BakTabStats:String = "BakTabStats";
       
       public static const BakTimeout:String = "BakTimeout";
@@ -140,7 +138,6 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(CodesAndGiftNoMoreMysteryBox);
          Hook.createHook(CodesAndGiftNotificationValue);
          Hook.createHook(CodesAndGiftOpenBoxStats);
-         Hook.createHook(CodesAndGiftEOSWarning);
          Hook.createHook(BakTabStats);
          Hook.createHook(CodesAndGiftGetArticlesStats);
          Hook.createHook(CodesAndGiftGiftAssigned);

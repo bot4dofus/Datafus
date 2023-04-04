@@ -1,37 +1,36 @@
 package com.ankamagames.dofus.network.types.game.character
 {
-   import com.ankamagames.dofus.network.types.game.context.roleplay.BasicAllianceInformations;
-   import com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.BasicNamedAllianceInformations;
    import com.ankamagames.dofus.network.types.game.look.EntityLook;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
    import com.ankamagames.jerakine.network.INetworkType;
    import com.ankamagames.jerakine.network.utils.FuncTree;
    
-   public class CharacterMinimalAllianceInformations extends CharacterMinimalGuildInformations implements INetworkType
+   public class CharacterMinimalAllianceInformations extends CharacterMinimalPlusLookInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 9153;
+      public static const protocolId:uint = 7333;
        
       
-      public var alliance:BasicAllianceInformations;
+      public var alliance:BasicNamedAllianceInformations;
       
       private var _alliancetree:FuncTree;
       
       public function CharacterMinimalAllianceInformations()
       {
-         this.alliance = new BasicAllianceInformations();
+         this.alliance = new BasicNamedAllianceInformations();
          super();
       }
       
       override public function getTypeId() : uint
       {
-         return 9153;
+         return 7333;
       }
       
-      public function initCharacterMinimalAllianceInformations(id:Number = 0, name:String = "", level:uint = 0, entityLook:EntityLook = null, breed:int = 0, guild:BasicGuildInformations = null, alliance:BasicAllianceInformations = null) : CharacterMinimalAllianceInformations
+      public function initCharacterMinimalAllianceInformations(id:Number = 0, name:String = "", level:uint = 0, entityLook:EntityLook = null, breed:int = 0, alliance:BasicNamedAllianceInformations = null) : CharacterMinimalAllianceInformations
       {
-         super.initCharacterMinimalGuildInformations(id,name,level,entityLook,breed,guild);
+         super.initCharacterMinimalPlusLookInformations(id,name,level,entityLook,breed);
          this.alliance = alliance;
          return this;
       }
@@ -39,7 +38,7 @@ package com.ankamagames.dofus.network.types.game.character
       override public function reset() : void
       {
          super.reset();
-         this.alliance = new BasicAllianceInformations();
+         this.alliance = new BasicNamedAllianceInformations();
       }
       
       override public function serialize(output:ICustomDataOutput) : void
@@ -49,8 +48,8 @@ package com.ankamagames.dofus.network.types.game.character
       
       public function serializeAs_CharacterMinimalAllianceInformations(output:ICustomDataOutput) : void
       {
-         super.serializeAs_CharacterMinimalGuildInformations(output);
-         this.alliance.serializeAs_BasicAllianceInformations(output);
+         super.serializeAs_CharacterMinimalPlusLookInformations(output);
+         this.alliance.serializeAs_BasicNamedAllianceInformations(output);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -61,7 +60,7 @@ package com.ankamagames.dofus.network.types.game.character
       public function deserializeAs_CharacterMinimalAllianceInformations(input:ICustomDataInput) : void
       {
          super.deserialize(input);
-         this.alliance = new BasicAllianceInformations();
+         this.alliance = new BasicNamedAllianceInformations();
          this.alliance.deserialize(input);
       }
       
@@ -78,7 +77,7 @@ package com.ankamagames.dofus.network.types.game.character
       
       private function _alliancetreeFunc(input:ICustomDataInput) : void
       {
-         this.alliance = new BasicAllianceInformations();
+         this.alliance = new BasicNamedAllianceInformations();
          this.alliance.deserializeAsync(this._alliancetree);
       }
    }

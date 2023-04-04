@@ -514,42 +514,6 @@
 			"activationCriterions": "null"
 		},
 		{
-			"id": 132,
-			"keyword": "fight.alignment.jailOnLoss",
-			"isClient": true,
-			"isServer": true,
-			"isActivationOnLaunch": false,
-			"isActivationOnServerConnection": false,
-			"activationCriterions": "null"
-		},
-		{
-			"id": 130,
-			"keyword": "character.alignment.forceWingsOut",
-			"isClient": true,
-			"isServer": true,
-			"isActivationOnLaunch": false,
-			"isActivationOnServerConnection": false,
-			"activationCriterions": "null"
-		},
-		{
-			"id": 131,
-			"keyword": "character.alignment.concealWings",
-			"isClient": true,
-			"isServer": true,
-			"isActivationOnLaunch": false,
-			"isActivationOnServerConnection": false,
-			"activationCriterions": "null"
-		},
-		{
-			"id": 129,
-			"keyword": "server.conf.alignmentWar",
-			"isClient": true,
-			"isServer": true,
-			"isActivationOnLaunch": false,
-			"isActivationOnServerConnection": false,
-			"activationCriterions": "null"
-		},
-		{
 			"id": 133,
 			"keyword": "social.discord",
 			"isClient": true,
@@ -631,15 +595,6 @@
 			"activationCriterions": "null"
 		},
 		{
-			"id": 88,
-			"keyword": "companion.hudButtonAndShortcut",
-			"isClient": true,
-			"isServer": false,
-			"isActivationOnLaunch": false,
-			"isActivationOnServerConnection": true,
-			"activationCriterions": "SC=5&ST=6"
-		},
-		{
 			"id": 141,
 			"keyword": "server.heroic",
 			"isClient": true,
@@ -674,6 +629,15 @@
 			"isActivationOnLaunch": false,
 			"isActivationOnServerConnection": false,
 			"activationCriterions": "null"
+		},
+		{
+			"id": 88,
+			"keyword": "companion.hudButtonAndShortcut",
+			"isClient": true,
+			"isServer": false,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": true,
+			"activationCriterions": ""
 		}
 	]
 }

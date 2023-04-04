@@ -12,6 +12,8 @@ package com.ankamagames.dofus.types.enums
       public static const AGGRO_CATEGORY:int = 3;
       
       public static const TURN_REMAINING:int = 4;
+      
+      public static const AVA_SCORE:int = 5;
        
       
       public function EntityIconEnum()

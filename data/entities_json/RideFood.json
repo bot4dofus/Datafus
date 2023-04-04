@@ -79,6 +79,21 @@
 			"gid": 14635,
 			"typeId": 0,
 			"familyId": 6
+		},
+		{
+			"gid": 28294,
+			"typeId": 0,
+			"familyId": 1
+		},
+		{
+			"gid": 28294,
+			"typeId": 0,
+			"familyId": 5
+		},
+		{
+			"gid": 28294,
+			"typeId": 0,
+			"familyId": 6
 		}
 	]
 }

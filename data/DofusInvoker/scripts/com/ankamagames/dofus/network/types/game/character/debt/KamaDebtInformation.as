@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character.debt
    public class KamaDebtInformation extends DebtInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 1295;
+      public static const protocolId:uint = 1238;
        
       
       public var kamas:Number = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.character.debt
       
       override public function getTypeId() : uint
       {
-         return 1295;
+         return 1238;
       }
       
       public function initKamaDebtInformation(id:Number = 0, timestamp:Number = 0, kamas:Number = 0) : KamaDebtInformation

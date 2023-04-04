@@ -36,6 +36,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
    import com.ankamagames.dofus.logic.game.approach.actions.CharacterRemodelSelectionAction;
    import com.ankamagames.dofus.logic.game.approach.actions.CharacterReplayRequestAction;
    import com.ankamagames.dofus.logic.game.approach.actions.CharacterSelectionAction;
+   import com.ankamagames.dofus.logic.game.approach.actions.GiftAssignAllRequestAction;
    import com.ankamagames.dofus.logic.game.approach.actions.GiftAssignRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.CharacterAutoConnectAction;
    import com.ankamagames.dofus.logic.game.common.actions.chat.PopupWarningCloseRequestAction;
@@ -94,7 +95,6 @@ package com.ankamagames.dofus.logic.game.approach.frames
    import com.ankamagames.dofus.network.messages.game.approach.AuthenticationTicketRefusedMessage;
    import com.ankamagames.dofus.network.messages.game.approach.HelloGameMessage;
    import com.ankamagames.dofus.network.messages.game.basic.BasicTimeMessage;
-   import com.ankamagames.dofus.network.messages.game.character.choice.BasicCharactersListMessage;
    import com.ankamagames.dofus.network.messages.game.character.choice.CharacterFirstSelectionMessage;
    import com.ankamagames.dofus.network.messages.game.character.choice.CharacterReplayWithRemodelRequestMessage;
    import com.ankamagames.dofus.network.messages.game.character.choice.CharacterSelectedErrorMessage;
@@ -122,17 +122,17 @@ package com.ankamagames.dofus.logic.game.approach.frames
    import com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena.GameRolePlayArenaSwitchToFightServerMessage;
    import com.ankamagames.dofus.network.messages.game.moderation.PopupWarningCloseRequestMessage;
    import com.ankamagames.dofus.network.messages.game.moderation.PopupWarningClosedMessage;
-   import com.ankamagames.dofus.network.messages.game.startup.StartupActionFinishedMessage;
-   import com.ankamagames.dofus.network.messages.game.startup.StartupActionsExecuteMessage;
-   import com.ankamagames.dofus.network.messages.game.startup.StartupActionsListMessage;
-   import com.ankamagames.dofus.network.messages.game.startup.StartupActionsObjetAttributionMessage;
+   import com.ankamagames.dofus.network.messages.game.startup.ConsumeAllGameActionItemMessage;
+   import com.ankamagames.dofus.network.messages.game.startup.ConsumeGameActionItemMessage;
+   import com.ankamagames.dofus.network.messages.game.startup.GameActionItemConsumedMessage;
+   import com.ankamagames.dofus.network.messages.game.startup.GameActionItemListMessage;
    import com.ankamagames.dofus.network.messages.security.ClientKeyMessage;
    import com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations;
    import com.ankamagames.dofus.network.types.game.character.choice.CharacterHardcoreOrEpicInformations;
    import com.ankamagames.dofus.network.types.game.character.choice.CharacterToRemodelInformations;
    import com.ankamagames.dofus.network.types.game.character.choice.RemodelingInformation;
    import com.ankamagames.dofus.network.types.game.data.items.ObjectItemInformationWithQuantity;
-   import com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject;
+   import com.ankamagames.dofus.network.types.game.startup.GameActionItem;
    import com.ankamagames.dofus.scripts.api.CameraApi;
    import com.ankamagames.dofus.scripts.api.EntityApi;
    import com.ankamagames.dofus.scripts.api.ScriptSequenceApi;
@@ -158,7 +158,6 @@ package com.ankamagames.dofus.logic.game.approach.frames
    import com.ankamagames.jerakine.types.enums.Priority;
    import com.ankamagames.jerakine.utils.benchmark.monitoring.FpsManager;
    import com.ankamagames.jerakine.utils.system.AirScanner;
-   import flash.display.Loader;
    import flash.system.ApplicationDomain;
    import flash.system.LoaderContext;
    import flash.utils.getQualifiedClassName;
@@ -169,8 +168,6 @@ package com.ankamagames.dofus.logic.game.approach.frames
    {
       
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(GameServerApproachFrame));
-      
-      private static var _changeLogLoader:Loader = new Loader();
       
       public static var authenticationTicketAccepted:Boolean = false;
        
@@ -206,8 +203,6 @@ package com.ankamagames.dofus.logic.game.approach.frames
       private var _charaListMinusDeadPeople:Array;
       
       private var _reconnectMsgSend:Boolean = false;
-      
-      private var _openCharsList:Boolean = true;
       
       public function GameServerApproachFrame()
       {
@@ -282,8 +277,6 @@ package com.ankamagames.dofus.logic.game.approach.frames
          var mod:UiModule = null;
          var dst:DataStoreType = null;
          var isCharacterCreationDisplayForced:Boolean = false;
-         var bclmsg:BasicCharactersListMessage = null;
-         var b:BasicCharacterWrapper = null;
          var ccbcmsg:CharacterCanBeCreatedResultMessage = null;
          var accmsg:AccountCapabilitiesMessage = null;
          var cca:CharacterCreationAction = null;
@@ -316,7 +309,13 @@ package com.ankamagames.dofus.logic.game.approach.frames
          var csemsg:CharacterSelectedErrorMessage = null;
          var btmsg:BasicTimeMessage = null;
          var date:Date = null;
-         var salm:StartupActionsListMessage = null;
+         var gailm:GameActionItemListMessage = null;
+         var gar:GiftAssignRequestAction = null;
+         var cgaimsg:ConsumeGameActionItemMessage = null;
+         var gaara:GiftAssignAllRequestAction = null;
+         var cagaimsg:ConsumeAllGameActionItemMessage = null;
+         var gaicmsg:GameActionItemConsumedMessage = null;
+         var indexToDelete:int = 0;
          var cclMsg:ConsoleCommandsListMessage = null;
          var stf:ServerTransferFrame = null;
          var pwcrmsg:PopupWarningCloseRequestMessage = null;
@@ -329,10 +328,6 @@ package com.ankamagames.dofus.logic.game.approach.frames
          var cbi:CharacterBaseInformations = null;
          var cbi2:CharacterBaseInformations = null;
          var charToConnect:BasicCharacterWrapper = null;
-         var saem:StartupActionsExecuteMessage = null;
-         var ccbcrmsg:CharacterCanBeCreatedRequestMessage = null;
-         var bChi:CharacterHardcoreOrEpicInformations = null;
-         var bCbi:CharacterBaseInformations = null;
          var c:* = undefined;
          var colorIndex:* = undefined;
          var colorInteger:* = 0;
@@ -355,15 +350,11 @@ package com.ankamagames.dofus.logic.game.approach.frames
          var i:uint = 0;
          var luaPlayer:LuaPlayer = null;
          var tag:Object = null;
-         var gift:StartupActionAddObject = null;
+         var gift:GameActionItem = null;
          var _items:Array = null;
          var item:ObjectItemInformationWithQuantity = null;
          var oj:Object = null;
          var iw:ItemWrapper = null;
-         var gar:GiftAssignRequestAction = null;
-         var sao:StartupActionsObjetAttributionMessage = null;
-         var safm:StartupActionFinishedMessage = null;
-         var indexToDelete:int = 0;
          var giftAction:Object = null;
          var cmdIndex:uint = 0;
          switch(true)
@@ -475,29 +466,18 @@ package com.ankamagames.dofus.logic.game.approach.frames
                isCharacterCreationDisplayForced = StoreDataManager.getInstance().getData(dst,"forceCharacterCreationDisplay");
                if(this._charactersList.length && !isCharacterCreationDisplayForced)
                {
-                  this._openCharsList = true;
                   charToConnect = this.getCharacterToConnect();
-                  if(clmsg.hasStartupActions && !charToConnect)
-                  {
-                     saem = new StartupActionsExecuteMessage();
-                     saem.initStartupActionsExecuteMessage();
-                     ConnectionsHandler.getConnection().send(saem);
-                     this._openCharsList = false;
-                  }
-                  else if(charToConnect)
+                  if(charToConnect)
                   {
                      this.launchAutoConnect(charToConnect,server);
                   }
-                  if(this._openCharsList)
+                  else if(!Berilia.getInstance().getUi("characterSelection"))
                   {
-                     if(!Berilia.getInstance().getUi("characterSelection"))
-                     {
-                        this._kernel.processCallback(HookList.CharacterSelectionStart,this._charactersList);
-                     }
-                     else
-                     {
-                        this._kernel.processCallback(HookList.CharactersListUpdated,this._charactersList);
-                     }
+                     this._kernel.processCallback(HookList.CharacterSelectionStart,this._charactersList);
+                  }
+                  else
+                  {
+                     this._kernel.processCallback(HookList.CharactersListUpdated,this._charactersList);
                   }
                }
                else
@@ -505,34 +485,6 @@ package com.ankamagames.dofus.logic.game.approach.frames
                   this._kernel.processCallback(HookList.CharacterCreationStart,[["create"],true]);
                   this._kernel.processCallback(HookList.CharactersListUpdated,this._charactersList);
                }
-               return true;
-            case msg is BasicCharactersListMessage:
-               bclmsg = msg as BasicCharactersListMessage;
-               if(this._waitingForListRefreshAfterDeletion)
-               {
-                  ccbcrmsg = new CharacterCanBeCreatedRequestMessage();
-                  ccbcrmsg.initCharacterCanBeCreatedRequestMessage();
-                  ConnectionsHandler.getConnection().send(ccbcrmsg);
-                  this._waitingForListRefreshAfterDeletion = false;
-               }
-               this._charactersList = new Vector.<BasicCharacterWrapper>();
-               if(FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER) || PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_EPIC)
-               {
-                  for each(bChi in bclmsg.characters)
-                  {
-                     b = BasicCharacterWrapper.create(bChi.id,bChi.name,bChi.level,bChi.entityLook,bChi.breed,bChi.sex,bChi.deathState,bChi.deathCount,bChi.deathMaxLevel,1,false);
-                     this._charactersList.push(b);
-                  }
-               }
-               else
-               {
-                  for each(bCbi in bclmsg.characters)
-                  {
-                     b = BasicCharacterWrapper.create(bCbi.id,bCbi.name,bCbi.level,bCbi.entityLook,bCbi.breed,bCbi.sex,0,0,0,1,false);
-                     this._charactersList.push(b);
-                  }
-               }
-               PlayerManager.getInstance().charactersList = this._charactersList;
                return true;
             case msg is CharactersListErrorMessage:
                this.commonMod.openPopup(I18n.getUiText("ui.common.error"),I18n.getUiText("ui.connexion.charactersListError"),[I18n.getUiText("ui.common.ok")]);
@@ -545,7 +497,6 @@ package com.ankamagames.dofus.logic.game.approach.frames
             case msg is AccountCapabilitiesMessage:
                accmsg = msg as AccountCapabilitiesMessage;
                this._kernel.processCallback(HookList.TutorielAvailable,accmsg.tutorialAvailable);
-               this._kernel.processCallback(HookList.BreedsAvailable,accmsg.breedsAvailable,accmsg.breedsVisible);
                PlayerManager.getInstance().adminStatus = accmsg.status;
                PlayerManager.getInstance().canCreateNewCharacter = accmsg.canCreateNewCharacter;
                KernelEventsManager.getInstance().processCallback(HookList.CharacterCreationStart,[["create"]]);
@@ -1001,10 +952,10 @@ package com.ankamagames.dofus.logic.game.approach.frames
                TimeManager.getInstance().timezoneOffset = btmsg.timezoneOffset * 60 * 1000;
                TimeManager.getInstance().dofusTimeYearLag = -1370;
                return true;
-            case msg is StartupActionsListMessage:
-               salm = msg as StartupActionsListMessage;
+            case msg is GameActionItemListMessage:
+               gailm = msg as GameActionItemListMessage;
                this._giftList = [];
-               for each(gift in salm.actions)
+               for each(gift in gailm.actions)
                {
                   _items = [];
                   for each(item in gift.items)
@@ -1016,8 +967,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
                      "uid":gift.uid,
                      "title":gift.title,
                      "text":gift.text,
-                     "items":_items,
-                     "actionType":gift.type
+                     "items":_items
                   };
                   this._giftList.push(oj);
                }
@@ -1040,24 +990,25 @@ package com.ankamagames.dofus.logic.game.approach.frames
                      this._kernel.processCallback(HookList.CharactersListUpdated,this._charactersList);
                   }
                }
-               else
-               {
-                  Kernel.getWorker().removeFrame(this);
-                  _log.warn("Empty Gift List Received");
-               }
                return true;
             case msg is GiftAssignRequestAction:
                gar = msg as GiftAssignRequestAction;
-               sao = new StartupActionsObjetAttributionMessage();
-               sao.initStartupActionsObjetAttributionMessage(gar.giftId,gar.characterId);
-               ConnectionsHandler.getConnection().send(sao);
+               cgaimsg = new ConsumeGameActionItemMessage();
+               cgaimsg.initConsumeGameActionItemMessage(gar.giftId,gar.characterId);
+               ConnectionsHandler.getConnection().send(cgaimsg);
                return true;
-            case msg is StartupActionFinishedMessage:
-               safm = msg as StartupActionFinishedMessage;
+            case msg is GiftAssignAllRequestAction:
+               gaara = msg as GiftAssignAllRequestAction;
+               cagaimsg = new ConsumeAllGameActionItemMessage();
+               cagaimsg.initConsumeAllGameActionItemMessage(gaara.characterId);
+               ConnectionsHandler.getConnection().send(cagaimsg);
+               return true;
+            case msg is GameActionItemConsumedMessage:
+               gaicmsg = msg as GameActionItemConsumedMessage;
                indexToDelete = -1;
                for each(giftAction in this._giftList)
                {
-                  if(giftAction.uid == safm.actionId)
+                  if(giftAction.uid == gaicmsg.actionId)
                   {
                      indexToDelete = this._giftList.indexOf(giftAction);
                      break;
@@ -1066,7 +1017,7 @@ package com.ankamagames.dofus.logic.game.approach.frames
                if(indexToDelete > -1)
                {
                   this._giftList.splice(indexToDelete,1);
-                  KernelEventsManager.getInstance().processCallback(HookList.GiftAssigned,safm.actionId);
+                  KernelEventsManager.getInstance().processCallback(HookList.GiftAssigned,gaicmsg.actionId);
                }
                return true;
             case msg is ConsoleCommandsListMessage:
@@ -1183,7 +1134,6 @@ package com.ankamagames.dofus.logic.game.approach.frames
          var fakacsa:CharacterSelectionAction = null;
          if(charToConnect && ((!FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER) && server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_EPIC || charToConnect.deathState == 0) && !SecureModeManager.getInstance().active && !this.isCharacterWaitingForChange(charToConnect.id) && !PlayerManager.getInstance().wasAlreadyConnected))
          {
-            this._openCharsList = false;
             this._kernel.processCallback(HookList.CharactersListUpdated,this._charactersList);
             updateInformationDisplayed = StoreDataManager.getInstance().getData(new DataStoreType("ComputerModule_Ankama_Connection",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_COMPUTER),"updateInformationDisplayed");
             currentVersion = BuildInfos.VERSION.major.toString() + "-" + BuildInfos.VERSION.minor.toString();

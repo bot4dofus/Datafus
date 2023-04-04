@@ -37,13 +37,13 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.internalDatacenter.communication.SmileyWrapper;
    import com.ankamagames.dofus.internalDatacenter.communication.ThinkBubble;
    import com.ankamagames.dofus.internalDatacenter.fight.ChallengeWrapper;
-   import com.ankamagames.dofus.internalDatacenter.guild.PaddockWrapper;
    import com.ankamagames.dofus.internalDatacenter.house.HouseWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.MountWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.QuantifiedItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.WeaponWrapper;
    import com.ankamagames.dofus.internalDatacenter.people.PartyCompanionWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.PaddockWrapper;
    import com.ankamagames.dofus.internalDatacenter.spells.EffectsListWrapper;
    import com.ankamagames.dofus.internalDatacenter.spells.EffectsWrapper;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
@@ -158,7 +158,6 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayCharacterInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayGroupMonsterInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayGroupMonsterWaveInformations;
-   import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMerchantInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMountInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayMutantInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayNpcInformations;
@@ -1048,7 +1047,6 @@ package com.ankamagames.dofus.logic.connection.frames
          TooltipsFactory.registerAssoc(GameRolePlayNpcInformations,"npc");
          TooltipsFactory.registerAssoc(GameRolePlayGroupMonsterInformations,"monsterGroup");
          TooltipsFactory.registerAssoc(GameRolePlayGroupMonsterWaveInformations,"monsterGroup");
-         TooltipsFactory.registerAssoc(GameRolePlayMerchantInformations,"merchant");
          TooltipsFactory.registerAssoc(GroundObject,"groundObject");
          TooltipsFactory.registerAssoc(TaxCollectorTooltipInformation,"taxCollector");
          TooltipsFactory.registerAssoc(GameFightTaxCollectorInformations,"fightTaxCollector");
@@ -1070,7 +1068,6 @@ package com.ankamagames.dofus.logic.connection.frames
          TooltipsFactory.registerAssoc(HouseWrapper,"house");
          TooltipsFactory.registerAssoc(SubhintWrapper,"simpleInterfaceTuto");
          TooltipsFactory.registerAssoc(Achievement,"achievementModster");
-         MenusFactory.registerAssoc(GameRolePlayMerchantInformations,"humanVendor");
          MenusFactory.registerAssoc(ItemWrapper,"item");
          MenusFactory.registerAssoc(QuantifiedItemWrapper,"item");
          MenusFactory.registerAssoc(WeaponWrapper,"item");

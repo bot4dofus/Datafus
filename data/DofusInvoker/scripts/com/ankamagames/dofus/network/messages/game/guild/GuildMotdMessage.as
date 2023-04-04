@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildMotdMessage extends SocialNoticeMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4753;
+      public static const protocolId:uint = 6481;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 4753;
+         return 6481;
       }
       
       public function initGuildMotdMessage(content:String = "", timestamp:uint = 0, memberId:Number = 0, memberName:String = "") : GuildMotdMessage

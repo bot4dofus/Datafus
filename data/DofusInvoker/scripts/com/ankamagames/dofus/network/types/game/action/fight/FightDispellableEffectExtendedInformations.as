@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.action.fight
    public class FightDispellableEffectExtendedInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 5136;
+      public static const protocolId:uint = 6381;
        
       
       public var actionId:uint = 0;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.types.game.action.fight
       
       public function getTypeId() : uint
       {
-         return 5136;
+         return 6381;
       }
       
       public function initFightDispellableEffectExtendedInformations(actionId:uint = 0, sourceId:Number = 0, effect:AbstractFightDispellableEffect = null) : FightDispellableEffectExtendedInformations

@@ -10,14 +10,12 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameFightTaxCollectorInformations extends GameFightAIInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 7033;
+      public static const protocolId:uint = 9904;
        
       
       public var firstNameId:uint = 0;
       
       public var lastNameId:uint = 0;
-      
-      public var level:uint = 0;
       
       public function GameFightTaxCollectorInformations()
       {
@@ -26,15 +24,14 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 7033;
+         return 9904;
       }
       
-      public function initGameFightTaxCollectorInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, spawnInfo:GameContextBasicSpawnInformation = null, wave:uint = 0, stats:GameFightCharacteristics = null, previousPositions:Vector.<uint> = null, firstNameId:uint = 0, lastNameId:uint = 0, level:uint = 0) : GameFightTaxCollectorInformations
+      public function initGameFightTaxCollectorInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, spawnInfo:GameContextBasicSpawnInformation = null, wave:uint = 0, stats:GameFightCharacteristics = null, previousPositions:Vector.<uint> = null, firstNameId:uint = 0, lastNameId:uint = 0) : GameFightTaxCollectorInformations
       {
          super.initGameFightAIInformations(contextualId,disposition,look,spawnInfo,wave,stats,previousPositions);
          this.firstNameId = firstNameId;
          this.lastNameId = lastNameId;
-         this.level = level;
          return this;
       }
       
@@ -43,7 +40,6 @@ package com.ankamagames.dofus.network.types.game.context.fight
          super.reset();
          this.firstNameId = 0;
          this.lastNameId = 0;
-         this.level = 0;
       }
       
       override public function serialize(output:ICustomDataOutput) : void
@@ -64,11 +60,6 @@ package com.ankamagames.dofus.network.types.game.context.fight
             throw new Error("Forbidden value (" + this.lastNameId + ") on element lastNameId.");
          }
          output.writeVarShort(this.lastNameId);
-         if(this.level < 0 || this.level > 255)
-         {
-            throw new Error("Forbidden value (" + this.level + ") on element level.");
-         }
-         output.writeByte(this.level);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -81,7 +72,6 @@ package com.ankamagames.dofus.network.types.game.context.fight
          super.deserialize(input);
          this._firstNameIdFunc(input);
          this._lastNameIdFunc(input);
-         this._levelFunc(input);
       }
       
       override public function deserializeAsync(tree:FuncTree) : void
@@ -94,7 +84,6 @@ package com.ankamagames.dofus.network.types.game.context.fight
          super.deserializeAsync(tree);
          tree.addChild(this._firstNameIdFunc);
          tree.addChild(this._lastNameIdFunc);
-         tree.addChild(this._levelFunc);
       }
       
       private function _firstNameIdFunc(input:ICustomDataInput) : void
@@ -112,15 +101,6 @@ package com.ankamagames.dofus.network.types.game.context.fight
          if(this.lastNameId < 0)
          {
             throw new Error("Forbidden value (" + this.lastNameId + ") on element of GameFightTaxCollectorInformations.lastNameId.");
-         }
-      }
-      
-      private function _levelFunc(input:ICustomDataInput) : void
-      {
-         this.level = input.readUnsignedByte();
-         if(this.level < 0 || this.level > 255)
-         {
-            throw new Error("Forbidden value (" + this.level + ") on element of GameFightTaxCollectorInformations.level.");
          }
       }
    }

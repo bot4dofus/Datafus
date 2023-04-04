@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.messages.game.guild
 {
-   import com.ankamagames.dofus.network.types.game.guild.GuildRankInformation;
+   import com.ankamagames.dofus.network.types.game.rank.RankInformation;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -12,18 +12,18 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class UpdateAllGuildRankRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4628;
+      public static const protocolId:uint = 90;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var ranks:Vector.<GuildRankInformation>;
+      public var ranks:Vector.<RankInformation>;
       
       private var _rankstree:FuncTree;
       
       public function UpdateAllGuildRankRequestMessage()
       {
-         this.ranks = new Vector.<GuildRankInformation>();
+         this.ranks = new Vector.<RankInformation>();
          super();
       }
       
@@ -34,10 +34,10 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 4628;
+         return 90;
       }
       
-      public function initUpdateAllGuildRankRequestMessage(ranks:Vector.<GuildRankInformation> = null) : UpdateAllGuildRankRequestMessage
+      public function initUpdateAllGuildRankRequestMessage(ranks:Vector.<RankInformation> = null) : UpdateAllGuildRankRequestMessage
       {
          this.ranks = ranks;
          this._isInitialized = true;
@@ -46,7 +46,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function reset() : void
       {
-         this.ranks = new Vector.<GuildRankInformation>();
+         this.ranks = new Vector.<RankInformation>();
          this._isInitialized = false;
       }
       
@@ -80,7 +80,7 @@ package com.ankamagames.dofus.network.messages.game.guild
          output.writeShort(this.ranks.length);
          for(var _i1:uint = 0; _i1 < this.ranks.length; _i1++)
          {
-            (this.ranks[_i1] as GuildRankInformation).serializeAs_GuildRankInformation(output);
+            (this.ranks[_i1] as RankInformation).serializeAs_RankInformation(output);
          }
       }
       
@@ -91,11 +91,11 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       public function deserializeAs_UpdateAllGuildRankRequestMessage(input:ICustomDataInput) : void
       {
-         var _item1:GuildRankInformation = null;
+         var _item1:RankInformation = null;
          var _ranksLen:uint = input.readUnsignedShort();
          for(var _i1:uint = 0; _i1 < _ranksLen; _i1++)
          {
-            _item1 = new GuildRankInformation();
+            _item1 = new RankInformation();
             _item1.deserialize(input);
             this.ranks.push(_item1);
          }
@@ -122,7 +122,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       private function _ranksFunc(input:ICustomDataInput) : void
       {
-         var _item:GuildRankInformation = new GuildRankInformation();
+         var _item:RankInformation = new RankInformation();
          _item.deserialize(input);
          this.ranks.push(_item);
       }

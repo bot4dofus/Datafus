@@ -23,6 +23,17 @@ package com.ankamagames.dofus.logic.common.managers
          KernelEventsManager.getInstance().processCallback(SocialHookList.OpenSocial,tab,subTab,args);
       }
       
+      public static function getLink(tab:int, subTab:int, args:Array, pText:String) : String
+      {
+         var text:String = !!pText ? "::" + pText : "";
+         var params:String = args.join(",");
+         if(params != "")
+         {
+            params = "," + params;
+         }
+         return "{openSocial," + tab + "," + subTab + params + text + "}";
+      }
+      
       public static function rollOver(pX:int, pY:int, tab:int, subTab:int, ... args) : void
       {
          var target:Rectangle = null;

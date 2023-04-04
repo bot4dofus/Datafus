@@ -97,12 +97,6 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       private var _targetInformations:GameRolePlayNamedActorInformations;
       
-      private var _meReady:Boolean = false;
-      
-      private var _youReady:Boolean = false;
-      
-      private var _exchangeInventory:Array;
-      
       private var _success:Boolean;
       
       public function ExchangeManagementFrame()
@@ -172,7 +166,8 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       public function processExchangeStartOkNpcTradeMessage(msg:ExchangeStartOkNpcTradeMessage) : void
       {
-         var sourceName:String = PlayedCharacterManager.getInstance().infos.name;
+         var sourceName:String = null;
+         sourceName = PlayedCharacterManager.getInstance().infos.name;
          var NPCId:int = this.roleplayEntitiesFrame.getEntityInfos(msg.npcId).contextualId;
          var NPC:Npc = Npc.getNpcById(NPCId);
          var targetName:String = Npc.getNpcById((this.roleplayEntitiesFrame.getEntityInfos(msg.npcId) as GameRolePlayNpcInformations).npcId).name;
@@ -196,7 +191,7 @@ package com.ankamagames.dofus.logic.game.common.frames
       {
          var esorctmsg:ExchangeStartOkRecycleTradeMessage = msg as ExchangeStartOkRecycleTradeMessage;
          PlayedCharacterManager.getInstance().isInExchange = true;
-         this._kernelEventsManager.processCallback(CraftHookList.ExchangeStartOkRecycleTrade,esorctmsg.percentToPlayer,esorctmsg.percentToPrism);
+         this._kernelEventsManager.processCallback(CraftHookList.ExchangeStartOkRecycleTrade,esorctmsg.percentToPlayer,esorctmsg.percentToPrism,esorctmsg.adjacentSubareaPossessed,esorctmsg.adjacentSubareaUnpossessed);
          this._kernelEventsManager.processCallback(ExchangeHookList.ExchangeStartedType,ExchangeTypeEnum.RECYCLE_TRADE);
       }
       
@@ -484,7 +479,7 @@ package com.ankamagames.dofus.logic.game.common.frames
             case msg is ExchangeStartOkRecycleTradeMessage:
                esorctmsg = msg as ExchangeStartOkRecycleTradeMessage;
                PlayedCharacterManager.getInstance().isInExchange = true;
-               KernelEventsManager.getInstance().processCallback(CraftHookList.ExchangeStartOkRecycleTrade,esorctmsg.percentToPlayer,esorctmsg.percentToPrism);
+               KernelEventsManager.getInstance().processCallback(CraftHookList.ExchangeStartOkRecycleTrade,esorctmsg.percentToPlayer,esorctmsg.percentToPrism,esorctmsg.adjacentSubareaPossessed,esorctmsg.adjacentSubareaUnpossessed);
                return true;
             case msg is RecycleResultMessage:
                rrmsg = msg as RecycleResultMessage;
@@ -560,7 +555,6 @@ package com.ankamagames.dofus.logic.game.common.frames
             Kernel.getWorker().removeFrame(Kernel.getWorker().getFrame(CommonExchangeManagementFrame));
          }
          KernelEventsManager.getInstance().processCallback(ExchangeHookList.ExchangeLeave,this._success);
-         this._exchangeInventory = null;
          return true;
       }
       

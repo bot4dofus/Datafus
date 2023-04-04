@@ -4,30 +4,30 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.berilia.types.data.UiModule;
    import com.ankamagames.dofus.internalDatacenter.communication.BasicChatSentence;
    import com.ankamagames.dofus.internalDatacenter.conquest.PrismSubAreaWrapper;
-   import com.ankamagames.dofus.internalDatacenter.guild.AllianceWrapper;
-   import com.ankamagames.dofus.internalDatacenter.guild.GuildFactSheetWrapper;
-   import com.ankamagames.dofus.internalDatacenter.guild.GuildHouseWrapper;
-   import com.ankamagames.dofus.internalDatacenter.guild.GuildWrapper;
-   import com.ankamagames.dofus.internalDatacenter.guild.SocialEntityInFightWrapper;
-   import com.ankamagames.dofus.internalDatacenter.guild.SocialFightersWrapper;
-   import com.ankamagames.dofus.internalDatacenter.guild.TaxCollectorWrapper;
    import com.ankamagames.dofus.internalDatacenter.people.SocialCharacterWrapper;
    import com.ankamagames.dofus.internalDatacenter.people.SpouseWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.AllianceWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.GuildHouseWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.GuildWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.SocialEntityInFightWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.TaxCollectorWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
-   import com.ankamagames.dofus.logic.game.common.actions.guild.UpdateGuildRankRequestAction;
    import com.ankamagames.dofus.logic.game.common.frames.AllianceFrame;
    import com.ankamagames.dofus.logic.game.common.frames.ChatFrame;
    import com.ankamagames.dofus.logic.game.common.frames.PlayedCharacterUpdatesFrame;
    import com.ankamagames.dofus.logic.game.common.frames.SocialFrame;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
-   import com.ankamagames.dofus.logic.game.common.managers.TaxCollectorsManager;
+   import com.ankamagames.dofus.logic.game.common.managers.SocialEntitiesManager;
    import com.ankamagames.dofus.network.enums.PlayerStatusEnum;
-   import com.ankamagames.dofus.network.types.game.guild.GuildMember;
-   import com.ankamagames.dofus.network.types.game.guild.GuildRankInformation;
+   import com.ankamagames.dofus.network.enums.SocialFightTypeEnum;
+   import com.ankamagames.dofus.network.types.game.alliance.AllianceMemberInfo;
+   import com.ankamagames.dofus.network.types.game.guild.GuildMemberInfo;
    import com.ankamagames.dofus.network.types.game.paddock.PaddockContentInformations;
    import com.ankamagames.dofus.network.types.game.prism.AllianceInsiderPrismInformation;
    import com.ankamagames.dofus.network.types.game.prism.AlliancePrismInformation;
    import com.ankamagames.dofus.network.types.game.prism.PrismInformation;
+   import com.ankamagames.dofus.network.types.game.rank.RankInformation;
+   import com.ankamagames.dofus.network.types.game.social.fight.SocialFightInfo;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.data.XmlConfig;
    import com.ankamagames.jerakine.logger.Log;
@@ -187,20 +187,15 @@ package com.ankamagames.dofus.uiApi
          return this.socialFrame.guild;
       }
       
-      public function getGuildMembers() : Vector.<GuildMember>
+      public function getGuildMembers() : Vector.<GuildMemberInfo>
       {
          return this.socialFrame.guildmembers;
       }
       
-      public function getGuildByid(id:int) : GuildFactSheetWrapper
-      {
-         return this.socialFrame.getGuildById(id);
-      }
-      
       public function hasGuildRight(pPlayerId:Number, pRightId:uint) : Boolean
       {
-         var member:GuildMember = null;
-         var rank:GuildRankInformation = null;
+         var member:GuildMemberInfo = null;
+         var rank:RankInformation = null;
          if(!this.socialFrame.hasGuild)
          {
             return false;
@@ -222,8 +217,8 @@ package com.ankamagames.dofus.uiApi
       
       public function hasGuildRank(pPlayerId:Number, rankOrder:int) : Boolean
       {
-         var member:GuildMember = null;
-         var rank:GuildRankInformation = null;
+         var member:GuildMemberInfo = null;
+         var rank:RankInformation = null;
          if(!this.socialFrame.hasGuild)
          {
             return false;
@@ -239,9 +234,9 @@ package com.ankamagames.dofus.uiApi
          return false;
       }
       
-      public function getPlayerGuildRank(playerId:Number) : GuildRankInformation
+      public function getPlayerGuildRank(playerId:Number) : RankInformation
       {
-         var member:GuildMember = null;
+         var member:GuildMemberInfo = null;
          if(!this.socialFrame.hasGuild)
          {
             return null;
@@ -256,24 +251,24 @@ package com.ankamagames.dofus.uiApi
          return null;
       }
       
-      public function getGuildRanks() : Vector.<GuildRankInformation>
+      public function getGuildRanks() : Vector.<RankInformation>
       {
          return this.socialFrame.getGuildRanks();
       }
       
-      public function getGuildRankById(id:uint) : GuildRankInformation
+      public function getGuildRankById(id:uint) : RankInformation
       {
          return this.socialFrame.getGuildRankById(id);
       }
       
-      public function getGuildRankIconIds() : Vector.<uint>
+      public function getRankIconIds() : Vector.<uint>
       {
-         return this.socialFrame.getGuildRanksIconIds();
+         return this.socialFrame.getRanksIconIds();
       }
       
-      public function getGuildRankIconUriById(iconId:uint) : Uri
+      public function getRankIconUriById(iconId:uint) : Uri
       {
-         return this.socialFrame.getGuildRankIconUriById(iconId);
+         return this.socialFrame.getRankIconUriById(iconId);
       }
       
       public function getGuildHouses() : Vector.<GuildHouseWrapper>
@@ -300,109 +295,60 @@ package com.ankamagames.dofus.uiApi
       {
          if(this.socialFrame.guild)
          {
-            return this.socialFrame.guild.realGuildName == "#NONAME#";
+            return this.socialFrame.guild.realGroupName == "#NONAME#";
          }
          return false;
-      }
-      
-      public function getMaxCollectorCount() : uint
-      {
-         return TaxCollectorsManager.getInstance().maxTaxCollectorsCount;
       }
       
       public function getTaxCollectors() : Dictionary
       {
-         return TaxCollectorsManager.getInstance().taxCollectors;
+         return SocialEntitiesManager.getInstance().taxCollectors;
       }
       
-      public function getTaxCollector(id:Number) : TaxCollectorWrapper
+      public function getTaxCollectorById(id:uint) : TaxCollectorWrapper
       {
-         return TaxCollectorsManager.getInstance().taxCollectors[id];
-      }
-      
-      public function getGuildFightingTaxCollectors() : Dictionary
-      {
-         return TaxCollectorsManager.getInstance().guildTaxCollectorsFighters;
-      }
-      
-      public function getGuildFightingTaxCollector(pFightId:Number) : SocialEntityInFightWrapper
-      {
-         return TaxCollectorsManager.getInstance().guildTaxCollectorsFighters[pFightId];
+         return SocialEntitiesManager.getInstance().taxCollectors[id];
       }
       
       public function getAllFightingTaxCollectors() : Dictionary
       {
-         return TaxCollectorsManager.getInstance().allTaxCollectorsInFight;
+         return SocialEntitiesManager.getInstance().taxCollectorsInFight;
       }
       
-      public function getAllFightingTaxCollector(pFightId:Number) : SocialEntityInFightWrapper
+      public function getFightingTaxCollector(pFightId:Number) : SocialEntityInFightWrapper
       {
-         return TaxCollectorsManager.getInstance().allTaxCollectorsInFight[pFightId];
-      }
-      
-      public function isPlayerDefender(pType:int, pPlayerId:Number, pSocialFightId:Number) : Boolean
-      {
-         var seifw:SocialEntityInFightWrapper = null;
-         var defender:SocialFightersWrapper = null;
-         if(pType == 0)
-         {
-            seifw = TaxCollectorsManager.getInstance().guildTaxCollectorsFighters[pSocialFightId];
-            if(!seifw)
-            {
-               seifw = TaxCollectorsManager.getInstance().allTaxCollectorsInFight[pSocialFightId];
-            }
-         }
-         else if(pType == 1)
-         {
-            seifw = TaxCollectorsManager.getInstance().prismsFighters[pSocialFightId];
-         }
-         if(seifw)
-         {
-            for each(defender in seifw.allyCharactersInformations)
-            {
-               if(defender.playerCharactersInformations.id == pPlayerId)
-               {
-                  return true;
-               }
-            }
-         }
-         return false;
+         return SocialEntitiesManager.getInstance().getFightingEntityById(pFightId,SocialFightTypeEnum.TaxCollectorFight);
       }
       
       public function hasAlliance() : Boolean
       {
-         return this.allianceFrame.hasAlliance;
+         return this.socialFrame.hasAlliance;
       }
       
       public function getAlliance() : AllianceWrapper
       {
-         return this.allianceFrame.alliance;
+         return this.socialFrame.alliance;
       }
       
-      public function getAllianceById(id:int) : AllianceWrapper
+      public function getAllianceMembers() : Vector.<AllianceMemberInfo>
       {
-         return this.allianceFrame.getAllianceById(id);
-      }
-      
-      public function getAllianceGuilds() : Vector.<GuildFactSheetWrapper>
-      {
-         return this.allianceFrame.alliance.guilds;
+         return this.socialFrame.alliancemembers;
       }
       
       public function isAllianceNameInvalid() : Boolean
       {
-         if(this.allianceFrame.alliance)
+         if(this.socialFrame.alliance)
          {
-            return this.allianceFrame.alliance.realAllianceName == "#NONAME#";
+            return this.socialFrame.alliance.realGroupName == "#NONAME#";
          }
          return false;
       }
       
       public function isAllianceTagInvalid() : Boolean
       {
-         if(this.allianceFrame.alliance)
+         if(this.socialFrame.alliance)
          {
-            return this.allianceFrame.alliance.realAllianceTag == "#TAG#";
+            return this.socialFrame.alliance.realAllianceTag == "#TAG#";
          }
          return false;
       }
@@ -415,13 +361,14 @@ package com.ankamagames.dofus.uiApi
          var allianceTag:String = null;
          var tag:* = null;
          var myAllianceInfos:AllianceWrapper = null;
+         var allianceFrame:AllianceFrame = null;
          if(pPrismInfo is AlliancePrismInformation)
          {
             alPrismInfos = pPrismInfo as AlliancePrismInformation;
             allianceName = alPrismInfos.alliance.allianceName;
             if(allianceName == "#NONAME#")
             {
-               allianceName = I18n.getUiText("ui.guild.noName");
+               allianceName = I18n.getUiText("ui.social.noName");
             }
             allianceTag = alPrismInfos.alliance.allianceTag;
             if(allianceTag == "#TAG#")
@@ -434,9 +381,42 @@ package com.ankamagames.dofus.uiApi
          else if(pPrismInfo is AllianceInsiderPrismInformation)
          {
             myAllianceInfos = this.getAlliance();
-            name = myAllianceInfos.allianceName + " \\[" + myAllianceInfos.allianceTag + "]";
+            name = myAllianceInfos.groupName + " \\[" + myAllianceInfos.allianceTag + "]";
+         }
+         else
+         {
+            allianceFrame = Kernel.getWorker().getFrame(AllianceFrame) as AllianceFrame;
+            name = allianceFrame.getPrismSubAreaById(PlayedCharacterManager.getInstance().currentSubArea.id).alliance.groupName;
          }
          return name;
+      }
+      
+      public function hasAllianceRight(pPlayerId:Number, pRightId:uint) : Boolean
+      {
+         var member:AllianceMemberInfo = null;
+         var rank:RankInformation = null;
+         if(!this.socialFrame.hasAlliance)
+         {
+            return false;
+         }
+         if(pPlayerId == PlayedCharacterManager.getInstance().id)
+         {
+            return this.socialFrame.playerAllianceRank.rights.indexOf(pRightId) != -1;
+         }
+         for each(member in this.socialFrame.alliancemembers)
+         {
+            if(member.id == pPlayerId)
+            {
+               rank = this.socialFrame.getAllianceRankById(member.rankId);
+               return rank.rights.indexOf(pRightId) != -1;
+            }
+         }
+         return false;
+      }
+      
+      public function getCurrentJoinedFight() : SocialFightInfo
+      {
+         return this.allianceFrame.currentJoinedFight;
       }
       
       public function getPrismSubAreaById(id:int) : PrismSubAreaWrapper
@@ -446,29 +426,12 @@ package com.ankamagames.dofus.uiApi
       
       public function getFightingPrisms() : Dictionary
       {
-         return TaxCollectorsManager.getInstance().prismsFighters;
+         return SocialEntitiesManager.getInstance().prismsInFight;
       }
       
       public function getFightingPrism(pFightId:uint) : SocialEntityInFightWrapper
       {
-         return TaxCollectorsManager.getInstance().prismsFighters[pFightId];
-      }
-      
-      public function isPlayerPrismDefender(pPlayerId:Number, pSubAreaId:int) : Boolean
-      {
-         var defender:SocialFightersWrapper = null;
-         var p:SocialEntityInFightWrapper = TaxCollectorsManager.getInstance().prismsFighters[pSubAreaId];
-         if(p)
-         {
-            for each(defender in p.allyCharactersInformations)
-            {
-               if(defender.playerCharactersInformations.id == pPlayerId)
-               {
-                  return true;
-               }
-            }
-         }
-         return false;
+         return SocialEntitiesManager.getInstance().prismsInFight[pFightId];
       }
       
       public function getChatSentence(timestamp:Number, fingerprint:String) : BasicChatSentence
@@ -549,19 +512,29 @@ package com.ankamagames.dofus.uiApi
          return toReturn;
       }
       
-      public function getGuildMembersMax(guildLevel:uint) : uint
-      {
-         return 140 + Math.floor(guildLevel * 0.5);
-      }
-      
-      public function get playerGuildRank() : GuildRankInformation
+      public function get playerGuildRank() : RankInformation
       {
          return this.socialFrame.playerGuildRank;
       }
       
-      public function modifyRank(guildRank:GuildRankInformation) : void
+      public function get playerAllianceRank() : RankInformation
       {
-         Kernel.getWorker().process(UpdateGuildRankRequestAction.create(guildRank));
+         return this.socialFrame.playerAllianceRank;
+      }
+      
+      public function getAllianceRanks() : Vector.<RankInformation>
+      {
+         return this.socialFrame.getAllianceRanks();
+      }
+      
+      public function getAllianceRankById(id:uint) : RankInformation
+      {
+         return this.socialFrame.getAllianceRankById(id);
+      }
+      
+      public function getNuggetsBalance() : Number
+      {
+         return this.allianceFrame.nuggetsBalance;
       }
    }
 }

@@ -1,7 +1,7 @@
 package com.ankamagames.dofus.network.messages.game.guild.application
 {
    import com.ankamagames.dofus.network.messages.game.PaginationAnswerAbstractMessage;
-   import com.ankamagames.dofus.network.types.game.guild.application.GuildApplicationInformation;
+   import com.ankamagames.dofus.network.types.game.social.application.SocialApplicationInformation;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -12,18 +12,18 @@ package com.ankamagames.dofus.network.messages.game.guild.application
    public class GuildListApplicationAnswerMessage extends PaginationAnswerAbstractMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9667;
+      public static const protocolId:uint = 1446;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var applies:Vector.<GuildApplicationInformation>;
+      public var applies:Vector.<SocialApplicationInformation>;
       
       private var _appliestree:FuncTree;
       
       public function GuildListApplicationAnswerMessage()
       {
-         this.applies = new Vector.<GuildApplicationInformation>();
+         this.applies = new Vector.<SocialApplicationInformation>();
          super();
       }
       
@@ -34,10 +34,10 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       override public function getMessageId() : uint
       {
-         return 9667;
+         return 1446;
       }
       
-      public function initGuildListApplicationAnswerMessage(offset:Number = 0, count:uint = 0, total:uint = 0, applies:Vector.<GuildApplicationInformation> = null) : GuildListApplicationAnswerMessage
+      public function initGuildListApplicationAnswerMessage(offset:Number = 0, count:uint = 0, total:uint = 0, applies:Vector.<SocialApplicationInformation> = null) : GuildListApplicationAnswerMessage
       {
          super.initPaginationAnswerAbstractMessage(offset,count,total);
          this.applies = applies;
@@ -48,7 +48,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       override public function reset() : void
       {
          super.reset();
-         this.applies = new Vector.<GuildApplicationInformation>();
+         this.applies = new Vector.<SocialApplicationInformation>();
          this._isInitialized = false;
       }
       
@@ -83,7 +83,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
          output.writeShort(this.applies.length);
          for(var _i1:uint = 0; _i1 < this.applies.length; _i1++)
          {
-            (this.applies[_i1] as GuildApplicationInformation).serializeAs_GuildApplicationInformation(output);
+            (this.applies[_i1] as SocialApplicationInformation).serializeAs_SocialApplicationInformation(output);
          }
       }
       
@@ -94,12 +94,12 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       public function deserializeAs_GuildListApplicationAnswerMessage(input:ICustomDataInput) : void
       {
-         var _item1:GuildApplicationInformation = null;
+         var _item1:SocialApplicationInformation = null;
          super.deserialize(input);
          var _appliesLen:uint = input.readUnsignedShort();
          for(var _i1:uint = 0; _i1 < _appliesLen; _i1++)
          {
-            _item1 = new GuildApplicationInformation();
+            _item1 = new SocialApplicationInformation();
             _item1.deserialize(input);
             this.applies.push(_item1);
          }
@@ -127,7 +127,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       private function _appliesFunc(input:ICustomDataInput) : void
       {
-         var _item:GuildApplicationInformation = new GuildApplicationInformation();
+         var _item:SocialApplicationInformation = new SocialApplicationInformation();
          _item.deserialize(input);
          this.applies.push(_item);
       }

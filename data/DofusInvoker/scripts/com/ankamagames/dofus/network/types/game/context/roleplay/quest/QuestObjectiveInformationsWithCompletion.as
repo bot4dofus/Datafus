@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.quest
    public class QuestObjectiveInformationsWithCompletion extends QuestObjectiveInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 765;
+      public static const protocolId:uint = 3901;
        
       
       public var curCompletion:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.quest
       
       override public function getTypeId() : uint
       {
-         return 765;
+         return 3901;
       }
       
       public function initQuestObjectiveInformationsWithCompletion(objectiveId:uint = 0, objectiveStatus:Boolean = false, dialogParams:Vector.<String> = null, curCompletion:uint = 0, maxCompletion:uint = 0) : QuestObjectiveInformationsWithCompletion

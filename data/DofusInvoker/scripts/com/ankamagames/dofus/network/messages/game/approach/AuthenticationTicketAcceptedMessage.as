@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.approach
    public class AuthenticationTicketAcceptedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4790;
+      public static const protocolId:uint = 6001;
        
       
       public function AuthenticationTicketAcceptedMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       override public function getMessageId() : uint
       {
-         return 4790;
+         return 6001;
       }
       
       public function initAuthenticationTicketAcceptedMessage() : AuthenticationTicketAcceptedMessage

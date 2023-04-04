@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildBulletinMessage extends BulletinMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4896;
+      public static const protocolId:uint = 6993;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,12 +28,12 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 4896;
+         return 6993;
       }
       
-      public function initGuildBulletinMessage(content:String = "", timestamp:uint = 0, memberId:Number = 0, memberName:String = "", lastNotifiedTimestamp:uint = 0) : GuildBulletinMessage
+      public function initGuildBulletinMessage(content:String = "", timestamp:uint = 0, memberId:Number = 0, memberName:String = "") : GuildBulletinMessage
       {
-         super.initBulletinMessage(content,timestamp,memberId,memberName,lastNotifiedTimestamp);
+         super.initBulletinMessage(content,timestamp,memberId,memberName);
          this._isInitialized = true;
          return this;
       }

@@ -791,7 +791,11 @@ package com.ankamagames.dofus.logic.game.fight.frames
          {
             usedSpellWrapper = this._usedWrapper as SpellWrapper;
             isTakenCell = this.cellHasEntity(selectionCellId);
-            if(portalUsableCells.indexOf(selectionCellId) != -1)
+            if(this.isCastBlockedByPortal(selectionCellId,this._usedWrapper as SpellWrapper))
+            {
+               untargetableCells.push(selectionCellId);
+            }
+            else if(portalUsableCells.indexOf(selectionCellId) != -1)
             {
                losCells.push(selectionCellId);
             }
@@ -825,6 +829,25 @@ package com.ankamagames.dofus.logic.game.fight.frames
             this._portalsSelection.zone = new Custom(portalUsableCells);
             SelectionManager.getInstance().addSelection(this._portalsSelection,SELECTION_PORTALS,origin);
          }
+      }
+      
+      private function isCastBlockedByPortal(cellId:uint, spell:SpellWrapper) : Boolean
+      {
+         if(spell === null)
+         {
+            return false;
+         }
+         var inPortal:MarkInstance = MarkedCellsManager.getInstance().getMarkAtCellId(cellId,GameActionMarkTypeEnum.PORTAL);
+         if(inPortal !== null && inPortal.active && spell.portalProjectionForbiddenWithModifiers)
+         {
+            return true;
+         }
+         var outPortal:MarkInstance = MarkedCellsManager.getInstance().getMarkAtCellId(this.getTargetThroughPortal(cellId),GameActionMarkTypeEnum.PORTAL);
+         if(outPortal !== null && outPortal.active && spell.needCellWithoutPortalWithModifiers)
+         {
+            return true;
+         }
+         return false;
       }
       
       private function removeTeleportationPreview(destroy:Boolean = false) : void
@@ -1013,6 +1036,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   }
                   if(currentEffect.movement != null && currentEffect.movement.swappedWith != null && currentCharacterIsXelor)
                   {
+                     params.spellDamage = spellDamage;
                      spellDamage.telefrag = true;
                   }
                }

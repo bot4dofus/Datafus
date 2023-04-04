@@ -23,7 +23,11 @@ package com.ankamagames.berilia.enums
       
       public static const GUILD_CHEST_CONTRIBUTE_POPUP:String = "guildChestContributePopup";
       
+      public static const PRISM_MODULE_UI:String = "prismModuleUi";
+      
       public static const SPECTATOR_UI:String = "spectatorUi";
+      
+      public static const KING_OF_THE_HILL:String = "kingOfTheHill";
       
       public static const GRIMOIRE:String = "book";
       
@@ -63,14 +67,6 @@ package com.ankamagames.berilia.enums
       
       public static const NPC_ITEM:String = "itemNpcStore";
       
-      public static const MYSELF_VENDOR_STOCK:String = "stockMyselfVendor";
-      
-      public static const MYSELF_VENDOR:String = "itemMyselfVendor";
-      
-      public static const HUMAN_VENDOR_STOCK:String = "stockHumanVendor";
-      
-      public static const HUMAN_VENDOR:String = "itemHumanVendor";
-      
       public static const AUCTIONHOUSE:String = "auctionHouse";
       
       public static const AUCTIONHOUSE_BUY:String = "auctionHouseBuy";
@@ -96,6 +92,8 @@ package com.ankamagames.berilia.enums
       public static const REWARDS:String = "rewardsUi";
       
       public static const PRE_GAME_MAIN_MENU:String = "preGameMainMenu";
+      
+      public static const ITEM_LIST:String = "itemList";
       
       public static const FIGHT_RESULT:String = "fightResult";
       
@@ -163,11 +161,27 @@ package com.ankamagames.berilia.enums
       
       public static const GUILD_RIGHTS_AND_RANKS:String = "guildRightsAndRanks";
       
-      public static const GUILD_CREATE_RANK:String = "guildCreateRank";
+      public static const CREATE_RANK:String = "createRank";
       
-      public static const REMOVE_GUILD_RANK_POPUP:String = "removeGuildRankPopup";
+      public static const REMOVE_RANK_POPUP:String = "removeRankPopup";
       
-      public static const MODIFY_GUILD_RANK_POPUP:String = "modifyGuildRankPopup";
+      public static const MODIFY_RANK_POPUP:String = "modifyRankPopup";
+      
+      public static const ALLIANCE_APPLICATIONS:String = "allianceApplications";
+      
+      public static const ALLIANCE_PREZ_AND_RECRUIT:String = "alliancePrezAndRecruit";
+      
+      public static const ALLIANCE_JOIN_POPUP:String = "allianceJoinPopup";
+      
+      public static const ALLIANCE_APPLY_POPUP:String = "allianceApplyPopup";
+      
+      public static const ALLIANCE_RIGHTS_AND_RANKS:String = "allianceRightsAndRanks";
+      
+      public static const ALLIANCE_NUGGET_VALID_POPUP:String = "allianceNuggetValidPopup";
+      
+      public static const MODIFY_TAX_COLLECTOR:String = "modifyTaxCollector";
+      
+      public static const CONSULT_TAX_COLLECTOR:String = "consultTaxCollector";
        
       
       public function UIEnum()

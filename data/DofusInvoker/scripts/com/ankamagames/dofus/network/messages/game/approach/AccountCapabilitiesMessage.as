@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.approach
    public class AccountCapabilitiesMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4669;
+      public static const protocolId:uint = 4809;
        
       
       private var _isInitialized:Boolean = false;
@@ -20,10 +20,6 @@ package com.ankamagames.dofus.network.messages.game.approach
       public var accountId:uint = 0;
       
       public var tutorialAvailable:Boolean = false;
-      
-      public var breedsVisible:uint = 0;
-      
-      public var breedsAvailable:uint = 0;
       
       public var status:int = -1;
       
@@ -41,15 +37,13 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       override public function getMessageId() : uint
       {
-         return 4669;
+         return 4809;
       }
       
-      public function initAccountCapabilitiesMessage(accountId:uint = 0, tutorialAvailable:Boolean = false, breedsVisible:uint = 0, breedsAvailable:uint = 0, status:int = -1, canCreateNewCharacter:Boolean = false) : AccountCapabilitiesMessage
+      public function initAccountCapabilitiesMessage(accountId:uint = 0, tutorialAvailable:Boolean = false, status:int = -1, canCreateNewCharacter:Boolean = false) : AccountCapabilitiesMessage
       {
          this.accountId = accountId;
          this.tutorialAvailable = tutorialAvailable;
-         this.breedsVisible = breedsVisible;
-         this.breedsAvailable = breedsAvailable;
          this.status = status;
          this.canCreateNewCharacter = canCreateNewCharacter;
          this._isInitialized = true;
@@ -60,8 +54,6 @@ package com.ankamagames.dofus.network.messages.game.approach
       {
          this.accountId = 0;
          this.tutorialAvailable = false;
-         this.breedsVisible = 0;
-         this.breedsAvailable = 0;
          this.status = -1;
          this.canCreateNewCharacter = false;
          this._isInitialized = false;
@@ -103,16 +95,6 @@ package com.ankamagames.dofus.network.messages.game.approach
             throw new Error("Forbidden value (" + this.accountId + ") on element accountId.");
          }
          output.writeInt(this.accountId);
-         if(this.breedsVisible < 0)
-         {
-            throw new Error("Forbidden value (" + this.breedsVisible + ") on element breedsVisible.");
-         }
-         output.writeVarInt(this.breedsVisible);
-         if(this.breedsAvailable < 0)
-         {
-            throw new Error("Forbidden value (" + this.breedsAvailable + ") on element breedsAvailable.");
-         }
-         output.writeVarInt(this.breedsAvailable);
          output.writeByte(this.status);
       }
       
@@ -125,8 +107,6 @@ package com.ankamagames.dofus.network.messages.game.approach
       {
          this.deserializeByteBoxes(input);
          this._accountIdFunc(input);
-         this._breedsVisibleFunc(input);
-         this._breedsAvailableFunc(input);
          this._statusFunc(input);
       }
       
@@ -139,8 +119,6 @@ package com.ankamagames.dofus.network.messages.game.approach
       {
          tree.addChild(this.deserializeByteBoxes);
          tree.addChild(this._accountIdFunc);
-         tree.addChild(this._breedsVisibleFunc);
-         tree.addChild(this._breedsAvailableFunc);
          tree.addChild(this._statusFunc);
       }
       
@@ -157,24 +135,6 @@ package com.ankamagames.dofus.network.messages.game.approach
          if(this.accountId < 0)
          {
             throw new Error("Forbidden value (" + this.accountId + ") on element of AccountCapabilitiesMessage.accountId.");
-         }
-      }
-      
-      private function _breedsVisibleFunc(input:ICustomDataInput) : void
-      {
-         this.breedsVisible = input.readVarUhInt();
-         if(this.breedsVisible < 0)
-         {
-            throw new Error("Forbidden value (" + this.breedsVisible + ") on element of AccountCapabilitiesMessage.breedsVisible.");
-         }
-      }
-      
-      private function _breedsAvailableFunc(input:ICustomDataInput) : void
-      {
-         this.breedsAvailable = input.readVarUhInt();
-         if(this.breedsAvailable < 0)
-         {
-            throw new Error("Forbidden value (" + this.breedsAvailable + ") on element of AccountCapabilitiesMessage.breedsAvailable.");
          }
       }
       

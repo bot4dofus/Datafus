@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach.meet
    public class BreachKickResponseMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4950;
+      public static const protocolId:uint = 7064;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach.meet
       
       override public function getMessageId() : uint
       {
-         return 4950;
+         return 7064;
       }
       
       public function initBreachKickResponseMessage(target:CharacterMinimalInformations = null, kicked:Boolean = false) : BreachKickResponseMessage

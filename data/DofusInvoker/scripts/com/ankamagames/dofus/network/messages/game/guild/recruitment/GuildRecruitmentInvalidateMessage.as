@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild.recruitment
    public class GuildRecruitmentInvalidateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 977;
+      public static const protocolId:uint = 9297;
        
       
       public function GuildRecruitmentInvalidateMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.guild.recruitment
       
       override public function getMessageId() : uint
       {
-         return 977;
+         return 9297;
       }
       
       public function initGuildRecruitmentInvalidateMessage() : GuildRecruitmentInvalidateMessage

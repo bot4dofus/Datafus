@@ -5,21 +5,17 @@ package com.ankamagames.dofus.misc.lists
    public class PrismHookList
    {
       
-      public static const PrismsList:String = "PrismsList";
+      public static const PrismAddOrUpdate:String = "PrismAddOrUpdate";
       
-      public static const PrismsListUpdate:String = "PrismsListUpdate";
+      public static const PrismsMultipleUpdate:String = "PrismsMultipleUpdate";
+      
+      public static const PrismRemoved:String = "PrismRemoved";
       
       public static const KohStarting:String = "KohStarting";
       
       public static const KohState:String = "KohState";
       
       public static const PrismAttacked:String = "PrismAttacked";
-      
-      public static const PrismInFightAdded:String = "PrismInFightAdded";
-      
-      public static const PrismInFightRemoved:String = "PrismInFightRemoved";
-      
-      public static const PrismsInFightList:String = "PrismsInFightList";
       
       public static const PvpAvaStateChange:String = "PvpAvaStateChange";
        
@@ -31,14 +27,12 @@ package com.ankamagames.dofus.misc.lists
       
       public static function initHooks() : void
       {
-         Hook.createHook(PrismsList);
-         Hook.createHook(PrismsListUpdate);
+         Hook.createHook(PrismAddOrUpdate);
+         Hook.createHook(PrismRemoved);
+         Hook.createHook(PrismsMultipleUpdate);
          Hook.createHook(KohStarting);
          Hook.createHook(KohState);
          Hook.createHook(PrismAttacked);
-         Hook.createHook(PrismInFightAdded);
-         Hook.createHook(PrismInFightRemoved);
-         Hook.createHook(PrismsInFightList);
          Hook.createHook(PvpAvaStateChange);
       }
    }

@@ -2,8 +2,8 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
 {
    import com.ankamagames.dofus.datacenter.monsters.Monster;
    import com.ankamagames.dofus.internalDatacenter.stats.DetailedStat;
+   import com.ankamagames.dofus.internalDatacenter.stats.EntityStat;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
-   import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.internalDatacenter.stats.UsableStat;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
@@ -253,7 +253,7 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
       
       public function resetStats() : void
       {
-         var stat:Stat = null;
+         var stat:EntityStat = null;
          var stats:EntityStats = StatsManager.getInstance().getStats(this._id);
          var usableStat:UsableStat = null;
          var detailedStat:DetailedStat = null;
@@ -272,7 +272,7 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
                   detailedStat = stat as DetailedStat;
                   this._stats[detailedStat.id] = new HaxeDetailedStat(detailedStat.id,detailedStat.baseValue,detailedStat.additionalValue,detailedStat.objectsAndMountBonusValue,detailedStat.alignGiftBonusValue,detailedStat.contextModifValue);
                }
-               else if(stat is Stat)
+               else if(stat is EntityStat)
                {
                   this._stats[stat.id] = new HaxeSimpleStat(stat.id,stat.totalValue);
                }

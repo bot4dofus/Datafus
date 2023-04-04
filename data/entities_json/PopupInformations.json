@@ -541,6 +541,46 @@
 			"criterion": "PL>159&ST=8&So=148",
 			"cacheType": 1,
 			"autoTrigger": true
+		},
+		{
+			"id": 39,
+			"parentId": 5,
+			"titleId": 993828,
+			"descriptionId": 993986,
+			"illuName": "fr_feature_alliances.jpg",
+			"buttons": [
+				{
+					"id": 39,
+					"popupId": 39,
+					"type": 0,
+					"textId": 993830,
+					"actionType": 1,
+					"actionValue": "OpenGuidebookAction:gameGuide|7|popup"
+				}
+			],
+			"criterion": "PL>49",
+			"cacheType": 2,
+			"autoTrigger": true
+		},
+		{
+			"id": 40,
+			"parentId": 5,
+			"titleId": 998859,
+			"descriptionId": 998860,
+			"illuName": "fr_feature_compagnons.jpg",
+			"buttons": [
+				{
+					"id": 40,
+					"popupId": 40,
+					"type": 0,
+					"textId": 998861,
+					"actionType": 1,
+					"actionValue": "OpenGuidebookAction:gameGuide|111|popup"
+				}
+			],
+			"criterion": "PL>29",
+			"cacheType": 2,
+			"autoTrigger": true
 		}
 	]
 }

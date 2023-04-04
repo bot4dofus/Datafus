@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.dialog
    public class LeaveDialogRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7766;
+      public static const protocolId:uint = 4843;
        
       
       public function LeaveDialogRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.dialog
       
       override public function getMessageId() : uint
       {
-         return 7766;
+         return 4843;
       }
       
       public function initLeaveDialogRequestMessage() : LeaveDialogRequestMessage

@@ -51,11 +51,6 @@ package com.ankamagames.dofus.datacenter.appearance
          return (GameData.getObject(MODULE,9) as CreatureBoneType).creatureBoneId;
       }
       
-      public static function getPlayerMerchantCreatureBone() : int
-      {
-         return (GameData.getObject(MODULE,10) as CreatureBoneType).creatureBoneId;
-      }
-      
       public static function getAllCreatureBonesTypes() : Array
       {
          return GameData.getObjects(MODULE);

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildInvitationStateRecruterMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4630;
+      public static const protocolId:uint = 4942;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 4630;
+         return 4942;
       }
       
       public function initGuildInvitationStateRecruterMessage(recrutedName:String = "", invitationState:uint = 0) : GuildInvitationStateRecruterMessage

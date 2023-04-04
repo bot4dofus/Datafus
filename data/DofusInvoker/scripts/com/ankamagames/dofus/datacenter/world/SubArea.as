@@ -60,6 +60,8 @@ package com.ankamagames.dofus.datacenter.world
       
       public var harvestables:Vector.<int>;
       
+      public var neighbors:Vector.<int>;
+      
       public var associatedZaapMapId:int;
       
       private var _name:String;

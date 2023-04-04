@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class ObjectItemToSell extends Item implements INetworkType
    {
       
-      public static const protocolId:uint = 4449;
+      public static const protocolId:uint = 4305;
        
       
       public var objectGID:uint = 0;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       override public function getTypeId() : uint
       {
-         return 4449;
+         return 4305;
       }
       
       public function initObjectItemToSell(objectGID:uint = 0, effects:Vector.<ObjectEffect> = null, objectUID:uint = 0, quantity:uint = 0, objectPrice:Number = 0) : ObjectItemToSell

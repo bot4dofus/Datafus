@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.house
    public class HouseInformationsForGuild extends HouseInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 4778;
+      public static const protocolId:uint = 600;
        
       
       public var instanceId:uint = 0;
@@ -43,7 +43,7 @@ package com.ankamagames.dofus.network.types.game.house
       
       override public function getTypeId() : uint
       {
-         return 4778;
+         return 600;
       }
       
       public function initHouseInformationsForGuild(houseId:uint = 0, modelId:uint = 0, instanceId:uint = 0, secondHand:Boolean = false, ownerTag:AccountTagInformation = null, worldX:int = 0, worldY:int = 0, mapId:Number = 0, subAreaId:uint = 0, skillListIds:Vector.<int> = null, guildshareParams:uint = 0) : HouseInformationsForGuild

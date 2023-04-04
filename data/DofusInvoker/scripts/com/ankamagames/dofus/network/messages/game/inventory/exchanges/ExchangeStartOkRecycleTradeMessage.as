@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartOkRecycleTradeMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6135;
+      public static const protocolId:uint = 2316;
        
       
       private var _isInitialized:Boolean = false;
@@ -20,8 +20,18 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       public var percentToPlayer:uint = 0;
       
+      public var adjacentSubareaPossessed:Vector.<uint>;
+      
+      public var adjacentSubareaUnpossessed:Vector.<uint>;
+      
+      private var _adjacentSubareaPossessedtree:FuncTree;
+      
+      private var _adjacentSubareaUnpossessedtree:FuncTree;
+      
       public function ExchangeStartOkRecycleTradeMessage()
       {
+         this.adjacentSubareaPossessed = new Vector.<uint>();
+         this.adjacentSubareaUnpossessed = new Vector.<uint>();
          super();
       }
       
@@ -32,13 +42,15 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 6135;
+         return 2316;
       }
       
-      public function initExchangeStartOkRecycleTradeMessage(percentToPrism:uint = 0, percentToPlayer:uint = 0) : ExchangeStartOkRecycleTradeMessage
+      public function initExchangeStartOkRecycleTradeMessage(percentToPrism:uint = 0, percentToPlayer:uint = 0, adjacentSubareaPossessed:Vector.<uint> = null, adjacentSubareaUnpossessed:Vector.<uint> = null) : ExchangeStartOkRecycleTradeMessage
       {
          this.percentToPrism = percentToPrism;
          this.percentToPlayer = percentToPlayer;
+         this.adjacentSubareaPossessed = adjacentSubareaPossessed;
+         this.adjacentSubareaUnpossessed = adjacentSubareaUnpossessed;
          this._isInitialized = true;
          return this;
       }
@@ -47,6 +59,8 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       {
          this.percentToPrism = 0;
          this.percentToPlayer = 0;
+         this.adjacentSubareaPossessed = new Vector.<uint>();
+         this.adjacentSubareaUnpossessed = new Vector.<uint>();
          this._isInitialized = false;
       }
       
@@ -87,6 +101,24 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
             throw new Error("Forbidden value (" + this.percentToPlayer + ") on element percentToPlayer.");
          }
          output.writeShort(this.percentToPlayer);
+         output.writeShort(this.adjacentSubareaPossessed.length);
+         for(var _i3:uint = 0; _i3 < this.adjacentSubareaPossessed.length; _i3++)
+         {
+            if(this.adjacentSubareaPossessed[_i3] < 0)
+            {
+               throw new Error("Forbidden value (" + this.adjacentSubareaPossessed[_i3] + ") on element 3 (starting at 1) of adjacentSubareaPossessed.");
+            }
+            output.writeInt(this.adjacentSubareaPossessed[_i3]);
+         }
+         output.writeShort(this.adjacentSubareaUnpossessed.length);
+         for(var _i4:uint = 0; _i4 < this.adjacentSubareaUnpossessed.length; _i4++)
+         {
+            if(this.adjacentSubareaUnpossessed[_i4] < 0)
+            {
+               throw new Error("Forbidden value (" + this.adjacentSubareaUnpossessed[_i4] + ") on element 4 (starting at 1) of adjacentSubareaUnpossessed.");
+            }
+            output.writeInt(this.adjacentSubareaUnpossessed[_i4]);
+         }
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -96,8 +128,30 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       public function deserializeAs_ExchangeStartOkRecycleTradeMessage(input:ICustomDataInput) : void
       {
+         var _val3:uint = 0;
+         var _val4:uint = 0;
          this._percentToPrismFunc(input);
          this._percentToPlayerFunc(input);
+         var _adjacentSubareaPossessedLen:uint = input.readUnsignedShort();
+         for(var _i3:uint = 0; _i3 < _adjacentSubareaPossessedLen; _i3++)
+         {
+            _val3 = input.readInt();
+            if(_val3 < 0)
+            {
+               throw new Error("Forbidden value (" + _val3 + ") on elements of adjacentSubareaPossessed.");
+            }
+            this.adjacentSubareaPossessed.push(_val3);
+         }
+         var _adjacentSubareaUnpossessedLen:uint = input.readUnsignedShort();
+         for(var _i4:uint = 0; _i4 < _adjacentSubareaUnpossessedLen; _i4++)
+         {
+            _val4 = input.readInt();
+            if(_val4 < 0)
+            {
+               throw new Error("Forbidden value (" + _val4 + ") on elements of adjacentSubareaUnpossessed.");
+            }
+            this.adjacentSubareaUnpossessed.push(_val4);
+         }
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -109,6 +163,8 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       {
          tree.addChild(this._percentToPrismFunc);
          tree.addChild(this._percentToPlayerFunc);
+         this._adjacentSubareaPossessedtree = tree.addChild(this._adjacentSubareaPossessedtreeFunc);
+         this._adjacentSubareaUnpossessedtree = tree.addChild(this._adjacentSubareaUnpossessedtreeFunc);
       }
       
       private function _percentToPrismFunc(input:ICustomDataInput) : void
@@ -127,6 +183,44 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
          {
             throw new Error("Forbidden value (" + this.percentToPlayer + ") on element of ExchangeStartOkRecycleTradeMessage.percentToPlayer.");
          }
+      }
+      
+      private function _adjacentSubareaPossessedtreeFunc(input:ICustomDataInput) : void
+      {
+         var length:uint = input.readUnsignedShort();
+         for(var i:uint = 0; i < length; i++)
+         {
+            this._adjacentSubareaPossessedtree.addChild(this._adjacentSubareaPossessedFunc);
+         }
+      }
+      
+      private function _adjacentSubareaPossessedFunc(input:ICustomDataInput) : void
+      {
+         var _val:uint = input.readInt();
+         if(_val < 0)
+         {
+            throw new Error("Forbidden value (" + _val + ") on elements of adjacentSubareaPossessed.");
+         }
+         this.adjacentSubareaPossessed.push(_val);
+      }
+      
+      private function _adjacentSubareaUnpossessedtreeFunc(input:ICustomDataInput) : void
+      {
+         var length:uint = input.readUnsignedShort();
+         for(var i:uint = 0; i < length; i++)
+         {
+            this._adjacentSubareaUnpossessedtree.addChild(this._adjacentSubareaUnpossessedFunc);
+         }
+      }
+      
+      private function _adjacentSubareaUnpossessedFunc(input:ICustomDataInput) : void
+      {
+         var _val:uint = input.readInt();
+         if(_val < 0)
+         {
+            throw new Error("Forbidden value (" + _val + ") on elements of adjacentSubareaUnpossessed.");
+         }
+         this.adjacentSubareaUnpossessed.push(_val);
       }
    }
 }

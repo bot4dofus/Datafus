@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight
    public class GameRolePlayRemoveChallengeMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6441;
+      public static const protocolId:uint = 5085;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight
       
       override public function getMessageId() : uint
       {
-         return 6441;
+         return 5085;
       }
       
       public function initGameRolePlayRemoveChallengeMessage(fightId:uint = 0) : GameRolePlayRemoveChallengeMessage

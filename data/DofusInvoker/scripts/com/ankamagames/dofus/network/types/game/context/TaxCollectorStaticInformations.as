@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.types.game.context
 {
-   import com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformation;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
    import com.ankamagames.jerakine.network.INetworkType;
@@ -9,35 +9,35 @@ package com.ankamagames.dofus.network.types.game.context
    public class TaxCollectorStaticInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 4346;
+      public static const protocolId:uint = 6932;
        
       
       public var firstNameId:uint = 0;
       
       public var lastNameId:uint = 0;
       
-      public var guildIdentity:GuildInformations;
+      public var allianceIdentity:AllianceInformation;
       
       public var callerId:Number = 0;
       
-      private var _guildIdentitytree:FuncTree;
+      private var _allianceIdentitytree:FuncTree;
       
       public function TaxCollectorStaticInformations()
       {
-         this.guildIdentity = new GuildInformations();
+         this.allianceIdentity = new AllianceInformation();
          super();
       }
       
       public function getTypeId() : uint
       {
-         return 4346;
+         return 6932;
       }
       
-      public function initTaxCollectorStaticInformations(firstNameId:uint = 0, lastNameId:uint = 0, guildIdentity:GuildInformations = null, callerId:Number = 0) : TaxCollectorStaticInformations
+      public function initTaxCollectorStaticInformations(firstNameId:uint = 0, lastNameId:uint = 0, allianceIdentity:AllianceInformation = null, callerId:Number = 0) : TaxCollectorStaticInformations
       {
          this.firstNameId = firstNameId;
          this.lastNameId = lastNameId;
-         this.guildIdentity = guildIdentity;
+         this.allianceIdentity = allianceIdentity;
          this.callerId = callerId;
          return this;
       }
@@ -46,7 +46,7 @@ package com.ankamagames.dofus.network.types.game.context
       {
          this.firstNameId = 0;
          this.lastNameId = 0;
-         this.guildIdentity = new GuildInformations();
+         this.allianceIdentity = new AllianceInformation();
       }
       
       public function serialize(output:ICustomDataOutput) : void
@@ -66,7 +66,7 @@ package com.ankamagames.dofus.network.types.game.context
             throw new Error("Forbidden value (" + this.lastNameId + ") on element lastNameId.");
          }
          output.writeVarShort(this.lastNameId);
-         this.guildIdentity.serializeAs_GuildInformations(output);
+         this.allianceIdentity.serializeAs_AllianceInformation(output);
          if(this.callerId < 0 || this.callerId > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.callerId + ") on element callerId.");
@@ -83,8 +83,8 @@ package com.ankamagames.dofus.network.types.game.context
       {
          this._firstNameIdFunc(input);
          this._lastNameIdFunc(input);
-         this.guildIdentity = new GuildInformations();
-         this.guildIdentity.deserialize(input);
+         this.allianceIdentity = new AllianceInformation();
+         this.allianceIdentity.deserialize(input);
          this._callerIdFunc(input);
       }
       
@@ -97,7 +97,7 @@ package com.ankamagames.dofus.network.types.game.context
       {
          tree.addChild(this._firstNameIdFunc);
          tree.addChild(this._lastNameIdFunc);
-         this._guildIdentitytree = tree.addChild(this._guildIdentitytreeFunc);
+         this._allianceIdentitytree = tree.addChild(this._allianceIdentitytreeFunc);
          tree.addChild(this._callerIdFunc);
       }
       
@@ -119,10 +119,10 @@ package com.ankamagames.dofus.network.types.game.context
          }
       }
       
-      private function _guildIdentitytreeFunc(input:ICustomDataInput) : void
+      private function _allianceIdentitytreeFunc(input:ICustomDataInput) : void
       {
-         this.guildIdentity = new GuildInformations();
-         this.guildIdentity.deserializeAsync(this._guildIdentitytree);
+         this.allianceIdentity = new AllianceInformation();
+         this.allianceIdentity.deserializeAsync(this._allianceIdentitytree);
       }
       
       private function _callerIdFunc(input:ICustomDataInput) : void

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.basic
    public class BasicNoOperationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9447;
+      public static const protocolId:uint = 6898;
        
       
       public function BasicNoOperationMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.basic
       
       override public function getMessageId() : uint
       {
-         return 9447;
+         return 6898;
       }
       
       public function initBasicNoOperationMessage() : BasicNoOperationMessage

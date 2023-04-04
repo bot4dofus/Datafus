@@ -146,5 +146,12 @@ package com.ankamagames.dofus.uiApi
          params["tempoken"] = nbTempoken;
          return LuaScriptManager.getInstance().executeLuaFormula(LuaFormulasEnum.TEMPOKEN_TO_XP,params) as Number;
       }
+      
+      public function getMaxGuildMembers(guildLevel:uint) : Number
+      {
+         var params:Dictionary = new Dictionary();
+         params["guild_level"] = guildLevel;
+         return LuaScriptManager.getInstance().executeLuaFormula(LuaFormulasEnum.MAX_GUILD_MEMBERS,params) as Number;
+      }
    }
 }

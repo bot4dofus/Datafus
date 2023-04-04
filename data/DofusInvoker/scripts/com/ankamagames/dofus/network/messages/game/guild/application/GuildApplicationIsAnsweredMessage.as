@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
    public class GuildApplicationIsAnsweredMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 507;
+      public static const protocolId:uint = 3107;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       override public function getMessageId() : uint
       {
-         return 507;
+         return 3107;
       }
       
       public function initGuildApplicationIsAnsweredMessage(accepted:Boolean = false, guildInformation:GuildInformations = null) : GuildApplicationIsAnsweredMessage

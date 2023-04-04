@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHun
    public class TreasureHuntFinishedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8564;
+      public static const protocolId:uint = 2706;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHun
       
       override public function getMessageId() : uint
       {
-         return 8564;
+         return 2706;
       }
       
       public function initTreasureHuntFinishedMessage(questType:uint = 0) : TreasureHuntFinishedMessage
