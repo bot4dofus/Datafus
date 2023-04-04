@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game
    public class uuid implements INetworkType
    {
       
-      public static const protocolId:uint = 8514;
+      public static const protocolId:uint = 5361;
        
       
       public var uuidString:String = "";
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game
       
       public function getTypeId() : uint
       {
-         return 8514;
+         return 5361;
       }
       
       public function inituuid(uuidString:String = "") : uuid

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party.breac
    public class PartyMemberInBreachFightMessage extends AbstractPartyMemberInFightMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6063;
+      public static const protocolId:uint = 2309;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party.breac
       
       override public function getMessageId() : uint
       {
-         return 6063;
+         return 2309;
       }
       
       public function initPartyMemberInBreachFightMessage(partyId:uint = 0, reason:uint = 0, memberId:Number = 0, memberAccountId:uint = 0, memberName:String = "", fightId:uint = 0, timeBeforeFightStart:int = 0, floor:uint = 0, room:uint = 0) : PartyMemberInBreachFightMessage

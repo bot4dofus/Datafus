@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.lockable
    public class LockableUseCodeMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2197;
+      public static const protocolId:uint = 4179;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.lockable
       
       override public function getMessageId() : uint
       {
-         return 2197;
+         return 4179;
       }
       
       public function initLockableUseCodeMessage(code:String = "") : LockableUseCodeMessage

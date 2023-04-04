@@ -48,7 +48,7 @@ package com.ankamagames.dofus.internalDatacenter.conquest
       
       private var _cristalObject:ObjectItem;
       
-      private var _cristalEndDate:Number;
+      private var _nextEvolutionDate:Number;
       
       private var _cristalType:int = -1;
       
@@ -79,7 +79,7 @@ package com.ankamagames.dofus.internalDatacenter.conquest
             prism._moduleType = aipi.moduleType;
             prism._cristalObject = aipi.cristalObject;
             prism._cristalType = aipi.cristalType;
-            prism._cristalEndDate = aipi.cristalEndDate;
+            prism._nextEvolutionDate = aipi.nextEvolutionDate;
             prism._cristalNumberLeft = aipi.cristalNumberLeft;
          }
          else
@@ -88,7 +88,7 @@ package com.ankamagames.dofus.internalDatacenter.conquest
             prism._moduleType = AlliancePrismModuleTypeEnum.NO_MODULE;
             prism._cristalObject = null;
             prism._cristalType = AlliancePrismCristalTypeEnum.NO_CRISTAL;
-            prism._cristalEndDate = 0;
+            prism._nextEvolutionDate = 0;
             prism._cristalNumberLeft = 0;
             if(prismInfo.prism is AlliancePrismInformation)
             {
@@ -166,9 +166,9 @@ package com.ankamagames.dofus.internalDatacenter.conquest
          return this._durability;
       }
       
-      public function get cristalEndDate() : Number
+      public function get nextEvolutionDate() : Number
       {
-         return this._cristalEndDate;
+         return this._nextEvolutionDate;
       }
       
       public function get cristalNumberLeft() : uint

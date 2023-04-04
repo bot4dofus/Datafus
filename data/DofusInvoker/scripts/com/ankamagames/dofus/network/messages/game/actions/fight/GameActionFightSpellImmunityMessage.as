@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightSpellImmunityMessage extends AbstractGameActionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5162;
+      public static const protocolId:uint = 7191;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 5162;
+         return 7191;
       }
       
       public function initGameActionFightSpellImmunityMessage(actionId:uint = 0, sourceId:Number = 0, targetId:Number = 0, spellId:uint = 0) : GameActionFightSpellImmunityMessage

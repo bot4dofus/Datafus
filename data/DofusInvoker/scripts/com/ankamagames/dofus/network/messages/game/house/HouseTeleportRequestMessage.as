@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.house
    public class HouseTeleportRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5059;
+      public static const protocolId:uint = 582;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.house
       
       override public function getMessageId() : uint
       {
-         return 5059;
+         return 582;
       }
       
       public function initHouseTeleportRequestMessage(houseId:uint = 0, houseInstanceId:uint = 0) : HouseTeleportRequestMessage

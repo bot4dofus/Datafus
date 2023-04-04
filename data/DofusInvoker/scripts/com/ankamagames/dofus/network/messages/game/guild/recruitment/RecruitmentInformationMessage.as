@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.guild.recruitment
    public class RecruitmentInformationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2355;
+      public static const protocolId:uint = 2688;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.guild.recruitment
       
       override public function getMessageId() : uint
       {
-         return 2355;
+         return 2688;
       }
       
       public function initRecruitmentInformationMessage(recruitmentData:GuildRecruitmentInformation = null) : RecruitmentInformationMessage

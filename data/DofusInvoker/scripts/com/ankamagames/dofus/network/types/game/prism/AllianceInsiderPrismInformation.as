@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.prism
    public class AllianceInsiderPrismInformation extends PrismInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 2656;
+      public static const protocolId:uint = 4695;
        
       
       public var moduleObject:ObjectItem;
@@ -19,8 +19,6 @@ package com.ankamagames.dofus.network.types.game.prism
       public var cristalObject:ObjectItem;
       
       public var cristalType:int = -1;
-      
-      public var cristalEndDate:Number = 0;
       
       public var cristalNumberLeft:uint = 0;
       
@@ -37,17 +35,16 @@ package com.ankamagames.dofus.network.types.game.prism
       
       override public function getTypeId() : uint
       {
-         return 2656;
+         return 4695;
       }
       
-      public function initAllianceInsiderPrismInformation(state:uint = 1, placementDate:uint = 0, nuggetsCount:uint = 0, durability:uint = 0, moduleObject:ObjectItem = null, moduleType:int = -1, cristalObject:ObjectItem = null, cristalType:int = -1, cristalEndDate:Number = 0, cristalNumberLeft:uint = 0) : AllianceInsiderPrismInformation
+      public function initAllianceInsiderPrismInformation(state:uint = 1, placementDate:uint = 0, nuggetsCount:uint = 0, durability:uint = 0, nextEvolutionDate:Number = 0, moduleObject:ObjectItem = null, moduleType:int = -1, cristalObject:ObjectItem = null, cristalType:int = -1, cristalNumberLeft:uint = 0) : AllianceInsiderPrismInformation
       {
-         super.initPrismInformation(state,placementDate,nuggetsCount,durability);
+         super.initPrismInformation(state,placementDate,nuggetsCount,durability,nextEvolutionDate);
          this.moduleObject = moduleObject;
          this.moduleType = moduleType;
          this.cristalObject = cristalObject;
          this.cristalType = cristalType;
-         this.cristalEndDate = cristalEndDate;
          this.cristalNumberLeft = cristalNumberLeft;
          return this;
       }
@@ -57,7 +54,6 @@ package com.ankamagames.dofus.network.types.game.prism
          super.reset();
          this.moduleObject = new ObjectItem();
          this.cristalObject = new ObjectItem();
-         this.cristalEndDate = 0;
          this.cristalNumberLeft = 0;
       }
       
@@ -73,11 +69,6 @@ package com.ankamagames.dofus.network.types.game.prism
          output.writeInt(this.moduleType);
          this.cristalObject.serializeAs_ObjectItem(output);
          output.writeInt(this.cristalType);
-         if(this.cristalEndDate < 0 || this.cristalEndDate > 9007199254740992)
-         {
-            throw new Error("Forbidden value (" + this.cristalEndDate + ") on element cristalEndDate.");
-         }
-         output.writeDouble(this.cristalEndDate);
          if(this.cristalNumberLeft < 0)
          {
             throw new Error("Forbidden value (" + this.cristalNumberLeft + ") on element cristalNumberLeft.");
@@ -99,7 +90,6 @@ package com.ankamagames.dofus.network.types.game.prism
          this.cristalObject = new ObjectItem();
          this.cristalObject.deserialize(input);
          this._cristalTypeFunc(input);
-         this._cristalEndDateFunc(input);
          this._cristalNumberLeftFunc(input);
       }
       
@@ -115,7 +105,6 @@ package com.ankamagames.dofus.network.types.game.prism
          tree.addChild(this._moduleTypeFunc);
          this._cristalObjecttree = tree.addChild(this._cristalObjecttreeFunc);
          tree.addChild(this._cristalTypeFunc);
-         tree.addChild(this._cristalEndDateFunc);
          tree.addChild(this._cristalNumberLeftFunc);
       }
       
@@ -139,15 +128,6 @@ package com.ankamagames.dofus.network.types.game.prism
       private function _cristalTypeFunc(input:ICustomDataInput) : void
       {
          this.cristalType = input.readInt();
-      }
-      
-      private function _cristalEndDateFunc(input:ICustomDataInput) : void
-      {
-         this.cristalEndDate = input.readDouble();
-         if(this.cristalEndDate < 0 || this.cristalEndDate > 9007199254740992)
-         {
-            throw new Error("Forbidden value (" + this.cristalEndDate + ") on element of AllianceInsiderPrismInformation.cristalEndDate.");
-         }
       }
       
       private function _cristalNumberLeftFunc(input:ICustomDataInput) : void

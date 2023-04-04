@@ -16,6 +16,7 @@ package com.ankamagames.dofus.misc.utils.errormanager
    import com.ankamagames.dofus.logic.connection.managers.AuthentificationManager;
    import com.ankamagames.dofus.logic.game.common.frames.AbstractEntitiesFrame;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
+   import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.dofus.logic.game.fight.frames.FightContextFrame;
    import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
    import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayEntitiesFrame;
@@ -390,7 +391,7 @@ package com.ankamagames.dofus.misc.utils.errormanager
          o.isUsingZaap = ZaapConnectionHelper.hasZaapArguments();
          o.isUsingZaapLogin = ZaapApi.canLoginWithZaap();
          o.isConnectedToZaapOrUpdater = ZaapApi.isConnected();
-         o.isSubscribed = PlayerManager.getInstance().subscriptionEndDate > 0;
+         o.isSubscribed = PlayerManager.getInstance().subscriptionEndDate > TimeManager.getInstance().getTimestamp();
          o.isAdmin = PlayerManager.getInstance().hasRights;
          if(ThemeManager.getInstance().currentTheme)
          {

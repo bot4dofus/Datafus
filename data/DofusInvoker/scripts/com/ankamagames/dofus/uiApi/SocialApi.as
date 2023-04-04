@@ -416,6 +416,10 @@ package com.ankamagames.dofus.uiApi
       
       public function getCurrentJoinedFight() : SocialFightInfo
       {
+         if(!this.allianceFrame)
+         {
+            return null;
+         }
          return this.allianceFrame.currentJoinedFight;
       }
       

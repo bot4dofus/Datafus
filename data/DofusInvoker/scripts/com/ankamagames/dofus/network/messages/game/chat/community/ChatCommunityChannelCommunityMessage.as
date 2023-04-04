@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.chat.community
    public class ChatCommunityChannelCommunityMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3716;
+      public static const protocolId:uint = 6487;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.chat.community
       
       override public function getMessageId() : uint
       {
-         return 3716;
+         return 6487;
       }
       
       public function initChatCommunityChannelCommunityMessage(communityId:int = 0) : ChatCommunityChannelCommunityMessage

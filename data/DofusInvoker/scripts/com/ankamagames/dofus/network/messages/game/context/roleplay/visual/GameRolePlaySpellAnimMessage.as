@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.visual
    public class GameRolePlaySpellAnimMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4174;
+      public static const protocolId:uint = 5618;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.visual
       
       override public function getMessageId() : uint
       {
-         return 4174;
+         return 5618;
       }
       
       public function initGameRolePlaySpellAnimMessage(casterId:Number = 0, targetCellId:uint = 0, spellId:uint = 0, spellLevel:int = 0, direction:int = 0) : GameRolePlaySpellAnimMessage

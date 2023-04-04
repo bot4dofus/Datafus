@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
    public class StopListenTaxCollectorPresetsUpdatesMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6796;
+      public static const protocolId:uint = 7668;
        
       
       public function StopListenTaxCollectorPresetsUpdatesMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       override public function getMessageId() : uint
       {
-         return 6796;
+         return 7668;
       }
       
       public function initStopListenTaxCollectorPresetsUpdatesMessage() : StopListenTaxCollectorPresetsUpdatesMessage

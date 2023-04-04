@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.document
    public class OpenGuideBookMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9195;
+      public static const protocolId:uint = 1800;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.document
       
       override public function getMessageId() : uint
       {
-         return 9195;
+         return 1800;
       }
       
       public function initOpenGuideBookMessage(articleId:uint = 0) : OpenGuideBookMessage

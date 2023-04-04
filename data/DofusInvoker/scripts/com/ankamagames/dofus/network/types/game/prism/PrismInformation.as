@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.prism
    public class PrismInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 1874;
+      public static const protocolId:uint = 1216;
        
       
       public var state:uint = 1;
@@ -19,6 +19,8 @@ package com.ankamagames.dofus.network.types.game.prism
       
       public var durability:uint = 0;
       
+      public var nextEvolutionDate:Number = 0;
+      
       public function PrismInformation()
       {
          super();
@@ -26,15 +28,16 @@ package com.ankamagames.dofus.network.types.game.prism
       
       public function getTypeId() : uint
       {
-         return 1874;
+         return 1216;
       }
       
-      public function initPrismInformation(state:uint = 1, placementDate:uint = 0, nuggetsCount:uint = 0, durability:uint = 0) : PrismInformation
+      public function initPrismInformation(state:uint = 1, placementDate:uint = 0, nuggetsCount:uint = 0, durability:uint = 0, nextEvolutionDate:Number = 0) : PrismInformation
       {
          this.state = state;
          this.placementDate = placementDate;
          this.nuggetsCount = nuggetsCount;
          this.durability = durability;
+         this.nextEvolutionDate = nextEvolutionDate;
          return this;
       }
       
@@ -44,6 +47,7 @@ package com.ankamagames.dofus.network.types.game.prism
          this.placementDate = 0;
          this.nuggetsCount = 0;
          this.durability = 0;
+         this.nextEvolutionDate = 0;
       }
       
       public function serialize(output:ICustomDataOutput) : void
@@ -69,6 +73,11 @@ package com.ankamagames.dofus.network.types.game.prism
             throw new Error("Forbidden value (" + this.durability + ") on element durability.");
          }
          output.writeInt(this.durability);
+         if(this.nextEvolutionDate < 0 || this.nextEvolutionDate > 9007199254740992)
+         {
+            throw new Error("Forbidden value (" + this.nextEvolutionDate + ") on element nextEvolutionDate.");
+         }
+         output.writeDouble(this.nextEvolutionDate);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -82,6 +91,7 @@ package com.ankamagames.dofus.network.types.game.prism
          this._placementDateFunc(input);
          this._nuggetsCountFunc(input);
          this._durabilityFunc(input);
+         this._nextEvolutionDateFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -95,6 +105,7 @@ package com.ankamagames.dofus.network.types.game.prism
          tree.addChild(this._placementDateFunc);
          tree.addChild(this._nuggetsCountFunc);
          tree.addChild(this._durabilityFunc);
+         tree.addChild(this._nextEvolutionDateFunc);
       }
       
       private function _stateFunc(input:ICustomDataInput) : void
@@ -130,6 +141,15 @@ package com.ankamagames.dofus.network.types.game.prism
          if(this.durability < 0)
          {
             throw new Error("Forbidden value (" + this.durability + ") on element of PrismInformation.durability.");
+         }
+      }
+      
+      private function _nextEvolutionDateFunc(input:ICustomDataInput) : void
+      {
+         this.nextEvolutionDate = input.readDouble();
+         if(this.nextEvolutionDate < 0 || this.nextEvolutionDate > 9007199254740992)
+         {
+            throw new Error("Forbidden value (" + this.nextEvolutionDate + ") on element of PrismInformation.nextEvolutionDate.");
          }
       }
    }

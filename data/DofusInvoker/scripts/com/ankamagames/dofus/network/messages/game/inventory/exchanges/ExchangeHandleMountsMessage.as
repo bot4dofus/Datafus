@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeHandleMountsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4866;
+      public static const protocolId:uint = 3027;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 4866;
+         return 3027;
       }
       
       public function initExchangeHandleMountsMessage(actionType:int = 0, ridesId:Vector.<uint> = null) : ExchangeHandleMountsMessage

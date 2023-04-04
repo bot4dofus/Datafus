@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.collector.tax
    public class TaxCollectorOrderedSpell implements INetworkType
    {
       
-      public static const protocolId:uint = 6015;
+      public static const protocolId:uint = 8347;
        
       
       public var spellId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.collector.tax
       
       public function getTypeId() : uint
       {
-         return 6015;
+         return 8347;
       }
       
       public function initTaxCollectorOrderedSpell(spellId:uint = 0, slot:uint = 0) : TaxCollectorOrderedSpell

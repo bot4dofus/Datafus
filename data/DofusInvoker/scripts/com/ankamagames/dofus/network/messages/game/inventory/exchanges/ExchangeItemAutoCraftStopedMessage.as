@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeItemAutoCraftStopedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9929;
+      public static const protocolId:uint = 5043;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 9929;
+         return 5043;
       }
       
       public function initExchangeItemAutoCraftStopedMessage(reason:int = 0) : ExchangeItemAutoCraftStopedMessage

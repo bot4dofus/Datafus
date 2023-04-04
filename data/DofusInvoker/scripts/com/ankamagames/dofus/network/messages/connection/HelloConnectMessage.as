@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class HelloConnectMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8016;
+      public static const protocolId:uint = 4422;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 8016;
+         return 4422;
       }
       
       public function initHelloConnectMessage(salt:String = "", key:Vector.<int> = null) : HelloConnectMessage

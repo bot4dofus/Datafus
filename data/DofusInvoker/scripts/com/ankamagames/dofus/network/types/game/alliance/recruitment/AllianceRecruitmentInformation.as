@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.alliance.recruitment
    public class AllianceRecruitmentInformation extends SocialRecruitmentInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 832;
+      public static const protocolId:uint = 2019;
        
       
       public function AllianceRecruitmentInformation()
@@ -19,7 +19,7 @@ package com.ankamagames.dofus.network.types.game.alliance.recruitment
       
       override public function getTypeId() : uint
       {
-         return 832;
+         return 2019;
       }
       
       public function initAllianceRecruitmentInformation(socialId:uint = 0, recruitmentType:uint = 0, recruitmentTitle:String = "", recruitmentText:String = "", selectedLanguages:Vector.<uint> = null, selectedCriterion:Vector.<uint> = null, minLevel:uint = 0, minLevelFacultative:Boolean = false, invalidatedByModeration:Boolean = false, lastEditPlayerName:String = "", lastEditDate:Number = 0, recruitmentAutoLocked:Boolean = false) : AllianceRecruitmentInformation

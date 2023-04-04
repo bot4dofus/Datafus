@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.death
    public class GameRolePlayGameOverMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2804;
+      public static const protocolId:uint = 8917;
        
       
       public function GameRolePlayGameOverMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.death
       
       override public function getMessageId() : uint
       {
-         return 2804;
+         return 8917;
       }
       
       public function initGameRolePlayGameOverMessage() : GameRolePlayGameOverMessage
