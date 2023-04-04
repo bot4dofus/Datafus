@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildJoinedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1713;
+      public static const protocolId:uint = 7120;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 1713;
+         return 7120;
       }
       
       public function initGuildJoinedMessage(guildInfo:GuildInformations = null, rankId:uint = 0) : GuildJoinedMessage

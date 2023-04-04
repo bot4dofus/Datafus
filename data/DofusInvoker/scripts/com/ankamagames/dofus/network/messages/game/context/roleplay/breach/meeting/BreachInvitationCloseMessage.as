@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach.meet
    public class BreachInvitationCloseMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6024;
+      public static const protocolId:uint = 5625;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach.meet
       
       override public function getMessageId() : uint
       {
-         return 6024;
+         return 5625;
       }
       
       public function initBreachInvitationCloseMessage(host:CharacterMinimalInformations = null) : BreachInvitationCloseMessage

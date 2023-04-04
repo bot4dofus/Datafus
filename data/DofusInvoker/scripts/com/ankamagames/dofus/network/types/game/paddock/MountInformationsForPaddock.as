@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.paddock
    public class MountInformationsForPaddock implements INetworkType
    {
       
-      public static const protocolId:uint = 3981;
+      public static const protocolId:uint = 5652;
        
       
       public var modelId:uint = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.paddock
       
       public function getTypeId() : uint
       {
-         return 3981;
+         return 5652;
       }
       
       public function initMountInformationsForPaddock(modelId:uint = 0, name:String = "", ownerName:String = "") : MountInformationsForPaddock

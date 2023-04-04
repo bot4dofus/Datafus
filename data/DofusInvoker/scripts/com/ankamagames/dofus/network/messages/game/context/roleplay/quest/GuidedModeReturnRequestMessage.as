@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
    public class GuidedModeReturnRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7827;
+      public static const protocolId:uint = 3871;
        
       
       public function GuidedModeReturnRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
       
       override public function getMessageId() : uint
       {
-         return 7827;
+         return 3871;
       }
       
       public function initGuidedModeReturnRequestMessage() : GuidedModeReturnRequestMessage

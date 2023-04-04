@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
    public class TopTaxCollectorListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9116;
+      public static const protocolId:uint = 3139;
        
       
       private var _isInitialized:Boolean = false;
@@ -40,7 +40,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       override public function getMessageId() : uint
       {
-         return 9116;
+         return 3139;
       }
       
       public function initTopTaxCollectorListMessage(dungeonTaxCollectorsInformation:Vector.<TaxCollectorInformations> = null, worldTaxCollectorsInformation:Vector.<TaxCollectorInformations> = null) : TopTaxCollectorListMessage

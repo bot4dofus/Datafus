@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.prism
    public class AlliancePrismInformation extends PrismInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 9441;
+      public static const protocolId:uint = 457;
        
       
       public var alliance:AllianceInformation;
@@ -24,12 +24,12 @@ package com.ankamagames.dofus.network.types.game.prism
       
       override public function getTypeId() : uint
       {
-         return 9441;
+         return 457;
       }
       
-      public function initAlliancePrismInformation(state:uint = 1, placementDate:uint = 0, nuggetsCount:uint = 0, durability:uint = 0, alliance:AllianceInformation = null) : AlliancePrismInformation
+      public function initAlliancePrismInformation(state:uint = 1, placementDate:uint = 0, nuggetsCount:uint = 0, durability:uint = 0, nextEvolutionDate:Number = 0, alliance:AllianceInformation = null) : AlliancePrismInformation
       {
-         super.initPrismInformation(state,placementDate,nuggetsCount,durability);
+         super.initPrismInformation(state,placementDate,nuggetsCount,durability,nextEvolutionDate);
          this.alliance = alliance;
          return this;
       }

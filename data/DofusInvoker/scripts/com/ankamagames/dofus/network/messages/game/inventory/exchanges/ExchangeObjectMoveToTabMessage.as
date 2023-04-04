@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeObjectMoveToTabMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2366;
+      public static const protocolId:uint = 3246;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 2366;
+         return 3246;
       }
       
       public function initExchangeObjectMoveToTabMessage(objectUID:uint = 0, quantity:int = 0, tabNumber:uint = 0) : ExchangeObjectMoveToTabMessage

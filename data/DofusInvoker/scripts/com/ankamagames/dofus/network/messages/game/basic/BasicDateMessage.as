@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.basic
    public class BasicDateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5493;
+      public static const protocolId:uint = 6395;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.basic
       
       override public function getMessageId() : uint
       {
-         return 5493;
+         return 6395;
       }
       
       public function initBasicDateMessage(day:uint = 0, month:uint = 0, year:uint = 0) : BasicDateMessage

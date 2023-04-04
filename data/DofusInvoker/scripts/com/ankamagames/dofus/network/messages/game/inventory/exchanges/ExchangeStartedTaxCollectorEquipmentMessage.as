@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartedTaxCollectorEquipmentMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8115;
+      public static const protocolId:uint = 6823;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 8115;
+         return 6823;
       }
       
       public function initExchangeStartedTaxCollectorEquipmentMessage(information:TaxCollectorInformations = null) : ExchangeStartedTaxCollectorEquipmentMessage

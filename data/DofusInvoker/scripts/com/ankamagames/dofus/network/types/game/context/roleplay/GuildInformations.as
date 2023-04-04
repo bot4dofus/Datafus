@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class GuildInformations extends BasicGuildInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 574;
+      public static const protocolId:uint = 1926;
        
       
       public var guildEmblem:SocialEmblem;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 574;
+         return 1926;
       }
       
       public function initGuildInformations(guildId:uint = 0, guildName:String = "", guildLevel:uint = 0, guildEmblem:SocialEmblem = null) : GuildInformations

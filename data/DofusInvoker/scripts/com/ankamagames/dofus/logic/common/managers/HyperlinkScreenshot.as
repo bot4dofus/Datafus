@@ -42,7 +42,7 @@ package com.ankamagames.dofus.logic.common.managers
          var _modContextMenu:Object = UiModuleManager.getInstance().getModule("Ankama_ContextMenu").mainClass;
          var menu:Array = new Array();
          menu.push(_modContextMenu.createContextMenuItemObject(I18n.getUiText("ui.common.openDirectory"),onOpenLocation,[f]));
-         if(PlayerManager.getInstance().subscriptionEndDate > 0)
+         if(PlayerManager.getInstance().subscriptionEndDate > TimeManager.getInstance().getTimestamp())
          {
             menu.push(_modContextMenu.createContextMenuItemObject(I18n.getUiText("ui.common.socialNetworkShare"),onShareFile,[f],!f.exists));
          }

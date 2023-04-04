@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class ObjectsAddedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 615;
+      public static const protocolId:uint = 7638;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 615;
+         return 7638;
       }
       
       public function initObjectsAddedMessage(object:Vector.<ObjectItem> = null) : ObjectsAddedMessage

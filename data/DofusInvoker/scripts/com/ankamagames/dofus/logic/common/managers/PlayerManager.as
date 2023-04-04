@@ -3,6 +3,7 @@ package com.ankamagames.dofus.logic.common.managers
    import com.ankamagames.dofus.datacenter.houses.HavenbagTheme;
    import com.ankamagames.dofus.datacenter.servers.Server;
    import com.ankamagames.dofus.internalDatacenter.connection.BasicCharacterWrapper;
+   import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.dofus.network.types.game.havenbag.HavenBagRoomPreviewInformation;
    import com.ankamagames.jerakine.interfaces.IDestroyable;
    import com.ankamagames.jerakine.utils.errors.SingletonError;
@@ -174,7 +175,7 @@ package com.ankamagames.dofus.logic.common.managers
       
       public function isBasicAccount() : Boolean
       {
-         return this.subscriptionEndDate <= 0 && !this.hasRights;
+         return this.subscriptionEndDate <= TimeManager.getInstance().getTimestamp() && !this.hasRights;
       }
       
       public function isMapInHavenbag(mapId:int) : Boolean

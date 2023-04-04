@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightAllianceTeamInformations extends FightTeamInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1373;
+      public static const protocolId:uint = 9458;
        
       
       public var relation:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 1373;
+         return 9458;
       }
       
       public function initFightAllianceTeamInformations(teamId:uint = 2, leaderId:Number = 0, teamSide:int = 0, teamTypeId:uint = 0, nbWaves:uint = 0, teamMembers:Vector.<FightTeamMemberInformations> = null, relation:uint = 0) : FightAllianceTeamInformations

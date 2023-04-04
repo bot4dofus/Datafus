@@ -1,6 +1,7 @@
 package com.ankamagames.dofus.datacenter.items.criterion
 {
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
+   import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
    
@@ -30,7 +31,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
       override protected function getCriterion() : int
       {
          var timeRemaining:Number = PlayerManager.getInstance().subscriptionEndDate;
-         if(timeRemaining > 0 || PlayerManager.getInstance().hasRights)
+         if(timeRemaining > TimeManager.getInstance().getTimestamp() || PlayerManager.getInstance().hasRights)
          {
             return 1;
          }

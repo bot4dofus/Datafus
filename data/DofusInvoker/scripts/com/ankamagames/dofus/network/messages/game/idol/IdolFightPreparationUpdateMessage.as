@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.idol
    public class IdolFightPreparationUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1461;
+      public static const protocolId:uint = 3709;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.game.idol
       
       override public function getMessageId() : uint
       {
-         return 1461;
+         return 3709;
       }
       
       public function initIdolFightPreparationUpdateMessage(idolSource:uint = 0, idols:Vector.<Idol> = null) : IdolFightPreparationUpdateMessage

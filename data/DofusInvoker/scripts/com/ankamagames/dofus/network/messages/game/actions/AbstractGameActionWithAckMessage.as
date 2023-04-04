@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.actions
    public class AbstractGameActionWithAckMessage extends AbstractGameActionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6;
+      public static const protocolId:uint = 8073;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.actions
       
       override public function getMessageId() : uint
       {
-         return 6;
+         return 8073;
       }
       
       public function initAbstractGameActionWithAckMessage(actionId:uint = 0, sourceId:Number = 0, waitAckId:int = 0) : AbstractGameActionWithAckMessage

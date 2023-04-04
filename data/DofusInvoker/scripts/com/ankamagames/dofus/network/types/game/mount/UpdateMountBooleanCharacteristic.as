@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.mount
    public class UpdateMountBooleanCharacteristic extends UpdateMountCharacteristic implements INetworkType
    {
       
-      public static const protocolId:uint = 8409;
+      public static const protocolId:uint = 5362;
        
       
       public var value:Boolean = false;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.mount
       
       override public function getTypeId() : uint
       {
-         return 8409;
+         return 5362;
       }
       
       public function initUpdateMountBooleanCharacteristic(type:uint = 0, value:Boolean = false) : UpdateMountBooleanCharacteristic

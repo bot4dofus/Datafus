@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions.sequence
    public class SequenceEndMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9274;
+      public static const protocolId:uint = 6944;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.actions.sequence
       
       override public function getMessageId() : uint
       {
-         return 9274;
+         return 6944;
       }
       
       public function initSequenceEndMessage(actionId:uint = 0, authorId:Number = 0, sequenceType:int = 0) : SequenceEndMessage

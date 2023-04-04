@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.paddock
    public class PaddockBuyableInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 5344;
+      public static const protocolId:uint = 2243;
        
       
       public var price:Number = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.paddock
       
       public function getTypeId() : uint
       {
-         return 5344;
+         return 2243;
       }
       
       public function initPaddockBuyableInformations(price:Number = 0, locked:Boolean = false) : PaddockBuyableInformations

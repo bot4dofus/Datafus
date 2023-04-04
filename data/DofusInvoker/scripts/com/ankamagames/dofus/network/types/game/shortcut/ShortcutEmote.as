@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.shortcut
    public class ShortcutEmote extends Shortcut implements INetworkType
    {
       
-      public static const protocolId:uint = 523;
+      public static const protocolId:uint = 9428;
        
       
       public var emoteId:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.shortcut
       
       override public function getTypeId() : uint
       {
-         return 523;
+         return 9428;
       }
       
       public function initShortcutEmote(slot:uint = 0, emoteId:uint = 0) : ShortcutEmote

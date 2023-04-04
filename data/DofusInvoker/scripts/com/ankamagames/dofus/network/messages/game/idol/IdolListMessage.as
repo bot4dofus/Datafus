@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.idol
    public class IdolListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5395;
+      public static const protocolId:uint = 4537;
        
       
       private var _isInitialized:Boolean = false;
@@ -45,7 +45,7 @@ package com.ankamagames.dofus.network.messages.game.idol
       
       override public function getMessageId() : uint
       {
-         return 5395;
+         return 4537;
       }
       
       public function initIdolListMessage(chosenIdols:Vector.<uint> = null, partyChosenIdols:Vector.<uint> = null, partyIdols:Vector.<PartyIdol> = null) : IdolListMessage
