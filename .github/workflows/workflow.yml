@@ -3,13 +3,6 @@ name: Workflow
 on:
   workflow_dispatch:
   repository_dispatch:
-  #push:
-  #  paths:
-  #    - 'data/DofusInvoker.swf'
-  #    - 'data/d2o/*'
-  #    - 'data/d2i/*'
-  #  branches:
-  #    - master
 
 jobs:
   Job_U:
@@ -44,45 +37,31 @@ jobs:
           name: Job_U
           path: data/U/
 
-      - name: Filter Job A
-        uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          filters: |
-            dofus_invoker:
-              - 'data/DofusInvoker.swf'
-
       - name: Setup Python
-        #if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         uses: actions/setup-python@v4
         with:
           python-version: 3.8
 
       - name: Setup Java
-        #if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
       - name: A1 - Extract DofusInvoker.swf
-        #if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
           chmod +x src/A1.sh
           src/A1.sh data/U/swf/DofusInvoker.swf data/A/DofusInvoker/
 
       - name: A2 - Build .json
-        #if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
             python src/A2.py data/A/DofusInvoker/scripts/com/ data/A/events.json
 
       - name: A3 - Build .properties
-        #if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
             python src/A3.py data/A/events.json data/A/events.properties
 
       - name: Upload files
-        #if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         uses: actions/upload-artifact@v3
         with:
           name: Job_A
@@ -103,27 +82,16 @@ jobs:
           name: Job_U
           path: data/U/
 
-      - name: Filter Job B
-        uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          filters: |
-            d2o:
-              - 'data/d2o/*'
-
       - name: Setup Python
-        #if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
         uses: actions/setup-python@v4
         with:
           python-version: 3.8
 
       - name: B1 - Build .json
-        #if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
             python src/B1.py data/U/d2o/ data/B/entities_json/
 
       - name: Upload files
-        #if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
         uses: actions/upload-artifact@v3
         with:
           name: Job_B
@@ -144,27 +112,16 @@ jobs:
           name: Job_U
           path: data/U/
 
-      - name: Filter Job C
-        uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          filters: |
-            d2i:
-              - 'data/d2i/*'
-
       - name: Setup Python
-        #if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
         uses: actions/setup-python@v4
         with:
           python-version: 3.8
 
       - name: C1 - Build .json
-        #if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
             python src/C1.py data/U/d2i/ data/C/translations_json/
 
       - name: Upload files
-        #if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
         uses: actions/upload-artifact@v3
         with:
           name: Job_C
