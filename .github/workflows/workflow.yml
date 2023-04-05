@@ -174,7 +174,7 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: '["data/A/", "data/B/", "data/C/"]'
-          message: 'Update Datafus version "${{ env.VERSION }}"'
+          message: 'Update ${{ env.VERSION }}'
           push: true
 
       - name: Create zip file
