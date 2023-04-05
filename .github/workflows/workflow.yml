@@ -21,14 +21,14 @@ jobs:
 
       - name: U1 - Update Dofus Client
         run: |
-          .\src\U1\U1.ps1 src\U1\project.json data\U1\swf\ data\U1\d2o\ data\U1\d2i\
+          .\src\U1\U1.ps1 src\U1\project.json data\U\swf\ data\U\d2o\ data\U\d2i\
 
       - name: Upload files
         uses: actions/upload-artifact@v3
         with:
           name: Job_U
           path: |
-            data/U1/
+            data/U/
 
   Job_A:
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: Job_U
-          path: data/U1/
+          path: data/U/
 
       - name: Filter Job A
         uses: dorny/paths-filter@v2
@@ -69,17 +69,17 @@ jobs:
         #if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
           chmod +x src/A1.sh
-          src/A1.sh data/U1/swf/DofusInvoker.swf data/DofusInvoker/
+          src/A1.sh data/U/swf/DofusInvoker.swf data/A/DofusInvoker/
 
       - name: A2 - Build .json
         #if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
-            python src/A2.py data/DofusInvoker/scripts/com/ data/events.json
+            python src/A2.py data/A/DofusInvoker/scripts/com/ data/A/events.json
 
       - name: A3 - Build .properties
         #if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
-            python src/A3.py data/events.json data/events.properties
+            python src/A3.py data/A/events.json data/A/events.properties
 
       - name: Upload files
         #if: (steps.filter.outputs.dofus_invoker == 'true') || (github.event_name == 'workflow_dispatch')
@@ -87,9 +87,7 @@ jobs:
         with:
           name: Job_A
           path: |
-            data/DofusInvoker/
-            data/events.json
-            data/events.properties
+            data/A/
 
   Job_B:
     runs-on: ubuntu-latest
@@ -103,7 +101,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: Job_U
-          path: data/U1/
+          path: data/U/
 
       - name: Filter Job B
         uses: dorny/paths-filter@v2
@@ -122,7 +120,7 @@ jobs:
       - name: B1 - Build .json
         #if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
-            python src/B1.py data/U1/d2o/ data/entities_json/
+            python src/B1.py data/U/d2o/ data/B/entities_json/
 
       - name: Upload files
         #if: (steps.filter.outputs.d2o == 'true') || (github.event_name == 'workflow_dispatch')
@@ -130,7 +128,7 @@ jobs:
         with:
           name: Job_B
           path: |
-            data/entities_json/
+            data/B/
 
   Job_C:
     runs-on: ubuntu-latest
@@ -144,7 +142,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: Job_U
-          path: data/U1/
+          path: data/U/
 
       - name: Filter Job C
         uses: dorny/paths-filter@v2
@@ -163,7 +161,7 @@ jobs:
       - name: C1 - Build .json
         #if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
         run: |
-            python src/C1.py data/U1/d2i/ data/translations_json/
+            python src/C1.py data/U/d2i/ data/C/translations_json/
 
       - name: Upload files
         #if: (steps.filter.outputs.d2i == 'true') || (github.event_name == 'workflow_dispatch')
@@ -171,7 +169,7 @@ jobs:
         with:
           name: Job_C
           path: |
-            data/translations_json/
+            data/C/
 
   Job_P:
     runs-on: ubuntu-latest
@@ -191,21 +189,21 @@ jobs:
         continue-on-error: true
         with:
           name: Job_A
-          path: data/
+          path: data/A/
 
       - name: Download files Job B
         uses: actions/download-artifact@v3
         continue-on-error: true
         with:
           name: Job_B
-          path: data/entities_json/
+          path: data/B/
 
       - name: Download files Job C
         uses: actions/download-artifact@v3
         continue-on-error: true
         with:
           name: Job_C
-          path: data/translations_json/
+          path: data/C/
 
       - name: Get latest Dofus version
         run: |
@@ -218,13 +216,13 @@ jobs:
       - name: Commit and push
         uses: EndBug/add-and-commit@v9
         with:
-          add: '["data/DofusInvoker/", "data/events.json", "data/events.properties", "data/entities_json/", "data/translations_json/"]'
+          add: '["data/A/", "data/B/", "data/C/"]'
           message: 'Update Datafus version "${{ env.VERSION }}"'
           push: true
 
       - name: Create zip file
         run: |
-            zip -r data.zip data/events.json data/events.properties data/entities_json/ data/translations_json/
+            zip -r data.zip data/A/ data/B/ data/C/
 
       - name: Publish release
         uses: "marvinpinto/action-automatic-releases@latest"
