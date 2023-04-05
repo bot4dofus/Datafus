@@ -173,7 +173,7 @@ jobs:
           path: |
             data/translations_json/
 
-  Publish:
+  Job_P:
     runs-on: ubuntu-latest
     needs: [Job_A, Job_B, Job_C]
 
