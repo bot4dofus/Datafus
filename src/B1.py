@@ -5,28 +5,31 @@ import os
 
 VERBOSE = 0
 
+
 def log(log):
     if(VERBOSE > 0):
         print(log)
+
 
 def save_file(file_name, data):
     file = open(file_name, 'w')
     file.write(json.dumps(data, indent='\t'))
     file.close()
 
+
 class D2OReader():
 
     FORMAT = b'D2O'
-    
+
     def __init__(self, file):
         self.fieldType = {
-            -1  :self.readInt,
-            -2  :self.readBool,
-            -3  :self.readUtf,
-            -4  :self.readDouble,
-            -5  :self.readI18N,
-            -6  :self.readUint,
-            -99 :self.readList
+            -1: self.readInt,
+            -2: self.readBool,
+            -3: self.readUtf,
+            -4: self.readDouble,
+            -5: self.readI18N,
+            -6: self.readUint,
+            -99: self.readList
         }
         self.file = file
         self.offset = 0
@@ -66,13 +69,13 @@ class D2OReader():
     def readBool(self):
         r = struct.unpack('>?', self.readBytes(1))
         return r[0]
-        
+
     def readUtf(self):
         return self.readBytes(self.readShort()).decode()
-        
+
     def readI18N(self):
         return self.readUint()
-    
+
     def readVector(self):
         name = self.readUtf()
         type = self.readInt()
@@ -101,19 +104,19 @@ class D2OReader():
                     c = self.readObject(self.classes[classId])
                 else:
                     c = None
-                
+
                 ret.append(c)
 
             elif (type == -99):
                 ret.append(self.readList(field['vectorTypes']))
-                
+
             else:
-                func =  self.fieldType[type]
+                func = self.fieldType[type]
                 ret.append(func())
 
         return ret
 
-    def readObject(self, obj = None):
+    def readObject(self, obj=None):
         log("Reading object")
         ret = {}
 
@@ -126,23 +129,23 @@ class D2OReader():
                 if classId not in self.classes:
                     classId = fieldType
                 ret[field['name']] = self.readObject(self.classes[classId])
-            
+
             else:
-                func =  self.fieldType[fieldType]
+                func = self.fieldType[fieldType]
                 if(fieldType != -99):
                     ret[field['name']] = func()
                 else:
                     ret[field['name']] = self.readList(field)
 
         return ret
-  
+
     def read(self):
 
         # File format
         format = self.readMagic()
         if(format != self.FORMAT):
             raise Exception("Can't read the file {} : not a {} format".format(self.file, str(self.FORMAT)))
-        
+
         # Index location
         headerPosition = self.readInt()
         self.seek(headerPosition)
@@ -154,7 +157,7 @@ class D2OReader():
 
             index = self.readInt()
             objectLocation = self.readInt()
-            
+
             indexTable[index] = objectLocation
             log(str(i) + ":" + str(index) + ":" + str(objectLocation))
 
@@ -202,11 +205,12 @@ class D2OReader():
             'data': objects
         }
 
+
 def main(input, output, is_files):
     files_to_convert = {}
-    
+
     if (is_files):
-        file[input] = output;
+        files_to_convert[input] = output
     else:
         files_in_input = os.listdir(input)
         for file_in_input in files_in_input:
@@ -222,7 +226,8 @@ def main(input, output, is_files):
         except Exception as e:
             print(str(e))
 
-if __name__ == "__main__":    
+
+if __name__ == "__main__":
     if(len(sys.argv) != 3):
         raise Exception("Needs two arguments of same type: Two files or two folders")
 
@@ -232,8 +237,8 @@ if __name__ == "__main__":
     if(not os.path.exists(sys.argv[2])):
         raise Exception("The output {} does not exists".format(sys.argv[2]))
 
-    are_files = (os.path.isfile(sys.argv[1]) and os.path.isfile(sys.argv[2]))    #If input and output are files
-    are_folders = (os.path.isdir(sys.argv[1]) and os.path.isdir(sys.argv[2]))    #If input and output are folders 
+    are_files = (os.path.isfile(sys.argv[1]) and os.path.isfile(sys.argv[2]))    # If input and output are files
+    are_folders = (os.path.isdir(sys.argv[1]) and os.path.isdir(sys.argv[2]))    # If input and output are folders
 
     if(not(are_files or are_folders)):
         raise Exception("Needs two arguments of same type: Two files or two folders")
