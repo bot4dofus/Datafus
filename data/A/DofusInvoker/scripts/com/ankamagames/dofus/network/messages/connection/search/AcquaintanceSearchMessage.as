@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.connection.search
    public class AcquaintanceSearchMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 537;
+      public static const protocolId:uint = 2819;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.connection.search
       
       override public function getMessageId() : uint
       {
-         return 537;
+         return 2819;
       }
       
       public function initAcquaintanceSearchMessage(tag:AccountTagInformation = null) : AcquaintanceSearchMessage

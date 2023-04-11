@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeMountsStableRemoveMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4647;
+      public static const protocolId:uint = 3503;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 4647;
+         return 3503;
       }
       
       public function initExchangeMountsStableRemoveMessage(mountsId:Vector.<int> = null) : ExchangeMountsStableRemoveMessage

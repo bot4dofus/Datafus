@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class SlaveNoLongerControledMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9326;
+      public static const protocolId:uint = 2937;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 9326;
+         return 2937;
       }
       
       public function initSlaveNoLongerControledMessage(masterId:Number = 0, slaveId:Number = 0) : SlaveNoLongerControledMessage

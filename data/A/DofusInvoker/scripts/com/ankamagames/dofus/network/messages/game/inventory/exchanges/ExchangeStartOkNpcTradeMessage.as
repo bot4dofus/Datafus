@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartOkNpcTradeMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7423;
+      public static const protocolId:uint = 7327;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 7423;
+         return 7327;
       }
       
       public function initExchangeStartOkNpcTradeMessage(npcId:Number = 0) : ExchangeStartOkNpcTradeMessage

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.shortcut
    public class ShortcutObject extends Shortcut implements INetworkType
    {
       
-      public static const protocolId:uint = 4;
+      public static const protocolId:uint = 4434;
        
       
       public function ShortcutObject()
@@ -18,7 +18,7 @@ package com.ankamagames.dofus.network.types.game.shortcut
       
       override public function getTypeId() : uint
       {
-         return 4;
+         return 4434;
       }
       
       public function initShortcutObject(slot:uint = 0) : ShortcutObject

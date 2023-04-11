@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection.register
    public class NicknameChoiceRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7064;
+      public static const protocolId:uint = 4530;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.connection.register
       
       override public function getMessageId() : uint
       {
-         return 7064;
+         return 4530;
       }
       
       public function initNicknameChoiceRequestMessage(nickname:String = "") : NicknameChoiceRequestMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class TeleportOnSameMapMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9768;
+      public static const protocolId:uint = 898;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 9768;
+         return 898;
       }
       
       public function initTeleportOnSameMapMessage(targetId:Number = 0, cellId:uint = 0) : TeleportOnSameMapMessage

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class BidExchangerObjectInfo implements INetworkType
    {
       
-      public static const protocolId:uint = 7576;
+      public static const protocolId:uint = 5828;
        
       
       public var objectUID:uint = 0;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       public function getTypeId() : uint
       {
-         return 7576;
+         return 5828;
       }
       
       public function initBidExchangerObjectInfo(objectUID:uint = 0, objectGID:uint = 0, objectType:uint = 0, effects:Vector.<ObjectEffect> = null, prices:Vector.<Number> = null) : BidExchangerObjectInfo

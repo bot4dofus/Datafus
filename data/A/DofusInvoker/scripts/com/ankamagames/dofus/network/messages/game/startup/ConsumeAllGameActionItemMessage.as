@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.startup
    public class ConsumeAllGameActionItemMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4817;
+      public static const protocolId:uint = 8431;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.startup
       
       override public function getMessageId() : uint
       {
-         return 4817;
+         return 8431;
       }
       
       public function initConsumeAllGameActionItemMessage(characterId:Number = 0) : ConsumeAllGameActionItemMessage

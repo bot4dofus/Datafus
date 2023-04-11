@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildPaddockTeleportRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6129;
+      public static const protocolId:uint = 3567;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 6129;
+         return 3567;
       }
       
       public function initGuildPaddockTeleportRequestMessage(paddockId:Number = 0) : GuildPaddockTeleportRequestMessage

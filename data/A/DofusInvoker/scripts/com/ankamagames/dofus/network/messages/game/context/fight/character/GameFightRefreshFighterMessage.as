@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.character
    public class GameFightRefreshFighterMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6157;
+      public static const protocolId:uint = 750;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.character
       
       override public function getMessageId() : uint
       {
-         return 6157;
+         return 750;
       }
       
       public function initGameFightRefreshFighterMessage(informations:GameContextActorInformations = null) : GameFightRefreshFighterMessage

@@ -175,7 +175,7 @@ package com.ankamagames.dofus.logic.common.managers
       
       public function isBasicAccount() : Boolean
       {
-         return this.subscriptionEndDate <= TimeManager.getInstance().getTimestamp() && !this.hasRights;
+         return this.subscriptionEndDate <= TimeManager.getInstance().getUtcTimestamp() && !this.hasRights;
       }
       
       public function isMapInHavenbag(mapId:int) : Boolean

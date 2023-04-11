@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameFightResumeSlaveInfo implements INetworkType
    {
       
-      public static const protocolId:uint = 3754;
+      public static const protocolId:uint = 8966;
        
       
       public var slaveId:Number = 0;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 3754;
+         return 8966;
       }
       
       public function initGameFightResumeSlaveInfo(slaveId:Number = 0, spellCooldowns:Vector.<GameFightSpellCooldown> = null, summonCount:uint = 0, bombCount:uint = 0) : GameFightResumeSlaveInfo

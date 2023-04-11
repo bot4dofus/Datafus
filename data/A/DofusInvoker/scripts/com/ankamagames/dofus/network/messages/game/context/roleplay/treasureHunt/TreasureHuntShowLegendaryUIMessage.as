@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHun
    public class TreasureHuntShowLegendaryUIMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8871;
+      public static const protocolId:uint = 7777;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHun
       
       override public function getMessageId() : uint
       {
-         return 8871;
+         return 7777;
       }
       
       public function initTreasureHuntShowLegendaryUIMessage(availableLegendaryIds:Vector.<uint> = null) : TreasureHuntShowLegendaryUIMessage

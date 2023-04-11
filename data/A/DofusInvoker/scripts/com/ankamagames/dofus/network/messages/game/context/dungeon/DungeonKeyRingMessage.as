@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.dungeon
    public class DungeonKeyRingMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7659;
+      public static const protocolId:uint = 202;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.context.dungeon
       
       override public function getMessageId() : uint
       {
-         return 7659;
+         return 202;
       }
       
       public function initDungeonKeyRingMessage(availables:Vector.<uint> = null, unavailables:Vector.<uint> = null) : DungeonKeyRingMessage

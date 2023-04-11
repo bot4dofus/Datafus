@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.social
    public class SocialEmblem implements INetworkType
    {
       
-      public static const protocolId:uint = 7391;
+      public static const protocolId:uint = 8655;
        
       
       public var symbolShape:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.social
       
       public function getTypeId() : uint
       {
-         return 7391;
+         return 8655;
       }
       
       public function initSocialEmblem(symbolShape:uint = 0, symbolColor:int = 0, backgroundShape:uint = 0, backgroundColor:int = 0) : SocialEmblem
