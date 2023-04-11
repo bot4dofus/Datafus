@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class SubareaRewardRateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4574;
+      public static const protocolId:uint = 225;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 4574;
+         return 225;
       }
       
       public function initSubareaRewardRateMessage(subAreaRate:int = 0) : SubareaRewardRateMessage

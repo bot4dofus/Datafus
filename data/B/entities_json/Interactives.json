@@ -1282,7 +1282,7 @@
 			"id": 234,
 			"nameId": 423445,
 			"actionId": 0,
-			"displayTooltip": false
+			"displayTooltip": true
 		},
 		{
 			"id": 235,
@@ -1870,7 +1870,7 @@
 			"id": 332,
 			"nameId": 826275,
 			"actionId": 0,
-			"displayTooltip": false
+			"displayTooltip": true
 		},
 		{
 			"id": 333,

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.house
    public class HouseOnMapInformations extends HouseInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1996;
+      public static const protocolId:uint = 3927;
        
       
       public var doorsOnMap:Vector.<uint>;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.house
       
       override public function getTypeId() : uint
       {
-         return 1996;
+         return 3927;
       }
       
       public function initHouseOnMapInformations(houseId:uint = 0, modelId:uint = 0, doorsOnMap:Vector.<uint> = null, houseInstances:Vector.<HouseInstanceInformations> = null) : HouseOnMapInformations

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
    public class EntityTalkMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5623;
+      public static const protocolId:uint = 6208;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
       
       override public function getMessageId() : uint
       {
-         return 5623;
+         return 6208;
       }
       
       public function initEntityTalkMessage(entityId:Number = 0, textId:uint = 0, parameters:Vector.<String> = null) : EntityTalkMessage

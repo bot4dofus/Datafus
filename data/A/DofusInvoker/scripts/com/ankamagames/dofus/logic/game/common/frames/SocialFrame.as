@@ -1,5 +1,6 @@
 package com.ankamagames.dofus.logic.game.common.frames
 {
+   import com.ankamagames.berilia.BeriliaConstants;
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.dofus.datacenter.alliance.AllianceRank;
    import com.ankamagames.dofus.datacenter.guild.GuildRank;
@@ -91,6 +92,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.common.actions.social.AddEnemyAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.AddFriendAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.AddIgnoredAction;
+   import com.ankamagames.dofus.logic.game.common.actions.social.AllianceMemberWarningSetAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.ContactsListRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.EnemiesListRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.FriendGuildSetWarnOnAchievementCompleteAction;
@@ -98,9 +100,9 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.common.actions.social.FriendSpouseFollowAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.FriendWarningSetAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.FriendsListRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.social.GuildMemberWarningSetAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.JoinFriendAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.JoinSpouseAction;
-   import com.ankamagames.dofus.logic.game.common.actions.social.MemberWarningSetAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.PlayerStatusUpdateRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.RemoveEnemyAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.RemoveFriendAction;
@@ -156,6 +158,9 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.alliance.AllianceLeftMessage;
    import com.ankamagames.dofus.network.messages.game.alliance.AllianceMemberInformationUpdateMessage;
    import com.ankamagames.dofus.network.messages.game.alliance.AllianceMemberLeavingMessage;
+   import com.ankamagames.dofus.network.messages.game.alliance.AllianceMemberOnlineStatusMessage;
+   import com.ankamagames.dofus.network.messages.game.alliance.AllianceMemberStartWarningOnConnectionMessage;
+   import com.ankamagames.dofus.network.messages.game.alliance.AllianceMemberStopWarningOnConnectionMessage;
    import com.ankamagames.dofus.network.messages.game.alliance.AllianceMembershipMessage;
    import com.ankamagames.dofus.network.messages.game.alliance.AllianceModificationResultMessage;
    import com.ankamagames.dofus.network.messages.game.alliance.AllianceModificationStartedMessage;
@@ -411,7 +416,9 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       private var _warnOnFrienConnec:Boolean;
       
-      private var _warnOnMemberConnec:Boolean;
+      private var _warnOnGuildMemberConnection:Boolean;
+      
+      private var _warnOnAllianceMemberConnection:Boolean;
       
       private var _warnWhenFriendOrGuildMemberLvlUp:Boolean;
       
@@ -540,9 +547,24 @@ package com.ankamagames.dofus.logic.game.common.frames
          return this._shareStatus;
       }
       
-      public function get warnMemberConnec() : Boolean
+      public function get warnGuildMemberConnection() : Boolean
       {
-         return this._warnOnMemberConnec;
+         return this._warnOnGuildMemberConnection;
+      }
+      
+      public function set warnGuildMemberConnection(value:Boolean) : void
+      {
+         this._warnOnGuildMemberConnection = value;
+      }
+      
+      public function get warnAllianceMemberConnection() : Boolean
+      {
+         return this._warnOnAllianceMemberConnection;
+      }
+      
+      public function set warnAllianceMemberConnection(value:Boolean) : void
+      {
+         this._warnOnAllianceMemberConnection = value;
       }
       
       public function get warnWhenFriendOrGuildMemberLvlUp() : Boolean
@@ -684,6 +706,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var rank:RankInformation = null;
          var errorMessage:String = null;
          var ds:DataStoreType = null;
+         var friendWrapper:FriendWrapper = null;
          var gmmsg:GuildMembershipMessage = null;
          var flmsg:FriendsListMessage = null;
          var almsg:AcquaintancesListMessage = null;
@@ -720,8 +743,9 @@ package com.ankamagames.dofus.logic.game.common.frames
          var fsssm:FriendSetStatusShareMessage = null;
          var fwsa:FriendWarningSetAction = null;
          var fsocmsg:FriendSetWarnOnConnectionMessage = null;
-         var mwsa:MemberWarningSetAction = null;
+         var gmwsa:GuildMemberWarningSetAction = null;
          var gmswocmsg:GuildMemberSetWarnOnConnectionMessage = null;
+         var amwsa:AllianceMemberWarningSetAction = null;
          var fogmwsa:FriendOrGuildMemberLevelUpWarningSetAction = null;
          var fswolgmsg:FriendSetWarnOnLevelGainMessage = null;
          var fgswoaca:FriendGuildSetWarnOnAchievementCompleteAction = null;
@@ -734,6 +758,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var fwocsmsg:FriendWarnOnConnectionStateMessage = null;
          var gmwocsmsg:GuildMemberWarnOnConnectionStateMessage = null;
          var gmosm:GuildMemberOnlineStatusMessage = null;
+         var amosm:AllianceMemberOnlineStatusMessage = null;
          var fwolgsmsg:FriendWarnOnLevelGainStateMessage = null;
          var fgwoacsmsg:FriendGuildWarnOnAchievementCompleteStateMessage = null;
          var wopdsmsg:WarnOnPermaDeathStateMessage = null;
@@ -955,15 +980,17 @@ package com.ankamagames.dofus.logic.game.common.frames
          var il:* = undefined;
          var ignoredAdd:* = undefined;
          var iar2msg:IgnoredAddRequestMessage = null;
+         var startListeningMsg:AllianceMemberStartWarningOnConnectionMessage = null;
+         var stopListeningMsg:AllianceMemberStopWarningOnConnectionMessage = null;
          var memberInfo:GuildMemberInfo = null;
          var nm:int = 0;
          var imood:int = 0;
          var frdmood:FriendWrapper = null;
          var cttmood:ContactWrapper = null;
-         var memberName:String = null;
+         var guildMemberName:String = null;
          var gm:GuildMemberInfo = null;
-         var friend:Boolean = false;
-         var fr:FriendWrapper = null;
+         var allianceMemberName:String = null;
+         var allianceMemberInfo:AllianceMemberInfo = null;
          var mb:GuildMemberInfo = null;
          var houseInformation:HouseInformationsForGuild = null;
          var ghw:GuildHouseWrapper = null;
@@ -1000,6 +1027,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var rankInfo:RankInformation = null;
          var rankData:AllianceRank = null;
          var allianceMotdText:String = null;
+         var isAFriend:Boolean = false;
          switch(true)
          {
             case msg is GuildMembershipMessage:
@@ -1015,6 +1043,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                this._hasGuild = true;
                this._playerGuildRank = rank;
+               Kernel.getWorker().process(GuildMemberWarningSetAction.create(StoreDataManager.getInstance().getData(BeriliaConstants.DATASTORE_UI_SNAPSHOT,"warnGuildMemberConnection" + PlayedCharacterManager.getInstance().id)));
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildMembershipUpdated,true);
                return true;
             case msg is FriendsListMessage:
@@ -1353,13 +1382,41 @@ package com.ankamagames.dofus.logic.game.common.frames
                fsocmsg.initFriendSetWarnOnConnectionMessage(fwsa.enable);
                ConnectionsHandler.getConnection().send(fsocmsg);
                return true;
-            case msg is MemberWarningSetAction:
-               mwsa = msg as MemberWarningSetAction;
-               this._warnOnMemberConnec = mwsa.enable;
+            case msg is GuildMemberWarningSetAction:
+               gmwsa = msg as GuildMemberWarningSetAction;
+               if(this._warnOnGuildMemberConnection == gmwsa.enable)
+               {
+                  return true;
+               }
+               this._warnOnGuildMemberConnection = gmwsa.enable;
+               StoreDataManager.getInstance().setData(BeriliaConstants.DATASTORE_UI_SNAPSHOT,"warnGuildMemberConnection" + PlayedCharacterManager.getInstance().id,this._warnOnGuildMemberConnection);
                gmswocmsg = new GuildMemberSetWarnOnConnectionMessage();
-               gmswocmsg.initGuildMemberSetWarnOnConnectionMessage(mwsa.enable);
+               gmswocmsg.initGuildMemberSetWarnOnConnectionMessage(gmwsa.enable);
                ConnectionsHandler.getConnection().send(gmswocmsg);
                return true;
+               break;
+            case msg is AllianceMemberWarningSetAction:
+               amwsa = msg as AllianceMemberWarningSetAction;
+               if(this._warnOnAllianceMemberConnection == amwsa.enable)
+               {
+                  return true;
+               }
+               this._warnOnAllianceMemberConnection = amwsa.enable;
+               StoreDataManager.getInstance().setData(BeriliaConstants.DATASTORE_UI_SNAPSHOT,"warnAllianceMemberConnection" + PlayedCharacterManager.getInstance().id,this._warnOnAllianceMemberConnection);
+               if(this._warnOnAllianceMemberConnection)
+               {
+                  startListeningMsg = new AllianceMemberStartWarningOnConnectionMessage();
+                  startListeningMsg.initAllianceMemberStartWarningOnConnectionMessage();
+                  ConnectionsHandler.getConnection().send(startListeningMsg);
+               }
+               else
+               {
+                  stopListeningMsg = new AllianceMemberStopWarningOnConnectionMessage();
+                  stopListeningMsg.initAllianceMemberStopWarningOnConnectionMessage();
+                  ConnectionsHandler.getConnection().send(stopListeningMsg);
+               }
+               return true;
+               break;
             case msg is FriendOrGuildMemberLevelUpWarningSetAction:
                fogmwsa = msg as FriendOrGuildMemberLevelUpWarningSetAction;
                this._warnWhenFriendOrGuildMemberLvlUp = fogmwsa.enable;
@@ -1445,8 +1502,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is GuildMemberWarnOnConnectionStateMessage:
                gmwocsmsg = msg as GuildMemberWarnOnConnectionStateMessage;
-               this._warnOnMemberConnec = gmwocsmsg.enable;
-               KernelEventsManager.getInstance().processCallback(SocialHookList.MemberWarningState,gmwocsmsg.enable);
+               this._warnOnGuildMemberConnection = gmwocsmsg.enable;
                return true;
             case msg is GuildMemberOnlineStatusMessage:
                if(!this._friendsList)
@@ -1454,28 +1510,58 @@ package com.ankamagames.dofus.logic.game.common.frames
                   return true;
                }
                gmosm = msg as GuildMemberOnlineStatusMessage;
-               if(ExternalNotificationManager.getInstance().canAddExternalNotification(ExternalNotificationTypeEnum.MEMBER_CONNECTION) && this._warnOnMemberConnec && gmosm.online)
+               if(ExternalNotificationManager.getInstance().canAddExternalNotification(ExternalNotificationTypeEnum.MEMBER_CONNECTION) && this._warnOnGuildMemberConnection && gmosm.online)
                {
                   for each(gm in this._guildMembers)
                   {
                      if(gm.id == gmosm.memberId)
                      {
-                        memberName = gm.name;
+                        guildMemberName = gm.name;
                         break;
                      }
                   }
-                  friend = false;
-                  for each(fr in this._friendsList)
+                  for each(friendWrapper in this._friendsList)
                   {
-                     if(fr.name == memberName)
+                     if(friendWrapper.name == guildMemberName)
                      {
-                        friend = true;
+                        isAFriend = true;
                         break;
                      }
                   }
-                  if(!(friend && !ExternalNotificationManager.getInstance().isExternalNotificationTypeIgnored(ExternalNotificationTypeEnum.FRIEND_CONNECTION)))
+                  if(!(isAFriend && !ExternalNotificationManager.getInstance().isExternalNotificationTypeIgnored(ExternalNotificationTypeEnum.FRIEND_CONNECTION)))
                   {
-                     KernelEventsManager.getInstance().processCallback(HookList.ExternalNotification,ExternalNotificationTypeEnum.MEMBER_CONNECTION,[memberName,gmosm.memberId]);
+                     KernelEventsManager.getInstance().processCallback(HookList.ExternalNotification,ExternalNotificationTypeEnum.MEMBER_CONNECTION,[guildMemberName,gmosm.memberId]);
+                  }
+               }
+               return true;
+               break;
+            case msg is AllianceMemberOnlineStatusMessage:
+               if(!this._friendsList)
+               {
+                  return true;
+               }
+               amosm = msg as AllianceMemberOnlineStatusMessage;
+               if(ExternalNotificationManager.getInstance().canAddExternalNotification(ExternalNotificationTypeEnum.MEMBER_CONNECTION) && this._warnOnAllianceMemberConnection && amosm.online)
+               {
+                  for each(allianceMemberInfo in this._guildMembers)
+                  {
+                     if(allianceMemberInfo.id == amosm.memberId)
+                     {
+                        allianceMemberName = allianceMemberInfo.name;
+                        break;
+                     }
+                  }
+                  for each(friendWrapper in this._friendsList)
+                  {
+                     if(friendWrapper.name == allianceMemberName)
+                     {
+                        isAFriend = true;
+                        break;
+                     }
+                  }
+                  if(!(isAFriend && !ExternalNotificationManager.getInstance().isExternalNotificationTypeIgnored(ExternalNotificationTypeEnum.FRIEND_CONNECTION)))
+                  {
+                     KernelEventsManager.getInstance().processCallback(HookList.ExternalNotification,ExternalNotificationTypeEnum.MEMBER_CONNECTION,[allianceMemberName,amosm.memberId]);
                   }
                }
                return true;
@@ -2368,6 +2454,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                this._alliance = AllianceWrapper.getFromNetwork(ammsg.allianceInfo);
                this._hasAlliance = true;
                this._playerAllianceRank = this.getAllianceRankById(ammsg.rankId);
+               Kernel.getWorker().process(AllianceMemberWarningSetAction.create(StoreDataManager.getInstance().getData(BeriliaConstants.DATASTORE_UI_SNAPSHOT,"warnAllianceMemberConnection" + PlayedCharacterManager.getInstance().id)));
                KernelEventsManager.getInstance().processCallback(SocialHookList.AllianceMembershipUpdated,true);
                return true;
             case msg is AllianceGetPlayerApplicationAction:

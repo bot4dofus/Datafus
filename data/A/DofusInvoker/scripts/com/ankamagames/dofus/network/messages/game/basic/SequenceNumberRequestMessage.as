@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.basic
    public class SequenceNumberRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1051;
+      public static const protocolId:uint = 5790;
        
       
       public function SequenceNumberRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.basic
       
       override public function getMessageId() : uint
       {
-         return 1051;
+         return 5790;
       }
       
       public function initSequenceNumberRequestMessage() : SequenceNumberRequestMessage

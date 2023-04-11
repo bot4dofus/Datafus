@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class UpdateGuildRightsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4404;
+      public static const protocolId:uint = 2114;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 4404;
+         return 2114;
       }
       
       public function initUpdateGuildRightsMessage(rankId:uint = 0, rights:Vector.<uint> = null) : UpdateGuildRightsMessage

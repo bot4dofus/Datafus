@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHun
    public class TreasureHuntAvailableRetryCountUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6197;
+      public static const protocolId:uint = 8428;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHun
       
       override public function getMessageId() : uint
       {
-         return 6197;
+         return 8428;
       }
       
       public function initTreasureHuntAvailableRetryCountUpdateMessage(questType:uint = 0, availableRetryCount:int = 0) : TreasureHuntAvailableRetryCountUpdateMessage

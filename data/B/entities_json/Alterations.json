@@ -4942,7 +4942,7 @@
 			"possibleEffects": [
 				{
 					"targetMask": "",
-					"diceNum": 0,
+					"diceNum": 2160,
 					"visibleInBuffUi": true,
 					"baseEffectId": 510,
 					"visibleInFightLog": true,
@@ -4954,14 +4954,14 @@
 					"spellId": -1,
 					"duration": 0,
 					"random": 0.0,
-					"effectId": 2833,
+					"effectId": 2996,
 					"delay": 0,
 					"diceSide": 0,
 					"visibleOnTerrain": true,
 					"visibleInTooltip": true,
 					"rawZone": "C",
 					"forClientOnly": false,
-					"value": 2160,
+					"value": 0,
 					"order": 0,
 					"group": 0
 				}
@@ -5020,17 +5020,6 @@
 			"isVisible": false,
 			"criteria": "null",
 			"isWebDisplay": true,
-			"possibleEffects": []
-		},
-		{
-			"id": 141,
-			"nameId": 987428,
-			"descriptionId": 988674,
-			"categoryId": 23,
-			"iconId": 32171,
-			"isVisible": true,
-			"criteria": "null",
-			"isWebDisplay": false,
 			"possibleEffects": []
 		},
 		{
@@ -5189,68 +5178,6 @@
 					"rawZone": "C",
 					"forClientOnly": false,
 					"value": 1440,
-					"order": 0,
-					"group": 0
-				}
-			]
-		},
-		{
-			"id": 134,
-			"nameId": 988677,
-			"descriptionId": 988678,
-			"categoryId": 23,
-			"iconId": 32172,
-			"isVisible": true,
-			"criteria": "null",
-			"isWebDisplay": false,
-			"possibleEffects": [
-				{
-					"targetMask": "",
-					"diceNum": 5,
-					"visibleInBuffUi": true,
-					"baseEffectId": 508,
-					"visibleInFightLog": true,
-					"targetId": 0,
-					"effectElement": -1,
-					"effectUid": 0,
-					"dispellable": 1,
-					"triggers": "",
-					"spellId": -1,
-					"duration": 0,
-					"random": 0.0,
-					"effectId": 2903,
-					"delay": 0,
-					"diceSide": 50,
-					"visibleOnTerrain": true,
-					"visibleInTooltip": true,
-					"rawZone": "C",
-					"forClientOnly": false,
-					"value": 1,
-					"order": 0,
-					"group": 0
-				},
-				{
-					"targetMask": "",
-					"diceNum": 100,
-					"visibleInBuffUi": true,
-					"baseEffectId": 509,
-					"visibleInFightLog": true,
-					"targetId": 0,
-					"effectElement": -1,
-					"effectUid": 0,
-					"dispellable": 1,
-					"triggers": "",
-					"spellId": -1,
-					"duration": 0,
-					"random": 0.0,
-					"effectId": 2902,
-					"delay": 0,
-					"diceSide": 50,
-					"visibleOnTerrain": true,
-					"visibleInTooltip": true,
-					"rawZone": "C",
-					"forClientOnly": false,
-					"value": 0,
 					"order": 0,
 					"group": 0
 				}
@@ -5822,7 +5749,7 @@
 			"possibleEffects": [
 				{
 					"targetMask": "",
-					"diceNum": 0,
+					"diceNum": 3,
 					"visibleInBuffUi": true,
 					"baseEffectId": 510,
 					"visibleInFightLog": true,
@@ -5834,14 +5761,14 @@
 					"spellId": -1,
 					"duration": 0,
 					"random": 0.0,
-					"effectId": 2833,
+					"effectId": 2996,
 					"delay": 0,
 					"diceSide": 0,
 					"visibleOnTerrain": true,
 					"visibleInTooltip": true,
 					"rawZone": "C",
 					"forClientOnly": false,
-					"value": 3,
+					"value": 0,
 					"order": 0,
 					"group": 0
 				}
@@ -6007,6 +5934,79 @@
 					"group": 0
 				}
 			]
+		},
+		{
+			"id": 134,
+			"nameId": 988677,
+			"descriptionId": 988678,
+			"categoryId": 23,
+			"iconId": 32171,
+			"isVisible": true,
+			"criteria": "null",
+			"isWebDisplay": false,
+			"possibleEffects": [
+				{
+					"targetMask": "",
+					"diceNum": 5,
+					"visibleInBuffUi": true,
+					"baseEffectId": 508,
+					"visibleInFightLog": true,
+					"targetId": 0,
+					"effectElement": -1,
+					"effectUid": 0,
+					"dispellable": 1,
+					"triggers": "",
+					"spellId": -1,
+					"duration": 0,
+					"random": 0.0,
+					"effectId": 2903,
+					"delay": 0,
+					"diceSide": 50,
+					"visibleOnTerrain": true,
+					"visibleInTooltip": true,
+					"rawZone": "C",
+					"forClientOnly": false,
+					"value": 1,
+					"order": 0,
+					"group": 0
+				},
+				{
+					"targetMask": "",
+					"diceNum": 100,
+					"visibleInBuffUi": true,
+					"baseEffectId": 509,
+					"visibleInFightLog": true,
+					"targetId": 0,
+					"effectElement": -1,
+					"effectUid": 0,
+					"dispellable": 1,
+					"triggers": "",
+					"spellId": -1,
+					"duration": 0,
+					"random": 0.0,
+					"effectId": 2902,
+					"delay": 0,
+					"diceSide": 50,
+					"visibleOnTerrain": true,
+					"visibleInTooltip": true,
+					"rawZone": "C",
+					"forClientOnly": false,
+					"value": 0,
+					"order": 0,
+					"group": 0
+				}
+			]
+		},
+		{
+			"id": 141,
+			"nameId": 987428,
+			"descriptionId": 988674,
+			"categoryId": 23,
+			"iconId": 32172,
+			"isVisible": true,
+			"criteria": "null",
+			"isWebDisplay": false,
+			"possibleEffects": []
 		}
 	]
 }

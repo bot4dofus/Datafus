@@ -27,8 +27,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const ShareStatusState:String = "ShareStatusState";
       
-      public static const MemberWarningState:String = "MemberWarningState";
-      
       public static const FriendOrGuildMemberLevelUpWarningState:String = "FriendOrGuildMemberLevelUpWarningState";
       
       public static const FriendGuildWarnOnAchievementCompleteState:String = "FriendGuildWarnOnAchievementCompleteState";
@@ -240,7 +238,6 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(IgnoredListUpdated);
          Hook.createHook(FriendWarningState);
          Hook.createHook(ShareStatusState);
-         Hook.createHook(MemberWarningState);
          Hook.createHook(FriendOrGuildMemberLevelUpWarningState);
          Hook.createHook(FriendGuildWarnOnAchievementCompleteState);
          Hook.createHook(WarnOnHardcoreDeathState);

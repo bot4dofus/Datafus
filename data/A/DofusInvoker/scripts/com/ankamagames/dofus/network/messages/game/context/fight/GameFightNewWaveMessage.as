@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightNewWaveMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7316;
+      public static const protocolId:uint = 3093;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 7316;
+         return 3093;
       }
       
       public function initGameFightNewWaveMessage(id:uint = 0, teamId:uint = 2, nbTurnBeforeNextWave:int = 0) : GameFightNewWaveMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.nuggets
    public class StartListenNuggetsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8597;
+      public static const protocolId:uint = 3823;
        
       
       public function StartListenNuggetsMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.nuggets
       
       override public function getMessageId() : uint
       {
-         return 8597;
+         return 3823;
       }
       
       public function initStartListenNuggetsMessage() : StartListenNuggetsMessage

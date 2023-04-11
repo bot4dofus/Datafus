@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyFollowStatusUpdateMessage extends AbstractPartyMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2637;
+      public static const protocolId:uint = 6319;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 2637;
+         return 6319;
       }
       
       public function initPartyFollowStatusUpdateMessage(partyId:uint = 0, success:Boolean = false, isFollowed:Boolean = false, followedId:Number = 0) : PartyFollowStatusUpdateMessage

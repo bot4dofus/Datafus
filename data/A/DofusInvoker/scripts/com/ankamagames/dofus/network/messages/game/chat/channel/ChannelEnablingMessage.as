@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.chat.channel
    public class ChannelEnablingMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 371;
+      public static const protocolId:uint = 689;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.chat.channel
       
       override public function getMessageId() : uint
       {
-         return 371;
+         return 689;
       }
       
       public function initChannelEnablingMessage(channel:uint = 0, enable:Boolean = false) : ChannelEnablingMessage

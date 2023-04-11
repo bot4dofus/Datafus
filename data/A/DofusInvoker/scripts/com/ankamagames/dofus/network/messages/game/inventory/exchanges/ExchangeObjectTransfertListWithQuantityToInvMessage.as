@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeObjectTransfertListWithQuantityToInvMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 379;
+      public static const protocolId:uint = 7546;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 379;
+         return 7546;
       }
       
       public function initExchangeObjectTransfertListWithQuantityToInvMessage(ids:Vector.<uint> = null, qtys:Vector.<uint> = null) : ExchangeObjectTransfertListWithQuantityToInvMessage
