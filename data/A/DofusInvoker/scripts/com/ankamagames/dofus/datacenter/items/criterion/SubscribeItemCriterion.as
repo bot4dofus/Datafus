@@ -31,7 +31,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
       override protected function getCriterion() : int
       {
          var timeRemaining:Number = PlayerManager.getInstance().subscriptionEndDate;
-         if(timeRemaining > TimeManager.getInstance().getTimestamp() || PlayerManager.getInstance().hasRights)
+         if(timeRemaining > TimeManager.getInstance().getUtcTimestamp() || PlayerManager.getInstance().hasRights)
          {
             return 1;
          }

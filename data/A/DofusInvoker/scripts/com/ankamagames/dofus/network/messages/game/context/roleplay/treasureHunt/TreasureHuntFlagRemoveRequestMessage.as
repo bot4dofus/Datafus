@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHun
    public class TreasureHuntFlagRemoveRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7000;
+      public static const protocolId:uint = 7391;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHun
       
       override public function getMessageId() : uint
       {
-         return 7000;
+         return 7391;
       }
       
       public function initTreasureHuntFlagRemoveRequestMessage(questType:uint = 0, index:uint = 0) : TreasureHuntFlagRemoveRequestMessage

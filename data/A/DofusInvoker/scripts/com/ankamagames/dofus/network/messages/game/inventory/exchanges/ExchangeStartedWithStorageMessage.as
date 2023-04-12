@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartedWithStorageMessage extends ExchangeStartedMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4145;
+      public static const protocolId:uint = 184;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 4145;
+         return 184;
       }
       
       public function initExchangeStartedWithStorageMessage(exchangeType:int = 0, storageMaxSlot:uint = 0) : ExchangeStartedWithStorageMessage

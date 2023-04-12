@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.death
    public class GameRolePlayPlayerLifeStatusMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3971;
+      public static const protocolId:uint = 5298;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.death
       
       override public function getMessageId() : uint
       {
-         return 3971;
+         return 5298;
       }
       
       public function initGameRolePlayPlayerLifeStatusMessage(state:uint = 0, phenixMapId:Number = 0) : GameRolePlayPlayerLifeStatusMessage

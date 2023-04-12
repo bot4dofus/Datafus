@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach
    public class BreachSavedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1912;
+      public static const protocolId:uint = 7311;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach
       
       override public function getMessageId() : uint
       {
-         return 1912;
+         return 7311;
       }
       
       public function initBreachSavedMessage(saved:Boolean = false) : BreachSavedMessage

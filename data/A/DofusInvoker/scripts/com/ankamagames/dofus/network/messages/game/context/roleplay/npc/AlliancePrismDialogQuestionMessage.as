@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
    public class AlliancePrismDialogQuestionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1288;
+      public static const protocolId:uint = 9684;
        
       
       public function AlliancePrismDialogQuestionMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
       
       override public function getMessageId() : uint
       {
-         return 1288;
+         return 9684;
       }
       
       public function initAlliancePrismDialogQuestionMessage() : AlliancePrismDialogQuestionMessage

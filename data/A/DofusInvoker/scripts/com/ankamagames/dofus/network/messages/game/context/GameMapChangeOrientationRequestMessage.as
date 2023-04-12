@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameMapChangeOrientationRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8787;
+      public static const protocolId:uint = 9834;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 8787;
+         return 9834;
       }
       
       public function initGameMapChangeOrientationRequestMessage(direction:uint = 1) : GameMapChangeOrientationRequestMessage

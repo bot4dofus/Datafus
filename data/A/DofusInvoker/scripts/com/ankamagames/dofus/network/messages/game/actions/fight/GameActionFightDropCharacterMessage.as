@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightDropCharacterMessage extends AbstractGameActionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3340;
+      public static const protocolId:uint = 8986;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 3340;
+         return 8986;
       }
       
       public function initGameActionFightDropCharacterMessage(actionId:uint = 0, sourceId:Number = 0, targetId:Number = 0, cellId:int = 0) : GameActionFightDropCharacterMessage

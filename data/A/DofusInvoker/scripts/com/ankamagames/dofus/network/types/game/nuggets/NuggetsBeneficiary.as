@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.nuggets
    public class NuggetsBeneficiary implements INetworkType
    {
       
-      public static const protocolId:uint = 1304;
+      public static const protocolId:uint = 9730;
        
       
       public var beneficiaryPlayerId:Number = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.nuggets
       
       public function getTypeId() : uint
       {
-         return 1304;
+         return 9730;
       }
       
       public function initNuggetsBeneficiary(beneficiaryPlayerId:Number = 0, nuggetsQuantity:int = 0) : NuggetsBeneficiary

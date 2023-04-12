@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class CurrentMapInstanceMessage extends CurrentMapMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8536;
+      public static const protocolId:uint = 9596;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 8536;
+         return 9596;
       }
       
       public function initCurrentMapInstanceMessage(mapId:Number = 0, instantiatedMapId:Number = 0) : CurrentMapInstanceMessage

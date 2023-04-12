@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyFollowMemberRequestMessage extends AbstractPartyMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1427;
+      public static const protocolId:uint = 4599;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 1427;
+         return 4599;
       }
       
       public function initPartyFollowMemberRequestMessage(partyId:uint = 0, playerId:Number = 0) : PartyFollowMemberRequestMessage

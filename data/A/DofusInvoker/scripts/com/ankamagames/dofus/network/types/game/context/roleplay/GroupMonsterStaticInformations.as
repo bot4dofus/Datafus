@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class GroupMonsterStaticInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 8171;
+      public static const protocolId:uint = 8972;
        
       
       public var mainCreatureLightInfos:MonsterInGroupLightInformations;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       public function getTypeId() : uint
       {
-         return 8171;
+         return 8972;
       }
       
       public function initGroupMonsterStaticInformations(mainCreatureLightInfos:MonsterInGroupLightInformations = null, underlings:Vector.<MonsterInGroupInformations> = null) : GroupMonsterStaticInformations

@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.prism
    public class PrismRemoveMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8772;
+      public static const protocolId:uint = 3383;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function getMessageId() : uint
       {
-         return 8772;
+         return 3383;
       }
       
       public function initPrismRemoveMessage(prism:PrismGeolocalizedInformation = null) : PrismRemoveMessage

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.quest
    public class GameRolePlayNpcQuestFlag implements INetworkType
    {
       
-      public static const protocolId:uint = 772;
+      public static const protocolId:uint = 6923;
        
       
       public var questsToValidId:Vector.<uint>;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.quest
       
       public function getTypeId() : uint
       {
-         return 772;
+         return 6923;
       }
       
       public function initGameRolePlayNpcQuestFlag(questsToValidId:Vector.<uint> = null, questsToStartId:Vector.<uint> = null) : GameRolePlayNpcQuestFlag

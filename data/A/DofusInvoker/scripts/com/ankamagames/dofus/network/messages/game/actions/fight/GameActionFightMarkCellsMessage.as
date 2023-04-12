@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightMarkCellsMessage extends AbstractGameActionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1479;
+      public static const protocolId:uint = 2895;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 1479;
+         return 2895;
       }
       
       public function initGameActionFightMarkCellsMessage(actionId:uint = 0, sourceId:Number = 0, mark:GameActionMark = null) : GameActionFightMarkCellsMessage

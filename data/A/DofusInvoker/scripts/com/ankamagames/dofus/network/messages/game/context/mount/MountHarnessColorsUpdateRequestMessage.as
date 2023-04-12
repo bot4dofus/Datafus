@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountHarnessColorsUpdateRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9323;
+      public static const protocolId:uint = 2200;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 9323;
+         return 2200;
       }
       
       public function initMountHarnessColorsUpdateRequestMessage(useHarnessColors:Boolean = false) : MountHarnessColorsUpdateRequestMessage

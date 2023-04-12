@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.nuggets
    public class StopListenNuggetsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8717;
+      public static const protocolId:uint = 4483;
        
       
       public function StopListenNuggetsMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.nuggets
       
       override public function getMessageId() : uint
       {
-         return 8717;
+         return 4483;
       }
       
       public function initStopListenNuggetsMessage() : StopListenNuggetsMessage

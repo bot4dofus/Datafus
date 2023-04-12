@@ -86,7 +86,7 @@ package com.ankamagames.dofus.logic.connection.managers
          this.addData("client_buildType",BuildInfos.BUILD_TYPE);
          this.addData("client_version",BuildInfos.VERSION.major + "." + BuildInfos.VERSION.minor);
          this.addData("client_sUid",MD5.hash(PlayerManager.getInstance().accountId.toString()));
-         this.addData("client_isAbo",PlayerManager.getInstance().subscriptionEndDate > TimeManager.getInstance().getTimestamp() || PlayerManager.getInstance().hasRights);
+         this.addData("client_isAbo",PlayerManager.getInstance().subscriptionEndDate > TimeManager.getInstance().getUtcTimestamp() || PlayerManager.getInstance().hasRights);
          this.addData("client_creationAbo",PlayerManager.getInstance().accountCreation);
          this.addData("client_creationAboDate",UiStatsFrame.formatDate(new Date(PlayerManager.getInstance().accountCreation)));
          this.addData("client_currentScreenResolution",StageShareManager.stage.fullScreenWidth + "x" + StageShareManager.stage.fullScreenHeight);
