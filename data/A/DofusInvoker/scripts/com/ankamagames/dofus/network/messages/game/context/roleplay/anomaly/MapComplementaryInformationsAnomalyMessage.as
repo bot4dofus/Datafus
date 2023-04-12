@@ -18,7 +18,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.anomaly
    public class MapComplementaryInformationsAnomalyMessage extends MapComplementaryInformationsDataMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5533;
+      public static const protocolId:uint = 2473;
        
       
       private var _isInitialized:Boolean = false;
@@ -39,7 +39,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.anomaly
       
       override public function getMessageId() : uint
       {
-         return 5533;
+         return 2473;
       }
       
       public function initMapComplementaryInformationsAnomalyMessage(subAreaId:uint = 0, mapId:Number = 0, houses:Vector.<HouseInformations> = null, actors:Vector.<GameRolePlayActorInformations> = null, interactiveElements:Vector.<InteractiveElement> = null, statedElements:Vector.<StatedElement> = null, obstacles:Vector.<MapObstacle> = null, fights:Vector.<FightCommonInformations> = null, hasAggressiveMonsters:Boolean = false, fightStartPositions:FightStartingPositions = null, level:uint = 0, closingTime:Number = 0) : MapComplementaryInformationsAnomalyMessage

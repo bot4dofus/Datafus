@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.character
    public class CharacterMinimalAllianceInformations extends CharacterMinimalPlusLookInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 5534;
+      public static const protocolId:uint = 5233;
        
       
       public var alliance:BasicNamedAllianceInformations;
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.types.game.character
       
       override public function getTypeId() : uint
       {
-         return 5534;
+         return 5233;
       }
       
       public function initCharacterMinimalAllianceInformations(id:Number = 0, name:String = "", level:uint = 0, entityLook:EntityLook = null, breed:int = 0, alliance:BasicNamedAllianceInformations = null) : CharacterMinimalAllianceInformations

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class ForgettableSpellItem extends SpellItem implements INetworkType
    {
       
-      public static const protocolId:uint = 1055;
+      public static const protocolId:uint = 5481;
        
       
       public var available:Boolean = false;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       override public function getTypeId() : uint
       {
-         return 1055;
+         return 5481;
       }
       
       public function initForgettableSpellItem(spellId:int = 0, spellLevel:int = 0, available:Boolean = false) : ForgettableSpellItem

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class ForceAccountMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3178;
+      public static const protocolId:uint = 7884;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 3178;
+         return 7884;
       }
       
       public function initForceAccountMessage(accountId:uint = 0) : ForceAccountMessage

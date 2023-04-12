@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountDataMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2517;
+      public static const protocolId:uint = 9247;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 2517;
+         return 9247;
       }
       
       public function initMountDataMessage(mountData:MountClientData = null) : MountDataMessage

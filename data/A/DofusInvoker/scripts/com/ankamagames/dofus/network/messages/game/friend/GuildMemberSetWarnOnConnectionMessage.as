@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class GuildMemberSetWarnOnConnectionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 773;
+      public static const protocolId:uint = 3008;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 773;
+         return 3008;
       }
       
       public function initGuildMemberSetWarnOnConnectionMessage(enable:Boolean = false) : GuildMemberSetWarnOnConnectionMessage

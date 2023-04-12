@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightTeamLightInformations extends AbstractFightTeamInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 4649;
+      public static const protocolId:uint = 3314;
        
       
       public var teamMembersCount:uint = 0;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 4649;
+         return 3314;
       }
       
       public function initFightTeamLightInformations(teamId:uint = 2, leaderId:Number = 0, teamSide:int = 0, teamTypeId:uint = 0, nbWaves:uint = 0, teamMembersCount:uint = 0, meanLevel:uint = 0, hasFriend:Boolean = false, hasGuildMember:Boolean = false, hasAllianceMember:Boolean = false, hasGroupMember:Boolean = false, hasMyTaxCollector:Boolean = false) : FightTeamLightInformations

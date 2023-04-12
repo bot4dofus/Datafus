@@ -354,7 +354,6 @@ package com.ankamagames.dofus.logic.connection.frames
                   dhf.resetConnectionAttempts();
                }
                iMsg.failedAttempts = elapsedTimesSinceConnectionFail;
-               ConnectionsHandler.getConnection().send(iMsg);
                KernelEventsManager.getInstance().processCallback(HookList.ConnectionTimerStart);
                TimeManager.getInstance().reset();
                if(InterClientManager.getInstance().flashKey)
@@ -363,6 +362,7 @@ package com.ankamagames.dofus.logic.connection.frames
                   flashKeyMsg.initClientKeyMessage(InterClientManager.getInstance().flashKey);
                   ConnectionsHandler.getConnection().send(flashKeyMsg);
                }
+               ConnectionsHandler.getConnection().send(iMsg);
                return true;
             case msg is AccountSubscriptionElapsedDurationMessage:
                PlayerManager.getInstance().subscriptionDurationElapsed = (msg as AccountSubscriptionElapsedDurationMessage).subscriptionElapsedDuration;

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.interactive.zaap
    public class TeleportDestination implements INetworkType
    {
       
-      public static const protocolId:uint = 9865;
+      public static const protocolId:uint = 2835;
        
       
       public var type:uint = 0;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.interactive.zaap
       
       public function getTypeId() : uint
       {
-         return 9865;
+         return 2835;
       }
       
       public function initTeleportDestination(type:uint = 0, mapId:Number = 0, subAreaId:uint = 0, level:uint = 0, cost:uint = 0) : TeleportDestination

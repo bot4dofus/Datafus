@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.web.haapi
    public class HaapiCancelBidRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3666;
+      public static const protocolId:uint = 1419;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.web.haapi
       
       override public function getMessageId() : uint
       {
-         return 3666;
+         return 1419;
       }
       
       public function initHaapiCancelBidRequestMessage(id:Number = 0, type:uint = 0) : HaapiCancelBidRequestMessage

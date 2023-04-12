@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook
    public class GuildLogbookEntryBasicInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 8984;
+      public static const protocolId:uint = 7236;
        
       
       public var id:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook
       
       public function getTypeId() : uint
       {
-         return 8984;
+         return 7236;
       }
       
       public function initGuildLogbookEntryBasicInformation(id:uint = 0, date:Number = 0) : GuildLogbookEntryBasicInformation

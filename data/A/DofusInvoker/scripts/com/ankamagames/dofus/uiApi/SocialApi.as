@@ -141,9 +141,24 @@ package com.ankamagames.dofus.uiApi
          return this.socialFrame.shareStatus;
       }
       
-      public function getWarnOnMemberConnec() : Boolean
+      public function getWarnOnGuildMemberConnection() : Boolean
       {
-         return this.socialFrame.warnMemberConnec;
+         return this.socialFrame.warnGuildMemberConnection;
+      }
+      
+      public function setWarnGuildMemberConnection(value:Boolean) : void
+      {
+         this.socialFrame.warnGuildMemberConnection = value;
+      }
+      
+      public function getWarnOnAllianceMemberConnection() : Boolean
+      {
+         return this.socialFrame.warnAllianceMemberConnection;
+      }
+      
+      public function setWarnAllianceMemberConnection(value:Boolean) : void
+      {
+         this.socialFrame.warnAllianceMemberConnection = value;
       }
       
       public function getWarnWhenFriendOrGuildMemberLvlUp() : Boolean

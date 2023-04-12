@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameFightSpellCooldown implements INetworkType
    {
       
-      public static const protocolId:uint = 9519;
+      public static const protocolId:uint = 425;
        
       
       public var spellId:int = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 9519;
+         return 425;
       }
       
       public function initGameFightSpellCooldown(spellId:int = 0, cooldown:uint = 0) : GameFightSpellCooldown

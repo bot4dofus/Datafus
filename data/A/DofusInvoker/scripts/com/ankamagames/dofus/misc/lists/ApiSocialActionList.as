@@ -75,6 +75,7 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.social.AddEnemyAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.AddFriendAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.AddIgnoredAction;
+   import com.ankamagames.dofus.logic.game.common.actions.social.AllianceMemberWarningSetAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.CharacterReportAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.ChatReportAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.ContactsListRequestAction;
@@ -84,9 +85,9 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.social.FriendSpouseFollowAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.FriendWarningSetAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.FriendsListRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.social.GuildMemberWarningSetAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.JoinFriendAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.JoinSpouseAction;
-   import com.ankamagames.dofus.logic.game.common.actions.social.MemberWarningSetAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.PlayerStatusUpdateRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.RemoveEnemyAction;
    import com.ankamagames.dofus.logic.game.common.actions.social.RemoveFriendAction;
@@ -147,7 +148,9 @@ package com.ankamagames.dofus.misc.lists
       
       public static const StatusShareSet:DofusApiAction = new DofusApiAction("StatusShareSetAction",StatusShareSetAction);
       
-      public static const MemberWarningSet:DofusApiAction = new DofusApiAction("MemberWarningSetAction",MemberWarningSetAction);
+      public static const GuildMemberWarningSet:DofusApiAction = new DofusApiAction("GuildMemberWarningSetAction",GuildMemberWarningSetAction);
+      
+      public static const AllianceMemberWarningSet:DofusApiAction = new DofusApiAction("AllianceMemberWarningSetAction",AllianceMemberWarningSetAction);
       
       public static const FriendOrGuildMemberLevelUpWarningSet:DofusApiAction = new DofusApiAction("FriendOrGuildMemberLevelUpWarningSetAction",FriendOrGuildMemberLevelUpWarningSetAction);
       

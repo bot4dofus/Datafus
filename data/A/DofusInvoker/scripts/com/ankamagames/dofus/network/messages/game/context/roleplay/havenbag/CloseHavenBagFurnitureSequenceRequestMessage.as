@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
    public class CloseHavenBagFurnitureSequenceRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5447;
+      public static const protocolId:uint = 3608;
        
       
       public function CloseHavenBagFurnitureSequenceRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
       
       override public function getMessageId() : uint
       {
-         return 5447;
+         return 3608;
       }
       
       public function initCloseHavenBagFurnitureSequenceRequestMessage() : CloseHavenBagFurnitureSequenceRequestMessage

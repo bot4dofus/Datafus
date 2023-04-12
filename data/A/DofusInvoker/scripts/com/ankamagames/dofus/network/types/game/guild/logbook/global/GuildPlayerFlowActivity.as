@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
    public class GuildPlayerFlowActivity extends GuildLogbookEntryBasicInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 9410;
+      public static const protocolId:uint = 4083;
        
       
       public var playerId:Number = 0;
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
       
       override public function getTypeId() : uint
       {
-         return 9410;
+         return 4083;
       }
       
       public function initGuildPlayerFlowActivity(id:uint = 0, date:Number = 0, playerId:Number = 0, playerName:String = "", playerFlowEventType:uint = 0) : GuildPlayerFlowActivity

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.character.choice
    public class CharacterBaseInformations extends CharacterMinimalPlusLookInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 2452;
+      public static const protocolId:uint = 3593;
        
       
       public var sex:Boolean = false;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.character.choice
       
       override public function getTypeId() : uint
       {
-         return 2452;
+         return 3593;
       }
       
       public function initCharacterBaseInformations(id:Number = 0, name:String = "", level:uint = 0, entityLook:EntityLook = null, breed:int = 0, sex:Boolean = false) : CharacterBaseInformations

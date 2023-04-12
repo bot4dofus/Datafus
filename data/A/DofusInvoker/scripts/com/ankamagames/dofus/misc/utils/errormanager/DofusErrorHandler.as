@@ -391,7 +391,7 @@ package com.ankamagames.dofus.misc.utils.errormanager
          o.isUsingZaap = ZaapConnectionHelper.hasZaapArguments();
          o.isUsingZaapLogin = ZaapApi.canLoginWithZaap();
          o.isConnectedToZaapOrUpdater = ZaapApi.isConnected();
-         o.isSubscribed = PlayerManager.getInstance().subscriptionEndDate > TimeManager.getInstance().getTimestamp();
+         o.isSubscribed = PlayerManager.getInstance().subscriptionEndDate > TimeManager.getInstance().getUtcTimestamp();
          o.isAdmin = PlayerManager.getInstance().hasRights;
          if(ThemeManager.getInstance().currentTheme)
          {

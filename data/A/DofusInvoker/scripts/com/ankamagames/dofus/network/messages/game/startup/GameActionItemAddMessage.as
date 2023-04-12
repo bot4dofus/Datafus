@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.startup
    public class GameActionItemAddMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1789;
+      public static const protocolId:uint = 3142;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.startup
       
       override public function getMessageId() : uint
       {
-         return 1789;
+         return 3142;
       }
       
       public function initGameActionItemAddMessage(newAction:GameActionItem = null) : GameActionItemAddMessage
