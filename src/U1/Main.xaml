@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1269,4674</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1269,4934</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="41">
@@ -120,7 +120,7 @@
       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <ueab:SequenceX DisplayName="Single Excel Process Scope" sap:VirtualizedContainerService.HintSize="1216,4609" sap2010:WorkflowViewState.IdRef="SequenceX_1">
+  <ueab:SequenceX DisplayName="Single Excel Process Scope" sap:VirtualizedContainerService.HintSize="1216,4869" sap2010:WorkflowViewState.IdRef="SequenceX_1">
     <ueab:SequenceX.Variables>
       <Variable x:TypeArguments="ue:IWorkbookQuickHandle" Default="[new WorkbookQuickHandle(workbookPath:=&quot;Project_Notebook.xlsx&quot;,visible:=True,autoSave:=False,createNew:=True,readOnly:=False,isWorkspace:=True)]" Name="Notes" />
       <Variable x:TypeArguments="x:String" Name="Button_Text" />
@@ -132,7 +132,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application: Ankama Launcher" sap:VirtualizedContainerService.HintSize="1174,4521" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="b4f6fadd-968c-480b-be07-05a5a404046b" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application: Ankama Launcher" sap:VirtualizedContainerService.HintSize="1174,4781" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="b4f6fadd-968c-480b-be07-05a5a404046b" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -143,15 +143,16 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Faire" sap:VirtualizedContainerService.HintSize="1140,4190" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence DisplayName="Faire" sap:VirtualizedContainerService.HintSize="1140,4450" sap2010:WorkflowViewState.IdRef="Sequence_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NCheckState DisplayName="If connexion displayed" sap:VirtualizedContainerService.HintSize="1098,1216" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="b4f6fadd-968c-480b-be07-05a5a404046b" Version="V3">
+            <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="1098,90" sap2010:WorkflowViewState.IdRef="Delay_1" />
+            <uix:NCheckState DisplayName="If connexion displayed" sap:VirtualizedContainerService.HintSize="1098,1346" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="b4f6fadd-968c-480b-be07-05a5a404046b" Version="V3">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Connexion is displayed" sap:VirtualizedContainerService.HintSize="400,999" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Connexion is displayed" sap:VirtualizedContainerService.HintSize="400,1129" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -179,6 +180,7 @@
                       </uix:TargetAnchorable>
                     </uix:NClick.Target>
                   </uix:NClick>
+                  <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="338,90" sap2010:WorkflowViewState.IdRef="Delay_2" />
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.Target>
@@ -286,7 +288,7 @@
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="If update in progress" sap:VirtualizedContainerService.HintSize="462,194" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                <Sequence DisplayName="If update in progress" sap:VirtualizedContainerService.HintSize="462,196" sap2010:WorkflowViewState.IdRef="Sequence_28">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
