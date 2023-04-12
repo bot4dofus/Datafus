@@ -188,7 +188,7 @@ class NetworkActionScriptReader:
                 result.pop('class_name')
                 results[class_name] = result
 
-        return results
+        return dict(sorted(results.items(), key=lambda t: t[0]))
 
 
 def save_json(file_name, data):
