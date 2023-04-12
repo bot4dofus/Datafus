@@ -206,10 +206,10 @@ class D2OReader():
         }
 
 
-def main(input, output, is_files):
+def main(input, output, are_files):
     files_to_convert = {}
 
-    if (is_files):
+    if (are_files):
         files_to_convert[input] = output
     else:
         files_in_input = os.listdir(input)
