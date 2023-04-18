@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.character.alteration
    public class AlterationsUpdatedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 645;
+      public static const protocolId:uint = 1691;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.character.alteration
       
       override public function getMessageId() : uint
       {
-         return 645;
+         return 1691;
       }
       
       public function initAlterationsUpdatedMessage(alterations:Vector.<AlterationInfo> = null) : AlterationsUpdatedMessage

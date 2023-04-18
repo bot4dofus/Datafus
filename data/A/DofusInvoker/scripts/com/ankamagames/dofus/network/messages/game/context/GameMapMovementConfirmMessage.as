@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameMapMovementConfirmMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9739;
+      public static const protocolId:uint = 2006;
        
       
       public function GameMapMovementConfirmMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 9739;
+         return 2006;
       }
       
       public function initGameMapMovementConfirmMessage() : GameMapMovementConfirmMessage

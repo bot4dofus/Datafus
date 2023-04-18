@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
    public class QuestListRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6527;
+      public static const protocolId:uint = 2084;
        
       
       public function QuestListRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
       
       override public function getMessageId() : uint
       {
-         return 6527;
+         return 2084;
       }
       
       public function initQuestListRequestMessage() : QuestListRequestMessage

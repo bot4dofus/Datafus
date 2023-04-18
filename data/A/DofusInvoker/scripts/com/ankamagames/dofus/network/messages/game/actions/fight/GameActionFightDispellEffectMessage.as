@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightDispellEffectMessage extends GameActionFightDispellMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6912;
+      public static const protocolId:uint = 3025;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 6912;
+         return 3025;
       }
       
       public function initGameActionFightDispellEffectMessage(actionId:uint = 0, sourceId:Number = 0, targetId:Number = 0, verboseCast:Boolean = false, boostUID:uint = 0) : GameActionFightDispellEffectMessage

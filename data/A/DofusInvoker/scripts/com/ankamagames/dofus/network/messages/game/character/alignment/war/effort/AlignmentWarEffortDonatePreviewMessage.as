@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.alignment.war.effo
    public class AlignmentWarEffortDonatePreviewMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3622;
+      public static const protocolId:uint = 9403;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.character.alignment.war.effo
       
       override public function getMessageId() : uint
       {
-         return 3622;
+         return 9403;
       }
       
       public function initAlignmentWarEffortDonatePreviewMessage(xp:Number = 0) : AlignmentWarEffortDonatePreviewMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.stats
    public class StatsUpgradeResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6870;
+      public static const protocolId:uint = 8603;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.stats
       
       override public function getMessageId() : uint
       {
-         return 6870;
+         return 8603;
       }
       
       public function initStatsUpgradeResultMessage(result:int = 0, nbCharacBoost:uint = 0) : StatsUpgradeResultMessage

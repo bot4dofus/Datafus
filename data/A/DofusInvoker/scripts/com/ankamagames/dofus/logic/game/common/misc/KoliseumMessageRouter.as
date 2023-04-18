@@ -158,6 +158,8 @@ package com.ankamagames.dofus.logic.game.common.misc
             case msg is AllianceModificationValidMessage:
             case msg is AllianceInvitationMessage:
             case msg is AllianceInvitationAnswerMessage:
+            case msg is AllianceMemberStartWarningOnConnectionMessage:
+            case msg is AllianceMemberStopWarningOnConnectionMessage:
             case msg is AllianceKickRequestMessage:
             case msg is AllianceFactsRequestMessage:
             case msg is AllianceInsiderInfoRequestMessage:
@@ -175,7 +177,8 @@ package com.ankamagames.dofus.logic.game.common.misc
             case msg is GuildSpellUpgradeRequestMessage:
             case msg is GuildCharacsUpgradeRequestMessage:
             case msg is GuildPaddockTeleportRequestMessage:
-            case msg is GuildMemberSetWarnOnConnectionMessage:
+            case msg is GuildMemberStartWarnOnConnectionMessage:
+            case msg is GuildMemberStopWarnOnConnectionMessage:
             case msg is GuildMotdSetRequestMessage:
             case msg is GuildBulletinSetRequestMessage:
             case msg is GuildFactsRequestMessage:

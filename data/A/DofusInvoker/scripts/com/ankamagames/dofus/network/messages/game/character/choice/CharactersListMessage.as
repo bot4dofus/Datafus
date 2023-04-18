@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.character.choice
    public class CharactersListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5452;
+      public static const protocolId:uint = 7446;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.character.choice
       
       override public function getMessageId() : uint
       {
-         return 5452;
+         return 7446;
       }
       
       public function initCharactersListMessage(characters:Vector.<CharacterBaseInformations> = null) : CharactersListMessage

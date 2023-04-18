@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.entity
    public class EntityInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 8225;
+      public static const protocolId:uint = 5260;
        
       
       public var id:uint = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.entity
       
       public function getTypeId() : uint
       {
-         return 8225;
+         return 5260;
       }
       
       public function initEntityInformation(id:uint = 0, experience:uint = 0, status:Boolean = false) : EntityInformation

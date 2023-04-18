@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class MapObstacleUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4348;
+      public static const protocolId:uint = 6038;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 4348;
+         return 6038;
       }
       
       public function initMapObstacleUpdateMessage(obstacles:Vector.<MapObstacle> = null) : MapObstacleUpdateMessage

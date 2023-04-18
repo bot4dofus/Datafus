@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.atlas.compass
    public class CompassUpdatePartyMemberMessage extends CompassUpdateMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7763;
+      public static const protocolId:uint = 306;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.atlas.compass
       
       override public function getMessageId() : uint
       {
-         return 7763;
+         return 306;
       }
       
       public function initCompassUpdatePartyMemberMessage(type:uint = 0, coords:MapCoordinates = null, memberId:Number = 0, active:Boolean = false) : CompassUpdatePartyMemberMessage

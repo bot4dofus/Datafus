@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightCloseCombatMessage extends AbstractGameActionFightTargetedAbilityMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2900;
+      public static const protocolId:uint = 3540;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 2900;
+         return 3540;
       }
       
       public function initGameActionFightCloseCombatMessage(actionId:uint = 0, sourceId:Number = 0, targetId:Number = 0, destinationCellId:int = 0, critical:uint = 1, silentCast:Boolean = false, verboseCast:Boolean = false, weaponGenericId:uint = 0) : GameActionFightCloseCombatMessage

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.social.fight
    public class SocialFight implements INetworkType
    {
       
-      public static const protocolId:uint = 8811;
+      public static const protocolId:uint = 7744;
        
       
       public var socialFightInfo:SocialFightInfo;
@@ -40,7 +40,7 @@ package com.ankamagames.dofus.network.types.game.social.fight
       
       public function getTypeId() : uint
       {
-         return 8811;
+         return 7744;
       }
       
       public function initSocialFight(socialFightInfo:SocialFightInfo = null, attackers:Vector.<CharacterMinimalPlusLookInformations> = null, defenders:Vector.<CharacterMinimalPlusLookInformations> = null, phase:FightPhase = null) : SocialFight

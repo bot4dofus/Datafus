@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context
    public class EntityDispositionInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 5591;
+      public static const protocolId:uint = 3882;
        
       
       public var cellId:int = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context
       
       public function getTypeId() : uint
       {
-         return 5591;
+         return 3882;
       }
       
       public function initEntityDispositionInformations(cellId:int = 0, direction:uint = 1) : EntityDispositionInformations

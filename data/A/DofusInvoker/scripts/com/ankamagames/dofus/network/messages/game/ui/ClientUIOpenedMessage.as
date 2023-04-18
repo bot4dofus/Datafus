@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.ui
    public class ClientUIOpenedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8475;
+      public static const protocolId:uint = 6665;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.ui
       
       override public function getMessageId() : uint
       {
-         return 8475;
+         return 6665;
       }
       
       public function initClientUIOpenedMessage(type:uint = 0) : ClientUIOpenedMessage

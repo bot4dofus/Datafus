@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild.chest
    public class AddListenerOnSynchronizedStorageMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3331;
+      public static const protocolId:uint = 1219;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.guild.chest
       
       override public function getMessageId() : uint
       {
-         return 3331;
+         return 1219;
       }
       
       public function initAddListenerOnSynchronizedStorageMessage(player:String = "") : AddListenerOnSynchronizedStorageMessage

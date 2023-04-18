@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.prism
    public class PrismGeolocalizedInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 6758;
+      public static const protocolId:uint = 5265;
        
       
       public var subAreaId:uint = 0;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.types.game.prism
       
       public function getTypeId() : uint
       {
-         return 6758;
+         return 5265;
       }
       
       public function initPrismGeolocalizedInformation(subAreaId:uint = 0, allianceId:uint = 0, worldX:int = 0, worldY:int = 0, mapId:Number = 0, prism:PrismInformation = null) : PrismGeolocalizedInformation

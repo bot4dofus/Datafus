@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.house
    public class HouseGuildedInformations extends HouseInstanceInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 9964;
+      public static const protocolId:uint = 9518;
        
       
       public var guildInfo:GuildInformations;
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.types.game.house
       
       override public function getTypeId() : uint
       {
-         return 9964;
+         return 9518;
       }
       
       public function initHouseGuildedInformations(instanceId:uint = 0, secondHand:Boolean = false, isLocked:Boolean = false, ownerTag:AccountTagInformation = null, hasOwner:Boolean = false, price:Number = 0, isSaleLocked:Boolean = false, isAdminLocked:Boolean = false, guildInfo:GuildInformations = null) : HouseGuildedInformations

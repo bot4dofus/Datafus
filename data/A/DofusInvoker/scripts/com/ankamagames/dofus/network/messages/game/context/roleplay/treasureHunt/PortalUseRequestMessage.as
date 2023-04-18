@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHun
    public class PortalUseRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8349;
+      public static const protocolId:uint = 9795;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHun
       
       override public function getMessageId() : uint
       {
-         return 8349;
+         return 9795;
       }
       
       public function initPortalUseRequestMessage(portalId:uint = 0) : PortalUseRequestMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildLevelUpMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4970;
+      public static const protocolId:uint = 1743;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 4970;
+         return 1743;
       }
       
       public function initGuildLevelUpMessage(newLevel:uint = 0) : GuildLevelUpMessage

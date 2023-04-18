@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.web.haapi
    public class HaapiAuthErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1654;
+      public static const protocolId:uint = 8330;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.web.haapi
       
       override public function getMessageId() : uint
       {
-         return 1654;
+         return 8330;
       }
       
       public function initHaapiAuthErrorMessage(type:uint = 0) : HaapiAuthErrorMessage

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyNameSetErrorMessage extends AbstractPartyMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9692;
+      public static const protocolId:uint = 940;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 9692;
+         return 940;
       }
       
       public function initPartyNameSetErrorMessage(partyId:uint = 0, result:uint = 0) : PartyNameSetErrorMessage

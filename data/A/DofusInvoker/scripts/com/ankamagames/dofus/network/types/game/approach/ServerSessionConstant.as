@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.approach
    public class ServerSessionConstant implements INetworkType
    {
       
-      public static const protocolId:uint = 7265;
+      public static const protocolId:uint = 6773;
        
       
       public var id:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.approach
       
       public function getTypeId() : uint
       {
-         return 7265;
+         return 6773;
       }
       
       public function initServerSessionConstant(id:uint = 0) : ServerSessionConstant

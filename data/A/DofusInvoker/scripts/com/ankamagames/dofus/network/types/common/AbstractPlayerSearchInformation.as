@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.common
    public class AbstractPlayerSearchInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 2632;
+      public static const protocolId:uint = 1498;
        
       
       public function AbstractPlayerSearchInformation()
@@ -18,7 +18,7 @@ package com.ankamagames.dofus.network.types.common
       
       public function getTypeId() : uint
       {
-         return 2632;
+         return 1498;
       }
       
       public function initAbstractPlayerSearchInformation() : AbstractPlayerSearchInformation

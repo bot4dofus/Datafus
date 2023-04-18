@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.mount
    public class UpdateMountCharacteristic implements INetworkType
    {
       
-      public static const protocolId:uint = 505;
+      public static const protocolId:uint = 3174;
        
       
       public var type:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.mount
       
       public function getTypeId() : uint
       {
-         return 505;
+         return 3174;
       }
       
       public function initUpdateMountCharacteristic(type:uint = 0) : UpdateMountCharacteristic

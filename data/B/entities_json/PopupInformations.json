@@ -91,7 +91,7 @@
 					"type": 0,
 					"textId": 869879,
 					"actionType": 1,
-					"actionValue": "OpenGuidebookAction:gameGuide|135|popup"
+					"actionValue": "OpenGuideBookAction:gameGuide|135|popup"
 				}
 			],
 			"criterion": "PL>9",
@@ -111,7 +111,7 @@
 					"type": 0,
 					"textId": 870763,
 					"actionType": 1,
-					"actionValue": "OpenGuidebookAction:gameGuide|17|popup"
+					"actionValue": "OpenGuideBookAction:gameGuide|17|popup"
 				}
 			],
 			"criterion": "PL>19&Qc=954",
@@ -131,7 +131,7 @@
 					"type": 0,
 					"textId": 870771,
 					"actionType": 1,
-					"actionValue": "OpenGuidebookAction:gameGuide|140|popup"
+					"actionValue": "OpenGuideBookAction:gameGuide|140|popup"
 				}
 			],
 			"criterion": "PL>19&(SC!5)",
@@ -151,7 +151,7 @@
 					"type": 0,
 					"textId": 870782,
 					"actionType": 1,
-					"actionValue": "OpenGuidebookAction:gameGuide|26|popup"
+					"actionValue": "OpenGuideBookAction:gameGuide|26|popup"
 				}
 			],
 			"criterion": "PL>19",
@@ -171,7 +171,7 @@
 					"type": 0,
 					"textId": 870807,
 					"actionType": 1,
-					"actionValue": "OpenGuidebookAction:gameGuide|172|popup"
+					"actionValue": "OpenGuideBookAction:gameGuide|172|popup"
 				}
 			],
 			"criterion": "PL>199&(SC!5|ST!5)",
@@ -251,7 +251,7 @@
 					"type": 0,
 					"textId": 871139,
 					"actionType": 1,
-					"actionValue": "OpenGuidebookAction:gameGuide|138|popup"
+					"actionValue": "OpenGuideBookAction:gameGuide|138|popup"
 				}
 			],
 			"criterion": "PL>29",
@@ -271,7 +271,7 @@
 					"type": 0,
 					"textId": 871144,
 					"actionType": 1,
-					"actionValue": "OpenGuidebookAction:gameGuide|31|popup"
+					"actionValue": "OpenGuideBookAction:gameGuide|31|popup"
 				}
 			],
 			"criterion": "(PL>59|(Of=1|Of=2|Of=3|Of=4|Of=5))",
@@ -404,7 +404,7 @@
 					"type": 0,
 					"textId": 900271,
 					"actionType": 1,
-					"actionValue": "OpenGuidebookAction:gameGuide|180|popup"
+					"actionValue": "OpenGuideBookAction:gameGuide|180|popup"
 				}
 			],
 			"criterion": "PL>49",
@@ -444,7 +444,7 @@
 					"type": 0,
 					"textId": 905288,
 					"actionType": 1,
-					"actionValue": "OpenGuidebookAction:gameGuide|204|popup"
+					"actionValue": "OpenGuideBookAction:gameGuide|204|popup"
 				}
 			],
 			"criterion": "PL>14",
@@ -464,7 +464,7 @@
 					"type": 0,
 					"textId": 910443,
 					"actionType": 1,
-					"actionValue": "OpenGuidebookAction:gameGuide|140|popup"
+					"actionValue": "OpenGuideBookAction:gameGuide|140|popup"
 				}
 			],
 			"criterion": "",
@@ -504,7 +504,7 @@
 					"type": 0,
 					"textId": 956338,
 					"actionType": 1,
-					"actionValue": "OpenGuidebookAction:gameGuide|135|popup"
+					"actionValue": "OpenGuideBookAction:gameGuide|135|popup"
 				}
 			],
 			"criterion": "PL>49",
@@ -555,7 +555,7 @@
 					"type": 0,
 					"textId": 993830,
 					"actionType": 1,
-					"actionValue": "OpenGuidebookAction:gameGuide|7|popup"
+					"actionValue": "OpenGuideBookAction:gameGuide|7|popup"
 				}
 			],
 			"criterion": "PL>49",
@@ -575,7 +575,7 @@
 					"type": 0,
 					"textId": 998861,
 					"actionType": 1,
-					"actionValue": "OpenGuidebookAction:gameGuide|111|popup"
+					"actionValue": "OpenGuideBookAction:gameGuide|111|popup"
 				}
 			],
 			"criterion": "PL>29",

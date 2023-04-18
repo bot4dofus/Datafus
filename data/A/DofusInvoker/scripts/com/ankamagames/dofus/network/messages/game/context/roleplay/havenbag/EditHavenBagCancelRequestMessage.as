@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
    public class EditHavenBagCancelRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5243;
+      public static const protocolId:uint = 5088;
        
       
       public function EditHavenBagCancelRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
       
       override public function getMessageId() : uint
       {
-         return 5243;
+         return 5088;
       }
       
       public function initEditHavenBagCancelRequestMessage() : EditHavenBagCancelRequestMessage

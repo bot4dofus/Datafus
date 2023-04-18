@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.moderation
    public class PopupWarningCloseRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8937;
+      public static const protocolId:uint = 8099;
        
       
       public function PopupWarningCloseRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.moderation
       
       override public function getMessageId() : uint
       {
-         return 8937;
+         return 8099;
       }
       
       public function initPopupWarningCloseRequestMessage() : PopupWarningCloseRequestMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
    public class ExitHavenBagRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8098;
+      public static const protocolId:uint = 380;
        
       
       public function ExitHavenBagRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
       
       override public function getMessageId() : uint
       {
-         return 8098;
+         return 380;
       }
       
       public function initExitHavenBagRequestMessage() : ExitHavenBagRequestMessage

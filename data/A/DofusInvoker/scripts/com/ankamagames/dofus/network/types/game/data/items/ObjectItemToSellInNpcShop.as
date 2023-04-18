@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class ObjectItemToSellInNpcShop extends ObjectItemMinimalInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 4214;
+      public static const protocolId:uint = 6501;
        
       
       public var objectPrice:Number = 0;
@@ -23,7 +23,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       override public function getTypeId() : uint
       {
-         return 4214;
+         return 6501;
       }
       
       public function initObjectItemToSellInNpcShop(objectGID:uint = 0, effects:Vector.<ObjectEffect> = null, objectPrice:Number = 0, buyCriterion:String = "") : ObjectItemToSellInNpcShop

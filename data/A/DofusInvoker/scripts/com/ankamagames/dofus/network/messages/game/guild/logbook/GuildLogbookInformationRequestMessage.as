@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild.logbook
    public class GuildLogbookInformationRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6010;
+      public static const protocolId:uint = 775;
        
       
       public function GuildLogbookInformationRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.guild.logbook
       
       override public function getMessageId() : uint
       {
-         return 6010;
+         return 775;
       }
       
       public function initGuildLogbookInformationRequestMessage() : GuildLogbookInformationRequestMessage

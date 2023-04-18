@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.secure
    public class TrustStatusMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5903;
+      public static const protocolId:uint = 2199;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.secure
       
       override public function getMessageId() : uint
       {
-         return 5903;
+         return 2199;
       }
       
       public function initTrustStatusMessage(trusted:Boolean = false, certified:Boolean = false) : TrustStatusMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.approach
    public class ServerOptionalFeaturesMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 518;
+      public static const protocolId:uint = 6436;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       override public function getMessageId() : uint
       {
-         return 518;
+         return 6436;
       }
       
       public function initServerOptionalFeaturesMessage(features:Vector.<uint> = null) : ServerOptionalFeaturesMessage

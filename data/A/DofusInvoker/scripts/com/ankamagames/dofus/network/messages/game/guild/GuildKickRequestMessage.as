@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildKickRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8150;
+      public static const protocolId:uint = 715;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 8150;
+         return 715;
       }
       
       public function initGuildKickRequestMessage(kickedId:Number = 0) : GuildKickRequestMessage

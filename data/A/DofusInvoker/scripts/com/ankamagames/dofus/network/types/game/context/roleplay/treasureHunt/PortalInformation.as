@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt
    public class PortalInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 6528;
+      public static const protocolId:uint = 25;
        
       
       public var portalId:int = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt
       
       public function getTypeId() : uint
       {
-         return 6528;
+         return 25;
       }
       
       public function initPortalInformation(portalId:int = 0, areaId:int = 0) : PortalInformation

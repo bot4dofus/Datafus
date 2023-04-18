@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.presets
    public class SpellForPreset implements INetworkType
    {
       
-      public static const protocolId:uint = 5318;
+      public static const protocolId:uint = 2056;
        
       
       public var spellId:uint = 0;
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.types.game.presets
       
       public function getTypeId() : uint
       {
-         return 5318;
+         return 2056;
       }
       
       public function initSpellForPreset(spellId:uint = 0, shortcuts:Vector.<int> = null) : SpellForPreset
