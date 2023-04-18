@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
    public class GameRolePlayArenaSwitchToFightServerMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1496;
+      public static const protocolId:uint = 9080;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       override public function getMessageId() : uint
       {
-         return 1496;
+         return 9080;
       }
       
       public function initGameRolePlayArenaSwitchToFightServerMessage(address:String = "", ports:Vector.<uint> = null, token:String = "") : GameRolePlayArenaSwitchToFightServerMessage

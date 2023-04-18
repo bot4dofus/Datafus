@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.presets
    public class IconPresetSaveRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3891;
+      public static const protocolId:uint = 9389;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.presets
       
       override public function getMessageId() : uint
       {
-         return 3891;
+         return 9389;
       }
       
       public function initIconPresetSaveRequestMessage(presetId:int = 0, symbolId:uint = 0, updateData:Boolean = false) : IconPresetSaveRequestMessage

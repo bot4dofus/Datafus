@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildLeftMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7711;
+      public static const protocolId:uint = 6953;
        
       
       public function GuildLeftMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 7711;
+         return 6953;
       }
       
       public function initGuildLeftMessage() : GuildLeftMessage

@@ -41,6 +41,7 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.guild.CreateGuildRankRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildApplicationReplyAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildApplicationsRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildAreThereApplicationsAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildBulletinSetRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildChangeMemberParametersAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildCharacsUpgradeRequestAction;
@@ -197,6 +198,8 @@ package com.ankamagames.dofus.misc.lists
       public static const GuildNoteUpdate:DofusApiAction = new DofusApiAction("GuildNoteUpdateAction",GuildNoteUpdateAction);
       
       public static const GuildApplicationReply:DofusApiAction = new DofusApiAction("GuildApplicationReplyAction",GuildApplicationReplyAction);
+      
+      public static const GuildAreThereApplications:DofusApiAction = new DofusApiAction("GuildAreThereApplicationsAction",GuildAreThereApplicationsAction);
       
       public static const GuildApplicationsRequest:DofusApiAction = new DofusApiAction("GuildApplicationsRequestAction",GuildApplicationsRequestAction);
       

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.debug
    public class DebugInClientMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2199;
+      public static const protocolId:uint = 9199;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.debug
       
       override public function getMessageId() : uint
       {
-         return 2199;
+         return 9199;
       }
       
       public function initDebugInClientMessage(level:uint = 0, message:String = "") : DebugInClientMessage

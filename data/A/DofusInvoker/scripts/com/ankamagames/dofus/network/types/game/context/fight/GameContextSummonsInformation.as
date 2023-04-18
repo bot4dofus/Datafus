@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameContextSummonsInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 231;
+      public static const protocolId:uint = 7053;
        
       
       public var spawnInformation:SpawnInformation;
@@ -42,7 +42,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 231;
+         return 7053;
       }
       
       public function initGameContextSummonsInformation(spawnInformation:SpawnInformation = null, wave:uint = 0, look:EntityLook = null, stats:GameFightCharacteristics = null, summons:Vector.<GameContextBasicSpawnInformation> = null) : GameContextSummonsInformation

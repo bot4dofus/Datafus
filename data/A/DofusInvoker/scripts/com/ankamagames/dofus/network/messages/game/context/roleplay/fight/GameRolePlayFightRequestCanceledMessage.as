@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight
    public class GameRolePlayFightRequestCanceledMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2068;
+      public static const protocolId:uint = 4207;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight
       
       override public function getMessageId() : uint
       {
-         return 2068;
+         return 4207;
       }
       
       public function initGameRolePlayFightRequestCanceledMessage(fightId:uint = 0, sourceId:Number = 0, targetId:Number = 0) : GameRolePlayFightRequestCanceledMessage

@@ -64,6 +64,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.common.actions.guild.CreateGuildRankRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildApplicationReplyAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildApplicationsRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.guild.GuildAreThereApplicationsAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildBulletinSetRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildChangeMemberParametersAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildCharacsUpgradeRequestAction;
@@ -221,8 +222,6 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.friend.FriendWarnOnLevelGainStateMessage;
    import com.ankamagames.dofus.network.messages.game.friend.FriendsGetListMessage;
    import com.ankamagames.dofus.network.messages.game.friend.FriendsListMessage;
-   import com.ankamagames.dofus.network.messages.game.friend.GuildMemberSetWarnOnConnectionMessage;
-   import com.ankamagames.dofus.network.messages.game.friend.GuildMemberWarnOnConnectionStateMessage;
    import com.ankamagames.dofus.network.messages.game.friend.IgnoredAddFailureMessage;
    import com.ankamagames.dofus.network.messages.game.friend.IgnoredAddRequestMessage;
    import com.ankamagames.dofus.network.messages.game.friend.IgnoredAddedMessage;
@@ -263,6 +262,8 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.guild.GuildLeftMessage;
    import com.ankamagames.dofus.network.messages.game.guild.GuildMemberLeavingMessage;
    import com.ankamagames.dofus.network.messages.game.guild.GuildMemberOnlineStatusMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.GuildMemberStartWarnOnConnectionMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.GuildMemberStopWarnOnConnectionMessage;
    import com.ankamagames.dofus.network.messages.game.guild.GuildMembershipMessage;
    import com.ankamagames.dofus.network.messages.game.guild.GuildModificationResultMessage;
    import com.ankamagames.dofus.network.messages.game.guild.GuildModificationStartedMessage;
@@ -287,9 +288,11 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.guild.application.GuildApplicationDeletedMessage;
    import com.ankamagames.dofus.network.messages.game.guild.application.GuildApplicationIsAnsweredMessage;
    import com.ankamagames.dofus.network.messages.game.guild.application.GuildApplicationListenMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildApplicationPresenceMessage;
    import com.ankamagames.dofus.network.messages.game.guild.application.GuildApplicationReceivedMessage;
    import com.ankamagames.dofus.network.messages.game.guild.application.GuildDeleteApplicationRequestMessage;
    import com.ankamagames.dofus.network.messages.game.guild.application.GuildGetPlayerApplicationMessage;
+   import com.ankamagames.dofus.network.messages.game.guild.application.GuildIsThereAnyApplicationMessage;
    import com.ankamagames.dofus.network.messages.game.guild.application.GuildListApplicationAnswerMessage;
    import com.ankamagames.dofus.network.messages.game.guild.application.GuildListApplicationModifiedMessage;
    import com.ankamagames.dofus.network.messages.game.guild.application.GuildListApplicationRequestMessage;
@@ -744,7 +747,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          var fwsa:FriendWarningSetAction = null;
          var fsocmsg:FriendSetWarnOnConnectionMessage = null;
          var gmwsa:GuildMemberWarningSetAction = null;
-         var gmswocmsg:GuildMemberSetWarnOnConnectionMessage = null;
          var amwsa:AllianceMemberWarningSetAction = null;
          var fogmwsa:FriendOrGuildMemberLevelUpWarningSetAction = null;
          var fswolgmsg:FriendSetWarnOnLevelGainMessage = null;
@@ -756,7 +758,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          var msumsg:MoodSmileyUpdateMessage = null;
          var fsssmsg:FriendStatusShareStateMessage = null;
          var fwocsmsg:FriendWarnOnConnectionStateMessage = null;
-         var gmwocsmsg:GuildMemberWarnOnConnectionStateMessage = null;
          var gmosm:GuildMemberOnlineStatusMessage = null;
          var amosm:AllianceMemberOnlineStatusMessage = null;
          var fwolgsmsg:FriendWarnOnLevelGainStateMessage = null;
@@ -810,6 +811,8 @@ package com.ankamagames.dofus.logic.game.common.frames
          var ghtra:HouseTeleportRequestAction = null;
          var ghtrmsg:HouseTeleportRequestMessage = null;
          var galmsg:GuildApplicationListenMessage = null;
+         var gitaamsg:GuildIsThereAnyApplicationMessage = null;
+         var gataamsg:GuildApplicationPresenceMessage = null;
          var garaction:GuildApplicationsRequestAction = null;
          var glarmsg:GuildListApplicationRequestMessage = null;
          var glaamsg:GuildListApplicationAnswerMessage = null;
@@ -980,8 +983,10 @@ package com.ankamagames.dofus.logic.game.common.frames
          var il:* = undefined;
          var ignoredAdd:* = undefined;
          var iar2msg:IgnoredAddRequestMessage = null;
-         var startListeningMsg:AllianceMemberStartWarningOnConnectionMessage = null;
-         var stopListeningMsg:AllianceMemberStopWarningOnConnectionMessage = null;
+         var gmswocmsg:GuildMemberStartWarnOnConnectionMessage = null;
+         var gmstwocmsg:GuildMemberStopWarnOnConnectionMessage = null;
+         var amswocmsg:AllianceMemberStartWarningOnConnectionMessage = null;
+         var amstwocmsg:AllianceMemberStopWarningOnConnectionMessage = null;
          var memberInfo:GuildMemberInfo = null;
          var nm:int = 0;
          var imood:int = 0;
@@ -1390,9 +1395,18 @@ package com.ankamagames.dofus.logic.game.common.frames
                }
                this._warnOnGuildMemberConnection = gmwsa.enable;
                StoreDataManager.getInstance().setData(BeriliaConstants.DATASTORE_UI_SNAPSHOT,"warnGuildMemberConnection" + PlayedCharacterManager.getInstance().id,this._warnOnGuildMemberConnection);
-               gmswocmsg = new GuildMemberSetWarnOnConnectionMessage();
-               gmswocmsg.initGuildMemberSetWarnOnConnectionMessage(gmwsa.enable);
-               ConnectionsHandler.getConnection().send(gmswocmsg);
+               if(this._warnOnGuildMemberConnection)
+               {
+                  gmswocmsg = new GuildMemberStartWarnOnConnectionMessage();
+                  gmswocmsg.initGuildMemberStartWarnOnConnectionMessage();
+                  ConnectionsHandler.getConnection().send(gmswocmsg);
+               }
+               else
+               {
+                  gmstwocmsg = new GuildMemberStopWarnOnConnectionMessage();
+                  gmstwocmsg.initGuildMemberStopWarnOnConnectionMessage();
+                  ConnectionsHandler.getConnection().send(gmstwocmsg);
+               }
                return true;
                break;
             case msg is AllianceMemberWarningSetAction:
@@ -1405,15 +1419,15 @@ package com.ankamagames.dofus.logic.game.common.frames
                StoreDataManager.getInstance().setData(BeriliaConstants.DATASTORE_UI_SNAPSHOT,"warnAllianceMemberConnection" + PlayedCharacterManager.getInstance().id,this._warnOnAllianceMemberConnection);
                if(this._warnOnAllianceMemberConnection)
                {
-                  startListeningMsg = new AllianceMemberStartWarningOnConnectionMessage();
-                  startListeningMsg.initAllianceMemberStartWarningOnConnectionMessage();
-                  ConnectionsHandler.getConnection().send(startListeningMsg);
+                  amswocmsg = new AllianceMemberStartWarningOnConnectionMessage();
+                  amswocmsg.initAllianceMemberStartWarningOnConnectionMessage();
+                  ConnectionsHandler.getConnection().send(amswocmsg);
                }
                else
                {
-                  stopListeningMsg = new AllianceMemberStopWarningOnConnectionMessage();
-                  stopListeningMsg.initAllianceMemberStopWarningOnConnectionMessage();
-                  ConnectionsHandler.getConnection().send(stopListeningMsg);
+                  amstwocmsg = new AllianceMemberStopWarningOnConnectionMessage();
+                  amstwocmsg.initAllianceMemberStopWarningOnConnectionMessage();
+                  ConnectionsHandler.getConnection().send(amstwocmsg);
                }
                return true;
                break;
@@ -1499,10 +1513,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                fwocsmsg = msg as FriendWarnOnConnectionStateMessage;
                this._warnOnFrienConnec = fwocsmsg.enable;
                KernelEventsManager.getInstance().processCallback(SocialHookList.FriendWarningState,fwocsmsg.enable);
-               return true;
-            case msg is GuildMemberWarnOnConnectionStateMessage:
-               gmwocsmsg = msg as GuildMemberWarnOnConnectionStateMessage;
-               this._warnOnGuildMemberConnection = gmwocsmsg.enable;
                return true;
             case msg is GuildMemberOnlineStatusMessage:
                if(!this._friendsList)
@@ -1954,6 +1964,15 @@ package com.ankamagames.dofus.logic.game.common.frames
                ConnectionsHandler.getConnection().send(galmsg);
                return true;
                break;
+            case msg is GuildAreThereApplicationsAction:
+               gitaamsg = new GuildIsThereAnyApplicationMessage();
+               gitaamsg.initGuildIsThereAnyApplicationMessage();
+               ConnectionsHandler.getConnection().send(gitaamsg);
+               return true;
+            case msg is GuildApplicationPresenceMessage:
+               gataamsg = msg as GuildApplicationPresenceMessage;
+               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildAreThereApplications,gataamsg.isApplication);
+               return true;
             case msg is GuildApplicationsRequestAction:
                garaction = msg as GuildApplicationsRequestAction;
                glarmsg = new GuildListApplicationRequestMessage();

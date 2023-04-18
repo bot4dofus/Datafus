@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.alignment.war.
    public class AlignmentWarEffortInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 7734;
+      public static const protocolId:uint = 2868;
        
       
       public var alignmentSide:int = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.alignment.war.
       
       public function getTypeId() : uint
       {
-         return 7734;
+         return 2868;
       }
       
       public function initAlignmentWarEffortInformation(alignmentSide:int = 0, alignmentWarEffort:Number = 0) : AlignmentWarEffortInformation

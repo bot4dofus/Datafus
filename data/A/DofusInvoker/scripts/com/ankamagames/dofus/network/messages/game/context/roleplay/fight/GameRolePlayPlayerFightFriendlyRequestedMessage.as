@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight
    public class GameRolePlayPlayerFightFriendlyRequestedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8057;
+      public static const protocolId:uint = 7362;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight
       
       override public function getMessageId() : uint
       {
-         return 8057;
+         return 7362;
       }
       
       public function initGameRolePlayPlayerFightFriendlyRequestedMessage(fightId:uint = 0, sourceId:Number = 0, targetId:Number = 0) : GameRolePlayPlayerFightFriendlyRequestedMessage

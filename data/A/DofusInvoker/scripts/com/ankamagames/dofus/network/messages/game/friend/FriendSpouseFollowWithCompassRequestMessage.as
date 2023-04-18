@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class FriendSpouseFollowWithCompassRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7407;
+      public static const protocolId:uint = 9221;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 7407;
+         return 9221;
       }
       
       public function initFriendSpouseFollowWithCompassRequestMessage(enable:Boolean = false) : FriendSpouseFollowWithCompassRequestMessage

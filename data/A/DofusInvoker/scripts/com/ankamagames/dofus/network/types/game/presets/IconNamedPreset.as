@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.presets
    public class IconNamedPreset extends PresetsContainerPreset implements INetworkType
    {
       
-      public static const protocolId:uint = 4908;
+      public static const protocolId:uint = 4724;
        
       
       public var iconId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.presets
       
       override public function getTypeId() : uint
       {
-         return 4908;
+         return 4724;
       }
       
       public function initIconNamedPreset(id:int = 0, presets:Vector.<Preset> = null, iconId:uint = 0, name:String = "") : IconNamedPreset

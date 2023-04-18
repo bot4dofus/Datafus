@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class WrapperObjectDissociateRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4145;
+      public static const protocolId:uint = 5678;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 4145;
+         return 5678;
       }
       
       public function initWrapperObjectDissociateRequestMessage(hostUID:uint = 0, hostPos:uint = 0) : WrapperObjectDissociateRequestMessage

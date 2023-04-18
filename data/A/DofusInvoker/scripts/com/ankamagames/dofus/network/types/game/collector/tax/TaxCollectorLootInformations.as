@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.collector.tax
    public class TaxCollectorLootInformations extends TaxCollectorComplementaryInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 5123;
+      public static const protocolId:uint = 1423;
        
       
       public var pods:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.collector.tax
       
       override public function getTypeId() : uint
       {
-         return 5123;
+         return 1423;
       }
       
       public function initTaxCollectorLootInformations(pods:uint = 0, itemsValue:Number = 0) : TaxCollectorLootInformations

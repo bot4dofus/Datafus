@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
    public class CharacterSpellModification implements INetworkType
    {
       
-      public static const protocolId:uint = 5176;
+      public static const protocolId:uint = 8596;
        
       
       public var modificationType:uint = 0;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       
       public function getTypeId() : uint
       {
-         return 5176;
+         return 8596;
       }
       
       public function initCharacterSpellModification(modificationType:uint = 0, spellId:uint = 0, value:CharacterCharacteristicDetailed = null) : CharacterSpellModification

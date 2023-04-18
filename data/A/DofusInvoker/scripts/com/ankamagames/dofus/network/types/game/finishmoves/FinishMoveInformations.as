@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.finishmoves
    public class FinishMoveInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 7449;
+      public static const protocolId:uint = 1134;
        
       
       public var finishMoveId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.finishmoves
       
       public function getTypeId() : uint
       {
-         return 7449;
+         return 1134;
       }
       
       public function initFinishMoveInformations(finishMoveId:uint = 0, finishMoveState:Boolean = false) : FinishMoveInformations

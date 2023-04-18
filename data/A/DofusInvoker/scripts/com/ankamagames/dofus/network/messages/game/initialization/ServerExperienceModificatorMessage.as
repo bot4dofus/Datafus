@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.initialization
    public class ServerExperienceModificatorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4936;
+      public static const protocolId:uint = 3466;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.initialization
       
       override public function getMessageId() : uint
       {
-         return 4936;
+         return 3466;
       }
       
       public function initServerExperienceModificatorMessage(experiencePercent:uint = 0) : ServerExperienceModificatorMessage

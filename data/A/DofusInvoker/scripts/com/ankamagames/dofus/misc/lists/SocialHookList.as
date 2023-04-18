@@ -185,6 +185,10 @@ package com.ankamagames.dofus.misc.lists
       
       public static const GuildPrezAndRecruitUiRequested:String = "GuildPrezAndRecruitUiRequested";
       
+      public static const GuildNewApplicationReceived:String = "GuildNewApplicationReceived";
+      
+      public static const GuildAreThereApplications:String = "GuildAreThereApplications";
+      
       public static const GuildApplicationsReceived:String = "GuildApplicationsReceived";
       
       public static const GuildApplicationUpdated:String = "GuildApplicationUpdated";
@@ -312,6 +316,8 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(ShowTopTaxCollectors);
          Hook.createHook(GuildApplicationsUiRequested);
          Hook.createHook(GuildPrezAndRecruitUiRequested);
+         Hook.createHook(GuildNewApplicationReceived);
+         Hook.createHook(GuildAreThereApplications);
          Hook.createHook(GuildApplicationsReceived);
          Hook.createHook(GuildApplicationUpdated);
          Hook.createHook(GuildRecruitmentDataReceived);

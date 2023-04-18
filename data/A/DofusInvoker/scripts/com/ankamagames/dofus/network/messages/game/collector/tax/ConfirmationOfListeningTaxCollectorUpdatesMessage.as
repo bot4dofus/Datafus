@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
    public class ConfirmationOfListeningTaxCollectorUpdatesMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6650;
+      public static const protocolId:uint = 7173;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       override public function getMessageId() : uint
       {
-         return 6650;
+         return 7173;
       }
       
       public function initConfirmationOfListeningTaxCollectorUpdatesMessage(information:TaxCollectorInformations = null) : ConfirmationOfListeningTaxCollectorUpdatesMessage
