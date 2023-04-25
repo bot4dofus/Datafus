@@ -480,6 +480,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var asmsg:Vector.<AgressableStatusMessage> = null;
          var playerInfo:GameRolePlayHumanoidInformations = null;
          var playerOption:* = undefined;
+         var hasAllianceInfo:Boolean = false;
          var usasm:UpdateSelfAgressableStatusMessage = null;
          var myPlayerInfo:GameRolePlayHumanoidInformations = null;
          var myPlayerOption:* = undefined;
@@ -1319,6 +1320,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
             case msg is UpdateMapPlayersAgressableStatusMessage:
                umpasm = msg as UpdateMapPlayersAgressableStatusMessage;
                asmsg = umpasm.playerAvAMessages;
+               hasAllianceInfo = false;
                for each(playerMessage in asmsg)
                {
                   playerInfo = getEntityInfos(playerMessage.playerId) as GameRolePlayHumanoidInformations;
@@ -1328,10 +1330,15 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                      {
                         if(playerOption is HumanOptionAlliance)
                         {
+                           hasAllianceInfo = true;
                            (playerOption as HumanOptionAlliance).aggressable = playerMessage.enable;
                            this.updateConquestIcon(playerMessage.playerId,playerMessage.roleAvAId,playerMessage.pictoScore);
                            break;
                         }
+                     }
+                     if(!hasAllianceInfo)
+                     {
+                        removeIconsCategory(playerMessage.playerId,EntityIconEnum.AVA_CATEGORY);
                      }
                   }
                }

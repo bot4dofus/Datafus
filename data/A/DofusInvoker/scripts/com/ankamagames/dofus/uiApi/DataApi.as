@@ -38,6 +38,7 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.datacenter.feature.OptionalFeature;
    import com.ankamagames.dofus.datacenter.guild.GuildRank;
    import com.ankamagames.dofus.datacenter.guild.GuildRankNameSuggestion;
+   import com.ankamagames.dofus.datacenter.guild.GuildRight;
    import com.ankamagames.dofus.datacenter.guild.GuildRightGroup;
    import com.ankamagames.dofus.datacenter.guild.GuildTag;
    import com.ankamagames.dofus.datacenter.guild.GuildTagsType;
@@ -91,6 +92,7 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.datacenter.social.EmblemBackground;
    import com.ankamagames.dofus.datacenter.social.EmblemSymbol;
    import com.ankamagames.dofus.datacenter.social.EmblemSymbolCategory;
+   import com.ankamagames.dofus.datacenter.social.SocialRight;
    import com.ankamagames.dofus.datacenter.social.SocialRightGroup;
    import com.ankamagames.dofus.datacenter.social.SocialTag;
    import com.ankamagames.dofus.datacenter.spells.FinishMove;
@@ -1511,6 +1513,11 @@ package com.ankamagames.dofus.uiApi
       public function getGuildRightGroups() : Array
       {
          return GuildRightGroup.getGuildRightGroups();
+      }
+      
+      public function getGuildRightById(rightId:uint) : SocialRight
+      {
+         return GuildRight.getGuildRightById(rightId);
       }
       
       public function getAllianceTagById(tagId:uint) : AllianceTag
