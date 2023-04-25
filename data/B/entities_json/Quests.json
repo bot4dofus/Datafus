@@ -8945,7 +8945,7 @@
 		{
 			"id": 762,
 			"nameId": 748931,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -8955,13 +8955,13 @@
 				1385
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=9&PZ=1",
+			"startCriterion": "Qf=1958&PG=9&PZ=1&PL>8",
 			"followable": true
 		},
 		{
 			"id": 763,
 			"nameId": 748937,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -8971,13 +8971,13 @@
 				1386
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=6&PZ=1",
+			"startCriterion": "Qf=1958&PG=6&PZ=1&PL>8",
 			"followable": true
 		},
 		{
 			"id": 764,
 			"nameId": 748944,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -8987,13 +8987,13 @@
 				1387
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=7&PZ=1",
+			"startCriterion": "Qf=1958&PG=7&PZ=1&PL>8",
 			"followable": true
 		},
 		{
 			"id": 765,
 			"nameId": 748947,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -9003,13 +9003,13 @@
 				1388
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=3&PZ=1",
+			"startCriterion": "Qf=1958&PG=3&PZ=1&PL>8",
 			"followable": true
 		},
 		{
 			"id": 766,
 			"nameId": 748955,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -9019,13 +9019,13 @@
 				1389
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=1&PZ=1",
+			"startCriterion": "Qf=1958&PG=1&PZ=1&PL>8",
 			"followable": true
 		},
 		{
 			"id": 767,
 			"nameId": 748958,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -9035,13 +9035,13 @@
 				1390
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=8&PZ=1",
+			"startCriterion": "Qf=1958&PG=8&PZ=1&PL>8",
 			"followable": true
 		},
 		{
 			"id": 768,
 			"nameId": 748979,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -9051,13 +9051,13 @@
 				1391
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=2&PZ=1",
+			"startCriterion": "Qf=1958&PG=2&PZ=1&PL>8",
 			"followable": true
 		},
 		{
 			"id": 769,
 			"nameId": 748992,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -9067,13 +9067,13 @@
 				1392
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=12&PZ=1",
+			"startCriterion": "Qf=1958&PG=12&PZ=1&PL>8",
 			"followable": true
 		},
 		{
 			"id": 770,
 			"nameId": 748934,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -9083,13 +9083,13 @@
 				1393
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=13&PZ=1",
+			"startCriterion": "Qf=1958&PG=13&PZ=1&PL>8",
 			"followable": true
 		},
 		{
 			"id": 771,
 			"nameId": 748995,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -9099,13 +9099,13 @@
 				1394
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=11&PZ=1",
+			"startCriterion": "Qf=1958&PG=11&PZ=1&PL>8",
 			"followable": true
 		},
 		{
 			"id": 772,
 			"nameId": 748998,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -9115,13 +9115,13 @@
 				1395
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=10&PZ=1",
+			"startCriterion": "Qf=1958&PG=10&PZ=1&PL>8",
 			"followable": true
 		},
 		{
 			"id": 773,
 			"nameId": 749004,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -9131,13 +9131,13 @@
 				1396
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=4&PZ=1",
+			"startCriterion": "Qf=1958&PG=4&PZ=1&PL>8",
 			"followable": true
 		},
 		{
 			"id": 774,
 			"nameId": 749007,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -9147,13 +9147,13 @@
 				1397
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=5&PZ=1",
+			"startCriterion": "Qf=1958&PG=5&PZ=1&PL>8",
 			"followable": true
 		},
 		{
 			"id": 775,
 			"nameId": 749001,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -9163,7 +9163,7 @@
 				1398
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=14&PZ=1",
+			"startCriterion": "Qf=1958&PG=14&PZ=1&PL>8",
 			"followable": true
 		},
 		{
@@ -10945,7 +10945,7 @@
 		{
 			"id": 939,
 			"nameId": 421990,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -10955,7 +10955,7 @@
 				1556
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=15&PZ=1",
+			"startCriterion": "Qf=1958&PG=15&PZ=1&PL>8",
 			"followable": true
 		},
 		{
@@ -21425,7 +21425,7 @@
 		{
 			"id": 1616,
 			"nameId": 506276,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -21435,7 +21435,7 @@
 				2235
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=16&PZ=1",
+			"startCriterion": "Qf=1958&PG=16&PZ=1&PL>8",
 			"followable": true
 		},
 		{
@@ -22385,7 +22385,7 @@
 		{
 			"id": 1678,
 			"nameId": 591525,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -22395,7 +22395,7 @@
 				2313
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=17&PZ=1",
+			"startCriterion": "Qf=1958&PG=17&PZ=1&PL>8",
 			"followable": true
 		},
 		{
@@ -24913,7 +24913,7 @@
 		{
 			"id": 1842,
 			"nameId": 720602,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -24923,7 +24923,7 @@
 				2482
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=18&PZ=1",
+			"startCriterion": "Qf=1958&PG=18&PZ=1&PL>8",
 			"followable": true
 		},
 		{
@@ -26731,7 +26731,7 @@
 				2629
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958",
+			"startCriterion": "Qf=1958&PL>9",
 			"followable": true
 		},
 		{
@@ -30913,7 +30913,7 @@
 		{
 			"id": 2467,
 			"nameId": 970471,
-			"categoryId": 4,
+			"categoryId": 2,
 			"repeatType": 0,
 			"repeatLimit": 1,
 			"isDungeonQuest": false,
@@ -30923,7 +30923,7 @@
 				3121
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=1958&PG=20&PZ=1",
+			"startCriterion": "Qf=1958&PG=20&PZ=1&PL>8",
 			"followable": true
 		},
 		{

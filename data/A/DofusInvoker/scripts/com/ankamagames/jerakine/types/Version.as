@@ -14,37 +14,14 @@ package com.ankamagames.jerakine.types
       
       private var _buildType:uint = 0;
       
-      public function Version(... args)
+      public function Version(versionNumber:String, buildType:uint)
       {
-         var split:Array = null;
          super();
-         if(!args || args.length == 0)
-         {
-            this._major = this._minor = this._code = this._build = this._buildType = 0;
-         }
-         else
-         {
-            if(!(args.length == 2 && args[0] is String))
-            {
-               throw new ArgumentError("invalid parameters");
-            }
-            split = (args[0] as String).split(".");
-            this._major = uint(split[0]);
-            this._minor = uint(split[1]);
-            this._code = uint(split[2].split("-")[0]);
-            this._buildType = uint(args[1]);
-         }
-      }
-      
-      public static function fromServerData(major:uint, minor:uint, code:uint, build:uint, buildType:uint) : Version
-      {
-         var version:Version = new Version();
-         version._major = major;
-         version._minor = minor;
-         version._code = code;
-         version._build = build;
-         version._buildType = buildType;
-         return version;
+         var versionSplit:Array = versionNumber.split(".");
+         this._major = uint(versionSplit[0]);
+         this._minor = uint(versionSplit[1]);
+         this._code = uint(versionSplit[2].split("-")[0]);
+         this._buildType = buildType;
       }
       
       public function get major() : uint

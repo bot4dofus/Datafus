@@ -493,6 +493,14 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const GUILD_RIGHTS_GROUP_CHEST_4_ID:uint = 12;
       
+      public static const GUILD_CHEST_RIGHTS_CONSULT_FIRST_CHEST:uint = 8;
+      
+      public static const GUILD_CHEST_RIGHTS_CONSULT_SECOND_CHEST:uint = 31;
+      
+      public static const GUILD_CHEST_RIGHTS_CONSULT_THIRD_CHEST:uint = 32;
+      
+      public static const GUILD_CHEST_RIGHTS_CONSULT_FOURTH_CHEST:uint = 35;
+      
       public static const ALLIANCE_TAB_MEMBERS_ID:uint = 0;
       
       public static const ALLIANCE_TAB_AREAS_ID:uint = 1;

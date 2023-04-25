@@ -162,7 +162,7 @@ package com.ankamagames.berilia.components
          {
             return;
          }
-         var currentScroll:uint = _tText.maxScrollV;
+         var currentScroll:uint = _tText.scrollV;
          _nWidth = nW;
          __width = nW;
          this.___width = nW;

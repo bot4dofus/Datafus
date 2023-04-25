@@ -131,6 +131,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private static const MAX_TOOLTIP:uint = 10;
       
+      private static const SWAP_POSITION_EFFECT_ID:int = 8;
+      
       private static var _currentTargetIsTargetable:Boolean;
        
       
@@ -988,6 +990,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       public function damagePreview() : Object
       {
+         var effect:EffectInstance = null;
          var currentFighter:HaxeFighter = null;
          var infos:GameFightCharacterInformations = null;
          var spellDamage:SpellDamage = null;
@@ -1006,6 +1009,14 @@ package com.ankamagames.dofus.logic.game.fight.frames
             if(infos != null && infos.breed == BreedEnum.Xelor)
             {
                currentCharacterIsXelor = true;
+            }
+         }
+         var isExchangingPositions:Boolean = false;
+         for each(effect in this._spellWrapper.effects)
+         {
+            if(effect.effectId == SWAP_POSITION_EFFECT_ID)
+            {
+               isExchangingPositions = true;
             }
          }
          for each(currentFighter in affectedFighters)
@@ -1034,10 +1045,13 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   {
                      movedFighters.push(currentFighter);
                   }
-                  if(currentEffect.movement != null && currentEffect.movement.swappedWith != null && currentCharacterIsXelor)
+                  if(currentCharacterIsXelor && currentEffect.movement != null && currentEffect.movement.swappedWith != null)
                   {
-                     params.spellDamage = spellDamage;
-                     spellDamage.telefrag = true;
+                     if((currentFighter.breed != BreedEnum.Xelor || currentFighter.teamId != (FightEntitiesFrame.getCurrentInstance().getEntityInfos(this._entityId) as GameFightFighterInformations).spawnInfo.teamId) && !isExchangingPositions)
+                     {
+                        params.spellDamage = spellDamage;
+                        spellDamage.telefrag = true;
+                     }
                   }
                }
                else if(currentEffect.summon != null)

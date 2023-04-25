@@ -35,9 +35,9 @@ package com.ankamagames.jerakine.handlers
       
       private static const RELEASE_SENTRY_CONFIG_URL:String = "https://dofus2.cdn.ankama.com/content/sentry/";
       
-      private static const LOCAL_CYTRUS_URL:String = "https://launcher-staging.cdn.ankama.com/cytrus.json";
+      private static const LOCAL_CYTRUS_URL:String = "https://cytrus-staging.cdn.ankama.com/cytrus.json";
       
-      private static const RELEASE_CYTRUS_URL:String = "https://launcher.cdn.ankama.com/cytrus.json";
+      private static const RELEASE_CYTRUS_URL:String = "https://cytrus.cdn.ankama.com/cytrus.json";
       
       protected static const SENTRY_DISABLED:uint = 0;
       
@@ -221,7 +221,7 @@ package com.ankamagames.jerakine.handlers
       {
          this._isLocal = isLocal;
          this._environment = environment.toLowerCase();
-         var sentryVersion:String = version.toString();
+         var sentryVersion:String = version.toString().split("-")[0];
          _sentryClient = new RavenClient("https://57c041aef92f4cf6bc2edc270dc604f2:3748f15212924e25a7038952c61278e9@sentry.io/271879",sentryVersion,environment,onSentryError);
          ErrorManager.eventDispatcher.addEventListener(ErrorReportedEvent.ERROR,this.onError);
          var sentryConfigUrl:URLRequest = new URLRequest((!!isLocal ? LOCAL_SENTRY_CONFIG_URL : RELEASE_SENTRY_CONFIG_URL) + this._environment + ".json");
