@@ -236,7 +236,7 @@ package com.ankamagames.dofus.logic.game.spin2.chat
             var key:String = null;
             try
             {
-               activities = JsonUtil.fromJson(loader.data);
+               activities = JSON.parse(loader.data);
                if(activities)
                {
                   map = new Dictionary();

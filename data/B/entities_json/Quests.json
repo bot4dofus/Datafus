@@ -10267,7 +10267,7 @@
 				1512
 			],
 			"isPartyQuest": false,
-			"startCriterion": "PL>19",
+			"startCriterion": "PL>19&PZ=1",
 			"followable": true
 		},
 		{
@@ -27355,7 +27355,7 @@
 				2621
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=896&PL>29",
+			"startCriterion": "Qf=896&PL>29&PZ=1",
 			"followable": true
 		},
 		{
@@ -27387,7 +27387,7 @@
 				2619
 			],
 			"isPartyQuest": false,
-			"startCriterion": "PL>14",
+			"startCriterion": "PL>14&PZ=1",
 			"followable": true
 		},
 		{
@@ -27403,7 +27403,7 @@
 				2620
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qf=2005&PL>19",
+			"startCriterion": "Qf=2005&PL>19&PZ=1",
 			"followable": true
 		},
 		{
