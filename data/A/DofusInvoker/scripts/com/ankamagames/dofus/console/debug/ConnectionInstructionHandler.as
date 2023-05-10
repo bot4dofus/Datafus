@@ -1,6 +1,10 @@
 package com.ankamagames.dofus.console.debug
 {
+   import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
+   import com.ankamagames.dofus.logic.game.common.managers.InactivityManager;
+   import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
+   import com.ankamagames.dofus.network.enums.ConsoleMessageTypeEnum;
    import com.ankamagames.jerakine.console.ConsoleHandler;
    import com.ankamagames.jerakine.console.ConsoleInstructionHandler;
    import com.ankamagames.jerakine.data.I18n;
@@ -29,16 +33,35 @@ package com.ankamagames.dofus.console.debug
             case "inspectlowtraffic":
                ServerConnection.DEBUG_LOW_LEVEL_VERBOSE = !ServerConnection.DEBUG_LOW_LEVEL_VERBOSE;
                console.output("Inspect low traffic is " + (!!ServerConnection.DEBUG_LOW_LEVEL_VERBOSE ? "ON" : "OFF"));
+               break;
+            case "setinactivitytimeout":
+               if(args.length == 1)
+               {
+                  InactivityManager.getInstance().inactivityDelay = int(args[0]) * 1000;
+                  console.output("Set the inactivity timeout to " + args[0] + " seconds");
+                  break;
+               }
+               if(args.length < 1)
+               {
+                  InactivityManager.getInstance().inactivityDelay = DataEnum.INACTIVITY_DEFAULT_DELAY;
+                  console.output("Inactivity timeout set to default value of " + TimeManager.getInstance().getDuration(InactivityManager.getInstance().inactivityDelay));
+                  break;
+               }
+               console.output("Too many arguments",ConsoleMessageTypeEnum.CONSOLE_ERR_MESSAGE);
+               console.showMan(console,this,cmd);
+               break;
          }
       }
       
       public function getArgs(cmd:String) : Array
       {
-         var _loc2_:* = cmd;
-         switch(0)
+         var argList:Array = [];
+         switch(cmd)
          {
+            case "setinactivitytimeout":
+               argList.push("[time] : Value, in seconds, of the inactivity disconnection delay. (optional)");
          }
-         return [];
+         return argList;
       }
       
       public function getHelp(cmd:String) : String
@@ -51,6 +74,8 @@ package com.ankamagames.dofus.console.debug
                return "Show detailled informations about network activities.";
             case "inspectlowtraffic":
                return "Show detailled informations about network message parsing.";
+            case "setinactivitytimeout":
+               return "Set the time it takes to be disconnected for inactivity (in seconds)";
             default:
                return "No help for command \'" + cmd + "\'";
          }
@@ -58,11 +83,13 @@ package com.ankamagames.dofus.console.debug
       
       public function getMan(cmd:String) : String
       {
-         var _loc2_:* = cmd;
-         switch(0)
+         switch(cmd)
          {
+            case "setinactivitytimeout":
+               return "Set the time it takes to be disconnected for inactivity (in seconds)";
+            default:
+               return I18n.getUiText("ui.chat.console.noMan",[cmd]);
          }
-         return I18n.getUiText("ui.chat.console.noMan",[cmd]);
       }
       
       public function getExamples(cmd:String) : String

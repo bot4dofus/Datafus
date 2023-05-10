@@ -546,6 +546,11 @@ package com.ankamagames.dofus.uiApi
          Dofus.getInstance().reboot();
       }
       
+      public function tryReconnectingAfterDisconnection() : Boolean
+      {
+         return Kernel.getInstance().tryReconnectingAfterDisconnection;
+      }
+      
       public function getCurrentServer() : Server
       {
          return PlayerManager.getInstance().server;
