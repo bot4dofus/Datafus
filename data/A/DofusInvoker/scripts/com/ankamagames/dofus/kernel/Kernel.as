@@ -112,6 +112,8 @@ package com.ankamagames.dofus.kernel
       public static var beingInReconection:Boolean;
        
       
+      private var _tryReconnectingAfterDisconnection:Boolean = true;
+      
       public function Kernel()
       {
          super();
@@ -316,6 +318,16 @@ package com.ankamagames.dofus.kernel
          }
       }
       
+      public function get tryReconnectingAfterDisconnection() : Boolean
+      {
+         return this._tryReconnectingAfterDisconnection;
+      }
+      
+      public function set tryReconnectingAfterDisconnection(value:Boolean) : void
+      {
+         this._tryReconnectingAfterDisconnection = value;
+      }
+      
       public function init(stage:Stage) : void
       {
          StageShareManager.stage = stage;
@@ -405,7 +417,7 @@ package com.ankamagames.dofus.kernel
          WorldPathFinder.init();
       }
       
-      public function reset(messagesToDispatchAfter:Array = null, autoRetry:Boolean = false, reloadData:Boolean = false) : void
+      public function reset(messagesToDispatchAfter:Array = null, autoRetry:Boolean = false) : void
       {
          var msg:Message = null;
          TooltipManager.hide();
@@ -441,7 +453,7 @@ package com.ankamagames.dofus.kernel
          TimeoutHTMLLoader.resetCache();
          OptionManager.reset();
          this.initOptions();
-         addInitialFrames(reloadData);
+         addInitialFrames();
          Kernel.beingInReconection = false;
          if(messagesToDispatchAfter != null && messagesToDispatchAfter.length > 0)
          {

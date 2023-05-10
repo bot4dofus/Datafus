@@ -598,6 +598,8 @@ package com.ankamagames.dofus.internalDatacenter
       public static const BASE_EFFECT_CATEGORY_TIME_OF_USE_HOURS:uint = 510;
       
       public static const ACHIEVEMENT_CAT_MODSTERS_HIDDEN:uint = 130;
+      
+      public static const INACTIVITY_DEFAULT_DELAY:uint = 1800000;
        
       
       public function DataEnum()

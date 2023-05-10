@@ -44,7 +44,6 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.network.messages.connection.IdentificationFailedMessage;
    import com.ankamagames.dofus.network.messages.connection.IdentificationMessage;
    import com.ankamagames.dofus.network.messages.connection.IdentificationSuccessMessage;
-   import com.ankamagames.dofus.network.messages.connection.IdentificationSuccessWithLoginTokenMessage;
    import com.ankamagames.dofus.network.messages.connection.ReleaseAccountMessage;
    import com.ankamagames.dofus.network.messages.connection.register.NicknameAcceptedMessage;
    import com.ankamagames.dofus.network.messages.connection.register.NicknameChoiceRequestMessage;
@@ -308,6 +307,7 @@ package com.ankamagames.dofus.logic.connection.frames
                }
                AuthentificationManager.getInstance().setValidationAction(lva);
                connInfo = this._connexionSequence.shift();
+               Kernel.getInstance().tryReconnectingAfterDisconnection = false;
                ConnectionsHandler.connectToLoginServer(connInfo.host,connInfo.port);
                return true;
             case msg is ServerConnectionFailedMessage:
@@ -375,10 +375,6 @@ package com.ankamagames.dofus.logic.connection.frames
                {
                   KernelEventsManager.getInstance().processCallback(HookList.OpenUpdateInformation);
                }
-               if(ismsg is IdentificationSuccessWithLoginTokenMessage)
-               {
-                  AuthentificationManager.getInstance().nextToken = IdentificationSuccessWithLoginTokenMessage(ismsg).loginToken;
-               }
                if(ismsg.login)
                {
                   AuthentificationManager.getInstance().username = ismsg.login;
@@ -413,9 +409,6 @@ package com.ankamagames.dofus.logic.connection.frames
                   if(lengthModsTou != newLengthModsTou)
                   {
                      files.push("modstou");
-                  }
-                  if(files.length > 0)
-                  {
                      PlayerManager.getInstance().allowAutoConnectCharacter = false;
                      KernelEventsManager.getInstance().processCallback(HookList.AgreementsRequired,files);
                   }

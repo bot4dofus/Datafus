@@ -2059,6 +2059,20 @@
 			"level": 0
 		},
 		{
+			"id": 2954,
+			"categoryId": 1,
+			"gfx": 30,
+			"nameId": 3392,
+			"mapId": 185862661,
+			"realMapId": 131844,
+			"x": -1,
+			"y": -4,
+			"outdoor": true,
+			"subareaId": 10,
+			"worldMapId": 1,
+			"level": 0
+		},
+		{
 			"id": 2955,
 			"categoryId": 1,
 			"gfx": 50,

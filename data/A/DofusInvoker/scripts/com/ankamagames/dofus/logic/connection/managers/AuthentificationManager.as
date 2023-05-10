@@ -191,7 +191,7 @@ package com.ankamagames.dofus.logic.connection.managers
          return this._lva;
       }
       
-      public function get canAutoConnectWithToken() : Boolean
+      public function get hasReconnectToken() : Boolean
       {
          return this.nextToken != null;
       }

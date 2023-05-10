@@ -2,6 +2,7 @@ package com.ankamagames.dofus.logic.game.common.managers
 {
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.dofus.datacenter.communication.InfoMessage;
+   import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.kernel.net.ConnectionType;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
@@ -31,7 +32,7 @@ package com.ankamagames.dofus.logic.game.common.managers
       
       private static const INACTIVITY_DELAY:int = 30 * 60 * 1000;
       
-      private static const INACTIVITY_DELAY_POPUP:int = 20 * 60 * 1000;
+      private static const INACTIVITY_DELAY_WARNING_POPUP:int = 20 * 60 * 1000;
       
       private static const MESSAGE_TYPE_ID:int = 4;
       
@@ -45,9 +46,9 @@ package com.ankamagames.dofus.logic.game.common.managers
       
       private var _isAfk:Boolean;
       
-      private var _activityTimer:BenchmarkTimer;
+      private var _inactivityTimer:BenchmarkTimer;
       
-      private var _activityPopupTimer:BenchmarkTimer;
+      private var _inactivityWarningPopupTimer:BenchmarkTimer;
       
       private var _serverActivityTimer:BenchmarkTimer;
       
@@ -58,8 +59,8 @@ package com.ankamagames.dofus.logic.game.common.managers
       public function InactivityManager()
       {
          super();
-         this._activityTimer = new BenchmarkTimer(INACTIVITY_DELAY,0,"InactivityManager._activityTimer");
-         this._activityPopupTimer = new BenchmarkTimer(INACTIVITY_DELAY_POPUP,0,"InactivityManager._activityPopupTimer");
+         this._inactivityTimer = new BenchmarkTimer(DataEnum.INACTIVITY_DEFAULT_DELAY,0,"InactivityManager._inactivityTimer");
+         this._inactivityWarningPopupTimer = new BenchmarkTimer(INACTIVITY_DELAY_WARNING_POPUP,0,"InactivityManager._inactivityPopupTimer");
          this._serverActivityTimer = new BenchmarkTimer(SERVER_INACTIVITY_DELAY,0,"InactivityManager._serverActivityTimer");
          this.resetActivity();
          this.resetServerActivity();
@@ -87,12 +88,12 @@ package com.ankamagames.dofus.logic.game.common.managers
       
       public function get inactivityDelay() : Number
       {
-         return this._activityTimer.delay;
+         return this._inactivityTimer.delay;
       }
       
       public function set inactivityDelay(t:Number) : void
       {
-         this._activityTimer.delay = t;
+         this._inactivityTimer.delay = t;
          this.resetActivity();
       }
       
@@ -108,10 +109,10 @@ package com.ankamagames.dofus.logic.game.common.managers
       
       public function stop() : void
       {
-         this._activityPopupTimer.stop();
-         this._activityPopupTimer.removeEventListener(TimerEvent.TIMER,this.onActivityPopupTimerUp);
-         this._activityTimer.stop();
-         this._activityTimer.removeEventListener(TimerEvent.TIMER,this.onActivityTimerUp);
+         this._inactivityWarningPopupTimer.stop();
+         this._inactivityWarningPopupTimer.removeEventListener(TimerEvent.TIMER,this.onActivityPopupTimerUp);
+         this._inactivityTimer.stop();
+         this._inactivityTimer.removeEventListener(TimerEvent.TIMER,this.onActivityTimerUp);
          this._serverActivityTimer.stop();
          this._serverActivityTimer.removeEventListener(TimerEvent.TIMER,this.onServerActivityTimerUp);
          StageShareManager.stage.removeEventListener(KeyboardEvent.KEY_DOWN,this.onActivity);
@@ -141,14 +142,14 @@ package com.ankamagames.dofus.logic.game.common.managers
       
       private function resetActivity() : void
       {
-         this._activityPopupTimer.reset();
-         this._activityTimer.reset();
+         this._inactivityWarningPopupTimer.reset();
+         this._inactivityTimer.reset();
          if(!this._paused)
          {
-            this._activityPopupTimer.start();
-            this._activityTimer.start();
-            this._activityPopupTimer.addEventListener(TimerEvent.TIMER,this.onActivityPopupTimerUp);
-            this._activityTimer.addEventListener(TimerEvent.TIMER,this.onActivityTimerUp);
+            this._inactivityWarningPopupTimer.start();
+            this._inactivityTimer.start();
+            this._inactivityWarningPopupTimer.addEventListener(TimerEvent.TIMER,this.onActivityPopupTimerUp);
+            this._inactivityTimer.addEventListener(TimerEvent.TIMER,this.onActivityTimerUp);
          }
       }
       

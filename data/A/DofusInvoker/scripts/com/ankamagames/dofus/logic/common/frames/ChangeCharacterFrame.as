@@ -121,7 +121,8 @@ package com.ankamagames.dofus.logic.common.frames
                   SoundManager.getInstance().manager.removeAllSounds();
                   ConnectionsHandler.closeConnection();
                   Kernel.getWorker().resume();
-                  Kernel.getInstance().reset(null,!!forceNoRetry ? false : AuthentificationManager.getInstance().canAutoConnectWithToken || !AuthentificationManager.getInstance().tokenMode);
+                  Kernel.getInstance().tryReconnectingAfterDisconnection = true;
+                  Kernel.getInstance().reset(null,!!forceNoRetry ? false : AuthentificationManager.getInstance().hasReconnectToken || !AuthentificationManager.getInstance().tokenMode);
                }
                return true;
             case msg is ChangeCharacterAction:
@@ -164,7 +165,8 @@ package com.ankamagames.dofus.logic.common.frames
                   SoundManager.getInstance().manager.removeAllSounds();
                   ConnectionsHandler.closeConnection();
                   Kernel.getWorker().resume();
-                  Kernel.getInstance().reset(null,!!forceNoRetry ? false : AuthentificationManager.getInstance().canAutoConnectWithToken || !AuthentificationManager.getInstance().tokenMode);
+                  Kernel.getInstance().tryReconnectingAfterDisconnection = true;
+                  Kernel.getInstance().reset(null,!!forceNoRetry ? false : AuthentificationManager.getInstance().hasReconnectToken || !AuthentificationManager.getInstance().tokenMode);
                }
                return true;
             case msg is ChangeServerAction:
@@ -202,7 +204,8 @@ package com.ankamagames.dofus.logic.common.frames
                      AuthentificationManager.getInstance().setValidationAction(lvachaNew);
                   }
                   ConnectionsHandler.closeConnection();
-                  Kernel.getInstance().reset(null,!!forceNoRetry ? false : AuthentificationManager.getInstance().canAutoConnectWithToken || !AuthentificationManager.getInstance().tokenMode);
+                  Kernel.getInstance().tryReconnectingAfterDisconnection = true;
+                  Kernel.getInstance().reset(null,!!forceNoRetry ? false : AuthentificationManager.getInstance().hasReconnectToken || !AuthentificationManager.getInstance().tokenMode);
                }
                return true;
             case msg is ReloginTokenStatusMessage:

@@ -52,7 +52,7 @@ package com.ankamagames.dofus.console
          console.addHandler(["clearscene","clearentities","countentities"],new ClearSceneInstructionHandler());
          console.addHandler(["inspector","uiinspector","inspectuielement","autoreloadui","changefonttype","resetuisavedusermodification","getthemefingerprint","inspectuielementsos","modulelist","loadui","unloadui","clearuicache","clearthemedata","setuiscale","useuicache","uilist","reloadui","getmoduleinfo","debugvisionneuse","loadprotoxml","clearcsscache","cleartooltipcache","showarrow","texturebitmapcache","subhint"],new UiHandlerInstructionHandler());
          console.addHandler("cleartexturecache",new ClearTextureCacheInstructionHandler());
-         console.addHandler(["connectionstatus","inspecttraffic","inspectlowtraffic"],new ConnectionInstructionHandler());
+         console.addHandler(["connectionstatus","inspecttraffic","inspectlowtraffic","setinactivitytimeout"],new ConnectionInstructionHandler());
          console.addHandler(["panic","throw"],new PanicInstructionHandler());
          console.addHandler("fullscreen",new FullScreenInstructionHandler());
          console.addHandler("reset",new ResetInstructionHandler());
