@@ -1580,7 +1580,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var fspvsTarget:IEntity = null;
          var flvs:FightLifeVariationStep = null;
          var flvsTarget:IEntity = null;
-         var caster:GameFightEntityInformation = null;
          var idx:int = 0;
          var idx2:int = 0;
          var loseLifeTarget:* = undefined;
@@ -1636,20 +1635,16 @@ package com.ankamagames.dofus.logic.game.fight.frames
                      }
                      hitStep.push(animStep.target);
                   }
-                  if(this._castingSpell)
+                  if(this._castingSpell && this._castingSpell.casterId < 0)
                   {
-                     caster = this.fightEntitiesFrame.getEntityInfos(this._castingSpell.casterId) as GameFightEntityInformation;
-                     if(!caster || this._castingSpell.casterId < 0 && caster.masterId < 0 && !caster.stats.summoned)
+                     if(entityAttaqueAnimWait[animStep.target])
                      {
-                        if(entityAttaqueAnimWait[animStep.target])
-                        {
-                           cleanedBuffer.unshift(entityAttaqueAnimWait[animStep.target]);
-                           delete entityAttaqueAnimWait[animStep.target];
-                        }
-                        if(animStep.animation.indexOf(AnimationEnum.ANIM_ATTAQUE_BASE) != -1)
-                        {
-                           entityAttaqueAnimWait[animStep.target] = new WaitAnimationEventStep(animStep);
-                        }
+                        cleanedBuffer.unshift(entityAttaqueAnimWait[animStep.target]);
+                        delete entityAttaqueAnimWait[animStep.target];
+                     }
+                     if(animStep.animation.indexOf(AnimationEnum.ANIM_ATTAQUE_BASE) != -1)
+                     {
+                        entityAttaqueAnimWait[animStep.target] = new WaitAnimationEventStep(animStep);
                      }
                   }
                   break;
