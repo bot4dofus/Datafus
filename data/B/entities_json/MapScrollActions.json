@@ -221,17 +221,6 @@
 			"topMapId": 73531910.0
 		},
 		{
-			"id": 146187.0,
-			"rightExists": true,
-			"bottomExists": true,
-			"leftExists": false,
-			"topExists": true,
-			"rightMapId": 171704320.0,
-			"bottomMapId": 100141313.0,
-			"leftMapId": 0.0,
-			"topMapId": 167248904.0
-		},
-		{
 			"id": 157205.0,
 			"rightExists": false,
 			"bottomExists": false,
@@ -2716,17 +2705,6 @@
 			"bottomMapId": 171835907.0,
 			"leftMapId": 0.0,
 			"topMapId": 0.0
-		},
-		{
-			"id": 100141313.0,
-			"rightExists": true,
-			"bottomExists": false,
-			"leftExists": false,
-			"topExists": true,
-			"rightMapId": 171704321.0,
-			"bottomMapId": 0.0,
-			"leftMapId": 0.0,
-			"topMapId": 146187.0
 		},
 		{
 			"id": 101187584.0,
@@ -13071,11 +13049,11 @@
 		{
 			"id": 167248904.0,
 			"rightExists": true,
-			"bottomExists": true,
+			"bottomExists": false,
 			"leftExists": false,
 			"topExists": false,
 			"rightMapId": 164102678.0,
-			"bottomMapId": 146187.0,
+			"bottomMapId": 0.0,
 			"leftMapId": 0.0,
 			"topMapId": 0.0
 		},
@@ -14150,11 +14128,11 @@
 			"id": 171704320.0,
 			"rightExists": false,
 			"bottomExists": false,
-			"leftExists": true,
+			"leftExists": false,
 			"topExists": true,
 			"rightMapId": 0.0,
 			"bottomMapId": 0.0,
-			"leftMapId": 146187.0,
+			"leftMapId": 0.0,
 			"topMapId": 164102678.0
 		},
 		{
