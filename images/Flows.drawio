@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-04-05T10:53:25.247Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/111.0" etag="p9wbbTqbvHXG9UawB1QM" version="21.1.4" type="device">
+<mxfile host="app.diagrams.net" modified="2023-05-02T17:28:33.146Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0" etag="xGNqPD_niVOJ022Xs9IA" version="21.2.3" type="device">
   <diagram id="nhp_7rRbsJUrWBSMZgtv" name="Page-1">
-    <mxGraphModel dx="989" dy="1120" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="520" pageHeight="600" math="0" shadow="0">
+    <mxGraphModel dx="1434" dy="1354" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="520" pageHeight="600" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -102,7 +102,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="apTINImMdSON69x1LJTN-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Georgia;" parent="1" target="apTINImMdSON69x1LJTN-2" edge="1" source="apTINImMdSON69x1LJTN-34">
+        <mxCell id="apTINImMdSON69x1LJTN-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Georgia;" parent="1" source="apTINImMdSON69x1LJTN-34" target="apTINImMdSON69x1LJTN-2" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="260" y="80" as="sourcePoint" />
             <mxPoint x="430" y="170" as="targetPoint" />
@@ -135,7 +135,7 @@
         <mxCell id="apTINImMdSON69x1LJTN-52" value="&lt;font color=&quot;#3399FF&quot;&gt;Job C&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;fontFamily=Georgia;fontColor=#FF6666;" parent="1" vertex="1">
           <mxGeometry x="370" y="130" width="40" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="MlVKwU8iSEv3AwQgIC7t-1" value=".java" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Helvetica;opacity=20;textOpacity=20;" parent="1" vertex="1">
+        <mxCell id="MlVKwU8iSEv3AwQgIC7t-1" value="events_java/" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Helvetica;opacity=20;textOpacity=20;" parent="1" vertex="1">
           <mxGeometry x="40" y="640" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="MlVKwU8iSEv3AwQgIC7t-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Georgia;exitX=0.5;exitY=1;exitDx=0;exitDy=0;opacity=20;textOpacity=20;" parent="1" source="apTINImMdSON69x1LJTN-10" target="MlVKwU8iSEv3AwQgIC7t-1" edge="1">
@@ -209,17 +209,17 @@
         <mxCell id="sLgVvRYrVAXlJ8nYai_G-22" value="&lt;font color=&quot;#FF8000&quot;&gt;Job U&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;fontFamily=Georgia;fontColor=#97D077;" parent="1" vertex="1">
           <mxGeometry x="210" y="-100" width="40" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="HrQ2cZQvFkraFqn7cPHn-2" value="Dofus client" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Helvetica;" vertex="1" parent="1">
+        <mxCell id="HrQ2cZQvFkraFqn7cPHn-2" value="Dofus client" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Helvetica;" parent="1" vertex="1">
           <mxGeometry x="200" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="HrQ2cZQvFkraFqn7cPHn-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontFamily=Georgia;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="apTINImMdSON69x1LJTN-1" target="HrQ2cZQvFkraFqn7cPHn-2">
+        <mxCell id="HrQ2cZQvFkraFqn7cPHn-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontFamily=Georgia;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="apTINImMdSON69x1LJTN-1" target="HrQ2cZQvFkraFqn7cPHn-2" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="260" y="-170" as="sourcePoint" />
             <mxPoint x="420" y="160" as="targetPoint" />
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="HrQ2cZQvFkraFqn7cPHn-5" value="&lt;div style=&quot;font-size: 12px&quot;&gt;&lt;font style=&quot;font-size: 12px&quot; color=&quot;#ff8000&quot;&gt;U1&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 12px&quot;&gt;&lt;font style=&quot;font-size: 12px&quot; color=&quot;#000000&quot;&gt;Update&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;fontFamily=Georgia;spacing=0;fontSize=11;fontColor=#FF6666;labelBackgroundColor=none;fillColor=default;" vertex="1" parent="1">
+        <mxCell id="HrQ2cZQvFkraFqn7cPHn-5" value="&lt;div style=&quot;font-size: 12px&quot;&gt;&lt;font style=&quot;font-size: 12px&quot; color=&quot;#ff8000&quot;&gt;U1&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 12px&quot;&gt;&lt;font style=&quot;font-size: 12px&quot; color=&quot;#000000&quot;&gt;Update&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;fontFamily=Georgia;spacing=0;fontSize=11;fontColor=#FF6666;labelBackgroundColor=none;fillColor=default;" parent="1" vertex="1">
           <mxGeometry x="240" y="-55" width="40" height="30" as="geometry" />
         </mxCell>
         <mxCell id="apTINImMdSON69x1LJTN-34" value="Upload" style="text;html=1;strokeColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;fontFamily=Georgia;fillColor=#FFFFFF;" parent="1" vertex="1">
