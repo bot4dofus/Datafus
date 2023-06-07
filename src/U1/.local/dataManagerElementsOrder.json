@@ -17,6 +17,7 @@
         "Update_Text&SequenceX_1"
       ],
       "ArgumentsSectionElementsOrder": [
+        "version_folder",
         "d2i_folder",
         "swf_folder",
         "d2o_folder"
