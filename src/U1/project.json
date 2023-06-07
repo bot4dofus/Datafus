@@ -15,7 +15,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "22.12.0.0",
-  "projectVersion": "1.0.5",
+  "projectVersion": "1.0.6",
   "runtimeOptions": {
     "exceptionHandlerWorkflow": "GlobalHandlerX.xaml",
     "autoDispose": false,
