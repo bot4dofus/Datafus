@@ -3,8 +3,8 @@ for ( $i = 0; $i -lt $args.count; $i++ ) {
     write-host "Argument  $i is $($args[$i])"
 } 
 
-If ($args.count -ne 4) {
-    echo "4 Arguments are needed <project.json file> <swf folder> <d2o folder> <d2i folder>"
+If ($args.count -ne 5) {
+    echo "5 Arguments are needed <project.json file> <swf folder> <d2o folder> <d2i folder>"
 	exit
 }
 
@@ -30,15 +30,20 @@ md $args[2] -ea 0
 Write-Host "Creating folder $args[3]"
 md $args[3] -ea 0
 
+Write-Host "Creating folder $args[4]"
+md $args[4] -ea 0
+
 $SWF_FOLDER = Resolve-Path $args[1]
 $D2O_FOLDER = Resolve-Path $args[2]
 $D2I_FOLDER = Resolve-Path $args[3]
-$INPUT = "{""swf_folder"": '$SWF_FOLDER', ""d2o_folder"": '$D2O_FOLDER', ""d2i_folder"": '$D2I_FOLDER'}"
+$VERSION_FOLDER = Resolve-Path $args[4]
+$INPUT = "{""swf_folder"": '$SWF_FOLDER', ""d2o_folder"": '$D2O_FOLDER', ""d2i_folder"": '$D2I_FOLDER', ""version_folder"": '$VERSION_FOLDER'}"
 $INPUT = $INPUT.replace("\", "//")
 
 Write-Host Swf folder: $SWF_FOLDER
 Write-Host D2o folder: $D2O_FOLDER
 Write-Host D2i folder: $D2I_FOLDER
+Write-Host Version folder: $VERSION_FOLDER
 Write-Host Input: $INPUT
 
 Set-Location $UIPATH
