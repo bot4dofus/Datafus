@@ -164,7 +164,7 @@ jobs:
 
       - name: Get latest Dofus version
         run: |
-          export DOFUS_VERSION=$(python devscript/latest-dofus-version.py)
+          export DOFUS_VERSION=$(bash devscript/latest-dofus-version.sh)
           echo The current Dofus version is $DOFUS_VERSION
           echo "::set-env name=VERSION::$DOFUS_VERSION"
         env:
