@@ -152,8 +152,6 @@ class ActionScriptReader:
                                 attribute.addType(_type)
                                 continue
 
-        # print(self.attributesToDict())
-
         return {
             'file': self.file_name,
             'id': self.protocolId,
@@ -179,9 +177,6 @@ class NetworkActionScriptReader:
     def __init__(self, folder):
         self.folder = folder
         self.files = self.list_files(folder)
-        # self.files = ['data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/context/fight/GameFightSynchronizeMessage.as']
-        # print(self.files)
-
 
     def list_files(self, search_folder, format=ACTION_SCRIPT_FORMAT):
         print("Searching " + format + " files...")
