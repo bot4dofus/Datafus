@@ -170,11 +170,13 @@ def is_file_up_to_date(file):
                 return False
     return True
 
+
 def is_file_interesting(file):
     name = file.Name().decode("utf-8")
     if "DofusInvoker.swf" in name or ".d2o" in name or".d2i" in name:
         return True
     return False
+
 
 def get_files_to_download(manifest):
     files = []
@@ -195,6 +197,7 @@ def main():
     files_to_download = get_files_to_download(manifest)
     print("Updating", len(files_to_download), "files")
     parse_fragments(manifest, files_to_download)
+
 
 if __name__ == "__main__":
     main()
