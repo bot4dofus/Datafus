@@ -173,7 +173,7 @@ def is_file_up_to_date(file):
 
 def is_file_interesting(file):
     name = file.Name().decode("utf-8")
-    if "DofusInvoker.swf" in name or ".d2o" in name or".d2i" in name:
+    if "DofusInvoker.swf" in name or ".d2o" in name or".d2i" in name or "VERSION" in name:
         return True
     return False
 
