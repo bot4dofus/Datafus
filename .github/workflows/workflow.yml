@@ -1,8 +1,10 @@
 name: Workflow
 
 on:
-  workflow_dispatch:
-  repository_dispatch:
+  push:
+    branches:
+      - '*'
+      - '!master'
 
 jobs:
   Job_U:
