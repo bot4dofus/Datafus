@@ -1,0 +1,2 @@
+flatbuffers==23.5.26
+requests==2.31.0
