@@ -201,7 +201,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"houseInfos": "HouseInstanceInformations",
+			"houseInfos": "TypeId<HouseInstanceInformations>",
 			"worldX": "Short",
 			"worldY": "Short",
 			"mapId": "Double",
@@ -407,7 +407,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"finishedAchievements": "Vector<Short,AchievementAchieved>"
+			"finishedAchievements": "TypeIdVector<Short,AchievementAchieved>"
 		}
 	},
 	"AchievementObjective": {
@@ -474,7 +474,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"acquaintanceAdded": "AcquaintanceInformation"
+			"acquaintanceAdded": "TypeId<AcquaintanceInformation>"
 		}
 	},
 	"AcquaintanceInformation": {
@@ -499,7 +499,7 @@
 			"playerId": "VarLong",
 			"playerName": "String",
 			"moodSmileyId": "VarShort",
-			"status": "PlayerStatus"
+			"status": "TypeId<PlayerStatus>"
 		}
 	},
 	"AcquaintanceSearchErrorMessage": {
@@ -552,7 +552,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"acquaintanceList": "Vector<Short,AcquaintanceInformation>"
+			"acquaintanceList": "TypeIdVector<Short,AcquaintanceInformation>"
 		}
 	},
 	"ActivityHideRequestMessage": {
@@ -1030,7 +1030,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"infos": "AllianceFactSheetInformation",
+			"infos": "TypeId<AllianceFactSheetInformation>",
 			"members": "Vector<Short,CharacterMinimalSocialPublicInformations>",
 			"controlledSubareaIds": "Vector<Short,VarShort>",
 			"leaderCharacterId": "VarLong",
@@ -1158,7 +1158,7 @@
 		"attributes": {
 			"allianceInfos": "AllianceFactSheetInformation",
 			"members": "Vector<Short,AllianceMemberInfo>",
-			"prisms": "Vector<Short,PrismGeolocalizedInformation>",
+			"prisms": "TypeIdVector<Short,PrismGeolocalizedInformation>",
 			"taxCollectors": "Vector<Short,TaxCollectorInformations>"
 		}
 	},
@@ -1767,7 +1767,7 @@
 			"creationTime": "Double",
 			"expirationType": "Byte",
 			"expirationValue": "Double",
-			"effects": "Vector<Short,ObjectEffect>"
+			"effects": "TypeIdVector<Short,ObjectEffect>"
 		}
 	},
 	"AlterationRemovedMessage": {
@@ -2163,7 +2163,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"datas": "Vector<Short,StatisticData>"
+			"datas": "TypeIdVector<Short,StatisticData>"
 		}
 	},
 	"BasicTimeMessage": {
@@ -2206,7 +2206,7 @@
 			"areaId": "Short",
 			"serverId": "Short",
 			"originServerId": "Short",
-			"socialGroups": "Vector<Short,AbstractSocialGroupInfos>",
+			"socialGroups": "TypeIdVector<Short,AbstractSocialGroupInfos>",
 			"verbose": "Boolean",
 			"playerState": "Byte"
 		}
@@ -2219,7 +2219,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"target": "AbstractPlayerSearchInformation"
+			"target": "TypeId<AbstractPlayerSearchInformation>"
 		}
 	},
 	"BasicWhoIsRequestMessage": {
@@ -2231,7 +2231,7 @@
 		],
 		"attributes": {
 			"verbose": "Boolean",
-			"target": "AbstractPlayerSearchInformation"
+			"target": "TypeId<AbstractPlayerSearchInformation>"
 		}
 	},
 	"BidExchangerObjectInfo": {
@@ -2245,7 +2245,7 @@
 			"objectUID": "VarInt",
 			"objectGID": "VarInt",
 			"objectType": "Int",
-			"effects": "Vector<Short,ObjectEffect>",
+			"effects": "TypeIdVector<Short,ObjectEffect>",
 			"prices": "Vector<Short,VarLong>"
 		}
 	},
@@ -2285,7 +2285,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"branches": "Vector<Short,ExtendedBreachBranch>"
+			"branches": "TypeIdVector<Short,ExtendedBreachBranch>"
 		}
 	},
 	"BreachBudgetMessage": {
@@ -2841,7 +2841,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"characteristics": "Vector<Short,CharacterCharacteristic>"
+			"characteristics": "TypeIdVector<Short,CharacterCharacteristic>"
 		}
 	},
 	"CharacterCharacteristicsInformations": {
@@ -2859,7 +2859,7 @@
 			"kamas": "VarLong",
 			"alignmentInfos": "ActorExtendedAlignmentInformations",
 			"criticalHitWeapon": "VarShort",
-			"characteristics": "Vector<Short,CharacterCharacteristic>",
+			"characteristics": "TypeIdVector<Short,CharacterCharacteristic>",
 			"spellModifications": "Vector<Short,CharacterSpellModification>",
 			"probationTime": "Double"
 		}
@@ -3260,7 +3260,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"characters": "Vector<Short,CharacterBaseInformations>"
+			"characters": "TypeIdVector<Short,CharacterBaseInformations>"
 		}
 	},
 	"CharactersListRequestMessage": {
@@ -3347,7 +3347,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"receiver": "AbstractPlayerSearchInformation"
+			"receiver": "TypeId<AbstractPlayerSearchInformation>"
 		}
 	},
 	"ChatClientPrivateWithObjectMessage": {
@@ -3606,7 +3606,7 @@
 		],
 		"attributes": {
 			"type": "Byte",
-			"coords": "MapCoordinates"
+			"coords": "TypeId<MapCoordinates>"
 		}
 	},
 	"CompassUpdatePartyMemberMessage": {
@@ -3863,7 +3863,7 @@
 		],
 		"attributes": {
 			"action": "Byte",
-			"debts": "Vector<Short,DebtInformation>"
+			"debts": "TypeIdVector<Short,DebtInformation>"
 		}
 	},
 	"DebugClearHighlightCellsMessage": {
@@ -4448,7 +4448,7 @@
 			"itemUID": "Int",
 			"objectGID": "VarInt",
 			"objectType": "Int",
-			"effects": "Vector<Short,ObjectEffect>",
+			"effects": "TypeIdVector<Short,ObjectEffect>",
 			"prices": "Vector<Short,VarLong>"
 		}
 	},
@@ -5697,7 +5697,7 @@
 		"attributes": {
 			"fightId": "VarShort",
 			"fightType": "Byte",
-			"fightTeams": "Vector<Short,FightTeamInformations>",
+			"fightTeams": "TypeIdVector<Short,FightTeamInformations>",
 			"fightTeamsPositions": "Vector<Short,VarShort>",
 			"fightTeamsOptions": "Vector<Short,FightOptionsInformations>"
 		}
@@ -5712,7 +5712,7 @@
 		"attributes": {
 			"actionId": "VarShort",
 			"sourceId": "Double",
-			"effect": "AbstractFightDispellableEffect"
+			"effect": "TypeId<AbstractFightDispellableEffect>"
 		}
 	},
 	"FightEntityDispositionInformations": {
@@ -5871,7 +5871,7 @@
 		],
 		"attributes": {
 			"level": "VarShort",
-			"additional": "Vector<Short,FightResultAdditionalData>"
+			"additional": "TypeIdVector<Short,FightResultAdditionalData>"
 		}
 	},
 	"FightResultPvpData": {
@@ -5920,7 +5920,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"teamMembers": "Vector<Short,FightTeamMemberInformations>"
+			"teamMembers": "TypeIdVector<Short,FightTeamMemberInformations>"
 		}
 	},
 	"FightTeamLightInformations": {
@@ -6294,7 +6294,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"target": "AbstractPlayerSearchInformation"
+			"target": "TypeId<AbstractPlayerSearchInformation>"
 		}
 	},
 	"FriendAddedMessage": {
@@ -6305,7 +6305,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"friendAdded": "FriendInformations"
+			"friendAdded": "TypeId<FriendInformations>"
 		}
 	},
 	"FriendDeleteRequestMessage": {
@@ -6376,7 +6376,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"target": "AbstractPlayerSearchInformation"
+			"target": "TypeId<AbstractPlayerSearchInformation>"
 		}
 	},
 	"FriendOnlineInformations": {
@@ -6395,7 +6395,7 @@
 			"sex": "Boolean",
 			"guildInfo": "GuildInformations",
 			"moodSmileyId": "VarShort",
-			"status": "PlayerStatus",
+			"status": "TypeId<PlayerStatus>",
 			"havenBagShared": "Boolean"
 		}
 	},
@@ -6504,7 +6504,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"friendUpdated": "FriendInformations"
+			"friendUpdated": "TypeId<FriendInformations>"
 		}
 	},
 	"FriendWarnOnConnectionStateMessage": {
@@ -6546,7 +6546,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"friendsList": "Vector<Short,FriendInformations>"
+			"friendsList": "TypeIdVector<Short,FriendInformations>"
 		}
 	},
 	"FullStatsPreset": {
@@ -6696,7 +6696,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"effect": "AbstractFightDispellableEffect"
+			"effect": "TypeId<AbstractFightDispellableEffect>"
 		}
 	},
 	"GameActionFightDodgePointLossMessage": {
@@ -6839,7 +6839,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"summons": "Vector<Short,GameContextSummonsInformation>"
+			"summons": "TypeIdVector<Short,GameContextSummonsInformation>"
 		}
 	},
 	"GameActionFightNoSpellCastMessage": {
@@ -6970,7 +6970,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"summons": "Vector<Short,GameFightFighterInformations>"
+			"summons": "TypeIdVector<Short,GameFightFighterInformations>"
 		}
 	},
 	"GameActionFightTackledMessage": {
@@ -7206,7 +7206,7 @@
 		],
 		"attributes": {
 			"contextualId": "Double",
-			"disposition": "EntityDispositionInformations"
+			"disposition": "TypeId<EntityDispositionInformations>"
 		}
 	},
 	"GameContextBasicSpawnInformation": {
@@ -7219,7 +7219,7 @@
 		"attributes": {
 			"teamId": "Byte",
 			"alive": "Boolean",
-			"informations": "GameContextActorPositionInformations"
+			"informations": "TypeId<GameContextActorPositionInformations>"
 		}
 	},
 	"GameContextCreateErrorMessage": {
@@ -7377,11 +7377,11 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"spawnInformation": "SpawnInformation",
+			"spawnInformation": "TypeId<SpawnInformation>",
 			"wave": "Byte",
 			"look": "EntityLook",
-			"stats": "GameFightCharacteristics",
-			"summons": "Vector<Short,GameContextBasicSpawnInformation>"
+			"stats": "TypeId<GameFightCharacteristics>",
+			"summons": "TypeIdVector<Short,GameContextBasicSpawnInformation>"
 		}
 	},
 	"GameDataPaddockObjectAddMessage": {
@@ -7520,7 +7520,7 @@
 			"duration": "Int",
 			"rewardRate": "VarShort",
 			"lootShareLimitMalus": "Short",
-			"results": "Vector<Short,FightResultListEntry>",
+			"results": "TypeIdVector<Short,FightResultListEntry>",
 			"namedPartyTeamsOutcomes": "Vector<Short,NamedPartyTeamWithOutcome>"
 		}
 	},
@@ -7559,7 +7559,7 @@
 		"attributes": {
 			"spawnInfo": "GameContextBasicSpawnInformation",
 			"wave": "Byte",
-			"stats": "GameFightCharacteristics",
+			"stats": "TypeId<GameFightCharacteristics>",
 			"previousPositions": "Vector<Short,VarShort>"
 		}
 	},
@@ -7897,7 +7897,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"informations": "GameContextActorInformations"
+			"informations": "TypeId<GameContextActorInformations>"
 		}
 	},
 	"GameFightRemoveTeamMemberMessage": {
@@ -7959,7 +7959,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"informations": "GameFightFighterInformations"
+			"informations": "TypeId<GameFightFighterInformations>"
 		}
 	},
 	"GameFightShowFighterRandomStaticPoseMessage": {
@@ -8056,7 +8056,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"fighters": "Vector<Short,GameFightFighterInformations>"
+			"fighters": "TypeIdVector<Short,GameFightFighterInformations>"
 		}
 	},
 	"GameFightTaxCollectorInformations": {
@@ -8560,7 +8560,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"staticInfos": "GroupMonsterStaticInformations",
+			"staticInfos": "TypeId<GroupMonsterStaticInformations>",
 			"lootShare": "Byte",
 			"alignmentSide": "Byte",
 			"hasHardcoreDrop": "Boolean"
@@ -8575,7 +8575,7 @@
 		],
 		"attributes": {
 			"nbWaves": "Byte",
-			"alternatives": "Vector<Short,GroupMonsterStaticInformations>"
+			"alternatives": "TypeIdVector<Short,GroupMonsterStaticInformations>"
 		}
 	},
 	"GameRolePlayHumanoidInformations": {
@@ -8586,7 +8586,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"humanoidInfo": "HumanInformations",
+			"humanoidInfo": "TypeId<HumanInformations>",
 			"accountId": "Int"
 		}
 	},
@@ -8759,7 +8759,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"portal": "PortalInformation"
+			"portal": "TypeId<PortalInformation>"
 		}
 	},
 	"GameRolePlayPrismInformations": {
@@ -8770,7 +8770,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"prism": "PrismInformation"
+			"prism": "TypeId<PrismInformation>"
 		}
 	},
 	"GameRolePlayRemoveChallengeMessage": {
@@ -8792,7 +8792,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"informations": "GameRolePlayActorInformations"
+			"informations": "TypeId<GameRolePlayActorInformations>"
 		}
 	},
 	"GameRolePlayShowActorWithEventMessage": {
@@ -8825,7 +8825,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"informationsList": "Vector<Short,GameRolePlayActorInformations>"
+			"informationsList": "TypeIdVector<Short,GameRolePlayActorInformations>"
 		}
 	},
 	"GameRolePlaySpellAnimMessage": {
@@ -8860,7 +8860,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"identification": "TaxCollectorStaticInformations",
+			"identification": "TypeId<TaxCollectorStaticInformations>",
 			"taxCollectorAttack": "Int"
 		}
 	},
@@ -9253,7 +9253,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"infos": "GuildFactSheetInformations",
+			"infos": "TypeId<GuildFactSheetInformations>",
 			"creationDate": "Int",
 			"members": "Vector<Short,CharacterMinimalSocialPublicInformations>"
 		}
@@ -9617,8 +9617,8 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"globalActivities": "Vector<Short,GuildLogbookEntryBasicInformation>",
-			"chestActivities": "Vector<Short,GuildLogbookEntryBasicInformation>"
+			"globalActivities": "TypeIdVector<Short,GuildLogbookEntryBasicInformation>",
+			"chestActivities": "TypeIdVector<Short,GuildLogbookEntryBasicInformation>"
 		}
 	},
 	"GuildLogbookInformationRequestMessage": {
@@ -10535,7 +10535,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"houseInfos": "HouseInstanceInformations",
+			"houseInfos": "TypeId<HouseInstanceInformations>",
 			"worldX": "Short",
 			"worldY": "Short"
 		}
@@ -10600,7 +10600,7 @@
 		"attributes": {
 			"houseId": "VarInt",
 			"doorsOnMap": "Vector<Short,Int>",
-			"properties": "HouseInstanceInformations"
+			"properties": "TypeId<HouseInstanceInformations>"
 		}
 	},
 	"HouseSellFromInsideRequestMessage": {
@@ -10702,7 +10702,7 @@
 		"attributes": {
 			"restrictions": "ActorRestrictionsInformations",
 			"sex": "Boolean",
-			"options": "Vector<Short,HumanOption>"
+			"options": "TypeIdVector<Short,HumanOption>"
 		}
 	},
 	"HumanOption": {
@@ -10976,7 +10976,7 @@
 		],
 		"attributes": {
 			"idolSource": "Byte",
-			"idols": "Vector<Short,Idol>"
+			"idols": "TypeIdVector<Short,Idol>"
 		}
 	},
 	"IdolListMessage": {
@@ -10989,7 +10989,7 @@
 		"attributes": {
 			"chosenIdols": "Vector<Short,VarShort>",
 			"partyChosenIdols": "Vector<Short,VarShort>",
-			"partyIdols": "Vector<Short,PartyIdol>"
+			"partyIdols": "TypeIdVector<Short,PartyIdol>"
 		}
 	},
 	"IdolPartyLostMessage": {
@@ -11105,7 +11105,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"target": "AbstractPlayerSearchInformation",
+			"target": "TypeId<AbstractPlayerSearchInformation>",
 			"session": "Boolean"
 		}
 	},
@@ -11117,7 +11117,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"ignoreAdded": "IgnoredInformations",
+			"ignoreAdded": "TypeId<IgnoredInformations>",
 			"session": "Boolean"
 		}
 	},
@@ -11172,7 +11172,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"ignoredList": "Vector<Short,IgnoredInformations>"
+			"ignoredList": "TypeIdVector<Short,IgnoredInformations>"
 		}
 	},
 	"IgnoredOnlineInformations": {
@@ -11211,8 +11211,8 @@
 		"attributes": {
 			"elementId": "Int",
 			"elementTypeId": "Int",
-			"enabledSkills": "Vector<Short,InteractiveElementSkill>",
-			"disabledSkills": "Vector<Short,InteractiveElementSkill>",
+			"enabledSkills": "TypeIdVector<Short,InteractiveElementSkill>",
+			"disabledSkills": "TypeIdVector<Short,InteractiveElementSkill>",
 			"onCurrentMap": "Boolean"
 		}
 	},
@@ -11269,7 +11269,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"interactiveElements": "Vector<Short,InteractiveElement>"
+			"interactiveElements": "TypeIdVector<Short,InteractiveElement>"
 		}
 	},
 	"InteractiveUseEndedMessage": {
@@ -11585,7 +11585,7 @@
 			"mapId": "Double",
 			"subAreaId": "VarShort",
 			"canCraftLegendary": "Boolean",
-			"status": "PlayerStatus"
+			"status": "TypeId<PlayerStatus>"
 		}
 	},
 	"JobCrafterDirectoryEntryRequestMessage": {
@@ -11678,7 +11678,7 @@
 		],
 		"attributes": {
 			"jobId": "Byte",
-			"skills": "Vector<Short,SkillActionDescription>"
+			"skills": "TypeIdVector<Short,SkillActionDescription>"
 		}
 	},
 	"JobDescriptionMessage": {
@@ -12142,7 +12142,7 @@
 			"floor": "VarInt",
 			"room": "Byte",
 			"infinityMode": "Short",
-			"branches": "Vector<Short,BreachBranch>"
+			"branches": "TypeIdVector<Short,BreachBranch>"
 		}
 	},
 	"MapComplementaryInformationsDataInHavenBagMessage": {
@@ -12180,9 +12180,9 @@
 		"attributes": {
 			"subAreaId": "VarShort",
 			"mapId": "Double",
-			"houses": "Vector<Short,HouseInformations>",
-			"actors": "Vector<Short,GameRolePlayActorInformations>",
-			"interactiveElements": "Vector<Short,InteractiveElement>",
+			"houses": "TypeIdVector<Short,HouseInformations>",
+			"actors": "TypeIdVector<Short,GameRolePlayActorInformations>",
+			"interactiveElements": "TypeIdVector<Short,InteractiveElement>",
 			"statedElements": "Vector<Short,StatedElement>",
 			"obstacles": "Vector<Short,MapObstacle>",
 			"fights": "Vector<Short,FightCommonInformations>",
@@ -12326,8 +12326,8 @@
 		],
 		"attributes": {
 			"fightId": "VarShort",
-			"attackers": "Vector<Short,GameFightFighterLightInformations>",
-			"defenders": "Vector<Short,GameFightFighterLightInformations>"
+			"attackers": "TypeIdVector<Short,GameFightFighterLightInformations>",
+			"defenders": "TypeIdVector<Short,GameFightFighterLightInformations>"
 		}
 	},
 	"MapRunningFightDetailsRequestMessage": {
@@ -13287,7 +13287,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"effects": "Vector<Short,ObjectEffect>"
+			"effects": "TypeIdVector<Short,ObjectEffect>"
 		}
 	},
 	"ObjectErrorMessage": {
@@ -13369,7 +13369,7 @@
 		"attributes": {
 			"position": "Short",
 			"objectGID": "VarInt",
-			"effects": "Vector<Short,ObjectEffect>",
+			"effects": "TypeIdVector<Short,ObjectEffect>",
 			"objectUID": "VarInt",
 			"quantity": "VarInt"
 		}
@@ -13418,7 +13418,7 @@
 		],
 		"attributes": {
 			"objectGID": "VarInt",
-			"effects": "Vector<Short,ObjectEffect>"
+			"effects": "TypeIdVector<Short,ObjectEffect>"
 		}
 	},
 	"ObjectItemNotInContainer": {
@@ -13430,7 +13430,7 @@
 		],
 		"attributes": {
 			"objectGID": "VarInt",
-			"effects": "Vector<Short,ObjectEffect>",
+			"effects": "TypeIdVector<Short,ObjectEffect>",
 			"objectUID": "VarInt",
 			"quantity": "VarInt"
 		}
@@ -13469,7 +13469,7 @@
 		],
 		"attributes": {
 			"objectGID": "VarInt",
-			"effects": "Vector<Short,ObjectEffect>",
+			"effects": "TypeIdVector<Short,ObjectEffect>",
 			"objectUID": "VarInt",
 			"quantity": "VarInt",
 			"objectPrice": "VarLong"
@@ -13846,7 +13846,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"paddocks": "Vector<Short,PaddockBuyableInformations>"
+			"paddocks": "TypeIdVector<Short,PaddockBuyableInformations>"
 		}
 	},
 	"PaddockItem": {
@@ -14134,7 +14134,7 @@
 			"guestLook": "EntityLook",
 			"breed": "Byte",
 			"sex": "Boolean",
-			"status": "PlayerStatus",
+			"status": "TypeId<PlayerStatus>",
 			"entities": "Vector<Short,PartyEntityBaseInformation>"
 		}
 	},
@@ -14182,7 +14182,7 @@
 			"fromId": "VarLong",
 			"fromName": "String",
 			"leaderId": "VarLong",
-			"members": "Vector<Short,PartyInvitationMemberInformations>",
+			"members": "TypeIdVector<Short,PartyInvitationMemberInformations>",
 			"guests": "Vector<Short,PartyGuestInformations>"
 		}
 	},
@@ -14268,7 +14268,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"target": "AbstractPlayerSearchInformation"
+			"target": "TypeId<AbstractPlayerSearchInformation>"
 		}
 	},
 	"PartyJoinMessage": {
@@ -14282,7 +14282,7 @@
 			"partyType": "Byte",
 			"partyLeaderId": "VarLong",
 			"maxParticipants": "Byte",
-			"members": "Vector<Short,PartyMemberInformations>",
+			"members": "TypeIdVector<Short,PartyMemberInformations>",
 			"guests": "Vector<Short,PartyGuestInformations>",
 			"restricted": "Boolean",
 			"partyName": "String"
@@ -14448,8 +14448,8 @@
 			"worldY": "Short",
 			"mapId": "Double",
 			"subAreaId": "VarShort",
-			"status": "PlayerStatus",
-			"entities": "Vector<Short,PartyEntityBaseInformation>"
+			"status": "TypeId<PlayerStatus>",
+			"entities": "TypeIdVector<Short,PartyEntityBaseInformation>"
 		}
 	},
 	"PartyMemberRemoveMessage": {
@@ -14603,7 +14603,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"memberInformations": "PartyMemberInformations"
+			"memberInformations": "TypeId<PartyMemberInformations>"
 		}
 	},
 	"PauseDialogMessage": {
@@ -14692,7 +14692,7 @@
 		"attributes": {
 			"accountId": "Int",
 			"playerId": "VarLong",
-			"status": "PlayerStatus"
+			"status": "TypeId<PlayerStatus>"
 		}
 	},
 	"PlayerStatusUpdateRequestMessage": {
@@ -14703,7 +14703,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"status": "PlayerStatus"
+			"status": "TypeId<PlayerStatus>"
 		}
 	},
 	"PopupWarningCloseRequestMessage": {
@@ -14826,7 +14826,7 @@
 		],
 		"attributes": {
 			"presetId": "Short",
-			"preset": "Preset"
+			"preset": "TypeId<Preset>"
 		}
 	},
 	"PresetUseRequestMessage": {
@@ -14871,7 +14871,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"presets": "Vector<Short,Preset>"
+			"presets": "TypeIdVector<Short,Preset>"
 		}
 	},
 	"PresetsMessage": {
@@ -14882,7 +14882,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"presets": "Vector<Short,Preset>"
+			"presets": "TypeIdVector<Short,Preset>"
 		}
 	},
 	"PrismAddOrUpdateMessage": {
@@ -14950,7 +14950,7 @@
 			"worldX": "Short",
 			"worldY": "Short",
 			"mapId": "Double",
-			"prism": "PrismInformation"
+			"prism": "TypeId<PrismInformation>"
 		}
 	},
 	"PrismInformation": {
@@ -15005,7 +15005,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"prisms": "Vector<Short,PrismGeolocalizedInformation>"
+			"prisms": "TypeIdVector<Short,PrismGeolocalizedInformation>"
 		}
 	},
 	"ProtectedEntityWaitingForHelpInfo": {
@@ -15056,7 +15056,7 @@
 		],
 		"attributes": {
 			"stepId": "VarShort",
-			"objectives": "Vector<Short,QuestObjectiveInformations>"
+			"objectives": "TypeIdVector<Short,QuestObjectiveInformations>"
 		}
 	},
 	"QuestActiveInformations": {
@@ -15080,7 +15080,7 @@
 		"attributes": {
 			"finishedQuestsIds": "Vector<Short,VarShort>",
 			"finishedQuestsCounts": "Vector<Short,VarShort>",
-			"activeQuests": "Vector<Short,QuestActiveInformations>",
+			"activeQuests": "TypeIdVector<Short,QuestActiveInformations>",
 			"reinitDoneQuestsIds": "Vector<Short,VarShort>"
 		}
 	},
@@ -15172,7 +15172,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"infos": "QuestActiveInformations"
+			"infos": "TypeId<QuestActiveInformations>"
 		}
 	},
 	"QuestStepInfoRequestMessage": {
@@ -15641,7 +15641,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"variables": "Vector<Short,ServerSessionConstant>"
+			"variables": "TypeIdVector<Short,ServerSessionConstant>"
 		}
 	},
 	"ServerSettingsMessage": {
@@ -15728,7 +15728,7 @@
 		"attributes": {
 			"setId": "VarShort",
 			"setObjects": "Vector<Short,VarInt>",
-			"setEffects": "Vector<Short,ObjectEffect>"
+			"setEffects": "TypeIdVector<Short,ObjectEffect>"
 		}
 	},
 	"Shortcut": {
@@ -15762,7 +15762,7 @@
 		],
 		"attributes": {
 			"barType": "Byte",
-			"shortcut": "Shortcut"
+			"shortcut": "TypeId<Shortcut>"
 		}
 	},
 	"ShortcutBarContentMessage": {
@@ -15774,7 +15774,7 @@
 		],
 		"attributes": {
 			"barType": "Byte",
-			"shortcuts": "Vector<Short,Shortcut>"
+			"shortcuts": "TypeIdVector<Short,Shortcut>"
 		}
 	},
 	"ShortcutBarRefreshMessage": {
@@ -15786,7 +15786,7 @@
 		],
 		"attributes": {
 			"barType": "Byte",
-			"shortcut": "Shortcut"
+			"shortcut": "TypeId<Shortcut>"
 		}
 	},
 	"ShortcutBarRemoveErrorMessage": {
@@ -15833,7 +15833,7 @@
 		],
 		"attributes": {
 			"barType": "Byte",
-			"shortcut": "Shortcut"
+			"shortcut": "TypeId<Shortcut>"
 		}
 	},
 	"ShortcutBarSwapErrorMessage": {
@@ -16064,7 +16064,7 @@
 			"slaveTurn": "VarShort",
 			"slaveSpells": "Vector<Short,SpellItem>",
 			"slaveStats": "CharacterCharacteristicsInformations",
-			"shortcuts": "Vector<Short,Shortcut>"
+			"shortcuts": "TypeIdVector<Short,Shortcut>"
 		}
 	},
 	"SocialApplicationInformation": {
@@ -16168,7 +16168,7 @@
 			"connected": "Byte",
 			"hoursSinceLastConnection": "Short",
 			"accountId": "Int",
-			"status": "PlayerStatus",
+			"status": "TypeId<PlayerStatus>",
 			"rankId": "Int",
 			"enrollmentDate": "Double"
 		}
@@ -16373,7 +16373,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"spouse": "FriendSpouseInformations"
+			"spouse": "TypeId<FriendSpouseInformations>"
 		}
 	},
 	"SpouseStatusMessage": {
@@ -16840,7 +16840,7 @@
 		],
 		"attributes": {
 			"callerId": "VarLong",
-			"description": "TaxCollectorInformations"
+			"description": "TypeId<TaxCollectorInformations>"
 		}
 	},
 	"TaxCollectorAttackedMessage": {
@@ -16982,7 +16982,7 @@
 			"subAreaId": "VarShort",
 			"state": "Byte",
 			"look": "EntityLook",
-			"complements": "Vector<Short,TaxCollectorComplementaryInformations>",
+			"complements": "TypeIdVector<Short,TaxCollectorComplementaryInformations>",
 			"characteristics": "CharacterCharacteristics",
 			"equipments": "Vector<Short,ObjectItem>",
 			"spells": "Vector<Short,TaxCollectorOrderedSpell>"
@@ -17417,8 +17417,8 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"dungeonTaxCollectorsInformation": "Vector<Short,TaxCollectorInformations>",
-			"worldTaxCollectorsInformation": "Vector<Short,TaxCollectorInformations>"
+			"dungeonTaxCollectorsInformation": "TypeIdVector<Short,TaxCollectorInformations>",
+			"worldTaxCollectorsInformation": "TypeIdVector<Short,TaxCollectorInformations>"
 		}
 	},
 	"TreasureHuntAvailableRetryCountUpdateMessage": {
@@ -17559,7 +17559,7 @@
 		"attributes": {
 			"questType": "Byte",
 			"startMapId": "Double",
-			"knownStepsList": "Vector<Short,TreasureHuntStep>",
+			"knownStepsList": "TypeIdVector<Short,TreasureHuntStep>",
 			"totalStepCount": "Byte",
 			"checkPointCurrent": "VarInt",
 			"checkPointTotal": "VarInt",
@@ -17777,7 +17777,7 @@
 		],
 		"attributes": {
 			"rideId": "VarInt",
-			"boostToUpdateList": "Vector<Short,UpdateMountCharacteristic>"
+			"boostToUpdateList": "TypeIdVector<Short,UpdateMountCharacteristic>"
 		}
 	},
 	"UpdateMountIntegerCharacteristic": {
