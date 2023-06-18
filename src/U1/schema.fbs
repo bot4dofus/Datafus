@@ -1,0 +1,33 @@
+namespace Cytrus;
+
+table Manifest {
+    fragments: [Fragment];
+}
+
+table Fragment {
+    name: string;
+    files: [File];
+    bundles: [Bundle];
+}
+
+table Bundle {
+    hash: [byte];
+    chunks: [Chunk];
+}
+
+table File {
+    name: string;
+    size: int64;
+    hash: [byte];
+    chunks: [Chunk];
+    executable: bool;
+    symlink: string;
+}
+
+table Chunk {
+    hash: [byte];
+    size: int64;
+    offset: int64;
+}
+
+

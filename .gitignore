@@ -3,3 +3,4 @@
 **/*.log
 src/U1/*.nupkg
 src/U1/tmp
+data/U/*
