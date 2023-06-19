@@ -1,0 +1,160 @@
+{
+	"def": [
+		{
+			"memberName": "SoundUiHook",
+			"packageName": "com.ankamagames.dofus.datacenter.sounds",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "name",
+					"type": -3
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 1,
+			"name": "onRollOver"
+		},
+		{
+			"id": 2,
+			"name": "onRollOut"
+		},
+		{
+			"id": 3,
+			"name": "onRelease"
+		},
+		{
+			"id": 4,
+			"name": "onReleaseOutside"
+		},
+		{
+			"id": 5,
+			"name": "onRightClick"
+		},
+		{
+			"id": 6,
+			"name": "onPress"
+		},
+		{
+			"id": 7,
+			"name": "onDoubleClick"
+		},
+		{
+			"id": 8,
+			"name": "onWheel"
+		},
+		{
+			"id": 9,
+			"name": "onMouseUp"
+		},
+		{
+			"id": 10,
+			"name": "onMiddleClick"
+		},
+		{
+			"id": 11,
+			"name": "onChange"
+		},
+		{
+			"id": 12,
+			"name": "onColorChange"
+		},
+		{
+			"id": 13,
+			"name": "onEntityReady"
+		},
+		{
+			"id": 14,
+			"name": "onSelectItem"
+		},
+		{
+			"id": 15,
+			"name": "onSelectEmptyItem"
+		},
+		{
+			"id": 16,
+			"name": "onItemRollOver"
+		},
+		{
+			"id": 17,
+			"name": "onItemRollOut"
+		},
+		{
+			"id": 18,
+			"name": "onItemRightClick"
+		},
+		{
+			"id": 19,
+			"name": "onDrop"
+		},
+		{
+			"id": 20,
+			"name": "onCreateTab"
+		},
+		{
+			"id": 21,
+			"name": "onDeleteTab"
+		},
+		{
+			"id": 22,
+			"name": "onRenameTab"
+		},
+		{
+			"id": 23,
+			"name": "onTextureReady"
+		},
+		{
+			"id": 24,
+			"name": "onMapElementRollOver"
+		},
+		{
+			"id": 25,
+			"name": "onMapElementRollOut"
+		},
+		{
+			"id": 26,
+			"name": "onMapElementRightClick"
+		},
+		{
+			"id": 27,
+			"name": "onMapMove"
+		},
+		{
+			"id": 28,
+			"name": "onMapRollOver"
+		},
+		{
+			"id": 29,
+			"name": "onComponentReadyMessage"
+		},
+		{
+			"id": 30,
+			"name": "onBrowserSessionTimeout"
+		},
+		{
+			"id": 31,
+			"name": "onBrowserDomReady"
+		},
+		{
+			"id": 32,
+			"name": "onTextClick"
+		},
+		{
+			"id": 33,
+			"name": "onVideoConnectFailed"
+		},
+		{
+			"id": 34,
+			"name": "onVideoConnectSuccess"
+		},
+		{
+			"id": 35,
+			"name": "onVideoBufferChange"
+		}
+	]
+}

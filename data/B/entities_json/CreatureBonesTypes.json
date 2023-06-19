@@ -1,0 +1,64 @@
+{
+	"def": [
+		{
+			"memberName": "CreatureBoneType",
+			"packageName": "com.ankamagames.dofus.datacenter.appearance",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "creatureBoneId",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 1,
+			"creatureBoneId": 1747
+		},
+		{
+			"id": 2,
+			"creatureBoneId": 1765
+		},
+		{
+			"id": 3,
+			"creatureBoneId": 1748
+		},
+		{
+			"id": 7,
+			"creatureBoneId": 2247
+		},
+		{
+			"id": 4,
+			"creatureBoneId": 1765
+		},
+		{
+			"id": 5,
+			"creatureBoneId": 1749
+		},
+		{
+			"id": 0,
+			"creatureBoneId": 666
+		},
+		{
+			"id": 6,
+			"creatureBoneId": 1749
+		},
+		{
+			"id": 8,
+			"creatureBoneId": 666
+		},
+		{
+			"id": 9,
+			"creatureBoneId": 1813
+		},
+		{
+			"id": 10,
+			"creatureBoneId": 1965
+		}
+	]
+}

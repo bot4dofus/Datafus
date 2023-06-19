@@ -1,0 +1,413 @@
+{
+	"def": [
+		{
+			"memberName": "ServerCommunity",
+			"packageName": "com.ankamagames.dofus.datacenter.servers",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "defaultCountries",
+					"type": -99,
+					"vectorTypes": {
+						"name": "Vector.<String>",
+						"type": -3
+					}
+				},
+				{
+					"name": "shortId",
+					"type": -3
+				},
+				{
+					"name": "supportedLangIds",
+					"type": -99,
+					"vectorTypes": {
+						"name": "Vector.<int>",
+						"type": -1
+					}
+				},
+				{
+					"name": "namingRulePlayerNameId",
+					"type": -1
+				},
+				{
+					"name": "namingRuleGuildNameId",
+					"type": -1
+				},
+				{
+					"name": "namingRuleAllianceNameId",
+					"type": -1
+				},
+				{
+					"name": "namingRuleAllianceTagId",
+					"type": -1
+				},
+				{
+					"name": "namingRulePartyNameId",
+					"type": -1
+				},
+				{
+					"name": "namingRuleMountNameId",
+					"type": -1
+				},
+				{
+					"name": "namingRuleNameGeneratorId",
+					"type": -1
+				},
+				{
+					"name": "namingRuleAdminId",
+					"type": -1
+				},
+				{
+					"name": "namingRuleModoId",
+					"type": -1
+				},
+				{
+					"name": "namingRulePresetNameId",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 0,
+			"nameId": 59874,
+			"defaultCountries": [
+				"FR",
+				"CH",
+				"BE",
+				"LU"
+			],
+			"shortId": "fr",
+			"supportedLangIds": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"namingRulePlayerNameId": 1,
+			"namingRuleGuildNameId": 2,
+			"namingRuleAllianceNameId": 2,
+			"namingRuleAllianceTagId": 8,
+			"namingRulePartyNameId": 11,
+			"namingRuleMountNameId": 16,
+			"namingRuleNameGeneratorId": 1,
+			"namingRuleAdminId": 14,
+			"namingRuleModoId": 15,
+			"namingRulePresetNameId": 17
+		},
+		{
+			"id": 1,
+			"nameId": 59875,
+			"defaultCountries": [
+				"UK",
+				"IE",
+				"GB"
+			],
+			"shortId": "uk",
+			"supportedLangIds": [
+				1
+			],
+			"namingRulePlayerNameId": 1,
+			"namingRuleGuildNameId": 2,
+			"namingRuleAllianceNameId": 2,
+			"namingRuleAllianceTagId": 8,
+			"namingRulePartyNameId": 11,
+			"namingRuleMountNameId": 16,
+			"namingRuleNameGeneratorId": 1,
+			"namingRuleAdminId": 14,
+			"namingRuleModoId": 15,
+			"namingRulePresetNameId": 17
+		},
+		{
+			"id": 2,
+			"nameId": 59871,
+			"defaultCountries": [
+				"XX"
+			],
+			"shortId": "en",
+			"supportedLangIds": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"namingRulePlayerNameId": 3,
+			"namingRuleGuildNameId": 7,
+			"namingRuleAllianceNameId": 7,
+			"namingRuleAllianceTagId": 10,
+			"namingRulePartyNameId": 13,
+			"namingRuleMountNameId": 16,
+			"namingRuleNameGeneratorId": 3,
+			"namingRuleAdminId": 14,
+			"namingRuleModoId": 15,
+			"namingRulePresetNameId": 17
+		},
+		{
+			"id": 3,
+			"nameId": 59872,
+			"defaultCountries": [
+				"DE",
+				"AT",
+				"LI"
+			],
+			"shortId": "de",
+			"supportedLangIds": [
+				2
+			],
+			"namingRulePlayerNameId": 1,
+			"namingRuleGuildNameId": 2,
+			"namingRuleAllianceNameId": 2,
+			"namingRuleAllianceTagId": 8,
+			"namingRulePartyNameId": 11,
+			"namingRuleMountNameId": 16,
+			"namingRuleNameGeneratorId": 1,
+			"namingRuleAdminId": 14,
+			"namingRuleModoId": 15,
+			"namingRulePresetNameId": 17
+		},
+		{
+			"id": 4,
+			"nameId": 59870,
+			"defaultCountries": [
+				"ES",
+				"AD",
+				"AR",
+				"CK",
+				"MX"
+			],
+			"shortId": "es",
+			"supportedLangIds": [
+				3
+			],
+			"namingRulePlayerNameId": 1,
+			"namingRuleGuildNameId": 2,
+			"namingRuleAllianceNameId": 2,
+			"namingRuleAllianceTagId": 8,
+			"namingRulePartyNameId": 11,
+			"namingRuleMountNameId": 16,
+			"namingRuleNameGeneratorId": 1,
+			"namingRuleAdminId": 14,
+			"namingRuleModoId": 15,
+			"namingRulePresetNameId": 17
+		},
+		{
+			"id": 5,
+			"nameId": 59878,
+			"defaultCountries": [
+				"RU"
+			],
+			"shortId": "ru",
+			"supportedLangIds": [
+				6
+			],
+			"namingRulePlayerNameId": 1,
+			"namingRuleGuildNameId": 2,
+			"namingRuleAllianceNameId": 2,
+			"namingRuleAllianceTagId": 8,
+			"namingRulePartyNameId": 11,
+			"namingRuleMountNameId": 16,
+			"namingRuleNameGeneratorId": 0,
+			"namingRuleAdminId": 14,
+			"namingRuleModoId": 15,
+			"namingRulePresetNameId": 17
+		},
+		{
+			"id": 6,
+			"nameId": 746794,
+			"defaultCountries": [
+				"PT",
+				"BR"
+			],
+			"shortId": "pt",
+			"supportedLangIds": [
+				5
+			],
+			"namingRulePlayerNameId": 1,
+			"namingRuleGuildNameId": 2,
+			"namingRuleAllianceNameId": 2,
+			"namingRuleAllianceTagId": 8,
+			"namingRulePartyNameId": 11,
+			"namingRuleMountNameId": 16,
+			"namingRuleNameGeneratorId": 1,
+			"namingRuleAdminId": 14,
+			"namingRuleModoId": 15,
+			"namingRulePresetNameId": 17
+		},
+		{
+			"id": 7,
+			"nameId": 59877,
+			"defaultCountries": [
+				"NL"
+			],
+			"shortId": "nl",
+			"supportedLangIds": [
+				4
+			],
+			"namingRulePlayerNameId": 1,
+			"namingRuleGuildNameId": 2,
+			"namingRuleAllianceNameId": 2,
+			"namingRuleAllianceTagId": 8,
+			"namingRulePartyNameId": 11,
+			"namingRuleMountNameId": 16,
+			"namingRuleNameGeneratorId": 1,
+			"namingRuleAdminId": 14,
+			"namingRuleModoId": 15,
+			"namingRulePresetNameId": 17
+		},
+		{
+			"id": 8,
+			"nameId": 59867,
+			"defaultCountries": [
+				"XX"
+			],
+			"shortId": "en",
+			"supportedLangIds": [
+				1
+			],
+			"namingRulePlayerNameId": 1,
+			"namingRuleGuildNameId": 2,
+			"namingRuleAllianceNameId": 2,
+			"namingRuleAllianceTagId": 8,
+			"namingRulePartyNameId": 11,
+			"namingRuleMountNameId": 16,
+			"namingRuleNameGeneratorId": 1,
+			"namingRuleAdminId": 14,
+			"namingRuleModoId": 15,
+			"namingRulePresetNameId": 17
+		},
+		{
+			"id": 9,
+			"nameId": 59868,
+			"defaultCountries": [
+				"IT"
+			],
+			"shortId": "it",
+			"supportedLangIds": [
+				7
+			],
+			"namingRulePlayerNameId": 1,
+			"namingRuleGuildNameId": 2,
+			"namingRuleAllianceNameId": 2,
+			"namingRuleAllianceTagId": 8,
+			"namingRulePartyNameId": 11,
+			"namingRuleMountNameId": 16,
+			"namingRuleNameGeneratorId": 1,
+			"namingRuleAdminId": 14,
+			"namingRuleModoId": 15,
+			"namingRulePresetNameId": 17
+		},
+		{
+			"id": 11,
+			"nameId": 292272,
+			"defaultCountries": [
+				"US",
+				"CA"
+			],
+			"shortId": "na",
+			"supportedLangIds": [
+				1
+			],
+			"namingRulePlayerNameId": 1,
+			"namingRuleGuildNameId": 2,
+			"namingRuleAllianceNameId": 2,
+			"namingRuleAllianceTagId": 8,
+			"namingRulePartyNameId": 11,
+			"namingRuleMountNameId": 16,
+			"namingRuleNameGeneratorId": 1,
+			"namingRuleAdminId": 14,
+			"namingRuleModoId": 15,
+			"namingRulePresetNameId": 17
+		},
+		{
+			"id": 12,
+			"nameId": 980323,
+			"defaultCountries": [
+				"XX"
+			],
+			"shortId": "en",
+			"supportedLangIds": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"namingRulePlayerNameId": 3,
+			"namingRuleGuildNameId": 7,
+			"namingRuleAllianceNameId": 7,
+			"namingRuleAllianceTagId": 10,
+			"namingRulePartyNameId": 13,
+			"namingRuleMountNameId": 16,
+			"namingRuleNameGeneratorId": 1,
+			"namingRuleAdminId": 14,
+			"namingRuleModoId": 15,
+			"namingRulePresetNameId": 17
+		},
+		{
+			"id": 99,
+			"nameId": 59873,
+			"defaultCountries": [],
+			"shortId": "xx",
+			"supportedLangIds": [
+				0
+			],
+			"namingRulePlayerNameId": 3,
+			"namingRuleGuildNameId": 7,
+			"namingRuleAllianceNameId": 7,
+			"namingRuleAllianceTagId": 10,
+			"namingRulePartyNameId": 13,
+			"namingRuleMountNameId": 16,
+			"namingRuleNameGeneratorId": 3,
+			"namingRuleAdminId": 14,
+			"namingRuleModoId": 15,
+			"namingRulePresetNameId": 17
+		},
+		{
+			"id": 100,
+			"nameId": 728856,
+			"defaultCountries": [
+				"XX"
+			],
+			"shortId": "fr",
+			"supportedLangIds": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"namingRulePlayerNameId": 3,
+			"namingRuleGuildNameId": 7,
+			"namingRuleAllianceNameId": 7,
+			"namingRuleAllianceTagId": 10,
+			"namingRulePartyNameId": 13,
+			"namingRuleMountNameId": 16,
+			"namingRuleNameGeneratorId": 1,
+			"namingRuleAdminId": 14,
+			"namingRuleModoId": 15,
+			"namingRulePresetNameId": 17
+		}
+	]
+}

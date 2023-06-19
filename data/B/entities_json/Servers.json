@@ -1,0 +1,176 @@
+{
+	"def": [
+		{
+			"memberName": "Server",
+			"packageName": "com.ankamagames.dofus.datacenter.servers",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "commentId",
+					"type": -5
+				},
+				{
+					"name": "openingDate",
+					"type": -4
+				},
+				{
+					"name": "language",
+					"type": -3
+				},
+				{
+					"name": "populationId",
+					"type": -1
+				},
+				{
+					"name": "gameTypeId",
+					"type": -1
+				},
+				{
+					"name": "communityId",
+					"type": -1
+				},
+				{
+					"name": "restrictedToLanguages",
+					"type": -99,
+					"vectorTypes": {
+						"name": "Vector.<String>",
+						"type": -3
+					}
+				},
+				{
+					"name": "monoAccount",
+					"type": -2
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 50,
+			"nameId": 455110,
+			"commentId": 455111,
+			"openingDate": 1222124400000.0,
+			"language": "en",
+			"populationId": 0,
+			"gameTypeId": 4,
+			"communityId": 12,
+			"restrictedToLanguages": [],
+			"monoAccount": false
+		},
+		{
+			"id": 99,
+			"nameId": 558429,
+			"commentId": 59818,
+			"openingDate": 1355270400000.0,
+			"language": "fr",
+			"populationId": 2,
+			"gameTypeId": 3,
+			"communityId": 2,
+			"restrictedToLanguages": [],
+			"monoAccount": false
+		},
+		{
+			"id": 290,
+			"nameId": 980596,
+			"commentId": 968496,
+			"openingDate": 1664838000000.0,
+			"language": "en",
+			"populationId": 0,
+			"gameTypeId": 0,
+			"communityId": 2,
+			"restrictedToLanguages": [],
+			"monoAccount": false
+		},
+		{
+			"id": 291,
+			"nameId": 968505,
+			"commentId": 968511,
+			"openingDate": 1666047600000.0,
+			"language": "fr",
+			"populationId": 1,
+			"gameTypeId": 0,
+			"communityId": 0,
+			"restrictedToLanguages": [],
+			"monoAccount": false
+		},
+		{
+			"id": 292,
+			"nameId": 968518,
+			"commentId": 968524,
+			"openingDate": 1666047600000.0,
+			"language": "fr",
+			"populationId": 1,
+			"gameTypeId": 0,
+			"communityId": 0,
+			"restrictedToLanguages": [],
+			"monoAccount": false
+		},
+		{
+			"id": 293,
+			"nameId": 968530,
+			"commentId": 968536,
+			"openingDate": 1667347200000.0,
+			"language": "fr",
+			"populationId": 0,
+			"gameTypeId": 0,
+			"communityId": 0,
+			"restrictedToLanguages": [],
+			"monoAccount": false
+		},
+		{
+			"id": 294,
+			"nameId": 980601,
+			"commentId": 968548,
+			"openingDate": 1667347200000.0,
+			"language": "fr",
+			"populationId": 1,
+			"gameTypeId": 0,
+			"communityId": 0,
+			"restrictedToLanguages": [],
+			"monoAccount": false
+		},
+		{
+			"id": 295,
+			"nameId": 968554,
+			"commentId": 968560,
+			"openingDate": 1667347200000.0,
+			"language": "fr",
+			"populationId": 1,
+			"gameTypeId": 0,
+			"communityId": 12,
+			"restrictedToLanguages": [],
+			"monoAccount": true
+		},
+		{
+			"id": 501,
+			"nameId": 737056,
+			"commentId": 59729,
+			"openingDate": 1359936000000.0,
+			"language": "en",
+			"populationId": 0,
+			"gameTypeId": 2,
+			"communityId": 12,
+			"restrictedToLanguages": [],
+			"monoAccount": false
+		},
+		{
+			"id": 502,
+			"nameId": 737065,
+			"commentId": 59824,
+			"openingDate": 1359936000000.0,
+			"language": "en",
+			"populationId": 0,
+			"gameTypeId": 2,
+			"communityId": 12,
+			"restrictedToLanguages": [],
+			"monoAccount": false
+		}
+	]
+}

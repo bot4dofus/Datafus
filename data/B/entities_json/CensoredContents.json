@@ -1,0 +1,70 @@
+{
+	"def": [
+		{
+			"memberName": "CensoredContent",
+			"packageName": "com.ankamagames.dofus.datacenter.misc",
+			"fields": [
+				{
+					"name": "lang",
+					"type": -3
+				},
+				{
+					"name": "type",
+					"type": -1
+				},
+				{
+					"name": "oldValue",
+					"type": -1
+				},
+				{
+					"name": "newValue",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"lang": "pt",
+			"type": 1,
+			"oldValue": 12,
+			"newValue": 292
+		},
+		{
+			"lang": "pt",
+			"type": 1,
+			"oldValue": 12,
+			"newValue": 292
+		},
+		{
+			"lang": "pt",
+			"type": 1,
+			"oldValue": 12,
+			"newValue": 2805
+		},
+		{
+			"lang": "pt",
+			"type": 1,
+			"oldValue": 12,
+			"newValue": 2806
+		},
+		{
+			"lang": "pt",
+			"type": 1,
+			"oldValue": 268,
+			"newValue": 6904
+		},
+		{
+			"lang": "pt",
+			"type": 1,
+			"oldValue": 22,
+			"newValue": 8523
+		},
+		{
+			"lang": "pt",
+			"type": 1,
+			"oldValue": 7,
+			"newValue": 7213
+		}
+	]
+}

@@ -1,6 +1,3 @@
-
-import os
-
 output_folder = './data/U/'
 
 def to_hex_string(arr):

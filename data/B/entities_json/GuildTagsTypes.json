@@ -1,0 +1,32 @@
+{
+	"def": [
+		{
+			"memberName": "GuildTagsType",
+			"packageName": "com.ankamagames.dofus.datacenter.guild",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 1,
+			"nameId": 919130
+		},
+		{
+			"id": 2,
+			"nameId": 919144
+		},
+		{
+			"id": 3,
+			"nameId": 919147
+		}
+	]
+}

@@ -1,0 +1,39 @@
+{
+	"def": [
+		{
+			"memberName": "Pack",
+			"packageName": "com.ankamagames.dofus.datacenter.misc",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "name",
+					"type": -3
+				},
+				{
+					"name": "hasSubAreas",
+					"type": -2
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 0,
+			"name": "base",
+			"hasSubAreas": true
+		},
+		{
+			"id": 1,
+			"name": "all",
+			"hasSubAreas": true
+		},
+		{
+			"id": 11,
+			"name": "subscribed",
+			"hasSubAreas": true
+		}
+	]
+}

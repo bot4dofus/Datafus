@@ -1,0 +1,58 @@
+{
+	"def": [
+		{
+			"memberName": "SmileyCategory",
+			"packageName": "com.ankamagames.dofus.datacenter.communication",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "order",
+					"type": -1
+				},
+				{
+					"name": "gfxId",
+					"type": -3
+				},
+				{
+					"name": "isFake",
+					"type": -2
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": -1,
+			"order": 5,
+			"gfxId": "btn_smileyCatRecent",
+			"isFake": true
+		},
+		{
+			"id": 0,
+			"order": 1,
+			"gfxId": "btn_smileyCatAll",
+			"isFake": true
+		},
+		{
+			"id": 3,
+			"order": 3,
+			"gfxId": "btn_smileyCatSad",
+			"isFake": false
+		},
+		{
+			"id": 2,
+			"order": 2,
+			"gfxId": "btn_smileyCatHappy",
+			"isFake": false
+		},
+		{
+			"id": 1,
+			"order": 4,
+			"gfxId": "btn_smileyCatOther",
+			"isFake": false
+		}
+	]
+}

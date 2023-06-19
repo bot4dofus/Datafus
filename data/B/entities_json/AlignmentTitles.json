@@ -1,0 +1,128 @@
+{
+	"def": [
+		{
+			"memberName": "AlignmentTitle",
+			"packageName": "com.ankamagames.dofus.datacenter.alignments",
+			"fields": [
+				{
+					"name": "sideId",
+					"type": -1
+				},
+				{
+					"name": "namesId",
+					"type": -99,
+					"vectorTypes": {
+						"name": "Vector.<int>",
+						"type": -5
+					}
+				},
+				{
+					"name": "shortsId",
+					"type": -99,
+					"vectorTypes": {
+						"name": "Vector.<int>",
+						"type": -5
+					}
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"sideId": 0,
+			"namesId": [
+				200
+			],
+			"shortsId": [
+				201
+			]
+		},
+		{
+			"sideId": 1,
+			"namesId": [
+				291884,
+				190,
+				194,
+				188,
+				196,
+				240,
+				242,
+				244,
+				246,
+				198,
+				192
+			],
+			"shortsId": [
+				291885,
+				191,
+				195,
+				189,
+				197,
+				241,
+				243,
+				245,
+				247,
+				199,
+				193
+			]
+		},
+		{
+			"sideId": 2,
+			"namesId": [
+				291886,
+				204,
+				236,
+				238,
+				228,
+				230,
+				226,
+				214,
+				216,
+				186,
+				212
+			],
+			"shortsId": [
+				291887,
+				205,
+				237,
+				239,
+				229,
+				231,
+				227,
+				215,
+				217,
+				187,
+				213
+			]
+		},
+		{
+			"sideId": 3,
+			"namesId": [
+				291882,
+				222,
+				224,
+				218,
+				220,
+				210,
+				208,
+				206,
+				232,
+				202,
+				234
+			],
+			"shortsId": [
+				291883,
+				223,
+				225,
+				219,
+				221,
+				211,
+				209,
+				207,
+				233,
+				203,
+				235
+			]
+		}
+	]
+}

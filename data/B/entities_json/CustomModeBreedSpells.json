@@ -1,0 +1,571 @@
+{
+	"def": [
+		{
+			"memberName": "CustomModeBreedSpell",
+			"packageName": "com.ankamagames.dofus.datacenter.optionalFeatures",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "pairId",
+					"type": -1
+				},
+				{
+					"name": "breedId",
+					"type": -1
+				},
+				{
+					"name": "isInitialSpell",
+					"type": -2
+				},
+				{
+					"name": "isHidden",
+					"type": -2
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 21958,
+			"pairId": 64,
+			"breedId": 6,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 21959,
+			"pairId": 65,
+			"breedId": 6,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 21960,
+			"pairId": 66,
+			"breedId": 6,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 21961,
+			"pairId": 67,
+			"breedId": 6,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 21967,
+			"pairId": 60,
+			"breedId": 9,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22029,
+			"pairId": 61,
+			"breedId": 9,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22031,
+			"pairId": 63,
+			"breedId": 9,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22032,
+			"pairId": 70,
+			"breedId": 16,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22033,
+			"pairId": 69,
+			"breedId": 16,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22034,
+			"pairId": 68,
+			"breedId": 16,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22036,
+			"pairId": 71,
+			"breedId": 7,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22038,
+			"pairId": 72,
+			"breedId": 7,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22039,
+			"pairId": 74,
+			"breedId": 7,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22040,
+			"pairId": 73,
+			"breedId": 7,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22042,
+			"pairId": 75,
+			"breedId": 1,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22048,
+			"pairId": 76,
+			"breedId": 1,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22049,
+			"pairId": 78,
+			"breedId": 1,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22050,
+			"pairId": 77,
+			"breedId": 1,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22055,
+			"pairId": 80,
+			"breedId": 17,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22061,
+			"pairId": 79,
+			"breedId": 8,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22065,
+			"pairId": 81,
+			"breedId": 8,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22066,
+			"pairId": 82,
+			"breedId": 8,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22069,
+			"pairId": 83,
+			"breedId": 8,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22072,
+			"pairId": 92,
+			"breedId": 18,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22073,
+			"pairId": 91,
+			"breedId": 18,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22086,
+			"pairId": 85,
+			"breedId": 17,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22087,
+			"pairId": 84,
+			"breedId": 17,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22089,
+			"pairId": 86,
+			"breedId": 17,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22090,
+			"pairId": 87,
+			"breedId": 3,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22096,
+			"pairId": 88,
+			"breedId": 3,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22097,
+			"pairId": 90,
+			"breedId": 3,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22098,
+			"pairId": 89,
+			"breedId": 3,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22109,
+			"pairId": 94,
+			"breedId": 18,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22110,
+			"pairId": 93,
+			"breedId": 18,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22111,
+			"pairId": 95,
+			"breedId": 18,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22115,
+			"pairId": 98,
+			"breedId": 2,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22116,
+			"pairId": 96,
+			"breedId": 2,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22118,
+			"pairId": 99,
+			"breedId": 2,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22122,
+			"pairId": 100,
+			"breedId": 2,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22185,
+			"pairId": 103,
+			"breedId": 12,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22186,
+			"pairId": 104,
+			"breedId": 12,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22197,
+			"pairId": 106,
+			"breedId": 13,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22202,
+			"pairId": 107,
+			"breedId": 13,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22203,
+			"pairId": 108,
+			"breedId": 13,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22204,
+			"pairId": 109,
+			"breedId": 13,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22205,
+			"pairId": 110,
+			"breedId": 13,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22216,
+			"pairId": 111,
+			"breedId": 11,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22224,
+			"pairId": 112,
+			"breedId": 11,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22227,
+			"pairId": 114,
+			"breedId": 11,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22245,
+			"pairId": 116,
+			"breedId": 10,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22256,
+			"pairId": 119,
+			"breedId": 10,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22278,
+			"pairId": 122,
+			"breedId": 4,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22279,
+			"pairId": 121,
+			"breedId": 4,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22280,
+			"pairId": 123,
+			"breedId": 4,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22281,
+			"pairId": 120,
+			"breedId": 4,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22289,
+			"pairId": 126,
+			"breedId": 15,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22291,
+			"pairId": 127,
+			"breedId": 15,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22293,
+			"pairId": 125,
+			"breedId": 15,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22295,
+			"pairId": 124,
+			"breedId": 15,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22314,
+			"pairId": 128,
+			"breedId": 15,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22318,
+			"pairId": 130,
+			"breedId": 5,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22319,
+			"pairId": 131,
+			"breedId": 5,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22320,
+			"pairId": 132,
+			"breedId": 5,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22332,
+			"pairId": 129,
+			"breedId": 5,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22342,
+			"pairId": 133,
+			"breedId": 14,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22343,
+			"pairId": 136,
+			"breedId": 14,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22344,
+			"pairId": 135,
+			"breedId": 14,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22345,
+			"pairId": 134,
+			"breedId": 14,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22346,
+			"pairId": 137,
+			"breedId": 14,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22372,
+			"pairId": 113,
+			"breedId": 11,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22373,
+			"pairId": 140,
+			"breedId": 12,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22383,
+			"pairId": 139,
+			"breedId": 12,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 22384,
+			"pairId": 141,
+			"breedId": 12,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 22411,
+			"pairId": 142,
+			"breedId": 9,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 23294,
+			"pairId": 115,
+			"breedId": 10,
+			"isInitialSpell": true,
+			"isHidden": false
+		},
+		{
+			"id": 23302,
+			"pairId": 118,
+			"breedId": 10,
+			"isInitialSpell": false,
+			"isHidden": false
+		},
+		{
+			"id": 23587,
+			"pairId": 143,
+			"breedId": 16,
+			"isInitialSpell": false,
+			"isHidden": false
+		}
+	]
+}

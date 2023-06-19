@@ -1,0 +1,172 @@
+{
+	"def": [
+		{
+			"memberName": "SkinMapping",
+			"packageName": "com.ankamagames.dofus.datacenter.appearance",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "lowDefId",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 10,
+			"lowDefId": 1375
+		},
+		{
+			"id": 11,
+			"lowDefId": 1376
+		},
+		{
+			"id": 20,
+			"lowDefId": 1377
+		},
+		{
+			"id": 21,
+			"lowDefId": 1378
+		},
+		{
+			"id": 30,
+			"lowDefId": 1379
+		},
+		{
+			"id": 31,
+			"lowDefId": 1380
+		},
+		{
+			"id": 40,
+			"lowDefId": 1381
+		},
+		{
+			"id": 41,
+			"lowDefId": 1382
+		},
+		{
+			"id": 50,
+			"lowDefId": 1383
+		},
+		{
+			"id": 51,
+			"lowDefId": 1384
+		},
+		{
+			"id": 60,
+			"lowDefId": 1385
+		},
+		{
+			"id": 61,
+			"lowDefId": 1386
+		},
+		{
+			"id": 70,
+			"lowDefId": 1387
+		},
+		{
+			"id": 71,
+			"lowDefId": 1388
+		},
+		{
+			"id": 80,
+			"lowDefId": 1389
+		},
+		{
+			"id": 81,
+			"lowDefId": 1390
+		},
+		{
+			"id": 90,
+			"lowDefId": 1391
+		},
+		{
+			"id": 91,
+			"lowDefId": 1392
+		},
+		{
+			"id": 100,
+			"lowDefId": 1393
+		},
+		{
+			"id": 101,
+			"lowDefId": 1394
+		},
+		{
+			"id": 110,
+			"lowDefId": 1395
+		},
+		{
+			"id": 111,
+			"lowDefId": 1396
+		},
+		{
+			"id": 120,
+			"lowDefId": 1397
+		},
+		{
+			"id": 121,
+			"lowDefId": 1398
+		},
+		{
+			"id": 1405,
+			"lowDefId": 1409
+		},
+		{
+			"id": 1407,
+			"lowDefId": 1410
+		},
+		{
+			"id": 1437,
+			"lowDefId": 1439
+		},
+		{
+			"id": 1438,
+			"lowDefId": 1440
+		},
+		{
+			"id": 1663,
+			"lowDefId": 1728
+		},
+		{
+			"id": 1664,
+			"lowDefId": 1729
+		},
+		{
+			"id": 3179,
+			"lowDefId": 3181
+		},
+		{
+			"id": 3180,
+			"lowDefId": 3182
+		},
+		{
+			"id": 3221,
+			"lowDefId": 4833
+		},
+		{
+			"id": 3285,
+			"lowDefId": 3287
+		},
+		{
+			"id": 3286,
+			"lowDefId": 3288
+		},
+		{
+			"id": 3498,
+			"lowDefId": 3542
+		},
+		{
+			"id": 3499,
+			"lowDefId": 3543
+		},
+		{
+			"id": 3633,
+			"lowDefId": 4834
+		}
+	]
+}

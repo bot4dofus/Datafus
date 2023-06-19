@@ -1,0 +1,142 @@
+{
+	"def": [
+		{
+			"memberName": "GuildTag",
+			"packageName": "com.ankamagames.dofus.datacenter.guild",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "typeId",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "order",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 8,
+			"typeId": 1,
+			"nameId": 919152,
+			"order": 2
+		},
+		{
+			"id": 9,
+			"typeId": 1,
+			"nameId": 923080,
+			"order": 0
+		},
+		{
+			"id": 11,
+			"typeId": 1,
+			"nameId": 923076,
+			"order": 4
+		},
+		{
+			"id": 13,
+			"typeId": 2,
+			"nameId": 919173,
+			"order": 0
+		},
+		{
+			"id": 14,
+			"typeId": 2,
+			"nameId": 919175,
+			"order": 1
+		},
+		{
+			"id": 15,
+			"typeId": 2,
+			"nameId": 919176,
+			"order": 2
+		},
+		{
+			"id": 16,
+			"typeId": 2,
+			"nameId": 919177,
+			"order": 3
+		},
+		{
+			"id": 17,
+			"typeId": 2,
+			"nameId": 927299,
+			"order": 4
+		},
+		{
+			"id": 18,
+			"typeId": 2,
+			"nameId": 923079,
+			"order": 5
+		},
+		{
+			"id": 19,
+			"typeId": 2,
+			"nameId": 919180,
+			"order": 6
+		},
+		{
+			"id": 20,
+			"typeId": 2,
+			"nameId": 919181,
+			"order": 7
+		},
+		{
+			"id": 22,
+			"typeId": 3,
+			"nameId": 923067,
+			"order": 0
+		},
+		{
+			"id": 23,
+			"typeId": 3,
+			"nameId": 923068,
+			"order": 3
+		},
+		{
+			"id": 24,
+			"typeId": 3,
+			"nameId": 919185,
+			"order": 2
+		},
+		{
+			"id": 25,
+			"typeId": 3,
+			"nameId": 919186,
+			"order": 5
+		},
+		{
+			"id": 26,
+			"typeId": 3,
+			"nameId": 919187,
+			"order": 1
+		},
+		{
+			"id": 27,
+			"typeId": 3,
+			"nameId": 919188,
+			"order": 4
+		},
+		{
+			"id": 28,
+			"typeId": 3,
+			"nameId": 923069,
+			"order": 6
+		},
+		{
+			"id": 29,
+			"typeId": 1,
+			"nameId": 923066,
+			"order": 3
+		}
+	]
+}

@@ -1,0 +1,229 @@
+{
+	"def": [
+		{
+			"memberName": "LegendaryTreasureHunt",
+			"packageName": "com.ankamagames.dofus.datacenter.quest.treasureHunt",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "level",
+					"type": -1
+				},
+				{
+					"name": "chestId",
+					"type": -6
+				},
+				{
+					"name": "monsterId",
+					"type": -6
+				},
+				{
+					"name": "mapItemId",
+					"type": -6
+				},
+				{
+					"name": "xpRatio",
+					"type": -4
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 29,
+			"nameId": 506619,
+			"level": 10,
+			"chestId": 15905,
+			"monsterId": 463,
+			"mapItemId": 15904,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 8,
+			"nameId": 460795,
+			"level": 30,
+			"chestId": 15402,
+			"monsterId": 460,
+			"mapItemId": 15378,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 33,
+			"nameId": 506618,
+			"level": 60,
+			"chestId": 16047,
+			"monsterId": 464,
+			"mapItemId": 16040,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 53,
+			"nameId": 768474,
+			"level": 80,
+			"chestId": 20196,
+			"monsterId": 3724,
+			"mapItemId": 20192,
+			"xpRatio": 1.0
+		},
+		{
+			"id": 57,
+			"nameId": 866733,
+			"level": 100,
+			"chestId": 23744,
+			"monsterId": 6542,
+			"mapItemId": 23743,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 34,
+			"nameId": 506617,
+			"level": 130,
+			"chestId": 16046,
+			"monsterId": 3762,
+			"mapItemId": 16041,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 20,
+			"nameId": 460797,
+			"level": 130,
+			"chestId": 15540,
+			"monsterId": 3524,
+			"mapItemId": 15534,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 14,
+			"nameId": 460793,
+			"level": 130,
+			"chestId": 15399,
+			"monsterId": 404,
+			"mapItemId": 15391,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 54,
+			"nameId": 768475,
+			"level": 140,
+			"chestId": 20197,
+			"monsterId": 3724,
+			"mapItemId": 20193,
+			"xpRatio": 1.0
+		},
+		{
+			"id": 48,
+			"nameId": 583344,
+			"level": 150,
+			"chestId": 17256,
+			"monsterId": 555,
+			"mapItemId": 17262,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 47,
+			"nameId": 583345,
+			"level": 160,
+			"chestId": 17255,
+			"monsterId": 4017,
+			"mapItemId": 17254,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 46,
+			"nameId": 583346,
+			"level": 180,
+			"chestId": 17248,
+			"monsterId": 4016,
+			"mapItemId": 17247,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 55,
+			"nameId": 768476,
+			"level": 180,
+			"chestId": 20198,
+			"monsterId": 3724,
+			"mapItemId": 20194,
+			"xpRatio": 1.0
+		},
+		{
+			"id": 15,
+			"nameId": 460792,
+			"level": 180,
+			"chestId": 15486,
+			"monsterId": 2908,
+			"mapItemId": 15479,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 51,
+			"nameId": 632764,
+			"level": 186,
+			"chestId": 17857,
+			"monsterId": 4402,
+			"mapItemId": 17855,
+			"xpRatio": 1.0
+		},
+		{
+			"id": 5,
+			"nameId": 460796,
+			"level": 200,
+			"chestId": 15401,
+			"monsterId": 3761,
+			"mapItemId": 15382,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 35,
+			"nameId": 506616,
+			"level": 200,
+			"chestId": 16045,
+			"monsterId": 3244,
+			"mapItemId": 16042,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 50,
+			"nameId": 616179,
+			"level": 200,
+			"chestId": 17653,
+			"monsterId": 4329,
+			"mapItemId": 17643,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 45,
+			"nameId": 608211,
+			"level": 200,
+			"chestId": 17241,
+			"monsterId": 3668,
+			"mapItemId": 17240,
+			"xpRatio": 10.0
+		},
+		{
+			"id": 56,
+			"nameId": 768477,
+			"level": 200,
+			"chestId": 20199,
+			"monsterId": 3724,
+			"mapItemId": 20195,
+			"xpRatio": 1.0
+		},
+		{
+			"id": 39,
+			"nameId": 583343,
+			"level": 200,
+			"chestId": 17231,
+			"monsterId": 4028,
+			"mapItemId": 17230,
+			"xpRatio": 10.0
+		}
+	]
+}

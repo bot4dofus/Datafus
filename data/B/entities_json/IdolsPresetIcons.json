@@ -1,0 +1,84 @@
+{
+	"def": [
+		{
+			"memberName": "IdolsPresetIcon",
+			"packageName": "com.ankamagames.dofus.datacenter.idols",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "order",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 0,
+			"order": 0
+		},
+		{
+			"id": 1,
+			"order": 1
+		},
+		{
+			"id": 2,
+			"order": 2
+		},
+		{
+			"id": 3,
+			"order": 3
+		},
+		{
+			"id": 4,
+			"order": 4
+		},
+		{
+			"id": 5,
+			"order": 5
+		},
+		{
+			"id": 6,
+			"order": 6
+		},
+		{
+			"id": 7,
+			"order": 7
+		},
+		{
+			"id": 8,
+			"order": 8
+		},
+		{
+			"id": 9,
+			"order": 9
+		},
+		{
+			"id": 10,
+			"order": 10
+		},
+		{
+			"id": 11,
+			"order": 11
+		},
+		{
+			"id": 12,
+			"order": 12
+		},
+		{
+			"id": 13,
+			"order": 13
+		},
+		{
+			"id": 14,
+			"order": 14
+		},
+		{
+			"id": 15,
+			"order": 15
+		}
+	]
+}

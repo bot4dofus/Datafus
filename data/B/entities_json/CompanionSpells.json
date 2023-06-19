@@ -1,0 +1,1900 @@
+{
+	"def": [
+		{
+			"memberName": "CompanionSpell",
+			"packageName": "com.ankamagames.dofus.datacenter.monsters",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "spellId",
+					"type": -1
+				},
+				{
+					"name": "companionId",
+					"type": -1
+				},
+				{
+					"name": "gradeByLevel",
+					"type": -3
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 1189,
+			"spellId": 24362,
+			"companionId": 61,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1190,
+			"spellId": 24363,
+			"companionId": 61,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1191,
+			"spellId": 24364,
+			"companionId": 61,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1192,
+			"spellId": 24367,
+			"companionId": 61,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1193,
+			"spellId": 24366,
+			"companionId": 61,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1194,
+			"spellId": 24365,
+			"companionId": 61,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1282,
+			"spellId": 25004,
+			"companionId": 75,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1283,
+			"spellId": 25003,
+			"companionId": 75,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1284,
+			"spellId": 25002,
+			"companionId": 75,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1285,
+			"spellId": 25007,
+			"companionId": 75,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1286,
+			"spellId": 25001,
+			"companionId": 75,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1287,
+			"spellId": 25000,
+			"companionId": 75,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1288,
+			"spellId": 25016,
+			"companionId": 76,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1289,
+			"spellId": 25009,
+			"companionId": 76,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1290,
+			"spellId": 25008,
+			"companionId": 76,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1291,
+			"spellId": 25010,
+			"companionId": 76,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1292,
+			"spellId": 25012,
+			"companionId": 76,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1293,
+			"spellId": 25011,
+			"companionId": 76,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1294,
+			"spellId": 25018,
+			"companionId": 77,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1295,
+			"spellId": 25020,
+			"companionId": 77,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1296,
+			"spellId": 25019,
+			"companionId": 77,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1297,
+			"spellId": 25022,
+			"companionId": 77,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1298,
+			"spellId": 25023,
+			"companionId": 77,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1299,
+			"spellId": 25021,
+			"companionId": 77,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1300,
+			"spellId": 25028,
+			"companionId": 78,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1301,
+			"spellId": 25029,
+			"companionId": 78,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1302,
+			"spellId": 25027,
+			"companionId": 78,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1303,
+			"spellId": 25025,
+			"companionId": 78,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1305,
+			"spellId": 25026,
+			"companionId": 78,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1312,
+			"spellId": 25047,
+			"companionId": 80,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1313,
+			"spellId": 25046,
+			"companionId": 80,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1314,
+			"spellId": 25045,
+			"companionId": 80,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1315,
+			"spellId": 25044,
+			"companionId": 80,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1316,
+			"spellId": 25053,
+			"companionId": 80,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1317,
+			"spellId": 25054,
+			"companionId": 80,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1318,
+			"spellId": 25059,
+			"companionId": 81,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1319,
+			"spellId": 25057,
+			"companionId": 81,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1320,
+			"spellId": 25060,
+			"companionId": 81,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1321,
+			"spellId": 25056,
+			"companionId": 81,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1322,
+			"spellId": 25055,
+			"companionId": 81,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1323,
+			"spellId": 25058,
+			"companionId": 81,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1324,
+			"spellId": 25061,
+			"companionId": 82,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1325,
+			"spellId": 25062,
+			"companionId": 82,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1326,
+			"spellId": 25063,
+			"companionId": 82,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1327,
+			"spellId": 25064,
+			"companionId": 82,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1328,
+			"spellId": 25065,
+			"companionId": 82,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1329,
+			"spellId": 25066,
+			"companionId": 82,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1330,
+			"spellId": 25068,
+			"companionId": 83,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1331,
+			"spellId": 25070,
+			"companionId": 83,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1332,
+			"spellId": 25071,
+			"companionId": 83,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1333,
+			"spellId": 25069,
+			"companionId": 83,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1334,
+			"spellId": 25067,
+			"companionId": 83,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1335,
+			"spellId": 25129,
+			"companionId": 83,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1336,
+			"spellId": 25130,
+			"companionId": 84,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1337,
+			"spellId": 25131,
+			"companionId": 84,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1338,
+			"spellId": 25132,
+			"companionId": 84,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1339,
+			"spellId": 25135,
+			"companionId": 84,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1340,
+			"spellId": 25136,
+			"companionId": 84,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1348,
+			"spellId": 25151,
+			"companionId": 86,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1349,
+			"spellId": 25153,
+			"companionId": 86,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1350,
+			"spellId": 25155,
+			"companionId": 86,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1351,
+			"spellId": 25156,
+			"companionId": 86,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1352,
+			"spellId": 25158,
+			"companionId": 86,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1353,
+			"spellId": 25159,
+			"companionId": 86,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1354,
+			"spellId": 25162,
+			"companionId": 87,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1355,
+			"spellId": 25168,
+			"companionId": 87,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1356,
+			"spellId": 25169,
+			"companionId": 87,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1357,
+			"spellId": 25161,
+			"companionId": 87,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1358,
+			"spellId": 25163,
+			"companionId": 87,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1359,
+			"spellId": 25167,
+			"companionId": 87,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1360,
+			"spellId": 25181,
+			"companionId": 88,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1361,
+			"spellId": 25179,
+			"companionId": 88,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1362,
+			"spellId": 25184,
+			"companionId": 88,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1363,
+			"spellId": 25177,
+			"companionId": 88,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1364,
+			"spellId": 25175,
+			"companionId": 88,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1365,
+			"spellId": 25176,
+			"companionId": 88,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1366,
+			"spellId": 25190,
+			"companionId": 89,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1367,
+			"spellId": 25192,
+			"companionId": 89,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1368,
+			"spellId": 25193,
+			"companionId": 89,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1369,
+			"spellId": 25194,
+			"companionId": 89,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1370,
+			"spellId": 25195,
+			"companionId": 89,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1371,
+			"spellId": 25196,
+			"companionId": 89,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1372,
+			"spellId": 25208,
+			"companionId": 90,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1373,
+			"spellId": 25209,
+			"companionId": 90,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1374,
+			"spellId": 25210,
+			"companionId": 90,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1378,
+			"spellId": 25211,
+			"companionId": 91,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1379,
+			"spellId": 25212,
+			"companionId": 91,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1380,
+			"spellId": 25213,
+			"companionId": 91,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1381,
+			"spellId": 25214,
+			"companionId": 91,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1382,
+			"spellId": 25219,
+			"companionId": 91,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1383,
+			"spellId": 25222,
+			"companionId": 91,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1384,
+			"spellId": 25242,
+			"companionId": 92,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1385,
+			"spellId": 25236,
+			"companionId": 92,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1386,
+			"spellId": 25240,
+			"companionId": 92,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1387,
+			"spellId": 25232,
+			"companionId": 92,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1388,
+			"spellId": 25238,
+			"companionId": 92,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1389,
+			"spellId": 25235,
+			"companionId": 92,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1406,
+			"spellId": 25039,
+			"companionId": 79,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1407,
+			"spellId": 25040,
+			"companionId": 79,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1408,
+			"spellId": 25041,
+			"companionId": 79,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1409,
+			"spellId": 25037,
+			"companionId": 79,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1410,
+			"spellId": 25036,
+			"companionId": 79,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1411,
+			"spellId": 25038,
+			"companionId": 79,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1425,
+			"spellId": 25376,
+			"companionId": 57,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1426,
+			"spellId": 25378,
+			"companionId": 57,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1427,
+			"spellId": 25379,
+			"companionId": 57,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1428,
+			"spellId": 25380,
+			"companionId": 57,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1429,
+			"spellId": 24335,
+			"companionId": 57,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1430,
+			"spellId": 24330,
+			"companionId": 57,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1431,
+			"spellId": 24313,
+			"companionId": 56,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1432,
+			"spellId": 24316,
+			"companionId": 56,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1433,
+			"spellId": 24317,
+			"companionId": 56,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1434,
+			"spellId": 24318,
+			"companionId": 56,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1435,
+			"spellId": 25374,
+			"companionId": 56,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1436,
+			"spellId": 25373,
+			"companionId": 56,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1437,
+			"spellId": 25389,
+			"companionId": 58,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1438,
+			"spellId": 25390,
+			"companionId": 58,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1439,
+			"spellId": 25388,
+			"companionId": 58,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1440,
+			"spellId": 25387,
+			"companionId": 58,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1441,
+			"spellId": 24343,
+			"companionId": 58,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1442,
+			"spellId": 25391,
+			"companionId": 58,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1443,
+			"spellId": 25392,
+			"companionId": 59,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1444,
+			"spellId": 25395,
+			"companionId": 59,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1445,
+			"spellId": 25394,
+			"companionId": 59,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1446,
+			"spellId": 25393,
+			"companionId": 59,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1447,
+			"spellId": 25396,
+			"companionId": 59,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1448,
+			"spellId": 24354,
+			"companionId": 59,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1449,
+			"spellId": 25398,
+			"companionId": 60,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1450,
+			"spellId": 25400,
+			"companionId": 60,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1451,
+			"spellId": 25399,
+			"companionId": 60,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1452,
+			"spellId": 25397,
+			"companionId": 60,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1453,
+			"spellId": 24360,
+			"companionId": 60,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1454,
+			"spellId": 24359,
+			"companionId": 60,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1455,
+			"spellId": 24430,
+			"companionId": 69,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1456,
+			"spellId": 24431,
+			"companionId": 69,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1457,
+			"spellId": 24466,
+			"companionId": 69,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1458,
+			"spellId": 24432,
+			"companionId": 69,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1459,
+			"spellId": 24428,
+			"companionId": 69,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1460,
+			"spellId": 24429,
+			"companionId": 69,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1477,
+			"spellId": 4707,
+			"companionId": 16,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1478,
+			"spellId": 4708,
+			"companionId": 16,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1479,
+			"spellId": 4710,
+			"companionId": 16,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1480,
+			"spellId": 4711,
+			"companionId": 16,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1481,
+			"spellId": 4716,
+			"companionId": 16,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1482,
+			"spellId": 4713,
+			"companionId": 16,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1483,
+			"spellId": 4990,
+			"companionId": 17,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1484,
+			"spellId": 4980,
+			"companionId": 17,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1485,
+			"spellId": 4981,
+			"companionId": 17,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1486,
+			"spellId": 4983,
+			"companionId": 17,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1487,
+			"spellId": 4984,
+			"companionId": 17,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1488,
+			"spellId": 4989,
+			"companionId": 17,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1521,
+			"spellId": 4208,
+			"companionId": 1,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1522,
+			"spellId": 4209,
+			"companionId": 1,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1523,
+			"spellId": 4210,
+			"companionId": 1,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1524,
+			"spellId": 4202,
+			"companionId": 1,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1525,
+			"spellId": 4204,
+			"companionId": 1,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1526,
+			"spellId": 4207,
+			"companionId": 1,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1528,
+			"spellId": 4208,
+			"companionId": 55,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1529,
+			"spellId": 4209,
+			"companionId": 55,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1530,
+			"spellId": 4210,
+			"companionId": 55,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1531,
+			"spellId": 4202,
+			"companionId": 55,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1532,
+			"spellId": 4204,
+			"companionId": 55,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1533,
+			"spellId": 4207,
+			"companionId": 55,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1559,
+			"spellId": 25462,
+			"companionId": 93,
+			"gradeByLevel": "1,30"
+		},
+		{
+			"id": 1560,
+			"spellId": 25252,
+			"companionId": 93,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1561,
+			"spellId": 25250,
+			"companionId": 93,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1562,
+			"spellId": 25253,
+			"companionId": 93,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1563,
+			"spellId": 25249,
+			"companionId": 93,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1564,
+			"spellId": 25254,
+			"companionId": 93,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1565,
+			"spellId": 24399,
+			"companionId": 65,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1566,
+			"spellId": 24400,
+			"companionId": 65,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1567,
+			"spellId": 24401,
+			"companionId": 65,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1568,
+			"spellId": 24398,
+			"companionId": 65,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1569,
+			"spellId": 24396,
+			"companionId": 65,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1570,
+			"spellId": 24397,
+			"companionId": 65,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1572,
+			"spellId": 24421,
+			"companionId": 68,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1573,
+			"spellId": 24422,
+			"companionId": 68,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1574,
+			"spellId": 24423,
+			"companionId": 68,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1575,
+			"spellId": 24419,
+			"companionId": 68,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1576,
+			"spellId": 24420,
+			"companionId": 68,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1577,
+			"spellId": 24426,
+			"companionId": 68,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1579,
+			"spellId": 24472,
+			"companionId": 70,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1580,
+			"spellId": 24475,
+			"companionId": 70,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1581,
+			"spellId": 24473,
+			"companionId": 70,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1582,
+			"spellId": 24470,
+			"companionId": 70,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1583,
+			"spellId": 24474,
+			"companionId": 70,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1584,
+			"spellId": 24471,
+			"companionId": 70,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1585,
+			"spellId": 24481,
+			"companionId": 71,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1586,
+			"spellId": 24480,
+			"companionId": 71,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1587,
+			"spellId": 24477,
+			"companionId": 71,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1588,
+			"spellId": 24478,
+			"companionId": 71,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1589,
+			"spellId": 24960,
+			"companionId": 71,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1590,
+			"spellId": 24479,
+			"companionId": 71,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1591,
+			"spellId": 24405,
+			"companionId": 66,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1592,
+			"spellId": 24404,
+			"companionId": 66,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1593,
+			"spellId": 24407,
+			"companionId": 66,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1594,
+			"spellId": 25401,
+			"companionId": 66,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1595,
+			"spellId": 24410,
+			"companionId": 66,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1596,
+			"spellId": 24408,
+			"companionId": 66,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1597,
+			"spellId": 24411,
+			"companionId": 67,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1598,
+			"spellId": 24416,
+			"companionId": 67,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1599,
+			"spellId": 24412,
+			"companionId": 67,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1600,
+			"spellId": 24413,
+			"companionId": 67,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1601,
+			"spellId": 24415,
+			"companionId": 67,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1609,
+			"spellId": 25137,
+			"companionId": 84,
+			"gradeByLevel": "1,30"
+		},
+		{
+			"id": 1610,
+			"spellId": 24975,
+			"companionId": 72,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1611,
+			"spellId": 24977,
+			"companionId": 72,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1612,
+			"spellId": 24978,
+			"companionId": 72,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1613,
+			"spellId": 24974,
+			"companionId": 72,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1614,
+			"spellId": 24976,
+			"companionId": 72,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1615,
+			"spellId": 24983,
+			"companionId": 72,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1624,
+			"spellId": 24373,
+			"companionId": 62,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1625,
+			"spellId": 24371,
+			"companionId": 62,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1626,
+			"spellId": 24372,
+			"companionId": 62,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1627,
+			"spellId": 24370,
+			"companionId": 62,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1628,
+			"spellId": 24368,
+			"companionId": 62,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1629,
+			"spellId": 24369,
+			"companionId": 62,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1636,
+			"spellId": 24374,
+			"companionId": 63,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1637,
+			"spellId": 24375,
+			"companionId": 63,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1638,
+			"spellId": 24376,
+			"companionId": 63,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1639,
+			"spellId": 24377,
+			"companionId": 63,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1640,
+			"spellId": 24379,
+			"companionId": 63,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1641,
+			"spellId": 24378,
+			"companionId": 63,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1642,
+			"spellId": 24989,
+			"companionId": 73,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1643,
+			"spellId": 24984,
+			"companionId": 73,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1644,
+			"spellId": 24985,
+			"companionId": 73,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1645,
+			"spellId": 24987,
+			"companionId": 73,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1646,
+			"spellId": 24988,
+			"companionId": 73,
+			"gradeByLevel": "1,30"
+		},
+		{
+			"id": 1647,
+			"spellId": 24986,
+			"companionId": 73,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1648,
+			"spellId": 25205,
+			"companionId": 90,
+			"gradeByLevel": "1,30"
+		},
+		{
+			"id": 1649,
+			"spellId": 25206,
+			"companionId": 90,
+			"gradeByLevel": "1,30"
+		},
+		{
+			"id": 1650,
+			"spellId": 25207,
+			"companionId": 90,
+			"gradeByLevel": "1,30"
+		},
+		{
+			"id": 1651,
+			"spellId": 25366,
+			"companionId": 94,
+			"gradeByLevel": "1,30"
+		},
+		{
+			"id": 1652,
+			"spellId": 25361,
+			"companionId": 94,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1653,
+			"spellId": 25268,
+			"companionId": 94,
+			"gradeByLevel": "1,30"
+		},
+		{
+			"id": 1654,
+			"spellId": 25370,
+			"companionId": 94,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1655,
+			"spellId": 25368,
+			"companionId": 94,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1656,
+			"spellId": 25371,
+			"companionId": 94,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1658,
+			"spellId": 24414,
+			"companionId": 67,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1659,
+			"spellId": 25141,
+			"companionId": 85,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1660,
+			"spellId": 25140,
+			"companionId": 85,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1661,
+			"spellId": 25139,
+			"companionId": 85,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1662,
+			"spellId": 25144,
+			"companionId": 85,
+			"gradeByLevel": "1,30"
+		},
+		{
+			"id": 1663,
+			"spellId": 25142,
+			"companionId": 85,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1664,
+			"spellId": 25147,
+			"companionId": 85,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1665,
+			"spellId": 4229,
+			"companionId": 2,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1666,
+			"spellId": 4230,
+			"companionId": 2,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1667,
+			"spellId": 4226,
+			"companionId": 2,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1668,
+			"spellId": 4225,
+			"companionId": 2,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1669,
+			"spellId": 4227,
+			"companionId": 2,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1670,
+			"spellId": 4228,
+			"companionId": 2,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1671,
+			"spellId": 4253,
+			"companionId": 6,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1672,
+			"spellId": 4256,
+			"companionId": 6,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1673,
+			"spellId": 4254,
+			"companionId": 6,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1674,
+			"spellId": 4255,
+			"companionId": 6,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1675,
+			"spellId": 4250,
+			"companionId": 6,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1676,
+			"spellId": 4252,
+			"companionId": 6,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1677,
+			"spellId": 4214,
+			"companionId": 7,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1678,
+			"spellId": 4219,
+			"companionId": 7,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1679,
+			"spellId": 4218,
+			"companionId": 7,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1680,
+			"spellId": 4216,
+			"companionId": 7,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1681,
+			"spellId": 4217,
+			"companionId": 7,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1682,
+			"spellId": 4221,
+			"companionId": 7,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1683,
+			"spellId": 4245,
+			"companionId": 8,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1684,
+			"spellId": 4241,
+			"companionId": 8,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1685,
+			"spellId": 4244,
+			"companionId": 8,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1686,
+			"spellId": 4247,
+			"companionId": 8,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1687,
+			"spellId": 4246,
+			"companionId": 8,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1688,
+			"spellId": 4242,
+			"companionId": 8,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1689,
+			"spellId": 4237,
+			"companionId": 9,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1690,
+			"spellId": 4233,
+			"companionId": 9,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1691,
+			"spellId": 4234,
+			"companionId": 9,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1692,
+			"spellId": 4235,
+			"companionId": 9,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1693,
+			"spellId": 4238,
+			"companionId": 9,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1694,
+			"spellId": 4236,
+			"companionId": 9,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1695,
+			"spellId": 25403,
+			"companionId": 11,
+			"gradeByLevel": "1,10;2,100;3,160"
+		},
+		{
+			"id": 1696,
+			"spellId": 25404,
+			"companionId": 11,
+			"gradeByLevel": "1,10;2,100;3,160"
+		},
+		{
+			"id": 1697,
+			"spellId": 25406,
+			"companionId": 11,
+			"gradeByLevel": "1,10;2,100;3,160"
+		},
+		{
+			"id": 1698,
+			"spellId": 25402,
+			"companionId": 11,
+			"gradeByLevel": "1,10;2,100;3,160"
+		},
+		{
+			"id": 1699,
+			"spellId": 25405,
+			"companionId": 11,
+			"gradeByLevel": "1,10;2,100;3,160"
+		},
+		{
+			"id": 1700,
+			"spellId": 25407,
+			"companionId": 11,
+			"gradeByLevel": "1,10;2,100;3,160"
+		},
+		{
+			"id": 1701,
+			"spellId": 4419,
+			"companionId": 12,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1702,
+			"spellId": 4414,
+			"companionId": 12,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1703,
+			"spellId": 4413,
+			"companionId": 12,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1704,
+			"spellId": 4412,
+			"companionId": 12,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1705,
+			"spellId": 4417,
+			"companionId": 12,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1706,
+			"spellId": 4416,
+			"companionId": 12,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1707,
+			"spellId": 4451,
+			"companionId": 14,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1708,
+			"spellId": 4452,
+			"companionId": 14,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1709,
+			"spellId": 4445,
+			"companionId": 14,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1710,
+			"spellId": 4443,
+			"companionId": 14,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1711,
+			"spellId": 4447,
+			"companionId": 14,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1712,
+			"spellId": 4449,
+			"companionId": 14,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1713,
+			"spellId": 4472,
+			"companionId": 15,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1714,
+			"spellId": 4470,
+			"companionId": 15,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1715,
+			"spellId": 4467,
+			"companionId": 15,
+			"gradeByLevel": "1,30"
+		},
+		{
+			"id": 1716,
+			"spellId": 4466,
+			"companionId": 15,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1717,
+			"spellId": 4474,
+			"companionId": 15,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1718,
+			"spellId": 4475,
+			"companionId": 15,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1719,
+			"spellId": 24992,
+			"companionId": 74,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1720,
+			"spellId": 24994,
+			"companionId": 74,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1721,
+			"spellId": 24993,
+			"companionId": 74,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1722,
+			"spellId": 24999,
+			"companionId": 74,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1723,
+			"spellId": 24998,
+			"companionId": 74,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1724,
+			"spellId": 24995,
+			"companionId": 74,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1726,
+			"spellId": 25030,
+			"companionId": 78,
+			"gradeByLevel": "1,30"
+		},
+		{
+			"id": 1727,
+			"spellId": 24386,
+			"companionId": 64,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1728,
+			"spellId": 24384,
+			"companionId": 64,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1729,
+			"spellId": 24383,
+			"companionId": 64,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1730,
+			"spellId": 24382,
+			"companionId": 64,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1731,
+			"spellId": 24381,
+			"companionId": 64,
+			"gradeByLevel": "1,30;2,100;3,160"
+		},
+		{
+			"id": 1732,
+			"spellId": 24380,
+			"companionId": 64,
+			"gradeByLevel": "1,30;2,100;3,160"
+		}
+	]
+}

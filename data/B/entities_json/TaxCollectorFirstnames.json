@@ -1,0 +1,624 @@
+{
+	"def": [
+		{
+			"memberName": "TaxCollectorFirstname",
+			"packageName": "com.ankamagames.dofus.datacenter.npcs",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "firstnameId",
+					"type": -5
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 1,
+			"firstnameId": 316
+		},
+		{
+			"id": 2,
+			"firstnameId": 317
+		},
+		{
+			"id": 3,
+			"firstnameId": 314
+		},
+		{
+			"id": 4,
+			"firstnameId": 315
+		},
+		{
+			"id": 5,
+			"firstnameId": 310
+		},
+		{
+			"id": 6,
+			"firstnameId": 312
+		},
+		{
+			"id": 7,
+			"firstnameId": 340
+		},
+		{
+			"id": 8,
+			"firstnameId": 313
+		},
+		{
+			"id": 9,
+			"firstnameId": 318
+		},
+		{
+			"id": 10,
+			"firstnameId": 323
+		},
+		{
+			"id": 11,
+			"firstnameId": 324
+		},
+		{
+			"id": 12,
+			"firstnameId": 393
+		},
+		{
+			"id": 13,
+			"firstnameId": 333
+		},
+		{
+			"id": 14,
+			"firstnameId": 332
+		},
+		{
+			"id": 15,
+			"firstnameId": 392
+		},
+		{
+			"id": 16,
+			"firstnameId": 397
+		},
+		{
+			"id": 17,
+			"firstnameId": 396
+		},
+		{
+			"id": 18,
+			"firstnameId": 395
+		},
+		{
+			"id": 19,
+			"firstnameId": 394
+		},
+		{
+			"id": 20,
+			"firstnameId": 391
+		},
+		{
+			"id": 21,
+			"firstnameId": 389
+		},
+		{
+			"id": 22,
+			"firstnameId": 390
+		},
+		{
+			"id": 23,
+			"firstnameId": 272
+		},
+		{
+			"id": 24,
+			"firstnameId": 338
+		},
+		{
+			"id": 25,
+			"firstnameId": 271
+		},
+		{
+			"id": 26,
+			"firstnameId": 326
+		},
+		{
+			"id": 27,
+			"firstnameId": 273
+		},
+		{
+			"id": 28,
+			"firstnameId": 274
+		},
+		{
+			"id": 29,
+			"firstnameId": 266
+		},
+		{
+			"id": 30,
+			"firstnameId": 339
+		},
+		{
+			"id": 31,
+			"firstnameId": 283
+		},
+		{
+			"id": 32,
+			"firstnameId": 276
+		},
+		{
+			"id": 33,
+			"firstnameId": 275
+		},
+		{
+			"id": 34,
+			"firstnameId": 279
+		},
+		{
+			"id": 35,
+			"firstnameId": 280
+		},
+		{
+			"id": 36,
+			"firstnameId": 342
+		},
+		{
+			"id": 37,
+			"firstnameId": 343
+		},
+		{
+			"id": 38,
+			"firstnameId": 277
+		},
+		{
+			"id": 39,
+			"firstnameId": 278
+		},
+		{
+			"id": 40,
+			"firstnameId": 348
+		},
+		{
+			"id": 41,
+			"firstnameId": 345
+		},
+		{
+			"id": 42,
+			"firstnameId": 344
+		},
+		{
+			"id": 43,
+			"firstnameId": 347
+		},
+		{
+			"id": 44,
+			"firstnameId": 346
+		},
+		{
+			"id": 45,
+			"firstnameId": 269
+		},
+		{
+			"id": 46,
+			"firstnameId": 353
+		},
+		{
+			"id": 47,
+			"firstnameId": 350
+		},
+		{
+			"id": 48,
+			"firstnameId": 351
+		},
+		{
+			"id": 49,
+			"firstnameId": 330
+		},
+		{
+			"id": 50,
+			"firstnameId": 356
+		},
+		{
+			"id": 51,
+			"firstnameId": 355
+		},
+		{
+			"id": 52,
+			"firstnameId": 285
+		},
+		{
+			"id": 53,
+			"firstnameId": 284
+		},
+		{
+			"id": 54,
+			"firstnameId": 281
+		},
+		{
+			"id": 55,
+			"firstnameId": 295
+		},
+		{
+			"id": 56,
+			"firstnameId": 320
+		},
+		{
+			"id": 57,
+			"firstnameId": 357
+		},
+		{
+			"id": 58,
+			"firstnameId": 358
+		},
+		{
+			"id": 59,
+			"firstnameId": 359
+		},
+		{
+			"id": 60,
+			"firstnameId": 360
+		},
+		{
+			"id": 61,
+			"firstnameId": 362
+		},
+		{
+			"id": 62,
+			"firstnameId": 361
+		},
+		{
+			"id": 63,
+			"firstnameId": 363
+		},
+		{
+			"id": 64,
+			"firstnameId": 286
+		},
+		{
+			"id": 65,
+			"firstnameId": 321
+		},
+		{
+			"id": 66,
+			"firstnameId": 364
+		},
+		{
+			"id": 67,
+			"firstnameId": 267
+		},
+		{
+			"id": 68,
+			"firstnameId": 366
+		},
+		{
+			"id": 69,
+			"firstnameId": 365
+		},
+		{
+			"id": 70,
+			"firstnameId": 371
+		},
+		{
+			"id": 71,
+			"firstnameId": 372
+		},
+		{
+			"id": 72,
+			"firstnameId": 370
+		},
+		{
+			"id": 73,
+			"firstnameId": 302
+		},
+		{
+			"id": 74,
+			"firstnameId": 322
+		},
+		{
+			"id": 75,
+			"firstnameId": 369
+		},
+		{
+			"id": 76,
+			"firstnameId": 367
+		},
+		{
+			"id": 77,
+			"firstnameId": 368
+		},
+		{
+			"id": 78,
+			"firstnameId": 374
+		},
+		{
+			"id": 79,
+			"firstnameId": 373
+		},
+		{
+			"id": 80,
+			"firstnameId": 375
+		},
+		{
+			"id": 81,
+			"firstnameId": 299
+		},
+		{
+			"id": 82,
+			"firstnameId": 300
+		},
+		{
+			"id": 83,
+			"firstnameId": 378
+		},
+		{
+			"id": 84,
+			"firstnameId": 303
+		},
+		{
+			"id": 85,
+			"firstnameId": 376
+		},
+		{
+			"id": 86,
+			"firstnameId": 306
+		},
+		{
+			"id": 87,
+			"firstnameId": 377
+		},
+		{
+			"id": 88,
+			"firstnameId": 331
+		},
+		{
+			"id": 89,
+			"firstnameId": 379
+		},
+		{
+			"id": 90,
+			"firstnameId": 380
+		},
+		{
+			"id": 91,
+			"firstnameId": 381
+		},
+		{
+			"id": 92,
+			"firstnameId": 384
+		},
+		{
+			"id": 93,
+			"firstnameId": 290
+		},
+		{
+			"id": 94,
+			"firstnameId": 382
+		},
+		{
+			"id": 95,
+			"firstnameId": 383
+		},
+		{
+			"id": 96,
+			"firstnameId": 387
+		},
+		{
+			"id": 97,
+			"firstnameId": 388
+		},
+		{
+			"id": 98,
+			"firstnameId": 385
+		},
+		{
+			"id": 99,
+			"firstnameId": 386
+		},
+		{
+			"id": 100,
+			"firstnameId": 301
+		},
+		{
+			"id": 101,
+			"firstnameId": 288
+		},
+		{
+			"id": 102,
+			"firstnameId": 294
+		},
+		{
+			"id": 103,
+			"firstnameId": 297
+		},
+		{
+			"id": 104,
+			"firstnameId": 270
+		},
+		{
+			"id": 105,
+			"firstnameId": 268
+		},
+		{
+			"id": 106,
+			"firstnameId": 287
+		},
+		{
+			"id": 107,
+			"firstnameId": 296
+		},
+		{
+			"id": 108,
+			"firstnameId": 305
+		},
+		{
+			"id": 109,
+			"firstnameId": 282
+		},
+		{
+			"id": 110,
+			"firstnameId": 308
+		},
+		{
+			"id": 111,
+			"firstnameId": 291
+		},
+		{
+			"id": 112,
+			"firstnameId": 293
+		},
+		{
+			"id": 113,
+			"firstnameId": 292
+		},
+		{
+			"id": 115,
+			"firstnameId": 311
+		},
+		{
+			"id": 116,
+			"firstnameId": 325
+		},
+		{
+			"id": 117,
+			"firstnameId": 327
+		},
+		{
+			"id": 118,
+			"firstnameId": 289
+		},
+		{
+			"id": 119,
+			"firstnameId": 341
+		},
+		{
+			"id": 120,
+			"firstnameId": 349
+		},
+		{
+			"id": 121,
+			"firstnameId": 328
+		},
+		{
+			"id": 122,
+			"firstnameId": 352
+		},
+		{
+			"id": 123,
+			"firstnameId": 329
+		},
+		{
+			"id": 124,
+			"firstnameId": 319
+		},
+		{
+			"id": 125,
+			"firstnameId": 307
+		},
+		{
+			"id": 126,
+			"firstnameId": 354
+		},
+		{
+			"id": 127,
+			"firstnameId": 304
+		},
+		{
+			"id": 128,
+			"firstnameId": 298
+		},
+		{
+			"id": 129,
+			"firstnameId": 309
+		},
+		{
+			"id": 130,
+			"firstnameId": 255
+		},
+		{
+			"id": 131,
+			"firstnameId": 253
+		},
+		{
+			"id": 132,
+			"firstnameId": 336
+		},
+		{
+			"id": 133,
+			"firstnameId": 251
+		},
+		{
+			"id": 134,
+			"firstnameId": 252
+		},
+		{
+			"id": 137,
+			"firstnameId": 264
+		},
+		{
+			"id": 138,
+			"firstnameId": 254
+		},
+		{
+			"id": 139,
+			"firstnameId": 261
+		},
+		{
+			"id": 140,
+			"firstnameId": 258
+		},
+		{
+			"id": 141,
+			"firstnameId": 337
+		},
+		{
+			"id": 142,
+			"firstnameId": 334
+		},
+		{
+			"id": 143,
+			"firstnameId": 262
+		},
+		{
+			"id": 144,
+			"firstnameId": 250
+		},
+		{
+			"id": 145,
+			"firstnameId": 249
+		},
+		{
+			"id": 146,
+			"firstnameId": 398
+		},
+		{
+			"id": 147,
+			"firstnameId": 259
+		},
+		{
+			"id": 148,
+			"firstnameId": 248
+		},
+		{
+			"id": 149,
+			"firstnameId": 260
+		},
+		{
+			"id": 150,
+			"firstnameId": 265
+		},
+		{
+			"id": 151,
+			"firstnameId": 256
+		},
+		{
+			"id": 152,
+			"firstnameId": 257
+		},
+		{
+			"id": 153,
+			"firstnameId": 335
+		},
+		{
+			"id": 154,
+			"firstnameId": 263
+		}
+	]
+}

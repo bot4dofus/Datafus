@@ -1,0 +1,236 @@
+{
+	"def": [
+		{
+			"memberName": "Notification",
+			"packageName": "com.ankamagames.dofus.datacenter.notifications",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "titleId",
+					"type": -5
+				},
+				{
+					"name": "messageId",
+					"type": -5
+				},
+				{
+					"name": "iconId",
+					"type": -1
+				},
+				{
+					"name": "typeId",
+					"type": -1
+				},
+				{
+					"name": "trigger",
+					"type": -3
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 1,
+			"titleId": 7473,
+			"messageId": 7474,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": ""
+		},
+		{
+			"id": 2,
+			"titleId": 7441,
+			"messageId": 7442,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": ""
+		},
+		{
+			"id": 3,
+			"titleId": 7465,
+			"messageId": 7466,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": ""
+		},
+		{
+			"id": 4,
+			"titleId": 7457,
+			"messageId": 7458,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": ""
+		},
+		{
+			"id": 5,
+			"titleId": 7447,
+			"messageId": 765248,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": ""
+		},
+		{
+			"id": 6,
+			"titleId": 7475,
+			"messageId": 196404,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": ""
+		},
+		{
+			"id": 7,
+			"titleId": 7437,
+			"messageId": 7438,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": ""
+		},
+		{
+			"id": 8,
+			"titleId": 538575,
+			"messageId": 538571,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": ""
+		},
+		{
+			"id": 9,
+			"titleId": 7461,
+			"messageId": 7462,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": ""
+		},
+		{
+			"id": 10,
+			"titleId": 7489,
+			"messageId": 756779,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": "CharacterLevelUp"
+		},
+		{
+			"id": 11,
+			"titleId": 7491,
+			"messageId": 732669,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": "PlayerNewSpell"
+		},
+		{
+			"id": 12,
+			"titleId": 7485,
+			"messageId": 715406,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": "PlayerIsDead"
+		},
+		{
+			"id": 13,
+			"titleId": 7487,
+			"messageId": 424501,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": "PlayerIsDead"
+		},
+		{
+			"id": 14,
+			"titleId": 7483,
+			"messageId": 568687,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": "GameRolePlayPlayerLifeStatus,0:2"
+		},
+		{
+			"id": 15,
+			"titleId": 7481,
+			"messageId": 7482,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": ""
+		},
+		{
+			"id": 16,
+			"titleId": 7495,
+			"messageId": 7496,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": ""
+		},
+		{
+			"id": 22,
+			"titleId": 7451,
+			"messageId": 7452,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": "CreaturesMode"
+		},
+		{
+			"id": 23,
+			"titleId": 7435,
+			"messageId": 661455,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": "LifePointsRegenBegin"
+		},
+		{
+			"id": 24,
+			"titleId": 7443,
+			"messageId": 7444,
+			"iconId": 0,
+			"typeId": 4,
+			"trigger": ""
+		},
+		{
+			"id": 29,
+			"titleId": 7459,
+			"messageId": 7460,
+			"iconId": 0,
+			"typeId": 1,
+			"trigger": "OpenSmileys"
+		},
+		{
+			"id": 30,
+			"titleId": 76674,
+			"messageId": 7472,
+			"iconId": 1,
+			"typeId": 4,
+			"trigger": ""
+		},
+		{
+			"id": 33,
+			"titleId": 7479,
+			"messageId": 7480,
+			"iconId": 0,
+			"typeId": 4,
+			"trigger": ""
+		},
+		{
+			"id": 34,
+			"titleId": 823595,
+			"messageId": 322123,
+			"iconId": 0,
+			"typeId": 4,
+			"trigger": ""
+		},
+		{
+			"id": 36,
+			"titleId": 988546,
+			"messageId": 322121,
+			"iconId": 0,
+			"typeId": 4,
+			"trigger": ""
+		},
+		{
+			"id": 37,
+			"titleId": 756273,
+			"messageId": 756274,
+			"iconId": 4,
+			"typeId": 4,
+			"trigger": ""
+		}
+	]
+}

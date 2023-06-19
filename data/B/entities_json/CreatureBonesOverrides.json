@@ -1,0 +1,52 @@
+{
+	"def": [
+		{
+			"memberName": "CreatureBoneOverride",
+			"packageName": "com.ankamagames.dofus.datacenter.appearance",
+			"fields": [
+				{
+					"name": "boneId",
+					"type": -1
+				},
+				{
+					"name": "creatureBoneId",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"boneId": 842,
+			"creatureBoneId": 1811
+		},
+		{
+			"boneId": 3164,
+			"creatureBoneId": 1812
+		},
+		{
+			"boneId": 3163,
+			"creatureBoneId": 1812
+		},
+		{
+			"boneId": 706,
+			"creatureBoneId": 1749
+		},
+		{
+			"boneId": 453,
+			"creatureBoneId": 1749
+		},
+		{
+			"boneId": 1504,
+			"creatureBoneId": 1749
+		},
+		{
+			"boneId": 1509,
+			"creatureBoneId": 1749
+		},
+		{
+			"boneId": 113,
+			"creatureBoneId": 1749
+		}
+	]
+}

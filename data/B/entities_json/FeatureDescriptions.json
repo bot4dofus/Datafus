@@ -1,0 +1,2319 @@
+{
+	"def": [
+		{
+			"memberName": "FeatureDescription",
+			"packageName": "com.ankamagames.dofus.datacenter.progression",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "descriptionId",
+					"type": -5
+				},
+				{
+					"name": "priority",
+					"type": -1
+				},
+				{
+					"name": "parentId",
+					"type": -1
+				},
+				{
+					"name": "children",
+					"type": -99,
+					"vectorTypes": {
+						"name": "Vector.<int>",
+						"type": -1
+					}
+				},
+				{
+					"name": "criterion",
+					"type": -3
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 3,
+			"nameId": 862803,
+			"descriptionId": 926012,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				4,
+				5
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 4,
+			"nameId": 862802,
+			"descriptionId": 872347,
+			"priority": 1,
+			"parentId": 3,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 5,
+			"nameId": 862801,
+			"descriptionId": 872348,
+			"priority": 1,
+			"parentId": 3,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 7,
+			"nameId": 862804,
+			"descriptionId": 997455,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				8,
+				9,
+				10,
+				133,
+				304,
+				305,
+				306
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 8,
+			"nameId": 862806,
+			"descriptionId": 1001204,
+			"priority": 1,
+			"parentId": 7,
+			"children": [
+				300,
+				302,
+				303
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 9,
+			"nameId": 862807,
+			"descriptionId": 997030,
+			"priority": 1,
+			"parentId": 7,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 10,
+			"nameId": 862808,
+			"descriptionId": 997546,
+			"priority": 1,
+			"parentId": 7,
+			"children": [
+				301,
+				307
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 11,
+			"nameId": 869583,
+			"descriptionId": 873912,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				13,
+				14
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 13,
+			"nameId": 862811,
+			"descriptionId": 880508,
+			"priority": 1,
+			"parentId": 11,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 14,
+			"nameId": 862812,
+			"descriptionId": 880510,
+			"priority": 1,
+			"parentId": 11,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 15,
+			"nameId": 880762,
+			"descriptionId": 993350,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				16,
+				18
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 16,
+			"nameId": 859894,
+			"descriptionId": 937974,
+			"priority": 1,
+			"parentId": 15,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 17,
+			"nameId": 860343,
+			"descriptionId": 891956,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 18,
+			"nameId": 860380,
+			"descriptionId": 894821,
+			"priority": 1,
+			"parentId": 15,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 19,
+			"nameId": 862813,
+			"descriptionId": 877591,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 20,
+			"nameId": 862815,
+			"descriptionId": 872720,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 21,
+			"nameId": 862817,
+			"descriptionId": 881442,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				24,
+				26,
+				27,
+				30,
+				31,
+				128,
+				129,
+				130
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 22,
+			"nameId": 862824,
+			"descriptionId": 880506,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 23,
+			"nameId": 862836,
+			"descriptionId": 891959,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 24,
+			"nameId": 862843,
+			"descriptionId": 993354,
+			"priority": 1,
+			"parentId": 21,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 25,
+			"nameId": 862850,
+			"descriptionId": 953965,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 26,
+			"nameId": 862857,
+			"descriptionId": 874535,
+			"priority": 1,
+			"parentId": 21,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 27,
+			"nameId": 862859,
+			"descriptionId": 874536,
+			"priority": 1,
+			"parentId": 21,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 29,
+			"nameId": 862868,
+			"descriptionId": 880559,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 30,
+			"nameId": 862875,
+			"descriptionId": 881449,
+			"priority": 1,
+			"parentId": 21,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 31,
+			"nameId": 862877,
+			"descriptionId": 881042,
+			"priority": 1,
+			"parentId": 21,
+			"children": [
+				123,
+				125,
+				126,
+				127
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 32,
+			"nameId": 864498,
+			"descriptionId": 993346,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 33,
+			"nameId": 864510,
+			"descriptionId": 968716,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				63
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 34,
+			"nameId": 864522,
+			"descriptionId": 880651,
+			"priority": 5,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 35,
+			"nameId": 864534,
+			"descriptionId": 872368,
+			"priority": 22,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 36,
+			"nameId": 864546,
+			"descriptionId": 880654,
+			"priority": 8,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 37,
+			"nameId": 864558,
+			"descriptionId": 873919,
+			"priority": 21,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 38,
+			"nameId": 864570,
+			"descriptionId": 873920,
+			"priority": 27,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 39,
+			"nameId": 864582,
+			"descriptionId": 880665,
+			"priority": 17,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 40,
+			"nameId": 864594,
+			"descriptionId": 880666,
+			"priority": 18,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 41,
+			"nameId": 864606,
+			"descriptionId": 894660,
+			"priority": 10,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 42,
+			"nameId": 864618,
+			"descriptionId": 880653,
+			"priority": 6,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 43,
+			"nameId": 864630,
+			"descriptionId": 880360,
+			"priority": 15,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 44,
+			"nameId": 864642,
+			"descriptionId": 880656,
+			"priority": 12,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 45,
+			"nameId": 864654,
+			"descriptionId": 872377,
+			"priority": 26,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 46,
+			"nameId": 864666,
+			"descriptionId": 993347,
+			"priority": 28,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 47,
+			"nameId": 864678,
+			"descriptionId": 881435,
+			"priority": 11,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 48,
+			"nameId": 864692,
+			"descriptionId": 873924,
+			"priority": 3,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 49,
+			"nameId": 864704,
+			"descriptionId": 872380,
+			"priority": 0,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 50,
+			"nameId": 864716,
+			"descriptionId": 872381,
+			"priority": 1,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 51,
+			"nameId": 864728,
+			"descriptionId": 872384,
+			"priority": 24,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 52,
+			"nameId": 864740,
+			"descriptionId": 872385,
+			"priority": 25,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 53,
+			"nameId": 864752,
+			"descriptionId": 880898,
+			"priority": 9,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 54,
+			"nameId": 864764,
+			"descriptionId": 877501,
+			"priority": 2,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 55,
+			"nameId": 864777,
+			"descriptionId": 880370,
+			"priority": 14,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 56,
+			"nameId": 864789,
+			"descriptionId": 880363,
+			"priority": 23,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 57,
+			"nameId": 864804,
+			"descriptionId": 880663,
+			"priority": 19,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 58,
+			"nameId": 864816,
+			"descriptionId": 880664,
+			"priority": 20,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 59,
+			"nameId": 864829,
+			"descriptionId": 880662,
+			"priority": 16,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 60,
+			"nameId": 864842,
+			"descriptionId": 881436,
+			"priority": 13,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 61,
+			"nameId": 864854,
+			"descriptionId": 880652,
+			"priority": 7,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 63,
+			"nameId": 864872,
+			"descriptionId": 872394,
+			"priority": 4,
+			"parentId": 33,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 64,
+			"nameId": 864970,
+			"descriptionId": 880899,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 65,
+			"nameId": 864982,
+			"descriptionId": 880813,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 66,
+			"nameId": 864994,
+			"descriptionId": 968075,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 67,
+			"nameId": 865006,
+			"descriptionId": 1001768,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				101,
+				102,
+				103,
+				104,
+				105,
+				206
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 68,
+			"nameId": 865018,
+			"descriptionId": 877908,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 69,
+			"nameId": 865030,
+			"descriptionId": 881107,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 70,
+			"nameId": 865042,
+			"descriptionId": 880588,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 71,
+			"nameId": 865054,
+			"descriptionId": 872404,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 72,
+			"nameId": 865066,
+			"descriptionId": 880513,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 73,
+			"nameId": 865078,
+			"descriptionId": 874047,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 74,
+			"nameId": 865090,
+			"descriptionId": 881454,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 75,
+			"nameId": 865102,
+			"descriptionId": 880697,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 76,
+			"nameId": 865114,
+			"descriptionId": 880587,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 77,
+			"nameId": 880704,
+			"descriptionId": 881104,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 78,
+			"nameId": 865138,
+			"descriptionId": 872409,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 79,
+			"nameId": 865150,
+			"descriptionId": 881457,
+			"priority": 1,
+			"parentId": 67,
+			"children": [
+				81,
+				82,
+				83,
+				84,
+				85,
+				202,
+				207
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 80,
+			"nameId": 969458,
+			"descriptionId": 969465,
+			"priority": 1,
+			"parentId": 67,
+			"children": [
+				238,
+				239,
+				240
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 81,
+			"nameId": 865174,
+			"descriptionId": 928153,
+			"priority": 1,
+			"parentId": 79,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 82,
+			"nameId": 865186,
+			"descriptionId": 894333,
+			"priority": 1,
+			"parentId": 79,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 83,
+			"nameId": 865198,
+			"descriptionId": 880595,
+			"priority": 1,
+			"parentId": 79,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 84,
+			"nameId": 865210,
+			"descriptionId": 873970,
+			"priority": 1,
+			"parentId": 79,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 85,
+			"nameId": 865222,
+			"descriptionId": 894336,
+			"priority": 1,
+			"parentId": 79,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 86,
+			"nameId": 865234,
+			"descriptionId": 969282,
+			"priority": 1,
+			"parentId": 238,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 87,
+			"nameId": 968635,
+			"descriptionId": 969359,
+			"priority": 1,
+			"parentId": 240,
+			"children": [],
+			"criterion": ""
+		},
+		{
+			"id": 88,
+			"nameId": 878887,
+			"descriptionId": 969283,
+			"priority": 1,
+			"parentId": 238,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 89,
+			"nameId": 969455,
+			"descriptionId": 969365,
+			"priority": 1,
+			"parentId": 240,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 90,
+			"nameId": 968721,
+			"descriptionId": 969457,
+			"priority": 1,
+			"parentId": 240,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 91,
+			"nameId": 968725,
+			"descriptionId": 969366,
+			"priority": 1,
+			"parentId": 240,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 92,
+			"nameId": 968727,
+			"descriptionId": 969367,
+			"priority": 1,
+			"parentId": 240,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 94,
+			"nameId": 968729,
+			"descriptionId": 969374,
+			"priority": 1,
+			"parentId": 240,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 95,
+			"nameId": 865334,
+			"descriptionId": 969356,
+			"priority": 1,
+			"parentId": 239,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 96,
+			"nameId": 865347,
+			"descriptionId": 969379,
+			"priority": 1,
+			"parentId": 240,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 97,
+			"nameId": 878871,
+			"descriptionId": 969383,
+			"priority": 1,
+			"parentId": 240,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 98,
+			"nameId": 865371,
+			"descriptionId": 969382,
+			"priority": 1,
+			"parentId": 240,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 99,
+			"nameId": 865383,
+			"descriptionId": 969456,
+			"priority": 1,
+			"parentId": 239,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 100,
+			"nameId": 865395,
+			"descriptionId": 969358,
+			"priority": 1,
+			"parentId": 239,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 101,
+			"nameId": 865407,
+			"descriptionId": 873971,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 102,
+			"nameId": 865419,
+			"descriptionId": 872432,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 103,
+			"nameId": 865431,
+			"descriptionId": 872433,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 104,
+			"nameId": 865443,
+			"descriptionId": 881433,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 105,
+			"nameId": 865455,
+			"descriptionId": 880598,
+			"priority": 1,
+			"parentId": 67,
+			"children": [
+				208,
+				209,
+				210,
+				211,
+				212,
+				213,
+				214,
+				215,
+				216,
+				217,
+				218,
+				219,
+				220,
+				222,
+				223,
+				224,
+				225
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 106,
+			"nameId": 865467,
+			"descriptionId": 993345,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				107,
+				108,
+				110
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 107,
+			"nameId": 865479,
+			"descriptionId": 1001596,
+			"priority": 1,
+			"parentId": 106,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 108,
+			"nameId": 865491,
+			"descriptionId": 872443,
+			"priority": 1,
+			"parentId": 106,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 110,
+			"nameId": 865515,
+			"descriptionId": 993487,
+			"priority": 1,
+			"parentId": 106,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 111,
+			"nameId": 865527,
+			"descriptionId": 1000058,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 112,
+			"nameId": 865539,
+			"descriptionId": 873981,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				113,
+				114,
+				115,
+				116,
+				117,
+				118,
+				119
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 113,
+			"nameId": 865556,
+			"descriptionId": 872446,
+			"priority": 1,
+			"parentId": 112,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 114,
+			"nameId": 865568,
+			"descriptionId": 881447,
+			"priority": 1,
+			"parentId": 112,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 115,
+			"nameId": 865580,
+			"descriptionId": 873986,
+			"priority": 1,
+			"parentId": 112,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 116,
+			"nameId": 865592,
+			"descriptionId": 875495,
+			"priority": 1,
+			"parentId": 112,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 117,
+			"nameId": 865604,
+			"descriptionId": 881450,
+			"priority": 1,
+			"parentId": 112,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 118,
+			"nameId": 865616,
+			"descriptionId": 881308,
+			"priority": 1,
+			"parentId": 112,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 119,
+			"nameId": 865630,
+			"descriptionId": 879913,
+			"priority": 1,
+			"parentId": 112,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 120,
+			"nameId": 865642,
+			"descriptionId": 880714,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 121,
+			"nameId": 865654,
+			"descriptionId": 880457,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 122,
+			"nameId": 865666,
+			"descriptionId": 891957,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 123,
+			"nameId": 865680,
+			"descriptionId": 881440,
+			"priority": 1,
+			"parentId": 31,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 125,
+			"nameId": 865697,
+			"descriptionId": 881437,
+			"priority": 1,
+			"parentId": 31,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 126,
+			"nameId": 865709,
+			"descriptionId": 881444,
+			"priority": 1,
+			"parentId": 31,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 127,
+			"nameId": 865722,
+			"descriptionId": 881445,
+			"priority": 1,
+			"parentId": 31,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 128,
+			"nameId": 865734,
+			"descriptionId": 880763,
+			"priority": 1,
+			"parentId": 21,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 129,
+			"nameId": 865746,
+			"descriptionId": 872576,
+			"priority": 1,
+			"parentId": 21,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 130,
+			"nameId": 865758,
+			"descriptionId": 874543,
+			"priority": 1,
+			"parentId": 21,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 131,
+			"nameId": 865770,
+			"descriptionId": 880605,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 132,
+			"nameId": 865782,
+			"descriptionId": 994315,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				134,
+				232,
+				233,
+				234,
+				235
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 133,
+			"nameId": 865794,
+			"descriptionId": 1001597,
+			"priority": 1,
+			"parentId": 7,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 134,
+			"nameId": 865806,
+			"descriptionId": 874801,
+			"priority": 1,
+			"parentId": 132,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 135,
+			"nameId": 865819,
+			"descriptionId": 880802,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				136,
+				137
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 136,
+			"nameId": 865834,
+			"descriptionId": 874548,
+			"priority": 1,
+			"parentId": 135,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 137,
+			"nameId": 865846,
+			"descriptionId": 874549,
+			"priority": 1,
+			"parentId": 135,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 138,
+			"nameId": 865858,
+			"descriptionId": 880804,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 139,
+			"nameId": 865870,
+			"descriptionId": 877962,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 140,
+			"nameId": 865882,
+			"descriptionId": 884078,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				226
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 141,
+			"nameId": 865895,
+			"descriptionId": 880879,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				142
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 142,
+			"nameId": 865907,
+			"descriptionId": 968714,
+			"priority": 1,
+			"parentId": 141,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 143,
+			"nameId": 865919,
+			"descriptionId": 880760,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				144
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 144,
+			"nameId": 865931,
+			"descriptionId": 874809,
+			"priority": 1,
+			"parentId": 143,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 145,
+			"nameId": 865943,
+			"descriptionId": 881087,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				146,
+				147,
+				148,
+				149
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 146,
+			"nameId": 865955,
+			"descriptionId": 874560,
+			"priority": 1,
+			"parentId": 145,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 147,
+			"nameId": 865967,
+			"descriptionId": 897259,
+			"priority": 1,
+			"parentId": 145,
+			"children": [
+				150,
+				151,
+				152,
+				153
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 148,
+			"nameId": 865979,
+			"descriptionId": 874577,
+			"priority": 1,
+			"parentId": 145,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 149,
+			"nameId": 865991,
+			"descriptionId": 873266,
+			"priority": 1,
+			"parentId": 145,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 150,
+			"nameId": 866003,
+			"descriptionId": 874564,
+			"priority": 1,
+			"parentId": 147,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 151,
+			"nameId": 866015,
+			"descriptionId": 874565,
+			"priority": 1,
+			"parentId": 147,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 152,
+			"nameId": 866027,
+			"descriptionId": 874566,
+			"priority": 1,
+			"parentId": 147,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 153,
+			"nameId": 866039,
+			"descriptionId": 880897,
+			"priority": 1,
+			"parentId": 147,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 154,
+			"nameId": 866051,
+			"descriptionId": 873338,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				156,
+				157,
+				158,
+				159,
+				160
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 156,
+			"nameId": 866066,
+			"descriptionId": 881012,
+			"priority": 1,
+			"parentId": 154,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 157,
+			"nameId": 866078,
+			"descriptionId": 880852,
+			"priority": 1,
+			"parentId": 154,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 158,
+			"nameId": 866090,
+			"descriptionId": 874583,
+			"priority": 1,
+			"parentId": 154,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 159,
+			"nameId": 866102,
+			"descriptionId": 951883,
+			"priority": 1,
+			"parentId": 154,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 160,
+			"nameId": 866114,
+			"descriptionId": 880742,
+			"priority": 1,
+			"parentId": 154,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 161,
+			"nameId": 866126,
+			"descriptionId": 875601,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				162,
+				163,
+				164,
+				165,
+				166,
+				167,
+				168,
+				169,
+				170,
+				171
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 162,
+			"nameId": 866138,
+			"descriptionId": 873344,
+			"priority": 1,
+			"parentId": 161,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 163,
+			"nameId": 866150,
+			"descriptionId": 874593,
+			"priority": 1,
+			"parentId": 161,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 164,
+			"nameId": 866162,
+			"descriptionId": 880741,
+			"priority": 1,
+			"parentId": 161,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 165,
+			"nameId": 866174,
+			"descriptionId": 873347,
+			"priority": 1,
+			"parentId": 161,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 166,
+			"nameId": 866186,
+			"descriptionId": 874785,
+			"priority": 1,
+			"parentId": 161,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 167,
+			"nameId": 866198,
+			"descriptionId": 880740,
+			"priority": 1,
+			"parentId": 161,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 168,
+			"nameId": 866210,
+			"descriptionId": 874791,
+			"priority": 1,
+			"parentId": 161,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 169,
+			"nameId": 866222,
+			"descriptionId": 874792,
+			"priority": 1,
+			"parentId": 161,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 170,
+			"nameId": 866234,
+			"descriptionId": 1001762,
+			"priority": 1,
+			"parentId": 161,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 171,
+			"nameId": 866246,
+			"descriptionId": 968717,
+			"priority": 1,
+			"parentId": 161,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 172,
+			"nameId": 866258,
+			"descriptionId": 993353,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 173,
+			"nameId": 866270,
+			"descriptionId": 881456,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 174,
+			"nameId": 866282,
+			"descriptionId": 873413,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				175,
+				176,
+				177,
+				179
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 175,
+			"nameId": 866294,
+			"descriptionId": 873415,
+			"priority": 1,
+			"parentId": 174,
+			"children": [],
+			"criterion": "SC=0"
+		},
+		{
+			"id": 176,
+			"nameId": 866306,
+			"descriptionId": 880689,
+			"priority": 1,
+			"parentId": 174,
+			"children": [],
+			"criterion": "SC!1&SC!4"
+		},
+		{
+			"id": 177,
+			"nameId": 866318,
+			"descriptionId": 880882,
+			"priority": 1,
+			"parentId": 174,
+			"children": [],
+			"criterion": "SC=4"
+		},
+		{
+			"id": 179,
+			"nameId": 866342,
+			"descriptionId": 874601,
+			"priority": 1,
+			"parentId": 174,
+			"children": [],
+			"criterion": "SC=5"
+		},
+		{
+			"id": 180,
+			"nameId": 866354,
+			"descriptionId": 891392,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 181,
+			"nameId": 866366,
+			"descriptionId": 881455,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 182,
+			"nameId": 868771,
+			"descriptionId": 866384,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				183,
+				184,
+				185,
+				187,
+				188
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 183,
+			"nameId": 866390,
+			"descriptionId": 926013,
+			"priority": 1,
+			"parentId": 182,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 184,
+			"nameId": 866402,
+			"descriptionId": 873796,
+			"priority": 1,
+			"parentId": 182,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 185,
+			"nameId": 866414,
+			"descriptionId": 874555,
+			"priority": 1,
+			"parentId": 182,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 187,
+			"nameId": 866429,
+			"descriptionId": 874556,
+			"priority": 1,
+			"parentId": 182,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 188,
+			"nameId": 866441,
+			"descriptionId": 873795,
+			"priority": 1,
+			"parentId": 182,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 189,
+			"nameId": 868763,
+			"descriptionId": 872559,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				190,
+				191,
+				192
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 190,
+			"nameId": 868765,
+			"descriptionId": 874597,
+			"priority": 1,
+			"parentId": 189,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 191,
+			"nameId": 873382,
+			"descriptionId": 880606,
+			"priority": 1,
+			"parentId": 189,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 192,
+			"nameId": 868769,
+			"descriptionId": 986581,
+			"priority": 1,
+			"parentId": 189,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 193,
+			"nameId": 868777,
+			"descriptionId": 928108,
+			"priority": 1,
+			"parentId": 0,
+			"children": [
+				194
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 194,
+			"nameId": 868779,
+			"descriptionId": 879317,
+			"priority": 1,
+			"parentId": 193,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 202,
+			"nameId": 869859,
+			"descriptionId": 880723,
+			"priority": 1,
+			"parentId": 79,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 204,
+			"nameId": 872797,
+			"descriptionId": 891930,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 205,
+			"nameId": 878861,
+			"descriptionId": 969384,
+			"priority": 1,
+			"parentId": 240,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 206,
+			"nameId": 878863,
+			"descriptionId": 881446,
+			"priority": 1,
+			"parentId": 67,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 207,
+			"nameId": 883882,
+			"descriptionId": 894321,
+			"priority": 1,
+			"parentId": 79,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 208,
+			"nameId": 883898,
+			"descriptionId": 884259,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 209,
+			"nameId": 883900,
+			"descriptionId": 884257,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 210,
+			"nameId": 883902,
+			"descriptionId": 884260,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 211,
+			"nameId": 883904,
+			"descriptionId": 894302,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 212,
+			"nameId": 883906,
+			"descriptionId": 884265,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 213,
+			"nameId": 883908,
+			"descriptionId": 884262,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 214,
+			"nameId": 883910,
+			"descriptionId": 884263,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 215,
+			"nameId": 883912,
+			"descriptionId": 884264,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 216,
+			"nameId": 883914,
+			"descriptionId": 884331,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 217,
+			"nameId": 883916,
+			"descriptionId": 884266,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 218,
+			"nameId": 883918,
+			"descriptionId": 884267,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 219,
+			"nameId": 883920,
+			"descriptionId": 884273,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 220,
+			"nameId": 883922,
+			"descriptionId": 884268,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 222,
+			"nameId": 883926,
+			"descriptionId": 884269,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 223,
+			"nameId": 883928,
+			"descriptionId": 884270,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 224,
+			"nameId": 883930,
+			"descriptionId": 884271,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 225,
+			"nameId": 883932,
+			"descriptionId": 890528,
+			"priority": 1,
+			"parentId": 105,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 226,
+			"nameId": 918155,
+			"descriptionId": 918458,
+			"priority": 1,
+			"parentId": 140,
+			"children": [
+				227,
+				228,
+				229,
+				230
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 227,
+			"nameId": 918213,
+			"descriptionId": 918352,
+			"priority": 1,
+			"parentId": 226,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 228,
+			"nameId": 918216,
+			"descriptionId": 918457,
+			"priority": 2,
+			"parentId": 226,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 229,
+			"nameId": 918222,
+			"descriptionId": 918460,
+			"priority": 3,
+			"parentId": 226,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 230,
+			"nameId": 918226,
+			"descriptionId": 918760,
+			"priority": 4,
+			"parentId": 226,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 231,
+			"nameId": 923136,
+			"descriptionId": 928164,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 232,
+			"nameId": 925338,
+			"descriptionId": 925469,
+			"priority": 1,
+			"parentId": 132,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 233,
+			"nameId": 937550,
+			"descriptionId": 937551,
+			"priority": 1,
+			"parentId": 132,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 234,
+			"nameId": 937558,
+			"descriptionId": 968712,
+			"priority": 1,
+			"parentId": 132,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 235,
+			"nameId": 937672,
+			"descriptionId": 937673,
+			"priority": 1,
+			"parentId": 132,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 236,
+			"nameId": 959551,
+			"descriptionId": 960363,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 237,
+			"nameId": 968413,
+			"descriptionId": 970991,
+			"priority": 1,
+			"parentId": 0,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 238,
+			"nameId": 969463,
+			"descriptionId": 969532,
+			"priority": 1,
+			"parentId": 80,
+			"children": [
+				86,
+				88
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 239,
+			"nameId": 969459,
+			"descriptionId": 969533,
+			"priority": 1,
+			"parentId": 80,
+			"children": [
+				95,
+				99,
+				100
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 240,
+			"nameId": 969464,
+			"descriptionId": 971381,
+			"priority": 1,
+			"parentId": 80,
+			"children": [
+				87,
+				89,
+				90,
+				91,
+				92,
+				94,
+				96,
+				97,
+				98,
+				205,
+				266,
+				267
+			],
+			"criterion": "null"
+		},
+		{
+			"id": 266,
+			"nameId": 968732,
+			"descriptionId": 969381,
+			"priority": 1,
+			"parentId": 240,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 267,
+			"nameId": 968742,
+			"descriptionId": 969378,
+			"priority": 1,
+			"parentId": 240,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 300,
+			"nameId": 994755,
+			"descriptionId": 997033,
+			"priority": 1,
+			"parentId": 8,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 301,
+			"nameId": 995163,
+			"descriptionId": 997789,
+			"priority": 1,
+			"parentId": 10,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 302,
+			"nameId": 995165,
+			"descriptionId": 997769,
+			"priority": 1,
+			"parentId": 8,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 303,
+			"nameId": 995167,
+			"descriptionId": 998674,
+			"priority": 1,
+			"parentId": 8,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 304,
+			"nameId": 996421,
+			"descriptionId": 996422,
+			"priority": 1,
+			"parentId": 7,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 305,
+			"nameId": 996424,
+			"descriptionId": 996425,
+			"priority": 1,
+			"parentId": 7,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 306,
+			"nameId": 996556,
+			"descriptionId": 996800,
+			"priority": 1,
+			"parentId": 7,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 307,
+			"nameId": 997378,
+			"descriptionId": 997735,
+			"priority": 1,
+			"parentId": 10,
+			"children": [],
+			"criterion": "null"
+		}
+	]
+}

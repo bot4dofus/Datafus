@@ -1,0 +1,92 @@
+{
+	"def": [
+		{
+			"memberName": "QuestObjectiveType",
+			"packageName": "com.ankamagames.dofus.datacenter.quest",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 0,
+			"nameId": 56295
+		},
+		{
+			"id": 1,
+			"nameId": 395670
+		},
+		{
+			"id": 2,
+			"nameId": 56296
+		},
+		{
+			"id": 3,
+			"nameId": 114533
+		},
+		{
+			"id": 4,
+			"nameId": 56293
+		},
+		{
+			"id": 5,
+			"nameId": 154393
+		},
+		{
+			"id": 6,
+			"nameId": 114534
+		},
+		{
+			"id": 7,
+			"nameId": 56297
+		},
+		{
+			"id": 8,
+			"nameId": 56300
+		},
+		{
+			"id": 9,
+			"nameId": 56304
+		},
+		{
+			"id": 10,
+			"nameId": 56294
+		},
+		{
+			"id": 11,
+			"nameId": 56299
+		},
+		{
+			"id": 12,
+			"nameId": 409845
+		},
+		{
+			"id": 13,
+			"nameId": 395669
+		},
+		{
+			"id": 14,
+			"nameId": 114535
+		},
+		{
+			"id": 15,
+			"nameId": 283527
+		},
+		{
+			"id": 16,
+			"nameId": 373996
+		},
+		{
+			"id": 17,
+			"nameId": 540078
+		}
+	]
+}

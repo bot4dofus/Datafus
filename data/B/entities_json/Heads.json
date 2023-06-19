@@ -1,0 +1,2776 @@
+{
+	"def": [
+		{
+			"memberName": "Head",
+			"packageName": "com.ankamagames.dofus.datacenter.breeds",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "skins",
+					"type": -3
+				},
+				{
+					"name": "assetId",
+					"type": -3
+				},
+				{
+					"name": "breed",
+					"type": -1
+				},
+				{
+					"name": "gender",
+					"type": -1
+				},
+				{
+					"name": "label",
+					"type": -3
+				},
+				{
+					"name": "order",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 1,
+			"skins": "2012",
+			"assetId": "10_1",
+			"breed": 1,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 2,
+			"skins": "2013",
+			"assetId": "10_2",
+			"breed": 1,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 3,
+			"skins": "2014",
+			"assetId": "10_3",
+			"breed": 1,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 4,
+			"skins": "2015",
+			"assetId": "10_4",
+			"breed": 1,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 5,
+			"skins": "2016",
+			"assetId": "10_5",
+			"breed": 1,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 6,
+			"skins": "2017",
+			"assetId": "10_6",
+			"breed": 1,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 7,
+			"skins": "2018",
+			"assetId": "10_7",
+			"breed": 1,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 8,
+			"skins": "2019",
+			"assetId": "10_8",
+			"breed": 1,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 9,
+			"skins": "2020",
+			"assetId": "11_1",
+			"breed": 1,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 10,
+			"skins": "2021",
+			"assetId": "11_2",
+			"breed": 1,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 11,
+			"skins": "2022",
+			"assetId": "11_3",
+			"breed": 1,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 12,
+			"skins": "2023",
+			"assetId": "11_4",
+			"breed": 1,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 13,
+			"skins": "2024",
+			"assetId": "11_5",
+			"breed": 1,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 14,
+			"skins": "2025",
+			"assetId": "11_6",
+			"breed": 1,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 15,
+			"skins": "2026",
+			"assetId": "11_7",
+			"breed": 1,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 16,
+			"skins": "2027",
+			"assetId": "11_8",
+			"breed": 1,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 17,
+			"skins": "2028",
+			"assetId": "20_1",
+			"breed": 2,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 18,
+			"skins": "2029",
+			"assetId": "20_2",
+			"breed": 2,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 19,
+			"skins": "2030",
+			"assetId": "20_3",
+			"breed": 2,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 20,
+			"skins": "2031",
+			"assetId": "20_4",
+			"breed": 2,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 21,
+			"skins": "2032",
+			"assetId": "20_5",
+			"breed": 2,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 22,
+			"skins": "2033",
+			"assetId": "20_6",
+			"breed": 2,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 23,
+			"skins": "2034",
+			"assetId": "20_7",
+			"breed": 2,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 24,
+			"skins": "2035",
+			"assetId": "20_8",
+			"breed": 2,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 25,
+			"skins": "2036",
+			"assetId": "21_1",
+			"breed": 2,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 26,
+			"skins": "2037",
+			"assetId": "21_2",
+			"breed": 2,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 27,
+			"skins": "2038",
+			"assetId": "21_3",
+			"breed": 2,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 28,
+			"skins": "2039",
+			"assetId": "21_4",
+			"breed": 2,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 29,
+			"skins": "2040",
+			"assetId": "21_5",
+			"breed": 2,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 30,
+			"skins": "2041",
+			"assetId": "21_6",
+			"breed": 2,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 31,
+			"skins": "2042",
+			"assetId": "21_7",
+			"breed": 2,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 32,
+			"skins": "2043",
+			"assetId": "21_8",
+			"breed": 2,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 33,
+			"skins": "2044",
+			"assetId": "30_1",
+			"breed": 3,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 34,
+			"skins": "2045",
+			"assetId": "30_2",
+			"breed": 3,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 35,
+			"skins": "2046",
+			"assetId": "30_3",
+			"breed": 3,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 36,
+			"skins": "2047",
+			"assetId": "30_4",
+			"breed": 3,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 37,
+			"skins": "2048",
+			"assetId": "30_5",
+			"breed": 3,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 38,
+			"skins": "2049",
+			"assetId": "30_6",
+			"breed": 3,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 39,
+			"skins": "2050",
+			"assetId": "30_7",
+			"breed": 3,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 40,
+			"skins": "2051",
+			"assetId": "30_8",
+			"breed": 3,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 41,
+			"skins": "2052",
+			"assetId": "31_1",
+			"breed": 3,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 42,
+			"skins": "2053",
+			"assetId": "31_2",
+			"breed": 3,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 43,
+			"skins": "2054",
+			"assetId": "31_3",
+			"breed": 3,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 44,
+			"skins": "2055",
+			"assetId": "31_4",
+			"breed": 3,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 45,
+			"skins": "2056",
+			"assetId": "31_5",
+			"breed": 3,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 46,
+			"skins": "2057",
+			"assetId": "31_6",
+			"breed": 3,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 47,
+			"skins": "2058",
+			"assetId": "31_7",
+			"breed": 3,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 48,
+			"skins": "2059",
+			"assetId": "31_8",
+			"breed": 3,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 49,
+			"skins": "2060",
+			"assetId": "40_1",
+			"breed": 4,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 50,
+			"skins": "2061",
+			"assetId": "40_2",
+			"breed": 4,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 51,
+			"skins": "2062",
+			"assetId": "40_3",
+			"breed": 4,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 52,
+			"skins": "2063",
+			"assetId": "40_4",
+			"breed": 4,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 53,
+			"skins": "2064",
+			"assetId": "40_5",
+			"breed": 4,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 54,
+			"skins": "2065",
+			"assetId": "40_6",
+			"breed": 4,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 55,
+			"skins": "2066",
+			"assetId": "40_7",
+			"breed": 4,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 56,
+			"skins": "2067",
+			"assetId": "40_8",
+			"breed": 4,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 57,
+			"skins": "2068",
+			"assetId": "41_1",
+			"breed": 4,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 58,
+			"skins": "2069",
+			"assetId": "41_2",
+			"breed": 4,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 59,
+			"skins": "2070",
+			"assetId": "41_3",
+			"breed": 4,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 60,
+			"skins": "2071",
+			"assetId": "41_4",
+			"breed": 4,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 61,
+			"skins": "2072",
+			"assetId": "41_5",
+			"breed": 4,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 62,
+			"skins": "2073",
+			"assetId": "41_6",
+			"breed": 4,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 63,
+			"skins": "2074",
+			"assetId": "41_7",
+			"breed": 4,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 64,
+			"skins": "2075",
+			"assetId": "41_8",
+			"breed": 4,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 65,
+			"skins": "2076",
+			"assetId": "50_1",
+			"breed": 5,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 66,
+			"skins": "2077",
+			"assetId": "50_2",
+			"breed": 5,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 67,
+			"skins": "2078",
+			"assetId": "50_3",
+			"breed": 5,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 68,
+			"skins": "2079",
+			"assetId": "50_4",
+			"breed": 5,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 69,
+			"skins": "2080",
+			"assetId": "50_5",
+			"breed": 5,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 70,
+			"skins": "2081",
+			"assetId": "50_6",
+			"breed": 5,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 71,
+			"skins": "2082",
+			"assetId": "50_7",
+			"breed": 5,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 72,
+			"skins": "2083",
+			"assetId": "50_8",
+			"breed": 5,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 73,
+			"skins": "2084",
+			"assetId": "51_1",
+			"breed": 5,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 74,
+			"skins": "2085",
+			"assetId": "51_2",
+			"breed": 5,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 75,
+			"skins": "2086",
+			"assetId": "51_3",
+			"breed": 5,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 76,
+			"skins": "2087",
+			"assetId": "51_4",
+			"breed": 5,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 77,
+			"skins": "2088",
+			"assetId": "51_5",
+			"breed": 5,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 78,
+			"skins": "2089",
+			"assetId": "51_6",
+			"breed": 5,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 79,
+			"skins": "2090",
+			"assetId": "51_7",
+			"breed": 5,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 80,
+			"skins": "2091",
+			"assetId": "51_8",
+			"breed": 5,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 81,
+			"skins": "2092",
+			"assetId": "60_1",
+			"breed": 6,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 82,
+			"skins": "2093",
+			"assetId": "60_2",
+			"breed": 6,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 83,
+			"skins": "2094",
+			"assetId": "60_3",
+			"breed": 6,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 84,
+			"skins": "2095",
+			"assetId": "60_4",
+			"breed": 6,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 85,
+			"skins": "2096",
+			"assetId": "60_5",
+			"breed": 6,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 86,
+			"skins": "2097",
+			"assetId": "60_6",
+			"breed": 6,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 87,
+			"skins": "2098",
+			"assetId": "60_7",
+			"breed": 6,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 88,
+			"skins": "2099",
+			"assetId": "60_8",
+			"breed": 6,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 89,
+			"skins": "2100",
+			"assetId": "61_1",
+			"breed": 6,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 90,
+			"skins": "2101",
+			"assetId": "61_2",
+			"breed": 6,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 91,
+			"skins": "2102",
+			"assetId": "61_3",
+			"breed": 6,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 92,
+			"skins": "2103",
+			"assetId": "61_4",
+			"breed": 6,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 93,
+			"skins": "2104",
+			"assetId": "61_5",
+			"breed": 6,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 94,
+			"skins": "2105",
+			"assetId": "61_6",
+			"breed": 6,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 95,
+			"skins": "2106",
+			"assetId": "61_7",
+			"breed": 6,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 96,
+			"skins": "2107",
+			"assetId": "61_8",
+			"breed": 6,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 97,
+			"skins": "2108",
+			"assetId": "70_1",
+			"breed": 7,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 98,
+			"skins": "2109",
+			"assetId": "70_2",
+			"breed": 7,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 99,
+			"skins": "2110",
+			"assetId": "70_3",
+			"breed": 7,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 100,
+			"skins": "2111",
+			"assetId": "70_4",
+			"breed": 7,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 101,
+			"skins": "2112",
+			"assetId": "70_5",
+			"breed": 7,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 102,
+			"skins": "2113",
+			"assetId": "70_6",
+			"breed": 7,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 103,
+			"skins": "2114",
+			"assetId": "70_7",
+			"breed": 7,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 104,
+			"skins": "2115",
+			"assetId": "70_8",
+			"breed": 7,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 105,
+			"skins": "2116",
+			"assetId": "71_1",
+			"breed": 7,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 106,
+			"skins": "2117",
+			"assetId": "71_2",
+			"breed": 7,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 107,
+			"skins": "2118",
+			"assetId": "71_3",
+			"breed": 7,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 108,
+			"skins": "2119",
+			"assetId": "71_4",
+			"breed": 7,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 109,
+			"skins": "2120",
+			"assetId": "71_5",
+			"breed": 7,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 110,
+			"skins": "2121",
+			"assetId": "71_6",
+			"breed": 7,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 111,
+			"skins": "2122",
+			"assetId": "71_7",
+			"breed": 7,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 112,
+			"skins": "2123",
+			"assetId": "71_8",
+			"breed": 7,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 113,
+			"skins": "2124",
+			"assetId": "80_1",
+			"breed": 8,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 114,
+			"skins": "2125",
+			"assetId": "80_2",
+			"breed": 8,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 115,
+			"skins": "2126",
+			"assetId": "80_3",
+			"breed": 8,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 116,
+			"skins": "2127",
+			"assetId": "80_4",
+			"breed": 8,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 117,
+			"skins": "2128",
+			"assetId": "80_5",
+			"breed": 8,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 118,
+			"skins": "2129",
+			"assetId": "80_6",
+			"breed": 8,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 119,
+			"skins": "2130",
+			"assetId": "80_7",
+			"breed": 8,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 120,
+			"skins": "2131",
+			"assetId": "80_8",
+			"breed": 8,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 121,
+			"skins": "2132",
+			"assetId": "81_1",
+			"breed": 8,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 122,
+			"skins": "2133",
+			"assetId": "81_2",
+			"breed": 8,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 123,
+			"skins": "2134",
+			"assetId": "81_3",
+			"breed": 8,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 124,
+			"skins": "2135",
+			"assetId": "81_4",
+			"breed": 8,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 125,
+			"skins": "2136",
+			"assetId": "81_5",
+			"breed": 8,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 126,
+			"skins": "2137",
+			"assetId": "81_6",
+			"breed": 8,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 127,
+			"skins": "2138",
+			"assetId": "81_7",
+			"breed": 8,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 128,
+			"skins": "2139",
+			"assetId": "81_8",
+			"breed": 8,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 129,
+			"skins": "2140",
+			"assetId": "90_1",
+			"breed": 9,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 130,
+			"skins": "2141",
+			"assetId": "90_2",
+			"breed": 9,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 131,
+			"skins": "2142",
+			"assetId": "90_3",
+			"breed": 9,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 132,
+			"skins": "2143",
+			"assetId": "90_4",
+			"breed": 9,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 133,
+			"skins": "2144",
+			"assetId": "90_5",
+			"breed": 9,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 134,
+			"skins": "2145",
+			"assetId": "90_6",
+			"breed": 9,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 135,
+			"skins": "2146",
+			"assetId": "90_7",
+			"breed": 9,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 136,
+			"skins": "2147",
+			"assetId": "90_8",
+			"breed": 9,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 137,
+			"skins": "2148",
+			"assetId": "91_1",
+			"breed": 9,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 138,
+			"skins": "2149",
+			"assetId": "91_2",
+			"breed": 9,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 139,
+			"skins": "2150",
+			"assetId": "91_3",
+			"breed": 9,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 140,
+			"skins": "2151",
+			"assetId": "91_4",
+			"breed": 9,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 141,
+			"skins": "2152",
+			"assetId": "91_5",
+			"breed": 9,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 142,
+			"skins": "2153",
+			"assetId": "91_6",
+			"breed": 9,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 143,
+			"skins": "2154",
+			"assetId": "91_7",
+			"breed": 9,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 144,
+			"skins": "2155",
+			"assetId": "91_8",
+			"breed": 9,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 145,
+			"skins": "2156",
+			"assetId": "100_1",
+			"breed": 10,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 146,
+			"skins": "2157",
+			"assetId": "100_2",
+			"breed": 10,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 147,
+			"skins": "2158",
+			"assetId": "100_3",
+			"breed": 10,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 148,
+			"skins": "2159",
+			"assetId": "100_4",
+			"breed": 10,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 149,
+			"skins": "2160",
+			"assetId": "100_5",
+			"breed": 10,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 150,
+			"skins": "2161",
+			"assetId": "100_6",
+			"breed": 10,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 151,
+			"skins": "2162",
+			"assetId": "100_7",
+			"breed": 10,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 152,
+			"skins": "2163",
+			"assetId": "100_8",
+			"breed": 10,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 153,
+			"skins": "2164",
+			"assetId": "101_1",
+			"breed": 10,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 154,
+			"skins": "2165",
+			"assetId": "101_2",
+			"breed": 10,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 155,
+			"skins": "2166",
+			"assetId": "101_3",
+			"breed": 10,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 156,
+			"skins": "2167",
+			"assetId": "101_4",
+			"breed": 10,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 157,
+			"skins": "2168",
+			"assetId": "101_5",
+			"breed": 10,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 158,
+			"skins": "2169",
+			"assetId": "101_6",
+			"breed": 10,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 159,
+			"skins": "2170",
+			"assetId": "101_7",
+			"breed": 10,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 160,
+			"skins": "2171",
+			"assetId": "101_8",
+			"breed": 10,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 161,
+			"skins": "2172",
+			"assetId": "110_1",
+			"breed": 11,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 162,
+			"skins": "2173",
+			"assetId": "110_2",
+			"breed": 11,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 163,
+			"skins": "2174",
+			"assetId": "110_3",
+			"breed": 11,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 164,
+			"skins": "2175",
+			"assetId": "110_4",
+			"breed": 11,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 165,
+			"skins": "2176",
+			"assetId": "110_5",
+			"breed": 11,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 166,
+			"skins": "2177",
+			"assetId": "110_6",
+			"breed": 11,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 167,
+			"skins": "2178",
+			"assetId": "110_7",
+			"breed": 11,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 168,
+			"skins": "2179",
+			"assetId": "110_8",
+			"breed": 11,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 169,
+			"skins": "2180",
+			"assetId": "111_1",
+			"breed": 11,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 170,
+			"skins": "2181",
+			"assetId": "111_2",
+			"breed": 11,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 171,
+			"skins": "2182",
+			"assetId": "111_3",
+			"breed": 11,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 172,
+			"skins": "2183",
+			"assetId": "111_4",
+			"breed": 11,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 173,
+			"skins": "2184",
+			"assetId": "111_5",
+			"breed": 11,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 174,
+			"skins": "2185",
+			"assetId": "111_6",
+			"breed": 11,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 175,
+			"skins": "2186",
+			"assetId": "111_7",
+			"breed": 11,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 176,
+			"skins": "2187",
+			"assetId": "111_8",
+			"breed": 11,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 177,
+			"skins": "2188",
+			"assetId": "120_1",
+			"breed": 12,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 178,
+			"skins": "2189",
+			"assetId": "120_2",
+			"breed": 12,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 179,
+			"skins": "2190",
+			"assetId": "120_3",
+			"breed": 12,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 180,
+			"skins": "2191",
+			"assetId": "120_4",
+			"breed": 12,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 181,
+			"skins": "2192",
+			"assetId": "120_5",
+			"breed": 12,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 182,
+			"skins": "2193",
+			"assetId": "120_6",
+			"breed": 12,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 183,
+			"skins": "2194",
+			"assetId": "120_7",
+			"breed": 12,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 184,
+			"skins": "2195",
+			"assetId": "120_8",
+			"breed": 12,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 185,
+			"skins": "2196",
+			"assetId": "121_1",
+			"breed": 12,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 186,
+			"skins": "2197",
+			"assetId": "121_2",
+			"breed": 12,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 187,
+			"skins": "2198",
+			"assetId": "121_3",
+			"breed": 12,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 188,
+			"skins": "2199",
+			"assetId": "121_4",
+			"breed": 12,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 189,
+			"skins": "2200",
+			"assetId": "121_5",
+			"breed": 12,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 190,
+			"skins": "2201",
+			"assetId": "121_6",
+			"breed": 12,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 191,
+			"skins": "2202",
+			"assetId": "121_7",
+			"breed": 12,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 192,
+			"skins": "2203",
+			"assetId": "121_8",
+			"breed": 12,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 193,
+			"skins": "2204",
+			"assetId": "130_1",
+			"breed": 13,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 194,
+			"skins": "2205",
+			"assetId": "130_2",
+			"breed": 13,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 195,
+			"skins": "2206",
+			"assetId": "130_3",
+			"breed": 13,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 196,
+			"skins": "2207",
+			"assetId": "130_4",
+			"breed": 13,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 197,
+			"skins": "2208",
+			"assetId": "130_5",
+			"breed": 13,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 198,
+			"skins": "2209",
+			"assetId": "130_6",
+			"breed": 13,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 199,
+			"skins": "2210",
+			"assetId": "130_7",
+			"breed": 13,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 200,
+			"skins": "2211",
+			"assetId": "130_8",
+			"breed": 13,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 201,
+			"skins": "2212",
+			"assetId": "131_1",
+			"breed": 13,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 202,
+			"skins": "2213",
+			"assetId": "131_2",
+			"breed": 13,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 203,
+			"skins": "2214",
+			"assetId": "131_3",
+			"breed": 13,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 204,
+			"skins": "2215",
+			"assetId": "131_4",
+			"breed": 13,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 205,
+			"skins": "2216",
+			"assetId": "131_5",
+			"breed": 13,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 206,
+			"skins": "2217",
+			"assetId": "131_6",
+			"breed": 13,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 207,
+			"skins": "2218",
+			"assetId": "131_7",
+			"breed": 13,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 208,
+			"skins": "2219",
+			"assetId": "131_8",
+			"breed": 13,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 209,
+			"skins": "2220",
+			"assetId": "140_1",
+			"breed": 14,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 210,
+			"skins": "2221",
+			"assetId": "140_2",
+			"breed": 14,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 211,
+			"skins": "2222",
+			"assetId": "140_3",
+			"breed": 14,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 212,
+			"skins": "2223",
+			"assetId": "140_4",
+			"breed": 14,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 213,
+			"skins": "2224",
+			"assetId": "140_5",
+			"breed": 14,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 214,
+			"skins": "2225",
+			"assetId": "140_6",
+			"breed": 14,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 215,
+			"skins": "2226",
+			"assetId": "140_7",
+			"breed": 14,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 216,
+			"skins": "2227",
+			"assetId": "140_8",
+			"breed": 14,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 217,
+			"skins": "2228",
+			"assetId": "141_1",
+			"breed": 14,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 218,
+			"skins": "2229",
+			"assetId": "141_2",
+			"breed": 14,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 219,
+			"skins": "2230",
+			"assetId": "141_3",
+			"breed": 14,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 220,
+			"skins": "2231",
+			"assetId": "141_4",
+			"breed": 14,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 221,
+			"skins": "2232",
+			"assetId": "141_5",
+			"breed": 14,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 222,
+			"skins": "2233",
+			"assetId": "141_6",
+			"breed": 14,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 223,
+			"skins": "2234",
+			"assetId": "141_7",
+			"breed": 14,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 224,
+			"skins": "2235",
+			"assetId": "141_8",
+			"breed": 14,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 225,
+			"skins": "2236",
+			"assetId": "150_1",
+			"breed": 15,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 226,
+			"skins": "2237",
+			"assetId": "150_2",
+			"breed": 15,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 227,
+			"skins": "2238",
+			"assetId": "150_3",
+			"breed": 15,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 228,
+			"skins": "2239",
+			"assetId": "150_4",
+			"breed": 15,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 229,
+			"skins": "2240",
+			"assetId": "150_5",
+			"breed": 15,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 230,
+			"skins": "2241",
+			"assetId": "150_6",
+			"breed": 15,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 231,
+			"skins": "2242",
+			"assetId": "150_7",
+			"breed": 15,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 232,
+			"skins": "2243",
+			"assetId": "150_8",
+			"breed": 15,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 233,
+			"skins": "2244",
+			"assetId": "151_1",
+			"breed": 15,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 234,
+			"skins": "2245",
+			"assetId": "151_2",
+			"breed": 15,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 235,
+			"skins": "2246",
+			"assetId": "151_3",
+			"breed": 15,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 236,
+			"skins": "2247",
+			"assetId": "151_4",
+			"breed": 15,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 237,
+			"skins": "2248",
+			"assetId": "151_5",
+			"breed": 15,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 238,
+			"skins": "2249",
+			"assetId": "151_6",
+			"breed": 15,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 239,
+			"skins": "2250",
+			"assetId": "151_7",
+			"breed": 15,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 240,
+			"skins": "2251",
+			"assetId": "151_8",
+			"breed": 15,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 241,
+			"skins": "3183",
+			"assetId": "160_1",
+			"breed": 16,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 242,
+			"skins": "3184",
+			"assetId": "160_2",
+			"breed": 16,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 243,
+			"skins": "3185",
+			"assetId": "160_3",
+			"breed": 16,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 244,
+			"skins": "3186",
+			"assetId": "160_4",
+			"breed": 16,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 245,
+			"skins": "3187",
+			"assetId": "160_5",
+			"breed": 16,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 246,
+			"skins": "3188",
+			"assetId": "160_6",
+			"breed": 16,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 247,
+			"skins": "3189",
+			"assetId": "160_7",
+			"breed": 16,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 248,
+			"skins": "3190",
+			"assetId": "160_8",
+			"breed": 16,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 249,
+			"skins": "3191",
+			"assetId": "161_1",
+			"breed": 16,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 250,
+			"skins": "3192",
+			"assetId": "161_2",
+			"breed": 16,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 251,
+			"skins": "3193",
+			"assetId": "161_3",
+			"breed": 16,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 252,
+			"skins": "3194",
+			"assetId": "161_4",
+			"breed": 16,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 253,
+			"skins": "3195",
+			"assetId": "161_5",
+			"breed": 16,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 254,
+			"skins": "3196",
+			"assetId": "161_6",
+			"breed": 16,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 255,
+			"skins": "3197",
+			"assetId": "161_7",
+			"breed": 16,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 256,
+			"skins": "3198",
+			"assetId": "161_8",
+			"breed": 16,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 257,
+			"skins": "3289",
+			"assetId": "170_1",
+			"breed": 17,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 258,
+			"skins": "3290",
+			"assetId": "170_2",
+			"breed": 17,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 259,
+			"skins": "3291",
+			"assetId": "170_3",
+			"breed": 17,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 260,
+			"skins": "3292",
+			"assetId": "170_4",
+			"breed": 17,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 261,
+			"skins": "3293",
+			"assetId": "170_5",
+			"breed": 17,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 262,
+			"skins": "3294",
+			"assetId": "170_6",
+			"breed": 17,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 263,
+			"skins": "3295",
+			"assetId": "170_7",
+			"breed": 17,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 264,
+			"skins": "3296",
+			"assetId": "170_8",
+			"breed": 17,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 265,
+			"skins": "3297",
+			"assetId": "171_1",
+			"breed": 17,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 266,
+			"skins": "3298",
+			"assetId": "171_2",
+			"breed": 17,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 267,
+			"skins": "3299",
+			"assetId": "171_3",
+			"breed": 17,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 268,
+			"skins": "3300",
+			"assetId": "171_4",
+			"breed": 17,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 269,
+			"skins": "3301",
+			"assetId": "171_5",
+			"breed": 17,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 270,
+			"skins": "3302",
+			"assetId": "171_6",
+			"breed": 17,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 271,
+			"skins": "3303",
+			"assetId": "171_7",
+			"breed": 17,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 272,
+			"skins": "3304",
+			"assetId": "171_8",
+			"breed": 17,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 273,
+			"skins": "3502",
+			"assetId": "180_1",
+			"breed": 18,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 275,
+			"skins": "3510",
+			"assetId": "181_1",
+			"breed": 18,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 276,
+			"skins": "3511",
+			"assetId": "181_2",
+			"breed": 18,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 277,
+			"skins": "3512",
+			"assetId": "181_3",
+			"breed": 18,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 280,
+			"skins": "3513",
+			"assetId": "181_4",
+			"breed": 18,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 281,
+			"skins": "3514",
+			"assetId": "181_5",
+			"breed": 18,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 282,
+			"skins": "3515",
+			"assetId": "181_6",
+			"breed": 18,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 283,
+			"skins": "3516",
+			"assetId": "181_7",
+			"breed": 18,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 284,
+			"skins": "3517",
+			"assetId": "181_8",
+			"breed": 18,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 285,
+			"skins": "3503",
+			"assetId": "180_2",
+			"breed": 18,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 286,
+			"skins": "3504",
+			"assetId": "180_3",
+			"breed": 18,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 287,
+			"skins": "3505",
+			"assetId": "180_4",
+			"breed": 18,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 288,
+			"skins": "3506",
+			"assetId": "180_5",
+			"breed": 18,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 289,
+			"skins": "3507",
+			"assetId": "180_6",
+			"breed": 18,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 290,
+			"skins": "3508",
+			"assetId": "180_7",
+			"breed": 18,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 291,
+			"skins": "3509",
+			"assetId": "180_8",
+			"breed": 18,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 294,
+			"skins": "3090",
+			"assetId": "200_1",
+			"breed": 20,
+			"gender": 0,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 295,
+			"skins": "3091",
+			"assetId": "200_2",
+			"breed": 20,
+			"gender": 0,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 296,
+			"skins": "3095",
+			"assetId": "200_3",
+			"breed": 20,
+			"gender": 0,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 297,
+			"skins": "3098",
+			"assetId": "200_4",
+			"breed": 20,
+			"gender": 0,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 298,
+			"skins": "3103",
+			"assetId": "200_5",
+			"breed": 20,
+			"gender": 0,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 299,
+			"skins": "3104",
+			"assetId": "200_6",
+			"breed": 20,
+			"gender": 0,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 300,
+			"skins": "3105",
+			"assetId": "200_7",
+			"breed": 20,
+			"gender": 0,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 301,
+			"skins": "3124",
+			"assetId": "200_8",
+			"breed": 20,
+			"gender": 0,
+			"label": "VIII",
+			"order": 7
+		},
+		{
+			"id": 302,
+			"skins": "3106",
+			"assetId": "201_1",
+			"breed": 20,
+			"gender": 1,
+			"label": "I",
+			"order": 0
+		},
+		{
+			"id": 303,
+			"skins": "3108",
+			"assetId": "201_2",
+			"breed": 20,
+			"gender": 1,
+			"label": "II",
+			"order": 1
+		},
+		{
+			"id": 304,
+			"skins": "3112",
+			"assetId": "201_3",
+			"breed": 20,
+			"gender": 1,
+			"label": "III",
+			"order": 2
+		},
+		{
+			"id": 305,
+			"skins": "3115",
+			"assetId": "201_4",
+			"breed": 20,
+			"gender": 1,
+			"label": "IV",
+			"order": 3
+		},
+		{
+			"id": 306,
+			"skins": "3143",
+			"assetId": "201_5",
+			"breed": 20,
+			"gender": 1,
+			"label": "V",
+			"order": 4
+		},
+		{
+			"id": 307,
+			"skins": "3121",
+			"assetId": "201_6",
+			"breed": 20,
+			"gender": 1,
+			"label": "VI",
+			"order": 5
+		},
+		{
+			"id": 308,
+			"skins": "3122",
+			"assetId": "201_7",
+			"breed": 20,
+			"gender": 1,
+			"label": "VII",
+			"order": 6
+		},
+		{
+			"id": 309,
+			"skins": "3123",
+			"assetId": "201_8",
+			"breed": 20,
+			"gender": 1,
+			"label": "VIII",
+			"order": 7
+		}
+	]
+}

@@ -1,0 +1,108 @@
+{
+	"def": [
+		{
+			"memberName": "SpellBomb",
+			"packageName": "com.ankamagames.dofus.datacenter.spells",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "chainReactionSpellId",
+					"type": -1
+				},
+				{
+					"name": "explodSpellId",
+					"type": -1
+				},
+				{
+					"name": "wallId",
+					"type": -1
+				},
+				{
+					"name": "instantSpellId",
+					"type": -1
+				},
+				{
+					"name": "comboCoeff",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 3103,
+			"chainReactionSpellId": 2759,
+			"explodSpellId": 2758,
+			"wallId": 1,
+			"instantSpellId": 2762,
+			"comboCoeff": 100
+		},
+		{
+			"id": 3112,
+			"chainReactionSpellId": 13457,
+			"explodSpellId": 13455,
+			"wallId": 2,
+			"instantSpellId": 13456,
+			"comboCoeff": 0
+		},
+		{
+			"id": 3113,
+			"chainReactionSpellId": 13460,
+			"explodSpellId": 13467,
+			"wallId": 3,
+			"instantSpellId": 13459,
+			"comboCoeff": 0
+		},
+		{
+			"id": 3114,
+			"chainReactionSpellId": 13464,
+			"explodSpellId": 13462,
+			"wallId": 4,
+			"instantSpellId": 13463,
+			"comboCoeff": 0
+		},
+		{
+			"id": 5161,
+			"chainReactionSpellId": 13502,
+			"explodSpellId": 13504,
+			"wallId": 5,
+			"instantSpellId": 13503,
+			"comboCoeff": 0
+		},
+		{
+			"id": 6719,
+			"chainReactionSpellId": 19950,
+			"explodSpellId": 19953,
+			"wallId": 10,
+			"instantSpellId": 19952,
+			"comboCoeff": 0
+		},
+		{
+			"id": 6720,
+			"chainReactionSpellId": 19949,
+			"explodSpellId": 19948,
+			"wallId": 11,
+			"instantSpellId": 19951,
+			"comboCoeff": 0
+		},
+		{
+			"id": 6721,
+			"chainReactionSpellId": 19946,
+			"explodSpellId": 19945,
+			"wallId": 9,
+			"instantSpellId": 19947,
+			"comboCoeff": 0
+		},
+		{
+			"id": 6737,
+			"chainReactionSpellId": 20137,
+			"explodSpellId": 20157,
+			"wallId": 12,
+			"instantSpellId": 20137,
+			"comboCoeff": 0
+		}
+	]
+}

@@ -1,0 +1,54 @@
+{
+	"def": [
+		{
+			"memberName": "MountFamily",
+			"packageName": "com.ankamagames.dofus.datacenter.mounts",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "headUri",
+					"type": -3
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 1,
+			"nameId": 59090,
+			"headUri": "tx_pictoDinde"
+		},
+		{
+			"id": 2,
+			"nameId": 59091,
+			"headUri": "null"
+		},
+		{
+			"id": 3,
+			"nameId": 59092,
+			"headUri": "null"
+		},
+		{
+			"id": 4,
+			"nameId": 59089,
+			"headUri": "null"
+		},
+		{
+			"id": 5,
+			"nameId": 649272,
+			"headUri": "tx_pictoMuldo"
+		},
+		{
+			"id": 6,
+			"nameId": 760584,
+			"headUri": "tx_pictoScara"
+		}
+	]
+}

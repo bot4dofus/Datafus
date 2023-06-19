@@ -1,0 +1,74 @@
+{
+	"def": [
+		{
+			"memberName": "ServerLang",
+			"packageName": "com.ankamagames.dofus.datacenter.servers",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "langCode",
+					"type": -3
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 0,
+			"nameId": 723111,
+			"langCode": "fr"
+		},
+		{
+			"id": 1,
+			"nameId": 723113,
+			"langCode": "en"
+		},
+		{
+			"id": 2,
+			"nameId": 723114,
+			"langCode": "de"
+		},
+		{
+			"id": 3,
+			"nameId": 723115,
+			"langCode": "es"
+		},
+		{
+			"id": 4,
+			"nameId": 723116,
+			"langCode": "nl"
+		},
+		{
+			"id": 5,
+			"nameId": 723117,
+			"langCode": "pt"
+		},
+		{
+			"id": 6,
+			"nameId": 723119,
+			"langCode": "ru"
+		},
+		{
+			"id": 7,
+			"nameId": 723120,
+			"langCode": "it"
+		},
+		{
+			"id": 8,
+			"nameId": 923138,
+			"langCode": "ar"
+		},
+		{
+			"id": 9,
+			"nameId": 927867,
+			"langCode": "cm"
+		}
+	]
+}

@@ -1,0 +1,36 @@
+{
+	"def": [
+		{
+			"memberName": "AlignmentSide",
+			"packageName": "com.ankamagames.dofus.datacenter.alignments",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 0,
+			"nameId": 179
+		},
+		{
+			"id": 1,
+			"nameId": 178
+		},
+		{
+			"id": 2,
+			"nameId": 309773
+		},
+		{
+			"id": 3,
+			"nameId": 176
+		}
+	]
+}
