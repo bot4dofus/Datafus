@@ -86,7 +86,7 @@ class ActionScriptReader:
     class_pattern = re.compile(r"public\sclass\s(\w+)\s(?:extends\s(\w+)\s)?(?:implements\s([\w,\s]+))?")
     protocolId_pattern = re.compile(r"public\sstatic\sconst\sprotocolId:\w+\s=\s(\d+);")
     attribute_pattern = re.compile(r"public\svar\s(\w+):([\w.<>]+)(?:\s=\s(.*))?;")
-    typeIdPattern = re.compile(r"output.write(\w+)\(\(this.fighters[a-zA-Z [_\]0-9]*\).getTypeId")
+    typeIdPattern = re.compile(r"output\.write(\w+)[\(]{0,2}this\.[a-zA-Z [_\]0-9]*\).getTypeId")
 
     def __init__(self, file_name):
         self.file_name = file_name
