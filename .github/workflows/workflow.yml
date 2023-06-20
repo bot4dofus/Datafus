@@ -6,16 +6,20 @@ on:
 
 jobs:
   Job_U:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm install -g cytrus-v6
+
       - name: U1 - Update Dofus Client
         run: |
-          .\src\U1\U1.ps1 src\U1\project.json data\U\swf\ data\U\d2o\ data\U\d2i\ data\U\version\
-          cat data/U/version/VERSION
+          cytrus-v6 download --game dofus --select "DofusInvoker.swf,**/*.d2i,**/*.d2o" --output data/U/
 
       - name: Upload files
         uses: actions/upload-artifact@v3
@@ -52,7 +56,7 @@ jobs:
       - name: A1 - Extract DofusInvoker.swf
         run: |
           chmod +x src/A1.sh
-          src/A1.sh data/U/swf/DofusInvoker.swf data/A/DofusInvoker/
+          src/A1.sh data/U/DofusInvoker.swf data/A/DofusInvoker/
 
       - name: A2 - Build .json
         run: |
@@ -90,7 +94,7 @@ jobs:
 
       - name: B1 - Build .json
         run: |
-            python src/B1.py data/U/d2o/ data/B/entities_json/
+            python src/B1.py data/U/data/common/ data/B/entities_json/
 
       - name: Upload files
         uses: actions/upload-artifact@v3
@@ -120,7 +124,7 @@ jobs:
 
       - name: C1 - Build .json
         run: |
-            python src/C1.py data/U/d2i/ data/C/translations_json/
+            python src/C1.py data/U/data/i18n/ data/C/translations_json/
 
       - name: Upload files
         uses: actions/upload-artifact@v3
