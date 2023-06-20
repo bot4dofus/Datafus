@@ -86,7 +86,6 @@ class ActionScriptReader:
     class_pattern = re.compile(r"public\sclass\s(\w+)\s(?:extends\s(\w+)\s)?(?:implements\s([\w,\s]+))?")
     protocolId_pattern = re.compile(r"public\sstatic\sconst\sprotocolId:\w+\s=\s(\d+);")
     attribute_pattern = re.compile(r"public\svar\s(\w+):([\w.<>]+)(?:\s=\s(.*))?;")
-    typeIdPattern = re.compile(r"output\.write(\w+)[\(]{0,2}this\.[a-zA-Z [_\]0-9]*\).getTypeId")
 
     def __init__(self, file_name):
         self.file_name = file_name
@@ -122,7 +121,6 @@ class ActionScriptReader:
                     self.protocolId = protocolId_match.group(1)
                     continue
 
-                typeid_match = self.typeIdPattern.search(line)
                 attribute_match = self.attribute_pattern.search(line)
 
                 if attribute_match:
@@ -153,7 +151,7 @@ class ActionScriptReader:
                                 continue
 
         return {
-            'file': self.file_name,
+            'file': self.file_name.replace("\\", "/"),
             'id': self.protocolId,
             'class_name': self.class_name,
             'superclass': self.superclass,
