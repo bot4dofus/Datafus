@@ -19,7 +19,7 @@ jobs:
 
       - name: U1 - Update Dofus Client
         run: |
-          cytrus-v6 download --game dofus --select "DofusInvoker.swf,**/*.d2i,**/*.d2o" --output data/U/
+          cytrus-v6 download --game dofus --select "DofusInvoker.swf,**/*.d2i,**/*.d2o,VERSION" --output data/U/
 
       - name: Upload files
         uses: actions/upload-artifact@v3
