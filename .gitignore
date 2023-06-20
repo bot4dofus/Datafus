@@ -1,5 +1,3 @@
 **/*.pyc
 **/__pycache__
 **/*.log
-src/U1/*.nupkg
-src/U1/tmp
