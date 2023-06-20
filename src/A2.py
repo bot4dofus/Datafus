@@ -11,16 +11,25 @@ class Attribute:
     TYPES_TO_FIX = ["uint", "int", "Number"]
     VECTOR_LIKE_TYPES = ["ByteArray"]
 
-    def __init__(self, name, script_type):
+    def __init__(self, name, script_type, lines):
         self._name = name
+        self._has_type_id = False
         self._script_type = script_type
         self._pattern = re.compile(rf"output.write(\w+)\(this.{name}|this.{name}\s=\snew\s{script_type}\((\d+),")
+        self._type_id_pattern = re.compile(rf"output.write(\w+)\([\(]?this.{name}[a-zA-Z [_\]0-9]*[\)]?.getTypeId")
+
+        for line in lines:
+            is_match = self._type_id_pattern.search(line)
+            if is_match:
+                self._has_type_id = True
+                break
 
         if ("Vector" in script_type):
             number_of_vectors = script_type.count("Vector")
             self._types = [None for i in range(number_of_vectors)]
             last_type = script_type[script_type.rfind('<')+1:script_type.find('>')]
             self._types.append(None if last_type in self.TYPES_TO_FIX else last_type)
+
         elif script_type in self.VECTOR_LIKE_TYPES:
             self._types = [None, None]
         else:
@@ -61,10 +70,14 @@ class Attribute:
         except ValueError:
             return False
 
+    def hasTypeId(self):
+        return self._has_type_id
+
     def buildSocketType(self):
-        self._socket_type = str(self._types[0])
+        self._socket_type =  "TypeId<" + str(self._types[0]) + ">" if self.hasTypeId() and len(self._types) < 2 else str(self._types[0]) 
+        
         for i in range(1, len(self._types)):
-            self._socket_type = "Vector<" + self._socket_type + "," + str(self._types[i]) + ">"
+            self._socket_type = ("TypeIdVector<" if self.hasTypeId() else "Vector<") + self._socket_type + "," + str(self._types[i]) + ">"
 
 
 class ActionScriptReader:
@@ -73,6 +86,7 @@ class ActionScriptReader:
     class_pattern = re.compile(r"public\sclass\s(\w+)\s(?:extends\s(\w+)\s)?(?:implements\s([\w,\s]+))?")
     protocolId_pattern = re.compile(r"public\sstatic\sconst\sprotocolId:\w+\s=\s(\d+);")
     attribute_pattern = re.compile(r"public\svar\s(\w+):([\w.<>]+)(?:\s=\s(.*))?;")
+    typeIdPattern = re.compile(r"output.write(\w+)\(\(this.fighters[a-zA-Z [_\]0-9]*\).getTypeId")
 
     def __init__(self, file_name):
         self.file_name = file_name
@@ -108,9 +122,11 @@ class ActionScriptReader:
                     self.protocolId = protocolId_match.group(1)
                     continue
 
+                typeid_match = self.typeIdPattern.search(line)
                 attribute_match = self.attribute_pattern.search(line)
+
                 if attribute_match:
-                    self.attributes.append(Attribute(attribute_match.group(1), attribute_match.group(2)))
+                    self.attributes.append(Attribute(attribute_match.group(1), attribute_match.group(2), lines))
                     continue
 
                 if self.RESET_FUNCTION in line and not reset_function_reached:
