@@ -396,9 +396,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                   case StatsUpgradeResultEnum.GUEST:
                      statUpgradeErrorText = I18n.getUiText("ui.fight.guestAccount");
                      break;
-                  case StatsUpgradeResultEnum.RESTRICTED:
-                     statUpgradeErrorText = I18n.getUiText("ui.charSel.deletionErrorUnsecureMode");
-                     break;
                   case StatsUpgradeResultEnum.IN_FIGHT:
                      statUpgradeErrorText = I18n.getUiText("ui.error.cantDoInFight");
                      break;
@@ -832,7 +829,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          {
             KernelEventsManager.getInstance().processCallback(TriggerHookList.PlayerIsDead);
          }
-         SpellModifiersManager.getInstance().setRawSpellsModifiers(playerId,stats.spellModifications);
+         SpellModifiersManager.getInstance().setRawSpellsModifiers(playerId,stats.spellModifiers);
          if(stats.kamas != InventoryManager.getInstance().inventory.kamas)
          {
             InventoryManager.getInstance().inventory.kamas = stats.kamas;

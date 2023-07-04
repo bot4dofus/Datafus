@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.replay
    public class CharacterReplayRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7933;
+      public static const protocolId:uint = 3908;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.character.replay
       
       override public function getMessageId() : uint
       {
-         return 7933;
+         return 3908;
       }
       
       public function initCharacterReplayRequestMessage(characterId:Number = 0) : CharacterReplayRequestMessage

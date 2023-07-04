@@ -162,7 +162,7 @@
 			"id": 13,
 			"parentId": 5,
 			"titleId": 870805,
-			"descriptionId": 870806,
+			"descriptionId": 1013301,
 			"illuName": "fr_feature_omega.jpg",
 			"buttons": [
 				{
@@ -237,26 +237,6 @@
 			"criterion": "(PJ>a,59)&(PZ=0)",
 			"cacheType": 0,
 			"autoTrigger": false
-		},
-		{
-			"id": 18,
-			"parentId": 5,
-			"titleId": 918551,
-			"descriptionId": 918552,
-			"illuName": "fr_feature_idoles.jpg",
-			"buttons": [
-				{
-					"id": 26,
-					"popupId": 18,
-					"type": 0,
-					"textId": 871139,
-					"actionType": 1,
-					"actionValue": "OpenGuideBookAction:gameGuide|138|popup"
-				}
-			],
-			"criterion": "PL>29",
-			"cacheType": 2,
-			"autoTrigger": true
 		},
 		{
 			"id": 19,
@@ -579,6 +559,26 @@
 				}
 			],
 			"criterion": "PL>29",
+			"cacheType": 2,
+			"autoTrigger": true
+		},
+		{
+			"id": 41,
+			"parentId": 5,
+			"titleId": 1018088,
+			"descriptionId": 1018089,
+			"illuName": "fr_feature_challenges.jpg",
+			"buttons": [
+				{
+					"id": 41,
+					"popupId": 41,
+					"type": 0,
+					"textId": 1012540,
+					"actionType": 1,
+					"actionValue": "OpenGuideBookAction:gameGuide|69|popup"
+				}
+			],
+			"criterion": "PL>14",
 			"cacheType": 2,
 			"autoTrigger": true
 		}

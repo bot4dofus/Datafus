@@ -15,8 +15,6 @@ package com.ankamagames.dofus.network.enums
       
       public static const REQUEST_CHARACTER_NOT_SUSCRIBER:int = 6;
       
-      public static const REQUEST_CHARACTER_RESTRICTED:int = 7;
-      
       public static const REQUEST_CHARACTER_GUEST:int = 8;
       
       public static const SELL_ERROR:int = 63;

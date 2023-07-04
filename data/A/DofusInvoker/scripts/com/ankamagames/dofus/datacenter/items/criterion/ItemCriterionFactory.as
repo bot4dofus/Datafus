@@ -274,9 +274,6 @@ package com.ankamagames.dofus.datacenter.items.criterion
             case "So":
                criterion = new OptionalFeatureEnabledCriterion(pServerCriterionForm);
                break;
-            case "IE":
-               criterion = new IdolsEquippedCriterion(pServerCriterionForm);
-               break;
             default:
                _log.warn("Criterion \'" + s + "\' unknow or unused (" + pServerCriterionForm + ")");
          }

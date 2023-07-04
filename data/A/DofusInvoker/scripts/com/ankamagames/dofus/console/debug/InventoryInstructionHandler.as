@@ -2,10 +2,9 @@ package com.ankamagames.dofus.console.debug
 {
    import com.ankamagames.dofus.datacenter.items.Item;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
-   import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
+   import com.ankamagames.dofus.logic.common.frames.AuthorizedFrame;
    import com.ankamagames.dofus.logic.game.common.managers.InventoryManager;
    import com.ankamagames.dofus.misc.utils.GameDataQuery;
-   import com.ankamagames.dofus.network.messages.authorized.AdminQuietCommandMessage;
    import com.ankamagames.jerakine.console.ConsoleHandler;
    import com.ankamagames.jerakine.console.ConsoleInstructionHandler;
    import com.ankamagames.jerakine.data.I18n;
@@ -37,7 +36,6 @@ package com.ankamagames.dofus.console.debug
          var item:ItemWrapper = null;
          var currentItem:Item = null;
          var currentItem2:Item = null;
-         var aqcmsg:AdminQuietCommandMessage = null;
          switch(cmd)
          {
             case "listinventory":
@@ -84,9 +82,7 @@ package com.ankamagames.dofus.console.debug
                      {
                         break;
                      }
-                     aqcmsg = new AdminQuietCommandMessage();
-                     aqcmsg.initAdminQuietCommandMessage("item * " + currentItem2.id + " " + Math.ceil(Math.random() * 10));
-                     ConnectionsHandler.getConnection().send(aqcmsg);
+                     AuthorizedFrame.sendServerCommandMessage("item * " + currentItem2.id + " " + Math.ceil(Math.random() * 10),true);
                      len--;
                   }
                }

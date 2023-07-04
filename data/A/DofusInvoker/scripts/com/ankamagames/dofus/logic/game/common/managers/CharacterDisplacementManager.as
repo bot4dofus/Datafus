@@ -10,12 +10,11 @@ package com.ankamagames.dofus.logic.game.common.managers
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.mount.MountData;
    import com.ankamagames.dofus.internalDatacenter.world.WorldPointWrapper;
-   import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
+   import com.ankamagames.dofus.logic.common.frames.AuthorizedFrame;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.roleplay.managers.MountAutoTripManager;
    import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.network.enums.ChatActivableChannelsEnum;
-   import com.ankamagames.dofus.network.messages.authorized.AdminQuietCommandMessage;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.interfaces.IDestroyable;
    import com.ankamagames.jerakine.logger.Log;
@@ -59,7 +58,7 @@ package com.ankamagames.dofus.logic.game.common.managers
       {
          var ability:MountBehavior = null;
          var eff:EffectInstance = null;
-         var playerIsOnMount:Boolean = PlayedCharacterManager.getInstance().isRidding;
+         var playerIsOnMount:Boolean = PlayedCharacterManager.getInstance().isRiding;
          var playerIsOnPetsMount:Boolean = PlayedCharacterManager.getInstance().isPetsMounting;
          var autopilotCapacity:MountBehavior = MountBehavior.getMountBehaviorById(DataEnum.MOUNT_CAPACITY_AUTOPILOT);
          if(!playerIsOnMount && !playerIsOnPetsMount)
@@ -147,31 +146,20 @@ package com.ankamagames.dofus.logic.game.common.managers
       
       public function movePlayer(x:int, y:int, world:int = -1) : void
       {
-         if(!PlayerManager.getInstance().hasRights)
-         {
-            return;
-         }
-         var aqcmsg:AdminQuietCommandMessage = new AdminQuietCommandMessage();
          var mapIds:Array = this.getOrderedMapIdsFromCoords(x,y,world);
          if(mapIds && mapIds.length > 0)
          {
-            aqcmsg.initAdminQuietCommandMessage("moveto " + mapIds.pop());
+            AuthorizedFrame.sendServerCommandMessage("moveto " + mapIds.pop(),true);
          }
          else
          {
-            aqcmsg.initAdminQuietCommandMessage("moveto " + x + "," + y);
+            AuthorizedFrame.sendServerCommandMessage("moveto " + x + "," + y,true);
          }
-         ConnectionsHandler.getConnection().send(aqcmsg);
       }
       
       public function movePlayerOnMapId(mapId:Number) : void
       {
-         var aqcmsg:AdminQuietCommandMessage = new AdminQuietCommandMessage();
-         aqcmsg.initAdminQuietCommandMessage("moveto " + mapId);
-         if(PlayerManager.getInstance().hasRights)
-         {
-            ConnectionsHandler.getConnection().send(aqcmsg);
-         }
+         AuthorizedFrame.sendServerCommandMessage("moveto " + mapId,true);
       }
       
       private function getOrderedMapIdsFromCoords(x:int, y:int, world:int = -1) : Array

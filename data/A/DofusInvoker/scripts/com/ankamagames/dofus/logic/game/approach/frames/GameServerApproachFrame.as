@@ -52,7 +52,6 @@ package com.ankamagames.dofus.logic.game.approach.frames
    import com.ankamagames.dofus.logic.game.common.frames.ExternalGameFrame;
    import com.ankamagames.dofus.logic.game.common.frames.ForgettableSpellsUiFrame;
    import com.ankamagames.dofus.logic.game.common.frames.HouseFrame;
-   import com.ankamagames.dofus.logic.game.common.frames.IdolsFrame;
    import com.ankamagames.dofus.logic.game.common.frames.InventoryManagementFrame;
    import com.ankamagames.dofus.logic.game.common.frames.JobsFrame;
    import com.ankamagames.dofus.logic.game.common.frames.LivingObjectFrame;
@@ -543,10 +542,6 @@ package com.ankamagames.dofus.logic.game.approach.frames
                {
                   reason = "WrongAnswer";
                }
-               else if(cdemsg.reason == CharacterDeletionErrorEnum.DEL_ERR_RESTRICED_ZONE)
-               {
-                  reason = "UnsecureMode";
-               }
                this._kernel.processCallback(HookList.CharacterDeletionError,reason);
                this._requestedCharacterId = 0;
                return true;
@@ -831,7 +826,6 @@ package com.ankamagames.dofus.logic.game.approach.frames
                Kernel.getWorker().addFrame(new ExternalGameFrame());
                Kernel.getWorker().addFrame(new AveragePricesFrame());
                Kernel.getWorker().addFrame(new CameraControlFrame());
-               Kernel.getWorker().addFrame(new IdolsFrame());
                Kernel.getWorker().addFrame(new RoleplayIntroductionFrame());
                Kernel.getWorker().addFrame(new ScreenCaptureFrame());
                Kernel.getWorker().addFrame(new AdministrablePopupFrame());
@@ -1132,7 +1126,8 @@ package com.ankamagames.dofus.logic.game.approach.frames
          var updateInformationDisplayed:String = null;
          var currentVersion:String = null;
          var fakacsa:CharacterSelectionAction = null;
-         if(charToConnect && ((!FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER) && server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_EPIC || charToConnect.deathState == 0) && !SecureModeManager.getInstance().active && !this.isCharacterWaitingForChange(charToConnect.id) && !PlayerManager.getInstance().wasAlreadyConnected))
+         var characterIsAliveOnHeroicOrEpicServer:Boolean = !FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.HEROIC_SERVER) && server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_EPIC || charToConnect.deathState == 0;
+         if(charToConnect && characterIsAliveOnHeroicOrEpicServer && !this.isCharacterWaitingForChange(charToConnect.id) && !PlayerManager.getInstance().wasAlreadyConnected)
          {
             this._kernel.processCallback(HookList.CharactersListUpdated,this._charactersList);
             updateInformationDisplayed = StoreDataManager.getInstance().getData(new DataStoreType("ComputerModule_Ankama_Connection",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_COMPUTER),"updateInformationDisplayed");

@@ -4,10 +4,9 @@ package com.ankamagames.dofus.logic.game.fight.types.castSpellManager
    import com.ankamagames.dofus.datacenter.spells.Spell;
    import com.ankamagames.dofus.datacenter.spells.SpellLevel;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
-   import com.ankamagames.dofus.logic.game.common.spell.SpellModifiers;
    import com.ankamagames.dofus.logic.game.fight.managers.SpellModifiersManager;
    import com.ankamagames.dofus.logic.game.fight.types.SpellCastInFightManager;
-   import com.ankamagames.dofus.network.enums.CharacterSpellModificationTypeEnum;
+   import com.ankamagames.dofus.network.enums.SpellModifierTypeEnum;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import flash.utils.Dictionary;
@@ -36,10 +35,6 @@ package com.ankamagames.dofus.logic.game.fight.types.castSpellManager
       private var _targetsThisTurn:Dictionary;
       
       private var _spellCastManager:SpellCastInFightManager;
-      
-      private var _castIntervalModificator:int;
-      
-      private var _castIntervalSetModificator:int;
       
       public function SpellManager(spellCastManager:SpellCastInFightManager, pSpellId:uint, pSpellLevel:uint)
       {
@@ -78,7 +73,6 @@ package com.ankamagames.dofus.logic.game.fight.types.castSpellManager
       public function cast(pTurn:int, pTarget:Array, pCountForCooldown:Boolean = true) : void
       {
          var target:Number = NaN;
-         this._castIntervalModificator = this._castIntervalSetModificator = 0;
          this._lastCastTurn = pTurn;
          this._forcedCooldown = false;
          this._spellHasBeenCast = true;
@@ -121,42 +115,10 @@ package com.ankamagames.dofus.logic.game.fight.types.castSpellManager
       
       public function get cooldown() : Number
       {
-         var interval:Number = NaN;
          var cooldown:int = 0;
          var spell:Spell = Spell.getSpellById(this._spellId);
          var spellLevel:SpellLevel = spell.getSpellLevel(this._spellLevel);
-         var spellModifiers:SpellModifiers = SpellModifiersManager.getInstance().getSpellModifiers(this._spellCastManager.entityId,this._spellId);
-         var castIntervalModifier:Number = 0;
-         var castIntervalSetModifier:Number = 0;
-         if(spellModifiers !== null)
-         {
-            castIntervalModifier = spellModifiers.getModifierValue(CharacterSpellModificationTypeEnum.CAST_INTERVAL);
-            castIntervalSetModifier = spellModifiers.getModifierValue(CharacterSpellModificationTypeEnum.CAST_INTERVAL_SET);
-         }
-         if(castIntervalModifier)
-         {
-            this._castIntervalModificator = castIntervalModifier;
-         }
-         else
-         {
-            castIntervalModifier = this._castIntervalModificator;
-         }
-         if(castIntervalSetModifier)
-         {
-            this._castIntervalSetModificator = castIntervalSetModifier;
-         }
-         else
-         {
-            castIntervalSetModifier = this._castIntervalSetModificator;
-         }
-         if(castIntervalSetModifier)
-         {
-            interval = -castIntervalModifier + castIntervalSetModifier;
-         }
-         else
-         {
-            interval = spellLevel.minCastInterval - (castIntervalModifier < 0 ? 0 : castIntervalModifier);
-         }
+         var interval:Number = SpellModifiersManager.getInstance().getModifiedInt(this._spellCastManager.entityId,this._spellId,SpellModifierTypeEnum.CAST_INTERVAL,spellLevel.minCastInterval);
          if(interval == 63)
          {
             return 63;
@@ -186,7 +148,7 @@ package com.ankamagames.dofus.logic.game.fight.types.castSpellManager
          var spellW:SpellWrapper = SpellWrapper.getSpellWrapperById(this._spellId,this._spellCastManager.entityId);
          if(isBonusRefresh)
          {
-            cooldown -= this._castIntervalModificator;
+            cooldown = SpellModifiersManager.getInstance().getModifiedInt(this._spellCastManager.entityId,this._spellId,SpellModifierTypeEnum.CAST_INTERVAL,cooldown);
          }
          spellW.actualCooldown = cooldown;
       }

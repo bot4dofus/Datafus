@@ -27,7 +27,7 @@ package com.ankamagames.dofus.datacenter.quest.objectives
          {
             return 0;
          }
-         return parameters[0];
+         return parameters.parameter0;
       }
       
       public function get monster() : Monster
@@ -45,7 +45,7 @@ package com.ankamagames.dofus.datacenter.quest.objectives
          {
             return 0;
          }
-         return parameters[1];
+         return parameters.parameter1;
       }
       
       public function get mapDescriptionTextId() : uint
@@ -54,7 +54,7 @@ package com.ankamagames.dofus.datacenter.quest.objectives
          {
             return 0;
          }
-         return parameters[3];
+         return parameters.parameter3;
       }
       
       public function get mapDescriptionText() : String

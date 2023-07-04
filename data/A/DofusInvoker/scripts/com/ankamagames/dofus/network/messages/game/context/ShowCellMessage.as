@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class ShowCellMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4855;
+      public static const protocolId:uint = 9767;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 4855;
+         return 9767;
       }
       
       public function initShowCellMessage(sourceId:Number = 0, cellId:uint = 0) : ShowCellMessage

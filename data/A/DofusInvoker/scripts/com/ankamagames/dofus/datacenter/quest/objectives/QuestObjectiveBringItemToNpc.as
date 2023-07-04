@@ -27,7 +27,7 @@ package com.ankamagames.dofus.datacenter.quest.objectives
          {
             return 0;
          }
-         return this.parameters[0];
+         return this.parameters.parameter0;
       }
       
       public function get npc() : Npc
@@ -45,7 +45,7 @@ package com.ankamagames.dofus.datacenter.quest.objectives
          {
             return 0;
          }
-         return this.parameters[1];
+         return this.parameters.parameter1;
       }
       
       public function get item() : Item
@@ -63,7 +63,7 @@ package com.ankamagames.dofus.datacenter.quest.objectives
          {
             return 0;
          }
-         return this.parameters[2];
+         return this.parameters.parameter2;
       }
       
       override public function get text() : String

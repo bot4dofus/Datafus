@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.challenge
    public class ChallengeResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6642;
+      public static const protocolId:uint = 6302;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.challenge
       
       override public function getMessageId() : uint
       {
-         return 6642;
+         return 6302;
       }
       
       public function initChallengeResultMessage(challengeId:uint = 0, success:Boolean = false) : ChallengeResultMessage
@@ -81,7 +81,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.challenge
          {
             throw new Error("Forbidden value (" + this.challengeId + ") on element challengeId.");
          }
-         output.writeVarShort(this.challengeId);
+         output.writeVarInt(this.challengeId);
          output.writeBoolean(this.success);
       }
       
@@ -109,7 +109,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.challenge
       
       private function _challengeIdFunc(input:ICustomDataInput) : void
       {
-         this.challengeId = input.readVarUhShort();
+         this.challengeId = input.readVarUhInt();
          if(this.challengeId < 0)
          {
             throw new Error("Forbidden value (" + this.challengeId + ") on element of ChallengeResultMessage.challengeId.");

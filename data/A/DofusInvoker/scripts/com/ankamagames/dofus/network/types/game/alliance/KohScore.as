@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.alliance
    public class KohScore implements INetworkType
    {
       
-      public static const protocolId:uint = 8765;
+      public static const protocolId:uint = 5867;
        
       
       public var avaScoreTypeEnum:uint = 1;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.alliance
       
       public function getTypeId() : uint
       {
-         return 8765;
+         return 5867;
       }
       
       public function initKohScore(avaScoreTypeEnum:uint = 1, roundScores:int = 0, cumulScores:int = 0) : KohScore

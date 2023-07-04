@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartOkRecycleTradeMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4324;
+      public static const protocolId:uint = 8048;
        
       
       private var _isInitialized:Boolean = false;
@@ -42,7 +42,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 4324;
+         return 8048;
       }
       
       public function initExchangeStartOkRecycleTradeMessage(percentToPrism:uint = 0, percentToPlayer:uint = 0, adjacentSubareaPossessed:Vector.<uint> = null, adjacentSubareaUnpossessed:Vector.<uint> = null) : ExchangeStartOkRecycleTradeMessage

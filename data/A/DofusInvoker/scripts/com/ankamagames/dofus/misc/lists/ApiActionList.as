@@ -38,7 +38,6 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.CaptureScreenWithoutUIAction;
    import com.ankamagames.dofus.logic.game.common.actions.ChangeScreenshotsDirectoryAction;
    import com.ankamagames.dofus.logic.game.common.actions.CharacterAutoConnectAction;
-   import com.ankamagames.dofus.logic.game.common.actions.CloseIdolsAction;
    import com.ankamagames.dofus.logic.game.common.actions.CloseInventoryAction;
    import com.ankamagames.dofus.logic.game.common.actions.ContactLookRequestByIdAction;
    import com.ankamagames.dofus.logic.game.common.actions.FollowQuestAction;
@@ -55,7 +54,6 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.HouseLockFromInsideAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseSellAction;
    import com.ankamagames.dofus.logic.game.common.actions.HouseSellFromInsideAction;
-   import com.ankamagames.dofus.logic.game.common.actions.IdolSelectRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.IncreaseSpellLevelAction;
    import com.ankamagames.dofus.logic.game.common.actions.InteractiveElementActivationAction;
    import com.ankamagames.dofus.logic.game.common.actions.LeaveDialogAction;
@@ -72,7 +70,6 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.OpenGuideBookAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenGuildPrezAndRecruitAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenHousesAction;
-   import com.ankamagames.dofus.logic.game.common.actions.OpenIdolsAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenInventoryAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenMainMenuAction;
    import com.ankamagames.dofus.logic.game.common.actions.OpenMapAction;
@@ -120,6 +117,12 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.externalGame.ShopOverlayBuyRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.externalGame.ShopSearchRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.externalGame.UpdateGiftListRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.fight.ChallengeBonusSelectAction;
+   import com.ankamagames.dofus.logic.game.common.actions.fight.ChallengeModSelectAction;
+   import com.ankamagames.dofus.logic.game.common.actions.fight.ChallengeReadyAction;
+   import com.ankamagames.dofus.logic.game.common.actions.fight.ChallengeSelectionAction;
+   import com.ankamagames.dofus.logic.game.common.actions.fight.ChallengeTargetsRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.fight.ChallengeValidateAction;
    import com.ankamagames.dofus.logic.game.common.actions.guild.GuildGetChestTabContributionsRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.PartyAbdicateThroneAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.PartyAcceptInvitationAction;
@@ -170,7 +173,6 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.tinsel.TitleSelectRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.tinsel.TitlesAndOrnamentsListRequestAction;
    import com.ankamagames.dofus.logic.game.fight.actions.BannerEmptySlotClickAction;
-   import com.ankamagames.dofus.logic.game.fight.actions.ChallengeTargetsListRequestAction;
    import com.ankamagames.dofus.logic.game.fight.actions.DisableAfkAction;
    import com.ankamagames.dofus.logic.game.fight.actions.GameContextKickAction;
    import com.ankamagames.dofus.logic.game.fight.actions.GameFightPlacementPositionRequestAction;
@@ -231,7 +233,6 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.roleplay.actions.havenbag.HavenbagSaveAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.havenbag.HavenbagThemeSelectedAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.preset.CharacterPresetSaveRequestAction;
-   import com.ankamagames.dofus.logic.game.roleplay.actions.preset.IdolsPresetSaveRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.preset.PresetDeleteRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.preset.PresetUseRequestAction;
    import com.ankamagames.dofus.misc.utils.DofusApiAction;
@@ -328,12 +329,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const OpenHouses:DofusApiAction = new DofusApiAction("OpenHousesAction",OpenHousesAction);
       
-      public static const OpenIdols:DofusApiAction = new DofusApiAction("OpenIdolsAction",OpenIdolsAction);
-      
-      public static const CloseIdols:DofusApiAction = new DofusApiAction("CloseIdolsAction",CloseIdolsAction);
-      
-      public static const IdolSelectRequest:DofusApiAction = new DofusApiAction("IdolSelectRequestAction",IdolSelectRequestAction);
-      
       public static const IncreaseSpellLevel:DofusApiAction = new DofusApiAction("IncreaseSpellLevelAction",IncreaseSpellLevelAction);
       
       public static const BasicWhoIsRequest:DofusApiAction = new DofusApiAction("BasicWhoIsRequestAction",BasicWhoIsRequestAction);
@@ -345,8 +340,6 @@ package com.ankamagames.dofus.misc.lists
       public static const RemoveBehaviorToStack:DofusApiAction = new DofusApiAction("RemoveBehaviorToStackAction",RemoveBehaviorToStackAction);
       
       public static const EmptyStack:DofusApiAction = new DofusApiAction("EmptyStackAction",EmptyStackAction);
-      
-      public static const ChallengeTargetsListRequest:DofusApiAction = new DofusApiAction("ChallengeTargetsListRequestAction",ChallengeTargetsListRequestAction);
       
       public static const GameFightReady:DofusApiAction = new DofusApiAction("GameFightReadyAction",GameFightReadyAction);
       
@@ -415,8 +408,6 @@ package com.ankamagames.dofus.misc.lists
       public static const PresetDeleteRequest:DofusApiAction = new DofusApiAction("PresetDeleteRequestAction",PresetDeleteRequestAction);
       
       public static const CharacterPresetSaveRequest:DofusApiAction = new DofusApiAction("CharacterPresetSaveRequestAction",CharacterPresetSaveRequestAction);
-      
-      public static const IdolsPresetSaveRequest:DofusApiAction = new DofusApiAction("IdolsPresetSaveRequestAction",IdolsPresetSaveRequestAction);
       
       public static const PresetUseRequest:DofusApiAction = new DofusApiAction("PresetUseRequestAction",PresetUseRequestAction);
       
@@ -715,6 +706,18 @@ package com.ankamagames.dofus.misc.lists
       public static const UpdateAlterationFavoriteFlag:DofusApiAction = new DofusApiAction("UpdateAlterationFavoriteFlagAction",UpdateAlterationFavoriteFlagAction);
       
       public static const GroupTeleportPlayerOfferReply:DofusApiAction = new DofusApiAction("GroupTeleportPlayerOfferReplyAction",GroupTeleportPlayerOfferReplyAction);
+      
+      public static const ChallengeModSelect:DofusApiAction = new DofusApiAction("ChallengeModSelectAction",ChallengeModSelectAction);
+      
+      public static const ChallengeBonusSelect:DofusApiAction = new DofusApiAction("ChallengeBonusSelectAction",ChallengeBonusSelectAction);
+      
+      public static const ChallengeSelection:DofusApiAction = new DofusApiAction("ChallengeSelectionAction",ChallengeSelectionAction);
+      
+      public static const ChallengeReady:DofusApiAction = new DofusApiAction("ChallengeReadyAction",ChallengeReadyAction);
+      
+      public static const ChallengeValidate:DofusApiAction = new DofusApiAction("ChallengeValidateAction",ChallengeValidateAction);
+      
+      public static const ChallengeTargetsRequest:DofusApiAction = new DofusApiAction("ChallengeTargetsRequestAction",ChallengeTargetsRequestAction);
        
       
       public function ApiActionList()

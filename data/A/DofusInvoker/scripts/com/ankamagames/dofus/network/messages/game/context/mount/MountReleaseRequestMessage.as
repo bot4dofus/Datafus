@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountReleaseRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4015;
+      public static const protocolId:uint = 4873;
        
       
       public function MountReleaseRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 4015;
+         return 4873;
       }
       
       public function initMountReleaseRequestMessage() : MountReleaseRequestMessage

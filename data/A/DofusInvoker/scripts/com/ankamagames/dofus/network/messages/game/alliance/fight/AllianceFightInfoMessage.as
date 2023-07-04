@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.fight
    public class AllianceFightInfoMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5259;
+      public static const protocolId:uint = 1055;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.fight
       
       override public function getMessageId() : uint
       {
-         return 5259;
+         return 1055;
       }
       
       public function initAllianceFightInfoMessage(allianceFights:Vector.<SocialFight> = null) : AllianceFightInfoMessage

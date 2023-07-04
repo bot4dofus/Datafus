@@ -419,25 +419,6 @@
 			"hint_creation_date": 169200000.0
 		},
 		{
-			"hint_id": 54,
-			"hint_parent_uid": "idolsTab_btn_solo",
-			"hint_anchored_element": "gd_idols",
-			"hint_anchor": 4,
-			"hint_position_x": 0,
-			"hint_position_y": 0,
-			"hint_width": 20,
-			"hint_height": 20,
-			"hint_highlighted_element": "gd_idols",
-			"hint_order": 1,
-			"hint_tooltip_text": 756765,
-			"hint_tooltip_position_enum": 7,
-			"hint_tooltip_url": "",
-			"hint_tooltip_offset_x": 5,
-			"hint_tooltip_offset_y": 5,
-			"hint_tooltip_width": 300,
-			"hint_creation_date": 255600000.0
-		},
-		{
 			"hint_id": 173,
 			"hint_parent_uid": "temporisSpellsUi",
 			"hint_anchored_element": "tx_btn_temporisSpells",

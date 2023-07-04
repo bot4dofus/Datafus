@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class LivingObjectDissociateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2542;
+      public static const protocolId:uint = 7311;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 2542;
+         return 7311;
       }
       
       public function initLivingObjectDissociateMessage(livingUID:uint = 0, livingPosition:uint = 0) : LivingObjectDissociateMessage

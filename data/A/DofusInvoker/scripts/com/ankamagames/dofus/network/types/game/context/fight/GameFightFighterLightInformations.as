@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameFightFighterLightInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 3588;
+      public static const protocolId:uint = 7874;
        
       
       public var id:Number = 0;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 3588;
+         return 7874;
       }
       
       public function initGameFightFighterLightInformations(id:Number = 0, wave:uint = 0, level:uint = 0, breed:int = 0, sex:Boolean = false, alive:Boolean = false) : GameFightFighterLightInformations

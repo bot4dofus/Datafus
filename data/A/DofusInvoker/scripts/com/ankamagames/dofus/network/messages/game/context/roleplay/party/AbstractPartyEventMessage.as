@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class AbstractPartyEventMessage extends AbstractPartyMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7612;
+      public static const protocolId:uint = 9359;
        
       
       private var _isInitialized:Boolean = false;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 7612;
+         return 9359;
       }
       
       public function initAbstractPartyEventMessage(partyId:uint = 0) : AbstractPartyEventMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class GameRolePlayGroupMonsterWaveInformations extends GameRolePlayGroupMonsterInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 496;
+      public static const protocolId:uint = 8988;
        
       
       public var nbWaves:uint = 0;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 496;
+         return 8988;
       }
       
       public function initGameRolePlayGroupMonsterWaveInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, staticInfos:GroupMonsterStaticInformations = null, lootShare:int = 0, alignmentSide:int = 0, hasHardcoreDrop:Boolean = false, nbWaves:uint = 0, alternatives:Vector.<GroupMonsterStaticInformations> = null) : GameRolePlayGroupMonsterWaveInformations

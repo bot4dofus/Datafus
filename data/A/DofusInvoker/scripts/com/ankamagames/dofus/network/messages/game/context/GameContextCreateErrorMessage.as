@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameContextCreateErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3856;
+      public static const protocolId:uint = 5580;
        
       
       public function GameContextCreateErrorMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 3856;
+         return 5580;
       }
       
       public function initGameContextCreateErrorMessage() : GameContextCreateErrorMessage

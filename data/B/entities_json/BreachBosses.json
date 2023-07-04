@@ -1457,6 +1457,7 @@
 				150,
 				151,
 				152,
+				162,
 				26,
 				38,
 				164
@@ -2064,6 +2065,7 @@
 			"accessCriterion": "OA=3037",
 			"incompatibleBosses": [
 				162,
+				107,
 				164
 			],
 			"rewardId": 351

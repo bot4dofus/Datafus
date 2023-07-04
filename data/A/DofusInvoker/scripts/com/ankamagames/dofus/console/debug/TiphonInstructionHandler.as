@@ -3,11 +3,9 @@ package com.ankamagames.dofus.console.debug
    import com.ankamagames.atouin.managers.EntitiesManager;
    import com.ankamagames.dofus.datacenter.monsters.Monster;
    import com.ankamagames.dofus.datacenter.npcs.Npc;
-   import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
-   import com.ankamagames.dofus.logic.common.managers.PlayerManager;
+   import com.ankamagames.dofus.logic.common.frames.AuthorizedFrame;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
-   import com.ankamagames.dofus.network.messages.authorized.AdminQuietCommandMessage;
    import com.ankamagames.jerakine.console.ConsoleHandler;
    import com.ankamagames.jerakine.console.ConsoleInstructionHandler;
    import com.ankamagames.jerakine.data.I18n;
@@ -35,7 +33,6 @@ package com.ankamagames.dofus.console.debug
          var monsterName:String = null;
          var searchBonesId:uint = 0;
          var look:TiphonEntityLook = null;
-         var aqcmsg:AdminQuietCommandMessage = null;
          var entity:IEntity = null;
          switch(cmd)
          {
@@ -56,12 +53,7 @@ package com.ankamagames.dofus.console.debug
                if(_monsters[monsterName])
                {
                   console.output("look like " + _monsters[monsterName]);
-                  aqcmsg = new AdminQuietCommandMessage();
-                  aqcmsg.initAdminQuietCommandMessage("look * " + _monsters[monsterName]);
-                  if(PlayerManager.getInstance().hasRights)
-                  {
-                     ConnectionsHandler.getConnection().send(aqcmsg);
-                  }
+                  AuthorizedFrame.sendServerCommandMessage("look * " + _monsters[monsterName],true);
                }
                break;
             case "relook":

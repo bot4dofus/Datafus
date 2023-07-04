@@ -16,7 +16,6 @@ package com.ankamagames.dofus.logic.common.frames
    import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
    import com.ankamagames.dofus.logic.game.fight.miscs.FightReachableCellsMaker;
    import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayEntitiesFrame;
-   import com.ankamagames.dofus.network.messages.authorized.AdminQuietCommandMessage;
    import com.ankamagames.dofus.network.messages.common.basic.BasicPingMessage;
    import com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightCastRequestMessage;
    import com.ankamagames.dofus.network.messages.game.actions.sequence.SequenceEndMessage;
@@ -211,9 +210,7 @@ package com.ankamagames.dofus.logic.common.frames
       
       private function sendAdminCmd(cmd:String) : void
       {
-         var aqcmsg:AdminQuietCommandMessage = new AdminQuietCommandMessage();
-         aqcmsg.initAdminQuietCommandMessage(cmd);
-         ConnectionsHandler.getConnection().send(aqcmsg);
+         AuthorizedFrame.sendServerCommandMessage(cmd,true);
       }
       
       private function onAction(e:Event) : void
@@ -259,9 +256,7 @@ package com.ankamagames.dofus.logic.common.frames
          {
             return;
          }
-         var aqcmsg:AdminQuietCommandMessage = new AdminQuietCommandMessage();
-         aqcmsg.initAdminQuietCommandMessage("join " + name);
-         ConnectionsHandler.getConnection().send(aqcmsg);
+         AuthorizedFrame.sendServerCommandMessage("join " + name,true);
          this._actionTimer.reset();
          this._actionTimer.start();
       }
@@ -273,9 +268,7 @@ package com.ankamagames.dofus.logic.common.frames
             return;
          }
          var mapPos:MapPosition = this._mapPos[int(Math.random() * this._mapPos.length)];
-         var aqcmsg:AdminQuietCommandMessage = new AdminQuietCommandMessage();
-         aqcmsg.initAdminQuietCommandMessage("moveto " + mapPos.id);
-         ConnectionsHandler.getConnection().send(aqcmsg);
+         AuthorizedFrame.sendServerCommandMessage("moveto " + mapPos.id,true);
          this._actionTimer.reset();
          this._actionTimer.start();
       }

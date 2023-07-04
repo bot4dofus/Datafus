@@ -21,10 +21,6 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const COMPANION_HUD_BUTTON_SHORTCUT:String = "companion.hudButtonAndShortcut";
       
-      public static const IDOL_DROP_BONUS:String = "game.feature.idol.drop.bonus";
-      
-      public static const IDOL_XP_BONUS:String = "game.feature.idol.exp.bonus";
-      
       public static const CHAT_DICE_ROLL:String = "game.roleplay.diceroll";
       
       public static const FIGHT_SLAVE_ACTION_BARS:String = "fight.slave.actionbars";

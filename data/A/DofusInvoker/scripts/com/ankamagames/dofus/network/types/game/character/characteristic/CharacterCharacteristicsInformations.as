@@ -2,6 +2,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
 {
    import com.ankamagames.dofus.network.ProtocolTypeManager;
    import com.ankamagames.dofus.network.types.game.character.alignment.ActorExtendedAlignmentInformations;
+   import com.ankamagames.dofus.network.types.game.character.spellmodifier.SpellModifierMessage;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
    import com.ankamagames.jerakine.network.INetworkType;
@@ -10,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
    public class CharacterCharacteristicsInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 7399;
+      public static const protocolId:uint = 6352;
        
       
       public var experience:Number = 0;
@@ -29,7 +30,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       
       public var characteristics:Vector.<CharacterCharacteristic>;
       
-      public var spellModifications:Vector.<CharacterSpellModification>;
+      public var spellModifiers:Vector.<SpellModifierMessage>;
       
       public var probationTime:Number = 0;
       
@@ -37,22 +38,22 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       
       private var _characteristicstree:FuncTree;
       
-      private var _spellModificationstree:FuncTree;
+      private var _spellModifierstree:FuncTree;
       
       public function CharacterCharacteristicsInformations()
       {
          this.alignmentInfos = new ActorExtendedAlignmentInformations();
          this.characteristics = new Vector.<CharacterCharacteristic>();
-         this.spellModifications = new Vector.<CharacterSpellModification>();
+         this.spellModifiers = new Vector.<SpellModifierMessage>();
          super();
       }
       
       public function getTypeId() : uint
       {
-         return 7399;
+         return 6352;
       }
       
-      public function initCharacterCharacteristicsInformations(experience:Number = 0, experienceLevelFloor:Number = 0, experienceNextLevelFloor:Number = 0, experienceBonusLimit:Number = 0, kamas:Number = 0, alignmentInfos:ActorExtendedAlignmentInformations = null, criticalHitWeapon:uint = 0, characteristics:Vector.<CharacterCharacteristic> = null, spellModifications:Vector.<CharacterSpellModification> = null, probationTime:Number = 0) : CharacterCharacteristicsInformations
+      public function initCharacterCharacteristicsInformations(experience:Number = 0, experienceLevelFloor:Number = 0, experienceNextLevelFloor:Number = 0, experienceBonusLimit:Number = 0, kamas:Number = 0, alignmentInfos:ActorExtendedAlignmentInformations = null, criticalHitWeapon:uint = 0, characteristics:Vector.<CharacterCharacteristic> = null, spellModifiers:Vector.<SpellModifierMessage> = null, probationTime:Number = 0) : CharacterCharacteristicsInformations
       {
          this.experience = experience;
          this.experienceLevelFloor = experienceLevelFloor;
@@ -62,7 +63,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
          this.alignmentInfos = alignmentInfos;
          this.criticalHitWeapon = criticalHitWeapon;
          this.characteristics = characteristics;
-         this.spellModifications = spellModifications;
+         this.spellModifiers = spellModifiers;
          this.probationTime = probationTime;
          return this;
       }
@@ -76,7 +77,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
          this.kamas = 0;
          this.alignmentInfos = new ActorExtendedAlignmentInformations();
          this.characteristics = new Vector.<CharacterCharacteristic>();
-         this.spellModifications = new Vector.<CharacterSpellModification>();
+         this.spellModifiers = new Vector.<SpellModifierMessage>();
          this.probationTime = 0;
       }
       
@@ -124,10 +125,10 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
             output.writeShort((this.characteristics[_i8] as CharacterCharacteristic).getTypeId());
             (this.characteristics[_i8] as CharacterCharacteristic).serialize(output);
          }
-         output.writeShort(this.spellModifications.length);
-         for(var _i9:uint = 0; _i9 < this.spellModifications.length; _i9++)
+         output.writeShort(this.spellModifiers.length);
+         for(var _i9:uint = 0; _i9 < this.spellModifiers.length; _i9++)
          {
-            (this.spellModifications[_i9] as CharacterSpellModification).serializeAs_CharacterSpellModification(output);
+            (this.spellModifiers[_i9] as SpellModifierMessage).serializeAs_SpellModifierMessage(output);
          }
          if(this.probationTime < 0 || this.probationTime > 9007199254740992)
          {
@@ -145,7 +146,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       {
          var _id8:uint = 0;
          var _item8:CharacterCharacteristic = null;
-         var _item9:CharacterSpellModification = null;
+         var _item9:SpellModifierMessage = null;
          this._experienceFunc(input);
          this._experienceLevelFloorFunc(input);
          this._experienceNextLevelFloorFunc(input);
@@ -162,12 +163,12 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
             _item8.deserialize(input);
             this.characteristics.push(_item8);
          }
-         var _spellModificationsLen:uint = input.readUnsignedShort();
-         for(var _i9:uint = 0; _i9 < _spellModificationsLen; _i9++)
+         var _spellModifiersLen:uint = input.readUnsignedShort();
+         for(var _i9:uint = 0; _i9 < _spellModifiersLen; _i9++)
          {
-            _item9 = new CharacterSpellModification();
+            _item9 = new SpellModifierMessage();
             _item9.deserialize(input);
-            this.spellModifications.push(_item9);
+            this.spellModifiers.push(_item9);
          }
          this._probationTimeFunc(input);
       }
@@ -187,7 +188,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
          this._alignmentInfostree = tree.addChild(this._alignmentInfostreeFunc);
          tree.addChild(this._criticalHitWeaponFunc);
          this._characteristicstree = tree.addChild(this._characteristicstreeFunc);
-         this._spellModificationstree = tree.addChild(this._spellModificationstreeFunc);
+         this._spellModifierstree = tree.addChild(this._spellModifierstreeFunc);
          tree.addChild(this._probationTimeFunc);
       }
       
@@ -268,20 +269,20 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
          this.characteristics.push(_item);
       }
       
-      private function _spellModificationstreeFunc(input:ICustomDataInput) : void
+      private function _spellModifierstreeFunc(input:ICustomDataInput) : void
       {
          var length:uint = input.readUnsignedShort();
          for(var i:uint = 0; i < length; i++)
          {
-            this._spellModificationstree.addChild(this._spellModificationsFunc);
+            this._spellModifierstree.addChild(this._spellModifiersFunc);
          }
       }
       
-      private function _spellModificationsFunc(input:ICustomDataInput) : void
+      private function _spellModifiersFunc(input:ICustomDataInput) : void
       {
-         var _item:CharacterSpellModification = new CharacterSpellModification();
+         var _item:SpellModifierMessage = new SpellModifierMessage();
          _item.deserialize(input);
-         this.spellModifications.push(_item);
+         this.spellModifiers.push(_item);
       }
       
       private function _probationTimeFunc(input:ICustomDataInput) : void

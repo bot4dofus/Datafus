@@ -19,6 +19,7 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.logic.game.fight.types.BasicBuff;
    import com.ankamagames.dofus.network.enums.FightTypeEnum;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristicsInformations;
+   import com.ankamagames.dofus.network.types.game.context.GameContextActorInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightEntityInformation;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightMonsterInformations;
@@ -166,11 +167,6 @@ package com.ankamagames.dofus.uiApi
          }
       }
       
-      public function getChallengeList() : Array
-      {
-         return this.getFightFrame().challengesList;
-      }
-      
       public function getCurrentPlayedFighterId() : Number
       {
          return CurrentPlayedFighterManager.getInstance().currentFighterId;
@@ -208,6 +204,11 @@ package com.ankamagames.dofus.uiApi
       public function isFightLeader() : Boolean
       {
          return this.getFightFrame().isFightLeader;
+      }
+      
+      public function fightLeader() : GameContextActorInformations
+      {
+         return this.getFightFrame().fightLeader;
       }
       
       public function isSpectator() : Boolean
@@ -263,6 +264,21 @@ package com.ankamagames.dofus.uiApi
          {
             fightPreparationFrame.setSwapPositionRequestsIconsVisibility(pVisible);
          }
+      }
+      
+      public function challengeBonus() : uint
+      {
+         return this.getFightFrame().challengeBonus;
+      }
+      
+      public function challengeMod() : uint
+      {
+         return this.getFightFrame().challengeMod;
+      }
+      
+      public function isChallengeChoicePhase() : Boolean
+      {
+         return this.getFightFrame().challengeChoicePhase;
       }
       
       private function getFighterInfos(fighterId:Number) : GameFightFighterInformations

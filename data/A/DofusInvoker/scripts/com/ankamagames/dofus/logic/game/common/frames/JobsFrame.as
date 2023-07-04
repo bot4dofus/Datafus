@@ -296,7 +296,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var paramsLastJob:Dictionary = new Dictionary();
          paramsNewJob["sum_of_jobs_earned_levels"] = newJobsLevel;
          paramsLastJob["sum_of_jobs_earned_levels"] = lastJobsLevel;
-         return (LuaScriptManager.getInstance().executeLuaFormula(LuaFormulasEnum.JOBLEVELUP_PODSBONUS,paramsNewJob) as uint) - (LuaScriptManager.getInstance().executeLuaFormula(LuaFormulasEnum.JOBLEVELUP_PODSBONUS,paramsLastJob) as uint);
+         return (LuaScriptManager.getInstance().executeLuaFormula(LuaFormulasEnum.JOB_LEVEL_UP_PODS_BONUS,paramsNewJob) as uint) - (LuaScriptManager.getInstance().executeLuaFormula(LuaFormulasEnum.JOB_LEVEL_UP_PODS_BONUS,paramsLastJob) as uint);
       }
    }
 }

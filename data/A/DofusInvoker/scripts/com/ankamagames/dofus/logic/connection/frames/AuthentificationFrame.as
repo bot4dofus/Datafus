@@ -217,18 +217,11 @@ package com.ankamagames.dofus.logic.connection.frames
          {
             case msg is LoginValidationWithTokenAction:
                lvwta = msg as LoginValidationWithTokenAction;
-               if(BuildInfos.BUILD_TYPE >= BuildTypeEnum.INTERNAL && !lvwta.host)
+               if(lvwta.host)
                {
-                  KernelEventsManager.getInstance().processCallback(HookList.DisplayHostSelection);
+                  _hostChosenByUser = lvwta.host;
                }
-               else
-               {
-                  if(lvwta.host)
-                  {
-                     _hostChosenByUser = lvwta.host;
-                  }
-                  ZaapConnectionManager.getInstance().requestApiToken();
-               }
+               ZaapConnectionManager.getInstance().requestApiToken();
                return true;
             case msg is LoginValidationAction:
                lva = LoginValidationAction(msg);

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyAbdicateThroneMessage extends AbstractPartyMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 368;
+      public static const protocolId:uint = 1919;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 368;
+         return 1919;
       }
       
       public function initPartyAbdicateThroneMessage(partyId:uint = 0, playerId:Number = 0) : PartyAbdicateThroneMessage

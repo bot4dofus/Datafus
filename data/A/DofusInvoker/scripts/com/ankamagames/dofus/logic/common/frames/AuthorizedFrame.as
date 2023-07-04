@@ -10,12 +10,15 @@ package com.ankamagames.dofus.logic.common.frames
    import com.ankamagames.dofus.logic.common.actions.AuthorizedCommandAction;
    import com.ankamagames.dofus.logic.common.actions.QuitGameAction;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkAdminManager;
+   import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.misc.lists.GameDataList;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
    import com.ankamagames.dofus.network.messages.authorized.AdminCommandMessage;
+   import com.ankamagames.dofus.network.messages.authorized.AdminQuietCommandMessage;
    import com.ankamagames.dofus.network.messages.authorized.ConsoleMessage;
    import com.ankamagames.dofus.network.messages.security.CheckIntegrityMessage;
+   import com.ankamagames.dofus.network.types.game.Uuid;
    import com.ankamagames.jerakine.console.ConsoleHandler;
    import com.ankamagames.jerakine.console.ConsoleOutputMessage;
    import com.ankamagames.jerakine.console.ConsolesManager;
@@ -27,6 +30,7 @@ package com.ankamagames.dofus.logic.common.frames
    import flash.utils.Dictionary;
    import flash.utils.getDefinitionByName;
    import flash.utils.getQualifiedClassName;
+   import mx.utils.UIDUtil;
    
    public class AuthorizedFrame extends RegisteringFrame
    {
@@ -45,6 +49,19 @@ package com.ankamagames.dofus.logic.common.frames
       public function AuthorizedFrame()
       {
          super();
+      }
+      
+      public static function sendServerCommandMessage(command:String, isQuiet:Boolean = false) : void
+      {
+         if(!PlayerManager.getInstance().hasRights)
+         {
+            return;
+         }
+         var message:AdminCommandMessage = !!isQuiet ? new AdminQuietCommandMessage() : new AdminCommandMessage();
+         var msgUuid:Uuid = new Uuid();
+         msgUuid.initUuid(UIDUtil.createUID());
+         message.initAdminCommandMessage(msgUuid,command);
+         ConnectionsHandler.getConnection().send(message);
       }
       
       private static function getValidClass() : Dictionary
@@ -118,6 +135,7 @@ package com.ankamagames.dofus.logic.common.frames
       {
          var command:String = null;
          var acmsg:AdminCommandMessage = null;
+         var msgUuid:Uuid = null;
          var commands:Array = aca.command.split(" ; ");
          for each(command in commands)
          {
@@ -139,7 +157,9 @@ package com.ankamagames.dofus.logic.common.frames
                   if(command.length >= 1 && command.length <= ProtocolConstantsEnum.MAX_CMD_LEN)
                   {
                      acmsg = new AdminCommandMessage();
-                     acmsg.initAdminCommandMessage(command);
+                     msgUuid = new Uuid();
+                     msgUuid.initUuid(UIDUtil.createUID());
+                     acmsg.initAdminCommandMessage(msgUuid,command);
                      ConnectionsHandler.getConnection().send(acmsg);
                   }
                   else

@@ -45,8 +45,6 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.datacenter.houses.HavenbagFurniture;
    import com.ankamagames.dofus.datacenter.houses.HavenbagTheme;
    import com.ankamagames.dofus.datacenter.houses.House;
-   import com.ankamagames.dofus.datacenter.idols.Idol;
-   import com.ankamagames.dofus.datacenter.idols.IdolsPresetIcon;
    import com.ankamagames.dofus.datacenter.interactives.Interactive;
    import com.ankamagames.dofus.datacenter.items.EvolutiveItemType;
    import com.ankamagames.dofus.datacenter.items.IncarnationLevel;
@@ -933,11 +931,6 @@ package com.ankamagames.dofus.uiApi
          return PresetIcon.getPresetIconById(iconId);
       }
       
-      public function getIdolsPresetIcons() : Array
-      {
-         return IdolsPresetIcon.getIdolsPresetIcons();
-      }
-      
       public function getDungeon(dungeonId:uint) : Dungeon
       {
          return Dungeon.getDungeonById(dungeonId);
@@ -1190,21 +1183,6 @@ package com.ankamagames.dofus.uiApi
       public function getBreachPrizeById(id:int) : BreachPrize
       {
          return BreachPrize.getBreachPrizeById(id);
-      }
-      
-      public function getIdol(pIdolId:uint) : Idol
-      {
-         return Idol.getIdolById(pIdolId);
-      }
-      
-      public function getIdolByItemId(pItemId:int) : Idol
-      {
-         return Idol.getIdolByItemId(pItemId);
-      }
-      
-      public function getAllIdols() : Array
-      {
-         return Idol.getIdols();
       }
       
       public function getHintById(pHintId:int) : Hint

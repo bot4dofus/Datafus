@@ -4,7 +4,6 @@ package com.ankamagames.dofus.logic.game.common.managers
    import com.ankamagames.dofus.datacenter.world.SubArea;
    import com.ankamagames.dofus.datacenter.world.WorldMap;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
-   import com.ankamagames.dofus.internalDatacenter.items.IdolsPresetWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.WeaponWrapper;
    import com.ankamagames.dofus.internalDatacenter.jobs.KnownJobWrapper;
@@ -51,12 +50,6 @@ package com.ankamagames.dofus.logic.game.common.managers
       private var _isPartyLeader:Boolean = false;
       
       private var _followingPlayerIds:Vector.<Number>;
-      
-      private var _soloIdols:Vector.<uint>;
-      
-      private var _partyIdols:Vector.<uint>;
-      
-      private var _idolsPresets:Vector.<IdolsPresetWrapper>;
       
       private var _infosAvailableCallbacks:Vector.<Callback>;
       
@@ -126,7 +119,7 @@ package com.ankamagames.dofus.logic.game.common.managers
       
       public var publicMode:Boolean = false;
       
-      public var isRidding:Boolean = false;
+      public var isRiding:Boolean = false;
       
       public var isPetsMounting:Boolean = false;
       
@@ -163,13 +156,10 @@ package com.ankamagames.dofus.logic.game.common.managers
       public function PlayedCharacterManager()
       {
          this._followingPlayerIds = new Vector.<Number>();
-         this._soloIdols = new Vector.<uint>();
-         this._partyIdols = new Vector.<uint>();
-         this._idolsPresets = new Vector.<IdolsPresetWrapper>(0);
          this._infosAvailableCallbacks = new Vector.<Callback>(0);
          this.playerForgettableSpellDictionary = new Dictionary();
          this.lastCoord = new Point(0,0);
-         this.waitingGifts = new Array();
+         this.waitingGifts = [];
          super();
          if(_self != null)
          {
@@ -456,36 +446,6 @@ package com.ankamagames.dofus.logic.game.common.managers
       public function set followingPlayerIds(pPlayerIds:Vector.<Number>) : void
       {
          this._followingPlayerIds = pPlayerIds;
-      }
-      
-      public function get soloIdols() : Vector.<uint>
-      {
-         return this._soloIdols;
-      }
-      
-      public function set soloIdols(pIdols:Vector.<uint>) : void
-      {
-         this._soloIdols = pIdols;
-      }
-      
-      public function get partyIdols() : Vector.<uint>
-      {
-         return this._partyIdols;
-      }
-      
-      public function set partyIdols(pIdols:Vector.<uint>) : void
-      {
-         this._partyIdols = pIdols;
-      }
-      
-      public function get idolsPresets() : Vector.<IdolsPresetWrapper>
-      {
-         return this._idolsPresets;
-      }
-      
-      public function set idolsPresets(pIdolsPresets:Vector.<IdolsPresetWrapper>) : void
-      {
-         this._idolsPresets = pIdolsPresets;
       }
       
       public function get extractedServerCharacterIdFromInterserverCharacterId() : Number

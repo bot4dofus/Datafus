@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class InventoryContentMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8819;
+      public static const protocolId:uint = 2012;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 8819;
+         return 2012;
       }
       
       public function initInventoryContentMessage(objects:Vector.<ObjectItem> = null, kamas:Number = 0) : InventoryContentMessage

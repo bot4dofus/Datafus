@@ -1,7 +1,6 @@
 package com.ankamagames.dofus.datacenter.quest.objectives
 {
    import flash.utils.Proxy;
-   import flash.utils.flash_proxy;
    
    public class QuestObjectiveParameters extends Proxy
    {
@@ -24,21 +23,6 @@ package com.ankamagames.dofus.datacenter.quest.objectives
       public function QuestObjectiveParameters()
       {
          super();
-      }
-      
-      override flash_proxy function getProperty(name:*) : *
-      {
-         var propertyName:String = QName(name).localName;
-         if(!isNaN(parseInt(propertyName)))
-         {
-            return this["parameter" + propertyName];
-         }
-         return this[propertyName];
-      }
-      
-      public function get length() : uint
-      {
-         return this.numParams;
       }
    }
 }

@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeTypesItemsExchangerDescriptionForUserMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3289;
+      public static const protocolId:uint = 177;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 3289;
+         return 177;
       }
       
       public function initExchangeTypesItemsExchangerDescriptionForUserMessage(objectGID:uint = 0, objectType:uint = 0, itemTypeDescriptions:Vector.<BidExchangerObjectInfo> = null) : ExchangeTypesItemsExchangerDescriptionForUserMessage

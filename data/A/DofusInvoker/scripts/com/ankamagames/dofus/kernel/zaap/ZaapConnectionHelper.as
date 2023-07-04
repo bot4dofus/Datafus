@@ -63,10 +63,10 @@ package com.ankamagames.dofus.kernel.zaap
       private static function getOverlayPosition() : OverlayPosition
       {
          var pos:OverlayPosition = new OverlayPosition();
-         pos.posX = 25;
-         pos.posY = 25;
-         pos.width = 50;
-         pos.height = 50;
+         pos.posX = 15;
+         pos.posY = 15;
+         pos.width = 70;
+         pos.height = 70;
          return pos;
       }
       

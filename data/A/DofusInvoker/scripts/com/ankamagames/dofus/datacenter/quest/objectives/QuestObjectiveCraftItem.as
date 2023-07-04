@@ -20,11 +20,11 @@ package com.ankamagames.dofus.datacenter.quest.objectives
       
       public function get itemId() : uint
       {
-         if(!this.parameters || this.parameters.length < 2)
+         if(!this.parameters || this.parameters.numParams < 2)
          {
             return 0;
          }
-         return this.parameters[0];
+         return this.parameters.parameter0;
       }
       
       public function get item() : Item
@@ -38,11 +38,11 @@ package com.ankamagames.dofus.datacenter.quest.objectives
       
       public function get quantity() : uint
       {
-         if(!this.parameters || this.parameters.length < 2)
+         if(!this.parameters || this.parameters.numParams < 2)
          {
             return 0;
          }
-         return this.parameters[1];
+         return this.parameters.parameter1;
       }
       
       override public function get text() : String

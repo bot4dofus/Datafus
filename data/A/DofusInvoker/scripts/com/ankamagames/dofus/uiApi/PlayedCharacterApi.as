@@ -10,7 +10,6 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.internalDatacenter.house.HouseWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.BuildWrapper;
-   import com.ankamagames.dofus.internalDatacenter.items.IdolsPresetWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.WeaponWrapper;
    import com.ankamagames.dofus.internalDatacenter.mount.MountData;
@@ -100,7 +99,7 @@ package com.ankamagames.dofus.uiApi
          {
             return null;
          }
-         var o:Object = new Object();
+         var o:Object = {};
          o.id = i.id;
          o.breed = i.breed;
          o.level = i.level;
@@ -155,7 +154,7 @@ package com.ankamagames.dofus.uiApi
       public function getEquipment() : Array
       {
          var item:* = undefined;
-         var equipment:Array = new Array();
+         var equipment:Array = [];
          for each(item in PlayedCharacterManager.getInstance().inventory)
          {
             if(item.position <= CharacterInventoryPositionEnum.ACCESSORY_POSITION_SHIELD)
@@ -240,7 +239,7 @@ package com.ankamagames.dofus.uiApi
       {
          var spellWrapper:SpellWrapper = null;
          var spellsInventory:Array = PlayedCharacterManager.getInstance().spellsInventory;
-         var activatedSpellIds:Array = new Array();
+         var activatedSpellIds:Array = [];
          var playerBreedId:int = PlayedCharacterManager.getInstance().infos.breed;
          var breedData:Breed = Breed.getBreedById(playerBreedId);
          var breedSpellsId:Array = breedData.allSpellsId;
@@ -417,9 +416,9 @@ package com.ankamagames.dofus.uiApi
          return PlayedCharacterManager.getInstance().isPartyLeader;
       }
       
-      public function isRidding() : Boolean
+      public function isRiding() : Boolean
       {
-         return PlayedCharacterManager.getInstance().isRidding;
+         return PlayedCharacterManager.getInstance().isRiding;
       }
       
       public function isPetsMounting() : Boolean
@@ -650,7 +649,7 @@ package com.ankamagames.dofus.uiApi
       
       public function getExperienceBonusPercent() : int
       {
-         return PlayedCharacterManager.getInstance().experiencePercent;
+         return PlayedCharacterManager.getInstance().experiencePercent + 100;
       }
       
       public function getAchievementPoints() : int
@@ -661,26 +660,6 @@ package com.ankamagames.dofus.uiApi
       public function getWaitingGifts() : Array
       {
          return PlayedCharacterManager.getInstance().waitingGifts;
-      }
-      
-      public function getSoloIdols() : Vector.<uint>
-      {
-         return PlayedCharacterManager.getInstance().soloIdols;
-      }
-      
-      public function getPartyIdols() : Vector.<uint>
-      {
-         return PlayedCharacterManager.getInstance().partyIdols;
-      }
-      
-      public function setPartyIdols(pIdols:Vector.<uint>) : void
-      {
-         PlayedCharacterManager.getInstance().partyIdols = pIdols;
-      }
-      
-      public function getIdolsPresets() : Vector.<IdolsPresetWrapper>
-      {
-         return PlayedCharacterManager.getInstance().idolsPresets;
       }
       
       public function isInHisHavenbag() : Boolean

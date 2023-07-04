@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class SpawnMonsterInformation extends BaseSpawnMonsterInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 9201;
+      public static const protocolId:uint = 3481;
        
       
       public var creatureGrade:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 9201;
+         return 3481;
       }
       
       public function initSpawnMonsterInformation(creatureGenericId:uint = 0, creatureGrade:uint = 0) : SpawnMonsterInformation

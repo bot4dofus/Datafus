@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameContextCreateRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6062;
+      public static const protocolId:uint = 1530;
        
       
       public function GameContextCreateRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 6062;
+         return 1530;
       }
       
       public function initGameContextCreateRequestMessage() : GameContextCreateRequestMessage

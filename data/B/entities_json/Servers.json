@@ -171,6 +171,18 @@
 			"communityId": 12,
 			"restrictedToLanguages": [],
 			"monoAccount": false
+		},
+		{
+			"id": 800,
+			"nameId": 1008971,
+			"commentId": 1008974,
+			"openingDate": 1207177200000.0,
+			"language": "fr",
+			"populationId": 0,
+			"gameTypeId": 0,
+			"communityId": 8,
+			"restrictedToLanguages": [],
+			"monoAccount": false
 		}
 	]
 }

@@ -3,7 +3,6 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    import com.ankamagames.dofus.network.types.game.action.fight.FightDispellableEffectExtendedInformations;
    import com.ankamagames.dofus.network.types.game.actions.fight.GameActionMark;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightEffectTriggerCount;
-   import com.ankamagames.dofus.network.types.game.idol.Idol;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -15,7 +14,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightSpectateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9527;
+      public static const protocolId:uint = 3448;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,15 +27,11 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       public var fightStart:uint = 0;
       
-      public var idols:Vector.<Idol>;
-      
       public var fxTriggerCounts:Vector.<GameFightEffectTriggerCount>;
       
       private var _effectstree:FuncTree;
       
       private var _markstree:FuncTree;
-      
-      private var _idolstree:FuncTree;
       
       private var _fxTriggerCountstree:FuncTree;
       
@@ -44,7 +39,6 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       {
          this.effects = new Vector.<FightDispellableEffectExtendedInformations>();
          this.marks = new Vector.<GameActionMark>();
-         this.idols = new Vector.<Idol>();
          this.fxTriggerCounts = new Vector.<GameFightEffectTriggerCount>();
          super();
       }
@@ -56,16 +50,15 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 9527;
+         return 3448;
       }
       
-      public function initGameFightSpectateMessage(effects:Vector.<FightDispellableEffectExtendedInformations> = null, marks:Vector.<GameActionMark> = null, gameTurn:uint = 0, fightStart:uint = 0, idols:Vector.<Idol> = null, fxTriggerCounts:Vector.<GameFightEffectTriggerCount> = null) : GameFightSpectateMessage
+      public function initGameFightSpectateMessage(effects:Vector.<FightDispellableEffectExtendedInformations> = null, marks:Vector.<GameActionMark> = null, gameTurn:uint = 0, fightStart:uint = 0, fxTriggerCounts:Vector.<GameFightEffectTriggerCount> = null) : GameFightSpectateMessage
       {
          this.effects = effects;
          this.marks = marks;
          this.gameTurn = gameTurn;
          this.fightStart = fightStart;
-         this.idols = idols;
          this.fxTriggerCounts = fxTriggerCounts;
          this._isInitialized = true;
          return this;
@@ -77,7 +70,6 @@ package com.ankamagames.dofus.network.messages.game.context.fight
          this.marks = new Vector.<GameActionMark>();
          this.gameTurn = 0;
          this.fightStart = 0;
-         this.idols = new Vector.<Idol>();
          this.fxTriggerCounts = new Vector.<GameFightEffectTriggerCount>();
          this._isInitialized = false;
       }
@@ -129,15 +121,10 @@ package com.ankamagames.dofus.network.messages.game.context.fight
             throw new Error("Forbidden value (" + this.fightStart + ") on element fightStart.");
          }
          output.writeInt(this.fightStart);
-         output.writeShort(this.idols.length);
-         for(var _i5:uint = 0; _i5 < this.idols.length; _i5++)
-         {
-            (this.idols[_i5] as Idol).serializeAs_Idol(output);
-         }
          output.writeShort(this.fxTriggerCounts.length);
-         for(var _i6:uint = 0; _i6 < this.fxTriggerCounts.length; _i6++)
+         for(var _i5:uint = 0; _i5 < this.fxTriggerCounts.length; _i5++)
          {
-            (this.fxTriggerCounts[_i6] as GameFightEffectTriggerCount).serializeAs_GameFightEffectTriggerCount(output);
+            (this.fxTriggerCounts[_i5] as GameFightEffectTriggerCount).serializeAs_GameFightEffectTriggerCount(output);
          }
       }
       
@@ -150,8 +137,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       {
          var _item1:FightDispellableEffectExtendedInformations = null;
          var _item2:GameActionMark = null;
-         var _item5:Idol = null;
-         var _item6:GameFightEffectTriggerCount = null;
+         var _item5:GameFightEffectTriggerCount = null;
          var _effectsLen:uint = input.readUnsignedShort();
          for(var _i1:uint = 0; _i1 < _effectsLen; _i1++)
          {
@@ -168,19 +154,12 @@ package com.ankamagames.dofus.network.messages.game.context.fight
          }
          this._gameTurnFunc(input);
          this._fightStartFunc(input);
-         var _idolsLen:uint = input.readUnsignedShort();
-         for(var _i5:uint = 0; _i5 < _idolsLen; _i5++)
-         {
-            _item5 = new Idol();
-            _item5.deserialize(input);
-            this.idols.push(_item5);
-         }
          var _fxTriggerCountsLen:uint = input.readUnsignedShort();
-         for(var _i6:uint = 0; _i6 < _fxTriggerCountsLen; _i6++)
+         for(var _i5:uint = 0; _i5 < _fxTriggerCountsLen; _i5++)
          {
-            _item6 = new GameFightEffectTriggerCount();
-            _item6.deserialize(input);
-            this.fxTriggerCounts.push(_item6);
+            _item5 = new GameFightEffectTriggerCount();
+            _item5.deserialize(input);
+            this.fxTriggerCounts.push(_item5);
          }
       }
       
@@ -195,7 +174,6 @@ package com.ankamagames.dofus.network.messages.game.context.fight
          this._markstree = tree.addChild(this._markstreeFunc);
          tree.addChild(this._gameTurnFunc);
          tree.addChild(this._fightStartFunc);
-         this._idolstree = tree.addChild(this._idolstreeFunc);
          this._fxTriggerCountstree = tree.addChild(this._fxTriggerCountstreeFunc);
       }
       
@@ -247,22 +225,6 @@ package com.ankamagames.dofus.network.messages.game.context.fight
          {
             throw new Error("Forbidden value (" + this.fightStart + ") on element of GameFightSpectateMessage.fightStart.");
          }
-      }
-      
-      private function _idolstreeFunc(input:ICustomDataInput) : void
-      {
-         var length:uint = input.readUnsignedShort();
-         for(var i:uint = 0; i < length; i++)
-         {
-            this._idolstree.addChild(this._idolsFunc);
-         }
-      }
-      
-      private function _idolsFunc(input:ICustomDataInput) : void
-      {
-         var _item:Idol = new Idol();
-         _item.deserialize(input);
-         this.idols.push(_item);
       }
       
       private function _fxTriggerCountstreeFunc(input:ICustomDataInput) : void

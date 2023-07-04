@@ -1,7 +1,7 @@
 package com.ankamagames.dofus.network.messages.game.collector.tax
 {
+   import com.ankamagames.dofus.network.types.game.Uuid;
    import com.ankamagames.dofus.network.types.game.collector.tax.TaxCollectorOrderedSpell;
-   import com.ankamagames.dofus.network.types.game.uuid;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -13,12 +13,12 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
    public class AddTaxCollectorPresetSpellMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4511;
+      public static const protocolId:uint = 2643;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var presetId:uuid;
+      public var presetId:Uuid;
       
       public var spell:TaxCollectorOrderedSpell;
       
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       public function AddTaxCollectorPresetSpellMessage()
       {
-         this.presetId = new uuid();
+         this.presetId = new Uuid();
          this.spell = new TaxCollectorOrderedSpell();
          super();
       }
@@ -40,10 +40,10 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       override public function getMessageId() : uint
       {
-         return 4511;
+         return 2643;
       }
       
-      public function initAddTaxCollectorPresetSpellMessage(presetId:uuid = null, spell:TaxCollectorOrderedSpell = null) : AddTaxCollectorPresetSpellMessage
+      public function initAddTaxCollectorPresetSpellMessage(presetId:Uuid = null, spell:TaxCollectorOrderedSpell = null) : AddTaxCollectorPresetSpellMessage
       {
          this.presetId = presetId;
          this.spell = spell;
@@ -53,7 +53,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       override public function reset() : void
       {
-         this.presetId = new uuid();
+         this.presetId = new Uuid();
          this._isInitialized = false;
       }
       
@@ -84,7 +84,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       public function serializeAs_AddTaxCollectorPresetSpellMessage(output:ICustomDataOutput) : void
       {
-         this.presetId.serializeAs_uuid(output);
+         this.presetId.serializeAs_Uuid(output);
          this.spell.serializeAs_TaxCollectorOrderedSpell(output);
       }
       
@@ -95,7 +95,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       public function deserializeAs_AddTaxCollectorPresetSpellMessage(input:ICustomDataInput) : void
       {
-         this.presetId = new uuid();
+         this.presetId = new Uuid();
          this.presetId.deserialize(input);
          this.spell = new TaxCollectorOrderedSpell();
          this.spell.deserialize(input);
@@ -114,7 +114,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       private function _presetIdtreeFunc(input:ICustomDataInput) : void
       {
-         this.presetId = new uuid();
+         this.presetId = new Uuid();
          this.presetId.deserializeAsync(this._presetIdtree);
       }
       

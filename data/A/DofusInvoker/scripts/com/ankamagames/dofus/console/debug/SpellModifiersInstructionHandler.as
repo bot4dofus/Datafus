@@ -1,5 +1,6 @@
 package com.ankamagames.dofus.console.debug
 {
+   import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.spell.SpellModifier;
    import com.ankamagames.dofus.logic.game.common.spell.SpellModifiers;
    import com.ankamagames.dofus.logic.game.fight.managers.SpellModifiersManager;
@@ -9,6 +10,7 @@ package com.ankamagames.dofus.console.debug
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
+   import flash.utils.Dictionary;
    import flash.utils.getQualifiedClassName;
    
    public class SpellModifiersInstructionHandler implements ConsoleInstructionHandler
@@ -16,7 +18,7 @@ package com.ankamagames.dofus.console.debug
       
       public static const _log:Logger = Log.getLogger(getQualifiedClassName(SpellModifiersInstructionHandler));
       
-      public static const BASE_COMMAND:String = "spellmodifiersmanager";
+      public static const BASE_COMMAND:String = "spellmodifiers";
       
       private static const DUMP_COMMAND:String = "dump";
       
@@ -31,10 +33,6 @@ package com.ankamagames.dofus.console.debug
       private static const ARGUMENT_ERROR:String = "Wrong number of arguments";
       
       private static const COMMAND_ABORTED_ERROR:String = "Aborting";
-      
-      private static const DUMP_MODIFIERS_ARGUMENT:String = "modifiers";
-      
-      private static const DUMP_MODIFIER_ARGUMENT:String = "modifier";
        
       
       public function SpellModifiersInstructionHandler()
@@ -44,7 +42,7 @@ package com.ankamagames.dofus.console.debug
       
       private static function getFullHelp() : String
       {
-         return "<b>Manage spell modifiers</b> via the <b>spells modifier stats manager</b>.\n\n" + "<b>Display help:</b>\n" + "\t/" + BASE_COMMAND + "\n" + "\t/" + BASE_COMMAND + "<b> " + HELP_COMMAND + "</b>\n\n" + "<b>Dump entity stats (or a specific one):</b>\n" + "\t/" + BASE_COMMAND + " <b>" + DUMP_COMMAND + "</b>" + " <b>" + DUMP_MODIFIERS_ARGUMENT + "</b> [<b>ENTITY ID</b>] [<b>SPELL ID</b>]\n\n" + "\t/" + BASE_COMMAND + " <b>" + DUMP_COMMAND + "</b>" + " <b>" + DUMP_MODIFIER_ARGUMENT + "</b> [<b>ENTITY ID</b>] [<b>SPELL ID</b>] [<b>MODIFIER ID</b>]\n\n" + "<b>Enable verbose mode:</b>\n" + "\t/" + BASE_COMMAND + " <b>" + VERBOSE_COMMAND + "</b> [<b>VALUE</b>]\n\n" + "\t- <b>VALUE</b> is either \'<b>true</b> or <b>false</b>, depending on what you want to do.\n\n";
+         return "<b>Manage spell modifiers</b> via the <b>spells modifier stats manager</b>.\n\n" + "<b>Display help:</b>\n" + "\t/" + BASE_COMMAND + "\n" + "\t/" + BASE_COMMAND + "<b> " + HELP_COMMAND + "</b>\n\n" + "<b>Dump entity stats (or a specific one):</b>\n" + "\t/" + BASE_COMMAND + " <b>" + DUMP_COMMAND + "</b> [<b>ENTITY ID|*</b>]\n\n" + "\t/" + BASE_COMMAND + " <b>" + DUMP_COMMAND + "</b> [<b>ENTITY ID|*</b>] [<b>SPELL ID</b>]\n\n" + "\t/" + BASE_COMMAND + " <b>" + DUMP_COMMAND + "</b> [<b>ENTITY ID|*</b>] [<b>SPELL ID</b>] [<b>MODIFIER ID</b>]\n\n" + "<b>Enable verbose mode:</b>\n" + "\t/" + BASE_COMMAND + " <b>" + VERBOSE_COMMAND + "</b> [<b>VALUE</b>]\n\n" + "\t- <b>VALUE</b> is either \'<b>true</b> or <b>false</b>, depending on what you want to do.\n\n";
       }
       
       private static function displayError(consoleHandler:ConsoleHandler, errorMessage:String, isHelp:Boolean = false) : void
@@ -59,35 +57,28 @@ package com.ankamagames.dofus.console.debug
       
       private static function handleDumpCommand(consoleHandler:ConsoleHandler, args:Array) : Boolean
       {
-         var modifierId:Number = NaN;
-         var stat:SpellModifier = null;
-         if(args.length < 4 || args.length > 5)
+         var entityId:Number = NaN;
+         var spellsModifiers:Dictionary = null;
+         var isEmpty:Boolean = false;
+         var spellIds:Vector.<Number> = null;
+         var curSpellMods:SpellModifiers = null;
+         var curSpellId:Number = NaN;
+         if(args.length < 2 || args.length > 4)
          {
             displayError(consoleHandler,ARGUMENT_ERROR,true);
             return false;
          }
-         var dumpCommand:String = args[1];
-         if(!dumpCommand)
+         if(args[1] === "*")
          {
-            displayError(consoleHandler,ARGUMENT_ERROR,true);
-            return false;
+            entityId = PlayedCharacterManager.getInstance().id;
          }
-         dumpCommand = dumpCommand.toLowerCase();
-         if(dumpCommand !== DUMP_MODIFIERS_ARGUMENT && dumpCommand !== DUMP_MODIFIER_ARGUMENT)
+         else
          {
-            displayError(consoleHandler,"The parameter should be either: \"" + DUMP_MODIFIER_ARGUMENT + "\" or \"" + DUMP_MODIFIER_ARGUMENT + "\".",true);
-            return false;
+            entityId = Number(args[1]);
          }
-         var entityId:Number = Number(args[2]);
          if(isNaN(entityId))
          {
-            displayError(consoleHandler,"The entity ID provided could not be parsed: \"" + args[2] + "\"",true);
-            return false;
-         }
-         var spellId:Number = Number(args[3]);
-         if(isNaN(spellId))
-         {
-            displayError(consoleHandler,"The spell ID provided could not be parsed: \"" + args[3] + "\"",true);
+            displayError(consoleHandler,"The entity ID provided could not be parsed: \"" + args[1] + "\"",true);
             return false;
          }
          var spellModifiersManager:SpellModifiersManager = SpellModifiersManager.getInstance();
@@ -96,48 +87,60 @@ package com.ankamagames.dofus.console.debug
             displayError(consoleHandler,SPELLS_MODIFIER_MANAGER_ERROR);
             return false;
          }
+         if(args.length === 2)
+         {
+            spellsModifiers = spellModifiersManager.getSpellsModifiers(entityId);
+            isEmpty = true;
+            spellIds = new Vector.<Number>(0);
+            for each(curSpellMods in spellsModifiers)
+            {
+               isEmpty = false;
+               spellIds.push(curSpellMods.spellId);
+            }
+            if(isEmpty)
+            {
+               consoleHandler.output("<b>No modifiers were given to the entity.</b>",ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
+               return true;
+            }
+            spellIds.sort(Array.NUMERIC);
+            for each(curSpellId in spellIds)
+            {
+               curSpellMods = spellsModifiers[curSpellId.toString()];
+               consoleHandler.output(curSpellMods.dump(1),ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
+            }
+            return true;
+         }
+         var spellId:Number = Number(args[2]);
+         if(isNaN(spellId))
+         {
+            displayError(consoleHandler,"The spell ID provided could not be parsed: \"" + args[2] + "\"",true);
+            return false;
+         }
          var spellModifiers:SpellModifiers = spellModifiersManager.getSpellModifiers(entityId,spellId);
          if(spellModifiers === null)
          {
             consoleHandler.output("<b>No modifiers were given to the entity.</b>",ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
             return true;
          }
-         if(dumpCommand === DUMP_MODIFIERS_ARGUMENT)
+         if(args.length === 3)
          {
-            if(args.length !== 4)
-            {
-               displayError(consoleHandler,"Only an entity ID and a spell ID should be given with the \"" + DUMP_MODIFIERS_ARGUMENT + "\" parameter",true);
-               return false;
-            }
-            consoleHandler.output(spellModifiers.toString(),ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
+            consoleHandler.output(spellModifiers.dump(),ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
+            return true;
+         }
+         var modifierId:Number = Number(args[3]);
+         if(isNaN(modifierId))
+         {
+            displayError(consoleHandler,"The modifier ID provided could not be parsed: \"" + args[3] + "\"",true);
+            return false;
+         }
+         var stat:SpellModifier = spellModifiers.getModifier(modifierId);
+         if(stat === null)
+         {
+            consoleHandler.output("<b>No modifier was given with this ID.</b>",ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
          }
          else
          {
-            if(dumpCommand !== DUMP_MODIFIER_ARGUMENT)
-            {
-               displayError(consoleHandler,"You must specify either \"" + DUMP_MODIFIER_ARGUMENT + "\" or \"" + DUMP_MODIFIER_ARGUMENT + "\"",true);
-               return false;
-            }
-            if(args.length !== 5)
-            {
-               displayError(consoleHandler,"An entity ID, a spell ID and a modifier ID should be given with the \"" + DUMP_MODIFIER_ARGUMENT + "\" parameter",true);
-               return false;
-            }
-            modifierId = Number(args[4]);
-            if(isNaN(modifierId))
-            {
-               displayError(consoleHandler,"The modifier ID provided could not be parsed: \"" + args[4] + "\"",true);
-               return false;
-            }
-            stat = spellModifiers.getModifier(modifierId);
-            if(stat === null)
-            {
-               consoleHandler.output("<b>No modifier was given with this ID.</b>",ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
-            }
-            else
-            {
-               consoleHandler.output(stat.toString(),ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
-            }
+            consoleHandler.output(stat.dump(),ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
          }
          return true;
       }

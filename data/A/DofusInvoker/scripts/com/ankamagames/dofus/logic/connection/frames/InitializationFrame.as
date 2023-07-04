@@ -199,7 +199,6 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.uiApi.PopupApi;
    import com.ankamagames.dofus.uiApi.QuestApi;
    import com.ankamagames.dofus.uiApi.RoleplayApi;
-   import com.ankamagames.dofus.uiApi.SecurityApi;
    import com.ankamagames.dofus.uiApi.SocialApi;
    import com.ankamagames.dofus.uiApi.SoundApi;
    import com.ankamagames.dofus.uiApi.StorageApi;
@@ -1014,7 +1013,6 @@ package com.ankamagames.dofus.logic.connection.frames
          ApiBinder.addApi("Party",PartyApi);
          ApiBinder.addApi("Highlight",HighlightApi);
          ApiBinder.addApi("File",FileApi);
-         ApiBinder.addApi("Security",SecurityApi);
          ApiBinder.addApi("Capture",CaptureApi);
          ApiBinder.addApi("Notification",NotificationApi);
          ApiBinder.addApi("ExternalNotification",ExternalNotificationApi);

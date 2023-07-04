@@ -37,8 +37,6 @@ package com.ankamagames.dofus.internalDatacenter.items
       
       private static const TYPE_EMOTE_WRAPPER:int = 4;
       
-      private static const TYPE_IDOLS_PRESET_WRAPPER:int = 5;
-      
       private static var _errorIconUri:Uri;
       
       private static var _uriLoaderContext:LoaderContext;
@@ -251,8 +249,6 @@ package com.ankamagames.dofus.internalDatacenter.items
          var itemWrapper:ItemWrapper = null;
          var builds:Array = null;
          var build:BuildWrapper = null;
-         var idolsPresets:Vector.<IdolsPresetWrapper> = null;
-         var idolPreset:IdolsPresetWrapper = null;
          if(this.type == TYPE_ITEM_WRAPPER)
          {
             if(this.id != 0)
@@ -289,17 +285,6 @@ package com.ankamagames.dofus.internalDatacenter.items
             if(this.type == TYPE_SMILEY_WRAPPER)
             {
                return SmileyWrapper.getSmileyWrapperById(this.id);
-            }
-            if(this.type == TYPE_IDOLS_PRESET_WRAPPER)
-            {
-               idolsPresets = PlayedCharacterManager.getInstance().idolsPresets;
-               for each(idolPreset in idolsPresets)
-               {
-                  if(idolPreset.id == this.id)
-                  {
-                     return idolPreset;
-                  }
-               }
             }
          }
          return null;
@@ -490,7 +475,7 @@ package com.ankamagames.dofus.internalDatacenter.items
                this.active = false;
             }
          }
-         if(this.type == TYPE_BUILD_WRAPPER || this.type == TYPE_IDOLS_PRESET_WRAPPER)
+         if(this.type == TYPE_BUILD_WRAPPER)
          {
             this._uri = this._uriFullsize = null;
          }
@@ -513,9 +498,6 @@ package com.ankamagames.dofus.internalDatacenter.items
          var spellWrapper:SpellWrapper = null;
          var smileyWrapper:SmileyWrapper = null;
          var emoteWrapper:EmoteWrapper = null;
-         var idolsPresets:Vector.<IdolsPresetWrapper> = null;
-         var idolsPreset:IdolsPresetWrapper = null;
-         var idolsPresetExists:Boolean = false;
          if(this.type != TYPE_SPELL_WRAPPER || this.id != 0)
          {
             if(pngMode && this._uri)
@@ -611,24 +593,6 @@ package com.ankamagames.dofus.internalDatacenter.items
                this._uriFullsize = emoteWrapper.fullSizeIconUri;
             }
             else
-            {
-               this._uri = this._uriFullsize = null;
-            }
-         }
-         else if(this.type == TYPE_IDOLS_PRESET_WRAPPER)
-         {
-            idolsPresets = PlayedCharacterManager.getInstance().idolsPresets;
-            for each(idolsPreset in idolsPresets)
-            {
-               if(idolsPreset.id == this.id)
-               {
-                  idolsPresetExists = true;
-                  this._uri = idolsPreset.iconUri;
-                  this._uriFullsize = idolsPreset.fullSizeIconUri;
-                  break;
-               }
-            }
-            if(!idolsPresetExists)
             {
                this._uri = this._uriFullsize = null;
             }

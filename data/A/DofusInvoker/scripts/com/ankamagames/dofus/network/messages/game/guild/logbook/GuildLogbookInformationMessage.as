@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.guild.logbook
    public class GuildLogbookInformationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3532;
+      public static const protocolId:uint = 9456;
        
       
       private var _isInitialized:Boolean = false;
@@ -40,7 +40,7 @@ package com.ankamagames.dofus.network.messages.game.guild.logbook
       
       override public function getMessageId() : uint
       {
-         return 3532;
+         return 9456;
       }
       
       public function initGuildLogbookInformationMessage(globalActivities:Vector.<GuildLogbookEntryBasicInformation> = null, chestActivities:Vector.<GuildLogbookEntryBasicInformation> = null) : GuildLogbookInformationMessage

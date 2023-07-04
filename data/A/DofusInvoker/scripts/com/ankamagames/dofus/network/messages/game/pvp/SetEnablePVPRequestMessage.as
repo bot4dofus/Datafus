@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.pvp
    public class SetEnablePVPRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 298;
+      public static const protocolId:uint = 9540;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.pvp
       
       override public function getMessageId() : uint
       {
-         return 298;
+         return 9540;
       }
       
       public function initSetEnablePVPRequestMessage(enable:Boolean = false) : SetEnablePVPRequestMessage

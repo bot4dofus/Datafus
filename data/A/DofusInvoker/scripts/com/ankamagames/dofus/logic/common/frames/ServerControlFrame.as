@@ -2,7 +2,6 @@ package com.ankamagames.dofus.logic.common.frames
 {
    import by.blooddy.crypto.MD5;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
-   import com.ankamagames.dofus.logic.shield.SecureModeManager;
    import com.ankamagames.dofus.network.messages.secure.TrustStatusMessage;
    import com.ankamagames.dofus.network.messages.security.RawDataMessage;
    import com.ankamagames.jerakine.benchmark.FileLoggerEnum;
@@ -93,7 +92,6 @@ package com.ankamagames.dofus.logic.common.frames
                return true;
             case msg is TrustStatusMessage:
                tsMsg = msg as TrustStatusMessage;
-               SecureModeManager.getInstance().active = !tsMsg.trusted;
                PlayerManager.getInstance().isSafe = tsMsg.certified;
                return true;
             default:

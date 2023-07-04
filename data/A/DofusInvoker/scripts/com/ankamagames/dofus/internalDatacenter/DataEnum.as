@@ -175,10 +175,6 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const ITEM_TYPE_CEREMONIAL_ITEMS:uint = 177;
       
-      public static const ITEM_TYPE_IDOLS_RESOURCES:uint = 178;
-      
-      public static const ITEM_TYPE_IDOLS_EQUIPMENT:uint = 267;
-      
       public static const ITEM_TYPE_SMITHMAGIC_ORB:int = 189;
       
       public static const ITEM_TYPE_HARNESS_MOUNT:int = 190;
@@ -438,8 +434,6 @@ package com.ankamagames.dofus.internalDatacenter
       public static const SHORTCUT_TYPE_SMILEY:int = 3;
       
       public static const SHORTCUT_TYPE_EMOTE:int = 4;
-      
-      public static const SHORTCUT_TYPE_IDOLS_PRESET:int = 5;
       
       public static const BREACH_REWARD_CURRENCY_BUDGET:int = 0;
       

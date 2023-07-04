@@ -865,14 +865,14 @@
 			"clientProperties": "null"
 		},
 		{
-			"id": 301,
-			"typeId": 2,
+			"id": 303,
+			"typeId": 1,
 			"showTitle": true,
 			"showBackgroundImage": true,
-			"titleId": 75267,
-			"authorId": 175830,
-			"subTitleId": 175829,
-			"contentId": 75274,
+			"titleId": 75247,
+			"authorId": 75249,
+			"subTitleId": 75248,
+			"contentId": 332029,
 			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
 			"clientProperties": "null"
 		},
@@ -1021,18 +1021,6 @@
 			"clientProperties": "null"
 		},
 		{
-			"id": 192,
-			"typeId": 1,
-			"showTitle": true,
-			"showBackgroundImage": true,
-			"titleId": 1763,
-			"authorId": 1764,
-			"subTitleId": 375454,
-			"contentId": 310007,
-			"contentCSS": "null",
-			"clientProperties": "null"
-		},
-		{
 			"id": 469,
 			"typeId": 2,
 			"showTitle": true,
@@ -1141,18 +1129,6 @@
 			"clientProperties": "null"
 		},
 		{
-			"id": 279,
-			"typeId": 2,
-			"showTitle": true,
-			"showBackgroundImage": true,
-			"titleId": 1210,
-			"authorId": 377986,
-			"subTitleId": 377985,
-			"contentId": 522041,
-			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
-			"clientProperties": "null"
-		},
-		{
 			"id": 656,
 			"typeId": 1,
 			"showTitle": true,
@@ -1201,14 +1177,14 @@
 			"clientProperties": ""
 		},
 		{
-			"id": 303,
-			"typeId": 1,
+			"id": 301,
+			"typeId": 2,
 			"showTitle": true,
 			"showBackgroundImage": true,
-			"titleId": 75247,
-			"authorId": 75249,
-			"subTitleId": 75248,
-			"contentId": 332029,
+			"titleId": 75267,
+			"authorId": 175830,
+			"subTitleId": 175829,
+			"contentId": 75274,
 			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
 			"clientProperties": "null"
 		},
@@ -1378,6 +1354,18 @@
 			"subTitleId": 175833,
 			"contentId": 73729,
 			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class5 {\n\tfont-style: italic;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
+			"clientProperties": "null"
+		},
+		{
+			"id": 192,
+			"typeId": 1,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 1763,
+			"authorId": 1764,
+			"subTitleId": 375454,
+			"contentId": 310007,
+			"contentCSS": "null",
 			"clientProperties": "null"
 		},
 		{
@@ -4333,18 +4321,6 @@
 			"clientProperties": ""
 		},
 		{
-			"id": 518,
-			"typeId": 2,
-			"showTitle": true,
-			"showBackgroundImage": true,
-			"titleId": 738400,
-			"authorId": 738402,
-			"subTitleId": 738401,
-			"contentId": 746548,
-			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
-			"clientProperties": ""
-		},
-		{
 			"id": 544,
 			"typeId": 2,
 			"showTitle": true,
@@ -6097,6 +6073,18 @@
 			"clientProperties": ""
 		},
 		{
+			"id": 279,
+			"typeId": 2,
+			"showTitle": true,
+			"showBackgroundImage": true,
+			"titleId": 1210,
+			"authorId": 377986,
+			"subTitleId": 377985,
+			"contentId": 1003735,
+			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
+			"clientProperties": "null"
+		},
+		{
 			"id": 661,
 			"typeId": 2,
 			"showTitle": true,
@@ -6104,7 +6092,7 @@
 			"titleId": 982531,
 			"authorId": 982533,
 			"subTitleId": 982532,
-			"contentId": 995099,
+			"contentId": 1004417,
 			"contentCSS": "li {\n\ttext-indent: 12pt;\n}\nbody {\n\tcolor: #000000;\n\tfont-family: Verdana, Geneva, sans-serif;\n\tfont-size: 18pt;\n\tfont-style: normal;\n\tfont-weight: normal;\n\tlist-style-type: none;\n\ttext-align: justify;\n\ttext-decoration: none;\n}\na {\n\tcolor: #0000FF;\n\ttext-decoration: underline;\n}\np {\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n.document_content2_fr-class5 {\n\tfont-style: italic;\n}\nol {\n\tlist-style-type: square;\n\tmargin-bottom: 0%;\n\tmargin-top: 0%;\n}\n",
 			"clientProperties": ""
 		},
@@ -6329,10 +6317,10 @@
 			"typeId": 2,
 			"showTitle": true,
 			"showBackgroundImage": true,
-			"titleId": 999558,
+			"titleId": 999552,
 			"authorId": 999015,
 			"subTitleId": 999014,
-			"contentId": 999560,
+			"contentId": 999554,
 			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\tfont-style: italic;\r\n}\r\n.document_content2_fr-class9 {\r\n\tfont-style: italic;\r\n\tfont-weight: bold;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}",
 			"clientProperties": ""
 		},
@@ -6341,10 +6329,10 @@
 			"typeId": 2,
 			"showTitle": true,
 			"showBackgroundImage": true,
-			"titleId": 999712,
+			"titleId": 999644,
 			"authorId": 999020,
 			"subTitleId": 999019,
-			"contentId": 999713,
+			"contentId": 999645,
 			"contentCSS": "li {\r\n\ttext-indent: 12pt;\r\n}\r\nbody {\r\n\tcolor: #000000;\r\n\tfont-family: Verdana, Geneva, sans-serif;\r\n\tfont-size: 18pt;\r\n\tfont-style: normal;\r\n\tfont-weight: normal;\r\n\tlist-style-type: none;\r\n\ttext-align: justify;\r\n\ttext-decoration: none;\r\n}\r\na {\r\n\tcolor: #0000FF;\r\n\ttext-decoration: underline;\r\n}\r\np {\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}\r\n.document_content2_fr-class5 {\r\n\tfont-weight: bold;\r\n}\r\n.document_content2_fr-class6 {\r\n\tfont-style: italic;\r\n}\r\n.document_content2_fr-class9 {\r\n\tfont-style: italic;\r\n\tfont-weight: bold;\r\n}\r\nol {\r\n\tlist-style-type: square;\r\n\tmargin-bottom: 0%;\r\n\tmargin-top: 0%;\r\n}",
 			"clientProperties": ""
 		}
