@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
    public class HavenBagPackListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4524;
+      public static const protocolId:uint = 4278;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
       
       override public function getMessageId() : uint
       {
-         return 4524;
+         return 4278;
       }
       
       public function initHavenBagPackListMessage(packIds:Vector.<int> = null) : HavenBagPackListMessage

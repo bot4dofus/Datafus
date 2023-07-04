@@ -4,32 +4,29 @@ package com.ankamagames.dofus.internalDatacenter.fight
    import com.ankamagames.dofus.datacenter.quest.Achievement;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.fight.frames.FightContextFrame;
+   import com.ankamagames.dofus.network.types.game.context.fight.challenge.ChallengeTargetInformation;
+   import com.ankamagames.dofus.network.types.game.context.fight.challenge.ChallengeTargetWithAttackerInformation;
+   import com.ankamagames.jerakine.data.XmlConfig;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
    import com.ankamagames.jerakine.interfaces.ISlotData;
    import com.ankamagames.jerakine.interfaces.ISlotDataHolder;
    import com.ankamagames.jerakine.types.Uri;
-   import flash.utils.Proxy;
-   import flash.utils.flash_proxy;
    
-   public class ChallengeWrapper extends Proxy implements IDataCenter, ISlotData
+   public class ChallengeWrapper implements IDataCenter, ISlotData
    {
        
       
-      private var _challenge:Challenge;
+      protected var _challenge:Challenge;
       
-      private var _id:uint;
+      protected var _id:uint;
       
-      private var _targetId:Number;
+      protected var _targets:Vector.<ChallengeTargetWrapper>;
       
-      private var _targetName:String;
+      protected var _xpBonus:uint;
       
-      private var _targetLevel:int;
+      protected var _dropBonus:uint;
       
-      private var _xpBonus:uint;
-      
-      private var _dropBonus:uint;
-      
-      private var _result:uint;
+      protected var _state:uint;
       
       public function ChallengeWrapper()
       {
@@ -47,46 +44,44 @@ package com.ankamagames.dofus.internalDatacenter.fight
          this._id = id;
       }
       
-      public function set targetId(targetId:Number) : void
+      public function setTargetsFromTargetInformation(targets:Vector.<ChallengeTargetInformation>) : void
       {
-         this._targetId = targetId;
-         this._targetName = this.getFightFrame().getFighterName(targetId);
-         this._targetLevel = this.getFightFrame().getFighterLevel(targetId);
+         var target:ChallengeTargetInformation = null;
+         var targetWrapper:ChallengeTargetWrapper = null;
+         this._targets = new Vector.<ChallengeTargetWrapper>();
+         for each(target in targets)
+         {
+            targetWrapper = new ChallengeTargetWrapper();
+            targetWrapper.targetId = target.targetId;
+            targetWrapper.targetCell = target.targetCell;
+            targetWrapper.targetName = this.getFightFrame().getFighterName(target.targetId);
+            targetWrapper.targetLevel = this.getFightFrame().getFighterLevel(target.targetId);
+            if(target is ChallengeTargetWithAttackerInformation)
+            {
+               targetWrapper.attackers = (target as ChallengeTargetWithAttackerInformation).attackersIds;
+            }
+            this._targets.push(targetWrapper);
+         }
       }
       
-      public function set xpBonus(xpBonus:uint) : void
+      public function set xpBonus(bonus:uint) : void
       {
-         this._xpBonus = xpBonus;
+         this._xpBonus = bonus;
       }
       
-      public function set dropBonus(dropBonus:uint) : void
+      public function set dropBonus(bonus:uint) : void
       {
-         this._dropBonus = dropBonus;
+         this._dropBonus = bonus;
       }
       
-      public function set result(result:uint) : void
+      public function set state(state:uint) : void
       {
-         this._result = result;
+         this._state = state;
       }
       
       public function get id() : uint
       {
          return this._id;
-      }
-      
-      public function get targetId() : Number
-      {
-         return this._targetId;
-      }
-      
-      public function get targetName() : String
-      {
-         return this._targetName;
-      }
-      
-      public function get targetLevel() : int
-      {
-         return this._targetLevel;
       }
       
       public function get xpBonus() : uint
@@ -99,9 +94,9 @@ package com.ankamagames.dofus.internalDatacenter.fight
          return this._dropBonus;
       }
       
-      public function get result() : uint
+      public function get state() : uint
       {
-         return this._result;
+         return this._state;
       }
       
       public function get iconUri() : Uri
@@ -118,6 +113,11 @@ package com.ankamagames.dofus.internalDatacenter.fight
          return this._challenge.description;
       }
       
+      public function get targets() : Vector.<ChallengeTargetWrapper>
+      {
+         return this._targets;
+      }
+      
       public function get name() : String
       {
          return this._challenge.name;
@@ -126,29 +126,6 @@ package com.ankamagames.dofus.internalDatacenter.fight
       public function get categoryId() : int
       {
          return this._challenge.categoryId;
-      }
-      
-      override flash_proxy function getProperty(name:*) : *
-      {
-         var l:* = undefined;
-         var r:* = undefined;
-         if(isAttribute(name))
-         {
-            return this[name];
-         }
-         l = Challenge.getChallengeById(this.id);
-         if(!l)
-         {
-            r = "";
-         }
-         try
-         {
-            return l[name];
-         }
-         catch(e:Error)
-         {
-            return "Error_on_challenge_" + name;
-         }
       }
       
       public function get fullSizeIconUri() : Uri
@@ -164,6 +141,15 @@ package com.ankamagames.dofus.internalDatacenter.fight
       public function get backGroundIconUri() : Uri
       {
          return null;
+      }
+      
+      public function get backgroundColor() : uint
+      {
+         if(this.categoryId == EnumChallengeCategory.ACHIEVEMENT)
+         {
+            return XmlConfig.getInstance().getEntry("colors.challenge.achievement");
+         }
+         return XmlConfig.getInstance().getEntry("colors.challenge.challenge");
       }
       
       public function get info1() : String
@@ -201,11 +187,6 @@ package com.ankamagames.dofus.internalDatacenter.fight
       
       public function removeHolder(h:ISlotDataHolder) : void
       {
-      }
-      
-      override flash_proxy function hasProperty(name:*) : Boolean
-      {
-         return isAttribute(name);
       }
       
       public function get boundAchievements() : Vector.<Achievement>
@@ -249,7 +230,7 @@ package com.ankamagames.dofus.internalDatacenter.fight
          return this._challenge.getPlayersNumberType();
       }
       
-      private function getFightFrame() : FightContextFrame
+      protected function getFightFrame() : FightContextFrame
       {
          return Kernel.getWorker().getFrame(FightContextFrame) as FightContextFrame;
       }

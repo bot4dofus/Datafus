@@ -18,7 +18,6 @@ package com.ankamagames.dofus.logic.common.frames
    import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.network.enums.ChatActivableChannelsEnum;
    import com.ankamagames.dofus.network.enums.ChatChannelsMultiEnum;
-   import com.ankamagames.dofus.network.messages.authorized.AdminQuietCommandMessage;
    import com.ankamagames.dofus.network.messages.common.basic.BasicPingMessage;
    import com.ankamagames.dofus.network.messages.game.chat.ChatServerMessage;
    import com.ankamagames.dofus.network.messages.game.context.fight.GameFightEndMessage;
@@ -235,11 +234,8 @@ package com.ankamagames.dofus.logic.common.frames
       
       private function initRight() : void
       {
-         var aqcmsg:AdminQuietCommandMessage = new AdminQuietCommandMessage();
-         aqcmsg.initAdminQuietCommandMessage("adminaway");
-         ConnectionsHandler.getConnection().send(aqcmsg);
-         aqcmsg.initAdminQuietCommandMessage("god");
-         ConnectionsHandler.getConnection().send(aqcmsg);
+         AuthorizedFrame.sendServerCommandMessage("adminaway",true);
+         AuthorizedFrame.sendServerCommandMessage("god",true);
       }
       
       private function onAction(e:Event) : void
@@ -260,9 +256,7 @@ package com.ankamagames.dofus.logic.common.frames
          {
             return;
          }
-         var aqcmsg:AdminQuietCommandMessage = new AdminQuietCommandMessage();
-         aqcmsg.initAdminQuietCommandMessage("join " + name);
-         ConnectionsHandler.getConnection().send(aqcmsg);
+         AuthorizedFrame.sendServerCommandMessage("join " + name,true);
          this._actionTimer.reset();
          this._actionTimer.start();
       }
@@ -274,9 +268,7 @@ package com.ankamagames.dofus.logic.common.frames
             return;
          }
          var mapPos:MapPosition = this._mapPos[int(Math.random() * this._mapPos.length)];
-         var aqcmsg:AdminQuietCommandMessage = new AdminQuietCommandMessage();
-         aqcmsg.initAdminQuietCommandMessage("moveto " + mapPos.id);
-         ConnectionsHandler.getConnection().send(aqcmsg);
+         AuthorizedFrame.sendServerCommandMessage("moveto " + mapPos.id,true);
          this._actionTimer.reset();
          this._actionTimer.start();
       }

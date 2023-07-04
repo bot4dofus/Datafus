@@ -85,7 +85,6 @@ package com.ankamagames.dofus.types
          add("spectatorAutoShowCurrentFighterInfo",false);
          add("enableForceWalk",true);
          add("showMountsInFight",true);
-         add("lastFightIdolUiHidden",false);
          add("havenbagEditPosition",new Point(390,212));
          add("screenshotsDirectory",ScreenCaptureFrame.getDefaultDirectory());
          add("showFinishMoves",true);

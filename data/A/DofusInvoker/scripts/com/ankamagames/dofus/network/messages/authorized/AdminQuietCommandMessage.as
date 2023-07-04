@@ -1,5 +1,6 @@
 package com.ankamagames.dofus.network.messages.authorized
 {
+   import com.ankamagames.dofus.network.types.game.Uuid;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -10,7 +11,7 @@ package com.ankamagames.dofus.network.messages.authorized
    public class AdminQuietCommandMessage extends AdminCommandMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8059;
+      public static const protocolId:uint = 3781;
        
       
       private var _isInitialized:Boolean = false;
@@ -27,12 +28,12 @@ package com.ankamagames.dofus.network.messages.authorized
       
       override public function getMessageId() : uint
       {
-         return 8059;
+         return 3781;
       }
       
-      public function initAdminQuietCommandMessage(content:String = "") : AdminQuietCommandMessage
+      public function initAdminQuietCommandMessage(messageUuid:Uuid = null, content:String = "") : AdminQuietCommandMessage
       {
-         super.initAdminCommandMessage(content);
+         super.initAdminCommandMessage(messageUuid,content);
          this._isInitialized = true;
          return this;
       }

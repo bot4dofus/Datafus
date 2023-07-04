@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context
    public class TaxCollectorStaticInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 2283;
+      public static const protocolId:uint = 7297;
        
       
       public var firstNameId:uint = 0;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.types.game.context
       
       public function getTypeId() : uint
       {
-         return 2283;
+         return 7297;
       }
       
       public function initTaxCollectorStaticInformations(firstNameId:uint = 0, lastNameId:uint = 0, allianceIdentity:AllianceInformation = null, callerId:Number = 0) : TaxCollectorStaticInformations

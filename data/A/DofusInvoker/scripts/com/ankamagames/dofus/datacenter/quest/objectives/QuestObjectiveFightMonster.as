@@ -1,8 +1,10 @@
 package com.ankamagames.dofus.datacenter.quest.objectives
 {
-   import com.ankamagames.dofus.datacenter.idols.Idol;
-   import com.ankamagames.dofus.datacenter.monsters.Monster;
+   import com.ankamagames.dofus.datacenter.alterations.Alteration;
    import com.ankamagames.dofus.datacenter.quest.QuestObjective;
+   import com.ankamagames.dofus.internalDatacenter.alterations.AlterationWrapper;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkAlterationManager;
+   import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
    import com.ankamagames.jerakine.utils.pattern.PatternDecoder;
@@ -11,8 +13,6 @@ package com.ankamagames.dofus.datacenter.quest.objectives
    {
        
       
-      private var _monster:Monster;
-      
       private var _text:String;
       
       public function QuestObjectiveFightMonster()
@@ -20,79 +20,51 @@ package com.ankamagames.dofus.datacenter.quest.objectives
          super();
       }
       
-      public function get monsterId() : uint
+      private function get monsterId() : uint
       {
          if(!this.parameters)
          {
             return 0;
          }
-         return this.parameters[0];
+         return this.parameters.parameter0;
       }
       
-      public function get monster() : Monster
-      {
-         if(!this._monster)
-         {
-            this._monster = Monster.getMonsterById(this.monsterId);
-         }
-         return this._monster;
-      }
-      
-      public function get quantity() : uint
+      private function get quantity() : uint
       {
          if(!this.parameters)
          {
             return 0;
          }
-         return this.parameters[1];
+         return this.parameters.parameter1;
       }
       
-      public function get idolsScore() : uint
-      {
-         if(this.parameters && this.parameters.length > 2)
-         {
-            return this.parameters[2];
-         }
-         return 0;
-      }
-      
-      public function get dungeonOnly() : Boolean
+      private function get alteration() : String
       {
          if(!this.parameters)
          {
-            return false;
+            return "";
          }
-         return parameters.dungeonOnly;
-      }
-      
-      public function get idolId() : uint
-      {
-         if(this.parameters && this.parameters.length > 4)
+         var alteration:Alteration = Alteration.getAlterationById(this.parameters.parameter3);
+         if(!alteration)
          {
-            return this.parameters[4];
+            return "";
          }
-         return 0;
+         return HyperlinkAlterationManager.getLink(AlterationWrapper.create(alteration,TimeManager.getInstance().getUtcTimestamp()));
       }
       
       override public function get text() : String
       {
          var monsterLink:* = null;
-         var idol:Idol = null;
          if(!this._text)
          {
             monsterLink = "{chatmonster," + this.monsterId + "}";
-            if(this.idolsScore == 0 && this.idolId == 0)
+            if(this.alteration.length == 0)
             {
                this._text = PatternDecoder.getDescription(this.type.name,[monsterLink,this.quantity]);
             }
-            else if(this.idolsScore > 0 && this.idolId == 0)
+            else
             {
-               this._text = I18n.getUiText("ui.grimoire.quest.objectives.type6.score",[this.quantity,monsterLink,this.idolsScore]);
-            }
-            else if(this.idolsScore > 0 && this.idolId > 0)
-            {
-               idol = Idol.getIdolById(this.idolId);
-               this._text = I18n.getUiText("ui.grimoire.quest.objectives.type6.scoreAndIdol",[this.quantity,monsterLink,"{item," + idol.itemId + "}",this.idolsScore]);
+               this._text = I18n.getUiText("ui.grimoire.quest.objectives.type6.alteration",[this.quantity,monsterLink,this.alteration]);
             }
          }
          return this._text;

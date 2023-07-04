@@ -361,7 +361,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
             case msg is HavenBagPermissionsUpdateMessage:
                hbpumsg = msg as HavenBagPermissionsUpdateMessage;
                this._sharePermissions = hbpumsg.permissions;
-               KernelEventsManager.getInstance().processCallback(HookList.HavenBagPermissionsUpdate);
+               KernelEventsManager.getInstance().processCallback(HookList.HavenbagPermissionsUpdate);
                return true;
             case msg is HavenbagPermissionsUpdateRequestAction:
                hpura = msg as HavenbagPermissionsUpdateRequestAction;
@@ -504,7 +504,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          if(payload && payload is Array && payload.length == 1 && payload[0] is KardKard)
          {
             kard = payload[0] as KardKard;
-            KernelEventsManager.getInstance().processCallback(HookList.HavenBagLotteryGift,kard.name);
+            KernelEventsManager.getInstance().processCallback(HookList.HavenbagLotteryGift,kard.name);
          }
       }
       

@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
    public class ListMapNpcsQuestStatusUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2720;
+      public static const protocolId:uint = 6306;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
       
       override public function getMessageId() : uint
       {
-         return 2720;
+         return 6306;
       }
       
       public function initListMapNpcsQuestStatusUpdateMessage(mapInfo:Vector.<MapNpcQuestInfo> = null) : ListMapNpcsQuestStatusUpdateMessage

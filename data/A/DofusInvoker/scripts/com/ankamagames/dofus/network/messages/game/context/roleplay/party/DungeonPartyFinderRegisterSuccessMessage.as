@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class DungeonPartyFinderRegisterSuccessMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1742;
+      public static const protocolId:uint = 4458;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 1742;
+         return 4458;
       }
       
       public function initDungeonPartyFinderRegisterSuccessMessage(dungeonIds:Vector.<uint> = null) : DungeonPartyFinderRegisterSuccessMessage

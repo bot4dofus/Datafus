@@ -7,8 +7,6 @@ package com.ankamagames.dofus.network.enums
       
       public static const SERVER_CONNECTION_ERROR_NO_REASON:uint = 1;
       
-      public static const SERVER_CONNECTION_ERROR_ACCOUNT_RESTRICTED:uint = 2;
-      
       public static const SERVER_CONNECTION_ERROR_SUBSCRIBERS_ONLY:uint = 3;
       
       public static const SERVER_CONNECTION_ERROR_REGULAR_PLAYERS_ONLY:uint = 4;

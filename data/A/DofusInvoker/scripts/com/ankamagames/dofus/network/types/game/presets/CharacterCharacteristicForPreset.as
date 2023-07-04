@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.presets
    public class CharacterCharacteristicForPreset extends SimpleCharacterCharacteristicForPreset implements INetworkType
    {
       
-      public static const protocolId:uint = 6828;
+      public static const protocolId:uint = 8956;
        
       
       public var stuff:int = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.presets
       
       override public function getTypeId() : uint
       {
-         return 6828;
+         return 8956;
       }
       
       public function initCharacterCharacteristicForPreset(keyword:String = "", base:int = 0, additionnal:int = 0, stuff:int = 0) : CharacterCharacteristicForPreset

@@ -97,9 +97,6 @@ package com.ankamagames.dofus.misc.stats.ui
                         break;
                      case CharacterCreationResultEnum.ERR_NO_REASON:
                         errorMsg = I18n.getUiText("ui.popup.charcrea.noReason");
-                        break;
-                     case CharacterCreationResultEnum.ERR_RESTRICTED_ZONE:
-                        errorMsg = I18n.getUiText("ui.charSel.deletionErrorUnsecureMode");
                   }
                   this._action2.setParam("create_error",errorMsg.substr(0,100));
                }

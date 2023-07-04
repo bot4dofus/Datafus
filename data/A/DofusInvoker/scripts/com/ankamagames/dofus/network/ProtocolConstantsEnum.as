@@ -121,8 +121,6 @@ package com.ankamagames.dofus.network
       
       public static const MAX_FORGETTABLE_SPELLS_PRESET_COUNT:int = 50;
       
-      public static const MAX_IDOLS_PRESET_IDOL_COUNT:int = 6;
-      
       public static const MIN_OBJ_COUNT_BY_XFERT:int = 1;
       
       public static const MAX_OBJ_COUNT_BY_XFERT:int = 800;
@@ -156,8 +154,6 @@ package com.ankamagames.dofus.network
       public static const MAX_FURNITURES_PER_PACKET:int = 40;
       
       public static const MIN_LEVEL_HAVENBAG:int = 10;
-      
-      public static const MIN_PLAYERS_FOR_GROUP_IDOLS:int = 3;
       
       public static const MAX_KAMA:Number = 1000000000000;
       

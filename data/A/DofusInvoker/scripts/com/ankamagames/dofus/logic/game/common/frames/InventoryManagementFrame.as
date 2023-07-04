@@ -11,12 +11,10 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.berilia.types.data.UiModule;
    import com.ankamagames.berilia.types.graphic.UiRootContainer;
    import com.ankamagames.dofus.datacenter.effects.EffectInstance;
-   import com.ankamagames.dofus.datacenter.idols.Idol;
    import com.ankamagames.dofus.datacenter.items.Item;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.internalDatacenter.FeatureEnum;
    import com.ankamagames.dofus.internalDatacenter.items.BuildWrapper;
-   import com.ankamagames.dofus.internalDatacenter.items.IdolsPresetWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ShortcutWrapper;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
@@ -46,7 +44,6 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.roleplay.actions.ShortcutBarRemoveRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.ShortcutBarSwapRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.preset.CharacterPresetSaveRequestAction;
-   import com.ankamagames.dofus.logic.game.roleplay.actions.preset.IdolsPresetSaveRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.preset.PresetDeleteRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.preset.PresetUseRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayMovementFrame;
@@ -99,7 +96,6 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.look.AccessoryPreviewMessage;
    import com.ankamagames.dofus.network.messages.game.look.AccessoryPreviewRequestMessage;
    import com.ankamagames.dofus.network.messages.game.presets.IconNamedPresetSaveRequestMessage;
-   import com.ankamagames.dofus.network.messages.game.presets.IdolsPresetSaveRequestMessage;
    import com.ankamagames.dofus.network.messages.game.presets.InvalidPresetsMessage;
    import com.ankamagames.dofus.network.messages.game.presets.ItemForPresetUpdateMessage;
    import com.ankamagames.dofus.network.messages.game.presets.PresetDeleteRequestMessage;
@@ -125,14 +121,12 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.types.game.presets.ForgettableSpellsPreset;
    import com.ankamagames.dofus.network.types.game.presets.FullStatsPreset;
    import com.ankamagames.dofus.network.types.game.presets.IconNamedPreset;
-   import com.ankamagames.dofus.network.types.game.presets.IdolsPreset;
    import com.ankamagames.dofus.network.types.game.presets.ItemsPreset;
    import com.ankamagames.dofus.network.types.game.presets.Preset;
    import com.ankamagames.dofus.network.types.game.presets.PresetsContainerPreset;
    import com.ankamagames.dofus.network.types.game.presets.SpellsPreset;
    import com.ankamagames.dofus.network.types.game.shortcut.Shortcut;
    import com.ankamagames.dofus.network.types.game.shortcut.ShortcutEmote;
-   import com.ankamagames.dofus.network.types.game.shortcut.ShortcutObjectIdolsPreset;
    import com.ankamagames.dofus.network.types.game.shortcut.ShortcutObjectItem;
    import com.ankamagames.dofus.network.types.game.shortcut.ShortcutObjectPreset;
    import com.ankamagames.dofus.network.types.game.shortcut.ShortcutSmiley;
@@ -170,8 +164,6 @@ package com.ankamagames.dofus.logic.game.common.frames
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(InventoryManagementFrame));
       
       private static const CHARACTER_BUILD_PRESET_TYPE:int = 1;
-      
-      private static const IDOLS_PRESET_TYPE:int = 2;
       
       private static const FORGETTABLE_PRESET_TYPE:int = 3;
       
@@ -275,11 +267,8 @@ package com.ankamagames.dofus.logic.game.common.frames
       public function process(msg:Message) : Boolean
       {
          var preset:Preset = null;
-         var idolsPresets:Vector.<IdolsPresetWrapper> = null;
          var build:BuildWrapper = null;
          var builds:Array = null;
-         var idolsPreset:IdolsPreset = null;
-         var idolsPresetWrapper:IdolsPresetWrapper = null;
          var forgettableSpellsActivated:Boolean = false;
          var wicmsg:WatchInventoryContentMessage = null;
          var mod:UiModule = null;
@@ -345,8 +334,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          var pdrmsg:PresetDeleteResultMessage = null;
          var cpsra:CharacterPresetSaveRequestAction = null;
          var npsrmsg:IconNamedPresetSaveRequestMessage = null;
-         var ipsra:IdolsPresetSaveRequestAction = null;
-         var ipsrmsg:IdolsPresetSaveRequestMessage = null;
          var psemsg:PresetSaveErrorMessage = null;
          var presetSaveErrorReasonText:String = null;
          var psmsg:PresetSavedMessage = null;
@@ -384,7 +371,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          var shortcuts:ShortcutSpell = null;
          var shortcutsm:ShortcutSmiley = null;
          var shortcute:ShortcutEmote = null;
-         var shortcutd:ShortcutObjectIdolsPreset = null;
          var realitem:ItemWrapper = null;
          var effect:EffectInstance = null;
          var ospmsg:ObjectSetPositionMessage = null;
@@ -409,7 +395,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          var presetIndex:int = 0;
          var deletePresetTypeId:int = 0;
          var reason1:String = null;
-         var idolWrapper:IdolsPresetWrapper = null;
          var newBuild:IconNamedPreset = null;
          var fullStatsPresetSaved:FullStatsPreset = null;
          var itemsPresetSaved:ItemsPreset = null;
@@ -669,13 +654,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                   shortcute.slot = sbara.slot;
                   sbarmsg.initShortcutBarAddRequestMessage(0,shortcute);
                }
-               else if(sbara.barType == DataEnum.SHORTCUT_TYPE_IDOLS_PRESET)
-               {
-                  shortcutd = new ShortcutObjectIdolsPreset();
-                  shortcutd.presetId = sbara.id;
-                  shortcutd.slot = sbara.slot;
-                  sbarmsg.initShortcutBarAddRequestMessage(0,shortcutd);
-               }
                ConnectionsHandler.getConnection().send(sbarmsg);
                return true;
             case msg is ShortcutBarRemoveRequestAction:
@@ -922,19 +900,11 @@ package com.ankamagames.dofus.logic.game.common.frames
             case msg is PresetsMessage:
                pmsg = msg as PresetsMessage;
                presetWrappers = new Array();
-               idolsPresets = new Vector.<IdolsPresetWrapper>(0);
                presetsCount = pmsg.presets.length;
                for(iPreset = 0; iPreset < presetsCount; )
                {
                   preset = pmsg.presets[iPreset];
-                  if(preset is IdolsPreset)
-                  {
-                     idolsPreset = preset as IdolsPreset;
-                     _log.debug(" - " + preset.id + "  idoles");
-                     idolsPresets.push(IdolsPresetWrapper.create(idolsPreset.id,idolsPreset.iconId,idolsPreset.idolIds));
-                     this._presetTypeIdByPresetId[preset.id] = IDOLS_PRESET_TYPE;
-                  }
-                  else if(preset is IconNamedPreset)
+                  if(preset is IconNamedPreset)
                   {
                      forgettableSpellsActivated = FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS);
                      buildPreset = preset as IconNamedPreset;
@@ -992,7 +962,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                   iPreset++;
                }
                InventoryManager.getInstance().builds = presetWrappers;
-               PlayedCharacterManager.getInstance().idolsPresets = idolsPresets;
                return true;
             case msg is InvalidPresetsMessage:
                ipmsg = msg as InvalidPresetsMessage;
@@ -1060,20 +1029,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                      builds.splice(presetIndex,1);
                      KernelEventsManager.getInstance().processCallback(InventoryHookList.PresetsUpdate);
                   }
-                  else if(deletePresetTypeId == IDOLS_PRESET_TYPE)
-                  {
-                     idolsPresets = PlayedCharacterManager.getInstance().idolsPresets;
-                     for each(idolsPresetWrapper in idolsPresets)
-                     {
-                        if(idolsPresetWrapper.id == pdrmsg.presetId)
-                        {
-                           presetIndex = idolsPresets.indexOf(idolsPresetWrapper);
-                           break;
-                        }
-                     }
-                     idolsPresets.splice(presetIndex,1);
-                     KernelEventsManager.getInstance().processCallback(HookList.IdolsPresetDelete,pdrmsg.presetId);
-                  }
                }
                else
                {
@@ -1096,12 +1051,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                npsrmsg = new IconNamedPresetSaveRequestMessage();
                npsrmsg.initIconNamedPresetSaveRequestMessage(cpsra.presetId,cpsra.symbolId,cpsra.fullSave,cpsra.name,cpsra.presetType);
                ConnectionsHandler.getConnection().send(npsrmsg);
-               return true;
-            case msg is IdolsPresetSaveRequestAction:
-               ipsra = msg as IdolsPresetSaveRequestAction;
-               ipsrmsg = new IdolsPresetSaveRequestMessage();
-               ipsrmsg.initIdolsPresetSaveRequestMessage(ipsra.presetId,ipsra.symbolId,true);
-               ConnectionsHandler.getConnection().send(ipsrmsg);
                return true;
             case msg is PresetSaveErrorMessage:
                psemsg = msg as PresetSaveErrorMessage;
@@ -1126,16 +1075,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is PresetSavedMessage:
                psmsg = msg as PresetSavedMessage;
-               if(psmsg.preset is IdolsPreset)
-               {
-                  idolsPreset = psmsg.preset as IdolsPreset;
-                  _log.debug("Saved " + psmsg.preset.id + "  idoles");
-                  idolWrapper = IdolsPresetWrapper.create(idolsPreset.id,idolsPreset.iconId,idolsPreset.idolIds);
-                  PlayedCharacterManager.getInstance().idolsPresets.push(idolWrapper);
-                  this._presetTypeIdByPresetId[psmsg.preset.id] = IDOLS_PRESET_TYPE;
-                  KernelEventsManager.getInstance().processCallback(HookList.IdolsPresetSaved,idolWrapper);
-               }
-               else if(psmsg.preset is IconNamedPreset)
+               if(psmsg.preset is IconNamedPreset)
                {
                   forgettableSpellsActivated = FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.FORGETTABLE_SPELLS);
                   newBuild = psmsg.preset as IconNamedPreset;
@@ -1248,10 +1188,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                         presetUseErrorText = I18n.getUiText("ui.temporis.spellPreset.error." + purmsg.code);
                      }
                   }
-                  else if(purmsg.code == PresetUseResultEnum.PRESET_USE_ERR_CRITERION || purmsg.code == PresetUseResultEnum.PRESET_USE_ERR_BAD_PRESET_ID || purmsg.code == PresetUseResultEnum.PRESET_USE_ERR_COOLDOWN || purmsg.code == PresetUseResultEnum.PRESET_USE_ERR_INVALID_STATE)
-                  {
-                     presetUseErrorText = I18n.getUiText("ui.idol.preset.error." + purmsg.code);
-                  }
                   KernelEventsManager.getInstance().processCallback(HookList.ErrorPopup,presetUseErrorText);
                }
                else
@@ -1262,11 +1198,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                      build = BuildWrapper.getBuildWrapperById(purmsg.presetId);
                      chatUseText = I18n.getUiText("ui.preset.inUse",[build.buildName]);
                      KernelEventsManager.getInstance().processCallback(InventoryHookList.PresetUsed,purmsg.presetId);
-                  }
-                  else if(presetTypeId == IDOLS_PRESET_TYPE)
-                  {
-                     KernelEventsManager.getInstance().processCallback(HookList.IdolsPresetEquipped,purmsg.presetId);
-                     chatUseText = I18n.getUiText("ui.idol.preset.inUse",[purmsg.presetId + 1]);
                   }
                   if(chatUseText !== null)
                   {
@@ -1318,11 +1249,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                                  missingName = Item.getItemById(missingId).name;
                                  missingText = I18n.getUiText("ui.preset.missingItem",[missingName]);
                               }
-                           }
-                           else
-                           {
-                              missingName = Idol.getIdolById(missingId).item.name;
-                              missingText = I18n.getUiText("ui.idol.preset.missingIdol",[missingName]);
                            }
                            KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,missingText,ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,TimeManager.getInstance().getTimestamp());
                         }
@@ -1571,11 +1497,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          {
             id = (shortcut as ShortcutEmote).emoteId;
             shortcutType = DataEnum.SHORTCUT_TYPE_EMOTE;
-         }
-         else if(shortcut is ShortcutObjectIdolsPreset)
-         {
-            id = (shortcut as ShortcutObjectIdolsPreset).presetId;
-            shortcutType = DataEnum.SHORTCUT_TYPE_IDOLS_PRESET;
          }
          return {
             "id":id,

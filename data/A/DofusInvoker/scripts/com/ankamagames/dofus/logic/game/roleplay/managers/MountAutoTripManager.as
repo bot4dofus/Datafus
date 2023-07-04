@@ -231,7 +231,7 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
             {
                KernelEventsManager.getInstance().processCallback(HookList.ExternalNotification,ExternalNotificationTypeEnum.PETSMOUNT_TRAVEL_END);
             }
-            else if(PlayedCharacterManager.getInstance().isRidding && ExternalNotificationManager.getInstance().canAddExternalNotification(ExternalNotificationTypeEnum.RIDE_TRAVEL_END))
+            else if(PlayedCharacterManager.getInstance().isRiding && ExternalNotificationManager.getInstance().canAddExternalNotification(ExternalNotificationTypeEnum.RIDE_TRAVEL_END))
             {
                KernelEventsManager.getInstance().processCallback(HookList.ExternalNotification,ExternalNotificationTypeEnum.RIDE_TRAVEL_END);
             }

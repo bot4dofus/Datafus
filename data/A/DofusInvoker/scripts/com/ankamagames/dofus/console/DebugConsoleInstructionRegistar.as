@@ -70,7 +70,7 @@ package com.ankamagames.dofus.console
          console.addHandler(["searchalteration"],new AlterationInstructionHandler());
          console.addHandler(["friendlist","friendinvite","friend","msg","mystatus","myactivity","friendgroup","listactivities"],new ChatServiceInstructionHandler());
          console.addHandler(["framelist","framepriority"],new FrameInstructionHandler());
-         console.addHandler(["addmovingcharacter","switchupdatemode","setanimation","playemote","setdirection","memorylog","bot-spectator","bot-fight","tiphon-error","fps","fpsmanager","tacticmode","chainteleport"],new BenchmarkInstructionHandler());
+         console.addHandler(["addmovingcharacter","switchupdatemode","setanimation","playemote","setdirection","memorylog","bot-spectator","bot-fight","tiphon-error","fps","fpsmanager","tacticmode","creaturemode","chainteleport"],new BenchmarkInstructionHandler());
          console.addHandler(["sendaction","listactions","sendhook"],new ActionsInstructionHandler());
          console.addHandler(["debuglos","calculatepath","tracepath","debugcellsinline"],new IAInstructionHandler());
          console.addHandler(["setspellscriptparam","setspellscript","inspectbuffs","haxegeneratetest","detailedfightlog"],new FightInstructionHandler());

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartOkMulticraftCrafterMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7878;
+      public static const protocolId:uint = 5320;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 7878;
+         return 5320;
       }
       
       public function initExchangeStartOkMulticraftCrafterMessage(skillId:uint = 0) : ExchangeStartOkMulticraftCrafterMessage

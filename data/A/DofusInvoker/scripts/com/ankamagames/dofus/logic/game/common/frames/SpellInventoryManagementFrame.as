@@ -267,7 +267,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                PlayedCharacterManager.getInstance().spellsInventory = this._fullSpellList[slaveId];
                CurrentPlayedFighterManager.getInstance().setCharacteristicsInformations(slaveId,sscmsg.slaveStats);
                StatsManager.getInstance().addRawStats(slaveId,sscmsg.slaveStats.characteristics);
-               SpellModifiersManager.getInstance().setRawSpellsModifiers(slaveId,sscmsg.slaveStats.spellModifications);
+               SpellModifiersManager.getInstance().setRawSpellsModifiers(slaveId,sscmsg.slaveStats.spellModifiers);
                if(CurrentPlayedFighterManager.getInstance().getSpellCastManagerById(slaveId).needCooldownUpdate)
                {
                   CurrentPlayedFighterManager.getInstance().getSpellCastManagerById(slaveId).updateCooldowns();

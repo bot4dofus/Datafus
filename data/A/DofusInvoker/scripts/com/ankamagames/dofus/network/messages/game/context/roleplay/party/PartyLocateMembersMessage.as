@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyLocateMembersMessage extends AbstractPartyMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7499;
+      public static const protocolId:uint = 263;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 7499;
+         return 263;
       }
       
       public function initPartyLocateMembersMessage(partyId:uint = 0, geopositions:Vector.<PartyMemberGeoPosition> = null) : PartyLocateMembersMessage

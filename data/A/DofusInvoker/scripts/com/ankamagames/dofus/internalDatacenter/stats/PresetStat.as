@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.internalDatacenter.stats
 {
-   import com.ankamagames.dofus.network.types.game.uuid;
+   import com.ankamagames.dofus.network.types.game.Uuid;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import flash.utils.getQualifiedClassName;
@@ -12,19 +12,19 @@ package com.ankamagames.dofus.internalDatacenter.stats
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(EntityStat));
        
       
-      protected var _presetId:uuid;
+      protected var _presetId:Uuid;
       
       public function PresetStat(id:Number, totalValue:Number)
       {
          super(id,totalValue);
       }
       
-      public function set presetId(presetId:uuid) : void
+      public function set presetId(presetId:Uuid) : void
       {
          this._presetId = presetId;
       }
       
-      public function get presetId() : uuid
+      public function get presetId() : Uuid
       {
          return this._presetId;
       }

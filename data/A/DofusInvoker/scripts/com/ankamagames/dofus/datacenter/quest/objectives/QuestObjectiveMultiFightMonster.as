@@ -24,7 +24,7 @@ package com.ankamagames.dofus.datacenter.quest.objectives
          {
             return 0;
          }
-         return this.parameters[0];
+         return this.parameters.parameter0;
       }
       
       public function get monster() : Monster
@@ -42,7 +42,7 @@ package com.ankamagames.dofus.datacenter.quest.objectives
          {
             return 0;
          }
-         return this.parameters[1];
+         return this.parameters.parameter1;
       }
       
       override public function get text() : String

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartedWithPodsMessage extends ExchangeStartedMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2583;
+      public static const protocolId:uint = 7482;
        
       
       private var _isInitialized:Boolean = false;
@@ -39,7 +39,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 2583;
+         return 7482;
       }
       
       public function initExchangeStartedWithPodsMessage(exchangeType:int = 0, firstCharacterId:Number = 0, firstCharacterCurrentWeight:uint = 0, firstCharacterMaxWeight:uint = 0, secondCharacterId:Number = 0, secondCharacterCurrentWeight:uint = 0, secondCharacterMaxWeight:uint = 0) : ExchangeStartedWithPodsMessage

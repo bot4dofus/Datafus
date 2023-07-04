@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightOptionToggleMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6395;
+      public static const protocolId:uint = 4020;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 6395;
+         return 4020;
       }
       
       public function initGameFightOptionToggleMessage(option:uint = 3) : GameFightOptionToggleMessage

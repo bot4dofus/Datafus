@@ -113,8 +113,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const TOGGLE_ENTITY_ICONS:String = "toggleEntityIcons";
       
-      public static const OPEN_IDOLS:String = "openIdols";
-      
       public static const HIGHLIGHT_INTERACTIVE_ELEMENTS:String = "highlightInteractiveElements";
       
       public static const SHOW_FIGHT_POSITIONS:String = "showFightPositions";

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.pvp
    public class AgressableStatusMessage implements INetworkType
    {
       
-      public static const protocolId:uint = 5775;
+      public static const protocolId:uint = 8496;
        
       
       public var playerId:Number = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.pvp
       
       public function getTypeId() : uint
       {
-         return 5775;
+         return 8496;
       }
       
       public function initAgressableStatusMessage(playerId:Number = 0, enable:uint = 0, roleAvAId:int = 0, pictoScore:int = 0) : AgressableStatusMessage

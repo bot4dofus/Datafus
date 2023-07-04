@@ -15,7 +15,21 @@ package com.ankamagames.dofus.misc.lists
       
       public static const FighterSelected:String = "FighterSelected";
       
-      public static const ChallengeInfoUpdate:String = "ChallengeInfoUpdate";
+      public static const ChallengeListUpdate:String = "ChallengeListUpdate";
+      
+      public static const ChallengeModSelected:String = "ChallengeModSelected";
+      
+      public static const ChallengeBonusSelected:String = "ChallengeBonusSelected";
+      
+      public static const ChallengeSelected:String = "ChallengeSelected";
+      
+      public static const ChallengeProposal:String = "ChallengeProposal";
+      
+      public static const ChallengeProposalUpdateTimer:String = "ChallengeProposalUpdateTimer";
+      
+      public static const CloseChallengeProposal:String = "CloseChallengeProposal";
+      
+      public static const FightLeader:String = "FightLeader";
       
       public static const RemindTurn:String = "RemindTurn";
       
@@ -51,10 +65,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const ShowSwapPositionRequestMenu:String = "ShowSwapPositionRequestMenu";
       
-      public static const IdolFightPreparationUpdate:String = "IdolFightPreparationUpdate";
-      
-      public static const FightIdolList:String = "FightIdolList";
-      
       public static const ArenaFighterLeave:String = "ArenaFighterLeave";
       
       public static const OpenFightResults:String = "OpenFightResults";
@@ -78,7 +88,14 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(BuffDispell);
          Hook.createHook(BuffAdd);
          Hook.createHook(FighterSelected);
-         Hook.createHook(ChallengeInfoUpdate);
+         Hook.createHook(ChallengeListUpdate);
+         Hook.createHook(ChallengeModSelected);
+         Hook.createHook(ChallengeBonusSelected);
+         Hook.createHook(ChallengeSelected);
+         Hook.createHook(ChallengeProposal);
+         Hook.createHook(ChallengeProposalUpdateTimer);
+         Hook.createHook(CloseChallengeProposal);
+         Hook.createHook(FightLeader);
          Hook.createHook(RemindTurn);
          Hook.createHook(SpectatorWantLeave);
          Hook.createHook(FightResultClosed);
@@ -96,8 +113,6 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(WaveUpdated);
          Hook.createHook(SpectateUpdate);
          Hook.createHook(ShowSwapPositionRequestMenu);
-         Hook.createHook(IdolFightPreparationUpdate);
-         Hook.createHook(FightIdolList);
          Hook.createHook(ArenaFighterLeave);
          Hook.createHook(OpenFightResults);
          Hook.createHook(FighterRemoved);

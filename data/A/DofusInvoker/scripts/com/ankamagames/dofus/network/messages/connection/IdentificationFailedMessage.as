@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class IdentificationFailedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 609;
+      public static const protocolId:uint = 7388;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 609;
+         return 7388;
       }
       
       public function initIdentificationFailedMessage(reason:uint = 99) : IdentificationFailedMessage

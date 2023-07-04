@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartOkJobIndexMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2008;
+      public static const protocolId:uint = 2386;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 2008;
+         return 2386;
       }
       
       public function initExchangeStartOkJobIndexMessage(jobs:Vector.<uint> = null) : ExchangeStartOkJobIndexMessage

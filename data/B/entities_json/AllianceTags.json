@@ -69,55 +69,55 @@
 		{
 			"id": 17,
 			"typeId": 2,
-			"nameId": 1001698,
+			"nameId": 1001987,
 			"order": 0
 		},
 		{
 			"id": 19,
 			"typeId": 2,
-			"nameId": 1001716,
+			"nameId": 1002011,
 			"order": 2
 		},
 		{
 			"id": 20,
 			"typeId": 2,
-			"nameId": 1001722,
+			"nameId": 1002017,
 			"order": 3
 		},
 		{
 			"id": 21,
 			"typeId": 2,
-			"nameId": 1001728,
+			"nameId": 1002023,
 			"order": 4
 		},
 		{
 			"id": 22,
 			"typeId": 2,
-			"nameId": 1001734,
+			"nameId": 1002029,
 			"order": 1
 		},
 		{
 			"id": 23,
 			"typeId": 1,
-			"nameId": 1001740,
+			"nameId": 1002035,
 			"order": 0
 		},
 		{
 			"id": 24,
 			"typeId": 1,
-			"nameId": 1001746,
+			"nameId": 1002041,
 			"order": 1
 		},
 		{
 			"id": 25,
 			"typeId": 1,
-			"nameId": 1001752,
+			"nameId": 1002047,
 			"order": 2
 		},
 		{
 			"id": 26,
 			"typeId": 1,
-			"nameId": 1001758,
+			"nameId": 1002053,
 			"order": 3
 		}
 	]

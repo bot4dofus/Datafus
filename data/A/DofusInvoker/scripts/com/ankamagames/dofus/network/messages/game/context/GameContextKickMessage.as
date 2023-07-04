@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameContextKickMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 995;
+      public static const protocolId:uint = 7588;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 995;
+         return 7588;
       }
       
       public function initGameContextKickMessage(targetId:Number = 0) : GameContextKickMessage

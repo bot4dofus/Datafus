@@ -1,5 +1,6 @@
 package com.ankamagames.dofus.internalDatacenter.spells
 {
+   import com.ankama.dofus.enums.ActionIds;
    import com.ankamagames.berilia.components.Slot;
    import com.ankamagames.berilia.interfaces.IClonable;
    import com.ankamagames.berilia.managers.SecureCenter;
@@ -18,12 +19,12 @@ package com.ankamagames.dofus.internalDatacenter.spells
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.common.managers.InventoryManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
-   import com.ankamagames.dofus.logic.game.common.spell.SpellModifier;
    import com.ankamagames.dofus.logic.game.common.spell.SpellModifiers;
    import com.ankamagames.dofus.logic.game.fight.frames.FightContextFrame;
    import com.ankamagames.dofus.logic.game.fight.managers.CurrentPlayedFighterManager;
    import com.ankamagames.dofus.logic.game.fight.managers.SpellModifiersManager;
-   import com.ankamagames.dofus.network.enums.CharacterSpellModificationTypeEnum;
+   import com.ankamagames.dofus.network.enums.SpellModifierActionTypeEnum;
+   import com.ankamagames.dofus.network.enums.SpellModifierTypeEnum;
    import com.ankamagames.dofus.uiApi.PlayedCharacterApi;
    import com.ankamagames.jerakine.data.XmlConfig;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
@@ -40,6 +41,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
    import flash.utils.Proxy;
    import flash.utils.flash_proxy;
    import flash.utils.getQualifiedClassName;
+   import tools.ActionIdHelper;
    
    public dynamic class SpellWrapper extends Proxy implements ISlotData, IClonable, ICellZoneProvider, IDataCenter
    {
@@ -56,7 +58,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
       
       public static const INFINITE_VALUE:uint = 63;
       
-      public static const BASE_DAMAGE_EFFECT_IDS:Array = [100,96,97,98,99,92,93,94,95,1012,1013,1014,1015,1016];
+      public static const BASE_DAMAGE_EFFECT_IDS:Array = [ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_BASED_ON_MOVEMENT_POINTS_FROM_AIR,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_BASED_ON_MOVEMENT_POINTS_FROM_EARTH,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_BASED_ON_MOVEMENT_POINTS_FROM_FIRE,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_BASED_ON_MOVEMENT_POINTS_FROM_WATER,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_FROM_AIR,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_FROM_BEST_ELEMENT,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_FROM_EARTH,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_FROM_FIRE,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_FROM_WATER,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_FROM_WORST_ELEMENT,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_NO_BOOST,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_NO_BOOST_FROM_AIR,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_NO_BOOST_FROM_EARTH,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_NO_BOOST_FROM_FIRE,ActionIds.ACTION_CHARACTER_LIFE_POINTS_LOST_NO_BOOST_FROM_WATER,ActionIds.ACTION_CHARACTER_LIFE_POINTS_STEAL,ActionIds.ACTION_CHARACTER_LIFE_POINTS_STEAL_FROM_AIR,ActionIds.ACTION_CHARACTER_LIFE_POINTS_STEAL_FROM_BEST_ELEMENT,ActionIds.ACTION_CHARACTER_LIFE_POINTS_STEAL_FROM_EARTH,ActionIds.ACTION_CHARACTER_LIFE_POINTS_STEAL_FROM_FIRE,ActionIds.ACTION_CHARACTER_LIFE_POINTS_STEAL_FROM_WATER,ActionIds.ACTION_CHARACTER_LIFE_POINTS_STEAL_FROM_WORST_ELEMENT,ActionIds.ACTION_CHARACTER_LIFE_POINTS_STEAL_WITHOUT_BOOST,ActionIds.ACTION_CHARACTER_MANA_USE_KILL_LIFE_AIR,ActionIds.ACTION_CHARACTER_MANA_USE_KILL_LIFE_FIRE,ActionIds.ACTION_CHARACTER_MANA_USE_KILL_LIFE_WATER,ActionIds.ACTION_CHARACTER_MOVEMENT_USE_KILL_LIFE_AIR,ActionIds.ACTION_CHARACTER_MOVEMENT_USE_KILL_LIFE_EARTH,ActionIds.ACTION_CHARACTER_MOVEMENT_USE_KILL_LIFE_FIRE,ActionIds.ACTION_CHARACTER_MOVEMENT_USE_KILL_LIFE_NEUTRAL,ActionIds.ACTION_CHARACTER_MOVEMENT_USE_KILL_LIFE_WATER];
        
       
       private var _uri:Uri;
@@ -301,52 +303,27 @@ package com.ankamagames.dofus.internalDatacenter.spells
       
       public function get needFreeCellWithModifiers() : Boolean
       {
-         var spellModifier:SpellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.FREE_CELL);
-         if(spellModifier !== null)
-         {
-            return spellModifier.totalValue > 0;
-         }
-         return this.spellLevelInfos["needFreeCell"];
+         return SpellModifiersManager.getInstance().getModifiedBool(this.getEntityId(),this.id,SpellModifierTypeEnum.FREE_CELL,this.spellLevelInfos["needFreeCell"]);
       }
       
       public function get needTakenCellWithModifiers() : Boolean
       {
-         var spellModifier:SpellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.OCCUPIED_CELL);
-         if(spellModifier !== null)
-         {
-            return spellModifier.totalValue > 0;
-         }
-         return this.spellLevelInfos["needTakenCell"];
+         return SpellModifiersManager.getInstance().getModifiedBool(this.getEntityId(),this.id,SpellModifierTypeEnum.OCCUPIED_CELL,this.spellLevelInfos["needTakenCell"]);
       }
       
       public function get needVisibleEntityWithModifiers() : Boolean
       {
-         var spellModifier:SpellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.VISIBLE_TARGET);
-         if(spellModifier !== null)
-         {
-            return spellModifier.totalValue > 0;
-         }
-         return this.spellLevelInfos["needVisibleEntity"];
+         return SpellModifiersManager.getInstance().getModifiedBool(this.getEntityId(),this.id,SpellModifierTypeEnum.VISIBLE_TARGET,this.spellLevelInfos["needVisibleEntity"]);
       }
       
       public function get needCellWithoutPortalWithModifiers() : Boolean
       {
-         var spellModifier:SpellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.PORTAL_FREE_CELL);
-         if(spellModifier !== null)
-         {
-            return spellModifier.totalValue > 0;
-         }
-         return this.spellLevelInfos["needCellWithoutPortal"];
+         return SpellModifiersManager.getInstance().getModifiedBool(this.getEntityId(),this.id,SpellModifierTypeEnum.PORTAL_FREE_CELL,this.spellLevelInfos["needCellWithoutPortal"]);
       }
       
       public function get portalProjectionForbiddenWithModifiers() : Boolean
       {
-         var spellModifier:SpellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.PORTAL_PROJECTION);
-         if(spellModifier !== null)
-         {
-            return spellModifier.totalValue > 0;
-         }
-         return this.spellLevelInfos["portalProjectionForbidden"];
+         return SpellModifiersManager.getInstance().getModifiedBool(this.getEntityId(),this.id,SpellModifierTypeEnum.PORTAL_PROJECTION,this.spellLevelInfos["portalProjectionForbidden"]);
       }
       
       public function get minimalRange() : uint
@@ -559,49 +536,35 @@ package com.ankamagames.dofus.internalDatacenter.spells
          return 0;
       }
       
-      public function get playerCriticalRate() : int
+      public function get criticalHitProbability() : int
       {
-         var currentCriticalHitProbability:Number = NaN;
-         var weaponCriticalHit:uint = 0;
-         var entityId:Number = NaN;
+         var entityId:Number = this.getEntityId();
+         var criticalHitProbability:int = this.baseCriticalHitProbability;
          var stats:EntityStats = null;
-         var totalCriticalHit:Number = NaN;
-         var criticalRate:int = 0;
-         if(this["isSpellWeapon"] && !this["isDefaultSpellWeapon"])
+         if(!isNaN(entityId))
          {
-            weaponCriticalHit = this.getWeaponProperty("criticalHitProbability");
-            currentCriticalHitProbability = weaponCriticalHit > 0 ? Number(55 - weaponCriticalHit) : Number(0);
-         }
-         else
-         {
-            currentCriticalHitProbability = this.getCriticalHitProbability();
-         }
-         var spellModifier:SpellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.CRITICAL_HIT_BONUS);
-         if(spellModifier !== null)
-         {
-            currentCriticalHitProbability = currentCriticalHitProbability > 0 ? Number(currentCriticalHitProbability - spellModifier.totalValue) : Number(0);
-         }
-         if(!isNaN(currentCriticalHitProbability))
-         {
-            entityId = this.getEntityId();
-            stats = null;
-            if(!isNaN(entityId))
+            criticalHitProbability = SpellModifiersManager.getInstance().getModifiedInt(entityId,this.id,SpellModifierTypeEnum.CRITICAL_HIT_BONUS,criticalHitProbability);
+            if(criticalHitProbability > 0)
             {
                stats = StatsManager.getInstance().getStats(entityId);
             }
-            if(stats !== null)
-            {
-               totalCriticalHit = stats.getStatTotalValue(StatIds.CRITICAL_HIT) - stats.getStatAdditionalValue(StatIds.CRITICAL_HIT);
-               criticalRate = currentCriticalHitProbability - totalCriticalHit;
-               if(criticalRate > 55)
-               {
-                  criticalRate = 55;
-               }
-               return criticalRate;
-            }
-            return currentCriticalHitProbability;
          }
-         return 0;
+         if(stats !== null)
+         {
+            criticalHitProbability += stats.getStatTotalValue(StatIds.CRITICAL_HIT);
+         }
+         criticalHitProbability = Math.max(0,criticalHitProbability);
+         return int(Math.min(criticalHitProbability,100));
+      }
+      
+      public function get isMaxRangeModifiableWithStats() : Boolean
+      {
+         return this.spellLevelInfos.rangeCanBeBoosted;
+      }
+      
+      public function get isMaxRangeModifiableWithStatsWithModifiers() : Boolean
+      {
+         return SpellModifiersManager.getInstance().getModifiedBool(this.getEntityId(),this.id,SpellModifierTypeEnum.RANGEABLE,this.isMaxRangeModifiableWithStats);
       }
       
       public function get maxRange() : int
@@ -610,27 +573,16 @@ package com.ankamagames.dofus.internalDatacenter.spells
          var entityId:Number = this.getEntityId();
          var stats:EntityStats = StatsManager.getInstance().getStats(entityId);
          var spellModifiers:SpellModifiers = SpellModifiersManager.getInstance().getSpellModifiers(entityId,this.id);
-         var boostableRange:Boolean = this.spellLevelInfos.rangeCanBeBoosted;
          var finalRange:Number = this.maximalRange;
-         if(spellModifiers !== null)
+         if(spellModifiers != null)
          {
-            if(spellModifiers.hasModifier(CharacterSpellModificationTypeEnum.SET_RANGE_MAX))
+            if(spellModifiers.hasAction(SpellModifierTypeEnum.RANGE_MAX,SpellModifierActionTypeEnum.ACTION_SET))
             {
-               return spellModifiers.getModifierValue(CharacterSpellModificationTypeEnum.SET_RANGE_MAX);
+               return spellModifiers.getModifiedInt(SpellModifierTypeEnum.RANGE_MAX);
             }
-            if(!boostableRange)
-            {
-               if(spellModifiers.hasModifier(CharacterSpellModificationTypeEnum.RANGEABLE))
-               {
-                  boostableRange = true;
-               }
-            }
-            if(spellModifiers.hasModifier(CharacterSpellModificationTypeEnum.RANGE_MAX))
-            {
-               finalRange += spellModifiers.getModifierValue(CharacterSpellModificationTypeEnum.RANGE_MAX);
-            }
+            finalRange = spellModifiers.getModifiedInt(SpellModifierTypeEnum.RANGE_MAX,finalRange);
          }
-         if(boostableRange && stats !== null)
+         if(this.isMaxRangeModifiableWithStatsWithModifiers && stats !== null)
          {
             rangeBonus = stats.getStatTotalValue(StatIds.RANGE) - stats.getStatAdditionalValue(StatIds.RANGE);
             finalRange += rangeBonus;
@@ -681,12 +633,8 @@ package com.ankamagames.dofus.internalDatacenter.spells
       
       override flash_proxy function getProperty(name:*) : *
       {
-         var spellModifier:SpellModifier = null;
-         var numberToReturn:Number = NaN;
-         var booleanToReturn:Boolean = false;
          var build:BuildWrapper = null;
          var iw:ItemWrapper = null;
-         var spellModifiers:SpellModifiers = null;
          if(isAttribute(name))
          {
             return this[name];
@@ -719,9 +667,6 @@ package com.ankamagames.dofus.internalDatacenter.spells
          {
             return this.getWeaponProperty(name);
          }
-         spellModifier = null;
-         numberToReturn = 0;
-         booleanToReturn = false;
          switch(name.toString())
          {
             case "id":
@@ -748,85 +693,27 @@ package com.ankamagames.dofus.internalDatacenter.spells
             case "maxStack":
             case "globalCooldown":
                return this.spellLevelInfos[name.toString()];
-            case "criticalHitProbability":
-               return this.getCriticalHitProbability();
             case "maxCastPerTurn":
-               numberToReturn = this.spellLevelInfos["maxCastPerTurn"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.MAX_CAST_PER_TURN);
-               if(spellModifier !== null)
-               {
-                  numberToReturn += spellModifier.contextModifValue + spellModifier.objectsAndMountBonusValue;
-               }
-               return numberToReturn;
+               return SpellModifiersManager.getInstance().getModifiedInt(this.getEntityId(),this.id,SpellModifierTypeEnum.MAX_CAST_PER_TURN,this.spellLevelInfos["maxCastPerTurn"]);
             case "range":
             case "maxRange":
                return this.maxRange;
             case "minRange":
-               numberToReturn = this.spellLevelInfos["minRange"];
-               spellModifiers = SpellModifiersManager.getInstance().getSpellModifiers(this.getEntityId(),this.id);
-               if(spellModifiers !== null)
-               {
-                  if(spellModifiers.hasModifier(CharacterSpellModificationTypeEnum.SET_RANGE_MIN))
-                  {
-                     return spellModifiers.getModifierValue(CharacterSpellModificationTypeEnum.SET_RANGE_MIN);
-                  }
-                  if(spellModifiers.hasModifier(CharacterSpellModificationTypeEnum.RANGE_MIN))
-                  {
-                     spellModifier = spellModifiers.getModifier(CharacterSpellModificationTypeEnum.RANGE_MIN);
-                     numberToReturn += spellModifier.contextModifValue + spellModifier.objectsAndMountBonusValue;
-                  }
-               }
-               return numberToReturn;
+               return SpellModifiersManager.getInstance().getModifiedInt(this.getEntityId(),this.id,SpellModifierTypeEnum.RANGE_MIN,this.spellLevelInfos["minRange"]);
             case "maxCastPerTarget":
-               numberToReturn = this.spellLevelInfos["maxCastPerTarget"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.MAX_CAST_PER_TARGET);
-               if(spellModifier !== null)
-               {
-                  numberToReturn += spellModifier.contextModifValue + spellModifier.objectsAndMountBonusValue;
-               }
-               return numberToReturn;
+               return SpellModifiersManager.getInstance().getModifiedInt(this.getEntityId(),this.id,SpellModifierTypeEnum.MAX_CAST_PER_TARGET,this.spellLevelInfos["maxCastPerTarget"]);
             case "castInLine":
-               booleanToReturn = this.spellLevelInfos["castInLine"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.CAST_LINE);
-               if(spellModifier !== null)
-               {
-                  booleanToReturn = booleanToReturn && spellModifier.totalValue === 0;
-               }
-               return booleanToReturn;
+               return SpellModifiersManager.getInstance().getModifiedBool(this.getEntityId(),this.id,SpellModifierTypeEnum.CAST_LINE,this.spellLevelInfos["castInLine"]);
             case "castInDiagonal":
                return this.spellLevelInfos["castInDiagonal"];
             case "castTestLos":
-               booleanToReturn = this.spellLevelInfos["castTestLos"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.LOS);
-               if(spellModifier !== null)
-               {
-                  booleanToReturn = booleanToReturn && spellModifier.totalValue === 0;
-               }
-               return booleanToReturn;
+               return SpellModifiersManager.getInstance().getModifiedBool(this.getEntityId(),this.id,SpellModifierTypeEnum.LOS,this.spellLevelInfos["castTestLos"]);
             case "rangeCanBeBoosted":
-               booleanToReturn = this.spellLevelInfos["rangeCanBeBoosted"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.RANGEABLE);
-               if(spellModifier !== null)
-               {
-                  booleanToReturn = booleanToReturn || spellModifier.totalValue > 0;
-               }
-               return booleanToReturn;
+               return SpellModifiersManager.getInstance().getModifiedBool(this.getEntityId(),this.id,SpellModifierTypeEnum.RANGEABLE,this.spellLevelInfos["rangeCanBeBoosted"]);
             case "apCost":
-               numberToReturn = this.spellLevelInfos["apCost"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.AP_COST);
-               if(spellModifier !== null)
-               {
-                  numberToReturn += -(spellModifier.contextModifValue + spellModifier.objectsAndMountBonusValue + spellModifier.baseValue + spellModifier.additionalValue + spellModifier.alignGiftBonusValue);
-               }
-               return numberToReturn;
+               return SpellModifiersManager.getInstance().getModifiedInt(this.getEntityId(),this.id,SpellModifierTypeEnum.AP_COST,this.spellLevelInfos["apCost"]);
             case "minCastInterval":
-               numberToReturn = this.spellLevelInfos["minCastInterval"];
-               spellModifier = SpellModifiersManager.getInstance().getSpellModifier(this.getEntityId(),this.id,CharacterSpellModificationTypeEnum.CAST_INTERVAL);
-               if(spellModifier !== null)
-               {
-                  numberToReturn += -(spellModifier.contextModifValue + spellModifier.objectsAndMountBonusValue + spellModifier.baseValue + spellModifier.additionalValue + spellModifier.alignGiftBonusValue);
-               }
-               return numberToReturn;
+               return SpellModifiersManager.getInstance().getModifiedInt(this.getEntityId(),this.id,SpellModifierTypeEnum.CAST_INTERVAL,this.spellLevelInfos["minCastInterval"]);
             case "isSpellWeapon":
                return this.id == 0;
             case "isDefaultSpellWeapon":
@@ -873,6 +760,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
             case "iconId":
             case "name":
             case "description":
+            case "baseCriticalHitProbability":
             case "criticalHitProbability":
             case "castInLine":
             case "castInDiagonal":
@@ -920,10 +808,19 @@ package com.ankamagames.dofus.internalDatacenter.spells
          }
       }
       
-      private function getCriticalHitProbability() : Number
+      public function get baseCriticalHitProbability() : Number
       {
-         var criticalHitProbability:Number = this.spellLevelInfos["criticalHitProbability"];
-         return criticalHitProbability > 0 ? Number(55 - criticalHitProbability) : Number(Number.NaN);
+         var toReturn:* = undefined;
+         if(this["isSpellWeapon"] && !this["isDefaultSpellWeapon"])
+         {
+            toReturn = this.getWeaponProperty("criticalHitProbability");
+            if(toReturn === null)
+            {
+               return 0;
+            }
+            return toReturn;
+         }
+         return this.spellLevelInfos["criticalHitProbability"];
       }
       
       public function clone() : *
@@ -979,39 +876,33 @@ package com.ankamagames.dofus.internalDatacenter.spells
       public function setSpellEffects(areModifiers:Boolean = true) : void
       {
          var effectInstance:EffectInstance = null;
-         var damageBaseSpellModifier:SpellModifier = null;
-         var damageSpellModifier:SpellModifier = null;
-         var healSpellModifier:SpellModifier = null;
-         var modif:int = 0;
          var entityId:Number = NaN;
-         var effectInstanceDice:EffectInstanceDice = null;
+         var regularBaseDamageMod:int = 0;
+         var criticalBaseDamageMod:int = 0;
          this.effects = new Vector.<EffectInstance>();
          this.criticalEffect = new Vector.<EffectInstance>();
          for each(effectInstance in this._spellLevel.effects)
          {
             effectInstance = effectInstance.clone();
             entityId = this.getEntityId();
-            if(areModifiers && (effectInstance.category == DataEnum.ACTION_TYPE_DAMAGES && BASE_DAMAGE_EFFECT_IDS.indexOf(effectInstance.effectId) != -1))
+            if(areModifiers && (effectInstance.category == DataEnum.ACTION_TYPE_DAMAGES && (BASE_DAMAGE_EFFECT_IDS.indexOf(effectInstance.effectId) != -1 || ActionIdHelper.isHeal(effectInstance.effectId))))
             {
-               damageBaseSpellModifier = SpellModifiersManager.getInstance().getSpellModifier(entityId,this.id,CharacterSpellModificationTypeEnum.BASE_DAMAGE);
-               if(damageBaseSpellModifier && effectInstance is EffectInstanceDice)
+               if(effectInstance is EffectInstanceDice)
                {
-                  modif = damageBaseSpellModifier.totalValue - damageBaseSpellModifier.additionalValue;
-                  (effectInstance as EffectInstanceDice).diceNum += modif;
+                  regularBaseDamageMod = SpellModifiersManager.getInstance().getModifiedInt(entityId,this.id,SpellModifierTypeEnum.BASE_DAMAGE);
+                  (effectInstance as EffectInstanceDice).diceNum += regularBaseDamageMod;
                   if((effectInstance as EffectInstanceDice).diceSide > 0)
                   {
-                     (effectInstance as EffectInstanceDice).diceSide += modif;
+                     (effectInstance as EffectInstanceDice).diceSide += regularBaseDamageMod;
                   }
                }
-               damageSpellModifier = SpellModifiersManager.getInstance().getSpellModifier(entityId,this.id,CharacterSpellModificationTypeEnum.DAMAGE);
-               healSpellModifier = SpellModifiersManager.getInstance().getSpellModifier(entityId,this.id,CharacterSpellModificationTypeEnum.HEAL_BONUS);
-               if(damageSpellModifier)
+               if(ActionIdHelper.isHeal(effectInstance.effectId))
                {
-                  effectInstance.modificator = damageSpellModifier.totalValue - damageSpellModifier.additionalValue;
+                  effectInstance.modificator = SpellModifiersManager.getInstance().getModifiedInt(entityId,this.id,SpellModifierTypeEnum.HEAL_BONUS,effectInstance.modificator);
                }
-               else if(healSpellModifier)
+               else
                {
-                  effectInstance.modificator = healSpellModifier.totalValue - healSpellModifier.additionalValue;
+                  effectInstance.modificator = SpellModifiersManager.getInstance().getModifiedInt(entityId,this.id,SpellModifierTypeEnum.DAMAGE);
                }
             }
             this.effects.push(effectInstance);
@@ -1019,28 +910,24 @@ package com.ankamagames.dofus.internalDatacenter.spells
          for each(effectInstance in this._spellLevel.criticalEffect)
          {
             effectInstance = effectInstance.clone();
-            if(areModifiers && (effectInstance.category == DataEnum.ACTION_TYPE_DAMAGES && BASE_DAMAGE_EFFECT_IDS.indexOf(effectInstance.effectId) != -1))
+            if(areModifiers && (effectInstance.category == DataEnum.ACTION_TYPE_DAMAGES && (BASE_DAMAGE_EFFECT_IDS.indexOf(effectInstance.effectId) != -1 || ActionIdHelper.isHeal(effectInstance.effectId))))
             {
-               damageBaseSpellModifier = SpellModifiersManager.getInstance().getSpellModifier(entityId,this.id,CharacterSpellModificationTypeEnum.BASE_DAMAGE);
-               if(damageBaseSpellModifier && effectInstance is EffectInstanceDice)
+               if(effectInstance is EffectInstanceDice)
                {
-                  effectInstanceDice = effectInstance as EffectInstanceDice;
-                  modif = damageBaseSpellModifier.totalValue - damageBaseSpellModifier.additionalValue;
-                  effectInstanceDice.diceNum += modif;
-                  if(effectInstanceDice.diceSide > 0)
+                  criticalBaseDamageMod = SpellModifiersManager.getInstance().getModifiedInt(entityId,this.id,SpellModifierTypeEnum.BASE_DAMAGE);
+                  (effectInstance as EffectInstanceDice).diceNum += criticalBaseDamageMod;
+                  if((effectInstance as EffectInstanceDice).diceSide > 0)
                   {
-                     effectInstanceDice.diceSide += modif;
+                     (effectInstance as EffectInstanceDice).diceSide += criticalBaseDamageMod;
                   }
                }
-               damageSpellModifier = SpellModifiersManager.getInstance().getSpellModifier(entityId,this.id,CharacterSpellModificationTypeEnum.DAMAGE);
-               healSpellModifier = SpellModifiersManager.getInstance().getSpellModifier(entityId,this.id,CharacterSpellModificationTypeEnum.HEAL_BONUS);
-               if(damageSpellModifier)
+               if(ActionIdHelper.isHeal(effectInstance.effectId))
                {
-                  effectInstance.modificator = damageSpellModifier.totalValue - damageSpellModifier.additionalValue;
+                  effectInstance.modificator = SpellModifiersManager.getInstance().getModifiedInt(entityId,this.id,SpellModifierTypeEnum.HEAL_BONUS,effectInstance.modificator);
                }
-               else if(healSpellModifier)
+               else
                {
-                  effectInstance.modificator = healSpellModifier.totalValue - healSpellModifier.additionalValue;
+                  effectInstance.modificator = SpellModifiersManager.getInstance().getModifiedInt(entityId,this.id,SpellModifierTypeEnum.DAMAGE);
                }
             }
             this.criticalEffect.push(effectInstance);

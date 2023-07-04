@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.prism
    public class PrismInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 7681;
+      public static const protocolId:uint = 85;
        
       
       public var state:uint = 1;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.prism
       
       public function getTypeId() : uint
       {
-         return 7681;
+         return 85;
       }
       
       public function initPrismInformation(state:uint = 1, placementDate:uint = 0, nuggetsCount:uint = 0, durability:uint = 0, nextEvolutionDate:Number = 0) : PrismInformation

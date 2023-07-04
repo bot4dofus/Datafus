@@ -199,7 +199,7 @@ package com.ankamagames.dofus.uiApi
                   equipmentPreset[i] = item;
                   objExists = true;
                }
-               else if(pos == CharacterInventoryPositionEnum.ACCESSORY_POSITION_PETS && PlayedCharacterManager.getInstance().isRidding)
+               else if(pos == CharacterInventoryPositionEnum.ACCESSORY_POSITION_PETS && PlayedCharacterManager.getInstance().isRiding)
                {
                   mountFakeItemWrapper = MountWrapper.create();
                   equipmentPreset[i] = mountFakeItemWrapper;

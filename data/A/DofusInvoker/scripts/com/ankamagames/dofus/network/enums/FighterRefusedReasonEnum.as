@@ -41,8 +41,6 @@ package com.ankamagames.dofus.network.enums
       
       public static const GHOST_REFUSED:int = 17;
       
-      public static const RESTRICTED_ACCOUNT:int = 19;
-      
       public static const WRONG_ALLIANCE:int = 20;
       
       public static const AVA_ZONE:int = 21;

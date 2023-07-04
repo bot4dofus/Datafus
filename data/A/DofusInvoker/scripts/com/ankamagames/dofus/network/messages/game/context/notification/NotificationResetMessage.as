@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.notification
    public class NotificationResetMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8734;
+      public static const protocolId:uint = 9791;
        
       
       public function NotificationResetMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.notification
       
       override public function getMessageId() : uint
       {
-         return 8734;
+         return 9791;
       }
       
       public function initNotificationResetMessage() : NotificationResetMessage

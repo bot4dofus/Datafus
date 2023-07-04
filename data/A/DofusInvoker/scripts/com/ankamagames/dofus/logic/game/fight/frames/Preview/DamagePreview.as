@@ -5,8 +5,6 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
    import com.ankamagames.dofus.datacenter.spells.SpellLevel;
    import com.ankamagames.dofus.internalDatacenter.items.WeaponWrapper;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
-   import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
-   import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.fight.frames.FightContextFrame;
    import com.ankamagames.dofus.logic.game.fight.managers.CurrentPlayedFighterManager;
@@ -27,7 +25,6 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
    import damageCalculation.fighterManagement.HaxeFighter;
    import damageCalculation.spellManagement.HaxeSpell;
    import damageCalculation.spellManagement.HaxeSpellEffect;
-   import damageCalculation.tools.StatIds;
    import flash.display.MovieClip;
    import flash.filesystem.File;
    import flash.filesystem.FileMode;
@@ -88,15 +85,7 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
          caster = new FighterTranslator(infos,casterId);
          spell = createHaxeSpell(rawSpell);
          map = new MapTranslator(context);
-         var critical:Boolean = false;
-         var stats:EntityStats = StatsManager.getInstance().getStats(casterId);
-         if(stats !== null)
-         {
-            if(stats.getStatTotalValue(StatIds.CRITICAL_HIT) + spell.criticalHitProbability >= 100)
-            {
-               critical = true;
-            }
-         }
+         var critical:Boolean = spell.criticalHitProbability >= 100;
          gameTurn = CurrentPlayedFighterManager.getInstance().getSpellCastManager().currentTurn;
          try
          {
@@ -214,7 +203,7 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
             needTakenCell = (spell as SpellLevel).needTakenCell;
             needVisibleEntity = (spell as SpellLevel).needVisibleEntity;
          }
-         return new HaxeSpell(!!isWeapon ? 0 : int(spell.spellId),translatedEffects,translatedCriticalEffects,spellLevel,canAlwaysTriggerSpells,isWeapon,spell.minRange,spell.range,spell.criticalHitProbability,needFreeCell,needTakenCell,needVisibleEntity,spell is SpellLevel ? int((spell as SpellLevel).maxStack) : -1);
+         return new HaxeSpell(!!isWeapon ? 0 : int(spell.spellId),translatedEffects,translatedCriticalEffects,spellLevel,canAlwaysTriggerSpells,isWeapon,spell.minRange,spell.range,spellWrapper !== null ? int(spellWrapper.criticalHitProbability) : int(spell.criticalHitProbability),needFreeCell,needTakenCell,needVisibleEntity,spell is SpellLevel ? int((spell as SpellLevel).maxStack) : -1);
       }
       
       private static function loadEffectArray(spell:Object, sourceEffects:Vector.<EffectInstance>, isWeapon:Boolean, isCritical:Boolean) : Array

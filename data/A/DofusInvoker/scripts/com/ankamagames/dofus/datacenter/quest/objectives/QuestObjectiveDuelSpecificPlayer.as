@@ -24,7 +24,7 @@ package com.ankamagames.dofus.datacenter.quest.objectives
          {
             return 0;
          }
-         return this.parameters[0];
+         return this.parameters.parameter0;
       }
       
       public function get specificPlayerText() : String

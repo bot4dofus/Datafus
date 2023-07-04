@@ -166,8 +166,7 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       public function processExchangeStartOkNpcTradeMessage(msg:ExchangeStartOkNpcTradeMessage) : void
       {
-         var sourceName:String = null;
-         sourceName = PlayedCharacterManager.getInstance().infos.name;
+         var sourceName:String = PlayedCharacterManager.getInstance().infos.name;
          var NPCId:int = this.roleplayEntitiesFrame.getEntityInfos(msg.npcId).contextualId;
          var NPC:Npc = Npc.getNpcById(NPCId);
          var targetName:String = Npc.getNpcById((this.roleplayEntitiesFrame.getEntityInfos(msg.npcId) as GameRolePlayNpcInformations).npcId).name;

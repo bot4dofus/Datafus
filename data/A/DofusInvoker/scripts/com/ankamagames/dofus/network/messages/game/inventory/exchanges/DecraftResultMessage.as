@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class DecraftResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3725;
+      public static const protocolId:uint = 951;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 3725;
+         return 951;
       }
       
       public function initDecraftResultMessage(results:Vector.<DecraftedItemStackInfo> = null) : DecraftResultMessage

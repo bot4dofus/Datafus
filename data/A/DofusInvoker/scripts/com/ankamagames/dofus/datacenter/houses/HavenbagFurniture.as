@@ -20,8 +20,6 @@ package com.ankamagames.dofus.datacenter.houses
       
       public var color:int;
       
-      public var skillId:int;
-      
       public var layerId:int;
       
       public var blocksMovement:Boolean;
@@ -31,8 +29,6 @@ package com.ankamagames.dofus.datacenter.houses
       public var cellsWidth:uint;
       
       public var cellsHeight:uint;
-      
-      public var order:uint;
       
       public function HavenbagFurniture()
       {

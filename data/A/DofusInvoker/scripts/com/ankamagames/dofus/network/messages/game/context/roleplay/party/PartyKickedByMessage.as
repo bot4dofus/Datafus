@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyKickedByMessage extends AbstractPartyMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3806;
+      public static const protocolId:uint = 6033;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 3806;
+         return 6033;
       }
       
       public function initPartyKickedByMessage(partyId:uint = 0, kickerId:Number = 0) : PartyKickedByMessage

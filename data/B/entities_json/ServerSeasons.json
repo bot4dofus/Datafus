@@ -100,22 +100,22 @@
 			"flagObjectId": 20763
 		},
 		{
-			"uid": 24,
-			"seasonNumber": 7,
-			"information": "Temporis VII",
-			"beginning": 1642636800000.0,
-			"closure": 1661986800000.0,
-			"resetDate": -3600000.0,
-			"flagObjectId": 20763
-		},
-		{
 			"uid": 25,
 			"seasonNumber": 8,
 			"information": "Exp\u00e9dition I : Mercenaire",
 			"beginning": 1661986800000.0,
 			"closure": 1669593600000.0,
-			"resetDate": 1689289200000.0,
+			"resetDate": 1679270400000.0,
 			"flagObjectId": 27427
+		},
+		{
+			"uid": 26,
+			"seasonNumber": 9,
+			"information": "Saison Test Event Streamer",
+			"beginning": 1679443200000.0,
+			"closure": 1682118000000.0,
+			"resetDate": -3600000.0,
+			"flagObjectId": 28400
 		}
 	]
 }

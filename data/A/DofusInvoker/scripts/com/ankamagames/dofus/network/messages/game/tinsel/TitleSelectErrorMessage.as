@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.tinsel
    public class TitleSelectErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7001;
+      public static const protocolId:uint = 7277;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.tinsel
       
       override public function getMessageId() : uint
       {
-         return 7001;
+         return 7277;
       }
       
       public function initTitleSelectErrorMessage(reason:uint = 0) : TitleSelectErrorMessage

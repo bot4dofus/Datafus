@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.common.basic
    public class StatisticDataInt extends StatisticData implements INetworkType
    {
       
-      public static const protocolId:uint = 1419;
+      public static const protocolId:uint = 854;
        
       
       public var value:int = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.common.basic
       
       override public function getTypeId() : uint
       {
-         return 1419;
+         return 854;
       }
       
       public function initStatisticDataInt(value:int = 0) : StatisticDataInt

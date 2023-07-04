@@ -1,7 +1,7 @@
 package com.ankamagames.dofus.network.types.game.collector.tax
 {
+   import com.ankamagames.dofus.network.types.game.Uuid;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristics;
-   import com.ankamagames.dofus.network.types.game.uuid;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
    import com.ankamagames.jerakine.network.INetworkType;
@@ -10,10 +10,10 @@ package com.ankamagames.dofus.network.types.game.collector.tax
    public class TaxCollectorPreset implements INetworkType
    {
       
-      public static const protocolId:uint = 2340;
+      public static const protocolId:uint = 5480;
        
       
-      public var presetId:uuid;
+      public var presetId:Uuid;
       
       public var spells:Vector.<TaxCollectorOrderedSpell>;
       
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.types.game.collector.tax
       
       public function TaxCollectorPreset()
       {
-         this.presetId = new uuid();
+         this.presetId = new Uuid();
          this.spells = new Vector.<TaxCollectorOrderedSpell>();
          this.characteristics = new CharacterCharacteristics();
          super();
@@ -35,10 +35,10 @@ package com.ankamagames.dofus.network.types.game.collector.tax
       
       public function getTypeId() : uint
       {
-         return 2340;
+         return 5480;
       }
       
-      public function initTaxCollectorPreset(presetId:uuid = null, spells:Vector.<TaxCollectorOrderedSpell> = null, characteristics:CharacterCharacteristics = null) : TaxCollectorPreset
+      public function initTaxCollectorPreset(presetId:Uuid = null, spells:Vector.<TaxCollectorOrderedSpell> = null, characteristics:CharacterCharacteristics = null) : TaxCollectorPreset
       {
          this.presetId = presetId;
          this.spells = spells;
@@ -48,7 +48,7 @@ package com.ankamagames.dofus.network.types.game.collector.tax
       
       public function reset() : void
       {
-         this.presetId = new uuid();
+         this.presetId = new Uuid();
          this.characteristics = new CharacterCharacteristics();
       }
       
@@ -59,7 +59,7 @@ package com.ankamagames.dofus.network.types.game.collector.tax
       
       public function serializeAs_TaxCollectorPreset(output:ICustomDataOutput) : void
       {
-         this.presetId.serializeAs_uuid(output);
+         this.presetId.serializeAs_Uuid(output);
          output.writeShort(this.spells.length);
          for(var _i2:uint = 0; _i2 < this.spells.length; _i2++)
          {
@@ -76,7 +76,7 @@ package com.ankamagames.dofus.network.types.game.collector.tax
       public function deserializeAs_TaxCollectorPreset(input:ICustomDataInput) : void
       {
          var _item2:TaxCollectorOrderedSpell = null;
-         this.presetId = new uuid();
+         this.presetId = new Uuid();
          this.presetId.deserialize(input);
          var _spellsLen:uint = input.readUnsignedShort();
          for(var _i2:uint = 0; _i2 < _spellsLen; _i2++)
@@ -103,7 +103,7 @@ package com.ankamagames.dofus.network.types.game.collector.tax
       
       private function _presetIdtreeFunc(input:ICustomDataInput) : void
       {
-         this.presetId = new uuid();
+         this.presetId = new Uuid();
          this.presetId.deserializeAsync(this._presetIdtree);
       }
       

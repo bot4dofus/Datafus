@@ -5,6 +5,7 @@ package com.ankamagames.dofus.console.debug
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
    import com.ankamagames.dofus.internalDatacenter.stats.Stat;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
+   import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.network.enums.ConsoleMessageTypeEnum;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristic;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristicDetailed;
@@ -21,7 +22,7 @@ package com.ankamagames.dofus.console.debug
       
       public static const _log:Logger = Log.getLogger(getQualifiedClassName(StatsInstructionHandler));
       
-      public static const BASE_COMMAND:String = "statsmanager";
+      public static const BASE_COMMAND:String = "stats";
       
       private static const DUMP_COMMAND:String = "dump";
       
@@ -36,10 +37,6 @@ package com.ankamagames.dofus.console.debug
       private static const ARGUMENT_ERROR:String = "Wrong number of arguments";
       
       private static const COMMAND_ABORTED_ERROR:String = "Aborting";
-      
-      private static const DUMP_STATS_ARGUMENT:String = "stats";
-      
-      private static const DUMP_STAT_ARGUMENT:String = "stat";
       
       private static const DIFF_ADD_COLOR:String = "#00ff00";
       
@@ -166,7 +163,7 @@ package com.ankamagames.dofus.console.debug
       
       private static function getFullHelp() : String
       {
-         return "<b>Manage stats</b> via the <b>stats manager</b>.\n\n" + "<b>Display help:</b>\n" + "\t/" + BASE_COMMAND + "\n" + "\t/" + BASE_COMMAND + "<b> " + HELP_COMMAND + "</b>\n\n" + "<b>Dump entity stats (or a specific one):</b>\n" + "\t/" + BASE_COMMAND + " <b>" + DUMP_COMMAND + "</b>" + " <b>" + DUMP_STATS_ARGUMENT + "</b> [<b>ENTITY ID</b>]\n\n" + "\t/" + BASE_COMMAND + " <b>" + DUMP_COMMAND + "</b>" + " <b>" + DUMP_STAT_ARGUMENT + "</b> [<b>ENTITY ID</b>] [<b>STAT ID</b>]\n\n" + "<b>Enable verbose mode:</b>\n" + "\t/" + BASE_COMMAND + " <b>" + VERBOSE_COMMAND + "</b> [<b>VALUE</b>]\n\n" + "\t- <b>VALUE</b> is either \'<b>true</b> or <b>false</b>, depending on what you want to do.\n\n";
+         return "<b>Manage stats</b> via the <b>stats manager</b>.\n\n" + "<b>Display help:</b>\n" + "\t/" + BASE_COMMAND + "\n" + "\t/" + BASE_COMMAND + "<b> " + HELP_COMMAND + "</b>\n\n" + "<b>Dump entity stats (or a specific one):</b>\n" + "\t/" + BASE_COMMAND + " <b>" + DUMP_COMMAND + "</b> [<b>ENTITY ID|*</b>]\n\n" + "\t/" + BASE_COMMAND + " <b>" + DUMP_COMMAND + "</b> [<b>ENTITY ID|*</b>] [<b>STAT ID</b>]\n\n" + "<b>Enable verbose mode:</b>\n" + "\t/" + BASE_COMMAND + " <b>" + VERBOSE_COMMAND + "</b> [<b>VALUE</b>]\n\n" + "\t- <b>VALUE</b> is either \'<b>true</b> or <b>false</b>, depending on what you want to do.\n\n";
       }
       
       private static function displayError(consoleHandler:ConsoleHandler, errorMessage:String, isHelp:Boolean = false) : void
@@ -181,26 +178,20 @@ package com.ankamagames.dofus.console.debug
       
       private static function handleDumpCommand(consoleHandler:ConsoleHandler, args:Array) : Boolean
       {
-         var statId:Number = NaN;
-         var stat:EntityStat = null;
-         if(args.length < 3 || args.length > 4)
+         var entityId:Number = NaN;
+         if(args.length < 2 || args.length > 3)
          {
             displayError(consoleHandler,ARGUMENT_ERROR,true);
             return false;
          }
-         var dumpCommand:String = args[1];
-         if(!dumpCommand)
+         if(args[1] === "*")
          {
-            displayError(consoleHandler,ARGUMENT_ERROR,true);
-            return false;
+            entityId = PlayedCharacterManager.getInstance().id;
          }
-         dumpCommand = dumpCommand.toLowerCase();
-         if(dumpCommand !== DUMP_STATS_ARGUMENT && dumpCommand !== DUMP_STAT_ARGUMENT)
+         else
          {
-            displayError(consoleHandler,"The parameter should be either: \"" + DUMP_STATS_ARGUMENT + "\" or \"" + DUMP_STAT_ARGUMENT + "\".",true);
-            return false;
+            entityId = Number(args[1]);
          }
-         var entityId:Number = Number(args[2]);
          if(isNaN(entityId))
          {
             displayError(consoleHandler,"The entity ID provided could not be parsed: \"" + args[2] + "\"",true);
@@ -218,42 +209,25 @@ package com.ankamagames.dofus.console.debug
             consoleHandler.output("<b>No stats were given to the entity.</b>",ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
             return true;
          }
-         if(dumpCommand === DUMP_STATS_ARGUMENT)
+         if(args.length === 2)
          {
-            if(args.length !== 3)
-            {
-               displayError(consoleHandler,"Only an entity ID should be given with the \"" + DUMP_STATS_ARGUMENT + "\" parameter",true);
-               return false;
-            }
             consoleHandler.output(entityStats.toString(),ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
+            return true;
+         }
+         var statId:Number = Number(args[2]);
+         if(isNaN(statId))
+         {
+            displayError(consoleHandler,"The stat ID provided could not be parsed: \"" + args[2] + "\"",true);
+            return false;
+         }
+         var stat:Stat = entityStats.getStat(statId);
+         if(stat === null)
+         {
+            consoleHandler.output("<b>No stat was given with this ID.</b>",ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
          }
          else
          {
-            if(dumpCommand !== DUMP_STAT_ARGUMENT)
-            {
-               displayError(consoleHandler,"You must specify either \"" + DUMP_STATS_ARGUMENT + "\" or \"" + DUMP_STAT_ARGUMENT + "\"",true);
-               return false;
-            }
-            if(args.length !== 4)
-            {
-               displayError(consoleHandler,"An entity ID and a stat ID should be given with the \"" + DUMP_STAT_ARGUMENT + "\" parameter",true);
-               return false;
-            }
-            statId = Number(args[3]);
-            if(isNaN(statId))
-            {
-               displayError(consoleHandler,"The stat ID provided could not be parsed: \"" + args[3] + "\"",true);
-               return false;
-            }
-            stat = entityStats.getStat(statId) as EntityStat;
-            if(stat === null)
-            {
-               consoleHandler.output("<b>No stat was given with this ID.</b>",ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
-            }
-            else
-            {
-               consoleHandler.output(stat.toString(),ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
-            }
+            consoleHandler.output(stat.toString(),ConsoleMessageTypeEnum.CONSOLE_INFO_MESSAGE);
          }
          return true;
       }

@@ -73,10 +73,6 @@ package com.ankamagames.dofus.datacenter.monsters
       
       public var fastAnimsFun:Boolean;
       
-      public var incompatibleIdols:Vector.<uint>;
-      
-      public var allIdolsDisabled:Boolean;
-      
       public var incompatibleChallenges:Vector.<uint>;
       
       public var useRaceValues:Boolean;

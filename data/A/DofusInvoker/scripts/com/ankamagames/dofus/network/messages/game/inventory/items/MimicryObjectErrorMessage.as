@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class MimicryObjectErrorMessage extends SymbioticObjectErrorMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8051;
+      public static const protocolId:uint = 5728;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 8051;
+         return 5728;
       }
       
       public function initMimicryObjectErrorMessage(reason:int = 0, errorCode:int = 0, preview:Boolean = false) : MimicryObjectErrorMessage

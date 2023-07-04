@@ -10,7 +10,6 @@ package com.ankamagames.dofus.misc.stats.custom
    import com.ankamagames.dofus.logic.common.actions.ChangeServerAction;
    import com.ankamagames.dofus.logic.common.actions.ResetGameAction;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
-   import com.ankamagames.dofus.logic.game.common.actions.OpenIdolsAction;
    import com.ankamagames.dofus.logic.game.common.actions.mount.MountToggleRidingRequestAction;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.fight.actions.GameFightSpellCastAction;
@@ -60,7 +59,6 @@ package com.ankamagames.dofus.misc.stats.custom
          "fake_1":"subQuestUi",
          "openTitle":"titleTab",
          "openBestiary":"encyclopediaBase",
-         "openIdols":null,
          "openBookAlignment":"alignmentTab",
          "openHavenbag":null,
          "openBuild":"characterBuildsUi",
@@ -238,10 +236,6 @@ package com.ankamagames.dofus.misc.stats.custom
             {
                this.onNoUiShortcut(ShortcutHookListEnum.TOGGLE_RIDE);
             }
-         }
-         else if(pMessage is OpenIdolsAction)
-         {
-            this.onNoUiShortcut(ShortcutHookListEnum.OPEN_IDOLS);
          }
          else if(pMessage is HavenbagEnterAction)
          {

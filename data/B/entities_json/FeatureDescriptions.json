@@ -90,7 +90,7 @@
 		{
 			"id": 8,
 			"nameId": 862806,
-			"descriptionId": 1001204,
+			"descriptionId": 1001360,
 			"priority": 1,
 			"parentId": 7,
 			"children": [
@@ -112,7 +112,7 @@
 		{
 			"id": 10,
 			"nameId": 862808,
-			"descriptionId": 997546,
+			"descriptionId": 1012456,
 			"priority": 1,
 			"parentId": 7,
 			"children": [
@@ -229,7 +229,7 @@
 		{
 			"id": 22,
 			"nameId": 862824,
-			"descriptionId": 880506,
+			"descriptionId": 1007209,
 			"priority": 1,
 			"parentId": 0,
 			"children": [],
@@ -651,7 +651,7 @@
 		{
 			"id": 67,
 			"nameId": 865006,
-			"descriptionId": 1001768,
+			"descriptionId": 1004047,
 			"priority": 1,
 			"parentId": 0,
 			"children": [
@@ -689,7 +689,7 @@
 		{
 			"id": 69,
 			"nameId": 865030,
-			"descriptionId": 881107,
+			"descriptionId": 1012455,
 			"priority": 1,
 			"parentId": 67,
 			"children": [],
@@ -716,7 +716,7 @@
 		{
 			"id": 72,
 			"nameId": 865066,
-			"descriptionId": 880513,
+			"descriptionId": 1012080,
 			"priority": 1,
 			"parentId": 67,
 			"children": [],
@@ -1056,7 +1056,7 @@
 		{
 			"id": 107,
 			"nameId": 865479,
-			"descriptionId": 1001596,
+			"descriptionId": 1002166,
 			"priority": 1,
 			"parentId": 106,
 			"children": [],
@@ -1083,7 +1083,7 @@
 		{
 			"id": 111,
 			"nameId": 865527,
-			"descriptionId": 1000058,
+			"descriptionId": 1000130,
 			"priority": 1,
 			"parentId": 0,
 			"children": [],
@@ -1286,7 +1286,7 @@
 		{
 			"id": 133,
 			"nameId": 865794,
-			"descriptionId": 1001597,
+			"descriptionId": 1002167,
 			"priority": 1,
 			"parentId": 7,
 			"children": [],
@@ -1328,15 +1328,6 @@
 			"descriptionId": 874549,
 			"priority": 1,
 			"parentId": 135,
-			"children": [],
-			"criterion": "null"
-		},
-		{
-			"id": 138,
-			"nameId": 865858,
-			"descriptionId": 880804,
-			"priority": 1,
-			"parentId": 0,
 			"children": [],
 			"criterion": "null"
 		},
@@ -1403,7 +1394,7 @@
 		{
 			"id": 145,
 			"nameId": 865943,
-			"descriptionId": 881087,
+			"descriptionId": 1012081,
 			"priority": 1,
 			"parentId": 0,
 			"children": [
@@ -1646,7 +1637,7 @@
 		{
 			"id": 170,
 			"nameId": 866234,
-			"descriptionId": 1001762,
+			"descriptionId": 1003917,
 			"priority": 1,
 			"parentId": 161,
 			"children": [],
@@ -2100,7 +2091,7 @@
 		{
 			"id": 229,
 			"nameId": 918222,
-			"descriptionId": 918460,
+			"descriptionId": 1008019,
 			"priority": 3,
 			"parentId": 226,
 			"children": [],
@@ -2172,7 +2163,7 @@
 		{
 			"id": 237,
 			"nameId": 968413,
-			"descriptionId": 970991,
+			"descriptionId": 1012727,
 			"priority": 1,
 			"parentId": 0,
 			"children": [],
