@@ -145,7 +145,7 @@ package com.ankamagames.dofus.internalDatacenter.fight
       
       public function get backgroundColor() : uint
       {
-         if(this.categoryId == EnumChallengeCategory.ACHIEVEMENT)
+         if(EnumChallengeCategory.isAchievementCategoryId(this.categoryId))
          {
             return XmlConfig.getInstance().getEntry("colors.challenge.achievement");
          }

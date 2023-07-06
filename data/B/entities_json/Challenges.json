@@ -7221,7 +7221,7 @@
 			"categoryId": 1,
 			"iconId": 973,
 			"completionCriterion": "TD<1,hc0,k1",
-			"activationCriterion": "GL>5,0",
+			"activationCriterion": "GN>1,1&GL>4,0",
 			"targetMonsterId": 0
 		},
 		{

@@ -51,7 +51,7 @@ package com.ankamagames.dofus.logic.common.managers
          {
             return;
          }
-         if(challenge.categoryId === EnumChallengeCategory.ACHIEVEMENT)
+         if(EnumChallengeCategory.isAchievementCategoryId(challenge.categoryId))
          {
             achievements = challenge.boundAchievements;
             params = {
