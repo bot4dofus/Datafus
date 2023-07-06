@@ -5,7 +5,13 @@ package com.ankamagames.dofus.internalDatacenter.fight
       
       public static const FIGHT:uint = 1;
       
-      public static const ACHIEVEMENT:uint = 3;
+      public static const ACHIEVEMENT_DUNGEON:uint = 3;
+      
+      public static const ACHIEVEMENT_ANOMALY:uint = 9;
+      
+      public static const ACHIEVEMENT_COMPANION:uint = 11;
+      
+      public static const ACHIEVEMENT_EXPEDITION:uint = 10;
       
       public static const PANDALA:uint = 4;
       
@@ -15,6 +21,11 @@ package com.ankamagames.dofus.internalDatacenter.fight
       public function EnumChallengeCategory()
       {
          super();
+      }
+      
+      public static function isAchievementCategoryId(id:uint) : Boolean
+      {
+         return id == ACHIEVEMENT_DUNGEON || id == ACHIEVEMENT_ANOMALY || id == ACHIEVEMENT_COMPANION || id == ACHIEVEMENT_EXPEDITION;
       }
    }
 }

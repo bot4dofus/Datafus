@@ -203,8 +203,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var gcka:GameContextKickAction = null;
          var gckmsg:GameContextKickMessage = null;
          var gfutmsg:GameFightUpdateTeamMessage = null;
-         var gfutmsg_myId:Number = NaN;
-         var alreadyInTeam:Boolean = false;
+         var myTeam:Boolean = false;
+         var playerId:Number = NaN;
          var gfrtmmsg:GameFightRemoveTeamMemberMessage = null;
          var indexOfCharToRemove:int = 0;
          var gfemsg2:GameFightEndMessage = null;
@@ -433,25 +433,24 @@ package com.ankamagames.dofus.logic.game.fight.frames
                return true;
             case msg is GameFightUpdateTeamMessage:
                gfutmsg = msg as GameFightUpdateTeamMessage;
-               gfutmsg_myId = PlayedCharacterManager.getInstance().id;
-               alreadyInTeam = false;
+               playerId = PlayedCharacterManager.getInstance().id;
                for each(teamMember in gfutmsg.team.teamMembers)
                {
-                  if(teamMember.id == gfutmsg_myId)
+                  if(teamMember.id == playerId)
                   {
-                     alreadyInTeam = true;
+                     myTeam = true;
                   }
                   if(this._fightersId.indexOf(teamMember.id) == -1)
                   {
                      this._fightersId.push(teamMember.id);
                   }
                }
-               if(alreadyInTeam || gfutmsg.team.teamMembers.length >= 1 && gfutmsg.team.teamMembers[0].id == gfutmsg_myId)
+               if(gfutmsg.team && (myTeam || this._fightContextFrame.entitiesFrame.getEntityInfos(playerId) && this._fightContextFrame.entitiesFrame.getEntityTeamId(playerId) == gfutmsg.team.teamId))
                {
                   PlayedCharacterManager.getInstance().teamId = gfutmsg.team.teamId;
-                  this._fightContextFrame.isFightLeader = gfutmsg.team.leaderId == gfutmsg_myId;
+                  this._fightContextFrame.isFightLeader = gfutmsg.team.leaderId == playerId;
                   this._fightContextFrame.fightLeader = this._fightContextFrame.entitiesFrame.getEntityInfos(gfutmsg.team.leaderId);
-                  KernelEventsManager.getInstance().processCallback(FightHookList.FightLeader);
+                  KernelEventsManager.getInstance().processCallback(FightHookList.FightLeader,this._fightContextFrame.challengeMod);
                }
                return true;
             case msg is GameFightRemoveTeamMemberMessage:
