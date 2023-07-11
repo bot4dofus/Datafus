@@ -223,7 +223,7 @@ package com.ankamagames.dofus.logic.game.common.managers
          KernelEventsManager.getInstance().processCallback(SocialHookList.AllianceFightsUpdate);
       }
       
-      public function addFightingEntity(pMapId:uint, pFightId:uint, pFightType:uint, pPhaseFight:uint, pNextPhaseTime:Number) : void
+      public function addFightingEntity(pMapId:Number, pFightId:uint, pFightType:uint, pPhaseFight:uint, pNextPhaseTime:Number) : void
       {
          var data:Dictionary = this.getFightingList(pFightType);
          if(!data[pMapId])
@@ -237,23 +237,23 @@ package com.ankamagames.dofus.logic.game.common.managers
          KernelEventsManager.getInstance().processCallback(SocialHookList.AllianceFightAdded,pMapId,pFightType);
       }
       
-      public function removeFightingEntity(pFightId:uint, pFightType:uint) : void
+      public function removeFightingEntity(pFightUniqueId:String, pFightType:uint) : void
       {
-         var fight:SocialEntityInFightWrapper = this.getFightingEntityById(pFightId,pFightType);
+         var fight:SocialEntityInFightWrapper = this.getFightingEntityById(pFightUniqueId,pFightType);
          var data:Dictionary = this.getFightingList(pFightType);
          if(fight)
          {
             delete data[fight.mapId];
          }
-         KernelEventsManager.getInstance().processCallback(SocialHookList.AllianceFightRemoved,pFightId);
+         KernelEventsManager.getInstance().processCallback(SocialHookList.AllianceFightRemoved,pFightUniqueId);
       }
       
-      public function addFighter(pFightId:uint, pFightType:uint, pPlayerInfo:CharacterMinimalPlusLookInformations, pTeam:uint) : void
+      public function addFighter(pFightUniqueId:String, pFightType:uint, pPlayerInfo:CharacterMinimalPlusLookInformations, pTeam:uint) : void
       {
          var fighters:Array = null;
          var alreadyFighting:SocialFightersWrapper = null;
          var fighter:SocialFightersWrapper = SocialFightersWrapper.create(pTeam,pPlayerInfo);
-         var fight:SocialEntityInFightWrapper = this.getFightingEntityById(pFightId,pFightType);
+         var fight:SocialEntityInFightWrapper = this.getFightingEntityById(pFightUniqueId,pFightType);
          if(pTeam == TeamEnum.TEAM_CHALLENGER)
          {
             fighters = fight.enemyCharactersInformations;
@@ -278,13 +278,13 @@ package com.ankamagames.dofus.logic.game.common.managers
          {
             fight.updateEntityLook(fighter.playerCharactersInformations);
          }
-         KernelEventsManager.getInstance().processCallback(SocialHookList.AllianceFightMemberUpdated,pFightId,pFightType);
+         KernelEventsManager.getInstance().processCallback(SocialHookList.AllianceFightMemberUpdated,pFightUniqueId,pFightType);
       }
       
-      public function removeFighter(pFightId:uint, pFightType:uint, pPlayerId:uint) : void
+      public function removeFighter(fightUniqueId:String, pFightType:uint, pPlayerId:uint) : void
       {
          var fighter:SocialFightersWrapper = null;
-         var fight:SocialEntityInFightWrapper = this.getFightingEntityById(pFightId,pFightType);
+         var fight:SocialEntityInFightWrapper = this.getFightingEntityById(fightUniqueId,pFightType);
          for each(fighter in fight.allyCharactersInformations)
          {
             if(fighter.playerCharactersInformations.id == pPlayerId)
@@ -299,23 +299,23 @@ package com.ankamagames.dofus.logic.game.common.managers
                fight.enemyCharactersInformations.removeAt(fight.enemyCharactersInformations.indexOf(fighter));
             }
          }
-         KernelEventsManager.getInstance().processCallback(SocialHookList.AllianceFightMemberUpdated,pFightId,pFightType);
+         KernelEventsManager.getInstance().processCallback(SocialHookList.AllianceFightMemberUpdated,fightUniqueId,pFightType);
       }
       
-      public function updatePhase(pFightId:uint, pFightType:uint, pFightPhase:uint, pTimeNextPhase:uint = 0) : void
+      public function updatePhase(fightUniqueId:String, pFightType:uint, pFightPhase:uint, pTimeNextPhase:uint = 0) : void
       {
-         var fight:SocialEntityInFightWrapper = this.getFightingEntityById(pFightId,pFightType);
+         var fight:SocialEntityInFightWrapper = this.getFightingEntityById(fightUniqueId,pFightType);
          fight.update(fight.typeId,fight.mapId,fight.fightId,fight.allyCharactersInformations,fight.enemyCharactersInformations,pFightPhase,pTimeNextPhase);
-         KernelEventsManager.getInstance().processCallback(SocialHookList.AllianceFightStateUpdate,pFightId,pFightType);
+         KernelEventsManager.getInstance().processCallback(SocialHookList.AllianceFightStateUpdate,fightUniqueId,pFightType);
       }
       
-      public function getFightingEntityById(fightId:uint, fightType:uint) : SocialEntityInFightWrapper
+      public function getFightingEntityById(fightUniqueId:String, fightType:uint) : SocialEntityInFightWrapper
       {
          var fight:SocialEntityInFightWrapper = null;
          var data:Dictionary = this.getFightingList(fightType);
          for each(fight in data)
          {
-            if(fight.fightId == fightId)
+            if(fight.getFightUniqueId() == fightUniqueId)
             {
                return fight;
             }
