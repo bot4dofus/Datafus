@@ -16163,9 +16163,9 @@
 		},
 		{
 			"id": 948,
-			"nameId": 373233,
+			"nameId": 1018114,
 			"categoryId": 60,
-			"descriptionId": 853087,
+			"descriptionId": 1018120,
 			"iconId": 251,
 			"points": 10,
 			"level": 50,
@@ -22687,11 +22687,12 @@
 			"iconId": 82,
 			"points": 30,
 			"level": 200,
-			"order": 46,
+			"order": 47,
 			"accountLinked": false,
 			"objectiveIds": [
 				4524,
-				14030
+				14030,
+				14044
 			],
 			"rewardIds": [
 				2265,
@@ -63713,6 +63714,86 @@
 			]
 		},
 		{
+			"id": 6274,
+			"nameId": 1018125,
+			"categoryId": 60,
+			"descriptionId": 1018131,
+			"iconId": 251,
+			"points": 10,
+			"level": 50,
+			"order": 5,
+			"accountLinked": false,
+			"objectiveIds": [
+				14032,
+				14033
+			],
+			"rewardIds": [
+				11129,
+				11130,
+				11131
+			]
+		},
+		{
+			"id": 6275,
+			"nameId": 1018148,
+			"categoryId": 60,
+			"descriptionId": 1018154,
+			"iconId": 251,
+			"points": 10,
+			"level": 100,
+			"order": 12,
+			"accountLinked": false,
+			"objectiveIds": [
+				14034,
+				14035
+			],
+			"rewardIds": [
+				11132,
+				11133,
+				11134
+			]
+		},
+		{
+			"id": 6276,
+			"nameId": 1018171,
+			"categoryId": 60,
+			"descriptionId": 1018177,
+			"iconId": 251,
+			"points": 10,
+			"level": 150,
+			"order": 19,
+			"accountLinked": false,
+			"objectiveIds": [
+				14036,
+				14037
+			],
+			"rewardIds": [
+				11135,
+				11136,
+				11137
+			]
+		},
+		{
+			"id": 6277,
+			"nameId": 1018194,
+			"categoryId": 60,
+			"descriptionId": 1018428,
+			"iconId": 251,
+			"points": 10,
+			"level": 200,
+			"order": 26,
+			"accountLinked": false,
+			"objectiveIds": [
+				14038,
+				14039
+			],
+			"rewardIds": [
+				11138,
+				11139,
+				11140
+			]
+		},
+		{
 			"id": 6283,
 			"nameId": 1011625,
 			"categoryId": 116,
@@ -63733,6 +63814,27 @@
 				11106,
 				11107,
 				11108
+			]
+		},
+		{
+			"id": 6284,
+			"nameId": 1018218,
+			"categoryId": 60,
+			"descriptionId": 1018224,
+			"iconId": 82,
+			"points": 20,
+			"level": 200,
+			"order": 46,
+			"accountLinked": false,
+			"objectiveIds": [
+				14040,
+				14041,
+				14042,
+				14043
+			],
+			"rewardIds": [
+				11144,
+				11145
 			]
 		}
 	]

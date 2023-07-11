@@ -330,9 +330,9 @@ package com.ankamagames.dofus.uiApi
          return SocialEntitiesManager.getInstance().taxCollectorsInFight;
       }
       
-      public function getFightingTaxCollector(pFightId:Number) : SocialEntityInFightWrapper
+      public function getFightingTaxCollector(pFightUniqueId:String) : SocialEntityInFightWrapper
       {
-         return SocialEntitiesManager.getInstance().getFightingEntityById(pFightId,SocialFightTypeEnum.TaxCollectorFight);
+         return SocialEntitiesManager.getInstance().getFightingEntityById(pFightUniqueId,SocialFightTypeEnum.TaxCollectorFight);
       }
       
       public function hasAlliance() : Boolean

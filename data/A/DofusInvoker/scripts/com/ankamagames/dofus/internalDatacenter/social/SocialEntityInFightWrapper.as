@@ -59,6 +59,11 @@ package com.ankamagames.dofus.internalDatacenter.social
          return item;
       }
       
+      public static function fightUniqueId(mapId:Number, fightId:int) : String
+      {
+         return mapId + "" + fightId;
+      }
+      
       public function update(pType:int, pMapId:Number, pFightId:Number, pAllies:Array, pEnemies:Array, pFightPhase:uint, pNextPhaseTime:Number = 0) : void
       {
          var ally:SocialFightersWrapper = null;

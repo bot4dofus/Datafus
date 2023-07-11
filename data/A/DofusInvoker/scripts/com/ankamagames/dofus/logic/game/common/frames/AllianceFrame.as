@@ -10,6 +10,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.internalDatacenter.conquest.AllianceOnTheHillWrapper;
    import com.ankamagames.dofus.internalDatacenter.conquest.PrismSubAreaWrapper;
    import com.ankamagames.dofus.internalDatacenter.social.AllianceWrapper;
+   import com.ankamagames.dofus.internalDatacenter.social.SocialEntityInFightWrapper;
    import com.ankamagames.dofus.internalDatacenter.social.TaxCollectorWrapper;
    import com.ankamagames.dofus.internalDatacenter.world.WorldPointWrapper;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
@@ -386,7 +387,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                {
                   this.currentJoinedFight = affamsg.allianceFightInfo;
                }
-               SocialEntitiesManager.getInstance().addFighter(affamsg.allianceFightInfo.fightId,affamsg.allianceFightInfo.fightType,affamsg.fighter,affamsg.team);
+               SocialEntitiesManager.getInstance().addFighter(SocialEntityInFightWrapper.fightUniqueId(affamsg.allianceFightInfo.mapId,affamsg.allianceFightInfo.fightId),affamsg.allianceFightInfo.fightType,affamsg.fighter,affamsg.team);
                return true;
             case msg is AllianceFightFighterRemovedMessage:
                affrmsg = msg as AllianceFightFighterRemovedMessage;
@@ -394,7 +395,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                {
                   this.currentJoinedFight = null;
                }
-               SocialEntitiesManager.getInstance().removeFighter(affrmsg.allianceFightInfo.fightId,affrmsg.allianceFightInfo.fightType,affrmsg.fighterId);
+               SocialEntitiesManager.getInstance().removeFighter(SocialEntityInFightWrapper.fightUniqueId(affrmsg.allianceFightInfo.mapId,affrmsg.allianceFightInfo.fightId),affrmsg.allianceFightInfo.fightType,affrmsg.fighterId);
                return true;
             case msg is AllianceFightStartedMessage:
                afsmsg = msg as AllianceFightStartedMessage;
@@ -406,11 +407,11 @@ package com.ankamagames.dofus.logic.game.common.frames
                {
                   this.currentJoinedFight = null;
                }
-               SocialEntitiesManager.getInstance().removeFightingEntity(affmsg.allianceFightInfo.fightId,affmsg.allianceFightInfo.fightType);
+               SocialEntitiesManager.getInstance().removeFightingEntity(SocialEntityInFightWrapper.fightUniqueId(affmsg.allianceFightInfo.mapId,affmsg.allianceFightInfo.fightId),affmsg.allianceFightInfo.fightType);
                return true;
             case msg is AllianceFightPhaseUpdateMessage:
                afpumsg = msg as AllianceFightPhaseUpdateMessage;
-               SocialEntitiesManager.getInstance().updatePhase(afpumsg.allianceFightInfo.fightId,afpumsg.allianceFightInfo.fightType,afpumsg.newPhase.phase,afpumsg.newPhase.phaseEndTimeStamp);
+               SocialEntitiesManager.getInstance().updatePhase(SocialEntityInFightWrapper.fightUniqueId(afpumsg.allianceFightInfo.mapId,afpumsg.allianceFightInfo.fightId),afpumsg.allianceFightInfo.fightType,afpumsg.newPhase.phase,afpumsg.newPhase.phaseEndTimeStamp);
                return true;
             case msg is SocialFightJoinRequestAction:
                sfjra = msg as SocialFightJoinRequestAction;

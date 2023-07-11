@@ -131989,6 +131989,18 @@
 			"nameId": 1013608,
 			"bonusIsSecret": false,
 			"effects": []
+		},
+		{
+			"id": 742,
+			"items": [
+				28563,
+				28564,
+				28565,
+				28566
+			],
+			"nameId": 1018405,
+			"bonusIsSecret": false,
+			"effects": []
 		}
 	]
 }
