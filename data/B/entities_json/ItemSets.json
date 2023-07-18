@@ -132001,6 +132001,16 @@
 			"nameId": 1018405,
 			"bonusIsSecret": false,
 			"effects": []
+		},
+		{
+			"id": 744,
+			"items": [
+				28482,
+				29031
+			],
+			"nameId": 1018448,
+			"bonusIsSecret": false,
+			"effects": []
 		}
 	]
 }
