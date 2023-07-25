@@ -53,9 +53,9 @@
 			"nameId": 742,
 			"descriptionId": 1008205,
 			"incompatibleChallenges": [
-				805,
 				811,
 				8,
+				805,
 				2
 			],
 			"categoryId": 1,
@@ -70,19 +70,19 @@
 			"descriptionId": 1008206,
 			"incompatibleChallenges": [
 				1,
-				805,
 				8,
 				36,
-				39,
-				37,
-				815,
 				813,
-				807,
-				488,
+				39,
 				40,
 				808,
+				815,
+				37,
+				805,
+				807,
 				971,
-				973
+				973,
+				488
 			],
 			"categoryId": 1,
 			"iconId": 2,
@@ -95,16 +95,16 @@
 			"nameId": 851058,
 			"descriptionId": 1015797,
 			"incompatibleChallenges": [
-				35,
-				25,
-				468,
-				595,
-				4,
 				34,
-				467,
 				594,
+				25,
 				10,
+				4,
+				595,
 				967,
+				468,
+				467,
+				35,
 				32
 			],
 			"categoryId": 1,
@@ -119,16 +119,16 @@
 			"descriptionId": 1015798,
 			"incompatibleChallenges": [
 				3,
-				34,
-				25,
+				595,
 				10,
+				25,
+				34,
+				32,
+				35,
+				594,
 				468,
 				467,
-				594,
-				35,
-				967,
-				32,
-				595
+				967
 			],
 			"categoryId": 1,
 			"iconId": 4,
@@ -141,18 +141,18 @@
 			"nameId": 800,
 			"descriptionId": 1008209,
 			"incompatibleChallenges": [
-				7,
-				24,
-				6,
-				816,
-				16,
-				15,
 				14,
-				12,
+				6,
+				7,
 				9,
+				12,
+				15,
+				16,
+				24,
+				41,
 				810,
 				812,
-				41
+				816
 			],
 			"categoryId": 1,
 			"iconId": 5,
@@ -197,12 +197,12 @@
 			"incompatibleChallenges": [
 				5,
 				7,
+				16,
+				18,
+				22,
 				12,
 				11,
-				15,
-				16,
-				22,
-				18
+				15
 			],
 			"categoryId": 1,
 			"iconId": 9,
@@ -217,14 +217,14 @@
 			"incompatibleChallenges": [
 				3,
 				4,
-				34,
-				967,
-				25,
-				468,
 				467,
-				594,
+				25,
+				967,
+				468,
 				35,
 				32,
+				34,
+				594,
 				595
 			],
 			"categoryId": 1,
@@ -251,12 +251,12 @@
 			"nameId": 748,
 			"descriptionId": 1008215,
 			"incompatibleChallenges": [
-				975,
 				976,
 				33,
-				47,
 				49,
-				487
+				975,
+				487,
+				47
 			],
 			"categoryId": 1,
 			"iconId": 17,
@@ -270,8 +270,8 @@
 			"descriptionId": 1008216,
 			"incompatibleChallenges": [
 				29,
-				30,
 				48,
+				30,
 				28
 			],
 			"categoryId": 1,
@@ -302,14 +302,14 @@
 				3,
 				4,
 				10,
+				32,
 				467,
-				967,
 				594,
 				468,
-				32,
 				34,
-				595,
-				35
+				967,
+				35,
+				595
 			],
 			"categoryId": 1,
 			"iconId": 25,
@@ -326,8 +326,8 @@
 				28,
 				29,
 				48,
-				44,
-				46
+				46,
+				44
 			],
 			"categoryId": 1,
 			"iconId": 30,
@@ -355,13 +355,13 @@
 				4,
 				10,
 				25,
-				967,
-				34,
-				467,
-				468,
 				594,
+				595,
+				467,
+				967,
 				35,
-				595
+				468,
+				34
 			],
 			"categoryId": 1,
 			"iconId": 32,
@@ -375,8 +375,8 @@
 			"descriptionId": 1012256,
 			"incompatibleChallenges": [
 				17,
-				818,
-				49
+				49,
+				818
 			],
 			"categoryId": 1,
 			"iconId": 33,
@@ -394,12 +394,12 @@
 				10,
 				25,
 				32,
-				596,
-				967,
-				35,
 				42,
+				967,
+				596,
 				595,
-				814
+				814,
+				35
 			],
 			"categoryId": 1,
 			"iconId": 34,
@@ -413,14 +413,14 @@
 			"descriptionId": 1008224,
 			"incompatibleChallenges": [
 				2,
-				481,
-				39,
-				815,
+				807,
 				40,
 				37,
+				39,
+				481,
 				488,
-				972,
-				807
+				815,
+				972
 			],
 			"categoryId": 1,
 			"iconId": 36,
@@ -435,10 +435,10 @@
 			"incompatibleChallenges": [
 				2,
 				36,
-				807,
+				39,
 				965,
 				40,
-				39
+				807
 			],
 			"categoryId": 1,
 			"iconId": 37,
@@ -482,11 +482,11 @@
 				36,
 				37,
 				39,
-				488,
-				972,
 				813,
 				807,
-				815
+				815,
+				488,
+				972
 			],
 			"categoryId": 1,
 			"iconId": 40,
@@ -500,8 +500,8 @@
 			"descriptionId": 1008229,
 			"incompatibleChallenges": [
 				34,
-				44,
 				973,
+				44,
 				46
 			],
 			"categoryId": 1,
@@ -519,10 +519,10 @@
 				29,
 				30,
 				42,
+				46,
 				814,
 				48,
-				596,
-				46
+				596
 			],
 			"categoryId": 1,
 			"iconId": 44,
@@ -554,9 +554,9 @@
 				42,
 				44,
 				45,
+				596,
 				48,
-				814,
-				596
+				814
 			],
 			"categoryId": 1,
 			"iconId": 46,
@@ -4728,10 +4728,10 @@
 			"descriptionId": 866631,
 			"incompatibleChallenges": [
 				458,
-				460,
 				459,
+				457,
 				461,
-				457
+				460
 			],
 			"categoryId": 4,
 			"iconId": 52,
@@ -4789,9 +4789,9 @@
 			"descriptionId": 844376,
 			"incompatibleChallenges": [
 				452,
-				458,
-				459,
 				461,
+				459,
+				458,
 				460
 			],
 			"categoryId": 4,
@@ -4807,8 +4807,8 @@
 			"incompatibleChallenges": [
 				452,
 				457,
-				460,
 				461,
+				460,
 				459
 			],
 			"categoryId": 4,
@@ -4825,8 +4825,8 @@
 				452,
 				457,
 				458,
-				461,
-				460
+				460,
+				461
 			],
 			"categoryId": 4,
 			"iconId": 55,
@@ -4911,8 +4911,8 @@
 				10,
 				25,
 				32,
-				595,
-				468
+				468,
+				595
 			],
 			"categoryId": 4,
 			"iconId": 72,
@@ -4942,23 +4942,23 @@
 		{
 			"id": 469,
 			"nameId": 847605,
-			"descriptionId": 847593,
+			"descriptionId": 1018449,
 			"incompatibleChallenges": [],
 			"categoryId": 4,
 			"iconId": 59,
-			"completionCriterion": "Ma=0",
-			"activationCriterion": "GM=1,6215,1",
+			"completionCriterion": "Ma=1",
+			"activationCriterion": "GM>0,6215,1&(GM>0,6212,1|GM>0,6213,1|GM>0,6216,1|GM>0,6217,1)",
 			"targetMonsterId": 0
 		},
 		{
 			"id": 470,
 			"nameId": 847606,
-			"descriptionId": 847641,
+			"descriptionId": 1018450,
 			"incompatibleChallenges": [],
 			"categoryId": 4,
 			"iconId": 60,
 			"completionCriterion": "Ma=1",
-			"activationCriterion": "GM=1,6214,1",
+			"activationCriterion": "GM>0,6214,1",
 			"targetMonsterId": 0
 		},
 		{
@@ -4987,14 +4987,7 @@
 			"id": 473,
 			"nameId": 849882,
 			"descriptionId": 847628,
-			"incompatibleChallenges": [
-				474,
-				475,
-				476,
-				477,
-				479,
-				480
-			],
+			"incompatibleChallenges": [],
 			"categoryId": 4,
 			"iconId": 65,
 			"completionCriterion": "Ma=1",
@@ -5005,14 +4998,7 @@
 			"id": 474,
 			"nameId": 847632,
 			"descriptionId": 850704,
-			"incompatibleChallenges": [
-				473,
-				475,
-				480,
-				479,
-				477,
-				476
-			],
+			"incompatibleChallenges": [],
 			"categoryId": 4,
 			"iconId": 66,
 			"completionCriterion": "Ma=0",
@@ -5023,14 +5009,7 @@
 			"id": 475,
 			"nameId": 849116,
 			"descriptionId": 1012261,
-			"incompatibleChallenges": [
-				473,
-				474,
-				479,
-				476,
-				477,
-				480
-			],
+			"incompatibleChallenges": [],
 			"categoryId": 4,
 			"iconId": 67,
 			"completionCriterion": "Ma=0",
@@ -5040,15 +5019,8 @@
 		{
 			"id": 476,
 			"nameId": 847642,
-			"descriptionId": 848275,
-			"incompatibleChallenges": [
-				473,
-				474,
-				475,
-				479,
-				480,
-				477
-			],
+			"descriptionId": 1018472,
+			"incompatibleChallenges": [],
 			"categoryId": 4,
 			"iconId": 68,
 			"completionCriterion": "Ma=0",
@@ -5058,29 +5030,22 @@
 		{
 			"id": 477,
 			"nameId": 847647,
-			"descriptionId": 849539,
-			"incompatibleChallenges": [
-				473,
-				474,
-				475,
-				476,
-				480,
-				479
-			],
+			"descriptionId": 1018465,
+			"incompatibleChallenges": [],
 			"categoryId": 4,
 			"iconId": 69,
-			"completionCriterion": "Ma=0",
-			"activationCriterion": "GM>0,6221,1",
+			"completionCriterion": "Ma=1",
+			"activationCriterion": "GM>0,6221,1|GM>0,2414,1",
 			"targetMonsterId": 0
 		},
 		{
 			"id": 478,
 			"nameId": 847650,
-			"descriptionId": 857335,
+			"descriptionId": 1018470,
 			"incompatibleChallenges": [],
 			"categoryId": 4,
 			"iconId": 76,
-			"completionCriterion": "Ma=0",
+			"completionCriterion": "Ma=1",
 			"activationCriterion": "GM>0,6217,1&(GM>0,6214,1|GM>0,6215,1|GM>0,6204,1)",
 			"targetMonsterId": 0
 		},
@@ -5088,14 +5053,7 @@
 			"id": 479,
 			"nameId": 847663,
 			"descriptionId": 847816,
-			"incompatibleChallenges": [
-				473,
-				474,
-				475,
-				476,
-				477,
-				480
-			],
+			"incompatibleChallenges": [],
 			"categoryId": 4,
 			"iconId": 70,
 			"completionCriterion": "Ma=1",
@@ -5106,14 +5064,7 @@
 			"id": 480,
 			"nameId": 849881,
 			"descriptionId": 847803,
-			"incompatibleChallenges": [
-				473,
-				474,
-				475,
-				476,
-				477,
-				479
-			],
+			"incompatibleChallenges": [],
 			"categoryId": 4,
 			"iconId": 71,
 			"completionCriterion": "Ma=0",
@@ -5137,12 +5088,12 @@
 		{
 			"id": 482,
 			"nameId": 848699,
-			"descriptionId": 848700,
+			"descriptionId": 1018452,
 			"incompatibleChallenges": [],
 			"categoryId": 4,
 			"iconId": 482,
-			"completionCriterion": "Ma=0",
-			"activationCriterion": "GM=1,6321,1&GN>1,1",
+			"completionCriterion": "Ma=1",
+			"activationCriterion": "GM>0,6321,1&GN>1,1",
 			"targetMonsterId": 0
 		},
 		{
@@ -5151,8 +5102,8 @@
 			"descriptionId": 848702,
 			"incompatibleChallenges": [
 				20,
-				817,
-				763
+				763,
+				817
 			],
 			"categoryId": 4,
 			"iconId": 483,
@@ -5166,8 +5117,8 @@
 			"descriptionId": 848704,
 			"incompatibleChallenges": [
 				20,
-				817,
-				763
+				763,
+				817
 			],
 			"categoryId": 4,
 			"iconId": 484,
@@ -5220,8 +5171,8 @@
 				36,
 				40,
 				811,
-				813,
-				808
+				808,
+				813
 			],
 			"categoryId": 4,
 			"iconId": 64,
@@ -5265,7 +5216,7 @@
 		{
 			"id": 492,
 			"nameId": 850806,
-			"descriptionId": 1008236,
+			"descriptionId": 1018451,
 			"incompatibleChallenges": [],
 			"categoryId": 1,
 			"iconId": 0,
@@ -5314,7 +5265,7 @@
 			"categoryId": 4,
 			"iconId": 489,
 			"completionCriterion": "Ma=1",
-			"activationCriterion": "GS>0,17295,0&GM>0,6389,1&(GM=1,6390,1|GM=1,6391,1|GM=1,6392,1|GM=1,6393,1|GM=1,6394,1)",
+			"activationCriterion": "GS>0,17295,0&GM>0,6389,1&(GM>0,6390,1|GM>0,6391,1|GM>0,6392,1|GM>0,6393,1|GM>0,6394,1)",
 			"targetMonsterId": 0
 		},
 		{
@@ -5852,10 +5803,10 @@
 				25,
 				32,
 				35,
+				596,
 				814,
 				967,
-				595,
-				596
+				595
 			],
 			"categoryId": 6,
 			"iconId": 34,
@@ -6254,9 +6205,9 @@
 				37,
 				40,
 				813,
+				815,
 				808,
-				811,
-				815
+				811
 			],
 			"categoryId": 6,
 			"iconId": 39,
@@ -6273,8 +6224,8 @@
 				488,
 				807,
 				815,
-				811,
-				813
+				813,
+				811
 			],
 			"categoryId": 6,
 			"iconId": 40,
@@ -7423,7 +7374,7 @@
 		{
 			"id": 989,
 			"nameId": 1009670,
-			"descriptionId": 1009671,
+			"descriptionId": 1018473,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 977,
@@ -7654,7 +7605,7 @@
 		{
 			"id": 1010,
 			"nameId": 1012216,
-			"descriptionId": 1012498,
+			"descriptionId": 1018466,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 977,
@@ -7830,7 +7781,7 @@
 		{
 			"id": 1026,
 			"nameId": 1012224,
-			"descriptionId": 1012331,
+			"descriptionId": 1018454,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 977,
@@ -8072,7 +8023,7 @@
 		{
 			"id": 1048,
 			"nameId": 1012233,
-			"descriptionId": 1009789,
+			"descriptionId": 1018474,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 977,
@@ -8160,7 +8111,7 @@
 		{
 			"id": 1056,
 			"nameId": 1009804,
-			"descriptionId": 1009805,
+			"descriptionId": 1018475,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 977,
@@ -8215,7 +8166,7 @@
 		{
 			"id": 1061,
 			"nameId": 1012240,
-			"descriptionId": 1011049,
+			"descriptionId": 1018455,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 977,
