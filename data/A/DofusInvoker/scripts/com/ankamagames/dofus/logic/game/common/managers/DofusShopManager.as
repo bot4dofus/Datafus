@@ -185,7 +185,7 @@ package com.ankamagames.dofus.logic.game.common.managers
             for each(data in payload.gondolahead_article)
             {
                article = new DofusShopArticle(data);
-               if(!article.hasExpired && !(article.category == TEMPORIS_CATEGORY && PlayerManager.getInstance().server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_TEMPORIS))
+               if(!article.hasExpired && !(article.category == TEMPORIS_CATEGORY && PlayerManager.getInstance().server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_TEMPORIS) && article.ingameCriterionIsRespected)
                {
                   gondolaArticles.push(article);
                }
@@ -227,7 +227,7 @@ package com.ankamagames.dofus.logic.game.common.managers
             for each(articleData in payload.articles)
             {
                article = new DofusShopArticle(articleData);
-               if(!article.hasExpired && !(article.category == TEMPORIS_CATEGORY && PlayerManager.getInstance().server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_TEMPORIS))
+               if(!article.hasExpired && !(article.category == TEMPORIS_CATEGORY && PlayerManager.getInstance().server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_TEMPORIS) && article.ingameCriterionIsRespected)
                {
                   articles.push(article);
                }
@@ -287,7 +287,7 @@ package com.ankamagames.dofus.logic.game.common.managers
             for each(articleData in payload.articles)
             {
                article = new DofusShopArticle(articleData);
-               if(!article.hasExpired && !(article.category == TEMPORIS_CATEGORY && PlayerManager.getInstance().server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_TEMPORIS))
+               if(!article.hasExpired && !(article.category == TEMPORIS_CATEGORY && PlayerManager.getInstance().server.gameTypeId != GameServerTypeEnum.SERVER_TYPE_TEMPORIS) && article.ingameCriterionIsRespected)
                {
                   articles.push(article);
                }

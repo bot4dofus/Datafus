@@ -28,6 +28,10 @@ package com.ankama.haapi.client.api
       public static const consumeById_GameIdEnum_13:String = "13";
       
       public static const consumeById_GameIdEnum_101:String = "101";
+      
+      public static const consumeById_GameIdEnum_102:String = "102";
+      
+      public static const consumeById_GameIdEnum_106:String = "106";
        
       
       public function KardApi(apiCredentials:ApiUserCredentials, eventDispatcher:EventDispatcher = null)

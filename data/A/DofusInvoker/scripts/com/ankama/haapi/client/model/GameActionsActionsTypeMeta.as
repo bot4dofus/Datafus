@@ -10,6 +10,8 @@ package com.ankama.haapi.client.model
       
       public var quantity:Number = 0;
       
+      public var context:GameActionsActionsContext = null;
+      
       public var theme_id:Number = 0;
       
       public var item_id:Number = 0;
@@ -52,6 +54,8 @@ package com.ankama.haapi.client.model
       
       public var shards:GameActionsShards = null;
       
+      public var item_type_id:Number = 0;
+      
       public function GameActionsActionsTypeMeta()
       {
          super();
@@ -63,6 +67,7 @@ package com.ankama.haapi.client.model
          str += " (destination_account_id: " + this.destination_account_id + ")";
          str += " (type: " + this.type + ")";
          str += " (quantity: " + this.quantity + ")";
+         str += " (context: " + this.context + ")";
          str += " (theme_id: " + this.theme_id + ")";
          str += " (item_id: " + this.item_id + ")";
          str += " (effect: " + this.effect + ")";
@@ -83,7 +88,8 @@ package com.ankama.haapi.client.model
          str += " (companion_xp: " + this.companion_xp + ")";
          str += " (pet_xp: " + this.pet_xp + ")";
          str += " (gems: " + this.gems + ")";
-         return str + (" (shards: " + this.shards + ")");
+         str += " (shards: " + this.shards + ")";
+         return str + (" (item_type_id: " + this.item_type_id + ")");
       }
    }
 }

@@ -16871,6 +16871,54 @@
 			"startDate": 0.0,
 			"endDate": 0.0,
 			"icon": "1222"
+		},
+		{
+			"id": 4121,
+			"nameId": 1018498,
+			"descriptionId": 1018499,
+			"categoryId": 13,
+			"level": 200,
+			"mapId": 74978817,
+			"isLarge": false,
+			"startDate": 0.0,
+			"endDate": 0.0,
+			"icon": "1223"
+		},
+		{
+			"id": 4122,
+			"nameId": 1018500,
+			"descriptionId": 1018501,
+			"categoryId": 13,
+			"level": 150,
+			"mapId": 74978821,
+			"isLarge": false,
+			"startDate": 0.0,
+			"endDate": 0.0,
+			"icon": "1223"
+		},
+		{
+			"id": 4123,
+			"nameId": 1018502,
+			"descriptionId": 1018503,
+			"categoryId": 13,
+			"level": 100,
+			"mapId": 74978819,
+			"isLarge": false,
+			"startDate": 0.0,
+			"endDate": 0.0,
+			"icon": "1223"
+		},
+		{
+			"id": 4124,
+			"nameId": 1018504,
+			"descriptionId": 1018505,
+			"categoryId": 13,
+			"level": 150,
+			"mapId": 74978823,
+			"isLarge": false,
+			"startDate": 0.0,
+			"endDate": 0.0,
+			"icon": "1223"
 		}
 	]
 }

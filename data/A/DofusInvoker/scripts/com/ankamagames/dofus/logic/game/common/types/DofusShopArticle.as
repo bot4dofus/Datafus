@@ -3,6 +3,7 @@ package com.ankamagames.dofus.logic.game.common.types
    import com.ankama.haapi.client.model.ShopMedia;
    import com.ankama.haapi.client.model.ShopPrice;
    import com.ankama.haapi.client.model.ShopPromo;
+   import com.ankamagames.dofus.datacenter.items.criterion.GroupItemCriterion;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.logic.game.common.managers.DofusShopManager;
    import com.ankamagames.jerakine.benchmark.BenchmarkTimer;
@@ -67,6 +68,8 @@ package com.ankamagames.dofus.logic.game.common.types
       private var _timerDisplay:String = "";
       
       protected var _availability:String;
+      
+      protected var _ingameCriterion:GroupItemCriterion = null;
       
       public function DofusShopArticle(data:Object)
       {
@@ -220,6 +223,10 @@ package com.ankamagames.dofus.logic.game.common.types
             this._imgNormal = data.image[1].url;
          }
          this._promo = data.promo;
+         if(data.hasOwnProperty("ingame_conditions") && data.ingame_conditions)
+         {
+            this._ingameCriterion = new GroupItemCriterion(data.ingame_conditions);
+         }
       }
       
       private function webStringToDate(dateStr:String) : Date
@@ -372,6 +379,15 @@ package com.ankamagames.dofus.logic.game.common.types
       public function get availability() : String
       {
          return this._availability;
+      }
+      
+      public function get ingameCriterionIsRespected() : Boolean
+      {
+         if(!this._ingameCriterion)
+         {
+            return true;
+         }
+         return this._ingameCriterion.isRespected;
       }
    }
 }

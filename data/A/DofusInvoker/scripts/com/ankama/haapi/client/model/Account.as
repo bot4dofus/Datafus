@@ -104,6 +104,8 @@ package com.ankama.haapi.client.model
       
       public var avatar_url:String = null;
       
+      public var fixed_country:String = null;
+      
       public function Account()
       {
          this.security = new Vector.<String>();
@@ -134,7 +136,8 @@ package com.ankama.haapi.client.model
          str += " (secure_info: " + this.secure_info + ")";
          str += " (email: " + this.email + ")";
          str += " (gsm: " + this.gsm + ")";
-         return str + (" (avatar_url: " + this.avatar_url + ")");
+         str += " (avatar_url: " + this.avatar_url + ")";
+         return str + (" (fixed_country: " + this.fixed_country + ")");
       }
    }
 }
