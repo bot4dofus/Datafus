@@ -1,10 +1,12 @@
 package com.ankama.haapi.client.api
 {
    import com.ankama.haapi.client.ApiInvokerHelper;
+   import com.ankama.haapi.client.model.AccessToken;
    import com.ankama.haapi.client.model.Account;
    import com.ankama.haapi.client.model.AccountOrigin;
    import com.ankama.haapi.client.model.AccountPublicStatus;
    import com.ankama.haapi.client.model.Avatar;
+   import com.ankama.haapi.client.model.SessionAnonymous;
    import com.ankama.haapi.client.model.SessionLogin;
    import com.ankama.haapi.client.model.Token;
    import flash.events.EventDispatcher;
@@ -20,8 +22,6 @@ package com.ankama.haapi.client.api
       
       public static const event_avatar:String = "avatar";
       
-      public static const event_create_ghost_from_client:String = "create_ghost_from_client";
-      
       public static const event_create_guest:String = "create_guest";
       
       public static const event_create_token:String = "create_token";
@@ -29,6 +29,10 @@ package com.ankama.haapi.client.api
       public static const event_create_token_with_password:String = "create_token_with_password";
       
       public static const event_delete_ghost:String = "delete_ghost";
+      
+      public static const event_get_access_token:String = "get_access_token";
+      
+      public static const event_get_access_token_from_ankama_api_key:String = "get_access_token_from_ankama_api_key";
       
       public static const event_origin_with_api_key:String = "origin_with_api_key";
       
@@ -48,31 +52,13 @@ package com.ankama.haapi.client.api
       
       public static const event_sign_on_with_api_key:String = "sign_on_with_api_key";
       
+      public static const event_start_anonymous_session:String = "start_anonymous_session";
+      
       public static const event_status:String = "status";
       
-      public static const createGhostFromClient_GameEnum_20:String = "20";
-      
-      public static const createGhostFromClient_LangEnum_FR:String = "fr";
-      
-      public static const createGhostFromClient_LangEnum_EN:String = "en";
-      
-      public static const createGhostFromClient_LangEnum_DE:String = "de";
-      
-      public static const createGhostFromClient_LangEnum_ES:String = "es";
-      
-      public static const createGhostFromClient_LangEnum_PT:String = "pt";
-      
-      public static const createGhostFromClient_LangEnum_JP:String = "jp";
-      
-      public static const createGhostFromClient_LangEnum_IT:String = "it";
-      
-      public static const createGhostFromClient_LangEnum_NL:String = "nl";
-      
-      public static const createGhostFromClient_LangEnum_RU:String = "ru";
+      public static const event_validate_guest_with_api_key:String = "validate_guest_with_api_key";
       
       public static const createGuest_GameEnum_17:String = "17";
-      
-      public static const createGuest_GameEnum_20:String = "20";
       
       public static const createGuest_LangEnum_FR:String = "fr";
       
@@ -108,8 +94,6 @@ package com.ankama.haapi.client.api
       
       public static const createToken_GameEnum_18:String = "18";
       
-      public static const createToken_GameEnum_20:String = "20";
-      
       public static const createToken_GameEnum_21:String = "21";
       
       public static const createToken_GameEnum_22:String = "22";
@@ -117,6 +101,10 @@ package com.ankama.haapi.client.api
       public static const createToken_GameEnum_99:String = "99";
       
       public static const createToken_GameEnum_101:String = "101";
+      
+      public static const createToken_GameEnum_106:String = "106";
+      
+      public static const createToken_GameEnum_108:String = "108";
       
       public static const createToken_GameEnum_1001:String = "1001";
       
@@ -128,9 +116,11 @@ package com.ankama.haapi.client.api
       
       public static const createTokenWithPassword_GameEnum_22:String = "22";
       
-      public static const createTokenWithPassword_GameEnum_99:String = "99";
+      public static const createTokenWithPassword_GameEnum_101:String = "101";
       
       public static const deleteGhost_GameEnum_16:String = "16";
+      
+      public static const getAccessToken_GameEnum_107:String = "107";
       
       public static const sendDeviceInfos_ConnectionTypeEnum_ANKAMA:String = "ANKAMA";
       
@@ -203,6 +193,10 @@ package com.ankama.haapi.client.api
       public static const signOffWithApiKey_PartnerEnum_LIKEVN:String = "LIKEVN";
       
       public static const signOffWithApiKey_PartnerEnum_STEAM:String = "STEAM";
+      
+      public static const startAnonymousSession_GameEnum_102:String = "102";
+      
+      public static const startAnonymousSession_GameEnum_106:String = "106";
        
       
       public function AccountApi(apiCredentials:ApiUserCredentials, eventDispatcher:EventDispatcher = null)
@@ -284,54 +278,6 @@ package com.ankama.haapi.client.api
             _token.requestId = requestId;
             _token.completionEventType = "avatar";
             _token.returnType = "com.ankama.haapi.client.model.Avatar";
-         });
-      }
-      
-      public function create_ghost_from_client(game:Number, lang:String, uid:String, ip:String) : ApiInvokerHelper
-      {
-         var path:String = null;
-         var queryParams:Dictionary = null;
-         var headerParams:Dictionary = null;
-         var postParams:Object = null;
-         var contentType:String = null;
-         path = "/Ankama/v4/Account/CreateGhostFromClient".replace(/{format}/g,"xml");
-         queryParams = new Dictionary();
-         headerParams = new Dictionary();
-         postParams = new Object();
-         if(!isValidParam(game))
-         {
-            throw new ApiError(400,"missing required params : game");
-         }
-         if(!isValidParam(lang))
-         {
-            throw new ApiError(400,"missing required params : lang");
-         }
-         if(!isValidParam(uid))
-         {
-            throw new ApiError(400,"missing required params : uid");
-         }
-         queryParams["game"] = toPathValue(game);
-         queryParams["lang"] = toPathValue(lang);
-         queryParams["uid"] = toPathValue(uid);
-         queryParams["ip"] = toPathValue(ip);
-         var forceImport_Account:Account = undefined;
-         var contentTypes:Array = new Array();
-         var testFunc:Function = function(item:String, index:int, array:Array):Boolean
-         {
-            if(item.toLowerCase() == "application/json")
-            {
-               return true;
-            }
-            return false;
-         };
-         contentType = contentTypes.length == 0 || contentTypes.some(testFunc) ? "application/json" : contentTypes[0];
-         return new ApiInvokerHelper(function(apiInvokerHelper:EventDispatcher):void
-         {
-            var _token:* = getNewApiInvoker(apiInvokerHelper).invokeAPI(path,"GET",queryParams,postParams,headerParams,contentType);
-            var requestId:* = getUniqueId();
-            _token.requestId = requestId;
-            _token.completionEventType = "create_ghost_from_client";
-            _token.returnType = "com.ankama.haapi.client.model.Account";
          });
       }
       
@@ -508,6 +454,85 @@ package com.ankama.haapi.client.api
             _token.requestId = requestId;
             _token.completionEventType = "delete_ghost";
             _token.returnType = "null ";
+         });
+      }
+      
+      public function get_access_token(login:String, password:String, game:Number) : ApiInvokerHelper
+      {
+         var path:String = null;
+         var queryParams:Dictionary = null;
+         var headerParams:Dictionary = null;
+         var postParams:Object = null;
+         var contentType:String = null;
+         path = "/Ankama/v4/Account/GetAccessToken".replace(/{format}/g,"xml");
+         queryParams = new Dictionary();
+         headerParams = new Dictionary();
+         postParams = new Object();
+         if(!isValidParam(login))
+         {
+            throw new ApiError(400,"missing required params : login");
+         }
+         if(!isValidParam(password))
+         {
+            throw new ApiError(400,"missing required params : password");
+         }
+         if(!isValidParam(game))
+         {
+            throw new ApiError(400,"missing required params : game");
+         }
+         postParams["login"] = toPathValue(login);
+         postParams["password"] = toPathValue(password);
+         postParams["game"] = toPathValue(game);
+         var forceImport_AccessToken:AccessToken = undefined;
+         var contentTypes:Array = new Array("application/x-www-form-urlencoded");
+         var testFunc:Function = function(item:String, index:int, array:Array):Boolean
+         {
+            if(item.toLowerCase() == "application/json")
+            {
+               return true;
+            }
+            return false;
+         };
+         contentType = contentTypes.length == 0 || contentTypes.some(testFunc) ? "application/json" : contentTypes[0];
+         return new ApiInvokerHelper(function(apiInvokerHelper:EventDispatcher):void
+         {
+            var _token:* = getNewApiInvoker(apiInvokerHelper).invokeAPI(path,"POST",queryParams,postParams,headerParams,contentType);
+            var requestId:* = getUniqueId();
+            _token.requestId = requestId;
+            _token.completionEventType = "get_access_token";
+            _token.returnType = "com.ankama.haapi.client.model.AccessToken";
+         });
+      }
+      
+      public function get_access_token_from_ankama_api_key() : ApiInvokerHelper
+      {
+         var path:String = null;
+         var queryParams:Dictionary = null;
+         var headerParams:Dictionary = null;
+         var postParams:Object = null;
+         var contentType:String = null;
+         path = "/Ankama/v4/Account/GetAccessTokenFromAnkamaApiKey".replace(/{format}/g,"xml");
+         queryParams = new Dictionary();
+         headerParams = new Dictionary();
+         postParams = new Object();
+         var forceImport_AccessToken:AccessToken = undefined;
+         var contentTypes:Array = new Array();
+         var testFunc:Function = function(item:String, index:int, array:Array):Boolean
+         {
+            if(item.toLowerCase() == "application/json")
+            {
+               return true;
+            }
+            return false;
+         };
+         contentType = contentTypes.length == 0 || contentTypes.some(testFunc) ? "application/json" : contentTypes[0];
+         return new ApiInvokerHelper(function(apiInvokerHelper:EventDispatcher):void
+         {
+            var _token:* = getNewApiInvoker(apiInvokerHelper).invokeAPI(path,"GET",queryParams,postParams,headerParams,contentType);
+            var requestId:* = getUniqueId();
+            _token.requestId = requestId;
+            _token.completionEventType = "get_access_token_from_ankama_api_key";
+            _token.returnType = "com.ankama.haapi.client.model.AccessToken";
          });
       }
       
@@ -828,7 +853,7 @@ package com.ankama.haapi.client.api
          });
       }
       
-      public function sign_on_with_api_key(game:Number) : ApiInvokerHelper
+      public function sign_on_with_api_key(game:Number, anonymous_session_id:String) : ApiInvokerHelper
       {
          var path:String = null;
          var queryParams:Dictionary = null;
@@ -840,6 +865,7 @@ package com.ankama.haapi.client.api
          headerParams = new Dictionary();
          postParams = new Object();
          postParams["game"] = toPathValue(game);
+         postParams["anonymous_session_id"] = toPathValue(anonymous_session_id);
          var forceImport_SessionLogin:SessionLogin = undefined;
          var contentTypes:Array = new Array("application/x-www-form-urlencoded");
          var testFunc:Function = function(item:String, index:int, array:Array):Boolean
@@ -858,6 +884,43 @@ package com.ankama.haapi.client.api
             _token.requestId = requestId;
             _token.completionEventType = "sign_on_with_api_key";
             _token.returnType = "com.ankama.haapi.client.model.SessionLogin";
+         });
+      }
+      
+      public function start_anonymous_session(game:Number) : ApiInvokerHelper
+      {
+         var path:String = null;
+         var queryParams:Dictionary = null;
+         var headerParams:Dictionary = null;
+         var postParams:Object = null;
+         var contentType:String = null;
+         path = "/Ankama/v4/Account/StartAnonymousSession".replace(/{format}/g,"xml");
+         queryParams = new Dictionary();
+         headerParams = new Dictionary();
+         postParams = new Object();
+         if(!isValidParam(game))
+         {
+            throw new ApiError(400,"missing required params : game");
+         }
+         postParams["game"] = toPathValue(game);
+         var forceImport_SessionAnonymous:SessionAnonymous = undefined;
+         var contentTypes:Array = new Array("application/x-www-form-urlencoded");
+         var testFunc:Function = function(item:String, index:int, array:Array):Boolean
+         {
+            if(item.toLowerCase() == "application/json")
+            {
+               return true;
+            }
+            return false;
+         };
+         contentType = contentTypes.length == 0 || contentTypes.some(testFunc) ? "application/json" : contentTypes[0];
+         return new ApiInvokerHelper(function(apiInvokerHelper:EventDispatcher):void
+         {
+            var _token:* = getNewApiInvoker(apiInvokerHelper).invokeAPI(path,"POST",queryParams,postParams,headerParams,contentType);
+            var requestId:* = getUniqueId();
+            _token.requestId = requestId;
+            _token.completionEventType = "start_anonymous_session";
+            _token.returnType = "com.ankama.haapi.client.model.SessionAnonymous";
          });
       }
       
@@ -890,6 +953,74 @@ package com.ankama.haapi.client.api
             _token.requestId = requestId;
             _token.completionEventType = "status";
             _token.returnType = "com.ankama.haapi.client.model.AccountPublicStatus";
+         });
+      }
+      
+      public function validate_guest_with_api_key(lang:String, nickname:String, email:String, password:String, birth_date:String, firstname:String, lastname:String, parent_email:String, login:String) : ApiInvokerHelper
+      {
+         var path:String = null;
+         var queryParams:Dictionary = null;
+         var headerParams:Dictionary = null;
+         var postParams:Object = null;
+         var contentType:String = null;
+         path = "/Ankama/v4/Account/ValidateGuestWithApiKey".replace(/{format}/g,"xml");
+         queryParams = new Dictionary();
+         headerParams = new Dictionary();
+         postParams = new Object();
+         if(!isValidParam(lang))
+         {
+            throw new ApiError(400,"missing required params : lang");
+         }
+         if(!isValidParam(nickname))
+         {
+            throw new ApiError(400,"missing required params : nickname");
+         }
+         if(!isValidParam(email))
+         {
+            throw new ApiError(400,"missing required params : email");
+         }
+         if(!isValidParam(password))
+         {
+            throw new ApiError(400,"missing required params : password");
+         }
+         if(!isValidParam(birth_date))
+         {
+            throw new ApiError(400,"missing required params : birth_date");
+         }
+         if(!isValidParam(firstname))
+         {
+            throw new ApiError(400,"missing required params : firstname");
+         }
+         if(!isValidParam(lastname))
+         {
+            throw new ApiError(400,"missing required params : lastname");
+         }
+         postParams["lang"] = toPathValue(lang);
+         postParams["nickname"] = toPathValue(nickname);
+         postParams["email"] = toPathValue(email);
+         postParams["password"] = toPathValue(password);
+         postParams["birth_date"] = toPathValue(birth_date);
+         postParams["parent_email"] = toPathValue(parent_email);
+         postParams["firstname"] = toPathValue(firstname);
+         postParams["lastname"] = toPathValue(lastname);
+         postParams["login"] = toPathValue(login);
+         var contentTypes:Array = new Array("application/x-www-form-urlencoded");
+         var testFunc:Function = function(item:String, index:int, array:Array):Boolean
+         {
+            if(item.toLowerCase() == "application/json")
+            {
+               return true;
+            }
+            return false;
+         };
+         contentType = contentTypes.length == 0 || contentTypes.some(testFunc) ? "application/json" : contentTypes[0];
+         return new ApiInvokerHelper(function(apiInvokerHelper:EventDispatcher):void
+         {
+            var _token:* = getNewApiInvoker(apiInvokerHelper).invokeAPI(path,"POST",queryParams,postParams,headerParams,contentType);
+            var requestId:* = getUniqueId();
+            _token.requestId = requestId;
+            _token.completionEventType = "validate_guest_with_api_key";
+            _token.returnType = "null ";
          });
       }
    }
