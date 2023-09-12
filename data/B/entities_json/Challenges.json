@@ -290,7 +290,7 @@
 			],
 			"categoryId": 1,
 			"iconId": 20,
-			"completionCriterion": "SC=hc0,e,t",
+			"completionCriterion": "SC=hc0,e,s",
 			"activationCriterion": "GN>1,0&GL>4,0",
 			"targetMonsterId": 0
 		},
@@ -5052,7 +5052,7 @@
 		{
 			"id": 479,
 			"nameId": 847663,
-			"descriptionId": 847816,
+			"descriptionId": 1018843,
 			"incompatibleChallenges": [],
 			"categoryId": 4,
 			"iconId": 70,
@@ -7151,7 +7151,7 @@
 		{
 			"id": 969,
 			"nameId": 1008080,
-			"descriptionId": 1008248,
+			"descriptionId": 1018840,
 			"incompatibleChallenges": [
 				968
 			],
