@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
    public class TaxCollectorAttackedResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1283;
+      public static const protocolId:uint = 7440;
        
       
       private var _isInitialized:Boolean = false;
@@ -42,7 +42,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       override public function getMessageId() : uint
       {
-         return 1283;
+         return 7440;
       }
       
       public function initTaxCollectorAttackedResultMessage(deadOrAlive:Boolean = false, basicInfos:TaxCollectorBasicInformations = null, alliance:BasicAllianceInformations = null) : TaxCollectorAttackedResultMessage

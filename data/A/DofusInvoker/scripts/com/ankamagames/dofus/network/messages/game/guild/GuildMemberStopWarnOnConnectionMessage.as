@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildMemberStopWarnOnConnectionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 216;
+      public static const protocolId:uint = 2325;
        
       
       public function GuildMemberStopWarnOnConnectionMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 216;
+         return 2325;
       }
       
       public function initGuildMemberStopWarnOnConnectionMessage() : GuildMemberStopWarnOnConnectionMessage

@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.entity
    public class EntityInformationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8503;
+      public static const protocolId:uint = 7132;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.entity
       
       override public function getMessageId() : uint
       {
-         return 8503;
+         return 7132;
       }
       
       public function initEntityInformationMessage(entity:EntityInformation = null) : EntityInformationMessage

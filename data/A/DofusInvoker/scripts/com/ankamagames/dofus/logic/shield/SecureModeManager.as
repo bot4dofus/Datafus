@@ -2,10 +2,7 @@ package com.ankamagames.dofus.logic.shield
 {
    import by.blooddy.crypto.MD5;
    import com.ankama.haapi.client.api.ShieldApi;
-   import com.ankamagames.berilia.managers.KernelEventsManager;
-   import com.ankamagames.dofus.Constants;
    import com.ankamagames.dofus.logic.connection.managers.AuthentificationManager;
-   import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.utils.GameID;
    import com.ankamagames.dofus.misc.utils.HaapiKeyManager;
    import com.ankamagames.dofus.network.types.secure.TrustCertificate;
@@ -14,7 +11,6 @@ package com.ankamagames.dofus.logic.shield
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.managers.ErrorManager;
-   import com.ankamagames.jerakine.managers.StoreDataManager;
    import com.ankamagames.jerakine.types.CustomSharedObject;
    import com.ankamagames.jerakine.utils.errors.SingletonError;
    import com.ankamagames.jerakine.utils.system.SystemManager;
@@ -24,7 +20,6 @@ package com.ankamagames.dofus.logic.shield
    import flash.system.Capabilities;
    import flash.utils.getQualifiedClassName;
    import org.openapitools.common.ApiUserCredentials;
-   import org.openapitools.event.ApiClientEvent;
    
    public class SecureModeManager
    {
@@ -37,17 +32,10 @@ package com.ankamagames.dofus.logic.shield
       [Api(name="ShieldApi")]
       public var shieldApi:ShieldApi;
       
-      private var _active:Boolean;
-      
       private var _hasV1Certif:Boolean;
-      
-      private var _validateCodeCallback:Function;
-      
-      public var shieldLevel:uint;
       
       public function SecureModeManager()
       {
-         this.shieldLevel = StoreDataManager.getInstance().getSetData(Constants.DATASTORE_COMPUTER_OPTIONS,"shieldLevel",ShieldSecureLevel.MEDIUM);
          super();
          if(_self)
          {
@@ -248,43 +236,6 @@ package com.ankamagames.dofus.logic.shield
          addCertificate(result.id,result.certificate);
       }
       
-      public function get active() : Boolean
-      {
-         return this._active;
-      }
-      
-      public function set active(b:Boolean) : void
-      {
-         _log.debug("SECURE MODE IS ACTIVE : " + b);
-         this._active = b;
-         KernelEventsManager.getInstance().processCallback(HookList.SecureModeChange,b);
-      }
-      
-      public function get certificate() : TrustCertificate
-      {
-         return this.retreiveCertificate();
-      }
-      
-      public function askCode() : void
-      {
-         HaapiKeyManager.getInstance().callWithApiKey(function(apiKey:String):void
-         {
-            shieldApi = new ShieldApi(new ApiUserCredentials("",XmlConfig.getInstance().getEntry("config.haapiUrlAnkama"),apiKey));
-            shieldApi.security_code().call();
-         });
-      }
-      
-      public function sendCode(code:String, callback:Function, errorCallback:Function, computerName:String) : void
-      {
-         HaapiKeyManager.getInstance().callWithApiKey(function(apiKey:String):void
-         {
-            var fooCertif:ShieldCertifcate = new ShieldCertifcate();
-            fooCertif.secureLevel = shieldLevel;
-            _validateCodeCallback = callback;
-            shieldApi.validate_code(GameID.current,code.toUpperCase(),fooCertif.hash,fooCertif.reverseHash,!!computerName ? computerName : null).onSuccess(onValidateCodeSuccess).onError(errorCallback).call();
-         });
-      }
-      
       public function checkMigrate() : void
       {
          if(!this._hasV1Certif)
@@ -337,18 +288,9 @@ package com.ankamagames.dofus.logic.shield
          HaapiKeyManager.getInstance().callWithApiKey(function(apiKey:String):void
          {
             var fooCertif:ShieldCertifcate = new ShieldCertifcate();
-            fooCertif.secureLevel = shieldLevel;
+            fooCertif.secureLevel = ShieldSecureLevel.MEDIUM;
             shieldApi.migrate(apiKey,GameID.current,4,iCertificateId,oldCertif,fooCertif.hash,fooCertif.reverseHash).onSuccess(migrationSuccess).call();
          });
-      }
-      
-      private function onValidateCodeSuccess(e:ApiClientEvent) : void
-      {
-         if(e.response.payload.id && e.response.payload.encodedCertificate)
-         {
-            addCertificate(e.response.payload.id,e.response.payload.encodedCertificate);
-         }
-         this._validateCodeCallback();
       }
    }
 }

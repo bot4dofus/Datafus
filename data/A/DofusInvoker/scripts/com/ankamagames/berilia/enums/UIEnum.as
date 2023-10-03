@@ -43,8 +43,6 @@ package com.ankamagames.berilia.enums
       
       public static const QUEST_BASE:String = "questBase";
       
-      public static const IDOLS_UI:String = "idolsTab";
-      
       public static const PREVIEWED_ALTERATIONS_UI:String = "previewedAlterationsUi";
       
       public static const ALTERATIONS_UI:String = "alterationsUi";
@@ -106,6 +104,8 @@ package com.ankamagames.berilia.enums
       public static const KIS_PREVENT_SANCTION_POPUP:String = "KISPreventAndSanctionPopup";
       
       public static const SLAVE_FIGHT_UI:String = "slaveFightUi";
+      
+      public static const CHALLENGES_DISPLAY:String = "challengeDisplay";
       
       public static const QUEST_LIST:String = "questList";
       

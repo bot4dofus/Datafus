@@ -5,6 +5,11 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.datacenter.characteristics.Characteristic;
    import com.ankamagames.dofus.datacenter.monsters.Monster;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.lua.GroupMemberLuaData;
+   import com.ankamagames.dofus.internalDatacenter.lua.GuildLuaData;
+   import com.ankamagames.dofus.internalDatacenter.lua.MonsterLuaData;
+   import com.ankamagames.dofus.internalDatacenter.lua.MountLuaData;
+   import com.ankamagames.dofus.internalDatacenter.lua.PlayerLuaData;
    import com.ankamagames.dofus.misc.utils.LuaScriptManager;
    import com.ankamagames.dofus.misc.utils.enums.LuaFormulasEnum;
    import com.ankamagames.jerakine.logger.Log;
@@ -26,6 +31,21 @@ package com.ankamagames.dofus.uiApi
          super();
       }
       
+      public static function createMonsterLuaData(pLevel:int, pXp:int, pHiddenLevel:uint, pBonusFamily:Number, pBonusAlmanac:Number, pAlive:Boolean = false) : MonsterLuaData
+      {
+         return new MonsterLuaData(pLevel,pXp,pHiddenLevel,pBonusFamily,pBonusAlmanac,pAlive);
+      }
+      
+      public static function createGroupMemberLuaData(pLevel:int, pIsCompanion:Boolean = false, pIsStillAlive:Boolean = true) : GroupMemberLuaData
+      {
+         return new GroupMemberLuaData(pLevel,pIsCompanion,pIsStillAlive);
+      }
+      
+      public static function createPlayerLuaData(pLevel:int, pWisdom:int, pXpBonusPercent:Number, pIsRiding:Boolean, pRideXpBonus:Number, pHasGuild:Boolean, pXpGuild:Number, pSharedXPCoefficient:Number, pUnsharedXPCoefficient:Number, pXpAlliancePrismBonus:Number = 1, pBonusAlmanac:Number = 1, pIsStillPresentInFight:Boolean = true) : PlayerLuaData
+      {
+         return new PlayerLuaData(pLevel,pIsStillPresentInFight,pWisdom,pXpAlliancePrismBonus,pBonusAlmanac,pXpBonusPercent,pIsRiding,pRideXpBonus,pHasGuild,pXpGuild,pSharedXPCoefficient,pUnsharedXPCoefficient);
+      }
+      
       [ApiData(name="module")]
       public function set module(value:UiModule) : void
       {
@@ -45,46 +65,91 @@ package com.ankamagames.dofus.uiApi
          return LuaScriptManager.getInstance().executeLuaFormula(LuaFormulasEnum.MONSTER_XP,params) as uint;
       }
       
-      public function getMonsterLifeScale(monsterLvl:uint, monster:Monster, characId:uint) : int
+      public function getBaseFightXp(players:Vector.<GroupMemberLuaData>, monsters:Vector.<MonsterLuaData>, fightIsWin:Boolean, rewardRate:Number) : int
+      {
+         var playersString:String = "players";
+         var monstersString:String = "monsters";
+         var advancedParams:* = playersString + "={}\n";
+         for(var i:int = 0; i < players.length; i++)
+         {
+            advancedParams += playersString + "[" + (i + 1) + "]={" + players[i].toString() + "}\n";
+         }
+         advancedParams += monstersString + "={}\n";
+         for(i = 0; i < monsters.length; i++)
+         {
+            advancedParams += monstersString + "[" + (i + 1) + "]={" + monsters[i].toString() + "}\n";
+         }
+         var params:Dictionary = new Dictionary();
+         params[playersString] = players;
+         params[monstersString] = monsters;
+         params["fightIsWin"] = fightIsWin;
+         params["rewardRate"] = rewardRate;
+         return LuaScriptManager.getInstance().executeLuaFormula(LuaFormulasEnum.XP_BASE,params,advancedParams) as int;
+      }
+      
+      public function getPlayerXp(xp:int, monsters:Vector.<MonsterLuaData>, player:PlayerLuaData, totalLevel:int, challengeCoefficient:int) : int
+      {
+         var monstersString:String = "monsters";
+         var advancedParams:* = monstersString + "={}\n";
+         for(var i:int = 0; i < monsters.length; i++)
+         {
+            advancedParams += monstersString + "[" + (i + 1) + "]={" + monsters[i].toString() + "}\n";
+         }
+         advancedParams += "player={" + player.toString() + "}\n";
+         var params:Dictionary = new Dictionary();
+         params["xp"] = xp;
+         params["monsters"] = monsters;
+         params["player"] = player;
+         params["maxLevel"] = totalLevel;
+         params["challengeCoefficient"] = challengeCoefficient;
+         return LuaScriptManager.getInstance().executeLuaFormula(LuaFormulasEnum.XP_PLAYER,params,advancedParams) as int;
+      }
+      
+      public function getXpDistribution(xp:int, player:PlayerLuaData, ride:MountLuaData, guild:GuildLuaData, bonus:Boolean) : Object
+      {
+         var advancedParams:* = "player={" + player.toString() + "}\n";
+         advancedParams += "ride={" + ride.toString() + "}\n";
+         advancedParams += "guild={" + guild.toString() + "}\n";
+         var params:Dictionary = new Dictionary();
+         params["xp"] = xp;
+         params["player"] = player;
+         params["ride"] = ride;
+         params["guild"] = guild;
+         params["bonus"] = bonus;
+         return LuaScriptManager.getInstance().executeLuaFormula(LuaFormulasEnum.XP_DISTRIBUTION,params,advancedParams,true);
+      }
+      
+      public function getMonsterLifeScale(monsterLvl:uint, monster:Monster, characteristicId:uint) : int
       {
          var params:Dictionary = new Dictionary();
          params["monster_level"] = monsterLvl;
-         params["stat_ratio"] = monster.getCharacRatio(characId);
-         return LuaScriptManager.getInstance().executeLuaFormula(Characteristic.getCharacteristicById(characId).scaleFormulaId,params) as int;
+         params["stat_ratio"] = monster.getCharacRatio(characteristicId);
+         return LuaScriptManager.getInstance().executeLuaFormula(Characteristic.getCharacteristicById(characteristicId).scaleFormulaId,params) as int;
       }
       
-      public function getMonsterStatScale(monster:Monster, characId:uint) : int
-      {
-         var params:Dictionary = new Dictionary();
-         params["monster_level"] = monster.grades[monster.scaleGradeRef - 1].level;
-         params["stat_ratio"] = monster.getCharacRatio(characId);
-         params["stat_base"] = this.getGradeStatValueById(monster,characId);
-         return 0;
-      }
-      
-      public function getMonsterMovementPointsScale(monster:Monster, monsterLevel:uint, characId:uint) : int
+      public function getMonsterMovementPointsScale(monster:Monster, monsterLevel:uint, characteristicId:uint) : int
       {
          var params:Dictionary = new Dictionary();
          params["monster_level"] = monsterLevel;
          params["monster_grade_hidden_level"] = monster.grades[monster.scaleGradeRef - 1].hiddenLevel;
-         params["stat_base"] = this.getGradeStatValueById(monster,characId);
+         params["stat_base"] = this.getGradeStatValueById(monster,characteristicId);
          params["monster_grade_level"] = monster.grades[monster.scaleGradeRef - 1].level;
-         return LuaScriptManager.getInstance().executeLuaFormula(Characteristic.getCharacteristicById(characId).scaleFormulaId,params) as int;
+         return LuaScriptManager.getInstance().executeLuaFormula(Characteristic.getCharacteristicById(characteristicId).scaleFormulaId,params) as int;
       }
       
-      public function getMonsterBonusRangeScale(monster:Monster, monsterLevel:uint, characId:uint) : int
+      public function getMonsterBonusRangeScale(monster:Monster, monsterLevel:uint, characteristicId:uint) : int
       {
          var params:Dictionary = new Dictionary();
          params["monster_level"] = monsterLevel;
          params["monster_grade_hidden_level"] = monster.grades[monster.scaleGradeRef - 1].hiddenLevel;
-         params["stat_base"] = this.getGradeStatValueById(monster,characId);
+         params["stat_base"] = this.getGradeStatValueById(monster,characteristicId);
          params["monster_grade_level"] = monster.grades[monster.scaleGradeRef - 1].level;
-         return LuaScriptManager.getInstance().executeLuaFormula(Characteristic.getCharacteristicById(characId).scaleFormulaId,params) as int;
+         return LuaScriptManager.getInstance().executeLuaFormula(Characteristic.getCharacteristicById(characteristicId).scaleFormulaId,params) as int;
       }
       
-      public function getGradeStatValueById(monster:Monster, characId:uint) : int
+      public function getGradeStatValueById(monster:Monster, characteristicId:uint) : int
       {
-         switch(characId)
+         switch(characteristicId)
          {
             case DataEnum.CHARAC_MOVEMENT_POINT_ID:
                return monster.grades[monster.scaleGradeRef - 1].movementPoints;
@@ -152,6 +217,13 @@ package com.ankamagames.dofus.uiApi
          var params:Dictionary = new Dictionary();
          params["guild_level"] = guildLevel;
          return LuaScriptManager.getInstance().executeLuaFormula(LuaFormulasEnum.MAX_GUILD_MEMBERS,params) as Number;
+      }
+      
+      public function getProspectionScore(prospectionBonus:Number) : Number
+      {
+         var params:Dictionary = new Dictionary();
+         params["prospection_bonus"] = prospectionBonus;
+         return LuaScriptManager.getInstance().executeLuaFormula(LuaFormulasEnum.PROSPECTION_BONUS,params) as Number;
       }
    }
 }

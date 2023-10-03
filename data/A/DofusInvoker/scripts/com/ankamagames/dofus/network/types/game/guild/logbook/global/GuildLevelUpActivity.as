@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
    public class GuildLevelUpActivity extends GuildLogbookEntryBasicInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 7925;
+      public static const protocolId:uint = 3144;
        
       
       public var newGuildLevel:uint = 0;
@@ -21,7 +21,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
       
       override public function getTypeId() : uint
       {
-         return 7925;
+         return 3144;
       }
       
       public function initGuildLevelUpActivity(id:uint = 0, date:Number = 0, newGuildLevel:uint = 0) : GuildLevelUpActivity

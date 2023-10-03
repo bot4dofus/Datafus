@@ -16,6 +16,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.kernel.sound.SoundManager;
    import com.ankamagames.dofus.kernel.sound.enum.UISoundEnum;
+   import com.ankamagames.dofus.logic.game.common.actions.fight.ChallengeReadyAction;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.dofus.logic.game.fight.actions.GameContextKickAction;
@@ -51,7 +52,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.network.messages.game.context.fight.GameFightReadyMessage;
    import com.ankamagames.dofus.network.messages.game.context.fight.GameFightRemoveTeamMemberMessage;
    import com.ankamagames.dofus.network.messages.game.context.fight.GameFightUpdateTeamMessage;
-   import com.ankamagames.dofus.network.messages.game.idol.IdolFightPreparationUpdateMessage;
+   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeReadyMessage;
    import com.ankamagames.dofus.network.types.game.context.IdentifiedEntityDispositionInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.FightTeamMemberInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightCharacterInformations;
@@ -196,18 +197,18 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var gfpspcdmsg:GameFightPlacementSwapPositionsCancelledMessage = null;
          var gfra:GameFightReadyAction = null;
          var gfrmsg:GameFightReadyMessage = null;
+         var chrmsg:ChallengeReadyMessage = null;
          var ecmsg:EntityClickMessage = null;
          var clickedEntity:IInteractive = null;
          var gcka:GameContextKickAction = null;
          var gckmsg:GameContextKickMessage = null;
          var gfutmsg:GameFightUpdateTeamMessage = null;
-         var gfutmsg_myId:Number = NaN;
-         var alreadyInTeam:Boolean = false;
+         var myTeam:Boolean = false;
+         var playerId:Number = NaN;
          var gfrtmmsg:GameFightRemoveTeamMemberMessage = null;
          var indexOfCharToRemove:int = 0;
          var gfemsg2:GameFightEndMessage = null;
          var fightContextFrame:FightContextFrame = null;
-         var ifpum:IdolFightPreparationUpdateMessage = null;
          var gfemsg:GameFightEndMessage = null;
          var fightContextFrame2:FightContextFrame = null;
          var entity:IEntity = null;
@@ -387,6 +388,10 @@ package com.ankamagames.dofus.logic.game.fight.frames
                gfrmsg.initGameFightReadyMessage(gfra.isReady);
                ConnectionsHandler.getConnection().send(gfrmsg);
                return true;
+            case msg is ChallengeReadyAction:
+               chrmsg = new ChallengeReadyMessage();
+               ConnectionsHandler.getConnection().send(chrmsg);
+               return true;
             case msg is EntityClickMessage:
                ecmsg = msg as EntityClickMessage;
                clickedEntity = ecmsg.entity as IInteractive;
@@ -428,23 +433,24 @@ package com.ankamagames.dofus.logic.game.fight.frames
                return true;
             case msg is GameFightUpdateTeamMessage:
                gfutmsg = msg as GameFightUpdateTeamMessage;
-               gfutmsg_myId = PlayedCharacterManager.getInstance().id;
-               alreadyInTeam = false;
+               playerId = PlayedCharacterManager.getInstance().id;
                for each(teamMember in gfutmsg.team.teamMembers)
                {
-                  if(teamMember.id == gfutmsg_myId)
+                  if(teamMember.id == playerId)
                   {
-                     alreadyInTeam = true;
+                     myTeam = true;
                   }
                   if(this._fightersId.indexOf(teamMember.id) == -1)
                   {
                      this._fightersId.push(teamMember.id);
                   }
                }
-               if(alreadyInTeam || gfutmsg.team.teamMembers.length >= 1 && gfutmsg.team.teamMembers[0].id == gfutmsg_myId)
+               if(gfutmsg.team && (myTeam || this._fightContextFrame.entitiesFrame.getEntityInfos(playerId) && this._fightContextFrame.entitiesFrame.getEntityTeamId(playerId) == gfutmsg.team.teamId))
                {
                   PlayedCharacterManager.getInstance().teamId = gfutmsg.team.teamId;
-                  this._fightContextFrame.isFightLeader = gfutmsg.team.leaderId == gfutmsg_myId;
+                  this._fightContextFrame.isFightLeader = gfutmsg.team.leaderId == playerId;
+                  this._fightContextFrame.fightLeader = this._fightContextFrame.entitiesFrame.getEntityInfos(gfutmsg.team.leaderId);
+                  KernelEventsManager.getInstance().processCallback(FightHookList.FightLeader,this._fightContextFrame.challengeMod);
                }
                return true;
             case msg is GameFightRemoveTeamMemberMessage:
@@ -468,10 +474,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
                {
                   Kernel.getWorker().process(gfemsg2);
                }
-               return true;
-            case msg is IdolFightPreparationUpdateMessage:
-               ifpum = msg as IdolFightPreparationUpdateMessage;
-               KernelEventsManager.getInstance().processCallback(FightHookList.IdolFightPreparationUpdate,ifpum.idolSource,ifpum.idols);
                return true;
             case msg is ShowTacticModeAction:
                this.removeSelections();

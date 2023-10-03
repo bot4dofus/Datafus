@@ -18,7 +18,6 @@ package com.ankamagames.dofus.logic.game.fight.managers
    import com.ankamagames.dofus.logic.game.common.managers.InventoryManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
-   import com.ankamagames.dofus.logic.game.common.spell.SpellModifiers;
    import com.ankamagames.dofus.logic.game.fight.frames.FightSpellCastFrame;
    import com.ankamagames.dofus.logic.game.fight.types.SpellCastInFightManager;
    import com.ankamagames.dofus.logic.game.fight.types.castSpellManager.SpellManager;
@@ -26,8 +25,8 @@ package com.ankamagames.dofus.logic.game.fight.managers
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.InventoryHookList;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
-   import com.ankamagames.dofus.network.enums.CharacterSpellModificationTypeEnum;
    import com.ankamagames.dofus.network.enums.ShortcutBarEnum;
+   import com.ankamagames.dofus.network.enums.SpellModifierTypeEnum;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristicsInformations;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
    import com.ankamagames.jerakine.data.I18n;
@@ -260,8 +259,7 @@ package com.ankamagames.dofus.logic.game.fight.managers
          var requiredStateCriterion:IItemCriterion = null;
          var cooldown:int = 0;
          var numberCastOnTarget:uint = 0;
-         var spellModifiers:SpellModifiers = null;
-         var bonus:Number = NaN;
+         var bonus:int = 0;
          var spell:Spell = Spell.getSpellById(spellId);
          var spellLevel:SpellLevel = spell.getSpellLevel(lvl);
          if(spellLevel == null)
@@ -365,12 +363,12 @@ package com.ankamagames.dofus.logic.game.fight.managers
          {
             states = new Array();
          }
-         var _loc31_:int = 0;
-         var _loc32_:* = states;
+         var _loc30_:int = 0;
+         var _loc31_:* = states;
          loop1:
          while(true)
          {
-            for each(state in _loc32_)
+            for each(state in _loc31_)
             {
                currentState = SpellState.getSpellStateById(state);
                if(currentState.preventsFight && spellId == 0)
@@ -492,8 +490,7 @@ package com.ankamagames.dofus.logic.game.fight.managers
             if(pTargetId != 0)
             {
                numberCastOnTarget = spellManager.getCastOnEntity(pTargetId);
-               spellModifiers = SpellModifiersManager.getInstance().getSpellModifiers(this.currentFighterId,spellId);
-               bonus = !!spellModifiers ? Number(spellModifiers.getModifierValue(CharacterSpellModificationTypeEnum.MAX_CAST_PER_TARGET)) : Number(0);
+               bonus = SpellModifiersManager.getInstance().getModifiedInt(this.currentFighterId,spellId,SpellModifierTypeEnum.MAX_CAST_PER_TARGET);
                if(spellLevel.maxCastPerTarget + bonus <= numberCastOnTarget && spellLevel.maxCastPerTarget > 0)
                {
                   if(result)

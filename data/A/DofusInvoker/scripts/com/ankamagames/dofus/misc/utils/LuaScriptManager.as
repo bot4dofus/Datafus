@@ -48,21 +48,26 @@ package com.ankamagames.dofus.misc.utils
          return scriptCode + "\n" + "return " + functionName + "()\n";
       }
       
-      public function executeScript(luaFunction:String, params:Dictionary) : Object
+      private function formatScriptToLuaFunctionReturningObject(scriptCode:String, functionName:String = "main") : String
+      {
+         return scriptCode + "\n" + "return as3.toobject(" + functionName + "())\n";
+      }
+      
+      public function executeScript(luaFunction:String, allParams:Dictionary, advancedParams:String) : Object
       {
          var luaResult:Array = null;
          var key:* = null;
-         if(params != null)
+         if(allParams != null)
          {
-            for(key in params)
+            for(key in allParams)
             {
-               this._luaAlchemy.setGlobalLuaValue(key,params[key]);
+               this._luaAlchemy.setGlobalLuaValue(key,allParams[key]);
             }
          }
-         luaResult = this._luaAlchemy.doString(luaFunction);
-         if(params != null)
+         luaResult = this._luaAlchemy.doString(advancedParams + luaFunction);
+         if(allParams != null)
          {
-            for(key in params)
+            for(key in allParams)
             {
                this._luaAlchemy.setGlobal(key,null);
             }
@@ -75,15 +80,15 @@ package com.ankamagames.dofus.misc.utils
          return luaResult[0];
       }
       
-      public function executeLuaFormula(luaFormulaId:uint, params:Dictionary) : Object
+      public function executeLuaFormula(luaFormulaId:uint, allParams:Dictionary, advancedParams:String = "", returnsObject:Boolean = false) : Object
       {
-         return this.executeScript(this.getLuaFunctionFromFormulaId(luaFormulaId),params);
+         return this.executeScript(this.getLuaFunctionFromFormulaId(luaFormulaId,returnsObject),allParams,advancedParams);
       }
       
-      public function getLuaFunctionFromFormulaId(luaFormulaId:uint) : String
+      public function getLuaFunctionFromFormulaId(luaFormulaId:uint, returnsObject:Boolean) : String
       {
          var formula:LuaFormula = LuaFormula.getLuaFormulaById(luaFormulaId);
-         return this.formatScriptToLuaFunction(formula.luaFormula);
+         return !!returnsObject ? this.formatScriptToLuaFunctionReturningObject(formula.luaFormula) : this.formatScriptToLuaFunction(formula.luaFormula);
       }
    }
 }

@@ -144,14 +144,15 @@ package com.ankamagames.berilia.factories
             return "";
          }
          var currentText:String = string;
+         var offset:Number = 0;
          while(true)
          {
-            leftIndex = currentText.indexOf(LEFT);
+            leftIndex = currentText.indexOf(LEFT,offset);
             if(leftIndex == -1)
             {
                break;
             }
-            rightIndex = currentText.indexOf(RIGHT);
+            rightIndex = currentText.indexOf(RIGHT,offset);
             if(rightIndex == -1)
             {
                break;
@@ -206,7 +207,8 @@ package com.ankamagames.berilia.factories
                   catch(e:Error)
                   {
                      _log.error("Invalid link : " + string);
-                     return string;
+                     offset = rightIndex + 1;
+                     continue;
                   }
                }
             }

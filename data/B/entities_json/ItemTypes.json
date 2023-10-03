@@ -1471,7 +1471,7 @@
 		},
 		{
 			"id": 136,
-			"nameId": 29714,
+			"nameId": 1007370,
 			"superTypeId": 14,
 			"categoryId": 3,
 			"isInEncyclopedia": false,
@@ -1485,19 +1485,6 @@
 		{
 			"id": 137,
 			"nameId": 29707,
-			"superTypeId": 14,
-			"categoryId": 3,
-			"isInEncyclopedia": false,
-			"plural": false,
-			"gender": 0,
-			"rawZone": "null",
-			"mimickable": false,
-			"craftXpRatio": -1,
-			"evolutiveTypeId": 0
-		},
-		{
-			"id": 138,
-			"nameId": 29708,
 			"superTypeId": 14,
 			"categoryId": 3,
 			"isInEncyclopedia": false,
@@ -1587,21 +1574,8 @@
 			"evolutiveTypeId": 0
 		},
 		{
-			"id": 145,
-			"nameId": 29693,
-			"superTypeId": 14,
-			"categoryId": 3,
-			"isInEncyclopedia": false,
-			"plural": false,
-			"gender": 0,
-			"rawZone": "null",
-			"mimickable": false,
-			"craftXpRatio": -1,
-			"evolutiveTypeId": 0
-		},
-		{
 			"id": 146,
-			"nameId": 29791,
+			"nameId": 1007369,
 			"superTypeId": 14,
 			"categoryId": 3,
 			"isInEncyclopedia": false,
@@ -1822,7 +1796,7 @@
 		},
 		{
 			"id": 169,
-			"nameId": 999915,
+			"nameId": 1000101,
 			"superTypeId": 23,
 			"categoryId": 0,
 			"isInEncyclopedia": true,
@@ -1909,19 +1883,6 @@
 			"rawZone": "null",
 			"mimickable": false,
 			"craftXpRatio": -1,
-			"evolutiveTypeId": 0
-		},
-		{
-			"id": 178,
-			"nameId": 580659,
-			"superTypeId": 9,
-			"categoryId": 2,
-			"isInEncyclopedia": true,
-			"plural": false,
-			"gender": 1,
-			"rawZone": "null",
-			"mimickable": false,
-			"craftXpRatio": 200,
 			"evolutiveTypeId": 0
 		},
 		{
@@ -2186,7 +2147,7 @@
 		},
 		{
 			"id": 209,
-			"nameId": 999170,
+			"nameId": 999210,
 			"superTypeId": 9,
 			"categoryId": 2,
 			"isInEncyclopedia": true,
@@ -2914,7 +2875,20 @@
 		},
 		{
 			"id": 287,
-			"nameId": 999917,
+			"nameId": 1000103,
+			"superTypeId": 14,
+			"categoryId": 3,
+			"isInEncyclopedia": false,
+			"plural": false,
+			"gender": 0,
+			"rawZone": "null",
+			"mimickable": false,
+			"craftXpRatio": -1,
+			"evolutiveTypeId": 0
+		},
+		{
+			"id": 289,
+			"nameId": 1010706,
 			"superTypeId": 14,
 			"categoryId": 3,
 			"isInEncyclopedia": false,

@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightCommonInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 6785;
+      public static const protocolId:uint = 9208;
        
       
       public var fightId:uint = 0;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 6785;
+         return 9208;
       }
       
       public function initFightCommonInformations(fightId:uint = 0, fightType:uint = 0, fightTeams:Vector.<FightTeamInformations> = null, fightTeamsPositions:Vector.<uint> = null, fightTeamsOptions:Vector.<FightOptionsInformations> = null) : FightCommonInformations

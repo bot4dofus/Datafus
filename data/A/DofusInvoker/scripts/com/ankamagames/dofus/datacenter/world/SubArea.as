@@ -6,7 +6,6 @@ package com.ankamagames.dofus.datacenter.world
    import com.ankamagames.jerakine.data.IPostInit;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
    import flash.geom.Point;
-   import flash.geom.Rectangle;
    
    public class SubArea implements IDataCenter, IPostInit
    {
@@ -27,8 +26,6 @@ package com.ankamagames.dofus.datacenter.world
       public var playlists:Vector.<Vector.<int>>;
       
       public var mapIds:Vector.<Number>;
-      
-      public var bounds:Rectangle;
       
       public var shape:Vector.<int>;
       

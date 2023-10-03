@@ -1,113 +1,37 @@
 package com.ankamagames.dofus.logic.game.common.spell
 {
-   import com.ankama.dofus.enums.ActionIds;
-   import com.ankamagames.dofus.network.enums.CharacterSpellModificationTypeEnum;
+   import com.ankamagames.dofus.network.enums.SpellModifierActionTypeEnum;
+   import com.ankamagames.dofus.network.enums.SpellModifierTypeEnum;
+   import com.ankamagames.jerakine.logger.Log;
+   import com.ankamagames.jerakine.logger.Logger;
+   import flash.utils.Dictionary;
+   import flash.utils.getQualifiedClassName;
    import mx.utils.NameUtil;
    
    public class SpellModifier
    {
       
       public static const UNKNOWN_MODIFIER_NAME:String = "unknown";
+      
+      protected static const _log:Logger = Log.getLogger(getQualifiedClassName(SpellModifier));
        
       
       private var _entityId:Number = NaN;
       
       private var _spellId:Number = NaN;
       
-      private var _id:Number = 0;
-      
-      private var _baseValue:Number = 0;
-      
-      private var _additionalValue:Number = 0;
-      
-      private var _objectsAndMountBonusValue:Number = 0;
-      
-      private var _alignGiftBonusValue:Number = 0;
-      
-      private var _contextModifValue:Number = 0;
-      
-      private var _totalValue:Number = 0;
+      private var _modifierType:Number = 0;
       
       private var _name:String = null;
       
-      public function SpellModifier(id:Number, baseValue:Number, additionalValue:Number, objectsAndMountBonusValue:Number, alignGiftBonusValue:Number, contextModifValue:Number)
-      {
-         super();
-         this._id = id;
-         this._baseValue = baseValue;
-         this._additionalValue = additionalValue;
-         this._objectsAndMountBonusValue = objectsAndMountBonusValue;
-         this._alignGiftBonusValue = alignGiftBonusValue;
-         this._contextModifValue = contextModifValue;
-         this._totalValue = this._baseValue + this._additionalValue + this._objectsAndMountBonusValue + this._alignGiftBonusValue + this._contextModifValue;
-         this._name = this.getModifierName();
-      }
+      private var _actions:Dictionary;
       
-      public static function getSpellModifierIdFromActionId(actionId:Number) : Number
+      public function SpellModifier(modifierType:Number)
       {
-         switch(actionId)
-         {
-            case ActionIds.ACTION_BOOST_SPELL_RANGEABLE:
-               return CharacterSpellModificationTypeEnum.RANGEABLE;
-            case ActionIds.ACTION_BOOST_SPELL_DMG:
-               return CharacterSpellModificationTypeEnum.DAMAGE;
-            case ActionIds.ACTION_BOOST_SPELL_BASE_DMG:
-               return CharacterSpellModificationTypeEnum.BASE_DAMAGE;
-            case ActionIds.ACTION_BOOST_SPELL_HEAL:
-               return CharacterSpellModificationTypeEnum.HEAL_BONUS;
-            case ActionIds.ACTION_BOOST_SPELL_AP_COST:
-               return CharacterSpellModificationTypeEnum.AP_COST;
-            case ActionIds.ACTION_DEBOOST_SPELL_AP_COST:
-               return CharacterSpellModificationTypeEnum.AP_COST;
-            case ActionIds.ACTION_BOOST_SPELL_CAST_INTVL:
-               return CharacterSpellModificationTypeEnum.CAST_INTERVAL;
-            case ActionIds.ACTION_BOOST_SPELL_CAST_INTVL_SET:
-               return CharacterSpellModificationTypeEnum.CAST_INTERVAL_SET;
-            case ActionIds.ACTION_BOOST_SPELL_CC:
-               return CharacterSpellModificationTypeEnum.CRITICAL_HIT_BONUS;
-            case ActionIds.ACTION_BOOST_SPELL_CASTOUTLINE:
-               return CharacterSpellModificationTypeEnum.CAST_LINE;
-            case ActionIds.ACTION_BOOST_SPELL_NOLINEOFSIGHT:
-               return CharacterSpellModificationTypeEnum.LOS;
-            case ActionIds.ACTION_BOOST_SPELL_MAXPERTURN:
-               return CharacterSpellModificationTypeEnum.MAX_CAST_PER_TURN;
-            case ActionIds.ACTION_BOOST_SPELL_MAXPERTARGET:
-               return CharacterSpellModificationTypeEnum.MAX_CAST_PER_TARGET;
-            case ActionIds.ACTION_BOOST_SPELL_RANGE_MAX:
-               return CharacterSpellModificationTypeEnum.RANGE_MAX;
-            case ActionIds.ACTION_DEBOOST_SPELL_RANGE_MAX:
-               return CharacterSpellModificationTypeEnum.RANGE_MAX;
-            case ActionIds.ACTION_BOOST_SPELL_RANGE_MIN:
-               return CharacterSpellModificationTypeEnum.RANGE_MIN;
-            case ActionIds.ACTION_DEBOOST_SPELL_RANGE_MIN:
-               return CharacterSpellModificationTypeEnum.RANGE_MIN;
-            case ActionIds.ACTION_BOOST_FREE_CELL:
-               return CharacterSpellModificationTypeEnum.FREE_CELL;
-            case ActionIds.ACTION_DEBOOST_FREE_CELL:
-               return CharacterSpellModificationTypeEnum.FREE_CELL;
-            case ActionIds.ACTION_BOOST_OCCUPIED_CELL:
-               return CharacterSpellModificationTypeEnum.OCCUPIED_CELL;
-            case ActionIds.ACTION_DEBOOST_OCCUPIED_CELL:
-               return CharacterSpellModificationTypeEnum.OCCUPIED_CELL;
-            case ActionIds.ACTION_SET_SPELL_RANGE_MAX:
-               return CharacterSpellModificationTypeEnum.SET_RANGE_MAX;
-            case ActionIds.ACTION_SET_SPELL_RANGE_MIN:
-               return CharacterSpellModificationTypeEnum.SET_RANGE_MIN;
-            case ActionIds.ACTION_BOOST_VISIBLE_TARGET_ON_CELL_ON:
-               return CharacterSpellModificationTypeEnum.VISIBLE_TARGET;
-            case ActionIds.ACTION_BOOST_VISIBLE_TARGET_ON_CELL_OFF:
-               return CharacterSpellModificationTypeEnum.VISIBLE_TARGET;
-            case ActionIds.ACTION_BOOST_PORTAL_PROJECTION_ON:
-               return CharacterSpellModificationTypeEnum.PORTAL_PROJECTION;
-            case ActionIds.ACTION_BOOST_PORTAL_PROJECTION_OFF:
-               return CharacterSpellModificationTypeEnum.PORTAL_PROJECTION;
-            case ActionIds.ACTION_BOOST_PORTAL_FREE_CELL_ON:
-               return CharacterSpellModificationTypeEnum.PORTAL_FREE_CELL;
-            case ActionIds.ACTION_BOOST_PORTAL_FREE_CELL_OFF:
-               return CharacterSpellModificationTypeEnum.PORTAL_FREE_CELL;
-            default:
-               return CharacterSpellModificationTypeEnum.INVALID_MODIFICATION;
-         }
+         this._actions = new Dictionary();
+         super();
+         this._modifierType = modifierType;
+         this._name = this.getModifierName();
       }
       
       public function set entityId(entityId:Number) : void
@@ -120,97 +44,317 @@ package com.ankamagames.dofus.logic.game.common.spell
          this._spellId = spellId;
       }
       
-      public function get id() : Number
+      public function get modifierType() : Number
       {
-         return this._id;
+         return this._modifierType;
       }
       
-      public function get baseValue() : Number
+      public function get isEmpty() : Boolean
       {
-         return this._baseValue;
+         var action:SpellModifierAction = null;
+         var _loc2_:int = 0;
+         var _loc3_:* = this._actions;
+         for each(action in _loc3_)
+         {
+            return false;
+         }
+         return true;
       }
       
-      public function get additionalValue() : Number
+      public function hasAction(actionType:int) : Boolean
       {
-         return this._additionalValue;
+         return actionType.toString() in this._actions;
       }
       
-      public function get objectsAndMountBonusValue() : Number
+      public function applyAction(actionType:int, equipment:int, context:int) : void
       {
-         return this._objectsAndMountBonusValue;
+         var action:SpellModifierAction = new SpellModifierAction(actionType,equipment,context);
+         this._actions[action.actionType] = action;
       }
       
-      public function get alignGiftBonusValue() : Number
+      public function removeAction(actionType:int) : void
       {
-         return this._alignGiftBonusValue;
+         var key:String = actionType.toString();
+         if(key in this._actions)
+         {
+            delete this._actions[key];
+         }
       }
       
-      public function get contextModifValue() : Number
+      public function getValueAsInt(valueType:int = 1, baseValue:int = 0) : int
       {
-         return this._contextModifValue;
+         var setAction:SpellModifierAction = this._actions[SpellModifierActionTypeEnum.ACTION_SET];
+         if(setAction !== null)
+         {
+            return setAction.getInt(valueType);
+         }
+         var boostAction:SpellModifierAction = this._actions[SpellModifierActionTypeEnum.ACTION_BOOST];
+         var deboostAction:SpellModifierAction = this._actions[SpellModifierActionTypeEnum.ACTION_DEBOOST];
+         var boostValue:int = boostAction !== null ? int(boostAction.getInt(valueType)) : 0;
+         var deboostValue:int = deboostAction !== null ? int(deboostAction.getInt(valueType)) : 0;
+         var modifierValue:int = boostValue - deboostValue;
+         return baseValue + modifierValue * this.getIntModifierSign();
       }
       
-      public function get totalValue() : Number
+      public function getValueAsBool(valueType:int = 1, baseValue:Boolean = false) : Boolean
       {
-         return this._totalValue;
+         var flag:Boolean = false;
+         var setAction:SpellModifierAction = this._actions[SpellModifierActionTypeEnum.ACTION_SET];
+         if(setAction !== null)
+         {
+            return setAction.getBool(valueType);
+         }
+         var boostAction:SpellModifierAction = this._actions[SpellModifierActionTypeEnum.ACTION_BOOST];
+         var deboostAction:SpellModifierAction = this._actions[SpellModifierActionTypeEnum.ACTION_DEBOOST];
+         var boostValue:Boolean = boostAction !== null ? Boolean(boostAction.getBool(valueType)) : false;
+         var deboostValue:Boolean = deboostAction !== null ? Boolean(deboostAction.getBool(valueType)) : false;
+         if(boostValue && deboostValue)
+         {
+            flag = baseValue;
+         }
+         else if(boostValue)
+         {
+            flag = true;
+         }
+         else if(deboostValue)
+         {
+            flag = false;
+         }
+         else
+         {
+            flag = baseValue;
+         }
+         return flag;
+      }
+      
+      private function getIntModifierSign() : int
+      {
+         switch(this._modifierType)
+         {
+            case SpellModifierTypeEnum.AP_COST:
+               return -1;
+            case SpellModifierTypeEnum.CAST_INTERVAL:
+               return -1;
+            default:
+               return 1;
+         }
       }
       
       private function getModifierName() : String
       {
-         switch(this._id)
+         switch(this._modifierType)
          {
-            case CharacterSpellModificationTypeEnum.INVALID_MODIFICATION:
+            case SpellModifierTypeEnum.INVALID_MODIFICATION:
                return "invalid modification";
-            case CharacterSpellModificationTypeEnum.RANGEABLE:
+            case SpellModifierTypeEnum.RANGEABLE:
                return "rangeable";
-            case CharacterSpellModificationTypeEnum.DAMAGE:
+            case SpellModifierTypeEnum.DAMAGE:
                return "damage";
-            case CharacterSpellModificationTypeEnum.BASE_DAMAGE:
+            case SpellModifierTypeEnum.BASE_DAMAGE:
                return "base damage";
-            case CharacterSpellModificationTypeEnum.HEAL_BONUS:
+            case SpellModifierTypeEnum.HEAL_BONUS:
                return "heal bonus";
-            case CharacterSpellModificationTypeEnum.AP_COST:
+            case SpellModifierTypeEnum.AP_COST:
                return "ap cost";
-            case CharacterSpellModificationTypeEnum.CAST_INTERVAL:
+            case SpellModifierTypeEnum.CAST_INTERVAL:
                return "cast interval";
-            case CharacterSpellModificationTypeEnum.CAST_INTERVAL_SET:
-               return "cast interval set";
-            case CharacterSpellModificationTypeEnum.CRITICAL_HIT_BONUS:
+            case SpellModifierTypeEnum.CRITICAL_HIT_BONUS:
                return "critical hit bonus";
-            case CharacterSpellModificationTypeEnum.CAST_LINE:
+            case SpellModifierTypeEnum.CAST_LINE:
                return "cast line";
-            case CharacterSpellModificationTypeEnum.LOS:
+            case SpellModifierTypeEnum.LOS:
                return "los";
-            case CharacterSpellModificationTypeEnum.MAX_CAST_PER_TURN:
+            case SpellModifierTypeEnum.MAX_CAST_PER_TURN:
                return "max cast per turn";
-            case CharacterSpellModificationTypeEnum.MAX_CAST_PER_TARGET:
+            case SpellModifierTypeEnum.MAX_CAST_PER_TARGET:
                return "max cast per target";
-            case CharacterSpellModificationTypeEnum.RANGE_MAX:
+            case SpellModifierTypeEnum.RANGE_MAX:
                return "range max";
-            case CharacterSpellModificationTypeEnum.RANGE_MIN:
+            case SpellModifierTypeEnum.RANGE_MIN:
                return "range min";
-            case CharacterSpellModificationTypeEnum.OCCUPIED_CELL:
+            case SpellModifierTypeEnum.OCCUPIED_CELL:
                return "occupied cell";
-            case CharacterSpellModificationTypeEnum.FREE_CELL:
+            case SpellModifierTypeEnum.FREE_CELL:
                return "free cell";
-            case CharacterSpellModificationTypeEnum.SET_RANGE_MAX:
-               return "set range max";
-            case CharacterSpellModificationTypeEnum.SET_RANGE_MIN:
-               return "set range min";
-            case CharacterSpellModificationTypeEnum.VISIBLE_TARGET:
+            case SpellModifierTypeEnum.VISIBLE_TARGET:
                return "visible target";
-            case CharacterSpellModificationTypeEnum.PORTAL_PROJECTION:
+            case SpellModifierTypeEnum.PORTAL_PROJECTION:
                return "portal projection";
-            case CharacterSpellModificationTypeEnum.PORTAL_FREE_CELL:
+            case SpellModifierTypeEnum.PORTAL_FREE_CELL:
                return "portal free cell";
             default:
                return UNKNOWN_MODIFIER_NAME;
          }
       }
       
-      public function toString() : String
+      public function dump(indentLevel:uint = 0) : String
       {
-         return NameUtil.getUnqualifiedClassName(this) + " " + this._name + " (Entity ID: " + this._entityId.toString() + ", Spell ID: " + this._spellId.toString() + ", ID: " + this._id.toString() + "): " + "base: " + this._baseValue.toString() + " additional: " + this._additionalValue.toString() + " objectsAndMountBonus: " + this._objectsAndMountBonusValue.toString() + " alignGiftBonus: " + this._alignGiftBonusValue.toString() + " contextModif: " + this._contextModifValue.toString() + " total: " + this._totalValue.toString();
+         var action:SpellModifierAction = null;
+         var actionType:int = 0;
+         var indent:* = "\t";
+         for(var i:uint = 0; i < indentLevel; i++)
+         {
+            indent += "\t";
+         }
+         var toReturn:* = NameUtil.getUnqualifiedClassName(this) + " " + this._name + " (Entity ID: " + this._entityId.toString() + ", Spell ID: " + this._spellId.toString() + ", type: " + this._modifierType.toString() + ")";
+         var actionTypes:Vector.<int> = new Vector.<int>(0);
+         for each(action in this._actions)
+         {
+            actionTypes.push(action.actionType);
+         }
+         actionTypes.sort(Array.NUMERIC);
+         for each(actionType in actionTypes)
+         {
+            action = this._actions[actionType];
+            toReturn += "\n" + indent + action.dump(this.isBool());
+         }
+         return toReturn;
+      }
+      
+      private function isBool() : Boolean
+      {
+         switch(this._modifierType)
+         {
+            case SpellModifierTypeEnum.RANGEABLE:
+               return true;
+            case SpellModifierTypeEnum.CAST_LINE:
+               return true;
+            case SpellModifierTypeEnum.LOS:
+               return true;
+            case SpellModifierTypeEnum.OCCUPIED_CELL:
+               return true;
+            case SpellModifierTypeEnum.FREE_CELL:
+               return true;
+            case SpellModifierTypeEnum.VISIBLE_TARGET:
+               return true;
+            case SpellModifierTypeEnum.PORTAL_PROJECTION:
+               return true;
+            case SpellModifierTypeEnum.PORTAL_FREE_CELL:
+               return true;
+            default:
+               return false;
+         }
+      }
+   }
+}
+
+import com.ankamagames.dofus.logic.game.common.spell.SpellModifierValueTypeEnum;
+import com.ankamagames.dofus.network.enums.SpellModifierActionTypeEnum;
+
+class SpellModifierAction
+{
+    
+   
+   private var _actionType:int = 0;
+   
+   private var _equipment:int = 0;
+   
+   private var _context:int = 0;
+   
+   private var _total:int = 0;
+   
+   function SpellModifierAction(actionType:int, equipment:int, context:int)
+   {
+      super();
+      this._actionType = actionType;
+      this._equipment = equipment;
+      this._context = context;
+      this._total = this._equipment + this._context;
+   }
+   
+   public function get actionType() : int
+   {
+      return this._actionType;
+   }
+   
+   public function getEquipmentAsInt() : int
+   {
+      return this._equipment;
+   }
+   
+   public function getEquipmentAsBool() : Boolean
+   {
+      return this._equipment > 0;
+   }
+   
+   public function getContextAsInt() : int
+   {
+      return this._context;
+   }
+   
+   public function getContextAsBool() : Boolean
+   {
+      return this._context > 0;
+   }
+   
+   public function getTotalAsInt() : int
+   {
+      return this._total;
+   }
+   
+   public function getTotalAsBool() : Boolean
+   {
+      return this._total > 0;
+   }
+   
+   public function getInt(valueType:int) : int
+   {
+      switch(valueType)
+      {
+         case SpellModifierValueTypeEnum.ALL:
+            return this.getTotalAsInt();
+         case SpellModifierValueTypeEnum.EQUIPMENT:
+            return this.getEquipmentAsInt();
+         case SpellModifierValueTypeEnum.CONTEXT:
+            return this.getContextAsInt();
+         default:
+            return 0;
+      }
+   }
+   
+   public function getBool(valueType:int) : Boolean
+   {
+      switch(valueType)
+      {
+         case SpellModifierValueTypeEnum.ALL:
+            return this.getTotalAsBool();
+         case SpellModifierValueTypeEnum.EQUIPMENT:
+            return this.getEquipmentAsBool();
+         case SpellModifierValueTypeEnum.CONTEXT:
+            return this.getContextAsBool();
+         default:
+            return false;
+      }
+   }
+   
+   public function dump(asBool:Boolean = false) : String
+   {
+      var equipmentStr:String = this.getEquipmentAsInt().toString();
+      var contextStr:String = this.getContextAsInt().toString();
+      var totalStr:String = this.getTotalAsInt().toString();
+      if(asBool)
+      {
+         equipmentStr += " (" + this.getEquipmentAsBool() + ")";
+         contextStr += " (" + this.getContextAsBool() + ")";
+         totalStr += " (" + this.getTotalAsBool() + ")";
+      }
+      return this.getActionName() + "[" + "equipment: " + equipmentStr + ", context: " + contextStr + ", total: " + totalStr + "]";
+   }
+   
+   private function getActionName() : String
+   {
+      switch(this._actionType)
+      {
+         case SpellModifierActionTypeEnum.ACTION_SET:
+            return "Set";
+         case SpellModifierActionTypeEnum.ACTION_BOOST:
+            return "Boost";
+         case SpellModifierActionTypeEnum.ACTION_DEBOOST:
+            return "Deboost";
+         case SpellModifierActionTypeEnum.ACTION_INVALID:
+            return "Invalid";
+         default:
+            return "???";
       }
    }
 }

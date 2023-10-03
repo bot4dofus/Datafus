@@ -4,11 +4,8 @@ package com.ankamagames.dofus.logic.game.fight.types
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.frames.SpellInventoryManagementFrame;
-   import com.ankamagames.dofus.logic.game.common.spell.SpellModifiers;
    import com.ankamagames.dofus.logic.game.fight.managers.CurrentPlayedFighterManager;
-   import com.ankamagames.dofus.logic.game.fight.managers.SpellModifiersManager;
    import com.ankamagames.dofus.logic.game.fight.types.castSpellManager.SpellManager;
-   import com.ankamagames.dofus.network.enums.CharacterSpellModificationTypeEnum;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightSpellCooldown;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
@@ -79,9 +76,6 @@ package com.ankamagames.dofus.logic.game.fight.types
          var spellLevel:SpellLevel = null;
          var spellCastManager:SpellCastInFightManager = null;
          var interval:int = 0;
-         var castInterval:Number = NaN;
-         var castIntervalSet:Number = NaN;
-         var spellModifiers:SpellModifiers = null;
          if(this.needCooldownUpdate && !spellCooldowns)
          {
             spellCooldowns = this._storedSpellCooldowns;
@@ -103,26 +97,7 @@ package com.ankamagames.dofus.logic.game.fight.types
                spellLevel = spellW.spell.getSpellLevel(spellW.spellLevel);
                spellCastManager = playedFighterManager.getSpellCastManagerById(this.entityId);
                spellCastManager.castSpell(spellW.id,spellW.spellLevel,[],false);
-               interval = spellLevel.minCastInterval;
-               if(spellCooldown.cooldown != 63)
-               {
-                  castInterval = 0;
-                  castIntervalSet = 0;
-                  spellModifiers = SpellModifiersManager.getInstance().getSpellModifiers(this.entityId,spellW.id);
-                  if(spellModifiers !== null)
-                  {
-                     castInterval = spellModifiers.getModifierValue(CharacterSpellModificationTypeEnum.CAST_INTERVAL);
-                     castIntervalSet = spellModifiers.getModifierValue(CharacterSpellModificationTypeEnum.CAST_INTERVAL_SET);
-                  }
-                  if(castIntervalSet)
-                  {
-                     interval = -castInterval + castIntervalSet;
-                  }
-                  else
-                  {
-                     interval -= castInterval;
-                  }
-               }
+               interval = spellW.minCastInterval;
                spellCastManager.getSpellManagerBySpellId(spellW.id).forceLastCastTurn(this.currentTurn + spellCooldown.cooldown - interval);
             }
          }

@@ -432,7 +432,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   }
                   player.setAnimation(AnimationEnum.ANIM_STATIQUE);
                }
-               PlayedCharacterManager.getInstance().isRidding = isRiding;
+               PlayedCharacterManager.getInstance().isRiding = isRiding;
                KernelEventsManager.getInstance().processCallback(MountHookList.MountRiding,isRiding);
                return true;
             case msg is MountEquipedErrorMessage:

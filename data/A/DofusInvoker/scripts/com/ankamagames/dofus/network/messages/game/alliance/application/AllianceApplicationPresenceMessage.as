@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.application
    public class AllianceApplicationPresenceMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3867;
+      public static const protocolId:uint = 6378;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.application
       
       override public function getMessageId() : uint
       {
-         return 3867;
+         return 6378;
       }
       
       public function initAllianceApplicationPresenceMessage(isApplication:Boolean = false) : AllianceApplicationPresenceMessage

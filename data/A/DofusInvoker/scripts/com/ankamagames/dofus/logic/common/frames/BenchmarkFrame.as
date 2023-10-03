@@ -1,8 +1,6 @@
 package com.ankamagames.dofus.logic.common.frames
 {
    import com.ankamagames.dofus.datacenter.world.SubArea;
-   import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
-   import com.ankamagames.dofus.network.messages.authorized.AdminQuietCommandMessage;
    import com.ankamagames.dofus.network.messages.authorized.ConsoleMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.MapComplementaryInformationsDataMessage;
    import com.ankamagames.jerakine.messages.RegisteringFrame;
@@ -48,9 +46,7 @@ package com.ankamagames.dofus.logic.common.frames
       private function moveToNextMap() : void
       {
          var subareas:Array = SubArea.getAllSubArea();
-         var aqcmsg:AdminQuietCommandMessage = new AdminQuietCommandMessage();
-         aqcmsg.initAdminQuietCommandMessage("moveto " + SubArea(subareas[this._subAreaIndex++ % subareas.length]).mapIds[0]);
-         ConnectionsHandler.getConnection().send(aqcmsg);
+         AuthorizedFrame.sendServerCommandMessage("moveto " + SubArea(subareas[this._subAreaIndex++ % subareas.length]).mapIds[0],true);
       }
    }
 }

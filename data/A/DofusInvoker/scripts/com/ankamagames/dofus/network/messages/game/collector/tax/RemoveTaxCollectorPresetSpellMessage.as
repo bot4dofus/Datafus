@@ -1,6 +1,6 @@
 package com.ankamagames.dofus.network.messages.game.collector.tax
 {
-   import com.ankamagames.dofus.network.types.game.uuid;
+   import com.ankamagames.dofus.network.types.game.Uuid;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -12,12 +12,12 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
    public class RemoveTaxCollectorPresetSpellMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8654;
+      public static const protocolId:uint = 2130;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var presetId:uuid;
+      public var presetId:Uuid;
       
       public var slot:uint = 0;
       
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       public function RemoveTaxCollectorPresetSpellMessage()
       {
-         this.presetId = new uuid();
+         this.presetId = new Uuid();
          super();
       }
       
@@ -36,10 +36,10 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       override public function getMessageId() : uint
       {
-         return 8654;
+         return 2130;
       }
       
-      public function initRemoveTaxCollectorPresetSpellMessage(presetId:uuid = null, slot:uint = 0) : RemoveTaxCollectorPresetSpellMessage
+      public function initRemoveTaxCollectorPresetSpellMessage(presetId:Uuid = null, slot:uint = 0) : RemoveTaxCollectorPresetSpellMessage
       {
          this.presetId = presetId;
          this.slot = slot;
@@ -49,7 +49,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       override public function reset() : void
       {
-         this.presetId = new uuid();
+         this.presetId = new Uuid();
          this._isInitialized = false;
       }
       
@@ -80,7 +80,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       public function serializeAs_RemoveTaxCollectorPresetSpellMessage(output:ICustomDataOutput) : void
       {
-         this.presetId.serializeAs_uuid(output);
+         this.presetId.serializeAs_Uuid(output);
          if(this.slot < 0)
          {
             throw new Error("Forbidden value (" + this.slot + ") on element slot.");
@@ -95,7 +95,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       public function deserializeAs_RemoveTaxCollectorPresetSpellMessage(input:ICustomDataInput) : void
       {
-         this.presetId = new uuid();
+         this.presetId = new Uuid();
          this.presetId.deserialize(input);
          this._slotFunc(input);
       }
@@ -113,7 +113,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       private function _presetIdtreeFunc(input:ICustomDataInput) : void
       {
-         this.presetId = new uuid();
+         this.presetId = new Uuid();
          this.presetId.deserializeAsync(this._presetIdtree);
       }
       

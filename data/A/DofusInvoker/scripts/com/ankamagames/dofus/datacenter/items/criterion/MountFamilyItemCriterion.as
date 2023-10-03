@@ -46,7 +46,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
       override protected function getCriterion() : int
       {
          var mount:MountData = PlayedCharacterManager.getInstance().mount;
-         if(!mount || !PlayedCharacterManager.getInstance().isRidding)
+         if(!mount || !PlayedCharacterManager.getInstance().isRiding)
          {
             return -1;
          }

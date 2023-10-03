@@ -5,7 +5,6 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightEffectTriggerCount;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightResumeSlaveInfo;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightSpellCooldown;
-   import com.ankamagames.dofus.network.types.game.idol.Idol;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -16,7 +15,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightResumeWithSlavesMessage extends GameFightResumeMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1237;
+      public static const protocolId:uint = 7814;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,12 +37,12 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 1237;
+         return 7814;
       }
       
-      public function initGameFightResumeWithSlavesMessage(effects:Vector.<FightDispellableEffectExtendedInformations> = null, marks:Vector.<GameActionMark> = null, gameTurn:uint = 0, fightStart:uint = 0, idols:Vector.<Idol> = null, fxTriggerCounts:Vector.<GameFightEffectTriggerCount> = null, spellCooldowns:Vector.<GameFightSpellCooldown> = null, summonCount:uint = 0, bombCount:uint = 0, slavesInfo:Vector.<GameFightResumeSlaveInfo> = null) : GameFightResumeWithSlavesMessage
+      public function initGameFightResumeWithSlavesMessage(effects:Vector.<FightDispellableEffectExtendedInformations> = null, marks:Vector.<GameActionMark> = null, gameTurn:uint = 0, fightStart:uint = 0, fxTriggerCounts:Vector.<GameFightEffectTriggerCount> = null, spellCooldowns:Vector.<GameFightSpellCooldown> = null, summonCount:uint = 0, bombCount:uint = 0, slavesInfo:Vector.<GameFightResumeSlaveInfo> = null) : GameFightResumeWithSlavesMessage
       {
-         super.initGameFightResumeMessage(effects,marks,gameTurn,fightStart,idols,fxTriggerCounts,spellCooldowns,summonCount,bombCount);
+         super.initGameFightResumeMessage(effects,marks,gameTurn,fightStart,fxTriggerCounts,spellCooldowns,summonCount,bombCount);
          this.slavesInfo = slavesInfo;
          this._isInitialized = true;
          return this;

@@ -21,16 +21,6 @@
 	],
 	"data": [
 		{
-			"id": 6,
-			"nameId": 976396,
-			"isDefault": false
-		},
-		{
-			"id": 2,
-			"nameId": 976375,
-			"isDefault": false
-		},
-		{
 			"id": 3,
 			"nameId": 976384,
 			"isDefault": false
@@ -54,6 +44,16 @@
 			"id": 8,
 			"nameId": 976400,
 			"isDefault": true
+		},
+		{
+			"id": 6,
+			"nameId": 976396,
+			"isDefault": false
+		},
+		{
+			"id": 2,
+			"nameId": 976375,
+			"isDefault": false
 		}
 	]
 }

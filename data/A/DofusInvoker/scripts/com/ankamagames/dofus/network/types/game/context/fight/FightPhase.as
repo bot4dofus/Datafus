@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightPhase implements INetworkType
    {
       
-      public static const protocolId:uint = 5619;
+      public static const protocolId:uint = 5435;
        
       
       public var phase:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 5619;
+         return 5435;
       }
       
       public function initFightPhase(phase:uint = 0, phaseEndTimeStamp:Number = 0) : FightPhase

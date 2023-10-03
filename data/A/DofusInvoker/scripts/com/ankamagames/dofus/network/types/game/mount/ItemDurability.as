@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.mount
    public class ItemDurability implements INetworkType
    {
       
-      public static const protocolId:uint = 6082;
+      public static const protocolId:uint = 8768;
        
       
       public var durability:int = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.mount
       
       public function getTypeId() : uint
       {
-         return 6082;
+         return 8768;
       }
       
       public function initItemDurability(durability:int = 0, durabilityMax:int = 0) : ItemDurability

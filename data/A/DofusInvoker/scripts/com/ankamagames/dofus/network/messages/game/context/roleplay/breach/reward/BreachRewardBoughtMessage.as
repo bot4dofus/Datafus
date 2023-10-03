@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach.rewa
    public class BreachRewardBoughtMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9202;
+      public static const protocolId:uint = 384;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach.rewa
       
       override public function getMessageId() : uint
       {
-         return 9202;
+         return 384;
       }
       
       public function initBreachRewardBoughtMessage(id:uint = 0, bought:Boolean = false) : BreachRewardBoughtMessage

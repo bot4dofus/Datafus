@@ -200,7 +200,7 @@
 			"longNameId": 116103,
 			"descriptionId": 305968,
 			"gameplayDescriptionId": 598583,
-			"gameplayClassDescriptionId": 888597,
+			"gameplayClassDescriptionId": 1010306,
 			"maleLook": "{1|10||135}",
 			"femaleLook": "{1|11||125}",
 			"creatureBonesId": 15,
@@ -318,22 +318,22 @@
 				{
 					"breedId": 1,
 					"roleId": 1,
-					"descriptionId": 598584,
-					"value": 6,
+					"descriptionId": 1004987,
+					"value": 7,
 					"order": 3
 				},
 				{
 					"breedId": 1,
 					"roleId": 2,
-					"descriptionId": 599995,
-					"value": 7,
+					"descriptionId": 1004996,
+					"value": 8,
 					"order": 2
 				},
 				{
 					"breedId": 1,
 					"roleId": 3,
-					"descriptionId": 598587,
-					"value": 7,
+					"descriptionId": 1007811,
+					"value": 8,
 					"order": 1
 				},
 				{
@@ -354,21 +354,21 @@
 					"breedId": 1,
 					"roleId": 6,
 					"descriptionId": 506517,
-					"value": 3,
+					"value": 4,
 					"order": -1
 				},
 				{
 					"breedId": 1,
 					"roleId": 7,
 					"descriptionId": 506472,
-					"value": 0,
+					"value": 2,
 					"order": -1
 				},
 				{
 					"breedId": 1,
 					"roleId": 8,
 					"descriptionId": 506468,
-					"value": 0,
+					"value": 3,
 					"order": -1
 				}
 			],
@@ -515,7 +515,7 @@
 					"breedId": 2,
 					"roleId": 1,
 					"descriptionId": 506481,
-					"value": 1,
+					"value": 3,
 					"order": -1
 				},
 				{
@@ -535,36 +535,36 @@
 				{
 					"breedId": 2,
 					"roleId": 4,
-					"descriptionId": 598599,
-					"value": 4,
+					"descriptionId": 1004937,
+					"value": 5,
 					"order": 2
 				},
 				{
 					"breedId": 2,
 					"roleId": 5,
 					"descriptionId": 506482,
-					"value": 3,
+					"value": 4,
 					"order": -1
 				},
 				{
 					"breedId": 2,
 					"roleId": 6,
 					"descriptionId": 506483,
-					"value": 2,
+					"value": 4,
 					"order": -1
 				},
 				{
 					"breedId": 2,
 					"roleId": 7,
 					"descriptionId": 823681,
-					"value": 10,
+					"value": 12,
 					"order": 1
 				},
 				{
 					"breedId": 2,
 					"roleId": 8,
 					"descriptionId": 823682,
-					"value": 5,
+					"value": 6,
 					"order": 3
 				}
 			],
@@ -592,7 +592,7 @@
 			"longNameId": 116105,
 			"descriptionId": 305969,
 			"gameplayDescriptionId": 598579,
-			"gameplayClassDescriptionId": 958243,
+			"gameplayClassDescriptionId": 1010305,
 			"maleLook": "{1|30||120}",
 			"femaleLook": "{1|31||95}",
 			"creatureBonesId": 17,
@@ -732,7 +732,7 @@
 					"breedId": 3,
 					"roleId": 4,
 					"descriptionId": 506516,
-					"value": 4,
+					"value": 5,
 					"order": -1
 				},
 				{
@@ -746,21 +746,21 @@
 					"breedId": 3,
 					"roleId": 6,
 					"descriptionId": 506521,
-					"value": 1,
+					"value": 3,
 					"order": -1
 				},
 				{
 					"breedId": 3,
 					"roleId": 7,
-					"descriptionId": 598581,
-					"value": 3,
+					"descriptionId": 1004994,
+					"value": 6,
 					"order": 2
 				},
 				{
 					"breedId": 3,
 					"roleId": 8,
-					"descriptionId": 599992,
-					"value": 5,
+					"descriptionId": 1004995,
+					"value": 6,
 					"order": 3
 				}
 			],
@@ -906,7 +906,7 @@
 				{
 					"breedId": 4,
 					"roleId": 1,
-					"descriptionId": 598621,
+					"descriptionId": 1004986,
 					"value": 6,
 					"order": 2
 				},
@@ -914,7 +914,7 @@
 					"breedId": 4,
 					"roleId": 2,
 					"descriptionId": 506413,
-					"value": 4,
+					"value": 2,
 					"order": -1
 				},
 				{
@@ -928,7 +928,7 @@
 					"breedId": 4,
 					"roleId": 4,
 					"descriptionId": 506415,
-					"value": 0,
+					"value": 2,
 					"order": -1
 				},
 				{
@@ -941,22 +941,22 @@
 				{
 					"breedId": 4,
 					"roleId": 6,
-					"descriptionId": 598618,
-					"value": 6,
+					"descriptionId": 1004953,
+					"value": 7,
 					"order": 3
 				},
 				{
 					"breedId": 4,
 					"roleId": 7,
 					"descriptionId": 506414,
-					"value": 3,
+					"value": 1,
 					"order": -1
 				},
 				{
 					"breedId": 4,
 					"roleId": 8,
 					"descriptionId": 506409,
-					"value": 1,
+					"value": 3,
 					"order": -1
 				}
 			],
@@ -984,7 +984,7 @@
 			"longNameId": 706,
 			"descriptionId": 305960,
 			"gameplayDescriptionId": 598627,
-			"gameplayClassDescriptionId": 891450,
+			"gameplayClassDescriptionId": 1010380,
 			"maleLook": "{1|50||110}",
 			"femaleLook": "{1|51||110}",
 			"creatureBonesId": 22,
@@ -1110,7 +1110,7 @@
 					"breedId": 5,
 					"roleId": 2,
 					"descriptionId": 506463,
-					"value": 0,
+					"value": 2,
 					"order": -1
 				},
 				{
@@ -1137,7 +1137,7 @@
 				{
 					"breedId": 5,
 					"roleId": 6,
-					"descriptionId": 598628,
+					"descriptionId": 1004957,
 					"value": 9,
 					"order": 1
 				},
@@ -1152,7 +1152,7 @@
 					"breedId": 5,
 					"roleId": 8,
 					"descriptionId": 506436,
-					"value": 5,
+					"value": 4,
 					"order": -1
 				}
 			],
@@ -1313,20 +1313,20 @@
 					"breedId": 6,
 					"roleId": 3,
 					"descriptionId": 506499,
-					"value": 0,
+					"value": 2,
 					"order": -1
 				},
 				{
 					"breedId": 6,
 					"roleId": 4,
-					"descriptionId": 598081,
+					"descriptionId": 1004992,
 					"value": 6,
 					"order": 3
 				},
 				{
 					"breedId": 6,
 					"roleId": 5,
-					"descriptionId": 598080,
+					"descriptionId": 1004991,
 					"value": 9,
 					"order": 1
 				},
@@ -1334,20 +1334,20 @@
 					"breedId": 6,
 					"roleId": 6,
 					"descriptionId": 506502,
-					"value": 2,
+					"value": 3,
 					"order": -1
 				},
 				{
 					"breedId": 6,
 					"roleId": 7,
 					"descriptionId": 506501,
-					"value": 2,
+					"value": 3,
 					"order": -1
 				},
 				{
 					"breedId": 6,
 					"roleId": 8,
-					"descriptionId": 598085,
+					"descriptionId": 1004931,
 					"value": 7,
 					"order": 2
 				}
@@ -1376,7 +1376,7 @@
 			"longNameId": 582016,
 			"descriptionId": 305962,
 			"gameplayDescriptionId": 598094,
-			"gameplayClassDescriptionId": 888306,
+			"gameplayClassDescriptionId": 1013460,
 			"maleLook": "{1|70||110}",
 			"femaleLook": "{1|71||115}",
 			"creatureBonesId": 36,
@@ -1467,35 +1467,35 @@
 				]
 			],
 			"breedSpellsId": [
-				13169,
-				13176,
-				13171,
-				13172,
+				25877,
+				25858,
+				25795,
+				25870,
+				25867,
+				25742,
 				13175,
-				13173,
-				13189,
-				13180,
-				13177,
-				13181,
-				13174,
-				14511,
-				13170,
-				13183,
-				13182,
-				13179,
-				13168,
-				13185,
-				13178,
+				25871,
+				25860,
+				25744,
+				25879,
+				25868,
+				25743,
+				25863,
+				25873,
+				25749,
+				25859,
+				25880,
 				13184,
-				13186,
+				25869,
+				25872,
 				13187
 			],
 			"breedRoles": [
 				{
 					"breedId": 7,
 					"roleId": 1,
-					"descriptionId": 598097,
-					"value": 5,
+					"descriptionId": 1009634,
+					"value": 9,
 					"order": 3
 				},
 				{
@@ -1515,36 +1515,36 @@
 				{
 					"breedId": 7,
 					"roleId": 4,
-					"descriptionId": 598578,
-					"value": 10,
+					"descriptionId": 1009635,
+					"value": 12,
 					"order": 1
 				},
 				{
 					"breedId": 7,
 					"roleId": 5,
 					"descriptionId": 506503,
-					"value": 5,
+					"value": 7,
 					"order": -1
 				},
 				{
 					"breedId": 7,
 					"roleId": 6,
 					"descriptionId": 506506,
-					"value": 2,
+					"value": 5,
 					"order": -1
 				},
 				{
 					"breedId": 7,
 					"roleId": 7,
 					"descriptionId": 506496,
-					"value": 1,
+					"value": 5,
 					"order": -1
 				},
 				{
 					"breedId": 7,
 					"roleId": 8,
-					"descriptionId": 720850,
-					"value": 5,
+					"descriptionId": 1009636,
+					"value": 9,
 					"order": 2
 				}
 			],
@@ -1705,7 +1705,7 @@
 					"breedId": 8,
 					"roleId": 3,
 					"descriptionId": 506486,
-					"value": 0,
+					"value": 3,
 					"order": -1
 				},
 				{
@@ -1725,21 +1725,21 @@
 				{
 					"breedId": 8,
 					"roleId": 6,
-					"descriptionId": 598593,
-					"value": 5,
+					"descriptionId": 1004963,
+					"value": 6,
 					"order": 3
 				},
 				{
 					"breedId": 8,
 					"roleId": 7,
 					"descriptionId": 506484,
-					"value": 0,
+					"value": 1,
 					"order": -1
 				},
 				{
 					"breedId": 8,
 					"roleId": 8,
-					"descriptionId": 598595,
+					"descriptionId": 1004961,
 					"value": 8,
 					"order": 2
 				}
@@ -1768,7 +1768,7 @@
 			"longNameId": 116108,
 			"descriptionId": 305970,
 			"gameplayDescriptionId": 598088,
-			"gameplayClassDescriptionId": 836506,
+			"gameplayClassDescriptionId": 1010304,
 			"maleLook": "{1|90||140}",
 			"femaleLook": "{1|91||135}",
 			"creatureBonesId": 40,
@@ -1914,8 +1914,8 @@
 				{
 					"breedId": 9,
 					"roleId": 5,
-					"descriptionId": 598076,
-					"value": 9,
+					"descriptionId": 1004988,
+					"value": 10,
 					"order": 1
 				},
 				{
@@ -1929,13 +1929,13 @@
 					"breedId": 9,
 					"roleId": 7,
 					"descriptionId": 506507,
-					"value": 0,
+					"value": 2,
 					"order": -1
 				},
 				{
 					"breedId": 9,
 					"roleId": 8,
-					"descriptionId": 598075,
+					"descriptionId": 1004990,
 					"value": 8,
 					"order": 3
 				}
@@ -1964,7 +1964,7 @@
 			"longNameId": 662,
 			"descriptionId": 305961,
 			"gameplayDescriptionId": 598613,
-			"gameplayClassDescriptionId": 998954,
+			"gameplayClassDescriptionId": 1010379,
 			"maleLook": "{1|100||150}",
 			"femaleLook": "{1|101||145}",
 			"creatureBonesId": 12,
@@ -2103,7 +2103,7 @@
 				{
 					"breedId": 10,
 					"roleId": 4,
-					"descriptionId": 598614,
+					"descriptionId": 1004950,
 					"value": 6,
 					"order": 3
 				},
@@ -2118,14 +2118,14 @@
 					"breedId": 10,
 					"roleId": 6,
 					"descriptionId": 506404,
-					"value": 0,
+					"value": 1,
 					"order": -1
 				},
 				{
 					"breedId": 10,
 					"roleId": 7,
 					"descriptionId": 598616,
-					"value": 9,
+					"value": 10,
 					"order": 1
 				},
 				{
@@ -2279,14 +2279,14 @@
 					"breedId": 11,
 					"roleId": 1,
 					"descriptionId": 506448,
-					"value": 0,
+					"value": 2,
 					"order": -1
 				},
 				{
 					"breedId": 11,
 					"roleId": 2,
-					"descriptionId": 600003,
-					"value": 10,
+					"descriptionId": 1004946,
+					"value": 12,
 					"order": 1
 				},
 				{
@@ -2300,35 +2300,35 @@
 					"breedId": 11,
 					"roleId": 4,
 					"descriptionId": 506408,
-					"value": 0,
+					"value": 3,
 					"order": -1
 				},
 				{
 					"breedId": 11,
 					"roleId": 5,
-					"descriptionId": 598610,
-					"value": 6,
-					"order": 3
+					"descriptionId": 1004945,
+					"value": 8,
+					"order": 2
 				},
 				{
 					"breedId": 11,
 					"roleId": 6,
-					"descriptionId": 598612,
+					"descriptionId": 1004948,
 					"value": 7,
-					"order": 2
+					"order": 3
 				},
 				{
 					"breedId": 11,
 					"roleId": 7,
 					"descriptionId": 506450,
-					"value": 0,
+					"value": 2,
 					"order": -1
 				},
 				{
 					"breedId": 11,
 					"roleId": 8,
 					"descriptionId": 506406,
-					"value": 1,
+					"value": 2,
 					"order": -1
 				}
 			],
@@ -2475,49 +2475,49 @@
 					"breedId": 12,
 					"roleId": 1,
 					"descriptionId": 506438,
-					"value": 0,
+					"value": 3,
 					"order": -1
 				},
 				{
 					"breedId": 12,
 					"roleId": 2,
-					"descriptionId": 598604,
-					"value": 6,
+					"descriptionId": 1004943,
+					"value": 7,
 					"order": 3
 				},
 				{
 					"breedId": 12,
 					"roleId": 3,
 					"descriptionId": 506427,
-					"value": 0,
+					"value": 1,
 					"order": -1
 				},
 				{
 					"breedId": 12,
 					"roleId": 4,
 					"descriptionId": 506423,
-					"value": 1,
+					"value": 4,
 					"order": -1
 				},
 				{
 					"breedId": 12,
 					"roleId": 5,
 					"descriptionId": 598603,
-					"value": 7,
+					"value": 8,
 					"order": 2
 				},
 				{
 					"breedId": 12,
 					"roleId": 6,
-					"descriptionId": 598602,
-					"value": 8,
+					"descriptionId": 1004941,
+					"value": 12,
 					"order": 1
 				},
 				{
 					"breedId": 12,
 					"roleId": 7,
 					"descriptionId": 506422,
-					"value": 3,
+					"value": 4,
 					"order": -1
 				},
 				{
@@ -2552,7 +2552,7 @@
 			"longNameId": 654,
 			"descriptionId": 652,
 			"gameplayDescriptionId": 598605,
-			"gameplayClassDescriptionId": 1001666,
+			"gameplayClassDescriptionId": 1010378,
 			"maleLook": "{1|1405||160}",
 			"femaleLook": "{1|1407||155}",
 			"creatureBonesId": 1537,
@@ -2705,7 +2705,7 @@
 				{
 					"breedId": 13,
 					"roleId": 6,
-					"descriptionId": 598606,
+					"descriptionId": 1004944,
 					"value": 7,
 					"order": 3
 				},
@@ -2713,7 +2713,7 @@
 					"breedId": 13,
 					"roleId": 7,
 					"descriptionId": 506461,
-					"value": 2,
+					"value": 5,
 					"order": -1
 				},
 				{
@@ -2839,48 +2839,48 @@
 				]
 			],
 			"breedSpellsId": [
-				13389,
-				13387,
-				13405,
 				13386,
-				13403,
+				13425,
+				13387,
+				13420,
 				13388,
-				13394,
 				13395,
-				13398,
-				13400,
-				13392,
-				13397,
-				13402,
-				13401,
+				13403,
 				13391,
-				13408,
+				13397,
+				13400,
+				13423,
+				13398,
+				13402,
+				13394,
+				13401,
+				13422,
 				13399,
-				13421,
-				18650,
+				13415,
+				13424,
+				13393,
 				13396,
-				13390,
-				13424
+				18651
 			],
 			"breedRoles": [
 				{
 					"breedId": 14,
 					"roleId": 1,
 					"descriptionId": 506433,
-					"value": 0,
+					"value": 5,
 					"order": -1
 				},
 				{
 					"breedId": 14,
 					"roleId": 2,
-					"descriptionId": 598633,
+					"descriptionId": 1004999,
 					"value": 7,
 					"order": 1
 				},
 				{
 					"breedId": 14,
 					"roleId": 3,
-					"descriptionId": 598634,
+					"descriptionId": 1005000,
 					"value": 7,
 					"order": 2
 				},
@@ -2894,22 +2894,22 @@
 				{
 					"breedId": 14,
 					"roleId": 5,
-					"descriptionId": 598632,
-					"value": 6,
+					"descriptionId": 1004998,
+					"value": 7,
 					"order": 3
 				},
 				{
 					"breedId": 14,
 					"roleId": 6,
 					"descriptionId": 506435,
-					"value": 4,
+					"value": 5,
 					"order": -1
 				},
 				{
 					"breedId": 14,
 					"roleId": 7,
 					"descriptionId": 506431,
-					"value": 0,
+					"value": 1,
 					"order": -1
 				},
 				{
@@ -3063,41 +3063,41 @@
 					"breedId": 15,
 					"roleId": 1,
 					"descriptionId": 506412,
-					"value": 0,
+					"value": 3,
 					"order": -1
 				},
 				{
 					"breedId": 15,
 					"roleId": 2,
 					"descriptionId": 506456,
-					"value": 0,
+					"value": 2,
 					"order": -1
 				},
 				{
 					"breedId": 15,
 					"roleId": 3,
 					"descriptionId": 506457,
-					"value": 2,
+					"value": 3,
 					"order": -1
 				},
 				{
 					"breedId": 15,
 					"roleId": 4,
-					"descriptionId": 598624,
+					"descriptionId": 1004955,
 					"value": 7,
 					"order": 1
 				},
 				{
 					"breedId": 15,
 					"roleId": 5,
-					"descriptionId": 598623,
-					"value": 6,
+					"descriptionId": 1004954,
+					"value": 7,
 					"order": 3
 				},
 				{
 					"breedId": 15,
 					"roleId": 6,
-					"descriptionId": 598625,
+					"descriptionId": 1004964,
 					"value": 7,
 					"order": 2
 				},
@@ -3112,7 +3112,7 @@
 					"breedId": 15,
 					"roleId": 8,
 					"descriptionId": 506452,
-					"value": 2,
+					"value": 5,
 					"order": -1
 				}
 			],
@@ -3231,7 +3231,7 @@
 				]
 			],
 			"breedSpellsId": [
-				14584,
+				14593,
 				14574,
 				14575,
 				14583,
@@ -3244,10 +3244,10 @@
 				14585,
 				14592,
 				14587,
-				14576,
+				14584,
 				14589,
 				14615,
-				14593,
+				14576,
 				14591,
 				14594,
 				14610,
@@ -3259,28 +3259,28 @@
 					"breedId": 16,
 					"roleId": 1,
 					"descriptionId": 506489,
-					"value": 2,
+					"value": 3,
 					"order": -1
 				},
 				{
 					"breedId": 16,
 					"roleId": 2,
 					"descriptionId": 506490,
-					"value": 3,
+					"value": 0,
 					"order": -1
 				},
 				{
 					"breedId": 16,
 					"roleId": 3,
 					"descriptionId": 506493,
-					"value": 2,
+					"value": 0,
 					"order": -1
 				},
 				{
 					"breedId": 16,
 					"roleId": 4,
-					"descriptionId": 598093,
-					"value": 4,
+					"descriptionId": 1004934,
+					"value": 6,
 					"order": 3
 				},
 				{
@@ -3293,7 +3293,7 @@
 				{
 					"breedId": 16,
 					"roleId": 6,
-					"descriptionId": 598092,
+					"descriptionId": 1004933,
 					"value": 8,
 					"order": 1
 				},
@@ -3301,14 +3301,14 @@
 					"breedId": 16,
 					"roleId": 7,
 					"descriptionId": 506491,
-					"value": 0,
+					"value": 1,
 					"order": -1
 				},
 				{
 					"breedId": 16,
 					"roleId": 8,
 					"descriptionId": 506494,
-					"value": 4,
+					"value": 5,
 					"order": -1
 				}
 			],
@@ -3336,7 +3336,7 @@
 			"longNameId": 577238,
 			"descriptionId": 583059,
 			"gameplayDescriptionId": 598588,
-			"gameplayClassDescriptionId": 888307,
+			"gameplayClassDescriptionId": 1010307,
 			"maleLook": "{1|3285||140}",
 			"femaleLook": "{1|3286||135}",
 			"creatureBonesId": 3372,
@@ -3462,21 +3462,21 @@
 					"breedId": 17,
 					"roleId": 2,
 					"descriptionId": 588554,
-					"value": 3,
+					"value": 4,
 					"order": -1
 				},
 				{
 					"breedId": 17,
 					"roleId": 3,
 					"descriptionId": 588555,
-					"value": 3,
+					"value": 4,
 					"order": -1
 				},
 				{
 					"breedId": 17,
 					"roleId": 4,
 					"descriptionId": 588556,
-					"value": 3,
+					"value": 4,
 					"order": -1
 				},
 				{
@@ -3489,22 +3489,22 @@
 				{
 					"breedId": 17,
 					"roleId": 6,
-					"descriptionId": 598589,
-					"value": 5,
+					"descriptionId": 1004936,
+					"value": 6,
 					"order": 2
 				},
 				{
 					"breedId": 17,
 					"roleId": 7,
 					"descriptionId": 588551,
-					"value": 0,
+					"value": 2,
 					"order": -1
 				},
 				{
 					"breedId": 17,
 					"roleId": 8,
 					"descriptionId": 598590,
-					"value": 5,
+					"value": 6,
 					"order": 3
 				}
 			],
@@ -3532,7 +3532,7 @@
 			"longNameId": 720110,
 			"descriptionId": 720111,
 			"gameplayDescriptionId": 720112,
-			"gameplayClassDescriptionId": 871411,
+			"gameplayClassDescriptionId": 1010381,
 			"maleLook": "{1|3498||155}",
 			"femaleLook": "{1|3499||145}",
 			"creatureBonesId": 3941,
@@ -3623,42 +3623,42 @@
 				]
 			],
 			"breedSpellsId": [
-				13760,
+				13762,
 				13756,
 				13748,
-				13768,
-				13754,
+				13766,
+				13755,
 				13770,
 				13774,
 				13757,
 				13763,
-				13755,
-				13765,
 				13771,
+				13754,
+				13768,
 				13772,
-				13766,
-				13762,
+				13790,
+				13760,
 				13769,
-				13758,
+				13802,
 				13781,
 				13773,
-				13753,
+				13765,
 				13749,
-				14321
+				14357
 			],
 			"breedRoles": [
 				{
 					"breedId": 18,
 					"roleId": 1,
-					"descriptionId": 718668,
+					"descriptionId": 1004970,
 					"value": 5,
 					"order": 3
 				},
 				{
 					"breedId": 18,
 					"roleId": 2,
-					"descriptionId": 718666,
-					"value": 6,
+					"descriptionId": 1004938,
+					"value": 7,
 					"order": 2
 				},
 				{
@@ -3672,7 +3672,7 @@
 					"breedId": 18,
 					"roleId": 4,
 					"descriptionId": 718672,
-					"value": 1,
+					"value": 4,
 					"order": -1
 				},
 				{
@@ -3686,21 +3686,21 @@
 					"breedId": 18,
 					"roleId": 6,
 					"descriptionId": 718670,
-					"value": 2,
+					"value": 3,
 					"order": -1
 				},
 				{
 					"breedId": 18,
 					"roleId": 7,
 					"descriptionId": 718671,
-					"value": 3,
+					"value": 2,
 					"order": -1
 				},
 				{
 					"breedId": 18,
 					"roleId": 8,
 					"descriptionId": 718669,
-					"value": 3,
+					"value": 4,
 					"order": -1
 				}
 			],
@@ -3847,14 +3847,14 @@
 					"breedId": 20,
 					"roleId": 1,
 					"descriptionId": 950043,
-					"value": 4,
+					"value": 3,
 					"order": -1
 				},
 				{
 					"breedId": 20,
 					"roleId": 2,
 					"descriptionId": 950044,
-					"value": 0,
+					"value": 2,
 					"order": -1
 				},
 				{
@@ -3896,7 +3896,7 @@
 					"breedId": 20,
 					"roleId": 8,
 					"descriptionId": 972179,
-					"value": 4,
+					"value": 3,
 					"order": -1
 				}
 			],

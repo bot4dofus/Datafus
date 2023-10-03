@@ -1,5 +1,6 @@
 package com.ankamagames.dofus.network.messages.authorized
 {
+   import com.ankamagames.dofus.network.types.game.Uuid;
    import com.ankamagames.jerakine.network.CustomDataWrapper;
    import com.ankamagames.jerakine.network.ICustomDataInput;
    import com.ankamagames.jerakine.network.ICustomDataOutput;
@@ -11,15 +12,20 @@ package com.ankamagames.dofus.network.messages.authorized
    public class AdminCommandMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5816;
+      public static const protocolId:uint = 3305;
        
       
       private var _isInitialized:Boolean = false;
       
+      public var messageUuid:Uuid;
+      
       public var content:String = "";
+      
+      private var _messageUuidtree:FuncTree;
       
       public function AdminCommandMessage()
       {
+         this.messageUuid = new Uuid();
          super();
       }
       
@@ -30,11 +36,12 @@ package com.ankamagames.dofus.network.messages.authorized
       
       override public function getMessageId() : uint
       {
-         return 5816;
+         return 3305;
       }
       
-      public function initAdminCommandMessage(content:String = "") : AdminCommandMessage
+      public function initAdminCommandMessage(messageUuid:Uuid = null, content:String = "") : AdminCommandMessage
       {
+         this.messageUuid = messageUuid;
          this.content = content;
          this._isInitialized = true;
          return this;
@@ -42,7 +49,7 @@ package com.ankamagames.dofus.network.messages.authorized
       
       override public function reset() : void
       {
-         this.content = "";
+         this.messageUuid = new Uuid();
          this._isInitialized = false;
       }
       
@@ -73,6 +80,7 @@ package com.ankamagames.dofus.network.messages.authorized
       
       public function serializeAs_AdminCommandMessage(output:ICustomDataOutput) : void
       {
+         this.messageUuid.serializeAs_Uuid(output);
          output.writeUTF(this.content);
       }
       
@@ -83,6 +91,8 @@ package com.ankamagames.dofus.network.messages.authorized
       
       public function deserializeAs_AdminCommandMessage(input:ICustomDataInput) : void
       {
+         this.messageUuid = new Uuid();
+         this.messageUuid.deserialize(input);
          this._contentFunc(input);
       }
       
@@ -93,7 +103,14 @@ package com.ankamagames.dofus.network.messages.authorized
       
       public function deserializeAsyncAs_AdminCommandMessage(tree:FuncTree) : void
       {
+         this._messageUuidtree = tree.addChild(this._messageUuidtreeFunc);
          tree.addChild(this._contentFunc);
+      }
+      
+      private function _messageUuidtreeFunc(input:ICustomDataInput) : void
+      {
+         this.messageUuid = new Uuid();
+         this.messageUuid.deserializeAsync(this._messageUuidtree);
       }
       
       private function _contentFunc(input:ICustomDataInput) : void

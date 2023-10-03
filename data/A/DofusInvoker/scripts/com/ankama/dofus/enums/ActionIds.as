@@ -125,7 +125,7 @@ package com.ankama.dofus.enums
       
       public static var ACTION_CHARACTER_LIFE_LOST_REFLECTOR:int = 107;
       
-      public static var ACTION_CHARACTER_LIFE_POINTS_WIN:int = 108;
+      public static var ACTION_CHARACTER_LIFE_POINTS_WIN_FROM_FIRE:int = 108;
       
       public static var ACTION_CHARACTER_LIFE_POINTS_LOST_CASTER:int = 109;
       
@@ -1453,6 +1453,8 @@ package com.ankama.dofus.enums
       
       public static var ACTION_ENABLE_SPELL_CASTOUTDIAGONAL:int = 2934;
       
+      public static var ACTION_BOOST_SPELL_BASE_HEAL:int = 2935;
+      
       public static var ACTION_CASTER_EXECUTE_SPELL_ON_CELL:int = 2960;
       
       public static var ACTION_CHARACTER_BOOST_DEALT_HEAL_PERCENT_MULTIPLIER:int = 2971;
@@ -1504,6 +1506,22 @@ package com.ankama.dofus.enums
       public static var ACTION_REDUCE_PRISM_DURABILITY_REDUCTION:int = 2994;
       
       public static var ACTION_TEAM_POINTS_WIN_AVA:int = 2995;
+      
+      public static var ACTION_DURATION_HOUR:int = 2996;
+      
+      public static var ACTION_CHARACTER_LEARN_SPELL_TEMPORARY_MUTANT:int = 2997;
+      
+      public static var ACTION_CHARACTER_LIFE_POINTS_WIN_FROM_WATER:int = 2998;
+      
+      public static var ACTION_CHARACTER_LIFE_POINTS_WIN_FROM_AIR:int = 2999;
+      
+      public static var ACTION_CHARACTER_LIFE_POINTS_WIN_FROM_EARTH:int = 3000;
+      
+      public static var ACTION_CHARACTER_LIFE_POINTS_WIN_FROM_NEUTRAL:int = 3001;
+      
+      public static var ACTION_CHARACTER_LIFE_POINTS_WIN_FROM_BEST_ELEMENT:int = 3002;
+      
+      public static var ACTION_REFRESH_MARK_QUEST:int = 3003;
        
       
       public function ActionIds()

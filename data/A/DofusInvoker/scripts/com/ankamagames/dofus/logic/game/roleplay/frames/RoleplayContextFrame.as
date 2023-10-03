@@ -1137,10 +1137,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                   case ExchangeErrorEnum.SELL_ERROR:
                      errorMessage = I18n.getUiText("ui.exchange.cantExchangeSellError");
                      break;
-                  case ExchangeErrorEnum.REQUEST_CHARACTER_RESTRICTED:
-                     errorMessage = I18n.getUiText("ui.exchange.cantExchangeCharacterRestricted");
-                     channelId = ChatFrame.RED_CHANNEL_ID;
-                     break;
                   case ExchangeErrorEnum.REQUEST_CHARACTER_GUEST:
                      errorMessage = I18n.getUiText("ui.exchange.cantExchangeCharacterGuest");
                      channelId = ChatFrame.RED_CHANNEL_ID;
@@ -1337,9 +1333,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                      break;
                   case FighterRefusedReasonEnum.AVA_ZONE:
                      message = I18n.getUiText("ui.fight.cantAttackAvAZone");
-                     break;
-                  case FighterRefusedReasonEnum.RESTRICTED_ACCOUNT:
-                     message = I18n.getUiText("ui.charSel.deletionErrorUnsecureMode");
                      break;
                   default:
                      return true;

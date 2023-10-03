@@ -236,7 +236,7 @@ package com.ankamagames.dofus.uiApi
             return false;
          }
          var specialUi:Boolean = false;
-         if(uirc.name == "idolsTab" && (this.currentMap().mapId == 153092356 || this.currentMap().mapId == 153093380) || uirc.name == "craft" && this.currentMap().mapId == 153093380)
+         if(uirc.name == "craft" && this.currentMap().mapId == 153093380)
          {
             specialUi = true;
          }

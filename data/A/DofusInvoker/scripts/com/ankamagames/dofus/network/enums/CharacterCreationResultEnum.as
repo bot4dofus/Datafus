@@ -14,8 +14,6 @@ package com.ankamagames.dofus.network.enums
       public static const ERR_NOT_ALLOWED:uint = 4;
       
       public static const ERR_NEW_PLAYER_NOT_ALLOWED:uint = 5;
-      
-      public static const ERR_RESTRICTED_ZONE:uint = 6;
        
       
       public function CharacterCreationResultEnum()

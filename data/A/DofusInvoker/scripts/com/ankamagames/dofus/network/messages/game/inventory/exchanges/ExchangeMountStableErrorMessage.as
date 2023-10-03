@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeMountStableErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5358;
+      public static const protocolId:uint = 4915;
        
       
       public function ExchangeMountStableErrorMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 5358;
+         return 4915;
       }
       
       public function initExchangeMountStableErrorMessage() : ExchangeMountStableErrorMessage

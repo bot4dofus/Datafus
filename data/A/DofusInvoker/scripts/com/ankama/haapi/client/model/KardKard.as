@@ -24,13 +24,15 @@ package com.ankama.haapi.client.model
       
       public var kard_krosmaster:KardTypeKrosmaster = null;
       
-      public var kard_game_action:KardTypeAction = null;
+      public var kard_game_action:KardTypeGameAction = null;
       
       public var kard_action:KardTypeAction = null;
       
       public var kard_virtual_subscription_level:KardTypeVirtualSubscriptionLevel = null;
       
       public var kard_virtual_subscription:KardTypeVirtualSubscription = null;
+      
+      public var kard_ogrine:KardTypeOgrine = null;
       
       public function KardKard()
       {
@@ -53,7 +55,8 @@ package com.ankama.haapi.client.model
          str += " (kard_game_action: " + this.kard_game_action + ")";
          str += " (kard_action: " + this.kard_action + ")";
          str += " (kard_virtual_subscription_level: " + this.kard_virtual_subscription_level + ")";
-         return str + (" (kard_virtual_subscription: " + this.kard_virtual_subscription + ")");
+         str += " (kard_virtual_subscription: " + this.kard_virtual_subscription + ")";
+         return str + (" (kard_ogrine: " + this.kard_ogrine + ")");
       }
    }
 }

@@ -30,7 +30,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.externalnotification.ExternalNotificationManager;
    import com.ankamagames.dofus.externalnotification.enums.ExternalNotificationTypeEnum;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
+   import com.ankamagames.dofus.internalDatacenter.fight.ChallengeTargetWrapper;
    import com.ankamagames.dofus.internalDatacenter.fight.ChallengeWrapper;
+   import com.ankamagames.dofus.internalDatacenter.fight.EmptyChallengeWrapper;
    import com.ankamagames.dofus.internalDatacenter.fight.FightResultEntryWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
@@ -43,6 +45,11 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.logic.common.managers.HyperlinkShowCellManager;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.common.actions.ToggleShowUIAction;
+   import com.ankamagames.dofus.logic.game.common.actions.fight.ChallengeBonusSelectAction;
+   import com.ankamagames.dofus.logic.game.common.actions.fight.ChallengeModSelectAction;
+   import com.ankamagames.dofus.logic.game.common.actions.fight.ChallengeSelectionAction;
+   import com.ankamagames.dofus.logic.game.common.actions.fight.ChallengeTargetsRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.fight.ChallengeValidateAction;
    import com.ankamagames.dofus.logic.game.common.frames.AllianceFrame;
    import com.ankamagames.dofus.logic.game.common.frames.BreachFrame;
    import com.ankamagames.dofus.logic.game.common.frames.PartyManagementFrame;
@@ -55,7 +62,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.logic.game.common.managers.SubhintManager;
    import com.ankamagames.dofus.logic.game.common.messages.FightEndingMessage;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
-   import com.ankamagames.dofus.logic.game.fight.actions.ChallengeTargetsListRequestAction;
    import com.ankamagames.dofus.logic.game.fight.actions.ShowTacticModeAction;
    import com.ankamagames.dofus.logic.game.fight.actions.TimelineEntityOutAction;
    import com.ankamagames.dofus.logic.game.fight.actions.TimelineEntityOverAction;
@@ -85,11 +91,12 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.TriggerHookList;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
-   import com.ankamagames.dofus.network.enums.CharacterSpellModificationTypeEnum;
+   import com.ankamagames.dofus.network.enums.ChallengeStateEnum;
    import com.ankamagames.dofus.network.enums.FightOutcomeEnum;
    import com.ankamagames.dofus.network.enums.FightTypeEnum;
    import com.ankamagames.dofus.network.enums.GameActionFightInvisibilityStateEnum;
    import com.ankamagames.dofus.network.enums.MapObstacleStateEnum;
+   import com.ankamagames.dofus.network.enums.SpellModifierTypeEnum;
    import com.ankamagames.dofus.network.enums.TeamEnum;
    import com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightCarryCharacterMessage;
    import com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightNoSpellCastMessage;
@@ -108,11 +115,20 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.network.messages.game.context.fight.arena.ArenaFighterIdleMessage;
    import com.ankamagames.dofus.network.messages.game.context.fight.arena.ArenaFighterLeaveMessage;
    import com.ankamagames.dofus.network.messages.game.context.fight.breach.BreachGameFightEndMessage;
-   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeInfoMessage;
+   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeAddMessage;
+   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeBonusChoiceMessage;
+   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeBonusChoiceSelectedMessage;
+   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeListMessage;
+   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeModSelectMessage;
+   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeModSelectedMessage;
+   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeNumberMessage;
+   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeProposalMessage;
    import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeResultMessage;
-   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeTargetUpdateMessage;
-   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeTargetsListMessage;
-   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeTargetsListRequestMessage;
+   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeSelectedMessage;
+   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeSelectionMessage;
+   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeTargetsMessage;
+   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeTargetsRequestMessage;
+   import com.ankamagames.dofus.network.messages.game.context.fight.challenge.ChallengeValidateMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.CurrentMapInstanceMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.CurrentMapMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.MapObstacleUpdateMessage;
@@ -121,6 +137,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.network.types.game.action.fight.FightDispellableEffectExtendedInformations;
    import com.ankamagames.dofus.network.types.game.actions.fight.GameActionMark;
    import com.ankamagames.dofus.network.types.game.actions.fight.GameActionMarkedCell;
+   import com.ankamagames.dofus.network.types.game.context.GameContextActorInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.FightResultFighterListEntry;
    import com.ankamagames.dofus.network.types.game.context.fight.FightResultListEntry;
    import com.ankamagames.dofus.network.types.game.context.fight.FightResultPlayerListEntry;
@@ -133,9 +150,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightMutantInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightResumeSlaveInfo;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightTaxCollectorInformations;
+   import com.ankamagames.dofus.network.types.game.context.fight.challenge.ChallengeInformation;
    import com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeam;
    import com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeamWithOutcome;
-   import com.ankamagames.dofus.network.types.game.idol.Idol;
    import com.ankamagames.dofus.network.types.game.interactive.MapObstacle;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
    import com.ankamagames.dofus.types.entities.Glyph;
@@ -235,7 +252,13 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private var _hiddenEntites:Array;
       
-      public var _challengesList:Array;
+      private var _challengesList:Array;
+      
+      private var _challengeSelectionMod:uint = 1;
+      
+      private var _challengeBonusType:uint = 0;
+      
+      public var challengeChoicePhase:Boolean = false;
       
       private var _fightType:uint;
       
@@ -251,13 +274,13 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private var _fightersRoundStartPosition:Dictionary;
       
-      private var _fightIdols:Vector.<Idol>;
-      
       private var _mustShowTreasureHuntMask:Boolean = false;
       
       private var _roleplayGridDisplayed:Boolean;
       
-      public var isFightLeader:Boolean;
+      public var isFightLeader:Boolean = true;
+      
+      public var fightLeader:GameContextActorInformations;
       
       public var onlyTheOtherTeamCanPlace:Boolean = false;
       
@@ -322,6 +345,16 @@ package com.ankamagames.dofus.logic.game.fight.frames
       public function get challengesList() : Array
       {
          return this._challengesList;
+      }
+      
+      public function get challengeBonus() : uint
+      {
+         return this._challengeBonusType;
+      }
+      
+      public function get challengeMod() : uint
+      {
+         return this._challengeSelectionMod;
       }
       
       public function get fightType() : uint
@@ -619,12 +652,23 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var entityId:Number = NaN;
          var entities:Vector.<Number> = null;
          var gfemsg:GameFightEndMessage = null;
-         var ctlra:ChallengeTargetsListRequestAction = null;
-         var ctlrmsg:ChallengeTargetsListRequestMessage = null;
-         var ctlmsg:ChallengeTargetsListMessage = null;
-         var cimsg:ChallengeInfoMessage = null;
-         var ctumsg:ChallengeTargetUpdateMessage = null;
+         var cnmsg:ChallengeNumberMessage = null;
+         var clmsg:ChallengeListMessage = null;
+         var camsg:ChallengeAddMessage = null;
+         var challInfo:ChallengeInformation = null;
+         var addedChall:ChallengeWrapper = null;
+         var ctmsg:ChallengeTargetsMessage = null;
+         var ctrmsg:ChallengeTargetsRequestMessage = null;
          var crmsg:ChallengeResultMessage = null;
+         var cmsmsg:ChallengeModSelectMessage = null;
+         var cmsdmsg:ChallengeModSelectedMessage = null;
+         var cbcmsg:ChallengeBonusChoiceMessage = null;
+         var cbcsmsg:ChallengeBonusChoiceSelectedMessage = null;
+         var csmsg:ChallengeSelectionMessage = null;
+         var csedmsg:ChallengeSelectedMessage = null;
+         var cvmsg:ChallengeValidateMessage = null;
+         var cpmsg:ChallengeProposalMessage = null;
+         var challengeProposals:Vector.<ChallengeWrapper> = null;
          var aflmsg:ArenaFighterLeaveMessage = null;
          var moumsg:MapObstacleUpdateMessage = null;
          var bemsg:BreachEnterMessage = null;
@@ -660,7 +704,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var losersName:String = null;
          var namedTeamWO:NamedPartyTeamWithOutcome = null;
          var resultsRecap:Object = null;
-         var idols:Vector.<uint> = null;
          var resultsKey:String = null;
          var frew:FightResultEntryWrapper = null;
          var id:Number = NaN;
@@ -670,9 +713,14 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var kamas:Number = NaN;
          var kamasPerWinner:Number = NaN;
          var winner:FightResultEntryWrapper = null;
-         var numIdols:uint = 0;
-         var j:int = 0;
-         var cell:Number = NaN;
+         var it:int = 0;
+         var chall:ChallengeInformation = null;
+         var challengeW:ChallengeWrapper = null;
+         var replaced:Boolean = false;
+         var index:int = 0;
+         var targetW:ChallengeTargetWrapper = null;
+         var proposal:ChallengeInformation = null;
+         var challWrapper:ChallengeWrapper = null;
          var mo:MapObstacle = null;
          var breachFrame:BreachFrame = null;
          var spellManager:SpellManager = null;
@@ -795,8 +843,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
                CurrentPlayedFighterManager.getInstance().setCurrentSummonedBomb(gfrmsg.bombCount,playerId);
                this._battleFrame.turnsCount = gfrmsg.gameTurn;
                KernelEventsManager.getInstance().processCallback(FightHookList.TurnCountUpdated,gfrmsg.gameTurn);
-               this._fightIdols = gfrmsg.idols;
-               KernelEventsManager.getInstance().processCallback(FightHookList.FightIdolList,gfrmsg.idols);
                if(msg is GameFightResumeWithSlavesMessage)
                {
                   gfrwsmsg = msg as GameFightResumeWithSlavesMessage;
@@ -862,8 +908,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
                this.tacticModeHandler();
                this._battleFrame.turnsCount = gfspmsg.gameTurn;
                KernelEventsManager.getInstance().processCallback(FightHookList.TurnCountUpdated,gfspmsg.gameTurn);
-               this._fightIdols = gfspmsg.idols;
-               KernelEventsManager.getInstance().processCallback(FightHookList.FightIdolList,gfspmsg.idols);
                fightStartTime = gfspmsg.fightStart;
                attackersName = "";
                defendersName = "";
@@ -1013,8 +1057,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
                      KernelEventsManager.getInstance().processCallback(HookList.ArenaExternalNotification,ExternalNotificationTypeEnum.KOLO_START,30000);
                   }
                }
-               this._fightIdols = gfsm.idols;
-               KernelEventsManager.getInstance().processCallback(FightHookList.FightIdolList,gfsm.idols);
                return true;
             case msg is GameContextDestroyMessage:
                TooltipManager.hide();
@@ -1045,6 +1087,10 @@ package com.ankamagames.dofus.logic.game.fight.frames
                {
                   this.overEntity(cellEntity.id);
                }
+               if(fscf !== null && fscf.spell !== null && fscf.spell.portalProjectionForbiddenWithModifiers)
+               {
+                  return true;
+               }
                mcm = MarkedCellsManager.getInstance();
                portalOnThisCell = mcm.getMarkAtCellId(conmsg.cellId,GameActionMarkTypeEnum.PORTAL);
                if(portalOnThisCell)
@@ -1068,6 +1114,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   }
                }
                return true;
+               break;
             case msg is CellOutMessage:
                coutMsg = msg as CellOutMessage;
                for each(entity2 in EntitiesManager.getInstance().getEntitiesOnCell(coutMsg.cellId))
@@ -1251,8 +1298,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
                         {
                            winners.push(frew);
                         }
-                        var _loc118_:* = resultIndex++;
-                        results[_loc118_] = frew;
+                        var _loc133_:* = resultIndex++;
+                        results[_loc133_] = frew;
                      }
                      if(frew.id == PlayedCharacterManager.getInstance().id)
                      {
@@ -1322,6 +1369,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   resultsRecap.sizeMalus = gfemsg.lootShareLimitMalus;
                   resultsRecap.duration = gfemsg.duration;
                   resultsRecap.challenges = this.challengesList;
+                  resultsRecap.challengeBonusType = this._challengeBonusType;
                   resultsRecap.turns = this._battleFrame.turnsCount;
                   resultsRecap.fightType = this._fightType;
                   resultsRecap.winnersName = winnersName;
@@ -1332,16 +1380,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   {
                      resultsRecap.budget = (gfemsg as BreachGameFightEndMessage).budget;
                   }
-                  idols = new Vector.<uint>();
-                  if(this._fightIdols)
-                  {
-                     numIdols = this._fightIdols.length;
-                     for(j = 0; j < numIdols; j++)
-                     {
-                        idols.push(this._fightIdols[j].id);
-                     }
-                  }
-                  resultsRecap.idols = idols;
                   resultsKey = saveResults(resultsRecap);
                   if(!PlayedCharacterManager.getInstance().isSpectator)
                   {
@@ -1355,54 +1393,97 @@ package com.ankamagames.dofus.logic.game.fight.frames
                }
                Kernel.getWorker().removeFrame(this);
                return true;
-            case msg is ChallengeTargetsListRequestAction:
-               ctlra = msg as ChallengeTargetsListRequestAction;
-               ctlrmsg = new ChallengeTargetsListRequestMessage();
-               ctlrmsg.initChallengeTargetsListRequestMessage(ctlra.challengeId);
-               ConnectionsHandler.getConnection().send(ctlrmsg);
-               return true;
-            case msg is ChallengeTargetsListMessage:
-               ctlmsg = msg as ChallengeTargetsListMessage;
-               for each(cell in ctlmsg.targetCells)
+            case msg is ChallengeNumberMessage:
+               cnmsg = msg as ChallengeNumberMessage;
+               this._challengesList = [];
+               for(it = 0; it < cnmsg.challengeNumber; it++)
                {
-                  if(cell != -1)
+                  this._challengesList.push(new EmptyChallengeWrapper());
+               }
+               KernelEventsManager.getInstance().processCallback(FightHookList.ChallengeListUpdate,this.challengesList);
+               return true;
+            case msg is ChallengeListMessage:
+               clmsg = msg as ChallengeListMessage;
+               for each(chall in clmsg.challengesInformation)
+               {
+                  if(Challenge.getChallengeById(chall.challengeId))
                   {
-                     HyperlinkShowCellManager.showCell(cell);
+                     challengeW = this.getChallengeById(chall.challengeId);
+                     if(!challengeW)
+                     {
+                        challengeW = new ChallengeWrapper();
+                        this.challengesList.push(challengeW);
+                     }
+                     challengeW.id = chall.challengeId;
+                     challengeW.setTargetsFromTargetInformation(chall.targetsList);
+                     challengeW.xpBonus = chall.xpBonus;
+                     challengeW.dropBonus = chall.dropBonus;
+                     challengeW.state = chall.state;
                   }
                }
+               KernelEventsManager.getInstance().processCallback(FightHookList.ChallengeListUpdate,this.challengesList);
+               KernelEventsManager.getInstance().processCallback(FightHookList.CloseChallengeProposal);
                return true;
-            case msg is ChallengeInfoMessage:
-               cimsg = msg as ChallengeInfoMessage;
-               if(!Challenge.getChallengeById(cimsg.challengeId))
+            case msg is ChallengeAddMessage:
+               camsg = msg as ChallengeAddMessage;
+               challInfo = camsg.challengeInformation;
+               if(!Challenge.getChallengeById(challInfo.challengeId))
                {
                   return true;
                }
-               challenge = this.getChallengeById(cimsg.challengeId);
-               if(!challenge)
+               addedChall = this.getChallengeById(challInfo.challengeId);
+               if(!addedChall)
                {
-                  challenge = new ChallengeWrapper();
-                  this.challengesList.push(challenge);
+                  addedChall = new ChallengeWrapper();
+                  replaced = false;
+                  for(index = 0; index < this.challengesList.length; index++)
+                  {
+                     if(this.challengesList[index] is EmptyChallengeWrapper)
+                     {
+                        this.challengesList[index] = addedChall;
+                        replaced = true;
+                        break;
+                     }
+                  }
+                  if(!replaced)
+                  {
+                     this.challengesList.push(addedChall);
+                  }
                }
-               challenge.id = cimsg.challengeId;
-               challenge.targetId = cimsg.targetId;
-               challenge.xpBonus = cimsg.xpBonus;
-               challenge.dropBonus = cimsg.dropBonus;
-               challenge.result = 0;
-               KernelEventsManager.getInstance().processCallback(FightHookList.ChallengeInfoUpdate,this.challengesList);
+               addedChall.id = challInfo.challengeId;
+               addedChall.setTargetsFromTargetInformation(challInfo.targetsList);
+               addedChall.xpBonus = challInfo.xpBonus;
+               addedChall.dropBonus = challInfo.dropBonus;
+               addedChall.state = challInfo.state;
+               KernelEventsManager.getInstance().processCallback(FightHookList.ChallengeListUpdate,this.challengesList);
                return true;
                break;
-            case msg is ChallengeTargetUpdateMessage:
-               ctumsg = msg as ChallengeTargetUpdateMessage;
-               challenge = this.getChallengeById(ctumsg.challengeId);
+            case msg is ChallengeTargetsMessage:
+               ctmsg = msg as ChallengeTargetsMessage;
+               challenge = this.getChallengeById(ctmsg.challengeInformation.challengeId);
                if(challenge == null)
                {
-                  _log.warn("Got a challenge result with no corresponding challenge (challenge id " + ctumsg.challengeId + "), skipping.");
+                  _log.warn("Got a challenge update with no corresponding challenge (challenge id " + ctmsg.challengeInformation.challengeId + "), skipping.");
                   return false;
                }
-               challenge.targetId = ctumsg.targetId;
-               KernelEventsManager.getInstance().processCallback(FightHookList.ChallengeInfoUpdate,this.challengesList);
+               challenge.setTargetsFromTargetInformation(ctmsg.challengeInformation.targetsList);
+               challenge.xpBonus = ctmsg.challengeInformation.xpBonus;
+               challenge.dropBonus = ctmsg.challengeInformation.dropBonus;
+               challenge.state = ctmsg.challengeInformation.state;
+               for each(targetW in challenge.targets)
+               {
+                  if(targetW.targetCell != -1 && (targetW.attackers.indexOf(PlayedCharacterManager.getInstance().id) != -1 || targetW.attackers.length == 0))
+                  {
+                     HyperlinkShowCellManager.showCell(targetW.targetCell);
+                  }
+               }
                return true;
                break;
+            case msg is ChallengeTargetsRequestAction:
+               ctrmsg = new ChallengeTargetsRequestMessage();
+               ctrmsg.initChallengeTargetsRequestMessage((msg as ChallengeTargetsRequestAction).challengeId);
+               ConnectionsHandler.getConnection().send(ctrmsg);
+               return true;
             case msg is ChallengeResultMessage:
                crmsg = msg as ChallengeResultMessage;
                challenge = this.getChallengeById(crmsg.challengeId);
@@ -1411,10 +1492,63 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   _log.warn("Got a challenge result with no corresponding challenge (challenge id " + crmsg.challengeId + "), skipping.");
                   return false;
                }
-               challenge.result = !!crmsg.success ? uint(1) : uint(2);
-               KernelEventsManager.getInstance().processCallback(FightHookList.ChallengeInfoUpdate,this.challengesList);
+               challenge.state = !!crmsg.success ? uint(ChallengeStateEnum.CHALLENGE_COMPLETED) : uint(ChallengeStateEnum.CHALLENGE_FAILED);
+               KernelEventsManager.getInstance().processCallback(FightHookList.ChallengeListUpdate,this.challengesList);
                return true;
                break;
+            case msg is ChallengeModSelectAction:
+               cmsmsg = new ChallengeModSelectMessage();
+               this._challengeSelectionMod = (msg as ChallengeModSelectAction).mod;
+               cmsmsg.initChallengeModSelectMessage(this._challengeSelectionMod);
+               ConnectionsHandler.getConnection().send(cmsmsg);
+               KernelEventsManager.getInstance().processCallback(FightHookList.ChallengeModSelected,this._challengeSelectionMod);
+               return true;
+            case msg is ChallengeModSelectedMessage:
+               cmsdmsg = msg as ChallengeModSelectedMessage;
+               this._challengeSelectionMod = cmsdmsg.challengeMod;
+               KernelEventsManager.getInstance().processCallback(FightHookList.ChallengeModSelected,this._challengeSelectionMod);
+               return true;
+            case msg is ChallengeBonusSelectAction:
+               cbcmsg = new ChallengeBonusChoiceMessage();
+               cbcmsg.initChallengeBonusChoiceMessage((msg as ChallengeBonusSelectAction).bonus);
+               ConnectionsHandler.getConnection().send(cbcmsg);
+               return true;
+            case msg is ChallengeBonusChoiceSelectedMessage:
+               cbcsmsg = msg as ChallengeBonusChoiceSelectedMessage;
+               this._challengeBonusType = cbcsmsg.challengeBonus;
+               KernelEventsManager.getInstance().processCallback(FightHookList.ChallengeBonusSelected,this._challengeBonusType);
+               return true;
+            case msg is ChallengeSelectionAction:
+               csmsg = new ChallengeSelectionMessage();
+               csmsg.initChallengeSelectionMessage((msg as ChallengeSelectionAction).challengeId);
+               ConnectionsHandler.getConnection().send(csmsg);
+               return true;
+            case msg is ChallengeSelectedMessage:
+               csedmsg = msg as ChallengeSelectedMessage;
+               KernelEventsManager.getInstance().processCallback(FightHookList.ChallengeSelected,csedmsg.challengeInformation.challengeId);
+               return true;
+            case msg is ChallengeValidateAction:
+               cvmsg = new ChallengeValidateMessage();
+               cvmsg.initChallengeValidateMessage((msg as ChallengeValidateAction).challengeId);
+               ConnectionsHandler.getConnection().send(cvmsg);
+               return true;
+            case msg is ChallengeProposalMessage:
+               cpmsg = msg as ChallengeProposalMessage;
+               challengeProposals = new Vector.<ChallengeWrapper>();
+               for each(proposal in cpmsg.challengeProposals)
+               {
+                  challWrapper = new ChallengeWrapper();
+                  challWrapper.id = proposal.challengeId;
+                  challWrapper.setTargetsFromTargetInformation(proposal.targetsList);
+                  challWrapper.xpBonus = proposal.xpBonus;
+                  challWrapper.dropBonus = proposal.dropBonus;
+                  challWrapper.state = proposal.state;
+                  challengeProposals.push(challWrapper);
+               }
+               this.challengeChoicePhase = true;
+               KernelEventsManager.getInstance().processCallback(FightHookList.ChallengeProposal,challengeProposals);
+               KernelEventsManager.getInstance().processCallback(FightHookList.ChallengeProposalUpdateTimer,cpmsg.timer * 1000);
+               return true;
             case msg is ArenaFighterLeaveMessage:
                aflmsg = msg as ArenaFighterLeaveMessage;
                KernelEventsManager.getInstance().processCallback(FightHookList.ArenaFighterLeave,aflmsg.leaver);
@@ -1485,7 +1619,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                if(spellWrapper !== null)
                {
                   ++spellWrapper.versionNum;
-                  if(usma.statId === CharacterSpellModificationTypeEnum.CAST_INTERVAL)
+                  if(usma.statId === SpellModifierTypeEnum.CAST_INTERVAL)
                   {
                      spellManager = CurrentPlayedFighterManager.getInstance().getSpellCastManagerById(usma.entityId).getSpellManagerBySpellId(usma.spellId);
                      if(spellManager !== null)
@@ -1493,7 +1627,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                         spellWrapper.actualCooldown = spellManager.cooldown;
                      }
                   }
-                  else if(usma.statId === CharacterSpellModificationTypeEnum.AP_COST)
+                  else if(usma.statId === SpellModifierTypeEnum.AP_COST)
                   {
                      KernelEventsManager.getInstance().processCallback(HookList.SpellUpdate,spellWrapper);
                   }
@@ -1663,28 +1797,29 @@ package com.ankamagames.dofus.logic.game.fight.frames
          }
       }
       
-      public function displayEntityTooltip(pEntityId:Number, pSpell:Object = null, pForceRefresh:Boolean = false, pSpellImpactCell:int = -1, pMakerParams:Object = null) : void
+      public function displayEntityTooltip(pEntityId:Number, pSpell:Object = null, pForceRefresh:Boolean = false, pSpellImpactCell:int = -1, pMakerParams:Object = null) : int
       {
          var entitiesOnCell:Array = null;
          var fighterNamedInfo:GameFightFighterNamedInformations = null;
+         var timer:int = getTimer();
          var infos:GameFightFighterInformations = this._entitiesFrame.getEntityInfos(pEntityId) as GameFightFighterInformations;
          var updateTime:uint = getTimer();
          this._tooltipLastUpdate[pEntityId] = updateTime;
          if(!infos || this._battleFrame.targetedEntities.indexOf(pEntityId) != -1 && this._hiddenEntites.indexOf(pEntityId) != -1)
          {
-            return;
+            return getTimer() - timer;
          }
          var spellImpactCell:int = pSpellImpactCell != -1 ? int(pSpellImpactCell) : int(currentCell);
          if(pSpell && spellImpactCell == -1)
          {
-            return;
+            return getTimer() - timer;
          }
          if(pSpell is SpellWrapper)
          {
             entitiesOnCell = EntitiesManager.getInstance().getEntitiesOnCell(spellImpactCell,AnimatedCharacter);
             if((pSpell as SpellWrapper).needTakenCellWithModifiers && entitiesOnCell.length == 0)
             {
-               return;
+               return getTimer() - timer;
             }
          }
          var tooltipCacheName:String = "EntityShortInfos" + infos.contextualId;
@@ -1696,7 +1831,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          }
          if(entity == null)
          {
-            return;
+            return getTimer() - timer;
          }
          var target:IRectangle = entity.absoluteBounds;
          var typeString:String = "monsterFighter";
@@ -1707,7 +1842,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
             fighterNamedInfo = infos as GameFightFighterNamedInformations;
             if(fighterNamedInfo && fighterNamedInfo.hiddenInPrefight)
             {
-               return;
+               return getTimer() - timer;
             }
          }
          else if(infos is GameFightEntityInformation)
@@ -1724,6 +1859,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          {
             this._entitiesFrame.updateEntityIconPosition(pEntityId);
          }
+         return getTimer() - timer;
       }
       
       public function addToHiddenEntities(entityId:Number) : void

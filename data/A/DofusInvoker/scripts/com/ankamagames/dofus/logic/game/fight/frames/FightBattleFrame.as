@@ -48,9 +48,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.network.messages.game.actions.fight.GameActionUpdateEffectTriggerCountMessage;
    import com.ankamagames.dofus.network.messages.game.actions.sequence.SequenceEndMessage;
    import com.ankamagames.dofus.network.messages.game.actions.sequence.SequenceStartMessage;
+   import com.ankamagames.dofus.network.messages.game.character.spellmodifier.ApplySpellModifierMessage;
+   import com.ankamagames.dofus.network.messages.game.character.spellmodifier.RemoveSpellModifierMessage;
    import com.ankamagames.dofus.network.messages.game.character.stats.CharacterStatsListMessage;
-   import com.ankamagames.dofus.network.messages.game.character.stats.RemoveSpellModifierMessage;
-   import com.ankamagames.dofus.network.messages.game.character.stats.UpdateSpellModifierMessage;
    import com.ankamagames.dofus.network.messages.game.context.GameContextDestroyMessage;
    import com.ankamagames.dofus.network.messages.game.context.fight.GameFightEndMessage;
    import com.ankamagames.dofus.network.messages.game.context.fight.GameFightLeaveMessage;
@@ -314,7 +314,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var gfemsg:GameFightEndMessage = null;
          var maxEndRescue:uint = 0;
          var gfpmsg:GameFightPauseMessage = null;
-         var usmmsg:UpdateSpellModifierMessage = null;
+         var asmmsg:ApplySpellModifierMessage = null;
          var rsmmsg:RemoveSpellModifierMessage = null;
          var fighter:GameFightFighterInformations = null;
          var effectTrigger:GameFightEffectTriggerCount = null;
@@ -736,13 +736,13 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   Kernel.getWorker().addFrame(this._infoEntitiesFrame);
                }
                return true;
-            case msg is UpdateSpellModifierMessage:
-               usmmsg = msg as UpdateSpellModifierMessage;
-               SpellModifiersManager.getInstance().setRawSpellModifier(usmmsg.actorId,usmmsg.spellModifier);
+            case msg is ApplySpellModifierMessage:
+               asmmsg = msg as ApplySpellModifierMessage;
+               SpellModifiersManager.getInstance().setRawSpellModifier(asmmsg.actorId,asmmsg.modifier);
                return true;
             case msg is RemoveSpellModifierMessage:
                rsmmsg = msg as RemoveSpellModifierMessage;
-               SpellModifiersManager.getInstance().deleteSpellModifier(rsmmsg.actorId,rsmmsg.spellId,rsmmsg.modificationType);
+               SpellModifiersManager.getInstance().deleteSpellModifierAction(rsmmsg.actorId,rsmmsg.spellId,rsmmsg.modifierType,rsmmsg.actionType);
                return true;
             default:
                return false;

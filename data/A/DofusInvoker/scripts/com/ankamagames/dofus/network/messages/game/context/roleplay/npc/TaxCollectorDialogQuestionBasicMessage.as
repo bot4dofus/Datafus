@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
    public class TaxCollectorDialogQuestionBasicMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8970;
+      public static const protocolId:uint = 8033;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
       
       override public function getMessageId() : uint
       {
-         return 8970;
+         return 8033;
       }
       
       public function initTaxCollectorDialogQuestionBasicMessage(allianceInfo:BasicAllianceInformations = null) : TaxCollectorDialogQuestionBasicMessage

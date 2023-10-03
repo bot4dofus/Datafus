@@ -43,7 +43,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
       {
          var mountId:int = 0;
          var mount:MountData = PlayedCharacterManager.getInstance().mount;
-         if(mount && PlayedCharacterManager.getInstance().isRidding)
+         if(mount && PlayedCharacterManager.getInstance().isRiding)
          {
             mountId = mount.modelId;
          }

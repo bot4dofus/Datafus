@@ -24,7 +24,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.datacenter.spells.SpellLevel;
    import com.ankamagames.dofus.internalDatacenter.items.WeaponWrapper;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
-   import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
@@ -90,7 +89,10 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import flash.geom.Point;
    import flash.ui.Keyboard;
    import flash.utils.Dictionary;
+   import flash.utils.clearTimeout;
    import flash.utils.getQualifiedClassName;
+   import flash.utils.getTimer;
+   import flash.utils.setTimeout;
    import haxe.ds._List.ListNode;
    import mapTools.MapTools;
    import tools.BreedEnum;
@@ -132,6 +134,14 @@ package com.ankamagames.dofus.logic.game.fight.frames
       private static const MAX_TOOLTIP:uint = 10;
       
       private static const SWAP_POSITION_EFFECT_ID:int = 8;
+      
+      private static var _lastSimulationTime:int;
+      
+      private static const MAX_SIMULATION_TIME_MS:int = 25;
+      
+      private static const SIMULATION_DELAY:int = 100;
+      
+      private static var _showTargetsTooltipsTimeoutHandle:uint = 0;
       
       private static var _currentTargetIsTargetable:Boolean;
        
@@ -259,6 +269,11 @@ package com.ankamagames.dofus.logic.game.fight.frames
             return this._summoningPreview.previews;
          }
          return null;
+      }
+      
+      public function get spell() : SpellWrapper
+      {
+         return this._spellWrapper as SpellWrapper;
       }
       
       public function get spellId() : uint
@@ -661,12 +676,11 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var currentFighterId:Number = this._entityId;
          var entityInfos:GameFightFighterInformations = FightEntitiesFrame.getCurrentInstance().getEntityInfos(currentFighterId) as GameFightFighterInformations;
          var origin:uint = entityInfos.disposition.cellId;
-         var playerStats:EntityStats = CurrentPlayedFighterManager.getInstance().getStats();
          var range:int = this._spellWrapper.range;
          var minRange:int = this._spellWrapper.minRange;
          var spellShape:uint = this.getSpellShape();
          var castInLine:Boolean = this._spellWrapper.castInLine || spellShape == SpellShapeEnum.l;
-         var mpWithPortals:Vector.<MapPoint> = MarkedCellsManager.getInstance().getMarksMapPoint(GameActionMarkTypeEnum.PORTAL);
+         var mpWithPortals:Vector.<MapPoint> = !!this._spellWrapper.portalProjectionForbiddenWithModifiers ? null : MarkedCellsManager.getInstance().getMarksMapPoint(GameActionMarkTypeEnum.PORTAL);
          if(!castInLine && !this._spellWrapper.castInDiagonal && !this._spellWrapper.castTestLos && range == 63)
          {
             this._isInfiniteTarget = true;
@@ -835,7 +849,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private function isCastBlockedByPortal(cellId:uint, spell:SpellWrapper) : Boolean
       {
-         if(spell === null)
+         if(spell === null || this._spellWrapper.portalProjectionForbiddenWithModifiers)
          {
             return false;
          }
@@ -884,7 +898,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          return !parentEntity ? pEntity : parentEntity;
       }
       
-      private function showTargetsTooltips() : void
+      private function showTargetsTooltips(isDelayed:Boolean = false) : void
       {
          var paramsToShow:Vector.<Object> = null;
          var movedFighters:Vector.<HaxeFighter> = null;
@@ -897,6 +911,23 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var movementPreview:AnimatedCharacter = null;
          var entId:Number = NaN;
          var entity:AnimatedCharacter = null;
+         if(!isDelayed)
+         {
+            if(_lastSimulationTime > MAX_SIMULATION_TIME_MS)
+            {
+               if(_showTargetsTooltipsTimeoutHandle != 0)
+               {
+                  clearTimeout(_showTargetsTooltipsTimeoutHandle);
+               }
+               _showTargetsTooltipsTimeoutHandle = setTimeout(function():void
+               {
+                  showTargetsTooltips(true);
+               },SIMULATION_DELAY);
+               return;
+            }
+         }
+         _showTargetsTooltipsTimeoutHandle = 0;
+         var timer:int = getTimer();
          var entitiesIds:Vector.<Number> = this._fightContextFrame.entitiesFrame.getEntitiesIdsList();
          var showDamages:Boolean = this._spellWrapper && OptionManager.getOptionManager("dofus").getOption("showDamagesPreview") && FightSpellCastFrame.isCurrentTargetTargetable();
          var showMove:Boolean = this._spellWrapper && OptionManager.getOptionManager("dofus").getOption("showMovePreview") && FightSpellCastFrame.isCurrentTargetTargetable();
@@ -981,11 +1012,12 @@ package com.ankamagames.dofus.logic.game.fight.frames
                this._fightContextFrame.displayEntityTooltip(entity.id,null,false,this._currentCell);
             }
          }
+         _lastSimulationTime = getTimer() - timer;
       }
       
       private function displayEntityTooltipTreatment(params:Object, spellLevel:int, currentCell:int) : void
       {
-         this._fightContextFrame.displayEntityTooltip(params.fighterId,spellLevel,true,currentCell,params);
+         _lastSimulationTime += this._fightContextFrame.displayEntityTooltip(params.fighterId,spellLevel,true,currentCell,params);
       }
       
       public function damagePreview() : Object
@@ -1138,6 +1170,10 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var newTargetPoint:MapPoint = null;
          var entryVector:Vector.<uint> = null;
          var exitVector:Vector.<uint> = null;
+         if(this._spellWrapper && this._spellWrapper.portalProjectionForbiddenWithModifiers)
+         {
+            return target;
+         }
          if(this._spellWrapper && this._spellWrapper.effects)
          {
             for each(effect in this._spellWrapper.effects)
@@ -1232,6 +1268,11 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var cellEntity:IEntity = null;
          var gafcotrmsg:GameActionFightCastOnTargetRequestMessage = null;
          var gafcrmsg:GameActionFightCastRequestMessage = null;
+         if(_showTargetsTooltipsTimeoutHandle != 0)
+         {
+            clearTimeout(_showTargetsTooltipsTimeoutHandle);
+            _showTargetsTooltipsTimeoutHandle = 0;
+         }
          var fightTurnFrame:FightTurnFrame = Kernel.getWorker().getFrame(FightTurnFrame) as FightTurnFrame;
          if(!fightTurnFrame)
          {

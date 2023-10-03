@@ -16,6 +16,8 @@ package com.ankama.haapi.client.api
       
       public static const event_admin_right_with_api_key:String = "admin_right_with_api_key";
       
+      public static const event_end_anonymous_session:String = "end_anonymous_session";
+      
       public static const event_end_session_with_api_key:String = "end_session_with_api_key";
       
       public static const event_game_enemies:String = "game_enemies";
@@ -27,6 +29,8 @@ package com.ankama.haapi.client.api
       public static const event_send_event:String = "send_event";
       
       public static const event_send_events:String = "send_events";
+      
+      public static const event_start_anonymous_session:String = "start_anonymous_session";
       
       public static const event_start_session_with_api_key:String = "start_session_with_api_key";
       
@@ -42,8 +46,6 @@ package com.ankama.haapi.client.api
       
       public static const sendEvent_GameEnum_18:String = "18";
       
-      public static const sendEvent_GameEnum_20:String = "20";
-      
       public static const sendEvent_GameEnum_21:String = "21";
       
       public static const sendEvent_GameEnum_22:String = "22";
@@ -53,6 +55,8 @@ package com.ankama.haapi.client.api
       public static const sendEvent_GameEnum_102:String = "102";
       
       public static const sendEvent_GameEnum_106:String = "106";
+      
+      public static const sendEvent_GameEnum_666:String = "666";
       
       public static const sendEvents_GameEnum_1:String = "1";
       
@@ -66,8 +70,6 @@ package com.ankama.haapi.client.api
       
       public static const sendEvents_GameEnum_18:String = "18";
       
-      public static const sendEvents_GameEnum_20:String = "20";
-      
       public static const sendEvents_GameEnum_21:String = "21";
       
       public static const sendEvents_GameEnum_22:String = "22";
@@ -75,6 +77,12 @@ package com.ankama.haapi.client.api
       public static const sendEvents_GameEnum_101:String = "101";
       
       public static const sendEvents_GameEnum_102:String = "102";
+      
+      public static const sendEvents_GameEnum_106:String = "106";
+      
+      public static const sendEvents_GameEnum_108:String = "108";
+      
+      public static const sendEvents_GameEnum_666:String = "666";
        
       
       public function GameApi(apiCredentials:ApiUserCredentials, eventDispatcher:EventDispatcher = null)
@@ -130,6 +138,44 @@ package com.ankama.haapi.client.api
             _token.requestId = requestId;
             _token.completionEventType = "admin_right_with_api_key";
             _token.returnType = "com.ankama.haapi.client.model.GameAdminRightWithApiKeyResponse";
+         });
+      }
+      
+      public function end_anonymous_session(anonymous_session_id:String, close_account_session:Boolean, date:Date) : ApiInvokerHelper
+      {
+         var path:String = null;
+         var queryParams:Dictionary = null;
+         var headerParams:Dictionary = null;
+         var postParams:Object = null;
+         var contentType:String = null;
+         path = "/Ankama/v4/Game/EndAnonymousSession".replace(/{format}/g,"xml");
+         queryParams = new Dictionary();
+         headerParams = new Dictionary();
+         postParams = new Object();
+         if(!isValidParam(anonymous_session_id))
+         {
+            throw new ApiError(400,"missing required params : anonymous_session_id");
+         }
+         postParams["anonymous_session_id"] = toPathValue(anonymous_session_id);
+         postParams["close_account_session"] = toPathValue(close_account_session);
+         postParams["date"] = toPathValue(date);
+         var contentTypes:Array = new Array("application/x-www-form-urlencoded");
+         var testFunc:Function = function(item:String, index:int, array:Array):Boolean
+         {
+            if(item.toLowerCase() == "application/json")
+            {
+               return true;
+            }
+            return false;
+         };
+         contentType = contentTypes.length == 0 || contentTypes.some(testFunc) ? "application/json" : contentTypes[0];
+         return new ApiInvokerHelper(function(apiInvokerHelper:EventDispatcher):void
+         {
+            var _token:* = getNewApiInvoker(apiInvokerHelper).invokeAPI(path,"POST",queryParams,postParams,headerParams,contentType);
+            var requestId:* = getUniqueId();
+            _token.requestId = requestId;
+            _token.completionEventType = "end_anonymous_session";
+            _token.returnType = "null ";
          });
       }
       
@@ -302,7 +348,6 @@ package com.ankama.haapi.client.api
          postParams["event_id"] = toPathValue(event_id);
          postParams["data"] = toPathValue(data);
          postParams["date"] = toPathValue(date);
-         var forceImport_Number:Number = undefined;
          var contentTypes:Array = new Array("application/x-www-form-urlencoded");
          var testFunc:Function = function(item:String, index:int, array:Array):Boolean
          {
@@ -319,7 +364,7 @@ package com.ankama.haapi.client.api
             var requestId:* = getUniqueId();
             _token.requestId = requestId;
             _token.completionEventType = "send_event";
-            _token.returnType = "com.ankama.haapi.client.model.Number";
+            _token.returnType = "null ";
          });
       }
       
@@ -349,7 +394,6 @@ package com.ankama.haapi.client.api
          postParams["game"] = toPathValue(game);
          postParams["session_id"] = toPathValue(session_id);
          postParams["events"] = toPathValue(events);
-         var forceImport_Number:Number = undefined;
          var contentTypes:Array = new Array("application/x-www-form-urlencoded");
          var testFunc:Function = function(item:String, index:int, array:Array):Boolean
          {
@@ -366,6 +410,43 @@ package com.ankama.haapi.client.api
             var requestId:* = getUniqueId();
             _token.requestId = requestId;
             _token.completionEventType = "send_events";
+            _token.returnType = "null ";
+         });
+      }
+      
+      public function start_anonymous_session(anonymous_session_id:String) : ApiInvokerHelper
+      {
+         var path:String = null;
+         var queryParams:Dictionary = null;
+         var headerParams:Dictionary = null;
+         var postParams:Object = null;
+         var contentType:String = null;
+         path = "/Ankama/v4/Game/StartAnonymousSession".replace(/{format}/g,"xml");
+         queryParams = new Dictionary();
+         headerParams = new Dictionary();
+         postParams = new Object();
+         if(!isValidParam(anonymous_session_id))
+         {
+            throw new ApiError(400,"missing required params : anonymous_session_id");
+         }
+         postParams["anonymous_session_id"] = toPathValue(anonymous_session_id);
+         var forceImport_Number:Number = undefined;
+         var contentTypes:Array = new Array("application/x-www-form-urlencoded");
+         var testFunc:Function = function(item:String, index:int, array:Array):Boolean
+         {
+            if(item.toLowerCase() == "application/json")
+            {
+               return true;
+            }
+            return false;
+         };
+         contentType = contentTypes.length == 0 || contentTypes.some(testFunc) ? "application/json" : contentTypes[0];
+         return new ApiInvokerHelper(function(apiInvokerHelper:EventDispatcher):void
+         {
+            var _token:* = getNewApiInvoker(apiInvokerHelper).invokeAPI(path,"POST",queryParams,postParams,headerParams,contentType);
+            var requestId:* = getUniqueId();
+            _token.requestId = requestId;
+            _token.completionEventType = "start_anonymous_session";
             _token.returnType = "com.ankama.haapi.client.model.Number";
          });
       }

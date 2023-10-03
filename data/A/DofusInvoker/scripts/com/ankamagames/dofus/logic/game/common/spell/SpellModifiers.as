@@ -58,96 +58,48 @@ package com.ankamagames.dofus.logic.game.common.spell
       {
          modifier.entityId = this._entityId;
          modifier.spellId = this._spellId;
-         this._modifiers[modifier.id.toString()] = modifier;
+         this._modifiers[modifier.modifierType.toString()] = modifier;
          if(this.isVerbose)
          {
-            _log.info("Set modifier for entity with ID " + this.entityId.toString() + " and spell with ID " + this.spellId.toString() + ": " + modifier.toString());
+            _log.info("Set modifier for entity with ID " + this.entityId.toString() + " and spell with ID " + this.spellId.toString() + ": " + modifier.dump());
          }
-         var updateSpellModifierAction:UpdateSpellModifierAction = UpdateSpellModifierAction.create(this.entityId,this.spellId,modifier.id);
+         var updateSpellModifierAction:UpdateSpellModifierAction = UpdateSpellModifierAction.create(this.entityId,this.spellId,modifier.modifierType);
          Kernel.getWorker().process(updateSpellModifierAction);
       }
       
-      public function getModifier(modifierId:Number) : SpellModifier
+      public function getModifier(modifierType:int) : SpellModifier
       {
-         if(!(modifierId in this._modifiers))
+         if(!(modifierType in this._modifiers))
          {
             return null;
          }
-         return this._modifiers[modifierId.toString()];
+         return this._modifiers[modifierType.toString()];
       }
       
-      public function deleteModifier(modifierId:Number) : void
+      public function deleteModifierAction(modifierType:int, actionType:int) : void
       {
-         if(!(modifierId in this._modifiers))
+         if(!(modifierType in this._modifiers))
          {
             return;
          }
-         var modifierKey:String = modifierId.toString();
+         var modifierKey:String = modifierType.toString();
          var modifier:SpellModifier = this._modifiers[modifierKey];
+         if(modifier === null)
+         {
+            return;
+         }
+         modifier.removeAction(actionType);
+         if(modifier.isEmpty)
+         {
+            delete this._modifiers[modifierKey];
+         }
          if(this.isVerbose)
          {
-            _log.info("Deleted modifier for entity with ID " + this._entityId.toString() + " and spell with ID " + this._spellId.toString() + ": " + modifier.toString());
+            _log.info("Deleted modifier for entity with ID " + this._entityId.toString() + " and spell with ID " + this._spellId.toString() + ": " + modifier.dump());
          }
-         delete this._modifiers[modifierKey];
       }
       
-      public function resetModifiers() : void
-      {
-         if(this.isVerbose)
-         {
-            _log.info("Modifiers reset for entity with ID " + this._entityId.toString() + " and spell with ID " + this._spellId.toString());
-         }
-         this._modifiers = new Dictionary();
-      }
-      
-      public function getSpellModifiersNumber() : Number
-      {
-         var modifierKey:* = null;
-         var counter:Number = 0;
-         for(modifierKey in this._modifiers)
-         {
-            counter++;
-         }
-         return counter;
-      }
-      
-      public function hasModifier(modifierId:Number) : Boolean
-      {
-         return modifierId.toString() in this._modifiers;
-      }
-      
-      public function getModifierValue(modifierId:Number) : Number
-      {
-         var key:String = modifierId.toString();
-         if(!(modifierId in this._modifiers))
-         {
-            return 0;
-         }
-         var modifier:SpellModifier = this._modifiers[key];
-         return modifier !== null ? Number(modifier.totalValue) : Number(0);
-      }
-      
-      public function getModifierBaseValue(modifierId:Number) : Number
-      {
-         var key:String = modifierId.toString();
-         if(!(modifierId in this._modifiers))
-         {
-            return 0;
-         }
-         return this._modifiers[key].baseValue;
-      }
-      
-      public function getModifierContextModifValue(modifierId:Number) : Number
-      {
-         var key:String = modifierId.toString();
-         if(!(modifierId in this._modifiers))
-         {
-            return 0;
-         }
-         return this._modifiers[key].contextModifValue;
-      }
-      
-      public function toString() : String
+      public function dump(indentLevel:uint = 0) : String
       {
          var spellModifierId:Number = NaN;
          var spellModifiersDump:String = "";
@@ -155,19 +107,52 @@ package com.ankamagames.dofus.logic.game.common.spell
          var spellModifier:SpellModifier = null;
          for each(spellModifier in this._modifiers)
          {
-            spellModifierIds.push(spellModifier.id);
+            spellModifierIds.push(spellModifier.modifierType);
          }
          spellModifierIds.sort(Array.NUMERIC);
          for each(spellModifierId in spellModifierIds)
          {
             spellModifier = this._modifiers[spellModifierId.toString()];
-            spellModifiersDump += "\n\t" + spellModifier.toString();
+            if(spellModifier !== null)
+            {
+               spellModifiersDump += "\n\t" + spellModifier.dump(indentLevel);
+            }
          }
          if(!spellModifiersDump)
          {
             spellModifiersDump = "\n\tNo spell modifiers to display.";
          }
          return this.getFormattedMessage(spellModifiersDump);
+      }
+      
+      public function getModifiedBool(modifierType:int, baseValue:Boolean = false, valueType:int = 1) : Boolean
+      {
+         var modifier:SpellModifier = this._modifiers[modifierType];
+         if(modifier === null)
+         {
+            return baseValue;
+         }
+         return modifier.getValueAsBool(valueType,baseValue);
+      }
+      
+      public function getModifiedInt(modifierType:int, baseValue:int = 0, valueType:int = 1) : int
+      {
+         var modifier:SpellModifier = this._modifiers[modifierType];
+         if(modifier === null)
+         {
+            return baseValue;
+         }
+         return modifier.getValueAsInt(valueType,baseValue);
+      }
+      
+      public function hasAction(modifierType:int, actionType:int) : Boolean
+      {
+         var modifier:SpellModifier = this._modifiers[modifierType];
+         if(modifier === null)
+         {
+            return false;
+         }
+         return modifier.hasAction(actionType);
       }
    }
 }

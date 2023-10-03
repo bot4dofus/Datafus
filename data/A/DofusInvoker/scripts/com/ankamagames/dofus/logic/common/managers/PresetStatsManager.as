@@ -6,11 +6,11 @@ package com.ankamagames.dofus.logic.common.managers
    import com.ankamagames.dofus.internalDatacenter.stats.UsablePresetStat;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.frames.EmoticonFrame;
+   import com.ankamagames.dofus.network.types.game.Uuid;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristic;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristicDetailed;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterCharacteristicValue;
    import com.ankamagames.dofus.network.types.game.character.characteristic.CharacterUsableCharacteristicDetailed;
-   import com.ankamagames.dofus.network.types.game.uuid;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.managers.StoreDataManager;
@@ -100,7 +100,7 @@ package com.ankamagames.dofus.logic.common.managers
          return true;
       }
       
-      public function getStats(presetId:uuid) : PresetStats
+      public function getStats(presetId:Uuid) : PresetStats
       {
          var key:String = presetId.uuidString;
          if(!(key in this._presetStats))
@@ -110,7 +110,7 @@ package com.ankamagames.dofus.logic.common.managers
          return this._presetStats[key];
       }
       
-      public function addRawStats(presetId:uuid, rawStats:Vector.<CharacterCharacteristic>) : void
+      public function addRawStats(presetId:Uuid, rawStats:Vector.<CharacterCharacteristic>) : void
       {
          var rawStat:CharacterCharacteristic = null;
          var emoticonFrame:EmoticonFrame = null;
@@ -161,7 +161,7 @@ package com.ankamagames.dofus.logic.common.managers
          }
       }
       
-      public function deleteStats(presetId:uuid) : Boolean
+      public function deleteStats(presetId:Uuid) : Boolean
       {
          var presetKey:String = presetId.uuidString;
          if(!(presetKey in this._presetStats))

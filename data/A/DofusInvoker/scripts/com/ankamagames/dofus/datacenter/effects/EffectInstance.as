@@ -722,10 +722,13 @@ package com.ankamagames.dofus.datacenter.effects
                      aTmp[1] = 0;
                   }
                case ActionIds.ACTION_BOOST_SPELL_RANGE_MAX:
+               case ActionIds.ACTION_DEBOOST_SPELL_RANGE_MAX:
+               case ActionIds.ACTION_SET_SPELL_RANGE_MAX:
                case ActionIds.ACTION_BOOST_SPELL_RANGE_MIN:
+               case ActionIds.ACTION_DEBOOST_SPELL_RANGE_MIN:
+               case ActionIds.ACTION_SET_SPELL_RANGE_MIN:
                case ActionIds.ACTION_BOOST_SPELL_RANGEABLE:
                case ActionIds.ACTION_BOOST_SPELL_DMG:
-               case ActionIds.ACTION_BOOST_SPELL_HEAL:
                case ActionIds.ACTION_BOOST_SPELL_AP_COST:
                case ActionIds.ACTION_DEBOOST_SPELL_AP_COST:
                case ActionIds.ACTION_BOOST_SPELL_CAST_INTVL:
@@ -736,13 +739,22 @@ package com.ankamagames.dofus.datacenter.effects
                case ActionIds.ACTION_BOOST_SPELL_MAXPERTARGET:
                case ActionIds.ACTION_BOOST_SPELL_CAST_INTVL_SET:
                case ActionIds.ACTION_BOOST_SPELL_BASE_DMG:
-               case ActionIds.ACTION_DEBOOST_SPELL_RANGE_MAX:
-               case ActionIds.ACTION_DEBOOST_SPELL_RANGE_MIN:
-               case ActionIds.ACTION_CASTER_EXECUTE_SPELL:
-               case ActionIds.ACTION_SET_SPELL_RANGE_MAX:
-               case ActionIds.ACTION_SET_SPELL_RANGE_MIN:
+               case ActionIds.ACTION_DEBOOST_OCCUPIED_CELL:
+               case ActionIds.ACTION_BOOST_OCCUPIED_CELL:
+               case ActionIds.ACTION_BOOST_FREE_CELL:
+               case ActionIds.ACTION_DEBOOST_FREE_CELL:
+               case ActionIds.ACTION_BOOST_VISIBLE_TARGET_ON_CELL_OFF:
+               case ActionIds.ACTION_BOOST_VISIBLE_TARGET_ON_CELL_ON:
+               case ActionIds.ACTION_BOOST_PORTAL_FREE_CELL_OFF:
+               case ActionIds.ACTION_BOOST_PORTAL_FREE_CELL_ON:
+               case ActionIds.ACTION_BOOST_PORTAL_PROJECTION_ON:
+               case ActionIds.ACTION_BOOST_PORTAL_PROJECTION_OFF:
+               case ActionIds.ACTION_BOOST_SPELL_HEAL:
                   aTmp[0] = this.getSpellName(aTmp[0]);
                   spellModif = true;
+                  break;
+               case ActionIds.ACTION_CASTER_EXECUTE_SPELL:
+                  aTmp[0] = this.getSpellName(aTmp[0]);
                   break;
                case ActionIds.ACTION_CAST_STARTING_SPELL:
                   aTmp[0] = "{spellNoLvl," + aTmp[0] + "," + aTmp[1] + "}";

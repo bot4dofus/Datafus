@@ -1684,7 +1684,7 @@
 			"id": 301,
 			"nameId": 719596,
 			"actionId": 0,
-			"displayTooltip": true
+			"displayTooltip": false
 		},
 		{
 			"id": 302,
@@ -1870,7 +1870,7 @@
 			"id": 332,
 			"nameId": 826275,
 			"actionId": 0,
-			"displayTooltip": false
+			"displayTooltip": true
 		},
 		{
 			"id": 333,
@@ -2279,6 +2279,42 @@
 			"nameId": 980795,
 			"actionId": 0,
 			"displayTooltip": false
+		},
+		{
+			"id": 406,
+			"nameId": 1005494,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 407,
+			"nameId": 1005495,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 408,
+			"nameId": 1005496,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 409,
+			"nameId": 1005497,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 410,
+			"nameId": 1005498,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 411,
+			"nameId": 1005499,
+			"actionId": 0,
+			"displayTooltip": true
 		}
 	]
 }

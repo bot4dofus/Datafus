@@ -65,20 +65,17 @@ package com.ankamagames.dofus.internalDatacenter.house
                refFurniture.elementId = 0;
                refFurniture.cellsWidth = 1;
                refFurniture.cellsHeight = 1;
-               refFurniture.order = 0;
             }
             furniture = new HavenbagFurnitureWrapper();
             furniture.typeId = refFurniture.typeId;
             furniture.themeId = refFurniture.themeId;
             furniture.color = refFurniture.color;
-            furniture.skillId = refFurniture.skillId;
             furniture.layerId = refFurniture.layerId;
             furniture.blocksMovement = refFurniture.blocksMovement;
             furniture.isStackable = refFurniture.isStackable;
             furniture.elementId = refFurniture.elementId;
             furniture.cellsWidth = refFurniture.cellsWidth;
             furniture.cellsHeight = refFurniture.cellsHeight;
-            furniture.order = refFurniture.order;
             _cache[furnitureTypeId] = furniture;
          }
          else

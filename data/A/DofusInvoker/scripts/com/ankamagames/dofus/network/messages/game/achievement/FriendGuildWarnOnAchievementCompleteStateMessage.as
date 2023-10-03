@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.achievement
    public class FriendGuildWarnOnAchievementCompleteStateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6599;
+      public static const protocolId:uint = 188;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.achievement
       
       override public function getMessageId() : uint
       {
-         return 6599;
+         return 188;
       }
       
       public function initFriendGuildWarnOnAchievementCompleteStateMessage(enable:Boolean = false) : FriendGuildWarnOnAchievementCompleteStateMessage

@@ -1,12 +1,8 @@
 package com.ankamagames.dofus.misc.stats.custom
 {
    import com.ankamagames.berilia.Berilia;
-   import com.ankamagames.berilia.components.Grid;
-   import com.ankamagames.berilia.components.messages.SelectItemMessage;
-   import com.ankamagames.berilia.enums.SelectMethodEnum;
    import com.ankamagames.berilia.types.graphic.GraphicContainer;
    import com.ankamagames.berilia.utils.BeriliaHookList;
-   import com.ankamagames.dofus.datacenter.jobs.Recipe;
    import com.ankamagames.dofus.datacenter.quest.Quest;
    import com.ankamagames.dofus.datacenter.quest.QuestStep;
    import com.ankamagames.dofus.kernel.Kernel;
@@ -65,10 +61,6 @@ package com.ankamagames.dofus.misc.stats.custom
       
       private static const TUTORIAL_STEP_USE_CRAFT_STATION:uint = 3900;
       
-      private static const TUTORIAL_STEP_SELECT_IDOL_RECIPE:uint = 4000;
-      
-      private static const TUTORIAL_STEP_CRAFT_IDOL:uint = 4100;
-      
       private static const TUTORIAL_STEP_OPEN_REWARDS_UI_2:uint = 4200;
       
       private static const TUTORIAL_STEP_ACCEPT_ALL_REWARDS_2:uint = 4300;
@@ -116,8 +108,6 @@ package com.ankamagames.dofus.misc.stats.custom
       private static const EXIT_MAP_ID:int = 154010883;
       
       private static const CRAFT_STATION_ELEMENT_ID:uint = 508989;
-      
-      private static const CRAFT_IDOL_ITEM_ID:uint = 16358;
        
       
       private var _jobStepsHarvest:Array;
@@ -151,7 +141,6 @@ package com.ankamagames.dofus.misc.stats.custom
          var target:GraphicContainer = null;
          var mcidmsg:MapComplementaryInformationsDataMessage = null;
          var iumsg:InteractiveUsedMessage = null;
-         var simsg:SelectItemMessage = null;
          var qvmsg:QuestValidatedMessage = null;
          var qlmsg:QuestListMessage = null;
          var activeQuest:QuestActiveInformations = null;
@@ -160,7 +149,7 @@ package com.ankamagames.dofus.misc.stats.custom
             target = pArgs[1];
             if(target && target.getUi() && target.getUi().name == "rewardsUi" && target.name == "btn_acceptAll")
             {
-               if(this._currentStep < TUTORIAL_STEP_CRAFT_IDOL)
+               if(this._currentStep <= TUTORIAL_STEP_USE_CRAFT_STATION)
                {
                   this.sendStepValidation(TUTORIAL_STEP_ACCEPT_ALL_REWARDS,null,null,false);
                }
@@ -214,14 +203,6 @@ package com.ankamagames.dofus.misc.stats.custom
             if(iumsg.elemId == CRAFT_STATION_ELEMENT_ID && this._currentStep == TUTORIAL_STEP_END_JOB_QUEST)
             {
                this.sendStepValidation(TUTORIAL_STEP_USE_CRAFT_STATION);
-            }
-         }
-         else if(pMessage is SelectItemMessage)
-         {
-            simsg = pMessage as SelectItemMessage;
-            if(simsg.target.name == "gd_recipes" && (simsg.selectMethod == SelectMethodEnum.CLICK || simsg.selectMethod == SelectMethodEnum.DOUBLE_CLICK) && ((simsg.target as Grid).selectedItem as Recipe).resultId == CRAFT_IDOL_ITEM_ID && this._currentStep == TUTORIAL_STEP_USE_CRAFT_STATION)
-            {
-               this.sendStepValidation(TUTORIAL_STEP_SELECT_IDOL_RECIPE);
             }
          }
          else if(pMessage is GameFightStartingMessage)
@@ -306,7 +287,7 @@ package com.ankamagames.dofus.misc.stats.custom
             case BeriliaHookList.UiLoaded:
                if(pArgs[0] == "rewardsUi")
                {
-                  if(this._currentStep < TUTORIAL_STEP_CRAFT_IDOL)
+                  if(this._currentStep <= TUTORIAL_STEP_USE_CRAFT_STATION)
                   {
                      this.sendStepValidation(TUTORIAL_STEP_OPEN_REWARDS_UI,null,null,false);
                   }
@@ -476,9 +457,6 @@ package com.ankamagames.dofus.misc.stats.custom
             case 9660:
             case 9661:
                break;
-            case 9662:
-               stepId = TUTORIAL_STEP_CRAFT_IDOL;
-               break;
             case 10015:
                stepId = TUTORIAL_STEP_END_CRAFT_TUTORIAL;
                break;
@@ -490,12 +468,6 @@ package com.ankamagames.dofus.misc.stats.custom
                break;
             case 9685:
                stepId = TUTORIAL_STEP_TALK_TO_DARM;
-               break;
-            case 9720:
-               stepId = TUTORIAL_STEP_FIGHT_WIN;
-               break;
-            case 10121:
-               stepId = TUTORIAL_STEP_FIGHT_WIN_BIS;
                break;
             case 10016:
                stepId = TUTORIAL_STEP_TALK_TO_DARM_2;

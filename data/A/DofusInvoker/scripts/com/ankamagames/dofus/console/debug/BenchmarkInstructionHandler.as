@@ -11,6 +11,7 @@ package com.ankamagames.dofus.console.debug
    import com.ankamagames.dofus.logic.common.frames.FightBotFrame;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
+   import com.ankamagames.dofus.logic.game.fight.actions.ToggleDematerializationAction;
    import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
    import com.ankamagames.dofus.logic.game.fight.managers.TacticModeManager;
    import com.ankamagames.dofus.misc.BenchmarkMovementBehavior;
@@ -22,6 +23,7 @@ package com.ankamagames.dofus.console.debug
    import com.ankamagames.jerakine.console.ConsoleInstructionHandler;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.entities.interfaces.IAnimated;
+   import com.ankamagames.jerakine.handlers.messages.Action;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.types.positions.MapPoint;
@@ -70,6 +72,7 @@ package com.ankamagames.dofus.console.debug
          var showScalezone:* = false;
          var flattenCells:* = false;
          var showBlockMvt:* = false;
+         var togglePokemonModeAction:Action = null;
          var rnd:PRNG = null;
          var i:uint = 0;
          var rpCharEntity:BenchmarkCharacter = null;
@@ -278,6 +281,10 @@ package com.ankamagames.dofus.console.debug
                txt += " du mode tactique.";
                console.output(txt);
                break;
+            case "creaturemode":
+               togglePokemonModeAction = ToggleDematerializationAction.create();
+               Kernel.getWorker().process(togglePokemonModeAction);
+               break;
             case "chainteleport":
                if(Kernel.getWorker().contains(BenchmarkFrame))
                {
@@ -324,6 +331,8 @@ package com.ankamagames.dofus.console.debug
                return "Désactive l\'affichage des erreurs du moteur d\'animation.";
             case "tacticmode":
                return "Active/Désactive le mode tactique" + "\n    show=[true|false]" + "\n    clearcache=[true|false]" + "\n    mode=[fight|RP]" + "\n    interactivecells=[true|false] " + "\n    fightzone=[true|false]" + "\n    scalezone=[true|false]" + "\n    flattencells=[true|false]";
+            case "creaturemode":
+               return "Enable/disable creature mode";
             case "chainteleport":
                return "Chain teleport in all game area";
             default:

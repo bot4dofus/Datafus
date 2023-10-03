@@ -17,6 +17,10 @@ package com.ankama.haapi.client.api
       public static const event_security_code:String = "security_code";
       
       public static const event_validate_code:String = "validate_code";
+      
+      public static const securityCode_TransportTypeEnum_EMAIL:String = "EMAIL";
+      
+      public static const securityCode_TransportTypeEnum_SMS:String = "SMS";
        
       
       public function ShieldApi(apiCredentials:ApiUserCredentials, eventDispatcher:EventDispatcher = null)
@@ -104,7 +108,7 @@ package com.ankama.haapi.client.api
          });
       }
       
-      public function security_code() : ApiInvokerHelper
+      public function security_code(transportType:String) : ApiInvokerHelper
       {
          var path:String = null;
          var queryParams:Dictionary = null;
@@ -115,6 +119,7 @@ package com.ankama.haapi.client.api
          queryParams = new Dictionary();
          headerParams = new Dictionary();
          postParams = new Object();
+         queryParams["transportType"] = toPathValue(transportType);
          var forceImport_Shielddomain:Shielddomain = undefined;
          var contentTypes:Array = new Array();
          var testFunc:Function = function(item:String, index:int, array:Array):Boolean

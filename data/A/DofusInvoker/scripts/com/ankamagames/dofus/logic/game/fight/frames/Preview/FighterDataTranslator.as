@@ -8,13 +8,12 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
-   import com.ankamagames.dofus.logic.game.common.spell.SpellModifier;
-   import com.ankamagames.dofus.logic.game.common.spell.SpellModifiers;
+   import com.ankamagames.dofus.logic.game.common.spell.SpellModifierValueTypeEnum;
    import com.ankamagames.dofus.logic.game.fight.frames.FightContextFrame;
    import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
    import com.ankamagames.dofus.logic.game.fight.managers.SpellModifiersManager;
-   import com.ankamagames.dofus.network.enums.CharacterSpellModificationTypeEnum;
    import com.ankamagames.dofus.network.enums.GameActionFightInvisibilityStateEnum;
+   import com.ankamagames.dofus.network.enums.SpellModifierTypeEnum;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightCharacterInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.GameFightMonsterInformations;
@@ -26,6 +25,7 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
    import damageCalculation.tools.StatIds;
    import flash.utils.Dictionary;
    import mapTools.MapTools;
+   import tools.ActionIdHelper;
    
    public class FighterDataTranslator implements IFighterData
    {
@@ -39,15 +39,9 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
       
       protected var _monsterProperties:Monster = null;
       
-      protected var itemSpellDamageModificator:Dictionary;
-      
-      protected var itemSpellBaseDamageModificator:Dictionary;
-      
       public function FighterDataTranslator(fighterInfos:GameFightFighterInformations, fighterId:Number)
       {
          var monsterInfos:GameFightMonsterInformations = null;
-         this.itemSpellDamageModificator = new Dictionary();
-         this.itemSpellBaseDamageModificator = new Dictionary();
          super();
          this._fighterInfos = fighterInfos;
          this._id = fighterId;
@@ -125,52 +119,6 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
       public function resolveDodge() : int
       {
          return -1;
-      }
-      
-      public function getItemSpellDamageModification(spellId:int) : int
-      {
-         var spellModifier:SpellModifier = null;
-         var spellModifierValue:Number = NaN;
-         var spellModifiers:SpellModifiers = null;
-         if(!(spellId in this.itemSpellDamageModificator))
-         {
-            spellModifier = null;
-            spellModifierValue = 0;
-            spellModifiers = SpellModifiersManager.getInstance().getSpellModifiers(this._id,spellId);
-            if(spellModifier !== null)
-            {
-               spellModifier = spellModifiers.getModifier(CharacterSpellModificationTypeEnum.DAMAGE);
-               if(spellModifier !== null)
-               {
-                  spellModifierValue = spellModifier.baseValue + spellModifier.additionalValue + spellModifier.alignGiftBonusValue + spellModifier.objectsAndMountBonusValue;
-               }
-            }
-            this.itemSpellDamageModificator[spellId] = spellModifierValue;
-         }
-         return this.itemSpellDamageModificator[spellId];
-      }
-      
-      public function getItemSpellBaseDamageModification(spellId:int) : int
-      {
-         var spellModifier:SpellModifier = null;
-         var spellModifierValue:Number = NaN;
-         var spellModifiers:SpellModifiers = null;
-         if(!(spellId in this.itemSpellBaseDamageModificator))
-         {
-            spellModifier = null;
-            spellModifierValue = 0;
-            spellModifiers = SpellModifiersManager.getInstance().getSpellModifiers(this._id,spellId);
-            if(spellModifier !== null)
-            {
-               spellModifier = spellModifiers.getModifier(CharacterSpellModificationTypeEnum.BASE_DAMAGE);
-               if(spellModifier !== null)
-               {
-                  spellModifierValue = spellModifier.baseValue + spellModifier.additionalValue + spellModifier.alignGiftBonusValue + spellModifier.objectsAndMountBonusValue;
-               }
-            }
-            this.itemSpellBaseDamageModificator[spellId] = spellModifierValue;
-         }
-         return this.itemSpellBaseDamageModificator[spellId];
       }
       
       public function canBreedSwitchPos() : Boolean
@@ -300,6 +248,20 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
             effectiveVitality = vitalityStat.total;
          }
          return this.getCharacteristicValue(StatIds.LIFE_POINTS) + effectiveVitality - this.getCharacteristicValue(StatIds.CUR_PERMANENT_DAMAGE);
+      }
+      
+      public function getBaseDamageHealEquipmentSpellMod(spellId:int) : int
+      {
+         return SpellModifiersManager.getInstance().getSpecificModifiedInt(this._id,spellId,SpellModifierTypeEnum.BASE_DAMAGE,SpellModifierValueTypeEnum.EQUIPMENT);
+      }
+      
+      public function getDamageHealEquipmentSpellMod(spellId:int, actionId:int) : int
+      {
+         if(ActionIdHelper.isHeal(actionId))
+         {
+            return SpellModifiersManager.getInstance().getSpecificModifiedInt(this._id,spellId,SpellModifierTypeEnum.HEAL_BONUS,SpellModifierValueTypeEnum.EQUIPMENT);
+         }
+         return SpellModifiersManager.getInstance().getSpecificModifiedInt(this._id,spellId,SpellModifierTypeEnum.DAMAGE,SpellModifierValueTypeEnum.EQUIPMENT);
       }
    }
 }

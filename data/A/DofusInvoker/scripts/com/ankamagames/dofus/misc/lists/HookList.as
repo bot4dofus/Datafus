@@ -397,8 +397,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const HideNotification:String = "HideNotification";
       
-      public static const SecureModeChange:String = "SecureModeChange";
-      
       public static const InactivityNotification:String = "InactivityNotification";
       
       public static const KISConnectingServer:String = "KISConnectingServer";
@@ -447,28 +445,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const ShowCollectedTaxCollector:String = "ShowCollectedTaxCollector";
       
-      public static const IdolSelectError:String = "IdolSelectError";
-      
-      public static const IdolSelected:String = "IdolSelected";
-      
-      public static const IdolAdded:String = "IdolAdded";
-      
-      public static const IdolRemoved:String = "IdolRemoved";
-      
-      public static const IdolPartyRefresh:String = "IdolPartyRefresh";
-      
-      public static const IdolPartyLost:String = "IdolPartyLost";
-      
-      public static const IdolsList:String = "IdolsList";
-      
-      public static const IdolsPresetsUpdate:String = "IdolsPresetsUpdate";
-      
-      public static const IdolsPresetDelete:String = "IdolsPresetDelete";
-      
-      public static const IdolsPresetEquipped:String = "IdolsPresetEquipped";
-      
-      public static const IdolsPresetSaved:String = "IdolsPresetSaved";
-      
       public static const StopableSoundEnded:String = "StopableSoundEnded";
       
       public static const HavenbagDisplayUi:String = "HavenbagDisplayUi";
@@ -479,13 +455,13 @@ package com.ankamagames.dofus.misc.lists
       
       public static const HavenbagAvailableThemesUpdate:String = "HavenbagAvailableThemesUpdate";
       
-      public static const HavenBagPermissionsUpdate:String = "HavenBagPermissionsUpdate";
+      public static const HavenbagSelectFurnitureType:String = "HavenbagSelectFurnitureType";
+      
+      public static const HavenbagPermissionsUpdate:String = "HavenbagPermissionsUpdate";
+      
+      public static const HavenbagLotteryGift:String = "HavenbagLotteryGift";
       
       public static const NpcDialogRepliesVisible:String = "NpcDialogRepliesVisible";
-      
-      public static const HavenBagLotteryDisplayUi:String = "HavenBagLotteryDisplayUi";
-      
-      public static const HavenBagLotteryGift:String = "HavenBagLotteryGift";
       
       public static const IntroductionCinematicStart:String = "IntroductionCinematicStart";
       
@@ -546,8 +522,6 @@ package com.ankamagames.dofus.misc.lists
       public static const ChinqStats:String = "ChinqStats";
       
       public static const SuggestionsStats:String = "SuggestionsStats";
-      
-      public static const DisplayHostSelection:String = "DisplayHostSelection";
       
       public static const ArenaExternalNotification:String = "ArenaExternalNotification";
       
@@ -763,7 +737,6 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(SetDofusQuality);
          Hook.createHook(CloseNotification);
          Hook.createHook(HideNotification);
-         Hook.createHook(SecureModeChange);
          Hook.createHook(InactivityNotification);
          Hook.createHook(KISConnectingServer);
          Hook.createHook(KISInactivityNotification);
@@ -787,26 +760,15 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(ServerStatusUpdate);
          Hook.createHook(CloseContextMenu);
          Hook.createHook(ShowCollectedTaxCollector);
-         Hook.createHook(IdolSelectError);
-         Hook.createHook(IdolSelected);
-         Hook.createHook(IdolAdded);
-         Hook.createHook(IdolRemoved);
-         Hook.createHook(IdolPartyRefresh);
-         Hook.createHook(IdolPartyLost);
-         Hook.createHook(IdolsList);
-         Hook.createHook(IdolsPresetsUpdate);
-         Hook.createHook(IdolsPresetDelete);
-         Hook.createHook(IdolsPresetEquipped);
-         Hook.createHook(IdolsPresetSaved);
          Hook.createHook(StopableSoundEnded);
          Hook.createHook(HavenbagDisplayUi);
          Hook.createHook(HavenbagExitEditMode);
          Hook.createHook(HavenbagAvailableRoomsUpdate);
          Hook.createHook(HavenbagAvailableThemesUpdate);
-         Hook.createHook(HavenBagPermissionsUpdate);
+         Hook.createHook(HavenbagSelectFurnitureType);
+         Hook.createHook(HavenbagPermissionsUpdate);
+         Hook.createHook(HavenbagLotteryGift);
          Hook.createHook(NpcDialogRepliesVisible);
-         Hook.createHook(HavenBagLotteryDisplayUi);
-         Hook.createHook(HavenBagLotteryGift);
          Hook.createHook(IntroductionCinematicStart);
          Hook.createHook(IntroductionCinematicEnd);
          Hook.createHook(DisplayUiArrow);
@@ -838,7 +800,6 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(OpenChinq);
          Hook.createHook(ChinqStats);
          Hook.createHook(SuggestionsStats);
-         Hook.createHook(DisplayHostSelection);
          Hook.createHook(ArenaExternalNotification);
          Hook.createHook(PopupWarningClosed);
          Hook.createHook(GuildsReceived);

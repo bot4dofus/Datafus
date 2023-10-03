@@ -68,6 +68,8 @@ package com.ankama.haapi.client.model
       
       public var marketing_display:ShopMarketingDisplay = null;
       
+      public var ingame_conditions:String = null;
+      
       public function ShopArticle()
       {
          this.image = new Vector.<ShopImage>();
@@ -104,7 +106,8 @@ package com.ankama.haapi.client.model
          str += " (most_precise_category_id: " + this.most_precise_category_id + ")";
          str += " (flag: " + this.flag + ")";
          str += " (availability: " + this.availability + ")";
-         return str + (" (marketing_display: " + this.marketing_display + ")");
+         str += " (marketing_display: " + this.marketing_display + ")";
+         return str + (" (ingame_conditions: " + this.ingame_conditions + ")");
       }
    }
 }

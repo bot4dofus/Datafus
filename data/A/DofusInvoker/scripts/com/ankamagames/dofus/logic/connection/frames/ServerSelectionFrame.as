@@ -293,9 +293,6 @@ package com.ankamagames.dofus.logic.connection.frames
                            error += "Unknown";
                      }
                      break;
-                  case ServerConnectionErrorEnum.SERVER_CONNECTION_ERROR_ACCOUNT_RESTRICTED:
-                     error = "AccountRestricted";
-                     break;
                   case ServerConnectionErrorEnum.SERVER_CONNECTION_ERROR_SUBSCRIBERS_ONLY:
                      error = "SubscribersOnly";
                      break;

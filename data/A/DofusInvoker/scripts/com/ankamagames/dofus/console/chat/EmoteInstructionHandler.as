@@ -26,7 +26,7 @@ package com.ankamagames.dofus.console.chat
          var emoteId:uint = this.getEmoteId(cmd);
          var playerManager:PlayedCharacterManager = PlayedCharacterManager.getInstance();
          var entFrame:AbstractEntitiesFrame = Kernel.getWorker().getFrame(RoleplayEntitiesFrame) as AbstractEntitiesFrame;
-         if(emoteId > 0 && playerManager.state == PlayerLifeStatusEnum.STATUS_ALIVE_AND_KICKING && (playerManager.isRidding || playerManager.isPetsMounting || playerManager.infos.entityLook.bonesId == 1 || entFrame && entFrame.creaturesMode))
+         if(emoteId > 0 && playerManager.state == PlayerLifeStatusEnum.STATUS_ALIVE_AND_KICKING && (playerManager.isRiding || playerManager.isPetsMounting || playerManager.infos.entityLook.bonesId == 1 || entFrame && entFrame.creaturesMode))
          {
             epra = EmotePlayRequestAction.create(emoteId);
             Kernel.getWorker().process(epra);

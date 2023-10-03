@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class HumanOptionSpeedMultiplier extends HumanOption implements INetworkType
    {
       
-      public static const protocolId:uint = 3553;
+      public static const protocolId:uint = 3522;
        
       
       public var speedMultiplier:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 3553;
+         return 3522;
       }
       
       public function initHumanOptionSpeedMultiplier(speedMultiplier:uint = 0) : HumanOptionSpeedMultiplier

@@ -189,9 +189,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                      case -1:
                         mimicryErrorText = I18n.getUiText("ui.error.state");
                         break;
-                     case -2:
-                        mimicryErrorText = I18n.getUiText("ui.charSel.deletionErrorUnsecureMode");
-                        break;
                      case -7:
                         mimicryErrorText = I18n.getUiText("ui.mimicry.error.foodType");
                         break;
@@ -256,9 +253,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                   {
                      case -1:
                         wrapperErrorText = I18n.getUiText("ui.error.state");
-                        break;
-                     case -2:
-                        wrapperErrorText = I18n.getUiText("ui.charSel.deletionErrorUnsecureMode");
                         break;
                      case -7:
                         wrapperErrorText = I18n.getUiText("ui.mimicry.error.foodType");
