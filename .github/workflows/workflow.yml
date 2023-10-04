@@ -15,7 +15,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm install -g cytrus-v6
+      - run: |
+          npm install -g cytrus-v6
 
       - name: U1 - Update Dofus Client
         run: |
@@ -60,11 +61,11 @@ jobs:
 
       - name: A2 - Build .json
         run: |
-            python src/A2.py data/A/DofusInvoker/scripts/com/ data/A/events.json
+          python src/A2.py data/A/DofusInvoker/scripts/com/ data/A/events.json
 
       - name: A3 - Build .properties
         run: |
-            python src/A3.py data/A/events.json data/A/events.properties
+          python src/A3.py data/A/events.json data/A/events.properties
 
       - name: Upload files
         uses: actions/upload-artifact@v3
@@ -94,7 +95,8 @@ jobs:
 
       - name: B1 - Build .json
         run: |
-            python src/B1.py data/U/data/common/ data/B/entities_json/
+          rm data/B/entities_json/*
+          python src/B1.py data/U/data/common/ data/B/entities_json/
 
       - name: Upload files
         uses: actions/upload-artifact@v3
@@ -124,7 +126,7 @@ jobs:
 
       - name: C1 - Build .json
         run: |
-            python src/C1.py data/U/data/i18n/ data/C/translations_json/
+          python src/C1.py data/U/data/i18n/ data/C/translations_json/
 
       - name: Upload files
         uses: actions/upload-artifact@v3
@@ -145,6 +147,10 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.8
+
+      - name: Remove data folder
+        run: |
+          rm -r data/
 
       - name: Download files Job U
         uses: actions/download-artifact@v3
@@ -183,7 +189,7 @@ jobs:
 
       - name: Create zip file
         run: |
-            zip -r data.zip data/A/ data/B/ data/C/
+          zip -r data.zip data/A/ data/B/ data/C/
 
       - name: Split entities json
         run: |
