@@ -179,24 +179,23 @@ class NetworkActionScriptReader:
                 if name.endswith((format)):
                     result.append(root + '/' + name)
 
-        print(str(len(result)) + " files found !")
+        print(str(len(result)) + " files found!")
         return result
 
     def parse(self):
         print("Parsing files")
 
-        results = {}
+        results = []
         for file in self.files:
             reader = ActionScriptReader(file)
             result = reader.parse()
 
             # If the class implements the wanted class
             if(self.INTERFACE_TO_IMPLEMENT & set(result['interfaces'])):
-                class_name = result['class_name']
-                result.pop('class_name')
-                results[class_name] = result
+                results.append(result)
 
-        return dict(sorted(results.items(), key=lambda t: t[0]))
+        print(f"{len(results)} events found!")
+        return sorted(results, key=lambda t: t['class_name'])
 
 
 def save_json(file_name, data):
