@@ -187,6 +187,7 @@ jobs:
 
       - name: Split entities json
         run: |
+          chmod +x devscript/split.sh
           ./devscript/split.sh data/B/entities_json/
 
       - name: Commit and push
