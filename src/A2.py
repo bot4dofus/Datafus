@@ -11,10 +11,18 @@ class Attribute:
     TYPES_TO_FIX = ["uint", "int", "Number"]
     VECTOR_LIKE_TYPES = ["ByteArray"]
 
-    def __init__(self, name, script_type):
+    def __init__(self, name, script_type, lines):
+        self._has_type_id = False
         self._name = name
         self._script_type = script_type
         self._pattern = re.compile(rf"output.write(\w+)\(this.{name}|this.{name}\s=\snew\s{script_type}\((\d+),")
+        self._type_id_pattern = re.compile(rf"output.write(\w+)\([\(]?this.{name}[a-zA-Z [_\]0-9]*[\)]?.getTypeId")
+
+        for line in lines:
+            is_match = self._type_id_pattern.search(line)
+            if is_match:
+                self._has_type_id = True
+                break
 
         if ("Vector" in script_type):
             number_of_vectors = script_type.count("Vector")
@@ -62,9 +70,9 @@ class Attribute:
             return False
 
     def buildSocketType(self):
-        self._socket_type = str(self._types[0])
+        self._socket_type =  "TypeId<" + str(self._types[0]) + ">" if self._has_type_id and len(self._types) < 2 else str(self._types[0]) 
         for i in range(1, len(self._types)):
-            self._socket_type = "Vector<" + self._socket_type + "," + str(self._types[i]) + ">"
+            self._socket_type = ("TypeIdVector<" if self._has_type_id else "Vector<") + self._socket_type + "," + str(self._types[i]) + ">"
 
 
 class ActionScriptReader:
@@ -110,7 +118,7 @@ class ActionScriptReader:
 
                 attribute_match = self.attribute_pattern.search(line)
                 if attribute_match:
-                    self.attributes.append(Attribute(attribute_match.group(1), attribute_match.group(2)))
+                    self.attributes.append(Attribute(attribute_match.group(1), attribute_match.group(2), lines))
                     continue
 
                 if self.RESET_FUNCTION in line and not reset_function_reached:
