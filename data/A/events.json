@@ -146,17 +146,6 @@
 		],
 		"attributes": {}
 	},
-	"AbstractTaxCollectorListMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/AbstractTaxCollectorListMessage.as",
-		"id": "5610",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"informations": "TypeIdVector<Short,TaxCollectorInformations>"
-		}
-	},
 	"AccessoryPreviewErrorMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/look/AccessoryPreviewErrorMessage.as",
 		"id": "4266",
@@ -212,7 +201,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"houseInfos": "TypeId<HouseInstanceInformations>",
+			"houseInfos": "HouseInstanceInformations",
 			"worldX": "Short",
 			"worldY": "Short",
 			"mapId": "Double",
@@ -418,7 +407,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"finishedAchievements": "TypeIdVector<Short,AchievementAchieved>"
+			"finishedAchievements": "Vector<Short,AchievementAchieved>"
 		}
 	},
 	"AchievementObjective": {
@@ -485,7 +474,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"acquaintanceAdded": "TypeId<AcquaintanceInformation>"
+			"acquaintanceAdded": "AcquaintanceInformation"
 		}
 	},
 	"AcquaintanceInformation": {
@@ -510,7 +499,7 @@
 			"playerId": "VarLong",
 			"playerName": "String",
 			"moodSmileyId": "VarShort",
-			"status": "TypeId<PlayerStatus>"
+			"status": "PlayerStatus"
 		}
 	},
 	"AcquaintanceSearchErrorMessage": {
@@ -563,7 +552,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"acquaintanceList": "TypeIdVector<Short,AcquaintanceInformation>"
+			"acquaintanceList": "Vector<Short,AcquaintanceInformation>"
 		}
 	},
 	"ActivityHideRequestMessage": {
@@ -729,18 +718,6 @@
 		],
 		"attributes": {
 			"collectorCallerId": "VarLong",
-			"collectorCallerName": "String",
-			"date": "Int"
-		}
-	},
-	"AdditionalTaxCollectorInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/tax/AdditionalTaxCollectorInformations.as",
-		"id": "5519",
-		"superclass": null,
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
 			"collectorCallerName": "String",
 			"date": "Int"
 		}
@@ -966,18 +943,6 @@
 			"content": "String"
 		}
 	},
-	"AllianceChangeGuildRightsMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/alliance/AllianceChangeGuildRightsMessage.as",
-		"id": "1555",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"guildId": "VarInt",
-			"rights": "Byte"
-		}
-	},
 	"AllianceChangeMemberRankMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/alliance/AllianceChangeMemberRankMessage.as",
 		"id": "1433",
@@ -1047,20 +1012,6 @@
 			"recruitment": "AllianceRecruitmentInformation"
 		}
 	},
-	"AllianceFactSheetInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/social/AllianceFactSheetInformations.as",
-		"id": "3583",
-		"superclass": "AllianceInformations",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"creationDate": "Int",
-			"nbGuilds": "VarShort",
-			"nbMembers": "VarShort",
-			"nbSubarea": "VarShort"
-		}
-	},
 	"AllianceFactsErrorMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/alliance/AllianceFactsErrorMessage.as",
 		"id": "3553",
@@ -1080,7 +1031,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"infos": "TypeId<AllianceFactSheetInformation>",
+			"infos": "AllianceFactSheetInformation",
 			"members": "Vector<Short,CharacterMinimalSocialPublicInformations>",
 			"controlledSubareaIds": "Vector<Short,VarShort>",
 			"leaderCharacterId": "VarLong",
@@ -1187,18 +1138,6 @@
 		],
 		"attributes": {}
 	},
-	"AllianceGuildLeavingMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/alliance/AllianceGuildLeavingMessage.as",
-		"id": "1732",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"kicked": "Boolean",
-			"guildId": "VarInt"
-		}
-	},
 	"AllianceInformation": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/context/roleplay/AllianceInformation.as",
 		"id": "8898",
@@ -1208,17 +1147,6 @@
 		],
 		"attributes": {
 			"allianceEmblem": "SocialEmblem"
-		}
-	},
-	"AllianceInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/context/roleplay/AllianceInformations.as",
-		"id": "1445",
-		"superclass": "BasicNamedAllianceInformations",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"allianceEmblem": "GuildEmblem"
 		}
 	},
 	"AllianceInsiderInfoMessage": {
@@ -1231,7 +1159,7 @@
 		"attributes": {
 			"allianceInfos": "AllianceFactSheetInformation",
 			"members": "Vector<Short,AllianceMemberInfo>",
-			"prisms": "TypeIdVector<Short,PrismGeolocalizedInformation>",
+			"prisms": "Vector<Short,PrismGeolocalizedInformation>",
 			"taxCollectors": "Vector<Short,TaxCollectorInformations>"
 		}
 	},
@@ -1774,17 +1702,6 @@
 			"maxPlayerLevelFilter": "Short"
 		}
 	},
-	"AllianceTaxCollectorDialogQuestionExtendedMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/context/roleplay/npc/AllianceTaxCollectorDialogQuestionExtendedMessage.as",
-		"id": "1540",
-		"superclass": "TaxCollectorDialogQuestionExtendedMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"alliance": "BasicNamedAllianceInformations"
-		}
-	},
 	"AllianceUpdateApplicationMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/alliance/application/AllianceUpdateApplicationMessage.as",
 		"id": "8147",
@@ -1806,17 +1723,6 @@
 		],
 		"attributes": {
 			"recruitmentData": "AllianceRecruitmentInformation"
-		}
-	},
-	"AlliancedGuildFactSheetInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/social/AlliancedGuildFactSheetInformations.as",
-		"id": "4861",
-		"superclass": "GuildInformations",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"allianceInfos": "BasicNamedAllianceInformations"
 		}
 	},
 	"AlmanachCalendarDateMessage": {
@@ -1862,7 +1768,7 @@
 			"creationTime": "Double",
 			"expirationType": "Byte",
 			"expirationValue": "Double",
-			"effects": "TypeIdVector<Short,ObjectEffect>"
+			"effects": "Vector<Short,ObjectEffect>"
 		}
 	},
 	"AlterationRemovedMessage": {
@@ -2160,17 +2066,6 @@
 			"allianceTag": "String"
 		}
 	},
-	"BasicCharactersListMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/character/choice/BasicCharactersListMessage.as",
-		"id": "4706",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"characters": "TypeIdVector<Short,CharacterBaseInformations>"
-		}
-	},
 	"BasicDateMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/basic/BasicDateMessage.as",
 		"id": "9400",
@@ -2281,7 +2176,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"datas": "TypeIdVector<Short,StatisticData>"
+			"datas": "Vector<Short,StatisticData>"
 		}
 	},
 	"BasicTimeMessage": {
@@ -2324,7 +2219,7 @@
 			"areaId": "Short",
 			"serverId": "Short",
 			"originServerId": "Short",
-			"socialGroups": "TypeIdVector<Short,AbstractSocialGroupInfos>",
+			"socialGroups": "Vector<Short,AbstractSocialGroupInfos>",
 			"verbose": "Boolean",
 			"playerState": "Byte"
 		}
@@ -2337,7 +2232,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"target": "TypeId<AbstractPlayerSearchInformation>"
+			"target": "AbstractPlayerSearchInformation"
 		}
 	},
 	"BasicWhoIsRequestMessage": {
@@ -2349,7 +2244,7 @@
 		],
 		"attributes": {
 			"verbose": "Boolean",
-			"target": "TypeId<AbstractPlayerSearchInformation>"
+			"target": "AbstractPlayerSearchInformation"
 		}
 	},
 	"BidExchangerObjectInfo": {
@@ -2363,7 +2258,7 @@
 			"objectUID": "VarInt",
 			"objectGID": "VarInt",
 			"objectType": "Int",
-			"effects": "TypeIdVector<Short,ObjectEffect>",
+			"effects": "Vector<Short,ObjectEffect>",
 			"prices": "Vector<Short,VarLong>"
 		}
 	},
@@ -2403,7 +2298,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"branches": "TypeIdVector<Short,ExtendedBreachBranch>"
+			"branches": "Vector<Short,ExtendedBreachBranch>"
 		}
 	},
 	"BreachBudgetMessage": {
@@ -2742,20 +2637,6 @@
 			"reason": "Byte"
 		}
 	},
-	"ChallengeInfoMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/context/fight/challenge/ChallengeInfoMessage.as",
-		"id": "8147",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"challengeId": "VarShort",
-			"targetId": "Double",
-			"xpBonus": "VarInt",
-			"dropBonus": "VarInt"
-		}
-	},
 	"ChallengeInformation": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/context/fight/challenge/ChallengeInformation.as",
 		"id": "8705",
@@ -2765,7 +2646,7 @@
 		],
 		"attributes": {
 			"challengeId": "VarInt",
-			"targetsList": "TypeIdVector<Short,ChallengeTargetInformation>",
+			"targetsList": "Vector<Short,ChallengeTargetInformation>",
 			"dropBonus": "VarInt",
 			"xpBonus": "VarInt",
 			"state": "Byte"
@@ -2884,18 +2765,6 @@
 			"targetCell": "Short"
 		}
 	},
-	"ChallengeTargetUpdateMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/context/fight/challenge/ChallengeTargetUpdateMessage.as",
-		"id": "7185",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"challengeId": "VarShort",
-			"targetId": "Double"
-		}
-	},
 	"ChallengeTargetWithAttackerInformation": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/context/fight/challenge/ChallengeTargetWithAttackerInformation.as",
 		"id": "3210",
@@ -2905,29 +2774,6 @@
 		],
 		"attributes": {
 			"attackersIds": "Vector<Short,Double>"
-		}
-	},
-	"ChallengeTargetsListMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/context/fight/challenge/ChallengeTargetsListMessage.as",
-		"id": "9439",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"targetIds": "Vector<Short,Double>",
-			"targetCells": "Vector<Short,Short>"
-		}
-	},
-	"ChallengeTargetsListRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/context/fight/challenge/ChallengeTargetsListRequestMessage.as",
-		"id": "2177",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"challengeId": "VarShort"
 		}
 	},
 	"ChallengeTargetsMessage": {
@@ -3152,7 +2998,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"characteristics": "TypeIdVector<Short,CharacterCharacteristic>"
+			"characteristics": "Vector<Short,CharacterCharacteristic>"
 		}
 	},
 	"CharacterCharacteristicsInformations": {
@@ -3170,7 +3016,7 @@
 			"kamas": "VarLong",
 			"alignmentInfos": "ActorExtendedAlignmentInformations",
 			"criticalHitWeapon": "VarShort",
-			"characteristics": "TypeIdVector<Short,CharacterCharacteristic>",
+			"characteristics": "Vector<Short,CharacterCharacteristic>",
 			"spellModifiers": "Vector<Short,SpellModifierMessage>",
 			"probationTime": "Double"
 		}
@@ -3342,17 +3188,6 @@
 			"guild": "BasicGuildInformations"
 		}
 	},
-	"CharacterMinimalGuildPublicInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/character/CharacterMinimalGuildPublicInformations.as",
-		"id": "9695",
-		"superclass": "CharacterMinimalInformations",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"rank": "GuildRankPublicInformation"
-		}
-	},
 	"CharacterMinimalInformations": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/character/CharacterMinimalInformations.as",
 		"id": "1869",
@@ -3362,17 +3197,6 @@
 		],
 		"attributes": {
 			"level": "VarShort"
-		}
-	},
-	"CharacterMinimalPlusLookAndGradeInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/character/CharacterMinimalPlusLookAndGradeInformations.as",
-		"id": "9686",
-		"superclass": "CharacterMinimalPlusLookInformations",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"grade": "VarInt"
 		}
 	},
 	"CharacterMinimalPlusLookInformations": {
@@ -3529,19 +3353,6 @@
 			"remodel": "RemodelingInformation"
 		}
 	},
-	"CharacterSpellModification": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/character/characteristic/CharacterSpellModification.as",
-		"id": "8596",
-		"superclass": null,
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"modificationType": "Byte",
-			"spellId": "VarShort",
-			"value": "CharacterCharacteristicDetailed"
-		}
-	},
 	"CharacterStatsListMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/character/stats/CharacterStatsListMessage.as",
 		"id": "5364",
@@ -3593,7 +3404,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"characters": "TypeIdVector<Short,CharacterBaseInformations>"
+			"characters": "Vector<Short,CharacterBaseInformations>"
 		}
 	},
 	"CharactersListRequestMessage": {
@@ -3680,7 +3491,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"receiver": "TypeId<AbstractPlayerSearchInformation>"
+			"receiver": "AbstractPlayerSearchInformation"
 		}
 	},
 	"ChatClientPrivateWithObjectMessage": {
@@ -3939,7 +3750,7 @@
 		],
 		"attributes": {
 			"type": "Byte",
-			"coords": "TypeId<MapCoordinates>"
+			"coords": "MapCoordinates"
 		}
 	},
 	"CompassUpdatePartyMemberMessage": {
@@ -4208,7 +4019,7 @@
 		],
 		"attributes": {
 			"action": "Byte",
-			"debts": "TypeIdVector<Short,DebtInformation>"
+			"debts": "Vector<Short,DebtInformation>"
 		}
 	},
 	"DebugClearHighlightCellsMessage": {
@@ -4793,7 +4604,7 @@
 			"itemUID": "Int",
 			"objectGID": "VarInt",
 			"objectType": "Int",
-			"effects": "TypeIdVector<Short,ObjectEffect>",
+			"effects": "Vector<Short,ObjectEffect>",
 			"prices": "Vector<Short,VarLong>"
 		}
 	},
@@ -5061,27 +4872,6 @@
 		],
 		"attributes": {
 			"errorType": "Byte"
-		}
-	},
-	"ExchangeGuildTaxCollectorGetMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeGuildTaxCollectorGetMessage.as",
-		"id": "2417",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"collectorName": "String",
-			"worldX": "Short",
-			"worldY": "Short",
-			"mapId": "Double",
-			"subAreaId": "VarShort",
-			"userName": "String",
-			"callerId": "VarLong",
-			"callerName": "String",
-			"experience": "Double",
-			"pods": "VarShort",
-			"objectsInfos": "Vector<Short,ObjectItemGenericQuantity>"
 		}
 	},
 	"ExchangeHandleMountsMessage": {
@@ -5550,18 +5340,6 @@
 			"role": "Byte"
 		}
 	},
-	"ExchangeOnHumanVendorRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeOnHumanVendorRequestMessage.as",
-		"id": "5497",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"humanVendorId": "VarLong",
-			"humanVendorCell": "VarShort"
-		}
-	},
 	"ExchangePlayerMultiCraftRequestMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangePlayerMultiCraftRequestMessage.as",
 		"id": "5318",
@@ -5618,18 +5396,6 @@
 		],
 		"attributes": {}
 	},
-	"ExchangeReplyTaxVendorMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeReplyTaxVendorMessage.as",
-		"id": "1144",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"objectValue": "VarLong",
-			"totalTaxValue": "VarLong"
-		}
-	},
 	"ExchangeRequestMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeRequestMessage.as",
 		"id": "2282",
@@ -5644,15 +5410,6 @@
 	"ExchangeRequestOnMountStockMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeRequestOnMountStockMessage.as",
 		"id": "8985",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {}
-	},
-	"ExchangeRequestOnShopStockMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeRequestOnShopStockMessage.as",
-		"id": "604",
 		"superclass": "NetworkMessage",
 		"interfaces": [
 			"INetworkMessage"
@@ -5723,79 +5480,6 @@
 			"objectGID": "VarInt"
 		}
 	},
-	"ExchangeShopStockMovementRemovedMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeShopStockMovementRemovedMessage.as",
-		"id": "882",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"objectId": "VarInt"
-		}
-	},
-	"ExchangeShopStockMovementUpdatedMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeShopStockMovementUpdatedMessage.as",
-		"id": "9464",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"objectInfo": "ObjectItemToSell"
-		}
-	},
-	"ExchangeShopStockMultiMovementRemovedMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeShopStockMultiMovementRemovedMessage.as",
-		"id": "7522",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"objectIdList": "Vector<Short,VarInt>"
-		}
-	},
-	"ExchangeShopStockMultiMovementUpdatedMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeShopStockMultiMovementUpdatedMessage.as",
-		"id": "4059",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"objectInfoList": "Vector<Short,ObjectItemToSell>"
-		}
-	},
-	"ExchangeShopStockStartedMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeShopStockStartedMessage.as",
-		"id": "4914",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"objectsInfos": "Vector<Short,ObjectItemToSell>"
-		}
-	},
-	"ExchangeShowVendorTaxMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeShowVendorTaxMessage.as",
-		"id": "8001",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {}
-	},
-	"ExchangeStartAsVendorMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeStartAsVendorMessage.as",
-		"id": "2725",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {}
-	},
 	"ExchangeStartOkCraftMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeStartOkCraftMessage.as",
 		"id": "9039",
@@ -5824,18 +5508,6 @@
 			"INetworkMessage"
 		],
 		"attributes": {}
-	},
-	"ExchangeStartOkHumanVendorMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeStartOkHumanVendorMessage.as",
-		"id": "8980",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"sellerId": "Double",
-			"objectsInfos": "Vector<Short,ObjectItemToSellInHumanVendorShop>"
-		}
 	},
 	"ExchangeStartOkJobIndexMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/inventory/exchanges/ExchangeStartOkJobIndexMessage.as",
@@ -6181,7 +5853,7 @@
 		"attributes": {
 			"fightId": "VarShort",
 			"fightType": "Byte",
-			"fightTeams": "TypeIdVector<Short,FightTeamInformations>",
+			"fightTeams": "Vector<Short,FightTeamInformations>",
 			"fightTeamsPositions": "Vector<Short,VarShort>",
 			"fightTeamsOptions": "Vector<Short,FightOptionsInformations>"
 		}
@@ -6209,7 +5881,7 @@
 		"attributes": {
 			"actionId": "VarShort",
 			"sourceId": "Double",
-			"effect": "TypeId<AbstractFightDispellableEffect>"
+			"effect": "AbstractFightDispellableEffect"
 		}
 	},
 	"FightEntityDispositionInformations": {
@@ -6368,7 +6040,7 @@
 		],
 		"attributes": {
 			"level": "VarShort",
-			"additional": "TypeIdVector<Short,FightResultAdditionalData>"
+			"additional": "Vector<Short,FightResultAdditionalData>"
 		}
 	},
 	"FightResultPvpData": {
@@ -6417,7 +6089,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"teamMembers": "TypeIdVector<Short,FightTeamMemberInformations>"
+			"teamMembers": "Vector<Short,FightTeamMemberInformations>"
 		}
 	},
 	"FightTeamLightInformations": {
@@ -6791,7 +6463,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"target": "TypeId<AbstractPlayerSearchInformation>"
+			"target": "AbstractPlayerSearchInformation"
 		}
 	},
 	"FriendAddedMessage": {
@@ -6802,7 +6474,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"friendAdded": "TypeId<FriendInformations>"
+			"friendAdded": "FriendInformations"
 		}
 	},
 	"FriendDeleteRequestMessage": {
@@ -6873,7 +6545,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"target": "TypeId<AbstractPlayerSearchInformation>"
+			"target": "AbstractPlayerSearchInformation"
 		}
 	},
 	"FriendOnlineInformations": {
@@ -6892,7 +6564,7 @@
 			"sex": "Boolean",
 			"guildInfo": "GuildInformations",
 			"moodSmileyId": "VarShort",
-			"status": "TypeId<PlayerStatus>",
+			"status": "PlayerStatus",
 			"havenBagShared": "Boolean"
 		}
 	},
@@ -7001,7 +6673,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"friendUpdated": "TypeId<FriendInformations>"
+			"friendUpdated": "FriendInformations"
 		}
 	},
 	"FriendWarnOnConnectionStateMessage": {
@@ -7043,7 +6715,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"friendsList": "TypeIdVector<Short,FriendInformations>"
+			"friendsList": "Vector<Short,FriendInformations>"
 		}
 	},
 	"FullStatsPreset": {
@@ -7193,7 +6865,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"effect": "TypeId<AbstractFightDispellableEffect>"
+			"effect": "AbstractFightDispellableEffect"
 		}
 	},
 	"GameActionFightDodgePointLossMessage": {
@@ -7336,7 +7008,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"summons": "TypeIdVector<Short,GameContextSummonsInformation>"
+			"summons": "Vector<Short,GameContextSummonsInformation>"
 		}
 	},
 	"GameActionFightNoSpellCastMessage": {
@@ -7467,7 +7139,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"summons": "TypeIdVector<Short,GameFightFighterInformations>"
+			"summons": "Vector<Short,GameFightFighterInformations>"
 		}
 	},
 	"GameActionFightTackledMessage": {
@@ -7703,7 +7375,7 @@
 		],
 		"attributes": {
 			"contextualId": "Double",
-			"disposition": "TypeId<EntityDispositionInformations>"
+			"disposition": "EntityDispositionInformations"
 		}
 	},
 	"GameContextBasicSpawnInformation": {
@@ -7716,7 +7388,7 @@
 		"attributes": {
 			"teamId": "Byte",
 			"alive": "Boolean",
-			"informations": "TypeId<GameContextActorPositionInformations>"
+			"informations": "GameContextActorPositionInformations"
 		}
 	},
 	"GameContextCreateErrorMessage": {
@@ -7874,11 +7546,11 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"spawnInformation": "TypeId<SpawnInformation>",
+			"spawnInformation": "SpawnInformation",
 			"wave": "Byte",
 			"look": "EntityLook",
-			"stats": "TypeId<GameFightCharacteristics>",
-			"summons": "TypeIdVector<Short,GameContextBasicSpawnInformation>"
+			"stats": "GameFightCharacteristics",
+			"summons": "Vector<Short,GameContextBasicSpawnInformation>"
 		}
 	},
 	"GameDataPaddockObjectAddMessage": {
@@ -8017,7 +7689,7 @@
 			"duration": "Int",
 			"rewardRate": "VarShort",
 			"lootShareLimitMalus": "Short",
-			"results": "TypeIdVector<Short,FightResultListEntry>",
+			"results": "Vector<Short,FightResultListEntry>",
 			"namedPartyTeamsOutcomes": "Vector<Short,NamedPartyTeamWithOutcome>"
 		}
 	},
@@ -8056,7 +7728,7 @@
 		"attributes": {
 			"spawnInfo": "GameContextBasicSpawnInformation",
 			"wave": "Byte",
-			"stats": "TypeId<GameFightCharacteristics>",
+			"stats": "GameFightCharacteristics",
 			"previousPositions": "Vector<Short,VarShort>"
 		}
 	},
@@ -8394,7 +8066,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"informations": "TypeId<GameContextActorInformations>"
+			"informations": "GameContextActorInformations"
 		}
 	},
 	"GameFightRemoveTeamMemberMessage": {
@@ -8456,7 +8128,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"informations": "TypeId<GameFightFighterInformations>"
+			"informations": "GameFightFighterInformations"
 		}
 	},
 	"GameFightShowFighterRandomStaticPoseMessage": {
@@ -8550,7 +8222,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"fighters": "TypeIdVector<Short,GameFightFighterInformations>"
+			"fighters": "Vector<Short,GameFightFighterInformations>"
 		}
 	},
 	"GameFightTaxCollectorInformations": {
@@ -9054,7 +8726,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"staticInfos": "TypeId<GroupMonsterStaticInformations>",
+			"staticInfos": "GroupMonsterStaticInformations",
 			"lootShare": "Byte",
 			"alignmentSide": "Byte",
 			"hasHardcoreDrop": "Boolean"
@@ -9069,7 +8741,7 @@
 		],
 		"attributes": {
 			"nbWaves": "Byte",
-			"alternatives": "TypeIdVector<Short,GroupMonsterStaticInformations>"
+			"alternatives": "Vector<Short,GroupMonsterStaticInformations>"
 		}
 	},
 	"GameRolePlayHumanoidInformations": {
@@ -9080,20 +8752,8 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"humanoidInfo": "TypeId<HumanInformations>",
+			"humanoidInfo": "HumanInformations",
 			"accountId": "Int"
-		}
-	},
-	"GameRolePlayMerchantInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/context/roleplay/GameRolePlayMerchantInformations.as",
-		"id": "3744",
-		"superclass": "GameRolePlayNamedActorInformations",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"sellType": "Byte",
-			"options": "TypeIdVector<Short,HumanOption>"
 		}
 	},
 	"GameRolePlayMonsterAngryAtPlayerMessage": {
@@ -9265,7 +8925,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"portal": "TypeId<PortalInformation>"
+			"portal": "PortalInformation"
 		}
 	},
 	"GameRolePlayPrismInformations": {
@@ -9276,7 +8936,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"prism": "TypeId<PrismInformation>"
+			"prism": "PrismInformation"
 		}
 	},
 	"GameRolePlayRemoveChallengeMessage": {
@@ -9298,7 +8958,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"informations": "TypeId<GameRolePlayActorInformations>"
+			"informations": "GameRolePlayActorInformations"
 		}
 	},
 	"GameRolePlayShowActorWithEventMessage": {
@@ -9331,7 +8991,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"informationsList": "TypeIdVector<Short,GameRolePlayActorInformations>"
+			"informationsList": "Vector<Short,GameRolePlayActorInformations>"
 		}
 	},
 	"GameRolePlaySpellAnimMessage": {
@@ -9350,8 +9010,8 @@
 		}
 	},
 	"GameRolePlayTaxCollectorFightRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/GameRolePlayTaxCollectorFightRequestMessage.as",
-		"id": "9802",
+		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/collector/tax/GameRolePlayTaxCollectorFightRequestMessage.as",
+		"id": "7487",
 		"superclass": "NetworkMessage",
 		"interfaces": [
 			"INetworkMessage"
@@ -9366,7 +9026,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"identification": "TypeId<TaxCollectorStaticInformations>",
+			"identification": "TaxCollectorStaticInformations",
 			"taxCollectorAttack": "Int"
 		}
 	},
@@ -9548,19 +9208,6 @@
 			"deleted": "Boolean"
 		}
 	},
-	"GuildApplicationInformation": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/application/GuildApplicationInformation.as",
-		"id": "8441",
-		"superclass": null,
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"playerInfo": "ApplicationPlayerInformation",
-			"applyText": "String",
-			"creationDate": "Double"
-		}
-	},
 	"GuildApplicationIsAnsweredMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/application/GuildApplicationIsAnsweredMessage.as",
 		"id": "668",
@@ -9738,20 +9385,6 @@
 		],
 		"attributes": {}
 	},
-	"GuildEmblem": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/GuildEmblem.as",
-		"id": "6191",
-		"superclass": null,
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"symbolShape": "VarShort",
-			"symbolColor": "Int",
-			"backgroundShape": "Byte",
-			"backgroundColor": "Int"
-		}
-	},
 	"GuildFactSheetInformations": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/social/GuildFactSheetInformations.as",
 		"id": "1615",
@@ -9786,7 +9419,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"infos": "TypeId<GuildFactSheetInformations>",
+			"infos": "GuildFactSheetInformations",
 			"creationDate": "Int",
 			"members": "Vector<Short,CharacterMinimalSocialPublicInformations>"
 		}
@@ -9800,88 +9433,6 @@
 		],
 		"attributes": {
 			"guildId": "VarInt"
-		}
-	},
-	"GuildFightJoinRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/GuildFightJoinRequestMessage.as",
-		"id": "1426",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"taxCollectorId": "Double"
-		}
-	},
-	"GuildFightLeaveRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/GuildFightLeaveRequestMessage.as",
-		"id": "6954",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"taxCollectorId": "Double",
-			"characterId": "VarLong"
-		}
-	},
-	"GuildFightPlayersEnemiesListMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/GuildFightPlayersEnemiesListMessage.as",
-		"id": "881",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"fightId": "Double",
-			"playerInfo": "Vector<Short,CharacterMinimalPlusLookInformations>"
-		}
-	},
-	"GuildFightPlayersEnemyRemoveMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/GuildFightPlayersEnemyRemoveMessage.as",
-		"id": "5710",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"fightId": "Double",
-			"playerId": "VarLong"
-		}
-	},
-	"GuildFightPlayersHelpersJoinMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/GuildFightPlayersHelpersJoinMessage.as",
-		"id": "5728",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"fightId": "Double",
-			"playerInfo": "CharacterMinimalPlusLookInformations"
-		}
-	},
-	"GuildFightPlayersHelpersLeaveMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/GuildFightPlayersHelpersLeaveMessage.as",
-		"id": "5912",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"fightId": "Double",
-			"playerId": "VarLong"
-		}
-	},
-	"GuildFightTakePlaceRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/GuildFightTakePlaceRequestMessage.as",
-		"id": "6277",
-		"superclass": "GuildFightJoinRequestMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"replacedCharacterId": "VarLong"
 		}
 	},
 	"GuildGetChestTabContributionsRequestMessage": {
@@ -9948,40 +9499,6 @@
 			"housesInformations": "Vector<Short,HouseInformationsForGuild>"
 		}
 	},
-	"GuildInAllianceFactsMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/GuildInAllianceFactsMessage.as",
-		"id": "4511",
-		"superclass": "GuildFactsMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"allianceInfos": "BasicNamedAllianceInformations"
-		}
-	},
-	"GuildInAllianceInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/context/roleplay/GuildInAllianceInformations.as",
-		"id": "2149",
-		"superclass": "GuildInformations",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"nbMembers": "Byte",
-			"joinDate": "Int"
-		}
-	},
-	"GuildInAllianceVersatileInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/social/GuildInAllianceVersatileInformations.as",
-		"id": "5353",
-		"superclass": "GuildVersatileInformations",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"allianceId": "VarInt"
-		}
-	},
 	"GuildInformations": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/context/roleplay/GuildInformations.as",
 		"id": "2230",
@@ -10043,26 +9560,6 @@
 			"paddocksInformations": "Vector<Short,PaddockContentInformations>"
 		}
 	},
-	"GuildInfosUpgradeMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/GuildInfosUpgradeMessage.as",
-		"id": "1356",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"maxTaxCollectorsCount": "Byte",
-			"taxCollectorsCount": "Byte",
-			"taxCollectorLifePoints": "VarShort",
-			"taxCollectorDamagesBonuses": "VarShort",
-			"taxCollectorPods": "VarShort",
-			"taxCollectorProspecting": "VarShort",
-			"taxCollectorWisdom": "VarShort",
-			"boostPoints": "VarShort",
-			"spellId": "Vector<Short,VarShort>",
-			"spellLevel": "Vector<Short,Short>"
-		}
-	},
 	"GuildInsiderFactSheetInformations": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/social/GuildInsiderFactSheetInformations.as",
 		"id": "5039",
@@ -10094,17 +9591,6 @@
 		],
 		"attributes": {
 			"targetId": "VarLong"
-		}
-	},
-	"GuildInvitationSearchMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/GuildInvitationSearchMessage.as",
-		"id": "6600",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"target": "TypeId<AbstractPlayerSearchInformation>"
 		}
 	},
 	"GuildInvitationStateRecrutedMessage": {
@@ -10297,8 +9783,8 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"globalActivities": "TypeIdVector<Short,GuildLogbookEntryBasicInformation>",
-			"chestActivities": "TypeIdVector<Short,GuildLogbookEntryBasicInformation>"
+			"globalActivities": "Vector<Short,GuildLogbookEntryBasicInformation>",
+			"chestActivities": "Vector<Short,GuildLogbookEntryBasicInformation>"
 		}
 	},
 	"GuildLogbookInformationRequestMessage": {
@@ -10309,31 +9795,6 @@
 			"INetworkMessage"
 		],
 		"attributes": {}
-	},
-	"GuildMember": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/GuildMember.as",
-		"id": "4700",
-		"superclass": "CharacterMinimalInformations",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"breed": "Byte",
-			"sex": "Boolean",
-			"rankId": "VarInt",
-			"enrollmentDate": "Double",
-			"givenExperience": "VarLong",
-			"experienceGivenPercent": "Byte",
-			"connected": "Byte",
-			"alignmentSide": "Byte",
-			"hoursSinceLastConnection": "Short",
-			"moodSmileyId": "VarShort",
-			"accountId": "Int",
-			"achievementPoints": "Int",
-			"status": "TypeId<PlayerStatus>",
-			"havenBagShared": "Boolean",
-			"note": "PlayerNote"
-		}
 	},
 	"GuildMemberInfo": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/GuildMemberInfo.as",
@@ -10376,17 +9837,6 @@
 			"online": "Boolean"
 		}
 	},
-	"GuildMemberSetWarnOnConnectionMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/friend/GuildMemberSetWarnOnConnectionMessage.as",
-		"id": "3008",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"enable": "Boolean"
-		}
-	},
 	"GuildMemberStartWarnOnConnectionMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/GuildMemberStartWarnOnConnectionMessage.as",
 		"id": "6903",
@@ -10404,17 +9854,6 @@
 			"INetworkMessage"
 		],
 		"attributes": {}
-	},
-	"GuildMemberWarnOnConnectionStateMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/friend/GuildMemberWarnOnConnectionStateMessage.as",
-		"id": "7942",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"enable": "Boolean"
-		}
 	},
 	"GuildMembershipMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/GuildMembershipMessage.as",
@@ -10629,44 +10068,6 @@
 			"guildRankMinimalInfos": "RankMinimalInformation"
 		}
 	},
-	"GuildRankInformation": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/GuildRankInformation.as",
-		"id": "8982",
-		"superclass": "GuildRankMinimalInformation",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"order": "VarInt",
-			"gfxId": "VarInt",
-			"modifiable": "Boolean",
-			"rights": "Vector<Short,VarInt>"
-		}
-	},
-	"GuildRankMinimalInformation": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/GuildRankMinimalInformation.as",
-		"id": "9298",
-		"superclass": null,
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"id": "VarInt",
-			"name": "String"
-		}
-	},
-	"GuildRankPublicInformation": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/GuildRankPublicInformation.as",
-		"id": "8341",
-		"superclass": "GuildRankMinimalInformation",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"order": "VarInt",
-			"gfxId": "VarInt"
-		}
-	},
 	"GuildRanksMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/GuildRanksMessage.as",
 		"id": "4603",
@@ -10830,31 +10231,6 @@
 		"attributes": {
 			"memberId": "VarLong",
 			"note": "String"
-		}
-	},
-	"GuildVersatileInfoListMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/GuildVersatileInfoListMessage.as",
-		"id": "3841",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"guilds": "TypeIdVector<Short,GuildVersatileInformations>"
-		}
-	},
-	"GuildVersatileInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/social/GuildVersatileInformations.as",
-		"id": "1609",
-		"superclass": null,
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"guildId": "VarInt",
-			"leaderId": "VarLong",
-			"guildLevel": "Byte",
-			"nbMembers": "Byte"
 		}
 	},
 	"HaapiApiKeyMessage": {
@@ -11326,7 +10702,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"houseInfos": "TypeId<HouseInstanceInformations>",
+			"houseInfos": "HouseInstanceInformations",
 			"worldX": "Short",
 			"worldY": "Short"
 		}
@@ -11347,17 +10723,6 @@
 			"price": "VarLong",
 			"isSaleLocked": "Boolean",
 			"isAdminLocked": "Boolean"
-		}
-	},
-	"HouseKickIndoorMerchantRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/context/roleplay/houses/HouseKickIndoorMerchantRequestMessage.as",
-		"id": "2460",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"cellId": "VarShort"
 		}
 	},
 	"HouseKickRequestMessage": {
@@ -11402,7 +10767,7 @@
 		"attributes": {
 			"houseId": "VarInt",
 			"doorsOnMap": "Vector<Short,Int>",
-			"properties": "TypeId<HouseInstanceInformations>"
+			"properties": "HouseInstanceInformations"
 		}
 	},
 	"HouseSellFromInsideRequestMessage": {
@@ -11504,7 +10869,7 @@
 		"attributes": {
 			"restrictions": "ActorRestrictionsInformations",
 			"sex": "Boolean",
-			"options": "TypeIdVector<Short,HumanOption>"
+			"options": "Vector<Short,HumanOption>"
 		}
 	},
 	"HumanOption": {
@@ -11662,17 +11027,6 @@
 			"updateData": "Boolean"
 		}
 	},
-	"IdentificationAccountForceMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/connection/IdentificationAccountForceMessage.as",
-		"id": "5556",
-		"superclass": "IdentificationMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"forcerAccountLogin": "String"
-		}
-	},
 	"IdentificationFailedBannedMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/connection/IdentificationFailedBannedMessage.as",
 		"id": "2849",
@@ -11767,138 +11121,6 @@
 			"id": "Double"
 		}
 	},
-	"Idol": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/idol/Idol.as",
-		"id": "2308",
-		"superclass": null,
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"id": "VarShort",
-			"xpBonusPercent": "VarShort",
-			"dropBonusPercent": "VarShort"
-		}
-	},
-	"IdolFightPreparationUpdateMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/idol/IdolFightPreparationUpdateMessage.as",
-		"id": "8314",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"idolSource": "Byte",
-			"idols": "TypeIdVector<Short,Idol>"
-		}
-	},
-	"IdolListMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/idol/IdolListMessage.as",
-		"id": "4298",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"chosenIdols": "Vector<Short,VarShort>",
-			"partyChosenIdols": "Vector<Short,VarShort>",
-			"partyIdols": "TypeIdVector<Short,PartyIdol>"
-		}
-	},
-	"IdolPartyLostMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/idol/IdolPartyLostMessage.as",
-		"id": "1705",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"idolId": "VarShort"
-		}
-	},
-	"IdolPartyRefreshMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/idol/IdolPartyRefreshMessage.as",
-		"id": "7021",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"partyIdol": "PartyIdol"
-		}
-	},
-	"IdolPartyRegisterRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/idol/IdolPartyRegisterRequestMessage.as",
-		"id": "5724",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"register": "Boolean"
-		}
-	},
-	"IdolSelectErrorMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/idol/IdolSelectErrorMessage.as",
-		"id": "6323",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"reason": "Byte",
-			"idolId": "VarShort",
-			"activate": "Boolean",
-			"party": "Boolean"
-		}
-	},
-	"IdolSelectRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/idol/IdolSelectRequestMessage.as",
-		"id": "7627",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"idolId": "VarShort",
-			"activate": "Boolean",
-			"party": "Boolean"
-		}
-	},
-	"IdolSelectedMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/idol/IdolSelectedMessage.as",
-		"id": "4793",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"idolId": "VarShort",
-			"activate": "Boolean",
-			"party": "Boolean"
-		}
-	},
-	"IdolsPreset": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/presets/IdolsPreset.as",
-		"id": "2099",
-		"superclass": "Preset",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"iconId": "Short",
-			"idolIds": "Vector<Short,VarShort>"
-		}
-	},
-	"IdolsPresetSaveRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/presets/IdolsPresetSaveRequestMessage.as",
-		"id": "7140",
-		"superclass": "IconPresetSaveRequestMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {}
-	},
 	"IgnoredAddFailureMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/friend/IgnoredAddFailureMessage.as",
 		"id": "6018",
@@ -11918,7 +11140,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"target": "TypeId<AbstractPlayerSearchInformation>",
+			"target": "AbstractPlayerSearchInformation",
 			"session": "Boolean"
 		}
 	},
@@ -11930,7 +11152,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"ignoreAdded": "TypeId<IgnoredInformations>",
+			"ignoreAdded": "IgnoredInformations",
 			"session": "Boolean"
 		}
 	},
@@ -11985,7 +11207,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"ignoredList": "TypeIdVector<Short,IgnoredInformations>"
+			"ignoredList": "Vector<Short,IgnoredInformations>"
 		}
 	},
 	"IgnoredOnlineInformations": {
@@ -12024,8 +11246,8 @@
 		"attributes": {
 			"elementId": "Int",
 			"elementTypeId": "Int",
-			"enabledSkills": "TypeIdVector<Short,InteractiveElementSkill>",
-			"disabledSkills": "TypeIdVector<Short,InteractiveElementSkill>",
+			"enabledSkills": "Vector<Short,InteractiveElementSkill>",
+			"disabledSkills": "Vector<Short,InteractiveElementSkill>",
 			"onCurrentMap": "Boolean"
 		}
 	},
@@ -12082,7 +11304,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"interactiveElements": "TypeIdVector<Short,InteractiveElement>"
+			"interactiveElements": "Vector<Short,InteractiveElement>"
 		}
 	},
 	"InteractiveUseEndedMessage": {
@@ -12398,7 +11620,7 @@
 			"mapId": "Double",
 			"subAreaId": "VarShort",
 			"canCraftLegendary": "Boolean",
-			"status": "TypeId<PlayerStatus>"
+			"status": "PlayerStatus"
 		}
 	},
 	"JobCrafterDirectoryEntryRequestMessage": {
@@ -12491,7 +11713,7 @@
 		],
 		"attributes": {
 			"jobId": "Byte",
-			"skills": "TypeIdVector<Short,SkillActionDescription>"
+			"skills": "Vector<Short,SkillActionDescription>"
 		}
 	},
 	"JobDescriptionMessage": {
@@ -12955,7 +12177,7 @@
 			"floor": "VarInt",
 			"room": "Byte",
 			"infinityMode": "Short",
-			"branches": "TypeIdVector<Short,BreachBranch>"
+			"branches": "Vector<Short,BreachBranch>"
 		}
 	},
 	"MapComplementaryInformationsDataInHavenBagMessage": {
@@ -12993,9 +12215,9 @@
 		"attributes": {
 			"subAreaId": "VarShort",
 			"mapId": "Double",
-			"houses": "TypeIdVector<Short,HouseInformations>",
-			"actors": "TypeIdVector<Short,GameRolePlayActorInformations>",
-			"interactiveElements": "TypeIdVector<Short,InteractiveElement>",
+			"houses": "Vector<Short,HouseInformations>",
+			"actors": "Vector<Short,GameRolePlayActorInformations>",
+			"interactiveElements": "Vector<Short,InteractiveElement>",
 			"statedElements": "Vector<Short,StatedElement>",
 			"obstacles": "Vector<Short,MapObstacle>",
 			"fights": "Vector<Short,FightCommonInformations>",
@@ -13139,8 +12361,8 @@
 		],
 		"attributes": {
 			"fightId": "VarShort",
-			"attackers": "TypeIdVector<Short,GameFightFighterLightInformations>",
-			"defenders": "TypeIdVector<Short,GameFightFighterLightInformations>"
+			"attackers": "Vector<Short,GameFightFighterLightInformations>",
+			"defenders": "Vector<Short,GameFightFighterLightInformations>"
 		}
 	},
 	"MapRunningFightDetailsRequestMessage": {
@@ -14100,7 +13322,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"effects": "TypeIdVector<Short,ObjectEffect>"
+			"effects": "Vector<Short,ObjectEffect>"
 		}
 	},
 	"ObjectErrorMessage": {
@@ -14182,7 +13404,7 @@
 		"attributes": {
 			"position": "Short",
 			"objectGID": "VarInt",
-			"effects": "TypeIdVector<Short,ObjectEffect>",
+			"effects": "Vector<Short,ObjectEffect>",
 			"objectUID": "VarInt",
 			"quantity": "VarInt"
 		}
@@ -14231,7 +13453,7 @@
 		],
 		"attributes": {
 			"objectGID": "VarInt",
-			"effects": "TypeIdVector<Short,ObjectEffect>"
+			"effects": "Vector<Short,ObjectEffect>"
 		}
 	},
 	"ObjectItemNotInContainer": {
@@ -14243,7 +13465,7 @@
 		],
 		"attributes": {
 			"objectGID": "VarInt",
-			"effects": "TypeIdVector<Short,ObjectEffect>",
+			"effects": "Vector<Short,ObjectEffect>",
 			"objectUID": "VarInt",
 			"quantity": "VarInt"
 		}
@@ -14282,7 +13504,7 @@
 		],
 		"attributes": {
 			"objectGID": "VarInt",
-			"effects": "TypeIdVector<Short,ObjectEffect>",
+			"effects": "Vector<Short,ObjectEffect>",
 			"objectUID": "VarInt",
 			"quantity": "VarInt",
 			"objectPrice": "VarLong"
@@ -14297,22 +13519,6 @@
 		],
 		"attributes": {
 			"unsoldDelay": "Int"
-		}
-	},
-	"ObjectItemToSellInHumanVendorShop": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/data/items/ObjectItemToSellInHumanVendorShop.as",
-		"id": "8803",
-		"superclass": "Item",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"objectGID": "VarInt",
-			"effects": "TypeIdVector<Short,ObjectEffect>",
-			"objectUID": "VarInt",
-			"quantity": "VarInt",
-			"objectPrice": "VarLong",
-			"publicPrice": "VarLong"
 		}
 	},
 	"ObjectItemToSellInNpcShop": {
@@ -14675,7 +13881,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"paddocks": "TypeIdVector<Short,PaddockBuyableInformations>"
+			"paddocks": "Vector<Short,PaddockBuyableInformations>"
 		}
 	},
 	"PaddockItem": {
@@ -14963,19 +14169,8 @@
 			"guestLook": "EntityLook",
 			"breed": "Byte",
 			"sex": "Boolean",
-			"status": "TypeId<PlayerStatus>",
+			"status": "PlayerStatus",
 			"entities": "Vector<Short,PartyEntityBaseInformation>"
-		}
-	},
-	"PartyIdol": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/idol/PartyIdol.as",
-		"id": "9009",
-		"superclass": "Idol",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"ownersIds": "Vector<Short,VarLong>"
 		}
 	},
 	"PartyInvitationArenaRequestMessage": {
@@ -15011,7 +14206,7 @@
 			"fromId": "VarLong",
 			"fromName": "String",
 			"leaderId": "VarLong",
-			"members": "TypeIdVector<Short,PartyInvitationMemberInformations>",
+			"members": "Vector<Short,PartyInvitationMemberInformations>",
 			"guests": "Vector<Short,PartyGuestInformations>"
 		}
 	},
@@ -15097,7 +14292,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"target": "TypeId<AbstractPlayerSearchInformation>"
+			"target": "AbstractPlayerSearchInformation"
 		}
 	},
 	"PartyJoinMessage": {
@@ -15111,7 +14306,7 @@
 			"partyType": "Byte",
 			"partyLeaderId": "VarLong",
 			"maxParticipants": "Byte",
-			"members": "TypeIdVector<Short,PartyMemberInformations>",
+			"members": "Vector<Short,PartyMemberInformations>",
 			"guests": "Vector<Short,PartyGuestInformations>",
 			"restricted": "Boolean",
 			"partyName": "String"
@@ -15277,8 +14472,8 @@
 			"worldY": "Short",
 			"mapId": "Double",
 			"subAreaId": "VarShort",
-			"status": "TypeId<PlayerStatus>",
-			"entities": "TypeIdVector<Short,PartyEntityBaseInformation>"
+			"status": "PlayerStatus",
+			"entities": "Vector<Short,PartyEntityBaseInformation>"
 		}
 	},
 	"PartyMemberRemoveMessage": {
@@ -15432,7 +14627,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"memberInformations": "TypeId<PartyMemberInformations>"
+			"memberInformations": "PartyMemberInformations"
 		}
 	},
 	"PauseDialogMessage": {
@@ -15521,7 +14716,7 @@
 		"attributes": {
 			"accountId": "Int",
 			"playerId": "VarLong",
-			"status": "TypeId<PlayerStatus>"
+			"status": "PlayerStatus"
 		}
 	},
 	"PlayerStatusUpdateRequestMessage": {
@@ -15532,7 +14727,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"status": "TypeId<PlayerStatus>"
+			"status": "PlayerStatus"
 		}
 	},
 	"PopupWarningCloseRequestMessage": {
@@ -15655,7 +14850,7 @@
 		],
 		"attributes": {
 			"presetId": "Short",
-			"preset": "TypeId<Preset>"
+			"preset": "Preset"
 		}
 	},
 	"PresetUseRequestMessage": {
@@ -15700,7 +14895,7 @@
 			"INetworkType"
 		],
 		"attributes": {
-			"presets": "TypeIdVector<Short,Preset>"
+			"presets": "Vector<Short,Preset>"
 		}
 	},
 	"PresetsMessage": {
@@ -15711,7 +14906,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"presets": "TypeIdVector<Short,Preset>"
+			"presets": "Vector<Short,Preset>"
 		}
 	},
 	"PrismAddOrUpdateMessage": {
@@ -15766,129 +14961,6 @@
 		],
 		"attributes": {}
 	},
-	"PrismFightAddedMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismFightAddedMessage.as",
-		"id": "4874",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"fight": "PrismFightersInformation"
-		}
-	},
-	"PrismFightAttackerAddMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismFightAttackerAddMessage.as",
-		"id": "4390",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"subAreaId": "VarShort",
-			"fightId": "VarShort",
-			"attacker": "TypeId<CharacterMinimalPlusLookInformations>"
-		}
-	},
-	"PrismFightAttackerRemoveMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismFightAttackerRemoveMessage.as",
-		"id": "9107",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"subAreaId": "VarShort",
-			"fightId": "VarShort",
-			"fighterToRemoveId": "VarLong"
-		}
-	},
-	"PrismFightDefenderAddMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismFightDefenderAddMessage.as",
-		"id": "2845",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"subAreaId": "VarShort",
-			"fightId": "VarShort",
-			"defender": "TypeId<CharacterMinimalPlusLookInformations>"
-		}
-	},
-	"PrismFightDefenderLeaveMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismFightDefenderLeaveMessage.as",
-		"id": "212",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"subAreaId": "VarShort",
-			"fightId": "VarShort",
-			"fighterToRemoveId": "VarLong"
-		}
-	},
-	"PrismFightJoinLeaveRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismFightJoinLeaveRequestMessage.as",
-		"id": "317",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"subAreaId": "VarShort",
-			"join": "Boolean"
-		}
-	},
-	"PrismFightRemovedMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismFightRemovedMessage.as",
-		"id": "1649",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"subAreaId": "VarShort"
-		}
-	},
-	"PrismFightStateUpdateMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismFightStateUpdateMessage.as",
-		"id": "7030",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"state": "Byte"
-		}
-	},
-	"PrismFightSwapRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismFightSwapRequestMessage.as",
-		"id": "5555",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"subAreaId": "VarShort",
-			"targetId": "VarLong"
-		}
-	},
-	"PrismFightersInformation": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/prism/PrismFightersInformation.as",
-		"id": "1824",
-		"superclass": null,
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"subAreaId": "VarShort",
-			"waitingForHelpInfo": "ProtectedEntityWaitingForHelpInfo",
-			"allyCharactersInformations": "TypeIdVector<Short,CharacterMinimalPlusLookInformations>",
-			"enemyCharactersInformations": "TypeIdVector<Short,CharacterMinimalPlusLookInformations>"
-		}
-	},
 	"PrismGeolocalizedInformation": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/prism/PrismGeolocalizedInformation.as",
 		"id": "2580",
@@ -15902,38 +14974,7 @@
 			"worldX": "Short",
 			"worldY": "Short",
 			"mapId": "Double",
-			"prism": "TypeId<PrismInformation>"
-		}
-	},
-	"PrismInfoCloseMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismInfoCloseMessage.as",
-		"id": "9471",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {}
-	},
-	"PrismInfoInValidMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismInfoInValidMessage.as",
-		"id": "1922",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"reason": "Byte"
-		}
-	},
-	"PrismInfoJoinLeaveRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismInfoJoinLeaveRequestMessage.as",
-		"id": "9586",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"join": "Boolean"
+			"prism": "PrismInformation"
 		}
 	},
 	"PrismInformation": {
@@ -15950,15 +14991,6 @@
 			"durability": "Int",
 			"nextEvolutionDate": "Double"
 		}
-	},
-	"PrismModuleExchangeRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismModuleExchangeRequestMessage.as",
-		"id": "6453",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {}
 	},
 	"PrismRecycleTradeRequestMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismRecycleTradeRequestMessage.as",
@@ -15980,62 +15012,6 @@
 			"prism": "PrismGeolocalizedInformation"
 		}
 	},
-	"PrismSetSabotagedRefusedMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismSetSabotagedRefusedMessage.as",
-		"id": "305",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"subAreaId": "VarShort",
-			"reason": "Byte"
-		}
-	},
-	"PrismSetSabotagedRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismSetSabotagedRequestMessage.as",
-		"id": "131",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"subAreaId": "VarShort"
-		}
-	},
-	"PrismSettingsErrorMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismSettingsErrorMessage.as",
-		"id": "2428",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {}
-	},
-	"PrismSettingsRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismSettingsRequestMessage.as",
-		"id": "9345",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"subAreaId": "VarShort",
-			"startDefenseTime": "Byte"
-		}
-	},
-	"PrismSubareaEmptyInfo": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/prism/PrismSubareaEmptyInfo.as",
-		"id": "2190",
-		"superclass": null,
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"subAreaId": "VarShort",
-			"allianceId": "VarInt"
-		}
-	},
 	"PrismTeleportationRequestMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismTeleportationRequestMessage.as",
 		"id": "8735",
@@ -16045,28 +15021,6 @@
 		],
 		"attributes": {}
 	},
-	"PrismUseRequestMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismUseRequestMessage.as",
-		"id": "751",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"moduleToUse": "Byte"
-		}
-	},
-	"PrismsInfoValidMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismsInfoValidMessage.as",
-		"id": "9792",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"fights": "Vector<Short,PrismFightersInformation>"
-		}
-	},
 	"PrismsListMessage": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismsListMessage.as",
 		"id": "1417",
@@ -16075,28 +15029,8 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"prisms": "TypeIdVector<Short,PrismGeolocalizedInformation>"
+			"prisms": "Vector<Short,PrismGeolocalizedInformation>"
 		}
-	},
-	"PrismsListRegisterMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismsListRegisterMessage.as",
-		"id": "2829",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"listen": "Byte"
-		}
-	},
-	"PrismsListUpdateMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/prism/PrismsListUpdateMessage.as",
-		"id": "7529",
-		"superclass": "PrismsListMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {}
 	},
 	"ProtectedEntityWaitingForHelpInfo": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/fight/ProtectedEntityWaitingForHelpInfo.as",
@@ -16146,7 +15080,7 @@
 		],
 		"attributes": {
 			"stepId": "VarShort",
-			"objectives": "TypeIdVector<Short,QuestObjectiveInformations>"
+			"objectives": "Vector<Short,QuestObjectiveInformations>"
 		}
 	},
 	"QuestActiveInformations": {
@@ -16170,7 +15104,7 @@
 		"attributes": {
 			"finishedQuestsIds": "Vector<Short,VarShort>",
 			"finishedQuestsCounts": "Vector<Short,VarShort>",
-			"activeQuests": "TypeIdVector<Short,QuestActiveInformations>",
+			"activeQuests": "Vector<Short,QuestActiveInformations>",
 			"reinitDoneQuestsIds": "Vector<Short,VarShort>"
 		}
 	},
@@ -16262,7 +15196,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"infos": "TypeId<QuestActiveInformations>"
+			"infos": "QuestActiveInformations"
 		}
 	},
 	"QuestStepInfoRequestMessage": {
@@ -16499,15 +15433,16 @@
 		}
 	},
 	"RemoveSpellModifierMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/character/stats/RemoveSpellModifierMessage.as",
-		"id": "6246",
+		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/character/spellmodifier/RemoveSpellModifierMessage.as",
+		"id": "8534",
 		"superclass": "NetworkMessage",
 		"interfaces": [
 			"INetworkMessage"
 		],
 		"attributes": {
 			"actorId": "Double",
-			"modificationType": "Byte",
+			"actionType": "Byte",
+			"modifierType": "Byte",
 			"spellId": "VarShort"
 		}
 	},
@@ -16731,7 +15666,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"variables": "TypeIdVector<Short,ServerSessionConstant>"
+			"variables": "Vector<Short,ServerSessionConstant>"
 		}
 	},
 	"ServerSettingsMessage": {
@@ -16818,7 +15753,7 @@
 		"attributes": {
 			"setId": "VarShort",
 			"setObjects": "Vector<Short,VarInt>",
-			"setEffects": "TypeIdVector<Short,ObjectEffect>"
+			"setEffects": "Vector<Short,ObjectEffect>"
 		}
 	},
 	"Shortcut": {
@@ -16852,7 +15787,7 @@
 		],
 		"attributes": {
 			"barType": "Byte",
-			"shortcut": "TypeId<Shortcut>"
+			"shortcut": "Shortcut"
 		}
 	},
 	"ShortcutBarContentMessage": {
@@ -16864,7 +15799,7 @@
 		],
 		"attributes": {
 			"barType": "Byte",
-			"shortcuts": "TypeIdVector<Short,Shortcut>"
+			"shortcuts": "Vector<Short,Shortcut>"
 		}
 	},
 	"ShortcutBarRefreshMessage": {
@@ -16876,7 +15811,7 @@
 		],
 		"attributes": {
 			"barType": "Byte",
-			"shortcut": "TypeId<Shortcut>"
+			"shortcut": "Shortcut"
 		}
 	},
 	"ShortcutBarRemoveErrorMessage": {
@@ -16923,7 +15858,7 @@
 		],
 		"attributes": {
 			"barType": "Byte",
-			"shortcut": "TypeId<Shortcut>"
+			"shortcut": "Shortcut"
 		}
 	},
 	"ShortcutBarSwapErrorMessage": {
@@ -16980,17 +15915,6 @@
 			"INetworkType"
 		],
 		"attributes": {}
-	},
-	"ShortcutObjectIdolsPreset": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/shortcut/ShortcutObjectIdolsPreset.as",
-		"id": "4184",
-		"superclass": "ShortcutObject",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"presetId": "Short"
-		}
 	},
 	"ShortcutObjectItem": {
 		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/shortcut/ShortcutObjectItem.as",
@@ -17154,7 +16078,7 @@
 			"slaveTurn": "VarShort",
 			"slaveSpells": "Vector<Short,SpellItem>",
 			"slaveStats": "CharacterCharacteristicsInformations",
-			"shortcuts": "TypeIdVector<Short,Shortcut>"
+			"shortcuts": "Vector<Short,Shortcut>"
 		}
 	},
 	"SocialApplicationInformation": {
@@ -17258,7 +16182,7 @@
 			"connected": "Byte",
 			"hoursSinceLastConnection": "Short",
 			"accountId": "Int",
-			"status": "TypeId<PlayerStatus>",
+			"status": "PlayerStatus",
 			"rankId": "Int",
 			"enrollmentDate": "Double"
 		}
@@ -17478,7 +16402,7 @@
 			"INetworkMessage"
 		],
 		"attributes": {
-			"spouse": "TypeId<FriendSpouseInformations>"
+			"spouse": "FriendSpouseInformations"
 		}
 	},
 	"SpouseStatusMessage": {
@@ -17557,90 +16481,6 @@
 		],
 		"attributes": {
 			"taxCollectorId": "Double"
-		}
-	},
-	"StartupActionAddMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/startup/StartupActionAddMessage.as",
-		"id": "4490",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"newAction": "StartupActionAddObject"
-		}
-	},
-	"StartupActionAddObject": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/startup/StartupActionAddObject.as",
-		"id": "9542",
-		"superclass": null,
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"uid": "Int",
-			"title": "String",
-			"text": "String",
-			"descUrl": "String",
-			"pictureUrl": "String",
-			"items": "Vector<Short,ObjectItemInformationWithQuantity>",
-			"type": "VarInt"
-		}
-	},
-	"StartupActionFinishedMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/startup/StartupActionFinishedMessage.as",
-		"id": "2096",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"success": "Boolean",
-			"actionId": "Int",
-			"automaticAction": "Boolean"
-		}
-	},
-	"StartupActionsAllAttributionMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/startup/StartupActionsAllAttributionMessage.as",
-		"id": "5005",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"characterId": "VarLong"
-		}
-	},
-	"StartupActionsExecuteMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/startup/StartupActionsExecuteMessage.as",
-		"id": "3292",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {}
-	},
-	"StartupActionsListMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/startup/StartupActionsListMessage.as",
-		"id": "7819",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"actions": "Vector<Short,StartupActionAddObject>"
-		}
-	},
-	"StartupActionsObjetAttributionMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/startup/StartupActionsObjetAttributionMessage.as",
-		"id": "2128",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"actionId": "Int",
-			"characterId": "VarLong"
 		}
 	},
 	"StatedElement": {
@@ -18029,12 +16869,12 @@
 		],
 		"attributes": {
 			"callerId": "VarLong",
-			"description": "TypeId<TaxCollectorInformations>"
+			"description": "TaxCollectorInformations"
 		}
 	},
 	"TaxCollectorAttackedMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/TaxCollectorAttackedMessage.as",
-		"id": "9963",
+		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/collector/tax/TaxCollectorAttackedMessage.as",
+		"id": "2392",
 		"superclass": "NetworkMessage",
 		"interfaces": [
 			"INetworkMessage"
@@ -18046,12 +16886,12 @@
 			"worldY": "Short",
 			"mapId": "Double",
 			"subAreaId": "VarShort",
-			"guild": "BasicGuildInformations"
+			"alliance": "BasicAllianceInformations"
 		}
 	},
 	"TaxCollectorAttackedResultMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/TaxCollectorAttackedResultMessage.as",
-		"id": "1359",
+		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/collector/tax/TaxCollectorAttackedResultMessage.as",
+		"id": "5228",
 		"superclass": "NetworkMessage",
 		"interfaces": [
 			"INetworkMessage"
@@ -18059,12 +16899,12 @@
 		"attributes": {
 			"deadOrAlive": "Boolean",
 			"basicInfos": "TaxCollectorBasicInformations",
-			"guild": "BasicGuildInformations"
+			"alliance": "BasicAllianceInformations"
 		}
 	},
 	"TaxCollectorBasicInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/tax/TaxCollectorBasicInformations.as",
-		"id": "8484",
+		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/collector/tax/TaxCollectorBasicInformations.as",
+		"id": "3056",
 		"superclass": null,
 		"interfaces": [
 			"INetworkType"
@@ -18079,8 +16919,8 @@
 		}
 	},
 	"TaxCollectorComplementaryInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/tax/TaxCollectorComplementaryInformations.as",
-		"id": "4404",
+		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/collector/tax/TaxCollectorComplementaryInformations.as",
+		"id": "3844",
 		"superclass": null,
 		"interfaces": [
 			"INetworkType"
@@ -18130,38 +16970,14 @@
 		}
 	},
 	"TaxCollectorErrorMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/TaxCollectorErrorMessage.as",
-		"id": "8428",
+		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/collector/tax/TaxCollectorErrorMessage.as",
+		"id": "7414",
 		"superclass": "NetworkMessage",
 		"interfaces": [
 			"INetworkMessage"
 		],
 		"attributes": {
 			"reason": "Byte"
-		}
-	},
-	"TaxCollectorFightersInformation": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/tax/TaxCollectorFightersInformation.as",
-		"id": "755",
-		"superclass": null,
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"collectorId": "Double",
-			"allyCharactersInformations": "TypeIdVector<Short,CharacterMinimalPlusLookInformations>",
-			"enemyCharactersInformations": "TypeIdVector<Short,CharacterMinimalPlusLookInformations>"
-		}
-	},
-	"TaxCollectorGuildInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/tax/TaxCollectorGuildInformations.as",
-		"id": "3219",
-		"superclass": "TaxCollectorComplementaryInformations",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"guild": "BasicGuildInformations"
 		}
 	},
 	"TaxCollectorHarvestedMessage": {
@@ -18178,55 +16994,44 @@
 		}
 	},
 	"TaxCollectorInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/tax/TaxCollectorInformations.as",
-		"id": "2087",
+		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/collector/tax/TaxCollectorInformations.as",
+		"id": "8675",
 		"superclass": null,
 		"interfaces": [
 			"INetworkType"
 		],
 		"attributes": {
 			"uniqueId": "Double",
-			"firtNameId": "VarShort",
+			"firstNameId": "VarShort",
 			"lastNameId": "VarShort",
-			"additionalInfos": "AdditionalTaxCollectorInformations",
+			"allianceIdentity": "AllianceInformation",
+			"additionalInfos": "AdditionalTaxCollectorInformation",
 			"worldX": "Short",
 			"worldY": "Short",
 			"subAreaId": "VarShort",
 			"state": "Byte",
 			"look": "EntityLook",
-			"complements": "TypeIdVector<Short,TaxCollectorComplementaryInformations>"
-		}
-	},
-	"TaxCollectorListMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/TaxCollectorListMessage.as",
-		"id": "5925",
-		"superclass": "AbstractTaxCollectorListMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"nbcollectorMax": "Byte",
-			"fightersInformations": "Vector<Short,TaxCollectorFightersInformation>",
-			"infoType": "Byte"
+			"complements": "Vector<Short,TaxCollectorComplementaryInformations>",
+			"characteristics": "CharacterCharacteristics",
+			"equipments": "Vector<Short,ObjectItem>",
+			"spells": "Vector<Short,TaxCollectorOrderedSpell>"
 		}
 	},
 	"TaxCollectorLootInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/tax/TaxCollectorLootInformations.as",
-		"id": "3251",
+		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/collector/tax/TaxCollectorLootInformations.as",
+		"id": "3892",
 		"superclass": "TaxCollectorComplementaryInformations",
 		"interfaces": [
 			"INetworkType"
 		],
 		"attributes": {
-			"kamas": "VarLong",
-			"experience": "VarLong",
 			"pods": "VarInt",
 			"itemsValue": "VarLong"
 		}
 	},
 	"TaxCollectorMovement": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/tax/TaxCollectorMovement.as",
-		"id": "7076",
+		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/collector/tax/TaxCollectorMovement.as",
+		"id": "1537",
 		"superclass": null,
 		"interfaces": [
 			"INetworkType"
@@ -18238,45 +17043,9 @@
 			"playerName": "String"
 		}
 	},
-	"TaxCollectorMovementAddMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/TaxCollectorMovementAddMessage.as",
-		"id": "9034",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"informations": "TypeId<TaxCollectorInformations>"
-		}
-	},
-	"TaxCollectorMovementMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/TaxCollectorMovementMessage.as",
-		"id": "5589",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"movementType": "Byte",
-			"basicInfos": "TaxCollectorBasicInformations",
-			"playerId": "VarLong",
-			"playerName": "String"
-		}
-	},
-	"TaxCollectorMovementRemoveMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/TaxCollectorMovementRemoveMessage.as",
-		"id": "4860",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"collectorId": "Double"
-		}
-	},
 	"TaxCollectorMovementsOfflineMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/TaxCollectorMovementsOfflineMessage.as",
-		"id": "7174",
+		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/collector/tax/TaxCollectorMovementsOfflineMessage.as",
+		"id": "6613",
 		"superclass": "NetworkMessage",
 		"interfaces": [
 			"INetworkMessage"
@@ -18357,8 +17126,8 @@
 		}
 	},
 	"TaxCollectorStateUpdateMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/TaxCollectorStateUpdateMessage.as",
-		"id": "223",
+		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/collector/tax/TaxCollectorStateUpdateMessage.as",
+		"id": "6245",
 		"superclass": "NetworkMessage",
 		"interfaces": [
 			"INetworkMessage"
@@ -18366,17 +17135,6 @@
 		"attributes": {
 			"uniqueId": "Double",
 			"state": "Byte"
-		}
-	},
-	"TaxCollectorStaticExtendedInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/context/TaxCollectorStaticExtendedInformations.as",
-		"id": "2929",
-		"superclass": "TaxCollectorStaticInformations",
-		"interfaces": [
-			"INetworkType"
-		],
-		"attributes": {
-			"allianceIdentity": "AllianceInformations"
 		}
 	},
 	"TaxCollectorStaticInformations": {
@@ -18394,8 +17152,8 @@
 		}
 	},
 	"TaxCollectorWaitingForHelpInformations": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/guild/tax/TaxCollectorWaitingForHelpInformations.as",
-		"id": "5562",
+		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/types/game/collector/tax/TaxCollectorWaitingForHelpInformations.as",
+		"id": "330",
 		"superclass": "TaxCollectorComplementaryInformations",
 		"interfaces": [
 			"INetworkType"
@@ -18681,14 +17439,15 @@
 		"attributes": {}
 	},
 	"TopTaxCollectorListMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/guild/tax/TopTaxCollectorListMessage.as",
-		"id": "2111",
-		"superclass": "AbstractTaxCollectorListMessage",
+		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/collector/tax/TopTaxCollectorListMessage.as",
+		"id": "4949",
+		"superclass": "NetworkMessage",
 		"interfaces": [
 			"INetworkMessage"
 		],
 		"attributes": {
-			"isDungeon": "Boolean"
+			"dungeonTaxCollectorsInformation": "Vector<Short,TaxCollectorInformations>",
+			"worldTaxCollectorsInformation": "Vector<Short,TaxCollectorInformations>"
 		}
 	},
 	"TreasureHuntAvailableRetryCountUpdateMessage": {
@@ -18829,7 +17588,7 @@
 		"attributes": {
 			"questType": "Byte",
 			"startMapId": "Double",
-			"knownStepsList": "TypeIdVector<Short,TreasureHuntStep>",
+			"knownStepsList": "Vector<Short,TreasureHuntStep>",
 			"totalStepCount": "Byte",
 			"checkPointCurrent": "VarInt",
 			"checkPointTotal": "VarInt",
@@ -19046,7 +17805,7 @@
 		],
 		"attributes": {
 			"rideId": "VarInt",
-			"boostToUpdateList": "TypeIdVector<Short,UpdateMountCharacteristic>"
+			"boostToUpdateList": "Vector<Short,UpdateMountCharacteristic>"
 		}
 	},
 	"UpdateMountIntegerCharacteristic": {
@@ -19083,18 +17842,6 @@
 			"probationTime": "Double",
 			"roleAvAId": "Int",
 			"pictoScore": "Int"
-		}
-	},
-	"UpdateSpellModifierMessage": {
-		"file": "data/A/DofusInvoker/scripts/com/ankamagames/dofus/network/messages/game/character/stats/UpdateSpellModifierMessage.as",
-		"id": "8033",
-		"superclass": "NetworkMessage",
-		"interfaces": [
-			"INetworkMessage"
-		],
-		"attributes": {
-			"actorId": "Double",
-			"spellModifier": "CharacterSpellModification"
 		}
 	},
 	"UpdatedStorageTabInformation": {
