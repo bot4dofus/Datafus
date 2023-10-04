@@ -29,7 +29,9 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const HINT_CATEGORY_TRANSPORTATIONS:int = 9;
       
-      public static const MONSTER_TYPE_OSATOPIA:uint = 248;
+      public static const MONSTER_TYPE_OSATOPIA:uint = 286;
+      
+      public static const HIDDEN_MONSTER_TYPE_OSATOPIA:uint = 289;
       
       public static const ITEM_SUPERTYPE_COLLAR:uint = 1;
       
@@ -81,11 +83,15 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const ITEM_SUPERTYPE_COSTUME:uint = 25;
       
+      public static const ITEM_SUPERTYPE_INVISIBLE:uint = 26;
+      
       public static const ITEM_SUPERTYPE_CERTIFICATE:uint = 27;
       
       public static const ITEM_SUPERTYPE_PET_GHOST:uint = 28;
       
       public static const ITEM_SUPERTYPE_TAX_COLLECTOR_EQUIPMENT:uint = 69;
+      
+      public static const ITEM_SUPERTYPE_FIGHT_CONSUMABLE:uint = 70;
       
       public static const ITEM_TYPE_COLLAR:int = 1;
       
@@ -243,9 +249,7 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const ITEM_TYPE_ECAFLIP_CARD:int = 238;
       
-      public static const ITEM_TYPE_MODSTER:int = 261;
-      
-      public static const ITEM_TYPE_FORGETTABLE_MODSTERS:int = 261;
+      public static const ITEM_TYPE_MODSTER:int = 293;
       
       public static const ITEM_GID_SOULSTONE:int = 7010;
       
@@ -581,6 +585,8 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const COLLECTABLE_CATEGORY_LEGENDARY:uint = 4;
       
+      public static const COLLECTABLE_CATEGORY_UNIQUE:uint = 5;
+      
       public static const BASE_EFFECT_CATEGORY_ANNOYING_THING:uint = 82;
       
       public static const BASE_EFFECT_CATEGORY_GOOD_THING:uint = 83;
@@ -591,7 +597,7 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const BASE_EFFECT_CATEGORY_TIME_OF_USE_HOURS:uint = 510;
       
-      public static const ACHIEVEMENT_CAT_MODSTERS_HIDDEN:uint = 130;
+      public static const ACHIEVEMENT_CAT_MODSTERS_HIDDEN:uint = 149;
       
       public static const INACTIVITY_DEFAULT_DELAY:uint = 1800000;
        

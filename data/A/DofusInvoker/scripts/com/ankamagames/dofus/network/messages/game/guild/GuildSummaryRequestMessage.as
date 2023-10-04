@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildSummaryRequestMessage extends PaginationRequestAbstractMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8581;
+      public static const protocolId:uint = 3550;
        
       
       private var _isInitialized:Boolean = false;
@@ -20,6 +20,8 @@ package com.ankamagames.dofus.network.messages.game.guild
       public var nameFilter:String = "";
       
       public var hideFullFilter:Boolean = false;
+      
+      public var followingGuildCriteria:Boolean = false;
       
       public var criterionFilter:Vector.<uint>;
       
@@ -64,14 +66,15 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 8581;
+         return 3550;
       }
       
-      public function initGuildSummaryRequestMessage(offset:Number = 0, count:uint = 0, nameFilter:String = "", hideFullFilter:Boolean = false, criterionFilter:Vector.<uint> = null, languagesFilter:Vector.<uint> = null, recruitmentTypeFilter:Vector.<uint> = null, minLevelFilter:uint = 0, maxLevelFilter:uint = 0, minPlayerLevelFilter:uint = 0, maxPlayerLevelFilter:uint = 0, minSuccessFilter:uint = 0, maxSuccessFilter:uint = 0, sortType:uint = 0, sortDescending:Boolean = false) : GuildSummaryRequestMessage
+      public function initGuildSummaryRequestMessage(offset:Number = 0, count:uint = 0, nameFilter:String = "", hideFullFilter:Boolean = false, followingGuildCriteria:Boolean = false, criterionFilter:Vector.<uint> = null, languagesFilter:Vector.<uint> = null, recruitmentTypeFilter:Vector.<uint> = null, minLevelFilter:uint = 0, maxLevelFilter:uint = 0, minPlayerLevelFilter:uint = 0, maxPlayerLevelFilter:uint = 0, minSuccessFilter:uint = 0, maxSuccessFilter:uint = 0, sortType:uint = 0, sortDescending:Boolean = false) : GuildSummaryRequestMessage
       {
          super.initPaginationRequestAbstractMessage(offset,count);
          this.nameFilter = nameFilter;
          this.hideFullFilter = hideFullFilter;
+         this.followingGuildCriteria = followingGuildCriteria;
          this.criterionFilter = criterionFilter;
          this.languagesFilter = languagesFilter;
          this.recruitmentTypeFilter = recruitmentTypeFilter;
@@ -92,6 +95,7 @@ package com.ankamagames.dofus.network.messages.game.guild
          super.reset();
          this.nameFilter = "";
          this.hideFullFilter = false;
+         this.followingGuildCriteria = false;
          this.criterionFilter = new Vector.<uint>();
          this.languagesFilter = new Vector.<uint>();
          this.recruitmentTypeFilter = new Vector.<uint>();
@@ -136,31 +140,32 @@ package com.ankamagames.dofus.network.messages.game.guild
          super.serializeAs_PaginationRequestAbstractMessage(output);
          var _box0:uint = 0;
          _box0 = BooleanByteWrapper.setFlag(_box0,0,this.hideFullFilter);
-         _box0 = BooleanByteWrapper.setFlag(_box0,1,this.sortDescending);
+         _box0 = BooleanByteWrapper.setFlag(_box0,1,this.followingGuildCriteria);
+         _box0 = BooleanByteWrapper.setFlag(_box0,2,this.sortDescending);
          output.writeByte(_box0);
          output.writeUTF(this.nameFilter);
          output.writeShort(this.criterionFilter.length);
-         for(var _i3:uint = 0; _i3 < this.criterionFilter.length; _i3++)
+         for(var _i4:uint = 0; _i4 < this.criterionFilter.length; _i4++)
          {
-            if(this.criterionFilter[_i3] < 0)
+            if(this.criterionFilter[_i4] < 0)
             {
-               throw new Error("Forbidden value (" + this.criterionFilter[_i3] + ") on element 3 (starting at 1) of criterionFilter.");
+               throw new Error("Forbidden value (" + this.criterionFilter[_i4] + ") on element 4 (starting at 1) of criterionFilter.");
             }
-            output.writeVarInt(this.criterionFilter[_i3]);
+            output.writeVarInt(this.criterionFilter[_i4]);
          }
          output.writeShort(this.languagesFilter.length);
-         for(var _i4:uint = 0; _i4 < this.languagesFilter.length; _i4++)
+         for(var _i5:uint = 0; _i5 < this.languagesFilter.length; _i5++)
          {
-            if(this.languagesFilter[_i4] < 0)
+            if(this.languagesFilter[_i5] < 0)
             {
-               throw new Error("Forbidden value (" + this.languagesFilter[_i4] + ") on element 4 (starting at 1) of languagesFilter.");
+               throw new Error("Forbidden value (" + this.languagesFilter[_i5] + ") on element 5 (starting at 1) of languagesFilter.");
             }
-            output.writeVarInt(this.languagesFilter[_i4]);
+            output.writeVarInt(this.languagesFilter[_i5]);
          }
          output.writeShort(this.recruitmentTypeFilter.length);
-         for(var _i5:uint = 0; _i5 < this.recruitmentTypeFilter.length; _i5++)
+         for(var _i6:uint = 0; _i6 < this.recruitmentTypeFilter.length; _i6++)
          {
-            output.writeByte(this.recruitmentTypeFilter[_i5]);
+            output.writeByte(this.recruitmentTypeFilter[_i6]);
          }
          if(this.minLevelFilter < 0)
          {
@@ -202,41 +207,41 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       public function deserializeAs_GuildSummaryRequestMessage(input:ICustomDataInput) : void
       {
-         var _val3:uint = 0;
          var _val4:uint = 0;
          var _val5:uint = 0;
+         var _val6:uint = 0;
          super.deserialize(input);
          this.deserializeByteBoxes(input);
          this._nameFilterFunc(input);
          var _criterionFilterLen:uint = input.readUnsignedShort();
-         for(var _i3:uint = 0; _i3 < _criterionFilterLen; _i3++)
-         {
-            _val3 = input.readVarUhInt();
-            if(_val3 < 0)
-            {
-               throw new Error("Forbidden value (" + _val3 + ") on elements of criterionFilter.");
-            }
-            this.criterionFilter.push(_val3);
-         }
-         var _languagesFilterLen:uint = input.readUnsignedShort();
-         for(var _i4:uint = 0; _i4 < _languagesFilterLen; _i4++)
+         for(var _i4:uint = 0; _i4 < _criterionFilterLen; _i4++)
          {
             _val4 = input.readVarUhInt();
             if(_val4 < 0)
             {
-               throw new Error("Forbidden value (" + _val4 + ") on elements of languagesFilter.");
+               throw new Error("Forbidden value (" + _val4 + ") on elements of criterionFilter.");
             }
-            this.languagesFilter.push(_val4);
+            this.criterionFilter.push(_val4);
          }
-         var _recruitmentTypeFilterLen:uint = input.readUnsignedShort();
-         for(var _i5:uint = 0; _i5 < _recruitmentTypeFilterLen; _i5++)
+         var _languagesFilterLen:uint = input.readUnsignedShort();
+         for(var _i5:uint = 0; _i5 < _languagesFilterLen; _i5++)
          {
-            _val5 = input.readByte();
+            _val5 = input.readVarUhInt();
             if(_val5 < 0)
             {
-               throw new Error("Forbidden value (" + _val5 + ") on elements of recruitmentTypeFilter.");
+               throw new Error("Forbidden value (" + _val5 + ") on elements of languagesFilter.");
             }
-            this.recruitmentTypeFilter.push(_val5);
+            this.languagesFilter.push(_val5);
+         }
+         var _recruitmentTypeFilterLen:uint = input.readUnsignedShort();
+         for(var _i6:uint = 0; _i6 < _recruitmentTypeFilterLen; _i6++)
+         {
+            _val6 = input.readByte();
+            if(_val6 < 0)
+            {
+               throw new Error("Forbidden value (" + _val6 + ") on elements of recruitmentTypeFilter.");
+            }
+            this.recruitmentTypeFilter.push(_val6);
          }
          this._minLevelFilterFunc(input);
          this._maxLevelFilterFunc(input);
@@ -273,7 +278,8 @@ package com.ankamagames.dofus.network.messages.game.guild
       {
          var _box0:uint = input.readByte();
          this.hideFullFilter = BooleanByteWrapper.getFlag(_box0,0);
-         this.sortDescending = BooleanByteWrapper.getFlag(_box0,1);
+         this.followingGuildCriteria = BooleanByteWrapper.getFlag(_box0,1);
+         this.sortDescending = BooleanByteWrapper.getFlag(_box0,2);
       }
       
       private function _nameFilterFunc(input:ICustomDataInput) : void

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class ObjectItem extends Item implements INetworkType
    {
       
-      public static const protocolId:uint = 9429;
+      public static const protocolId:uint = 9326;
        
       
       public var position:uint = 63;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       override public function getTypeId() : uint
       {
-         return 9429;
+         return 9326;
       }
       
       public function initObjectItem(position:uint = 63, objectGID:uint = 0, effects:Vector.<ObjectEffect> = null, objectUID:uint = 0, quantity:uint = 0) : ObjectItem

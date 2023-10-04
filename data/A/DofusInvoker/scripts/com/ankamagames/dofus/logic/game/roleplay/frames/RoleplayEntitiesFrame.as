@@ -197,6 +197,8 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.jerakine.managers.StoreDataManager;
    import com.ankamagames.jerakine.messages.Frame;
    import com.ankamagames.jerakine.messages.Message;
+   import com.ankamagames.jerakine.resources.ResourceType;
+   import com.ankamagames.jerakine.resources.adapters.impl.AdvancedSwfAdapter;
    import com.ankamagames.jerakine.resources.events.ResourceErrorEvent;
    import com.ankamagames.jerakine.resources.events.ResourceLoadedEvent;
    import com.ankamagames.jerakine.resources.loaders.IResourceLoader;
@@ -2276,6 +2278,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var modster:Modster = null;
          var innerGlow:GlowFilter = null;
          var outerGlow:GlowFilter = null;
+         var isKroma:* = false;
          if(this._objectsByCellId && this._objectsByCellId[pCellId])
          {
             _log.error("To add an object on the ground, the destination cell must be empty.");
@@ -2283,12 +2286,15 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          }
          var objectEntity:IInteractive = new RoleplayObjectEntity(pObjectUID,MapPoint.fromCellId(pCellId));
          var item:Item = Item.getItemById(pObjectUID);
+         var forcedAdapter:Class = null;
          if(item && item.typeId == DataEnum.ITEM_TYPE_MODSTER)
          {
             modster = Modster.getModsterByScrollId(item.id);
             if(modster)
             {
-               objectUri = new Uri(LangManager.getInstance().getEntry("config.gfx.path") + "modsters/" + modster.modsterId + ".swf");
+               isKroma = modster.itemIdKroma == item.id;
+               objectUri = new Uri(LangManager.getInstance().getEntry("config.gfx.path") + "modsters/" + modster.modsterId + ".swf|" + (!!isKroma ? "Chroma" : "Normal"));
+               forcedAdapter = AdvancedSwfAdapter;
             }
             else
             {
@@ -2314,7 +2320,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          this._objects[objectUri] = objectEntity;
          this._objectsByCellId[pCellId] = this._objects[objectUri];
          registerActorWithId(groundObject,objectEntity.id);
-         this._loader.load(objectUri,null,null,true);
+         this._loader.load(objectUri,null,forcedAdapter,forcedAdapter == null);
       }
       
       private function removeObject(pCellId:uint) : void
@@ -2659,14 +2665,26 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       
       private function onGroundObjectLoaded(e:ResourceLoadedEvent) : void
       {
-         var objectMc:MovieClip = e.resource is ASwf ? e.resource.content : e.resource;
+         var objectMc:MovieClip = null;
+         var aswf:ASwf = null;
+         var child:DisplayObject = null;
+         if(e.resourceType == ResourceType.RESOURCE_ASWF)
+         {
+            aswf = ASwf(e.resource);
+            objectMc = new (aswf.applicationDomain.getDefinition(e.uri.subPath) as Class)() as MovieClip;
+         }
+         else
+         {
+            objectMc = e.resource;
+         }
          objectMc.width = 34;
          objectMc.height = 34;
          objectMc.x -= objectMc.width / 2;
          objectMc.y -= objectMc.height / 2;
          if(this._objects[e.uri])
          {
-            this._objects[e.uri].addChild(objectMc);
+            child = this._objects[e.uri].addChild(objectMc);
+            (child as MovieClip).stop();
          }
       }
       

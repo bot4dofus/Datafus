@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.approach
    public class AccountCapabilitiesMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1358;
+      public static const protocolId:uint = 7413;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       override public function getMessageId() : uint
       {
-         return 1358;
+         return 7413;
       }
       
       public function initAccountCapabilitiesMessage(accountId:uint = 0, tutorialAvailable:Boolean = false, status:int = -1, canCreateNewCharacter:Boolean = false) : AccountCapabilitiesMessage

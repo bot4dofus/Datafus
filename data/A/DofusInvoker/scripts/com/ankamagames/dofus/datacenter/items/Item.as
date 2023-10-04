@@ -5,7 +5,6 @@ package com.ankamagames.dofus.datacenter.items
    import com.ankamagames.dofus.datacenter.items.criterion.GroupItemCriterion;
    import com.ankamagames.dofus.datacenter.jobs.Recipe;
    import com.ankamagames.dofus.datacenter.monsters.Monster;
-   import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkMapPosition;
    import com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect;
@@ -27,8 +26,6 @@ package com.ankamagames.dofus.datacenter.items
    {
       
       public static const MODULE:String = "Items";
-      
-      private static const SUPERTYPE_NOT_EQUIPABLE:Array = [DataEnum.ITEM_SUPERTYPE_RESOURCES,DataEnum.ITEM_SUPERTYPE_QUEST_ITEMS,DataEnum.ITEM_SUPERTYPE_MUTATIONS,DataEnum.ITEM_SUPERTYPE_FOODS,DataEnum.ITEM_SUPERTYPE_BLESSINGS,DataEnum.ITEM_SUPERTYPE_CURSES,DataEnum.ITEM_SUPERTYPE_CONSUMABLE,DataEnum.ITEM_SUPERTYPE_ROLEPLAY_BUFFS,DataEnum.ITEM_SUPERTYPE_FOLLOWERS,DataEnum.ITEM_SUPERTYPE_MOUNTS,DataEnum.ITEM_SUPERTYPE_CATCHING_ITEMS,DataEnum.ITEM_SUPERTYPE_LIVING_ITEMS];
       
       public static const MAX_JOB_LEVEL_GAP:int = 100;
       

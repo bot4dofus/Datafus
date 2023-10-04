@@ -15,10 +15,6 @@ package com.ankamagames.berilia.utils
       
       public static const MouseAltClick:String = "MouseAltClick";
       
-      public static const MouseCtrlDoubleClick:String = "MouseCtrlDoubleClick";
-      
-      public static const MouseAltDoubleClick:String = "MouseAltDoubleClick";
-      
       public static const PostMouseClick:String = "PostMouseClick";
       
       public static const KeyUp:String = "KeyUp";
@@ -82,8 +78,6 @@ package com.ankamagames.berilia.utils
          Hook.createHook(MouseShiftClick);
          Hook.createHook(MouseCtrlClick);
          Hook.createHook(MouseAltClick);
-         Hook.createHook(MouseCtrlDoubleClick);
-         Hook.createHook(MouseAltDoubleClick);
          Hook.createHook(PostMouseClick);
          Hook.createHook(KeyUp);
          Hook.createHook(KeyDown);

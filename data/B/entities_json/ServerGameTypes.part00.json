@@ -1,0 +1,74 @@
+{
+	"def": [
+		{
+			"memberName": "ServerGameType",
+			"packageName": "com.ankamagames.dofus.datacenter.servers",
+			"fields": [
+				{
+					"name": "id",
+					"type": -1
+				},
+				{
+					"name": "selectableByPlayer",
+					"type": -2
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "rulesId",
+					"type": -5
+				},
+				{
+					"name": "descriptionId",
+					"type": -5
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"id": 0,
+			"selectableByPlayer": true,
+			"nameId": 744486,
+			"rulesId": 787699,
+			"descriptionId": 724092
+		},
+		{
+			"id": 1,
+			"selectableByPlayer": true,
+			"nameId": 744484,
+			"rulesId": 724074,
+			"descriptionId": 724098
+		},
+		{
+			"id": 2,
+			"selectableByPlayer": false,
+			"nameId": 392557,
+			"rulesId": 0,
+			"descriptionId": 0
+		},
+		{
+			"id": 3,
+			"selectableByPlayer": true,
+			"nameId": 744480,
+			"rulesId": 724066,
+			"descriptionId": 0
+		},
+		{
+			"id": 4,
+			"selectableByPlayer": true,
+			"nameId": 744477,
+			"rulesId": 724061,
+			"descriptionId": 724104
+		},
+		{
+			"id": 5,
+			"selectableByPlayer": true,
+			"nameId": 745765,
+			"rulesId": 1043593,
+			"descriptionId": 784373
+		}
+	]
+}

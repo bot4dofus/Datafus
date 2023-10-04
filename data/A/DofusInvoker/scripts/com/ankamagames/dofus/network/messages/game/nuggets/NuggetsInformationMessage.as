@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.nuggets
    public class NuggetsInformationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7361;
+      public static const protocolId:uint = 1617;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.nuggets
       
       override public function getMessageId() : uint
       {
-         return 7361;
+         return 1617;
       }
       
       public function initNuggetsInformationMessage(nuggetsQuantity:int = 0) : NuggetsInformationMessage

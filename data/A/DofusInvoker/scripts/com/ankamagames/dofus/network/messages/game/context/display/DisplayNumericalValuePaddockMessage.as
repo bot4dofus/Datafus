@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.display
    public class DisplayNumericalValuePaddockMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4937;
+      public static const protocolId:uint = 9965;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.display
       
       override public function getMessageId() : uint
       {
-         return 4937;
+         return 9965;
       }
       
       public function initDisplayNumericalValuePaddockMessage(rideId:int = 0, value:int = 0, type:uint = 0) : DisplayNumericalValuePaddockMessage

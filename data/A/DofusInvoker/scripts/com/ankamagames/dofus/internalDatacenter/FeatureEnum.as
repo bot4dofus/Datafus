@@ -42,6 +42,8 @@ package com.ankamagames.dofus.internalDatacenter
       public static const PVP_KIS:String = "pvp.kis";
       
       public static const EXPEDITION:String = "misc.expedition";
+      
+      public static const FIGHT_CONSUMABLE:String = "inventory.character.slot.fightConsumable";
        
       
       public function FeatureEnum()

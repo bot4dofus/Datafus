@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.breach
    public class BreachGameFightEndMessage extends GameFightEndMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3085;
+      public static const protocolId:uint = 5018;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.breach
       
       override public function getMessageId() : uint
       {
-         return 3085;
+         return 5018;
       }
       
       public function initBreachGameFightEndMessage(duration:uint = 0, rewardRate:int = 0, lootShareLimitMalus:int = 0, results:Vector.<FightResultListEntry> = null, namedPartyTeamsOutcomes:Vector.<NamedPartyTeamWithOutcome> = null, budget:int = 0) : BreachGameFightEndMessage

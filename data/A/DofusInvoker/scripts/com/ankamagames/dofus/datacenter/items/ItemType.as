@@ -46,9 +46,13 @@ package com.ankamagames.dofus.datacenter.items
       
       public var evolutiveTypeId:int;
       
+      public var possiblePositions:Vector.<int> = null;
+      
       private var _name:String;
       
       private var _evolutiveType:EvolutiveItemType;
+      
+      private var _superType:ItemSuperType;
       
       public function ItemType()
       {
@@ -112,6 +116,15 @@ package com.ankamagames.dofus.datacenter.items
             this.parseZone();
          }
          return this._zoneMinSize;
+      }
+      
+      public function get superType() : ItemSuperType
+      {
+         if(!this._superType)
+         {
+            this._superType = ItemSuperType.getItemSuperTypeById(this.superTypeId);
+         }
+         return this._superType;
       }
       
       private function parseZone() : void

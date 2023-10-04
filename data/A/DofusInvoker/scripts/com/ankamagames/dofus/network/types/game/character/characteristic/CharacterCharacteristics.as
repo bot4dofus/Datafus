@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
    public class CharacterCharacteristics implements INetworkType
    {
       
-      public static const protocolId:uint = 3075;
+      public static const protocolId:uint = 3697;
        
       
       public var characteristics:Vector.<CharacterCharacteristic>;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       
       public function getTypeId() : uint
       {
-         return 3075;
+         return 3697;
       }
       
       public function initCharacterCharacteristics(characteristics:Vector.<CharacterCharacteristic> = null) : CharacterCharacteristics

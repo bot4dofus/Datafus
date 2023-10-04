@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
    public class GuildPlayerRankUpdateActivity extends GuildLogbookEntryBasicInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 2109;
+      public static const protocolId:uint = 9581;
        
       
       public var guildRankMinimalInfos:RankMinimalInformation;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
       
       override public function getTypeId() : uint
       {
-         return 2109;
+         return 9581;
       }
       
       public function initGuildPlayerRankUpdateActivity(id:uint = 0, date:Number = 0, guildRankMinimalInfos:RankMinimalInformation = null, sourcePlayerId:Number = 0, targetPlayerId:Number = 0, sourcePlayerName:String = "", targetPlayerName:String = "") : GuildPlayerRankUpdateActivity

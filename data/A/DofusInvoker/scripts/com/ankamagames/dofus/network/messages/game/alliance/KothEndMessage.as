@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class KothEndMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4175;
+      public static const protocolId:uint = 279;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 4175;
+         return 279;
       }
       
       public function initKothEndMessage(winner:KothWinner = null) : KothEndMessage

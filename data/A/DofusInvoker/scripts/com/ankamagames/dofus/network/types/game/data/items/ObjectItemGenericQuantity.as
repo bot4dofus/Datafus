@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class ObjectItemGenericQuantity extends Item implements INetworkType
    {
       
-      public static const protocolId:uint = 2187;
+      public static const protocolId:uint = 3545;
        
       
       public var objectGID:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       override public function getTypeId() : uint
       {
-         return 2187;
+         return 3545;
       }
       
       public function initObjectItemGenericQuantity(objectGID:uint = 0, quantity:uint = 0) : ObjectItemGenericQuantity

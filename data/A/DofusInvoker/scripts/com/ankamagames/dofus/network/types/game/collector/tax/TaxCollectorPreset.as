@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.collector.tax
    public class TaxCollectorPreset implements INetworkType
    {
       
-      public static const protocolId:uint = 5480;
+      public static const protocolId:uint = 4739;
        
       
       public var presetId:Uuid;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.types.game.collector.tax
       
       public function getTypeId() : uint
       {
-         return 5480;
+         return 4739;
       }
       
       public function initTaxCollectorPreset(presetId:Uuid = null, spells:Vector.<TaxCollectorOrderedSpell> = null, characteristics:CharacterCharacteristics = null) : TaxCollectorPreset

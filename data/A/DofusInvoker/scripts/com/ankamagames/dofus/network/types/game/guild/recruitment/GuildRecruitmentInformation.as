@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.guild.recruitment
    public class GuildRecruitmentInformation extends SocialRecruitmentInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 8160;
+      public static const protocolId:uint = 9610;
        
       
       public var minSuccess:uint = 0;
@@ -23,7 +23,7 @@ package com.ankamagames.dofus.network.types.game.guild.recruitment
       
       override public function getTypeId() : uint
       {
-         return 8160;
+         return 9610;
       }
       
       public function initGuildRecruitmentInformation(socialId:uint = 0, recruitmentType:uint = 0, recruitmentTitle:String = "", recruitmentText:String = "", selectedLanguages:Vector.<uint> = null, selectedCriterion:Vector.<uint> = null, minLevel:uint = 0, minLevelFacultative:Boolean = false, invalidatedByModeration:Boolean = false, lastEditPlayerName:String = "", lastEditDate:Number = 0, recruitmentAutoLocked:Boolean = false, minSuccess:uint = 0, minSuccessFacultative:Boolean = false) : GuildRecruitmentInformation

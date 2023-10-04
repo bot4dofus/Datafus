@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
    public class QuestListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6218;
+      public static const protocolId:uint = 3230;
        
       
       private var _isInitialized:Boolean = false;
@@ -50,7 +50,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
       
       override public function getMessageId() : uint
       {
-         return 6218;
+         return 3230;
       }
       
       public function initQuestListMessage(finishedQuestsIds:Vector.<uint> = null, finishedQuestsCounts:Vector.<uint> = null, activeQuests:Vector.<QuestActiveInformations> = null, reinitDoneQuestsIds:Vector.<uint> = null) : QuestListMessage

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class HumanOptionGuild extends HumanOption implements INetworkType
    {
       
-      public static const protocolId:uint = 8515;
+      public static const protocolId:uint = 121;
        
       
       public var guildInformations:GuildInformations;
@@ -23,7 +23,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 8515;
+         return 121;
       }
       
       public function initHumanOptionGuild(guildInformations:GuildInformations = null) : HumanOptionGuild

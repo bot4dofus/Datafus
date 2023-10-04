@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.fight
    public class AllianceFightStartedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6373;
+      public static const protocolId:uint = 9739;
        
       
       private var _isInitialized:Boolean = false;
@@ -40,7 +40,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.fight
       
       override public function getMessageId() : uint
       {
-         return 6373;
+         return 9739;
       }
       
       public function initAllianceFightStartedMessage(allianceFightInfo:SocialFightInfo = null, phase:FightPhase = null) : AllianceFightStartedMessage

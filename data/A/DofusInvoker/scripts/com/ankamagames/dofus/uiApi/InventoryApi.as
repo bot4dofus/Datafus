@@ -250,6 +250,8 @@ package com.ankamagames.dofus.uiApi
                return "companon";
             case CharacterInventoryPositionEnum.INVENTORY_POSITION_COSTUME:
                return "costume";
+            case CharacterInventoryPositionEnum.INVENTORY_POSITION_CONSUMABLE:
+               return "consumable";
             default:
                return "companon";
          }

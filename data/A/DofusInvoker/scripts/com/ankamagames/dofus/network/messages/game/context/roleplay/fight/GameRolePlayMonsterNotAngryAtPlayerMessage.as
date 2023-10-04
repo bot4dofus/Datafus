@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight
    public class GameRolePlayMonsterNotAngryAtPlayerMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6627;
+      public static const protocolId:uint = 1350;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight
       
       override public function getMessageId() : uint
       {
-         return 6627;
+         return 1350;
       }
       
       public function initGameRolePlayMonsterNotAngryAtPlayerMessage(playerId:Number = 0, monsterGroupId:Number = 0) : GameRolePlayMonsterNotAngryAtPlayerMessage

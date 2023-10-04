@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class ReleaseAccountMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9736;
+      public static const protocolId:uint = 2800;
        
       
       public function ReleaseAccountMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 9736;
+         return 2800;
       }
       
       public function initReleaseAccountMessage() : ReleaseAccountMessage

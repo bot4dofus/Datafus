@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountRenameRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5809;
+      public static const protocolId:uint = 8769;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 5809;
+         return 8769;
       }
       
       public function initMountRenameRequestMessage(name:String = "", mountId:int = 0) : MountRenameRequestMessage

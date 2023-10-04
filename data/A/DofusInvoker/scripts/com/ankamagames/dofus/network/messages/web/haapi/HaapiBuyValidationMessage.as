@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.web.haapi
    public class HaapiBuyValidationMessage extends HaapiValidationMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4967;
+      public static const protocolId:uint = 9053;
        
       
       private var _isInitialized:Boolean = false;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.network.messages.web.haapi
       
       override public function getMessageId() : uint
       {
-         return 4967;
+         return 9053;
       }
       
       public function initHaapiBuyValidationMessage(action:uint = 0, code:uint = 0, amount:Number = 0, email:String = "") : HaapiBuyValidationMessage

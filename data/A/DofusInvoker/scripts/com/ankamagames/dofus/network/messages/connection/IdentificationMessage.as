@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class IdentificationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7755;
+      public static const protocolId:uint = 4805;
        
       
       private var _isInitialized:Boolean = false;
@@ -57,7 +57,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 7755;
+         return 4805;
       }
       
       public function initIdentificationMessage(version:Version = null, lang:String = "", credentials:Vector.<int> = null, serverId:int = 0, autoconnect:Boolean = false, useCertificate:Boolean = false, useLoginToken:Boolean = false, sessionOptionalSalt:Number = 0, failedAttempts:Vector.<uint> = null) : IdentificationMessage

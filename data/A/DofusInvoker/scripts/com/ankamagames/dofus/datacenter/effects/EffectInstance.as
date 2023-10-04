@@ -664,6 +664,7 @@ package com.ankamagames.dofus.datacenter.effects
          var nextMapping:CharacterXPMapping = null;
          var text:String = null;
          var statName:String = null;
+         var statName2:String = null;
          var currentLevelXP:Number = NaN;
          var nextLevelXP:Number = NaN;
          var i:uint = 0;
@@ -1014,6 +1015,10 @@ package com.ankamagames.dofus.datacenter.effects
                   aTmp[0] = text + "</span>";
                   break;
                case ActionIds.ACTION_FIGHT_ADD_PORTAL:
+                  if(aTmp[0] == null)
+                  {
+                     aTmp[0] = 0;
+                  }
                   if(aTmp[2] == null)
                   {
                      aTmp[2] = 0;
@@ -1063,6 +1068,17 @@ package com.ankamagames.dofus.datacenter.effects
                   statName = this.getStatName(aTmp[1] as int);
                   aTmp[1] = aTmp[0];
                   aTmp[0] = statName;
+                  break;
+               case ActionIds.ACTION_INHERITE_CHARAC:
+                  statName2 = this.getStatName(aTmp[0] as int);
+                  aTmp[0] = statName2;
+                  break;
+               case ActionIds.ACTION_CHARACTER_MULTIPLY_RECEIVED_DAMAGE:
+               case ActionIds.ACTION_CHARACTER_MULTIPLY_RECEIVED_HEAL:
+                  if(aTmp[0] === null)
+                  {
+                     aTmp[0] = 0;
+                  }
             }
             if(forTooltip && aTmp)
             {

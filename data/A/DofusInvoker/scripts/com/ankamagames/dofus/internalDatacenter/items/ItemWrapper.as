@@ -87,6 +87,8 @@ package com.ankamagames.dofus.internalDatacenter.items
       
       private var _searchContent:String;
       
+      private var _possiblePositions:Vector.<int> = null;
+      
       public var position:uint = 63;
       
       public var sortOrder:uint = 0;
@@ -218,6 +220,7 @@ package com.ankamagames.dofus.internalDatacenter.items
             }
          }
          item.dropPriority = dropPriority;
+         item.initPossiblePositions();
          return item;
       }
       
@@ -273,6 +276,7 @@ package com.ankamagames.dofus.internalDatacenter.items
          item.effects = new Vector.<EffectInstance>();
          item.exchangeAllowed = true;
          item.updateEffects(item.effectsList);
+         item.initPossiblePositions();
          return item;
       }
       
@@ -748,6 +752,44 @@ package com.ankamagames.dofus.internalDatacenter.items
          return this.evolutiveLevel - 1;
       }
       
+      public function get possiblePositions() : Vector.<int>
+      {
+         if(this._possiblePositions == null)
+         {
+            this.initPossiblePositions();
+         }
+         return this._possiblePositions;
+      }
+      
+      private function initPossiblePositions() : void
+      {
+         var cat:int = 0;
+         var superTypeId:int = type.superTypeId;
+         var itemType:ItemType = type as ItemType;
+         if(!itemType)
+         {
+            return;
+         }
+         if(this.isLivingObject || this.isWrapperObject)
+         {
+            cat = 0;
+            if(this.isLivingObject)
+            {
+               cat = this.livingObjectCategory;
+            }
+            else
+            {
+               cat = this.wrapperObjectCategory;
+            }
+            itemType = ItemType.getItemTypeById(cat);
+         }
+         this._possiblePositions = itemType.possiblePositions;
+         if(this._possiblePositions == null || this._possiblePositions.length == 0)
+         {
+            this._possiblePositions = itemType.superType.possiblePositions;
+         }
+      }
+      
       public function update(position:uint, objectUID:uint, objectGID:uint, quantity:uint, newEffects:Vector.<ObjectEffect>) : void
       {
          if(this.objectGID != objectGID || this.effectsList != newEffects)
@@ -774,6 +816,7 @@ package com.ankamagames.dofus.internalDatacenter.items
          var skinItem:Item = null;
          var skinItemm:Item = null;
          var modster:Modster = null;
+         var isKroma:* = false;
          var compId:int = 0;
          var ei:EffectInstance = null;
          var companion:Companion = null;
@@ -818,7 +861,8 @@ package com.ankamagames.dofus.internalDatacenter.items
                modster = Modster.getModsterByScrollId(item.id);
                if(modster)
                {
-                  this._uriPngMode = this._uri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path") + "modsters/" + modster.modsterId + ".swf");
+                  isKroma = modster.itemIdKroma == item.id;
+                  this._uriPngMode = this._uri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path") + "modsters/" + modster.modsterId + ".swf|" + (!!isKroma ? "Chroma" : "Normal"));
                }
                return this._uri;
             }
@@ -886,6 +930,7 @@ package com.ankamagames.dofus.internalDatacenter.items
          item.experiencePoints = this.experiencePoints;
          item.evolutiveLevel = this.evolutiveLevel;
          item.customTextureUri = this.customTextureUri;
+         item.initPossiblePositions();
          return item;
       }
       
@@ -1097,6 +1142,11 @@ package com.ankamagames.dofus.internalDatacenter.items
             }
          }
          return false;
+      }
+      
+      public function get isEquippable() : Boolean
+      {
+         return this.possiblePositions != null && this.possiblePositions.length > 0;
       }
    }
 }

@@ -2017,6 +2017,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                gsrm.sortType = gsra.filters.sortType;
                gsrm.sortDescending = gsra.filters.sortDescending;
                gsrm.hideFullFilter = gsra.filters.hideFullFilter;
+               gsrm.followingGuildCriteria = gsra.filters.followingSocialGroupCriteria;
                ConnectionsHandler.getConnection().send(gsrm);
                return true;
             case msg is GuildSummaryMessage:

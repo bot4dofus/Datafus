@@ -59,6 +59,8 @@ package com.ankamagames.dofus.network.enums
       
       public static const INVENTORY_POSITION_COSTUME:uint = 30;
       
+      public static const INVENTORY_POSITION_CONSUMABLE:uint = 31;
+      
       public static const INVENTORY_POSITION_NOT_EQUIPED:uint = 63;
        
       

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
    public class ObjectEffectString extends ObjectEffect implements INetworkType
    {
       
-      public static const protocolId:uint = 6359;
+      public static const protocolId:uint = 3954;
        
       
       public var value:String = "";
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
       
       override public function getTypeId() : uint
       {
-         return 6359;
+         return 3954;
       }
       
       public function initObjectEffectString(actionId:uint = 0, value:String = "") : ObjectEffectString

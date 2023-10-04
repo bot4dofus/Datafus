@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameContextQuitMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5896;
+      public static const protocolId:uint = 87;
        
       
       public function GameContextQuitMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 5896;
+         return 87;
       }
       
       public function initGameContextQuitMessage() : GameContextQuitMessage

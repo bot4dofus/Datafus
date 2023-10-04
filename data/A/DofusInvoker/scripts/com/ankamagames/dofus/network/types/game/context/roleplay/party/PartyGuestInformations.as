@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
    public class PartyGuestInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 7304;
+      public static const protocolId:uint = 4118;
        
       
       public var guestId:Number = 0;
@@ -47,7 +47,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
       
       public function getTypeId() : uint
       {
-         return 7304;
+         return 4118;
       }
       
       public function initPartyGuestInformations(guestId:Number = 0, hostId:Number = 0, name:String = "", guestLook:EntityLook = null, breed:int = 0, sex:Boolean = false, status:PlayerStatus = null, entities:Vector.<PartyEntityBaseInformation> = null) : PartyGuestInformations

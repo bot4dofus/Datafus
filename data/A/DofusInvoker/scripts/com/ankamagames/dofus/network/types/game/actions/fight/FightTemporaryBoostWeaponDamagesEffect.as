@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.actions.fight
    public class FightTemporaryBoostWeaponDamagesEffect extends FightTemporaryBoostEffect implements INetworkType
    {
       
-      public static const protocolId:uint = 7303;
+      public static const protocolId:uint = 7395;
        
       
       public var weaponTypeId:int = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.actions.fight
       
       override public function getTypeId() : uint
       {
-         return 7303;
+         return 7395;
       }
       
       public function initFightTemporaryBoostWeaponDamagesEffect(uid:uint = 0, targetId:Number = 0, turnDuration:int = 0, dispelable:uint = 1, spellId:uint = 0, effectId:uint = 0, parentBoostUid:uint = 0, delta:int = 0, weaponTypeId:int = 0) : FightTemporaryBoostWeaponDamagesEffect

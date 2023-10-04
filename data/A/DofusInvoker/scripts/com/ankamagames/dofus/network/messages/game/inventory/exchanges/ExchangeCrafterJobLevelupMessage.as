@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeCrafterJobLevelupMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4924;
+      public static const protocolId:uint = 7353;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 4924;
+         return 7353;
       }
       
       public function initExchangeCrafterJobLevelupMessage(crafterJobLevel:uint = 0) : ExchangeCrafterJobLevelupMessage

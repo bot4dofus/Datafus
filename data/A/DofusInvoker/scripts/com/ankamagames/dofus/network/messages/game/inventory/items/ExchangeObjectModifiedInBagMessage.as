@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class ExchangeObjectModifiedInBagMessage extends ExchangeObjectMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2026;
+      public static const protocolId:uint = 645;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 2026;
+         return 645;
       }
       
       public function initExchangeObjectModifiedInBagMessage(remote:Boolean = false, object:ObjectItem = null) : ExchangeObjectModifiedInBagMessage

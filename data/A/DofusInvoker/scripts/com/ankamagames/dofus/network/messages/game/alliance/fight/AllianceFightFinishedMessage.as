@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.fight
    public class AllianceFightFinishedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3017;
+      public static const protocolId:uint = 6051;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.fight
       
       override public function getMessageId() : uint
       {
-         return 3017;
+         return 6051;
       }
       
       public function initAllianceFightFinishedMessage(allianceFightInfo:SocialFightInfo = null) : AllianceFightFinishedMessage

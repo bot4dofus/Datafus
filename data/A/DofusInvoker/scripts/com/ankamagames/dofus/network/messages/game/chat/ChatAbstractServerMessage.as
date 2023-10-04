@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.chat
    public class ChatAbstractServerMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2850;
+      public static const protocolId:uint = 5870;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.game.chat
       
       override public function getMessageId() : uint
       {
-         return 2850;
+         return 5870;
       }
       
       public function initChatAbstractServerMessage(channel:uint = 0, content:String = "", timestamp:uint = 0, fingerprint:String = "") : ChatAbstractServerMessage

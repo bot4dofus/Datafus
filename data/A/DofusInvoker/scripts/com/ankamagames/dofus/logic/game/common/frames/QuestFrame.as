@@ -159,6 +159,14 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       protected static const FIRST_TEMPORIS_COMPANION_REWARD_ACHIEVEMENT_ID:int = 2906;
       
+      protected static const TEMPORIS_ACHIEVEMENT_STARTER_ONE:int = 7000;
+      
+      protected static const TEMPORIS_ACHIEVEMENT_STARTER_TWO:int = 7002;
+      
+      protected static const TEMPORIS_ACHIEVEMENT_STARTER_THREE:int = 7004;
+      
+      protected static const TEMPORIS_ACHIEVEMENT_STARTER_FOUR:int = 7006;
+      
       private static const TEMPORIS_CATEGORY:uint = 107;
       
       private static const EXPEDITION_ACHIEVEMENT_CATEGORY_ID:uint = 136;
@@ -1062,9 +1070,9 @@ package com.ankamagames.dofus.logic.game.common.frames
                      NotificationManager.getInstance().sendNotification(nid);
                   }
                }
-               if(finishedAchievement.category.id === 130)
+               if(finishedAchievement.category.id === DataEnum.ACHIEVEMENT_CAT_MODSTERS_HIDDEN)
                {
-                  if((finishedAchievement.id == 5246 || finishedAchievement.id == 5252 || finishedAchievement.id == 5258 || finishedAchievement.id == 5264) && (!this.achievementIsFinished(5246) && !this.achievementIsFinished(5252) && !this.achievementIsFinished(5258) && !this.achievementIsFinished(5264)))
+                  if((finishedAchievement.id == TEMPORIS_ACHIEVEMENT_STARTER_ONE || finishedAchievement.id == TEMPORIS_ACHIEVEMENT_STARTER_TWO || finishedAchievement.id == TEMPORIS_ACHIEVEMENT_STARTER_THREE || finishedAchievement.id == TEMPORIS_ACHIEVEMENT_STARTER_FOUR) && (!this.achievementIsFinished(TEMPORIS_ACHIEVEMENT_STARTER_ONE) && !this.achievementIsFinished(TEMPORIS_ACHIEVEMENT_STARTER_TWO) && !this.achievementIsFinished(TEMPORIS_ACHIEVEMENT_STARTER_THREE) && !this.achievementIsFinished(TEMPORIS_ACHIEVEMENT_STARTER_FOUR)))
                   {
                      shortcut = this.getShortcutBindString(ShortcutHookListEnum.OPEN_SPELLS);
                      if(shortcut != "")

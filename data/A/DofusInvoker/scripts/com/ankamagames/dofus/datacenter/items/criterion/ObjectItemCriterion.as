@@ -1,6 +1,8 @@
 package com.ankamagames.dofus.datacenter.items.criterion
 {
    import com.ankamagames.dofus.datacenter.items.Item;
+   import com.ankamagames.dofus.datacenter.items.ItemType;
+   import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.logic.game.common.managers.InventoryManager;
    import com.ankamagames.jerakine.data.I18n;
@@ -79,7 +81,12 @@ package com.ankamagames.dofus.datacenter.items.criterion
       
       override public function get text() : String
       {
-         var objectName:String = Item.getItemById(_criterionValue).name;
+         var object:Item = Item.getItemById(_criterionValue);
+         if(ItemType(object.type).superTypeId == DataEnum.ITEM_SUPERTYPE_INVISIBLE)
+         {
+            return "";
+         }
+         var objectName:String = object.name;
          var readableCriterion:String = "";
          switch(_operator.text)
          {

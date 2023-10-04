@@ -56,6 +56,8 @@ package com.ankamagames.dofus.datacenter.spells
       
       public var adminName:String;
       
+      public var hideCastConditions:Boolean;
+      
       private var _effectZone:EffectZone = null;
       
       private var _name:String;

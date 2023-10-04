@@ -2,6 +2,7 @@ package com.ankamagames.dofus.logic.game.fight.types
 {
    import com.ankamagames.dofus.datacenter.effects.Effect;
    import com.ankamagames.dofus.datacenter.effects.instances.EffectInstanceDice;
+   import com.ankamagames.dofus.network.types.game.actions.fight.FightDetailedTemporaryBoostEffect;
    import com.ankamagames.dofus.network.types.game.actions.fight.FightTemporaryBoostEffect;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
@@ -22,9 +23,26 @@ package com.ankamagames.dofus.logic.game.fight.types
       
       public function StatBuff(effect:FightTemporaryBoostEffect = null, castingSpell:CastingSpell = null, actionId:int = 0, isRecent:Boolean = false)
       {
-         if(effect)
+         var param1:* = undefined;
+         var param2:* = undefined;
+         var param3:* = undefined;
+         var detailedEffect:FightDetailedTemporaryBoostEffect = null;
+         if(effect !== null)
          {
-            super(effect,castingSpell,actionId,effect.delta,null,null);
+            if(effect is FightDetailedTemporaryBoostEffect)
+            {
+               detailedEffect = effect as FightDetailedTemporaryBoostEffect;
+               param1 = detailedEffect.param1;
+               param2 = detailedEffect.param2;
+               param3 = detailedEffect.param3;
+            }
+            else
+            {
+               param1 = effect.delta;
+               param2 = null;
+               param3 = null;
+            }
+            super(effect,castingSpell,actionId,param1,param2,param3);
             this._statName = ActionIdHelper.getActionIdStatName(actionId);
             this._isABoost = ActionIdHelper.isBuff(actionId);
             this.isRecent = isRecent;

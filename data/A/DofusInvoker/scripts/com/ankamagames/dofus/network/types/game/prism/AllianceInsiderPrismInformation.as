@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.prism
    public class AllianceInsiderPrismInformation extends PrismInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 1593;
+      public static const protocolId:uint = 1275;
        
       
       public var moduleObject:ObjectItem;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.types.game.prism
       
       override public function getTypeId() : uint
       {
-         return 1593;
+         return 1275;
       }
       
       public function initAllianceInsiderPrismInformation(state:uint = 1, placementDate:uint = 0, nuggetsCount:uint = 0, durability:uint = 0, nextEvolutionDate:Number = 0, moduleObject:ObjectItem = null, moduleType:int = -1, cristalObject:ObjectItem = null, cristalType:int = -1, cristalNumberLeft:uint = 0) : AllianceInsiderPrismInformation

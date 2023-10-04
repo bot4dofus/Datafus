@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses
    public class AccountHouseMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2128;
+      public static const protocolId:uint = 9333;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses
       
       override public function getMessageId() : uint
       {
-         return 2128;
+         return 9333;
       }
       
       public function initAccountHouseMessage(houses:Vector.<AccountHouseInformations> = null) : AccountHouseMessage

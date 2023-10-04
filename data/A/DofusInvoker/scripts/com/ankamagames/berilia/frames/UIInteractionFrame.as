@@ -413,6 +413,10 @@ package com.ankamagames.berilia.frames
             {
                args = [ie.instance,MouseWheelMessage(msg).mouseEvent.delta];
             }
+            else if(msg is MouseDoubleClickMessage)
+            {
+               args = [ie.instance,(msg as MouseDoubleClickMessage).mouseEvent];
+            }
             else
             {
                args = [ie.instance];
@@ -423,6 +427,10 @@ package com.ankamagames.berilia.frames
          else if(msg is MouseWheelMessage)
          {
             ErrorManager.tryFunction(ie.callbackObject[fctName],[ie.instance,MouseWheelMessage(msg).mouseEvent.delta]);
+         }
+         else if(msg is MouseDoubleClickMessage)
+         {
+            ErrorManager.tryFunction(ie.callbackObject[fctName],[ie.instance,MouseDoubleClickMessage(msg).mouseEvent]);
          }
          else
          {

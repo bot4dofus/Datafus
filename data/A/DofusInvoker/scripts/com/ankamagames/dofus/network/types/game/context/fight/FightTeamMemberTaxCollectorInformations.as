@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightTeamMemberTaxCollectorInformations extends FightTeamMemberInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 9811;
+      public static const protocolId:uint = 9156;
        
       
       public var firstNameId:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 9811;
+         return 9156;
       }
       
       public function initFightTeamMemberTaxCollectorInformations(id:Number = 0, firstNameId:uint = 0, lastNameId:uint = 0, groupId:uint = 0, uid:Number = 0) : FightTeamMemberTaxCollectorInformations

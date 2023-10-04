@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.alliance
    public class KothWinner implements INetworkType
    {
       
-      public static const protocolId:uint = 629;
+      public static const protocolId:uint = 3972;
        
       
       public function KothWinner()
@@ -18,7 +18,7 @@ package com.ankamagames.dofus.network.types.game.alliance
       
       public function getTypeId() : uint
       {
-         return 629;
+         return 3972;
       }
       
       public function initKothWinner() : KothWinner

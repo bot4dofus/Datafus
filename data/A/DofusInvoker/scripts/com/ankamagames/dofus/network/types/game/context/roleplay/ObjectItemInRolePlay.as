@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class ObjectItemInRolePlay implements INetworkType
    {
       
-      public static const protocolId:uint = 2267;
+      public static const protocolId:uint = 9742;
        
       
       public var cellId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       public function getTypeId() : uint
       {
-         return 2267;
+         return 9742;
       }
       
       public function initObjectItemInRolePlay(cellId:uint = 0, objectGID:uint = 0) : ObjectItemInRolePlay

@@ -399,10 +399,6 @@ package com.ankamagames.dofus.internalDatacenter.spells
       
       public function get backGroundIconUri() : Uri
       {
-         if(this.id == 0 && PlayedCharacterManager.getInstance().currentWeapon != null)
-         {
-            return new Uri(XmlConfig.getInstance().getEntry("config.content.path").concat("gfx/spells/all.swf|noIcon"));
-         }
          return null;
       }
       
@@ -437,25 +433,25 @@ package com.ankamagames.dofus.internalDatacenter.spells
                   }
                   if(iw is WeaponWrapper)
                   {
-                     this._uri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path.spells").concat("all.swf|weapon_").concat(iw.typeId));
+                     this._uri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path.spells") + "weapon_" + iw.typeId + ".png");
                   }
                   else
                   {
-                     this._uri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path.spells").concat("all.swf|sort_0"));
+                     this._uri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path.spells") + "sort_0.png");
                   }
                }
                else
                {
-                  this._uri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path.spells").concat("all.swf|sort_").concat(!!this.spell ? this.spell.iconId : 0));
+                  this._uri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path.spells") + "sort_" + (!!this.spell ? this.spell.iconId : 0) + ".png");
                }
             }
             else if(this.id == 0 && PlayedCharacterManager.getInstance().currentWeapon != null)
             {
-               this._uri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path.spells").concat("all.swf|weapon_").concat(PlayedCharacterManager.getInstance().currentWeapon.typeId));
+               this._uri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path.spells") + "weapon_" + PlayedCharacterManager.getInstance().currentWeapon.typeId + ".png");
             }
             else
             {
-               this._uri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path.spells").concat("all.swf|sort_").concat(!!this.spell ? this.spell.iconId : 0));
+               this._uri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path.spells") + "sort_" + (!!this.spell ? this.spell.iconId : 0) + ".png");
             }
             this._uri.tag = Slot.NEED_CACHE_AS_BITMAP;
          }
@@ -466,7 +462,7 @@ package com.ankamagames.dofus.internalDatacenter.spells
       {
          if(!_errorIconUri)
          {
-            _errorIconUri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path.spells").concat("all.swf|noIcon"));
+            _errorIconUri = new Uri(XmlConfig.getInstance().getEntry("config.gfx.path.spells") + "noIcon.png");
          }
          return _errorIconUri;
       }

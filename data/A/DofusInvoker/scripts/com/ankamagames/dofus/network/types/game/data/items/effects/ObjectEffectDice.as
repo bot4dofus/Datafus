@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
    public class ObjectEffectDice extends ObjectEffect implements INetworkType
    {
       
-      public static const protocolId:uint = 1988;
+      public static const protocolId:uint = 2568;
        
       
       public var diceNum:uint = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
       
       override public function getTypeId() : uint
       {
-         return 1988;
+         return 2568;
       }
       
       public function initObjectEffectDice(actionId:uint = 0, diceNum:uint = 0, diceSide:uint = 0, diceConst:uint = 0) : ObjectEffectDice

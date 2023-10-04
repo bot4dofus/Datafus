@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceMotdMessage extends SocialNoticeMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8500;
+      public static const protocolId:uint = 6865;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 8500;
+         return 6865;
       }
       
       public function initAllianceMotdMessage(content:String = "", timestamp:uint = 0, memberId:Number = 0, memberName:String = "") : AllianceMotdMessage

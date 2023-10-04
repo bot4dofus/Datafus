@@ -2,10 +2,9 @@ package com.ankamagames.dofus.uiApi
 {
    import com.ankamagames.berilia.interfaces.IApi;
    import com.ankamagames.dofus.datacenter.items.Item;
-   import com.ankamagames.dofus.datacenter.items.ItemType;
+   import com.ankamagames.dofus.datacenter.items.ItemSuperType;
    import com.ankamagames.dofus.datacenter.jobs.Skill;
    import com.ankamagames.dofus.datacenter.mounts.RideFood;
-   import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.internalDatacenter.items.ItemWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.MountWrapper;
    import com.ankamagames.dofus.internalDatacenter.items.SimpleTextureWrapper;
@@ -30,42 +29,31 @@ package com.ankamagames.dofus.uiApi
       private static const _log:Logger = Log.getLogger(getQualifiedClassName(StorageApi));
       
       private static var _lastItemPosition:Array = [];
+       
       
-      public static const ITEM_TYPE_TO_SERVER_POSITION:Array = [[],[0],[1],[2,4],[3],[5],[],[15],[1],[],[6],[7],[8],[9,10,11,12,13,14],[],[20],[21],[22,23],[24,25],[26],[27],[16],[],[28],[8,16],[30]];
-      
-      public static const ITEM_REAL_TYPE_TO_SERVER_POSITION:Dictionary = new Dictionary();
-      
-      {
-         ITEM_REAL_TYPE_TO_SERVER_POSITION[DataEnum.ITEM_TYPE_PRYSMARADITE] = [9];
-         ITEM_REAL_TYPE_TO_SERVER_POSITION[DataEnum.ITEM_TYPE_MINOUKI] = [10];
-      }
+      private var _itemTypeToServerPositionMap:Dictionary;
       
       public function StorageApi()
       {
+         var itemSuperType:ItemSuperType = null;
          super();
-      }
-      
-      public function itemSuperTypeToServerPosition(superTypeId:uint) : Array
-      {
-         return ITEM_TYPE_TO_SERVER_POSITION[superTypeId];
-      }
-      
-      public function itemTypeToServerPosition(typeId:uint) : Array
-      {
-         return ITEM_REAL_TYPE_TO_SERVER_POSITION[typeId];
+         this._itemTypeToServerPositionMap = new Dictionary();
+         for each(itemSuperType in ItemSuperType.getItemSuperTypes())
+         {
+            this._itemTypeToServerPositionMap[itemSuperType.id] = itemSuperType.possiblePositions;
+         }
       }
       
       public function serverPositionsToItemSuperType(position:int) : Array
       {
+         var supertypeId:* = undefined;
          var superTypes:Array = [];
-         var i:int = 0;
-         for(var typesCount:int = ITEM_TYPE_TO_SERVER_POSITION.length; i < typesCount; )
+         for(supertypeId in this._itemTypeToServerPositionMap)
          {
-            if(ITEM_TYPE_TO_SERVER_POSITION[i].length && ITEM_TYPE_TO_SERVER_POSITION[i].indexOf(position) != -1)
+            if(this._itemTypeToServerPositionMap[supertypeId].length && this._itemTypeToServerPositionMap[supertypeId].indexOf(position) != -1)
             {
-               superTypes.push(i);
+               superTypes.push(supertypeId);
             }
-            i++;
          }
          return superTypes;
       }
@@ -198,35 +186,11 @@ package com.ankamagames.dofus.uiApi
       
       public function getBestEquipablePosition(item:ItemWrapper) : int
       {
-         var cat:int = 0;
-         var itemType:ItemType = null;
          var equipement:Vector.<ItemWrapper> = null;
          var freeSlot:int = 0;
          var pos:int = 0;
          var lastIndex:int = 0;
-         var superTypeId:int = item.type.superTypeId;
-         if(item && (item.isLivingObject || item.isWrapperObject))
-         {
-            cat = 0;
-            if(item.isLivingObject)
-            {
-               cat = item.livingObjectCategory;
-            }
-            else
-            {
-               cat = item.wrapperObjectCategory;
-            }
-            itemType = ItemType.getItemTypeById(cat);
-            if(itemType)
-            {
-               superTypeId = itemType.superTypeId;
-            }
-         }
-         var possiblePosition:Array = this.itemTypeToServerPosition(item.typeId);
-         if(possiblePosition == null)
-         {
-            possiblePosition = this.itemSuperTypeToServerPosition(superTypeId);
-         }
+         var possiblePosition:Vector.<int> = item.possiblePositions;
          if(possiblePosition && possiblePosition.length)
          {
             equipement = this.getViewContent("equipment");

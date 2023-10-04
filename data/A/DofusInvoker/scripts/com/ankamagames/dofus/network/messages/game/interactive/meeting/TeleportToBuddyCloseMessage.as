@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.meeting
    public class TeleportToBuddyCloseMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5873;
+      public static const protocolId:uint = 2748;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.meeting
       
       override public function getMessageId() : uint
       {
-         return 5873;
+         return 2748;
       }
       
       public function initTeleportToBuddyCloseMessage(dungeonId:uint = 0, buddyId:Number = 0) : TeleportToBuddyCloseMessage

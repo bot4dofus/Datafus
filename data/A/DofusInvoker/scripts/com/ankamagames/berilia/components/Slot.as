@@ -937,14 +937,6 @@ package com.ankamagames.berilia.components
                {
                   this.removeDrag();
                }
-               if(ShortcutsFrame.ctrlKey && msg is MouseDoubleClickMessage)
-               {
-                  KernelEventsManager.getInstance().processCallback(BeriliaHookList.MouseCtrlDoubleClick,this);
-               }
-               else if(ShortcutsFrame.altKey && msg is MouseDoubleClickMessage)
-               {
-                  KernelEventsManager.getInstance().processCallback(BeriliaHookList.MouseAltDoubleClick,this);
-               }
                break;
             case msg is MouseUpMessage:
                linkCursor = LinkedCursorSpriteManager.getInstance().getItem(DRAG_AND_DROP_CURSOR_NAME);
