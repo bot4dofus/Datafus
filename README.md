@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="100%" src="https://github.com/LucBerge/Datafus/raw/master/images/banner_tags.drawio.svg" />
+  <img width="100%" src="https://github.com/LucBerge/Datafus/raw/master/images/banner_tags.svg" />
 </p>
 
 [![Join B4D!](https://img.shields.io/badge/Discord-Join%20B4D!-7289DA.svg?style=flat&logo=discord&logoColor=white)](https://discord.gg/kNHsFcbUGp)
@@ -25,5 +25,5 @@ If you need the data in local for your project, you can download it in the [rele
 ## Workflow
 
 <p align="center">
-  <img width="80%" src="https://github.com/LucBerge/Datafus/raw/master/images/Flows.drawio.svg" />
+  <img width="80%" src="https://github.com/LucBerge/Datafus/raw/master/images/flows.svg" />
 </p>
