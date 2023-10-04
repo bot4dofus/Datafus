@@ -181,16 +181,20 @@ jobs:
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
+      - name: Create zip file
+        run: |
+            zip -r data.zip data/A/ data/B/ data/C/
+
+      - name: Split entities json
+        run: |
+          ./devscript/split.sh data/B/entities_json/
+
       - name: Commit and push
         uses: EndBug/add-and-commit@v9
         with:
           add: '["data/A/", "data/B/", "data/C/"]'
           message: 'Update ${{ env.VERSION }}'
           push: true
-
-      - name: Create zip file
-        run: |
-            zip -r data.zip data/A/ data/B/ data/C/
 
       - name: Publish release
         uses: "marvinpinto/action-automatic-releases@latest"
