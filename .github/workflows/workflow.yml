@@ -63,10 +63,6 @@ jobs:
         run: |
           python src/A2.py data/A/DofusInvoker/scripts/com/ data/A/events.json
 
-      - name: A3 - Build .properties
-        run: |
-          python src/A3.py data/A/events.json data/A/events.properties
-
       - name: Upload files
         uses: actions/upload-artifact@v3
         with:
