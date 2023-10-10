@@ -7519,12 +7519,10 @@
 				7681,
 				7682,
 				7683,
-				7686,
 				7687,
 				7688,
 				7689,
 				7690,
-				7691,
 				7700,
 				7701,
 				7706,
@@ -7582,6 +7580,19 @@
 				1229,
 				1230,
 				1231
+			]
+		},
+		{
+			"id": 289,
+			"superRaceId": 43,
+			"nameId": 1047303,
+			"aggressiveZoneSize": 0,
+			"aggressiveLevelDiff": 0,
+			"aggressiveImmunityCriterion": "null",
+			"aggressiveAttackDelay": 0,
+			"monsters": [
+				7686,
+				7691
 			]
 		}
 	]

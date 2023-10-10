@@ -63057,23 +63057,6 @@
 			]
 		},
 		{
-			"id": 7477,
-			"nameId": 1032693,
-			"categoryId": 150,
-			"descriptionId": 1032694,
-			"iconId": 203,
-			"points": 0,
-			"level": 1,
-			"order": 177,
-			"accountLinked": false,
-			"objectiveIds": [
-				14977
-			],
-			"rewardIds": [
-				11327
-			]
-		},
-		{
 			"id": 7478,
 			"nameId": 1032696,
 			"categoryId": 150,
@@ -63516,23 +63499,6 @@
 			]
 		},
 		{
-			"id": 7511,
-			"nameId": 1032795,
-			"categoryId": 150,
-			"descriptionId": 1032796,
-			"iconId": 203,
-			"points": 0,
-			"level": 1,
-			"order": 211,
-			"accountLinked": false,
-			"objectiveIds": [
-				15011
-			],
-			"rewardIds": [
-				11361
-			]
-		},
-		{
 			"id": 7512,
 			"nameId": 1032798,
 			"categoryId": 150,
@@ -63873,23 +63839,6 @@
 			]
 		},
 		{
-			"id": 7537,
-			"nameId": 1032873,
-			"categoryId": 150,
-			"descriptionId": 1032874,
-			"iconId": 203,
-			"points": 0,
-			"level": 1,
-			"order": 237,
-			"accountLinked": false,
-			"objectiveIds": [
-				15037
-			],
-			"rewardIds": [
-				11387
-			]
-		},
-		{
 			"id": 7538,
 			"nameId": 1032876,
 			"categoryId": 150,
@@ -64125,23 +64074,6 @@
 			],
 			"rewardIds": [
 				11408
-			]
-		},
-		{
-			"id": 7559,
-			"nameId": 1032939,
-			"categoryId": 150,
-			"descriptionId": 1032940,
-			"iconId": 203,
-			"points": 0,
-			"level": 1,
-			"order": 259,
-			"accountLinked": false,
-			"objectiveIds": [
-				15059
-			],
-			"rewardIds": [
-				11409
 			]
 		},
 		{
@@ -64584,23 +64516,6 @@
 			],
 			"rewardIds": [
 				11441
-			]
-		},
-		{
-			"id": 7592,
-			"nameId": 1033038,
-			"categoryId": 150,
-			"descriptionId": 1033039,
-			"iconId": 203,
-			"points": 0,
-			"level": 1,
-			"order": 292,
-			"accountLinked": false,
-			"objectiveIds": [
-				15092
-			],
-			"rewardIds": [
-				11442
 			]
 		},
 		{

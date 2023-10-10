@@ -6133,6 +6133,22 @@
 			"targetMonsterId": 5755
 		},
 		{
+			"id": 805,
+			"nameId": 962093,
+			"descriptionId": 1047627,
+			"incompatibleChallenges": [
+				1,
+				2,
+				811,
+				809
+			],
+			"categoryId": 6,
+			"iconId": 8,
+			"completionCriterion": "TM=m,0&TT=0,0",
+			"activationCriterion": "GL>10,1&GL>4,0",
+			"targetMonsterId": 0
+		},
+		{
 			"id": 807,
 			"nameId": 1013960,
 			"descriptionId": 1011948,
@@ -8574,19 +8590,6 @@
 			"iconId": 965,
 			"completionCriterion": "SP=te,d,e0,e0",
 			"activationCriterion": "GN>1,0&GL>4,0",
-			"targetMonsterId": 0
-		},
-		{
-			"id": 1263,
-			"nameId": 1044887,
-			"descriptionId": 1044892,
-			"incompatibleChallenges": [
-				818
-			],
-			"categoryId": 6,
-			"iconId": 975,
-			"completionCriterion": "SB=e0,m1",
-			"activationCriterion": "GL>4,0",
 			"targetMonsterId": 0
 		},
 		{
