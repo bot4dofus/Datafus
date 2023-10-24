@@ -7141,19 +7141,6 @@
 			"targetMonsterId": 0
 		},
 		{
-			"id": 976,
-			"nameId": 1008102,
-			"descriptionId": 1019225,
-			"incompatibleChallenges": [
-				17
-			],
-			"categoryId": 1,
-			"iconId": 976,
-			"completionCriterion": "CC=e1,e0,e,d",
-			"activationCriterion": "GN>1,0&GL>4,0",
-			"targetMonsterId": 0
-		},
-		{
 			"id": 977,
 			"nameId": 1009895,
 			"descriptionId": 1009639,
