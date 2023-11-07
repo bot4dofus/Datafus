@@ -133884,6 +133884,19 @@
 			"nameId": 1047443,
 			"bonusIsSecret": false,
 			"effects": []
+		},
+		{
+			"id": 827,
+			"items": [
+				29449,
+				29450,
+				29451,
+				29452,
+				29453
+			],
+			"nameId": 1047684,
+			"bonusIsSecret": false,
+			"effects": []
 		}
 	]
 }
