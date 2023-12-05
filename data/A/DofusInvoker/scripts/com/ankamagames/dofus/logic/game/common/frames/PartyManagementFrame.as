@@ -19,6 +19,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.common.actions.party.ArenaFightAnswerAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.ArenaRegisterAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.ArenaUnregisterAction;
+   import com.ankamagames.dofus.logic.game.common.actions.party.ArenaXpSwitchModeAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.DungeonPartyFinderAvailableDungeonsAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.DungeonPartyFinderListenAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.DungeonPartyFinderRegisterAction;
@@ -78,8 +79,8 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena.GameRolePlayArenaRegistrationStatusMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena.GameRolePlayArenaRegistrationWarningMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena.GameRolePlayArenaUnregisterMessage;
-   import com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena.GameRolePlayArenaUpdatePlayerInfosAllQueuesMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena.GameRolePlayArenaUpdatePlayerInfosMessage;
+   import com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena.SwitchArenaXpRewardsModeMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.party.DungeonPartyFinderAvailableDungeonsMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.party.DungeonPartyFinderAvailableDungeonsRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.party.DungeonPartyFinderListenErrorMessage;
@@ -147,6 +148,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.types.game.context.fight.FightTeamInformations;
    import com.ankamagames.dofus.network.types.game.context.fight.FightTeamMemberInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayCharacterInformations;
+   import com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena.ArenaRankInfos;
    import com.ankamagames.dofus.network.types.game.context.roleplay.party.DungeonPartyFinderPlayer;
    import com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyGuestInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyInvitationMemberInformations;
@@ -160,8 +162,11 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
+   import com.ankamagames.jerakine.managers.StoreDataManager;
    import com.ankamagames.jerakine.messages.Frame;
    import com.ankamagames.jerakine.messages.Message;
+   import com.ankamagames.jerakine.types.DataStoreType;
+   import com.ankamagames.jerakine.types.enums.DataStoreEnum;
    import com.ankamagames.jerakine.types.enums.Priority;
    import com.ankamagames.jerakine.utils.pattern.PatternDecoder;
    import flash.events.TimerEvent;
@@ -174,6 +179,10 @@ package com.ankamagames.dofus.logic.game.common.frames
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(PartyManagementFrame));
       
       private static const GROUP_TELEPORT_PLAYER_OFFER_POPUP_PREFIX:String = "GroupTeleportPlayerOfferPopup_";
+      
+      private static const DATASTORE_PARTY:DataStoreType = new DataStoreType("Dofus_Party",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_CHARACTER);
+      
+      private static const DATA_XP_ACTIVATED:String = "XpActivatedData";
        
       
       private var _playerNameInvited:String;
@@ -216,11 +225,13 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       private var _arenaLeader:PartyMemberWrapper;
       
-      private var _arenaRankSoloInfos:ArenaRankInfosWrapper;
+      private var _currentArenaType:uint;
       
-      private var _arenaRankGroupInfos:ArenaRankInfosWrapper;
+      private var _arenaRanksInformation:Dictionary;
       
-      private var _arenaRankDuelInfos:ArenaRankInfosWrapper;
+      private var _banEndDate:Number;
+      
+      private var _xpActivated:Boolean = true;
       
       private var _playerDungeons:Vector.<uint>;
       
@@ -245,6 +256,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          this._previewPartyMembers = new Vector.<PartyMemberWrapper>();
          this._arenaReadyPartyMemberIds = [];
          this._arenaAlliesIds = [];
+         this._arenaRanksInformation = new Dictionary();
          this._playerDungeons = new Vector.<uint>();
          this._playerSubscribedDungeons = new Vector.<uint>();
          this._dungeonFighters = new Vector.<DungeonPartyFinderPlayer>();
@@ -318,19 +330,34 @@ package com.ankamagames.dofus.logic.game.common.frames
          return this._arenaAlliesIds;
       }
       
-      public function get arenaRankSoloInfos() : ArenaRankInfosWrapper
+      public function get banEndDate() : Number
       {
-         return this._arenaRankSoloInfos;
+         return this._banEndDate;
       }
       
-      public function get arenaRankGroupInfos() : ArenaRankInfosWrapper
+      public function get arenaRankInfo() : Dictionary
       {
-         return this._arenaRankGroupInfos;
+         return this._arenaRanksInformation;
       }
       
-      public function get arenaRankDuelInfos() : ArenaRankInfosWrapper
+      public function get arenaRank1V1Infos() : ArenaRankInfosWrapper
       {
-         return this._arenaRankDuelInfos;
+         return this._arenaRanksInformation[PvpArenaTypeEnum.ARENA_TYPE_1VS1];
+      }
+      
+      public function get arenaRank2V2Infos() : ArenaRankInfosWrapper
+      {
+         return this._arenaRanksInformation[PvpArenaTypeEnum.ARENA_TYPE_2VS2];
+      }
+      
+      public function get arenaRank3V3Infos() : ArenaRankInfosWrapper
+      {
+         return this._arenaRanksInformation[PvpArenaTypeEnum.ARENA_TYPE_3VS3];
+      }
+      
+      public function get xpActivated() : Boolean
+      {
+         return this._xpActivated;
       }
       
       public function get playerShouldReceiveRewards() : Boolean
@@ -371,6 +398,8 @@ package com.ankamagames.dofus.logic.game.common.frames
       public function pushed() : Boolean
       {
          this._teleportBuddiesDialogFrame = new TeleportBuddiesDialogFrame();
+         this._xpActivated = StoreDataManager.getInstance().getSetData(DATASTORE_PARTY,DATA_XP_ACTIVATED,true);
+         this.sendArenaXpSwitchMessage();
          return true;
       }
       
@@ -562,6 +591,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var paramDonjons:String = null;
          var djId:int = 0;
          var allyId:Number = NaN;
+         var rankInfo:ArenaRankInfos = null;
          var commonMod:Object = null;
          var pmibfm:PartyMemberInBreachFightMessage = null;
          var breachFightCause:String = null;
@@ -1759,6 +1789,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is ArenaRegisterAction:
                ara = msg as ArenaRegisterAction;
+               this._currentArenaType = ara.fightTypeId;
                grparmsg = new GameRolePlayArenaRegisterMessage();
                grparmsg.initGameRolePlayArenaRegisterMessage(ara.fightTypeId);
                ConnectionsHandler.getConnection().send(grparmsg);
@@ -1799,10 +1830,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                NotificationManager.getInstance().addButtonToNotification(grpafpmsgNid,I18n.getUiText("ui.common.accept"),"ArenaFightAnswerAction",[grpafpmsg.fightId,true],true,130);
                NotificationManager.getInstance().addCallbackToNotification(grpafpmsgNid,"ArenaFightAnswerAction",[grpafpmsg.fightId,false]);
                NotificationManager.getInstance().sendNotification(grpafpmsgNid);
-               if(ExternalNotificationManager.getInstance().canAddExternalNotification(ExternalNotificationTypeEnum.KOLO_FIGHT))
-               {
-                  KernelEventsManager.getInstance().processCallback(HookList.ArenaExternalNotification,ExternalNotificationTypeEnum.KOLO_FIGHT,grpafpmsg.duration * 1000);
-               }
+               KernelEventsManager.getInstance().processCallback(HookList.ArenaExternalNotification,ExternalNotificationTypeEnum.KOLO_FIGHT,grpafpmsg.duration * 1000);
                return true;
             case msg is ArenaFightAnswerAction:
                afaa = msg as ArenaFightAnswerAction;
@@ -1836,15 +1864,17 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is GameRolePlayArenaUpdatePlayerInfosMessage:
                grpaupimsg = msg as GameRolePlayArenaUpdatePlayerInfosMessage;
-               this._arenaRankSoloInfos = ArenaRankInfosWrapper.create(grpaupimsg.solo);
-               this._arenaRankGroupInfos = null;
-               this._arenaRankDuelInfos = null;
-               if(msg is GameRolePlayArenaUpdatePlayerInfosAllQueuesMessage)
+               this._banEndDate = grpaupimsg.banEndDate;
+               for each(rankInfo in grpaupimsg.arenaRanks)
                {
-                  this._arenaRankGroupInfos = ArenaRankInfosWrapper.create((grpaupimsg as GameRolePlayArenaUpdatePlayerInfosAllQueuesMessage).team);
-                  this._arenaRankDuelInfos = ArenaRankInfosWrapper.create((grpaupimsg as GameRolePlayArenaUpdatePlayerInfosAllQueuesMessage).duel);
+                  this._arenaRanksInformation[rankInfo.arenaType] = ArenaRankInfosWrapper.create(rankInfo);
                }
-               KernelEventsManager.getInstance().processCallback(RoleplayHookList.ArenaUpdateRank,this._arenaRankSoloInfos,this._arenaRankGroupInfos,this._arenaRankDuelInfos);
+               KernelEventsManager.getInstance().processCallback(RoleplayHookList.ArenaUpdateRank,this._arenaRanksInformation);
+               return true;
+            case msg is ArenaXpSwitchModeAction:
+               this._xpActivated = (msg as ArenaXpSwitchModeAction).xpActivated;
+               StoreDataManager.getInstance().setData(DATASTORE_PARTY,DATA_XP_ACTIVATED,this._xpActivated);
+               this.sendArenaXpSwitchMessage();
                return true;
             case msg is GameFightJoinMessage:
                gfjmsg = msg as GameFightJoinMessage;
@@ -2134,6 +2164,13 @@ package com.ankamagames.dofus.logic.game.common.frames
          return false;
       }
       
+      private function sendArenaXpSwitchMessage() : void
+      {
+         var saxrmmsg:SwitchArenaXpRewardsModeMessage = new SwitchArenaXpRewardsModeMessage();
+         saxrmmsg.initSwitchArenaXpRewardsModeMessage(this._xpActivated);
+         ConnectionsHandler.getConnection().send(saxrmmsg);
+      }
+      
       private function cleanPartyFightNotifications() : void
       {
          var notifName:String = null;
@@ -2177,7 +2214,7 @@ package com.ankamagames.dofus.logic.game.common.frames
       public function reinscriptionWantedFunction() : void
       {
          var action:ArenaRegisterAction = new ArenaRegisterAction();
-         action.fightTypeId = PvpArenaTypeEnum.ARENA_TYPE_3VS3_TEAM;
+         action.fightTypeId = this._currentArenaType;
          this.process(action);
       }
       

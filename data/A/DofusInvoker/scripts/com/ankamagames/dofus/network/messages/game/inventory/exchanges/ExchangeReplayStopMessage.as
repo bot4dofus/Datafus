@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeReplayStopMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8092;
+      public static const protocolId:uint = 3031;
        
       
       public function ExchangeReplayStopMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 8092;
+         return 3031;
       }
       
       public function initExchangeReplayStopMessage() : ExchangeReplayStopMessage

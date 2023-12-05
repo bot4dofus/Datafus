@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class SelectedServerRefusedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6476;
+      public static const protocolId:uint = 1645;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 6476;
+         return 1645;
       }
       
       public function initSelectedServerRefusedMessage(serverId:uint = 0, error:uint = 1, serverStatus:uint = 1) : SelectedServerRefusedMessage

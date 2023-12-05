@@ -88,7 +88,7 @@
 				144,
 				113
 			],
-			"rewardId": 4294967295
+			"rewardId": 384
 		},
 		{
 			"id": 120,
@@ -112,7 +112,7 @@
 				121,
 				113
 			],
-			"rewardId": 4294967295
+			"rewardId": 373
 		},
 		{
 			"id": 124,
@@ -136,7 +136,7 @@
 				125,
 				113
 			],
-			"rewardId": 4294967295
+			"rewardId": 376
 		},
 		{
 			"id": 126,
@@ -183,7 +183,7 @@
 			"incompatibleBosses": [
 				128
 			],
-			"rewardId": 4294967295
+			"rewardId": 381
 		},
 		{
 			"id": 20,
@@ -227,7 +227,7 @@
 			"incompatibleBosses": [
 				25
 			],
-			"rewardId": 4294967295
+			"rewardId": 371
 		},
 		{
 			"id": 32,
@@ -286,7 +286,7 @@
 			"incompatibleBosses": [
 				54
 			],
-			"rewardId": 4294967295
+			"rewardId": 391
 		},
 		{
 			"id": 55,
@@ -297,7 +297,7 @@
 			"incompatibleBosses": [
 				55
 			],
-			"rewardId": 4294967295
+			"rewardId": 390
 		},
 		{
 			"id": 131,
@@ -322,7 +322,7 @@
 				144,
 				113
 			],
-			"rewardId": 4294967295
+			"rewardId": 389
 		},
 		{
 			"id": 135,
@@ -356,7 +356,7 @@
 			"incompatibleBosses": [
 				57
 			],
-			"rewardId": 4294967295
+			"rewardId": 374
 		},
 		{
 			"id": 58,
@@ -478,7 +478,7 @@
 				26,
 				38
 			],
-			"rewardId": 4294967295
+			"rewardId": 378
 		},
 		{
 			"id": 109,
@@ -710,7 +710,7 @@
 				144,
 				164
 			],
-			"rewardId": 4294967295
+			"rewardId": 386
 		},
 		{
 			"id": 157,
@@ -724,7 +724,7 @@
 				143,
 				144
 			],
-			"rewardId": 4294967295
+			"rewardId": 377
 		},
 		{
 			"id": 19,
@@ -746,7 +746,7 @@
 			"incompatibleBosses": [
 				24
 			],
-			"rewardId": 4294967295
+			"rewardId": 385
 		},
 		{
 			"id": 26,
@@ -781,7 +781,7 @@
 			"incompatibleBosses": [
 				27
 			],
-			"rewardId": 4294967295
+			"rewardId": 398
 		},
 		{
 			"id": 28,
@@ -836,7 +836,7 @@
 			"incompatibleBosses": [
 				33
 			],
-			"rewardId": 4294967295
+			"rewardId": 383
 		},
 		{
 			"id": 34,
@@ -912,7 +912,7 @@
 			"incompatibleBosses": [
 				43
 			],
-			"rewardId": 4294967295
+			"rewardId": 382
 		},
 		{
 			"id": 45,
@@ -923,7 +923,7 @@
 			"incompatibleBosses": [
 				45
 			],
-			"rewardId": 4294967295
+			"rewardId": 372
 		},
 		{
 			"id": 46,
@@ -934,7 +934,7 @@
 			"incompatibleBosses": [
 				46
 			],
-			"rewardId": 4294967295
+			"rewardId": 393
 		},
 		{
 			"id": 47,
@@ -945,7 +945,7 @@
 			"incompatibleBosses": [
 				47
 			],
-			"rewardId": 4294967295
+			"rewardId": 396
 		},
 		{
 			"id": 49,
@@ -979,7 +979,7 @@
 			"incompatibleBosses": [
 				53
 			],
-			"rewardId": 4294967295
+			"rewardId": 387
 		},
 		{
 			"id": 62,
@@ -1001,7 +1001,7 @@
 			"incompatibleBosses": [
 				64
 			],
-			"rewardId": 4294967295
+			"rewardId": 397
 		},
 		{
 			"id": 66,
@@ -1012,7 +1012,7 @@
 			"incompatibleBosses": [
 				66
 			],
-			"rewardId": 4294967295
+			"rewardId": 392
 		},
 		{
 			"id": 67,
@@ -1023,7 +1023,7 @@
 			"incompatibleBosses": [
 				67
 			],
-			"rewardId": 4294967295
+			"rewardId": 367
 		},
 		{
 			"id": 68,
@@ -1034,7 +1034,7 @@
 			"incompatibleBosses": [
 				68
 			],
-			"rewardId": 4294967295
+			"rewardId": 368
 		},
 		{
 			"id": 69,
@@ -1045,7 +1045,7 @@
 			"incompatibleBosses": [
 				69
 			],
-			"rewardId": 4294967295
+			"rewardId": 369
 		},
 		{
 			"id": 70,
@@ -1056,7 +1056,7 @@
 			"incompatibleBosses": [
 				70
 			],
-			"rewardId": 4294967295
+			"rewardId": 370
 		},
 		{
 			"id": 71,
@@ -1193,7 +1193,7 @@
 			"incompatibleBosses": [
 				82
 			],
-			"rewardId": 4294967295
+			"rewardId": 380
 		},
 		{
 			"id": 85,
@@ -1254,7 +1254,7 @@
 				158,
 				135
 			],
-			"rewardId": 4294967295
+			"rewardId": 388
 		},
 		{
 			"id": 96,
@@ -2027,7 +2027,7 @@
 				143,
 				144
 			],
-			"rewardId": 4294967295
+			"rewardId": 375
 		},
 		{
 			"id": 160,
@@ -2041,7 +2041,7 @@
 				143,
 				144
 			],
-			"rewardId": 4294967295
+			"rewardId": 394
 		},
 		{
 			"id": 161,
@@ -2166,7 +2166,7 @@
 			"incompatibleBosses": [
 				165
 			],
-			"rewardId": 4294967295
+			"rewardId": 395
 		},
 		{
 			"id": 166,
@@ -2177,7 +2177,7 @@
 			"incompatibleBosses": [
 				166
 			],
-			"rewardId": 4294967295
+			"rewardId": 379
 		},
 		{
 			"id": 168,

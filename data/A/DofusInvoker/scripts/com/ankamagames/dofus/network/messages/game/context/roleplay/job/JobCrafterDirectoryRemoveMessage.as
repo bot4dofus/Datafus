@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.job
    public class JobCrafterDirectoryRemoveMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6391;
+      public static const protocolId:uint = 5422;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.job
       
       override public function getMessageId() : uint
       {
-         return 6391;
+         return 5422;
       }
       
       public function initJobCrafterDirectoryRemoveMessage(jobId:uint = 0, playerId:Number = 0) : JobCrafterDirectoryRemoveMessage

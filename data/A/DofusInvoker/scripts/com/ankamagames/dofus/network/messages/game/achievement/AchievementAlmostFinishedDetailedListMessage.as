@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.achievement
    public class AchievementAlmostFinishedDetailedListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 211;
+      public static const protocolId:uint = 2788;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.achievement
       
       override public function getMessageId() : uint
       {
-         return 211;
+         return 2788;
       }
       
       public function initAchievementAlmostFinishedDetailedListMessage(almostFinishedAchievements:Vector.<Achievement> = null) : AchievementAlmostFinishedDetailedListMessage

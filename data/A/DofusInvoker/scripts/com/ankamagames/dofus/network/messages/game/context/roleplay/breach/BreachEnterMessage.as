@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach
    public class BreachEnterMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9638;
+      public static const protocolId:uint = 7851;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach
       
       override public function getMessageId() : uint
       {
-         return 9638;
+         return 7851;
       }
       
       public function initBreachEnterMessage(owner:Number = 0) : BreachEnterMessage

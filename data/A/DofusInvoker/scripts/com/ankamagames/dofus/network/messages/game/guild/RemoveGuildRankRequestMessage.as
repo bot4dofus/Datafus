@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class RemoveGuildRankRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7322;
+      public static const protocolId:uint = 8286;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 7322;
+         return 8286;
       }
       
       public function initRemoveGuildRankRequestMessage(rankId:uint = 0, newRankId:uint = 0) : RemoveGuildRankRequestMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.progression.suggestion
    public class ActivityLockRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8672;
+      public static const protocolId:uint = 1828;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.progression.suggestion
       
       override public function getMessageId() : uint
       {
-         return 8672;
+         return 1828;
       }
       
       public function initActivityLockRequestMessage(activityId:uint = 0, lock:Boolean = false) : ActivityLockRequestMessage

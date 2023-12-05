@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameFightCharacteristics implements INetworkType
    {
       
-      public static const protocolId:uint = 9233;
+      public static const protocolId:uint = 5267;
        
       
       public var characteristics:CharacterCharacteristics;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 9233;
+         return 5267;
       }
       
       public function initGameFightCharacteristics(characteristics:CharacterCharacteristics = null, summoner:Number = 0, summoned:Boolean = false, invisibilityState:uint = 0) : GameFightCharacteristics

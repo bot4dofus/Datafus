@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.server.basic
    public class SystemMessageDisplayMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6724;
+      public static const protocolId:uint = 5025;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.server.basic
       
       override public function getMessageId() : uint
       {
-         return 6724;
+         return 5025;
       }
       
       public function initSystemMessageDisplayMessage(hangUp:Boolean = false, msgId:uint = 0, parameters:Vector.<String> = null) : SystemMessageDisplayMessage

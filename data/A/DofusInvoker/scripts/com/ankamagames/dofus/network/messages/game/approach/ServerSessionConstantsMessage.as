@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.approach
    public class ServerSessionConstantsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3329;
+      public static const protocolId:uint = 3977;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       override public function getMessageId() : uint
       {
-         return 3329;
+         return 3977;
       }
       
       public function initServerSessionConstantsMessage(variables:Vector.<ServerSessionConstant> = null) : ServerSessionConstantsMessage

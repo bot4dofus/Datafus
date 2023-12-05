@@ -6351,51 +6351,6 @@
 			"endSeasonRewards": true
 		},
 		{
-			"id": 741,
-			"seasonId": 19,
-			"leagueId": 11,
-			"titlesRewards": [
-				247
-			],
-			"endSeasonRewards": true
-		},
-		{
-			"id": 742,
-			"seasonId": 19,
-			"leagueId": 12,
-			"titlesRewards": [
-				247
-			],
-			"endSeasonRewards": true
-		},
-		{
-			"id": 743,
-			"seasonId": 19,
-			"leagueId": 13,
-			"titlesRewards": [
-				247
-			],
-			"endSeasonRewards": true
-		},
-		{
-			"id": 744,
-			"seasonId": 19,
-			"leagueId": 14,
-			"titlesRewards": [
-				247
-			],
-			"endSeasonRewards": true
-		},
-		{
-			"id": 745,
-			"seasonId": 19,
-			"leagueId": 15,
-			"titlesRewards": [
-				247
-			],
-			"endSeasonRewards": true
-		},
-		{
 			"id": 746,
 			"seasonId": 19,
 			"leagueId": 16,
@@ -6441,51 +6396,6 @@
 			"endSeasonRewards": true
 		},
 		{
-			"id": 751,
-			"seasonId": 19,
-			"leagueId": 22,
-			"titlesRewards": [
-				248
-			],
-			"endSeasonRewards": true
-		},
-		{
-			"id": 752,
-			"seasonId": 19,
-			"leagueId": 23,
-			"titlesRewards": [
-				248
-			],
-			"endSeasonRewards": true
-		},
-		{
-			"id": 753,
-			"seasonId": 19,
-			"leagueId": 24,
-			"titlesRewards": [
-				248
-			],
-			"endSeasonRewards": true
-		},
-		{
-			"id": 754,
-			"seasonId": 19,
-			"leagueId": 25,
-			"titlesRewards": [
-				248
-			],
-			"endSeasonRewards": true
-		},
-		{
-			"id": 755,
-			"seasonId": 19,
-			"leagueId": 26,
-			"titlesRewards": [
-				248
-			],
-			"endSeasonRewards": true
-		},
-		{
 			"id": 756,
 			"seasonId": 19,
 			"leagueId": 27,
@@ -6525,42 +6435,6 @@
 			"id": 760,
 			"seasonId": 19,
 			"leagueId": 31,
-			"titlesRewards": [
-				249
-			],
-			"endSeasonRewards": true
-		},
-		{
-			"id": 761,
-			"seasonId": 19,
-			"leagueId": 32,
-			"titlesRewards": [
-				249
-			],
-			"endSeasonRewards": true
-		},
-		{
-			"id": 762,
-			"seasonId": 19,
-			"leagueId": 33,
-			"titlesRewards": [
-				249
-			],
-			"endSeasonRewards": true
-		},
-		{
-			"id": 763,
-			"seasonId": 19,
-			"leagueId": 34,
-			"titlesRewards": [
-				249
-			],
-			"endSeasonRewards": true
-		},
-		{
-			"id": 764,
-			"seasonId": 19,
-			"leagueId": 35,
 			"titlesRewards": [
 				249
 			],
@@ -6662,15 +6536,6 @@
 			"leagueId": 47,
 			"titlesRewards": [
 				252
-			],
-			"endSeasonRewards": true
-		},
-		{
-			"id": 776,
-			"seasonId": 19,
-			"leagueId": 48,
-			"titlesRewards": [
-				249
 			],
 			"endSeasonRewards": true
 		},

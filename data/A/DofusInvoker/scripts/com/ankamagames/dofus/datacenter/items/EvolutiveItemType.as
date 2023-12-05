@@ -42,7 +42,7 @@ package com.ankamagames.dofus.datacenter.items
       
       public function getLevelFromExperiencePoints(experience:int) : int
       {
-         for(var i:int = 1; i <= this.maxLevel; )
+         for(var i:int = 1; i <= this.getMaxLevel(); )
          {
             if(this.experienceByLevel[i] > experience)
             {
@@ -57,6 +57,11 @@ package com.ankamagames.dofus.datacenter.items
       {
          var experienceForNextLevel:int = this.experienceByLevel[level + 1];
          return experienceForNextLevel - 1;
+      }
+      
+      public function getMaxLevel() : uint
+      {
+         return this.maxLevel - 1;
       }
    }
 }

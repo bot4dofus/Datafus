@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.objects
    public class ObjectGroundListAddedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8803;
+      public static const protocolId:uint = 1209;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.objects
       
       override public function getMessageId() : uint
       {
-         return 8803;
+         return 1209;
       }
       
       public function initObjectGroundListAddedMessage(cells:Vector.<uint> = null, referenceIds:Vector.<uint> = null) : ObjectGroundListAddedMessage

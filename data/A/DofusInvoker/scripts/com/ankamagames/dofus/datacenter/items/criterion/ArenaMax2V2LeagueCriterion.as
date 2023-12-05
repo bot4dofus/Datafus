@@ -1,23 +1,24 @@
 package com.ankamagames.dofus.datacenter.items.criterion
 {
+   import com.ankamagames.dofus.datacenter.arena.ArenaLeague;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.frames.PartyManagementFrame;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
    
-   public class ArenaMaxDuelRankCriterion extends ItemCriterion implements IDataCenter
+   public class ArenaMax2V2LeagueCriterion extends ItemCriterion implements IDataCenter
    {
        
       
-      public function ArenaMaxDuelRankCriterion(pCriterion:String)
+      public function ArenaMax2V2LeagueCriterion(pCriterion:String)
       {
          super(pCriterion);
       }
       
       override public function get text() : String
       {
-         var readableCriterionValue:String = String(_criterionValue);
-         var readableCriterionRef:String = I18n.getUiText("ui.common.pvpMaxDuelRank");
+         var readableCriterionValue:String = ArenaLeague.getArenaLeagueById(_criterionValue).name;
+         var readableCriterionRef:String = I18n.getUiText("ui.common.pvp2v2MaxLeague");
          var readableOperator:* = ">";
          if(_operator.text == ItemCriterionOperator.DIFFERENT)
          {
@@ -28,18 +29,13 @@ package com.ankamagames.dofus.datacenter.items.criterion
       
       override public function clone() : IItemCriterion
       {
-         return new ArenaMaxDuelRankCriterion(this.basicText);
+         return new ArenaMax2V2LeagueCriterion(this.basicText);
       }
       
       override protected function getCriterion() : int
       {
          var frame:PartyManagementFrame = Kernel.getWorker().getFrame(PartyManagementFrame) as PartyManagementFrame;
-         var maxRank:int = 0;
-         if(frame.arenaRankDuelInfos && frame.arenaRankDuelInfos.maxRank > maxRank)
-         {
-            maxRank = frame.arenaRankDuelInfos.maxRank;
-         }
-         return maxRank;
+         return !!frame.arenaRank2V2Infos ? int(frame.arenaRank2V2Infos.maxRating) : 0;
       }
    }
 }

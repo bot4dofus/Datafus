@@ -11,12 +11,12 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
    public class GameRolePlayArenaRegisterMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8721;
+      public static const protocolId:uint = 1231;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var battleMode:uint = 3;
+      public var arenaType:uint = 3;
       
       public function GameRolePlayArenaRegisterMessage()
       {
@@ -30,19 +30,19 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       override public function getMessageId() : uint
       {
-         return 8721;
+         return 1231;
       }
       
-      public function initGameRolePlayArenaRegisterMessage(battleMode:uint = 3) : GameRolePlayArenaRegisterMessage
+      public function initGameRolePlayArenaRegisterMessage(arenaType:uint = 3) : GameRolePlayArenaRegisterMessage
       {
-         this.battleMode = battleMode;
+         this.arenaType = arenaType;
          this._isInitialized = true;
          return this;
       }
       
       override public function reset() : void
       {
-         this.battleMode = 3;
+         this.arenaType = 3;
          this._isInitialized = false;
       }
       
@@ -73,7 +73,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       public function serializeAs_GameRolePlayArenaRegisterMessage(output:ICustomDataOutput) : void
       {
-         output.writeInt(this.battleMode);
+         output.writeInt(this.arenaType);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -83,7 +83,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       public function deserializeAs_GameRolePlayArenaRegisterMessage(input:ICustomDataInput) : void
       {
-         this._battleModeFunc(input);
+         this._arenaTypeFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -93,15 +93,15 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       public function deserializeAsyncAs_GameRolePlayArenaRegisterMessage(tree:FuncTree) : void
       {
-         tree.addChild(this._battleModeFunc);
+         tree.addChild(this._arenaTypeFunc);
       }
       
-      private function _battleModeFunc(input:ICustomDataInput) : void
+      private function _arenaTypeFunc(input:ICustomDataInput) : void
       {
-         this.battleMode = input.readInt();
-         if(this.battleMode < 0)
+         this.arenaType = input.readInt();
+         if(this.arenaType < 0)
          {
-            throw new Error("Forbidden value (" + this.battleMode + ") on element of GameRolePlayArenaRegisterMessage.battleMode.");
+            throw new Error("Forbidden value (" + this.arenaType + ") on element of GameRolePlayArenaRegisterMessage.arenaType.");
          }
       }
    }

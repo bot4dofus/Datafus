@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.character.choice
    public class CharacterFirstSelectionMessage extends CharacterSelectionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1225;
+      public static const protocolId:uint = 1168;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.character.choice
       
       override public function getMessageId() : uint
       {
-         return 1225;
+         return 1168;
       }
       
       public function initCharacterFirstSelectionMessage(id:Number = 0, doTutorial:Boolean = false) : CharacterFirstSelectionMessage

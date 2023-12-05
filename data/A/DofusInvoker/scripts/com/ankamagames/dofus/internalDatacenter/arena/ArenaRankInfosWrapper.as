@@ -10,29 +10,37 @@ package com.ankamagames.dofus.internalDatacenter.arena
       
       public const LEAGUE_DEFAULT_ICON_ID:String = "icon_kolizeum01.png";
       
-      public var rank:int = 0;
+      public var rating:int = 0;
       
-      public var maxRank:int = 0;
+      public var arenaType:uint = 1;
       
-      public var todayFightCount:int = 0;
+      public var maxRating:int = 0;
       
-      public var todayVictoryCount:int = 0;
+      public var dailyFightCount:int = 0;
+      
+      public var dailyVictoryCount:int = 0;
+      
+      public var seasonFightCount:int = 0;
+      
+      public var seasonVictoryCount:int = 0;
       
       public var leagueId:int = -1;
       
+      public var bestLeagueId:int = -1;
+      
       public var leagueName:String = "";
+      
+      public var bestLeagueName:String = "";
       
       public var inLastLeague:Boolean = false;
       
-      public var leagueProgression:int = -1;
-      
       public var ladderPosition:int = -1;
-      
-      public var totalLeaguePoint:int = -1;
       
       public var numFightNeededForLadder:int = 0;
       
       public var leagueIconId:String = "icon_kolizeum01.png";
+      
+      public var bestLeagueIconId:String = "icon_kolizeum01.png";
       
       public function ArenaRankInfosWrapper()
       {
@@ -41,27 +49,49 @@ package com.ankamagames.dofus.internalDatacenter.arena
       
       public static function create(informations:ArenaRankInfos) : ArenaRankInfosWrapper
       {
+         var bestLeague:ArenaLeague = null;
          var league:ArenaLeague = null;
          var obj:ArenaRankInfosWrapper = new ArenaRankInfosWrapper();
-         if(informations.fightcount)
+         obj.arenaType = informations.arenaType;
+         if(informations.dailyFightcount)
          {
-            obj.todayFightCount = informations.fightcount;
+            obj.dailyFightCount = informations.dailyFightcount;
          }
-         if(informations.victoryCount)
+         if(informations.dailyVictoryCount)
          {
-            obj.todayVictoryCount = informations.victoryCount;
+            obj.dailyVictoryCount = informations.dailyVictoryCount;
+         }
+         if(informations.seasonFightcount)
+         {
+            obj.seasonFightCount = informations.seasonFightcount;
+         }
+         if(informations.seasonVictoryCount)
+         {
+            obj.seasonVictoryCount = informations.seasonVictoryCount;
          }
          if(informations.numFightNeededForLadder)
          {
             obj.numFightNeededForLadder = informations.numFightNeededForLadder;
          }
+         if(informations.bestRating)
+         {
+            obj.maxRating = informations.bestRating;
+         }
+         if(informations.bestLeagueId)
+         {
+            obj.bestLeagueId = informations.bestLeagueId;
+            bestLeague = ArenaLeague.getArenaLeagueById(obj.bestLeagueId);
+            if(bestLeague)
+            {
+               obj.bestLeagueIconId = bestLeague.iconWithExtension;
+               obj.bestLeagueName = bestLeague.name;
+            }
+         }
          if(informations.leagueRanking)
          {
-            obj.rank = informations.leagueRanking.rank;
+            obj.rating = informations.leagueRanking.rating;
             obj.leagueId = informations.leagueRanking.leagueId;
-            obj.leagueProgression = informations.leagueRanking.leaguePoints;
             obj.ladderPosition = informations.leagueRanking.ladderPosition;
-            obj.totalLeaguePoint = informations.leagueRanking.totalLeaguePoints;
             league = ArenaLeague.getArenaLeagueById(obj.leagueId);
             if(league != null)
             {
@@ -69,11 +99,6 @@ package com.ankamagames.dofus.internalDatacenter.arena
                obj.inLastLeague = league.isLastLeague;
                obj.leagueIconId = league.iconWithExtension;
             }
-         }
-         else if(informations.ranking)
-         {
-            obj.rank = informations.ranking.rank;
-            obj.maxRank = informations.ranking.bestRank;
          }
          return obj;
       }

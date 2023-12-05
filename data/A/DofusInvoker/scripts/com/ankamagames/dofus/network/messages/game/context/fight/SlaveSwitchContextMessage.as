@@ -15,7 +15,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class SlaveSwitchContextMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7542;
+      public static const protocolId:uint = 2521;
        
       
       private var _isInitialized:Boolean = false;
@@ -53,7 +53,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 7542;
+         return 2521;
       }
       
       public function initSlaveSwitchContextMessage(masterId:Number = 0, slaveId:Number = 0, slaveTurn:uint = 0, slaveSpells:Vector.<SpellItem> = null, slaveStats:CharacterCharacteristicsInformations = null, shortcuts:Vector.<Shortcut> = null) : SlaveSwitchContextMessage

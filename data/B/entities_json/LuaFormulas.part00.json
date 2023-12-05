@@ -193,7 +193,12 @@
 		{
 			"id": 108,
 			"formulaName": "t8_tempoken_to_experience",
-			"luaFormula": "function params()\n   return {\"tempoken\"}\nend\n\nfunction main()\n   return math.floor( 3785 * math.pow(tempoken, 1.74)*(1.5/(4000/tempoken)))\nend"
+			"luaFormula": "function params()\r\n   return {\"tempoken\"}\r\nend\r\n\r\nfunction main()\r\n   return math.floor( 3785 * math.pow(tempoken, 1.74)*(1.5/(4000/tempoken)))\r\nend"
+		},
+		{
+			"id": 109,
+			"formulaName": "minimum_rank_by_player_level",
+			"luaFormula": "function params()\r\n    return {\"player_level\"}\r\nend\r\n\r\nfunction main()\r\n    local minimum_rating_by_player_level = 0.06*(player_level^2)+3.5*player_level\r\n\r\nreturn minimum_rating_by_player_level\r\nend"
 		}
 	]
 }

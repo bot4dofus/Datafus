@@ -27,7 +27,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.datacenter.npcs.TaxCollectorName;
    import com.ankamagames.dofus.datacenter.spells.Spell;
    import com.ankamagames.dofus.datacenter.world.SubArea;
-   import com.ankamagames.dofus.externalnotification.ExternalNotificationManager;
    import com.ankamagames.dofus.externalnotification.enums.ExternalNotificationTypeEnum;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
    import com.ankamagames.dofus.internalDatacenter.fight.ChallengeTargetWrapper;
@@ -63,6 +62,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.logic.game.common.messages.FightEndingMessage;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
    import com.ankamagames.dofus.logic.game.fight.actions.ShowTacticModeAction;
+   import com.ankamagames.dofus.logic.game.fight.actions.SurrenderPopupNameAction;
    import com.ankamagames.dofus.logic.game.fight.actions.TimelineEntityOutAction;
    import com.ankamagames.dofus.logic.game.fight.actions.TimelineEntityOverAction;
    import com.ankamagames.dofus.logic.game.fight.actions.ToggleEntityIconsAction;
@@ -226,6 +226,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private var _battleFrame:FightBattleFrame;
       
+      private var _surrenderVoteFrame:FightSurrenderFrame;
+      
       private var _overEffectOk:GlowFilter;
       
       private var _overEffectKo:GlowFilter;
@@ -277,6 +279,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
       private var _mustShowTreasureHuntMask:Boolean = false;
       
       private var _roleplayGridDisplayed:Boolean;
+      
+      private var _surrenderPopupName:String;
       
       public var isFightLeader:Boolean = true;
       
@@ -340,6 +344,11 @@ package com.ankamagames.dofus.logic.game.fight.frames
       public function get preparationFrame() : FightPreparationFrame
       {
          return this._preparationFrame;
+      }
+      
+      public function get surrenderVoteFrame() : FightSurrenderFrame
+      {
+         return this._surrenderVoteFrame;
       }
       
       public function get challengesList() : Array
@@ -424,6 +433,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          this._entitiesFrame = new FightEntitiesFrame();
          this._preparationFrame = new FightPreparationFrame(this);
          this._battleFrame = new FightBattleFrame();
+         this._surrenderVoteFrame = new FightSurrenderFrame();
          this._challengesList = [];
          this._timerFighterInfo = new BenchmarkTimer(100,1,"FightContextFrame._timerFighterInfo");
          this._timerFighterInfo.addEventListener(TimerEvent.TIMER,this.showFighterInfo,false,0,true);
@@ -576,6 +586,15 @@ package com.ankamagames.dofus.logic.game.fight.frames
             default:
                return 0;
          }
+      }
+      
+      public function getFighters() : Vector.<Number>
+      {
+         if(this.battleFrame.fightersList && !Kernel.getWorker().getFrame(FightPreparationFrame))
+         {
+            return this.battleFrame.fightersList;
+         }
+         return this.entitiesFrame.getOrdonnedPreFighters();
       }
       
       public function getChallengeById(challengeId:uint) : ChallengeWrapper
@@ -1019,6 +1038,10 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   KernelEventsManager.getInstance().processCallback(HookList.GameFightStart);
                   this.onlyTheOtherTeamCanPlace = false;
                }
+               if(this.fightType == FightTypeEnum.FIGHT_TYPE_PVP_ARENA && !Kernel.getWorker().contains(FightSurrenderFrame))
+               {
+                  Kernel.getWorker().addFrame(this._surrenderVoteFrame);
+               }
                PlayedCharacterManager.getInstance().isSpectator = false;
                PlayedCharacterManager.getInstance().isFighting = true;
                timeBeforeStart = gfjmsg.timeMaxBeforeFightStart * 100;
@@ -1029,10 +1052,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                KernelEventsManager.getInstance().processCallback(HookList.GameFightJoin,gfjmsg.canBeCancelled,gfjmsg.canSayReady,false,timeBeforeStart,gfjmsg.fightType,gfjmsg.isTeamPhase);
                if(PlayerManager.getInstance().kisServerPort > 0)
                {
-                  if(ExternalNotificationManager.getInstance().canAddExternalNotification(ExternalNotificationTypeEnum.KOLO_JOIN))
-                  {
-                     KernelEventsManager.getInstance().processCallback(HookList.ArenaExternalNotification,ExternalNotificationTypeEnum.KOLO_JOIN,timeBeforeStart);
-                  }
+                  KernelEventsManager.getInstance().processCallback(HookList.ArenaExternalNotification,ExternalNotificationTypeEnum.KOLO_JOIN,timeBeforeStart);
                }
                return true;
             case msg is GameActionFightCarryCharacterMessage:
@@ -1052,10 +1072,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                KernelEventsManager.getInstance().processCallback(HookList.GameFightStart);
                if(PlayerManager.getInstance().kisServerPort > 0)
                {
-                  if(ExternalNotificationManager.getInstance().canAddExternalNotification(ExternalNotificationTypeEnum.KOLO_START))
-                  {
-                     KernelEventsManager.getInstance().processCallback(HookList.ArenaExternalNotification,ExternalNotificationTypeEnum.KOLO_START,30000);
-                  }
+                  KernelEventsManager.getInstance().processCallback(HookList.ArenaExternalNotification,ExternalNotificationTypeEnum.KOLO_START,30000);
                }
                return true;
             case msg is GameContextDestroyMessage:
@@ -1636,6 +1653,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
             case msg is ArenaFighterIdleMessage:
                KernelEventsManager.getInstance().processCallback(HookList.KISInactivityNotification,[]);
                return true;
+            case msg is SurrenderPopupNameAction:
+               this._surrenderPopupName = (msg as SurrenderPopupNameAction).popupName;
+               return true;
             default:
                return false;
          }
@@ -1646,6 +1666,14 @@ package com.ankamagames.dofus.logic.game.fight.frames
          if(TacticModeManager.getInstance().tacticModeActivated)
          {
             TacticModeManager.getInstance().hide(true);
+         }
+         if(Berilia.getInstance().getUi(this._surrenderPopupName))
+         {
+            Berilia.getInstance().unloadUi(this._surrenderPopupName);
+         }
+         if(Berilia.getInstance().getUi(this.surrenderVoteFrame.refusalPopupName))
+         {
+            Berilia.getInstance().unloadUi(this.surrenderVoteFrame.refusalPopupName);
          }
          if(this._battleFrame)
          {
@@ -1658,6 +1686,10 @@ package com.ankamagames.dofus.logic.game.fight.frames
          if(this._preparationFrame)
          {
             Kernel.getWorker().removeFrame(this._preparationFrame);
+         }
+         if(this._surrenderVoteFrame)
+         {
+            Kernel.getWorker().removeFrame(this._surrenderVoteFrame);
          }
          SerialSequencer.clearByType(FightSequenceFrame.FIGHT_SEQUENCERS_CATEGORY);
          this._preparationFrame = null;

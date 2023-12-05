@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.social.fight
    public class SocialFightTakePlaceRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2381;
+      public static const protocolId:uint = 7289;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.social.fight
       
       override public function getMessageId() : uint
       {
-         return 2381;
+         return 7289;
       }
       
       public function initSocialFightTakePlaceRequestMessage(socialFightInfo:SocialFightInfo = null, replacedCharacterId:Number = 0) : SocialFightTakePlaceRequestMessage

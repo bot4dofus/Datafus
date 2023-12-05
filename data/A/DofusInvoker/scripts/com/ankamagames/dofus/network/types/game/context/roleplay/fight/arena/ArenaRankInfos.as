@@ -8,49 +8,63 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
    public class ArenaRankInfos implements INetworkType
    {
       
-      public static const protocolId:uint = 9323;
+      public static const protocolId:uint = 2411;
        
       
-      public var ranking:ArenaRanking;
+      public var arenaType:uint = 3;
       
       public var leagueRanking:ArenaLeagueRanking;
       
-      public var victoryCount:uint = 0;
+      public var bestLeagueId:int = 0;
       
-      public var fightcount:uint = 0;
+      public var bestRating:int = 0;
+      
+      public var dailyVictoryCount:uint = 0;
+      
+      public var seasonVictoryCount:uint = 0;
+      
+      public var dailyFightcount:uint = 0;
+      
+      public var seasonFightcount:uint = 0;
       
       public var numFightNeededForLadder:uint = 0;
-      
-      private var _rankingtree:FuncTree;
       
       private var _leagueRankingtree:FuncTree;
       
       public function ArenaRankInfos()
       {
-         this.ranking = new ArenaRanking();
          this.leagueRanking = new ArenaLeagueRanking();
          super();
       }
       
       public function getTypeId() : uint
       {
-         return 9323;
+         return 2411;
       }
       
-      public function initArenaRankInfos(ranking:ArenaRanking = null, leagueRanking:ArenaLeagueRanking = null, victoryCount:uint = 0, fightcount:uint = 0, numFightNeededForLadder:uint = 0) : ArenaRankInfos
+      public function initArenaRankInfos(arenaType:uint = 3, leagueRanking:ArenaLeagueRanking = null, bestLeagueId:int = 0, bestRating:int = 0, dailyVictoryCount:uint = 0, seasonVictoryCount:uint = 0, dailyFightcount:uint = 0, seasonFightcount:uint = 0, numFightNeededForLadder:uint = 0) : ArenaRankInfos
       {
-         this.ranking = ranking;
+         this.arenaType = arenaType;
          this.leagueRanking = leagueRanking;
-         this.victoryCount = victoryCount;
-         this.fightcount = fightcount;
+         this.bestLeagueId = bestLeagueId;
+         this.bestRating = bestRating;
+         this.dailyVictoryCount = dailyVictoryCount;
+         this.seasonVictoryCount = seasonVictoryCount;
+         this.dailyFightcount = dailyFightcount;
+         this.seasonFightcount = seasonFightcount;
          this.numFightNeededForLadder = numFightNeededForLadder;
          return this;
       }
       
       public function reset() : void
       {
-         this.ranking = new ArenaRanking();
-         this.fightcount = 0;
+         this.arenaType = 3;
+         this.leagueRanking = new ArenaLeagueRanking();
+         this.bestRating = 0;
+         this.dailyVictoryCount = 0;
+         this.seasonVictoryCount = 0;
+         this.dailyFightcount = 0;
+         this.seasonFightcount = 0;
          this.numFightNeededForLadder = 0;
       }
       
@@ -61,15 +75,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
       
       public function serializeAs_ArenaRankInfos(output:ICustomDataOutput) : void
       {
-         if(this.ranking == null)
-         {
-            output.writeByte(0);
-         }
-         else
-         {
-            output.writeByte(1);
-            this.ranking.serializeAs_ArenaRanking(output);
-         }
+         output.writeInt(this.arenaType);
          if(this.leagueRanking == null)
          {
             output.writeByte(0);
@@ -79,16 +85,32 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
             output.writeByte(1);
             this.leagueRanking.serializeAs_ArenaLeagueRanking(output);
          }
-         if(this.victoryCount < 0)
+         output.writeVarShort(this.bestLeagueId);
+         if(this.bestRating < 0 || this.bestRating > 20000)
          {
-            throw new Error("Forbidden value (" + this.victoryCount + ") on element victoryCount.");
+            throw new Error("Forbidden value (" + this.bestRating + ") on element bestRating.");
          }
-         output.writeVarShort(this.victoryCount);
-         if(this.fightcount < 0)
+         output.writeInt(this.bestRating);
+         if(this.dailyVictoryCount < 0)
          {
-            throw new Error("Forbidden value (" + this.fightcount + ") on element fightcount.");
+            throw new Error("Forbidden value (" + this.dailyVictoryCount + ") on element dailyVictoryCount.");
          }
-         output.writeVarShort(this.fightcount);
+         output.writeVarShort(this.dailyVictoryCount);
+         if(this.seasonVictoryCount < 0)
+         {
+            throw new Error("Forbidden value (" + this.seasonVictoryCount + ") on element seasonVictoryCount.");
+         }
+         output.writeVarShort(this.seasonVictoryCount);
+         if(this.dailyFightcount < 0)
+         {
+            throw new Error("Forbidden value (" + this.dailyFightcount + ") on element dailyFightcount.");
+         }
+         output.writeVarShort(this.dailyFightcount);
+         if(this.seasonFightcount < 0)
+         {
+            throw new Error("Forbidden value (" + this.seasonFightcount + ") on element seasonFightcount.");
+         }
+         output.writeVarShort(this.seasonFightcount);
          if(this.numFightNeededForLadder < 0)
          {
             throw new Error("Forbidden value (" + this.numFightNeededForLadder + ") on element numFightNeededForLadder.");
@@ -103,15 +125,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
       
       public function deserializeAs_ArenaRankInfos(input:ICustomDataInput) : void
       {
-         if(input.readByte() == 0)
-         {
-            this.ranking = null;
-         }
-         else
-         {
-            this.ranking = new ArenaRanking();
-            this.ranking.deserialize(input);
-         }
+         this._arenaTypeFunc(input);
          if(input.readByte() == 0)
          {
             this.leagueRanking = null;
@@ -121,8 +135,12 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
             this.leagueRanking = new ArenaLeagueRanking();
             this.leagueRanking.deserialize(input);
          }
-         this._victoryCountFunc(input);
-         this._fightcountFunc(input);
+         this._bestLeagueIdFunc(input);
+         this._bestRatingFunc(input);
+         this._dailyVictoryCountFunc(input);
+         this._seasonVictoryCountFunc(input);
+         this._dailyFightcountFunc(input);
+         this._seasonFightcountFunc(input);
          this._numFightNeededForLadderFunc(input);
       }
       
@@ -133,17 +151,24 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
       
       public function deserializeAsyncAs_ArenaRankInfos(tree:FuncTree) : void
       {
-         this._rankingtree = tree.addChild(this._rankingtreeFunc);
+         tree.addChild(this._arenaTypeFunc);
          this._leagueRankingtree = tree.addChild(this._leagueRankingtreeFunc);
-         tree.addChild(this._victoryCountFunc);
-         tree.addChild(this._fightcountFunc);
+         tree.addChild(this._bestLeagueIdFunc);
+         tree.addChild(this._bestRatingFunc);
+         tree.addChild(this._dailyVictoryCountFunc);
+         tree.addChild(this._seasonVictoryCountFunc);
+         tree.addChild(this._dailyFightcountFunc);
+         tree.addChild(this._seasonFightcountFunc);
          tree.addChild(this._numFightNeededForLadderFunc);
       }
       
-      private function _rankingtreeFunc(input:ICustomDataInput) : void
+      private function _arenaTypeFunc(input:ICustomDataInput) : void
       {
-         this.ranking = new ArenaRanking();
-         this.ranking.deserializeAsync(this._rankingtree);
+         this.arenaType = input.readInt();
+         if(this.arenaType < 0)
+         {
+            throw new Error("Forbidden value (" + this.arenaType + ") on element of ArenaRankInfos.arenaType.");
+         }
       }
       
       private function _leagueRankingtreeFunc(input:ICustomDataInput) : void
@@ -152,21 +177,53 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
          this.leagueRanking.deserializeAsync(this._leagueRankingtree);
       }
       
-      private function _victoryCountFunc(input:ICustomDataInput) : void
+      private function _bestLeagueIdFunc(input:ICustomDataInput) : void
       {
-         this.victoryCount = input.readVarUhShort();
-         if(this.victoryCount < 0)
+         this.bestLeagueId = input.readVarShort();
+      }
+      
+      private function _bestRatingFunc(input:ICustomDataInput) : void
+      {
+         this.bestRating = input.readInt();
+         if(this.bestRating < 0 || this.bestRating > 20000)
          {
-            throw new Error("Forbidden value (" + this.victoryCount + ") on element of ArenaRankInfos.victoryCount.");
+            throw new Error("Forbidden value (" + this.bestRating + ") on element of ArenaRankInfos.bestRating.");
          }
       }
       
-      private function _fightcountFunc(input:ICustomDataInput) : void
+      private function _dailyVictoryCountFunc(input:ICustomDataInput) : void
       {
-         this.fightcount = input.readVarUhShort();
-         if(this.fightcount < 0)
+         this.dailyVictoryCount = input.readVarUhShort();
+         if(this.dailyVictoryCount < 0)
          {
-            throw new Error("Forbidden value (" + this.fightcount + ") on element of ArenaRankInfos.fightcount.");
+            throw new Error("Forbidden value (" + this.dailyVictoryCount + ") on element of ArenaRankInfos.dailyVictoryCount.");
+         }
+      }
+      
+      private function _seasonVictoryCountFunc(input:ICustomDataInput) : void
+      {
+         this.seasonVictoryCount = input.readVarUhShort();
+         if(this.seasonVictoryCount < 0)
+         {
+            throw new Error("Forbidden value (" + this.seasonVictoryCount + ") on element of ArenaRankInfos.seasonVictoryCount.");
+         }
+      }
+      
+      private function _dailyFightcountFunc(input:ICustomDataInput) : void
+      {
+         this.dailyFightcount = input.readVarUhShort();
+         if(this.dailyFightcount < 0)
+         {
+            throw new Error("Forbidden value (" + this.dailyFightcount + ") on element of ArenaRankInfos.dailyFightcount.");
+         }
+      }
+      
+      private function _seasonFightcountFunc(input:ICustomDataInput) : void
+      {
+         this.seasonFightcount = input.readVarUhShort();
+         if(this.seasonFightcount < 0)
+         {
+            throw new Error("Forbidden value (" + this.seasonFightcount + ") on element of ArenaRankInfos.seasonFightcount.");
          }
       }
       

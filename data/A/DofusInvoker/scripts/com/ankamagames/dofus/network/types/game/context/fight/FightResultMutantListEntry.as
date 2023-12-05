@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightResultMutantListEntry extends FightResultFighterListEntry implements INetworkType
    {
       
-      public static const protocolId:uint = 765;
+      public static const protocolId:uint = 3801;
        
       
       public var level:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 765;
+         return 3801;
       }
       
       public function initFightResultMutantListEntry(outcome:uint = 0, wave:uint = 0, rewards:FightLoot = null, id:Number = 0, alive:Boolean = false, level:uint = 0) : FightResultMutantListEntry

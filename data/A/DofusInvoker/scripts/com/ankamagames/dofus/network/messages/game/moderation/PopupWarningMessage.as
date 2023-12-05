@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.moderation
    public class PopupWarningMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3812;
+      public static const protocolId:uint = 5392;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.moderation
       
       override public function getMessageId() : uint
       {
-         return 3812;
+         return 5392;
       }
       
       public function initPopupWarningMessage(lockDuration:uint = 0, author:String = "", content:String = "") : PopupWarningMessage

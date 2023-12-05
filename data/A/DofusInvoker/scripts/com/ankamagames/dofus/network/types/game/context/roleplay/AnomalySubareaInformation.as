@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class AnomalySubareaInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 132;
+      public static const protocolId:uint = 364;
        
       
       public var subAreaId:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       public function getTypeId() : uint
       {
-         return 132;
+         return 364;
       }
       
       public function initAnomalySubareaInformation(subAreaId:uint = 0, rewardRate:int = 0, hasAnomaly:Boolean = false, anomalyClosingTime:Number = 0) : AnomalySubareaInformation

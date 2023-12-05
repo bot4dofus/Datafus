@@ -44,6 +44,16 @@
 			"id": 6,
 			"name": "Exp\u00e9dition 1",
 			"seasonId": 25
+		},
+		{
+			"id": 7,
+			"name": "Saison koliz\u00e9um 1",
+			"seasonId": 28
+		},
+		{
+			"id": 8,
+			"name": "Saison koliz\u00e9um Beta",
+			"seasonId": 29
 		}
 	]
 }

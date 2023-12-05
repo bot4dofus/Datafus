@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class ObjectDropMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3708;
+      public static const protocolId:uint = 5861;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 3708;
+         return 5861;
       }
       
       public function initObjectDropMessage(objectUID:uint = 0, quantity:uint = 0) : ObjectDropMessage

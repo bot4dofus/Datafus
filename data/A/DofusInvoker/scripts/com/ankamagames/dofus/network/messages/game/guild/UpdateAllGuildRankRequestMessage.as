@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class UpdateAllGuildRankRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3860;
+      public static const protocolId:uint = 6793;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 3860;
+         return 6793;
       }
       
       public function initUpdateAllGuildRankRequestMessage(ranks:Vector.<RankInformation> = null) : UpdateAllGuildRankRequestMessage

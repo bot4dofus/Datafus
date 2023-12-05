@@ -27,6 +27,14 @@
 				{
 					"name": "isLastLeague",
 					"type": -2
+				},
+				{
+					"name": "lowRatingBound",
+					"type": -1
+				},
+				{
+					"name": "highRatingBound",
+					"type": -1
 				}
 			]
 		}
@@ -34,83 +42,53 @@
 	"data": [
 		{
 			"id": 6,
-			"nameId": 766736,
+			"nameId": 1048152,
 			"ornamentId": 127,
 			"icon": "icon_kolizeum02",
 			"illus": "tx_illu_arena_02",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 0,
+			"highRatingBound": 139
 		},
 		{
 			"id": 7,
-			"nameId": 766738,
+			"nameId": 1048153,
 			"ornamentId": 127,
 			"icon": "icon_kolizeum02",
 			"illus": "tx_illu_arena_02",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 90,
+			"highRatingBound": 259
 		},
 		{
 			"id": 8,
-			"nameId": 766740,
+			"nameId": 1048154,
 			"ornamentId": 127,
 			"icon": "icon_kolizeum02",
 			"illus": "tx_illu_arena_02",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 210,
+			"highRatingBound": 379
 		},
 		{
 			"id": 9,
-			"nameId": 766742,
+			"nameId": 1048157,
 			"ornamentId": 127,
 			"icon": "icon_kolizeum02",
 			"illus": "tx_illu_arena_02",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 330,
+			"highRatingBound": 499
 		},
 		{
 			"id": 10,
-			"nameId": 766744,
+			"nameId": 1048156,
 			"ornamentId": 127,
 			"icon": "icon_kolizeum02",
 			"illus": "tx_illu_arena_02",
-			"isLastLeague": false
-		},
-		{
-			"id": 11,
-			"nameId": 766746,
-			"ornamentId": 127,
-			"icon": "icon_kolizeum02",
-			"illus": "tx_illu_arena_02",
-			"isLastLeague": false
-		},
-		{
-			"id": 12,
-			"nameId": 766748,
-			"ornamentId": 127,
-			"icon": "icon_kolizeum02",
-			"illus": "tx_illu_arena_02",
-			"isLastLeague": false
-		},
-		{
-			"id": 13,
-			"nameId": 766750,
-			"ornamentId": 127,
-			"icon": "icon_kolizeum02",
-			"illus": "tx_illu_arena_02",
-			"isLastLeague": false
-		},
-		{
-			"id": 14,
-			"nameId": 766752,
-			"ornamentId": 127,
-			"icon": "icon_kolizeum02",
-			"illus": "tx_illu_arena_02",
-			"isLastLeague": false
-		},
-		{
-			"id": 15,
-			"nameId": 766754,
-			"ornamentId": 127,
-			"icon": "icon_kolizeum02",
-			"illus": "tx_illu_arena_02",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 450,
+			"highRatingBound": 619
 		},
 		{
 			"id": 16,
@@ -118,7 +96,9 @@
 			"ornamentId": 128,
 			"icon": "icon_kolizeum03",
 			"illus": "tx_illu_arena_03",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 570,
+			"highRatingBound": 759
 		},
 		{
 			"id": 17,
@@ -126,7 +106,9 @@
 			"ornamentId": 128,
 			"icon": "icon_kolizeum03",
 			"illus": "tx_illu_arena_03",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 710,
+			"highRatingBound": 899
 		},
 		{
 			"id": 18,
@@ -134,7 +116,9 @@
 			"ornamentId": 128,
 			"icon": "icon_kolizeum03",
 			"illus": "tx_illu_arena_03",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 850,
+			"highRatingBound": 1039
 		},
 		{
 			"id": 20,
@@ -142,7 +126,9 @@
 			"ornamentId": 128,
 			"icon": "icon_kolizeum03",
 			"illus": "tx_illu_arena_03",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 990,
+			"highRatingBound": 1179
 		},
 		{
 			"id": 21,
@@ -150,47 +136,9 @@
 			"ornamentId": 128,
 			"icon": "icon_kolizeum03",
 			"illus": "tx_illu_arena_03",
-			"isLastLeague": false
-		},
-		{
-			"id": 22,
-			"nameId": 766768,
-			"ornamentId": 128,
-			"icon": "icon_kolizeum03",
-			"illus": "tx_illu_arena_03",
-			"isLastLeague": false
-		},
-		{
-			"id": 23,
-			"nameId": 766770,
-			"ornamentId": 128,
-			"icon": "icon_kolizeum03",
-			"illus": "tx_illu_arena_03",
-			"isLastLeague": false
-		},
-		{
-			"id": 24,
-			"nameId": 766772,
-			"ornamentId": 128,
-			"icon": "icon_kolizeum03",
-			"illus": "tx_illu_arena_03",
-			"isLastLeague": false
-		},
-		{
-			"id": 25,
-			"nameId": 766774,
-			"ornamentId": 128,
-			"icon": "icon_kolizeum03",
-			"illus": "tx_illu_arena_03",
-			"isLastLeague": false
-		},
-		{
-			"id": 26,
-			"nameId": 766777,
-			"ornamentId": 128,
-			"icon": "icon_kolizeum03",
-			"illus": "tx_illu_arena_03",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 1130,
+			"highRatingBound": 1319
 		},
 		{
 			"id": 27,
@@ -198,7 +146,9 @@
 			"ornamentId": 129,
 			"icon": "icon_kolizeum04",
 			"illus": "tx_illu_arena_04",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 1270,
+			"highRatingBound": 1479
 		},
 		{
 			"id": 28,
@@ -206,7 +156,9 @@
 			"ornamentId": 129,
 			"icon": "icon_kolizeum04",
 			"illus": "tx_illu_arena_04",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 1430,
+			"highRatingBound": 1639
 		},
 		{
 			"id": 29,
@@ -214,7 +166,9 @@
 			"ornamentId": 129,
 			"icon": "icon_kolizeum04",
 			"illus": "tx_illu_arena_04",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 1590,
+			"highRatingBound": 1799
 		},
 		{
 			"id": 30,
@@ -222,7 +176,9 @@
 			"ornamentId": 129,
 			"icon": "icon_kolizeum04",
 			"illus": "tx_illu_arena_04",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 1750,
+			"highRatingBound": 1959
 		},
 		{
 			"id": 31,
@@ -230,79 +186,59 @@
 			"ornamentId": 129,
 			"icon": "icon_kolizeum04",
 			"illus": "tx_illu_arena_04",
-			"isLastLeague": false
-		},
-		{
-			"id": 32,
-			"nameId": 766790,
-			"ornamentId": 129,
-			"icon": "icon_kolizeum04",
-			"illus": "tx_illu_arena_04",
-			"isLastLeague": false
-		},
-		{
-			"id": 33,
-			"nameId": 766792,
-			"ornamentId": 129,
-			"icon": "icon_kolizeum04",
-			"illus": "tx_illu_arena_04",
-			"isLastLeague": false
-		},
-		{
-			"id": 34,
-			"nameId": 766794,
-			"ornamentId": 129,
-			"icon": "icon_kolizeum04",
-			"illus": "tx_illu_arena_04",
-			"isLastLeague": false
-		},
-		{
-			"id": 35,
-			"nameId": 766797,
-			"ornamentId": 129,
-			"icon": "icon_kolizeum04",
-			"illus": "tx_illu_arena_04",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 1910,
+			"highRatingBound": 2119
 		},
 		{
 			"id": 36,
-			"nameId": 766799,
+			"nameId": 1048158,
 			"ornamentId": 130,
 			"icon": "icon_kolizeum05",
 			"illus": "tx_illu_arena_05",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 2070,
+			"highRatingBound": 2369
 		},
 		{
 			"id": 37,
-			"nameId": 766801,
+			"nameId": 1048159,
 			"ornamentId": 130,
 			"icon": "icon_kolizeum05",
 			"illus": "tx_illu_arena_05",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 2320,
+			"highRatingBound": 2619
 		},
 		{
 			"id": 38,
-			"nameId": 766803,
+			"nameId": 1048160,
 			"ornamentId": 130,
 			"icon": "icon_kolizeum05",
 			"illus": "tx_illu_arena_05",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 2570,
+			"highRatingBound": 2869
 		},
 		{
 			"id": 39,
-			"nameId": 766805,
+			"nameId": 1048161,
 			"ornamentId": 130,
 			"icon": "icon_kolizeum05",
 			"illus": "tx_illu_arena_05",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 2820,
+			"highRatingBound": 3119
 		},
 		{
 			"id": 40,
-			"nameId": 766807,
+			"nameId": 1048162,
 			"ornamentId": 130,
 			"icon": "icon_kolizeum05",
 			"illus": "tx_illu_arena_05",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 3070,
+			"highRatingBound": 3369
 		},
 		{
 			"id": 42,
@@ -310,7 +246,9 @@
 			"ornamentId": 131,
 			"icon": "icon_kolizeum06",
 			"illus": "tx_illu_arena_06",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 3320,
+			"highRatingBound": 3699
 		},
 		{
 			"id": 43,
@@ -318,7 +256,9 @@
 			"ornamentId": 131,
 			"icon": "icon_kolizeum06",
 			"illus": "tx_illu_arena_06",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 3650,
+			"highRatingBound": 4029
 		},
 		{
 			"id": 44,
@@ -326,7 +266,9 @@
 			"ornamentId": 131,
 			"icon": "icon_kolizeum06",
 			"illus": "tx_illu_arena_06",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 3980,
+			"highRatingBound": 4359
 		},
 		{
 			"id": 45,
@@ -334,7 +276,9 @@
 			"ornamentId": 131,
 			"icon": "icon_kolizeum06",
 			"illus": "tx_illu_arena_06",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 4310,
+			"highRatingBound": 4689
 		},
 		{
 			"id": 46,
@@ -342,7 +286,9 @@
 			"ornamentId": 131,
 			"icon": "icon_kolizeum06",
 			"illus": "tx_illu_arena_06",
-			"isLastLeague": false
+			"isLastLeague": false,
+			"lowRatingBound": 4640,
+			"highRatingBound": 5000
 		},
 		{
 			"id": 47,
@@ -350,15 +296,9 @@
 			"ornamentId": 132,
 			"icon": "icon_kolizeum07",
 			"illus": "tx_illu_arena_07",
-			"isLastLeague": true
-		},
-		{
-			"id": 48,
-			"nameId": 766854,
-			"ornamentId": 129,
-			"icon": "icon_kolizeum04",
-			"illus": "tx_illu_arena_04",
-			"isLastLeague": false
+			"isLastLeague": true,
+			"lowRatingBound": 4999,
+			"highRatingBound": 5001
 		}
 	]
 }

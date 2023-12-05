@@ -8408,12 +8408,12 @@
 			"id": 146800640.0,
 			"rightExists": true,
 			"bottomExists": false,
-			"leftExists": false,
-			"topExists": false,
+			"leftExists": true,
+			"topExists": true,
 			"rightMapId": 146801664.0,
 			"bottomMapId": 0.0,
-			"leftMapId": 0.0,
-			"topMapId": 0.0
+			"leftMapId": 81789954.0,
+			"topMapId": 81789954.0
 		},
 		{
 			"id": 146800898.0,
@@ -24363,6 +24363,28 @@
 			"rightMapId": 229900288.0,
 			"bottomMapId": 0.0,
 			"leftMapId": 0.0,
+			"topMapId": 0.0
+		},
+		{
+			"id": 232259584.0,
+			"rightExists": false,
+			"bottomExists": false,
+			"leftExists": true,
+			"topExists": false,
+			"rightMapId": 0.0,
+			"bottomMapId": 0.0,
+			"leftMapId": 60032000.0,
+			"topMapId": 0.0
+		},
+		{
+			"id": 232260608.0,
+			"rightExists": false,
+			"bottomExists": false,
+			"leftExists": true,
+			"topExists": false,
+			"rightMapId": 0.0,
+			"bottomMapId": 0.0,
+			"leftMapId": 232259584.0,
 			"topMapId": 0.0
 		}
 	]

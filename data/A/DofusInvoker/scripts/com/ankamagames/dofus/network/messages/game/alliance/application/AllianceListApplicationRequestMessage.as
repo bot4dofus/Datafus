@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.application
    public class AllianceListApplicationRequestMessage extends PaginationRequestAbstractMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5210;
+      public static const protocolId:uint = 7349;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.application
       
       override public function getMessageId() : uint
       {
-         return 5210;
+         return 7349;
       }
       
       public function initAllianceListApplicationRequestMessage(offset:Number = 0, count:uint = 0) : AllianceListApplicationRequestMessage

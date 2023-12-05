@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.quest
    public class QuestActiveDetailedInformations extends QuestActiveInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 2437;
+      public static const protocolId:uint = 2813;
        
       
       public var stepId:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.quest
       
       override public function getTypeId() : uint
       {
-         return 2437;
+         return 2813;
       }
       
       public function initQuestActiveDetailedInformations(questId:uint = 0, stepId:uint = 0, objectives:Vector.<QuestObjectiveInformations> = null) : QuestActiveDetailedInformations

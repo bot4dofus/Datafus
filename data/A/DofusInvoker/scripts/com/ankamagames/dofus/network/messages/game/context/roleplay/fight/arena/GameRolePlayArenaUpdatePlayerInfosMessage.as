@@ -12,18 +12,20 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
    public class GameRolePlayArenaUpdatePlayerInfosMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7553;
+      public static const protocolId:uint = 5736;
        
       
       private var _isInitialized:Boolean = false;
       
-      public var solo:ArenaRankInfos;
+      public var arenaRanks:Vector.<ArenaRankInfos>;
       
-      private var _solotree:FuncTree;
+      public var banEndDate:Number = 0;
+      
+      private var _arenaRankstree:FuncTree;
       
       public function GameRolePlayArenaUpdatePlayerInfosMessage()
       {
-         this.solo = new ArenaRankInfos();
+         this.arenaRanks = new Vector.<ArenaRankInfos>();
          super();
       }
       
@@ -34,19 +36,21 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       override public function getMessageId() : uint
       {
-         return 7553;
+         return 5736;
       }
       
-      public function initGameRolePlayArenaUpdatePlayerInfosMessage(solo:ArenaRankInfos = null) : GameRolePlayArenaUpdatePlayerInfosMessage
+      public function initGameRolePlayArenaUpdatePlayerInfosMessage(arenaRanks:Vector.<ArenaRankInfos> = null, banEndDate:Number = 0) : GameRolePlayArenaUpdatePlayerInfosMessage
       {
-         this.solo = solo;
+         this.arenaRanks = arenaRanks;
+         this.banEndDate = banEndDate;
          this._isInitialized = true;
          return this;
       }
       
       override public function reset() : void
       {
-         this.solo = new ArenaRankInfos();
+         this.arenaRanks = new Vector.<ArenaRankInfos>();
+         this.banEndDate = 0;
          this._isInitialized = false;
       }
       
@@ -77,7 +81,16 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       public function serializeAs_GameRolePlayArenaUpdatePlayerInfosMessage(output:ICustomDataOutput) : void
       {
-         this.solo.serializeAs_ArenaRankInfos(output);
+         output.writeShort(this.arenaRanks.length);
+         for(var _i1:uint = 0; _i1 < this.arenaRanks.length; _i1++)
+         {
+            (this.arenaRanks[_i1] as ArenaRankInfos).serializeAs_ArenaRankInfos(output);
+         }
+         if(this.banEndDate < -9007199254740992 || this.banEndDate > 9007199254740992)
+         {
+            throw new Error("Forbidden value (" + this.banEndDate + ") on element banEndDate.");
+         }
+         output.writeDouble(this.banEndDate);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -87,8 +100,15 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       public function deserializeAs_GameRolePlayArenaUpdatePlayerInfosMessage(input:ICustomDataInput) : void
       {
-         this.solo = new ArenaRankInfos();
-         this.solo.deserialize(input);
+         var _item1:ArenaRankInfos = null;
+         var _arenaRanksLen:uint = input.readUnsignedShort();
+         for(var _i1:uint = 0; _i1 < _arenaRanksLen; _i1++)
+         {
+            _item1 = new ArenaRankInfos();
+            _item1.deserialize(input);
+            this.arenaRanks.push(_item1);
+         }
+         this._banEndDateFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -98,13 +118,33 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       public function deserializeAsyncAs_GameRolePlayArenaUpdatePlayerInfosMessage(tree:FuncTree) : void
       {
-         this._solotree = tree.addChild(this._solotreeFunc);
+         this._arenaRankstree = tree.addChild(this._arenaRankstreeFunc);
+         tree.addChild(this._banEndDateFunc);
       }
       
-      private function _solotreeFunc(input:ICustomDataInput) : void
+      private function _arenaRankstreeFunc(input:ICustomDataInput) : void
       {
-         this.solo = new ArenaRankInfos();
-         this.solo.deserializeAsync(this._solotree);
+         var length:uint = input.readUnsignedShort();
+         for(var i:uint = 0; i < length; i++)
+         {
+            this._arenaRankstree.addChild(this._arenaRanksFunc);
+         }
+      }
+      
+      private function _arenaRanksFunc(input:ICustomDataInput) : void
+      {
+         var _item:ArenaRankInfos = new ArenaRankInfos();
+         _item.deserialize(input);
+         this.arenaRanks.push(_item);
+      }
+      
+      private function _banEndDateFunc(input:ICustomDataInput) : void
+      {
+         this.banEndDate = input.readDouble();
+         if(this.banEndDate < -9007199254740992 || this.banEndDate > 9007199254740992)
+         {
+            throw new Error("Forbidden value (" + this.banEndDate + ") on element of GameRolePlayArenaUpdatePlayerInfosMessage.banEndDate.");
+         }
       }
    }
 }

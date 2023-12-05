@@ -71,6 +71,7 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.logic.common.managers.HyperlinkOpenAnomaly;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkOpenBook;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkOpenCompanion;
+   import com.ankamagames.dofus.logic.common.managers.HyperlinkOpenPvpArena;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkOptionManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkPresetManager;
    import com.ankamagames.dofus.logic.common.managers.HyperlinkScreenshot;
@@ -1135,6 +1136,8 @@ package com.ankamagames.dofus.logic.connection.frames
          HyperlinkFactory.registerProtocol("openOption",HyperlinkOptionManager.openOption,null,null,true);
          HyperlinkFactory.registerProtocol("highlightElement",SubhintInspector.selectElementInInspector,null,null,true,SubhintInspector.processRollOver);
          HyperlinkFactory.registerProtocol("openBook",HyperlinkOpenBook.open,null,null,true);
+         HyperlinkFactory.registerProtocol("openArena",HyperlinkOpenPvpArena.open);
+         HyperlinkFactory.registerProtocol("openArenaRewards",HyperlinkOpenPvpArena.openArenaRewardTab);
          HyperlinkFactory.registerProtocol("openFightResult",HyperlinkFightResultManager.open);
          HyperlinkFactory.registerProtocol("leaveBreach",HyperlinkBreachManager.leaveBreach);
          HyperlinkFactory.registerProtocol("invitGroup",HyperlinkBreachManager.invitGroup);

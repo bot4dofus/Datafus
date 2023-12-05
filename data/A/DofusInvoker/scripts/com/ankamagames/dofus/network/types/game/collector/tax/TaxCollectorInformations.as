@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.types.game.collector.tax
    public class TaxCollectorInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 8675;
+      public static const protocolId:uint = 8047;
        
       
       public var uniqueId:Number = 0;
@@ -72,7 +72,7 @@ package com.ankamagames.dofus.network.types.game.collector.tax
       
       public function getTypeId() : uint
       {
-         return 8675;
+         return 8047;
       }
       
       public function initTaxCollectorInformations(uniqueId:Number = 0, firstNameId:uint = 0, lastNameId:uint = 0, allianceIdentity:AllianceInformation = null, additionalInfos:AdditionalTaxCollectorInformation = null, worldX:int = 0, worldY:int = 0, subAreaId:uint = 0, state:uint = 0, look:EntityLook = null, complements:Vector.<TaxCollectorComplementaryInformations> = null, characteristics:CharacterCharacteristics = null, equipments:Vector.<ObjectItem> = null, spells:Vector.<TaxCollectorOrderedSpell> = null) : TaxCollectorInformations

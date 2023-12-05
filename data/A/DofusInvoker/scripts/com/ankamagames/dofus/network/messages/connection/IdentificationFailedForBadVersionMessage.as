@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class IdentificationFailedForBadVersionMessage extends IdentificationFailedMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7224;
+      public static const protocolId:uint = 8809;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 7224;
+         return 8809;
       }
       
       public function initIdentificationFailedForBadVersionMessage(reason:uint = 99, requiredVersion:Version = null) : IdentificationFailedForBadVersionMessage

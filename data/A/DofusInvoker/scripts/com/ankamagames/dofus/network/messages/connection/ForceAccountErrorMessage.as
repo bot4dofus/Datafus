@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class ForceAccountErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5913;
+      public static const protocolId:uint = 5002;
        
       
       public function ForceAccountErrorMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 5913;
+         return 5002;
       }
       
       public function initForceAccountErrorMessage() : ForceAccountErrorMessage

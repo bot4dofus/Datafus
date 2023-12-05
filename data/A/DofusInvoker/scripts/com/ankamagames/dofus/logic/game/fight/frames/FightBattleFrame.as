@@ -4,7 +4,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.atouin.utils.DataMapProvider;
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.berilia.managers.TooltipManager;
-   import com.ankamagames.dofus.externalnotification.ExternalNotificationManager;
    import com.ankamagames.dofus.externalnotification.enums.ExternalNotificationTypeEnum;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
@@ -482,10 +481,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                KernelEventsManager.getInstance().processCallback(HookList.GameFightTurnStart,gftsmsg.id,gftsmsg.waitTime * 100,!!isResumeMessage ? (msg as GameFightTurnResumeMessage).remainingTime * 100 : gftsmsg.waitTime * 100,Dofus.getInstance().options.getOption("turnPicture"));
                if(this._turnFrame.myTurn && PlayerManager.getInstance().kisServerPort > 0)
                {
-                  if(ExternalNotificationManager.getInstance().canAddExternalNotification(ExternalNotificationTypeEnum.KOLO_TURN_START))
-                  {
-                     KernelEventsManager.getInstance().processCallback(HookList.ArenaExternalNotification,ExternalNotificationTypeEnum.KOLO_TURN_START,!!isResumeMessage ? (msg as GameFightTurnResumeMessage).remainingTime * 100 : gftsmsg.waitTime * 100);
-                  }
+                  KernelEventsManager.getInstance().processCallback(HookList.ArenaExternalNotification,ExternalNotificationTypeEnum.KOLO_TURN_START,!!isResumeMessage ? (msg as GameFightTurnResumeMessage).remainingTime * 100 : gftsmsg.waitTime * 100);
                }
                if(this._skipTurnTimer)
                {
@@ -654,6 +650,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   _log.debug("[BUFFS DEBUG] Début du tour de jeu " + this._turnsCount + " !");
                }
                BuffManager.getInstance().spellBuffsToIgnore.length = 0;
+               KernelEventsManager.getInstance().processCallback(HookList.GameFightRoundStart);
                return true;
             case msg is GameFightLeaveMessage:
                gflmsg = msg as GameFightLeaveMessage;

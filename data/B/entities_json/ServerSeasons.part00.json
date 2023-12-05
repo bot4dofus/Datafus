@@ -104,7 +104,7 @@
 			"seasonNumber": 7,
 			"information": "Temporis VII / VIII : Osatopia",
 			"beginning": 1682982000000.0,
-			"closure": 1703980800000.0,
+			"closure": 1700611200000.0,
 			"resetDate": -3600000.0,
 			"flagObjectId": 20763
 		},
@@ -125,6 +125,24 @@
 			"closure": 1682118000000.0,
 			"resetDate": -3600000.0,
 			"flagObjectId": 28400
+		},
+		{
+			"uid": 28,
+			"seasonNumber": 9,
+			"information": "Saison Koliz\u00e9um 1",
+			"beginning": 1701734400000.0,
+			"closure": 1710806400000.0,
+			"resetDate": -3600000.0,
+			"flagObjectId": 29425
+		},
+		{
+			"uid": 29,
+			"seasonNumber": 9,
+			"information": "Saison Koliz\u00e9um Beta",
+			"beginning": 1699920000000.0,
+			"closure": 1701734400000.0,
+			"resetDate": -3600000.0,
+			"flagObjectId": 29425
 		}
 	]
 }

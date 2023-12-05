@@ -166,7 +166,7 @@
 			"nameId": 272239,
 			"parentId": 0,
 			"icon": "cat_7",
-			"order": 8,
+			"order": 7,
 			"color": "0xcb35fd",
 			"achievementIds": [],
 			"visibilityCriterion": "null"
@@ -1034,7 +1034,10 @@
 				1070,
 				2005,
 				2006,
-				2007
+				2007,
+				6271,
+				6272,
+				6273
 			],
 			"visibilityCriterion": "null"
 		},
@@ -1475,7 +1478,8 @@
 				5162,
 				5163,
 				5220,
-				5222
+				5222,
+				7761
 			],
 			"visibilityCriterion": "null"
 		},
@@ -2043,6 +2047,16 @@
 				1034,
 				1035
 			],
+			"visibilityCriterion": "null"
+		},
+		{
+			"id": 62,
+			"nameId": 326514,
+			"parentId": 0,
+			"icon": "cat_11",
+			"order": 8,
+			"color": "",
+			"achievementIds": [],
 			"visibilityCriterion": "null"
 		},
 		{
@@ -3980,7 +3994,8 @@
 				558,
 				597,
 				655,
-				656
+				656,
+				7760
 			],
 			"visibilityCriterion": "null"
 		},
@@ -4692,7 +4707,7 @@
 		},
 		{
 			"id": 151,
-			"nameId": 1046608,
+			"nameId": 1046944,
 			"parentId": 103,
 			"icon": "",
 			"order": 18,
@@ -4712,6 +4727,43 @@
 				7788
 			],
 			"visibilityCriterion": "SC=5&ST=7"
+		},
+		{
+			"id": 152,
+			"nameId": 1048385,
+			"parentId": 62,
+			"icon": "",
+			"order": 2,
+			"color": "",
+			"achievementIds": [
+				7804,
+				7805,
+				7806,
+				7807,
+				7808,
+				7809
+			],
+			"visibilityCriterion": ""
+		},
+		{
+			"id": 153,
+			"nameId": 1048384,
+			"parentId": 62,
+			"icon": "",
+			"order": 3,
+			"color": "",
+			"achievementIds": [
+				7794,
+				7795,
+				7796,
+				7797,
+				7798,
+				7800,
+				7801,
+				7802,
+				7803
+			],
+			"visibilityCriterion": ""
 		}
 	]
 }

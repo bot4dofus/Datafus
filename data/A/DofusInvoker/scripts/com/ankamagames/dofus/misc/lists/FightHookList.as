@@ -74,6 +74,14 @@ package com.ankamagames.dofus.misc.lists
       public static const FightersInitiative:String = "FighterInitiative";
       
       public static const SlaveTurnStart:String = "SlaveTurnStart";
+      
+      public static const UnlockSurrender:String = "UnlockSurrender";
+      
+      public static const SurrenderInfo:String = "SurrenderInfo";
+      
+      public static const SurrenderVoteExternalNotification:String = "SurrenderVoteExternalNotification";
+      
+      public static const SurrenderVoteRefused:String = "SurrenderVoteRefused";
        
       
       public function FightHookList()
@@ -118,6 +126,10 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(FighterRemoved);
          Hook.createHook(FightersInitiative);
          Hook.createHook(SlaveTurnStart);
+         Hook.createHook(UnlockSurrender);
+         Hook.createHook(SurrenderInfo);
+         Hook.createHook(SurrenderVoteExternalNotification);
+         Hook.createHook(SurrenderVoteRefused);
       }
    }
 }

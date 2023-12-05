@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context
    public class EntityMovementInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 2714;
+      public static const protocolId:uint = 2256;
        
       
       public var id:int = 0;
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.types.game.context
       
       public function getTypeId() : uint
       {
-         return 2714;
+         return 2256;
       }
       
       public function initEntityMovementInformations(id:int = 0, steps:Vector.<int> = null) : EntityMovementInformations

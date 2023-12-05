@@ -70,22 +70,22 @@ package com.ankamagames.dofus.datacenter.items.criterion
                criterion = new GuildMasterItemCriterion(pServerCriterionForm);
                break;
             case "Kd":
-               criterion = new ArenaDuelRankCriterion(pServerCriterionForm);
+               criterion = new Arena1V1LeagueCriterion(pServerCriterionForm);
                break;
             case "KD":
-               criterion = new ArenaMaxDuelRankCriterion(pServerCriterionForm);
+               criterion = new ArenaMax1V1LeagueCriterion(pServerCriterionForm);
                break;
             case "Ks":
-               criterion = new ArenaSoloRankCriterion(pServerCriterionForm);
+               criterion = new Arena2V2LeagueCriterion(pServerCriterionForm);
                break;
             case "KS":
-               criterion = new ArenaMaxSoloRankCriterion(pServerCriterionForm);
+               criterion = new ArenaMax2V2LeagueCriterion(pServerCriterionForm);
                break;
             case "Kt":
-               criterion = new ArenaTeamRankCriterion(pServerCriterionForm);
+               criterion = new Arena3V3LeagueCriterion(pServerCriterionForm);
                break;
             case "KT":
-               criterion = new ArenaMaxTeamRankCriterion(pServerCriterionForm);
+               criterion = new ArenaMax3V3LeagueCriterion(pServerCriterionForm);
                break;
             case "MK":
                criterion = new MapCharactersItemCriterion(pServerCriterionForm);

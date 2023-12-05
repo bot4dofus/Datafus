@@ -199,6 +199,8 @@ package com.ankamagames.dofus.misc.lists
       
       public static const GameFightTurnChangeInformations:String = "GameFightTurnChangeInformations";
       
+      public static const GameFightRoundStart:String = "GameFightRoundStart";
+      
       public static const GameFightTurnEnd:String = "GameFightTurnEnd";
       
       public static const FightersListUpdated:String = "FightersListUpdated";
@@ -393,6 +395,8 @@ package com.ankamagames.dofus.misc.lists
       
       public static const SetDofusQuality:String = "SetDofusQuality";
       
+      public static const UpdateNotification:String = "UpdateNotification";
+      
       public static const CloseNotification:String = "CloseNotification";
       
       public static const HideNotification:String = "HideNotification";
@@ -502,6 +506,8 @@ package com.ankamagames.dofus.misc.lists
       public static const LocatePorisAssistant:String = "LocatePorisAssistant";
       
       public static const AreTemporisRewardsAvailable:String = "AreTemporisRewardsAvailable";
+      
+      public static const AreKolizeumRewardsAvailable:String = "AreKolizeumRewardsAvailable";
       
       public static const MapDebugWorldGraphSortcutToggle:String = "MapDebugWorldGraphSortcutToggle";
       
@@ -638,6 +644,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(GameFightStarting);
          Hook.createHook(GameFightJoin);
          Hook.createHook(GameFightTurnChangeInformations);
+         Hook.createHook(GameFightRoundStart);
          Hook.createHook(GameFightTurnEnd);
          Hook.createHook(FightersListUpdated);
          Hook.createHook(GameFightTurnStart);
@@ -735,6 +742,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(WorldMouseWheel);
          Hook.createHook(QualitySelectionRequired);
          Hook.createHook(SetDofusQuality);
+         Hook.createHook(UpdateNotification);
          Hook.createHook(CloseNotification);
          Hook.createHook(HideNotification);
          Hook.createHook(InactivityNotification);
@@ -789,6 +797,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(SearchForgettableSpellScroll);
          Hook.createHook(LocatePorisAssistant);
          Hook.createHook(AreTemporisRewardsAvailable);
+         Hook.createHook(AreKolizeumRewardsAvailable);
          Hook.createHook(MapDebugWorldGraphSortcutToggle);
          Hook.createHook(SaveCurrentZaap);
          Hook.createHook(UpdateKnownZaaps);

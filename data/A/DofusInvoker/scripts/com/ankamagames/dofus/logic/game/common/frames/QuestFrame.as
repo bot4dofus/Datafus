@@ -169,9 +169,11 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       private static const TEMPORIS_CATEGORY:uint = 107;
       
+      private static const KOLIZEUM_CATEGORY_ID:uint = 153;
+      
       private static const EXPEDITION_ACHIEVEMENT_CATEGORY_ID:uint = 136;
       
-      private static const STORAGE_NEW_TEMPORIS_REWARD:String = "storageNewTemporisReward";
+      private static const STORAGE_NEW_REWARD:String = "storageNewReward";
       
       public static var notificationList:Array;
        
@@ -225,7 +227,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          super();
       }
       
-      private static function displayFinishedAchievementInChat(finishedAchievement:Achievement) : void
+      private static function displayFinishedAchievementInChat(finishedAchievement:Achievement, isTemporis:Boolean = false) : void
       {
          var itemAwardIndex:uint = 0;
          var itemQuantity:uint = 0;
@@ -258,7 +260,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   currentItemAward = ItemWrapper.create(0,0,itemId,itemQuantity,new Vector.<ObjectEffect>(),false);
                   if(currentItemAward !== null)
                   {
-                     chatMessage = I18n.getUiText("ui.temporis.rewardObtained",["{item," + currentItemAward.id + "::" + currentItemAward.name + "}","{openTemporisQuestTab::" + I18n.getUiText("ui.temporis.getReward") + "}"]);
+                     chatMessage = I18n.getUiText("ui.temporis.rewardObtained",["{item," + currentItemAward.id + "::" + currentItemAward.name + "}","{" + (!!isTemporis ? "openTemporisQuestTab" : "openArenaRewards") + "::" + I18n.getUiText("ui.temporis.getReward") + "}"]);
                      KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,chatMessage,ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,TimeManager.getInstance().getTimestamp());
                   }
                }
@@ -602,6 +604,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var characterDst:DataStoreType = null;
          var companion:Companion = null;
          var param:Object = null;
+         var characDst:DataStoreType = null;
          var achievementId:int = 0;
          var playerId:Number = NaN;
          var achievementFinished:Achievement = null;
@@ -1119,10 +1122,16 @@ package com.ankamagames.dofus.logic.game.common.frames
                      }
                   }
                   characterDst = new DataStoreType("Module_Ankama_Grimoire",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_CHARACTER);
-                  StoreDataManager.getInstance().setData(characterDst,STORAGE_NEW_TEMPORIS_REWARD,true);
+                  StoreDataManager.getInstance().setData(characterDst,STORAGE_NEW_REWARD,true);
                   KernelEventsManager.getInstance().processCallback(HookList.AreTemporisRewardsAvailable,true);
                }
-               if(finishedAchievement.category.visible || finishedAchievement.category.id === EXPEDITION_ACHIEVEMENT_CATEGORY_ID)
+               if(finishedAchievement.category.id === KOLIZEUM_CATEGORY_ID)
+               {
+                  characDst = new DataStoreType("Module_Ankama_Grimoire",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_CHARACTER);
+                  StoreDataManager.getInstance().setData(characDst,STORAGE_NEW_REWARD,true);
+                  KernelEventsManager.getInstance().processCallback(HookList.AreKolizeumRewardsAvailable,true);
+               }
+               if(finishedAchievement.category.visible || finishedAchievement.category.id === EXPEDITION_ACHIEVEMENT_CATEGORY_ID || finishedAchievement.category.id === KOLIZEUM_CATEGORY_ID)
                {
                   for each(achievementId in this._finishedCharacterAchievementIds)
                   {
@@ -1139,9 +1148,9 @@ package com.ankamagames.dofus.logic.game.common.frames
                      this._rewardableAchievementsVisible = true;
                      KernelEventsManager.getInstance().processCallback(QuestHookList.RewardableAchievementsVisible,this._rewardableAchievementsVisible);
                   }
-                  if(FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_ACHIEVEMENT_PROGRESS) && finishedAchievement.category.id === TEMPORIS_CATEGORY)
+                  if(FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.TEMPORIS_ACHIEVEMENT_PROGRESS) && finishedAchievement.category.id === TEMPORIS_CATEGORY || FeatureManager.getInstance().isFeatureWithKeywordEnabled(FeatureEnum.PVP_KIS) && finishedAchievement.category.id === KOLIZEUM_CATEGORY_ID)
                   {
-                     displayFinishedAchievementInChat(finishedAchievement);
+                     displayFinishedAchievementInChat(finishedAchievement,finishedAchievement.category.id === TEMPORIS_CATEGORY);
                   }
                   else
                   {
@@ -1580,7 +1589,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                if(achievement !== null)
                {
                   category = achievement.category;
-                  if(category !== null && category.id !== TEMPORIS_CATEGORY && category.id !== EXPEDITION_ACHIEVEMENT_CATEGORY_ID)
+                  if(category !== null && category.id !== TEMPORIS_CATEGORY && category.id !== EXPEDITION_ACHIEVEMENT_CATEGORY_ID && category.id !== KOLIZEUM_CATEGORY_ID)
                   {
                      return true;
                   }

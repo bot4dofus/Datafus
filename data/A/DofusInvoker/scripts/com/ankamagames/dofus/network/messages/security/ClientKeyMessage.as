@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.security
    public class ClientKeyMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5072;
+      public static const protocolId:uint = 316;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.security
       
       override public function getMessageId() : uint
       {
-         return 5072;
+         return 316;
       }
       
       public function initClientKeyMessage(key:String = "") : ClientKeyMessage

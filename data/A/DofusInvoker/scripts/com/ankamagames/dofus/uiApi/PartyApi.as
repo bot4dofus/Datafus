@@ -2,12 +2,12 @@ package com.ankamagames.dofus.uiApi
 {
    import com.ankamagames.berilia.interfaces.IApi;
    import com.ankamagames.berilia.types.data.UiModule;
-   import com.ankamagames.dofus.internalDatacenter.arena.ArenaRankInfosWrapper;
    import com.ankamagames.dofus.internalDatacenter.people.PartyMemberWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.frames.PartyManagementFrame;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
+   import flash.utils.Dictionary;
    import flash.utils.getQualifiedClassName;
    
    [InstanciedApi]
@@ -131,19 +131,19 @@ package com.ankamagames.dofus.uiApi
          return this.partyManagementFrame.arenaAlliesIds;
       }
       
-      public function getArenaRankSoloInfos() : ArenaRankInfosWrapper
+      public function getArenarankInfo() : Dictionary
       {
-         return this.partyManagementFrame.arenaRankSoloInfos;
+         return this.partyManagementFrame.arenaRankInfo;
       }
       
-      public function getArenaRankGroupInfos() : ArenaRankInfosWrapper
+      public function getXpActivated() : Boolean
       {
-         return this.partyManagementFrame.arenaRankGroupInfos;
+         return this.partyManagementFrame.xpActivated;
       }
       
-      public function getArenaRankDuelInfos() : ArenaRankInfosWrapper
+      public function getArenaBanEndDate() : Number
       {
-         return this.partyManagementFrame.arenaRankDuelInfos;
+         return this.partyManagementFrame.banEndDate;
       }
       
       public function getAllMemberFollowPlayerId(partyId:int) : Number

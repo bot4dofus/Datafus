@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses
    public class HouseToSellListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5156;
+      public static const protocolId:uint = 4635;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses
       
       override public function getMessageId() : uint
       {
-         return 5156;
+         return 4635;
       }
       
       public function initHouseToSellListMessage(pageIndex:uint = 0, totalPage:uint = 0, houseList:Vector.<HouseInformationsForSell> = null) : HouseToSellListMessage

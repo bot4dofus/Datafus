@@ -2321,6 +2321,18 @@
 			"nameId": 1044461,
 			"actionId": 0,
 			"displayTooltip": false
+		},
+		{
+			"id": 413,
+			"nameId": 1050927,
+			"actionId": 0,
+			"displayTooltip": true
+		},
+		{
+			"id": 414,
+			"nameId": 1051467,
+			"actionId": 0,
+			"displayTooltip": true
 		}
 	]
 }

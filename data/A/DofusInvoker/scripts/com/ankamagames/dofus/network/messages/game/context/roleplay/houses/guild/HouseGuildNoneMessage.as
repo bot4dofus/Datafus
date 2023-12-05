@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses.guil
    public class HouseGuildNoneMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1896;
+      public static const protocolId:uint = 4939;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses.guil
       
       override public function getMessageId() : uint
       {
-         return 1896;
+         return 4939;
       }
       
       public function initHouseGuildNoneMessage(houseId:uint = 0, instanceId:uint = 0, secondHand:Boolean = false) : HouseGuildNoneMessage

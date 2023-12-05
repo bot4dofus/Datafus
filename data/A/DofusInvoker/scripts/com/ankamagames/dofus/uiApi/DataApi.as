@@ -1039,7 +1039,7 @@ package com.ankamagames.dofus.uiApi
          }
          var newTotalExperience:int = experienceBoost + item.experiencePoints;
          var evolutiveItemType:EvolutiveItemType = item.type.evolutiveType;
-         if(evolutiveItemType.maxLevel == item.evolutiveLevel)
+         if(evolutiveItemType.getMaxLevel() == item.evolutiveLevel)
          {
             return [];
          }

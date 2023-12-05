@@ -25,6 +25,10 @@ package com.ankamagames.dofus.datacenter.arena
       
       public var isLastLeague:Boolean;
       
+      public var lowRatingBound:int;
+      
+      public var highRatingBound:int;
+      
       private var _name:String;
       
       private var _iconWithExtension:String;

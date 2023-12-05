@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.job
    public class JobLevelUpMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2061;
+      public static const protocolId:uint = 687;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.job
       
       override public function getMessageId() : uint
       {
-         return 2061;
+         return 687;
       }
       
       public function initJobLevelUpMessage(newLevel:uint = 0, jobsDescription:JobDescription = null) : JobLevelUpMessage

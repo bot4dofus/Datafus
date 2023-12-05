@@ -20,8 +20,6 @@ package com.ankamagames.jerakine.resources.protocols.impl
       
       private static var _indexes:Dictionary = new Dictionary();
       
-      private static var _properties:Dictionary = new Dictionary();
-      
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(PakProtocol2));
        
       
@@ -109,17 +107,15 @@ package com.ankamagames.jerakine.resources.protocols.impl
          var propertiesCount:uint = 0;
          var propertyName:String = null;
          var propertyValue:String = null;
-         var i:uint = 0;
          var filePath:String = null;
          var fileOffset:int = 0;
          var fileLength:int = 0;
+         var i:int = 0;
          var idx:int = 0;
          var fileUri:Uri = uri;
          var file:File = fileUri.toFile();
          var indexes:Dictionary = new Dictionary();
-         var properties:Dictionary = new Dictionary();
          _indexes[uri.path] = indexes;
-         _properties[uri.path] = properties;
          while(file && file.exists)
          {
             fs = new FileStream();
@@ -139,24 +135,20 @@ package com.ankamagames.jerakine.resources.protocols.impl
             propertiesCount = fs.readUnsignedInt();
             fs.position = propertiesOffset;
             file = null;
-            for(i = 0; i < propertiesCount; i++)
+            propertyName = fs.readUTF();
+            propertyValue = fs.readUTF();
+            if(propertyName == "link")
             {
-               propertyName = fs.readUTF();
-               propertyValue = fs.readUTF();
-               properties[propertyName] = propertyValue;
-               if(propertyName == "link")
+               idx = fileUri.path.lastIndexOf("/");
+               if(idx != -1)
                {
-                  idx = fileUri.path.lastIndexOf("/");
-                  if(idx != -1)
-                  {
-                     fileUri = new Uri(fileUri.path.substr(0,idx) + "/" + propertyValue);
-                  }
-                  else
-                  {
-                     fileUri = new Uri(propertyValue);
-                  }
-                  file = fileUri.toFile();
+                  fileUri = new Uri(fileUri.path.substr(0,idx) + "/" + propertyValue);
                }
+               else
+               {
+                  fileUri = new Uri(propertyValue);
+               }
+               file = fileUri.toFile();
             }
             fs.position = indexOffset;
             for(i = 0; i < indexCount; i++)

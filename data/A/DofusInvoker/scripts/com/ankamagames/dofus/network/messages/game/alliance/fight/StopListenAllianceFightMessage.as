@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.fight
    public class StopListenAllianceFightMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 810;
+      public static const protocolId:uint = 4443;
        
       
       public function StopListenAllianceFightMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.fight
       
       override public function getMessageId() : uint
       {
-         return 810;
+         return 4443;
       }
       
       public function initStopListenAllianceFightMessage() : StopListenAllianceFightMessage

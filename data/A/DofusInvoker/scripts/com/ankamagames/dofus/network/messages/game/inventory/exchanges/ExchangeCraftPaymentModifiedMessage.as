@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeCraftPaymentModifiedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6612;
+      public static const protocolId:uint = 495;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 6612;
+         return 495;
       }
       
       public function initExchangeCraftPaymentModifiedMessage(goldSum:Number = 0) : ExchangeCraftPaymentModifiedMessage

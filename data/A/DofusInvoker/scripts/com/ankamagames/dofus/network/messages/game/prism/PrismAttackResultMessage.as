@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.prism
    public class PrismAttackResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3335;
+      public static const protocolId:uint = 8922;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function getMessageId() : uint
       {
-         return 3335;
+         return 8922;
       }
       
       public function initPrismAttackResultMessage(prism:PrismGeolocalizedInformation = null, result:uint = 0) : PrismAttackResultMessage

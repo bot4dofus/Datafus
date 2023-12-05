@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.chest
    public class GuildLogbookChestActivity extends GuildLogbookEntryBasicInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 5168;
+      public static const protocolId:uint = 7744;
        
       
       public var playerId:Number = 0;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.chest
       
       override public function getTypeId() : uint
       {
-         return 5168;
+         return 7744;
       }
       
       public function initGuildLogbookChestActivity(id:uint = 0, date:Number = 0, playerId:Number = 0, playerName:String = "", eventType:uint = 0, quantity:uint = 0, object:ObjectItemNotInContainer = null, sourceTabId:uint = 0, destinationTabId:uint = 0) : GuildLogbookChestActivity

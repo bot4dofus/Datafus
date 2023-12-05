@@ -9363,7 +9363,7 @@
 		{
 			"id": 2806,
 			"nameId": 862911,
-			"descriptionId": 869777,
+			"descriptionId": 1052109,
 			"categoryId": 14,
 			"level": 30,
 			"mapId": 217449476,
@@ -9797,7 +9797,7 @@
 			"nameId": 863119,
 			"descriptionId": 869492,
 			"categoryId": 6,
-			"level": 15,
+			"level": 30,
 			"mapId": 0,
 			"isLarge": false,
 			"startDate": 0.0,
@@ -11727,7 +11727,7 @@
 		{
 			"id": 3659,
 			"nameId": 868819,
-			"descriptionId": 869778,
+			"descriptionId": 1052110,
 			"categoryId": 14,
 			"level": 30,
 			"mapId": 216663298,

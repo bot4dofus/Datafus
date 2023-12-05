@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class ObjectMovementMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8402;
+      public static const protocolId:uint = 9376;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 8402;
+         return 9376;
       }
       
       public function initObjectMovementMessage(objectUID:uint = 0, position:uint = 63) : ObjectMovementMessage

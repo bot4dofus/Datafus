@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class ServerSelectionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6291;
+      public static const protocolId:uint = 6131;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 6291;
+         return 6131;
       }
       
       public function initServerSelectionMessage(serverId:uint = 0) : ServerSelectionMessage

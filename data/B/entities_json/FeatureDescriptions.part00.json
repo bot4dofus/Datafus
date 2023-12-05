@@ -1343,11 +1343,16 @@
 		{
 			"id": 140,
 			"nameId": 865882,
-			"descriptionId": 884078,
+			"descriptionId": 1052649,
 			"priority": 1,
 			"parentId": 0,
 			"children": [
-				226
+				226,
+				229,
+				314,
+				315,
+				316,
+				317
 			],
 			"criterion": "null"
 		},
@@ -2060,12 +2065,11 @@
 			"id": 226,
 			"nameId": 918155,
 			"descriptionId": 918458,
-			"priority": 1,
+			"priority": 6,
 			"parentId": 140,
 			"children": [
 				227,
 				228,
-				229,
 				230
 			],
 			"criterion": "null"
@@ -2074,7 +2078,7 @@
 			"id": 227,
 			"nameId": 918213,
 			"descriptionId": 918352,
-			"priority": 1,
+			"priority": 2,
 			"parentId": 226,
 			"children": [],
 			"criterion": "null"
@@ -2083,7 +2087,7 @@
 			"id": 228,
 			"nameId": 918216,
 			"descriptionId": 918457,
-			"priority": 2,
+			"priority": 1,
 			"parentId": 226,
 			"children": [],
 			"criterion": "null"
@@ -2091,9 +2095,9 @@
 		{
 			"id": 229,
 			"nameId": 918222,
-			"descriptionId": 1008019,
-			"priority": 3,
-			"parentId": 226,
+			"descriptionId": 1053130,
+			"priority": 5,
+			"parentId": 140,
 			"children": [],
 			"criterion": "null"
 		},
@@ -2101,7 +2105,7 @@
 			"id": 230,
 			"nameId": 918226,
 			"descriptionId": 918760,
-			"priority": 4,
+			"priority": 3,
 			"parentId": 226,
 			"children": [],
 			"criterion": "null"
@@ -2303,6 +2307,42 @@
 			"descriptionId": 1044677,
 			"priority": 1,
 			"parentId": 10,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 314,
+			"nameId": 1049296,
+			"descriptionId": 1049386,
+			"priority": 3,
+			"parentId": 140,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 315,
+			"nameId": 1049298,
+			"descriptionId": 1053128,
+			"priority": 2,
+			"parentId": 140,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 316,
+			"nameId": 1049300,
+			"descriptionId": 1053129,
+			"priority": 4,
+			"parentId": 140,
+			"children": [],
+			"criterion": "null"
+		},
+		{
+			"id": 317,
+			"nameId": 1052646,
+			"descriptionId": 1052650,
+			"priority": 1,
+			"parentId": 140,
 			"children": [],
 			"criterion": "null"
 		}

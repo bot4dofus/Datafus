@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class MimicryObjectPreviewMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5947;
+      public static const protocolId:uint = 1654;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 5947;
+         return 1654;
       }
       
       public function initMimicryObjectPreviewMessage(result:ObjectItem = null) : MimicryObjectPreviewMessage

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class HumanInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 9307;
+      public static const protocolId:uint = 2283;
        
       
       public var restrictions:ActorRestrictionsInformations;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       public function getTypeId() : uint
       {
-         return 9307;
+         return 2283;
       }
       
       public function initHumanInformations(restrictions:ActorRestrictionsInformations = null, sex:Boolean = false, options:Vector.<HumanOption> = null) : HumanInformations

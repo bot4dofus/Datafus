@@ -8,16 +8,12 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
    public class ArenaLeagueRanking implements INetworkType
    {
       
-      public static const protocolId:uint = 9091;
+      public static const protocolId:uint = 1978;
        
       
-      public var rank:uint = 0;
+      public var rating:int = 0;
       
-      public var leagueId:uint = 0;
-      
-      public var leaguePoints:int = 0;
-      
-      public var totalLeaguePoints:int = 0;
+      public var leagueId:int = 0;
       
       public var ladderPosition:int = 0;
       
@@ -28,25 +24,21 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
       
       public function getTypeId() : uint
       {
-         return 9091;
+         return 1978;
       }
       
-      public function initArenaLeagueRanking(rank:uint = 0, leagueId:uint = 0, leaguePoints:int = 0, totalLeaguePoints:int = 0, ladderPosition:int = 0) : ArenaLeagueRanking
+      public function initArenaLeagueRanking(rating:int = 0, leagueId:int = 0, ladderPosition:int = 0) : ArenaLeagueRanking
       {
-         this.rank = rank;
+         this.rating = rating;
          this.leagueId = leagueId;
-         this.leaguePoints = leaguePoints;
-         this.totalLeaguePoints = totalLeaguePoints;
          this.ladderPosition = ladderPosition;
          return this;
       }
       
       public function reset() : void
       {
-         this.rank = 0;
+         this.rating = 0;
          this.leagueId = 0;
-         this.leaguePoints = 0;
-         this.totalLeaguePoints = 0;
          this.ladderPosition = 0;
       }
       
@@ -57,18 +49,12 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
       
       public function serializeAs_ArenaLeagueRanking(output:ICustomDataOutput) : void
       {
-         if(this.rank < 0 || this.rank > 20000)
+         if(this.rating < 0 || this.rating > 20000)
          {
-            throw new Error("Forbidden value (" + this.rank + ") on element rank.");
+            throw new Error("Forbidden value (" + this.rating + ") on element rating.");
          }
-         output.writeVarShort(this.rank);
-         if(this.leagueId < 0)
-         {
-            throw new Error("Forbidden value (" + this.leagueId + ") on element leagueId.");
-         }
+         output.writeInt(this.rating);
          output.writeVarShort(this.leagueId);
-         output.writeVarShort(this.leaguePoints);
-         output.writeVarShort(this.totalLeaguePoints);
          output.writeInt(this.ladderPosition);
       }
       
@@ -79,10 +65,8 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
       
       public function deserializeAs_ArenaLeagueRanking(input:ICustomDataInput) : void
       {
-         this._rankFunc(input);
+         this._ratingFunc(input);
          this._leagueIdFunc(input);
-         this._leaguePointsFunc(input);
-         this._totalLeaguePointsFunc(input);
          this._ladderPositionFunc(input);
       }
       
@@ -93,39 +77,23 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
       
       public function deserializeAsyncAs_ArenaLeagueRanking(tree:FuncTree) : void
       {
-         tree.addChild(this._rankFunc);
+         tree.addChild(this._ratingFunc);
          tree.addChild(this._leagueIdFunc);
-         tree.addChild(this._leaguePointsFunc);
-         tree.addChild(this._totalLeaguePointsFunc);
          tree.addChild(this._ladderPositionFunc);
       }
       
-      private function _rankFunc(input:ICustomDataInput) : void
+      private function _ratingFunc(input:ICustomDataInput) : void
       {
-         this.rank = input.readVarUhShort();
-         if(this.rank < 0 || this.rank > 20000)
+         this.rating = input.readInt();
+         if(this.rating < 0 || this.rating > 20000)
          {
-            throw new Error("Forbidden value (" + this.rank + ") on element of ArenaLeagueRanking.rank.");
+            throw new Error("Forbidden value (" + this.rating + ") on element of ArenaLeagueRanking.rating.");
          }
       }
       
       private function _leagueIdFunc(input:ICustomDataInput) : void
       {
-         this.leagueId = input.readVarUhShort();
-         if(this.leagueId < 0)
-         {
-            throw new Error("Forbidden value (" + this.leagueId + ") on element of ArenaLeagueRanking.leagueId.");
-         }
-      }
-      
-      private function _leaguePointsFunc(input:ICustomDataInput) : void
-      {
-         this.leaguePoints = input.readVarShort();
-      }
-      
-      private function _totalLeaguePointsFunc(input:ICustomDataInput) : void
-      {
-         this.totalLeaguePoints = input.readVarShort();
+         this.leagueId = input.readVarShort();
       }
       
       private function _ladderPositionFunc(input:ICustomDataInput) : void

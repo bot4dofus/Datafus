@@ -4145,20 +4145,6 @@
 			"level": 0
 		},
 		{
-			"id": 3184,
-			"categoryId": 4,
-			"gfx": 429,
-			"nameId": 3083,
-			"mapId": 165152262,
-			"realMapId": 0,
-			"x": -13,
-			"y": -29,
-			"outdoor": true,
-			"subareaId": 54,
-			"worldMapId": 1,
-			"level": 0
-		},
-		{
 			"id": 3185,
 			"categoryId": 4,
 			"gfx": 427,
@@ -6301,20 +6287,6 @@
 			"level": 0
 		},
 		{
-			"id": 3357,
-			"categoryId": 3,
-			"gfx": 319,
-			"nameId": 554568,
-			"mapId": 165152262,
-			"realMapId": 0,
-			"x": -13,
-			"y": -29,
-			"outdoor": true,
-			"subareaId": 54,
-			"worldMapId": 1,
-			"level": 0
-		},
-		{
 			"id": 3358,
 			"categoryId": 4,
 			"gfx": 900,
@@ -6885,20 +6857,6 @@
 			"y": -66,
 			"outdoor": true,
 			"subareaId": 878,
-			"worldMapId": 1,
-			"level": 0
-		},
-		{
-			"id": 3405,
-			"categoryId": 4,
-			"gfx": 429,
-			"nameId": 719597,
-			"mapId": 147853315,
-			"realMapId": 0,
-			"x": -6,
-			"y": -12,
-			"outdoor": true,
-			"subareaId": 33,
 			"worldMapId": 1,
 			"level": 0
 		},
@@ -9851,6 +9809,34 @@
 			"realMapId": 0,
 			"x": -19,
 			"y": -23,
+			"outdoor": true,
+			"subareaId": 54,
+			"worldMapId": 1,
+			"level": 0
+		},
+		{
+			"id": 3625,
+			"categoryId": 4,
+			"gfx": 429,
+			"nameId": 1050821,
+			"mapId": 165152262,
+			"realMapId": 0,
+			"x": -13,
+			"y": -29,
+			"outdoor": true,
+			"subareaId": 54,
+			"worldMapId": 1,
+			"level": 0
+		},
+		{
+			"id": 3626,
+			"categoryId": 3,
+			"gfx": 319,
+			"nameId": 1050935,
+			"mapId": 165152262,
+			"realMapId": 0,
+			"x": -13,
+			"y": -29,
 			"outdoor": true,
 			"subareaId": 54,
 			"worldMapId": 1,

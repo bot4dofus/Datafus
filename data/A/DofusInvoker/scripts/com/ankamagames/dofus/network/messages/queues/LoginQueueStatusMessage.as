@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.queues
    public class LoginQueueStatusMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6831;
+      public static const protocolId:uint = 8600;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.queues
       
       override public function getMessageId() : uint
       {
-         return 6831;
+         return 8600;
       }
       
       public function initLoginQueueStatusMessage(position:uint = 0, total:uint = 0) : LoginQueueStatusMessage

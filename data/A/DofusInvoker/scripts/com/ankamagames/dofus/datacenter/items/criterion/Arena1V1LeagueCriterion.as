@@ -1,23 +1,24 @@
 package com.ankamagames.dofus.datacenter.items.criterion
 {
+   import com.ankamagames.dofus.datacenter.arena.ArenaLeague;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.frames.PartyManagementFrame;
    import com.ankamagames.jerakine.data.I18n;
    import com.ankamagames.jerakine.interfaces.IDataCenter;
    
-   public class ArenaMaxSoloRankCriterion extends ItemCriterion implements IDataCenter
+   public class Arena1V1LeagueCriterion extends ItemCriterion implements IDataCenter
    {
        
       
-      public function ArenaMaxSoloRankCriterion(pCriterion:String)
+      public function Arena1V1LeagueCriterion(pCriterion:String)
       {
          super(pCriterion);
       }
       
       override public function get text() : String
       {
-         var readableCriterionValue:String = String(_criterionValue);
-         var readableCriterionRef:String = I18n.getUiText("ui.common.pvpMaxSoloRank");
+         var readableCriterionValue:String = ArenaLeague.getArenaLeagueById(_criterionValue).name;
+         var readableCriterionRef:String = I18n.getUiText("ui.common.pvp1v1League");
          var readableOperator:* = ">";
          if(_operator.text == ItemCriterionOperator.DIFFERENT)
          {
@@ -28,13 +29,13 @@ package com.ankamagames.dofus.datacenter.items.criterion
       
       override public function clone() : IItemCriterion
       {
-         return new ArenaMaxSoloRankCriterion(this.basicText);
+         return new Arena1V1LeagueCriterion(this.basicText);
       }
       
       override protected function getCriterion() : int
       {
          var frame:PartyManagementFrame = Kernel.getWorker().getFrame(PartyManagementFrame) as PartyManagementFrame;
-         return int(frame.arenaRankSoloInfos.maxRank);
+         return !!frame.arenaRank1V1Infos ? int(frame.arenaRank1V1Infos.leagueId) : 0;
       }
    }
 }

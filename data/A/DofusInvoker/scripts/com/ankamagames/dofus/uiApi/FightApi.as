@@ -14,6 +14,7 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
    import com.ankamagames.dofus.logic.game.fight.frames.FightPreparationFrame;
    import com.ankamagames.dofus.logic.game.fight.frames.FightSpellCastFrame;
+   import com.ankamagames.dofus.logic.game.fight.frames.FightSurrenderFrame;
    import com.ankamagames.dofus.logic.game.fight.managers.BuffManager;
    import com.ankamagames.dofus.logic.game.fight.managers.CurrentPlayedFighterManager;
    import com.ankamagames.dofus.logic.game.fight.types.BasicBuff;
@@ -88,11 +89,7 @@ package com.ankamagames.dofus.uiApi
       
       public function getFighters() : Vector.<Number>
       {
-         if(Kernel.getWorker().getFrame(FightBattleFrame) && !Kernel.getWorker().getFrame(FightPreparationFrame))
-         {
-            return this.getFightFrame().battleFrame.fightersList;
-         }
-         return this.getFightFrame().entitiesFrame.getOrdonnedPreFighters();
+         return this.getFightFrame().getFighters();
       }
       
       public function getFighterInitiative(fighterId:Number) : int
@@ -132,6 +129,11 @@ package com.ankamagames.dofus.uiApi
       public function getFightType() : uint
       {
          return this.getFightFrame().fightType;
+      }
+      
+      public function getMaxSurrenderTurn() : int
+      {
+         return this.getFightFrame().surrenderVoteFrame.maxSurrenderTurn;
       }
       
       public function getBuffList(targetId:Number) : Array
@@ -194,11 +196,7 @@ package com.ankamagames.dofus.uiApi
       
       public function isWaitingBeforeFight() : Boolean
       {
-         if(this.getFightFrame().fightType == FightTypeEnum.FIGHT_TYPE_PvMA || this.getFightFrame().fightType == FightTypeEnum.FIGHT_TYPE_PvT)
-         {
-            return true;
-         }
-         return false;
+         return this.getFightFrame().fightType == FightTypeEnum.FIGHT_TYPE_PvMA || this.getFightFrame().fightType == FightTypeEnum.FIGHT_TYPE_PvT;
       }
       
       public function isFightLeader() : Boolean
@@ -281,6 +279,11 @@ package com.ankamagames.dofus.uiApi
          return this.getFightFrame().challengeChoicePhase;
       }
       
+      public function isVotePermitted() : Boolean
+      {
+         return this.getSurrenderFrame().votePermitted;
+      }
+      
       private function getFighterInfos(fighterId:Number) : GameFightFighterInformations
       {
          return this.getFightFrame().entitiesFrame.getEntityInfos(fighterId) as GameFightFighterInformations;
@@ -294,6 +297,16 @@ package com.ankamagames.dofus.uiApi
             throw new ApiError("Unallowed call of FightApi method while not fighting.");
          }
          return frame as FightContextFrame;
+      }
+      
+      private function getSurrenderFrame() : FightSurrenderFrame
+      {
+         var frame:Frame = Kernel.getWorker().getFrame(FightSurrenderFrame);
+         if(!frame)
+         {
+            throw new ApiError("Unallowed call of FightApi method while not fighting.");
+         }
+         return frame as FightSurrenderFrame;
       }
    }
 }

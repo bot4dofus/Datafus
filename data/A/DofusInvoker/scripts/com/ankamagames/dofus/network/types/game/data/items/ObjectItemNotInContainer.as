@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class ObjectItemNotInContainer extends Item implements INetworkType
    {
       
-      public static const protocolId:uint = 4752;
+      public static const protocolId:uint = 2203;
        
       
       public var objectGID:uint = 0;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       override public function getTypeId() : uint
       {
-         return 4752;
+         return 2203;
       }
       
       public function initObjectItemNotInContainer(objectGID:uint = 0, effects:Vector.<ObjectEffect> = null, objectUID:uint = 0, quantity:uint = 0) : ObjectItemNotInContainer

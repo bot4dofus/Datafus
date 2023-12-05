@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild.chest
    public class RemoveListenerOnSynchronizedStorageMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8096;
+      public static const protocolId:uint = 888;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.guild.chest
       
       override public function getMessageId() : uint
       {
-         return 8096;
+         return 888;
       }
       
       public function initRemoveListenerOnSynchronizedStorageMessage(player:String = "") : RemoveListenerOnSynchronizedStorageMessage

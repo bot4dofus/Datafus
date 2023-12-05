@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class MapFightCountMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1874;
+      public static const protocolId:uint = 8632;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 1874;
+         return 8632;
       }
       
       public function initMapFightCountMessage(fightCount:uint = 0) : MapFightCountMessage

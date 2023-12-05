@@ -991,8 +991,8 @@
 		{
 			"id": 83,
 			"nameId": 249249,
-			"superTypeId": 2,
-			"categoryId": 0,
+			"superTypeId": 70,
+			"categoryId": 1,
 			"isInEncyclopedia": true,
 			"plural": false,
 			"gender": 1,
@@ -1147,8 +1147,8 @@
 		{
 			"id": 99,
 			"nameId": 29801,
-			"superTypeId": 2,
-			"categoryId": 0,
+			"superTypeId": 70,
+			"categoryId": 1,
 			"isInEncyclopedia": true,
 			"plural": false,
 			"gender": 0,
@@ -1322,19 +1322,6 @@
 			"plural": false,
 			"gender": 1,
 			"rawZone": "P",
-			"mimickable": false,
-			"craftXpRatio": -1,
-			"evolutiveTypeId": 0
-		},
-		{
-			"id": 118,
-			"nameId": 29678,
-			"superTypeId": 6,
-			"categoryId": 1,
-			"isInEncyclopedia": true,
-			"plural": false,
-			"gender": 0,
-			"rawZone": "null",
 			"mimickable": false,
 			"craftXpRatio": -1,
 			"evolutiveTypeId": 0
@@ -2875,7 +2862,7 @@
 		},
 		{
 			"id": 291,
-			"nameId": 1030971,
+			"nameId": 1051504,
 			"superTypeId": 70,
 			"categoryId": 1,
 			"isInEncyclopedia": true,

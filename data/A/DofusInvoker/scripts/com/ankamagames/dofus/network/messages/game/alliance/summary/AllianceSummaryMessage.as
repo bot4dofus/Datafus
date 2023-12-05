@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.summary
    public class AllianceSummaryMessage extends PaginationAnswerAbstractMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3233;
+      public static const protocolId:uint = 9007;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.summary
       
       override public function getMessageId() : uint
       {
-         return 3233;
+         return 9007;
       }
       
       public function initAllianceSummaryMessage(offset:Number = 0, count:uint = 0, total:uint = 0, alliances:Vector.<AllianceFactSheetInformation> = null) : AllianceSummaryMessage

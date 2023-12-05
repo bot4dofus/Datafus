@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
    public class ObjectEffectDuration extends ObjectEffect implements INetworkType
    {
       
-      public static const protocolId:uint = 5040;
+      public static const protocolId:uint = 157;
        
       
       public var days:uint = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
       
       override public function getTypeId() : uint
       {
-         return 5040;
+         return 157;
       }
       
       public function initObjectEffectDuration(actionId:uint = 0, days:uint = 0, hours:uint = 0, minutes:uint = 0) : ObjectEffectDuration

@@ -3,6 +3,7 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.party.ArenaFightAnswerAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.ArenaRegisterAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.ArenaUnregisterAction;
+   import com.ankamagames.dofus.logic.game.common.actions.party.ArenaXpSwitchModeAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.DungeonPartyFinderAvailableDungeonsAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.DungeonPartyFinderListenAction;
    import com.ankamagames.dofus.logic.game.common.actions.party.DungeonPartyFinderRegisterAction;
@@ -51,6 +52,8 @@ package com.ankamagames.dofus.misc.lists
       public static const ArenaUnregister:DofusApiAction = new DofusApiAction("ArenaUnregisterAction",ArenaUnregisterAction);
       
       public static const ArenaFightAnswer:DofusApiAction = new DofusApiAction("ArenaFightAnswerAction",ArenaFightAnswerAction);
+      
+      public static const ArenaXpSwitchMode:DofusApiAction = new DofusApiAction("ArenaXpSwitchModeAction",ArenaXpSwitchModeAction);
       
       public static const TeleportBuddiesAnswer:DofusApiAction = new DofusApiAction("TeleportBuddiesAnswerAction",TeleportBuddiesAnswerAction);
       

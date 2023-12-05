@@ -749,7 +749,7 @@ package com.ankamagames.dofus.internalDatacenter.items
       
       public function get displayedLevel() : int
       {
-         return this.evolutiveLevel - 1;
+         return this.evolutiveLevel;
       }
       
       public function get possiblePositions() : Vector.<int>

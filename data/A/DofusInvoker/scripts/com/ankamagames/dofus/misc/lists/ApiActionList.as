@@ -186,6 +186,9 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.fight.actions.ShowAllNamesAction;
    import com.ankamagames.dofus.logic.game.fight.actions.ShowMountsInFightAction;
    import com.ankamagames.dofus.logic.game.fight.actions.ShowTacticModeAction;
+   import com.ankamagames.dofus.logic.game.fight.actions.SurrenderInfoRequestAction;
+   import com.ankamagames.dofus.logic.game.fight.actions.SurrenderPopupNameAction;
+   import com.ankamagames.dofus.logic.game.fight.actions.SurrenderVoteAction;
    import com.ankamagames.dofus.logic.game.fight.actions.TimelineEntityClickAction;
    import com.ankamagames.dofus.logic.game.fight.actions.TimelineEntityOutAction;
    import com.ankamagames.dofus.logic.game.fight.actions.TimelineEntityOverAction;
@@ -370,6 +373,12 @@ package com.ankamagames.dofus.misc.lists
       public static const ToggleHelpWanted:DofusApiAction = new DofusApiAction("ToggleHelpWantedAction",ToggleHelpWantedAction);
       
       public static const ToggleLockFight:DofusApiAction = new DofusApiAction("ToggleLockFightAction",ToggleLockFightAction);
+      
+      public static const SurrenderPopupName:DofusApiAction = new DofusApiAction("SurrenderPopupNameAction",SurrenderPopupNameAction);
+      
+      public static const SurrenderInfoRequest:DofusApiAction = new DofusApiAction("SurrenderInfoRequestAction",SurrenderInfoRequestAction);
+      
+      public static const SurrenderVote:DofusApiAction = new DofusApiAction("SurrenderVoteAction",SurrenderVoteAction);
       
       public static const ToggleLockParty:DofusApiAction = new DofusApiAction("ToggleLockPartyAction",ToggleLockPartyAction);
       

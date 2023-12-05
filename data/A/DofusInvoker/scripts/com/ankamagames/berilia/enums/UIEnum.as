@@ -182,6 +182,8 @@ package com.ankamagames.berilia.enums
       public static const MODIFY_TAX_COLLECTOR:String = "modifyTaxCollector";
       
       public static const CONSULT_TAX_COLLECTOR:String = "consultTaxCollector";
+      
+      public static const PVP_ARENA:String = "pvpArena";
        
       
       public function UIEnum()

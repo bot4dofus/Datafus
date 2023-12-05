@@ -925,7 +925,7 @@ package com.ankamagames.dofus.datacenter.effects
                   break;
                case ActionIds.ACTION_EVOLUTIVE_PET_LEVEL:
                   aTmp[0] = this.getItemTypeName(aTmp[0]);
-                  aTmp[2] = aTmp[2] - 1;
+                  aTmp[2] = !!aTmp[2] ? aTmp[2] : 0;
                   break;
                case ActionIds.ACTION_SUPERFOOD_EXPERIENCE:
                   aTmp[2] = aTmp[0];

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
    public class GuildPaddockActivity extends GuildLogbookEntryBasicInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 2636;
+      public static const protocolId:uint = 7067;
        
       
       public var playerId:Number = 0;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.types.game.guild.logbook.global
       
       override public function getTypeId() : uint
       {
-         return 2636;
+         return 7067;
       }
       
       public function initGuildPaddockActivity(id:uint = 0, date:Number = 0, playerId:Number = 0, playerName:String = "", paddockCoordinates:MapCoordinatesExtended = null, farmId:Number = 0, paddockEventType:uint = 0) : GuildPaddockActivity

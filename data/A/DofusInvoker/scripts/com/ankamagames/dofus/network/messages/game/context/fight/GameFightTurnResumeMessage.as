@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightTurnResumeMessage extends GameFightTurnStartMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 737;
+      public static const protocolId:uint = 7115;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 737;
+         return 7115;
       }
       
       public function initGameFightTurnResumeMessage(id:Number = 0, waitTime:uint = 0, remainingTime:uint = 0) : GameFightTurnResumeMessage

@@ -2759,7 +2759,8 @@
 				27911,
 				27912,
 				28214,
-				28488
+				28488,
+				29464
 			],
 			"interactiveId": 90,
 			"range": 1,
@@ -3366,7 +3367,8 @@
 				23341,
 				23342,
 				23343,
-				23344
+				23344,
+				29371
 			],
 			"interactiveId": 41,
 			"range": 1,
@@ -4249,7 +4251,8 @@
 				28073,
 				28074,
 				28075,
-				28076
+				28076,
+				29393
 			],
 			"interactiveId": 58,
 			"range": 1,
@@ -5311,7 +5314,8 @@
 				26660,
 				26661,
 				26662,
-				26663
+				26663,
+				29378
 			],
 			"interactiveId": 94,
 			"range": 1,
@@ -5469,7 +5473,8 @@
 				12846,
 				12847,
 				13589,
-				29010
+				29010,
+				29454
 			],
 			"interactiveId": 103,
 			"range": 1,
@@ -5637,7 +5642,8 @@
 				23621,
 				25220,
 				27537,
-				27544
+				27544,
+				29463
 			],
 			"interactiveId": 107,
 			"range": 1,
@@ -6209,7 +6215,8 @@
 				27921,
 				28200,
 				28201,
-				28202
+				28202,
+				29372
 			],
 			"interactiveId": 122,
 			"range": 1,
@@ -10961,6 +10968,26 @@
 			"useAnimation": "AnimStatique",
 			"cursor": 0,
 			"elementActionId": 0,
+			"availableInHouse": false,
+			"clientDisplay": true,
+			"levelMin": 1
+		},
+		{
+			"id": 417,
+			"nameId": 1031042,
+			"parentJobId": 1,
+			"isForgemagus": false,
+			"modifiableItemTypeIds": [],
+			"gatheredRessourceItem": -1,
+			"craftableItemIds": [
+				29110
+			],
+			"interactiveId": 107,
+			"range": 1,
+			"useRangeInClient": false,
+			"useAnimation": "AnimCueillir0",
+			"cursor": 0,
+			"elementActionId": 2,
 			"availableInHouse": false,
 			"clientDisplay": true,
 			"levelMin": 1
