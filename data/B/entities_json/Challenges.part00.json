@@ -7077,7 +7077,7 @@
 		{
 			"id": 966,
 			"nameId": 1008041,
-			"descriptionId": 1008246,
+			"descriptionId": 1053765,
 			"incompatibleChallenges": [],
 			"categoryId": 1,
 			"iconId": 966,
@@ -8769,7 +8769,7 @@
 		{
 			"id": 1278,
 			"nameId": 1051584,
-			"descriptionId": 1051495,
+			"descriptionId": 1053762,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 977,
@@ -8780,7 +8780,7 @@
 		{
 			"id": 1279,
 			"nameId": 1051585,
-			"descriptionId": 1051497,
+			"descriptionId": 1053763,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 977,
@@ -8791,7 +8791,7 @@
 		{
 			"id": 1280,
 			"nameId": 1051586,
-			"descriptionId": 1051498,
+			"descriptionId": 1053764,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 977,

@@ -1895,7 +1895,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   this._isArenaRegistered = false;
                   this._arenaReadyPartyMemberIds = new Array();
                   KernelEventsManager.getInstance().processCallback(RoleplayHookList.ArenaRegistrationStatusUpdate,this._isArenaRegistered,this._arenaCurrentStatus);
-                  if(this._arenaLeader && PlayedCharacterManager.getInstance().id == this._arenaLeader.id)
+                  if(this._arenaLeader && PlayedCharacterManager.getInstance().id == this._arenaLeader.id && this._currentArenaType != 0)
                   {
                      commonMod = UiModuleManager.getInstance().getModule("Ankama_Common").mainClass;
                      commonMod.openPopup(I18n.getUiText("ui.common.confirm"),I18n.getUiText("ui.party.arenaPopupReinscription"),[I18n.getUiText("ui.common.yes"),I18n.getUiText("ui.common.no")],[this.reinscriptionWantedFunction,null],this.reinscriptionWantedFunction,function():void

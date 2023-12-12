@@ -661,7 +661,7 @@ package com.ankamagames.dofus.uiApi
          {
             return false;
          }
-         var targetIsMaxLevel:* = pet.evolutiveLevel == pet.type.evolutiveType.maxLevel;
+         var targetIsMaxLevel:* = pet.evolutiveLevel == pet.type.evolutiveType.getMaxLevel();
          var targetIsLegendary:Boolean = pet.itemHasLegendaryEffect;
          var foodGivesLegendaryStatus:Boolean = food.itemHoldsLegendaryStatus;
          var foodIsLegendary:Boolean = food.itemHasLegendaryEffect;
