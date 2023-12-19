@@ -83,6 +83,8 @@ package com.ankamagames.berilia.enums
       
       public static const RECYCLE:String = "recycle";
       
+      public static const CRAFTER_LIST:String = "crafterList";
+      
       public static const TREASURE_HUNT:String = "treasureHunt";
       
       public static const CINEMATIC:String = "cinematic";
@@ -184,6 +186,8 @@ package com.ankamagames.berilia.enums
       public static const CONSULT_TAX_COLLECTOR:String = "consultTaxCollector";
       
       public static const PVP_ARENA:String = "pvpArena";
+      
+      public static const WEB_BASE:String = "webBase";
        
       
       public function UIEnum()

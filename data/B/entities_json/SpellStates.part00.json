@@ -82778,7 +82778,7 @@
 			"cantSwitchPosition": false,
 			"incurable": false,
 			"effectsIds": [],
-			"icon": "stateExalted",
+			"icon": "",
 			"iconVisibilityMask": 0,
 			"invulnerableMelee": false,
 			"invulnerableRange": false,

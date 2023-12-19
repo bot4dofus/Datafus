@@ -7729,13 +7729,13 @@
 			"possibleEffects": []
 		},
 		{
-			"id": 423,
-			"nameId": 1052615,
-			"descriptionId": 1052616,
+			"id": 425,
+			"nameId": 1052619,
+			"descriptionId": 1052620,
 			"categoryId": 38,
-			"iconId": 89060,
+			"iconId": 89062,
 			"isVisible": true,
-			"criteria": "null",
+			"criteria": "Mt=0",
 			"isWebDisplay": true,
 			"possibleEffects": [
 				{
@@ -7772,7 +7772,7 @@
 			"categoryId": 38,
 			"iconId": 89061,
 			"isVisible": true,
-			"criteria": "null",
+			"criteria": "Mt=0",
 			"isWebDisplay": true,
 			"possibleEffects": [
 				{
@@ -7803,13 +7803,13 @@
 			]
 		},
 		{
-			"id": 425,
-			"nameId": 1052619,
-			"descriptionId": 1052620,
+			"id": 423,
+			"nameId": 1052615,
+			"descriptionId": 1052616,
 			"categoryId": 38,
-			"iconId": 89062,
+			"iconId": 89060,
 			"isVisible": true,
-			"criteria": "null",
+			"criteria": "Mt=0",
 			"isWebDisplay": true,
 			"possibleEffects": [
 				{

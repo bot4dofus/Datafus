@@ -414,14 +414,6 @@ package com.ankamagames.dofus.logic.game.fight.frames
          if(!Kernel.beingInReconection && MapDisplayManager.getInstance().getDataMapContainer())
          {
             this._roleplayGridDisplayed = Atouin.getInstance().options.getOption("alwaysShowGrid");
-            if(Berilia.getInstance().getUi("banner").uiClass.tacticModeActivated && OptionManager.getOptionManager("dofus").getOption("useNewTacticalMode"))
-            {
-               Atouin.getInstance().displayGrid(false,true);
-            }
-            else
-            {
-               Atouin.getInstance().displayGrid(true,true);
-            }
          }
          currentCell = -1;
          this._overEffectOk = new GlowFilter(16777215,1,4,4,3,1);

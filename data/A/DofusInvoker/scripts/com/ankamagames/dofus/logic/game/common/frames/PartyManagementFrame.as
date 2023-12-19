@@ -1,5 +1,7 @@
 package com.ankamagames.dofus.logic.game.common.frames
 {
+   import com.ankamagames.berilia.Berilia;
+   import com.ankamagames.berilia.enums.UIEnum;
    import com.ankamagames.berilia.factories.MenusFactory;
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.berilia.managers.UiModuleManager;
@@ -1883,6 +1885,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   this._arenaCurrentStatus = PvpArenaStepEnum.ARENA_STEP_STARTING_FIGHT;
                   this._isArenaRegistered = false;
                   KernelEventsManager.getInstance().processCallback(RoleplayHookList.ArenaRegistrationStatusUpdate,this._isArenaRegistered,this._arenaCurrentStatus);
+                  this.clearUis();
                }
                this._wasSpectatorInLastFight = gfjmsg is GameFightSpectatorJoinMessage;
                this.cleanPartyFightNotifications();
@@ -2160,8 +2163,10 @@ package com.ankamagames.dofus.logic.game.common.frames
                gtporaction = msg as GroupTeleportPlayerOfferReplyAction;
                replyMsg.initGroupTeleportPlayerAnswerMessage(gtporaction.isTeleport,gtporaction.requesterId);
                ConnectionsHandler.getConnection().send(replyMsg);
+               return true;
+            default:
+               return false;
          }
-         return false;
       }
       
       private function sendArenaXpSwitchMessage() : void
@@ -2181,6 +2186,26 @@ package com.ankamagames.dofus.logic.game.common.frames
                NotificationManager.getInstance().closeNotification(notifName,false);
             }
             this._partyFightNotification = new Array();
+         }
+      }
+      
+      private function clearUis() : void
+      {
+         if(Berilia.getInstance().getUi(UIEnum.AUCTIONHOUSE))
+         {
+            Berilia.getInstance().unloadUi(UIEnum.AUCTIONHOUSE);
+         }
+         if(Berilia.getInstance().getUi(UIEnum.PVP_ARENA))
+         {
+            Berilia.getInstance().unloadUi(UIEnum.PVP_ARENA);
+         }
+         if(Berilia.getInstance().getUi(UIEnum.WEB_BASE))
+         {
+            Berilia.getInstance().unloadUi(UIEnum.WEB_BASE);
+         }
+         if(Berilia.getInstance().getUi(UIEnum.CRAFTER_LIST))
+         {
+            Berilia.getInstance().unloadUi(UIEnum.CRAFTER_LIST);
          }
       }
       
