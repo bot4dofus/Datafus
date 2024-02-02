@@ -2836,6 +2836,11 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       override protected function changeColor(entityId:Number, name:String, color:ColorTransform = null) : void
       {
          var info:* = undefined;
+         var playedCharacterManager:PlayedCharacterManager = null;
+         var subarea:SubArea = null;
+         var subareaId:int = 0;
+         var prismSubareaWrapper:PrismSubAreaWrapper = null;
+         var allianceWrapper:AllianceWrapper = null;
          var prismAlliance:uint = 0;
          var playerAlliance:uint = 0;
          var entityAlliance:uint = 0;
@@ -2850,7 +2855,12 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                entityAlliance = info.allianceInformation.allianceId;
             }
          }
-         prismAlliance = this._allianceFrame.getPrismSubAreaById(PlayedCharacterManager.getInstance().currentSubArea.id).alliance.groupId;
+         playedCharacterManager = PlayedCharacterManager.getInstance();
+         subarea = playedCharacterManager.currentSubArea;
+         subareaId = subarea.id;
+         prismSubareaWrapper = this._allianceFrame.getPrismSubAreaById(subareaId);
+         allianceWrapper = prismSubareaWrapper.alliance;
+         prismAlliance = allianceWrapper.groupId;
          playerAlliance = this._socialFrame.alliance.groupId;
          if(prismAlliance == entityAlliance)
          {

@@ -354,6 +354,16 @@ package com.ankamagames.dofus.logic.game.common.frames
    public class SocialFrame implements Frame
    {
       
+      private static const DATA_WARN_FRIEND_CONNECTION:String = "WarnFriendConnection";
+      
+      private static const DATA_WARN_FRIEND_LEVELUP:String = "WarnFriendLevelUp";
+      
+      private static const DATA_WARN_FRIEND_ACHIEVEMENT:String = "WarnFriendAchievement";
+      
+      private static const DATA_WARN_FRIEND_PERMA_DEATH:String = "WarnFriendPermaDeath";
+      
+      private static const DATA_FRIEND_SHARE_STATUS:String = "ShareStatusToFriends";
+      
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(SocialFrame));
       
       private static var _instance:SocialFrame;
@@ -661,6 +671,11 @@ package com.ankamagames.dofus.logic.game.common.frames
          ConnectionsHandler.getConnection().send(new GuildRanksRequestMessage());
          ConnectionsHandler.getConnection().send(new AllianceGetPlayerApplicationMessage());
          ConnectionsHandler.getConnection().send(new AllianceRanksRequestMessage());
+         this.enableAchievementWarn(StoreDataManager.getInstance().getSetData(BeriliaConstants.DATASTORE_UI_OPTIONS,DATA_WARN_FRIEND_ACHIEVEMENT,false));
+         this.enableFriendConnectionWarn(StoreDataManager.getInstance().getSetData(BeriliaConstants.DATASTORE_UI_OPTIONS,DATA_WARN_FRIEND_CONNECTION,false));
+         this.enableLevelupWarn(StoreDataManager.getInstance().getSetData(BeriliaConstants.DATASTORE_UI_OPTIONS,DATA_WARN_FRIEND_LEVELUP,false));
+         this.enablePermaDeathWarn(StoreDataManager.getInstance().getSetData(BeriliaConstants.DATASTORE_UI_OPTIONS,DATA_WARN_FRIEND_PERMA_DEATH,false));
+         this.enableShareStatusToFriends(StoreDataManager.getInstance().getSetData(BeriliaConstants.DATASTORE_UI_OPTIONS,DATA_FRIEND_SHARE_STATUS,false));
          this.fillRanksIconsList();
          return true;
       }
@@ -743,17 +758,12 @@ package com.ankamagames.dofus.logic.game.common.frames
          var fsfa:FriendSpouseFollowAction = null;
          var fsfwcmsg:FriendSpouseFollowWithCompassRequestMessage = null;
          var sssa:StatusShareSetAction = null;
-         var fsssm:FriendSetStatusShareMessage = null;
          var fwsa:FriendWarningSetAction = null;
-         var fsocmsg:FriendSetWarnOnConnectionMessage = null;
          var gmwsa:GuildMemberWarningSetAction = null;
          var amwsa:AllianceMemberWarningSetAction = null;
          var fogmwsa:FriendOrGuildMemberLevelUpWarningSetAction = null;
-         var fswolgmsg:FriendSetWarnOnLevelGainMessage = null;
          var fgswoaca:FriendGuildSetWarnOnAchievementCompleteAction = null;
-         var fgswoacmsg:FriendGuildSetWarnOnAchievementCompleteMessage = null;
          var wohda:WarnOnHardcoreDeathAction = null;
-         var wopdmsg:WarnOnPermaDeathMessage = null;
          var ssmsg:SpouseStatusMessage = null;
          var msumsg:MoodSmileyUpdateMessage = null;
          var fsssmsg:FriendStatusShareStateMessage = null;
@@ -1375,17 +1385,13 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is StatusShareSetAction:
                sssa = msg as StatusShareSetAction;
-               this._shareStatus = sssa.enable;
-               fsssm = new FriendSetStatusShareMessage();
-               fsssm.initFriendSetStatusShareMessage(sssa.enable);
-               ConnectionsHandler.getConnection().send(fsssm);
+               StoreDataManager.getInstance().setData(BeriliaConstants.DATASTORE_UI_OPTIONS,DATA_FRIEND_SHARE_STATUS,sssa.enable);
+               this.enableShareStatusToFriends(sssa.enable);
                return true;
             case msg is FriendWarningSetAction:
                fwsa = msg as FriendWarningSetAction;
-               this._warnOnFrienConnec = fwsa.enable;
-               fsocmsg = new FriendSetWarnOnConnectionMessage();
-               fsocmsg.initFriendSetWarnOnConnectionMessage(fwsa.enable);
-               ConnectionsHandler.getConnection().send(fsocmsg);
+               StoreDataManager.getInstance().setData(BeriliaConstants.DATASTORE_UI_OPTIONS,DATA_WARN_FRIEND_CONNECTION,fwsa.enable);
+               this.enableFriendConnectionWarn(fwsa.enable);
                return true;
             case msg is GuildMemberWarningSetAction:
                gmwsa = msg as GuildMemberWarningSetAction;
@@ -1433,24 +1439,18 @@ package com.ankamagames.dofus.logic.game.common.frames
                break;
             case msg is FriendOrGuildMemberLevelUpWarningSetAction:
                fogmwsa = msg as FriendOrGuildMemberLevelUpWarningSetAction;
-               this._warnWhenFriendOrGuildMemberLvlUp = fogmwsa.enable;
-               fswolgmsg = new FriendSetWarnOnLevelGainMessage();
-               fswolgmsg.initFriendSetWarnOnLevelGainMessage(fogmwsa.enable);
-               ConnectionsHandler.getConnection().send(fswolgmsg);
+               StoreDataManager.getInstance().setData(BeriliaConstants.DATASTORE_UI_OPTIONS,DATA_WARN_FRIEND_LEVELUP,fogmwsa.enable);
+               this.enableLevelupWarn(fogmwsa.enable);
                return true;
             case msg is FriendGuildSetWarnOnAchievementCompleteAction:
                fgswoaca = msg as FriendGuildSetWarnOnAchievementCompleteAction;
-               this._warnWhenFriendOrGuildMemberAchieve = fgswoaca.enable;
-               fgswoacmsg = new FriendGuildSetWarnOnAchievementCompleteMessage();
-               fgswoacmsg.initFriendGuildSetWarnOnAchievementCompleteMessage(fgswoaca.enable);
-               ConnectionsHandler.getConnection().send(fgswoacmsg);
+               StoreDataManager.getInstance().setData(BeriliaConstants.DATASTORE_UI_OPTIONS,DATA_WARN_FRIEND_ACHIEVEMENT,fgswoaca.enable);
+               this.enableAchievementWarn(fgswoaca.enable);
                return true;
             case msg is WarnOnHardcoreDeathAction:
                wohda = msg as WarnOnHardcoreDeathAction;
-               this._warnOnHardcoreDeath = wohda.enable;
-               wopdmsg = new WarnOnPermaDeathMessage();
-               wopdmsg.initWarnOnPermaDeathMessage(wohda.enable);
-               ConnectionsHandler.getConnection().send(wopdmsg);
+               StoreDataManager.getInstance().setData(BeriliaConstants.DATASTORE_UI_OPTIONS,DATA_WARN_FRIEND_PERMA_DEATH,wohda.enable);
+               this.enablePermaDeathWarn(wohda.enable);
                return true;
             case msg is SpouseStatusMessage:
                ssmsg = msg as SpouseStatusMessage;
@@ -3091,6 +3091,46 @@ package com.ankamagames.dofus.logic.game.common.frames
             return new PlayerSearchCharacterNameInformation().initPlayerSearchCharacterNameInformation(name);
          }
          return new PlayerSearchTagInformation().initPlayerSearchTagInformation(new AccountTagInformation().initAccountTagInformation(name,tag));
+      }
+      
+      private function enableLevelupWarn(enabled:Boolean) : void
+      {
+         this._warnWhenFriendOrGuildMemberLvlUp = enabled;
+         var fswolgmsg:FriendSetWarnOnLevelGainMessage = new FriendSetWarnOnLevelGainMessage();
+         fswolgmsg.initFriendSetWarnOnLevelGainMessage(enabled);
+         ConnectionsHandler.getConnection().send(fswolgmsg);
+      }
+      
+      private function enableAchievementWarn(enabled:Boolean) : void
+      {
+         this._warnWhenFriendOrGuildMemberAchieve = enabled;
+         var fgswoacmsg:FriendGuildSetWarnOnAchievementCompleteMessage = new FriendGuildSetWarnOnAchievementCompleteMessage();
+         fgswoacmsg.initFriendGuildSetWarnOnAchievementCompleteMessage(enabled);
+         ConnectionsHandler.getConnection().send(fgswoacmsg);
+      }
+      
+      private function enablePermaDeathWarn(enabled:Boolean) : void
+      {
+         this._warnOnHardcoreDeath = enabled;
+         var wopdmsg:WarnOnPermaDeathMessage = new WarnOnPermaDeathMessage();
+         wopdmsg.initWarnOnPermaDeathMessage(enabled);
+         ConnectionsHandler.getConnection().send(wopdmsg);
+      }
+      
+      private function enableFriendConnectionWarn(enabled:Boolean) : void
+      {
+         this._warnOnFrienConnec = enabled;
+         var fsocmsg:FriendSetWarnOnConnectionMessage = new FriendSetWarnOnConnectionMessage();
+         fsocmsg.initFriendSetWarnOnConnectionMessage(enabled);
+         ConnectionsHandler.getConnection().send(fsocmsg);
+      }
+      
+      private function enableShareStatusToFriends(enabled:Boolean) : void
+      {
+         this._shareStatus = enabled;
+         var fsssm:FriendSetStatusShareMessage = new FriendSetStatusShareMessage();
+         fsssm.initFriendSetStatusShareMessage(enabled);
+         ConnectionsHandler.getConnection().send(fsssm);
       }
    }
 }

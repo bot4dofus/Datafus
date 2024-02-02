@@ -23,6 +23,8 @@ package com.ankamagames.berilia
       
       public static var DATASTORE_UI_POSITIONS:DataStoreType = new DataStoreType("Berilia_ui_positions",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_ACCOUNT);
       
+      public static var DATASTORE_UI_OPTIONS:DataStoreType = new DataStoreType("Berilia_ui_options",true,DataStoreEnum.LOCATION_LOCAL,DataStoreEnum.BIND_ACCOUNT);
+      
       public static var USE_UI_CACHE:Boolean = StoreDataManager.getInstance().getSetData(DATASTORE_UI_DEFINITION,"useCache",true);
        
       

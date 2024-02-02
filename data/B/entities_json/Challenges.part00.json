@@ -247,7 +247,7 @@
 			],
 			"categoryId": 1,
 			"iconId": 17,
-			"completionCriterion": "SD!0,-1",
+			"completionCriterion": "SD!hc0,e-1",
 			"activationCriterion": "GL>4,0",
 			"targetMonsterId": 0
 		},
@@ -2180,11 +2180,11 @@
 		{
 			"id": 209,
 			"nameId": 851901,
-			"descriptionId": 1052218,
+			"descriptionId": 1053833,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 17,
-			"completionCriterion": "SD!0,-1",
+			"completionCriterion": "SD!hc0,e-1",
 			"activationCriterion": "GM>0,1087,1&Gm=d",
 			"targetMonsterId": 1087
 		},

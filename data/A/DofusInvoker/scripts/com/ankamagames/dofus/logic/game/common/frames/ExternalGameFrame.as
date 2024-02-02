@@ -571,7 +571,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var xmlConfig:XmlConfig = XmlConfig.getInstance();
          var apiCredentials:ApiUserCredentials = new ApiUserCredentials("",xmlConfig.getEntry("config.haapiUrlAnkama"),this._haapiKey);
          var cmdItemsApi:CmsItemsApi = new CmsItemsApi(apiCredentials);
-         cmdItemsApi.get_feeds("DOFUS",xmlConfig.getEntry("config.lang.current"),0,1000).onSuccess(this.onWelcomeMessages).onError(onWelcomeMessagesError).call();
+         cmdItemsApi.get_feeds("DOFUS",xmlConfig.getEntry("config.lang.current"),0,20).onSuccess(this.onWelcomeMessages).onError(onWelcomeMessagesError).call();
       }
       
       private function onWelcomeMessages(event:ApiClientEvent) : void
