@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.debt
    public class DebtsDeleteMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7548;
+      public static const protocolId:uint = 2909;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.character.debt
       
       override public function getMessageId() : uint
       {
-         return 7548;
+         return 2909;
       }
       
       public function initDebtsDeleteMessage(reason:uint = 0, debts:Vector.<Number> = null) : DebtsDeleteMessage

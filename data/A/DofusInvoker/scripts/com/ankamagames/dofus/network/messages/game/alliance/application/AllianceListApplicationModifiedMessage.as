@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.application
    public class AllianceListApplicationModifiedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5453;
+      public static const protocolId:uint = 8669;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.application
       
       override public function getMessageId() : uint
       {
-         return 5453;
+         return 8669;
       }
       
       public function initAllianceListApplicationModifiedMessage(apply:SocialApplicationInformation = null, state:uint = 0, playerId:Number = 0) : AllianceListApplicationModifiedMessage

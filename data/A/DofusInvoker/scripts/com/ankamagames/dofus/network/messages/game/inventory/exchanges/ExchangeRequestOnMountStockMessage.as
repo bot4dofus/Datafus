@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeRequestOnMountStockMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9105;
+      public static const protocolId:uint = 9183;
        
       
       public function ExchangeRequestOnMountStockMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 9105;
+         return 9183;
       }
       
       public function initExchangeRequestOnMountStockMessage() : ExchangeRequestOnMountStockMessage

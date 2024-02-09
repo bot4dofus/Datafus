@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class SpawnInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 7238;
+      public static const protocolId:uint = 5883;
        
       
       public function SpawnInformation()
@@ -18,7 +18,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 7238;
+         return 5883;
       }
       
       public function initSpawnInformation() : SpawnInformation

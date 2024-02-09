@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeMountsPaddockAddMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2436;
+      public static const protocolId:uint = 4742;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 2436;
+         return 4742;
       }
       
       public function initExchangeMountsPaddockAddMessage(mountDescription:Vector.<MountClientData> = null) : ExchangeMountsPaddockAddMessage

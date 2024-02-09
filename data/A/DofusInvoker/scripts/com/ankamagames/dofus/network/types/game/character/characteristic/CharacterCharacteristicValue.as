@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
    public class CharacterCharacteristicValue extends CharacterCharacteristic implements INetworkType
    {
       
-      public static const protocolId:uint = 8046;
+      public static const protocolId:uint = 6693;
        
       
       public var total:int = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.character.characteristic
       
       override public function getTypeId() : uint
       {
-         return 8046;
+         return 6693;
       }
       
       public function initCharacterCharacteristicValue(characteristicId:int = 0, total:int = 0) : CharacterCharacteristicValue

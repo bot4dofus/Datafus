@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.creation
    public class CharacterNameSuggestionSuccessMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6719;
+      public static const protocolId:uint = 3995;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.character.creation
       
       override public function getMessageId() : uint
       {
-         return 6719;
+         return 3995;
       }
       
       public function initCharacterNameSuggestionSuccessMessage(suggestion:String = "") : CharacterNameSuggestionSuccessMessage

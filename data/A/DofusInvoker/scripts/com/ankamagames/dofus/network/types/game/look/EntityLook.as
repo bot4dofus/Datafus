@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.look
    public class EntityLook implements INetworkType
    {
       
-      public static const protocolId:uint = 9762;
+      public static const protocolId:uint = 6697;
        
       
       public var bonesId:uint = 0;
@@ -40,7 +40,7 @@ package com.ankamagames.dofus.network.types.game.look
       
       public function getTypeId() : uint
       {
-         return 9762;
+         return 6697;
       }
       
       public function initEntityLook(bonesId:uint = 0, skins:Vector.<uint> = null, indexedColors:Vector.<int> = null, scales:Vector.<int> = null, subentities:Vector.<SubEntity> = null) : EntityLook

@@ -72,6 +72,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.context.roleplay.breach.meeting.BreachInvitationCloseMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.breach.meeting.BreachInvitationOfferMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.fight.GameRolePlayRemoveChallengeMessage;
+   import com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena.ArenaFightAnswerAcknowledgementMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena.GameRolePlayArenaFightAnswerMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena.GameRolePlayArenaFightPropositionMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena.GameRolePlayArenaFighterStatusMessage;
@@ -228,6 +229,8 @@ package com.ankamagames.dofus.logic.game.common.frames
       private var _arenaLeader:PartyMemberWrapper;
       
       private var _currentArenaType:uint;
+      
+      private var _arenaProposalNotifName:String;
       
       private var _arenaRanksInformation:Dictionary;
       
@@ -538,7 +541,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var grpaumsg:GameRolePlayArenaUnregisterMessage = null;
          var grparsmsg:GameRolePlayArenaRegistrationStatusMessage = null;
          var grpafpmsg:GameRolePlayArenaFightPropositionMessage = null;
-         var grpafpmsgNid:uint = 0;
+         var arenaProposalNotifId:uint = 0;
          var afaa:ArenaFightAnswerAction = null;
          var grpafamsg:GameRolePlayArenaFightAnswerMessage = null;
          var grpafsmsg:GameRolePlayArenaFighterStatusMessage = null;
@@ -1826,12 +1829,13 @@ package com.ankamagames.dofus.logic.game.common.frames
                {
                   this._arenaAlliesIds.push(allyId);
                }
-               grpafpmsgNid = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.common.koliseum"),I18n.getUiText("ui.party.fightFound"),NotificationTypeEnum.PRIORITY_INVITATION,"fightProposition_" + grpafpmsg.fightId,false,true);
-               NotificationManager.getInstance().addTimerToNotification(grpafpmsgNid,grpafpmsg.duration,false,true);
-               NotificationManager.getInstance().addButtonToNotification(grpafpmsgNid,I18n.getUiText("ui.common.refuse"),"ArenaFightAnswerAction",[grpafpmsg.fightId,false],true,130);
-               NotificationManager.getInstance().addButtonToNotification(grpafpmsgNid,I18n.getUiText("ui.common.accept"),"ArenaFightAnswerAction",[grpafpmsg.fightId,true],true,130);
-               NotificationManager.getInstance().addCallbackToNotification(grpafpmsgNid,"ArenaFightAnswerAction",[grpafpmsg.fightId,false]);
-               NotificationManager.getInstance().sendNotification(grpafpmsgNid);
+               this._arenaProposalNotifName = "fightProposition_" + grpafpmsg.fightId;
+               arenaProposalNotifId = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.common.koliseum"),I18n.getUiText("ui.party.fightFound"),NotificationTypeEnum.PRIORITY_INVITATION,this._arenaProposalNotifName,false,true);
+               NotificationManager.getInstance().addTimerToNotification(arenaProposalNotifId,grpafpmsg.duration,false,true);
+               NotificationManager.getInstance().addButtonToNotification(arenaProposalNotifId,I18n.getUiText("ui.common.refuse"),"ArenaFightAnswerAction",[grpafpmsg.fightId,false],true,130);
+               NotificationManager.getInstance().addButtonToNotification(arenaProposalNotifId,I18n.getUiText("ui.common.accept"),"ArenaFightAnswerAction",[grpafpmsg.fightId,true],false,130);
+               NotificationManager.getInstance().addCallbackToNotification(arenaProposalNotifId,"ArenaFightAnswerAction",[grpafpmsg.fightId,false]);
+               NotificationManager.getInstance().sendNotification(arenaProposalNotifId);
                KernelEventsManager.getInstance().processCallback(HookList.ArenaExternalNotification,ExternalNotificationTypeEnum.KOLO_FIGHT,grpafpmsg.duration * 1000);
                return true;
             case msg is ArenaFightAnswerAction:
@@ -1863,6 +1867,12 @@ package com.ankamagames.dofus.logic.game.common.frames
                   this._arenaReadyPartyMemberIds.push(grpafsmsg.playerId);
                }
                KernelEventsManager.getInstance().processCallback(RoleplayHookList.ArenaFighterStatusUpdate,grpafsmsg.playerId,grpafsmsg.accepted);
+               return true;
+            case msg is ArenaFightAnswerAcknowledgementMessage:
+               if((msg as ArenaFightAnswerAcknowledgementMessage).acknowledged)
+               {
+                  NotificationManager.getInstance().closeNotification(this._arenaProposalNotifName,true);
+               }
                return true;
             case msg is GameRolePlayArenaUpdatePlayerInfosMessage:
                grpaupimsg = msg as GameRolePlayArenaUpdatePlayerInfosMessage;

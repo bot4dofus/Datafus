@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.surrender.vote
    public class SurrenderVoteResponse implements INetworkType
    {
       
-      public static const protocolId:uint = 5156;
+      public static const protocolId:uint = 8487;
        
       
       public function SurrenderVoteResponse()
@@ -18,7 +18,7 @@ package com.ankamagames.dofus.network.types.game.surrender.vote
       
       public function getTypeId() : uint
       {
-         return 5156;
+         return 8487;
       }
       
       public function initSurrenderVoteResponse() : SurrenderVoteResponse

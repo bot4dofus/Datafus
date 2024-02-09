@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class SpawnCompanionInformation extends SpawnInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 5728;
+      public static const protocolId:uint = 1474;
        
       
       public var modelId:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 5728;
+         return 1474;
       }
       
       public function initSpawnCompanionInformation(modelId:uint = 0, level:uint = 0, summonerId:Number = 0, ownerId:Number = 0) : SpawnCompanionInformation

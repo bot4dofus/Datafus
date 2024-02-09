@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class HumanOption implements INetworkType
    {
       
-      public static const protocolId:uint = 6564;
+      public static const protocolId:uint = 1396;
        
       
       public function HumanOption()
@@ -18,7 +18,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       public function getTypeId() : uint
       {
-         return 6564;
+         return 1396;
       }
       
       public function initHumanOption() : HumanOption

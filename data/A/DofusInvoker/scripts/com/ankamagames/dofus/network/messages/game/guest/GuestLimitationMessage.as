@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guest
    public class GuestLimitationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6493;
+      public static const protocolId:uint = 8832;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.guest
       
       override public function getMessageId() : uint
       {
-         return 6493;
+         return 8832;
       }
       
       public function initGuestLimitationMessage(reason:uint = 0) : GuestLimitationMessage

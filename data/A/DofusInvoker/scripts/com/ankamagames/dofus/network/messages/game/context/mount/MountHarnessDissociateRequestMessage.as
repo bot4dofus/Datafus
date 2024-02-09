@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountHarnessDissociateRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9002;
+      public static const protocolId:uint = 8086;
        
       
       public function MountHarnessDissociateRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 9002;
+         return 8086;
       }
       
       public function initMountHarnessDissociateRequestMessage() : MountHarnessDissociateRequestMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountEmoteIconUsedOkMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1291;
+      public static const protocolId:uint = 664;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 1291;
+         return 664;
       }
       
       public function initMountEmoteIconUsedOkMessage(mountId:int = 0, reactionType:uint = 0) : MountEmoteIconUsedOkMessage

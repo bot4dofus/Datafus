@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartOkEvolutiveObjectRecycleTradeMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 862;
+      public static const protocolId:uint = 7807;
        
       
       public function ExchangeStartOkEvolutiveObjectRecycleTradeMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 862;
+         return 7807;
       }
       
       public function initExchangeStartOkEvolutiveObjectRecycleTradeMessage() : ExchangeStartOkEvolutiveObjectRecycleTradeMessage

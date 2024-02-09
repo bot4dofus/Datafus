@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.notification
    public class NotificationListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1652;
+      public static const protocolId:uint = 1914;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.context.notification
       
       override public function getMessageId() : uint
       {
-         return 1652;
+         return 1914;
       }
       
       public function initNotificationListMessage(flags:Vector.<int> = null) : NotificationListMessage

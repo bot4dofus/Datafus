@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class SpouseInformationsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4727;
+      public static const protocolId:uint = 7497;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 4727;
+         return 7497;
       }
       
       public function initSpouseInformationsMessage(spouse:FriendSpouseInformations = null) : SpouseInformationsMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.prism
    public class PrismRecycleTradeRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8986;
+      public static const protocolId:uint = 5511;
        
       
       public function PrismRecycleTradeRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function getMessageId() : uint
       {
-         return 8986;
+         return 5511;
       }
       
       public function initPrismRecycleTradeRequestMessage() : PrismRecycleTradeRequestMessage

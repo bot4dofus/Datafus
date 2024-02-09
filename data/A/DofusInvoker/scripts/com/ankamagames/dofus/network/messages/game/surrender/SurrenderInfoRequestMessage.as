@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.surrender
    public class SurrenderInfoRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8005;
+      public static const protocolId:uint = 7492;
        
       
       public function SurrenderInfoRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.surrender
       
       override public function getMessageId() : uint
       {
-         return 8005;
+         return 7492;
       }
       
       public function initSurrenderInfoRequestMessage() : SurrenderInfoRequestMessage

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class MimicryObjectAssociatedMessage extends SymbioticObjectAssociatedMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3208;
+      public static const protocolId:uint = 3159;
        
       
       private var _isInitialized:Boolean = false;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 3208;
+         return 3159;
       }
       
       public function initMimicryObjectAssociatedMessage(hostUID:uint = 0) : MimicryObjectAssociatedMessage

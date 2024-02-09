@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
    public class ArenaLeagueRanking implements INetworkType
    {
       
-      public static const protocolId:uint = 1978;
+      public static const protocolId:uint = 458;
        
       
       public var rating:int = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
       
       public function getTypeId() : uint
       {
-         return 1978;
+         return 458;
       }
       
       public function initArenaLeagueRanking(rating:int = 0, leagueId:int = 0, ladderPosition:int = 0) : ArenaLeagueRanking

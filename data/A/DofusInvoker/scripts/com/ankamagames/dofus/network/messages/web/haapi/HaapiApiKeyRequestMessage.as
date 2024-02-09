@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.web.haapi
    public class HaapiApiKeyRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6543;
+      public static const protocolId:uint = 1785;
        
       
       public function HaapiApiKeyRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.web.haapi
       
       override public function getMessageId() : uint
       {
-         return 6543;
+         return 1785;
       }
       
       public function initHaapiApiKeyRequestMessage() : HaapiApiKeyRequestMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class JobBookSubscribeRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8000;
+      public static const protocolId:uint = 5408;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 8000;
+         return 5408;
       }
       
       public function initJobBookSubscribeRequestMessage(jobIds:Vector.<uint> = null) : JobBookSubscribeRequestMessage

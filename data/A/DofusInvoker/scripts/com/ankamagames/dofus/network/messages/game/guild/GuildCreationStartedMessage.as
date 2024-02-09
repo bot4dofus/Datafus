@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildCreationStartedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 347;
+      public static const protocolId:uint = 6308;
        
       
       public function GuildCreationStartedMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 347;
+         return 6308;
       }
       
       public function initGuildCreationStartedMessage() : GuildCreationStartedMessage

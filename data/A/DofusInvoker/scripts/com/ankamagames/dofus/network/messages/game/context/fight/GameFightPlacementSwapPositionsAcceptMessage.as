@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightPlacementSwapPositionsAcceptMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6107;
+      public static const protocolId:uint = 3399;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 6107;
+         return 3399;
       }
       
       public function initGameFightPlacementSwapPositionsAcceptMessage(requestId:uint = 0) : GameFightPlacementSwapPositionsAcceptMessage

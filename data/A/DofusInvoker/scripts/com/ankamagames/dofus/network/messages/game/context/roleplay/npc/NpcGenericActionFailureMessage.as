@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
    public class NpcGenericActionFailureMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4794;
+      public static const protocolId:uint = 5954;
        
       
       public function NpcGenericActionFailureMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.npc
       
       override public function getMessageId() : uint
       {
-         return 4794;
+         return 5954;
       }
       
       public function initNpcGenericActionFailureMessage() : NpcGenericActionFailureMessage

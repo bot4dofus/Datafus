@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.surrender.vote
    public class SurrenderVoteRefusedWaitBetweenVotes extends SurrenderVoteRefused implements INetworkType
    {
       
-      public static const protocolId:uint = 2647;
+      public static const protocolId:uint = 3346;
        
       
       public var nextVoteTimestamp:int = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.surrender.vote
       
       override public function getTypeId() : uint
       {
-         return 2647;
+         return 3346;
       }
       
       public function initSurrenderVoteRefusedWaitBetweenVotes(nextVoteTimestamp:int = 0) : SurrenderVoteRefusedWaitBetweenVotes

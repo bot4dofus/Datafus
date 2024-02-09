@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.prism
    public class PrismTeleportationRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2043;
+      public static const protocolId:uint = 1336;
        
       
       public function PrismTeleportationRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.prism
       
       override public function getMessageId() : uint
       {
-         return 2043;
+         return 1336;
       }
       
       public function initPrismTeleportationRequestMessage() : PrismTeleportationRequestMessage

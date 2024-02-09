@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class ServerStatusUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8970;
+      public static const protocolId:uint = 8961;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 8970;
+         return 8961;
       }
       
       public function initServerStatusUpdateMessage(server:GameServerInformations = null) : ServerStatusUpdateMessage

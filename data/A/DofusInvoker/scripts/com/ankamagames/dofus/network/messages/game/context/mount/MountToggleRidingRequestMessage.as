@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountToggleRidingRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1129;
+      public static const protocolId:uint = 1621;
        
       
       public function MountToggleRidingRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 1129;
+         return 1621;
       }
       
       public function initMountToggleRidingRequestMessage() : MountToggleRidingRequestMessage

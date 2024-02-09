@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartedBidBuyerMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 765;
+      public static const protocolId:uint = 754;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 765;
+         return 754;
       }
       
       public function initExchangeStartedBidBuyerMessage(buyerDescriptor:SellerBuyerDescriptor = null) : ExchangeStartedBidBuyerMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class GameRolePlayNpcWithQuestInformations extends GameRolePlayNpcInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 8370;
+      public static const protocolId:uint = 5263;
        
       
       public var questFlag:GameRolePlayNpcQuestFlag;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 8370;
+         return 5263;
       }
       
       public function initGameRolePlayNpcWithQuestInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, npcId:uint = 0, sex:Boolean = false, specialArtworkId:uint = 0, questFlag:GameRolePlayNpcQuestFlag = null) : GameRolePlayNpcWithQuestInformations

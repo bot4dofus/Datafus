@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.achievement
    public class AchievementRewardErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1613;
+      public static const protocolId:uint = 9461;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.achievement
       
       override public function getMessageId() : uint
       {
-         return 1613;
+         return 9461;
       }
       
       public function initAchievementRewardErrorMessage(achievementId:int = 0) : AchievementRewardErrorMessage

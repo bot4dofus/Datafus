@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character.spellmodifier
    public class SpellModifierMessage implements INetworkType
    {
       
-      public static const protocolId:uint = 6699;
+      public static const protocolId:uint = 1288;
        
       
       public var spellId:uint = 0;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.character.spellmodifier
       
       public function getTypeId() : uint
       {
-         return 6699;
+         return 1288;
       }
       
       public function initSpellModifierMessage(spellId:uint = 0, actionType:uint = 0, modifierType:uint = 0, context:int = 0, equipment:int = 0) : SpellModifierMessage

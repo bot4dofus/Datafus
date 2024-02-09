@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class MonsterInGroupInformations extends MonsterInGroupLightInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 2447;
+      public static const protocolId:uint = 4200;
        
       
       public var look:EntityLook;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 2447;
+         return 4200;
       }
       
       public function initMonsterInGroupInformations(genericId:int = 0, grade:uint = 0, level:uint = 0, look:EntityLook = null) : MonsterInGroupInformations

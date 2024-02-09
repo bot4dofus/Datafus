@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.lockable
    public class LockableStateUpdateHouseDoorMessage extends LockableStateUpdateAbstractMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6751;
+      public static const protocolId:uint = 4961;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.lockable
       
       override public function getMessageId() : uint
       {
-         return 6751;
+         return 4961;
       }
       
       public function initLockableStateUpdateHouseDoorMessage(locked:Boolean = false, houseId:uint = 0, instanceId:uint = 0, secondHand:Boolean = false) : LockableStateUpdateHouseDoorMessage

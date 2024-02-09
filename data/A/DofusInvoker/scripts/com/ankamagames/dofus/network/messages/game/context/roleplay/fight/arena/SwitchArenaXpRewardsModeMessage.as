@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
    public class SwitchArenaXpRewardsModeMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7074;
+      public static const protocolId:uint = 1703;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       override public function getMessageId() : uint
       {
-         return 7074;
+         return 1703;
       }
       
       public function initSwitchArenaXpRewardsModeMessage(xpRewards:Boolean = false) : SwitchArenaXpRewardsModeMessage

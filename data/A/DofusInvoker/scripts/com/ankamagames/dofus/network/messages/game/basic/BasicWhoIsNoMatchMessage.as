@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.basic
    public class BasicWhoIsNoMatchMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7538;
+      public static const protocolId:uint = 3432;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.basic
       
       override public function getMessageId() : uint
       {
-         return 7538;
+         return 3432;
       }
       
       public function initBasicWhoIsNoMatchMessage(target:AbstractPlayerSearchInformation = null) : BasicWhoIsNoMatchMessage

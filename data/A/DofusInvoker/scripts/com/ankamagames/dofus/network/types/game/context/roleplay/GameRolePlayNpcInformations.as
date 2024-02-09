@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class GameRolePlayNpcInformations extends GameRolePlayActorInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 7521;
+      public static const protocolId:uint = 5939;
        
       
       public var npcId:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 7521;
+         return 5939;
       }
       
       public function initGameRolePlayNpcInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, npcId:uint = 0, sex:Boolean = false, specialArtworkId:uint = 0) : GameRolePlayNpcInformations

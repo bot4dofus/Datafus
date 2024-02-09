@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeStartOkNpcShopMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1913;
+      public static const protocolId:uint = 304;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 1913;
+         return 304;
       }
       
       public function initExchangeStartOkNpcShopMessage(npcSellerId:Number = 0, tokenId:uint = 0, objectsInfos:Vector.<ObjectItemToSellInNpcShop> = null) : ExchangeStartOkNpcShopMessage

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context
    public class ActorOrientation implements INetworkType
    {
       
-      public static const protocolId:uint = 668;
+      public static const protocolId:uint = 1691;
        
       
       public var id:Number = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context
       
       public function getTypeId() : uint
       {
-         return 668;
+         return 1691;
       }
       
       public function initActorOrientation(id:Number = 0, direction:uint = 1) : ActorOrientation

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightInvisibilityMessage extends AbstractGameActionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5505;
+      public static const protocolId:uint = 5033;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 5505;
+         return 5033;
       }
       
       public function initGameActionFightInvisibilityMessage(actionId:uint = 0, sourceId:Number = 0, targetId:Number = 0, state:uint = 0) : GameActionFightInvisibilityMessage

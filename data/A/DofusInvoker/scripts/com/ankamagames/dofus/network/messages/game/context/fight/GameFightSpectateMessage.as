@@ -14,7 +14,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightSpectateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8164;
+      public static const protocolId:uint = 615;
        
       
       private var _isInitialized:Boolean = false;
@@ -50,7 +50,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 8164;
+         return 615;
       }
       
       public function initGameFightSpectateMessage(effects:Vector.<FightDispellableEffectExtendedInformations> = null, marks:Vector.<GameActionMark> = null, gameTurn:uint = 0, fightStart:uint = 0, fxTriggerCounts:Vector.<GameFightEffectTriggerCount> = null) : GameFightSpectateMessage

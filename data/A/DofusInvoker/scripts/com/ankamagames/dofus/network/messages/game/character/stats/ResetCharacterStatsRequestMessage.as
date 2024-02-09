@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.stats
    public class ResetCharacterStatsRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6388;
+      public static const protocolId:uint = 3781;
        
       
       public function ResetCharacterStatsRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.character.stats
       
       override public function getMessageId() : uint
       {
-         return 6388;
+         return 3781;
       }
       
       public function initResetCharacterStatsRequestMessage() : ResetCharacterStatsRequestMessage

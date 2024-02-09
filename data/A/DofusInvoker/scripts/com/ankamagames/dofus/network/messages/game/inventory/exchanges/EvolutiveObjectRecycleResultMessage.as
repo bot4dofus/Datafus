@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class EvolutiveObjectRecycleResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2916;
+      public static const protocolId:uint = 562;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 2916;
+         return 562;
       }
       
       public function initEvolutiveObjectRecycleResultMessage(recycledItems:Vector.<RecycledItem> = null) : EvolutiveObjectRecycleResultMessage

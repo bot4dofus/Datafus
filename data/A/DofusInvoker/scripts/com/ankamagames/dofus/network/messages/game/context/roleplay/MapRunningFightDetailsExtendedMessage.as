@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class MapRunningFightDetailsExtendedMessage extends MapRunningFightDetailsMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4237;
+      public static const protocolId:uint = 3273;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 4237;
+         return 3273;
       }
       
       public function initMapRunningFightDetailsExtendedMessage(fightId:uint = 0, attackers:Vector.<GameFightFighterLightInformations> = null, defenders:Vector.<GameFightFighterLightInformations> = null, namedPartyTeams:Vector.<NamedPartyTeam> = null) : MapRunningFightDetailsExtendedMessage

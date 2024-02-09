@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class GoldItem extends Item implements INetworkType
    {
       
-      public static const protocolId:uint = 4724;
+      public static const protocolId:uint = 2452;
        
       
       public var sum:Number = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       override public function getTypeId() : uint
       {
-         return 4724;
+         return 2452;
       }
       
       public function initGoldItem(sum:Number = 0) : GoldItem

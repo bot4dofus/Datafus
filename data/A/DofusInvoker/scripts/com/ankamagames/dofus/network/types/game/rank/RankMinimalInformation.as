@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.rank
    public class RankMinimalInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 9283;
+      public static const protocolId:uint = 7797;
        
       
       public var id:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.rank
       
       public function getTypeId() : uint
       {
-         return 9283;
+         return 7797;
       }
       
       public function initRankMinimalInformation(id:uint = 0, name:String = "") : RankMinimalInformation

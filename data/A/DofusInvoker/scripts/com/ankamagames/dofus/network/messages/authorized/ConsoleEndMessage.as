@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.authorized
    public class ConsoleEndMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8364;
+      public static const protocolId:uint = 6798;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.authorized
       
       override public function getMessageId() : uint
       {
-         return 8364;
+         return 6798;
       }
       
       public function initConsoleEndMessage(consoleUuid:Uuid = null, isSuccess:Boolean = false) : ConsoleEndMessage

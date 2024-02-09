@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.subscriber
    public class SubscriptionLimitationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8472;
+      public static const protocolId:uint = 758;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.subscriber
       
       override public function getMessageId() : uint
       {
-         return 8472;
+         return 758;
       }
       
       public function initSubscriptionLimitationMessage(reason:uint = 0) : SubscriptionLimitationMessage

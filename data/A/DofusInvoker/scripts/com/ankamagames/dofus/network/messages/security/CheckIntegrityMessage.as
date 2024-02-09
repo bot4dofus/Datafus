@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.security
    public class CheckIntegrityMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9230;
+      public static const protocolId:uint = 6593;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.security
       
       override public function getMessageId() : uint
       {
-         return 9230;
+         return 6593;
       }
       
       public function initCheckIntegrityMessage(data:Vector.<int> = null) : CheckIntegrityMessage
