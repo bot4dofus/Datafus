@@ -2575,6 +2575,20 @@
 			"nameFemaleId": 1053687,
 			"visible": true,
 			"categoryId": 7
+		},
+		{
+			"id": 397,
+			"nameMaleId": 1053932,
+			"nameFemaleId": 1053933,
+			"visible": true,
+			"categoryId": 7
+		},
+		{
+			"id": 406,
+			"nameMaleId": 1053972,
+			"nameFemaleId": 1053973,
+			"visible": true,
+			"categoryId": 7
 		}
 	]
 }

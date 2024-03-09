@@ -127,20 +127,20 @@
 			"flagObjectId": 28400
 		},
 		{
-			"uid": 28,
-			"seasonNumber": 9,
-			"information": "Saison Koliz\u00e9um 1",
-			"beginning": 1701734400000.0,
-			"closure": 1710806400000.0,
-			"resetDate": -3600000.0,
-			"flagObjectId": 29425
-		},
-		{
 			"uid": 29,
 			"seasonNumber": 9,
 			"information": "Saison Koliz\u00e9um Beta",
 			"beginning": 1699920000000.0,
 			"closure": 1701734400000.0,
+			"resetDate": -3600000.0,
+			"flagObjectId": 29425
+		},
+		{
+			"uid": 28,
+			"seasonNumber": 9,
+			"information": "Saison Koliz\u00e9um 1",
+			"beginning": 1701734400000.0,
+			"closure": 1711411200000.0,
 			"resetDate": -3600000.0,
 			"flagObjectId": 29425
 		}

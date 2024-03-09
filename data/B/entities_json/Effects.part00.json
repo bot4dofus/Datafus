@@ -282,8 +282,8 @@
 			"showInSet": true,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 15000,
-			"effectPowerRate": 0.0,
+			"effectPriority": 16000,
+			"effectPowerRate": 1.0,
 			"elementId": -1
 		},
 		{
@@ -414,7 +414,7 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 2100,
+			"effectPriority": 17500,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -3120,7 +3120,7 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 22400,
+			"effectPriority": 22600,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -3494,7 +3494,7 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 23100,
+			"effectPriority": 23000,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -3516,7 +3516,7 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 23200,
+			"effectPriority": 23300,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -6593,11 +6593,11 @@
 			"oppositeId": 0,
 			"theoreticalDescriptionId": 0,
 			"theoreticalPattern": 1,
-			"showInSet": false,
+			"showInSet": true,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 2200,
-			"effectPowerRate": 0.0,
+			"effectPriority": 16050,
+			"effectPowerRate": 1.0,
 			"elementId": -1
 		},
 		{
@@ -8752,7 +8752,7 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 26100,
+			"effectPriority": 26200,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},

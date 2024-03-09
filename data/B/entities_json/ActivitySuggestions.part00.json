@@ -10851,13 +10851,13 @@
 		{
 			"id": 3585,
 			"nameId": 890674,
-			"descriptionId": 868440,
+			"descriptionId": 1054075,
 			"categoryId": 13,
 			"level": 0,
 			"mapId": 0,
-			"isLarge": false,
-			"startDate": 1678924800000.0,
-			"endDate": 1679529600000.0,
+			"isLarge": true,
+			"startDate": 1710151200000.0,
+			"endDate": 1710756000000.0,
 			"icon": "1113"
 		},
 		{
