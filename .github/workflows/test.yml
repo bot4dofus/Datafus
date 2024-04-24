@@ -29,6 +29,8 @@ jobs:
           echo The latest Datafus version is $DATAFUS_VERSION
           echo "::set-env name=DOFUS_VERSION::$DOFUS_VERSION"
           echo "::set-env name=DATAFUS_VERSION::$DATAFUS_VERSION"
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - uses: actions/github-script@v6
         with:
