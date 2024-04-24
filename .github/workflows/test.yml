@@ -24,8 +24,11 @@ jobs:
       - name: Get latest Dofus version
         run: |
           export DOFUS_VERSION=$(cat data/U/VERSION)
+          export DATAFUS_VERSION=$(curl https://api.github.com/repos/bot4dofus/Datafus/releases/latest | jq -r ".name")
           echo The current Dofus version is $DOFUS_VERSION
+          echo The latest Datafus version is $DATAFUS_VERSION
 
       - name: U1 - Update Dofus Client
         run: |
           cytrus-v6 download --game dofus --select "DofusInvoker.swf,**/*.d2i,**/*.d2o" --output data/U/
+          ls data/U/
