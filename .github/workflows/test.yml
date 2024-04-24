@@ -40,7 +40,7 @@ jobs:
             console.log(process.env.DOFUS_VERSION == process.env.DATAFUS_VERSION);
 
             if(process.env.DOFUS_VERSION == process.env.DATAFUS_VERSION) {
-              console.log("Dofus and Datafus versions are the same. Stopping the workflow.)
+              core.info("Dofus and Datafus versions are the same. Stopping the workflow.");
               const delay = ms => new Promise(res => setTimeout(res, ms));
               
               github.rest.actions.cancelWorkflowRun({
