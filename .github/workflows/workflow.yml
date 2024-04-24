@@ -3,6 +3,8 @@ name: Workflow
 on:
   workflow_dispatch:
   repository_dispatch:
+  schedule:
+  - cron: "0 14 * * *"   # Everyday at 14:00
 
 jobs:
   Job_U:
@@ -18,9 +20,46 @@ jobs:
       - run: |
           npm install -g cytrus-v6
 
+      - name: Get Dofus version
+        run: |
+          cytrus-v6 download --game dofus --select "VERSION" --output data/U/
+          export DOFUS_VERSION=$(cat data/U/VERSION)
+          echo "::set-env name=DOFUS_VERSION::$DOFUS_VERSION"
+          echo The current Dofus version is $DOFUS_VERSION
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+      - name: Get Datafus version
+        run: |
+          export DATAFUS_VERSION=$(curl https://api.github.com/repos/bot4dofus/Datafus/releases/latest | jq -r ".name")
+          echo "::set-env name=DATAFUS_VERSION::$DATAFUS_VERSION"
+          echo The latest Datafus version is $DATAFUS_VERSION
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+      - name: Stop workflow if no new version
+        uses: actions/github-script@v6
+        with:
+          script: |
+            if(process.env.DOFUS_VERSION == process.env.DATAFUS_VERSION) {
+              core.info("Dofus and Datafus versions are the same. No new version. Stopping the workflow.");
+              const delay = ms => new Promise(res => setTimeout(res, ms));
+              
+              github.rest.actions.cancelWorkflowRun({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: context.runId
+              });
+                
+              while (true) {
+                core.info('Waiting for workflow to cancel ...');
+                await delay(5000);
+              }
+            }
+
       - name: U1 - Update Dofus Client
         run: |
-          cytrus-v6 download --game dofus --select "DofusInvoker.swf,**/*.d2i,**/*.d2o,VERSION" --output data/U/
+          cytrus-v6 download --game dofus --select "DofusInvoker.swf,**/*.d2i,**/*.d2o" --output data/U/
 
       - name: Upload files
         uses: actions/upload-artifact@v3
