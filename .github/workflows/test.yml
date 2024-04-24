@@ -38,18 +38,21 @@ jobs:
             console.log(process.env.DOFUS_VERSION);
             console.log(process.env.DATAFUS_VERSION);
             console.log(process.env.DOFUS_VERSION == process.env.DATAFUS_VERSION);
-            
-            const delay = ms => new Promise(res => setTimeout(res, ms));
-            
-            github.rest.actions.cancelWorkflowRun({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              run_id: context.runId
-            });
+
+            if(process.env.DOFUS_VERSION == process.env.DATAFUS_VERSION) {
+              console.log("Dofus and Datafus versions are the same. Stopping the workflow.)
+              const delay = ms => new Promise(res => setTimeout(res, ms));
               
-            while (true) {
-              core.info('Waiting for workflow to cancel ...');
-              await delay(5000);
+              github.rest.actions.cancelWorkflowRun({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: context.runId
+              });
+                
+              while (true) {
+                core.info('Waiting for workflow to cancel ...');
+                await delay(5000);
+              }
             }
       
       - name: U1 - Update Dofus Client
