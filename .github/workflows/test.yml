@@ -1,0 +1,31 @@
+name: Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: |
+          npm install -g cytrus-v6
+
+      - name: U1 - Get latest dofus version
+        run: |
+          cytrus-v6 download --game dofus --select "VERSION" --output data/U/
+
+      - name: Get latest Dofus version
+        run: |
+          export DOFUS_VERSION=$(cat data/U/VERSION)
+          echo The current Dofus version is $DOFUS_VERSION
+
+      - name: U1 - Update Dofus Client
+        run: |
+          cytrus-v6 download --game dofus --select "DofusInvoker.swf,**/*.d2i,**/*.d2o" --output data/U/
