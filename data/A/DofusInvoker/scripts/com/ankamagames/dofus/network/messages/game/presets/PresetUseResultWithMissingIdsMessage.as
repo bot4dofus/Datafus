@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.presets
    public class PresetUseResultWithMissingIdsMessage extends PresetUseResultMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5634;
+      public static const protocolId:uint = 6242;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.presets
       
       override public function getMessageId() : uint
       {
-         return 5634;
+         return 6242;
       }
       
       public function initPresetUseResultWithMissingIdsMessage(presetId:int = 0, code:uint = 3, missingIds:Vector.<uint> = null) : PresetUseResultWithMissingIdsMessage

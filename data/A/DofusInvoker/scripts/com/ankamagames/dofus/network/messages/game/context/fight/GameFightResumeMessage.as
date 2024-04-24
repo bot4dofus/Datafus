@@ -14,7 +14,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightResumeMessage extends GameFightSpectateMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 152;
+      public static const protocolId:uint = 5578;
        
       
       private var _isInitialized:Boolean = false;
@@ -40,7 +40,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 152;
+         return 5578;
       }
       
       public function initGameFightResumeMessage(effects:Vector.<FightDispellableEffectExtendedInformations> = null, marks:Vector.<GameActionMark> = null, gameTurn:uint = 0, fightStart:uint = 0, fxTriggerCounts:Vector.<GameFightEffectTriggerCount> = null, spellCooldowns:Vector.<GameFightSpellCooldown> = null, summonCount:uint = 0, bombCount:uint = 0) : GameFightResumeMessage

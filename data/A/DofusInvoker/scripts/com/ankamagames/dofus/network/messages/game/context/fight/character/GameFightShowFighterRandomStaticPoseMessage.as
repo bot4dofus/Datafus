@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.character
    public class GameFightShowFighterRandomStaticPoseMessage extends GameFightShowFighterMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8129;
+      public static const protocolId:uint = 7042;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.character
       
       override public function getMessageId() : uint
       {
-         return 8129;
+         return 7042;
       }
       
       public function initGameFightShowFighterRandomStaticPoseMessage(informations:GameFightFighterInformations = null) : GameFightShowFighterRandomStaticPoseMessage

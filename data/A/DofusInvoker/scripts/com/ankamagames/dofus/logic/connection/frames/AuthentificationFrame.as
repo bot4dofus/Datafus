@@ -375,6 +375,7 @@ package com.ankamagames.dofus.logic.connection.frames
                PlayerManager.getInstance().accountId = ismsg.accountId;
                PlayerManager.getInstance().communityId = ismsg.communityId;
                PlayerManager.getInstance().hasRights = ismsg.hasRights;
+               PlayerManager.getInstance().hasReportRight = ismsg.hasReportRight;
                PlayerManager.getInstance().hasForceRight = ismsg.hasForceRight;
                PlayerManager.getInstance().nickname = ismsg.accountTag.nickname;
                PlayerManager.getInstance().tag = ismsg.accountTag.tagNumber;

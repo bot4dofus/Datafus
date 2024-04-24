@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class IdentificationSuccessMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1955;
+      public static const protocolId:uint = 3227;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,6 +28,8 @@ package com.ankamagames.dofus.network.messages.connection
       public var communityId:uint = 0;
       
       public var hasRights:Boolean = false;
+      
+      public var hasReportRight:Boolean = false;
       
       public var hasForceRight:Boolean = false;
       
@@ -54,16 +56,17 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 1955;
+         return 3227;
       }
       
-      public function initIdentificationSuccessMessage(login:String = "", accountTag:AccountTagInformation = null, accountId:uint = 0, communityId:uint = 0, hasRights:Boolean = false, hasForceRight:Boolean = false, accountCreation:Number = 0, subscriptionEndDate:Number = 0, wasAlreadyConnected:Boolean = false, havenbagAvailableRoom:uint = 0) : IdentificationSuccessMessage
+      public function initIdentificationSuccessMessage(login:String = "", accountTag:AccountTagInformation = null, accountId:uint = 0, communityId:uint = 0, hasRights:Boolean = false, hasReportRight:Boolean = false, hasForceRight:Boolean = false, accountCreation:Number = 0, subscriptionEndDate:Number = 0, wasAlreadyConnected:Boolean = false, havenbagAvailableRoom:uint = 0) : IdentificationSuccessMessage
       {
          this.login = login;
          this.accountTag = accountTag;
          this.accountId = accountId;
          this.communityId = communityId;
          this.hasRights = hasRights;
+         this.hasReportRight = hasReportRight;
          this.hasForceRight = hasForceRight;
          this.accountCreation = accountCreation;
          this.subscriptionEndDate = subscriptionEndDate;
@@ -79,6 +82,7 @@ package com.ankamagames.dofus.network.messages.connection
          this.accountTag = new AccountTagInformation();
          this.communityId = 0;
          this.hasRights = false;
+         this.hasReportRight = false;
          this.hasForceRight = false;
          this.accountCreation = 0;
          this.subscriptionEndDate = 0;
@@ -116,8 +120,9 @@ package com.ankamagames.dofus.network.messages.connection
       {
          var _box0:uint = 0;
          _box0 = BooleanByteWrapper.setFlag(_box0,0,this.hasRights);
-         _box0 = BooleanByteWrapper.setFlag(_box0,1,this.hasForceRight);
-         _box0 = BooleanByteWrapper.setFlag(_box0,2,this.wasAlreadyConnected);
+         _box0 = BooleanByteWrapper.setFlag(_box0,1,this.hasReportRight);
+         _box0 = BooleanByteWrapper.setFlag(_box0,2,this.hasForceRight);
+         _box0 = BooleanByteWrapper.setFlag(_box0,3,this.wasAlreadyConnected);
          output.writeByte(_box0);
          output.writeUTF(this.login);
          this.accountTag.serializeAs_AccountTagInformation(output);
@@ -187,8 +192,9 @@ package com.ankamagames.dofus.network.messages.connection
       {
          var _box0:uint = input.readByte();
          this.hasRights = BooleanByteWrapper.getFlag(_box0,0);
-         this.hasForceRight = BooleanByteWrapper.getFlag(_box0,1);
-         this.wasAlreadyConnected = BooleanByteWrapper.getFlag(_box0,2);
+         this.hasReportRight = BooleanByteWrapper.getFlag(_box0,1);
+         this.hasForceRight = BooleanByteWrapper.getFlag(_box0,2);
+         this.wasAlreadyConnected = BooleanByteWrapper.getFlag(_box0,3);
       }
       
       private function _loginFunc(input:ICustomDataInput) : void

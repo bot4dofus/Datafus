@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class ObjectItemQuantityPriceDateEffects extends ObjectItemGenericQuantity implements INetworkType
    {
       
-      public static const protocolId:uint = 7188;
+      public static const protocolId:uint = 8474;
        
       
       public var price:Number = 0;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       override public function getTypeId() : uint
       {
-         return 7188;
+         return 8474;
       }
       
       public function initObjectItemQuantityPriceDateEffects(objectGID:uint = 0, quantity:uint = 0, price:Number = 0, effects:ObjectEffects = null, date:uint = 0) : ObjectItemQuantityPriceDateEffects

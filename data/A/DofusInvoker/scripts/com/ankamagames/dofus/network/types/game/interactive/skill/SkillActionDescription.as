@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.interactive.skill
    public class SkillActionDescription implements INetworkType
    {
       
-      public static const protocolId:uint = 6755;
+      public static const protocolId:uint = 2902;
        
       
       public var skillId:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.interactive.skill
       
       public function getTypeId() : uint
       {
-         return 6755;
+         return 2902;
       }
       
       public function initSkillActionDescription(skillId:uint = 0) : SkillActionDescription

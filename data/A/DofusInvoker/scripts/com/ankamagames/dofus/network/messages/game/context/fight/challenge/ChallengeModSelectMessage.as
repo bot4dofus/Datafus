@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.challenge
    public class ChallengeModSelectMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6679;
+      public static const protocolId:uint = 5193;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.challenge
       
       override public function getMessageId() : uint
       {
-         return 6679;
+         return 5193;
       }
       
       public function initChallengeModSelectMessage(challengeMod:uint = 0) : ChallengeModSelectMessage

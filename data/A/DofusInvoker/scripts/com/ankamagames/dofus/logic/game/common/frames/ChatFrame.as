@@ -1057,6 +1057,10 @@ package com.ankamagames.dofus.logic.game.common.frames
                   {
                      channel = ChatActivableChannelsEnum.PSEUDO_CHANNEL_FIGHT_LOG;
                   }
+                  else if(timsg.msgType == TextInformationTypeEnum.TEXT_INFORMATION_EVENT)
+                  {
+                     channel = ChatActivableChannelsEnum.PSEUDO_CHANNEL_EVENT;
+                  }
                   this.saveMessage(channel,null,msgContent,timestamp);
                   KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,msgContent,channel,timestamp,false);
                }

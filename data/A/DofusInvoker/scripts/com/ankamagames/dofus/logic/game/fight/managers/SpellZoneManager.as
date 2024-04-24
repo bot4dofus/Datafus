@@ -232,6 +232,19 @@ package com.ankamagames.dofus.logic.game.fight.managers
          return finalZone;
       }
       
+      public function getEffectZone(rawZone:String) : EffectZone
+      {
+         var effectZone:EffectZone = new EffectZone();
+         effectZone.rawActivationZone = rawZone;
+         return effectZone;
+      }
+      
+      public function parseZone(rawZone:String, casterId:Number, targetedCellId:int, isWeapon:Boolean) : DisplayZone
+      {
+         var effectZone:EffectZone = this.getEffectZone(rawZone);
+         return SpellZoneManager.getInstance().getZone(effectZone.activationZoneShape,effectZone.activationZoneSize,effectZone.activationZoneMinSize,false,effectZone.activationZoneStopAtTarget,isWeapon,casterId,targetedCellId);
+      }
+      
       public function getZone(shape:uint, size:uint, alternativeSize:uint, isWholeMapShapeIgnored:Boolean = false, isZoneStopAtTarget:uint = 0, isWeapon:Boolean = false, entityId:Number = NaN, entityCellId:int = -1) : DisplayZone
       {
          var casterId:Number = NaN;

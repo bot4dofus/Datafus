@@ -13,7 +13,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class FriendAddRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5162;
+      public static const protocolId:uint = 8880;
        
       
       private var _isInitialized:Boolean = false;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 5162;
+         return 8880;
       }
       
       public function initFriendAddRequestMessage(target:AbstractPlayerSearchInformation = null) : FriendAddRequestMessage

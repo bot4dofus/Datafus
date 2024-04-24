@@ -8,12 +8,14 @@ package com.ankamagames.dofus.network.types.game.achievement
    public class AchievementAchieved implements INetworkType
    {
       
-      public static const protocolId:uint = 4993;
+      public static const protocolId:uint = 6128;
        
       
       public var id:uint = 0;
       
       public var achievedBy:Number = 0;
+      
+      public var achievedPioneerRank:uint = 0;
       
       public function AchievementAchieved()
       {
@@ -22,13 +24,14 @@ package com.ankamagames.dofus.network.types.game.achievement
       
       public function getTypeId() : uint
       {
-         return 4993;
+         return 6128;
       }
       
-      public function initAchievementAchieved(id:uint = 0, achievedBy:Number = 0) : AchievementAchieved
+      public function initAchievementAchieved(id:uint = 0, achievedBy:Number = 0, achievedPioneerRank:uint = 0) : AchievementAchieved
       {
          this.id = id;
          this.achievedBy = achievedBy;
+         this.achievedPioneerRank = achievedPioneerRank;
          return this;
       }
       
@@ -36,6 +39,7 @@ package com.ankamagames.dofus.network.types.game.achievement
       {
          this.id = 0;
          this.achievedBy = 0;
+         this.achievedPioneerRank = 0;
       }
       
       public function serialize(output:ICustomDataOutput) : void
@@ -55,6 +59,11 @@ package com.ankamagames.dofus.network.types.game.achievement
             throw new Error("Forbidden value (" + this.achievedBy + ") on element achievedBy.");
          }
          output.writeVarLong(this.achievedBy);
+         if(this.achievedPioneerRank < 0)
+         {
+            throw new Error("Forbidden value (" + this.achievedPioneerRank + ") on element achievedPioneerRank.");
+         }
+         output.writeVarInt(this.achievedPioneerRank);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -66,6 +75,7 @@ package com.ankamagames.dofus.network.types.game.achievement
       {
          this._idFunc(input);
          this._achievedByFunc(input);
+         this._achievedPioneerRankFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -77,6 +87,7 @@ package com.ankamagames.dofus.network.types.game.achievement
       {
          tree.addChild(this._idFunc);
          tree.addChild(this._achievedByFunc);
+         tree.addChild(this._achievedPioneerRankFunc);
       }
       
       private function _idFunc(input:ICustomDataInput) : void
@@ -94,6 +105,15 @@ package com.ankamagames.dofus.network.types.game.achievement
          if(this.achievedBy < 0 || this.achievedBy > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.achievedBy + ") on element of AchievementAchieved.achievedBy.");
+         }
+      }
+      
+      private function _achievedPioneerRankFunc(input:ICustomDataInput) : void
+      {
+         this.achievedPioneerRank = input.readVarUhInt();
+         if(this.achievedPioneerRank < 0)
+         {
+            throw new Error("Forbidden value (" + this.achievedPioneerRank + ") on element of AchievementAchieved.achievedPioneerRank.");
          }
       }
    }

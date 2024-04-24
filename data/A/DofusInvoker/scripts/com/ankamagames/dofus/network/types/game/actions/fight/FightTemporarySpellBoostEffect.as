@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.actions.fight
    public class FightTemporarySpellBoostEffect extends FightTemporaryBoostEffect implements INetworkType
    {
       
-      public static const protocolId:uint = 5387;
+      public static const protocolId:uint = 5892;
        
       
       public var boostedSpellId:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.actions.fight
       
       override public function getTypeId() : uint
       {
-         return 5387;
+         return 5892;
       }
       
       public function initFightTemporarySpellBoostEffect(uid:uint = 0, targetId:Number = 0, turnDuration:int = 0, dispelable:uint = 1, spellId:uint = 0, effectId:uint = 0, parentBoostUid:uint = 0, delta:int = 0, boostedSpellId:uint = 0) : FightTemporarySpellBoostEffect

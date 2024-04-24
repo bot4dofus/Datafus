@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.job
    public class JobAllowMultiCraftRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6606;
+      public static const protocolId:uint = 1645;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.job
       
       override public function getMessageId() : uint
       {
-         return 6606;
+         return 1645;
       }
       
       public function initJobAllowMultiCraftRequestMessage(enabled:Boolean = false) : JobAllowMultiCraftRequestMessage

@@ -26,6 +26,8 @@ package com.ankamagames.dofus.logic.common.managers
       
       public var hasForceRight:Boolean;
       
+      public var hasReportRight:Boolean;
+      
       public var nickname:String;
       
       public var tag:String;

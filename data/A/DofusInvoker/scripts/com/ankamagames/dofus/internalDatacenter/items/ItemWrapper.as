@@ -764,7 +764,6 @@ package com.ankamagames.dofus.internalDatacenter.items
       private function initPossiblePositions() : void
       {
          var cat:int = 0;
-         var superTypeId:int = type.superTypeId;
          var itemType:ItemType = type as ItemType;
          if(!itemType)
          {

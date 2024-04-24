@@ -1,0 +1,60 @@
+{
+	"def": [
+		{
+			"memberName": "ExpeditionSeason",
+			"packageName": "com.ankamagames.dofus.datacenter.seasons",
+			"fields": [
+				{
+					"name": "uid",
+					"type": -1
+				},
+				{
+					"name": "nameId",
+					"type": -5
+				},
+				{
+					"name": "beginning",
+					"type": -4
+				},
+				{
+					"name": "closure",
+					"type": -4
+				},
+				{
+					"name": "resetDate",
+					"type": -4
+				},
+				{
+					"name": "flagObjectId",
+					"type": -1
+				}
+			]
+		}
+	],
+	"data": [
+		{
+			"uid": 25,
+			"nameId": 1058851,
+			"beginning": 1661986800000.0,
+			"closure": 1669593600000.0,
+			"resetDate": 1679270400000.0,
+			"flagObjectId": 27427
+		},
+		{
+			"uid": 26,
+			"nameId": 1057955,
+			"beginning": 1679443200000.0,
+			"closure": 1682118000000.0,
+			"resetDate": -3600000.0,
+			"flagObjectId": 28400
+		},
+		{
+			"uid": 59,
+			"nameId": 1066939,
+			"beginning": 1704844800000.0,
+			"closure": 1719270000000.0,
+			"resetDate": 1726527600000.0,
+			"flagObjectId": 29751
+		}
+	]
+}

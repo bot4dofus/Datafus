@@ -1,9 +1,11 @@
 package com.ankamagames.dofus.uiApi
 {
+   import com.ankama.dofus.enums.ActionIds;
    import com.ankamagames.berilia.interfaces.IApi;
    import com.ankamagames.dofus.datacenter.appearance.Ornament;
    import com.ankamagames.dofus.datacenter.appearance.Title;
    import com.ankamagames.dofus.datacenter.breeds.Breed;
+   import com.ankamagames.dofus.datacenter.effects.EffectInstance;
    import com.ankamagames.dofus.datacenter.optionalFeatures.CustomModeBreedSpell;
    import com.ankamagames.dofus.datacenter.optionalFeatures.ForgettableSpell;
    import com.ankamagames.dofus.datacenter.world.SubArea;
@@ -17,6 +19,7 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.internalDatacenter.stats.EntityStats;
    import com.ankamagames.dofus.internalDatacenter.world.WorldPointWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
+   import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.common.managers.StatsManager;
    import com.ankamagames.dofus.logic.game.common.frames.AbstractEntitiesFrame;
    import com.ankamagames.dofus.logic.game.common.frames.HouseFrame;
@@ -27,7 +30,6 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.logic.game.common.managers.EntitiesLooksManager;
    import com.ankamagames.dofus.logic.game.common.managers.InventoryManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
-   import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
    import com.ankamagames.dofus.logic.game.fight.frames.FightContextFrame;
    import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
    import com.ankamagames.dofus.logic.game.fight.frames.FightPreparationFrame;
@@ -53,7 +55,6 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.network.types.game.data.items.ForgettableSpellItem;
    import com.ankamagames.dofus.network.types.game.social.application.SocialApplicationInformation;
    import com.ankamagames.dofus.types.data.PlayerSetInfo;
-   import com.ankamagames.dofus.types.entities.AnimatedCharacter;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.tiphon.types.look.TiphonEntityLook;
@@ -129,21 +130,6 @@ package com.ankamagames.dofus.uiApi
             o.entityLook = ridderLook;
          }
          return o;
-      }
-      
-      public function getCurrentEntityLook() : TiphonEntityLook
-      {
-         var look:TiphonEntityLook = null;
-         var entity:AnimatedCharacter = DofusEntities.getEntity(PlayedCharacterManager.getInstance().id) as AnimatedCharacter;
-         if(entity)
-         {
-            look = entity.look.clone();
-         }
-         else
-         {
-            look = EntityLookAdapter.fromNetwork(PlayedCharacterManager.getInstance().infos.entityLook);
-         }
-         return look;
       }
       
       public function getInventory() : Vector.<ItemWrapper>
@@ -424,6 +410,51 @@ package com.ankamagames.dofus.uiApi
       public function isPetsMounting() : Boolean
       {
          return PlayedCharacterManager.getInstance().isPetsMounting;
+      }
+      
+      public function hasAutoPilot() : Boolean
+      {
+         var capacityCount:int = 0;
+         var i:int = 0;
+         var eff:EffectInstance = null;
+         var mountInfo:MountData = this.getMount();
+         var petsMountInfo:ItemWrapper = this.getPetsMount();
+         if(this.isRiding() && mountInfo || this.isPetsMounting() && petsMountInfo)
+         {
+            if(PlayerManager.getInstance().hasFreeAutopilot)
+            {
+               return true;
+            }
+            if(this.isRiding())
+            {
+               capacityCount = mountInfo.ability.length;
+               i = 0;
+               if(capacityCount)
+               {
+                  for(i = 0; i < capacityCount; i++)
+                  {
+                     if(mountInfo.ability[i].id == DataEnum.MOUNT_CAPACITY_AUTOPILOT)
+                     {
+                        return true;
+                     }
+                  }
+               }
+            }
+            else if(this.isPetsMounting())
+            {
+               if(petsMountInfo.effects.length)
+               {
+                  for each(eff in petsMountInfo.effects)
+                  {
+                     if(eff.effectId == ActionIds.ACTION_SELF_PILOTING)
+                     {
+                        return true;
+                     }
+                  }
+               }
+            }
+         }
+         return false;
       }
       
       public function hasCompanion() : Boolean

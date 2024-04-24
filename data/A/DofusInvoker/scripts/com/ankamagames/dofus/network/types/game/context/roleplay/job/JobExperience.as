@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
    public class JobExperience implements INetworkType
    {
       
-      public static const protocolId:uint = 3640;
+      public static const protocolId:uint = 3823;
        
       
       public var jobId:uint = 0;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.job
       
       public function getTypeId() : uint
       {
-         return 3640;
+         return 3823;
       }
       
       public function initJobExperience(jobId:uint = 0, jobLevel:uint = 0, jobXP:Number = 0, jobXpLevelFloor:Number = 0, jobXpNextLevelFloor:Number = 0) : JobExperience

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.social.application
    public class ApplicationPlayerInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 4107;
+      public static const protocolId:uint = 1848;
        
       
       public var playerId:Number = 0;
@@ -41,7 +41,7 @@ package com.ankamagames.dofus.network.types.game.social.application
       
       public function getTypeId() : uint
       {
-         return 4107;
+         return 1848;
       }
       
       public function initApplicationPlayerInformation(playerId:Number = 0, playerName:String = "", breed:int = 0, sex:Boolean = false, level:uint = 0, accountId:uint = 0, accountTag:String = "", accountNickname:String = "", status:PlayerStatus = null) : ApplicationPlayerInformation

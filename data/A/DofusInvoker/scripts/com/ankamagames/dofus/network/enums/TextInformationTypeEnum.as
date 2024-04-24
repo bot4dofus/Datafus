@@ -18,6 +18,8 @@ package com.ankamagames.dofus.network.enums
       public static const TEXT_ENTITY_TALK:uint = 6;
       
       public static const TEXT_INFORMATION_FIGHT:uint = 7;
+      
+      public static const TEXT_INFORMATION_EVENT:uint = 9;
        
       
       public function TextInformationTypeEnum()

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.actions.fight
    public class GameActionMark implements INetworkType
    {
       
-      public static const protocolId:uint = 8488;
+      public static const protocolId:uint = 4305;
        
       
       public var markAuthorId:Number = 0;
@@ -39,7 +39,7 @@ package com.ankamagames.dofus.network.types.game.actions.fight
       
       public function getTypeId() : uint
       {
-         return 8488;
+         return 4305;
       }
       
       public function initGameActionMark(markAuthorId:Number = 0, markTeamId:uint = 2, markSpellId:uint = 0, markSpellLevel:int = 0, markId:int = 0, markType:int = 0, markimpactCell:int = 0, cells:Vector.<GameActionMarkedCell> = null, active:Boolean = false) : GameActionMark

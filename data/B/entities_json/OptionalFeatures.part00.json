@@ -622,6 +622,15 @@
 			"activationCriterions": "null"
 		},
 		{
+			"id": 151,
+			"keyword": "social.guild.score",
+			"isClient": true,
+			"isServer": true,
+			"isActivationOnLaunch": false,
+			"isActivationOnServerConnection": false,
+			"activationCriterions": "null"
+		},
+		{
 			"id": 148,
 			"keyword": "misc.expedition",
 			"isClient": true,

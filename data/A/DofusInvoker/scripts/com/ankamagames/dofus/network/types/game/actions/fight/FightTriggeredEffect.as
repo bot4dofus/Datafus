@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.actions.fight
    public class FightTriggeredEffect extends AbstractFightDispellableEffect implements INetworkType
    {
       
-      public static const protocolId:uint = 1094;
+      public static const protocolId:uint = 7243;
        
       
       public var param1:int = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.actions.fight
       
       override public function getTypeId() : uint
       {
-         return 1094;
+         return 7243;
       }
       
       public function initFightTriggeredEffect(uid:uint = 0, targetId:Number = 0, turnDuration:int = 0, dispelable:uint = 1, spellId:uint = 0, effectId:uint = 0, parentBoostUid:uint = 0, param1:int = 0, param2:int = 0, param3:int = 0, delay:int = 0) : FightTriggeredEffect

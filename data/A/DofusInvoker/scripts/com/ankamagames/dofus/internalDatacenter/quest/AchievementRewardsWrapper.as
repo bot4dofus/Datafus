@@ -47,6 +47,10 @@ package com.ankamagames.dofus.internalDatacenter.quest
             {
                mergedRewards.experienceRatio = rewards[i].experienceRatio;
             }
+            if(rewards[i].guildPoints)
+            {
+               mergedRewards.guildPoints = rewards[i].guildPoints;
+            }
             mergedRewards.itemsReward = mergedRewards.itemsReward.concat(rewards[i].itemsReward);
             mergedRewards.itemsQuantityReward = mergedRewards.itemsQuantityReward.concat(rewards[i].itemsQuantityReward);
             mergedRewards.emotesReward = mergedRewards.emotesReward.concat(rewards[i].emotesReward);
@@ -83,6 +87,10 @@ package com.ankamagames.dofus.internalDatacenter.quest
             if(rewards[i].experienceRatio)
             {
                this.experienceRatio = rewards[i].experienceRatio;
+            }
+            if(rewards[i].guildPoints)
+            {
+               this.guildPoints = rewards[i].guildPoints;
             }
             this.itemsReward = this.itemsReward.concat(rewards[i].itemsReward);
             this.itemsQuantityReward = this.itemsQuantityReward.concat(rewards[i].itemsQuantityReward);

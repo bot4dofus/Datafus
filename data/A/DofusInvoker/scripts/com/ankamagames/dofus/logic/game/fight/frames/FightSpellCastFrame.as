@@ -675,6 +675,10 @@ package com.ankamagames.dofus.logic.game.fight.frames
          }
          var currentFighterId:Number = this._entityId;
          var entityInfos:GameFightFighterInformations = FightEntitiesFrame.getCurrentInstance().getEntityInfos(currentFighterId) as GameFightFighterInformations;
+         if(!entityInfos)
+         {
+            return;
+         }
          var origin:uint = entityInfos.disposition.cellId;
          var range:int = this._spellWrapper.range;
          var minRange:int = this._spellWrapper.minRange;

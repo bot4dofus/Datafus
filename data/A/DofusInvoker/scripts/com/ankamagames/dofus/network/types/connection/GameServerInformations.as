@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.connection
    public class GameServerInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1173;
+      public static const protocolId:uint = 9294;
        
       
       public var id:uint = 0;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.types.connection
       
       public function getTypeId() : uint
       {
-         return 1173;
+         return 9294;
       }
       
       public function initGameServerInformations(id:uint = 0, type:int = -1, isMonoAccount:Boolean = false, status:uint = 1, completion:uint = 0, isSelectable:Boolean = false, charactersCount:uint = 0, charactersSlots:uint = 0, date:Number = 0) : GameServerInformations

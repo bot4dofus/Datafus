@@ -2333,6 +2333,36 @@
 			"nameId": 1051467,
 			"actionId": 0,
 			"displayTooltip": true
+		},
+		{
+			"id": 415,
+			"nameId": 1070093,
+			"actionId": 0,
+			"displayTooltip": false
+		},
+		{
+			"id": 416,
+			"nameId": 1070094,
+			"actionId": 0,
+			"displayTooltip": false
+		},
+		{
+			"id": 417,
+			"nameId": 1070095,
+			"actionId": 0,
+			"displayTooltip": false
+		},
+		{
+			"id": 418,
+			"nameId": 1070096,
+			"actionId": 0,
+			"displayTooltip": false
+		},
+		{
+			"id": 419,
+			"nameId": 1070097,
+			"actionId": 0,
+			"displayTooltip": false
 		}
 	]
 }

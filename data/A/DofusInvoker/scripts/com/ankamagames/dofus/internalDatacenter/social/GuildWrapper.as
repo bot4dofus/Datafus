@@ -15,6 +15,8 @@ package com.ankamagames.dofus.internalDatacenter.social
       
       public var level:uint = 0;
       
+      public var score:uint = 0;
+      
       public var experience:Number;
       
       public var expLevelFloor:Number;

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.chat.smiley
    public class LocalizedChatSmileyMessage extends ChatSmileyMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8452;
+      public static const protocolId:uint = 9190;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.chat.smiley
       
       override public function getMessageId() : uint
       {
-         return 8452;
+         return 9190;
       }
       
       public function initLocalizedChatSmileyMessage(entityId:Number = 0, smileyId:uint = 0, accountId:uint = 0, cellId:uint = 0) : LocalizedChatSmileyMessage

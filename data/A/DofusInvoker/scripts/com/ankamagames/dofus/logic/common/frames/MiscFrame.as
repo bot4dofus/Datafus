@@ -7,7 +7,9 @@ package com.ankamagames.dofus.logic.common.frames
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.logic.common.managers.PlayerManager;
    import com.ankamagames.dofus.logic.game.common.actions.GoToUrlAction;
+   import com.ankamagames.dofus.logic.game.common.actions.ReportPlayerAction;
    import com.ankamagames.dofus.logic.game.common.frames.HouseFrame;
+   import com.ankamagames.dofus.misc.lists.ExternalGameHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.utils.HaapiKeyManager;
    import com.ankamagames.dofus.network.enums.HaapiAuthTypeEnum;
@@ -16,6 +18,8 @@ package com.ankamagames.dofus.logic.common.frames
    import com.ankamagames.dofus.network.messages.game.approach.ServerSettingsMessage;
    import com.ankamagames.dofus.network.messages.game.basic.CurrentServerStatusUpdateMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.houses.AccountHouseMessage;
+   import com.ankamagames.dofus.network.messages.report.ReportRequestMessage;
+   import com.ankamagames.dofus.network.messages.report.ReportResponseMessage;
    import com.ankamagames.dofus.network.messages.security.CheckFileMessage;
    import com.ankamagames.dofus.network.messages.security.CheckFileRequestMessage;
    import com.ankamagames.dofus.network.messages.web.haapi.HaapiApiKeyMessage;
@@ -136,6 +140,8 @@ package com.ankamagames.dofus.logic.common.frames
          var hakmsg:HaapiApiKeyMessage = null;
          var logStr:String = null;
          var haem:HaapiAuthErrorMessage = null;
+         var rrmsg:ReportRequestMessage = null;
+         var rpa:ReportPlayerAction = null;
          var mwMsg:MouseWheelMessage = null;
          var currentW:DisplayObject = null;
          var stageW:Stage = null;
@@ -321,6 +327,18 @@ package com.ankamagames.dofus.logic.common.frames
                if(haem.type == HaapiAuthTypeEnum.HAAPI_API_KEY)
                {
                   _log.error("Error during ApiKey request.");
+               }
+               return true;
+            case msg is ReportPlayerAction:
+               rrmsg = new ReportRequestMessage();
+               rpa = msg as ReportPlayerAction;
+               rrmsg.initReportRequestMessage(rpa.targetId,rpa.categories,rpa.description);
+               ConnectionsHandler.getConnection().send(rrmsg);
+               return true;
+            case msg is ReportResponseMessage:
+               if((msg as ReportResponseMessage).success)
+               {
+                  KernelEventsManager.getInstance().processCallback(ExternalGameHookList.ReportResponse,(msg as ReportResponseMessage).success);
                }
                return true;
             default:

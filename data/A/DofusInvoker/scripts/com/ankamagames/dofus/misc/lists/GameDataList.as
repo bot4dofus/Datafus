@@ -25,7 +25,6 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.datacenter.appearance.TitleCategory;
    import com.ankamagames.dofus.datacenter.arena.ArenaLeague;
    import com.ankamagames.dofus.datacenter.arena.ArenaLeagueReward;
-   import com.ankamagames.dofus.datacenter.arena.ArenaLeagueSeason;
    import com.ankamagames.dofus.datacenter.bonus.Bonus;
    import com.ankamagames.dofus.datacenter.bonus.MonsterDropChanceBonus;
    import com.ankamagames.dofus.datacenter.bonus.MonsterStarRateBonus;
@@ -155,12 +154,13 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.datacenter.quest.treasureHunt.LegendaryTreasureHunt;
    import com.ankamagames.dofus.datacenter.quest.treasureHunt.PointOfInterest;
    import com.ankamagames.dofus.datacenter.quest.treasureHunt.PointOfInterestCategory;
+   import com.ankamagames.dofus.datacenter.seasons.ArenaLeagueSeason;
+   import com.ankamagames.dofus.datacenter.seasons.ServerSeason;
    import com.ankamagames.dofus.datacenter.servers.Server;
    import com.ankamagames.dofus.datacenter.servers.ServerCommunity;
    import com.ankamagames.dofus.datacenter.servers.ServerGameType;
    import com.ankamagames.dofus.datacenter.servers.ServerLang;
    import com.ankamagames.dofus.datacenter.servers.ServerPopulation;
-   import com.ankamagames.dofus.datacenter.servers.ServerSeason;
    import com.ankamagames.dofus.datacenter.social.EmblemBackground;
    import com.ankamagames.dofus.datacenter.social.EmblemSymbol;
    import com.ankamagames.dofus.datacenter.social.EmblemSymbolCategory;

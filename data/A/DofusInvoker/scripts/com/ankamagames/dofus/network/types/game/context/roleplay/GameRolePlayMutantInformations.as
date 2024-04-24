@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class GameRolePlayMutantInformations extends GameRolePlayHumanoidInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 7547;
+      public static const protocolId:uint = 3898;
        
       
       public var monsterId:uint = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 7547;
+         return 3898;
       }
       
       public function initGameRolePlayMutantInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, name:String = "", humanoidInfo:HumanInformations = null, accountId:uint = 0, monsterId:uint = 0, powerLevel:int = 0) : GameRolePlayMutantInformations

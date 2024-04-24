@@ -39,6 +39,8 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const GUILD_CHEST_TAB:String = "social.guild.chestTab";
       
+      public static const GUILD_SCORE:String = "social.guild.score";
+      
       public static const PVP_KIS:String = "pvp.kis";
       
       public static const EXPEDITION:String = "misc.expedition";

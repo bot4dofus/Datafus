@@ -8,10 +8,10 @@ package com.ankamagames.dofus.network.types.game.achievement
    public class AchievementStartedObjective extends AchievementObjective implements INetworkType
    {
       
-      public static const protocolId:uint = 6999;
+      public static const protocolId:uint = 6683;
        
       
-      public var value:uint = 0;
+      public var value:Number = 0;
       
       public function AchievementStartedObjective()
       {
@@ -20,10 +20,10 @@ package com.ankamagames.dofus.network.types.game.achievement
       
       override public function getTypeId() : uint
       {
-         return 6999;
+         return 6683;
       }
       
-      public function initAchievementStartedObjective(id:uint = 0, maxValue:uint = 0, value:uint = 0) : AchievementStartedObjective
+      public function initAchievementStartedObjective(id:uint = 0, maxValue:Number = 0, value:Number = 0) : AchievementStartedObjective
       {
          super.initAchievementObjective(id,maxValue);
          this.value = value;
@@ -44,11 +44,11 @@ package com.ankamagames.dofus.network.types.game.achievement
       public function serializeAs_AchievementStartedObjective(output:ICustomDataOutput) : void
       {
          super.serializeAs_AchievementObjective(output);
-         if(this.value < 0)
+         if(this.value < 0 || this.value > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.value + ") on element value.");
          }
-         output.writeVarShort(this.value);
+         output.writeVarLong(this.value);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -75,8 +75,8 @@ package com.ankamagames.dofus.network.types.game.achievement
       
       private function _valueFunc(input:ICustomDataInput) : void
       {
-         this.value = input.readVarUhShort();
-         if(this.value < 0)
+         this.value = input.readVarUhLong();
+         if(this.value < 0 || this.value > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.value + ") on element of AchievementStartedObjective.value.");
          }

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.pvp
    public class AlignmentRankUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3829;
+      public static const protocolId:uint = 1223;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.pvp
       
       override public function getMessageId() : uint
       {
-         return 3829;
+         return 1223;
       }
       
       public function initAlignmentRankUpdateMessage(alignmentRank:uint = 0, verbose:Boolean = false) : AlignmentRankUpdateMessage

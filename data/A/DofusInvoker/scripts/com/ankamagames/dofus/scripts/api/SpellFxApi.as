@@ -1,10 +1,8 @@
 package com.ankamagames.dofus.scripts.api
 {
-   import com.ankamagames.dofus.datacenter.items.Item;
    import com.ankamagames.dofus.logic.game.fight.managers.MarkedCellsManager;
    import com.ankamagames.dofus.logic.game.fight.steps.IFightStep;
-   import com.ankamagames.dofus.logic.game.fight.types.CastingSpell;
-   import com.ankamagames.dofus.scripts.SpellFxRunner;
+   import com.ankamagames.dofus.scripts.SpellScriptRunner;
    import com.ankamagames.dofus.types.entities.ExplosionEntity;
    import com.ankamagames.dofus.types.entities.Glyph;
    import com.ankamagames.jerakine.sequencer.ISequencable;
@@ -12,7 +10,7 @@ package com.ankamagames.dofus.scripts.api
    import com.ankamagames.jerakine.types.positions.MapPoint;
    import com.ankamagames.tiphon.TiphonConstants;
    
-   public class SpellFxApi extends FxApi
+   public class SpellFxApi extends SpellScriptRunnerUtils
    {
        
       
@@ -21,61 +19,17 @@ package com.ankamagames.dofus.scripts.api
          super();
       }
       
-      public static function GetCastingSpell(runner:SpellFxRunner) : CastingSpell
+      public static function GetPortalCells(runner:SpellScriptRunner) : Vector.<MapPoint>
       {
-         return runner.castingSpell;
+         return runner.castSequenceContext.portalMapPoints;
       }
       
-      public static function GetUsedWeaponType(spell:CastingSpell) : uint
+      public static function GetPortalIds(runner:SpellScriptRunner) : Vector.<int>
       {
-         if(spell.weaponId > 0)
-         {
-            return Item.getItemById(spell.weaponId).typeId;
-         }
-         return 0;
+         return runner.castSequenceContext.portalIds;
       }
       
-      public static function IsCriticalHit(spell:CastingSpell) : Boolean
-      {
-         return spell.isCriticalHit;
-      }
-      
-      public static function IsCriticalFail(spell:CastingSpell) : Boolean
-      {
-         return spell.isCriticalFail;
-      }
-      
-      public static function GetSpellParam(spell:CastingSpell, name:String) : *
-      {
-         var r:* = spell.spell.getParamByName(name,IsCriticalHit(spell));
-         if(r is String)
-         {
-            return r;
-         }
-         return !!isNaN(r) ? 0 : r;
-      }
-      
-      public static function HasSpellParam(spell:CastingSpell, name:String) : Boolean
-      {
-         if(!spell || !spell.spell)
-         {
-            return false;
-         }
-         var v:* = spell.spell.getParamByName(name,IsCriticalHit(spell));
-         return !isNaN(v) || v != null;
-      }
-      
-      public static function GetPortalCells(runner:SpellFxRunner) : Vector.<MapPoint>
-      {
-         return runner.castingSpell.portalMapPoints;
-      }
-      
-      public static function GetPortalIds(runner:SpellFxRunner) : Vector.<int>
-      {
-         return runner.castingSpell.portalIds;
-      }
-      
-      public static function GetPortalEntity(runner:SpellFxRunner, portalId:int) : Glyph
+      public static function GetPortalEntity(runner:SpellScriptRunner, portalId:int) : Glyph
       {
          return MarkedCellsManager.getInstance().getGlyph(portalId);
       }
@@ -89,12 +43,12 @@ package com.ankamagames.dofus.scripts.api
          return "other";
       }
       
-      public static function GetStepsFromType(runner:SpellFxRunner, type:String) : Vector.<IFightStep>
+      public static function GetStepsFromType(runner:SpellScriptRunner, type:String) : Vector.<IFightStep>
       {
          var stepInside:ISequencable = null;
          var fightStepInside:IFightStep = null;
          var steps:Vector.<IFightStep> = new Vector.<IFightStep>(0,false);
-         for each(stepInside in runner.stepsBuffer)
+         for each(stepInside in runner.steps)
          {
             if(stepInside is IFightStep)
             {
@@ -108,22 +62,22 @@ package com.ankamagames.dofus.scripts.api
          return steps;
       }
       
-      public static function AddFrontStep(runner:SpellFxRunner, step:ISequencable) : void
+      public static function AddFrontStep(runner:SpellScriptRunner, step:ISequencable) : void
       {
-         runner.stepsBuffer.splice(0,0,step);
+         runner.steps.splice(0,0,step);
       }
       
-      public static function AddBackStep(runner:SpellFxRunner, step:ISequencable) : void
+      public static function AddBackStep(runner:SpellScriptRunner, step:ISequencable) : void
       {
-         runner.stepsBuffer.push(step);
+         runner.steps.push(step);
       }
       
-      public static function AddStepBefore(runner:SpellFxRunner, referenceStep:ISequencable, stepToAdd:ISequencable) : void
+      public static function AddStepBefore(runner:SpellScriptRunner, referenceStep:ISequencable, stepToAdd:ISequencable) : void
       {
-         var index:int = runner.stepsBuffer.indexOf(referenceStep);
+         var index:int = runner.steps.indexOf(referenceStep);
          if(index >= 0)
          {
-            runner.stepsBuffer.insertAt(index,stepToAdd);
+            runner.steps.insertAt(index,stepToAdd);
          }
          else
          {
@@ -131,12 +85,12 @@ package com.ankamagames.dofus.scripts.api
          }
       }
       
-      public static function AddStepAfter(runner:SpellFxRunner, referenceStep:ISequencable, stepToAdd:ISequencable) : void
+      public static function AddStepAfter(runner:SpellScriptRunner, referenceStep:ISequencable, stepToAdd:ISequencable) : void
       {
-         var index:int = runner.stepsBuffer.indexOf(referenceStep);
+         var index:int = runner.steps.indexOf(referenceStep);
          if(index >= 0)
          {
-            runner.stepsBuffer.insertAt(index + 1,stepToAdd);
+            runner.steps.insertAt(index + 1,stepToAdd);
          }
          else
          {
@@ -144,7 +98,7 @@ package com.ankamagames.dofus.scripts.api
          }
       }
       
-      public static function CreateExplosionEntity(runner:SpellFxRunner, gfxId:uint, startColors:String, particleCount:uint, levelChange:Boolean, subExplo:Boolean, exploType:uint) : ExplosionEntity
+      public static function CreateExplosionEntity(runner:SpellScriptRunner, gfxId:uint, startColors:String, particleCount:uint, levelChange:Boolean, subExplo:Boolean, exploType:uint) : ExplosionEntity
       {
          var tmp:Array = null;
          var i:uint = 0;
@@ -160,10 +114,10 @@ package com.ankamagames.dofus.scripts.api
          }
          if(levelChange)
          {
-            spellRank = runner.castingSpell.spellRank.spell.spellLevels.indexOf(runner.castingSpell.spellRank.id);
+            spellRank = runner.castSequenceContext.spellLevelData.spell.spellLevels.indexOf(runner.castSequenceContext.spellLevelData.id);
             if(spellRank != -1)
             {
-               particleCount = particleCount * runner.castingSpell.spellRank.spell.spellLevels.length / 10 + particleCount * (spellRank + 1) / 10;
+               particleCount = particleCount * runner.castSequenceContext.spellLevelData.spell.spellLevels.length / 10 + particleCount * (spellRank + 1) / 10;
             }
          }
          return new ExplosionEntity(uri,tmp,particleCount,subExplo,exploType);

@@ -317,7 +317,7 @@ package com.ankamagames.dofus.logic.game.fight.types
             return;
          }
          var fightContextFrame:FightContextFrame = Kernel.getWorker().getFrame(FightContextFrame) as FightContextFrame;
-         var showPermanentTooltips:Boolean = fightContextFrame.showPermanentTooltips && fightContextFrame.battleFrame.targetedEntities.length > 0;
+         var showPermanentTooltips:Boolean = fightContextFrame && fightContextFrame.showPermanentTooltips && fightContextFrame.battleFrame.targetedEntities.length > 0;
          var overEntity:AnimatedCharacter = EntitiesManager.getInstance().getEntityOnCell(FightContextFrame.currentCell,AnimatedCharacter) as AnimatedCharacter;
          overEntity = !!overEntity ? getParentEntity(overEntity) as AnimatedCharacter : null;
          for each(entityId in this.getEntitiesIds())
@@ -348,7 +348,10 @@ package com.ankamagames.dofus.logic.game.fight.types
                {
                   ac.hide(false);
                }
-               fightContextFrame.entitiesFrame.updateEntityIconPosition(this._previewIdEntityIdAssoc[ac.id]);
+               if(fightContextFrame)
+               {
+                  fightContextFrame.entitiesFrame.updateEntityIconPosition(this._previewIdEntityIdAssoc[ac.id]);
+               }
             }
          }
          this._removed = true;

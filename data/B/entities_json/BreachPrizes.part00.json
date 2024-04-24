@@ -100,6 +100,15 @@
 			"itemId": -1
 		},
 		{
+			"id": 367,
+			"nameId": 1053855,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
 			"id": 329,
 			"nameId": 821434,
 			"categoryId": 4,
@@ -597,6 +606,285 @@
 		{
 			"id": 366,
 			"nameId": 972397,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 368,
+			"nameId": 1053856,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 369,
+			"nameId": 1053857,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 370,
+			"nameId": 1053858,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 371,
+			"nameId": 1053859,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 372,
+			"nameId": 1053860,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 373,
+			"nameId": 1053861,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 374,
+			"nameId": 1053862,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 375,
+			"nameId": 1053863,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 376,
+			"nameId": 1053864,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 377,
+			"nameId": 1053865,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 378,
+			"nameId": 1053866,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 379,
+			"nameId": 1053867,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 380,
+			"nameId": 1053868,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 381,
+			"nameId": 1053869,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 382,
+			"nameId": 1053870,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 383,
+			"nameId": 1053871,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 384,
+			"nameId": 1053872,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 385,
+			"nameId": 1053873,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 386,
+			"nameId": 1053874,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 387,
+			"nameId": 1053875,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 388,
+			"nameId": 1053876,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 389,
+			"nameId": 1053877,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 390,
+			"nameId": 1053878,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 391,
+			"nameId": 1053879,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 392,
+			"nameId": 1053880,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 393,
+			"nameId": 1053881,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 394,
+			"nameId": 1053882,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 395,
+			"nameId": 1053883,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 396,
+			"nameId": 1053884,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 397,
+			"nameId": 1053885,
+			"categoryId": 6,
+			"currency": 0,
+			"tooltipKey": "breachReward.addBoss",
+			"descriptionKey": 0,
+			"itemId": -1
+		},
+		{
+			"id": 398,
+			"nameId": 1053886,
 			"categoryId": 6,
 			"currency": 0,
 			"tooltipKey": "breachReward.addBoss",
@@ -1569,294 +1857,6 @@
 		{
 			"id": 320,
 			"nameId": 807391,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 367,
-			"nameId": 1052985,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 368,
-			"nameId": 1052986,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 369,
-			"nameId": 1052987,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 370,
-			"nameId": 1052988,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 371,
-			"nameId": 1052989,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 372,
-			"nameId": 1052990,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 373,
-			"nameId": 1052991,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 374,
-			"nameId": 1052992,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 375,
-			"nameId": 1052993,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 376,
-			"nameId": 1052994,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 377,
-			"nameId": 1052995,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 378,
-			"nameId": 1052996,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 379,
-			"nameId": 1052997,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 380,
-			"nameId": 1052998,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 381,
-			"nameId": 1052999,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 382,
-			"nameId": 1053000,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 383,
-			"nameId": 1053001,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 384,
-			"nameId": 1053002,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 385,
-			"nameId": 1053003,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 386,
-			"nameId": 1053004,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 387,
-			"nameId": 1053005,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 388,
-			"nameId": 1053006,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 389,
-			"nameId": 1053007,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 390,
-			"nameId": 1053008,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 391,
-			"nameId": 1053009,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 392,
-			"nameId": 1053010,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 393,
-			"nameId": 1053011,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 394,
-			"nameId": 1053012,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 395,
-			"nameId": 1053013,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 396,
-			"nameId": 1053014,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 397,
-			"nameId": 1053015,
-			"categoryId": 6,
-			"currency": 0,
-			"tooltipKey": "breachReward.addBoss",
-			"descriptionKey": 0,
-			"itemId": -1
-		},
-		{
-			"id": 398,
-			"nameId": 1053016,
 			"categoryId": 6,
 			"currency": 0,
 			"tooltipKey": "breachReward.addBoss",

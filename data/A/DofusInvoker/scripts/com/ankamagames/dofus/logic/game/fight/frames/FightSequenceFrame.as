@@ -14,6 +14,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.datacenter.monsters.Monster;
    import com.ankamagames.dofus.datacenter.spells.Spell;
    import com.ankamagames.dofus.datacenter.spells.SpellLevel;
+   import com.ankamagames.dofus.datacenter.spells.SpellScript;
    import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.frames.SpellInventoryManagementFrame;
@@ -22,13 +23,13 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.managers.SpeakingItemManager;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
-   import com.ankamagames.dofus.logic.game.common.misc.ISpellCastProvider;
+   import com.ankamagames.dofus.logic.game.common.misc.ISpellCastSequence;
+   import com.ankamagames.dofus.logic.game.common.misc.SpellCastSequence;
    import com.ankamagames.dofus.logic.game.fight.managers.BuffManager;
    import com.ankamagames.dofus.logic.game.fight.managers.CurrentPlayedFighterManager;
    import com.ankamagames.dofus.logic.game.fight.managers.MarkedCellsManager;
    import com.ankamagames.dofus.logic.game.fight.messages.GameActionFightLeaveMessage;
    import com.ankamagames.dofus.logic.game.fight.miscs.ActionIdProtocol;
-   import com.ankamagames.dofus.logic.game.fight.miscs.SpellScriptBuffer;
    import com.ankamagames.dofus.logic.game.fight.miscs.TackleUtil;
    import com.ankamagames.dofus.logic.game.fight.steps.FightActionPointsLossDodgeStep;
    import com.ankamagames.dofus.logic.game.fight.steps.FightActionPointsVariationStep;
@@ -79,9 +80,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.logic.game.fight.steps.FightVisibilityStep;
    import com.ankamagames.dofus.logic.game.fight.steps.IFightStep;
    import com.ankamagames.dofus.logic.game.fight.types.BasicBuff;
-   import com.ankamagames.dofus.logic.game.fight.types.CastingSpell;
    import com.ankamagames.dofus.logic.game.fight.types.MarkInstance;
    import com.ankamagames.dofus.logic.game.fight.types.SpellCastInFightManager;
+   import com.ankamagames.dofus.logic.game.fight.types.SpellCastSequenceContext;
    import com.ankamagames.dofus.logic.game.fight.types.StatBuff;
    import com.ankamagames.dofus.logic.game.fight.types.StateBuff;
    import com.ankamagames.dofus.logic.game.fight.types.castSpellManager.SpellManager;
@@ -153,6 +154,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.network.types.game.context.fight.SpawnCompanionInformation;
    import com.ankamagames.dofus.network.types.game.context.fight.SpawnMonsterInformation;
    import com.ankamagames.dofus.network.types.game.context.fight.SpawnScaledMonsterInformation;
+   import com.ankamagames.dofus.scripts.SpellScriptContext;
+   import com.ankamagames.dofus.scripts.SpellScriptManager;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
    import com.ankamagames.dofus.types.enums.AnimationEnum;
    import com.ankamagames.dofus.types.sequences.AddGfxEntityStep;
@@ -189,23 +192,19 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import tools.enumeration.ElementEnum;
    import tools.enumeration.GameActionMarkTypeEnum;
    
-   public class FightSequenceFrame implements Frame, ISpellCastProvider
+   public class FightSequenceFrame implements Frame, ISpellCastSequence
    {
       
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(FightSequenceFrame));
       
-      private static var _lastCastingSpell:CastingSpell;
+      private static var _lastCastingSpell:SpellCastSequenceContext;
       
       private static var _currentInstanceId:uint;
       
       public static const FIGHT_SEQUENCERS_CATEGORY:String = "FightSequencer";
        
       
-      private var _castingSpell:CastingSpell;
-      
-      private var _castingSpells:Vector.<CastingSpell>;
-      
-      private var _stepsBuffer:Vector.<ISequencable>;
+      private var _steps:Vector.<ISequencable>;
       
       public var mustAck:Boolean;
       
@@ -233,9 +232,13 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private var _playSpellScriptStep:FightPlaySpellScriptStep;
       
-      private var _spellScriptTemporaryBuffer:SpellScriptBuffer;
+      private var _tmpSpellCastSequence:SpellCastSequence;
       
       private var _permanentTooltipsCallback:Callback;
+      
+      private var _forcedCastSequenceContext:SpellCastSequenceContext;
+      
+      private var _castContexts:Vector.<SpellCastSequenceContext>;
       
       public function FightSequenceFrame(pFightBattleFrame:FightBattleFrame, parent:FightSequenceFrame = null)
       {
@@ -246,7 +249,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          this.clearBuffer();
       }
       
-      public static function get lastCastingSpell() : CastingSpell
+      public static function get lastCastingSpell() : SpellCastSequenceContext
       {
          return _lastCastingSpell;
       }
@@ -273,18 +276,18 @@ package com.ankamagames.dofus.logic.game.fight.frames
          return Priority.HIGHEST;
       }
       
-      public function get castingSpell() : CastingSpell
+      public function get context() : SpellCastSequenceContext
       {
-         if(this._castingSpells && this._castingSpells.length > 1)
+         if(this._castContexts && this._castContexts.length > 1)
          {
-            return this._castingSpells[this._castingSpells.length - 1];
+            return this._castContexts[this._castContexts.length - 1];
          }
-         return this._castingSpell;
+         return this._forcedCastSequenceContext;
       }
       
-      public function get stepsBuffer() : Vector.<ISequencable>
+      public function get steps() : Vector.<ISequencable>
       {
-         return this._stepsBuffer;
+         return this._steps;
       }
       
       public function get parent() : FightSequenceFrame
@@ -310,9 +313,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       public function pulled() : Boolean
       {
-         this._stepsBuffer = null;
-         this._castingSpell = null;
-         this._castingSpells = null;
+         this._steps = null;
+         this._forcedCastSequenceContext = null;
+         this._castContexts = null;
          _lastCastingSpell = null;
          this._sequenceEndCallback = null;
          this._parent = null;
@@ -334,7 +337,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
       public function addSubSequence(sequence:ISequencer) : void
       {
          ++this._subSequenceWaitingCount;
-         this._stepsBuffer.push(new ParallelStartSequenceStep([sequence],false));
+         this._steps.push(new ParallelStartSequenceStep([sequence],false));
       }
       
       public function process(msg:Message) : Boolean
@@ -344,8 +347,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var gafscmsg:GameActionFightSpellCastMessage = null;
          var forceDetailedLogs:Boolean = false;
          var closeCombatWeaponId:uint = 0;
-         var fxScriptId:int = 0;
-         var tempCastingSpell:CastingSpell = null;
+         var tempSpellCastContext:SpellCastSequenceContext = null;
          var sourceCellId:int = 0;
          var critical:* = false;
          var entities:Dictionary = null;
@@ -407,7 +409,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var gftmsg:GameFightTurnListMessage = null;
          var gafccmsg:GameActionFightCloseCombatMessage = null;
          var fighterInfo:GameContextActorInformations = null;
-         var cssb:SpellScriptBuffer = null;
+         var castSteps:SpellCastSequence = null;
          var startIndex:uint = 0;
          var stepsChanged:Boolean = false;
          var playSpellScriptStepPosition:uint = 0;
@@ -442,14 +444,14 @@ package com.ankamagames.dofus.logic.game.fight.frames
             case msg is GameFightRefreshFighterMessage:
                gfrfmsg = msg as GameFightRefreshFighterMessage;
                this.keepInMindToUpdateMovementArea();
-               this._stepsBuffer.push(new FightRefreshFighterStep(gfrfmsg.informations));
+               this._steps.push(new FightRefreshFighterStep(gfrfmsg.informations));
                return true;
             case msg is GameActionFightCloseCombatMessage:
             case msg is GameActionFightSpellCastMessage:
                forceDetailedLogs = GameDebugManager.getInstance().detailedFightLog_showEverything;
-               if(!this._castingSpells)
+               if(!this._castContexts)
                {
-                  this._castingSpells = new Vector.<CastingSpell>();
+                  this._castContexts = new Vector.<SpellCastSequenceContext>();
                }
                if(msg is GameActionFightSpellCastMessage)
                {
@@ -474,15 +476,15 @@ package com.ankamagames.dofus.logic.game.fight.frames
                      SpeakingItemManager.getInstance().triggerEvent(SpeakingItemManager.SPEAK_TRIGGER_PLAYER_CLOSE_COMBAT);
                   }
                }
-               tempCastingSpell = new CastingSpell();
-               tempCastingSpell.casterId = gafscmsg.sourceId;
-               tempCastingSpell.spell = Spell.getSpellById(gafscmsg.spellId);
-               tempCastingSpell.spellRank = tempCastingSpell.spell.getSpellLevel(gafscmsg.spellLevel);
-               tempCastingSpell.isCriticalFail = gafscmsg.critical == FightSpellCastCriticalEnum.CRITICAL_FAIL;
-               tempCastingSpell.isCriticalHit = gafscmsg.critical == FightSpellCastCriticalEnum.CRITICAL_HIT;
-               tempCastingSpell.silentCast = gafscmsg.silentCast;
-               tempCastingSpell.portalIds = gafscmsg.portalsIds;
-               tempCastingSpell.portalMapPoints = MarkedCellsManager.getInstance().getMapPointsFromMarkIds(gafscmsg.portalsIds);
+               tempSpellCastContext = new SpellCastSequenceContext();
+               tempSpellCastContext.casterId = gafscmsg.sourceId;
+               tempSpellCastContext.spellData = Spell.getSpellById(gafscmsg.spellId);
+               tempSpellCastContext.spellLevelData = tempSpellCastContext.spellData.getSpellLevel(gafscmsg.spellLevel);
+               tempSpellCastContext.isCriticalFail = gafscmsg.critical == FightSpellCastCriticalEnum.CRITICAL_FAIL;
+               tempSpellCastContext.isCriticalHit = gafscmsg.critical == FightSpellCastCriticalEnum.CRITICAL_HIT;
+               tempSpellCastContext.isSilentCast = gafscmsg.silentCast;
+               tempSpellCastContext.portalIds = gafscmsg.portalsIds;
+               tempSpellCastContext.portalMapPoints = MarkedCellsManager.getInstance().getMapPointsFromMarkIds(gafscmsg.portalsIds);
                fightEntitiesFrame = FightEntitiesFrame.getCurrentInstance();
                sourceCellId = -1;
                if(fightEntitiesFrame && fightEntitiesFrame.hasEntity(gafscmsg.sourceId))
@@ -493,21 +495,21 @@ package com.ankamagames.dofus.logic.game.fight.frames
                      sourceCellId = fighterInfo.disposition.cellId;
                   }
                }
-               if(sourceCellId !== -1 && tempCastingSpell.portalMapPoints.length > 0)
+               if(sourceCellId !== -1 && tempSpellCastContext.portalMapPoints.length > 0)
                {
-                  sourceCellId = tempCastingSpell.portalMapPoints[tempCastingSpell.portalMapPoints.length - 1].cellId;
+                  sourceCellId = tempSpellCastContext.portalMapPoints[tempSpellCastContext.portalMapPoints.length - 1].cellId;
                }
                if(GameDebugManager.getInstance().buffsDebugActivated)
                {
-                  _log.debug("\r[BUFFS DEBUG] Sort " + tempCastingSpell.spell.name + " (" + gafscmsg.spellId + ") lancé par " + gafscmsg.sourceId + " sur " + gafscmsg.targetId + " (cellule " + gafscmsg.destinationCellId + ")");
+                  _log.debug("\r[BUFFS DEBUG] Sort " + tempSpellCastContext.spellData.name + " (" + gafscmsg.spellId + ") lancé par " + gafscmsg.sourceId + " sur " + gafscmsg.targetId + " (cellule " + gafscmsg.destinationCellId + ")");
                }
                if(!this._fightBattleFrame.currentPlayerId)
                {
-                  BuffManager.getInstance().spellBuffsToIgnore.push(tempCastingSpell);
+                  BuffManager.getInstance().spellBuffsToIgnore.push(tempSpellCastContext);
                }
                if(gafscmsg.destinationCellId != -1)
                {
-                  tempCastingSpell.targetedCell = MapPoint.fromCellId(gafscmsg.destinationCellId);
+                  tempSpellCastContext.targetedCellId = gafscmsg.destinationCellId;
                }
                if(gafscmsg && gafscmsg.actionId == ActionIds.ACTION_FINISH_MOVE)
                {
@@ -515,30 +517,29 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   {
                      return true;
                   }
-                  cssb = new SpellScriptBuffer(tempCastingSpell);
-                  fxScriptId = tempCastingSpell.spell.getScriptId(tempCastingSpell.isCriticalHit);
-                  this.pushPlaySpellScriptStep(fxScriptId,gafscmsg.sourceId,gafscmsg.destinationCellId,gafscmsg.spellId,gafscmsg.spellLevel,cssb);
+                  castSteps = new SpellCastSequence(tempSpellCastContext);
+                  this.pushPlaySpellScriptStep(castSteps,gafscmsg.destinationCellId);
                   startIndex = 0;
                   stepsChanged = true;
                   playSpellScriptStepPosition = 0;
                   while(stepsChanged)
                   {
                      stepsChanged = false;
-                     for(stepIndex = 0; stepIndex < this._stepsBuffer.length; stepIndex++)
+                     for(stepIndex = 0; stepIndex < this._steps.length; stepIndex++)
                      {
-                        if(this._stepsBuffer[stepIndex] == this._playSpellScriptStep)
+                        if(this._steps[stepIndex] == this._playSpellScriptStep)
                         {
                            playSpellScriptStepPosition = stepIndex;
                         }
-                        if(this._spellScriptTemporaryBuffer)
+                        if(this._tmpSpellCastSequence)
                         {
-                           for(stepSubIndex = startIndex; stepSubIndex < this._spellScriptTemporaryBuffer.stepsBuffer.length; stepSubIndex++)
+                           for(stepSubIndex = startIndex; stepSubIndex < this._tmpSpellCastSequence.steps.length; stepSubIndex++)
                            {
-                              if(this._stepsBuffer[stepIndex] == this._spellScriptTemporaryBuffer.stepsBuffer[stepSubIndex])
+                              if(this._steps[stepIndex] == this._tmpSpellCastSequence.steps[stepSubIndex])
                               {
                                  stepsChanged = true;
                                  startIndex = stepSubIndex;
-                                 this._stepsBuffer = this._stepsBuffer.slice(0,stepIndex).concat(this._stepsBuffer.slice(stepIndex + 1));
+                                 this._steps = this._steps.slice(0,stepIndex).concat(this._steps.slice(stepIndex + 1));
                                  break;
                               }
                            }
@@ -550,14 +551,14 @@ package com.ankamagames.dofus.logic.game.fight.frames
                      }
                   }
                   lookWithMount = EntitiesLooksManager.getInstance().getRealTiphonEntityLook(gafscmsg.sourceId);
-                  sliced = this._stepsBuffer.slice(playSpellScriptStepPosition + 1);
-                  this._stepsBuffer = this._stepsBuffer.slice(0,playSpellScriptStepPosition + 1);
+                  sliced = this._steps.slice(playSpellScriptStepPosition + 1);
+                  this._steps = this._steps.slice(0,playSpellScriptStepPosition + 1);
                   this.pushStep(new FightChangeLookStep(gafscmsg.sourceId,EntityLookAdapter.fromNetwork(EntityLookAdapter.toNetwork(TiphonUtility.getLookWithoutMount(lookWithMount)))));
-                  this._stepsBuffer = this._stepsBuffer.concat(cssb.stepsBuffer).concat(sliced);
+                  this._steps = this._steps.concat(castSteps.steps).concat(sliced);
                   this._fightBattleFrame.isFightAboutToEnd = true;
                   return true;
                }
-               if(this._castingSpell)
+               if(this._forcedCastSequenceContext)
                {
                   if(closeCombatWeaponId != 0)
                   {
@@ -567,32 +568,31 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   {
                      this.pushStep(new FightSpellCastStep(gafscmsg.sourceId,gafscmsg.destinationCellId,sourceCellId,gafscmsg.spellId,gafscmsg.spellLevel,gafscmsg.critical,gafscmsg.verboseCast));
                   }
-                  this._castingSpells.push(tempCastingSpell);
+                  this._castContexts.push(tempSpellCastContext);
                   if(msg is GameActionFightCloseCombatMessage)
                   {
-                     this._castingSpell.weaponId = GameActionFightCloseCombatMessage(msg).weaponGenericId;
-                     this.pushPlaySpellScriptStep(7,gafscmsg.sourceId,gafscmsg.destinationCellId,gafscmsg.spellId,gafscmsg.spellLevel);
+                     this._forcedCastSequenceContext.weaponId = GameActionFightCloseCombatMessage(msg).weaponGenericId;
+                     this.pushPlaySpellScriptStep(this);
                   }
-                  else if(!tempCastingSpell.isCriticalFail)
+                  else if(!tempSpellCastContext.isCriticalFail)
                   {
-                     fxScriptId = tempCastingSpell.spell.getScriptId(tempCastingSpell.isCriticalHit);
-                     this.pushPlaySpellScriptStep(fxScriptId,gafscmsg.sourceId,gafscmsg.destinationCellId,gafscmsg.spellId,gafscmsg.spellLevel);
+                     this._forcedCastSequenceContext = tempSpellCastContext;
+                     this.pushPlaySpellScriptStep(this);
                   }
                   return true;
                }
-               this._castingSpell = tempCastingSpell;
-               this._spellScriptTemporaryBuffer = new SpellScriptBuffer(this._castingSpell);
+               this._forcedCastSequenceContext = tempSpellCastContext;
+               this._tmpSpellCastSequence = new SpellCastSequence(this._forcedCastSequenceContext);
                if(msg is GameActionFightCloseCombatMessage)
                {
-                  this._castingSpell.weaponId = GameActionFightCloseCombatMessage(msg).weaponGenericId;
-                  this._playSpellScriptStep = this.pushPlaySpellScriptStep(7,gafscmsg.sourceId,gafscmsg.destinationCellId,gafscmsg.spellId,gafscmsg.spellLevel,this._spellScriptTemporaryBuffer);
+                  this._forcedCastSequenceContext.weaponId = GameActionFightCloseCombatMessage(msg).weaponGenericId;
+                  this._playSpellScriptStep = this.pushPlaySpellScriptStep(this._tmpSpellCastSequence);
                }
-               else if(!this._castingSpell.isCriticalFail)
+               else if(!this._forcedCastSequenceContext.isCriticalFail)
                {
-                  fxScriptId = this._castingSpell.spell.getScriptId(this._castingSpell.isCriticalHit);
-                  this._playSpellScriptStep = this.pushPlaySpellScriptStep(fxScriptId,gafscmsg.sourceId,gafscmsg.destinationCellId,gafscmsg.spellId,gafscmsg.spellLevel,this._spellScriptTemporaryBuffer);
+                  this._playSpellScriptStep = this.pushPlaySpellScriptStep(this._tmpSpellCastSequence);
                }
-               this._stepsBuffer = this._stepsBuffer.concat(this._spellScriptTemporaryBuffer.stepsBuffer);
+               this._steps = this._steps.concat(this._tmpSpellCastSequence.steps);
                if(gafscmsg.critical != FightSpellCastCriticalEnum.CRITICAL_FAIL)
                {
                   spellTargetEntities = [];
@@ -620,7 +620,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                {
                   isAlly = true;
                }
-               if(isAlly && !this._castingSpell.isCriticalFail)
+               if(isAlly && !this._forcedCastSequenceContext.isCriticalFail)
                {
                   isSpellKnown = false;
                   for each(spellKnown in playerManager.spellsInventory)
@@ -720,7 +720,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                target = fightEntitiesFrame.getEntityInfos(gafscmsg.targetId) as GameFightFighterInformations;
                if(target && target.disposition.cellId == -1)
                {
-                  for each(ei in this._castingSpell.spellRank.effects)
+                  for each(ei in this._forcedCastSequenceContext.spellLevelData.effects)
                   {
                      if(ei.hasOwnProperty("zoneShape"))
                      {
@@ -731,16 +731,16 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   if(shape == SpellShapeEnum.P)
                   {
                      ts = DofusEntities.getEntity(gafscmsg.targetId) as TiphonSprite;
-                     if(ts && this._castingSpell && this._castingSpell.targetedCell)
+                     if(ts && this._forcedCastSequenceContext && this._forcedCastSequenceContext.targetedCellId >= 0)
                      {
-                        targetedCell = InteractiveCellManager.getInstance().getCell(this._castingSpell.targetedCell.cellId);
+                        targetedCell = InteractiveCellManager.getInstance().getCell(this._forcedCastSequenceContext.targetedCellId);
                         cellPos = targetedCell.parent.localToGlobal(new Point(targetedCell.x + targetedCell.width / 2,targetedCell.y + targetedCell.height / 2));
                         ts.x = cellPos.x;
                         ts.y = cellPos.y;
                      }
                   }
                }
-               this._castingSpells.push(this._castingSpell);
+               this._castContexts.push(this._forcedCastSequenceContext);
                return true;
                break;
             case msg is GameMapMovementMessage:
@@ -933,7 +933,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                this.pushStep(new FightTackledStep(gaftmsg.sourceId));
                return true;
             case msg is GameActionFightTriggerGlyphTrapMessage:
-               if(this._castingSpell)
+               if(this._forcedCastSequenceContext)
                {
                   this._fightBattleFrame.process(new SequenceEndMessage());
                   this._fightBattleFrame.process(new SequenceStartMessage());
@@ -972,13 +972,13 @@ package com.ankamagames.dofus.logic.game.fight.frames
                      carriedByCarried = carriedByCarried.carriedEntity as AnimatedCharacter;
                   }
                   this.pushStep(new FightCarryCharacterStep(gafcchmsg.sourceId,gafcchmsg.targetId,gafcchmsg.cellId));
-                  this._stepsBuffer.push(new CallbackStep(new Callback(deleteTooltip,gafcchmsg.targetId)));
+                  this._steps.push(new CallbackStep(new Callback(deleteTooltip,gafcchmsg.targetId)));
                }
                return false;
             case msg is GameActionFightThrowCharacterMessage:
                gaftcmsg = msg as GameActionFightThrowCharacterMessage;
                this.keepInMindToUpdateMovementArea();
-               throwCellId = this._castingSpell && this._castingSpell.targetedCell ? uint(this._castingSpell.targetedCell.cellId) : uint(gaftcmsg.cellId);
+               throwCellId = this._forcedCastSequenceContext && this._forcedCastSequenceContext.targetedCellId >= 0 ? uint(this._forcedCastSequenceContext.targetedCellId) : uint(gaftcmsg.cellId);
                fightContextFrame_gaftcmsg = Kernel.getWorker().getFrame(FightContextFrame) as FightContextFrame;
                fightContextFrame_gaftcmsg.saveFighterPosition(gaftcmsg.targetId,throwCellId);
                this.pushThrowCharacterStep(gaftcmsg.sourceId,gaftcmsg.targetId,throwCellId);
@@ -987,9 +987,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
                gafdcmsg = msg as GameActionFightDropCharacterMessage;
                this.keepInMindToUpdateMovementArea();
                dropCellId = gafdcmsg.cellId;
-               if(dropCellId == -1 && this._castingSpell)
+               if(dropCellId == -1 && this._forcedCastSequenceContext)
                {
-                  dropCellId = this._castingSpell.targetedCell.cellId;
+                  dropCellId = this._forcedCastSequenceContext.targetedCellId;
                }
                this.pushThrowCharacterStep(gafdcmsg.sourceId,gafdcmsg.targetId,dropCellId);
                return false;
@@ -1108,7 +1108,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
             }
          }
          var entityDeathStepAlreadyInBuffer:Boolean = false;
-         for each(step in this._stepsBuffer)
+         for each(step in this._steps)
          {
             if(step is FightDeathStep && (step as FightDeathStep).entityId == gafdmsg.targetId)
             {
@@ -1219,11 +1219,11 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var spellLevel:SpellLevel = null;
          var effect:EffectInstanceDice = null;
          var spellId:uint = gafmcmsg.mark.markSpellId;
-         if(this._castingSpell && this._castingSpell.spell && this._castingSpell.spell.id != 1750)
+         if(this._forcedCastSequenceContext && this._forcedCastSequenceContext.spellData && this._forcedCastSequenceContext.spellData.id != 1750)
          {
-            this._castingSpell.markId = gafmcmsg.mark.markId;
-            this._castingSpell.markType = gafmcmsg.mark.markType;
-            this._castingSpell.casterId = gafmcmsg.sourceId;
+            this._forcedCastSequenceContext.markId = gafmcmsg.mark.markId;
+            this._forcedCastSequenceContext.markType = gafmcmsg.mark.markType;
+            this._forcedCastSequenceContext.casterId = gafmcmsg.sourceId;
             spellGrade = gafmcmsg.mark.markSpellLevel;
          }
          else
@@ -1339,8 +1339,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
             fightContextFrame.deleteFighterPreviousPosition(gafepmsg.sourceId);
          }
          fightContextFrame.saveFighterPosition(gafepmsg.targetId,gafepmsg.targetCellId);
-         this._stepsBuffer.push(new CallbackStep(new Callback(deleteTooltip,gafepmsg.targetId)));
-         this._stepsBuffer.push(new CallbackStep(new Callback(deleteTooltip,gafepmsg.targetCellId)));
+         this._steps.push(new CallbackStep(new Callback(deleteTooltip,gafepmsg.targetId)));
+         this._steps.push(new CallbackStep(new Callback(deleteTooltip,gafepmsg.targetCellId)));
          this.pushStep(new FightExchangePositionsStep(gafepmsg.sourceId,gafepmsg.casterCellId,gafepmsg.targetId,gafepmsg.targetCellId));
       }
       
@@ -1394,7 +1394,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          {
             fscf.entityMovement(gmmmsg.actorId);
          }
-         this._stepsBuffer.push(new CallbackStep(new Callback(deleteTooltip,gmmmsg.actorId)));
+         this._steps.push(new CallbackStep(new Callback(deleteTooltip,gmmmsg.actorId)));
          this.pushStep(new FightEntityMovementStep(gmmmsg.actorId,movementPath));
       }
       
@@ -1402,9 +1402,10 @@ package com.ankamagames.dofus.logic.game.fight.frames
       {
          var triggeredSpellId:int = 0;
          var eid:EffectInstanceDice = null;
+         var context:SpellScriptContext = null;
          this.pushStep(new FightMarkTriggeredStep(gaftgtmsg.triggeringCharacterId,gaftgtmsg.sourceId,gaftgtmsg.markId));
-         this._castingSpell = new CastingSpell();
-         this._castingSpell.casterId = gaftgtmsg.sourceId;
+         this._forcedCastSequenceContext = new SpellCastSequenceContext();
+         this._forcedCastSequenceContext.casterId = gaftgtmsg.sourceId;
          var triggeringCharacterInfos:GameFightFighterInformations = FightEntitiesFrame.getCurrentInstance().getEntityInfos(gaftgtmsg.triggeringCharacterId) as GameFightFighterInformations;
          var triggeredCellId:int = !!triggeringCharacterInfos ? int(triggeringCharacterInfos.disposition.cellId) : -1;
          var mark:MarkInstance = MarkedCellsManager.getInstance().getMarkDatas(gaftgtmsg.markId);
@@ -1422,18 +1423,25 @@ package com.ankamagames.dofus.logic.game.fight.frames
                }
                if(triggeredSpellId)
                {
-                  this._castingSpell.spell = Spell.getSpellById(triggeredSpellId);
-                  this._castingSpell.spellRank = this._castingSpell.spell.getSpellLevel(mark.associatedSpellLevel.grade);
-                  this._castingSpell.targetedCell = MapPoint.fromCellId(gaftgtmsg.markImpactCell);
+                  this._forcedCastSequenceContext.spellData = Spell.getSpellById(triggeredSpellId);
+                  this._forcedCastSequenceContext.spellLevelData = this._forcedCastSequenceContext.spellData.getSpellLevel(mark.associatedSpellLevel.grade);
+                  this._forcedCastSequenceContext.targetedCellId = gaftgtmsg.markImpactCell;
+                  context = new SpellScriptContext();
+                  context.scriptId = SpellScript.INVALID_ID;
                   if(mark.markType == GameActionMarkTypeEnum.GLYPH)
                   {
-                     this._castingSpell.defaultTargetGfxId = 1016;
+                     this._forcedCastSequenceContext.defaultTargetGfxId = 1016;
+                     context.scriptId = SpellScript.FECA_GLYPH_SCRIPT_ID;
                   }
                   else if(mark.markType == GameActionMarkTypeEnum.TRAP)
                   {
-                     this._castingSpell.defaultTargetGfxId = 1017;
+                     this._forcedCastSequenceContext.defaultTargetGfxId = 1017;
+                     context.scriptId = SpellScript.SRAM_TRAP_SCRIPT_ID;
                   }
-                  this.pushPlaySpellScriptStep(1,gaftgtmsg.sourceId,triggeredCellId,this._castingSpell.spell.id,this._castingSpell.spellRank.grade);
+                  if(context.scriptId != SpellScript.INVALID_ID)
+                  {
+                     this.pushPlaySpellScriptStep(this,gaftgtmsg.markImpactCell);
+                  }
                }
             }
          }
@@ -1445,8 +1453,8 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private function fighterHasBeenBuffed(gaftbmsg:GameActionFightDispellableEffectMessage) : void
       {
-         var myCastingSpell:CastingSpell = null;
-         var castedSpell:CastingSpell = null;
+         var myCastingSpell:SpellCastSequenceContext = null;
+         var castedSpell:SpellCastSequenceContext = null;
          var e:Effect = null;
          var description:String = null;
          var sb:StateBuff = null;
@@ -1464,9 +1472,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
             }
             _log.debug("\r[BUFFS DEBUG] Message de nouveau buff \'" + description + "\' (" + gaftbmsg.actionId + ") lancé par " + gaftbmsg.sourceId + " sur " + gaftbmsg.effect.targetId + " (uid " + gaftbmsg.effect.uid + ", sort " + gaftbmsg.effect.spellId + ", durée " + gaftbmsg.effect.turnDuration + ", desenvoutable " + gaftbmsg.effect.dispelable + ", buff parent " + gaftbmsg.effect.parentBoostUid + ")");
          }
-         for each(castedSpell in this._castingSpells)
+         for each(castedSpell in this._castContexts)
          {
-            if(castedSpell.spell.id == gaftbmsg.effect.spellId && castedSpell.casterId == gaftbmsg.sourceId)
+            if(castedSpell.spellData.id == gaftbmsg.effect.spellId && castedSpell.casterId == gaftbmsg.sourceId)
             {
                myCastingSpell = castedSpell;
                break;
@@ -1476,21 +1484,21 @@ package com.ankamagames.dofus.logic.game.fight.frames
          {
             if(gaftbmsg.actionId == ActionIdProtocol.ACTION_CHARACTER_UPDATE_BOOST)
             {
-               myCastingSpell = new CastingSpell(false);
+               myCastingSpell = new SpellCastSequenceContext(false);
             }
             else
             {
-               myCastingSpell = new CastingSpell(this._castingSpell == null);
+               myCastingSpell = new SpellCastSequenceContext(this._forcedCastSequenceContext == null);
             }
-            if(this._castingSpell)
+            if(this._forcedCastSequenceContext)
             {
-               myCastingSpell.castingSpellId = this._castingSpell.castingSpellId;
-               if(this._castingSpell.spell && this._castingSpell.spell.id == gaftbmsg.effect.spellId)
+               myCastingSpell.id = this._forcedCastSequenceContext.id;
+               if(this._forcedCastSequenceContext.spellData && this._forcedCastSequenceContext.spellData.id == gaftbmsg.effect.spellId)
                {
-                  myCastingSpell.spellRank = this._castingSpell.spellRank;
+                  myCastingSpell.spellLevelData = this._forcedCastSequenceContext.spellLevelData;
                }
             }
-            myCastingSpell.spell = Spell.getSpellById(gaftbmsg.effect.spellId);
+            myCastingSpell.spellData = Spell.getSpellById(gaftbmsg.effect.spellId);
             myCastingSpell.casterId = gaftbmsg.sourceId;
          }
          var buffEffect:AbstractFightDispellableEffect = gaftbmsg.effect;
@@ -1509,9 +1517,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
             }
             if(myCastingSpell != null)
             {
-               step.castingSpellId = myCastingSpell.castingSpellId;
+               step.castingSpellId = myCastingSpell.id;
             }
-            this._stepsBuffer.push(step);
+            this._steps.push(step);
          }
          if(buff is StatBuff)
          {
@@ -1589,7 +1597,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var hitStep:Vector.<TiphonSprite> = new Vector.<TiphonSprite>();
          var loseLifeStep:Dictionary = new Dictionary(true);
          var waitHitEnd:Boolean = false;
-         for each(step in this._stepsBuffer)
+         for each(step in this._steps)
          {
             if(step is FightMarkTriggeredStep)
             {
@@ -1606,14 +1614,14 @@ package com.ankamagames.dofus.logic.game.fight.frames
          shieldLoseSum = new Dictionary(true);
          shieldLoseLastStep = new Dictionary(true);
          deathNumber = 0;
-         for(i = this._stepsBuffer.length; --i >= 0; )
+         for(i = this._steps.length; --i >= 0; )
          {
             if(removed && step)
             {
                step.clear();
             }
             removed = true;
-            step = this._stepsBuffer[i];
+            step = this._steps[i];
             switch(true)
             {
                case step is PlayAnimationStep:
@@ -1635,7 +1643,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
                      }
                      hitStep.push(animStep.target);
                   }
-                  if(this._castingSpell && this._castingSpell.casterId < 0)
+                  if(this._forcedCastSequenceContext && this._forcedCastSequenceContext.casterId < 0)
                   {
                      if(entityAttaqueAnimWait[animStep.target])
                      {
@@ -1779,7 +1787,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
             this._permanentTooltipsCallback = new Callback(this.showPermanentTooltips,cleanedBuffer);
             this._sequencer.addEventListener(SequencerEvent.SEQUENCE_END,this.onSequenceEnd);
          }
-         _lastCastingSpell = this._castingSpell;
+         _lastCastingSpell = this._forcedCastSequenceContext;
          this._scriptInit = true;
          if(!this._parent)
          {
@@ -1831,15 +1839,15 @@ package com.ankamagames.dofus.logic.game.fight.frames
       private function pushTeleportStep(fighterId:Number, destinationCell:int) : void
       {
          var step:FightTeleportStep = null;
-         this._stepsBuffer.push(new CallbackStep(new Callback(deleteTooltip,fighterId)));
+         this._steps.push(new CallbackStep(new Callback(deleteTooltip,fighterId)));
          if(destinationCell != -1)
          {
             step = new FightTeleportStep(fighterId,MapPoint.fromCellId(destinationCell));
-            if(this.castingSpell != null)
+            if(this.context != null)
             {
-               step.castingSpellId = this.castingSpell.castingSpellId;
+               step.castingSpellId = this.context.id;
             }
-            this._stepsBuffer.push(step);
+            this._steps.push(step);
          }
       }
       
@@ -1849,13 +1857,13 @@ package com.ankamagames.dofus.logic.game.fight.frames
          {
             return;
          }
-         this._stepsBuffer.push(new CallbackStep(new Callback(deleteTooltip,fighterId)));
+         this._steps.push(new CallbackStep(new Callback(deleteTooltip,fighterId)));
          var step:FightEntitySlideStep = new FightEntitySlideStep(fighterId,MapPoint.fromCellId(startCell),MapPoint.fromCellId(endCell));
-         if(this.castingSpell != null)
+         if(this.context != null)
          {
-            step.castingSpellId = this.castingSpell.castingSpellId;
+            step.castingSpellId = this.context.id;
          }
-         this._stepsBuffer.push(step);
+         this._steps.push(step);
       }
       
       private function pushPointsVariationStep(fighterId:Number, actionId:uint, delta:int) : void
@@ -1881,20 +1889,20 @@ package com.ankamagames.dofus.logic.game.fight.frames
                _log.warn("Points variation with unsupported action (" + actionId + "), skipping.");
                return;
          }
-         if(this.castingSpell != null)
+         if(this.context != null)
          {
-            step.castingSpellId = this.castingSpell.castingSpellId;
+            step.castingSpellId = this.context.id;
          }
-         this._stepsBuffer.push(step);
+         this._steps.push(step);
       }
       
       private function pushStep(step:AbstractSequencable) : void
       {
-         if(this.castingSpell != null)
+         if(this.context != null)
          {
-            step.castingSpellId = this.castingSpell.castingSpellId;
+            step.castingSpellId = this.context.id;
          }
-         this._stepsBuffer.push(step);
+         this._steps.push(step);
       }
       
       private function pushPointsLossDodgeStep(fighterId:Number, actionId:uint, amount:int) : void
@@ -1912,39 +1920,40 @@ package com.ankamagames.dofus.logic.game.fight.frames
                _log.warn("Points dodge with unsupported action (" + actionId + "), skipping.");
                return;
          }
-         if(this.castingSpell != null)
+         if(this.context != null)
          {
-            step.castingSpellId = this.castingSpell.castingSpellId;
+            step.castingSpellId = this.context.id;
          }
-         this._stepsBuffer.push(step);
+         this._steps.push(step);
       }
       
-      private function pushPlaySpellScriptStep(fxScriptId:int, fighterId:Number, cellId:int, spellId:int, spellRank:uint, stepBuff:SpellScriptBuffer = null) : FightPlaySpellScriptStep
+      private function pushPlaySpellScriptStep(castSequence:ISpellCastSequence, specificTargetedCellId:int = -1) : FightPlaySpellScriptStep
       {
-         var step:FightPlaySpellScriptStep = new FightPlaySpellScriptStep(fxScriptId,fighterId,cellId,spellId,spellRank,!!stepBuff ? stepBuff : this);
-         if(this.castingSpell != null)
+         var scriptTypes:Vector.<SpellScriptContext> = SpellScriptManager.getInstance().resolveScriptUsageFromCastContext(castSequence.context,specificTargetedCellId);
+         var step:FightPlaySpellScriptStep = new FightPlaySpellScriptStep(scriptTypes,castSequence,castSequence.context.spellLevelData.grade);
+         if(this.context !== null)
          {
-            step.castingSpellId = this.castingSpell.castingSpellId;
+            step.castingSpellId = this.context.id;
          }
-         this._stepsBuffer.push(step);
+         this._steps.push(step);
          return step;
       }
       
       private function pushThrowCharacterStep(fighterId:Number, carriedId:Number, cellId:int) : void
       {
          var step:FightThrowCharacterStep = new FightThrowCharacterStep(fighterId,carriedId,cellId);
-         if(this.castingSpell != null)
+         if(this.context != null)
          {
-            step.castingSpellId = this.castingSpell.castingSpellId;
-            step.portals = this.castingSpell.portalMapPoints;
-            step.portalIds = this.castingSpell.portalIds;
+            step.castingSpellId = this.context.id;
+            step.portals = this.context.portalMapPoints;
+            step.portalIds = this.context.portalIds;
          }
-         this._stepsBuffer.push(step);
+         this._steps.push(step);
       }
       
       private function clearBuffer() : void
       {
-         this._stepsBuffer = new Vector.<ISequencable>(0,false);
+         this._steps = new Vector.<ISequencable>(0,false);
       }
       
       private function keepInMindToUpdateMovementArea() : void
@@ -1978,7 +1987,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
       {
          var fcf:FightContextFrame = Kernel.getWorker().getFrame(FightContextFrame) as FightContextFrame;
          var entityInfos:GameFightFighterInformations = this.fightEntitiesFrame.getEntityInfos(pEntityId) as GameFightFighterInformations;
-         if(entityInfos.spawnInfo.alive && this._castingSpell && (this._castingSpell.casterId == PlayedCharacterManager.getInstance().id || fcf.battleFrame.playingSlaveEntity) && pEntityId != this.castingSpell.casterId && this._fightBattleFrame.targetedEntities.indexOf(pEntityId) == -1 && fcf.hiddenEntites.indexOf(pEntityId) == -1)
+         if(entityInfos.spawnInfo.alive && this._forcedCastSequenceContext && (this._forcedCastSequenceContext.casterId == PlayedCharacterManager.getInstance().id || fcf.battleFrame.playingSlaveEntity) && pEntityId != this.context.casterId && this._fightBattleFrame.targetedEntities.indexOf(pEntityId) == -1 && fcf.hiddenEntites.indexOf(pEntityId) == -1)
          {
             this._fightBattleFrame.targetedEntities.push(pEntityId);
             if(OptionManager.getOptionManager("dofus").getOption("showPermanentTargetsTooltips") == true)
@@ -1991,9 +2000,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
       private function isSpellTeleportingToPreviousPosition() : Boolean
       {
          var spellEffect:EffectInstanceDice = null;
-         if(this.castingSpell && this.castingSpell.spellRank)
+         if(this.context && this.context.spellLevelData)
          {
-            for each(spellEffect in this.castingSpell.spellRank.effects)
+            for each(spellEffect in this.context.spellLevelData.effects)
             {
                if(spellEffect.effectId == ActionIds.ACTION_FIGHT_ROLLBACK_PREVIOUS_POSITION)
                {
@@ -2092,6 +2101,16 @@ package com.ankamagames.dofus.logic.game.fight.frames
          {
             this._fightBattleFrame.prepareNextPlayableCharacter();
          }
+      }
+      
+      public function set context(context:SpellCastSequenceContext) : void
+      {
+         _lastCastingSpell = context;
+      }
+      
+      public function set steps(steps:Vector.<ISequencable>) : void
+      {
+         this._steps = steps;
       }
    }
 }

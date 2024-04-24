@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameFightEntityInformation extends GameFightFighterInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1279;
+      public static const protocolId:uint = 8220;
        
       
       public var entityModelId:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 1279;
+         return 8220;
       }
       
       public function initGameFightEntityInformation(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, spawnInfo:GameContextBasicSpawnInformation = null, wave:uint = 0, stats:GameFightCharacteristics = null, previousPositions:Vector.<uint> = null, entityModelId:uint = 0, level:uint = 0, masterId:Number = 0) : GameFightEntityInformation

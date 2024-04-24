@@ -2,6 +2,7 @@ package com.ankamagames.dofus.logic.connection.frames
 {
    import com.ankamagames.berilia.Berilia;
    import com.ankamagames.berilia.managers.KernelEventsManager;
+   import com.ankamagames.dofus.BuildInfos;
    import com.ankamagames.dofus.datacenter.servers.Server;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
@@ -12,6 +13,7 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.logic.connection.managers.AuthentificationManager;
    import com.ankamagames.dofus.logic.game.approach.frames.GameServerApproachFrame;
    import com.ankamagames.dofus.misc.lists.HookList;
+   import com.ankamagames.dofus.network.enums.BuildTypeEnum;
    import com.ankamagames.dofus.network.enums.ServerConnectionErrorEnum;
    import com.ankamagames.dofus.network.enums.ServerStatusEnum;
    import com.ankamagames.dofus.network.messages.connection.MigratedServerListMessage;
@@ -28,6 +30,7 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.network.types.connection.GameServerInformations;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
+   import com.ankamagames.jerakine.managers.OptionManager;
    import com.ankamagames.jerakine.messages.Frame;
    import com.ankamagames.jerakine.messages.Message;
    import com.ankamagames.jerakine.messages.Worker;
@@ -100,44 +103,47 @@ package com.ankamagames.dofus.logic.connection.frames
          return true;
       }
       
-      public function process(msg:Message) : Boolean
+      public function process(param1:Message) : Boolean
       {
-         var slmsg:ServersListMessage = null;
-         var initFrame:Frame = null;
-         var ssumsg:ServerStatusUpdateMessage = null;
-         var serverHasBeenUpdated:Boolean = false;
-         var ssaction:ServerSelectionAction = null;
-         var ssdemsg:SelectedServerDataExtendedMessage = null;
-         var ssdmsg:SelectedServerDataMessage = null;
-         var escmsg:ExpectedSocketClosureMessage = null;
-         var asaction:AcquaintanceSearchAction = null;
-         var asmsg:AcquaintanceSearchMessage = null;
-         var accountTag:AccountTagInformation = null;
-         var asemsg:AcquaintanceSearchErrorMessage = null;
-         var reasonSearchError:String = null;
-         var aslmsg:AcquaintanceServerListMessage = null;
-         var ssrmsg:SelectedServerRefusedMessage = null;
-         var error:* = null;
-         var mslm:MigratedServerListMessage = null;
-         var scfm:ServerConnectionFailedMessage = null;
-         var formerPort:uint = 0;
-         var knownServer:GameServerInformations = null;
-         var server:* = undefined;
-         var ssmsg:ServerSelectionMessage = null;
-         var errorText:* = null;
-         var port:uint = 0;
-         var newPort:uint = 0;
+         var _loc2_:ServersListMessage = null;
+         var _loc3_:Frame = null;
+         var _loc4_:ServerStatusUpdateMessage = null;
+         var _loc5_:Boolean = false;
+         var _loc6_:ServerSelectionAction = null;
+         var _loc7_:SelectedServerDataExtendedMessage = null;
+         var _loc8_:SelectedServerDataMessage = null;
+         var _loc9_:ExpectedSocketClosureMessage = null;
+         var _loc10_:String = null;
+         var _loc11_:Vector.<uint> = null;
+         var _loc12_:uint = 0;
+         var _loc13_:AcquaintanceSearchAction = null;
+         var _loc14_:AcquaintanceSearchMessage = null;
+         var _loc15_:AccountTagInformation = null;
+         var _loc16_:AcquaintanceSearchErrorMessage = null;
+         var _loc17_:String = null;
+         var _loc18_:AcquaintanceServerListMessage = null;
+         var _loc19_:SelectedServerRefusedMessage = null;
+         var _loc20_:* = null;
+         var _loc21_:MigratedServerListMessage = null;
+         var _loc22_:ServerConnectionFailedMessage = null;
+         var _loc23_:uint = 0;
+         var _loc24_:GameServerInformations = null;
+         var _loc25_:* = undefined;
+         var _loc26_:ServerSelectionMessage = null;
+         var _loc27_:* = null;
+         var _loc28_:uint = 0;
+         var _loc29_:uint = 0;
          switch(true)
          {
-            case msg is ServersListMessage:
-               slmsg = msg as ServersListMessage;
+            case param1 is ServersListMessage:
+               _loc2_ = param1 as ServersListMessage;
                PlayerManager.getInstance().server = null;
-               this._serversList = slmsg.servers;
+               this._serversList = _loc2_.servers;
                this._serversList.sort(serverDateSortFunction);
-               initFrame = Kernel.getWorker().getFrame(InitializationFrame);
-               if(initFrame)
+               _loc3_ = Kernel.getWorker().getFrame(InitializationFrame);
+               if(_loc3_)
                {
-                  Kernel.getWorker().removeFrame(initFrame);
+                  Kernel.getWorker().removeFrame(_loc3_);
                }
                if(!Berilia.getInstance().uiList["CharacterHeader"])
                {
@@ -145,191 +151,202 @@ package com.ankamagames.dofus.logic.connection.frames
                }
                this.broadcastServersListUpdate();
                return true;
-            case msg is ServerStatusUpdateMessage:
-               ssumsg = msg as ServerStatusUpdateMessage;
-               serverHasBeenUpdated = false;
-               for each(knownServer in this._serversList)
+            case param1 is ServerStatusUpdateMessage:
+               _loc4_ = param1 as ServerStatusUpdateMessage;
+               _loc5_ = false;
+               for each(_loc24_ in this._serversList)
                {
-                  if(ssumsg.server.id == knownServer.id)
+                  if(_loc4_.server.id == _loc24_.id)
                   {
-                     knownServer.charactersCount = ssumsg.server.charactersCount;
-                     knownServer.completion = ssumsg.server.completion;
-                     knownServer.isSelectable = ssumsg.server.isSelectable;
-                     knownServer.status = ssumsg.server.status;
-                     serverHasBeenUpdated = true;
+                     _loc24_.charactersCount = _loc4_.server.charactersCount;
+                     _loc24_.completion = _loc4_.server.completion;
+                     _loc24_.isSelectable = _loc4_.server.isSelectable;
+                     _loc24_.status = _loc4_.server.status;
+                     _loc5_ = true;
                   }
                }
-               if(!serverHasBeenUpdated)
+               if(!_loc5_)
                {
-                  this._serversList.push(ssumsg.server);
+                  this._serversList.push(_loc4_.server);
                   this._serversList.sort(serverDateSortFunction);
                }
-               _log.info("Server " + ssumsg.server.id + " status changed to " + ssumsg.server.status + ".");
+               _log.info("Server " + _loc4_.server.id + " status changed to " + _loc4_.server.status + ".");
                this.broadcastServersListUpdate();
                return true;
-            case msg is ServerSelectionAction:
-               ssaction = msg as ServerSelectionAction;
-               for each(server in this._serversList)
+            case param1 is ServerSelectionAction:
+               _loc6_ = param1 as ServerSelectionAction;
+               for each(_loc25_ in this._serversList)
                {
-                  if(server.id == ssaction.serverId)
+                  if(_loc25_.id == _loc6_.serverId)
                   {
-                     if(server.status == ServerStatusEnum.ONLINE || server.status == ServerStatusEnum.NOJOIN)
+                     if(_loc25_.status == ServerStatusEnum.ONLINE || _loc25_.status == ServerStatusEnum.NOJOIN)
                      {
-                        ssmsg = new ServerSelectionMessage();
-                        ssmsg.initServerSelectionMessage(ssaction.serverId);
-                        ConnectionsHandler.getConnection().send(ssmsg);
+                        _loc26_ = new ServerSelectionMessage();
+                        _loc26_.initServerSelectionMessage(_loc6_.serverId);
+                        ConnectionsHandler.getConnection().send(_loc26_);
                         KernelEventsManager.getInstance().processCallback(HookList.ServerConnectionStarted);
                      }
                      else
                      {
-                        errorText = "Status";
-                        switch(server.status)
+                        _loc27_ = "Status";
+                        switch(_loc25_.status)
                         {
                            case ServerStatusEnum.OFFLINE:
-                              errorText += "Offline";
+                              _loc27_ += "Offline";
                               break;
                            case ServerStatusEnum.STARTING:
-                              errorText += "Starting";
+                              _loc27_ += "Starting";
                               break;
                            case ServerStatusEnum.SAVING:
-                              errorText += "Saving";
+                              _loc27_ += "Saving";
                               break;
                            case ServerStatusEnum.STOPING:
-                              errorText += "Stoping";
+                              _loc27_ += "Stoping";
                               break;
                            case ServerStatusEnum.FULL:
-                              errorText += "Full";
+                              _loc27_ += "Full";
                               break;
                            case ServerStatusEnum.STATUS_UNKNOWN:
                            default:
-                              errorText += "Unknown";
+                              _loc27_ += "Unknown";
                         }
-                        KernelEventsManager.getInstance().processCallback(HookList.SelectedServerRefused,server.id,errorText,this.getSelectableServers());
+                        KernelEventsManager.getInstance().processCallback(HookList.SelectedServerRefused,_loc25_.id,_loc27_,this.getSelectableServers());
                      }
                   }
                }
                return true;
-            case msg is SelectedServerDataExtendedMessage:
-               ssdemsg = msg as SelectedServerDataExtendedMessage;
-               this._serversList = ssdemsg.servers;
+            case param1 is SelectedServerDataExtendedMessage:
+               _loc7_ = param1 as SelectedServerDataExtendedMessage;
+               this._serversList = _loc7_.servers;
                this._serversList.sort(serverDateSortFunction);
                this.broadcastServersListUpdate(true);
                break;
-            case msg is SelectedServerDataMessage:
+            case param1 is SelectedServerDataMessage:
                break;
-            case msg is ExpectedSocketClosureMessage:
-               escmsg = msg as ExpectedSocketClosureMessage;
-               if(escmsg.reason != DisconnectionReasonEnum.SWITCHING_TO_GAME_SERVER)
+            case param1 is ExpectedSocketClosureMessage:
+               _loc9_ = param1 as ExpectedSocketClosureMessage;
+               if(_loc9_.reason != DisconnectionReasonEnum.SWITCHING_TO_GAME_SERVER)
                {
-                  this._worker.process(new WrongSocketClosureReasonMessage(DisconnectionReasonEnum.SWITCHING_TO_GAME_SERVER,escmsg.reason));
+                  this._worker.process(new WrongSocketClosureReasonMessage(DisconnectionReasonEnum.SWITCHING_TO_GAME_SERVER,_loc9_.reason));
                   return true;
                }
                this._worker.addFrame(new GameServerApproachFrame());
-               ConnectionsHandler.connectToGameServer(this._selectedServer.address,this._selectedServer.ports[0]);
+               _loc10_ = BuildInfos.BUILD_TYPE < BuildTypeEnum.INTERNAL ? OptionManager.getOptionManager("dofus").getOption("connectionPort") : "";
+               _loc11_ = this._selectedServer.ports;
+               _loc12_ = this._selectedServer.ports[0];
+               for each(_loc28_ in _loc11_)
+               {
+                  if(parseInt(_loc10_) == _loc28_)
+                  {
+                     _loc12_ = _loc28_;
+                     break;
+                  }
+               }
+               ConnectionsHandler.connectToGameServer(this._selectedServer.address,_loc12_);
                return true;
                break;
-            case msg is AcquaintanceSearchAction:
-               asaction = msg as AcquaintanceSearchAction;
-               asmsg = new AcquaintanceSearchMessage();
-               accountTag = new AccountTagInformation();
-               accountTag.nickname = asaction.friendName;
-               accountTag.tagNumber = asaction.friendTag;
-               asmsg.initAcquaintanceSearchMessage(accountTag);
-               ConnectionsHandler.getConnection().send(asmsg);
+            case param1 is AcquaintanceSearchAction:
+               _loc13_ = param1 as AcquaintanceSearchAction;
+               _loc14_ = new AcquaintanceSearchMessage();
+               _loc15_ = new AccountTagInformation();
+               _loc15_.nickname = _loc13_.friendName;
+               _loc15_.tagNumber = _loc13_.friendTag;
+               _loc14_.initAcquaintanceSearchMessage(_loc15_);
+               ConnectionsHandler.getConnection().send(_loc14_);
                return true;
-            case msg is AcquaintanceSearchErrorMessage:
-               asemsg = msg as AcquaintanceSearchErrorMessage;
-               switch(asemsg.reason)
+            case param1 is AcquaintanceSearchErrorMessage:
+               _loc16_ = param1 as AcquaintanceSearchErrorMessage;
+               switch(_loc16_.reason)
                {
                   case 1:
-                     reasonSearchError = "unavailable";
+                     _loc17_ = "unavailable";
                      break;
                   case 2:
-                     reasonSearchError = "no_result";
+                     _loc17_ = "no_result";
                      break;
                   case 3:
-                     reasonSearchError = "flood";
+                     _loc17_ = "flood";
                      break;
                   case 0:
                   default:
-                     reasonSearchError = "unknown";
+                     _loc17_ = "unknown";
                }
-               KernelEventsManager.getInstance().processCallback(HookList.AcquaintanceSearchError,reasonSearchError);
+               KernelEventsManager.getInstance().processCallback(HookList.AcquaintanceSearchError,_loc17_);
                return true;
-            case msg is AcquaintanceServerListMessage:
-               aslmsg = msg as AcquaintanceServerListMessage;
-               KernelEventsManager.getInstance().processCallback(HookList.AcquaintanceServerList,aslmsg.servers);
+            case param1 is AcquaintanceServerListMessage:
+               _loc18_ = param1 as AcquaintanceServerListMessage;
+               KernelEventsManager.getInstance().processCallback(HookList.AcquaintanceServerList,_loc18_.servers);
                return true;
-            case msg is SelectedServerRefusedMessage:
-               ssrmsg = msg as SelectedServerRefusedMessage;
-               this._serversList.forEach(this.getUpdateServerStatusFunction(ssrmsg.serverId,ssrmsg.serverStatus));
+            case param1 is SelectedServerRefusedMessage:
+               _loc19_ = param1 as SelectedServerRefusedMessage;
+               this._serversList.forEach(this.getUpdateServerStatusFunction(_loc19_.serverId,_loc19_.serverStatus));
                this.broadcastServersListUpdate();
-               switch(ssrmsg.error)
+               switch(_loc19_.error)
                {
                   case ServerConnectionErrorEnum.SERVER_CONNECTION_ERROR_DUE_TO_STATUS:
-                     error = "Status";
-                     switch(ssrmsg.serverStatus)
+                     _loc20_ = "Status";
+                     switch(_loc19_.serverStatus)
                      {
                         case ServerStatusEnum.OFFLINE:
-                           error += "Offline";
+                           _loc20_ += "Offline";
                            break;
                         case ServerStatusEnum.STARTING:
-                           error += "Starting";
+                           _loc20_ += "Starting";
                            break;
                         case ServerStatusEnum.NOJOIN:
-                           error += "Nojoin";
+                           _loc20_ += "Nojoin";
                            break;
                         case ServerStatusEnum.SAVING:
-                           error += "Saving";
+                           _loc20_ += "Saving";
                            break;
                         case ServerStatusEnum.STOPING:
-                           error += "Stoping";
+                           _loc20_ += "Stoping";
                            break;
                         case ServerStatusEnum.FULL:
-                           error += "Full";
+                           _loc20_ += "Full";
                            break;
                         case ServerStatusEnum.STATUS_UNKNOWN:
                         default:
-                           error += "Unknown";
+                           _loc20_ += "Unknown";
                      }
                      break;
                   case ServerConnectionErrorEnum.SERVER_CONNECTION_ERROR_SUBSCRIBERS_ONLY:
-                     error = "SubscribersOnly";
+                     _loc20_ = "SubscribersOnly";
                      break;
                   case ServerConnectionErrorEnum.SERVER_CONNECTION_ERROR_REGULAR_PLAYERS_ONLY:
-                     error = "RegularPlayersOnly";
+                     _loc20_ = "RegularPlayersOnly";
                      break;
                   case ServerConnectionErrorEnum.SERVER_CONNECTION_ERROR_MONOACCOUNT_CANNOT_VERIFY:
-                     error = "MonoaccountCannotVerify";
+                     _loc20_ = "MonoaccountCannotVerify";
                      break;
                   case ServerConnectionErrorEnum.SERVER_CONNECTION_ERROR_MONOACCOUNT_ONLY:
-                     error = "MonoaccountOnly";
+                     _loc20_ = "MonoaccountOnly";
                      break;
                   case 9:
-                     error = "ServerFull";
+                     _loc20_ = "ServerFull";
                      break;
                   case ServerConnectionErrorEnum.SERVER_CONNECTION_ERROR_NO_REASON:
                   default:
-                     error = "NoReason";
+                     _loc20_ = "NoReason";
                }
-               KernelEventsManager.getInstance().processCallback(HookList.SelectedServerRefused,ssrmsg.serverId,error,this.getSelectableServers());
+               KernelEventsManager.getInstance().processCallback(HookList.SelectedServerRefused,_loc19_.serverId,_loc20_,this.getSelectableServers());
                return true;
-            case msg is MigratedServerListMessage:
-               mslm = msg as MigratedServerListMessage;
-               KernelEventsManager.getInstance().processCallback(HookList.MigratedServerList,mslm.migratedServerIds);
+            case param1 is MigratedServerListMessage:
+               _loc21_ = param1 as MigratedServerListMessage;
+               KernelEventsManager.getInstance().processCallback(HookList.MigratedServerList,_loc21_.migratedServerIds);
                return true;
-            case msg is ServerConnectionFailedMessage:
-               scfm = msg as ServerConnectionFailedMessage;
-               formerPort = scfm.failedConnection.port;
-               _log.debug("Connection failed using port " + formerPort);
+            case param1 is ServerConnectionFailedMessage:
+               _loc22_ = param1 as ServerConnectionFailedMessage;
+               _loc23_ = _loc22_.failedConnection.port;
+               _log.debug("Connection failed using port " + _loc23_);
                if(this._connexionPorts && this._connexionPorts.length)
                {
-                  this._connexionPorts.splice(this._connexionPorts.indexOf(formerPort),1);
+                  this._connexionPorts.splice(this._connexionPorts.indexOf(_loc23_),1);
                   if(this._connexionPorts.length)
                   {
-                     newPort = this._connexionPorts[0];
+                     _loc29_ = this._connexionPorts[0];
                      _log.debug("Connection new attempt, port " + this._connexionPorts);
-                     scfm.failedConnection.tryConnectingOnAnotherPort(newPort);
+                     _loc22_.failedConnection.tryConnectingOnAnotherPort(_loc29_);
                      return true;
                   }
                   return false;
@@ -339,16 +356,16 @@ package com.ankamagames.dofus.logic.connection.frames
             default:
                return false;
          }
-         ssdmsg = msg as SelectedServerDataMessage;
+         _loc8_ = param1 as SelectedServerDataMessage;
          ConnectionsHandler.connectionGonnaBeClosed(DisconnectionReasonEnum.SWITCHING_TO_GAME_SERVER);
-         this._selectedServer = ssdmsg;
-         AuthentificationManager.getInstance().gameServerTicket = AuthentificationManager.getInstance().decodeWithAES(ssdmsg.ticket).toString();
-         PlayerManager.getInstance().server = Server.getServerById(ssdmsg.serverId);
+         this._selectedServer = _loc8_;
+         AuthentificationManager.getInstance().gameServerTicket = AuthentificationManager.getInstance().decodeWithAES(_loc8_.ticket).toString();
+         PlayerManager.getInstance().server = Server.getServerById(_loc8_.serverId);
          PlayerManager.getInstance().kisServerPort = 0;
          this._connexionPorts = [];
-         for each(port in ssdmsg.ports)
+         for each(_loc28_ in _loc8_.ports)
          {
-            this._connexionPorts.push(port);
+            this._connexionPorts.push(_loc28_);
          }
          _log.debug("Connection to game server using ports : " + this._connexionPorts);
          return true;

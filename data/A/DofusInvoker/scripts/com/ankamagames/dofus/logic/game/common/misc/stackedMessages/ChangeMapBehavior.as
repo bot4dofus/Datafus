@@ -75,7 +75,10 @@ package com.ankamagames.dofus.logic.game.common.misc.stackedMessages
       override public function processMessageToWorker() : void
       {
          var rpMovementFrame:RoleplayMovementFrame = Kernel.getWorker().getFrame(RoleplayMovementFrame) as RoleplayMovementFrame;
-         rpMovementFrame.forceNextMovementBehavior(!!this.forceWalk ? uint(AtouinConstants.MOVEMENT_WALK) : uint(AtouinConstants.MOVEMENT_NORMAL));
+         if(rpMovementFrame)
+         {
+            rpMovementFrame.forceNextMovementBehavior(!!this.forceWalk ? uint(AtouinConstants.MOVEMENT_WALK) : uint(AtouinConstants.MOVEMENT_NORMAL));
+         }
          super.processMessageToWorker();
       }
    }

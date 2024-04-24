@@ -238,6 +238,10 @@ package com.ankamagames.berilia.components
       
       private function addHistory(pText:String) : void
       {
+         if(pText == this._placeholderText)
+         {
+            return;
+         }
          var hyperlinkCodes:Vector.<String> = this.getHyperLinkCodes();
          var entry:InputEntry = new InputEntry(pText,hyperlinkCodes);
          if(this._inputHistory.length < UNDO_MAX_SIZE)

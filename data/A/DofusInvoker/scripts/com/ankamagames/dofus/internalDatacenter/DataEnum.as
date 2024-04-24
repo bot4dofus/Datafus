@@ -417,6 +417,8 @@ package com.ankamagames.dofus.internalDatacenter
       
       public static const CHAT_CHANNEL_COMMUNITY:int = 14;
       
+      public static const CHAT_CHANNEL_EVENT:int = 15;
+      
       public static const MOUNT_CAPACITY_AUTOPILOT:int = 10;
       
       public static const CHARACTERISTIC_TYPE_PRIMARY:int = 2;

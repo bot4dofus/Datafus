@@ -143,8 +143,8 @@ package com.ankamagames.dofus.logic.game.fight.frames.Preview
       public static function createHaxeBuff(buff:BasicBuff) : HaxeBuff
       {
          var casterId:Number = buff.castingSpell.casterId;
-         var grade:int = buff.castingSpell.spellRank != null ? int(buff.castingSpell.spellRank.grade) : 1;
-         var spellLevel:SpellLevel = Spell.getSpellById(buff.castingSpell.spell.id).getSpellLevel(grade);
+         var grade:int = buff.castingSpell.spellLevelData != null ? int(buff.castingSpell.spellLevelData.grade) : 1;
+         var spellLevel:SpellLevel = Spell.getSpellById(buff.castingSpell.spellData.id).getSpellLevel(grade);
          var newSpell:HaxeSpell = createHaxeSpell(spellLevel);
          var effect:HaxeSpellEffect = SpellEffectTranslator.fromBuff(buff,spellLevel.grade);
          var isCritical:* = newSpell.getCriticalEffectById(effect.id) != null;

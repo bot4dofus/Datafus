@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.fight
    public class StartListenAllianceFightMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5156;
+      public static const protocolId:uint = 9408;
        
       
       public function StartListenAllianceFightMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.fight
       
       override public function getMessageId() : uint
       {
-         return 5156;
+         return 9408;
       }
       
       public function initStartListenAllianceFightMessage() : StartListenAllianceFightMessage

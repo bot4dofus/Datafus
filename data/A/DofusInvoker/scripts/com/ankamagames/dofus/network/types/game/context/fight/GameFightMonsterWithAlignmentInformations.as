@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameFightMonsterWithAlignmentInformations extends GameFightMonsterInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 5188;
+      public static const protocolId:uint = 4842;
        
       
       public var alignmentInfos:ActorAlignmentInformations;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 5188;
+         return 4842;
       }
       
       public function initGameFightMonsterWithAlignmentInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, spawnInfo:GameContextBasicSpawnInformation = null, wave:uint = 0, stats:GameFightCharacteristics = null, previousPositions:Vector.<uint> = null, creatureGenericId:uint = 0, creatureGrade:uint = 0, creatureLevel:uint = 0, alignmentInfos:ActorAlignmentInformations = null) : GameFightMonsterWithAlignmentInformations

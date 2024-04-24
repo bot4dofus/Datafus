@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.basic
    public class BasicLatencyStatsRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2824;
+      public static const protocolId:uint = 4623;
        
       
       public function BasicLatencyStatsRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.basic
       
       override public function getMessageId() : uint
       {
-         return 2824;
+         return 4623;
       }
       
       public function initBasicLatencyStatsRequestMessage() : BasicLatencyStatsRequestMessage

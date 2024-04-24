@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.progression.suggestion
    public class ActivitySuggestionsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5915;
+      public static const protocolId:uint = 6835;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.progression.suggestion
       
       override public function getMessageId() : uint
       {
-         return 5915;
+         return 6835;
       }
       
       public function initActivitySuggestionsMessage(lockedActivitiesIds:Vector.<uint> = null, unlockedActivitiesIds:Vector.<uint> = null) : ActivitySuggestionsMessage

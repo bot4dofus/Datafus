@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag.me
    public class InviteInHavenBagClosedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1965;
+      public static const protocolId:uint = 8453;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag.me
       
       override public function getMessageId() : uint
       {
-         return 1965;
+         return 8453;
       }
       
       public function initInviteInHavenBagClosedMessage(hostInformations:CharacterMinimalInformations = null) : InviteInHavenBagClosedMessage

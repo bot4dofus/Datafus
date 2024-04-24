@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context
    public class MapCoordinatesAndId extends MapCoordinates implements INetworkType
    {
       
-      public static const protocolId:uint = 3146;
+      public static const protocolId:uint = 9666;
        
       
       public var mapId:Number = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.context
       
       override public function getTypeId() : uint
       {
-         return 3146;
+         return 9666;
       }
       
       public function initMapCoordinatesAndId(worldX:int = 0, worldY:int = 0, mapId:Number = 0) : MapCoordinatesAndId

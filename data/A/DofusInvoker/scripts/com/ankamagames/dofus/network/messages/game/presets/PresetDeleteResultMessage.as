@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.presets
    public class PresetDeleteResultMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2114;
+      public static const protocolId:uint = 4975;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.presets
       
       override public function getMessageId() : uint
       {
-         return 2114;
+         return 4975;
       }
       
       public function initPresetDeleteResultMessage(presetId:int = 0, code:uint = 2) : PresetDeleteResultMessage

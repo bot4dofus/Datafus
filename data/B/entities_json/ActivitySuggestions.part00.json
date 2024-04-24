@@ -10851,7 +10851,7 @@
 		{
 			"id": 3585,
 			"nameId": 890674,
-			"descriptionId": 1054075,
+			"descriptionId": 1067556,
 			"categoryId": 13,
 			"level": 0,
 			"mapId": 0,
@@ -10868,8 +10868,8 @@
 			"level": 0,
 			"mapId": 185863685,
 			"isLarge": true,
-			"startDate": 1680566400000.0,
-			"endDate": 1682985600000.0,
+			"startDate": 1711411200000.0,
+			"endDate": 1713830400000.0,
 			"icon": "1114"
 		},
 		{
@@ -11954,8 +11954,8 @@
 		},
 		{
 			"id": 3680,
-			"nameId": 1053789,
-			"descriptionId": 1053790,
+			"nameId": 1057949,
+			"descriptionId": 1057952,
 			"categoryId": 7,
 			"level": 0,
 			"mapId": 0,
@@ -11966,8 +11966,8 @@
 		},
 		{
 			"id": 3681,
-			"nameId": 1053792,
-			"descriptionId": 1053793,
+			"nameId": 1057951,
+			"descriptionId": 1057953,
 			"categoryId": 7,
 			"level": 0,
 			"mapId": 0,
@@ -16602,7 +16602,7 @@
 			"descriptionId": 948767,
 			"categoryId": 13,
 			"level": 0,
-			"mapId": 88082195,
+			"mapId": 153357316,
 			"isLarge": true,
 			"startDate": 0.0,
 			"endDate": 0.0,
@@ -16634,7 +16634,7 @@
 		},
 		{
 			"id": 4099,
-			"nameId": 967776,
+			"nameId": 1076217,
 			"descriptionId": 967778,
 			"categoryId": 13,
 			"level": 160,

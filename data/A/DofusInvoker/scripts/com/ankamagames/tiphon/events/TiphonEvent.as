@@ -122,10 +122,5 @@ package com.ankamagames.tiphon.events
             this._direction = 5;
          }
       }
-      
-      public function duplicate() : TiphonEvent
-      {
-         return new TiphonEvent(this.type,this._sprite,this._params);
-      }
    }
 }

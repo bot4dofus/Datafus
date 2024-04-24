@@ -86,6 +86,11 @@ package com.ankamagames.dofus.logic.game.fight.steps
             _log.warn("FightEntitiesFrame does not exist anymore, we don\'t execute this step.");
             return;
          }
+         if(!PlayedCharacterManager.getInstance().isFighting)
+         {
+            _log.warn("Player does not seem to be fighting, we don\'t execute this step.");
+            return;
+         }
          var stats:EntityStats = StatsManager.getInstance().getStats(_targetId);
          var res:int = stats.getHealthPoints() + this._delta;
          var maxLifePoints:Number = Math.max(1,stats.getMaxHealthPoints() + this._permanentDamages);

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class ObjectItem extends Item implements INetworkType
    {
       
-      public static const protocolId:uint = 6292;
+      public static const protocolId:uint = 8371;
        
       
       public var position:uint = 63;
@@ -23,6 +23,8 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       public var quantity:uint = 0;
       
+      public var favorite:Boolean = false;
+      
       private var _effectstree:FuncTree;
       
       public function ObjectItem()
@@ -33,16 +35,17 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       override public function getTypeId() : uint
       {
-         return 6292;
+         return 8371;
       }
       
-      public function initObjectItem(position:uint = 63, objectGID:uint = 0, effects:Vector.<ObjectEffect> = null, objectUID:uint = 0, quantity:uint = 0) : ObjectItem
+      public function initObjectItem(position:uint = 63, objectGID:uint = 0, effects:Vector.<ObjectEffect> = null, objectUID:uint = 0, quantity:uint = 0, favorite:Boolean = false) : ObjectItem
       {
          this.position = position;
          this.objectGID = objectGID;
          this.effects = effects;
          this.objectUID = objectUID;
          this.quantity = quantity;
+         this.favorite = favorite;
          return this;
       }
       
@@ -53,6 +56,7 @@ package com.ankamagames.dofus.network.types.game.data.items
          this.effects = new Vector.<ObjectEffect>();
          this.objectUID = 0;
          this.quantity = 0;
+         this.favorite = false;
       }
       
       override public function serialize(output:ICustomDataOutput) : void
@@ -85,6 +89,7 @@ package com.ankamagames.dofus.network.types.game.data.items
             throw new Error("Forbidden value (" + this.quantity + ") on element quantity.");
          }
          output.writeVarInt(this.quantity);
+         output.writeBoolean(this.favorite);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -109,6 +114,7 @@ package com.ankamagames.dofus.network.types.game.data.items
          }
          this._objectUIDFunc(input);
          this._quantityFunc(input);
+         this._favoriteFunc(input);
       }
       
       override public function deserializeAsync(tree:FuncTree) : void
@@ -124,6 +130,7 @@ package com.ankamagames.dofus.network.types.game.data.items
          this._effectstree = tree.addChild(this._effectstreeFunc);
          tree.addChild(this._objectUIDFunc);
          tree.addChild(this._quantityFunc);
+         tree.addChild(this._favoriteFunc);
       }
       
       private function _positionFunc(input:ICustomDataInput) : void
@@ -177,6 +184,11 @@ package com.ankamagames.dofus.network.types.game.data.items
          {
             throw new Error("Forbidden value (" + this.quantity + ") on element of ObjectItem.quantity.");
          }
+      }
+      
+      private function _favoriteFunc(input:ICustomDataInput) : void
+      {
+         this.favorite = input.readBoolean();
       }
    }
 }

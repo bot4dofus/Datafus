@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.quest
    public class QuestActiveInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 7110;
+      public static const protocolId:uint = 1335;
        
       
       public var questId:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.quest
       
       public function getTypeId() : uint
       {
-         return 7110;
+         return 1335;
       }
       
       public function initQuestActiveInformations(questId:uint = 0) : QuestActiveInformations

@@ -22,6 +22,9 @@ package com.ankamagames.dofus.datacenter.items.criterion
          var s:String = pServerCriterionForm.slice(0,2);
          switch(s)
          {
+            case "Ar":
+               criterion = new AchievementPioneerItemCriterion(pServerCriterionForm);
+               break;
             case "BI":
                criterion = new UnusableItemCriterion(pServerCriterionForm);
                break;
@@ -257,7 +260,7 @@ package com.ankamagames.dofus.datacenter.items.criterion
                criterion = new SubareaLevelItemCriterion(pServerCriterionForm);
                break;
             case "ST":
-               criterion = new ServerSeasonTemporisCriterion(pServerCriterionForm);
+               criterion = new SeasonCriterion(pServerCriterionForm);
                break;
             case "Sy":
                criterion = new CommunityItemCriterion(pServerCriterionForm);

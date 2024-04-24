@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class AllianceInformation extends BasicNamedAllianceInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 8630;
+      public static const protocolId:uint = 9229;
        
       
       public var allianceEmblem:SocialEmblem;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 8630;
+         return 9229;
       }
       
       public function initAllianceInformation(allianceId:uint = 0, allianceTag:String = "", allianceName:String = "", allianceEmblem:SocialEmblem = null) : AllianceInformation

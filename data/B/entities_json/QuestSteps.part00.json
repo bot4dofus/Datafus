@@ -17653,7 +17653,7 @@
 			"descriptionId": 351795,
 			"dialogId": 12054,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5771,
 				5772,
@@ -17680,7 +17680,7 @@
 			"descriptionId": 351789,
 			"dialogId": 12067,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5775,
 				5776,
@@ -17707,7 +17707,7 @@
 			"descriptionId": 351791,
 			"dialogId": 12074,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5779,
 				5780,
@@ -17734,7 +17734,7 @@
 			"descriptionId": 351801,
 			"dialogId": 12081,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5783,
 				5784,
@@ -17761,7 +17761,7 @@
 			"descriptionId": 351803,
 			"dialogId": 12087,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5787,
 				5788,
@@ -17788,7 +17788,7 @@
 			"descriptionId": 351797,
 			"dialogId": 12096,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5791,
 				5792,
@@ -17815,7 +17815,7 @@
 			"descriptionId": 351799,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5795,
 				5796,
@@ -17842,7 +17842,7 @@
 			"descriptionId": 352195,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5799,
 				5800,
@@ -17869,7 +17869,7 @@
 			"descriptionId": 352197,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5803,
 				5804,
@@ -17896,7 +17896,7 @@
 			"descriptionId": 352199,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5807,
 				5808,
@@ -17923,7 +17923,7 @@
 			"descriptionId": 352201,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5811,
 				5812,
@@ -17950,7 +17950,7 @@
 			"descriptionId": 352203,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5815,
 				5816,
@@ -17977,7 +17977,7 @@
 			"descriptionId": 352205,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5819,
 				5820,
@@ -18004,7 +18004,7 @@
 			"descriptionId": 352207,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5823,
 				5824,
@@ -18031,7 +18031,7 @@
 			"descriptionId": 352209,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5827,
 				5828,
@@ -18058,7 +18058,7 @@
 			"descriptionId": 352211,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5831,
 				5832,
@@ -18085,7 +18085,7 @@
 			"descriptionId": 352213,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5835,
 				5836,
@@ -18112,7 +18112,7 @@
 			"descriptionId": 352219,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5839,
 				5840,
@@ -18139,7 +18139,7 @@
 			"descriptionId": 352221,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5843,
 				5844,
@@ -18166,7 +18166,7 @@
 			"descriptionId": 352215,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5847,
 				5848,
@@ -18193,7 +18193,7 @@
 			"descriptionId": 352217,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5851,
 				5852,
@@ -18220,7 +18220,7 @@
 			"descriptionId": 352227,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5855,
 				5856,
@@ -18247,7 +18247,7 @@
 			"descriptionId": 352229,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5859,
 				5860,
@@ -18274,7 +18274,7 @@
 			"descriptionId": 352223,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5863,
 				5864,
@@ -18301,7 +18301,7 @@
 			"descriptionId": 352225,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5867,
 				5868,
@@ -18328,7 +18328,7 @@
 			"descriptionId": 352231,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5871,
 				5872,
@@ -18355,7 +18355,7 @@
 			"descriptionId": 352233,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5875,
 				5876,
@@ -18382,7 +18382,7 @@
 			"descriptionId": 352141,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5879,
 				5880,
@@ -18409,7 +18409,7 @@
 			"descriptionId": 352139,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5883,
 				5884,
@@ -18436,7 +18436,7 @@
 			"descriptionId": 352145,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5887,
 				5888,
@@ -18463,7 +18463,7 @@
 			"descriptionId": 352143,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5891,
 				5892,
@@ -18490,7 +18490,7 @@
 			"descriptionId": 352149,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5895,
 				5896,
@@ -18517,7 +18517,7 @@
 			"descriptionId": 352147,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5899,
 				5900,
@@ -18544,7 +18544,7 @@
 			"descriptionId": 352119,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5903,
 				5904,
@@ -18571,7 +18571,7 @@
 			"descriptionId": 352121,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5907,
 				5908,
@@ -18598,7 +18598,7 @@
 			"descriptionId": 352115,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5911,
 				5912,
@@ -18625,7 +18625,7 @@
 			"descriptionId": 352117,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5915,
 				5916,
@@ -18652,7 +18652,7 @@
 			"descriptionId": 352127,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5919,
 				5920,
@@ -18679,7 +18679,7 @@
 			"descriptionId": 352125,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5923,
 				5924,
@@ -18706,7 +18706,7 @@
 			"descriptionId": 352123,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5927,
 				5928,
@@ -18733,7 +18733,7 @@
 			"descriptionId": 352135,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5931,
 				5932,
@@ -18760,7 +18760,7 @@
 			"descriptionId": 352133,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5935,
 				5936,
@@ -18787,7 +18787,7 @@
 			"descriptionId": 352131,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5939,
 				5940,
@@ -18814,7 +18814,7 @@
 			"descriptionId": 352129,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5943,
 				5944,
@@ -18841,7 +18841,7 @@
 			"descriptionId": 351991,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5947,
 				5948,
@@ -18868,7 +18868,7 @@
 			"descriptionId": 351989,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5951,
 				5952,
@@ -18895,7 +18895,7 @@
 			"descriptionId": 351987,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5955,
 				5956,
@@ -18922,7 +18922,7 @@
 			"descriptionId": 351983,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5959,
 				5960,
@@ -18949,7 +18949,7 @@
 			"descriptionId": 351985,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5963,
 				5964,
@@ -18976,7 +18976,7 @@
 			"descriptionId": 351979,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5967,
 				5968,
@@ -19003,7 +19003,7 @@
 			"descriptionId": 351981,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5971,
 				5972,
@@ -19030,7 +19030,7 @@
 			"descriptionId": 351975,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5975,
 				5976,
@@ -19057,7 +19057,7 @@
 			"descriptionId": 351977,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5979,
 				5980,
@@ -19084,7 +19084,7 @@
 			"descriptionId": 351971,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5983,
 				5984,
@@ -19111,7 +19111,7 @@
 			"descriptionId": 351973,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5987,
 				5988,
@@ -19138,7 +19138,7 @@
 			"descriptionId": 351969,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5991,
 				5992,
@@ -19165,7 +19165,7 @@
 			"descriptionId": 351967,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5995,
 				5996,
@@ -19192,7 +19192,7 @@
 			"descriptionId": 351949,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				5999,
 				6000,
@@ -19219,7 +19219,7 @@
 			"descriptionId": 351959,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6003,
 				6004,
@@ -19246,7 +19246,7 @@
 			"descriptionId": 351961,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6007,
 				6008,
@@ -19273,7 +19273,7 @@
 			"descriptionId": 351963,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6011,
 				6012,
@@ -19300,7 +19300,7 @@
 			"descriptionId": 351965,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6015,
 				6016,
@@ -19327,7 +19327,7 @@
 			"descriptionId": 351951,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6019,
 				6020,
@@ -19354,7 +19354,7 @@
 			"descriptionId": 351953,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6023,
 				6024,
@@ -19381,7 +19381,7 @@
 			"descriptionId": 351955,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6027,
 				6028,
@@ -19408,7 +19408,7 @@
 			"descriptionId": 351957,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6031,
 				6032,
@@ -19435,7 +19435,7 @@
 			"descriptionId": 351945,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6035,
 				6036,
@@ -19462,7 +19462,7 @@
 			"descriptionId": 351925,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6039,
 				6040,
@@ -19489,7 +19489,7 @@
 			"descriptionId": 351927,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6043,
 				6044,
@@ -19516,7 +19516,7 @@
 			"descriptionId": 351933,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6047,
 				6048,
@@ -19543,7 +19543,7 @@
 			"descriptionId": 351935,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6051,
 				6052,
@@ -19570,7 +19570,7 @@
 			"descriptionId": 351929,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6055,
 				6056,
@@ -19597,7 +19597,7 @@
 			"descriptionId": 351931,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6059,
 				6060,
@@ -19624,7 +19624,7 @@
 			"descriptionId": 351941,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6063,
 				6064,
@@ -19651,7 +19651,7 @@
 			"descriptionId": 351943,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6067,
 				6068,
@@ -19678,7 +19678,7 @@
 			"descriptionId": 351937,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6071,
 				6072,
@@ -19705,7 +19705,7 @@
 			"descriptionId": 351939,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6075,
 				6076,
@@ -19732,7 +19732,7 @@
 			"descriptionId": 351905,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6079,
 				6080,
@@ -19759,7 +19759,7 @@
 			"descriptionId": 351907,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6083,
 				6084,
@@ -19786,7 +19786,7 @@
 			"descriptionId": 351909,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6087,
 				6088,
@@ -19813,7 +19813,7 @@
 			"descriptionId": 351911,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6091,
 				6092,
@@ -19840,7 +19840,7 @@
 			"descriptionId": 351913,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6095,
 				6096,
@@ -19867,7 +19867,7 @@
 			"descriptionId": 351915,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6099,
 				6100,
@@ -19894,7 +19894,7 @@
 			"descriptionId": 351917,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6103,
 				6104,
@@ -19921,7 +19921,7 @@
 			"descriptionId": 351919,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6107,
 				6108,
@@ -19948,7 +19948,7 @@
 			"descriptionId": 351921,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6111,
 				6112,
@@ -19975,7 +19975,7 @@
 			"descriptionId": 351923,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6115,
 				6116,
@@ -20002,7 +20002,7 @@
 			"descriptionId": 352063,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6119,
 				6120,
@@ -20029,7 +20029,7 @@
 			"descriptionId": 352061,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6123,
 				6124,
@@ -20056,7 +20056,7 @@
 			"descriptionId": 352059,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6127,
 				6128,
@@ -20083,7 +20083,7 @@
 			"descriptionId": 352057,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6131,
 				6132,
@@ -20110,7 +20110,7 @@
 			"descriptionId": 352055,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6135,
 				6136,
@@ -20137,7 +20137,7 @@
 			"descriptionId": 352053,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6139,
 				6140,
@@ -20164,7 +20164,7 @@
 			"descriptionId": 352051,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6143,
 				6144,
@@ -20191,7 +20191,7 @@
 			"descriptionId": 352049,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6147,
 				6148,
@@ -20218,7 +20218,7 @@
 			"descriptionId": 352047,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6151,
 				6152,
@@ -20245,7 +20245,7 @@
 			"descriptionId": 352045,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6155,
 				6156,
@@ -20272,7 +20272,7 @@
 			"descriptionId": 352043,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6159,
 				6160,
@@ -20299,7 +20299,7 @@
 			"descriptionId": 352037,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6163,
 				6164,
@@ -20326,7 +20326,7 @@
 			"descriptionId": 352035,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6167,
 				6168,
@@ -20353,7 +20353,7 @@
 			"descriptionId": 352041,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6171,
 				6172,
@@ -20380,7 +20380,7 @@
 			"descriptionId": 352039,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6175,
 				6176,
@@ -20407,7 +20407,7 @@
 			"descriptionId": 352029,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6179,
 				6180,
@@ -20434,7 +20434,7 @@
 			"descriptionId": 352027,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6183,
 				6184,
@@ -20461,7 +20461,7 @@
 			"descriptionId": 352033,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6187,
 				6188,
@@ -20488,7 +20488,7 @@
 			"descriptionId": 352031,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6191,
 				6192,
@@ -20515,7 +20515,7 @@
 			"descriptionId": 352025,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6195,
 				6196,
@@ -20610,7 +20610,7 @@
 			"descriptionId": 352021,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6225,
 				6226,
@@ -20661,7 +20661,7 @@
 			"descriptionId": 352013,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6232,
 				6233,
@@ -20688,7 +20688,7 @@
 			"descriptionId": 351999,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6236,
 				6237,
@@ -20715,7 +20715,7 @@
 			"descriptionId": 352003,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6240,
 				6241,
@@ -20742,7 +20742,7 @@
 			"descriptionId": 352001,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6244,
 				6245,
@@ -20769,7 +20769,7 @@
 			"descriptionId": 352007,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6248,
 				6249,
@@ -20796,7 +20796,7 @@
 			"descriptionId": 352005,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6252,
 				6253,
@@ -20823,7 +20823,7 @@
 			"descriptionId": 352011,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6256,
 				6257,
@@ -20850,7 +20850,7 @@
 			"descriptionId": 352009,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6260,
 				6261,
@@ -20877,7 +20877,7 @@
 			"descriptionId": 351995,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6264,
 				6265,
@@ -20904,7 +20904,7 @@
 			"descriptionId": 351993,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6268,
 				6269,
@@ -20931,7 +20931,7 @@
 			"descriptionId": 351997,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6272,
 				6273,
@@ -20958,7 +20958,7 @@
 			"descriptionId": 352525,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6276,
 				6277,
@@ -20985,7 +20985,7 @@
 			"descriptionId": 352519,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6280,
 				6281,
@@ -21012,7 +21012,7 @@
 			"descriptionId": 352517,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6284,
 				6285,
@@ -21039,7 +21039,7 @@
 			"descriptionId": 352523,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6288,
 				6289,
@@ -21066,7 +21066,7 @@
 			"descriptionId": 352521,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6292,
 				6293,
@@ -21093,7 +21093,7 @@
 			"descriptionId": 352501,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6296,
 				6297,
@@ -21120,7 +21120,7 @@
 			"descriptionId": 352503,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6300,
 				6301,
@@ -21147,7 +21147,7 @@
 			"descriptionId": 352497,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6304,
 				6305,
@@ -21174,7 +21174,7 @@
 			"descriptionId": 352499,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6308,
 				6309,
@@ -21201,7 +21201,7 @@
 			"descriptionId": 352495,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6312,
 				6313,
@@ -21228,7 +21228,7 @@
 			"descriptionId": 352515,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6316,
 				6317,
@@ -21255,7 +21255,7 @@
 			"descriptionId": 352513,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6320,
 				6321,
@@ -21282,7 +21282,7 @@
 			"descriptionId": 352511,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6324,
 				6325,
@@ -21309,7 +21309,7 @@
 			"descriptionId": 352509,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6328,
 				6329,
@@ -21336,7 +21336,7 @@
 			"descriptionId": 352507,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6332,
 				6333,
@@ -21363,7 +21363,7 @@
 			"descriptionId": 352505,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6336,
 				6337,
@@ -21390,7 +21390,7 @@
 			"descriptionId": 352553,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6340,
 				6341,
@@ -21417,7 +21417,7 @@
 			"descriptionId": 352555,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6344,
 				6345,
@@ -21444,7 +21444,7 @@
 			"descriptionId": 352557,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6348,
 				6349,
@@ -21471,7 +21471,7 @@
 			"descriptionId": 352559,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6352,
 				6353,
@@ -21498,7 +21498,7 @@
 			"descriptionId": 352575,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6356,
 				6357,
@@ -21525,7 +21525,7 @@
 			"descriptionId": 352583,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6360,
 				6361,
@@ -21552,7 +21552,7 @@
 			"descriptionId": 352579,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6364,
 				6365,
@@ -21579,7 +21579,7 @@
 			"descriptionId": 352591,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6368,
 				6369,
@@ -21606,7 +21606,7 @@
 			"descriptionId": 352587,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6372,
 				6373,
@@ -21633,7 +21633,7 @@
 			"descriptionId": 352599,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6376,
 				6377,
@@ -21660,7 +21660,7 @@
 			"descriptionId": 352595,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6380,
 				6381,
@@ -21687,7 +21687,7 @@
 			"descriptionId": 352529,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6384,
 				6385,
@@ -21714,7 +21714,7 @@
 			"descriptionId": 352531,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6388,
 				6389,
@@ -21741,7 +21741,7 @@
 			"descriptionId": 352527,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6392,
 				6393,
@@ -21768,7 +21768,7 @@
 			"descriptionId": 352543,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6396,
 				6397,
@@ -21795,7 +21795,7 @@
 			"descriptionId": 352541,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6400,
 				6401,
@@ -21822,7 +21822,7 @@
 			"descriptionId": 352539,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6404,
 				6405,
@@ -21849,7 +21849,7 @@
 			"descriptionId": 352537,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6408,
 				6409,
@@ -21876,7 +21876,7 @@
 			"descriptionId": 352551,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6412,
 				6413,
@@ -21903,7 +21903,7 @@
 			"descriptionId": 352549,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6416,
 				6417,
@@ -21930,7 +21930,7 @@
 			"descriptionId": 352547,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6420,
 				6421,
@@ -21957,7 +21957,7 @@
 			"descriptionId": 352545,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6424,
 				6425,
@@ -21984,7 +21984,7 @@
 			"descriptionId": 352279,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6428,
 				6429,
@@ -22011,7 +22011,7 @@
 			"descriptionId": 352277,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6432,
 				6433,
@@ -22038,7 +22038,7 @@
 			"descriptionId": 352275,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6436,
 				6437,
@@ -22065,7 +22065,7 @@
 			"descriptionId": 352271,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6440,
 				6441,
@@ -22092,7 +22092,7 @@
 			"descriptionId": 352273,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6444,
 				6445,
@@ -22119,7 +22119,7 @@
 			"descriptionId": 352267,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6448,
 				6449,
@@ -22146,7 +22146,7 @@
 			"descriptionId": 352269,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6452,
 				6453,
@@ -22173,7 +22173,7 @@
 			"descriptionId": 352263,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6456,
 				6457,
@@ -22200,7 +22200,7 @@
 			"descriptionId": 352265,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6460,
 				6461,
@@ -22227,7 +22227,7 @@
 			"descriptionId": 352259,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6464,
 				6465,
@@ -22254,7 +22254,7 @@
 			"descriptionId": 352261,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6468,
 				6469,
@@ -22281,7 +22281,7 @@
 			"descriptionId": 352257,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6472,
 				6473,
@@ -22308,7 +22308,7 @@
 			"descriptionId": 352253,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6476,
 				6477,
@@ -22335,7 +22335,7 @@
 			"descriptionId": 352255,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6480,
 				6481,
@@ -22362,7 +22362,7 @@
 			"descriptionId": 352245,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6484,
 				6485,
@@ -22389,7 +22389,7 @@
 			"descriptionId": 352247,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6488,
 				6489,
@@ -22416,7 +22416,7 @@
 			"descriptionId": 352249,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6492,
 				6493,
@@ -22443,7 +22443,7 @@
 			"descriptionId": 352251,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6496,
 				6497,
@@ -22470,7 +22470,7 @@
 			"descriptionId": 352237,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6500,
 				6501,
@@ -22497,7 +22497,7 @@
 			"descriptionId": 352239,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6504,
 				6505,
@@ -22524,7 +22524,7 @@
 			"descriptionId": 352241,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6508,
 				6509,
@@ -22551,7 +22551,7 @@
 			"descriptionId": 352243,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6512,
 				6513,
@@ -22578,7 +22578,7 @@
 			"descriptionId": 352319,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6516,
 				6517,
@@ -22605,7 +22605,7 @@
 			"descriptionId": 352315,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6520,
 				6521,
@@ -22632,7 +22632,7 @@
 			"descriptionId": 352317,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6524,
 				6525,
@@ -22659,7 +22659,7 @@
 			"descriptionId": 352305,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6528,
 				6529,
@@ -22686,7 +22686,7 @@
 			"descriptionId": 352307,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6532,
 				6533,
@@ -22713,7 +22713,7 @@
 			"descriptionId": 352301,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6536,
 				6537,
@@ -22740,7 +22740,7 @@
 			"descriptionId": 352303,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6540,
 				6541,
@@ -22767,7 +22767,7 @@
 			"descriptionId": 352311,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6544,
 				6545,
@@ -22794,7 +22794,7 @@
 			"descriptionId": 352313,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6548,
 				6549,
@@ -22821,7 +22821,7 @@
 			"descriptionId": 352309,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6552,
 				6553,
@@ -22848,7 +22848,7 @@
 			"descriptionId": 352293,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6556,
 				6557,
@@ -22875,7 +22875,7 @@
 			"descriptionId": 352295,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6560,
 				6561,
@@ -22902,7 +22902,7 @@
 			"descriptionId": 352297,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6564,
 				6565,
@@ -22929,7 +22929,7 @@
 			"descriptionId": 352299,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6568,
 				6569,
@@ -22956,7 +22956,7 @@
 			"descriptionId": 352281,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6572,
 				6573,
@@ -22983,7 +22983,7 @@
 			"descriptionId": 352283,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6576,
 				6577,
@@ -23010,7 +23010,7 @@
 			"descriptionId": 352285,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6580,
 				6581,
@@ -23037,7 +23037,7 @@
 			"descriptionId": 352287,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6584,
 				6585,
@@ -23064,7 +23064,7 @@
 			"descriptionId": 352289,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6588,
 				6589,
@@ -23091,7 +23091,7 @@
 			"descriptionId": 352291,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6592,
 				6593,
@@ -23118,7 +23118,7 @@
 			"descriptionId": 352353,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6596,
 				6597,
@@ -23145,7 +23145,7 @@
 			"descriptionId": 352351,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6600,
 				6601,
@@ -23172,7 +23172,7 @@
 			"descriptionId": 352349,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6604,
 				6605,
@@ -23199,7 +23199,7 @@
 			"descriptionId": 352347,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6608,
 				6609,
@@ -23226,7 +23226,7 @@
 			"descriptionId": 352345,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6612,
 				6613,
@@ -23253,7 +23253,7 @@
 			"descriptionId": 352363,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6616,
 				6617,
@@ -23280,7 +23280,7 @@
 			"descriptionId": 352361,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6620,
 				6621,
@@ -23307,7 +23307,7 @@
 			"descriptionId": 352359,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6624,
 				6625,
@@ -23334,7 +23334,7 @@
 			"descriptionId": 352357,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6628,
 				6629,
@@ -23361,7 +23361,7 @@
 			"descriptionId": 352355,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6632,
 				6633,
@@ -23388,7 +23388,7 @@
 			"descriptionId": 352333,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6636,
 				6637,
@@ -23415,7 +23415,7 @@
 			"descriptionId": 352331,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6640,
 				6641,
@@ -23442,7 +23442,7 @@
 			"descriptionId": 352325,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6644,
 				6645,
@@ -23469,7 +23469,7 @@
 			"descriptionId": 352321,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6648,
 				6649,
@@ -23496,7 +23496,7 @@
 			"descriptionId": 352329,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6652,
 				6653,
@@ -23523,7 +23523,7 @@
 			"descriptionId": 352327,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6656,
 				6657,
@@ -23550,7 +23550,7 @@
 			"descriptionId": 352339,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6660,
 				6661,
@@ -23577,7 +23577,7 @@
 			"descriptionId": 352337,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6664,
 				6665,
@@ -23604,7 +23604,7 @@
 			"descriptionId": 352343,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6668,
 				6669,
@@ -23631,7 +23631,7 @@
 			"descriptionId": 352341,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6672,
 				6673,
@@ -23658,7 +23658,7 @@
 			"descriptionId": 351215,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6676,
 				6677,
@@ -23685,7 +23685,7 @@
 			"descriptionId": 351217,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6680,
 				6681,
@@ -23712,7 +23712,7 @@
 			"descriptionId": 351219,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6684,
 				6685,
@@ -23739,7 +23739,7 @@
 			"descriptionId": 351221,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6688,
 				6689,
@@ -23766,7 +23766,7 @@
 			"descriptionId": 351209,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6692,
 				6693,
@@ -23793,7 +23793,7 @@
 			"descriptionId": 351207,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6696,
 				6697,
@@ -23820,7 +23820,7 @@
 			"descriptionId": 351205,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6700,
 				6701,
@@ -23847,7 +23847,7 @@
 			"descriptionId": 351203,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6704,
 				6705,
@@ -23874,7 +23874,7 @@
 			"descriptionId": 351213,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6708,
 				6709,
@@ -23901,7 +23901,7 @@
 			"descriptionId": 351211,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6712,
 				6713,
@@ -23928,7 +23928,7 @@
 			"descriptionId": 351193,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6716,
 				6717,
@@ -23955,7 +23955,7 @@
 			"descriptionId": 351199,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6720,
 				6721,
@@ -24124,7 +24124,7 @@
 			"descriptionId": 351175,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6775,
 				6776,
@@ -24151,7 +24151,7 @@
 			"descriptionId": 351171,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6779,
 				6780,
@@ -24178,7 +24178,7 @@
 			"descriptionId": 351167,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6783,
 				6784,
@@ -24205,7 +24205,7 @@
 			"descriptionId": 351161,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6787,
 				6788,
@@ -24232,7 +24232,7 @@
 			"descriptionId": 351159,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6791,
 				6792,
@@ -24259,7 +24259,7 @@
 			"descriptionId": 351165,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6795,
 				6796,
@@ -24286,7 +24286,7 @@
 			"descriptionId": 351163,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6799,
 				6800,
@@ -24313,7 +24313,7 @@
 			"descriptionId": 351152,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6803,
 				6804,
@@ -24340,7 +24340,7 @@
 			"descriptionId": 351155,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6807,
 				6808,
@@ -24367,7 +24367,7 @@
 			"descriptionId": 351148,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6811,
 				6812,
@@ -24394,7 +24394,7 @@
 			"descriptionId": 351150,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6815,
 				6816,
@@ -24421,7 +24421,7 @@
 			"descriptionId": 351137,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6819,
 				6820,
@@ -24448,7 +24448,7 @@
 			"descriptionId": 351133,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6823,
 				6824,
@@ -24475,7 +24475,7 @@
 			"descriptionId": 351129,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6827,
 				6828,
@@ -24502,7 +24502,7 @@
 			"descriptionId": 351127,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6831,
 				6832,
@@ -24529,7 +24529,7 @@
 			"descriptionId": 351125,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6835,
 				6836,
@@ -24556,7 +24556,7 @@
 			"descriptionId": 351121,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6839,
 				6840,
@@ -24583,7 +24583,7 @@
 			"descriptionId": 351119,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6843,
 				6844,
@@ -24610,7 +24610,7 @@
 			"descriptionId": 351105,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6847,
 				6848,
@@ -24637,7 +24637,7 @@
 			"descriptionId": 351107,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6851,
 				6852,
@@ -24664,7 +24664,7 @@
 			"descriptionId": 351109,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6855,
 				6856,
@@ -24691,7 +24691,7 @@
 			"descriptionId": 351087,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6859,
 				6860,
@@ -24718,7 +24718,7 @@
 			"descriptionId": 351084,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6863,
 				6864,
@@ -24745,7 +24745,7 @@
 			"descriptionId": 351091,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6867,
 				6868,
@@ -24772,7 +24772,7 @@
 			"descriptionId": 351089,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6871,
 				6872,
@@ -24799,7 +24799,7 @@
 			"descriptionId": 351095,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6875,
 				6876,
@@ -24826,7 +24826,7 @@
 			"descriptionId": 351093,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6879,
 				6880,
@@ -24853,7 +24853,7 @@
 			"descriptionId": 351101,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6883,
 				6884,
@@ -24880,7 +24880,7 @@
 			"descriptionId": 351097,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6887,
 				6888,
@@ -24907,7 +24907,7 @@
 			"descriptionId": 351074,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6891,
 				6892,
@@ -24934,7 +24934,7 @@
 			"descriptionId": 351076,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6895,
 				6896,
@@ -24961,7 +24961,7 @@
 			"descriptionId": 351071,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6899,
 				6900,
@@ -24988,7 +24988,7 @@
 			"descriptionId": 351053,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6903,
 				6904,
@@ -25015,7 +25015,7 @@
 			"descriptionId": 351051,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6907,
 				6908,
@@ -25042,7 +25042,7 @@
 			"descriptionId": 351047,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6911,
 				6912,
@@ -25069,7 +25069,7 @@
 			"descriptionId": 351043,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6915,
 				6916,
@@ -25096,7 +25096,7 @@
 			"descriptionId": 351067,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6919,
 				6920,
@@ -25123,7 +25123,7 @@
 			"descriptionId": 351065,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6923,
 				6924,
@@ -25150,7 +25150,7 @@
 			"descriptionId": 351061,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6927,
 				6928,
@@ -25177,7 +25177,7 @@
 			"descriptionId": 351057,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6931,
 				6932,
@@ -25204,7 +25204,7 @@
 			"descriptionId": 351021,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6935,
 				6936,
@@ -25231,7 +25231,7 @@
 			"descriptionId": 351023,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6939,
 				6940,
@@ -25258,7 +25258,7 @@
 			"descriptionId": 351025,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6943,
 				6944,
@@ -25285,7 +25285,7 @@
 			"descriptionId": 351039,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6947,
 				6948,
@@ -25312,7 +25312,7 @@
 			"descriptionId": 351041,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6951,
 				6952,
@@ -25339,7 +25339,7 @@
 			"descriptionId": 351035,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6955,
 				6956,
@@ -25366,7 +25366,7 @@
 			"descriptionId": 351037,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6959,
 				6960,
@@ -25393,7 +25393,7 @@
 			"descriptionId": 351031,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6963,
 				6964,
@@ -25420,7 +25420,7 @@
 			"descriptionId": 351033,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6967,
 				6968,
@@ -25447,7 +25447,7 @@
 			"descriptionId": 351027,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6971,
 				6972,
@@ -25474,7 +25474,7 @@
 			"descriptionId": 351029,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6975,
 				6976,
@@ -25501,7 +25501,7 @@
 			"descriptionId": 351001,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6979,
 				6980,
@@ -25528,7 +25528,7 @@
 			"descriptionId": 351003,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6983,
 				6984,
@@ -25555,7 +25555,7 @@
 			"descriptionId": 351005,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6987,
 				6988,
@@ -25582,7 +25582,7 @@
 			"descriptionId": 351013,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6991,
 				6992,
@@ -25609,7 +25609,7 @@
 			"descriptionId": 351015,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6995,
 				6996,
@@ -25636,7 +25636,7 @@
 			"descriptionId": 351017,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				6999,
 				7000,
@@ -25663,7 +25663,7 @@
 			"descriptionId": 351019,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7003,
 				7004,
@@ -25690,7 +25690,7 @@
 			"descriptionId": 351007,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7007,
 				7008,
@@ -25717,7 +25717,7 @@
 			"descriptionId": 351009,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7011,
 				7012,
@@ -25744,7 +25744,7 @@
 			"descriptionId": 351011,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7015,
 				7016,
@@ -25771,7 +25771,7 @@
 			"descriptionId": 350983,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7019,
 				7020,
@@ -25798,7 +25798,7 @@
 			"descriptionId": 350985,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7023,
 				7024,
@@ -27293,7 +27293,7 @@
 			"descriptionId": 351531,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7515,
 				7516,
@@ -27320,7 +27320,7 @@
 			"descriptionId": 351529,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7519,
 				7520,
@@ -27347,7 +27347,7 @@
 			"descriptionId": 351527,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7523,
 				7524,
@@ -27374,7 +27374,7 @@
 			"descriptionId": 351525,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7527,
 				7528,
@@ -27401,7 +27401,7 @@
 			"descriptionId": 351523,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7531,
 				7532,
@@ -27428,7 +27428,7 @@
 			"descriptionId": 351521,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7535,
 				7536,
@@ -27455,7 +27455,7 @@
 			"descriptionId": 351649,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7539,
 				7540,
@@ -27482,7 +27482,7 @@
 			"descriptionId": 351651,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7543,
 				7544,
@@ -27509,7 +27509,7 @@
 			"descriptionId": 351631,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7547,
 				7548,
@@ -27536,7 +27536,7 @@
 			"descriptionId": 351635,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7551,
 				7552,
@@ -27563,7 +27563,7 @@
 			"descriptionId": 351633,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7555,
 				7556,
@@ -27590,7 +27590,7 @@
 			"descriptionId": 351639,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7559,
 				7560,
@@ -27617,7 +27617,7 @@
 			"descriptionId": 351637,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7563,
 				7564,
@@ -27644,7 +27644,7 @@
 			"descriptionId": 351643,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7567,
 				7568,
@@ -27671,7 +27671,7 @@
 			"descriptionId": 351641,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7571,
 				7572,
@@ -27698,7 +27698,7 @@
 			"descriptionId": 351647,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7575,
 				7576,
@@ -27725,7 +27725,7 @@
 			"descriptionId": 351645,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7579,
 				7580,
@@ -27752,7 +27752,7 @@
 			"descriptionId": 351621,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7583,
 				7584,
@@ -27779,7 +27779,7 @@
 			"descriptionId": 351591,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7587,
 				7588,
@@ -27806,7 +27806,7 @@
 			"descriptionId": 351587,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7591,
 				7592,
@@ -27833,7 +27833,7 @@
 			"descriptionId": 351609,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7595,
 				7596,
@@ -27860,7 +27860,7 @@
 			"descriptionId": 351605,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7599,
 				7600,
@@ -27887,7 +27887,7 @@
 			"descriptionId": 351601,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7603,
 				7604,
@@ -27914,7 +27914,7 @@
 			"descriptionId": 351597,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7607,
 				7608,
@@ -27941,7 +27941,7 @@
 			"descriptionId": 351619,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7611,
 				7612,
@@ -27968,7 +27968,7 @@
 			"descriptionId": 351617,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7615,
 				7616,
@@ -27995,7 +27995,7 @@
 			"descriptionId": 351615,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7619,
 				7620,
@@ -28022,7 +28022,7 @@
 			"descriptionId": 351613,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7623,
 				7624,
@@ -28049,7 +28049,7 @@
 			"descriptionId": 351501,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7627,
 				7628,
@@ -28076,7 +28076,7 @@
 			"descriptionId": 351497,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7631,
 				7632,
@@ -28103,7 +28103,7 @@
 			"descriptionId": 351499,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7635,
 				7636,
@@ -28130,7 +28130,7 @@
 			"descriptionId": 351493,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7639,
 				7640,
@@ -28157,7 +28157,7 @@
 			"descriptionId": 351495,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7643,
 				7644,
@@ -28184,7 +28184,7 @@
 			"descriptionId": 351489,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7647,
 				7648,
@@ -28211,7 +28211,7 @@
 			"descriptionId": 351491,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7651,
 				7652,
@@ -28238,7 +28238,7 @@
 			"descriptionId": 351485,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7655,
 				7656,
@@ -28265,7 +28265,7 @@
 			"descriptionId": 351487,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7659,
 				7660,
@@ -28292,7 +28292,7 @@
 			"descriptionId": 351483,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7663,
 				7664,
@@ -28319,7 +28319,7 @@
 			"descriptionId": 351475,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7667,
 				7668,
@@ -28346,7 +28346,7 @@
 			"descriptionId": 351477,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7671,
 				7672,
@@ -28373,7 +28373,7 @@
 			"descriptionId": 351479,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7675,
 				7676,
@@ -28400,7 +28400,7 @@
 			"descriptionId": 351481,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7679,
 				7680,
@@ -28427,7 +28427,7 @@
 			"descriptionId": 351467,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7683,
 				7684,
@@ -28454,7 +28454,7 @@
 			"descriptionId": 351469,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7687,
 				7688,
@@ -28481,7 +28481,7 @@
 			"descriptionId": 351471,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7691,
 				7692,
@@ -28508,7 +28508,7 @@
 			"descriptionId": 351473,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7695,
 				7696,
@@ -28535,7 +28535,7 @@
 			"descriptionId": 351463,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7699,
 				7700,
@@ -28562,7 +28562,7 @@
 			"descriptionId": 351465,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7703,
 				7704,
@@ -28589,7 +28589,7 @@
 			"descriptionId": 351259,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7707,
 				7708,
@@ -28616,7 +28616,7 @@
 			"descriptionId": 351261,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7711,
 				7712,
@@ -28643,7 +28643,7 @@
 			"descriptionId": 351263,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7715,
 				7716,
@@ -28670,7 +28670,7 @@
 			"descriptionId": 351265,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7719,
 				7720,
@@ -28697,7 +28697,7 @@
 			"descriptionId": 351267,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7723,
 				7724,
@@ -28724,7 +28724,7 @@
 			"descriptionId": 351269,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7727,
 				7728,
@@ -28751,7 +28751,7 @@
 			"descriptionId": 351271,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7731,
 				7732,
@@ -28778,7 +28778,7 @@
 			"descriptionId": 351273,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7735,
 				7736,
@@ -28805,7 +28805,7 @@
 			"descriptionId": 351275,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7739,
 				7740,
@@ -28832,7 +28832,7 @@
 			"descriptionId": 351277,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7743,
 				7744,
@@ -28859,7 +28859,7 @@
 			"descriptionId": 351287,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7747,
 				7748,
@@ -28886,7 +28886,7 @@
 			"descriptionId": 351289,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7751,
 				7752,
@@ -28913,7 +28913,7 @@
 			"descriptionId": 351283,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7755,
 				7756,
@@ -28940,7 +28940,7 @@
 			"descriptionId": 351285,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7759,
 				7760,
@@ -28967,7 +28967,7 @@
 			"descriptionId": 351279,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7763,
 				7764,
@@ -28994,7 +28994,7 @@
 			"descriptionId": 351281,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7767,
 				7768,
@@ -29021,7 +29021,7 @@
 			"descriptionId": 351295,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7771,
 				7772,
@@ -29048,7 +29048,7 @@
 			"descriptionId": 351297,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7775,
 				7776,
@@ -29075,7 +29075,7 @@
 			"descriptionId": 351291,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7779,
 				7780,
@@ -29102,7 +29102,7 @@
 			"descriptionId": 351293,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7783,
 				7784,
@@ -29129,7 +29129,7 @@
 			"descriptionId": 351307,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7787,
 				7788,
@@ -29156,7 +29156,7 @@
 			"descriptionId": 351309,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7791,
 				7792,
@@ -29183,7 +29183,7 @@
 			"descriptionId": 351311,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7795,
 				7796,
@@ -29210,7 +29210,7 @@
 			"descriptionId": 351299,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7799,
 				7800,
@@ -29237,7 +29237,7 @@
 			"descriptionId": 351301,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7803,
 				7804,
@@ -29264,7 +29264,7 @@
 			"descriptionId": 351303,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7807,
 				7808,
@@ -29291,7 +29291,7 @@
 			"descriptionId": 351305,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7811,
 				7812,
@@ -29318,7 +29318,7 @@
 			"descriptionId": 351313,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7815,
 				7816,
@@ -29345,7 +29345,7 @@
 			"descriptionId": 351315,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7819,
 				7820,
@@ -29372,7 +29372,7 @@
 			"descriptionId": 351317,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7823,
 				7824,
@@ -29399,7 +29399,7 @@
 			"descriptionId": 351325,
 			"dialogId": 0,
 			"optimalLevel": 200,
-			"duration": 1.0,
+			"duration": 0.5,
 			"objectiveIds": [
 				7827,
 				7828,

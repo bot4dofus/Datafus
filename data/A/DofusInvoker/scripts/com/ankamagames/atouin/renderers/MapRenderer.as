@@ -42,7 +42,6 @@ package com.ankamagames.atouin.renderers
    import com.ankamagames.jerakine.enum.OperatingSystem;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
-   import com.ankamagames.jerakine.managers.ErrorManager;
    import com.ankamagames.jerakine.managers.OptionManager;
    import com.ankamagames.jerakine.resources.adapters.impl.AdvancedSwfAdapter;
    import com.ankamagames.jerakine.resources.events.ResourceErrorEvent;
@@ -1340,7 +1339,7 @@ package com.ankamagames.atouin.renderers
             bmpdt = this._bitmapsGfx[fixture.fixtureId];
             if(!bmpdt)
             {
-               ErrorManager.addError("Fixture " + fixture.fixtureId + " file is missing ",null,false);
+               _log.error("Fixture " + fixture.fixtureId + " file is missing ");
             }
             else
             {

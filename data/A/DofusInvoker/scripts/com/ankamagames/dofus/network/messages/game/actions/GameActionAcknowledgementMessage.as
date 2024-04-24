@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions
    public class GameActionAcknowledgementMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1579;
+      public static const protocolId:uint = 6232;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.actions
       
       override public function getMessageId() : uint
       {
-         return 1579;
+         return 6232;
       }
       
       public function initGameActionAcknowledgementMessage(valid:Boolean = false, actionId:int = 0) : GameActionAcknowledgementMessage

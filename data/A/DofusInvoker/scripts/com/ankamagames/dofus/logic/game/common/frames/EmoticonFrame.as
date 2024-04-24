@@ -21,13 +21,11 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayEntitiesFrame;
    import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayMovementFrame;
    import com.ankamagames.dofus.logic.game.roleplay.messages.GameRolePlaySetAnimationMessage;
-   import com.ankamagames.dofus.misc.EntityLookAdapter;
    import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
    import com.ankamagames.dofus.misc.lists.InventoryHookList;
    import com.ankamagames.dofus.misc.lists.RoleplayHookList;
    import com.ankamagames.dofus.network.enums.ChatActivableChannelsEnum;
-   import com.ankamagames.dofus.network.enums.SubEntityBindingPointCategoryEnum;
    import com.ankamagames.dofus.network.messages.game.character.stats.LifePointsRegenBeginMessage;
    import com.ankamagames.dofus.network.messages.game.character.stats.LifePointsRegenEndMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.emote.EmoteAddMessage;
@@ -50,8 +48,6 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.jerakine.messages.Frame;
    import com.ankamagames.jerakine.messages.Message;
    import com.ankamagames.jerakine.types.enums.Priority;
-   import com.ankamagames.tiphon.types.TiphonUtility;
-   import com.ankamagames.tiphon.types.look.TiphonEntityLook;
    import damageCalculation.tools.StatIds;
    import flash.utils.clearInterval;
    import flash.utils.getQualifiedClassName;
@@ -62,8 +58,6 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       protected static const _log:Logger = Log.getLogger(getQualifiedClassName(EmoticonFrame));
        
-      
-      private const HP_REGEN_STEP:uint = 1;
       
       private var _emotes:Array;
       
@@ -125,8 +119,8 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       public function pushed() : Boolean
       {
-         this._emotes = new Array();
-         this._emotesList = new Array();
+         this._emotes = [];
+         this._emotesList = [];
          return true;
       }
       
@@ -156,7 +150,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          var epmsg:EmotePlayMessage = null;
          var entityInfo:GameContextActorInformations = null;
          var epmmsg:EmotePlayMassiveMessage = null;
-         var epemsg:EmotePlayErrorMessage = null;
          var errorText:String = null;
          var lprbmsg:LifePointsRegenBeginMessage = null;
          var lpremsg:LifePointsRegenEndMessage = null;
@@ -167,15 +160,12 @@ package com.ankamagames.dofus.logic.game.common.frames
          var ire:int = 0;
          var ire2:int = 0;
          var e:Emoticon = null;
-         var tiphonLook:TiphonEntityLook = null;
-         var riderLook:TiphonEntityLook = null;
          var anim:String = null;
          var persistancy:Boolean = false;
          var directions8:Boolean = false;
          var spellLevelId:uint = 0;
          var actor:* = undefined;
          var mEntityInfo:GameContextActorInformations = null;
-         var tiphonMassiveLook:TiphonEntityLook = null;
          var emo:Emoticon = null;
          var mAnim:String = null;
          var mPersistancy:Boolean = false;
@@ -185,7 +175,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          {
             case msg is EmoteListMessage:
                elmsg = msg as EmoteListMessage;
-               this._emotes = new Array();
+               this._emotes = [];
                this._emotesList.splice(0,this._emotesList.length);
                pos = 0;
                for each(id in elmsg.emoteIds)
@@ -200,14 +190,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                {
                   if(shortcut && shortcut.type == 4)
                   {
-                     if(this._emotes.indexOf(shortcut.id) != -1)
-                     {
-                        shortcut.active = true;
-                     }
-                     else
-                     {
-                        shortcut.active = false;
-                     }
+                     shortcut.active = this._emotes.indexOf(shortcut.id) != -1;
                   }
                }
                KernelEventsManager.getInstance().processCallback(InventoryHookList.ShortcutBarViewContent,0);
@@ -356,9 +339,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                      _log.error("ERREUR : Le client n\'a pas de données pour l\'emote [" + epmsg.emoteId + "].");
                      return true;
                   }
-                  tiphonLook = EntityLookAdapter.fromNetwork(entityInfo.look);
-                  riderLook = tiphonLook.getSubEntity(SubEntityBindingPointCategoryEnum.HOOK_POINT_CATEGORY_MOUNT_DRIVER,0);
-                  anim = e.getAnimName(!!riderLook ? riderLook : tiphonLook);
+                  anim = e.getAnimName();
                   persistancy = e.persistancy;
                   directions8 = e.eight_directions;
                   spellLevelId = e.spellLevelId;
@@ -383,9 +364,8 @@ package com.ankamagames.dofus.logic.game.common.frames
                   }
                   else
                   {
-                     tiphonMassiveLook = EntityLookAdapter.fromNetwork(mEntityInfo.look);
                      emo = Emoticon.getEmoticonById(epmmsg.emoteId);
-                     mAnim = emo.getAnimName(TiphonUtility.getLookWithoutMount(tiphonMassiveLook));
+                     mAnim = emo.getAnimName();
                      mPersistancy = Emoticon.getEmoticonById(epmmsg.emoteId).persistancy;
                      mDirections8 = Emoticon.getEmoticonById(epmmsg.emoteId).eight_directions;
                      this.roleplayEntitiesFrame.currentEmoticon = epmmsg.emoteId;
@@ -395,7 +375,6 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
                break;
             case msg is EmotePlayErrorMessage:
-               epemsg = msg as EmotePlayErrorMessage;
                errorText = I18n.getUiText("ui.common.cantUseEmote");
                KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,errorText,ChatFrame.RED_CHANNEL_ID,TimeManager.getInstance().getTimestamp());
                return true;
@@ -527,7 +506,7 @@ package com.ankamagames.dofus.logic.game.common.frames
             return 0;
          }
          var regenFactor:Number = (TimeManager.getInstance().getTimestamp() - this._hpRegenStartTime) / this._hpRegenRate;
-         var regenDelta:Number = regenFactor * this.HP_REGEN_STEP;
+         var regenDelta:Number = regenFactor;
          if(this._hpRegenStartValue + regenDelta > 0)
          {
             regenDelta = -this._hpRegenStartValue;

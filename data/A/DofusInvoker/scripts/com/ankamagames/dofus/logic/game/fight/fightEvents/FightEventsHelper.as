@@ -457,7 +457,7 @@ package com.ankamagames.dofus.logic.game.fight.fightEvents
                   {
                      if(event.targetId == evt.targetId && event.buff.id !== evt.buff.id)
                      {
-                        if(evt.buff.castingSpell.spellRank.maxStack && buffStackCount >= evt.buff.castingSpell.spellRank.maxStack)
+                        if(evt.buff.castingSpell.spellLevelData.maxStack && buffStackCount >= evt.buff.castingSpell.spellLevelData.maxStack)
                         {
                            break;
                         }

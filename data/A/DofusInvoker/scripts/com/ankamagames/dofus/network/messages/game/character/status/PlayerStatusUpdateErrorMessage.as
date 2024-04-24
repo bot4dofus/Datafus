@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.status
    public class PlayerStatusUpdateErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7411;
+      public static const protocolId:uint = 5538;
        
       
       public function PlayerStatusUpdateErrorMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.character.status
       
       override public function getMessageId() : uint
       {
-         return 7411;
+         return 5538;
       }
       
       public function initPlayerStatusUpdateErrorMessage() : PlayerStatusUpdateErrorMessage

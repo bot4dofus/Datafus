@@ -807,5 +807,14 @@ package com.ankamagames.dofus.kernel.sound.manager
          }
          return soundEvents;
       }
+      
+      public function removeRegSentry() : void
+      {
+         if(!this.checkIfAvailable())
+         {
+            return;
+         }
+         RegConnectionManager.getInstance().send(ProtocolEnum.QUIT,true);
+      }
    }
 }

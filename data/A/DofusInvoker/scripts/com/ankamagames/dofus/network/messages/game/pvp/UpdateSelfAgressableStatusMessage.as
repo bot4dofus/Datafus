@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.pvp
    public class UpdateSelfAgressableStatusMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9436;
+      public static const protocolId:uint = 9866;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.pvp
       
       override public function getMessageId() : uint
       {
-         return 9436;
+         return 9866;
       }
       
       public function initUpdateSelfAgressableStatusMessage(status:uint = 0, probationTime:Number = 0, roleAvAId:int = 0, pictoScore:int = 0) : UpdateSelfAgressableStatusMessage

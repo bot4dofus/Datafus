@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildInformationsMembersMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5497;
+      public static const protocolId:uint = 4402;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 5497;
+         return 4402;
       }
       
       public function initGuildInformationsMembersMessage(members:Vector.<GuildMemberInfo> = null) : GuildInformationsMembersMessage

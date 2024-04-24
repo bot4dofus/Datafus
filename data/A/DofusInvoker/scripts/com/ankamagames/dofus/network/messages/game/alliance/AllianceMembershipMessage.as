@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceMembershipMessage extends AllianceJoinedMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9425;
+      public static const protocolId:uint = 1877;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 9425;
+         return 1877;
       }
       
       public function initAllianceMembershipMessage(allianceInfo:AllianceInformation = null, rankId:uint = 0) : AllianceMembershipMessage

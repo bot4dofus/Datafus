@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.feed
    public class ObjectFeedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1393;
+      public static const protocolId:uint = 6700;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.feed
       
       override public function getMessageId() : uint
       {
-         return 1393;
+         return 6700;
       }
       
       public function initObjectFeedMessage(objectUID:uint = 0, meal:Vector.<ObjectItemQuantity> = null) : ObjectFeedMessage

@@ -6,7 +6,6 @@ package com.ankamagames.dofus.datacenter.communication
    import com.ankamagames.jerakine.interfaces.IDataCenter;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
-   import com.ankamagames.tiphon.types.look.TiphonEntityLook;
    import flash.utils.getQualifiedClassName;
    
    public class Emoticon implements IDataCenter
@@ -27,15 +26,13 @@ package com.ankamagames.dofus.datacenter.communication
       
       public var order:uint;
       
-      public var defaultAnim:String;
+      public var animName:String;
       
       public var persistancy:Boolean;
       
       public var eight_directions:Boolean;
       
       public var aura:Boolean;
-      
-      public var anims:Vector.<String>;
       
       public var cooldown:uint = 1000;
       
@@ -79,54 +76,23 @@ package com.ankamagames.dofus.datacenter.communication
          {
             this._shortcut = I18n.getText(this.shortcutId);
          }
-         if(!this._shortcut || this._shortcut == "")
-         {
-            return this.defaultAnim;
-         }
          return this._shortcut;
       }
       
-      public function getAnimName(look:TiphonEntityLook) : String
+      public function getAnimName() : String
       {
-         var lookBoneId:uint = 0;
-         var i:int = 0;
-         var anim:String = null;
-         var animCase:Array = null;
-         var caseBoneId:uint = 0;
-         var caseSkins:Array = null;
-         var skin:String = null;
-         var skinId:uint = 0;
-         var lookSkin:uint = 0;
-         if(this.spellLevelId != 0 && !this.defaultAnim && this.anims.length == 0)
+         var allPossibilities:Array = null;
+         if(this.spellLevelId != 0)
          {
             return null;
          }
-         if(look)
+         var finalAnimName:String = this.animName;
+         if(finalAnimName.indexOf("random") == 0)
          {
-            lookBoneId = look.getBone();
-            for(i = this.anims.length - 1; i >= 0; i--)
-            {
-               anim = this.anims[i];
-               animCase = anim.split(";");
-               caseBoneId = parseInt(animCase[0]);
-               if(caseBoneId == lookBoneId)
-               {
-                  caseSkins = animCase[1].split(",");
-                  for each(skin in caseSkins)
-                  {
-                     skinId = parseInt(skin);
-                     for each(lookSkin in look.skins)
-                     {
-                        if(skinId == lookSkin)
-                        {
-                           return "AnimEmote" + animCase[2];
-                        }
-                     }
-                  }
-               }
-            }
+            allPossibilities = finalAnimName.substring(finalAnimName.indexOf("("),finalAnimName.indexOf(")")).split(",");
+            finalAnimName = allPossibilities[Math.floor(allPossibilities.length * Math.random())];
          }
-         return "AnimEmote" + this.defaultAnim.charAt(0).toUpperCase() + this.defaultAnim.substr(1).toLowerCase() + "_0";
+         return finalAnimName;
       }
    }
 }

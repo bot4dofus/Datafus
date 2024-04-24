@@ -594,11 +594,7 @@ package com.ankamagames.tiphon.types.look
       
       public function unlock(silentUnlock:Boolean = false) : void
       {
-         var elo0:* = null;
-         var elo1:* = null;
-         var elo2:* = null;
-         var elo3:* = null;
-         var elo4:* = null;
+         var elo:* = null;
          if(!this._locked)
          {
             return;
@@ -606,45 +602,33 @@ package com.ankamagames.tiphon.types.look
          this._locked = false;
          if(!silentUnlock)
          {
-            if(this._boneChangedWhileLocked)
+            for(elo in this._observers)
             {
-               for(elo0 in this._observers)
+               if(this._boneChangedWhileLocked)
                {
-                  elo0.boneChanged(this);
+                  elo.boneChanged(this);
+                  this._boneChangedWhileLocked = false;
                }
-               this._boneChangedWhileLocked = false;
-            }
-            if(this._skinsChangedWhileLocked)
-            {
-               for(elo1 in this._observers)
+               if(this._skinsChangedWhileLocked)
                {
-                  elo1.skinsChanged(this);
+                  elo.skinsChanged(this);
+                  this._skinsChangedWhileLocked = false;
                }
-               this._skinsChangedWhileLocked = false;
-            }
-            if(this._colorsChangedWhileLocked)
-            {
-               for(elo2 in this._observers)
+               if(this._colorsChangedWhileLocked)
                {
-                  elo2.colorsChanged(this);
+                  elo.colorsChanged(this);
+                  this._colorsChangedWhileLocked = false;
                }
-               this._colorsChangedWhileLocked = false;
-            }
-            if(this._scalesChangedWhileLocked)
-            {
-               for(elo3 in this._observers)
+               if(this._scalesChangedWhileLocked)
                {
-                  elo3.scalesChanged(this);
+                  elo.scalesChanged(this);
+                  this._scalesChangedWhileLocked = false;
                }
-               this._scalesChangedWhileLocked = false;
-            }
-            if(this._subEntitiesChangedWhileLocked)
-            {
-               for(elo4 in this._observers)
+               if(this._subEntitiesChangedWhileLocked)
                {
-                  elo4.subEntitiesChanged(this);
+                  elo.subEntitiesChanged(this);
+                  this._subEntitiesChangedWhileLocked = false;
                }
-               this._subEntitiesChangedWhileLocked = false;
             }
          }
       }

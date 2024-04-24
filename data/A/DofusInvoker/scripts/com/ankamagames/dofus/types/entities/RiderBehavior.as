@@ -4,7 +4,7 @@ package com.ankamagames.dofus.types.entities
    import com.ankamagames.dofus.datacenter.effects.instances.EffectInstanceDice;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.fight.frames.FightSequenceFrame;
-   import com.ankamagames.dofus.logic.game.fight.types.CastingSpell;
+   import com.ankamagames.dofus.logic.game.fight.types.SpellCastSequenceContext;
    import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayEntitiesFrame;
    import com.ankamagames.dofus.types.enums.AnimationEnum;
    import com.ankamagames.tiphon.display.TiphonSprite;
@@ -39,7 +39,7 @@ package com.ankamagames.dofus.types.entities
       {
          var modifier:IAnimationModifier = null;
          var isAttack:Boolean = false;
-         var cs:CastingSpell = null;
+         var cs:SpellCastSequenceContext = null;
          var effects:Vector.<EffectInstanceDice> = null;
          var effect:EffectInstanceDice = null;
          this._subentity = target;
@@ -85,9 +85,9 @@ package com.ankamagames.dofus.types.entities
             case this._parentData.animation.indexOf("AnimAttaque") != -1:
                this._parentData.animation = AnimationEnum.ANIM_STATIQUE;
                cs = FightSequenceFrame.lastCastingSpell;
-               if(cs && cs.spellRank)
+               if(cs && cs.spellLevelData)
                {
-                  effects = cs.spellRank.effects;
+                  effects = cs.spellLevelData.effects;
                   if(effects)
                   {
                      for each(effect in effects)
@@ -145,7 +145,7 @@ package com.ankamagames.dofus.types.entities
          }
          else if(currentEmoticon && currentEmoticon.persistancy && this._parentData.animation == AnimationEnum.ANIM_STATIQUE)
          {
-            emoticonAnim = currentEmoticon.getAnimName(this._subentity.look);
+            emoticonAnim = currentEmoticon.getAnimName();
             if(this._subentity.getAnimation() == emoticonAnim.replace("_","_Statique_"))
             {
                this._animation = this._subentity.getAnimation();

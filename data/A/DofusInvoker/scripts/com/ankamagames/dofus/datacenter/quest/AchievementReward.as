@@ -41,6 +41,8 @@ package com.ankamagames.dofus.datacenter.quest
       
       public var ornamentsReward:Vector.<uint>;
       
+      public var guildPoints:uint;
+      
       private var _achievement:Achievement;
       
       private var _conditions:GroupItemCriterion;
@@ -90,6 +92,11 @@ package com.ankamagames.dofus.datacenter.quest
       public function getExperienceReward(pPlayerLevel:int, pXpBonus:int) : Number
       {
          return RoleplayManager.getInstance().getExperienceReward(pPlayerLevel,pXpBonus,this.achievement.level,this.experienceRatio);
+      }
+      
+      public function getGuildPointsReward() : Number
+      {
+         return this.guildPoints;
       }
       
       public function isConditionRespectedForSpecificLevel(level:uint) : Boolean

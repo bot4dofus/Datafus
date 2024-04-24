@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class DungeonPartyFinderRegisterErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8360;
+      public static const protocolId:uint = 8804;
        
       
       public function DungeonPartyFinderRegisterErrorMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 8360;
+         return 8804;
       }
       
       public function initDungeonPartyFinderRegisterErrorMessage() : DungeonPartyFinderRegisterErrorMessage

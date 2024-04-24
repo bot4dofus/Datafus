@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.zaap
    public class TeleportRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 689;
+      public static const protocolId:uint = 7069;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.zaap
       
       override public function getMessageId() : uint
       {
-         return 689;
+         return 7069;
       }
       
       public function initTeleportRequestMessage(sourceType:uint = 0, destinationType:uint = 0, mapId:Number = 0) : TeleportRequestMessage

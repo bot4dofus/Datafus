@@ -15,7 +15,6 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.datacenter.appearance.TitleCategory;
    import com.ankamagames.dofus.datacenter.arena.ArenaLeague;
    import com.ankamagames.dofus.datacenter.arena.ArenaLeagueReward;
-   import com.ankamagames.dofus.datacenter.arena.ArenaLeagueSeason;
    import com.ankamagames.dofus.datacenter.breach.BreachDungeonModificator;
    import com.ankamagames.dofus.datacenter.breach.BreachInfinityLevel;
    import com.ankamagames.dofus.datacenter.breach.BreachWorldMapCoordinate;
@@ -83,10 +82,12 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.datacenter.quest.QuestObjective;
    import com.ankamagames.dofus.datacenter.quest.QuestStep;
    import com.ankamagames.dofus.datacenter.quest.treasureHunt.LegendaryTreasureHunt;
+   import com.ankamagames.dofus.datacenter.seasons.ArenaLeagueSeason;
+   import com.ankamagames.dofus.datacenter.seasons.ExpeditionSeason;
+   import com.ankamagames.dofus.datacenter.seasons.ServerSeason;
    import com.ankamagames.dofus.datacenter.servers.Server;
    import com.ankamagames.dofus.datacenter.servers.ServerGameType;
    import com.ankamagames.dofus.datacenter.servers.ServerLang;
-   import com.ankamagames.dofus.datacenter.servers.ServerSeason;
    import com.ankamagames.dofus.datacenter.social.EmblemBackground;
    import com.ankamagames.dofus.datacenter.social.EmblemSymbol;
    import com.ankamagames.dofus.datacenter.social.EmblemSymbolCategory;
@@ -146,7 +147,6 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.types.positions.WorldPoint;
-   import com.ankamagames.tiphon.types.look.TiphonEntityLook;
    import flash.net.registerClassAlias;
    import flash.utils.ByteArray;
    import flash.utils.Dictionary;
@@ -1303,9 +1303,14 @@ package com.ankamagames.dofus.uiApi
          return null;
       }
       
-      public function getCurrentSeason() : ServerSeason
+      public function getCurrentArenaSeason() : ArenaLeagueSeason
       {
-         return ServerSeason.getCurrentSeason();
+         return ArenaLeagueSeason.getCurrentSeason();
+      }
+      
+      public function getCurrentExpeditionSeason() : ExpeditionSeason
+      {
+         return ExpeditionSeason.getCurrentSeason();
       }
       
       public function getCurrentTemporisSeason() : ServerSeason
@@ -1317,12 +1322,12 @@ package com.ankamagames.dofus.uiApi
          return ServerSeason.getCurrentSeason();
       }
       
-      public function getCurrentTemporisSeasonNumber() : int
+      public function getCurrentTemporisSeasonId() : int
       {
          var season:ServerSeason = this.getCurrentTemporisSeason();
          if(season)
          {
-            return season.seasonNumber;
+            return season.uid;
          }
          return -1;
       }
@@ -1362,9 +1367,9 @@ package com.ankamagames.dofus.uiApi
          return maxCoordinate;
       }
       
-      public function getEmoteAnimName(emoteId:int, look:TiphonEntityLook) : String
+      public function getEmoteAnimName(emoteId:int) : String
       {
-         return Emoticon.getEmoticonById(emoteId).getAnimName(look);
+         return Emoticon.getEmoticonById(emoteId).getAnimName();
       }
       
       public function createDofusShopArticle(data:Object) : DofusShopArticle

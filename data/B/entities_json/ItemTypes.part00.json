@@ -2627,19 +2627,6 @@
 			"evolutiveTypeId": 0
 		},
 		{
-			"id": 265,
-			"nameId": 961023,
-			"superTypeId": 13,
-			"categoryId": 0,
-			"isInEncyclopedia": true,
-			"plural": false,
-			"gender": 2,
-			"rawZone": "null",
-			"mimickable": false,
-			"craftXpRatio": -1,
-			"evolutiveTypeId": 0
-		},
-		{
 			"id": 266,
 			"nameId": 962266,
 			"superTypeId": 9,
@@ -2647,19 +2634,6 @@
 			"isInEncyclopedia": true,
 			"plural": true,
 			"gender": 1,
-			"rawZone": "null",
-			"mimickable": false,
-			"craftXpRatio": -1,
-			"evolutiveTypeId": 0
-		},
-		{
-			"id": 267,
-			"nameId": 966415,
-			"superTypeId": 51,
-			"categoryId": 0,
-			"isInEncyclopedia": false,
-			"plural": false,
-			"gender": 0,
 			"rawZone": "null",
 			"mimickable": false,
 			"craftXpRatio": -1,
@@ -2822,19 +2796,6 @@
 			"evolutiveTypeId": 0
 		},
 		{
-			"id": 286,
-			"nameId": 997919,
-			"superTypeId": 23,
-			"categoryId": 0,
-			"isInEncyclopedia": true,
-			"plural": false,
-			"gender": 0,
-			"rawZone": "null",
-			"mimickable": false,
-			"craftXpRatio": -1,
-			"evolutiveTypeId": 0
-		},
-		{
 			"id": 287,
 			"nameId": 1000103,
 			"superTypeId": 14,
@@ -2861,10 +2822,23 @@
 			"evolutiveTypeId": 0
 		},
 		{
-			"id": 291,
-			"nameId": 1051504,
-			"superTypeId": 70,
+			"id": 297,
+			"nameId": 1056282,
+			"superTypeId": 6,
 			"categoryId": 1,
+			"isInEncyclopedia": true,
+			"plural": false,
+			"gender": 0,
+			"rawZone": "null",
+			"mimickable": false,
+			"craftXpRatio": -1,
+			"evolutiveTypeId": 0
+		},
+		{
+			"id": 299,
+			"nameId": 1076044,
+			"superTypeId": 25,
+			"categoryId": 5,
 			"isInEncyclopedia": true,
 			"plural": false,
 			"gender": 1,
@@ -2874,13 +2848,13 @@
 			"evolutiveTypeId": 0
 		},
 		{
-			"id": 293,
-			"nameId": 1037643,
-			"superTypeId": 6,
-			"categoryId": 1,
+			"id": 300,
+			"nameId": 1076049,
+			"superTypeId": 25,
+			"categoryId": 5,
 			"isInEncyclopedia": true,
 			"plural": false,
-			"gender": 0,
+			"gender": 1,
 			"rawZone": "null",
 			"mimickable": false,
 			"craftXpRatio": -1,

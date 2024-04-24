@@ -18,10 +18,6 @@ package com.ankamagames.dofus.datacenter.spells
       public static var idAccessors:IdAccessors = new IdAccessors(getSpellById,getSpells);
        
       
-      private var _indexedParam:Array;
-      
-      private var _indexedCriticalParam:Array;
-      
       public var id:int;
       
       public var nameId:uint;
@@ -32,13 +28,9 @@ package com.ankamagames.dofus.datacenter.spells
       
       public var order:uint;
       
-      public var scriptParams:String;
+      public var boundScriptUsageData:Vector.<BoundScriptUsageData>;
       
-      public var scriptParamsCritical:String;
-      
-      public var scriptId:int;
-      
-      public var scriptIdCritical:int;
+      public var criticalHitBoundScriptUsageData:Vector.<BoundScriptUsageData>;
       
       public var iconId:uint;
       
@@ -163,68 +155,41 @@ package com.ankamagames.dofus.datacenter.spells
          return this._spellLevels;
       }
       
-      public function getScriptId(critical:Boolean = false) : int
-      {
-         if(critical && this.scriptIdCritical)
-         {
-            return this.scriptIdCritical;
-         }
-         return this.scriptId;
-      }
-      
-      public function getParamByName(name:String, critical:Boolean = false) : *
-      {
-         var tmp:Array = null;
-         var tmp2:Array = null;
-         var param:String = null;
-         if(critical && this.scriptParamsCritical && this.scriptParamsCritical != "null")
-         {
-            if(!this._indexedCriticalParam || !this.useParamCache)
-            {
-               this._indexedCriticalParam = new Array();
-               if(this.scriptParamsCritical)
-               {
-                  tmp = this.scriptParamsCritical.split(",");
-                  for each(param in tmp)
-                  {
-                     tmp2 = param.split(":");
-                     this._indexedCriticalParam[tmp2[0]] = this.getValue(tmp2[1]);
-                  }
-               }
-            }
-            return this._indexedCriticalParam[name];
-         }
-         if(!this._indexedParam || !this.useParamCache)
-         {
-            this._indexedParam = new Array();
-            if(this.scriptParams)
-            {
-               tmp = this.scriptParams.split(",");
-               for each(param in tmp)
-               {
-                  tmp2 = param.split(":");
-                  this._indexedParam[tmp2[0]] = this.getValue(tmp2[1]);
-               }
-            }
-         }
-         return this._indexedParam[name];
-      }
-      
-      private function getValue(str:String) : *
-      {
-         var num:Number = NaN;
-         var regNum:RegExp = /^[+-]?[0-9.]*$/;
-         if(str.search(regNum) != -1)
-         {
-            num = parseFloat(str);
-            return !!isNaN(num) ? 0 : num;
-         }
-         return str;
-      }
-      
       public function toString() : String
       {
          return this.name + " (" + this.id + ")";
+      }
+      
+      public function getScriptConditions(index:uint, isCritical:Boolean) : BoundScriptUsageData
+      {
+         var resolvedConditions:Vector.<BoundScriptUsageData> = !!isCritical ? this.boundScriptUsageData : this.criticalHitBoundScriptUsageData;
+         if(index > resolvedConditions.length - 1)
+         {
+            return null;
+         }
+         return resolvedConditions[index];
+      }
+      
+      public function getScriptParam(scriptIndex:int, name:String, isCritical:Boolean = false) : *
+      {
+         var conditions:BoundScriptUsageData = this.getScriptConditions(scriptIndex,isCritical);
+         var script:SpellScript = SpellScript.getSpellScriptById(conditions.scriptId);
+         if(script === null)
+         {
+            return null;
+         }
+         return script.getStringParam(name);
+      }
+      
+      public function getScriptTypeId(scriptIndex:int, isCritical:Boolean = false) : int
+      {
+         var conditions:BoundScriptUsageData = this.getScriptConditions(scriptIndex,isCritical);
+         var script:SpellScript = conditions !== null ? SpellScript.getSpellScriptById(conditions.scriptId) : null;
+         if(script === null)
+         {
+            return !!isCritical ? 1 : 0;
+         }
+         return script.typeId;
       }
    }
 }

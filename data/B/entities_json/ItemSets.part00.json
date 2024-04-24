@@ -149950,7 +149950,7 @@
 				20303,
 				20304
 			],
-			"nameId": 1008969,
+			"nameId": 1076320,
 			"bonusIsSecret": false,
 			"effects": []
 		},
@@ -151232,7 +151232,7 @@
 				26324,
 				26325
 			],
-			"nameId": 1015066,
+			"nameId": 1076319,
 			"bonusIsSecret": false,
 			"effects": []
 		},
@@ -152520,6 +152520,16 @@
 			"effects": []
 		},
 		{
+			"id": 793,
+			"items": [
+				17454,
+				17455
+			],
+			"nameId": 1029536,
+			"bonusIsSecret": false,
+			"effects": []
+		},
+		{
 			"id": 794,
 			"items": [
 				14305,
@@ -152587,7 +152597,7 @@
 				27848,
 				29498
 			],
-			"nameId": 1052966,
+			"nameId": 1053807,
 			"bonusIsSecret": false,
 			"effects": []
 		},
@@ -152938,7 +152948,7 @@
 				29494,
 				29497
 			],
-			"nameId": 1053209,
+			"nameId": 1054103,
 			"bonusIsSecret": false,
 			"effects": []
 		},
@@ -152950,7 +152960,7 @@
 				29493,
 				29496
 			],
-			"nameId": 1053210,
+			"nameId": 1054104,
 			"bonusIsSecret": false,
 			"effects": []
 		},
@@ -152962,7 +152972,7 @@
 				29492,
 				29495
 			],
-			"nameId": 1053211,
+			"nameId": 1054105,
 			"bonusIsSecret": false,
 			"effects": []
 		},
@@ -152975,7 +152985,7 @@
 				27839,
 				29513
 			],
-			"nameId": 1053651,
+			"nameId": 1056191,
 			"bonusIsSecret": false,
 			"effects": []
 		},
@@ -152989,7 +152999,7 @@
 				29564,
 				29565
 			],
-			"nameId": 1053796,
+			"nameId": 1057954,
 			"bonusIsSecret": false,
 			"effects": []
 		},
@@ -153000,7 +153010,7 @@
 				29571,
 				29573
 			],
-			"nameId": 1053851,
+			"nameId": 1059559,
 			"bonusIsSecret": false,
 			"effects": []
 		},
@@ -153014,7 +153024,7 @@
 				29642,
 				29643
 			],
-			"nameId": 1053885,
+			"nameId": 1063594,
 			"bonusIsSecret": false,
 			"effects": []
 		},
@@ -153024,7 +153034,93 @@
 				29646,
 				29647
 			],
-			"nameId": 1053913,
+			"nameId": 1064519,
+			"bonusIsSecret": false,
+			"effects": []
+		},
+		{
+			"id": 838,
+			"items": [
+				29743,
+				29744,
+				29745,
+				29746
+			],
+			"nameId": 1067468,
+			"bonusIsSecret": false,
+			"effects": []
+		},
+		{
+			"id": 839,
+			"items": [
+				29747,
+				29748,
+				29749,
+				29750
+			],
+			"nameId": 1067496,
+			"bonusIsSecret": false,
+			"effects": []
+		},
+		{
+			"id": 840,
+			"items": [
+				29731,
+				29732,
+				29733,
+				29734,
+				30021
+			],
+			"nameId": 1068259,
+			"bonusIsSecret": false,
+			"effects": []
+		},
+		{
+			"id": 841,
+			"items": [
+				29755,
+				29756,
+				29757,
+				29758,
+				29759
+			],
+			"nameId": 1076321,
+			"bonusIsSecret": false,
+			"effects": []
+		},
+		{
+			"id": 842,
+			"items": [
+				30047,
+				30048
+			],
+			"nameId": 1075956,
+			"bonusIsSecret": false,
+			"effects": []
+		},
+		{
+			"id": 843,
+			"items": [
+				30061,
+				30062,
+				30063,
+				30064,
+				30066
+			],
+			"nameId": 1076309,
+			"bonusIsSecret": false,
+			"effects": []
+		},
+		{
+			"id": 846,
+			"items": [
+				30022,
+				30023,
+				30024,
+				30025,
+				30029
+			],
+			"nameId": 1076322,
 			"bonusIsSecret": false,
 			"effects": []
 		}

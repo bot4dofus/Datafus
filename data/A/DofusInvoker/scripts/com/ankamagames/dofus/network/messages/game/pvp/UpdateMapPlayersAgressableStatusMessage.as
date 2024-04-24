@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.pvp
    public class UpdateMapPlayersAgressableStatusMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1711;
+      public static const protocolId:uint = 2209;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.pvp
       
       override public function getMessageId() : uint
       {
-         return 1711;
+         return 2209;
       }
       
       public function initUpdateMapPlayersAgressableStatusMessage(playerAvAMessages:Vector.<AgressableStatusMessage> = null) : UpdateMapPlayersAgressableStatusMessage

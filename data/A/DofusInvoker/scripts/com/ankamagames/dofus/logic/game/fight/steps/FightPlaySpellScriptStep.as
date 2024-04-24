@@ -2,69 +2,46 @@ package com.ankamagames.dofus.logic.game.fight.steps
 {
    import com.ankamagames.dofus.datacenter.spells.Spell;
    import com.ankamagames.dofus.datacenter.spells.SpellLevel;
-   import com.ankamagames.dofus.logic.game.common.misc.ISpellCastProvider;
+   import com.ankamagames.dofus.logic.game.common.misc.ISpellCastSequence;
+   import com.ankamagames.dofus.scripts.SpellScriptContext;
    import com.ankamagames.dofus.scripts.SpellScriptManager;
    import com.ankamagames.jerakine.sequencer.AbstractSequencable;
    import com.ankamagames.jerakine.types.Callback;
-   import flash.utils.getTimer;
    
    public class FightPlaySpellScriptStep extends AbstractSequencable implements IFightStep
    {
        
       
-      private var _fighterId:Number;
+      private var _casterIds:Vector.<Number>;
       
-      private var _cellId:int;
-      
-      private var _spellId:int;
-      
-      private var _spellRank:uint;
-      
-      private var _portalIds:Vector.<int>;
-      
-      private var _fxScriptId:int;
-      
-      private var _scriptStarted:uint;
-      
-      private var _spellCastProvider:ISpellCastProvider;
-      
-      public function FightPlaySpellScriptStep(fxScriptId:int, fighterId:Number, cellId:int, spellId:int, spellRank:uint, spellCastProvider:ISpellCastProvider)
+      public function FightPlaySpellScriptStep(contexts:Vector.<SpellScriptContext>, spellCastSequence:ISpellCastSequence, spellRank:int)
       {
+         var context:SpellScriptContext = null;
          super();
-         this._fxScriptId = fxScriptId;
-         this._spellId = spellId;
-         this._spellRank = spellRank;
-         this._spellCastProvider = spellCastProvider;
-         this._fighterId = fighterId;
-         if(this._fxScriptId == 0)
+         this._casterIds = new Vector.<Number>();
+         if(contexts.length === 0)
          {
             return;
          }
-         var s:Spell = Spell.getSpellById(this._spellId);
-         if(!s)
+         for each(context in contexts)
          {
-            return;
+            this.handleFightContext(context,spellRank,spellCastSequence);
          }
-         var sl:SpellLevel = s.getSpellLevel(this._spellRank);
-         if(!sl || !sl.playAnimation)
-         {
-            return;
-         }
-         if(this._spellCastProvider.castingSpell.spell)
-         {
-            _log.info("Executing SpellScript" + this._fxScriptId + " for spell \'" + this._spellCastProvider.castingSpell.spell.name + "\' (" + this._spellCastProvider.castingSpell.spell.id + ")");
-         }
-         else
-         {
-            _log.info("Executing SpellScript" + this._fxScriptId + " for unknown spell");
-         }
-         this._scriptStarted = getTimer();
-         SpellScriptManager.getInstance().runSpellScript(this._fxScriptId,this._spellCastProvider,new Callback(this.scriptEnd,true),new Callback(this.scriptEnd,false));
       }
       
-      public function get stepType() : String
+      private function handleFightContext(context:SpellScriptContext, spellRank:int, spellCastSequence:ISpellCastSequence) : void
       {
-         return "spellCast";
+         if(this._casterIds.indexOf(context.casterId) === -1)
+         {
+            this._casterIds.push(context.casterId);
+         }
+         var spellData:Spell = Spell.getSpellById(context.spellId);
+         var spellLevelData:SpellLevel = spellData !== null ? spellData.getSpellLevel(spellRank) : null;
+         if(spellLevelData === null || !spellLevelData.playAnimation)
+         {
+            return;
+         }
+         SpellScriptManager.getInstance().run(context,spellCastSequence,new Callback(this.scriptEnd,true),new Callback(this.scriptEnd,false));
       }
       
       override public function start() : void
@@ -74,20 +51,21 @@ package com.ankamagames.dofus.logic.game.fight.steps
       
       public function get targets() : Vector.<Number>
       {
-         return new <Number>[this._fighterId];
+         return this._casterIds;
+      }
+      
+      public function get stepType() : String
+      {
+         return "spellCast";
       }
       
       private function scriptEnd(scriptSuccess:Boolean = false) : void
       {
-         var scriptTook:uint = getTimer() - this._scriptStarted;
-         if(!scriptSuccess)
+         if(scriptSuccess)
          {
-            _log.warn("Script failed during a fight sequence, but still took " + scriptTook + "ms.");
+            return;
          }
-         else
-         {
-            _log.info("Script successfuly executed in " + scriptTook + "ms.");
-         }
+         _log.warn("An error occurred with a spell script!");
       }
    }
 }

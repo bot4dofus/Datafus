@@ -32,6 +32,8 @@ package com.ankamagames.dofus.network.enums
       public static const PSEUDO_CHANNEL_INFO:uint = 10;
       
       public static const PSEUDO_CHANNEL_FIGHT_LOG:uint = 11;
+      
+      public static const PSEUDO_CHANNEL_EVENT:uint = 15;
        
       
       public function ChatActivableChannelsEnum()

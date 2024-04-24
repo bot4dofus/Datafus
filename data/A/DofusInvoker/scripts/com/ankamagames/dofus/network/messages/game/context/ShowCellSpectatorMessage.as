@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class ShowCellSpectatorMessage extends ShowCellMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3715;
+      public static const protocolId:uint = 2967;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 3715;
+         return 2967;
       }
       
       public function initShowCellSpectatorMessage(sourceId:Number = 0, cellId:uint = 0, playerName:String = "") : ShowCellSpectatorMessage

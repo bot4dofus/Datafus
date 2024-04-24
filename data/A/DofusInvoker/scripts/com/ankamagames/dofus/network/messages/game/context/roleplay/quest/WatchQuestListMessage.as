@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
    public class WatchQuestListMessage extends QuestListMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8747;
+      public static const protocolId:uint = 1292;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
       
       override public function getMessageId() : uint
       {
-         return 8747;
+         return 1292;
       }
       
       public function initWatchQuestListMessage(finishedQuestsIds:Vector.<uint> = null, finishedQuestsCounts:Vector.<uint> = null, activeQuests:Vector.<QuestActiveInformations> = null, reinitDoneQuestsIds:Vector.<uint> = null, playerId:Number = 0) : WatchQuestListMessage

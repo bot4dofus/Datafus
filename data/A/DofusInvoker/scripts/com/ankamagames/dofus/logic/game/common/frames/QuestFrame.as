@@ -46,6 +46,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.logic.game.common.actions.quest.AchievementDetailedListRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.AchievementDetailsRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.AchievementRewardRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.quest.AchievementsPioneerRanksRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.GuidedModeQuitRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.GuidedModeReturnRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.QuestInfosRequestAction;
@@ -86,6 +87,8 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.achievement.AchievementRewardErrorMessage;
    import com.ankamagames.dofus.network.messages.game.achievement.AchievementRewardRequestMessage;
    import com.ankamagames.dofus.network.messages.game.achievement.AchievementRewardSuccessMessage;
+   import com.ankamagames.dofus.network.messages.game.achievement.AchievementsPioneerRanksMessage;
+   import com.ankamagames.dofus.network.messages.game.achievement.AchievementsPioneerRanksRequestMessage;
    import com.ankamagames.dofus.network.messages.game.context.notification.NotificationResetMessage;
    import com.ankamagames.dofus.network.messages.game.context.notification.NotificationUpdateFlagMessage;
    import com.ankamagames.dofus.network.messages.game.context.roleplay.quest.FollowQuestObjectiveRequestMessage;
@@ -124,6 +127,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.dofus.network.messages.game.inventory.items.ObjectAddedMessage;
    import com.ankamagames.dofus.network.types.game.achievement.AchievementAchieved;
    import com.ankamagames.dofus.network.types.game.achievement.AchievementAchievedRewardable;
+   import com.ankamagames.dofus.network.types.game.achievement.AchievementPioneerRank;
    import com.ankamagames.dofus.network.types.game.context.roleplay.quest.QuestActiveDetailedInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.quest.QuestActiveInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.quest.QuestObjectiveInformations;
@@ -200,9 +204,13 @@ package com.ankamagames.dofus.logic.game.common.frames
       
       private var _finishedCharacterAchievementIds:Array;
       
+      private var _finishedCharacterAchievementByIds:Dictionary;
+      
       private var _rewardableAchievements:Vector.<AchievementAchievedRewardable>;
       
       private var _rewardableAchievementsVisible:Boolean;
+      
+      private var _pioneerRanks:Dictionary;
       
       private var _treasureHunts:Dictionary;
       
@@ -222,6 +230,8 @@ package com.ankamagames.dofus.logic.game.common.frames
          this._questsInformations = new Dictionary();
          this._activeObjectives = new Vector.<uint>();
          this._completedObjectives = new Vector.<uint>();
+         this._finishedCharacterAchievementByIds = new Dictionary();
+         this._pioneerRanks = new Dictionary();
          this._treasureHunts = new Dictionary();
          this._flagColors = new Array();
          super();
@@ -416,6 +426,16 @@ package com.ankamagames.dofus.logic.game.common.frames
          return this._finishedCharacterAchievementIds;
       }
       
+      public function get finishedCharacterAchievementByIds() : Dictionary
+      {
+         return this._finishedCharacterAchievementByIds;
+      }
+      
+      public function get achievementPioneerRanks() : Dictionary
+      {
+         return this._pioneerRanks;
+      }
+      
       public function getActiveQuests() : Vector.<QuestActiveInformations>
       {
          return this._activeQuests;
@@ -545,6 +565,8 @@ package com.ankamagames.dofus.logic.game.common.frames
          var achievementAchieved:AchievementAchieved = null;
          var rewardedAchievement:Achievement = null;
          var aremsg:AchievementRewardErrorMessage = null;
+         var aprmsg:AchievementsPioneerRanksMessage = null;
+         var aprrmsg:AchievementsPioneerRanksRequestMessage = null;
          var thslumsg:TreasureHuntShowLegendaryUIMessage = null;
          var thlra:TreasureHuntLegendaryRequestAction = null;
          var thlrmsg:TreasureHuntLegendaryRequestMessage = null;
@@ -610,6 +632,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var achievementFinished:Achievement = null;
          var info:String = null;
          var achievementRewardable:AchievementAchievedRewardable = null;
+         var pioneerRank:AchievementPioneerRank = null;
          var l:int = 0;
          var st:TreasureHuntStepWrapper = null;
          var fl:TreasureHuntFlag = null;
@@ -1101,12 +1124,12 @@ package com.ankamagames.dofus.logic.game.common.frames
                   NotificationManager.getInstance().addButtonToNotification(nid,I18n.getUiText("ui.expedition.pushup.rewardButton"),"OpenBookAction",["expeditionTab"],true,220);
                   NotificationManager.getInstance().sendNotification(nid);
                }
-               this._achievementsList.finishedAchievements.push(new AchievementAchieved().initAchievementAchieved(afmsg.achievement.id,afmsg.achievement.achievedBy));
+               this._achievementsList.finishedAchievements.push(new AchievementAchieved().initAchievementAchieved(afmsg.achievement.id,afmsg.achievement.achievedBy,afmsg.achievement.achievedPioneerRank));
                if(this._achievementsFinishedCache === null)
                {
                   this._achievementsFinishedCache = [];
                }
-               this._achievementsFinishedCache.push(new AchievementAchievedRewardable().initAchievementAchievedRewardable(afmsg.achievement.id,afmsg.achievement.achievedBy,afmsg.achievement.finishedlevel));
+               this._achievementsFinishedCache.push(new AchievementAchievedRewardable().initAchievementAchievedRewardable(afmsg.achievement.id,afmsg.achievement.achievedBy,afmsg.achievement.achievedPioneerRank,afmsg.achievement.finishedLevel));
                if(finishedAchievement.category.id === TEMPORIS_CATEGORY)
                {
                   if(finishedAchievement.id == FIRST_TEMPORIS_COMPANION_REWARD_ACHIEVEMENT_ID)
@@ -1166,6 +1189,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   if(afmsg.achievement.achievedBy == playerId)
                   {
                      this._finishedCharacterAchievementIds.push(afmsg.achievement.id);
+                     this._finishedCharacterAchievementByIds[afmsg.achievement.id] = afmsg.achievement;
                      PlayedCharacterManager.getInstance().achievementPercent = Math.floor(this._finishedCharacterAchievementIds.length / this._nbAllAchievements * 100);
                   }
                   achievementFinished = Achievement.getAchievementById(afmsg.achievement.id);
@@ -1202,7 +1226,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   if(achievementAchieved.id == arsmsg.achievementId && achievementAchieved is AchievementAchievedRewardable)
                   {
                      this._achievementsList.finishedAchievements[achievementIndex] = new AchievementAchieved();
-                     this._achievementsList.finishedAchievements[achievementIndex].initAchievementAchieved(achievementAchieved.id,achievementAchieved.achievedBy);
+                     this._achievementsList.finishedAchievements[achievementIndex].initAchievementAchieved(achievementAchieved.id,achievementAchieved.achievedBy,achievementAchieved.achievedPioneerRank);
                      break;
                   }
                }
@@ -1220,6 +1244,18 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is AchievementRewardErrorMessage:
                aremsg = msg as AchievementRewardErrorMessage;
+               return true;
+            case msg is AchievementsPioneerRanksMessage:
+               aprmsg = msg as AchievementsPioneerRanksMessage;
+               for each(pioneerRank in aprmsg.achievementsPioneerRanks)
+               {
+                  this._pioneerRanks[pioneerRank.achievementId] = pioneerRank.pioneerRank;
+               }
+               return true;
+            case msg is AchievementsPioneerRanksRequestAction:
+               aprrmsg = new AchievementsPioneerRanksRequestMessage();
+               aprrmsg.initAchievementsPioneerRanksRequestMessage();
+               ConnectionsHandler.getConnection().send(aprrmsg);
                return true;
             case msg is TreasureHuntShowLegendaryUIMessage:
                thslumsg = msg as TreasureHuntShowLegendaryUIMessage;
@@ -1496,6 +1532,7 @@ package com.ankamagames.dofus.logic.game.common.frames
                   playerPoints += ach.points;
                   playerAchievementsCount++;
                   this._finishedCharacterAchievementIds.push(ach.id);
+                  this._finishedCharacterAchievementByIds[ach.id] = achievedAchievement;
                }
                achievementDone[achievedAchievement.id] = true;
             }

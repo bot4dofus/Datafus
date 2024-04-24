@@ -18,7 +18,12 @@ package com.ankamagames.dofus.datacenter.items.criterion
       override public function get isRespected() : Boolean
       {
          var id:int = 0;
-         var achievementFinishedList:Array = (Kernel.getWorker().getFrame(QuestFrame) as QuestFrame).finishedAccountAchievementIds;
+         var questFrame:QuestFrame = Kernel.getWorker().getFrame(QuestFrame) as QuestFrame;
+         if(!questFrame)
+         {
+            return false;
+         }
+         var achievementFinishedList:Array = questFrame.finishedAccountAchievementIds;
          for each(id in achievementFinishedList)
          {
             if(id == _criterionValue)

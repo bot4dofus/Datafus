@@ -32,8 +32,8 @@ package com.ankamagames.dofus.console
       
       public function registerInstructions(console:ConsoleHandler) : void
       {
-         var emote:* = undefined;
-         var emoteShortcuts:Array = new Array();
+         var emote:Emoticon = null;
+         var emoteShortcuts:Array = [];
          for each(emote in Emoticon.getEmoticons())
          {
             emoteShortcuts.push(emote.shortcut);

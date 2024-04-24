@@ -39,7 +39,7 @@ package com.ankamagames.dofus.logic.game.fight.types
       
       public var duration:int;
       
-      public var castingSpell:CastingSpell;
+      public var castingSpell:SpellCastSequenceContext;
       
       public var targetId:Number;
       
@@ -63,7 +63,7 @@ package com.ankamagames.dofus.logic.game.fight.types
       
       public var dataUid:int;
       
-      public function BasicBuff(effect:AbstractFightDispellableEffect = null, castingSpell:CastingSpell = null, actionId:uint = 0, param1:* = null, param2:* = null, param3:* = null)
+      public function BasicBuff(effect:AbstractFightDispellableEffect = null, castingSpell:SpellCastSequenceContext = null, actionId:uint = 0, param1:* = null, param2:* = null, param3:* = null)
       {
          var entitiesFrame:FightEntitiesFrame = null;
          super();
@@ -237,9 +237,9 @@ package com.ankamagames.dofus.logic.game.fight.types
       public function get effectOrder() : int
       {
          var effect:EffectInstance = null;
-         for(var i:int = 0; i < this.castingSpell.spellRank.effects.length; i++)
+         for(var i:int = 0; i < this.castingSpell.spellLevelData.effects.length; i++)
          {
-            effect = this.castingSpell.spellRank.effects[i];
+            effect = this.castingSpell.spellLevelData.effects[i];
             if(effect.effectUid == this.dataUid)
             {
                return i;
@@ -285,7 +285,7 @@ package com.ankamagames.dofus.logic.game.fight.types
             (this._effect as EffectInstanceInteger).value = param3;
             this._effect.trigger = this.trigger;
          }
-         for each(slId in this.castingSpell.spell.spellLevels)
+         for each(slId in this.castingSpell.spellData.spellLevels)
          {
             sl = SpellLevel.getLevelById(slId);
             if(sl)
@@ -397,7 +397,7 @@ package com.ankamagames.dofus.logic.game.fight.types
       {
          var sb1:StateBuff = null;
          var sb2:StateBuff = null;
-         if(this.targetId != other.targetId || this.aliveSource != other.aliveSource || this.effect.effectId != other.actionId || this.duration != other.duration || this.effect.hasOwnProperty("delay") && other.effect.hasOwnProperty("delay") && this.effect.delay != other.effect.delay || this.castingSpell.spellRank && other.castingSpell.spellRank && !ignoreSpell && this.castingSpell.spellRank.id != other.castingSpell.spellRank.id || !ignoreSpell && this.castingSpell.spell.id != other.castingSpell.spell.id || getQualifiedClassName(this) != getQualifiedClassName(other) || this.source != other.source || this.trigger && (this.effect.triggers.indexOf("|") == -1 || this.dataUid != other.dataUid))
+         if(this.targetId != other.targetId || this.aliveSource != other.aliveSource || this.effect.effectId != other.actionId || this.duration != other.duration || this.effect.hasOwnProperty("delay") && other.effect.hasOwnProperty("delay") && this.effect.delay != other.effect.delay || this.castingSpell.spellLevelData && other.castingSpell.spellLevelData && !ignoreSpell && this.castingSpell.spellLevelData.id != other.castingSpell.spellLevelData.id || !ignoreSpell && this.castingSpell.spellData.id != other.castingSpell.spellData.id || getQualifiedClassName(this) != getQualifiedClassName(other) || this.source != other.source || this.trigger && (this.effect.triggers.indexOf("|") == -1 || this.dataUid != other.dataUid))
          {
             return false;
          }

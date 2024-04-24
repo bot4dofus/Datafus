@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character.choice
    public class RemodelingInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 3230;
+      public static const protocolId:uint = 9177;
        
       
       public var name:String = "";
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.network.types.game.character.choice
       
       public function getTypeId() : uint
       {
-         return 3230;
+         return 9177;
       }
       
       public function initRemodelingInformation(name:String = "", breed:int = 0, sex:Boolean = false, cosmeticId:uint = 0, colors:Vector.<int> = null) : RemodelingInformation

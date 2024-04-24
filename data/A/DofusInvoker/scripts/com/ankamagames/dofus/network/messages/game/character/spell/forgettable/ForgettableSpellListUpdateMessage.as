@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.character.spell.forgettable
    public class ForgettableSpellListUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3270;
+      public static const protocolId:uint = 1165;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.character.spell.forgettable
       
       override public function getMessageId() : uint
       {
-         return 3270;
+         return 1165;
       }
       
       public function initForgettableSpellListUpdateMessage(action:uint = 0, spells:Vector.<ForgettableSpellItem> = null) : ForgettableSpellListUpdateMessage

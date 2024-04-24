@@ -13,9 +13,10 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
    import com.ankamagames.dofus.logic.game.common.actions.chat.ChatSmileyRequestAction;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
+   import com.ankamagames.dofus.logic.game.common.misc.SpellCastSequence;
+   import com.ankamagames.dofus.logic.game.fight.types.SpellCastSequenceContext;
    import com.ankamagames.dofus.logic.game.roleplay.actions.EmotePlayRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.types.GameContextPaddockItemInformations;
-   import com.ankamagames.dofus.logic.game.roleplay.types.RoleplaySpellCastProvider;
    import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
    import com.ankamagames.dofus.network.enums.ChatActivableChannelsEnum;
@@ -27,6 +28,7 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayNpcInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayPortalInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayPrismInformations;
+   import com.ankamagames.dofus.scripts.SpellScriptContext;
    import com.ankamagames.dofus.scripts.SpellScriptManager;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
    import com.ankamagames.jerakine.benchmark.BenchmarkTimer;
@@ -38,7 +40,6 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
    import com.ankamagames.jerakine.sequencer.ISequencable;
    import com.ankamagames.jerakine.sequencer.SerialSequencer;
    import com.ankamagames.jerakine.types.Callback;
-   import com.ankamagames.jerakine.types.positions.MapPoint;
    import com.ankamagames.jerakine.utils.errors.SingletonError;
    import flash.display.Sprite;
    import flash.events.Event;
@@ -255,24 +256,25 @@ package com.ankamagames.dofus.logic.game.roleplay.managers
       
       private function playSpellAnimation(spellId:int, spellLevel:int, targetCellId:int) : void
       {
-         var rpSpellCastProvider:RoleplaySpellCastProvider = new RoleplaySpellCastProvider();
-         rpSpellCastProvider.castingSpell.casterId = PlayedCharacterManager.getInstance().id;
-         rpSpellCastProvider.castingSpell.spell = Spell.getSpellById(spellId);
-         rpSpellCastProvider.castingSpell.spellRank = rpSpellCastProvider.castingSpell.spell.getSpellLevel(spellLevel);
-         rpSpellCastProvider.castingSpell.targetedCell = MapPoint.fromCellId(targetCellId);
-         var spellScriptId:int = rpSpellCastProvider.castingSpell.spell.getScriptId(rpSpellCastProvider.castingSpell.isCriticalHit);
-         SpellScriptManager.getInstance().runSpellScript(spellScriptId,rpSpellCastProvider,new Callback(this.executeSpellBuffer,null,true,true,rpSpellCastProvider),new Callback(this.executeSpellBuffer,null,true,false,rpSpellCastProvider));
+         var context:SpellCastSequenceContext = new SpellCastSequenceContext();
+         context.casterId = PlayedCharacterManager.getInstance().id;
+         context.spellData = Spell.getSpellById(spellId);
+         context.spellLevelData = context.spellData.getSpellLevel(spellLevel);
+         context.targetedCellId = targetCellId;
+         var castSequence:SpellCastSequence = new SpellCastSequence(context);
+         var contexts:Vector.<SpellScriptContext> = SpellScriptManager.getInstance().resolveScriptUsageFromCastContext(context,targetCellId);
+         SpellScriptManager.getInstance().runBulk(contexts,castSequence,new Callback(this.executeSpellBuffer,null,true,true,castSequence),new Callback(this.executeSpellBuffer,null,true,false,castSequence));
       }
       
-      private function executeSpellBuffer(callback:Function, hadScript:Boolean, scriptSuccess:Boolean = false, castProvider:RoleplaySpellCastProvider = null) : void
+      private function executeSpellBuffer(callback:Function, hadScript:Boolean, scriptSuccess:Boolean = false, castSequence:SpellCastSequence = null) : void
       {
          var step:ISequencable = null;
-         var ss:SerialSequencer = new SerialSequencer();
-         for each(step in castProvider.stepsBuffer)
+         var serialSequencer:SerialSequencer = new SerialSequencer();
+         for each(step in castSequence.steps)
          {
-            ss.addStep(step);
+            serialSequencer.addStep(step);
          }
-         ss.start();
+         serialSequencer.start();
       }
    }
 }

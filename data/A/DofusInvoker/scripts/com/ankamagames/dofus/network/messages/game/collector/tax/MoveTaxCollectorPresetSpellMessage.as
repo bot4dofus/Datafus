@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
    public class MoveTaxCollectorPresetSpellMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8466;
+      public static const protocolId:uint = 2277;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.collector.tax
       
       override public function getMessageId() : uint
       {
-         return 8466;
+         return 2277;
       }
       
       public function initMoveTaxCollectorPresetSpellMessage(presetId:Uuid = null, movedFrom:uint = 0, movedTo:uint = 0) : MoveTaxCollectorPresetSpellMessage

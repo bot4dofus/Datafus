@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.emote
    public class EmotePlayMassiveMessage extends EmotePlayAbstractMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1782;
+      public static const protocolId:uint = 6382;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.emote
       
       override public function getMessageId() : uint
       {
-         return 1782;
+         return 6382;
       }
       
       public function initEmotePlayMassiveMessage(emoteId:uint = 0, emoteStartTime:Number = 0, actorIds:Vector.<Number> = null) : EmotePlayMassiveMessage

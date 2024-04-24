@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach
    public class BreachExitRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7400;
+      public static const protocolId:uint = 2470;
        
       
       public function BreachExitRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach
       
       override public function getMessageId() : uint
       {
-         return 7400;
+         return 2470;
       }
       
       public function initBreachExitRequestMessage() : BreachExitRequestMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection.register
    public class AccountLinkRequiredMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1300;
+      public static const protocolId:uint = 9543;
        
       
       public function AccountLinkRequiredMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.connection.register
       
       override public function getMessageId() : uint
       {
-         return 1300;
+         return 9543;
       }
       
       public function initAccountLinkRequiredMessage() : AccountLinkRequiredMessage

@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.challenge
    public class ChallengeTargetsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5157;
+      public static const protocolId:uint = 1271;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.challenge
       
       override public function getMessageId() : uint
       {
-         return 5157;
+         return 1271;
       }
       
       public function initChallengeTargetsMessage(challengeInformation:ChallengeInformation = null) : ChallengeTargetsMessage

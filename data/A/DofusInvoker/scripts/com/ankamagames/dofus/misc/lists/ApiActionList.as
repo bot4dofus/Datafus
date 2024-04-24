@@ -82,6 +82,7 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.PivotCharacterAction;
    import com.ankamagames.dofus.logic.game.common.actions.PlaySoundAction;
    import com.ankamagames.dofus.logic.game.common.actions.RefreshFollowedQuestsOrderAction;
+   import com.ankamagames.dofus.logic.game.common.actions.ReportPlayerAction;
    import com.ankamagames.dofus.logic.game.common.actions.StartGuildChestContributionAction;
    import com.ankamagames.dofus.logic.game.common.actions.StartZoomAction;
    import com.ankamagames.dofus.logic.game.common.actions.StopGuildChestContributionAction;
@@ -148,6 +149,7 @@ package com.ankamagames.dofus.misc.lists
    import com.ankamagames.dofus.logic.game.common.actions.quest.AchievementDetailedListRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.AchievementDetailsRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.AchievementRewardRequestAction;
+   import com.ankamagames.dofus.logic.game.common.actions.quest.AchievementsPioneerRanksRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.GuidedModeQuitRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.GuidedModeReturnRequestAction;
    import com.ankamagames.dofus.logic.game.common.actions.quest.QuestInfosRequestAction;
@@ -512,6 +514,8 @@ package com.ankamagames.dofus.misc.lists
       
       public static const AchievementRewardRequest:DofusApiAction = new DofusApiAction("AchievementRewardRequestAction",AchievementRewardRequestAction);
       
+      public static const AchievementsPioneerRanksRequest:DofusApiAction = new DofusApiAction("AchievementsPioneerRanksRequestAction",AchievementsPioneerRanksRequestAction);
+      
       public static const QuestObjectiveValidation:DofusApiAction = new DofusApiAction("QuestObjectiveValidationAction",QuestObjectiveValidationAction);
       
       public static const TreasureHuntLegendaryRequest:DofusApiAction = new DofusApiAction("TreasureHuntLegendaryRequestAction",TreasureHuntLegendaryRequestAction);
@@ -727,6 +731,8 @@ package com.ankamagames.dofus.misc.lists
       public static const ChallengeValidate:DofusApiAction = new DofusApiAction("ChallengeValidateAction",ChallengeValidateAction);
       
       public static const ChallengeTargetsRequest:DofusApiAction = new DofusApiAction("ChallengeTargetsRequestAction",ChallengeTargetsRequestAction);
+      
+      public static const ReportPlayer:DofusApiAction = new DofusApiAction("ReportPlayerAction",ReportPlayerAction);
        
       
       public function ApiActionList()

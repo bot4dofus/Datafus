@@ -38,7 +38,7 @@ package com.ankamagames.dofus.logic.game.common.steps
             {
                this._entity.addEventListener(TiphonEvent.ANIMATION_END,this.onAnimationEnd);
             }
-            anim = emote.getAnimName(this._entity.look);
+            anim = emote.getAnimName();
             rpef = Kernel.getWorker().getFrame(RoleplayEntitiesFrame) as RoleplayEntitiesFrame;
             rpef.currentEmoticon = this._emoteId;
             rpef.process(new GameRolePlaySetAnimationMessage(rpef.getEntityInfos(this._entity.id),anim,emote.spellLevelId,0,!emote.persistancy,emote.eight_directions));

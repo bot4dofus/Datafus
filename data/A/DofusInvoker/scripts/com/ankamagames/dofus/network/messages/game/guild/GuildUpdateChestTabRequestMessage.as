@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildUpdateChestTabRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2134;
+      public static const protocolId:uint = 7784;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 2134;
+         return 7784;
       }
       
       public function initGuildUpdateChestTabRequestMessage(tab:UpdatedStorageTabInformation = null) : GuildUpdateChestTabRequestMessage

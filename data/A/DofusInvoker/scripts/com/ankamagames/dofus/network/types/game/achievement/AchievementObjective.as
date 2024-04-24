@@ -8,12 +8,12 @@ package com.ankamagames.dofus.network.types.game.achievement
    public class AchievementObjective implements INetworkType
    {
       
-      public static const protocolId:uint = 784;
+      public static const protocolId:uint = 2521;
        
       
       public var id:uint = 0;
       
-      public var maxValue:uint = 0;
+      public var maxValue:Number = 0;
       
       public function AchievementObjective()
       {
@@ -22,10 +22,10 @@ package com.ankamagames.dofus.network.types.game.achievement
       
       public function getTypeId() : uint
       {
-         return 784;
+         return 2521;
       }
       
-      public function initAchievementObjective(id:uint = 0, maxValue:uint = 0) : AchievementObjective
+      public function initAchievementObjective(id:uint = 0, maxValue:Number = 0) : AchievementObjective
       {
          this.id = id;
          this.maxValue = maxValue;
@@ -50,11 +50,11 @@ package com.ankamagames.dofus.network.types.game.achievement
             throw new Error("Forbidden value (" + this.id + ") on element id.");
          }
          output.writeVarInt(this.id);
-         if(this.maxValue < 0)
+         if(this.maxValue < 0 || this.maxValue > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.maxValue + ") on element maxValue.");
          }
-         output.writeVarShort(this.maxValue);
+         output.writeVarLong(this.maxValue);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -90,8 +90,8 @@ package com.ankamagames.dofus.network.types.game.achievement
       
       private function _maxValueFunc(input:ICustomDataInput) : void
       {
-         this.maxValue = input.readVarUhShort();
-         if(this.maxValue < 0)
+         this.maxValue = input.readVarUhLong();
+         if(this.maxValue < 0 || this.maxValue > 9007199254740992)
          {
             throw new Error("Forbidden value (" + this.maxValue + ") on element of AchievementObjective.maxValue.");
          }

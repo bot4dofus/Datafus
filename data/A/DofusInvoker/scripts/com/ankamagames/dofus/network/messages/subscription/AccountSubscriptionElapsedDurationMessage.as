@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.subscription
    public class AccountSubscriptionElapsedDurationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1639;
+      public static const protocolId:uint = 2680;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.subscription
       
       override public function getMessageId() : uint
       {
-         return 1639;
+         return 2680;
       }
       
       public function initAccountSubscriptionElapsedDurationMessage(subscriptionElapsedDuration:Number = 0) : AccountSubscriptionElapsedDurationMessage

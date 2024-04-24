@@ -4,8 +4,8 @@ package com.ankamagames.dofus.types.sequences
    import com.ankamagames.atouin.utils.DataMapProvider;
    import com.ankamagames.dofus.datacenter.effects.EffectInstance;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
-   import com.ankamagames.dofus.logic.game.fight.types.CastingSpell;
-   import com.ankamagames.dofus.scripts.api.FxApi;
+   import com.ankamagames.dofus.logic.game.fight.types.SpellCastSequenceContext;
+   import com.ankamagames.dofus.scripts.api.SpellScriptRunnerUtils;
    import com.ankamagames.dofus.types.entities.Projectile;
    import com.ankamagames.jerakine.entities.interfaces.IEntity;
    import com.ankamagames.jerakine.enum.AddGfxModeEnum;
@@ -45,7 +45,7 @@ package com.ankamagames.dofus.types.sequences
       
       private var _scale:Number;
       
-      private var _castingSpell:CastingSpell;
+      private var _castingSpell:SpellCastSequenceContext;
       
       private var _showUnder:Boolean;
       
@@ -57,7 +57,7 @@ package com.ankamagames.dofus.types.sequences
       
       private var _zone:DisplayZone;
       
-      public function AddGfxInLineStep(gfxId:uint, castingSpell:CastingSpell, startCell:MapPoint, endCell:MapPoint, yOffset:int, mode:uint = 0, minScale:Number = 0, maxScale:Number = 0, addOnStartCell:Boolean = false, addOnEndCell:Boolean = false, useSpellZone:Boolean = false, useOnlyAddedCells:Boolean = false, showUnder:Boolean = false, startEntity:IEntity = null)
+      public function AddGfxInLineStep(gfxId:uint, castingSpell:SpellCastSequenceContext, startCell:MapPoint, endCell:MapPoint, yOffset:int, mode:uint = 0, minScale:Number = 0, maxScale:Number = 0, addOnStartCell:Boolean = false, addOnEndCell:Boolean = false, useSpellZone:Boolean = false, useOnlyAddedCells:Boolean = false, showUnder:Boolean = false, startEntity:IEntity = null)
       {
          var shape:uint = 0;
          var ray:uint = 0;
@@ -75,14 +75,14 @@ package com.ankamagames.dofus.types.sequences
          this._showUnder = showUnder;
          this._castingSpell = castingSpell;
          this._startEntity = startEntity;
-         var level:uint = this._castingSpell.spell.spellLevels.indexOf(this._castingSpell.spellRank.id);
-         this._scale = 1 + (minScale + (maxScale - minScale) * level / this._castingSpell.spell.spellLevels.length) / 10;
+         var level:uint = this._castingSpell.spellData.spellLevels.indexOf(this._castingSpell.spellLevelData.id);
+         this._scale = 1 + (minScale + (maxScale - minScale) * level / this._castingSpell.spellData.spellLevels.length) / 10;
          this._addedCells = new Vector.<uint>();
          if(useSpellZone)
          {
             shape = 88;
             ray = 0;
-            for each(i in this._castingSpell.spellRank.effects)
+            for each(i in this._castingSpell.spellLevelData.effects)
             {
                if(i.zoneShape != 0 && i.zoneSize < 63 && (i.zoneSize > ray || i.zoneSize == ray && shape == SpellShapeEnum.P))
                {
@@ -124,15 +124,17 @@ package com.ankamagames.dofus.types.sequences
          var cell:Point = null;
          var i:uint = 0;
          var add:Boolean = false;
+         var targetedPoint:MapPoint = null;
          var j:uint = 0;
          if(this._startEntity)
          {
-            this._startCell = FxApi.GetEntityCell(this._startEntity);
+            this._startCell = SpellScriptRunnerUtils.GetEntityCell(this._startEntity);
          }
          if(this._zone)
          {
-            this._zone.direction = this._startCell.advancedOrientationTo(this._castingSpell.targetedCell);
-            this._addedCells = this._zone.getCells(this._castingSpell.targetedCell.cellId);
+            targetedPoint = MapPoint.fromCellId(this._castingSpell.targetedCellId);
+            this._zone.direction = this._startCell.advancedOrientationTo(targetedPoint);
+            this._addedCells = this._zone.getCells(this._castingSpell.targetedCellId);
          }
          if(!this._useOnlyAddedCells)
          {

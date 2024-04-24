@@ -4374,7 +4374,7 @@
 		},
 		{
 			"id": 81,
-			"nameId": 60245,
+			"nameId": 1052755,
 			"parentJobId": 1,
 			"isForgemagus": false,
 			"modifiableItemTypeIds": [],
@@ -4446,7 +4446,7 @@
 		},
 		{
 			"id": 100,
-			"nameId": 60256,
+			"nameId": 1052756,
 			"parentJobId": 1,
 			"isForgemagus": false,
 			"modifiableItemTypeIds": [],
@@ -4950,7 +4950,9 @@
 				24936,
 				24937,
 				24938,
-				24939
+				24939,
+				29683,
+				29684
 			],
 			"interactiveId": 93,
 			"range": 1,

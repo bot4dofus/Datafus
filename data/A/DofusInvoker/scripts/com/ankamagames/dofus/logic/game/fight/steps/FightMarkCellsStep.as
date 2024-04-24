@@ -66,20 +66,21 @@ package com.ankamagames.dofus.logic.game.fight.steps
          var updatePath:Boolean = false;
          var spell:Spell = Spell.getSpellById(this._markSpellId);
          var originMarkSpellLevel:SpellLevel = spell.getSpellLevel(this._markSpellGrade);
+         var glyphGfxId:int = MarkedCellsManager.getInstance().getResolvedMarkGlyphId(this._markCasterId,this._markSpellId,this._markSpellGrade,this._markImpactCell);
          if(this._markType == GameActionMarkTypeEnum.WALL || originMarkSpellLevel.hasZoneShape(SpellShapeEnum.semicolon))
          {
-            if(spell.getParamByName("glyphGfxId") || true)
+            if(glyphGfxId !== 0)
             {
                for each(cellZone in this._cells)
                {
-                  step = new AddGlyphGfxStep(spell.getParamByName("glyphGfxId"),cellZone.cellId,this._markId,this._markType,this._markTeamId);
+                  step = new AddGlyphGfxStep(glyphGfxId,cellZone.cellId,this._markId,this._markType,this._markTeamId);
                   step.start();
                }
             }
          }
-         else if(spell.getParamByName("glyphGfxId") && !MarkedCellsManager.getInstance().getGlyph(this._markId) && this._markImpactCell != -1)
+         else if(glyphGfxId !== 0 && !MarkedCellsManager.getInstance().getGlyph(this._markId) && this._markImpactCell != -1)
          {
-            step = new AddGlyphGfxStep(spell.getParamByName("glyphGfxId"),this._markImpactCell,this._markId,this._markType,this._markTeamId);
+            step = new AddGlyphGfxStep(glyphGfxId,this._markImpactCell,this._markId,this._markType,this._markTeamId);
             step.start();
          }
          MarkedCellsManager.getInstance().addMark(this._markCasterId,this._markId,this._markType,spell,originMarkSpellLevel,this._cells,this._markTeamId,this._markActive,this._markImpactCell);

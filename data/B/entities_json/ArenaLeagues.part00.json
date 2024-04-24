@@ -48,7 +48,7 @@
 			"illus": "tx_illu_arena_02",
 			"isLastLeague": false,
 			"lowRatingBound": 0,
-			"highRatingBound": 139
+			"highRatingBound": 419
 		},
 		{
 			"id": 7,
@@ -57,8 +57,8 @@
 			"icon": "icon_kolizeum02",
 			"illus": "tx_illu_arena_02",
 			"isLastLeague": false,
-			"lowRatingBound": 90,
-			"highRatingBound": 259
+			"lowRatingBound": 370,
+			"highRatingBound": 569
 		},
 		{
 			"id": 8,
@@ -67,8 +67,8 @@
 			"icon": "icon_kolizeum02",
 			"illus": "tx_illu_arena_02",
 			"isLastLeague": false,
-			"lowRatingBound": 210,
-			"highRatingBound": 379
+			"lowRatingBound": 520,
+			"highRatingBound": 719
 		},
 		{
 			"id": 9,
@@ -77,8 +77,8 @@
 			"icon": "icon_kolizeum02",
 			"illus": "tx_illu_arena_02",
 			"isLastLeague": false,
-			"lowRatingBound": 330,
-			"highRatingBound": 499
+			"lowRatingBound": 670,
+			"highRatingBound": 869
 		},
 		{
 			"id": 10,
@@ -87,8 +87,8 @@
 			"icon": "icon_kolizeum02",
 			"illus": "tx_illu_arena_02",
 			"isLastLeague": false,
-			"lowRatingBound": 450,
-			"highRatingBound": 619
+			"lowRatingBound": 820,
+			"highRatingBound": 1019
 		},
 		{
 			"id": 16,
@@ -97,8 +97,8 @@
 			"icon": "icon_kolizeum03",
 			"illus": "tx_illu_arena_03",
 			"isLastLeague": false,
-			"lowRatingBound": 570,
-			"highRatingBound": 759
+			"lowRatingBound": 970,
+			"highRatingBound": 1169
 		},
 		{
 			"id": 17,
@@ -107,8 +107,8 @@
 			"icon": "icon_kolizeum03",
 			"illus": "tx_illu_arena_03",
 			"isLastLeague": false,
-			"lowRatingBound": 710,
-			"highRatingBound": 899
+			"lowRatingBound": 1120,
+			"highRatingBound": 1319
 		},
 		{
 			"id": 18,
@@ -117,8 +117,8 @@
 			"icon": "icon_kolizeum03",
 			"illus": "tx_illu_arena_03",
 			"isLastLeague": false,
-			"lowRatingBound": 850,
-			"highRatingBound": 1039
+			"lowRatingBound": 1270,
+			"highRatingBound": 1469
 		},
 		{
 			"id": 20,
@@ -127,8 +127,8 @@
 			"icon": "icon_kolizeum03",
 			"illus": "tx_illu_arena_03",
 			"isLastLeague": false,
-			"lowRatingBound": 990,
-			"highRatingBound": 1179
+			"lowRatingBound": 1420,
+			"highRatingBound": 1619
 		},
 		{
 			"id": 21,
@@ -137,8 +137,8 @@
 			"icon": "icon_kolizeum03",
 			"illus": "tx_illu_arena_03",
 			"isLastLeague": false,
-			"lowRatingBound": 1130,
-			"highRatingBound": 1319
+			"lowRatingBound": 1570,
+			"highRatingBound": 1769
 		},
 		{
 			"id": 27,
@@ -147,8 +147,8 @@
 			"icon": "icon_kolizeum04",
 			"illus": "tx_illu_arena_04",
 			"isLastLeague": false,
-			"lowRatingBound": 1270,
-			"highRatingBound": 1479
+			"lowRatingBound": 1720,
+			"highRatingBound": 1919
 		},
 		{
 			"id": 28,
@@ -157,8 +157,8 @@
 			"icon": "icon_kolizeum04",
 			"illus": "tx_illu_arena_04",
 			"isLastLeague": false,
-			"lowRatingBound": 1430,
-			"highRatingBound": 1639
+			"lowRatingBound": 1870,
+			"highRatingBound": 2069
 		},
 		{
 			"id": 29,
@@ -167,8 +167,8 @@
 			"icon": "icon_kolizeum04",
 			"illus": "tx_illu_arena_04",
 			"isLastLeague": false,
-			"lowRatingBound": 1590,
-			"highRatingBound": 1799
+			"lowRatingBound": 2020,
+			"highRatingBound": 2219
 		},
 		{
 			"id": 30,
@@ -177,8 +177,8 @@
 			"icon": "icon_kolizeum04",
 			"illus": "tx_illu_arena_04",
 			"isLastLeague": false,
-			"lowRatingBound": 1750,
-			"highRatingBound": 1959
+			"lowRatingBound": 2170,
+			"highRatingBound": 2369
 		},
 		{
 			"id": 31,
@@ -187,8 +187,8 @@
 			"icon": "icon_kolizeum04",
 			"illus": "tx_illu_arena_04",
 			"isLastLeague": false,
-			"lowRatingBound": 1910,
-			"highRatingBound": 2119
+			"lowRatingBound": 2320,
+			"highRatingBound": 2519
 		},
 		{
 			"id": 36,
@@ -197,8 +197,8 @@
 			"icon": "icon_kolizeum05",
 			"illus": "tx_illu_arena_05",
 			"isLastLeague": false,
-			"lowRatingBound": 2070,
-			"highRatingBound": 2369
+			"lowRatingBound": 2470,
+			"highRatingBound": 2669
 		},
 		{
 			"id": 37,
@@ -207,8 +207,8 @@
 			"icon": "icon_kolizeum05",
 			"illus": "tx_illu_arena_05",
 			"isLastLeague": false,
-			"lowRatingBound": 2320,
-			"highRatingBound": 2619
+			"lowRatingBound": 2620,
+			"highRatingBound": 2819
 		},
 		{
 			"id": 38,
@@ -217,8 +217,8 @@
 			"icon": "icon_kolizeum05",
 			"illus": "tx_illu_arena_05",
 			"isLastLeague": false,
-			"lowRatingBound": 2570,
-			"highRatingBound": 2869
+			"lowRatingBound": 2770,
+			"highRatingBound": 2969
 		},
 		{
 			"id": 39,
@@ -227,7 +227,7 @@
 			"icon": "icon_kolizeum05",
 			"illus": "tx_illu_arena_05",
 			"isLastLeague": false,
-			"lowRatingBound": 2820,
+			"lowRatingBound": 2920,
 			"highRatingBound": 3119
 		},
 		{
@@ -238,7 +238,7 @@
 			"illus": "tx_illu_arena_05",
 			"isLastLeague": false,
 			"lowRatingBound": 3070,
-			"highRatingBound": 3369
+			"highRatingBound": 3269
 		},
 		{
 			"id": 42,
@@ -247,8 +247,8 @@
 			"icon": "icon_kolizeum06",
 			"illus": "tx_illu_arena_06",
 			"isLastLeague": false,
-			"lowRatingBound": 3320,
-			"highRatingBound": 3699
+			"lowRatingBound": 3220,
+			"highRatingBound": 3419
 		},
 		{
 			"id": 43,
@@ -257,8 +257,8 @@
 			"icon": "icon_kolizeum06",
 			"illus": "tx_illu_arena_06",
 			"isLastLeague": false,
-			"lowRatingBound": 3650,
-			"highRatingBound": 4029
+			"lowRatingBound": 3370,
+			"highRatingBound": 3569
 		},
 		{
 			"id": 44,
@@ -267,8 +267,8 @@
 			"icon": "icon_kolizeum06",
 			"illus": "tx_illu_arena_06",
 			"isLastLeague": false,
-			"lowRatingBound": 3980,
-			"highRatingBound": 4359
+			"lowRatingBound": 3520,
+			"highRatingBound": 3719
 		},
 		{
 			"id": 45,
@@ -277,8 +277,8 @@
 			"icon": "icon_kolizeum06",
 			"illus": "tx_illu_arena_06",
 			"isLastLeague": false,
-			"lowRatingBound": 4310,
-			"highRatingBound": 4689
+			"lowRatingBound": 3670,
+			"highRatingBound": 3869
 		},
 		{
 			"id": 46,
@@ -287,8 +287,8 @@
 			"icon": "icon_kolizeum06",
 			"illus": "tx_illu_arena_06",
 			"isLastLeague": false,
-			"lowRatingBound": 4640,
-			"highRatingBound": 5000
+			"lowRatingBound": 3820,
+			"highRatingBound": 4000
 		},
 		{
 			"id": 47,
@@ -297,8 +297,8 @@
 			"icon": "icon_kolizeum07",
 			"illus": "tx_illu_arena_07",
 			"isLastLeague": true,
-			"lowRatingBound": 4999,
-			"highRatingBound": 5001
+			"lowRatingBound": 3999,
+			"highRatingBound": 4001
 		}
 	]
 }

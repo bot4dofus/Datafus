@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class ObjectEffects implements INetworkType
    {
       
-      public static const protocolId:uint = 1385;
+      public static const protocolId:uint = 5223;
        
       
       public var effects:Vector.<ObjectEffect>;
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       public function getTypeId() : uint
       {
-         return 1385;
+         return 5223;
       }
       
       public function initObjectEffects(effects:Vector.<ObjectEffect> = null) : ObjectEffects

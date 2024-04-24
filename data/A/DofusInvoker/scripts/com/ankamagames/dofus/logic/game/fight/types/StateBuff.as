@@ -36,7 +36,7 @@ package com.ankamagames.dofus.logic.game.fight.types
       
       public var delta:int;
       
-      public function StateBuff(effect:FightTemporaryBoostStateEffect = null, castingSpell:CastingSpell = null, actionId:uint = 0)
+      public function StateBuff(effect:FightTemporaryBoostStateEffect = null, castingSpell:SpellCastSequenceContext = null, actionId:uint = 0)
       {
          var spellState:SpellState = null;
          if(effect)

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.social
    public class SocialMember extends CharacterMinimalInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 3333;
+      public static const protocolId:uint = 2956;
        
       
       public var breed:int = 0;
@@ -40,7 +40,7 @@ package com.ankamagames.dofus.network.types.game.social
       
       override public function getTypeId() : uint
       {
-         return 3333;
+         return 2956;
       }
       
       public function initSocialMember(id:Number = 0, name:String = "", level:uint = 0, breed:int = 0, sex:Boolean = false, connected:uint = 99, hoursSinceLastConnection:uint = 0, accountId:uint = 0, status:PlayerStatus = null, rankId:int = 0, enrollmentDate:Number = 0) : SocialMember

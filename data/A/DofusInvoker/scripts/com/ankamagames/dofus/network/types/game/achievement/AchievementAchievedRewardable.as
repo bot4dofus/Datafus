@@ -8,10 +8,10 @@ package com.ankamagames.dofus.network.types.game.achievement
    public class AchievementAchievedRewardable extends AchievementAchieved implements INetworkType
    {
       
-      public static const protocolId:uint = 4361;
+      public static const protocolId:uint = 6359;
        
       
-      public var finishedlevel:uint = 0;
+      public var finishedLevel:uint = 0;
       
       public function AchievementAchievedRewardable()
       {
@@ -20,20 +20,20 @@ package com.ankamagames.dofus.network.types.game.achievement
       
       override public function getTypeId() : uint
       {
-         return 4361;
+         return 6359;
       }
       
-      public function initAchievementAchievedRewardable(id:uint = 0, achievedBy:Number = 0, finishedlevel:uint = 0) : AchievementAchievedRewardable
+      public function initAchievementAchievedRewardable(id:uint = 0, achievedBy:Number = 0, achievedPioneerRank:uint = 0, finishedLevel:uint = 0) : AchievementAchievedRewardable
       {
-         super.initAchievementAchieved(id,achievedBy);
-         this.finishedlevel = finishedlevel;
+         super.initAchievementAchieved(id,achievedBy,achievedPioneerRank);
+         this.finishedLevel = finishedLevel;
          return this;
       }
       
       override public function reset() : void
       {
          super.reset();
-         this.finishedlevel = 0;
+         this.finishedLevel = 0;
       }
       
       override public function serialize(output:ICustomDataOutput) : void
@@ -44,11 +44,11 @@ package com.ankamagames.dofus.network.types.game.achievement
       public function serializeAs_AchievementAchievedRewardable(output:ICustomDataOutput) : void
       {
          super.serializeAs_AchievementAchieved(output);
-         if(this.finishedlevel < 0 || this.finishedlevel > 200)
+         if(this.finishedLevel < 0 || this.finishedLevel > 200)
          {
-            throw new Error("Forbidden value (" + this.finishedlevel + ") on element finishedlevel.");
+            throw new Error("Forbidden value (" + this.finishedLevel + ") on element finishedLevel.");
          }
-         output.writeVarShort(this.finishedlevel);
+         output.writeVarShort(this.finishedLevel);
       }
       
       override public function deserialize(input:ICustomDataInput) : void
@@ -59,7 +59,7 @@ package com.ankamagames.dofus.network.types.game.achievement
       public function deserializeAs_AchievementAchievedRewardable(input:ICustomDataInput) : void
       {
          super.deserialize(input);
-         this._finishedlevelFunc(input);
+         this._finishedLevelFunc(input);
       }
       
       override public function deserializeAsync(tree:FuncTree) : void
@@ -70,15 +70,15 @@ package com.ankamagames.dofus.network.types.game.achievement
       public function deserializeAsyncAs_AchievementAchievedRewardable(tree:FuncTree) : void
       {
          super.deserializeAsync(tree);
-         tree.addChild(this._finishedlevelFunc);
+         tree.addChild(this._finishedLevelFunc);
       }
       
-      private function _finishedlevelFunc(input:ICustomDataInput) : void
+      private function _finishedLevelFunc(input:ICustomDataInput) : void
       {
-         this.finishedlevel = input.readVarUhShort();
-         if(this.finishedlevel < 0 || this.finishedlevel > 200)
+         this.finishedLevel = input.readVarUhShort();
+         if(this.finishedLevel < 0 || this.finishedLevel > 200)
          {
-            throw new Error("Forbidden value (" + this.finishedlevel + ") on element of AchievementAchievedRewardable.finishedlevel.");
+            throw new Error("Forbidden value (" + this.finishedLevel + ") on element of AchievementAchievedRewardable.finishedLevel.");
          }
       }
    }

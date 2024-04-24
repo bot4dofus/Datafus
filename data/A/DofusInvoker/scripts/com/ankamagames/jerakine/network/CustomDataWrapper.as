@@ -65,7 +65,7 @@ package com.ankamagames.jerakine.network
                value += b & MASK_01111111;
             }
             offset += CHUNCK_BIT_SIZE;
-            if(!hasNext)
+            if(!(hasNext && this._data.bytesAvailable > 0))
             {
                return value;
             }

@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameContextMoveElementMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4818;
+      public static const protocolId:uint = 2284;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 4818;
+         return 2284;
       }
       
       public function initGameContextMoveElementMessage(movement:EntityMovementInformations = null) : GameContextMoveElementMessage

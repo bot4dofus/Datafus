@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.social.recruitment
    public class SocialRecruitmentInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 6223;
+      public static const protocolId:uint = 209;
        
       
       public var socialId:uint = 0;
@@ -49,7 +49,7 @@ package com.ankamagames.dofus.network.types.game.social.recruitment
       
       public function getTypeId() : uint
       {
-         return 6223;
+         return 209;
       }
       
       public function initSocialRecruitmentInformation(socialId:uint = 0, recruitmentType:uint = 0, recruitmentTitle:String = "", recruitmentText:String = "", selectedLanguages:Vector.<uint> = null, selectedCriterion:Vector.<uint> = null, minLevel:uint = 0, minLevelFacultative:Boolean = false, invalidatedByModeration:Boolean = false, lastEditPlayerName:String = "", lastEditDate:Number = 0, recruitmentAutoLocked:Boolean = false) : SocialRecruitmentInformation

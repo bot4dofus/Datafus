@@ -143,6 +143,10 @@ package com.ankamagames.dofus.uiApi
       public function searchChannel(chan:String) : int
       {
          var i:* = undefined;
+         if(!chan)
+         {
+            return -1;
+         }
          var channels:Array = ChatChannel.getChannels();
          for(i in channels)
          {

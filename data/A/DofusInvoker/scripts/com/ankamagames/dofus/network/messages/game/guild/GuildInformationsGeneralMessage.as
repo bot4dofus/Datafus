@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildInformationsGeneralMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5184;
+      public static const protocolId:uint = 1991;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,6 +28,8 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       public var creationDate:uint = 0;
       
+      public var score:int = 0;
+      
       public function GuildInformationsGeneralMessage()
       {
          super();
@@ -40,10 +42,10 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 5184;
+         return 1991;
       }
       
-      public function initGuildInformationsGeneralMessage(abandonnedPaddock:Boolean = false, level:uint = 0, expLevelFloor:Number = 0, experience:Number = 0, expNextLevelFloor:Number = 0, creationDate:uint = 0) : GuildInformationsGeneralMessage
+      public function initGuildInformationsGeneralMessage(abandonnedPaddock:Boolean = false, level:uint = 0, expLevelFloor:Number = 0, experience:Number = 0, expNextLevelFloor:Number = 0, creationDate:uint = 0, score:int = 0) : GuildInformationsGeneralMessage
       {
          this.abandonnedPaddock = abandonnedPaddock;
          this.level = level;
@@ -51,6 +53,7 @@ package com.ankamagames.dofus.network.messages.game.guild
          this.experience = experience;
          this.expNextLevelFloor = expNextLevelFloor;
          this.creationDate = creationDate;
+         this.score = score;
          this._isInitialized = true;
          return this;
       }
@@ -63,6 +66,7 @@ package com.ankamagames.dofus.network.messages.game.guild
          this.experience = 0;
          this.expNextLevelFloor = 0;
          this.creationDate = 0;
+         this.score = 0;
          this._isInitialized = false;
       }
       
@@ -119,6 +123,7 @@ package com.ankamagames.dofus.network.messages.game.guild
             throw new Error("Forbidden value (" + this.creationDate + ") on element creationDate.");
          }
          output.writeInt(this.creationDate);
+         output.writeInt(this.score);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -134,6 +139,7 @@ package com.ankamagames.dofus.network.messages.game.guild
          this._experienceFunc(input);
          this._expNextLevelFloorFunc(input);
          this._creationDateFunc(input);
+         this._scoreFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -149,6 +155,7 @@ package com.ankamagames.dofus.network.messages.game.guild
          tree.addChild(this._experienceFunc);
          tree.addChild(this._expNextLevelFloorFunc);
          tree.addChild(this._creationDateFunc);
+         tree.addChild(this._scoreFunc);
       }
       
       private function _abandonnedPaddockFunc(input:ICustomDataInput) : void
@@ -199,6 +206,11 @@ package com.ankamagames.dofus.network.messages.game.guild
          {
             throw new Error("Forbidden value (" + this.creationDate + ") on element of GuildInformationsGeneralMessage.creationDate.");
          }
+      }
+      
+      private function _scoreFunc(input:ICustomDataInput) : void
+      {
+         this.score = input.readInt();
       }
    }
 }

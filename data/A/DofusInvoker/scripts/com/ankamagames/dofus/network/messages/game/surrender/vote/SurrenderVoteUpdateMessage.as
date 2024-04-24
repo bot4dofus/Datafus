@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.surrender.vote
    public class SurrenderVoteUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9956;
+      public static const protocolId:uint = 1395;
        
       
       public function SurrenderVoteUpdateMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.surrender.vote
       
       override public function getMessageId() : uint
       {
-         return 9956;
+         return 1395;
       }
       
       public function initSurrenderVoteUpdateMessage() : SurrenderVoteUpdateMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameEntityDispositionErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4926;
+      public static const protocolId:uint = 9598;
        
       
       public function GameEntityDispositionErrorMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 4926;
+         return 9598;
       }
       
       public function initGameEntityDispositionErrorMessage() : GameEntityDispositionErrorMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.guild
    public class GuildMemberInfo extends SocialMember implements INetworkType
    {
       
-      public static const protocolId:uint = 2117;
+      public static const protocolId:uint = 1244;
        
       
       public var givenExperience:Number = 0;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.types.game.guild
       
       override public function getTypeId() : uint
       {
-         return 2117;
+         return 1244;
       }
       
       public function initGuildMemberInfo(id:Number = 0, name:String = "", level:uint = 0, breed:int = 0, sex:Boolean = false, connected:uint = 99, hoursSinceLastConnection:uint = 0, accountId:uint = 0, status:PlayerStatus = null, rankId:int = 0, enrollmentDate:Number = 0, givenExperience:Number = 0, experienceGivenPercent:uint = 0, alignmentSide:int = 0, moodSmileyId:uint = 0, achievementPoints:int = 0, havenBagShared:Boolean = false, note:PlayerNote = null) : GuildMemberInfo

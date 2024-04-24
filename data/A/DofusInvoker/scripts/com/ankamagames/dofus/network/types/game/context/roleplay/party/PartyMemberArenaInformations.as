@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
    public class PartyMemberArenaInformations extends PartyMemberInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 7873;
+      public static const protocolId:uint = 8362;
        
       
       public var rank:uint = 0;
@@ -23,7 +23,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.party
       
       override public function getTypeId() : uint
       {
-         return 7873;
+         return 8362;
       }
       
       public function initPartyMemberArenaInformations(id:Number = 0, name:String = "", level:uint = 0, entityLook:EntityLook = null, breed:int = 0, sex:Boolean = false, lifePoints:uint = 0, maxLifePoints:uint = 0, prospecting:uint = 0, regenRate:uint = 0, initiative:uint = 0, alignmentSide:int = 0, worldX:int = 0, worldY:int = 0, mapId:Number = 0, subAreaId:uint = 0, status:PlayerStatus = null, entities:Vector.<PartyEntityBaseInformation> = null, rank:uint = 0) : PartyMemberArenaInformations

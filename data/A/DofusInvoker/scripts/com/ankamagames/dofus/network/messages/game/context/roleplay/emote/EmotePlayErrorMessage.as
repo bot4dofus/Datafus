@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.emote
    public class EmotePlayErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8409;
+      public static const protocolId:uint = 8332;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.emote
       
       override public function getMessageId() : uint
       {
-         return 8409;
+         return 8332;
       }
       
       public function initEmotePlayErrorMessage(emoteId:uint = 0) : EmotePlayErrorMessage

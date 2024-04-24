@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.almanach
    public class AlmanachCalendarDateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8687;
+      public static const protocolId:uint = 3125;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.almanach
       
       override public function getMessageId() : uint
       {
-         return 8687;
+         return 3125;
       }
       
       public function initAlmanachCalendarDateMessage(date:int = 0) : AlmanachCalendarDateMessage

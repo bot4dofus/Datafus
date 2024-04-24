@@ -99,7 +99,7 @@ package com.ankamagames.dofus.kernel.sound.manager
             this._buffer.push(data);
             return;
          }
-         if(this._channelOut.state == MessageChannelState.CLOSED)
+         if(this._channelOut.state == MessageChannelState.CLOSED || this._channelOut.state == MessageChannelState.CLOSING)
          {
             _log.error("Message Channel Closed !");
             return;

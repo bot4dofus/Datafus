@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightSpellCastMessage extends AbstractGameActionFightTargetedAbilityMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7398;
+      public static const protocolId:uint = 9303;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 7398;
+         return 9303;
       }
       
       public function initGameActionFightSpellCastMessage(actionId:uint = 0, sourceId:Number = 0, targetId:Number = 0, destinationCellId:int = 0, critical:uint = 1, silentCast:Boolean = false, verboseCast:Boolean = false, spellId:uint = 0, spellLevel:int = 0, portalsIds:Vector.<int> = null) : GameActionFightSpellCastMessage

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
    public class ObjectEffectDate extends ObjectEffect implements INetworkType
    {
       
-      public static const protocolId:uint = 5221;
+      public static const protocolId:uint = 3111;
        
       
       public var year:uint = 0;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
       
       override public function getTypeId() : uint
       {
-         return 5221;
+         return 3111;
       }
       
       public function initObjectEffectDate(actionId:uint = 0, year:uint = 0, month:uint = 0, day:uint = 0, hour:uint = 0, minute:uint = 0) : ObjectEffectDate

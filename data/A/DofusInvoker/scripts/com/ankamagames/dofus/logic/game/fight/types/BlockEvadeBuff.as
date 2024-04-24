@@ -9,7 +9,7 @@ package com.ankamagames.dofus.logic.game.fight.types
    {
        
       
-      public function BlockEvadeBuff(effect:FightTemporaryBoostEffect = null, castingSpell:CastingSpell = null, actionId:int = 0)
+      public function BlockEvadeBuff(effect:FightTemporaryBoostEffect = null, castingSpell:SpellCastSequenceContext = null, actionId:int = 0)
       {
          super(effect,castingSpell,actionId);
       }

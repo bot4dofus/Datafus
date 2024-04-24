@@ -170,6 +170,15 @@
 			"shortcutKey": "toggleChannelCommunity",
 			"isPrivate": false,
 			"allowObjects": false
+		},
+		{
+			"id": 15,
+			"nameId": 1059617,
+			"descriptionId": 1059623,
+			"shortcut": "",
+			"shortcutKey": "",
+			"isPrivate": false,
+			"allowObjects": false
 		}
 	]
 }

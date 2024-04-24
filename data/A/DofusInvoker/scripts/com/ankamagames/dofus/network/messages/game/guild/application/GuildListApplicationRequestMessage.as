@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
    public class GuildListApplicationRequestMessage extends PaginationRequestAbstractMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2808;
+      public static const protocolId:uint = 5311;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.messages.game.guild.application
       
       override public function getMessageId() : uint
       {
-         return 2808;
+         return 5311;
       }
       
       public function initGuildListApplicationRequestMessage(offset:Number = 0, count:uint = 0) : GuildListApplicationRequestMessage

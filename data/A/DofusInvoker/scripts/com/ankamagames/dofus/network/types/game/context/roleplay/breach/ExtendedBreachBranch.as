@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.breach
    public class ExtendedBreachBranch extends BreachBranch implements INetworkType
    {
       
-      public static const protocolId:uint = 1872;
+      public static const protocolId:uint = 6771;
        
       
       public var rewards:Vector.<BreachReward>;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.breach
       
       override public function getTypeId() : uint
       {
-         return 1872;
+         return 6771;
       }
       
       public function initExtendedBreachBranch(room:uint = 0, element:uint = 0, bosses:Vector.<MonsterInGroupLightInformations> = null, map:Number = 0, score:int = 0, relativeScore:int = 0, monsters:Vector.<MonsterInGroupLightInformations> = null, rewards:Vector.<BreachReward> = null, modifier:int = 0, prize:uint = 0) : ExtendedBreachBranch

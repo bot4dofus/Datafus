@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightExchangePositionsMessage extends AbstractGameActionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1971;
+      public static const protocolId:uint = 3330;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 1971;
+         return 3330;
       }
       
       public function initGameActionFightExchangePositionsMessage(actionId:uint = 0, sourceId:Number = 0, targetId:Number = 0, casterCellId:int = 0, targetCellId:int = 0) : GameActionFightExchangePositionsMessage

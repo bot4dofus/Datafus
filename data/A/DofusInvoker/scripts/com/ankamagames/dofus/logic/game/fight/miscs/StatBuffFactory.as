@@ -2,7 +2,7 @@ package com.ankamagames.dofus.logic.game.fight.miscs
 {
    import com.ankama.dofus.enums.ActionIds;
    import com.ankamagames.dofus.logic.game.fight.types.BlockEvadeBuff;
-   import com.ankamagames.dofus.logic.game.fight.types.CastingSpell;
+   import com.ankamagames.dofus.logic.game.fight.types.SpellCastSequenceContext;
    import com.ankamagames.dofus.logic.game.fight.types.StatBuff;
    import com.ankamagames.dofus.network.types.game.actions.fight.FightTemporaryBoostEffect;
    
@@ -15,7 +15,7 @@ package com.ankamagames.dofus.logic.game.fight.miscs
          super();
       }
       
-      public static function createStatBuff(pEffect:FightTemporaryBoostEffect, pCastingSpell:CastingSpell, pActionId:uint) : StatBuff
+      public static function createStatBuff(pEffect:FightTemporaryBoostEffect, pCastingSpell:SpellCastSequenceContext, pActionId:uint) : StatBuff
       {
          var buff:StatBuff = null;
          switch(pActionId)

@@ -90,6 +90,8 @@ package com.ankamagames.dofus.misc.lists
       public static const CodesAndGiftGetArticlesStats:String = "CodesAndGiftGetArticlesStats";
       
       public static const CodesAndGiftGiftAssigned:String = "CodesAndGiftGiftAssigned";
+      
+      public static const ReportResponse:String = "ReportResponse";
        
       
       public function ExternalGameHookList()
@@ -142,6 +144,7 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(CodesAndGiftGetArticlesStats);
          Hook.createHook(CodesAndGiftGiftAssigned);
          Hook.createHook(BakTimeout);
+         Hook.createHook(ReportResponse);
       }
    }
 }

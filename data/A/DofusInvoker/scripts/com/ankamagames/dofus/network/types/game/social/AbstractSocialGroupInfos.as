@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.social
    public class AbstractSocialGroupInfos implements INetworkType
    {
       
-      public static const protocolId:uint = 3668;
+      public static const protocolId:uint = 7935;
        
       
       public function AbstractSocialGroupInfos()
@@ -18,7 +18,7 @@ package com.ankamagames.dofus.network.types.game.social
       
       public function getTypeId() : uint
       {
-         return 3668;
+         return 7935;
       }
       
       public function initAbstractSocialGroupInfos() : AbstractSocialGroupInfos

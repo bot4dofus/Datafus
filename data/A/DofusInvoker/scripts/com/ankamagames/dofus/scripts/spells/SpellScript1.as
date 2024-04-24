@@ -1,23 +1,23 @@
 package com.ankamagames.dofus.scripts.spells
 {
    import com.ankamagames.dofus.logic.game.fight.frames.FightEntitiesFrame;
-   import com.ankamagames.dofus.scripts.SpellFxRunner;
-   import com.ankamagames.dofus.scripts.api.FxApi;
+   import com.ankamagames.dofus.scripts.SpellScriptRunner;
    import com.ankamagames.dofus.scripts.api.SpellFxApi;
+   import com.ankamagames.dofus.scripts.api.SpellScriptRunnerUtils;
    import com.ankamagames.jerakine.types.positions.MapPoint;
    
    public class SpellScript1 extends SpellScriptBase
    {
        
       
-      public function SpellScript1(spellFxRunner:SpellFxRunner)
+      public function SpellScript1(spellFxRunner:SpellScriptRunner)
       {
          var casterCell:MapPoint = null;
          var targetGfxId:uint = 0;
          var entryPortalCell:MapPoint = null;
          var exitPortalCell:MapPoint = null;
          super(spellFxRunner);
-         var targetCell:MapPoint = FxApi.GetCurrentTargetedCell(runner);
+         var targetCell:MapPoint = MapPoint.fromCellId(runner.targetedCellId);
          if(caster == null)
          {
             casterCell = null;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.scripts.spells
          }
          else
          {
-            casterCell = FxApi.GetEntityCell(caster);
+            casterCell = SpellScriptRunnerUtils.GetEntityCell(caster);
          }
          var portalsCells:Vector.<MapPoint> = SpellFxApi.GetPortalCells(runner);
          if(portalsCells && portalsCells.length > 1)
@@ -38,9 +38,9 @@ package com.ankamagames.dofus.scripts.spells
          }
          var tmpTargetCell:MapPoint = !!entryPortalCell ? entryPortalCell : targetCell;
          var tmpCasterCell:MapPoint = !!exitPortalCell ? exitPortalCell : casterCell;
-         addCasterSetDirectionStep(tmpTargetCell,spellFxRunner.castingSpell.spellDirection);
+         addCasterSetDirectionStep(tmpTargetCell,spellFxRunner.castSequenceContext.direction);
          addCasterAnimationStep();
-         if(SpellFxApi.HasSpellParam(spell,"casterGfxId"))
+         if(runner.scriptData.hasParam("casterGfxId"))
          {
             addNewGfxEntityStep(casterCell,casterCell,tmpTargetCell,PREFIX_CASTER,"",caster);
          }
@@ -49,10 +49,10 @@ package com.ankamagames.dofus.scripts.spells
             addPortalAnimationSteps(SpellFxApi.GetPortalIds(runner));
          }
          var prefix:String = "";
-         if(SpellFxApi.HasSpellParam(spell,"targetGfxId"))
+         if(runner.scriptData.hasParam("targetGfxId"))
          {
             prefix = PREFIX_TARGET;
-            targetGfxId = SpellFxApi.GetSpellParam(spell,"targetGfxId");
+            targetGfxId = runner.scriptData.getNumberParam("targetGfxId");
          }
          else
          {
@@ -62,7 +62,7 @@ package com.ankamagames.dofus.scripts.spells
          {
             addNewGfxEntityStep(targetCell,tmpCasterCell,targetCell,prefix,"",null,targetGfxId);
          }
-         if(SpellFxApi.HasSpellParam(spell,"targetGfxId2"))
+         if(runner.scriptData.hasParam("targetGfxId2"))
          {
             addNewGfxEntityStep(targetCell,tmpCasterCell,targetCell,PREFIX_TARGET,"2");
          }

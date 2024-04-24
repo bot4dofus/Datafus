@@ -25,13 +25,14 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.logic.game.common.managers.AlmanaxManager;
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
+   import com.ankamagames.dofus.logic.game.common.misc.SpellCastSequence;
+   import com.ankamagames.dofus.logic.game.fight.types.SpellCastSequenceContext;
    import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayContextFrame;
    import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayEntitiesFrame;
    import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayInteractivesFrame;
    import com.ankamagames.dofus.logic.game.roleplay.frames.ZaapFrame;
    import com.ankamagames.dofus.logic.game.roleplay.managers.RoleplayManager;
    import com.ankamagames.dofus.logic.game.roleplay.types.Fight;
-   import com.ankamagames.dofus.logic.game.roleplay.types.RoleplaySpellCastProvider;
    import com.ankamagames.dofus.network.ProtocolConstantsEnum;
    import com.ankamagames.dofus.network.types.game.context.EntityDispositionInformations;
    import com.ankamagames.dofus.network.types.game.context.GameContextActorInformations;
@@ -44,6 +45,7 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.dofus.network.types.game.context.roleplay.GroupMonsterStaticInformationsWithAlternatives;
    import com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupLightInformations;
+   import com.ankamagames.dofus.scripts.SpellScriptContext;
    import com.ankamagames.dofus.scripts.SpellScriptManager;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
    import com.ankamagames.dofus.types.enums.ItemCategoryEnum;
@@ -58,7 +60,6 @@ package com.ankamagames.dofus.uiApi
    import com.ankamagames.jerakine.sequencer.ISequencer;
    import com.ankamagames.jerakine.sequencer.SerialSequencer;
    import com.ankamagames.jerakine.types.Callback;
-   import com.ankamagames.jerakine.types.positions.MapPoint;
    import com.ankamagames.tiphon.sequence.PlayAnimationStep;
    import flash.utils.Dictionary;
    import flash.utils.getQualifiedClassName;
@@ -278,13 +279,14 @@ package com.ankamagames.dofus.uiApi
       
       public function playSpellAnimation(spellId:int, spellLevel:int, targetCellId:int) : void
       {
-         var rpSpellCastProvider:RoleplaySpellCastProvider = new RoleplaySpellCastProvider();
-         rpSpellCastProvider.castingSpell.casterId = PlayedCharacterManager.getInstance().id;
-         rpSpellCastProvider.castingSpell.spell = Spell.getSpellById(spellId);
-         rpSpellCastProvider.castingSpell.spellRank = rpSpellCastProvider.castingSpell.spell.getSpellLevel(spellLevel);
-         rpSpellCastProvider.castingSpell.targetedCell = MapPoint.fromCellId(targetCellId);
-         var spellScriptId:int = rpSpellCastProvider.castingSpell.spell.getScriptId(rpSpellCastProvider.castingSpell.isCriticalHit);
-         SpellScriptManager.getInstance().runSpellScript(spellScriptId,rpSpellCastProvider,new Callback(this.executeSpellBuffer,null,true,true,rpSpellCastProvider),new Callback(this.executeSpellBuffer,null,true,false,rpSpellCastProvider));
+         var context:SpellCastSequenceContext = new SpellCastSequenceContext();
+         context.casterId = PlayedCharacterManager.getInstance().id;
+         context.spellData = Spell.getSpellById(spellId);
+         context.spellLevelData = context.spellData.getSpellLevel(spellLevel);
+         context.targetedCellId = targetCellId;
+         var castSequence:SpellCastSequence = new SpellCastSequence(context);
+         var contexts:Vector.<SpellScriptContext> = SpellScriptManager.getInstance().resolveScriptUsageFromCastContext(context,targetCellId);
+         SpellScriptManager.getInstance().runBulk(contexts,castSequence,new Callback(this.executeSpellBuffer,null,true,true,castSequence),new Callback(this.executeSpellBuffer,null,true,false,castSequence));
       }
       
       public function showNpcBubble(npcID:int, text:String) : void
@@ -634,15 +636,15 @@ package com.ankamagames.dofus.uiApi
          return infos;
       }
       
-      private function executeSpellBuffer(callback:Function, hadScript:Boolean, scriptSuccess:Boolean = false, castProvider:RoleplaySpellCastProvider = null) : void
+      private function executeSpellBuffer(callback:Function, hadScript:Boolean, scriptSuccess:Boolean = false, castSequence:SpellCastSequence = null) : void
       {
          var step:ISequencable = null;
-         var ss:SerialSequencer = new SerialSequencer();
-         for each(step in castProvider.stepsBuffer)
+         var serialSequencer:SerialSequencer = new SerialSequencer();
+         for each(step in castSequence.steps)
          {
-            ss.addStep(step);
+            serialSequencer.addStep(step);
          }
-         ss.start();
+         serialSequencer.start();
       }
       
       public function resourceIsFood(resource:ItemWrapper) : Boolean

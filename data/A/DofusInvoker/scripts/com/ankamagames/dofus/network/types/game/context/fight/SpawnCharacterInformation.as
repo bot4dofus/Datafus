@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class SpawnCharacterInformation extends SpawnInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 2132;
+      public static const protocolId:uint = 8865;
        
       
       public var name:String = "";
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 2132;
+         return 8865;
       }
       
       public function initSpawnCharacterInformation(name:String = "", level:uint = 0) : SpawnCharacterInformation

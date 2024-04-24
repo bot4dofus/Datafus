@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.approach
    public class ServerSettingsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1183;
+      public static const protocolId:uint = 3136;
        
       
       private var _isInitialized:Boolean = false;
@@ -43,7 +43,7 @@ package com.ankamagames.dofus.network.messages.game.approach
       
       override public function getMessageId() : uint
       {
-         return 1183;
+         return 3136;
       }
       
       public function initServerSettingsMessage(lang:String = "", community:uint = 0, gameType:int = -1, isMonoAccount:Boolean = false, arenaLeaveBanTime:uint = 0, itemMaxLevel:uint = 0, hasFreeAutopilot:Boolean = false) : ServerSettingsMessage

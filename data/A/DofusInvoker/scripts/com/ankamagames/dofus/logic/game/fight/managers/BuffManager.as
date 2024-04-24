@@ -13,8 +13,8 @@ package com.ankamagames.dofus.logic.game.fight.managers
    import com.ankamagames.dofus.logic.game.fight.miscs.ActionIdProtocol;
    import com.ankamagames.dofus.logic.game.fight.miscs.StatBuffFactory;
    import com.ankamagames.dofus.logic.game.fight.types.BasicBuff;
-   import com.ankamagames.dofus.logic.game.fight.types.CastingSpell;
    import com.ankamagames.dofus.logic.game.fight.types.SpellBuff;
+   import com.ankamagames.dofus.logic.game.fight.types.SpellCastSequenceContext;
    import com.ankamagames.dofus.logic.game.fight.types.StatBuff;
    import com.ankamagames.dofus.logic.game.fight.types.StateBuff;
    import com.ankamagames.dofus.logic.game.fight.types.TriggeredBuff;
@@ -49,12 +49,12 @@ package com.ankamagames.dofus.logic.game.fight.managers
       
       private var _buffs:Dictionary;
       
-      public var spellBuffsToIgnore:Vector.<CastingSpell>;
+      public var spellBuffsToIgnore:Vector.<SpellCastSequenceContext>;
       
       public function BuffManager()
       {
          this._buffs = new Dictionary();
-         this.spellBuffsToIgnore = new Vector.<CastingSpell>();
+         this.spellBuffsToIgnore = new Vector.<SpellCastSequenceContext>();
          super();
          if(_self)
          {
@@ -71,7 +71,7 @@ package com.ankamagames.dofus.logic.game.fight.managers
          return _self;
       }
       
-      public static function makeBuffFromEffect(effect:AbstractFightDispellableEffect, castingSpell:CastingSpell, actionId:uint) : BasicBuff
+      public static function makeBuffFromEffect(effect:AbstractFightDispellableEffect, castingSpell:SpellCastSequenceContext, actionId:uint) : BasicBuff
       {
          var buff:BasicBuff = null;
          var effectInstanceDice:EffectInstanceDice = null;
@@ -176,11 +176,11 @@ package com.ankamagames.dofus.logic.game.fight.managers
                   break;
                }
             }
-            buff.castingSpell.spellRank = spellLevel;
+            buff.castingSpell.spellLevelData = spellLevel;
          }
          if(GameDebugManager.getInstance().buffsDebugActivated)
          {
-            _log.debug("[BUFFS DEBUG]      Buff " + effect.uid + " : sort lanceur " + buff.castingSpell.spell.name + " (" + buff.castingSpell.spell.id + ") niveau " + buff.castingSpell.spellRank.grade + " par " + buff.castingSpell.casterId);
+            _log.debug("[BUFFS DEBUG]      Buff " + effect.uid + " : sort lanceur " + buff.castingSpell.spellData.name + " (" + buff.castingSpell.spellData.id + ") niveau " + buff.castingSpell.spellLevelData.grade + " par " + buff.castingSpell.casterId);
          }
          return buff;
       }
@@ -222,7 +222,7 @@ package com.ankamagames.dofus.logic.game.fight.managers
          var buffItem:BasicBuff = null;
          var modified:Boolean = false;
          var skipBuffUpdate:Boolean = false;
-         var spell:CastingSpell = null;
+         var spell:SpellCastSequenceContext = null;
          var currentFighterId:Number = NaN;
          var newBuffs:Dictionary = new Dictionary();
          for each(targetBuffs in this._buffs)
@@ -244,7 +244,7 @@ package com.ankamagames.dofus.logic.game.fight.managers
                      skipBuffUpdate = false;
                      for each(spell in this.spellBuffsToIgnore)
                      {
-                        if(spell.castingSpellId == buffItem.castingSpell.castingSpellId && spell.casterId == targetId)
+                        if(spell.id == buffItem.castingSpell.id && spell.casterId == targetId)
                         {
                            skipBuffUpdate = true;
                            break;
@@ -454,7 +454,7 @@ package com.ankamagames.dofus.logic.game.fight.managers
          }
          else
          {
-            if(sameBuff is TriggeredBuff && sameBuff.effect.triggers.indexOf("|") != -1 || sameBuff.castingSpell.spellRank && sameBuff.castingSpell.spellRank.maxStack > 0 && sameBuff.stack && sameBuff.stack.length == sameBuff.castingSpell.spellRank.maxStack)
+            if(sameBuff is TriggeredBuff && sameBuff.effect.triggers.indexOf("|") != -1 || sameBuff.castingSpell.spellLevelData && sameBuff.castingSpell.spellLevelData.maxStack > 0 && sameBuff.stack && sameBuff.stack.length == sameBuff.castingSpell.spellLevelData.maxStack)
             {
                return;
             }
@@ -545,7 +545,7 @@ package com.ankamagames.dofus.logic.game.fight.managers
          var currentFighterId:Number = CurrentPlayedFighterManager.getInstance().currentFighterId;
          for each(buff in this._buffs[targetId])
          {
-            if(spellId == buff.castingSpell.spell.id && buff.canBeDispell(forceUndispellable,int.MIN_VALUE,dying))
+            if(spellId == buff.castingSpell.spellData.id && buff.canBeDispell(forceUndispellable,int.MIN_VALUE,dying))
             {
                if(GameDebugManager.getInstance().buffsDebugActivated)
                {

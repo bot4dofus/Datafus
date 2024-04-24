@@ -17,6 +17,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.datacenter.npcs.TaxCollectorFirstname;
    import com.ankamagames.dofus.datacenter.npcs.TaxCollectorName;
    import com.ankamagames.dofus.datacenter.spells.Spell;
+   import com.ankamagames.dofus.datacenter.spells.SpellLevel;
    import com.ankamagames.dofus.datacenter.world.Area;
    import com.ankamagames.dofus.datacenter.world.SubArea;
    import com.ankamagames.dofus.externalnotification.ExternalNotificationManager;
@@ -64,7 +65,9 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.logic.game.common.managers.SpeakingItemManager;
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
+   import com.ankamagames.dofus.logic.game.common.misc.SpellCastSequence;
    import com.ankamagames.dofus.logic.game.fight.managers.TacticModeManager;
+   import com.ankamagames.dofus.logic.game.fight.types.SpellCastSequenceContext;
    import com.ankamagames.dofus.logic.game.roleplay.actions.DisplayContextualMenuAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.NpcGenericActionRequestAction;
    import com.ankamagames.dofus.logic.game.roleplay.actions.PlayerFightFriendlyAnswerAction;
@@ -75,7 +78,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.logic.game.roleplay.managers.MountAutoTripManager;
    import com.ankamagames.dofus.logic.game.roleplay.managers.RoleplayManager;
    import com.ankamagames.dofus.logic.game.roleplay.messages.InteractiveElementActivationMessage;
-   import com.ankamagames.dofus.logic.game.roleplay.types.RoleplaySpellCastProvider;
    import com.ankamagames.dofus.misc.EntityLookAdapter;
    import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.CraftHookList;
@@ -166,6 +168,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayPortalInformations;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayPrismInformations;
    import com.ankamagames.dofus.network.types.game.prism.AlliancePrismInformation;
+   import com.ankamagames.dofus.scripts.SpellScriptContext;
    import com.ankamagames.dofus.scripts.SpellScriptManager;
    import com.ankamagames.dofus.types.characteristicContextual.CharacteristicContextualManager;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
@@ -185,7 +188,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.jerakine.sequencer.SerialSequencer;
    import com.ankamagames.jerakine.types.Callback;
    import com.ankamagames.jerakine.types.Uri;
-   import com.ankamagames.jerakine.types.positions.MapPoint;
    import com.ankamagames.jerakine.types.positions.WorldPoint;
    import com.ankamagames.jerakine.utils.display.AngleToOrientation;
    import com.ankamagames.jerakine.utils.display.StageShareManager;
@@ -468,8 +470,9 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var dnvpmsg:DisplayNumericalValuePaddockMessage = null;
          var mount:IEntity = null;
          var grpsamsg:GameRolePlaySpellAnimMessage = null;
-         var rpSpellCastProvider:RoleplaySpellCastProvider = null;
-         var spellScriptId:int = 0;
+         var context:SpellCastSequenceContext = null;
+         var castSequence:SpellCastSequence = null;
+         var contexts:Vector.<SpellScriptContext> = null;
          var hea:HavenbagEnterAction = null;
          var enterhbrmsg:EnterHavenBagRequestMessage = null;
          var hipa:HavenbagInvitePlayerAction = null;
@@ -1420,14 +1423,15 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                   return true;
                }
                grpsamsg = msg as GameRolePlaySpellAnimMessage;
-               rpSpellCastProvider = new RoleplaySpellCastProvider();
-               rpSpellCastProvider.castingSpell.casterId = grpsamsg.casterId;
-               rpSpellCastProvider.castingSpell.spell = Spell.getSpellById(grpsamsg.spellId);
-               rpSpellCastProvider.castingSpell.spellRank = rpSpellCastProvider.castingSpell.spell.getSpellLevel(grpsamsg.spellLevel);
-               rpSpellCastProvider.castingSpell.targetedCell = MapPoint.fromCellId(grpsamsg.targetCellId);
-               rpSpellCastProvider.castingSpell.spellDirection = grpsamsg.direction;
-               spellScriptId = rpSpellCastProvider.castingSpell.spell.getScriptId(rpSpellCastProvider.castingSpell.isCriticalHit);
-               SpellScriptManager.getInstance().runSpellScript(spellScriptId,rpSpellCastProvider,new Callback(this.executeSpellBuffer,null,true,true,rpSpellCastProvider),new Callback(this.executeSpellBuffer,null,true,false,rpSpellCastProvider));
+               context = new SpellCastSequenceContext();
+               context.casterId = grpsamsg.casterId;
+               context.spellData = Spell.getSpellById(grpsamsg.spellId);
+               context.spellLevelData = context.spellData !== null ? context.spellData.getSpellLevel(grpsamsg.spellLevel) : null;
+               context.targetedCellId = grpsamsg.targetCellId;
+               context.direction = grpsamsg.direction;
+               castSequence = new SpellCastSequence(context);
+               contexts = SpellScriptManager.getInstance().resolveScriptUsageFromCastContext(castSequence.context);
+               SpellScriptManager.getInstance().runBulk(contexts,castSequence,new Callback(this.executeSpellBuffer,null,true,true,castSequence),new Callback(this.executeSpellBuffer,null,true,false,castSequence));
                return true;
                break;
             case msg is HavenbagEnterAction:
@@ -1551,15 +1555,15 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          return this.entitiesFrame.getEntityInfos(actorId) as GameRolePlayActorInformations;
       }
       
-      private function executeSpellBuffer(callback:Function, hadScript:Boolean, scriptSuccess:Boolean = false, castProvider:RoleplaySpellCastProvider = null) : void
+      private function executeSpellBuffer(callback:Function, hadScript:Boolean, scriptSuccess:Boolean = false, castSequence:SpellCastSequence = null) : void
       {
          var step:ISequencable = null;
-         var ss:SerialSequencer = new SerialSequencer();
-         for each(step in castProvider.stepsBuffer)
+         var serialSequencer:SerialSequencer = new SerialSequencer();
+         for each(step in castSequence.steps)
          {
-            ss.addStep(step);
+            serialSequencer.addStep(step);
          }
-         ss.start();
+         serialSequencer.start();
       }
       
       private function addCraftFrame() : void

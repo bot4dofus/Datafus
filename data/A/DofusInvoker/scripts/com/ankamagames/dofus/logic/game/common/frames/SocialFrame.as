@@ -4,7 +4,7 @@ package com.ankamagames.dofus.logic.game.common.frames
    import com.ankamagames.berilia.managers.KernelEventsManager;
    import com.ankamagames.dofus.datacenter.alliance.AllianceRank;
    import com.ankamagames.dofus.datacenter.guild.GuildRank;
-   import com.ankamagames.dofus.datacenter.servers.ServerSeason;
+   import com.ankamagames.dofus.datacenter.seasons.ServerSeason;
    import com.ankamagames.dofus.externalnotification.ExternalNotificationManager;
    import com.ankamagames.dofus.externalnotification.enums.ExternalNotificationTypeEnum;
    import com.ankamagames.dofus.internalDatacenter.DataEnum;
@@ -783,7 +783,7 @@ package com.ankamagames.dofus.logic.game.common.frames
          var gisredmsg:GuildInvitationStateRecrutedMessage = null;
          var gjmsg:GuildJoinedMessage = null;
          var joinMessage:String = null;
-         var seasonNumber:int = 0;
+         var seasonId:int = 0;
          var gigmsg:GuildInformationsGeneralMessage = null;
          var gimumsg:GuildInformationsMemberUpdateMessage = null;
          var member:GuildMemberInfo = null;
@@ -1716,10 +1716,10 @@ package com.ankamagames.dofus.logic.game.common.frames
                KernelEventsManager.getInstance().processCallback(SocialHookList.GuildMembershipUpdated,true);
                joinMessage = I18n.getUiText("ui.guild.JoinGuildMessage",[gjmsg.guildInfo.guildName]);
                KernelEventsManager.getInstance().processCallback(ChatHookList.TextInformation,joinMessage,ChatActivableChannelsEnum.PSEUDO_CHANNEL_INFO,TimeManager.getInstance().getTimestamp());
-               seasonNumber = !!ServerSeason.getCurrentSeason() ? int(ServerSeason.getCurrentSeason().seasonNumber) : -1;
-               if(PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_TEMPORIS && seasonNumber == 5)
+               seasonId = !!ServerSeason.getCurrentSeason() ? int(ServerSeason.getCurrentSeason().uid) : -1;
+               if(PlayerManager.getInstance().server.gameTypeId == GameServerTypeEnum.SERVER_TYPE_TEMPORIS && seasonId == 14)
                {
-                  notificationId = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.social.xpGuild"),I18n.getUiText("ui.social.modifyXpGuild"),NotificationTypeEnum.TUTORIAL,"temporisXpGuild_T" + seasonNumber);
+                  notificationId = NotificationManager.getInstance().prepareNotification(I18n.getUiText("ui.social.xpGuild"),I18n.getUiText("ui.social.modifyXpGuild"),NotificationTypeEnum.TUTORIAL,"temporisXpGuild_T" + seasonId);
                   NotificationManager.getInstance().addButtonToNotification(notificationId,I18n.getUiText("ui.common.modify"),"OpenSocialAction",[DataEnum.SOCIAL_TAB_GUILD_ID]);
                   NotificationManager.getInstance().sendNotification(notificationId);
                }
@@ -1727,8 +1727,9 @@ package com.ankamagames.dofus.logic.game.common.frames
                return true;
             case msg is GuildInformationsGeneralMessage:
                gigmsg = msg as GuildInformationsGeneralMessage;
-               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInformationsGeneral,gigmsg.expLevelFloor,gigmsg.experience,gigmsg.expNextLevelFloor,gigmsg.level,gigmsg.abandonnedPaddock);
+               KernelEventsManager.getInstance().processCallback(SocialHookList.GuildInformationsGeneral,gigmsg.expLevelFloor,gigmsg.experience,gigmsg.expNextLevelFloor,gigmsg.level,gigmsg.abandonnedPaddock,gigmsg.score);
                this._guild.level = gigmsg.level;
+               this._guild.score = gigmsg.score;
                this._guild.experience = gigmsg.experience;
                this._guild.expLevelFloor = gigmsg.expLevelFloor;
                this._guild.expNextLevelFloor = gigmsg.expNextLevelFloor;

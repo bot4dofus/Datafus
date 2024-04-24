@@ -12,10 +12,14 @@ package com.ankamagames.dofus.logic.game.fight.managers
    import com.ankamagames.atouin.utils.DataMapProvider;
    import com.ankamagames.dofus.datacenter.spells.Spell;
    import com.ankamagames.dofus.datacenter.spells.SpellLevel;
+   import com.ankamagames.dofus.datacenter.spells.SpellScript;
+   import com.ankamagames.dofus.internalDatacenter.spells.SpellWrapper;
    import com.ankamagames.dofus.logic.game.fight.types.MarkInstance;
    import com.ankamagames.dofus.network.enums.GameActionMarkCellsTypeEnum;
    import com.ankamagames.dofus.network.enums.TeamEnum;
    import com.ankamagames.dofus.network.types.game.actions.fight.GameActionMarkedCell;
+   import com.ankamagames.dofus.scripts.SpellScriptContext;
+   import com.ankamagames.dofus.scripts.SpellScriptManager;
    import com.ankamagames.dofus.types.entities.Glyph;
    import com.ankamagames.jerakine.entities.interfaces.IDisplayable;
    import com.ankamagames.jerakine.interfaces.IDestroyable;
@@ -495,6 +499,23 @@ package com.ankamagames.dofus.logic.game.fight.managers
                num++;
             }
          }
+      }
+      
+      public function getResolvedMarkGlyphId(casterId:Number, spellId:int, spellRank:int, markCellId:int) : int
+      {
+         var spell:SpellWrapper = SpellWrapper.create(spellId,spellRank,true,casterId);
+         return this.getResolvedMarkGlyphIdFromSpell(spell,casterId,markCellId);
+      }
+      
+      public function getResolvedMarkGlyphIdFromSpell(spell:SpellWrapper, casterId:Number, markCellId:int) : int
+      {
+         var contexts:Vector.<SpellScriptContext> = SpellScriptManager.getInstance().resolveScriptUsage(spell,false,casterId,markCellId);
+         if(contexts === null || contexts.length === 0)
+         {
+            return 0;
+         }
+         var spellScriptData:SpellScript = SpellScript.getSpellScriptById(contexts[0].scriptId);
+         return spellScriptData.getNumberParam("glyphGfxId");
       }
    }
 }

@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory
    public class MultiTabStorageMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2090;
+      public static const protocolId:uint = 3530;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory
       
       override public function getMessageId() : uint
       {
-         return 2090;
+         return 3530;
       }
       
       public function initMultiTabStorageMessage(tabs:Vector.<StorageTabInformation> = null) : MultiTabStorageMessage

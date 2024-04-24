@@ -24,6 +24,10 @@ package com.ankamagames.jerakine.messages
          {
             return true;
          }
+         if(this._iterable.length <= this._iterator)
+         {
+            return false;
+         }
          params[0] = this._iterable[this._iterator];
          ++this._iterator;
          calledfunction.apply(object,params);

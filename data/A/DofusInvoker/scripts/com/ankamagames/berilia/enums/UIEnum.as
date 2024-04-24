@@ -188,6 +188,8 @@ package com.ankamagames.berilia.enums
       public static const PVP_ARENA:String = "pvpArena";
       
       public static const WEB_BASE:String = "webBase";
+      
+      public static const REPORT:String = "report";
        
       
       public function UIEnum()

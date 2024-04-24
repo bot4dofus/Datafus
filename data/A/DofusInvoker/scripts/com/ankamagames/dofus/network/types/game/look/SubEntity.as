@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.look
    public class SubEntity implements INetworkType
    {
       
-      public static const protocolId:uint = 5890;
+      public static const protocolId:uint = 9711;
        
       
       public var bindingPointCategory:uint = 0;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.types.game.look
       
       public function getTypeId() : uint
       {
-         return 5890;
+         return 9711;
       }
       
       public function initSubEntity(bindingPointCategory:uint = 0, bindingPointIndex:uint = 0, subEntityLook:EntityLook = null) : SubEntity

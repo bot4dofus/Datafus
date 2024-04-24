@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeOfflineSoldItemsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1262;
+      public static const protocolId:uint = 1127;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 1262;
+         return 1127;
       }
       
       public function initExchangeOfflineSoldItemsMessage(bidHouseItems:Vector.<ObjectItemQuantityPriceDateEffects> = null) : ExchangeOfflineSoldItemsMessage

@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class ObjectUseOnCharacterMessage extends ObjectUseMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1729;
+      public static const protocolId:uint = 801;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 1729;
+         return 801;
       }
       
       public function initObjectUseOnCharacterMessage(objectUID:uint = 0, characterId:Number = 0) : ObjectUseOnCharacterMessage

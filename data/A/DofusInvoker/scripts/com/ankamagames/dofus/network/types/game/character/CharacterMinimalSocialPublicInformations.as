@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.character
    public class CharacterMinimalSocialPublicInformations extends CharacterMinimalInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 3968;
+      public static const protocolId:uint = 5230;
        
       
       public var rank:RankPublicInformation;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.character
       
       override public function getTypeId() : uint
       {
-         return 3968;
+         return 5230;
       }
       
       public function initCharacterMinimalSocialPublicInformations(id:Number = 0, name:String = "", level:uint = 0, rank:RankPublicInformation = null) : CharacterMinimalSocialPublicInformations

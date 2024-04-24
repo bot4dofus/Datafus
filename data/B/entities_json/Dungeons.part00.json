@@ -1823,6 +1823,221 @@
 			],
 			"entranceMapId": 223350028.0,
 			"exitMapId": 224137218.0
+		},
+		{
+			"id": 143,
+			"nameId": 1076277,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232790529.0,
+				232791553.0
+			],
+			"entranceMapId": 96338944.0,
+			"exitMapId": 10231814.0
+		},
+		{
+			"id": 144,
+			"nameId": 1070130,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232784389.0,
+				232785413.0
+			],
+			"entranceMapId": 120063489.0,
+			"exitMapId": 120063489.0
+		},
+		{
+			"id": 145,
+			"nameId": 1070132,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232791559.0,
+				232790535.0
+			],
+			"entranceMapId": 149422080.0,
+			"exitMapId": 149422080.0
+		},
+		{
+			"id": 146,
+			"nameId": 1070133,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232790533.0,
+				232791557.0
+			],
+			"entranceMapId": 88086786.0,
+			"exitMapId": 88086786.0
+		},
+		{
+			"id": 147,
+			"nameId": 1070134,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232788489.0,
+				232789513.0
+			],
+			"entranceMapId": 198967296.0,
+			"exitMapId": 86248450.0
+		},
+		{
+			"id": 148,
+			"nameId": 1070135,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232788487.0,
+				232789511.0
+			],
+			"entranceMapId": 34473220.0,
+			"exitMapId": 34476294.0
+		},
+		{
+			"id": 149,
+			"nameId": 1070136,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232790537.0,
+				232791561.0
+			],
+			"entranceMapId": 158334976.0,
+			"exitMapId": 158334976.0
+		},
+		{
+			"id": 150,
+			"nameId": 1070107,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232784385.0,
+				232785409.0
+			],
+			"entranceMapId": 192937992.0,
+			"exitMapId": 192937992.0
+		},
+		{
+			"id": 151,
+			"nameId": 1070137,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232788485.0,
+				232789509.0
+			],
+			"entranceMapId": 166985728.0,
+			"exitMapId": 166985728.0
+		},
+		{
+			"id": 152,
+			"nameId": 1070138,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232789507.0
+			],
+			"entranceMapId": 216927751.0,
+			"exitMapId": 218894338.0
+		},
+		{
+			"id": 153,
+			"nameId": 1070139,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232784393.0,
+				232785417.0
+			],
+			"entranceMapId": 104862211.0,
+			"exitMapId": 104862211.0
+		},
+		{
+			"id": 154,
+			"nameId": 1070140,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232786433.0,
+				232787457.0
+			],
+			"entranceMapId": 185861634.0,
+			"exitMapId": 185861634.0
+		},
+		{
+			"id": 155,
+			"nameId": 1070129,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232790531.0,
+				232791555.0
+			],
+			"entranceMapId": 216402698.0,
+			"exitMapId": 218632194.0
+		},
+		{
+			"id": 156,
+			"nameId": 1070128,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232786439.0
+			],
+			"entranceMapId": 171706891.0,
+			"exitMapId": 171706891.0
+		},
+		{
+			"id": 157,
+			"nameId": 1070127,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232786435.0,
+				232787459.0
+			],
+			"entranceMapId": 87032320.0,
+			"exitMapId": 82314753.0
+		},
+		{
+			"id": 158,
+			"nameId": 1070126,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232787465.0
+			],
+			"entranceMapId": 139784.0,
+			"exitMapId": 139265.0
+		},
+		{
+			"id": 159,
+			"nameId": 1070125,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232788481.0,
+				232789505.0
+			],
+			"entranceMapId": 156499968.0,
+			"exitMapId": 156499968.0
+		},
+		{
+			"id": 160,
+			"nameId": 1070124,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232784387.0,
+				232785411.0
+			],
+			"entranceMapId": 190056961.0,
+			"exitMapId": 190056961.0
+		},
+		{
+			"id": 161,
+			"nameId": 1070123,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232785415.0
+			],
+			"entranceMapId": 88080387.0,
+			"exitMapId": 88080899.0
+		},
+		{
+			"id": 162,
+			"nameId": 1070141,
+			"optimalPlayerLevel": 200,
+			"mapIds": [
+				232787461.0
+			],
+			"entranceMapId": 72221696.0,
+			"exitMapId": 72221696.0
 		}
 	]
 }

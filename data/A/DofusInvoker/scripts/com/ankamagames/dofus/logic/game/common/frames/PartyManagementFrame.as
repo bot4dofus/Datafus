@@ -2217,6 +2217,18 @@ package com.ankamagames.dofus.logic.game.common.frames
          {
             Berilia.getInstance().unloadUi(UIEnum.CRAFTER_LIST);
          }
+         if(Berilia.getInstance().getUi(UIEnum.PRISM_MODULE_UI))
+         {
+            Berilia.getInstance().unloadUi(UIEnum.PRISM_MODULE_UI);
+         }
+         if(Berilia.getInstance().getUi(UIEnum.NPC_STOCK))
+         {
+            Berilia.getInstance().unloadUi(UIEnum.NPC_STOCK);
+         }
+         if(Berilia.getInstance().getUi(UIEnum.NPC_ITEM))
+         {
+            Berilia.getInstance().unloadUi(UIEnum.NPC_ITEM);
+         }
       }
       
       private function createPartyFightNotification(mapId:Number, currentFight:PartyFightInformationsData, fightTeamLeaderId:Number, notifTitleKey:String = "ui.party.teamFightTitle", notifName:String = null) : void

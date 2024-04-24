@@ -79,10 +79,10 @@ package com.ankamagames.dofus.logic.game.fight.frames
    import com.ankamagames.dofus.logic.game.fight.managers.TacticModeManager;
    import com.ankamagames.dofus.logic.game.fight.miscs.FightReachableCellsMaker;
    import com.ankamagames.dofus.logic.game.fight.types.BasicBuff;
-   import com.ankamagames.dofus.logic.game.fight.types.CastingSpell;
    import com.ankamagames.dofus.logic.game.fight.types.FightEventEnum;
    import com.ankamagames.dofus.logic.game.fight.types.MarkInstance;
    import com.ankamagames.dofus.logic.game.fight.types.SpellCastInFightManager;
+   import com.ankamagames.dofus.logic.game.fight.types.SpellCastSequenceContext;
    import com.ankamagames.dofus.logic.game.fight.types.StatBuff;
    import com.ankamagames.dofus.logic.game.fight.types.castSpellManager.SpellManager;
    import com.ankamagames.dofus.logic.game.roleplay.frames.EntitiesTooltipsFrame;
@@ -627,7 +627,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var castingSpellPool:Array = null;
          var targetPool:Array = null;
          var durationPool:Array = null;
-         var castingSpell:CastingSpell = null;
+         var castingSpell:SpellCastSequenceContext = null;
          var numEffects:uint = 0;
          var buff:FightDispellableEffectExtendedInformations = null;
          var gfutmsg:GameFightUpdateTeamMessage = null;
@@ -638,7 +638,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          var castingSpellPools:Array = null;
          var targetPools:Array = null;
          var durationPools:Array = null;
-         var castingSpells:CastingSpell = null;
+         var castingSpells:SpellCastSequenceContext = null;
          var gfsjmsg:GameFightSpectatorJoinMessage = null;
          var timeBeforeStart2:int = 0;
          var attackersName2:String = null;
@@ -899,9 +899,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   castingSpell = durationPool[buff.effect.spellId];
                   if(!castingSpell)
                   {
-                     castingSpell = new CastingSpell();
+                     castingSpell = new SpellCastSequenceContext();
                      castingSpell.casterId = buff.sourceId;
-                     castingSpell.spell = Spell.getSpellById(buff.effect.spellId);
+                     castingSpell.spellData = Spell.getSpellById(buff.effect.spellId);
                      durationPool[buff.effect.spellId] = castingSpell;
                   }
                   buffTmp = BuffManager.makeBuffFromEffect(buff.effect,castingSpell,buff.actionId);
@@ -953,9 +953,9 @@ package com.ankamagames.dofus.logic.game.fight.frames
                   castingSpells = durationPools[buffS.effect.spellId];
                   if(!castingSpells)
                   {
-                     castingSpells = new CastingSpell();
+                     castingSpells = new SpellCastSequenceContext();
                      castingSpells.casterId = buffS.sourceId;
-                     castingSpells.spell = Spell.getSpellById(buffS.effect.spellId);
+                     castingSpells.spellData = Spell.getSpellById(buffS.effect.spellId);
                      durationPools[buffS.effect.spellId] = castingSpells;
                   }
                   buffTmpS = BuffManager.makeBuffFromEffect(buffS.effect,castingSpells,buffS.actionId);
@@ -2008,29 +2008,33 @@ package com.ankamagames.dofus.logic.game.fight.frames
       private function addMarks(marks:Vector.<GameActionMark>) : void
       {
          var mark:GameActionMark = null;
-         var spell:Spell = null;
+         var spell:SpellWrapper = null;
          var step:AddGlyphGfxStep = null;
+         var spellData:Spell = null;
+         var glyphGfxId:int = 0;
          var cellZone:GameActionMarkedCell = null;
          for each(mark in marks)
          {
-            spell = Spell.getSpellById(mark.markSpellId);
-            if(mark.markType == GameActionMarkTypeEnum.WALL || spell.getSpellLevel(mark.markSpellLevel).hasZoneShape(SpellShapeEnum.semicolon))
+            spell = SpellWrapper.create(mark.markSpellId,mark.markSpellLevel,true,mark.markAuthorId);
+            spellData = spell.spell;
+            glyphGfxId = MarkedCellsManager.getInstance().getResolvedMarkGlyphIdFromSpell(spell,mark.markAuthorId,mark.markimpactCell);
+            if(mark.markType == GameActionMarkTypeEnum.WALL || spellData.getSpellLevel(mark.markSpellLevel).hasZoneShape(SpellShapeEnum.semicolon))
             {
-               if(spell.getParamByName(this.GLYPH_GFX_ID))
+               if(glyphGfxId !== 0)
                {
                   for each(cellZone in mark.cells)
                   {
-                     step = new AddGlyphGfxStep(spell.getParamByName(this.GLYPH_GFX_ID),cellZone.cellId,mark.markId,mark.markType,mark.markTeamId,mark.active);
+                     step = new AddGlyphGfxStep(glyphGfxId,cellZone.cellId,mark.markId,mark.markType,mark.markTeamId,mark.active);
                      step.start();
                   }
                }
             }
-            else if(spell.getParamByName(this.GLYPH_GFX_ID) && !MarkedCellsManager.getInstance().getGlyph(mark.markId) && mark.markimpactCell != -1)
+            else if(glyphGfxId !== 0 && !MarkedCellsManager.getInstance().getGlyph(mark.markId) && mark.markimpactCell != -1)
             {
-               step = new AddGlyphGfxStep(spell.getParamByName(this.GLYPH_GFX_ID),mark.markimpactCell,mark.markId,mark.markType,mark.markTeamId,mark.active);
+               step = new AddGlyphGfxStep(glyphGfxId,mark.markimpactCell,mark.markId,mark.markType,mark.markTeamId,mark.active);
                step.start();
             }
-            MarkedCellsManager.getInstance().addMark(mark.markAuthorId,mark.markId,mark.markType,spell,spell.getSpellLevel(mark.markSpellLevel),mark.cells,mark.markTeamId,mark.active,mark.markimpactCell);
+            MarkedCellsManager.getInstance().addMark(mark.markAuthorId,mark.markId,mark.markType,spellData,spellData.getSpellLevel(mark.markSpellLevel),mark.cells,mark.markTeamId,mark.active,mark.markimpactCell);
          }
       }
       
@@ -2046,27 +2050,30 @@ package com.ankamagames.dofus.logic.game.fight.frames
       
       private function addMark(mark:GameActionMark) : void
       {
-         var spell:Spell = null;
+         var spell:SpellWrapper = null;
          var step:AddGlyphGfxStep = null;
+         var spellData:Spell = null;
          var cellZone:GameActionMarkedCell = null;
-         spell = Spell.getSpellById(mark.markSpellId);
-         if(mark.markType == GameActionMarkTypeEnum.WALL || spell.getSpellLevel(mark.markSpellLevel).hasZoneShape(SpellShapeEnum.semicolon))
+         spell = SpellWrapper.create(mark.markSpellId,mark.markSpellLevel,true,mark.markAuthorId);
+         spellData = spell.spell;
+         var glyphGfxId:int = MarkedCellsManager.getInstance().getResolvedMarkGlyphIdFromSpell(spell,mark.markAuthorId,mark.markimpactCell);
+         if(mark.markType == GameActionMarkTypeEnum.WALL || spellData.getSpellLevel(mark.markSpellLevel).hasZoneShape(SpellShapeEnum.semicolon))
          {
-            if(spell.getParamByName(this.GLYPH_GFX_ID))
+            if(glyphGfxId !== 0)
             {
                for each(cellZone in mark.cells)
                {
-                  step = new AddGlyphGfxStep(spell.getParamByName(this.GLYPH_GFX_ID),cellZone.cellId,mark.markId,mark.markType,mark.markTeamId,mark.active);
+                  step = new AddGlyphGfxStep(glyphGfxId,cellZone.cellId,mark.markId,mark.markType,mark.markTeamId,mark.active);
                   step.start();
                }
             }
          }
-         else if(spell.getParamByName(this.GLYPH_GFX_ID) && !MarkedCellsManager.getInstance().getGlyph(mark.markId) && mark.markimpactCell != -1)
+         else if(glyphGfxId !== 0 && !MarkedCellsManager.getInstance().getGlyph(mark.markId) && mark.markimpactCell != -1)
          {
-            step = new AddGlyphGfxStep(spell.getParamByName(this.GLYPH_GFX_ID),mark.markimpactCell,mark.markId,mark.markType,mark.markTeamId,mark.active);
+            step = new AddGlyphGfxStep(glyphGfxId,mark.markimpactCell,mark.markId,mark.markType,mark.markTeamId,mark.active);
             step.start();
          }
-         MarkedCellsManager.getInstance().addMark(mark.markAuthorId,mark.markId,mark.markType,spell,spell.getSpellLevel(mark.markSpellLevel),mark.cells,mark.markTeamId,mark.active,mark.markimpactCell);
+         MarkedCellsManager.getInstance().addMark(mark.markAuthorId,mark.markId,mark.markType,spellData,spellData.getSpellLevel(mark.markSpellLevel),mark.cells,mark.markTeamId,mark.active,mark.markimpactCell);
       }
       
       private function removeAsLinkEntityEffect() : void

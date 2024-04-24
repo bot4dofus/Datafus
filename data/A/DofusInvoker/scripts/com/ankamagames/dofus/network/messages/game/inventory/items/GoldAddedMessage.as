@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class GoldAddedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5964;
+      public static const protocolId:uint = 4979;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 5964;
+         return 4979;
       }
       
       public function initGoldAddedMessage(gold:GoldItem = null) : GoldAddedMessage

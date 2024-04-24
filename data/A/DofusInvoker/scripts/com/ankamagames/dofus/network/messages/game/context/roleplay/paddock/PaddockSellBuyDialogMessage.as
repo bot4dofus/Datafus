@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
    public class PaddockSellBuyDialogMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6305;
+      public static const protocolId:uint = 7276;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
       
       override public function getMessageId() : uint
       {
-         return 6305;
+         return 7276;
       }
       
       public function initPaddockSellBuyDialogMessage(bsell:Boolean = false, ownerId:uint = 0, price:Number = 0) : PaddockSellBuyDialogMessage

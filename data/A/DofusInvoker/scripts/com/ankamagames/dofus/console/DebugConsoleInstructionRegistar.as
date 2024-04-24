@@ -73,7 +73,7 @@ package com.ankamagames.dofus.console
          console.addHandler(["addmovingcharacter","switchupdatemode","setanimation","playemote","setdirection","memorylog","bot-spectator","bot-fight","tiphon-error","fps","fpsmanager","tacticmode","creaturemode","chainteleport"],new BenchmarkInstructionHandler());
          console.addHandler(["sendaction","listactions","sendhook"],new ActionsInstructionHandler());
          console.addHandler(["debuglos","calculatepath","tracepath","debugcellsinline"],new IAInstructionHandler());
-         console.addHandler(["setspellscriptparam","setspellscript","inspectbuffs","haxegeneratetest","detailedfightlog"],new FightInstructionHandler());
+         console.addHandler(["inspectbuffs","haxegeneratetest","detailedfightlog"],new FightInstructionHandler());
          console.addHandler(["playmusic","stopmusic","playambiance","stopambiance","addsoundinplaylist","stopplaylist","playplaylist","activesounds","adduisoundelement","clearsoundcache"],new SoundInstructionHandler());
          console.addHandler(["floodlivingobject"],new LivingObjectInstructionHandler());
          console.addHandler(["getuid"],new SystemInstructionHandler());

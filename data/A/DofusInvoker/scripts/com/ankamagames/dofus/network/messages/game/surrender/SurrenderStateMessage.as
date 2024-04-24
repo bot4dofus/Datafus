@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.surrender
    public class SurrenderStateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1652;
+      public static const protocolId:uint = 6810;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.surrender
       
       override public function getMessageId() : uint
       {
-         return 1652;
+         return 6810;
       }
       
       public function initSurrenderStateMessage(canSurrender:Boolean = false, permitVote:Boolean = false) : SurrenderStateMessage

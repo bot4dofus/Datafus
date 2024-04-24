@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeBidHouseBuyMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6726;
+      public static const protocolId:uint = 3286;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 6726;
+         return 3286;
       }
       
       public function initExchangeBidHouseBuyMessage(uid:uint = 0, qty:uint = 0, price:Number = 0) : ExchangeBidHouseBuyMessage

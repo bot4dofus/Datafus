@@ -21,7 +21,7 @@ package com.ankamagames.dofus.logic.game.fight.types
       
       public var isRecent:Boolean;
       
-      public function StatBuff(effect:FightTemporaryBoostEffect = null, castingSpell:CastingSpell = null, actionId:int = 0, isRecent:Boolean = false)
+      public function StatBuff(effect:FightTemporaryBoostEffect = null, castingSpell:SpellCastSequenceContext = null, actionId:int = 0, isRecent:Boolean = false)
       {
          var param1:* = undefined;
          var param2:* = undefined;

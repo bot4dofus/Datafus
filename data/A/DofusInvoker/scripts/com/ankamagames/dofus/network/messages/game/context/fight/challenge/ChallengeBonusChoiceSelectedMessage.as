@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.challenge
    public class ChallengeBonusChoiceSelectedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1202;
+      public static const protocolId:uint = 4927;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight.challenge
       
       override public function getMessageId() : uint
       {
-         return 1202;
+         return 4927;
       }
       
       public function initChallengeBonusChoiceSelectedMessage(challengeBonus:uint = 0) : ChallengeBonusChoiceSelectedMessage

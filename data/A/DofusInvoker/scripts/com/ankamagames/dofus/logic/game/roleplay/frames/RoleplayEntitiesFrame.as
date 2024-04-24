@@ -70,6 +70,8 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.logic.game.common.managers.SpeakingItemManager;
    import com.ankamagames.dofus.logic.game.common.managers.TimeManager;
    import com.ankamagames.dofus.logic.game.common.misc.DofusEntities;
+   import com.ankamagames.dofus.logic.game.common.misc.SpellCastSequence;
+   import com.ankamagames.dofus.logic.game.fight.types.SpellCastSequenceContext;
    import com.ankamagames.dofus.logic.game.roleplay.managers.AnimFunManager;
    import com.ankamagames.dofus.logic.game.roleplay.messages.CharacterMovementStoppedMessage;
    import com.ankamagames.dofus.logic.game.roleplay.messages.DelayedActionMessage;
@@ -78,7 +80,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.logic.game.roleplay.types.FightTeam;
    import com.ankamagames.dofus.logic.game.roleplay.types.GameContextPaddockItemInformations;
    import com.ankamagames.dofus.logic.game.roleplay.types.GroundObject;
-   import com.ankamagames.dofus.logic.game.roleplay.types.RoleplaySpellCastProvider;
    import com.ankamagames.dofus.misc.EntityLookAdapter;
    import com.ankamagames.dofus.misc.lists.ChatHookList;
    import com.ankamagames.dofus.misc.lists.HookList;
@@ -176,6 +177,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
    import com.ankamagames.dofus.network.types.game.look.IndexedEntityLook;
    import com.ankamagames.dofus.network.types.game.paddock.PaddockItem;
    import com.ankamagames.dofus.network.types.game.pvp.AgressableStatusMessage;
+   import com.ankamagames.dofus.scripts.SpellScriptContext;
    import com.ankamagames.dofus.scripts.SpellScriptManager;
    import com.ankamagames.dofus.types.data.Follower;
    import com.ankamagames.dofus.types.entities.AnimStatiqueSubEntityBehavior;
@@ -253,8 +255,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       private var _paddockItem:Dictionary;
       
       private var _fightNumber:uint = 0;
-      
-      private var _timeout:Number;
       
       private var _loader:IResourceLoader;
       
@@ -359,11 +359,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          return _creaturesMode;
       }
       
-      public function get monstersIds() : Vector.<Number>
-      {
-         return this._monstersIds;
-      }
-      
       public function get lastStaticAnimations() : Dictionary
       {
          return this._lastStaticAnimations;
@@ -385,7 +380,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var connexion:String = null;
          var mirmsg:MapInformationsRequestMessage = null;
          this.initNewMap();
-         this._playersId = new Array();
+         this._playersId = [];
          this._monstersIds = new Vector.<Number>();
          this._emoteTimesBySprite = new Dictionary();
          _entitiesVisibleNumber = 0;
@@ -425,7 +420,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       
       override public function process(msg:Message) : Boolean
       {
-         var char:AnimatedCharacter = null;
+         var animatedCharacter:AnimatedCharacter = null;
          var mcidmsg:MapComplementaryInformationsDataMessage = null;
          var currentMapHasChanged:Boolean = false;
          var currentSubAreaHasChanged:Boolean = false;
@@ -464,7 +459,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var emcm:EntityMovementCompleteMessage = null;
          var entityMovementComplete:AnimatedCharacter = null;
          var emsm:EntityMovementStoppedMessage = null;
-         var cmsmsg:CharacterMovementStoppedMessage = null;
          var characterEntityStopped:AnimatedCharacter = null;
          var grpsclmsg:GameRolePlayShowChallengeMessage = null;
          var gfosumsg:GameFightOptionStateUpdateMessage = null;
@@ -536,7 +530,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var emote:Emoticon = null;
          var staticOnly:Boolean = false;
          var time:Date = null;
-         var animNameLook:TiphonEntityLook = null;
          var emoteAnimMsg:GameRolePlaySetAnimationMessage = null;
          var taxCollectorInfo:GameRolePlayTaxCollectorInformations = null;
          var taxCollector:TaxCollectorWrapper = null;
@@ -553,6 +546,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var partyManagementFrame:PartyManagementFrame = null;
          var anomalyNid:uint = 0;
          var doorsLength:int = 0;
+         var j:int = 0;
          var humi:HumanInformations = null;
          var infos:GameRolePlayHumanoidInformations = null;
          var rpInfos:GameRolePlayCharacterInformations = null;
@@ -571,7 +565,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var menuEntity:AnimatedCharacter = null;
          var menuItem:* = undefined;
          var ch:AnimatedCharacter = null;
-         var rpwf:RoleplayWorldFrame = null;
          var modContextMenu:Object = null;
          var elementId:Number = NaN;
          var playerMessage:AgressableStatusMessage = null;
@@ -580,7 +573,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var item:PaddockItem = null;
          var cellId:uint = 0;
          var mapInfo:MapNpcQuestInfo = null;
-         var j:uint = 0;
+         var l:uint = 0;
          var questId:int = 0;
          var mapQuests:Object = null;
          var rect:Rectangle = null;
@@ -693,7 +686,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                   newSubArea = SubArea.getSubAreaById(_currentSubAreaId);
                   PlayedCharacterManager.getInstance().currentSubArea = newSubArea;
                }
-               this._playersId = new Array();
+               this._playersId = [];
                this._monstersIds = new Vector.<Number>();
                for each(actor in mcidmsg.actors)
                {
@@ -708,14 +701,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                }
                updateCreaturesLimit();
                _entitiesVisibleNumber = this._playersId.length + this._monstersIds.length;
-               if(_creaturesLimit == 0 || _creaturesLimit < 50 && _entitiesVisibleNumber >= _creaturesLimit)
-               {
-                  _creaturesMode = true;
-               }
-               else
-               {
-                  _creaturesMode = false;
-               }
+               _creaturesMode = _creaturesLimit == 0 || _creaturesLimit < 50 && _entitiesVisibleNumber >= _creaturesLimit;
                mapWithNoMonsters = true;
                emoteId = 0;
                emoteStartTime = 0;
@@ -786,8 +772,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                                     {
                                        staticOnly = true;
                                     }
-                                    animNameLook = EntityLookAdapter.fromNetwork(character.look);
-                                    emoteAnimMsg = new GameRolePlaySetAnimationMessage(actor1,emote.getAnimName(animNameLook),emote.spellLevelId,emoteStartTime,!emote.persistancy,emote.eight_directions,staticOnly);
+                                    emoteAnimMsg = new GameRolePlaySetAnimationMessage(actor1,emote.getAnimName(),emote.spellLevelId,emoteStartTime,!emote.persistancy,emote.eight_directions,staticOnly);
                                     if(ac.rendered)
                                     {
                                        this.process(emoteAnimMsg);
@@ -837,7 +822,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                }
                this.switchPokemonMode();
                thisFightExists = false;
-               fightIdsToRemove = new Array();
+               fightIdsToRemove = [];
                for each(fight in mcidmsg.fights)
                {
                   thisFightExists = false;
@@ -932,7 +917,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                {
                   PlayedCharacterManager.getInstance().isInAnomaly = false;
                }
-               if(currentMapHasChanged && OptionManager.getOptionManager("dofus").getOption("allowAnimsFun") == true)
+               if(currentMapHasChanged && OptionManager.getOptionManager("dofus").getOption("allowAnimsFun"))
                {
                   AnimFunManager.getInstance().initializeByMap(mcidmsg.mapId);
                }
@@ -1036,14 +1021,14 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                else
                {
                   doorsLength = hpmsg.doorsOnMap.length;
-                  for(i = 0; i < doorsLength; i++)
+                  for(j = 0; j < doorsLength; j++)
                   {
-                     for(h in this._housesList[hpmsg.doorsOnMap[i]].houseInstances)
+                     for(h in this._housesList[hpmsg.doorsOnMap[j]].houseInstances)
                      {
-                        if(this._housesList[hpmsg.doorsOnMap[i]].houseInstances[h].id == houseInstanceInfo.instanceId)
+                        if(this._housesList[hpmsg.doorsOnMap[j]].houseInstances[h].id == houseInstanceInfo.instanceId)
                         {
-                           houseInstanceWrapper = HouseInstanceWrapper.create(houseInstanceInfo,this._housesList[hpmsg.doorsOnMap[i]].houseInstances[h].indexOfThisInstanceForTheOwner);
-                           this._housesList[hpmsg.doorsOnMap[i]].houseInstances[h] = houseInstanceWrapper;
+                           houseInstanceWrapper = HouseInstanceWrapper.create(houseInstanceInfo,this._housesList[hpmsg.doorsOnMap[j]].houseInstances[h].indexOfThisInstanceForTheOwner);
+                           this._housesList[hpmsg.doorsOnMap[j]].houseInstances[h] = houseInstanceWrapper;
                         }
                      }
                   }
@@ -1067,25 +1052,25 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                      infos.humanoidInfo.restrictions = PlayedCharacterManager.getInstance().restrictions;
                   }
                }
-               char = DofusEntities.getEntity(grpsamsg.informations.contextualId) as AnimatedCharacter;
-               if(char && char.getAnimation().indexOf(AnimationEnum.ANIM_STATIQUE) == -1)
+               animatedCharacter = DofusEntities.getEntity(grpsamsg.informations.contextualId) as AnimatedCharacter;
+               if(animatedCharacter && animatedCharacter.getAnimation().indexOf(AnimationEnum.ANIM_STATIQUE) == -1)
                {
-                  char.visibleAura = false;
+                  animatedCharacter.visibleAura = false;
                }
-               if(!char)
+               if(!animatedCharacter)
                {
                   updateCreaturesLimit();
                }
-               char = this.addOrUpdateActor(grpsamsg.informations);
-               if(char && grpsamsg.informations.contextualId == PlayedCharacterManager.getInstance().id)
+               animatedCharacter = this.addOrUpdateActor(grpsamsg.informations);
+               if(animatedCharacter && grpsamsg.informations.contextualId == PlayedCharacterManager.getInstance().id)
                {
-                  if(char.libraryIsAvailable)
+                  if(animatedCharacter.libraryIsAvailable)
                   {
-                     this.updateUsableEmotesListInit(char.look);
+                     this.updateUsableEmotesListInit(animatedCharacter.look);
                   }
                   else
                   {
-                     char.addEventListener(TiphonEvent.SPRITE_INIT,this.onPlayerSpriteInit);
+                     animatedCharacter.addEventListener(TiphonEvent.SPRITE_INIT,this.onPlayerSpriteInit);
                   }
                }
                if(this.switchPokemonMode())
@@ -1108,7 +1093,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                         SpeakingItemManager.getInstance().triggerEvent(SpeakingItemManager.SPEAK_TRIGGER_NEW_ENEMY_STRONG);
                   }
                }
-               if(OptionManager.getOptionManager("dofus").getOption("allowAnimsFun") == true && grpsamsg.informations is GameRolePlayGroupMonsterInformations)
+               if(OptionManager.getOptionManager("dofus").getOption("allowAnimsFun") && grpsamsg.informations is GameRolePlayGroupMonsterInformations)
                {
                   AnimFunManager.getInstance().restart();
                }
@@ -1129,16 +1114,16 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                   return true;
                }
                gcrelmsg = msg as GameContextRefreshEntityLookMessage;
-               char = this.updateActorLook(gcrelmsg.id,gcrelmsg.look,true);
-               if(char && gcrelmsg.id == PlayedCharacterManager.getInstance().id)
+               animatedCharacter = this.updateActorLook(gcrelmsg.id,gcrelmsg.look,true);
+               if(animatedCharacter && gcrelmsg.id == PlayedCharacterManager.getInstance().id)
                {
-                  if(char.libraryIsAvailable)
+                  if(animatedCharacter.libraryIsAvailable)
                   {
-                     this.updateUsableEmotesListInit(char.look);
+                     this.updateUsableEmotesListInit(animatedCharacter.look);
                   }
                   else
                   {
-                     char.addEventListener(TiphonEvent.SPRITE_INIT,this.onPlayerSpriteInit);
+                     animatedCharacter.addEventListener(TiphonEvent.SPRITE_INIT,this.onPlayerSpriteInit);
                   }
                }
                return true;
@@ -1187,7 +1172,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                }
                return false;
             case msg is CharacterMovementStoppedMessage:
-               cmsmsg = msg as CharacterMovementStoppedMessage;
                characterEntityStopped = DofusEntities.getEntity(PlayedCharacterManager.getInstance().id) as AnimatedCharacter;
                if(OptionManager.getOptionManager("tiphon").getOption("auraMode") > OptionEnum.AURA_NONE && OptionManager.getOptionManager("tiphon").getOption("alwaysShowAuraOnFront") && characterEntityStopped.getDirection() == DirectionsEnum.DOWN && characterEntityStopped.getAnimation().indexOf(AnimationEnum.ANIM_STATIQUE) != -1 && PlayedCharacterManager.getInstance().state == PlayerLifeStatusEnum.STATUS_ALIVE_AND_KICKING)
                {
@@ -1271,7 +1255,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                   }
                }
                removeActor(gcremsg.id);
-               if(OptionManager.getOptionManager("dofus").getOption("allowAnimsFun") == true && monsterId != -1)
+               if(OptionManager.getOptionManager("dofus").getOption("allowAnimsFun") && monsterId != -1)
                {
                   AnimFunManager.getInstance().restart();
                }
@@ -1294,7 +1278,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                   {
                      if(menuEntity)
                      {
-                        rpwf = Kernel.getWorker().getFrame(RoleplayWorldFrame) as RoleplayWorldFrame;
                         modContextMenu = UiModuleManager.getInstance().getModule("Ankama_ContextMenu").mainClass;
                         modContextMenu.closeAllMenu();
                         modContextMenu.createContextMenu(MenusFactory.create(getEntityInfos(menuEntity.id),"multiplayer",[menuEntity]),null,null,"multiplayerMenu");
@@ -1446,12 +1429,12 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                      this.addNpcClip(mapInfo);
                   }
                   nbQuest = 0;
-                  for(j = 0; j < mapInfo.npcsIdsWithQuest.length; j++)
+                  for(l = 0; l < mapInfo.npcsIdsWithQuest.length; l++)
                   {
-                     for each(questId in mapInfo.questFlags[j].questsToStartId)
+                     for each(questId in mapInfo.questFlags[l].questsToStartId)
                      {
                         q = Quest.getQuestById(questId);
-                        if(q != null && mapInfo.questFlags[j].questsToStartId.indexOf(q.id) != -1)
+                        if(q != null && mapInfo.questFlags[l].questsToStartId.indexOf(q.id) != -1)
                         {
                            nbQuest++;
                         }
@@ -1557,8 +1540,9 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       {
          var f:Follower = null;
          var rider:TiphonSprite = null;
-         var rpSpellCastProvider:RoleplaySpellCastProvider = null;
-         var spellScriptId:int = 0;
+         var context:SpellCastSequenceContext = null;
+         var castSequence:SpellCastSequence = null;
+         var scriptContexts:Vector.<SpellScriptContext> = null;
          var availableDirection:Array = null;
          var characterDirection:uint = 0;
          var nearestDirection:uint = 0;
@@ -1582,13 +1566,14 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
             {
                rider.removeEventListener(TiphonEvent.ANIMATION_ADDED,this.onAnimationAdded);
             }
-            rpSpellCastProvider = new RoleplaySpellCastProvider();
-            rpSpellCastProvider.castingSpell.casterId = characterEntity.id;
-            rpSpellCastProvider.castingSpell.spellRank = SpellLevel.getLevelById(spellLevelId);
-            rpSpellCastProvider.castingSpell.spell = rpSpellCastProvider.castingSpell.spellRank.spell;
-            rpSpellCastProvider.castingSpell.targetedCell = characterEntity.position;
-            spellScriptId = rpSpellCastProvider.castingSpell.spell.getScriptId(rpSpellCastProvider.castingSpell.isCriticalHit);
-            SpellScriptManager.getInstance().runSpellScript(spellScriptId,rpSpellCastProvider,new Callback(this.executeSpellBuffer,rpSpellCastProvider),new Callback(this.executeSpellBuffer,rpSpellCastProvider));
+            context = new SpellCastSequenceContext();
+            context.casterId = characterEntity.id;
+            context.spellLevelData = SpellLevel.getLevelById(spellLevelId);
+            context.spellData = context.spellLevelData.spell;
+            context.targetedCellId = characterEntity.position !== null ? int(characterEntity.position.cellId) : -1;
+            castSequence = new SpellCastSequence(context);
+            scriptContexts = SpellScriptManager.getInstance().resolveScriptUsageFromCastContext(castSequence.context);
+            SpellScriptManager.getInstance().runBulk(scriptContexts,castSequence,new Callback(this.executeSpellBuffer,castSequence),new Callback(this.executeSpellBuffer,castSequence));
          }
          else if(animation == AnimationEnum.ANIM_STATIQUE)
          {
@@ -1670,19 +1655,19 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          return nearestDir;
       }
       
-      private function executeSpellBuffer(castProvider:RoleplaySpellCastProvider) : void
+      private function executeSpellBuffer(castSequence:SpellCastSequence) : void
       {
          var step:ISequencable = null;
-         var ss:SerialSequencer = new SerialSequencer();
-         for each(step in castProvider.stepsBuffer)
+         var serialSequencer:SerialSequencer = new SerialSequencer();
+         for each(step in castSequence.steps)
          {
-            ss.addStep(step);
+            serialSequencer.addStep(step);
          }
-         ss.addStep(new CallbackStep(new Callback(function():void
+         serialSequencer.addStep(new CallbackStep(new Callback(function():void
          {
             _currentEmoticon = 0;
          })));
-         ss.start();
+         serialSequencer.start();
       }
       
       private function initNewMap() : void
@@ -1735,7 +1720,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
             this._loader.removeEventListener(ResourceErrorEvent.ERROR,this.onGroundObjectLoadFailed);
             this._loader = null;
          }
-         if(OptionManager.getOptionManager("dofus").getOption("allowAnimsFun") == true)
+         if(OptionManager.getOptionManager("dofus").getOption("allowAnimsFun"))
          {
             AnimFunManager.getInstance().stop();
          }
@@ -1788,11 +1773,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          return _entities[entityId] is FightTeam;
       }
       
-      public function isPaddockItem(entityId:Number) : Boolean
-      {
-         return _entities[entityId] is GameContextPaddockItemInformations;
-      }
-      
       public function getFightTeam(entityId:Number) : FightTeam
       {
          return _entities[entityId] as FightTeam;
@@ -1829,13 +1809,13 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       private function updateMonstersGroup(pMonstersInfo:GameRolePlayGroupMonsterInformations) : void
       {
          var monsterInfos:MonsterInGroupLightInformations = null;
-         var i:uint = 0;
          var underling:MonsterInGroupLightInformations = null;
          var monster:Monster = null;
          var monsterGrade:int = 0;
          var length:int = 0;
          var monstersGroup:Vector.<MonsterInGroupLightInformations> = this.getMonsterGroup(pMonstersInfo.staticInfos);
          var groupHasMiniBoss:Boolean = Monster.getMonsterById(pMonstersInfo.staticInfos.mainCreatureLightInfos.genericId).isMiniBoss;
+         var i:uint = 0;
          if(monstersGroup)
          {
             for each(monsterInfos in monstersGroup)
@@ -2045,7 +2025,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                   switch(true)
                   {
                      case option is HumanOptionFollowers:
-                        indexedLooks = new Array();
+                        indexedLooks = [];
                         for each(indexedEL in option.followingCharactersLook)
                         {
                            indexedLooks.push(indexedEL);
@@ -2090,7 +2070,6 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                break;
             case infos is GameRolePlayNpcInformations:
                this._npcList[infos.contextualId] = ac;
-            case infos is GameContextPaddockItemInformations:
                break;
             default:
                _log.warn("Unknown GameRolePlayActorInformations type : " + infos + ".");
@@ -2199,7 +2178,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          ac.removeBackground("questRepeatableObjectiveClip");
       }
       
-      private function manageFollowers(char:AnimatedCharacter, followers:Vector.<EntityLook>, speedAdjust:Vector.<Number> = null, types:Vector.<uint> = null, areMonsters:Boolean = false) : void
+      private function manageFollowers(animatedCharacter:AnimatedCharacter, followers:Vector.<EntityLook>, speedAdjust:Vector.<Number> = null, types:Vector.<uint> = null, areMonsters:Boolean = false) : void
       {
          var num:int = 0;
          var i:int = 0;
@@ -2209,20 +2188,20 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          {
             return;
          }
-         if(!char.followersEqual(followers))
+         if(!animatedCharacter.followersEqual(followers))
          {
-            char.removeAllFollowers();
+            animatedCharacter.removeAllFollowers();
             num = followers.length;
             for(i = 0; i < num; i++)
             {
                followerBaseLook = followers[i];
                followerEntityLook = EntityLookAdapter.fromNetwork(followerBaseLook);
-               char.addFollower(this.createFollower(followerEntityLook,char,!!types ? uint(types[i]) : (!!areMonsters ? uint(Follower.TYPE_MONSTER) : uint(Follower.TYPE_NETWORK)),speedAdjust != null ? Number(speedAdjust[i]) : Number(null)));
+               animatedCharacter.addFollower(this.createFollower(followerEntityLook,animatedCharacter,!!types ? uint(types[i]) : (!!areMonsters ? uint(Follower.TYPE_MONSTER) : uint(Follower.TYPE_NETWORK)),speedAdjust != null ? Number(speedAdjust[i]) : Number(0)));
             }
          }
       }
       
-      private function createFollower(look:TiphonEntityLook, parent:AnimatedCharacter, type:uint, speedAdjust:Number = 0) : Follower
+      private function createFollower(look:TiphonEntityLook, parent:AnimatedCharacter, followerType:uint, speedAdjust:Number = 0) : Follower
       {
          var mapPosition:MapPosition = null;
          var followerEntity:AnimatedCharacter = new AnimatedCharacter(EntitiesManager.getInstance().getFreeEntityId(),look,parent);
@@ -2239,7 +2218,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                followerEntity.addAnimationModifier(_underWaterAnimationModifier);
             }
          }
-         return new Follower(followerEntity,type);
+         return new Follower(followerEntity,followerType);
       }
       
       private function addFight(infos:FightCommonInformations) : void
@@ -2565,13 +2544,13 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          var emotes:Array = rpEmoticonFrame.emotesList;
          var subEntities:Dictionary = pLook.getSubEntities();
          var updateShortcutsBar:Boolean = false;
-         var usableEmotes:Array = new Array();
+         var usableEmotes:Array = [];
          for each(emote in emotes)
          {
             emoteAvailable = false;
             if(emote && emote.emote)
             {
-               animName = emote.emote.getAnimName(pLook);
+               animName = emote.emote.getAnimName();
                if(emote.emote.aura && !isGhost && !isIncarnation || Tiphon.skullLibrary.hasAnim(pLook.getBone(),animName))
                {
                   emoteAvailable = true;
@@ -2692,18 +2671,10 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       {
       }
       
-      public function timeoutStop(character:AnimatedCharacter) : void
-      {
-         clearTimeout(this._timeout);
-         character.setAnimation(AnimationEnum.ANIM_STATIQUE);
-         this._currentEmoticon = 0;
-      }
-      
       override public function onPlayAnim(e:TiphonEvent) : void
       {
-         var animsRandom:Array = new Array();
          var tempStr:String = e.params.substring(6,e.params.length - 1);
-         animsRandom = tempStr.split(",");
+         var animsRandom:Array = tempStr.split(",");
          var whichAnim:int = this._emoteTimesBySprite[(e.currentTarget as TiphonSprite).name] % animsRandom.length;
          e.sprite.setAnimation(animsRandom[whichAnim]);
       }
@@ -2836,13 +2807,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
       override protected function changeColor(entityId:Number, name:String, color:ColorTransform = null) : void
       {
          var info:* = undefined;
-         var playedCharacterManager:PlayedCharacterManager = null;
-         var subarea:SubArea = null;
-         var subareaId:int = 0;
-         var prismSubareaWrapper:PrismSubAreaWrapper = null;
-         var allianceWrapper:AllianceWrapper = null;
-         var prismAlliance:uint = 0;
-         var playerAlliance:uint = 0;
+         var prism:PrismSubAreaWrapper = null;
          var entityAlliance:uint = 0;
          if(name.indexOf("role") == -1)
          {
@@ -2855,14 +2820,14 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
                entityAlliance = info.allianceInformation.allianceId;
             }
          }
-         playedCharacterManager = PlayedCharacterManager.getInstance();
-         subarea = playedCharacterManager.currentSubArea;
-         subareaId = subarea.id;
-         prismSubareaWrapper = this._allianceFrame.getPrismSubAreaById(subareaId);
-         allianceWrapper = prismSubareaWrapper.alliance;
-         prismAlliance = allianceWrapper.groupId;
-         playerAlliance = this._socialFrame.alliance.groupId;
-         if(prismAlliance == entityAlliance)
+         prism = this._allianceFrame.getPrismSubAreaById(PlayedCharacterManager.getInstance().currentSubArea.id);
+         if(!prism)
+         {
+            return;
+         }
+         var prismAllianceId:uint = prism.alliance.groupId;
+         var playerAlliance:uint = this._socialFrame.alliance.groupId;
+         if(prismAllianceId == entityAlliance)
          {
             super.changeColor(entityId,name,KothColorsEnum.COLOR_DEFENDER_AVA_BLUE);
          }
@@ -2995,7 +2960,7 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          if(e.propertyName == "allowAnimsFun")
          {
             AnimFunManager.getInstance().stop();
-            if(e.propertyValue == true)
+            if(e.propertyValue)
             {
                AnimFunManager.getInstance().initializeByMap(PlayedCharacterManager.getInstance().currentMap.mapId);
             }
@@ -3043,11 +3008,11 @@ package com.ankamagames.dofus.logic.game.roleplay.frames
          }
       }
       
-      private function getNumDirections(char:TiphonSprite) : int
+      private function getNumDirections(character:TiphonSprite) : int
       {
-         var num:int = 0;
          var b:Boolean = false;
-         for each(b in char.getAvaibleDirection())
+         var num:int = 0;
+         for each(b in character.getAvaibleDirection())
          {
             if(b)
             {

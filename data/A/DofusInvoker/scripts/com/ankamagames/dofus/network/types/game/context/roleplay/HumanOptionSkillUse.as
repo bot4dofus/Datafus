@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class HumanOptionSkillUse extends HumanOption implements INetworkType
    {
       
-      public static const protocolId:uint = 3994;
+      public static const protocolId:uint = 2431;
        
       
       public var elementId:uint = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 3994;
+         return 2431;
       }
       
       public function initHumanOptionSkillUse(elementId:uint = 0, skillId:uint = 0, skillEndTime:Number = 0) : HumanOptionSkillUse

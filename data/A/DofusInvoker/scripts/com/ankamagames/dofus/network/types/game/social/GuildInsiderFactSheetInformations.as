@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.social
    public class GuildInsiderFactSheetInformations extends GuildFactSheetInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 6089;
+      public static const protocolId:uint = 7914;
        
       
       public var leaderName:String = "";
@@ -21,7 +21,7 @@ package com.ankamagames.dofus.network.types.game.social
       
       override public function getTypeId() : uint
       {
-         return 6089;
+         return 7914;
       }
       
       public function initGuildInsiderFactSheetInformations(guildId:uint = 0, guildName:String = "", guildLevel:uint = 0, guildEmblem:SocialEmblem = null, leaderId:Number = 0, nbMembers:uint = 0, lastActivityDay:uint = 0, recruitment:GuildRecruitmentInformation = null, nbPendingApply:uint = 0, leaderName:String = "") : GuildInsiderFactSheetInformations

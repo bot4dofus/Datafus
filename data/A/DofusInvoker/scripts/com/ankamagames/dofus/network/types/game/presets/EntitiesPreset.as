@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.presets
    public class EntitiesPreset extends Preset implements INetworkType
    {
       
-      public static const protocolId:uint = 9660;
+      public static const protocolId:uint = 5403;
        
       
       public var iconId:uint = 0;
@@ -25,7 +25,7 @@ package com.ankamagames.dofus.network.types.game.presets
       
       override public function getTypeId() : uint
       {
-         return 9660;
+         return 5403;
       }
       
       public function initEntitiesPreset(id:int = 0, iconId:uint = 0, entityIds:Vector.<uint> = null) : EntitiesPreset

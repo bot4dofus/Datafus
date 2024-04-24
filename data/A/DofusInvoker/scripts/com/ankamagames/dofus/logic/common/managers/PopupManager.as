@@ -4,7 +4,7 @@ package com.ankamagames.dofus.logic.common.managers
    import com.ankamagames.dofus.datacenter.items.criterion.CriterionUtils;
    import com.ankamagames.dofus.datacenter.items.criterion.GroupItemCriterion;
    import com.ankamagames.dofus.datacenter.items.criterion.IItemCriterion;
-   import com.ankamagames.dofus.datacenter.items.criterion.ServerSeasonTemporisCriterion;
+   import com.ankamagames.dofus.datacenter.items.criterion.SeasonCriterion;
    import com.ankamagames.dofus.datacenter.items.criterion.ServerTypeItemCriterion;
    import com.ankamagames.dofus.datacenter.popup.PopupButton;
    import com.ankamagames.dofus.datacenter.popup.PopupInformation;
@@ -78,7 +78,7 @@ package com.ankamagames.dofus.logic.common.managers
                isPrepared = false;
                for each(criterion in criterionList)
                {
-                  if((criterion is ServerTypeItemCriterion || criterion is ServerSeasonTemporisCriterion) && !this.isInCache(popupInformation))
+                  if((criterion is ServerTypeItemCriterion || criterion is SeasonCriterion) && !this.isInCache(popupInformation))
                   {
                      this.preparePopup(popupInformation);
                      isPrepared = true;

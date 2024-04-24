@@ -12,7 +12,7 @@ package com.ankamagames.dofus.logic.game.fight.types
       
       public var triggerCount:uint;
       
-      public function TriggeredBuff(effect:FightTriggeredEffect = null, castingSpell:CastingSpell = null, actionId:uint = 0)
+      public function TriggeredBuff(effect:FightTriggeredEffect = null, castingSpell:SpellCastSequenceContext = null, actionId:uint = 0)
       {
          if(effect)
          {

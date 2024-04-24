@@ -23,7 +23,7 @@ package com.ankamagames.jerakine.sequencer
       
       private var _castingSpellId:int = -1;
       
-      protected var _timeoutMax:int;
+      protected var _timeoutInMs:int;
       
       private var _withTimeOut:Boolean = false;
       
@@ -34,7 +34,7 @@ package com.ankamagames.jerakine.sequencer
       public function AbstractSequencable()
       {
          this._listeners = new Dictionary();
-         this._timeoutMax = DEFAULT_TIMEOUT;
+         this._timeoutInMs = DEFAULT_TIMEOUT;
          super();
       }
       
@@ -45,7 +45,7 @@ package com.ankamagames.jerakine.sequencer
       
       public function get timeout() : int
       {
-         return this._timeoutMax;
+         return this._timeoutInMs;
       }
       
       public function get finished() : Boolean
@@ -60,7 +60,7 @@ package com.ankamagames.jerakine.sequencer
       
       public function set timeout(value:int) : void
       {
-         this._timeoutMax = value;
+         this._timeoutInMs = value;
          if(this._timeOut && value != -1)
          {
             this._timeOut.delay = value;
@@ -69,7 +69,7 @@ package com.ankamagames.jerakine.sequencer
       
       public function get hasDefaultTimeout() : Boolean
       {
-         return this._timeoutMax == DEFAULT_TIMEOUT;
+         return this._timeoutInMs == DEFAULT_TIMEOUT;
       }
       
       public function pause() : void
@@ -96,9 +96,9 @@ package com.ankamagames.jerakine.sequencer
       
       public function addListener(listener:ISequencableListener) : void
       {
-         if(!this._timeOut && this._timeoutMax != -1)
+         if(!this._timeOut && this._timeoutInMs != -1)
          {
-            this._timeOut = new BenchmarkTimer(this._timeoutMax,1,"AbstractSequencable._timeOut");
+            this._timeOut = new BenchmarkTimer(this._timeoutInMs,1,"AbstractSequencable._timeOut");
             this._timeOut.addEventListener(TimerEvent.TIMER,this.onTimeOut);
             this._timeOut.start();
          }
@@ -170,7 +170,7 @@ package com.ankamagames.jerakine.sequencer
       
       protected function onTimeOut(e:TimerEvent) : void
       {
-         _log.error("Time out sur la step " + this + " (" + this._timeOut.delay + ")");
+         _log.error("Timeout on step " + this + " (" + this._timeOut.delay + "ms)");
          this._withTimeOut = true;
          if(this._timeOut)
          {

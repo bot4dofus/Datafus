@@ -29,7 +29,6 @@ package com.ankamagames.dofus.console.debug
    import com.ankamagames.jerakine.types.positions.MapPoint;
    import com.ankamagames.jerakine.utils.benchmark.monitoring.FpsManager;
    import com.ankamagames.jerakine.utils.display.StageShareManager;
-   import com.ankamagames.jerakine.utils.misc.StringUtils;
    import com.ankamagames.jerakine.utils.prng.PRNG;
    import com.ankamagames.jerakine.utils.prng.ParkMillerCarta;
    import com.ankamagames.tiphon.display.TiphonSprite;
@@ -54,9 +53,6 @@ package com.ankamagames.dofus.console.debug
       
       public function handle(console:ConsoleHandler, cmd:String, args:Array) : void
       {
-         var emotes:Array = null;
-         var emoticonFounded:Boolean = false;
-         var animName:String = null;
          var animEntity:IAnimated = null;
          var lsrf:LuaScriptRecorderFrame = null;
          var fef:FightEntitiesFrame = null;
@@ -77,9 +73,6 @@ package com.ankamagames.dofus.console.debug
          var i:uint = 0;
          var rpCharEntity:BenchmarkCharacter = null;
          var cell:MapPoint = null;
-         var emote:Emoticon = null;
-         var name:String = null;
-         var param:String = null;
          var fightEntity:GameContextActorInformations = null;
          var gfmi:GameFightMonsterInformations = null;
          var fr:DebugBotFrame = null;
@@ -109,32 +102,6 @@ package com.ankamagames.dofus.console.debug
                   }
                }
                break;
-            case "playemote":
-               emotes = Emoticon.getEmoticons();
-               emoticonFounded = false;
-               animName = StringUtils.noAccent(args.join(" ").toLowerCase());
-               for each(emote in emotes)
-               {
-                  name = I18n.getUnDiacriticalText(emote.nameId);
-                  if(animName.indexOf(name) != -1)
-                  {
-                     args[0] = emote.getAnimName(TiphonSprite(DofusEntities.getEntity(PlayedCharacterManager.getInstance().id)).look);
-                     emoticonFounded = true;
-                  }
-               }
-               if(!emoticonFounded)
-               {
-                  console.output("Aucune correspondance trouvée pour : " + animName);
-                  return;
-               }
-               for each(param in args)
-               {
-                  if(parseInt(param).toString() == param)
-                  {
-                     args[1] = param;
-                     break;
-                  }
-               }
             case "setanimation":
                animEntity = DofusEntities.getEntity(PlayedCharacterManager.getInstance().id) as IAnimated;
                lsrf = Kernel.getWorker().getFrame(LuaScriptRecorderFrame) as LuaScriptRecorderFrame;

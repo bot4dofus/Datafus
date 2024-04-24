@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class StartGuildChestContributionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9708;
+      public static const protocolId:uint = 4696;
        
       
       public function StartGuildChestContributionMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 9708;
+         return 4696;
       }
       
       public function initStartGuildChestContributionMessage() : StartGuildChestContributionMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.presets
    public class PresetSaveErrorMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1194;
+      public static const protocolId:uint = 77;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.presets
       
       override public function getMessageId() : uint
       {
-         return 1194;
+         return 77;
       }
       
       public function initPresetSaveErrorMessage(presetId:int = 0, code:uint = 2) : PresetSaveErrorMessage

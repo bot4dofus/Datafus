@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.friend
    public class SpouseGetInformationsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 90;
+      public static const protocolId:uint = 954;
        
       
       public function SpouseGetInformationsMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.friend
       
       override public function getMessageId() : uint
       {
-         return 90;
+         return 954;
       }
       
       public function initSpouseGetInformationsMessage() : SpouseGetInformationsMessage

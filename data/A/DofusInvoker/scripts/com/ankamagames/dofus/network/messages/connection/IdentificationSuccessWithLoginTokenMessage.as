@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.connection
    public class IdentificationSuccessWithLoginTokenMessage extends IdentificationSuccessMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4505;
+      public static const protocolId:uint = 5227;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,12 +30,12 @@ package com.ankamagames.dofus.network.messages.connection
       
       override public function getMessageId() : uint
       {
-         return 4505;
+         return 5227;
       }
       
-      public function initIdentificationSuccessWithLoginTokenMessage(login:String = "", accountTag:AccountTagInformation = null, accountId:uint = 0, communityId:uint = 0, hasRights:Boolean = false, hasForceRight:Boolean = false, accountCreation:Number = 0, subscriptionEndDate:Number = 0, wasAlreadyConnected:Boolean = false, havenbagAvailableRoom:uint = 0, loginToken:String = "") : IdentificationSuccessWithLoginTokenMessage
+      public function initIdentificationSuccessWithLoginTokenMessage(login:String = "", accountTag:AccountTagInformation = null, accountId:uint = 0, communityId:uint = 0, hasRights:Boolean = false, hasReportRight:Boolean = false, hasForceRight:Boolean = false, accountCreation:Number = 0, subscriptionEndDate:Number = 0, wasAlreadyConnected:Boolean = false, havenbagAvailableRoom:uint = 0, loginToken:String = "") : IdentificationSuccessWithLoginTokenMessage
       {
-         super.initIdentificationSuccessMessage(login,accountTag,accountId,communityId,hasRights,hasForceRight,accountCreation,subscriptionEndDate,wasAlreadyConnected,havenbagAvailableRoom);
+         super.initIdentificationSuccessMessage(login,accountTag,accountId,communityId,hasRights,hasReportRight,hasForceRight,accountCreation,subscriptionEndDate,wasAlreadyConnected,havenbagAvailableRoom);
          this.loginToken = loginToken;
          this._isInitialized = true;
          return this;

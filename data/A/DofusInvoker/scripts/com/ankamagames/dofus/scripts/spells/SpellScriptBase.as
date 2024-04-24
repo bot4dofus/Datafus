@@ -6,11 +6,11 @@ package com.ankamagames.dofus.scripts.spells
    import com.ankamagames.dofus.logic.game.common.managers.PlayedCharacterManager;
    import com.ankamagames.dofus.logic.game.fight.steps.FightLifeVariationStep;
    import com.ankamagames.dofus.logic.game.fight.steps.IFightStep;
-   import com.ankamagames.dofus.logic.game.fight.types.CastingSpell;
-   import com.ankamagames.dofus.scripts.SpellFxRunner;
-   import com.ankamagames.dofus.scripts.api.FxApi;
+   import com.ankamagames.dofus.logic.game.fight.types.SpellCastSequenceContext;
+   import com.ankamagames.dofus.scripts.SpellScriptRunner;
    import com.ankamagames.dofus.scripts.api.SequenceApi;
    import com.ankamagames.dofus.scripts.api.SpellFxApi;
+   import com.ankamagames.dofus.scripts.api.SpellScriptRunnerUtils;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
    import com.ankamagames.dofus.types.entities.Glyph;
    import com.ankamagames.dofus.types.entities.Projectile;
@@ -44,21 +44,21 @@ package com.ankamagames.dofus.scripts.spells
       
       protected var latestStep:ISequencable;
       
-      protected var runner:SpellFxRunner;
+      protected var runner:SpellScriptRunner;
       
-      protected var spell:CastingSpell;
+      protected var spell:SpellCastSequenceContext;
       
       protected var caster:AnimatedCharacter;
       
-      public function SpellScriptBase(spellFxRunner:SpellFxRunner)
+      public function SpellScriptBase(spellFxRunner:SpellScriptRunner)
       {
          super();
          this.runner = spellFxRunner;
-         this.spell = SpellFxApi.GetCastingSpell(this.runner);
-         this.caster = FxApi.GetCurrentCaster(this.runner) as AnimatedCharacter;
-         if(this.runner.stepsBuffer && this.runner.stepsBuffer.length > 0)
+         this.spell = this.runner.castSequenceContext;
+         this.caster = this.runner.caster as AnimatedCharacter;
+         if(this.runner.steps && this.runner.steps.length > 0)
          {
-            this.latestStep = this.runner.stepsBuffer[this.runner.stepsBuffer.length - 1];
+            this.latestStep = this.runner.steps[this.runner.steps.length - 1];
          }
       }
       
@@ -68,9 +68,9 @@ package com.ankamagames.dofus.scripts.spells
          if(this.caster && this.caster.position && target)
          {
             orientationStep = new SetDirectionStep(this.caster,forcedDirection,target);
-            if(!this.latestStep && this.runner.stepsBuffer.length > 0)
+            if(!this.latestStep && this.runner.steps.length > 0)
             {
-               this.latestStep = this.runner.stepsBuffer[this.runner.stepsBuffer.length - 1];
+               this.latestStep = this.runner.steps[this.runner.steps.length - 1];
             }
             if(!this.latestStep)
             {
@@ -89,9 +89,9 @@ package com.ankamagames.dofus.scripts.spells
          var animId:int = 0;
          var allowSpellEffects:Boolean = false;
          var animationStep:ISequencable = null;
-         if(this.caster && SpellFxApi.HasSpellParam(this.spell,"animId"))
+         if(this.caster && this.runner.scriptData.hasParam("animId"))
          {
-            animId = SpellFxApi.GetSpellParam(this.spell,"animId");
+            animId = this.runner.scriptData.getNumberParam("animId");
             allowSpellEffects = OptionManager.getOptionManager("dofus").getOption("allowSpellEffects");
             if(!allowSpellEffects && this.caster.id > 0 && PlayedCharacterManager.getInstance().isFighting)
             {
@@ -123,24 +123,24 @@ package com.ankamagames.dofus.scripts.spells
             return;
          }
          var gfxAngle:int = 0;
-         if(SpellFxApi.HasSpellParam(this.spell,stringPrefix + "GfxOriented" + stringSuffix))
+         if(this.runner.scriptData.hasParam(stringPrefix + "GfxOriented" + stringSuffix))
          {
-            if(SpellFxApi.GetSpellParam(this.spell,stringPrefix + "GfxOriented" + stringSuffix))
+            if(this.runner.scriptData.getBoolParam(stringPrefix + "GfxOriented" + stringSuffix))
             {
-               gfxAngle = FxApi.GetAngleTo(casterCell,targetCell);
+               gfxAngle = SpellScriptRunnerUtils.GetAngleTo(casterCell,targetCell);
             }
          }
          var spellGfxEntityYOffset:int = 0;
-         if(SpellFxApi.HasSpellParam(this.spell,stringPrefix + "GfxYOffset" + stringSuffix))
+         if(this.runner.scriptData.hasParam(stringPrefix + "GfxYOffset" + stringSuffix))
          {
-            spellGfxEntityYOffset = SpellFxApi.GetSpellParam(this.spell,stringPrefix + "GfxYOffset" + stringSuffix);
+            spellGfxEntityYOffset = this.runner.scriptData.getNumberParam(stringPrefix + "GfxYOffset" + stringSuffix);
          }
          var spellGfxEntityShowUnder:Boolean = false;
-         if(SpellFxApi.HasSpellParam(this.spell,stringPrefix + "GfxShowUnder" + stringSuffix))
+         if(this.runner.scriptData.hasParam(stringPrefix + "GfxShowUnder" + stringSuffix))
          {
-            spellGfxEntityShowUnder = SpellFxApi.GetSpellParam(this.spell,stringPrefix + "GfxShowUnder" + stringSuffix);
+            spellGfxEntityShowUnder = this.runner.scriptData.getBoolParam(stringPrefix + "GfxShowUnder" + stringSuffix);
          }
-         var gfxDisplayMode:uint = SpellFxApi.GetSpellParam(this.spell,stringPrefix + "GfxDisplayType" + stringSuffix);
+         var gfxDisplayMode:uint = this.runner.scriptData.getNumberParam(stringPrefix + "GfxDisplayType" + stringSuffix);
          if(gfxDisplayMode == AddGfxModeEnum.ORIENTED)
          {
             startCell = casterCell;
@@ -159,12 +159,12 @@ package com.ankamagames.dofus.scripts.spells
                return;
             }
          }
-         var gfxEntityStep:ISequencable = SequenceApi.CreateAddGfxEntityStep(this.runner,!!pGfxId ? uint(pGfxId) : uint(SpellFxApi.GetSpellParam(this.spell,stringPrefix + "GfxId" + stringSuffix)),originCell,gfxAngle,spellGfxEntityYOffset,gfxDisplayMode,startCell,endCell,spellGfxEntityShowUnder,startEntity);
+         var gfxEntityStep:ISequencable = SequenceApi.CreateAddGfxEntityStep(this.runner,!!pGfxId ? uint(pGfxId) : uint(this.runner.scriptData.getNumberParam(stringPrefix + "GfxId" + stringSuffix)),originCell,gfxAngle,spellGfxEntityYOffset,gfxDisplayMode,startCell,endCell,spellGfxEntityShowUnder,startEntity);
          if(!this.latestStep)
          {
             SpellFxApi.AddFrontStep(this.runner,gfxEntityStep);
          }
-         else if(stringPrefix == PREFIX_TARGET && SpellFxApi.HasSpellParam(this.spell,"playTargetGfxFirst" + stringSuffix) && SpellFxApi.GetSpellParam(this.spell,"playTargetGfxFirst" + stringSuffix) > 0)
+         else if(stringPrefix == PREFIX_TARGET && this.runner.scriptData.hasParam("playTargetGfxFirst" + stringSuffix) && this.runner.scriptData.getNumberParam("playTargetGfxFirst" + stringSuffix) > 0)
          {
             SpellFxApi.AddStepBefore(this.runner,this.latestStep,gfxEntityStep);
          }
@@ -185,9 +185,9 @@ package com.ankamagames.dofus.scripts.spells
             if(lifeVariationStep.value < 0)
             {
                hitAnimName = "AnimHit";
-               if(SpellFxApi.HasSpellParam(this.spell,"customHitAnim"))
+               if(this.runner.scriptData.hasParam("customHitAnim"))
                {
-                  hitAnimName = SpellFxApi.GetSpellParam(this.spell,"customHitAnim");
+                  hitAnimName = this.runner.scriptData.getStringParam("customHitAnim");
                }
                SpellFxApi.AddStepBefore(this.runner,lifeVariationStep,SequenceApi.CreatePlayAnimationStep(lifeVariationStep.target as TiphonSprite,hitAnimName,true,false));
             }
@@ -197,7 +197,7 @@ package com.ankamagames.dofus.scripts.spells
       protected function addPortalAnimationSteps(portalIds:Vector.<int>) : void
       {
          var glyphAnimationStep:ISequencable = null;
-         if(this.spell.spellRank.canThrowPlayer)
+         if(this.spell.spellLevelData.canThrowPlayer)
          {
             return;
          }
@@ -279,14 +279,14 @@ package com.ankamagames.dofus.scripts.spells
          var background:Projectile = null;
          var addBackgroundStep:AddWorldEntityStep = null;
          var destroyMissileStep:DestroyEntityStep = null;
-         if(SpellFxApi.HasSpellParam(this.spell,"foregroundGfxId"))
+         if(this.runner.scriptData.hasParam("foregroundGfxId"))
          {
             foregroundStrata = PlacementStrataEnums.STRATA_FOREGROUND;
-            if(SpellFxApi.HasSpellParam(this.spell,"foregroundGfxShowUnder"))
+            if(this.runner.scriptData.hasParam("foregroundGfxShowUnder"))
             {
                foregroundStrata = PlacementStrataEnums.STRATA_SPELL_BACKGROUND;
             }
-            background = FxApi.CreateGfxEntity(SpellFxApi.GetSpellParam(this.spell,"foregroundGfxId"),MapPoint.fromCellId(272)) as Projectile;
+            background = SpellScriptRunnerUtils.CreateGfxEntity(this.runner.scriptData.getNumberParam("foregroundGfxId"),MapPoint.fromCellId(272)) as Projectile;
             addBackgroundStep = SequenceApi.CreateAddWorldEntityStep(background,foregroundStrata);
             SpellFxApi.AddFrontStep(this.runner,addBackgroundStep);
             destroyMissileStep = SequenceApi.CreateDestroyEntityStep(background);

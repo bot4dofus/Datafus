@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
    public class QuestObjectiveValidationMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2244;
+      public static const protocolId:uint = 2512;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.quest
       
       override public function getMessageId() : uint
       {
-         return 2244;
+         return 2512;
       }
       
       public function initQuestObjectiveValidationMessage(questId:uint = 0, objectiveId:uint = 0) : QuestObjectiveValidationMessage

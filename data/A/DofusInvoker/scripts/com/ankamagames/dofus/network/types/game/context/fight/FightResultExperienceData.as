@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightResultExperienceData extends FightResultAdditionalData implements INetworkType
    {
       
-      public static const protocolId:uint = 9273;
+      public static const protocolId:uint = 9334;
        
       
       public var experience:Number = 0;
@@ -47,7 +47,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 9273;
+         return 9334;
       }
       
       public function initFightResultExperienceData(experience:Number = 0, showExperience:Boolean = false, experienceLevelFloor:Number = 0, showExperienceLevelFloor:Boolean = false, experienceNextLevelFloor:Number = 0, showExperienceNextLevelFloor:Boolean = false, experienceFightDelta:Number = 0, showExperienceFightDelta:Boolean = false, experienceForGuild:Number = 0, showExperienceForGuild:Boolean = false, experienceForMount:Number = 0, showExperienceForMount:Boolean = false, isIncarnationExperience:Boolean = false, rerollExperienceMul:uint = 0) : FightResultExperienceData

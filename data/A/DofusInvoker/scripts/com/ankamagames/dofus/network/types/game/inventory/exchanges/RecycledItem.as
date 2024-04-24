@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.inventory.exchanges
    public class RecycledItem implements INetworkType
    {
       
-      public static const protocolId:uint = 4335;
+      public static const protocolId:uint = 1966;
        
       
       public var id:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.inventory.exchanges
       
       public function getTypeId() : uint
       {
-         return 4335;
+         return 1966;
       }
       
       public function initRecycledItem(id:uint = 0, qty:uint = 0) : RecycledItem

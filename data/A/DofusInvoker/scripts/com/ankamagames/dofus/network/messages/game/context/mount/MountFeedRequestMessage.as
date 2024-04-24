@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountFeedRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 5133;
+      public static const protocolId:uint = 5031;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 5133;
+         return 5031;
       }
       
       public function initMountFeedRequestMessage(mountUid:uint = 0, mountLocation:int = 0, mountFoodUid:uint = 0, quantity:uint = 0) : MountFeedRequestMessage

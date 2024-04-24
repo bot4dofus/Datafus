@@ -27,12 +27,6 @@ package com.ankamagames.tiphon.engine
       
       private static const PLAYER_STOP:String = "STOP";
       
-      private static const EVENT_SOUND:String = "SOUND";
-      
-      private static const EVENT_DATASOUND:String = "DATASOUND";
-      
-      private static const EVENT_PLAYANIM:String = "PLAYANIM";
-      
       public static var BALISE_SOUND:String = "Sound";
       
       public static var BALISE_DATASOUND:String = "DataSound";
@@ -54,10 +48,10 @@ package com.ankamagames.tiphon.engine
       {
          super();
          this._weakTiphonSprite = new WeakReference(pTiphonSprite);
-         this._events = new Array();
+         this._events = [];
          if(_eventsDic == null)
          {
-            _eventsDic = new Array();
+            _eventsDic = [];
          }
       }
       
@@ -80,15 +74,6 @@ package com.ankamagames.tiphon.engine
             }
          }
          TiphonEventsManager._listeners.push(new EventListener(pListener,pTypes));
-      }
-      
-      public static function removeListener(pListener:IFLAEventHandler) : void
-      {
-         var index:int = TiphonEventsManager._listeners.indexOf(pListener);
-         if(index != -1)
-         {
-            TiphonEventsManager._listeners.splice(index,1);
-         }
       }
       
       public function parseLabels(pScene:Scene, pAnimationName:String) : void

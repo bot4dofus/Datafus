@@ -538,6 +538,10 @@ package com.ankamagames.dofus.uiApi
       
       public function clearCache(pSelective:Boolean = false) : void
       {
+         if(Kernel.getWorker().getFrame(FightContextFrame) || Kernel.getWorker().contains(FightPreparationFrame) || Kernel.getWorker().isBeingAdded(FightPreparationFrame))
+         {
+            return;
+         }
          Dofus.getInstance().clearCache(pSelective,true);
       }
       

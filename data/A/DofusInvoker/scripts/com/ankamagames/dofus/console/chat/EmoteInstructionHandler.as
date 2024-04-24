@@ -74,10 +74,6 @@ package com.ankamagames.dofus.console.chat
             {
                return emote.id;
             }
-            if(emote.defaultAnim == cmd)
-            {
-               return emote.id;
-            }
          }
          return 0;
       }

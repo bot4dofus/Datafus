@@ -222,7 +222,7 @@ package com.ankamagames.jerakine.handlers
          this._isLocal = isLocal;
          this._environment = environment.toLowerCase();
          var sentryVersion:String = version.toString().split("-")[0];
-         _sentryClient = new RavenClient("https://57c041aef92f4cf6bc2edc270dc604f2:3748f15212924e25a7038952c61278e9@sentry.io/271879",sentryVersion,environment,onSentryError);
+         _sentryClient = new RavenClient("https://c2af8495f5f2cb171a004cb6d6db569f@o89945.ingest.us.sentry.io/271879",sentryVersion,environment,onSentryError);
          ErrorManager.eventDispatcher.addEventListener(ErrorReportedEvent.ERROR,this.onError);
          var sentryConfigUrl:URLRequest = new URLRequest((!!isLocal ? LOCAL_SENTRY_CONFIG_URL : RELEASE_SENTRY_CONFIG_URL) + this._environment + ".json");
          var sentryConfigLoader:URLLoader = new URLLoader();
@@ -232,6 +232,11 @@ package com.ankamagames.jerakine.handlers
          var cytrusVersionLoader:URLLoader = new URLLoader();
          this.addListeners(cytrusVersionLoader,this.onCytrusVersionLoaded,this.onCytrusVersionError);
          cytrusVersionLoader.load(cytrusVersionUrl);
+      }
+      
+      protected function removeSentry() : void
+      {
+         _sentryClient = null;
       }
       
       private function onCytrusVersionLoaded(event:Event) : void
@@ -246,7 +251,7 @@ package com.ankamagames.jerakine.handlers
             lastVersion = result.games.dofus.platforms.windows[this.getCytrusBranch()];
             lastVersion = lastVersion.split("_")[1];
             _log.info("Last version : " + lastVersion);
-            if(_sentryClient.getConfig().release != lastVersion)
+            if(_sentryClient && _sentryClient.getConfig().release != lastVersion)
             {
                _log.info("Current version " + _sentryClient.getConfig().release + " is not the last version, disabling Sentry.");
                _sentryLevel = SENTRY_DISABLED;
@@ -371,6 +376,10 @@ package com.ankamagames.jerakine.handlers
       
       private function sendLogToSentry(log:LogEvent, error:Error) : void
       {
+         if(!_sentryClient)
+         {
+            return;
+         }
          _sentryClient.setUserInfos(this.getUserInfo());
          _sentryClient.setTags(this.getTags());
          _sentryClient.setExtras(this.getExtras());

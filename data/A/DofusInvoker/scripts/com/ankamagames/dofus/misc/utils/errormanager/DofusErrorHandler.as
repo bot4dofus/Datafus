@@ -114,6 +114,11 @@ package com.ankamagames.dofus.misc.utils.errormanager
          _self.captureMessage(message,tags,level);
       }
       
+      public static function removeSentry() : void
+      {
+         _self.removeSentry();
+      }
+      
       public static function formatLogBufferReg(data:String) : void
       {
          var params:String = null;

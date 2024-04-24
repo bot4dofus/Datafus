@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class MonsterBoosts implements INetworkType
    {
       
-      public static const protocolId:uint = 4036;
+      public static const protocolId:uint = 84;
        
       
       public var id:uint = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       public function getTypeId() : uint
       {
-         return 4036;
+         return 84;
       }
       
       public function initMonsterBoosts(id:uint = 0, xpBoost:uint = 0, dropBoost:uint = 0) : MonsterBoosts

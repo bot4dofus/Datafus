@@ -17,7 +17,7 @@ package com.ankamagames.dofus.logic.game.fight.types
       
       public var modifType:int;
       
-      public function SpellBuff(effect:FightTemporarySpellBoostEffect = null, castingSpell:CastingSpell = null, actionId:int = 0)
+      public function SpellBuff(effect:FightTemporarySpellBoostEffect = null, castingSpell:SpellCastSequenceContext = null, actionId:int = 0)
       {
          if(effect)
          {

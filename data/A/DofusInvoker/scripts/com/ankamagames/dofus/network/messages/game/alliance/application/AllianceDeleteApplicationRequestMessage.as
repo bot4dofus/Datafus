@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.application
    public class AllianceDeleteApplicationRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3701;
+      public static const protocolId:uint = 612;
        
       
       public function AllianceDeleteApplicationRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.application
       
       override public function getMessageId() : uint
       {
-         return 3701;
+         return 612;
       }
       
       public function initAllianceDeleteApplicationRequestMessage() : AllianceDeleteApplicationRequestMessage

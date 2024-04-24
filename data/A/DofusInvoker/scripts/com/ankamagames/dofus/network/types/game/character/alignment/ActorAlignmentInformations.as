@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.character.alignment
    public class ActorAlignmentInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 753;
+      public static const protocolId:uint = 7770;
        
       
       public var alignmentSide:int = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.character.alignment
       
       public function getTypeId() : uint
       {
-         return 753;
+         return 7770;
       }
       
       public function initActorAlignmentInformations(alignmentSide:int = 0, alignmentValue:uint = 0, alignmentGrade:uint = 0, characterPower:Number = 0) : ActorAlignmentInformations

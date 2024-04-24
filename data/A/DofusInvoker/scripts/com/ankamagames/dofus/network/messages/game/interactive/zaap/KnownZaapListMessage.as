@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.zaap
    public class KnownZaapListMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4331;
+      public static const protocolId:uint = 3175;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.zaap
       
       override public function getMessageId() : uint
       {
-         return 4331;
+         return 3175;
       }
       
       public function initKnownZaapListMessage(destinations:Vector.<Number> = null) : KnownZaapListMessage

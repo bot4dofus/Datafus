@@ -2,8 +2,6 @@ package com.ankamagames.tiphon.engine
 {
    import com.ankamagames.jerakine.entities.interfaces.IEntity;
    import com.ankamagames.jerakine.interfaces.IFLAEventHandler;
-   import com.ankamagames.jerakine.logger.Log;
-   import com.ankamagames.jerakine.logger.Logger;
    import com.ankamagames.jerakine.utils.errors.SingletonError;
    import com.ankamagames.tiphon.TiphonConstants;
    import com.ankamagames.tiphon.display.TiphonSprite;
@@ -15,12 +13,9 @@ package com.ankamagames.tiphon.engine
    import com.ankamagames.tiphon.types.ScriptedAnimation;
    import flash.events.Event;
    import flash.events.EventDispatcher;
-   import flash.utils.getQualifiedClassName;
    
    public final class Tiphon extends EventDispatcher implements IFLAEventHandler
    {
-      
-      private static const _log:Logger = Log.getLogger(getQualifiedClassName(Tiphon));
       
       private static var _self:Tiphon;
       
@@ -39,8 +34,6 @@ package com.ankamagames.tiphon.engine
       
       protected var scriptedAnimation:ScriptedAnimation;
       
-      private var _rasterizedAnimationNameList:Array;
-      
       private var _toOptions;
       
       private var _waitForInit:Boolean;
@@ -49,7 +42,6 @@ package com.ankamagames.tiphon.engine
       
       public function Tiphon()
       {
-         this._rasterizedAnimationNameList = new Array();
          super();
          if(_self != null)
          {
@@ -64,15 +56,6 @@ package com.ankamagames.tiphon.engine
             _self = new Tiphon();
          }
          return _self;
-      }
-      
-      public function addRasterizeAnimation(animName:String) : void
-      {
-      }
-      
-      public function isRasterizeAnimation(animName:String) : Boolean
-      {
-         return this._rasterizedAnimationNameList[animName];
       }
       
       public function get options() : *

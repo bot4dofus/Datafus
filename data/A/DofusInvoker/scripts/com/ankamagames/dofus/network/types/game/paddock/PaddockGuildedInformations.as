@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.paddock
    public class PaddockGuildedInformations extends PaddockBuyableInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 6724;
+      public static const protocolId:uint = 2305;
        
       
       public var deserted:Boolean = false;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.paddock
       
       override public function getTypeId() : uint
       {
-         return 6724;
+         return 2305;
       }
       
       public function initPaddockGuildedInformations(price:Number = 0, locked:Boolean = false, deserted:Boolean = false, guildInfo:GuildInformations = null) : PaddockGuildedInformations

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameFightEffectTriggerCount implements INetworkType
    {
       
-      public static const protocolId:uint = 3015;
+      public static const protocolId:uint = 7944;
        
       
       public var effectId:uint = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       public function getTypeId() : uint
       {
-         return 3015;
+         return 7944;
       }
       
       public function initGameFightEffectTriggerCount(effectId:uint = 0, targetId:Number = 0, count:uint = 0) : GameFightEffectTriggerCount

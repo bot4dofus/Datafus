@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.chat
    public class ChatClientMultiWithObjectMessage extends ChatClientMultiMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7295;
+      public static const protocolId:uint = 7821;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.chat
       
       override public function getMessageId() : uint
       {
-         return 7295;
+         return 7821;
       }
       
       public function initChatClientMultiWithObjectMessage(content:String = "", channel:uint = 0, objects:Vector.<ObjectItem> = null) : ChatClientMultiWithObjectMessage

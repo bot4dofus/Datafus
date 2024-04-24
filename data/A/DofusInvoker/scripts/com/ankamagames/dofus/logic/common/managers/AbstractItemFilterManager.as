@@ -10,7 +10,7 @@ package com.ankamagames.dofus.logic.common.managers
    import com.ankamagames.dofus.datacenter.items.Item;
    import com.ankamagames.dofus.datacenter.items.ItemType;
    import com.ankamagames.dofus.datacenter.items.criterion.ItemCriterion;
-   import com.ankamagames.dofus.datacenter.items.criterion.ServerSeasonTemporisCriterion;
+   import com.ankamagames.dofus.datacenter.items.criterion.SeasonCriterion;
    import com.ankamagames.dofus.datacenter.monsters.Monster;
    import com.ankamagames.dofus.datacenter.monsters.MonsterDrop;
    import com.ankamagames.dofus.datacenter.mounts.Mount;
@@ -912,7 +912,7 @@ package com.ankamagames.dofus.logic.common.managers
             {
                for each(criteria in drop.conditions.inlineCriteria)
                {
-                  if(criteria is ServerSeasonTemporisCriterion)
+                  if(criteria is SeasonCriterion)
                   {
                      if(criteria.isRespected)
                      {

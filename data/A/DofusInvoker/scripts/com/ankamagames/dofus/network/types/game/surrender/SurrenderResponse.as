@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.surrender
    public class SurrenderResponse implements INetworkType
    {
       
-      public static const protocolId:uint = 2288;
+      public static const protocolId:uint = 130;
        
       
       public function SurrenderResponse()
@@ -18,7 +18,7 @@ package com.ankamagames.dofus.network.types.game.surrender
       
       public function getTypeId() : uint
       {
-         return 2288;
+         return 130;
       }
       
       public function initSurrenderResponse() : SurrenderResponse

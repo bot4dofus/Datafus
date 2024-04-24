@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyModifiableStatusMessage extends AbstractPartyMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6570;
+      public static const protocolId:uint = 5630;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 6570;
+         return 5630;
       }
       
       public function initPartyModifiableStatusMessage(partyId:uint = 0, enabled:Boolean = false) : PartyModifiableStatusMessage

@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.friend
    public class AbstractContactInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 6958;
+      public static const protocolId:uint = 4780;
        
       
       public var accountId:uint = 0;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.friend
       
       public function getTypeId() : uint
       {
-         return 6958;
+         return 4780;
       }
       
       public function initAbstractContactInformations(accountId:uint = 0, accountTag:AccountTagInformation = null) : AbstractContactInformations

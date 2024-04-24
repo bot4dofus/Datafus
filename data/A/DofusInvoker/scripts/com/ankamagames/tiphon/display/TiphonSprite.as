@@ -110,8 +110,6 @@ package com.ankamagames.tiphon.display
       
       private var _lookCode:String;
       
-      private var _rasterize:Boolean = false;
-      
       private var _parentSprite:TiphonSprite;
       
       private var _rendered:Boolean = false;
@@ -374,16 +372,6 @@ package com.ankamagames.tiphon.display
       public function get look() : TiphonEntityLook
       {
          return this._look;
-      }
-      
-      public function get rasterize() : Boolean
-      {
-         return this._rasterize;
-      }
-      
-      public function set rasterize(b:Boolean) : void
-      {
-         this._rasterize = b;
       }
       
       public function get rawAnimation() : TiphonAnimation
@@ -1434,7 +1422,6 @@ package com.ankamagames.tiphon.display
          var carrying:int = 0;
          var dirs:Array = null;
          var dir:* = undefined;
-         var rasterizedSyncAnimation:RasterizedSyncAnimation = null;
          var sprite:Sprite = null;
          var pos:Rectangle = null;
          var subEntityInfo:SubEntityTempInfo = null;
@@ -1589,32 +1576,16 @@ package com.ankamagames.tiphon.display
          {
             this.addChild(this._animMovieClip);
          }
-         if(isSingleFrame || !this._rasterize && !Tiphon.getInstance().isRasterizeAnimation(this._currentAnimation))
+         if((this._currentAnimation.indexOf("AnimStatique") != -1 || this._currentAnimation.indexOf("AnimState") != -1) && this._currentAnimation.indexOf("_to_") == -1 && !isSingleFrame)
          {
-            if((this._currentAnimation.indexOf("AnimStatique") != -1 || this._currentAnimation.indexOf("AnimState") != -1) && this._currentAnimation.indexOf("_to_") == -1 && !isSingleFrame)
-            {
-               _log.error("/!\\ ATTENTION, l\'animation [" + this._currentAnimation + "_" + finalDirection + "] sur le squelette [" + this._look.getBone() + "] contient un clip qui contient plusieurs frames. C\'est mal.");
-            }
-            if(!isSingleFrame)
-            {
-               FpsControler.controlFps(this._animMovieClip,lib.frameRate);
-            }
-            this._animMovieClip.addEventListener(AnimationEvent.EVENT,this.animEventHandler);
-            this._animMovieClip.addEventListener(AnimationEvent.ANIM,this.animSwitchHandler);
+            _log.error("/!\\ ATTENTION, l\'animation [" + this._currentAnimation + "_" + finalDirection + "] sur le squelette [" + this._look.getBone() + "] contient un clip qui contient plusieurs frames. C\'est mal.");
          }
-         else
+         if(!isSingleFrame)
          {
-            this._animMovieClip.visible = false;
-            rasterizedSyncAnimation = new RasterizedSyncAnimation(this._animMovieClip,this._lookCode);
-            FpsControler.controlFps(rasterizedSyncAnimation,lib.frameRate);
-            rasterizedSyncAnimation.addEventListener(AnimationEvent.EVENT,this.animEventHandler);
-            rasterizedSyncAnimation.addEventListener(AnimationEvent.ANIM,this.animSwitchHandler);
-            if(!this._backgroundOnly)
-            {
-               this.addChild(rasterizedSyncAnimation);
-            }
-            this._animMovieClip = rasterizedSyncAnimation;
+            FpsControler.controlFps(this._animMovieClip,lib.frameRate);
          }
+         this._animMovieClip.addEventListener(AnimationEvent.EVENT,this.animEventHandler);
+         this._animMovieClip.addEventListener(AnimationEvent.ANIM,this.animSwitchHandler);
          if(!isSingleFrame && gotoFrame != -1)
          {
             this._animMovieClip.gotoAndStop(gotoFrame);
@@ -2032,7 +2003,7 @@ package com.ankamagames.tiphon.display
          this._look = look;
          this._lookCode = this._look.toString();
          this._aTransformColors.length = 0;
-         if(this._rasterize || Tiphon.getInstance().useOptimization && Tiphon.getInstance().options.getOption("useAnimationCache"))
+         if(Tiphon.getInstance().useOptimization && Tiphon.getInstance().options.getOption("useAnimationCache"))
          {
             this.finalize();
          }
@@ -2049,11 +2020,7 @@ package com.ankamagames.tiphon.display
       {
          this._look = look;
          this._lookCode = this._look.toString();
-         if(this._rasterize)
-         {
-            this.finalize();
-         }
-         else if(this._animMovieClip != null)
+         if(this._animMovieClip != null)
          {
             this.updateScale();
          }

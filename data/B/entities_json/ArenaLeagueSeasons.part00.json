@@ -2,18 +2,51 @@
 	"def": [
 		{
 			"memberName": "ArenaLeagueSeason",
-			"packageName": "com.ankamagames.dofus.datacenter.arena",
+			"packageName": "com.ankamagames.dofus.datacenter.seasons",
 			"fields": [
 				{
-					"name": "id",
+					"name": "uid",
 					"type": -1
 				},
 				{
 					"name": "nameId",
 					"type": -5
+				},
+				{
+					"name": "beginning",
+					"type": -4
+				},
+				{
+					"name": "closure",
+					"type": -4
+				},
+				{
+					"name": "resetDate",
+					"type": -4
+				},
+				{
+					"name": "flagObjectId",
+					"type": -1
 				}
 			]
 		}
 	],
-	"data": []
+	"data": [
+		{
+			"uid": 28,
+			"nameId": 1057974,
+			"beginning": 1701734400000.0,
+			"closure": 1711411200000.0,
+			"resetDate": -3600000.0,
+			"flagObjectId": 29425
+		},
+		{
+			"uid": 60,
+			"nameId": 1068065,
+			"beginning": 1711411200000.0,
+			"closure": 1718665200000.0,
+			"resetDate": -3600000.0,
+			"flagObjectId": 29753
+		}
+	]
 }

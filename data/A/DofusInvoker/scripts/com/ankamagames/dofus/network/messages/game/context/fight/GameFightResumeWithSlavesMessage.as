@@ -15,7 +15,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
    public class GameFightResumeWithSlavesMessage extends GameFightResumeMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1886;
+      public static const protocolId:uint = 4166;
        
       
       private var _isInitialized:Boolean = false;
@@ -37,7 +37,7 @@ package com.ankamagames.dofus.network.messages.game.context.fight
       
       override public function getMessageId() : uint
       {
-         return 1886;
+         return 4166;
       }
       
       public function initGameFightResumeWithSlavesMessage(effects:Vector.<FightDispellableEffectExtendedInformations> = null, marks:Vector.<GameActionMark> = null, gameTurn:uint = 0, fightStart:uint = 0, fxTriggerCounts:Vector.<GameFightEffectTriggerCount> = null, spellCooldowns:Vector.<GameFightSpellCooldown> = null, summonCount:uint = 0, bombCount:uint = 0, slavesInfo:Vector.<GameFightResumeSlaveInfo> = null) : GameFightResumeWithSlavesMessage

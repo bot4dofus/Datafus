@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.house
    public class HouseInstanceInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 2666;
+      public static const protocolId:uint = 3942;
        
       
       public var instanceId:uint = 0;
@@ -39,7 +39,7 @@ package com.ankamagames.dofus.network.types.game.house
       
       public function getTypeId() : uint
       {
-         return 2666;
+         return 3942;
       }
       
       public function initHouseInstanceInformations(instanceId:uint = 0, secondHand:Boolean = false, isLocked:Boolean = false, ownerTag:AccountTagInformation = null, hasOwner:Boolean = false, price:Number = 0, isSaleLocked:Boolean = false, isAdminLocked:Boolean = false) : HouseInstanceInformations

@@ -2,7 +2,7 @@ package com.ankamagames.dofus.types.sequences
 {
    import com.ankamagames.atouin.enums.PlacementStrataEnums;
    import com.ankamagames.atouin.managers.EntitiesManager;
-   import com.ankamagames.dofus.scripts.api.FxApi;
+   import com.ankamagames.dofus.scripts.api.SpellScriptRunnerUtils;
    import com.ankamagames.dofus.types.entities.Projectile;
    import com.ankamagames.jerakine.entities.interfaces.IEntity;
    import com.ankamagames.jerakine.enum.AddGfxModeEnum;
@@ -69,7 +69,7 @@ package com.ankamagames.dofus.types.sequences
          var i:uint = 0;
          if(this._startEntity)
          {
-            this._startCell = FxApi.GetEntityCell(this._startEntity);
+            this._startCell = SpellScriptRunnerUtils.GetEntityCell(this._startEntity);
             this._cellId = this._startCell.cellId;
          }
          var id:Number = EntitiesManager.getInstance().getFreeEntityId();

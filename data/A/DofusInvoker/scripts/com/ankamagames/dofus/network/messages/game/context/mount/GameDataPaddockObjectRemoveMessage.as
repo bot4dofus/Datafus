@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class GameDataPaddockObjectRemoveMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8733;
+      public static const protocolId:uint = 4782;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 8733;
+         return 4782;
       }
       
       public function initGameDataPaddockObjectRemoveMessage(cellId:uint = 0) : GameDataPaddockObjectRemoveMessage

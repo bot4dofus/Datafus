@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions
    public class GameActionSpamMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8234;
+      public static const protocolId:uint = 6901;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.actions
       
       override public function getMessageId() : uint
       {
-         return 8234;
+         return 6901;
       }
       
       public function initGameActionSpamMessage(cells:Vector.<int> = null) : GameActionSpamMessage

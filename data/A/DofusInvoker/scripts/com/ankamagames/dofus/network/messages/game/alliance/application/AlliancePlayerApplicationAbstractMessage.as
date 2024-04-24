@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.application
    public class AlliancePlayerApplicationAbstractMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6640;
+      public static const protocolId:uint = 8912;
        
       
       public function AlliancePlayerApplicationAbstractMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.application
       
       override public function getMessageId() : uint
       {
-         return 6640;
+         return 8912;
       }
       
       public function initAlliancePlayerApplicationAbstractMessage() : AlliancePlayerApplicationAbstractMessage

@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.paddock
    public class PaddockInstancesInformations extends PaddockInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 6094;
+      public static const protocolId:uint = 6034;
        
       
       public var paddocks:Vector.<PaddockBuyableInformations>;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.paddock
       
       override public function getTypeId() : uint
       {
-         return 6094;
+         return 6034;
       }
       
       public function initPaddockInstancesInformations(maxOutdoorMount:uint = 0, maxItems:uint = 0, paddocks:Vector.<PaddockBuyableInformations> = null) : PaddockInstancesInformations

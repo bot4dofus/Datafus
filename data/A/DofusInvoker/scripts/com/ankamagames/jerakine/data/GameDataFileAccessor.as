@@ -203,7 +203,12 @@ package com.ankamagames.jerakine.data
          }
          this._streams[moduleName].position = pointer;
          var classId:int = this._streams[moduleName].readInt();
-         return this._classes[moduleName][classId].read(moduleName,this._streams[moduleName]);
+         var classDef:GameDataClassDefinition = this.getClassDefinition(moduleName,classId);
+         if(classDef)
+         {
+            return classDef.read(moduleName,this._streams[moduleName]);
+         }
+         return null;
       }
       
       public function getObjects(moduleName:String) : Array

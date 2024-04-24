@@ -218,6 +218,12 @@ package com.ankamagames.dofus.datacenter.quest
          return this._currentLevelRewards == null ? Number(0) : Number(this._currentLevelRewards.getExperienceReward(pPlayerLevel,pXpBonus));
       }
       
+      public function getGuildPointsReward(pPlayerLevel:int) : Number
+      {
+         this.initCurrentLevelRewards(pPlayerLevel);
+         return this._currentLevelRewards == null ? Number(0) : Number(this._currentLevelRewards.getGuildPointsReward());
+      }
+      
       public function getAchievementRewardByLevel(playerLevel:int, showAllReward:Boolean = false) : AchievementRewardsWrapper
       {
          this.initCurrentLevelRewards(playerLevel);

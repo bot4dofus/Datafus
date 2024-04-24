@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceMemberOnlineStatusMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2918;
+      public static const protocolId:uint = 1867;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 2918;
+         return 1867;
       }
       
       public function initAllianceMemberOnlineStatusMessage(memberId:Number = 0, online:Boolean = false) : AllianceMemberOnlineStatusMessage

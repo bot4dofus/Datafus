@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
    public class ObjectEffectLadder extends ObjectEffectCreature implements INetworkType
    {
       
-      public static const protocolId:uint = 1485;
+      public static const protocolId:uint = 6905;
        
       
       public var monsterCount:uint = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
       
       override public function getTypeId() : uint
       {
-         return 1485;
+         return 6905;
       }
       
       public function initObjectEffectLadder(actionId:uint = 0, monsterFamilyId:uint = 0, monsterCount:uint = 0) : ObjectEffectLadder

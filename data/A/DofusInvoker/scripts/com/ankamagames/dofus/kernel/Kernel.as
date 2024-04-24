@@ -61,7 +61,6 @@ package com.ankamagames.dofus.kernel
    import com.ankamagames.dofus.network.enums.BuildTypeEnum;
    import com.ankamagames.dofus.types.DofusOptions;
    import com.ankamagames.dofus.types.entities.AnimatedCharacter;
-   import com.ankamagames.dofus.types.enums.AnimationEnum;
    import com.ankamagames.dofus.types.enums.LanguageEnum;
    import com.ankamagames.jerakine.benchmark.FileLoggerEnum;
    import com.ankamagames.jerakine.benchmark.LogInFile;
@@ -399,9 +398,6 @@ package com.ankamagames.dofus.kernel
          DataMapProvider.init(AnimatedCharacter);
          TiphonSprite.subEntityHandler = SubEntityHandler.instance;
          Tiphon.getInstance().init(LangManager.getInstance().getEntry("config.gfx.path.skull"),LangManager.getInstance().getEntry("config.gfx.path.skin"),LangManager.getInstance().getEntry("config.gfx.path.animIndex"));
-         Tiphon.getInstance().addRasterizeAnimation(AnimationEnum.ANIM_COURSE);
-         Tiphon.getInstance().addRasterizeAnimation(AnimationEnum.ANIM_MARCHE);
-         Tiphon.getInstance().addRasterizeAnimation(AnimationEnum.ANIM_STATIQUE);
          Skin.skinPartTransformProvider = new SkinPartTransformProvider();
          UiSoundManager.getInstance().playSound = SoundManager.getInstance().manager.playUISound;
          var uiSound:Array = SoundUi.getSoundUis();

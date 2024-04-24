@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach
    public class MapComplementaryInformationsBreachMessage extends MapComplementaryInformationsDataMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6574;
+      public static const protocolId:uint = 748;
        
       
       private var _isInitialized:Boolean = false;
@@ -48,7 +48,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.breach
       
       override public function getMessageId() : uint
       {
-         return 6574;
+         return 748;
       }
       
       public function initMapComplementaryInformationsBreachMessage(subAreaId:uint = 0, mapId:Number = 0, houses:Vector.<HouseInformations> = null, actors:Vector.<GameRolePlayActorInformations> = null, interactiveElements:Vector.<InteractiveElement> = null, statedElements:Vector.<StatedElement> = null, obstacles:Vector.<MapObstacle> = null, fights:Vector.<FightCommonInformations> = null, hasAggressiveMonsters:Boolean = false, fightStartPositions:FightStartingPositions = null, floor:uint = 0, room:uint = 0, infinityMode:uint = 0, branches:Vector.<BreachBranch> = null) : MapComplementaryInformationsBreachMessage

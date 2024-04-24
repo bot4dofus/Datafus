@@ -48,7 +48,7 @@ package com.ankamagames.dofus.logic.game.fight.steps
          var refreshEntityLook:Boolean = false;
          for each(buff in buffs)
          {
-            if(buff.castingSpell.spell.id == this._spellId && buff.actionId == ActionIds.ACTION_CHARACTER_ADD_APPEARANCE)
+            if(buff.castingSpell.spellData.id == this._spellId && buff.actionId == ActionIds.ACTION_CHARACTER_ADD_APPEARANCE)
             {
                refreshEntityLook = true;
                break;

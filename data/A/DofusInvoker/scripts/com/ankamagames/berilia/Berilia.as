@@ -523,29 +523,13 @@ package com.ankamagames.berilia
       
       public function loadUiInside(uiData:UiData, sName:String, suiContainer:UiRootContainer, parent:GraphicContainer, properties:* = null, bReplace:Boolean = false, useCache:Boolean = true, loadingCallback:Boolean = true) : UiRootContainer
       {
-         if(!uiData)
-         {
-            _log.fatal("&&&&&&&&&& uiData is null for : " + sName == null ? "null value" : sName);
-            if(parent && parent.getUi())
-            {
-               _log.fatal("########## parent ui : " + parent.name + " get ui name : " + parent.getUi().name);
-            }
-            if(suiContainer)
-            {
-               _log.fatal("&&&&&&&&&& suiContainer is null for : " + sName);
-            }
-         }
-         if(parent && !parent.getUi())
-         {
-            _log.fatal("&&&&&&&&&& parent.getUi is null for : " + sName);
-         }
-         if(!suiContainer)
-         {
-            _log.fatal("&&&&&&&&&& suiContainer is null for : " + sName);
-         }
          if(this._aLoadingUi[sName] && !bReplace)
          {
             return this._aUiList[sName];
+         }
+         if(!uiData)
+         {
+            return suiContainer;
          }
          if(loadingCallback)
          {
