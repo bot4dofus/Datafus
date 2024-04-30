@@ -68828,7 +68828,7 @@
 		{
 			"id": 16844,
 			"typeId": 1,
-			"rawParams": "animId:0,targetGfxId:5505"
+			"rawParams": "targetGfxId:5505"
 		},
 		{
 			"id": 16845,
@@ -68839,6 +68839,26 @@
 			"id": 16846,
 			"typeId": 1,
 			"rawParams": "animId:0,targetGfxId:4863"
+		},
+		{
+			"id": 16851,
+			"typeId": 1,
+			"rawParams": "animId:1"
+		},
+		{
+			"id": 16852,
+			"typeId": 1,
+			"rawParams": "animId:0"
+		},
+		{
+			"id": 16853,
+			"typeId": 1,
+			"rawParams": "animId:2"
+		},
+		{
+			"id": 16854,
+			"typeId": 1,
+			"rawParams": "animId:0"
 		}
 	]
 }
