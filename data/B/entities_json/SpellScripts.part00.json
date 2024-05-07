@@ -68859,6 +68859,41 @@
 			"id": 16854,
 			"typeId": 1,
 			"rawParams": "animId:0"
+		},
+		{
+			"id": 16856,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4477"
+		},
+		{
+			"id": 16857,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4405"
+		},
+		{
+			"id": 16858,
+			"typeId": 1,
+			"rawParams": "targetGfxId:3694"
+		},
+		{
+			"id": 16859,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4392"
+		},
+		{
+			"id": 16860,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4950"
+		},
+		{
+			"id": 16894,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4774"
+		},
+		{
+			"id": 16900,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3867,targetGfxDisplayType:2,targetGfxId2:3854"
 		}
 	]
 }

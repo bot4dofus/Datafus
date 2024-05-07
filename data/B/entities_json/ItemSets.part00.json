@@ -153123,6 +153123,20 @@
 			"nameId": 1076322,
 			"bonusIsSecret": false,
 			"effects": []
+		},
+		{
+			"id": 848,
+			"items": [
+				30081,
+				30082,
+				30083,
+				30084,
+				30085,
+				30086
+			],
+			"nameId": 1076566,
+			"bonusIsSecret": false,
+			"effects": []
 		}
 	]
 }
