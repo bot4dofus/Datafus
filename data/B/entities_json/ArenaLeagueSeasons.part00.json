@@ -35,17 +35,17 @@
 		{
 			"uid": 28,
 			"nameId": 1057974,
-			"beginning": 1701734400000.0,
-			"closure": 1711411200000.0,
-			"resetDate": -3600000.0,
+			"beginning": 1701765000000.0,
+			"closure": 1711441800000.0,
+			"resetDate": 0.0,
 			"flagObjectId": 29425
 		},
 		{
 			"uid": 60,
 			"nameId": 1068065,
-			"beginning": 1711411200000.0,
-			"closure": 1718665200000.0,
-			"resetDate": -3600000.0,
+			"beginning": 1711441860000.0,
+			"closure": 1718695860000.0,
+			"resetDate": 0.0,
 			"flagObjectId": 29753
 		}
 	]

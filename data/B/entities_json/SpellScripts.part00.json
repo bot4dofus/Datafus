@@ -68894,6 +68894,11 @@
 			"id": 16900,
 			"typeId": 1,
 			"rawParams": "animId:0,targetGfxId:3867,targetGfxDisplayType:2,targetGfxId2:3854"
+		},
+		{
+			"id": 16960,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3871"
 		}
 	]
 }
