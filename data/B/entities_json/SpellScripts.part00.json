@@ -68899,6 +68899,71 @@
 			"id": 16960,
 			"typeId": 1,
 			"rawParams": "animId:0,targetGfxId:3871"
+		},
+		{
+			"id": 17076,
+			"typeId": 1,
+			"rawParams": "animId:2"
+		},
+		{
+			"id": 17077,
+			"typeId": 1,
+			"rawParams": "animId:1"
+		},
+		{
+			"id": 17078,
+			"typeId": 1,
+			"rawParams": "animId:0"
+		},
+		{
+			"id": 17079,
+			"typeId": 1,
+			"rawParams": "animId:1"
+		},
+		{
+			"id": 17080,
+			"typeId": 1,
+			"rawParams": "animId:2"
+		},
+		{
+			"id": 17081,
+			"typeId": 1,
+			"rawParams": "animId:0"
+		},
+		{
+			"id": 17082,
+			"typeId": 1,
+			"rawParams": "animId:3"
+		},
+		{
+			"id": 17083,
+			"typeId": 1,
+			"rawParams": "animId:0"
+		},
+		{
+			"id": 17084,
+			"typeId": 1,
+			"rawParams": "animId:1"
+		},
+		{
+			"id": 17085,
+			"typeId": 1,
+			"rawParams": "animId:2"
+		},
+		{
+			"id": 17086,
+			"typeId": 1,
+			"rawParams": "animId:2,targetGfxId:3857"
+		},
+		{
+			"id": 17087,
+			"typeId": 1,
+			"rawParams": "animId:1"
+		},
+		{
+			"id": 17088,
+			"typeId": 1,
+			"rawParams": "animId:1"
 		}
 	]
 }
