@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.skill
    public class InteractiveUseWithParamRequestMessage extends InteractiveUseRequestMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8437;
+      public static const protocolId:uint = 8117;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.interactive.skill
       
       override public function getMessageId() : uint
       {
-         return 8437;
+         return 8117;
       }
       
       public function initInteractiveUseWithParamRequestMessage(elemId:uint = 0, skillInstanceUid:uint = 0, id:int = 0) : InteractiveUseWithParamRequestMessage

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class FightResultPvpData extends FightResultAdditionalData implements INetworkType
    {
       
-      public static const protocolId:uint = 192;
+      public static const protocolId:uint = 7233;
        
       
       public var grade:uint = 0;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 192;
+         return 7233;
       }
       
       public function initFightResultPvpData(grade:uint = 0, minHonorForGrade:uint = 0, maxHonorForGrade:uint = 0, honor:uint = 0, honorDelta:int = 0) : FightResultPvpData

@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context
    public class TaxCollectorStaticInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 2371;
+      public static const protocolId:uint = 1672;
        
       
       public var firstNameId:uint = 0;
@@ -19,6 +19,8 @@ package com.ankamagames.dofus.network.types.game.context
       public var allianceIdentity:AllianceInformation;
       
       public var callerId:Number = 0;
+      
+      public var uid:String = "";
       
       private var _allianceIdentitytree:FuncTree;
       
@@ -30,15 +32,16 @@ package com.ankamagames.dofus.network.types.game.context
       
       public function getTypeId() : uint
       {
-         return 2371;
+         return 1672;
       }
       
-      public function initTaxCollectorStaticInformations(firstNameId:uint = 0, lastNameId:uint = 0, allianceIdentity:AllianceInformation = null, callerId:Number = 0) : TaxCollectorStaticInformations
+      public function initTaxCollectorStaticInformations(firstNameId:uint = 0, lastNameId:uint = 0, allianceIdentity:AllianceInformation = null, callerId:Number = 0, uid:String = "") : TaxCollectorStaticInformations
       {
          this.firstNameId = firstNameId;
          this.lastNameId = lastNameId;
          this.allianceIdentity = allianceIdentity;
          this.callerId = callerId;
+         this.uid = uid;
          return this;
       }
       
@@ -47,6 +50,7 @@ package com.ankamagames.dofus.network.types.game.context
          this.firstNameId = 0;
          this.lastNameId = 0;
          this.allianceIdentity = new AllianceInformation();
+         this.uid = "";
       }
       
       public function serialize(output:ICustomDataOutput) : void
@@ -72,6 +76,7 @@ package com.ankamagames.dofus.network.types.game.context
             throw new Error("Forbidden value (" + this.callerId + ") on element callerId.");
          }
          output.writeVarLong(this.callerId);
+         output.writeUTF(this.uid);
       }
       
       public function deserialize(input:ICustomDataInput) : void
@@ -86,6 +91,7 @@ package com.ankamagames.dofus.network.types.game.context
          this.allianceIdentity = new AllianceInformation();
          this.allianceIdentity.deserialize(input);
          this._callerIdFunc(input);
+         this._uidFunc(input);
       }
       
       public function deserializeAsync(tree:FuncTree) : void
@@ -99,6 +105,7 @@ package com.ankamagames.dofus.network.types.game.context
          tree.addChild(this._lastNameIdFunc);
          this._allianceIdentitytree = tree.addChild(this._allianceIdentitytreeFunc);
          tree.addChild(this._callerIdFunc);
+         tree.addChild(this._uidFunc);
       }
       
       private function _firstNameIdFunc(input:ICustomDataInput) : void
@@ -132,6 +139,11 @@ package com.ankamagames.dofus.network.types.game.context
          {
             throw new Error("Forbidden value (" + this.callerId + ") on element of TaxCollectorStaticInformations.callerId.");
          }
+      }
+      
+      private function _uidFunc(input:ICustomDataInput) : void
+      {
+         this.uid = input.readUTF();
       }
    }
 }

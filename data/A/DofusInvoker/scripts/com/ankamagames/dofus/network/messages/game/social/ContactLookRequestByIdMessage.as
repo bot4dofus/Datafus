@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.social
    public class ContactLookRequestByIdMessage extends ContactLookRequestMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2103;
+      public static const protocolId:uint = 6048;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.social
       
       override public function getMessageId() : uint
       {
-         return 2103;
+         return 6048;
       }
       
       public function initContactLookRequestByIdMessage(requestId:uint = 0, contactType:uint = 0, playerId:Number = 0) : ContactLookRequestByIdMessage

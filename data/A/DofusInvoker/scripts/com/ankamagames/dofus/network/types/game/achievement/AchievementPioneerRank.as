@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.achievement
    public class AchievementPioneerRank implements INetworkType
    {
       
-      public static const protocolId:uint = 8013;
+      public static const protocolId:uint = 6487;
        
       
       public var achievementId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.achievement
       
       public function getTypeId() : uint
       {
-         return 8013;
+         return 6487;
       }
       
       public function initAchievementPioneerRank(achievementId:uint = 0, pioneerRank:uint = 0) : AchievementPioneerRank

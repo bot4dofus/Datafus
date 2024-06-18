@@ -627,7 +627,6 @@ package com.ankamagames.dofus.logic.game.common.frames
          var params:Array = null;
          var partyFightMsg:String = null;
          var fightTeamLeaderId:Number = NaN;
-         var entitiesFrame:RoleplayEntitiesFrame = null;
          var fight:Fight = null;
          var notifKey:String = null;
          var team:FightTeam = null;
@@ -2043,8 +2042,10 @@ package com.ankamagames.dofus.logic.game.common.frames
                   }
                   if(PlayedCharacterManager.getInstance().currentMap.mapId == fightMapId)
                   {
-                     entitiesFrame = Kernel.getWorker().getFrame(RoleplayEntitiesFrame) as RoleplayEntitiesFrame;
-                     fight = entitiesFrame.fights[fightInformation.fightId];
+                     if(this.roleplayEntitiesFrame)
+                     {
+                        fight = this.roleplayEntitiesFrame.fights[fightInformation.fightId];
+                     }
                      notifKey = pemifmmsg.reason == 4 ? "ui.party.teamFightChallengeTitle" : "ui.party.teamFightTitle";
                      if(!fight)
                      {

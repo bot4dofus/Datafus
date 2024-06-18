@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceBulletinSetErrorMessage extends SocialNoticeSetErrorMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3948;
+      public static const protocolId:uint = 8685;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 3948;
+         return 8685;
       }
       
       public function initAllianceBulletinSetErrorMessage(reason:uint = 0) : AllianceBulletinSetErrorMessage

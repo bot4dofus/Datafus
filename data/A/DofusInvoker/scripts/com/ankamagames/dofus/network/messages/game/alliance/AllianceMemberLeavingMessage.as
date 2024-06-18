@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceMemberLeavingMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1716;
+      public static const protocolId:uint = 626;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 1716;
+         return 626;
       }
       
       public function initAllianceMemberLeavingMessage(kicked:Boolean = false, memberId:Number = 0) : AllianceMemberLeavingMessage

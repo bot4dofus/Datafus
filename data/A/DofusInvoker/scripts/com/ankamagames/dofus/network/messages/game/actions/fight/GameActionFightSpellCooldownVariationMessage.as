@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightSpellCooldownVariationMessage extends AbstractGameActionMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3158;
+      public static const protocolId:uint = 766;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 3158;
+         return 766;
       }
       
       public function initGameActionFightSpellCooldownVariationMessage(actionId:uint = 0, sourceId:Number = 0, targetId:Number = 0, spellId:uint = 0, value:int = 0) : GameActionFightSpellCooldownVariationMessage

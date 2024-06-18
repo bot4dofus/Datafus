@@ -1570,7 +1570,7 @@
 			"id": 282,
 			"nameId": 601012,
 			"actionId": 0,
-			"displayTooltip": false
+			"displayTooltip": true
 		},
 		{
 			"id": 283,
@@ -2336,31 +2336,37 @@
 		},
 		{
 			"id": 415,
-			"nameId": 1070093,
+			"nameId": 1070953,
 			"actionId": 0,
 			"displayTooltip": false
 		},
 		{
 			"id": 416,
-			"nameId": 1070094,
+			"nameId": 1070954,
 			"actionId": 0,
 			"displayTooltip": false
 		},
 		{
 			"id": 417,
-			"nameId": 1070095,
+			"nameId": 1070955,
 			"actionId": 0,
 			"displayTooltip": false
 		},
 		{
 			"id": 418,
-			"nameId": 1070096,
+			"nameId": 1070956,
 			"actionId": 0,
 			"displayTooltip": false
 		},
 		{
 			"id": 419,
-			"nameId": 1070097,
+			"nameId": 1070957,
+			"actionId": 0,
+			"displayTooltip": false
+		},
+		{
+			"id": 420,
+			"nameId": 1083945,
 			"actionId": 0,
 			"displayTooltip": false
 		}

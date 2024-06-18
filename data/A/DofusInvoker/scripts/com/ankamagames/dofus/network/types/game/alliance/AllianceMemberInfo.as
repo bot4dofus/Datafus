@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.alliance
    public class AllianceMemberInfo extends SocialMember implements INetworkType
    {
       
-      public static const protocolId:uint = 9446;
+      public static const protocolId:uint = 7753;
        
       
       public var avaRoleId:int = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.alliance
       
       override public function getTypeId() : uint
       {
-         return 9446;
+         return 7753;
       }
       
       public function initAllianceMemberInfo(id:Number = 0, name:String = "", level:uint = 0, breed:int = 0, sex:Boolean = false, connected:uint = 99, hoursSinceLastConnection:uint = 0, accountId:uint = 0, status:PlayerStatus = null, rankId:int = 0, enrollmentDate:Number = 0, avaRoleId:int = 0) : AllianceMemberInfo

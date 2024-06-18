@@ -18,7 +18,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
    public class MapComplementaryInformationsDataInHavenBagMessage extends MapComplementaryInformationsDataMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 88;
+      public static const protocolId:uint = 2021;
        
       
       private var _isInitialized:Boolean = false;
@@ -46,7 +46,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay
       
       override public function getMessageId() : uint
       {
-         return 88;
+         return 2021;
       }
       
       public function initMapComplementaryInformationsDataInHavenBagMessage(subAreaId:uint = 0, mapId:Number = 0, houses:Vector.<HouseInformations> = null, actors:Vector.<GameRolePlayActorInformations> = null, interactiveElements:Vector.<InteractiveElement> = null, statedElements:Vector.<StatedElement> = null, obstacles:Vector.<MapObstacle> = null, fights:Vector.<FightCommonInformations> = null, hasAggressiveMonsters:Boolean = false, fightStartPositions:FightStartingPositions = null, ownerInformations:CharacterMinimalInformations = null, theme:int = 0, roomId:uint = 0, maxRoomId:uint = 0) : MapComplementaryInformationsDataInHavenBagMessage

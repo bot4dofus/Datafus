@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ItemNoMoreAvailableMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6607;
+      public static const protocolId:uint = 2498;
        
       
       public function ItemNoMoreAvailableMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 6607;
+         return 2498;
       }
       
       public function initItemNoMoreAvailableMessage() : ItemNoMoreAvailableMessage

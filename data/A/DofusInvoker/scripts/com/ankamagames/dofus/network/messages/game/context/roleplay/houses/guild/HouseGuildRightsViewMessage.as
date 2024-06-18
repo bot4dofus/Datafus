@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses.guil
    public class HouseGuildRightsViewMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 9539;
+      public static const protocolId:uint = 9956;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.houses.guil
       
       override public function getMessageId() : uint
       {
-         return 9539;
+         return 9956;
       }
       
       public function initHouseGuildRightsViewMessage(houseId:uint = 0, instanceId:uint = 0) : HouseGuildRightsViewMessage

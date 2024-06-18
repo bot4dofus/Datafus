@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.interactive
    public class InteractiveElement implements INetworkType
    {
       
-      public static const protocolId:uint = 6006;
+      public static const protocolId:uint = 6065;
        
       
       public var elementId:uint = 0;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.types.game.interactive
       
       public function getTypeId() : uint
       {
-         return 6006;
+         return 6065;
       }
       
       public function initInteractiveElement(elementId:uint = 0, elementTypeId:int = 0, enabledSkills:Vector.<InteractiveElementSkill> = null, disabledSkills:Vector.<InteractiveElementSkill> = null, onCurrentMap:Boolean = false) : InteractiveElement

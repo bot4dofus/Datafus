@@ -2760,7 +2760,8 @@
 				27912,
 				28214,
 				28488,
-				29464
+				29464,
+				30096
 			],
 			"interactiveId": 90,
 			"range": 1,
@@ -5645,7 +5646,8 @@
 				25220,
 				27537,
 				27544,
-				29463
+				29463,
+				30060
 			],
 			"interactiveId": 107,
 			"range": 1,
@@ -10962,7 +10964,8 @@
 				28451,
 				28452,
 				28453,
-				28455
+				28455,
+				30049
 			],
 			"interactiveId": 12,
 			"range": 1,
@@ -10985,6 +10988,26 @@
 				29110
 			],
 			"interactiveId": 107,
+			"range": 1,
+			"useRangeInClient": false,
+			"useAnimation": "AnimCueillir0",
+			"cursor": 0,
+			"elementActionId": 2,
+			"availableInHouse": false,
+			"clientDisplay": true,
+			"levelMin": 1
+		},
+		{
+			"id": 419,
+			"nameId": 1079127,
+			"parentJobId": 1,
+			"isForgemagus": false,
+			"modifiableItemTypeIds": [],
+			"gatheredRessourceItem": -1,
+			"craftableItemIds": [
+				30059
+			],
+			"interactiveId": 13,
 			"range": 1,
 			"useRangeInClient": false,
 			"useAnimation": "AnimCueillir0",

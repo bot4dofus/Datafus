@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.friend
    public class FriendSpouseOnlineInformations extends FriendSpouseInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1391;
+      public static const protocolId:uint = 8676;
        
       
       public var mapId:Number = 0;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.types.game.friend
       
       override public function getTypeId() : uint
       {
-         return 1391;
+         return 8676;
       }
       
       public function initFriendSpouseOnlineInformations(spouseAccountId:uint = 0, spouseId:Number = 0, spouseName:String = "", spouseLevel:uint = 0, breed:int = 0, sex:int = 0, spouseEntityLook:EntityLook = null, guildInfo:GuildInformations = null, alignmentSide:int = 0, mapId:Number = 0, subAreaId:uint = 0, inFight:Boolean = false, followSpouse:Boolean = false) : FriendSpouseOnlineInformations

@@ -198,12 +198,12 @@
 		{
 			"id": 109,
 			"formulaName": "minimum_rank_by_player_level",
-			"luaFormula": "function params()\n    return {\"player_level\"}\nend\n\nfunction main()\n    local minimum_rating_by_player_level = 0.058*(player_level^2)+5*player_level\n\nreturn minimum_rating_by_player_level\nend"
+			"luaFormula": "function params()\r\n    return {\"player_level\"}\r\nend\r\n\r\nfunction main()\r\n    local minimum_rating_by_player_level = 0.058*(player_level^2)+5*player_level\r\n\r\nreturn minimum_rating_by_player_level\r\nend"
 		},
 		{
 			"id": 110,
 			"formulaName": "starting_rank_by_player_level",
-			"luaFormula": "function params()\n    return {\"player_level\"}\nend\n\nfunction main()\n    local starting_rating_by_player_level = 0.57*(player_level^1.5)+9*player_level\n\nreturn starting_rating_by_player_level\nend"
+			"luaFormula": "function params()\r\n    return {\"player_level\"}\r\nend\r\n\r\nfunction main()\r\n    local starting_rating_by_player_level = 0.57*(player_level^1.5)+9*player_level\r\n\r\nreturn starting_rating_by_player_level\r\nend"
 		}
 	]
 }

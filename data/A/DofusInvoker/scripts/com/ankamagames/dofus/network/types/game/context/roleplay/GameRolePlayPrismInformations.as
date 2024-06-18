@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class GameRolePlayPrismInformations extends GameRolePlayActorInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 4347;
+      public static const protocolId:uint = 7369;
        
       
       public var prism:PrismInformation;
@@ -27,7 +27,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 4347;
+         return 7369;
       }
       
       public function initGameRolePlayPrismInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, prism:PrismInformation = null) : GameRolePlayPrismInformations

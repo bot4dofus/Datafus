@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
    public class GameActionFightLifeAndShieldPointsLostMessage extends GameActionFightLifePointsLostMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8896;
+      public static const protocolId:uint = 5703;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.actions.fight
       
       override public function getMessageId() : uint
       {
-         return 8896;
+         return 5703;
       }
       
       public function initGameActionFightLifeAndShieldPointsLostMessage(actionId:uint = 0, sourceId:Number = 0, targetId:Number = 0, loss:uint = 0, permanentDamages:uint = 0, elementId:int = 0, shieldLoss:uint = 0) : GameActionFightLifeAndShieldPointsLostMessage

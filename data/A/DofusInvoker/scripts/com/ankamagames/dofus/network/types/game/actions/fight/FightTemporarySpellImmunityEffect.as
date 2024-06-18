@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.actions.fight
    public class FightTemporarySpellImmunityEffect extends AbstractFightDispellableEffect implements INetworkType
    {
       
-      public static const protocolId:uint = 273;
+      public static const protocolId:uint = 3450;
        
       
       public var immuneSpellId:int = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.actions.fight
       
       override public function getTypeId() : uint
       {
-         return 273;
+         return 3450;
       }
       
       public function initFightTemporarySpellImmunityEffect(uid:uint = 0, targetId:Number = 0, turnDuration:int = 0, dispelable:uint = 1, spellId:uint = 0, effectId:uint = 0, parentBoostUid:uint = 0, immuneSpellId:int = 0) : FightTemporarySpellImmunityEffect

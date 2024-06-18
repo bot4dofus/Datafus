@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.achievement
    public class AchievementsPioneerRanksMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7311;
+      public static const protocolId:uint = 3443;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.achievement
       
       override public function getMessageId() : uint
       {
-         return 7311;
+         return 3443;
       }
       
       public function initAchievementsPioneerRanksMessage(achievementsPioneerRanks:Vector.<AchievementPioneerRank> = null) : AchievementsPioneerRanksMessage

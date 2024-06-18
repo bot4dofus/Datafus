@@ -8,7 +8,6 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.kernel.net.ConnectionsHandler;
    import com.ankamagames.dofus.kernel.net.DisconnectionReasonEnum;
    import com.ankamagames.dofus.kernel.sound.SoundManager;
-   import com.ankamagames.dofus.logic.common.actions.AgreementAgreedAction;
    import com.ankamagames.dofus.logic.common.frames.DisconnectionHandlerFrame;
    import com.ankamagames.dofus.logic.connection.messages.DelayedSystemMessageDisplayMessage;
    import com.ankamagames.dofus.logic.connection.messages.GameStartingMessage;
@@ -18,10 +17,8 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.misc.utils.mapeditor.MapEditorManager;
    import com.ankamagames.dofus.network.messages.server.basic.SystemMessageDisplayMessage;
    import com.ankamagames.jerakine.data.I18n;
-   import com.ankamagames.jerakine.data.XmlConfig;
    import com.ankamagames.jerakine.logger.Log;
    import com.ankamagames.jerakine.logger.Logger;
-   import com.ankamagames.jerakine.managers.OptionManager;
    import com.ankamagames.jerakine.messages.Frame;
    import com.ankamagames.jerakine.messages.Message;
    import com.ankamagames.jerakine.messages.Worker;
@@ -63,8 +60,6 @@ package com.ankamagames.dofus.logic.connection.frames
       {
          var dsmdmsg:DelayedSystemMessageDisplayMessage = null;
          var smdmsg:SystemMessageDisplayMessage = null;
-         var aaa:AgreementAgreedAction = null;
-         var newLength:String = null;
          var dsmdmsg2:DelayedSystemMessageDisplayMessage = null;
          switch(true)
          {
@@ -82,19 +77,6 @@ package com.ankamagames.dofus.logic.connection.frames
                   DisconnectionHandlerFrame.messagesAfterReset.push(dsmdmsg2);
                }
                this.systemMessageDisplay(smdmsg);
-               return true;
-            case msg is AgreementAgreedAction:
-               aaa = AgreementAgreedAction(msg);
-               if(aaa.fileName == "tou")
-               {
-                  newLength = XmlConfig.getInstance().getEntry("config.lang.current") + "#" + (I18n.getUiText("ui.legal.tou1") + I18n.getUiText("ui.legal.tou2")).length;
-                  OptionManager.getOptionManager("dofus").setOption("legalAgreementTou",newLength);
-               }
-               if(aaa.fileName == "modstou")
-               {
-                  newLength = XmlConfig.getInstance().getEntry("config.lang.current") + "#" + I18n.getUiText("ui.legal.modstou").length;
-                  OptionManager.getOptionManager("dofus").setOption("legalAgreementModsTou",newLength);
-               }
                return true;
             case msg is OpenMainMenuAction:
                KernelEventsManager.getInstance().processCallback(HookList.OpenMainMenu);

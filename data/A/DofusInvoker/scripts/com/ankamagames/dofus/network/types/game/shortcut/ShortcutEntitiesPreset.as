@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.shortcut
    public class ShortcutEntitiesPreset extends Shortcut implements INetworkType
    {
       
-      public static const protocolId:uint = 4998;
+      public static const protocolId:uint = 3288;
        
       
       public var presetId:int = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.shortcut
       
       override public function getTypeId() : uint
       {
-         return 4998;
+         return 3288;
       }
       
       public function initShortcutEntitiesPreset(slot:uint = 0, presetId:int = 0) : ShortcutEntitiesPreset

@@ -11,8 +11,6 @@ package com.ankamagames.dofus.misc.lists
       
       public static const AuthentificationStart:String = "AuthentificationStart";
       
-      public static const AgreementsRequired:String = "AgreementsRequired";
-      
       public static const IdentificationSuccess:String = "IdentificationSuccess";
       
       public static const IdentificationFailed:String = "IdentificationFailed";
@@ -552,7 +550,6 @@ package com.ankamagames.dofus.misc.lists
          Hook.createHook(LangFileLoaded);
          Hook.createHook(ConfigStart);
          Hook.createHook(AuthentificationStart);
-         Hook.createHook(AgreementsRequired);
          Hook.createHook(IdentificationSuccess);
          Hook.createHook(IdentificationFailed);
          Hook.createHook(IdentificationFailedWithDuration);

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildInformationsGeneralMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1991;
+      public static const protocolId:uint = 4406;
        
       
       private var _isInitialized:Boolean = false;
@@ -42,7 +42,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 1991;
+         return 4406;
       }
       
       public function initGuildInformationsGeneralMessage(abandonnedPaddock:Boolean = false, level:uint = 0, expLevelFloor:Number = 0, experience:Number = 0, expNextLevelFloor:Number = 0, creationDate:uint = 0, score:int = 0) : GuildInformationsGeneralMessage

@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class HumanOptionEmote extends HumanOption implements INetworkType
    {
       
-      public static const protocolId:uint = 620;
+      public static const protocolId:uint = 7646;
        
       
       public var emoteId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 620;
+         return 7646;
       }
       
       public function initHumanOptionEmote(emoteId:uint = 0, emoteStartTime:Number = 0) : HumanOptionEmote

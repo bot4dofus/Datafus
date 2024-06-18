@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceBulletinMessage extends BulletinMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3779;
+      public static const protocolId:uint = 8751;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 3779;
+         return 8751;
       }
       
       public function initAllianceBulletinMessage(content:String = "", timestamp:uint = 0, memberId:Number = 0, memberName:String = "") : AllianceBulletinMessage

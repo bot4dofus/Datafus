@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.data.items
    public class SellerBuyerDescriptor implements INetworkType
    {
       
-      public static const protocolId:uint = 1407;
+      public static const protocolId:uint = 780;
        
       
       public var quantities:Vector.<uint>;
@@ -40,7 +40,7 @@ package com.ankamagames.dofus.network.types.game.data.items
       
       public function getTypeId() : uint
       {
-         return 1407;
+         return 780;
       }
       
       public function initSellerBuyerDescriptor(quantities:Vector.<uint> = null, types:Vector.<uint> = null, taxPercentage:Number = 0, taxModificationPercentage:Number = 0, maxItemLevel:uint = 0, maxItemPerAccount:uint = 0, npcContextualId:int = 0, unsoldDelay:uint = 0) : SellerBuyerDescriptor

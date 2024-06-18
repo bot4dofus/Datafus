@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.paddock
    public class PaddockContentInformations extends PaddockInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 8721;
+      public static const protocolId:uint = 6426;
        
       
       public var paddockId:Number = 0;
@@ -35,7 +35,7 @@ package com.ankamagames.dofus.network.types.game.paddock
       
       override public function getTypeId() : uint
       {
-         return 8721;
+         return 6426;
       }
       
       public function initPaddockContentInformations(maxOutdoorMount:uint = 0, maxItems:uint = 0, paddockId:Number = 0, worldX:int = 0, worldY:int = 0, mapId:Number = 0, subAreaId:uint = 0, abandonned:Boolean = false, mountsInformations:Vector.<MountInformationsForPaddock> = null) : PaddockContentInformations

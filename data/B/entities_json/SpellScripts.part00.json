@@ -5988,7 +5988,7 @@
 		{
 			"id": 1363,
 			"typeId": 1,
-			"rawParams": "animId:1002"
+			"rawParams": "animId:1002,casterGfxId:3167,casterGfxShowUnder:1"
 		},
 		{
 			"id": 1364,
@@ -6923,7 +6923,7 @@
 		{
 			"id": 1578,
 			"typeId": 1,
-			"rawParams": "animId:1"
+			"rawParams": "animId:2,targetGfxId:3711,targetGfxDisplayType:2"
 		},
 		{
 			"id": 1581,
@@ -7373,7 +7373,7 @@
 		{
 			"id": 1687,
 			"typeId": 1,
-			"rawParams": "targetGfxId:4662"
+			"rawParams": "targetGfxId:21013,targetGfxId2:4460,targetGfxShowUnder2:1"
 		},
 		{
 			"id": 1688,
@@ -9023,7 +9023,7 @@
 		{
 			"id": 2107,
 			"typeId": 1,
-			"rawParams": "animId:1"
+			"rawParams": "animId:1,targetGfxId:825"
 		},
 		{
 			"id": 2108,
@@ -13843,7 +13843,7 @@
 		{
 			"id": 3240,
 			"typeId": 1,
-			"rawParams": "animId:0,targetGfxId:4653,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:0,targetGfxId:21010,targetGfxDisplayType:2,casterGfxId:3167,casterGfxShowUnder:1"
 		},
 		{
 			"id": 3241,
@@ -14208,7 +14208,7 @@
 		{
 			"id": 3331,
 			"typeId": 1,
-			"rawParams": "animId:9,targetGfxId:4661,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:9,targetGfxId:4661"
 		},
 		{
 			"id": 3332,
@@ -14913,7 +14913,7 @@
 		{
 			"id": 3482,
 			"typeId": 1,
-			"rawParams": "targetGfxId:4310"
+			"rawParams": "targetGfxId:7659,targetGfxYOffset:5"
 		},
 		{
 			"id": 3484,
@@ -19073,7 +19073,7 @@
 		{
 			"id": 4377,
 			"typeId": 1,
-			"rawParams": "animId:5,targetGfxId:20001"
+			"rawParams": "animId:304,targetGfxId:4554,targetGfxDisplayType:2"
 		},
 		{
 			"id": 4378,
@@ -19088,7 +19088,7 @@
 		{
 			"id": 4380,
 			"typeId": 1,
-			"rawParams": "animId:304,targetGfxId:4554,targetGfxDisplayType:2"
+			"rawParams": "animId:8,targetGfxId:4158"
 		},
 		{
 			"id": 4381,
@@ -19378,7 +19378,7 @@
 		{
 			"id": 4454,
 			"typeId": 1,
-			"rawParams": "animId:0,targetGfxId:4316"
+			"rawParams": "animId:0,targetGfxId:117,targetGfxDisplayType:2,targetGfxId2:4316"
 		},
 		{
 			"id": 4455,
@@ -19808,7 +19808,7 @@
 		{
 			"id": 4552,
 			"typeId": 1,
-			"rawParams": "animId:1"
+			"rawParams": "animId:1,targetGfxId:3385"
 		},
 		{
 			"id": 4553,
@@ -19843,7 +19843,7 @@
 		{
 			"id": 4571,
 			"typeId": 1,
-			"rawParams": "animId:1,targetGfxId:4650"
+			"rawParams": "animId:1,targetGfxId:4649"
 		},
 		{
 			"id": 4572,
@@ -21257,8 +21257,8 @@
 		},
 		{
 			"id": 4870,
-			"typeId": 1,
-			"rawParams": "animId:0"
+			"typeId": 2,
+			"rawParams": "animId:0,missileGfxId:129,missileGfxYOffset:5"
 		},
 		{
 			"id": 4871,
@@ -27103,7 +27103,7 @@
 		{
 			"id": 6214,
 			"typeId": 1,
-			"rawParams": "animId:1"
+			"rawParams": "animId:2,targetGfxId:3709"
 		},
 		{
 			"id": 6215,
@@ -27153,7 +27153,7 @@
 		{
 			"id": 6224,
 			"typeId": 1,
-			"rawParams": "animId:0,targetGfxId:21010,targetGfxDisplayType:2,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:0,casterGfxId:3167,casterGfxShowUnder:1"
 		},
 		{
 			"id": 6225,
@@ -31023,7 +31023,7 @@
 		{
 			"id": 7067,
 			"typeId": 1,
-			"rawParams": "animId:2"
+			"rawParams": "animId:2,targetGfxId:3693,targetGfxYOffset:5,targetGfxId2:4740"
 		},
 		{
 			"id": 7068,
@@ -31893,7 +31893,7 @@
 		{
 			"id": 7281,
 			"typeId": 1,
-			"rawParams": "animId:1,targetGfxId:21014,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:1,targetGfxId:4651,casterGfxId:3167,casterGfxShowUnder:1"
 		},
 		{
 			"id": 7282,
@@ -34243,7 +34243,7 @@
 		{
 			"id": 7798,
 			"typeId": 1,
-			"rawParams": "animId:1"
+			"rawParams": "animId:1,targetGfxId:7470"
 		},
 		{
 			"id": 7799,
@@ -35803,7 +35803,7 @@
 		{
 			"id": 8153,
 			"typeId": 1,
-			"rawParams": "animId:0,targetGfxId:4387"
+			"rawParams": "animId:0,targetGfxId:4406"
 		},
 		{
 			"id": 8154,
@@ -36353,7 +36353,7 @@
 		{
 			"id": 8288,
 			"typeId": 1,
-			"rawParams": "animId:0,targetGfxId:4658,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:0,targetGfxId:4658,targetGfxId2:21008,targetGfxShowUnder2:1,casterGfxId:3167,casterGfxShowUnder:1"
 		},
 		{
 			"id": 8290,
@@ -36508,7 +36508,7 @@
 		{
 			"id": 8331,
 			"typeId": 1,
-			"rawParams": "animId:1"
+			"rawParams": "animId:1,targetGfxId:829,targetGfxShowUnder:1"
 		},
 		{
 			"id": 8332,
@@ -41238,7 +41238,7 @@
 		{
 			"id": 9364,
 			"typeId": 1,
-			"rawParams": "animId:1"
+			"rawParams": "animId:1,targetGfxId:6146"
 		},
 		{
 			"id": 9365,
@@ -41248,7 +41248,7 @@
 		{
 			"id": 9366,
 			"typeId": 1,
-			"rawParams": "animId:0,targetGfxDisplayType:0,targetGfxDisplayType2:0,casterGfxDisplayType:0"
+			"rawParams": "animId:0,targetGfxId:3710,targetGfxDisplayType:2"
 		},
 		{
 			"id": 9367,
@@ -41318,7 +41318,7 @@
 		{
 			"id": 9380,
 			"typeId": 1,
-			"rawParams": "animId:5,targetGfxId:3174,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:5,targetGfxId:21001"
 		},
 		{
 			"id": 9381,
@@ -45968,7 +45968,7 @@
 		{
 			"id": 10356,
 			"typeId": 1,
-			"rawParams": "targetGfxId:4308"
+			"rawParams": "targetGfxId:115"
 		},
 		{
 			"id": 10358,
@@ -50428,7 +50428,7 @@
 		{
 			"id": 11370,
 			"typeId": 1,
-			"rawParams": "targetGfxId:4407"
+			"rawParams": "targetGfxId:4404"
 		},
 		{
 			"id": 11371,
@@ -53158,7 +53158,7 @@
 		{
 			"id": 12002,
 			"typeId": 1,
-			"rawParams": "animId:9,targetGfxId:4651,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:9,targetGfxId:4651,targetGfxId2:3167,targetGfxShowUnder2:1"
 		},
 		{
 			"id": 12003,
@@ -53253,7 +53253,7 @@
 		{
 			"id": 12037,
 			"typeId": 1,
-			"rawParams": "animId:601,targetGfxId:4310"
+			"rawParams": "animId:601,targetGfxId:7659,targetGfxYOffset:5"
 		},
 		{
 			"id": 12038,
@@ -53298,7 +53298,7 @@
 		{
 			"id": 12047,
 			"typeId": 1,
-			"rawParams": "animId:9,targetGfxId:1120,targetGfxShowUnder:1,targetGfxId2:3174,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:5,targetGfxId:1120,targetGfxShowUnder:1,casterGfxId:3167,casterGfxShowUnder:1"
 		},
 		{
 			"id": 12048,
@@ -53488,7 +53488,7 @@
 		{
 			"id": 12102,
 			"typeId": 3,
-			"rawParams": "animId:602,trailGfxId:20613,trailDisplayType:1,trailGfxMinScale:0,trailGfxMaxScale:6,endTrailOnTarget:1,useSpellZone:1,useOnlySpellZone:1"
+			"rawParams": "animId:602,trailGfxId:20613,trailDisplayType:1,trailGfxMinScale:0,trailGfxMaxScale:6,endTrailOnTarget:1"
 		},
 		{
 			"id": 12103,
@@ -53503,12 +53503,12 @@
 		{
 			"id": 12107,
 			"typeId": 1,
-			"rawParams": "animId:602,targetGfxId:4319"
+			"rawParams": "animId:602,targetGfxId:4303,casterGfxId:4303"
 		},
 		{
 			"id": 12108,
 			"typeId": 2,
-			"rawParams": "animId:602,missileGfxId:122,missileOrientedToCurve:1,targetGfxId:123"
+			"rawParams": "animId:602,missileGfxId:122,missileOrientedToCurve:1,targetGfxId:4250"
 		},
 		{
 			"id": 12112,
@@ -53538,7 +53538,7 @@
 		{
 			"id": 12121,
 			"typeId": 1,
-			"rawParams": "animId:603,targetGfxId:20605"
+			"rawParams": "animId:602,targetGfxId:20602,targetGfxId2:4714"
 		},
 		{
 			"id": 12122,
@@ -53603,7 +53603,7 @@
 		{
 			"id": 12134,
 			"typeId": 1,
-			"rawParams": "animId:9,targetGfxId:4655,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:1001,targetGfxId:3167,targetGfxShowUnder:1,targetGfxId2:4655,casterGfxId:3167,casterGfxShowUnder:1"
 		},
 		{
 			"id": 12136,
@@ -54018,7 +54018,7 @@
 		{
 			"id": 12250,
 			"typeId": 1,
-			"rawParams": "animId:1001,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:1001,targetGfxId:4256,targetGfxYOffset:6,casterGfxId:3167,casterGfxShowUnder:1"
 		},
 		{
 			"id": 12251,
@@ -54038,12 +54038,12 @@
 		{
 			"id": 12254,
 			"typeId": 1,
-			"rawParams": "animId:5,targetGfxId:3174,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:5,targetGfxId:21001"
 		},
 		{
 			"id": 12255,
 			"typeId": 1,
-			"rawParams": "animId:5,targetGfxId:3174,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:5,targetGfxId:21001"
 		},
 		{
 			"id": 12256,
@@ -54263,7 +54263,7 @@
 		{
 			"id": 12331,
 			"typeId": 1,
-			"rawParams": "animId:5,targetGfxId:3174,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:5,targetGfxId:21001"
 		},
 		{
 			"id": 12333,
@@ -54308,7 +54308,7 @@
 		{
 			"id": 12359,
 			"typeId": 1,
-			"rawParams": "animId:1001,targetGfxId:4659,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:9,targetGfxId:4659"
 		},
 		{
 			"id": 12362,
@@ -54498,12 +54498,12 @@
 		{
 			"id": 12424,
 			"typeId": 1,
-			"rawParams": "animId:9,targetGfxId:4534,casterGfxId:4534"
+			"rawParams": "animId:302,targetGfxId:7319,casterGfxId:7319"
 		},
 		{
 			"id": 12425,
 			"typeId": 1,
-			"rawParams": "animId:602,targetGfxId:4303"
+			"rawParams": "animId:602,targetGfxId:3920,targetGfxDisplayType:2,targetGfxId2:4668"
 		},
 		{
 			"id": 12426,
@@ -54513,7 +54513,7 @@
 		{
 			"id": 12427,
 			"typeId": 1,
-			"rawParams": "animId:5,targetGfxId:20001"
+			"rawParams": "animId:601,targetGfxId:115"
 		},
 		{
 			"id": 12428,
@@ -54523,7 +54523,7 @@
 		{
 			"id": 12429,
 			"typeId": 1,
-			"rawParams": "animId:8,targetGfxId:4308"
+			"rawParams": "animId:601,targetGfxId:115"
 		},
 		{
 			"id": 12430,
@@ -54628,7 +54628,7 @@
 		{
 			"id": 12463,
 			"typeId": 1,
-			"rawParams": "animId:301,targetGfxId:20601"
+			"rawParams": "animId:301,targetGfxId:4247"
 		},
 		{
 			"id": 12464,
@@ -54653,7 +54653,7 @@
 		{
 			"id": 12468,
 			"typeId": 1,
-			"rawParams": "animId:601,targetGfxId:4251"
+			"rawParams": "animId:601,targetGfxId:4311"
 		},
 		{
 			"id": 12469,
@@ -55013,7 +55013,7 @@
 		{
 			"id": 12550,
 			"typeId": 1,
-			"rawParams": "animId:9,targetGfxId:21007,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:9,targetGfxId:21007"
 		},
 		{
 			"id": 12552,
@@ -55198,7 +55198,7 @@
 		{
 			"id": 12630,
 			"typeId": 1,
-			"rawParams": "animId:9"
+			"rawParams": "animId:9,targetGfxId:4534"
 		},
 		{
 			"id": 12631,
@@ -55258,7 +55258,7 @@
 		{
 			"id": 12644,
 			"typeId": 1,
-			"rawParams": "animId:6,targetGfxId:115,targetGfxDisplayType:0,targetGfxDisplayType2:0,casterGfxDisplayType:0"
+			"rawParams": "animId:601,targetGfxId:4308"
 		},
 		{
 			"id": 12645,
@@ -55588,7 +55588,7 @@
 		{
 			"id": 12737,
 			"typeId": 1,
-			"rawParams": "animId:9,targetGfxId:4320"
+			"rawParams": "animId:602,targetGfxId:4320"
 		},
 		{
 			"id": 12738,
@@ -55627,8 +55627,8 @@
 		},
 		{
 			"id": 12752,
-			"typeId": 1,
-			"rawParams": "animId:602,targetGfxId:4250"
+			"typeId": 2,
+			"rawParams": "animId:602,missileGfxId:122,missileSpeed:-6,targetGfxId:123"
 		},
 		{
 			"id": 12753,
@@ -55678,7 +55678,7 @@
 		{
 			"id": 12768,
 			"typeId": 1,
-			"rawParams": "animId:602,targetGfxId:4306,targetGfxDisplayType:2"
+			"rawParams": "animId:601,targetGfxId:4306,targetGfxDisplayType:2"
 		},
 		{
 			"id": 12773,
@@ -55768,12 +55768,12 @@
 		{
 			"id": 12794,
 			"typeId": 1,
-			"rawParams": "animId:5,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:5,targetGfxId:4665,casterGfxId:3167,casterGfxShowUnder:1"
 		},
 		{
 			"id": 12795,
 			"typeId": 1,
-			"rawParams": "animId:6,targetGfxId:20001"
+			"rawParams": "animId:8,targetGfxId:20603"
 		},
 		{
 			"id": 12796,
@@ -55793,7 +55793,7 @@
 		{
 			"id": 12799,
 			"typeId": 1,
-			"rawParams": "animId:601,targetGfxId:20606"
+			"rawParams": "animId:9,targetGfxId:4304,targetGfxYOffset:5"
 		},
 		{
 			"id": 12800,
@@ -55888,7 +55888,7 @@
 		{
 			"id": 12837,
 			"typeId": 1,
-			"rawParams": "animId:9,targetGfxId:5388"
+			"rawParams": "animId:9,targetGfxId:5388,targetGfxId2:4544,targetGfxYOffset2:-3"
 		},
 		{
 			"id": 12840,
@@ -56068,7 +56068,7 @@
 		{
 			"id": 12896,
 			"typeId": 1,
-			"rawParams": "animId:6,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:6"
 		},
 		{
 			"id": 12897,
@@ -56117,13 +56117,13 @@
 		},
 		{
 			"id": 12907,
-			"typeId": 3,
-			"rawParams": "caster_separator:Animation du caster,animId:602,Gfx sur le caster_separator:Gfx sur le caster,casterGfxDisplayType:0,gfx_separator:Gfx de la train\u00e9e,trailGfxId:117,trailDisplayType:2,trailGfxMinScale:-3,trailGfxMaxScale:2,Gfx d'impact sur la cible_separator:Gfx d'impact sur la cible,targetGfxDisplayType:0,other_separator:Autre,endTrailOnTarget:1"
+			"typeId": 1,
+			"rawParams": "animId:602,targetGfxId:117,targetGfxDisplayType:2"
 		},
 		{
 			"id": 12909,
 			"typeId": 1,
-			"rawParams": "animId:603,targetGfxId:4408"
+			"rawParams": "animId:602,targetGfxId:4408"
 		},
 		{
 			"id": 12910,
@@ -56143,7 +56143,7 @@
 		{
 			"id": 12913,
 			"typeId": 1,
-			"rawParams": "animId:301,targetGfxId:4247"
+			"rawParams": "animId:602,targetGfxId:20601"
 		},
 		{
 			"id": 12918,
@@ -56398,7 +56398,7 @@
 		{
 			"id": 12975,
 			"typeId": 1,
-			"rawParams": "animId:1203,targetGfxId:21010,targetGfxDisplayType:2,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:4"
 		},
 		{
 			"id": 12976,
@@ -56568,7 +56568,7 @@
 		{
 			"id": 13038,
 			"typeId": 1,
-			"rawParams": "animId:9,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:603,targetGfxId:4656"
 		},
 		{
 			"id": 13040,
@@ -56658,12 +56658,12 @@
 		{
 			"id": 13059,
 			"typeId": 1,
-			"rawParams": "animId:4,targetGfxId:20612"
+			"rawParams": "animId:602,targetGfxId:20612"
 		},
 		{
 			"id": 13060,
 			"typeId": 1,
-			"rawParams": "animId:601"
+			"rawParams": "animId:602,targetGfxId:4252"
 		},
 		{
 			"id": 13061,
@@ -56673,7 +56673,7 @@
 		{
 			"id": 13062,
 			"typeId": 1,
-			"rawParams": "animId:301,targetGfxId:4532"
+			"rawParams": "animId:301,targetGfxId:4157,targetGfxId2:4532"
 		},
 		{
 			"id": 13063,
@@ -56763,7 +56763,7 @@
 		{
 			"id": 13087,
 			"typeId": 1,
-			"rawParams": "animId:602,targetGfxId:5389"
+			"rawParams": "animId:602,targetGfxId:5389,targetGfxId2:7274"
 		},
 		{
 			"id": 13088,
@@ -57118,7 +57118,7 @@
 		{
 			"id": 13189,
 			"typeId": 1,
-			"rawParams": "animId:5,targetGfxId:20001"
+			"rawParams": "animId:601,targetGfxId:115"
 		},
 		{
 			"id": 13190,
@@ -57203,7 +57203,7 @@
 		{
 			"id": 13206,
 			"typeId": 1,
-			"rawParams": "animId:603,targetGfxId:4311"
+			"rawParams": "animId:603,targetGfxId:6186,targetGfxId2:6155"
 		},
 		{
 			"id": 13207,
@@ -57278,7 +57278,7 @@
 		{
 			"id": 13232,
 			"typeId": 1,
-			"rawParams": "animId:9,targetGfxId:21013,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:9,targetGfxId:21013"
 		},
 		{
 			"id": 13234,
@@ -57438,7 +57438,7 @@
 		{
 			"id": 13272,
 			"typeId": 1,
-			"rawParams": "animId:1203,targetGfxId:21005,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:603,targetGfxId:21005"
 		},
 		{
 			"id": 13273,
@@ -59103,7 +59103,7 @@
 		{
 			"id": 13686,
 			"typeId": 1,
-			"rawParams": "animId:602,targetGfxId:4315"
+			"rawParams": "animId:602,targetGfxId:3499,targetGfxId2:4315"
 		},
 		{
 			"id": 13687,
@@ -60473,7 +60473,7 @@
 		{
 			"id": 14010,
 			"typeId": 1,
-			"rawParams": "animId:1001,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:1001,targetGfxId:3167,targetGfxShowUnder:1,targetGfxId2:5406,casterGfxId:3167,casterGfxShowUnder:1"
 		},
 		{
 			"id": 14011,
@@ -61082,8 +61082,8 @@
 		},
 		{
 			"id": 14179,
-			"typeId": 3,
-			"rawParams": "animId:32210,trailGfxId:1499,trailDisplayType:2,targetGfxId:7095,targetGfxDisplayType:2"
+			"typeId": 1,
+			"rawParams": "animId:32210,targetGfxId:7096,targetGfxDisplayType:2"
 		},
 		{
 			"id": 14180,
@@ -61763,7 +61763,7 @@
 		{
 			"id": 14326,
 			"typeId": 1,
-			"rawParams": "animId:1,targetGfxId:4668"
+			"rawParams": "targetGfxId:4445"
 		},
 		{
 			"id": 14327,
@@ -61788,7 +61788,7 @@
 		{
 			"id": 14335,
 			"typeId": 1,
-			"rawParams": "animId:1,targetGfxId:3876"
+			"rawParams": "animId:1,targetGfxId:4633"
 		},
 		{
 			"id": 14336,
@@ -61803,7 +61803,7 @@
 		{
 			"id": 14338,
 			"typeId": 1,
-			"rawParams": "animId:1,targetGfxId:3160,targetGfxId2:3161,targetGfxShowUnder2:1"
+			"rawParams": "animId:1,targetGfxId:3160,targetGfxId2:3161,targetGfxShowUnder2:1,casterGfxId:3167,casterGfxShowUnder:1"
 		},
 		{
 			"id": 14339,
@@ -61987,8 +61987,8 @@
 		},
 		{
 			"id": 14379,
-			"typeId": 1,
-			"rawParams": "animId:32210,targetGfxId:7097"
+			"typeId": 3,
+			"rawParams": "animId:32217,trailGfxId:7097"
 		},
 		{
 			"id": 14380,
@@ -62337,7 +62337,7 @@
 		},
 		{
 			"id": 14456,
-			"typeId": 1,
+			"typeId": 3,
 			"rawParams": "animId:32210,targetGfxId:4266"
 		},
 		{
@@ -62403,7 +62403,7 @@
 		{
 			"id": 14470,
 			"typeId": 1,
-			"rawParams": "targetGfxId:4658"
+			"rawParams": "targetGfxId:4658,targetGfxShowUnder:1"
 		},
 		{
 			"id": 14471,
@@ -62443,7 +62443,7 @@
 		{
 			"id": 14478,
 			"typeId": 1,
-			"rawParams": "targetGfxId:4660"
+			"rawParams": "targetGfxId:4652"
 		},
 		{
 			"id": 14479,
@@ -62503,7 +62503,7 @@
 		{
 			"id": 14497,
 			"typeId": 1,
-			"rawParams": "animId:1203,targetGfxId:21004,casterGfxId:3167,casterGfxShowUnder:1"
+			"rawParams": "animId:603,targetGfxId:21004"
 		},
 		{
 			"id": 14498,
@@ -63088,7 +63088,7 @@
 		{
 			"id": 14618,
 			"typeId": 1,
-			"rawParams": "targetGfxId:4318"
+			"rawParams": "targetGfxId:20614"
 		},
 		{
 			"id": 14619,
@@ -68736,6 +68736,166 @@
 			"rawParams": "animId:705,targetGfxId:7602,targetGfxDisplayType:2"
 		},
 		{
+			"id": 16659,
+			"typeId": 1,
+			"rawParams": "animId:5,targetGfxId:21001"
+		},
+		{
+			"id": 16660,
+			"typeId": 1,
+			"rawParams": "animId:5,targetGfxId:3174,casterGfxId:3167,casterGfxShowUnder:1"
+		},
+		{
+			"id": 16661,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4658,targetGfxShowUnder:1"
+		},
+		{
+			"id": 16662,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4658,targetGfxShowUnder:1,targetGfxId2:4794,targetGfxShowUnder2:1"
+		},
+		{
+			"id": 16663,
+			"typeId": 1,
+			"rawParams": "targetGfxId:21008,targetGfxShowUnder:1"
+		},
+		{
+			"id": 16664,
+			"typeId": 1,
+			"rawParams": "targetGfxId:21008,targetGfxShowUnder:1,targetGfxId2:4658,targetGfxShowUnder2:1"
+		},
+		{
+			"id": 16665,
+			"typeId": 1,
+			"rawParams": "targetGfxId:21010,targetGfxDisplayType:2,targetGfxId2:4649"
+		},
+		{
+			"id": 16666,
+			"typeId": 1,
+			"rawParams": "targetGfxId:5406"
+		},
+		{
+			"id": 16667,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4652,targetGfxShowUnder:1"
+		},
+		{
+			"id": 16668,
+			"typeId": 1,
+			"rawParams": "animId:1001,targetGfxId:3167,targetGfxShowUnder:1,targetGfxId2:4662,casterGfxId:3167,casterGfxShowUnder:1"
+		},
+		{
+			"id": 16669,
+			"typeId": 1,
+			"rawParams": "targetGfxId:3167,targetGfxShowUnder:1"
+		},
+		{
+			"id": 16670,
+			"typeId": 1,
+			"rawParams": "targetGfxId:5009"
+		},
+		{
+			"id": 16671,
+			"typeId": 1,
+			"rawParams": "targetGfxId:21010,targetGfxDisplayType:2"
+		},
+		{
+			"id": 16672,
+			"typeId": 1,
+			"rawParams": "animId:1001,targetGfxId:6816,targetGfxId2:7529,targetGfxDisplayType2:2,casterGfxId:3167,casterGfxShowUnder:1"
+		},
+		{
+			"id": 16673,
+			"typeId": 1,
+			"rawParams": "targetGfxId:3174"
+		},
+		{
+			"id": 16674,
+			"typeId": 1,
+			"rawParams": "targetGfxId:3167,targetGfxShowUnder:1,targetGfxId2:5900"
+		},
+		{
+			"id": 16675,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4652,targetGfxShowUnder:1"
+		},
+		{
+			"id": 16676,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4660"
+		},
+		{
+			"id": 16677,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:21014,casterGfxId:3167,casterGfxShowUnder:1"
+		},
+		{
+			"id": 16678,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:4650"
+		},
+		{
+			"id": 16679,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:21001"
+		},
+		{
+			"id": 16680,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4443"
+		},
+		{
+			"id": 16681,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:20316"
+		},
+		{
+			"id": 16682,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4668"
+		},
+		{
+			"id": 16683,
+			"typeId": 1,
+			"rawParams": "targetGfxId:6847,targetGfxId2:3918"
+		},
+		{
+			"id": 16684,
+			"typeId": 1,
+			"rawParams": "animId:1"
+		},
+		{
+			"id": 16685,
+			"typeId": 1,
+			"rawParams": "targetGfxId:3881"
+		},
+		{
+			"id": 16686,
+			"typeId": 1,
+			"rawParams": "casterGfxId:21010,casterGfxDisplayType:2"
+		},
+		{
+			"id": 16687,
+			"typeId": 1,
+			"rawParams": "animId:0,casterGfxId:3167,casterGfxShowUnder:1"
+		},
+		{
+			"id": 16688,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4658,targetGfxShowUnder:1"
+		},
+		{
+			"id": 16689,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4662"
+		},
+		{
+			"id": 16690,
+			"typeId": 1,
+			"rawParams": "targetGfxId:5009"
+		},
+		{
 			"id": 16825,
 			"typeId": 1,
 			"rawParams": "targetGfxId:6828,targetGfxId2:6815"
@@ -68769,6 +68929,11 @@
 			"id": 16831,
 			"typeId": 1,
 			"rawParams": "animId:0,targetGfxId:7339,targetGfxId2:4544"
+		},
+		{
+			"id": 16832,
+			"typeId": 1,
+			"rawParams": "animId:302,targetGfxId:7319"
 		},
 		{
 			"id": 16833,
@@ -68841,6 +69006,21 @@
 			"rawParams": "animId:0,targetGfxId:4863"
 		},
 		{
+			"id": 16848,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3710,targetGfxDisplayType:2"
+		},
+		{
+			"id": 16849,
+			"typeId": 1,
+			"rawParams": "animId:0"
+		},
+		{
+			"id": 16850,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:3680,targetGfxId2:3684"
+		},
+		{
 			"id": 16851,
 			"typeId": 1,
 			"rawParams": "animId:1"
@@ -68886,9 +69066,194 @@
 			"rawParams": "targetGfxId:4950"
 		},
 		{
+			"id": 16861,
+			"typeId": 1,
+			"rawParams": "animId:0"
+		},
+		{
+			"id": 16862,
+			"typeId": 1,
+			"rawParams": "animId:0"
+		},
+		{
+			"id": 16863,
+			"typeId": 1,
+			"rawParams": "animId:0"
+		},
+		{
+			"id": 16864,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:3684"
+		},
+		{
+			"id": 16865,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3684"
+		},
+		{
+			"id": 16866,
+			"typeId": 1,
+			"rawParams": "animId:0"
+		},
+		{
+			"id": 16867,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:6231,targetGfxId2:3684"
+		},
+		{
+			"id": 16868,
+			"typeId": 1,
+			"rawParams": "animId:2,targetGfxId:6230,targetGfxId2:3684"
+		},
+		{
+			"id": 16869,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3684"
+		},
+		{
+			"id": 16870,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:2446,targetGfxDisplayType:2"
+		},
+		{
+			"id": 16871,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:3690"
+		},
+		{
+			"id": 16872,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:3713,targetGfxDisplayType:2"
+		},
+		{
+			"id": 16873,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3687"
+		},
+		{
+			"id": 16874,
+			"typeId": 1,
+			"rawParams": "animId:2,targetGfxId:4532"
+		},
+		{
+			"id": 16875,
+			"typeId": 1,
+			"rawParams": "animId:2,targetGfxId:3678"
+		},
+		{
+			"id": 16876,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3682"
+		},
+		{
+			"id": 16877,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:4864"
+		},
+		{
+			"id": 16878,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3683"
+		},
+		{
+			"id": 16879,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3682"
+		},
+		{
+			"id": 16880,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:4864"
+		},
+		{
+			"id": 16881,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3683"
+		},
+		{
+			"id": 16882,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:3682"
+		},
+		{
+			"id": 16883,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:4864"
+		},
+		{
+			"id": 16884,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:3683"
+		},
+		{
+			"id": 16885,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:6231,targetGfxId2:3682"
+		},
+		{
+			"id": 16886,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:6231,targetGfxId2:4864"
+		},
+		{
+			"id": 16887,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:6231,targetGfxId2:3683"
+		},
+		{
+			"id": 16888,
+			"typeId": 1,
+			"rawParams": "animId:2,targetGfxId:6230,targetGfxId2:3682"
+		},
+		{
+			"id": 16889,
+			"typeId": 1,
+			"rawParams": "animId:2,targetGfxId:6230,targetGfxId2:4864"
+		},
+		{
+			"id": 16890,
+			"typeId": 1,
+			"rawParams": "animId:2,targetGfxId:6230,targetGfxId2:3683"
+		},
+		{
+			"id": 16891,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4403"
+		},
+		{
+			"id": 16892,
+			"typeId": 1,
+			"rawParams": "targetGfxId:5113"
+		},
+		{
+			"id": 16893,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4501,targetGfxId2:3682"
+		},
+		{
 			"id": 16894,
 			"typeId": 1,
 			"rawParams": "targetGfxId:4774"
+		},
+		{
+			"id": 16895,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4501,targetGfxId2:4864"
+		},
+		{
+			"id": 16896,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4501,targetGfxId2:3684"
+		},
+		{
+			"id": 16897,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4501,targetGfxId2:3683"
+		},
+		{
+			"id": 16899,
+			"typeId": 1,
+			"rawParams": "targetGfxId2:500"
 		},
 		{
 			"id": 16900,
@@ -68896,9 +69261,259 @@
 			"rawParams": "animId:0,targetGfxId:3867,targetGfxDisplayType:2,targetGfxId2:3854"
 		},
 		{
+			"id": 16902,
+			"typeId": 1,
+			"rawParams": "targetGfxId:7097"
+		},
+		{
+			"id": 16903,
+			"typeId": 1,
+			"rawParams": "targetGfxId:21013"
+		},
+		{
 			"id": 16960,
 			"typeId": 1,
-			"rawParams": "animId:0,targetGfxId:3871"
+			"rawParams": "animId:0,targetGfxId:3871,targetGfxDisplayType:2"
+		},
+		{
+			"id": 16961,
+			"typeId": 1,
+			"rawParams": "casterGfxId:3822"
+		},
+		{
+			"id": 16962,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:20210"
+		},
+		{
+			"id": 16963,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3142,targetGfxDisplayType:2"
+		},
+		{
+			"id": 16964,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:5320,targetGfxId2:4532"
+		},
+		{
+			"id": 16965,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:3174"
+		},
+		{
+			"id": 16966,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:4755"
+		},
+		{
+			"id": 16967,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:4863,targetGfxDisplayType:2"
+		},
+		{
+			"id": 16968,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:4336,targetGfxDisplayType:2"
+		},
+		{
+			"id": 16969,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:20905,targetGfxDisplayType:2"
+		},
+		{
+			"id": 16970,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3682"
+		},
+		{
+			"id": 16971,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3684"
+		},
+		{
+			"id": 16972,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3683"
+		},
+		{
+			"id": 16973,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:4864"
+		},
+		{
+			"id": 16974,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:4775"
+		},
+		{
+			"id": 16975,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:1550"
+		},
+		{
+			"id": 16976,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:1551"
+		},
+		{
+			"id": 16977,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:1556"
+		},
+		{
+			"id": 16978,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:3684"
+		},
+		{
+			"id": 16979,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:3682"
+		},
+		{
+			"id": 16980,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:4864"
+		},
+		{
+			"id": 16981,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:3683"
+		},
+		{
+			"id": 16982,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:2350"
+		},
+		{
+			"id": 16983,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:3684"
+		},
+		{
+			"id": 16984,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:2350"
+		},
+		{
+			"id": 16985,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:3682"
+		},
+		{
+			"id": 16986,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:4864"
+		},
+		{
+			"id": 16987,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:3683"
+		},
+		{
+			"id": 16988,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3161,targetGfxShowUnder:1,targetGfxId2:3160"
+		},
+		{
+			"id": 16989,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3684"
+		},
+		{
+			"id": 16990,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3684,targetGfxId2:4774"
+		},
+		{
+			"id": 16991,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3682,targetGfxId2:4774"
+		},
+		{
+			"id": 16992,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:4864,targetGfxId2:4774"
+		},
+		{
+			"id": 16993,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:3683,targetGfxId2:4774"
+		},
+		{
+			"id": 16994,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:2350,targetGfxId2:4774"
+		},
+		{
+			"id": 16995,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:21014"
+		},
+		{
+			"id": 16996,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:4639"
+		},
+		{
+			"id": 16997,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:4475"
+		},
+		{
+			"id": 16998,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:922"
+		},
+		{
+			"id": 16999,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:6846"
+		},
+		{
+			"id": 17000,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:2140"
+		},
+		{
+			"id": 17001,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:4406"
+		},
+		{
+			"id": 17069,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:137"
+		},
+		{
+			"id": 17070,
+			"typeId": 2,
+			"rawParams": "animId:1,targetGfxId:114"
+		},
+		{
+			"id": 17071,
+			"typeId": 1,
+			"rawParams": "animId:2,targetGfxId:4066"
+		},
+		{
+			"id": 17072,
+			"typeId": 1,
+			"rawParams": "animId:0"
+		},
+		{
+			"id": 17073,
+			"typeId": 1,
+			"rawParams": "animId:1"
+		},
+		{
+			"id": 17074,
+			"typeId": 1,
+			"rawParams": "animId:2"
+		},
+		{
+			"id": 17075,
+			"typeId": 1,
+			"rawParams": "animId:0"
 		},
 		{
 			"id": 17076,
@@ -68964,6 +69579,126 @@
 			"id": 17088,
 			"typeId": 1,
 			"rawParams": "animId:1"
+		},
+		{
+			"id": 17099,
+			"typeId": 1,
+			"rawParams": "targetGfxId:198"
+		},
+		{
+			"id": 17100,
+			"typeId": 1,
+			"rawParams": "targetGfxId:199"
+		},
+		{
+			"id": 17101,
+			"typeId": 1,
+			"rawParams": "targetGfxId:200"
+		},
+		{
+			"id": 17102,
+			"typeId": 1,
+			"rawParams": "targetGfxId:202"
+		},
+		{
+			"id": 17103,
+			"typeId": 1,
+			"rawParams": "targetGfxId:203"
+		},
+		{
+			"id": 17104,
+			"typeId": 1,
+			"rawParams": "targetGfxId:204"
+		},
+		{
+			"id": 17105,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4149,targetGfxDisplayType:2"
+		},
+		{
+			"id": 17107,
+			"typeId": 1,
+			"rawParams": "animId:602"
+		},
+		{
+			"id": 17108,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:4249"
+		},
+		{
+			"id": 17109,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:20608"
+		},
+		{
+			"id": 17114,
+			"typeId": 1,
+			"rawParams": "animId:301"
+		},
+		{
+			"id": 17115,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4407"
+		},
+		{
+			"id": 17116,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4315"
+		},
+		{
+			"id": 17117,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4316"
+		},
+		{
+			"id": 17118,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4312"
+		},
+		{
+			"id": 17119,
+			"typeId": 1,
+			"rawParams": "animId:8,targetGfxId:4304,targetGfxYOffset:5,targetGfxId2:4403"
+		},
+		{
+			"id": 17120,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4304,targetGfxYOffset:5,targetGfxId2:4405"
+		},
+		{
+			"id": 17121,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4317"
+		},
+		{
+			"id": 17122,
+			"typeId": 1,
+			"rawParams": "targetGfxId:3493"
+		},
+		{
+			"id": 17123,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4403"
+		},
+		{
+			"id": 17125,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4408"
+		},
+		{
+			"id": 17126,
+			"typeId": 1,
+			"rawParams": "targetGfxId:20602,targetGfxId2:4714"
+		},
+		{
+			"id": 17127,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4252"
+		},
+		{
+			"id": 17128,
+			"typeId": 1,
+			"rawParams": "targetGfxId:123"
 		}
 	]
 }

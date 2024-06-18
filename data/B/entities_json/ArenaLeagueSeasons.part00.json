@@ -47,6 +47,14 @@
 			"closure": 1718695860000.0,
 			"resetDate": 0.0,
 			"flagObjectId": 29753
+		},
+		{
+			"uid": 61,
+			"nameId": 1082436,
+			"beginning": 1718695860000.0,
+			"closure": 1726558200000.0,
+			"resetDate": 0.0,
+			"flagObjectId": 30148
 		}
 	]
 }

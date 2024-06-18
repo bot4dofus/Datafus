@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context
    public class GameContextRemoveElementWithEventMessage extends GameContextRemoveElementMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1450;
+      public static const protocolId:uint = 7775;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.context
       
       override public function getMessageId() : uint
       {
-         return 1450;
+         return 7775;
       }
       
       public function initGameContextRemoveElementWithEventMessage(id:Number = 0, elementEventId:uint = 0) : GameContextRemoveElementWithEventMessage

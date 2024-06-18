@@ -28571,7 +28571,7 @@
 				2749
 			],
 			"isPartyQuest": false,
-			"startCriterion": "PL>10&PZ=1&Qo>15155&Sc=940",
+			"startCriterion": "PL>10&PZ=1&PO=30071&((Qa=2091&Qo>15155)|Qf=2091)&Sc=940",
 			"followable": true
 		},
 		{
@@ -28635,7 +28635,7 @@
 				2753
 			],
 			"isPartyQuest": false,
-			"startCriterion": "PZ=1&Qo>15171&Sc=940",
+			"startCriterion": "PL>10&PZ=1&PO=30071&((Qa=2091&Qo>15171)|Qf=2091)&Sc=940",
 			"followable": true
 		},
 		{
@@ -28651,7 +28651,7 @@
 				2754
 			],
 			"isPartyQuest": false,
-			"startCriterion": "PL>10&PZ=1&Qo>15165&Sc=940",
+			"startCriterion": "PL>10&PZ=1&Qa=2091&Qo>15165&Sc=940",
 			"followable": true
 		},
 		{
@@ -28667,7 +28667,7 @@
 				2755
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Sc=940&Qo>15170&(PO!21668|(PO=21668&PO<21668,2&(PO!21647|DM>29,21647)))",
+			"startCriterion": "PL>10&PZ=1&Sc=940&((Qa=2091&Qo>15170)|Qf=2091)&(PO!21668|(PO=21668&PO<21668,2&(PO!21647|DM>29,21647)))",
 			"followable": true
 		},
 		{
@@ -28683,7 +28683,7 @@
 				2758
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qa=2100&(Qo=15210|(Qo>15210&PO=21858))&Sc=940",
+			"startCriterion": "PL>10&PZ=1&Qa=2100&(Qo=15210|(Qo>15210&PO=21858))&Sc=940",
 			"followable": true
 		},
 		{
@@ -28699,7 +28699,7 @@
 				2756
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qa=2100&((Qo=15238)|(Qo>15238&PO=21859))&Sc=940",
+			"startCriterion": "PL>10&PZ=1&Qa=2100&((Qo=15238)|(Qo>15238&PO=21859))&Sc=940",
 			"followable": true
 		},
 		{
@@ -28715,7 +28715,7 @@
 				2757
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qa=2100&(Qo=15266|(Qo>15266&PO=21860))&Sc=940",
+			"startCriterion": "PL>10&PZ=1&Qa=2100&(Qo=15266|(Qo>15266&PO=21860))&Sc=940",
 			"followable": true
 		},
 		{
@@ -28731,7 +28731,7 @@
 				2759
 			],
 			"isPartyQuest": false,
-			"startCriterion": "PL>10&PZ=1&Sc=940&Qo>15152",
+			"startCriterion": "PL>10&PZ=1&Sc=940&Qa=2091&Qo>15152",
 			"followable": true
 		},
 		{
@@ -28747,7 +28747,7 @@
 				2762
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Sc=940&Qo=15169",
+			"startCriterion": "PL>10&PZ=1&Sc=940&Qa=2091&Qo=15169",
 			"followable": true
 		},
 		{
@@ -28763,7 +28763,7 @@
 				2763
 			],
 			"isPartyQuest": false,
-			"startCriterion": "PL>10&PZ=1&Sc=940&Qo=15172",
+			"startCriterion": "PL>10&PZ=1&Sc=940&Qa=2091&Qo=15172",
 			"followable": true
 		},
 		{
@@ -28779,7 +28779,7 @@
 				2764
 			],
 			"isPartyQuest": false,
-			"startCriterion": "Qo=15174&Sc=940",
+			"startCriterion": "PL>10&PZ=1&Qa=2091&Qo=15174&Sc=940",
 			"followable": true
 		},
 		{
@@ -31372,6 +31372,70 @@
 			],
 			"isPartyQuest": false,
 			"startCriterion": "SC=5&ST=7&Qf=2496",
+			"followable": true
+		},
+		{
+			"id": 2498,
+			"nameId": 1077887,
+			"categoryId": 28,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": true,
+			"levelMin": 50,
+			"levelMax": 200,
+			"stepIds": [
+				3155
+			],
+			"isPartyQuest": false,
+			"startCriterion": "PL>10&PZ=1&Qa=2091&Qo>15171&Sc=940",
+			"followable": true
+		},
+		{
+			"id": 2499,
+			"nameId": 1080820,
+			"categoryId": 28,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 20,
+			"levelMax": 200,
+			"stepIds": [
+				3157
+			],
+			"isPartyQuest": false,
+			"startCriterion": "PL>10&PZ=1&Sc=940",
+			"followable": false
+		},
+		{
+			"id": 2500,
+			"nameId": 1082052,
+			"categoryId": 28,
+			"repeatType": 0,
+			"repeatLimit": 1,
+			"isDungeonQuest": false,
+			"levelMin": 20,
+			"levelMax": 200,
+			"stepIds": [
+				3158
+			],
+			"isPartyQuest": false,
+			"startCriterion": "PL>10&PZ=1&Sc=940&Qa=2091&Qo=19130",
+			"followable": true
+		},
+		{
+			"id": 2501,
+			"nameId": 1083458,
+			"categoryId": 28,
+			"repeatType": -1,
+			"repeatLimit": 50,
+			"isDungeonQuest": false,
+			"levelMin": 20,
+			"levelMax": 200,
+			"stepIds": [
+				3159
+			],
+			"isPartyQuest": false,
+			"startCriterion": "PL>10&PZ=1&Sc=940&Qa=2091&Qo>15163",
 			"followable": true
 		}
 	]

@@ -73,7 +73,7 @@
 		{
 			"id": 5,
 			"nameId": 324611,
-			"descId": 1056017,
+			"descId": 1077038,
 			"npcId": 1644,
 			"bonusesIds": [
 				123
@@ -168,7 +168,7 @@
 		{
 			"id": 16,
 			"nameId": 324315,
-			"descId": 1056034,
+			"descId": 1076433,
 			"npcId": 1622,
 			"bonusesIds": [
 				280
@@ -202,7 +202,7 @@
 		{
 			"id": 20,
 			"nameId": 1056038,
-			"descId": 1056039,
+			"descId": 1080903,
 			"npcId": 1630,
 			"bonusesIds": [
 				13
@@ -294,8 +294,8 @@
 		},
 		{
 			"id": 30,
-			"nameId": 1075602,
-			"descId": 1075601,
+			"nameId": 1076502,
+			"descId": 1076498,
 			"npcId": 1653,
 			"bonusesIds": [
 				62
@@ -313,7 +313,7 @@
 		{
 			"id": 32,
 			"nameId": 1056055,
-			"descId": 1056056,
+			"descId": 1080904,
 			"npcId": 1655,
 			"bonusesIds": [
 				297
@@ -600,7 +600,7 @@
 		{
 			"id": 64,
 			"nameId": 324627,
-			"descId": 1056093,
+			"descId": 1077039,
 			"npcId": 1687,
 			"bonusesIds": [
 				512
@@ -935,7 +935,7 @@
 		{
 			"id": 101,
 			"nameId": 324421,
-			"descId": 560002,
+			"descId": 1077040,
 			"npcId": 1724,
 			"bonusesIds": [
 				125
@@ -1985,7 +1985,7 @@
 		{
 			"id": 219,
 			"nameId": 324547,
-			"descId": 1054752,
+			"descId": 1070540,
 			"npcId": 1857,
 			"bonusesIds": [
 				366
@@ -2207,7 +2207,7 @@
 		{
 			"id": 243,
 			"nameId": 324917,
-			"descId": 324918,
+			"descId": 1078598,
 			"npcId": 1881,
 			"bonusesIds": [
 				239
@@ -2259,7 +2259,7 @@
 		{
 			"id": 249,
 			"nameId": 324929,
-			"descId": 1070090,
+			"descId": 1068770,
 			"npcId": 1887,
 			"bonusesIds": [
 				245
@@ -2313,7 +2313,7 @@
 		{
 			"id": 256,
 			"nameId": 324733,
-			"descId": 1075606,
+			"descId": 1076524,
 			"npcId": 1923,
 			"bonusesIds": [
 				2,
@@ -2620,8 +2620,8 @@
 		},
 		{
 			"id": 290,
-			"nameId": 1075960,
-			"descId": 1075961,
+			"nameId": 1077473,
+			"descId": 1077474,
 			"npcId": 1957,
 			"bonusesIds": []
 		},
@@ -2867,7 +2867,7 @@
 		{
 			"id": 317,
 			"nameId": 324545,
-			"descId": 1056103,
+			"descId": 1070842,
 			"npcId": 1984,
 			"bonusesIds": [
 				124
@@ -2912,7 +2912,7 @@
 		{
 			"id": 322,
 			"nameId": 1055864,
-			"descId": 1055865,
+			"descId": 1077485,
 			"npcId": 2075,
 			"bonusesIds": [
 				497,
@@ -3015,7 +3015,7 @@
 		{
 			"id": 333,
 			"nameId": 324585,
-			"descId": 1055908,
+			"descId": 1077036,
 			"npcId": 2086,
 			"bonusesIds": [
 				311
@@ -3044,7 +3044,7 @@
 		{
 			"id": 336,
 			"nameId": 1055913,
-			"descId": 1075607,
+			"descId": 1076525,
 			"npcId": 2089,
 			"bonusesIds": [
 				501
@@ -3089,7 +3089,7 @@
 		{
 			"id": 341,
 			"nameId": 1055919,
-			"descId": 1075603,
+			"descId": 1076517,
 			"npcId": 2094,
 			"bonusesIds": [
 				502
@@ -3125,7 +3125,7 @@
 		{
 			"id": 345,
 			"nameId": 1055925,
-			"descId": 1055926,
+			"descId": 1077037,
 			"npcId": 2098,
 			"bonusesIds": [
 				149
@@ -3268,7 +3268,7 @@
 		{
 			"id": 361,
 			"nameId": 1055948,
-			"descId": 1055949,
+			"descId": 1071053,
 			"npcId": 2114,
 			"bonusesIds": [
 				328
@@ -3306,7 +3306,7 @@
 		{
 			"id": 365,
 			"nameId": 1055955,
-			"descId": 1055956,
+			"descId": 1080902,
 			"npcId": 2118,
 			"bonusesIds": [
 				503
@@ -3351,7 +3351,7 @@
 		{
 			"id": 370,
 			"nameId": 1055963,
-			"descId": 1055964,
+			"descId": 1078241,
 			"npcId": 2123,
 			"bonusesIds": [
 				214

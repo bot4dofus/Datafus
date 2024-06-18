@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
    public class PartyCancelInvitationNotificationMessage extends AbstractPartyEventMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3506;
+      public static const protocolId:uint = 1327;
        
       
       private var _isInitialized:Boolean = false;
@@ -31,7 +31,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.party
       
       override public function getMessageId() : uint
       {
-         return 3506;
+         return 1327;
       }
       
       public function initPartyCancelInvitationNotificationMessage(partyId:uint = 0, cancelerId:Number = 0, guestId:Number = 0) : PartyCancelInvitationNotificationMessage

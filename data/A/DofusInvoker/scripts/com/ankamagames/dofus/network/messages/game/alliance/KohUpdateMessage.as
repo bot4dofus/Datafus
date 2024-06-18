@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class KohUpdateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 584;
+      public static const protocolId:uint = 1036;
        
       
       private var _isInitialized:Boolean = false;
@@ -38,7 +38,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 584;
+         return 1036;
       }
       
       public function initKohUpdateMessage(kohAllianceInfo:Vector.<KohAllianceInfo> = null, startingAvaTimestamp:uint = 0, nextTickTime:Number = 0) : KohUpdateMessage

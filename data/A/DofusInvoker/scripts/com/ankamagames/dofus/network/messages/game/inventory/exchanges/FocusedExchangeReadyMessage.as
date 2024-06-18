@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class FocusedExchangeReadyMessage extends ExchangeReadyMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 957;
+      public static const protocolId:uint = 885;
        
       
       private var _isInitialized:Boolean = false;
@@ -29,7 +29,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 957;
+         return 885;
       }
       
       public function initFocusedExchangeReadyMessage(ready:Boolean = false, step:uint = 0, focusActionId:uint = 0) : FocusedExchangeReadyMessage

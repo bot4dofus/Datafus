@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.startup
    public class GameActionItem implements INetworkType
    {
       
-      public static const protocolId:uint = 8473;
+      public static const protocolId:uint = 7527;
        
       
       public var uid:uint = 0;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.types.game.startup
       
       public function getTypeId() : uint
       {
-         return 8473;
+         return 7527;
       }
       
       public function initGameActionItem(uid:uint = 0, title:String = "", text:String = "", descUrl:String = "", pictureUrl:String = "", items:Vector.<ObjectItemInformationWithQuantity> = null) : GameActionItem

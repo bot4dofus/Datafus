@@ -1382,7 +1382,7 @@ package com.ankamagames.dofus.logic.game.fight.frames
          for(i = 1; i < nbCells; i++)
          {
             fightContextFrame.saveFighterPosition(gmmmsg.actorId,movementPathCells[i]);
-            carriedEntity = movingEntity.carriedEntity as AnimatedCharacter;
+            carriedEntity = !!movingEntity ? movingEntity.carriedEntity as AnimatedCharacter : null;
             while(carriedEntity)
             {
                fightContextFrame.saveFighterPosition(carriedEntity.id,movementPathCells[i]);

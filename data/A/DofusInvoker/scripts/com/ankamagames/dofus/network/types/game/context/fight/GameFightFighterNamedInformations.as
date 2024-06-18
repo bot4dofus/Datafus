@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
    public class GameFightFighterNamedInformations extends GameFightFighterInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 5462;
+      public static const protocolId:uint = 4176;
        
       
       public var name:String = "";
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.types.game.context.fight
       
       override public function getTypeId() : uint
       {
-         return 5462;
+         return 4176;
       }
       
       public function initGameFightFighterNamedInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, spawnInfo:GameContextBasicSpawnInformation = null, wave:uint = 0, stats:GameFightCharacteristics = null, previousPositions:Vector.<uint> = null, name:String = "", status:PlayerStatus = null, leagueId:int = 0, ladderPosition:int = 0, hiddenInPrefight:Boolean = false) : GameFightFighterNamedInformations

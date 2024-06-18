@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
    public class ArenaRankInfos implements INetworkType
    {
       
-      public static const protocolId:uint = 9831;
+      public static const protocolId:uint = 2174;
        
       
       public var arenaType:uint = 3;
@@ -39,7 +39,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena
       
       public function getTypeId() : uint
       {
-         return 9831;
+         return 2174;
       }
       
       public function initArenaRankInfos(arenaType:uint = 3, leagueRanking:ArenaLeagueRanking = null, bestLeagueId:int = 0, bestRating:int = 0, dailyVictoryCount:uint = 0, seasonVictoryCount:uint = 0, dailyFightcount:uint = 0, seasonFightcount:uint = 0, numFightNeededForLadder:uint = 0) : ArenaRankInfos

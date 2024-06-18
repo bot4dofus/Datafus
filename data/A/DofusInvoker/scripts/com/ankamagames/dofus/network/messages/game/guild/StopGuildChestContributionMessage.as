@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class StopGuildChestContributionMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4233;
+      public static const protocolId:uint = 1053;
        
       
       public function StopGuildChestContributionMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 4233;
+         return 1053;
       }
       
       public function initStopGuildChestContributionMessage() : StopGuildChestContributionMessage

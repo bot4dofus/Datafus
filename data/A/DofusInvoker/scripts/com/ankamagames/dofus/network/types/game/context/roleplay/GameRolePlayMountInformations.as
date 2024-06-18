@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class GameRolePlayMountInformations extends GameRolePlayNamedActorInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 7627;
+      public static const protocolId:uint = 9212;
        
       
       public var ownerName:String = "";
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 7627;
+         return 9212;
       }
       
       public function initGameRolePlayMountInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, name:String = "", ownerName:String = "", level:uint = 0) : GameRolePlayMountInformations

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.surrender.vote
    public class SurrenderVoteStartMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8647;
+      public static const protocolId:uint = 6177;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.surrender.vote
       
       override public function getMessageId() : uint
       {
-         return 8647;
+         return 6177;
       }
       
       public function initSurrenderVoteStartMessage(alreadyCastedVote:Boolean = false, numberOfParticipants:int = 0, castedVoteNumber:int = 0, voteDuration:int = 0) : SurrenderVoteStartMessage

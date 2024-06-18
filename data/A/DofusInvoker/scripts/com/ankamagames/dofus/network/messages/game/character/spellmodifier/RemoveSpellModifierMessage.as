@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.character.spellmodifier
    public class RemoveSpellModifierMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 139;
+      public static const protocolId:uint = 194;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.character.spellmodifier
       
       override public function getMessageId() : uint
       {
-         return 139;
+         return 194;
       }
       
       public function initRemoveSpellModifierMessage(actorId:Number = 0, actionType:uint = 0, modifierType:uint = 0, spellId:uint = 0) : RemoveSpellModifierMessage

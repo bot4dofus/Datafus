@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildCreationValidMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2815;
+      public static const protocolId:uint = 1720;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 2815;
+         return 1720;
       }
       
       public function initGuildCreationValidMessage(guildName:String = "", guildEmblem:SocialEmblem = null) : GuildCreationValidMessage

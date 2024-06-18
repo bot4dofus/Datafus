@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.authorized
    public class AdminQuietCommandMessage extends AdminCommandMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 1038;
+      public static const protocolId:uint = 8282;
        
       
       private var _isInitialized:Boolean = false;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.messages.authorized
       
       override public function getMessageId() : uint
       {
-         return 1038;
+         return 8282;
       }
       
       public function initAdminQuietCommandMessage(messageUuid:Uuid = null, content:String = "") : AdminQuietCommandMessage

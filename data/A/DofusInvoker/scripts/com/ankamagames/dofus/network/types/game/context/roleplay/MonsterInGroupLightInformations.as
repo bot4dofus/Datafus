@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class MonsterInGroupLightInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 1902;
+      public static const protocolId:uint = 1537;
        
       
       public var genericId:int = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       public function getTypeId() : uint
       {
-         return 1902;
+         return 1537;
       }
       
       public function initMonsterInGroupLightInformations(genericId:int = 0, grade:uint = 0, level:uint = 0) : MonsterInGroupLightInformations

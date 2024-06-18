@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.recruitment
    public class AllianceRecruitmentInvalidateMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3297;
+      public static const protocolId:uint = 523;
        
       
       public function AllianceRecruitmentInvalidateMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.alliance.recruitment
       
       override public function getMessageId() : uint
       {
-         return 3297;
+         return 523;
       }
       
       public function initAllianceRecruitmentInvalidateMessage() : AllianceRecruitmentInvalidateMessage

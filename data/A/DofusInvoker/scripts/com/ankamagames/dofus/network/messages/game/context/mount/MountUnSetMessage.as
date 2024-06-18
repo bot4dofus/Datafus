@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
    public class MountUnSetMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 7032;
+      public static const protocolId:uint = 8582;
        
       
       public function MountUnSetMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.context.mount
       
       override public function getMessageId() : uint
       {
-         return 7032;
+         return 8582;
       }
       
       public function initMountUnSetMessage() : MountUnSetMessage

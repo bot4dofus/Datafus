@@ -282,8 +282,8 @@
 			"showInSet": true,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 16000,
-			"effectPowerRate": 1.0,
+			"effectPriority": 15000,
+			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
 		{
@@ -1603,7 +1603,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 7200,
-			"effectPowerRate": -25.0,
+			"effectPowerRate": -25.5,
 			"elementId": -1
 		},
 		{
@@ -2351,7 +2351,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 5800,
-			"effectPowerRate": -1.0,
+			"effectPowerRate": -0.5,
 			"elementId": 3
 		},
 		{
@@ -2395,7 +2395,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 6000,
-			"effectPowerRate": -1.0,
+			"effectPowerRate": -0.5,
 			"elementId": 4
 		},
 		{
@@ -2417,7 +2417,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 5600,
-			"effectPowerRate": -1.0,
+			"effectPowerRate": -0.5,
 			"elementId": 2
 		},
 		{
@@ -2439,7 +2439,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 6200,
-			"effectPowerRate": -2.0,
+			"effectPowerRate": -1.5,
 			"elementId": -1
 		},
 		{
@@ -2461,7 +2461,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 5400,
-			"effectPowerRate": -1.0,
+			"effectPowerRate": -0.5,
 			"elementId": 1
 		},
 		{
@@ -2571,7 +2571,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 13300,
-			"effectPowerRate": -4.0,
+			"effectPowerRate": -3.5,
 			"elementId": -1
 		},
 		{
@@ -2593,7 +2593,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 13500,
-			"effectPowerRate": -4.0,
+			"effectPowerRate": -3.5,
 			"elementId": -1
 		},
 		{
@@ -2633,11 +2633,11 @@
 			"oppositeId": 0,
 			"theoreticalDescriptionId": 0,
 			"theoreticalPattern": 1,
-			"showInSet": false,
-			"bonusType": 0,
+			"showInSet": true,
+			"bonusType": 1,
 			"useInFight": false,
-			"effectPriority": 0,
-			"effectPowerRate": 0.0,
+			"effectPriority": 102000,
+			"effectPowerRate": 20.0,
 			"elementId": -1
 		},
 		{
@@ -2857,7 +2857,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 8800,
-			"effectPowerRate": -2.0,
+			"effectPowerRate": -1.5,
 			"elementId": -1
 		},
 		{
@@ -3055,7 +3055,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 96900,
-			"effectPowerRate": -2.0,
+			"effectPowerRate": -1.0,
 			"elementId": 5
 		},
 		{
@@ -3120,7 +3120,7 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 22600,
+			"effectPriority": 22500,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -4903,7 +4903,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 12900,
-			"effectPowerRate": -4.0,
+			"effectPowerRate": -3.5,
 			"elementId": -1
 		},
 		{
@@ -4947,7 +4947,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 13100,
-			"effectPowerRate": -4.0,
+			"effectPowerRate": -3.5,
 			"elementId": -1
 		},
 		{
@@ -4991,7 +4991,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 14100,
-			"effectPowerRate": -3.0,
+			"effectPowerRate": -2.5,
 			"elementId": -1
 		},
 		{
@@ -5079,7 +5079,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 13700,
-			"effectPowerRate": -3.0,
+			"effectPowerRate": -2.5,
 			"elementId": -1
 		},
 		{
@@ -6593,11 +6593,11 @@
 			"oppositeId": 0,
 			"theoreticalDescriptionId": 0,
 			"theoreticalPattern": 1,
-			"showInSet": false,
+			"showInSet": true,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 2200,
-			"effectPowerRate": 0.0,
+			"effectPriority": 16050,
+			"effectPowerRate": 1.0,
 			"elementId": -1
 		},
 		{
@@ -7542,8 +7542,8 @@
 			"showInSet": true,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 99300,
-			"effectPowerRate": 20.0,
+			"effectPriority": 28900,
+			"effectPowerRate": -20.0,
 			"elementId": -1
 		},
 		{
@@ -8686,7 +8686,7 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 26200,
+			"effectPriority": 26100,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -8730,7 +8730,7 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 24200,
+			"effectPriority": 24400,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -8824,7 +8824,7 @@
 		},
 		{
 			"id": 1012,
-			"descriptionId": 426973,
+			"descriptionId": 1083135,
 			"iconId": 1,
 			"characteristic": 0,
 			"category": 2,
@@ -8846,7 +8846,7 @@
 		},
 		{
 			"id": 1013,
-			"descriptionId": 426648,
+			"descriptionId": 1083136,
 			"iconId": 6,
 			"characteristic": 0,
 			"category": 2,
@@ -8868,7 +8868,7 @@
 		},
 		{
 			"id": 1014,
-			"descriptionId": 426922,
+			"descriptionId": 1083134,
 			"iconId": 4,
 			"characteristic": 0,
 			"category": 2,
@@ -8890,7 +8890,7 @@
 		},
 		{
 			"id": 1015,
-			"descriptionId": 427116,
+			"descriptionId": 1083133,
 			"iconId": 3,
 			"characteristic": 0,
 			"category": 2,
@@ -8912,7 +8912,7 @@
 		},
 		{
 			"id": 1016,
-			"descriptionId": 426874,
+			"descriptionId": 1083132,
 			"iconId": 2,
 			"characteristic": 0,
 			"category": 2,
@@ -11502,7 +11502,7 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 42100,
+			"effectPriority": 91100,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -11942,7 +11942,7 @@
 			"showInSet": true,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 98500,
+			"effectPriority": 90000,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -12933,7 +12933,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 14940,
-			"effectPowerRate": -8.0,
+			"effectPowerRate": -7.5,
 			"elementId": -1
 		},
 		{
@@ -12955,7 +12955,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 14930,
-			"effectPowerRate": -8.0,
+			"effectPowerRate": -7.5,
 			"elementId": -1
 		},
 		{
@@ -13021,7 +13021,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 14920,
-			"effectPowerRate": -8.0,
+			"effectPowerRate": -7.5,
 			"elementId": -1
 		},
 		{
@@ -13043,7 +13043,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 14910,
-			"effectPowerRate": -8.0,
+			"effectPowerRate": -7.5,
 			"elementId": -1
 		},
 		{
@@ -13109,7 +13109,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 14950,
-			"effectPowerRate": -8.0,
+			"effectPowerRate": -7.5,
 			"elementId": -1
 		},
 		{
@@ -13131,7 +13131,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 14900,
-			"effectPowerRate": -8.0,
+			"effectPowerRate": -7.5,
 			"elementId": -1
 		},
 		{
@@ -13197,7 +13197,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 14890,
-			"effectPowerRate": -8.0,
+			"effectPowerRate": -7.5,
 			"elementId": -1
 		},
 		{
@@ -13219,7 +13219,7 @@
 			"bonusType": -1,
 			"useInFight": false,
 			"effectPriority": 14880,
-			"effectPowerRate": -8.0,
+			"effectPowerRate": -7.5,
 			"elementId": -1
 		},
 		{
@@ -13328,7 +13328,7 @@
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,
-			"effectPriority": 96200,
+			"effectPriority": 101300,
 			"effectPowerRate": 0.0,
 			"elementId": -1
 		},
@@ -15754,7 +15754,7 @@
 		},
 		{
 			"id": 2990,
-			"descriptionId": 992448,
+			"descriptionId": 1081894,
 			"iconId": 0,
 			"characteristic": 26,
 			"category": 0,
@@ -15771,7 +15771,7 @@
 			"bonusType": 1,
 			"useInFight": false,
 			"effectPriority": 100800,
-			"effectPowerRate": 30.0,
+			"effectPowerRate": -15.0,
 			"elementId": -1
 		},
 		{
@@ -16097,6 +16097,138 @@
 			"oppositeId": 0,
 			"theoreticalDescriptionId": 1059511,
 			"theoreticalPattern": 0,
+			"showInSet": false,
+			"bonusType": 0,
+			"useInFight": false,
+			"effectPriority": 0,
+			"effectPowerRate": 0.0,
+			"elementId": -1
+		},
+		{
+			"id": 3007,
+			"descriptionId": 1081089,
+			"iconId": 0,
+			"characteristic": 0,
+			"category": 0,
+			"operator": "null",
+			"showInTooltip": false,
+			"useDice": false,
+			"forceMinMax": false,
+			"boost": false,
+			"active": false,
+			"oppositeId": 0,
+			"theoreticalDescriptionId": 1081088,
+			"theoreticalPattern": 1,
+			"showInSet": false,
+			"bonusType": 0,
+			"useInFight": false,
+			"effectPriority": 0,
+			"effectPowerRate": 0.0,
+			"elementId": -1
+		},
+		{
+			"id": 3008,
+			"descriptionId": 1081776,
+			"iconId": 0,
+			"characteristic": 0,
+			"category": 0,
+			"operator": "+",
+			"showInTooltip": false,
+			"useDice": false,
+			"forceMinMax": false,
+			"boost": false,
+			"active": false,
+			"oppositeId": 0,
+			"theoreticalDescriptionId": 1081775,
+			"theoreticalPattern": 0,
+			"showInSet": false,
+			"bonusType": 0,
+			"useInFight": false,
+			"effectPriority": 0,
+			"effectPowerRate": 0.0,
+			"elementId": 5
+		},
+		{
+			"id": 3009,
+			"descriptionId": 1081850,
+			"iconId": 0,
+			"characteristic": 0,
+			"category": 0,
+			"operator": "null",
+			"showInTooltip": false,
+			"useDice": false,
+			"forceMinMax": false,
+			"boost": false,
+			"active": false,
+			"oppositeId": 0,
+			"theoreticalDescriptionId": 1081849,
+			"theoreticalPattern": 1,
+			"showInSet": false,
+			"bonusType": 0,
+			"useInFight": false,
+			"effectPriority": 0,
+			"effectPowerRate": 0.0,
+			"elementId": -1
+		},
+		{
+			"id": 3010,
+			"descriptionId": 1081854,
+			"iconId": 0,
+			"characteristic": 0,
+			"category": 0,
+			"operator": "null",
+			"showInTooltip": false,
+			"useDice": false,
+			"forceMinMax": false,
+			"boost": false,
+			"active": false,
+			"oppositeId": 0,
+			"theoreticalDescriptionId": 1081853,
+			"theoreticalPattern": 1,
+			"showInSet": false,
+			"bonusType": 0,
+			"useInFight": false,
+			"effectPriority": 0,
+			"effectPowerRate": 0.0,
+			"elementId": -1
+		},
+		{
+			"id": 3011,
+			"descriptionId": 1081858,
+			"iconId": 0,
+			"characteristic": 0,
+			"category": 0,
+			"operator": "null",
+			"showInTooltip": false,
+			"useDice": false,
+			"forceMinMax": false,
+			"boost": false,
+			"active": false,
+			"oppositeId": 0,
+			"theoreticalDescriptionId": 1081857,
+			"theoreticalPattern": 1,
+			"showInSet": false,
+			"bonusType": 0,
+			"useInFight": false,
+			"effectPriority": 0,
+			"effectPowerRate": 0.0,
+			"elementId": -1
+		},
+		{
+			"id": 3012,
+			"descriptionId": 1081862,
+			"iconId": 0,
+			"characteristic": 0,
+			"category": 0,
+			"operator": "null",
+			"showInTooltip": false,
+			"useDice": false,
+			"forceMinMax": false,
+			"boost": false,
+			"active": false,
+			"oppositeId": 0,
+			"theoreticalDescriptionId": 1081861,
+			"theoreticalPattern": 1,
 			"showInSet": false,
 			"bonusType": 0,
 			"useInFight": false,

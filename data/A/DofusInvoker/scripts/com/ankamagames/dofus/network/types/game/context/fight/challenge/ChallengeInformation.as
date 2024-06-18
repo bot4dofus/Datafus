@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.fight.challenge
    public class ChallengeInformation implements INetworkType
    {
       
-      public static const protocolId:uint = 1254;
+      public static const protocolId:uint = 1494;
        
       
       public var challengeId:uint = 0;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.types.game.context.fight.challenge
       
       public function getTypeId() : uint
       {
-         return 1254;
+         return 1494;
       }
       
       public function initChallengeInformation(challengeId:uint = 0, targetsList:Vector.<ChallengeTargetInformation> = null, dropBonus:uint = 0, xpBonus:uint = 0, state:uint = 2) : ChallengeInformation

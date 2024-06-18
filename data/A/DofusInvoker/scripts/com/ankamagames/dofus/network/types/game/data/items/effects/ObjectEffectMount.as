@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
    public class ObjectEffectMount extends ObjectEffect implements INetworkType
    {
       
-      public static const protocolId:uint = 7839;
+      public static const protocolId:uint = 3353;
        
       
       public var id:Number = 0;
@@ -53,7 +53,7 @@ package com.ankamagames.dofus.network.types.game.data.items.effects
       
       override public function getTypeId() : uint
       {
-         return 7839;
+         return 3353;
       }
       
       public function initObjectEffectMount(actionId:uint = 0, id:Number = 0, expirationDate:Number = 0, model:uint = 0, name:String = "", owner:String = "", level:uint = 0, sex:Boolean = false, isRideable:Boolean = false, isFeconded:Boolean = false, isFecondationReady:Boolean = false, reproductionCount:int = 0, reproductionCountMax:uint = 0, effects:Vector.<ObjectEffectInteger> = null, capacities:Vector.<uint> = null) : ObjectEffectMount

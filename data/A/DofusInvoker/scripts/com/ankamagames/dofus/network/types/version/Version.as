@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.version
    public class Version implements INetworkType
    {
       
-      public static const protocolId:uint = 6593;
+      public static const protocolId:uint = 580;
        
       
       public var major:uint = 0;
@@ -28,7 +28,7 @@ package com.ankamagames.dofus.network.types.version
       
       public function getTypeId() : uint
       {
-         return 6593;
+         return 580;
       }
       
       public function initVersion(major:uint = 0, minor:uint = 0, code:uint = 0, build:uint = 0, buildType:uint = 0) : Version

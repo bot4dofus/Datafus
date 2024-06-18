@@ -46,8 +46,6 @@ package com.ankamagames.dofus.types
          add("bigMenuButton",false);
          add("allowSpellEffects",true);
          add("allowHitAnim",true);
-         add("legalAgreementTou","fr#0");
-         add("legalAgreementModsTou","fr#0");
          add("flashQuality",2);
          add("cellSelectionOnly",true);
          add("orderFighters",false);

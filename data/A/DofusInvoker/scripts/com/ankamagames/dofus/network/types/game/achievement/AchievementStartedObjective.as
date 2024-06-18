@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.achievement
    public class AchievementStartedObjective extends AchievementObjective implements INetworkType
    {
       
-      public static const protocolId:uint = 6683;
+      public static const protocolId:uint = 5360;
        
       
       public var value:Number = 0;
@@ -20,7 +20,7 @@ package com.ankamagames.dofus.network.types.game.achievement
       
       override public function getTypeId() : uint
       {
-         return 6683;
+         return 5360;
       }
       
       public function initAchievementStartedObjective(id:uint = 0, maxValue:Number = 0, value:Number = 0) : AchievementStartedObjective

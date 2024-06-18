@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.alliance
    public class KohAllianceRoleMembers implements INetworkType
    {
       
-      public static const protocolId:uint = 4219;
+      public static const protocolId:uint = 9987;
        
       
       public var memberCount:Number = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.alliance
       
       public function getTypeId() : uint
       {
-         return 4219;
+         return 9987;
       }
       
       public function initKohAllianceRoleMembers(memberCount:Number = 0, roleAvAId:int = 0) : KohAllianceRoleMembers

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
    public class ExchangeLeaveMessage extends LeaveDialogMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8715;
+      public static const protocolId:uint = 384;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.exchanges
       
       override public function getMessageId() : uint
       {
-         return 8715;
+         return 384;
       }
       
       public function initExchangeLeaveMessage(dialogType:uint = 0, success:Boolean = false) : ExchangeLeaveMessage

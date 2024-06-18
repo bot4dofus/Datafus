@@ -2660,7 +2660,7 @@
 			"isInEncyclopedia": true,
 			"plural": false,
 			"gender": 1,
-			"rawZone": "L3,25,10",
+			"rawZone": "L3,25,1",
 			"mimickable": true,
 			"craftXpRatio": -1,
 			"evolutiveTypeId": 0
@@ -2836,7 +2836,7 @@
 		},
 		{
 			"id": 299,
-			"nameId": 1076044,
+			"nameId": 1077102,
 			"superTypeId": 25,
 			"categoryId": 5,
 			"isInEncyclopedia": true,
@@ -2849,7 +2849,7 @@
 		},
 		{
 			"id": 300,
-			"nameId": 1076049,
+			"nameId": 1077107,
 			"superTypeId": 25,
 			"categoryId": 5,
 			"isInEncyclopedia": true,

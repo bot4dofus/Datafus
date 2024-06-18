@@ -1,7 +1,6 @@
 package com.ankamagames.dofus.misc.lists
 {
    import com.ankamagames.dofus.logic.common.actions.AddBehaviorToStackAction;
-   import com.ankamagames.dofus.logic.common.actions.AgreementAgreedAction;
    import com.ankamagames.dofus.logic.common.actions.AuthorizedCommandAction;
    import com.ankamagames.dofus.logic.common.actions.ChangeCharacterAction;
    import com.ankamagames.dofus.logic.common.actions.ChangeServerAction;
@@ -285,8 +284,6 @@ package com.ankamagames.dofus.misc.lists
       public static const QuitGame:DofusApiAction = new DofusApiAction("QuitGameAction",QuitGameAction);
       
       public static const ResetGame:DofusApiAction = new DofusApiAction("ResetGameAction",ResetGameAction);
-      
-      public static const AgreementAgreed:DofusApiAction = new DofusApiAction("AgreementAgreedAction",AgreementAgreedAction);
       
       public static const CharacterCreation:DofusApiAction = new DofusApiAction("CharacterCreationAction",CharacterCreationAction);
       

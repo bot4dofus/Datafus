@@ -16634,7 +16634,7 @@
 		},
 		{
 			"id": 4099,
-			"nameId": 1076217,
+			"nameId": 1078618,
 			"descriptionId": 967778,
 			"categoryId": 13,
 			"level": 160,
@@ -16931,6 +16931,18 @@
 			"startDate": 0.0,
 			"endDate": 0.0,
 			"icon": "1223"
+		},
+		{
+			"id": 4126,
+			"nameId": 1079487,
+			"descriptionId": 1079488,
+			"categoryId": 13,
+			"level": 20,
+			"mapId": 192937992,
+			"isLarge": false,
+			"startDate": 0.0,
+			"endDate": 0.0,
+			"icon": "1226"
 		}
 	]
 }

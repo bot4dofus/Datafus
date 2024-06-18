@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
    public class GameRolePlayCharacterInformations extends GameRolePlayHumanoidInformations implements INetworkType
    {
       
-      public static const protocolId:uint = 3924;
+      public static const protocolId:uint = 9304;
        
       
       public var alignmentInfos:ActorAlignmentInformations;
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay
       
       override public function getTypeId() : uint
       {
-         return 3924;
+         return 9304;
       }
       
       public function initGameRolePlayCharacterInformations(contextualId:Number = 0, disposition:EntityDispositionInformations = null, look:EntityLook = null, name:String = "", humanoidInfo:HumanInformations = null, accountId:uint = 0, alignmentInfos:ActorAlignmentInformations = null) : GameRolePlayCharacterInformations

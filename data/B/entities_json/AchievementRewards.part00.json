@@ -114584,7 +114584,7 @@
 		{
 			"id": 11121,
 			"achievementId": 6270,
-			"criteria": "Ob!2085",
+			"criteria": "Ob!6270",
 			"kamasRatio": 0.0,
 			"experienceRatio": 0.0,
 			"guildPoints": 0,
@@ -124668,7 +124668,7 @@
 			"emotesReward": [],
 			"spellsReward": [],
 			"titlesReward": [
-				413
+				422
 			],
 			"ornamentsReward": [
 				127
@@ -124687,7 +124687,7 @@
 			"emotesReward": [],
 			"spellsReward": [],
 			"titlesReward": [
-				412
+				421
 			],
 			"ornamentsReward": [
 				128
@@ -124706,7 +124706,7 @@
 			"emotesReward": [],
 			"spellsReward": [],
 			"titlesReward": [
-				415
+				424
 			],
 			"ornamentsReward": [
 				129
@@ -124725,7 +124725,7 @@
 			"emotesReward": [],
 			"spellsReward": [],
 			"titlesReward": [
-				417
+				426
 			],
 			"ornamentsReward": [
 				130
@@ -124744,7 +124744,7 @@
 			"emotesReward": [],
 			"spellsReward": [],
 			"titlesReward": [
-				414
+				423
 			],
 			"ornamentsReward": [
 				131
@@ -124763,7 +124763,7 @@
 			"emotesReward": [],
 			"spellsReward": [],
 			"titlesReward": [
-				416
+				425
 			],
 			"ornamentsReward": [
 				132
@@ -124778,7 +124778,7 @@
 			"guildPoints": 0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				29750
+				30152
 			],
 			"itemsQuantityReward": [
 				1
@@ -124797,7 +124797,7 @@
 			"guildPoints": 0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				29749
+				30150
 			],
 			"itemsQuantityReward": [
 				1
@@ -124816,7 +124816,7 @@
 			"guildPoints": 0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				29748
+				30156
 			],
 			"itemsQuantityReward": [
 				1
@@ -124835,7 +124835,7 @@
 			"guildPoints": 0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				29747
+				30154
 			],
 			"itemsQuantityReward": [
 				1
@@ -124854,7 +124854,7 @@
 			"guildPoints": 0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				29745
+				30149
 			],
 			"itemsQuantityReward": [
 				1
@@ -124873,7 +124873,7 @@
 			"guildPoints": 0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				29744
+				30155
 			],
 			"itemsQuantityReward": [
 				1
@@ -124892,7 +124892,7 @@
 			"guildPoints": 0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				29743
+				30153
 			],
 			"itemsQuantityReward": [
 				1
@@ -124911,7 +124911,7 @@
 			"guildPoints": 0,
 			"kamasScaleWithPlayerLevel": false,
 			"itemsReward": [
-				29746
+				30151
 			],
 			"itemsQuantityReward": [
 				1
@@ -150484,25 +150484,6 @@
 			],
 			"itemsQuantityReward": [
 				50
-			],
-			"emotesReward": [],
-			"spellsReward": [],
-			"titlesReward": [],
-			"ornamentsReward": []
-		},
-		{
-			"id": 13769,
-			"achievementId": 8457,
-			"criteria": "null",
-			"kamasRatio": 0.0,
-			"experienceRatio": 0.0,
-			"guildPoints": 0,
-			"kamasScaleWithPlayerLevel": false,
-			"itemsReward": [
-				28359
-			],
-			"itemsQuantityReward": [
-				1
 			],
 			"emotesReward": [],
 			"spellsReward": [],

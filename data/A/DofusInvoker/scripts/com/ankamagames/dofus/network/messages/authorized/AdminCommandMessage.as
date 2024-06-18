@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.authorized
    public class AdminCommandMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8164;
+      public static const protocolId:uint = 9773;
        
       
       private var _isInitialized:Boolean = false;
@@ -36,7 +36,7 @@ package com.ankamagames.dofus.network.messages.authorized
       
       override public function getMessageId() : uint
       {
-         return 8164;
+         return 9773;
       }
       
       public function initAdminCommandMessage(messageUuid:Uuid = null, content:String = "") : AdminCommandMessage

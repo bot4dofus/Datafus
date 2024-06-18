@@ -9,7 +9,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.breach
    public class BreachBranch implements INetworkType
    {
       
-      public static const protocolId:uint = 3663;
+      public static const protocolId:uint = 7507;
        
       
       public var room:uint = 0;
@@ -39,7 +39,7 @@ package com.ankamagames.dofus.network.types.game.context.roleplay.breach
       
       public function getTypeId() : uint
       {
-         return 3663;
+         return 7507;
       }
       
       public function initBreachBranch(room:uint = 0, element:uint = 0, bosses:Vector.<MonsterInGroupLightInformations> = null, map:Number = 0, score:int = 0, relativeScore:int = 0, monsters:Vector.<MonsterInGroupLightInformations> = null) : BreachBranch

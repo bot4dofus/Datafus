@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
    public class AllianceRanksRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 2665;
+      public static const protocolId:uint = 7629;
        
       
       public function AllianceRanksRequestMessage()
@@ -26,7 +26,7 @@ package com.ankamagames.dofus.network.messages.game.alliance
       
       override public function getMessageId() : uint
       {
-         return 2665;
+         return 7629;
       }
       
       public function initAllianceRanksRequestMessage() : AllianceRanksRequestMessage

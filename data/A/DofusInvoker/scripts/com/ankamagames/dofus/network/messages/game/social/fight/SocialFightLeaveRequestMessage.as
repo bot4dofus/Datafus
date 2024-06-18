@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.social.fight
    public class SocialFightLeaveRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 508;
+      public static const protocolId:uint = 995;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.social.fight
       
       override public function getMessageId() : uint
       {
-         return 508;
+         return 995;
       }
       
       public function initSocialFightLeaveRequestMessage(socialFightInfo:SocialFightInfo = null) : SocialFightLeaveRequestMessage

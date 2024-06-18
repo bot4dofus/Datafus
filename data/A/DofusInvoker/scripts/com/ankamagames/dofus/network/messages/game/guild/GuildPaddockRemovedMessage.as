@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildPaddockRemovedMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 3443;
+      public static const protocolId:uint = 1415;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 3443;
+         return 1415;
       }
       
       public function initGuildPaddockRemovedMessage(paddockId:Number = 0) : GuildPaddockRemovedMessage

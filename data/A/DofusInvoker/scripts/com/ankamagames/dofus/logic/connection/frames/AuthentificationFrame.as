@@ -210,9 +210,6 @@ package com.ankamagames.dofus.logic.connection.frames
          var i:int = 0;
          var elapsedSeconds:Number = NaN;
          var flashKeyMsg:ClientKeyMessage = null;
-         var lengthModsTou:String = null;
-         var newLengthModsTou:String = null;
-         var files:Array = null;
          switch(true)
          {
             case msg is LoginValidationWithTokenAction:
@@ -395,18 +392,6 @@ package com.ankamagames.dofus.logic.connection.frames
                   KernelEventsManager.getInstance().processCallback(HookList.AlreadyConnected);
                }
                AuthorizedFrame(Kernel.getWorker().getFrame(AuthorizedFrame)).hasRights = ismsg.hasRights;
-               if(PlayerManager.getInstance().hasRights)
-               {
-                  lengthModsTou = OptionManager.getOptionManager("dofus").getOption("legalAgreementModsTou");
-                  newLengthModsTou = XmlConfig.getInstance().getEntry("config.lang.current") + "#" + I18n.getUiText("ui.legal.modstou").length;
-                  files = [];
-                  if(lengthModsTou != newLengthModsTou)
-                  {
-                     files.push("modstou");
-                     PlayerManager.getInstance().allowAutoConnectCharacter = false;
-                     KernelEventsManager.getInstance().processCallback(HookList.AgreementsRequired,files);
-                  }
-               }
                if(StoreUserDataManager.getInstance().statsEnabled)
                {
                   StoreUserDataManager.getInstance().gatherUserData();

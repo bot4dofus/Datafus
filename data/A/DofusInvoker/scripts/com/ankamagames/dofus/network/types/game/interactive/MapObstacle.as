@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.interactive
    public class MapObstacle implements INetworkType
    {
       
-      public static const protocolId:uint = 3091;
+      public static const protocolId:uint = 9518;
        
       
       public var obstacleCellId:uint = 0;
@@ -22,7 +22,7 @@ package com.ankamagames.dofus.network.types.game.interactive
       
       public function getTypeId() : uint
       {
-         return 3091;
+         return 9518;
       }
       
       public function initMapObstacle(obstacleCellId:uint = 0, state:uint = 0) : MapObstacle

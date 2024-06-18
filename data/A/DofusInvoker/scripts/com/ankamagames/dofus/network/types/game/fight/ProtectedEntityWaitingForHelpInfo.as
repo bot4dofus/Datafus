@@ -8,7 +8,7 @@ package com.ankamagames.dofus.network.types.game.fight
    public class ProtectedEntityWaitingForHelpInfo implements INetworkType
    {
       
-      public static const protocolId:uint = 3140;
+      public static const protocolId:uint = 9739;
        
       
       public var timeLeftBeforeFight:int = 0;
@@ -24,7 +24,7 @@ package com.ankamagames.dofus.network.types.game.fight
       
       public function getTypeId() : uint
       {
-         return 3140;
+         return 9739;
       }
       
       public function initProtectedEntityWaitingForHelpInfo(timeLeftBeforeFight:int = 0, waitTimeForPlacement:int = 0, nbPositionForDefensors:uint = 0) : ProtectedEntityWaitingForHelpInfo

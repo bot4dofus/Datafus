@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class MimicryObjectEraseRequestMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4153;
+      public static const protocolId:uint = 7124;
        
       
       private var _isInitialized:Boolean = false;
@@ -32,7 +32,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 4153;
+         return 7124;
       }
       
       public function initMimicryObjectEraseRequestMessage(hostUID:uint = 0, hostPos:uint = 0) : MimicryObjectEraseRequestMessage

@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
    public class GameRolePlayArenaRegisterMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 6088;
+      public static const protocolId:uint = 2855;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
       
       override public function getMessageId() : uint
       {
-         return 6088;
+         return 2855;
       }
       
       public function initGameRolePlayArenaRegisterMessage(arenaType:uint = 3) : GameRolePlayArenaRegisterMessage

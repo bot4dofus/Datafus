@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.atlas
    public class AtlasPointInformationsMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4784;
+      public static const protocolId:uint = 5424;
        
       
       private var _isInitialized:Boolean = false;
@@ -34,7 +34,7 @@ package com.ankamagames.dofus.network.messages.game.atlas
       
       override public function getMessageId() : uint
       {
-         return 4784;
+         return 5424;
       }
       
       public function initAtlasPointInformationsMessage(type:AtlasPointsInformations = null) : AtlasPointInformationsMessage

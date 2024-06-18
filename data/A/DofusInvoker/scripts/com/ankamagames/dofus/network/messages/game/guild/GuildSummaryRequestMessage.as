@@ -12,7 +12,7 @@ package com.ankamagames.dofus.network.messages.game.guild
    public class GuildSummaryRequestMessage extends PaginationRequestAbstractMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 4368;
+      public static const protocolId:uint = 1163;
        
       
       private var _isInitialized:Boolean = false;
@@ -66,7 +66,7 @@ package com.ankamagames.dofus.network.messages.game.guild
       
       override public function getMessageId() : uint
       {
-         return 4368;
+         return 1163;
       }
       
       public function initGuildSummaryRequestMessage(offset:Number = 0, count:uint = 0, nameFilter:String = "", hideFullFilter:Boolean = false, followingGuildCriteria:Boolean = false, criterionFilter:Vector.<uint> = null, languagesFilter:Vector.<uint> = null, recruitmentTypeFilter:Vector.<uint> = null, minLevelFilter:uint = 0, maxLevelFilter:uint = 0, minPlayerLevelFilter:uint = 0, maxPlayerLevelFilter:uint = 0, minSuccessFilter:uint = 0, maxSuccessFilter:uint = 0, sortType:uint = 0, sortDescending:Boolean = false) : GuildSummaryRequestMessage

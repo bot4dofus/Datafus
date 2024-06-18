@@ -10,7 +10,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
    public class MimicryObjectFeedAndAssociateRequestMessage extends SymbioticObjectAssociateRequestMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 8822;
+      public static const protocolId:uint = 3754;
        
       
       private var _isInitialized:Boolean = false;
@@ -33,7 +33,7 @@ package com.ankamagames.dofus.network.messages.game.inventory.items
       
       override public function getMessageId() : uint
       {
-         return 8822;
+         return 3754;
       }
       
       public function initMimicryObjectFeedAndAssociateRequestMessage(symbioteUID:uint = 0, symbiotePos:uint = 0, hostUID:uint = 0, hostPos:uint = 0, foodUID:uint = 0, foodPos:uint = 0, preview:Boolean = false) : MimicryObjectFeedAndAssociateRequestMessage

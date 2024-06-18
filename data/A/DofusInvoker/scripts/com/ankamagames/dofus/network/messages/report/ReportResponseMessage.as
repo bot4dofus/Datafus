@@ -11,7 +11,7 @@ package com.ankamagames.dofus.network.messages.report
    public class ReportResponseMessage extends NetworkMessage implements INetworkMessage
    {
       
-      public static const protocolId:uint = 188;
+      public static const protocolId:uint = 8138;
        
       
       private var _isInitialized:Boolean = false;
@@ -30,7 +30,7 @@ package com.ankamagames.dofus.network.messages.report
       
       override public function getMessageId() : uint
       {
-         return 188;
+         return 8138;
       }
       
       public function initReportResponseMessage(success:Boolean = false) : ReportResponseMessage
