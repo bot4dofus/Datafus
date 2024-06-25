@@ -1570,7 +1570,7 @@
 			"id": 282,
 			"nameId": 601012,
 			"actionId": 0,
-			"displayTooltip": true
+			"displayTooltip": false
 		},
 		{
 			"id": 283,
