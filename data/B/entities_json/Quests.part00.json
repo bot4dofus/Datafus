@@ -28571,7 +28571,7 @@
 				2749
 			],
 			"isPartyQuest": false,
-			"startCriterion": "PL>10&PZ=1&PO=30071&((Qa=2091&Qo>15155)|Qf=2091)&Sc=940",
+			"startCriterion": "PL>10&PZ=1&PO=30071&((Qa=2091&Qo>15155)|Qf=2091)&PO<21471,99&Sc=940",
 			"followable": true
 		},
 		{

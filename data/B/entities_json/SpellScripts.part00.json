@@ -69722,8 +69722,18 @@
 		},
 		{
 			"id": 17471,
-			"typeId": 2,
-			"rawParams": "animId:0,missileGfxId:2355,missileGfxYOffset:0,missileCurvature:10,missileSpeed:10,targetGfxId:4026,targetGfxOriented:1"
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:4026,targetGfxOriented:1"
+		},
+		{
+			"id": 17581,
+			"typeId": 1,
+			"rawParams": "targetGfxId:5390"
+		},
+		{
+			"id": 17582,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4537,targetGfxId2:4532,targetGfxShowUnder2:1"
 		}
 	]
 }
