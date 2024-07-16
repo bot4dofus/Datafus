@@ -3818,7 +3818,7 @@
 		{
 			"id": 912,
 			"typeId": 1,
-			"rawParams": "animId:1,targetGfxId:1349"
+			"rawParams": "animId:1,targetGfxId:1438"
 		},
 		{
 			"id": 913,
@@ -35103,7 +35103,7 @@
 		{
 			"id": 7983,
 			"typeId": 1,
-			"rawParams": "animId:1,targetGfxId:1349"
+			"rawParams": "targetGfxId:1438"
 		},
 		{
 			"id": 7984,
@@ -40288,7 +40288,7 @@
 		{
 			"id": 9143,
 			"typeId": 1,
-			"rawParams": "animId:0,targetGfxId:3343"
+			"rawParams": "animId:0,targetGfxId:4316"
 		},
 		{
 			"id": 9144,
@@ -56398,7 +56398,7 @@
 		{
 			"id": 12975,
 			"typeId": 1,
-			"rawParams": "animId:4"
+			"rawParams": "animId:603,targetGfxId:21010,targetGfxDisplayType:2"
 		},
 		{
 			"id": 12976,

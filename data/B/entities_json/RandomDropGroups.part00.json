@@ -3213,8 +3213,8 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 6920,
-					"itemId": 30123,
+					"id": 6918,
+					"itemId": 30124,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -3227,8 +3227,8 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 6918,
-					"itemId": 30124,
+					"id": 6920,
+					"itemId": 30123,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -3505,8 +3505,8 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 6922,
-					"itemId": 30168,
+					"id": 6909,
+					"itemId": 30113,
 					"probability": -1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -3519,15 +3519,22 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 6909,
-					"itemId": 30113,
+					"id": 6921,
+					"itemId": 21488,
 					"probability": -1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
 				},
 				{
-					"id": 6921,
-					"itemId": 21488,
+					"id": 6922,
+					"itemId": 30168,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 7015,
+					"itemId": 30226,
 					"probability": -1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
