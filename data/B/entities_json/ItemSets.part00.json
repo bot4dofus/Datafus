@@ -153052,6 +153052,19 @@
 			"nameId": 1084866,
 			"bonusIsSecret": false,
 			"effects": []
+		},
+		{
+			"id": 854,
+			"items": [
+				30227,
+				30228,
+				30229,
+				30230,
+				30231
+			],
+			"nameId": 1085614,
+			"bonusIsSecret": false,
+			"effects": []
 		}
 	]
 }
