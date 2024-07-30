@@ -31435,7 +31435,7 @@
 				3159
 			],
 			"isPartyQuest": false,
-			"startCriterion": "PL>10&PZ=1&Sc=940&Qa=2091&Qo>15163&PO<30224,100",
+			"startCriterion": "PL>10&PZ=1&Sc=940&Qa=2091&Qo>15163",
 			"followable": true
 		}
 	]
