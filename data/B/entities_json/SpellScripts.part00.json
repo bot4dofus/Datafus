@@ -69734,6 +69734,41 @@
 			"id": 17582,
 			"typeId": 1,
 			"rawParams": "targetGfxId:4537,targetGfxId2:4532,targetGfxShowUnder2:1"
+		},
+		{
+			"id": 18084,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4073"
+		},
+		{
+			"id": 18085,
+			"typeId": 1,
+			"rawParams": "targetGfxId:1885"
+		},
+		{
+			"id": 18086,
+			"typeId": 1,
+			"rawParams": "targetGfxId:1883"
+		},
+		{
+			"id": 18087,
+			"typeId": 1,
+			"rawParams": "targetGfxId:39"
+		},
+		{
+			"id": 18088,
+			"typeId": 1,
+			"rawParams": "targetGfxId:1880"
+		},
+		{
+			"id": 18089,
+			"typeId": 1,
+			"rawParams": "targetGfxId:1881"
+		},
+		{
+			"id": 18090,
+			"typeId": 1,
+			"rawParams": "targetGfxId:1231"
 		}
 	]
 }

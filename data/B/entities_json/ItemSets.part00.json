@@ -152976,6 +152976,18 @@
 			"effects": []
 		},
 		{
+			"id": 847,
+			"items": [
+				30077,
+				30078,
+				30079,
+				30080
+			],
+			"nameId": 1080251,
+			"bonusIsSecret": false,
+			"effects": []
+		},
+		{
 			"id": 848,
 			"items": [
 				30081,
