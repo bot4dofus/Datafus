@@ -153101,6 +153101,15 @@
 			"nameId": 1085757,
 			"bonusIsSecret": false,
 			"effects": []
+		},
+		{
+			"id": 858,
+			"items": [
+				30434
+			],
+			"nameId": 1085816,
+			"bonusIsSecret": false,
+			"effects": []
 		}
 	]
 }
