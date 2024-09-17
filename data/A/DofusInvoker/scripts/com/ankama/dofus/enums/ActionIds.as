@@ -23,6 +23,8 @@ package com.ankama.dofus.enums
       
       public static var ACTION_CHARACTER_CREATE_GUILD:int = 12;
       
+      public static var UNUSED_ACTION_13:int = 13;
+      
       public static var ACTION_QUEST_OBJECTIVE_VALIDATE:int = 30;
       
       public static var ACTION_QUEST_STEP_VALIDATE:int = 31;
@@ -135,6 +137,8 @@ package com.ankama.dofus.enums
       
       public static var ACTION_CHARACTER_BOOST_DAMAGES:int = 112;
       
+      public static var UNUSED_ACTION_113:int = 113;
+      
       public static var ACTION_CHARACTER_MULTIPLY_DAMAGES:int = 114;
       
       public static var ACTION_CHARACTER_BOOST_CRITICAL_HIT:int = 115;
@@ -166,6 +170,8 @@ package com.ankama.dofus.enums
       public static var ACTION_CHARACTER_BOOST_MOVEMENT_POINTS:int = 128;
       
       public static var ACTION_CHARACTER_STEAL_GOLD:int = 130;
+      
+      public static var UNUSED_ACTION_131:int = 131;
       
       public static var ACTION_CHARACTER_REMOVE_ALL_EFFECTS:int = 132;
       
@@ -229,7 +235,11 @@ package com.ankama.dofus.enums
       
       public static var ACTION_CHARACTER_DEBOOST_MOVEMENT_POINTS_LOST_DODGE:int = 163;
       
+      public static var UNUSED_ACTION_164:int = 164;
+      
       public static var ACTION_CHARACTER_BOOST_ONE_WEAPON_DAMAGE_PERCENT:int = 165;
+      
+      public static var UNUSED_ACTION_166:int = 166;
       
       public static var ACTION_CHARACTER_DEBOOST_ACTION_POINTS:int = 168;
       
@@ -262,6 +272,8 @@ package com.ankama.dofus.enums
       public static var ACTION_CHARACTER_BOOST_MAGICAL_REDUCTION:int = 183;
       
       public static var ACTION_CHARACTER_BOOST_PHYSICAL_REDUCTION:int = 184;
+      
+      public static var UNUSED_ACTION_185:int = 185;
       
       public static var ACTION_CHARACTER_DEBOOST_DAMAGES_PERCENT:int = 186;
       
@@ -517,6 +529,10 @@ package com.ankama.dofus.enums
       
       public static var ACTION_GOTO_WAYPOINT:int = 600;
       
+      public static var UNUSED_ACTION_601:int = 601;
+      
+      public static var UNUSED_ACTION_602:int = 602;
+      
       public static var ACTION_CHARACTER_LEARN_JOB:int = 603;
       
       public static var ACTION_CHARACTER_LEARN_SPELL_LEVEL:int = 604;
@@ -537,9 +553,13 @@ package com.ankama.dofus.enums
       
       public static var ACTION_CHARACTER_GAIN_STATS_POINTS:int = 612;
       
+      public static var ACTION_GIVE_SPELL_POINT:int = 613;
+      
       public static var ACTION_CHARACTER_GAIN_JOB_XP:int = 614;
       
       public static var ACTION_CHARACTER_UNLEARN_JOB:int = 615;
+      
+      public static var ACTION_FORGET_SPELL_LEVEL:int = 616;
       
       public static var ACTION_CHARACTER_READ_BOOK:int = 620;
       
@@ -551,6 +571,8 @@ package com.ankama.dofus.enums
       
       public static var ACTION_CHARACTER_UNLEARN_GUILDSPELL:int = 624;
       
+      public static var ACTION_RESET_STATS:int = 625;
+      
       public static var ACTION_CHARACTER_RESET_CHARACS:int = 626;
       
       public static var ACTION_CHARACTER_SUMMON_MONSTER_GROUP_SET_MAP:int = 627;
@@ -560,6 +582,8 @@ package com.ankama.dofus.enums
       public static var ACTION_CHARACTER_LEARN_SPELL:int = 629;
       
       public static var ACTION_CHARACTER_SEND_INFORMATION_TEXT:int = 630;
+      
+      public static var UNUSED_ACTION_631:int = 631;
       
       public static var ACTION_CHARACTER_SEND_ERROR_TEXT:int = 632;
       
@@ -671,6 +695,8 @@ package com.ankama.dofus.enums
       
       public static var ACTION_CHARACTER_BOOST_PERMANENT_DAMAGE_PERCENT:int = 776;
       
+      public static var ACTION_CHARACTER_DEBOOST_PERMANENT_DAMAGE_PERCENT:int = 777;
+      
       public static var ACTION_CHARACTER_CHANGE_RESPAWN_MAP_BY_REF:int = 778;
       
       public static var ACTION_CHARACTER_TELEPORT_ON_PREVIOUS_MAP:int = 779;
@@ -688,6 +714,8 @@ package com.ankama.dofus.enums
       public static var ACTION_CHARACTER_WALK_FOUR_DIR:int = 785;
       
       public static var ACTION_CHARACTER_HEAL_ATTACKERS:int = 786;
+      
+      public static var UNUSED_ACTION_787:int = 787;
       
       public static var ACTION_CHARACTER_PUNISHMENT:int = 788;
       
@@ -708,6 +736,8 @@ package com.ankama.dofus.enums
       public static var ACTION_BOOST_VISIBLE_TARGET_ON_CELL_ON:int = 798;
       
       public static var ACTION_BOOST_VISIBLE_TARGET_ON_CELL_OFF:int = 799;
+      
+      public static var ACTION_PET_LIFE_POINTS:int = 800;
       
       public static var ACTION_ITEM_CHANGE_DURATION:int = 805;
       
@@ -739,6 +769,8 @@ package com.ankama.dofus.enums
       
       public static var ACTION_ITEM_TELEPORT_MAP_REFERENCE:int = 826;
       
+      public static var ACTION_OPEN_FORGETTABLE_SPELL_UI:int = 831;
+      
       public static var ACTION_FIGHT_CHALLENGE_AGAINST_MONSTER:int = 905;
       
       public static var ACTION_FIGHT_CHALLENGE_MIXED_VERSUS_MONSTER:int = 911;
@@ -746,6 +778,22 @@ package com.ankama.dofus.enums
       public static var ACTION_CHARACTER_SEND_NOTIFICATION_TEXT:int = 916;
       
       public static var ACTION_CHARACTER_SEND_NOTIFICATION_ALERT_TEXT:int = 917;
+      
+      public static var UNUSED_ACTION_930:int = 930;
+      
+      public static var UNUSED_ACTION_931:int = 931;
+      
+      public static var UNUSED_ACTION_932:int = 932;
+      
+      public static var UNUSED_ACTION_933:int = 933;
+      
+      public static var UNUSED_ACTION_934:int = 934;
+      
+      public static var UNUSED_ACTION_935:int = 935;
+      
+      public static var UNUSED_ACTION_936:int = 936;
+      
+      public static var UNUSED_ACTION_937:int = 937;
       
       public static var ACTION_PET_SET_POWER_BOOST:int = 939;
       
@@ -764,6 +812,12 @@ package com.ankama.dofus.enums
       public static var ACTION_FIGHT_UNSET_STATE:int = 951;
       
       public static var ACTION_FIGHT_DISABLE_STATE:int = 952;
+      
+      public static var UNUSED_ACTION_960:int = 960;
+      
+      public static var UNUSED_ACTION_961:int = 961;
+      
+      public static var UNUSED_ACTION_962:int = 962;
       
       public static var ACTION_CREATED_SINCE:int = 963;
       
@@ -803,13 +857,31 @@ package com.ankama.dofus.enums
       
       public static var ACTION_RIDE_DETAILS:int = 995;
       
+      public static var UNUSED_ACTION_996:int = 996;
+      
+      public static var UNUSED_ACTION_997:int = 997;
+      
+      public static var UNUSED_ACTION_998:int = 998;
+      
       public static var ACTION_ITEM_TELEPORT:int = 999;
+      
+      public static var UNUSED_ACTION_1002:int = 1002;
+      
+      public static var UNUSED_ACTION_1003:int = 1003;
+      
+      public static var UNUSED_ACTION_1004:int = 1004;
+      
+      public static var ACTION_REDUCE_MAXIMUM_BONUS_PET:int = 1005;
+      
+      public static var ACTION_REDUCE_MINIMUM_BONUS_PET:int = 1006;
       
       public static var ACTION_FARM_OBJET_EFFICACITY:int = 1007;
       
       public static var ACTION_SUMMON_BOMB:int = 1008;
       
       public static var ACTION_CHARACTER_ACTIVATE_BOMB:int = 1009;
+      
+      public static var UNUSED_ACTION_1010:int = 1010;
       
       public static var ACTION_SUMMON_SLAVE:int = 1011;
       
@@ -881,11 +953,15 @@ package com.ankama.dofus.enums
       
       public static var ACTION_CHARACTER_SET_SPELL_COOLDOWN:int = 1045;
       
+      public static var UNUSED_ACTION_1046:int = 1046;
+      
       public static var ACTION_CHARACTER_LIFE_POINTS_MALUS:int = 1047;
       
       public static var ACTION_CHARACTER_LIFE_POINTS_MALUS_PERCENT:int = 1048;
       
       public static var ACTION_CHARACTER_GAIN_LEVEL:int = 1049;
+      
+      public static var ACTION_CHARACTER_GIVE_JOB_LEVEL:int = 1050;
       
       public static var ACTION_CHARACTER_EXIT_DUNGEON:int = 1051;
       
@@ -1027,7 +1103,7 @@ package com.ankama.dofus.enums
       
       public static var ACTION_FIGHT_SPLASH_RAW_TAKEN_DAMAGE_EARTH:int = 1128;
       
-      public static var K:int = 1129;
+      public static var KROSMASTER:int = 1129;
       
       public static var ACTION_CHARACTER_MANA_USE_KILL_LIFE_AIR:int = 1131;
       
@@ -1048,6 +1124,8 @@ package com.ankama.dofus.enums
       public static var ACTION_CHARACTER_MOVEMENT_USE_KILL_LIFE_NEUTRAL:int = 1139;
       
       public static var ACTION_CHARACTER_MOVEMENT_USE_KILL_LIFE_EARTH:int = 1140;
+      
+      public static var KOLIZETON_POINTS_SORT:int = 1141;
       
       public static var ACTION_ACHIEVEMENT_OBJECTIVE_VALIDATE:int = 1142;
       
@@ -1125,11 +1203,15 @@ package com.ankama.dofus.enums
       
       public static var ACTION_ITEM_RESET_EFFECTS:int = 1185;
       
+      public static var UNUSED_ACTION_1186:int = 1186;
+      
       public static var ACTION_RIDE_HARNESS_GID:int = 1187;
       
       public static var ACTION_RIDE_GAIN_CAPACITY:int = 1188;
       
       public static var ACTION_CHARACTER_ADD_DOUBLE_NO_SUMMON_SLOT:int = 1189;
+      
+      public static var UNUSED_ACTION_1190:int = 1190;
       
       public static var ACTION_FIGHT_SPLASH_FINAL_TAKEN_DAMAGE:int = 1223;
       
@@ -1142,6 +1224,10 @@ package com.ankama.dofus.enums
       public static var ACTION_FIGHT_SPLASH_FINAL_TAKEN_DAMAGE_WATER:int = 1227;
       
       public static var ACTION_FIGHT_SPLASH_FINAL_TAKEN_DAMAGE_EARTH:int = 1228;
+      
+      public static var ACTION_ENABLE_CONTROL_ENTITY_BY_FIGHT_OWNER:int = 2010;
+      
+      public static var ACTION_DISABLE_CONTROL_ENTITY_BY_FIGHT_OWNER:int = 2011;
       
       public static var ACTION_TARGET_EXECUTE_SPELL_ON_SOURCE_GLOBAL_LIMITATION:int = 2017;
       
@@ -1186,6 +1272,8 @@ package com.ankama.dofus.enums
       public static var ACTION_FIGHT_KILL_AND_SUMMON_SLAVE:int = 2796;
       
       public static var ACTION_CHARACTER_LEARN_SMILEY_PACK:int = 2797;
+      
+      public static var K:int = 2798;
       
       public static var ACTION_CHARACTER_BOOST_DEALT_DAMAGE_PERCENT_MULTIPLIER_MELEE:int = 2800;
       
@@ -1522,6 +1610,12 @@ package com.ankama.dofus.enums
       public static var ACTION_CHARACTER_LIFE_POINTS_WIN_FROM_BEST_ELEMENT:int = 3002;
       
       public static var ACTION_REFRESH_MARK_QUEST:int = 3003;
+      
+      public static var ACTION_INVENTORY_REMOVE_ITEM:int = 3004;
+      
+      public static var ACTION_CHARACTER_LEAVE_GUILD:int = 3005;
+      
+      public static var ACTION_CHARACTER_LIFE_POINTS_WIN_FROM_WORST_ELEMENT:int = 3006;
        
       
       public function ActionIds()

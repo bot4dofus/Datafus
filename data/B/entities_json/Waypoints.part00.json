@@ -331,6 +331,12 @@
 			"activated": true
 		},
 		{
+			"id": 77,
+			"mapId": 165153537,
+			"subAreaId": 84,
+			"activated": true
+		},
+		{
 			"id": 29,
 			"mapId": 164364304,
 			"subAreaId": 525,

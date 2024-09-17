@@ -110,6 +110,7 @@ package com.ankamagames.dofus.logic.connection.frames
    import com.ankamagames.dofus.logic.common.managers.HyperlinkZaapPosition;
    import com.ankamagames.dofus.logic.common.managers.temporis.HyperlinkTemporisManager;
    import com.ankamagames.dofus.logic.connection.managers.StoreUserDataManager;
+   import com.ankamagames.dofus.logic.game.common.misc.PlayerIdName;
    import com.ankamagames.dofus.logic.game.roleplay.types.CharacterTooltipInformation;
    import com.ankamagames.dofus.logic.game.roleplay.types.GameContextPaddockItemInformations;
    import com.ankamagames.dofus.logic.game.roleplay.types.GroundObject;
@@ -1081,6 +1082,7 @@ package com.ankamagames.dofus.logic.connection.frames
          MenusFactory.registerAssoc(GameContextPaddockItemInformations,"paddockItem");
          MenusFactory.registerAssoc(GameRolePlayMountInformations,"mount");
          MenusFactory.registerAssoc(String,"player");
+         MenusFactory.registerAssoc(PlayerIdName,"player");
          MenusFactory.registerAssoc(GameRolePlayGroupMonsterInformations,"monsterGroup");
          MenusFactory.registerAssoc(GameFightEntityInformation,"companion");
          MenusFactory.registerAssoc(PartyCompanionWrapper,"companion");

@@ -91,8 +91,8 @@
 		{
 			"id": 26511,
 			"itemId": 28718,
-			"spellIdKroma": 27318,
-			"itemIdKroma": 28868,
+			"spellIdKroma": 26511,
+			"itemIdKroma": 28718,
 			"modsterId": 7424,
 			"parentsModsterId": [
 				7561,
@@ -116,7 +116,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7168
+				7018
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -147,8 +147,8 @@
 		{
 			"id": 26513,
 			"itemId": 28720,
-			"spellIdKroma": 27320,
-			"itemIdKroma": 28870,
+			"spellIdKroma": 26513,
+			"itemIdKroma": 28720,
 			"modsterId": 7426,
 			"parentsModsterId": [
 				7563,
@@ -165,7 +165,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7170
+				7020
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -173,8 +173,8 @@
 		{
 			"id": 26514,
 			"itemId": 28721,
-			"spellIdKroma": 27321,
-			"itemIdKroma": 28871,
+			"spellIdKroma": 26514,
+			"itemIdKroma": 28721,
 			"modsterId": 7427,
 			"parentsModsterId": [
 				7562,
@@ -196,7 +196,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7171
+				7021
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -204,8 +204,8 @@
 		{
 			"id": 26515,
 			"itemId": 28722,
-			"spellIdKroma": 27322,
-			"itemIdKroma": 28872,
+			"spellIdKroma": 26515,
+			"itemIdKroma": 28722,
 			"modsterId": 7428,
 			"parentsModsterId": [
 				7561,
@@ -231,7 +231,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7172
+				7022
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -292,8 +292,8 @@
 		{
 			"id": 26518,
 			"itemId": 28725,
-			"spellIdKroma": 27325,
-			"itemIdKroma": 28875,
+			"spellIdKroma": 26518,
+			"itemIdKroma": 28725,
 			"modsterId": 7431,
 			"parentsModsterId": [
 				7561,
@@ -312,7 +312,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7175
+				7025
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -320,8 +320,8 @@
 		{
 			"id": 26519,
 			"itemId": 28726,
-			"spellIdKroma": 27326,
-			"itemIdKroma": 28876,
+			"spellIdKroma": 26519,
+			"itemIdKroma": 28726,
 			"modsterId": 7432,
 			"parentsModsterId": [
 				7561,
@@ -347,7 +347,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7176
+				7026
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -572,8 +572,8 @@
 		{
 			"id": 26528,
 			"itemId": 28735,
-			"spellIdKroma": 27335,
-			"itemIdKroma": 28885,
+			"spellIdKroma": 26528,
+			"itemIdKroma": 28735,
 			"modsterId": 7441,
 			"parentsModsterId": [
 				7558,
@@ -590,7 +590,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7185
+				7035
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -598,8 +598,8 @@
 		{
 			"id": 26529,
 			"itemId": 28736,
-			"spellIdKroma": 27336,
-			"itemIdKroma": 28886,
+			"spellIdKroma": 26529,
+			"itemIdKroma": 28736,
 			"modsterId": 7442,
 			"parentsModsterId": [
 				7560,
@@ -620,7 +620,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7186
+				7036
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -656,8 +656,8 @@
 		{
 			"id": 26531,
 			"itemId": 28738,
-			"spellIdKroma": 27338,
-			"itemIdKroma": 28888,
+			"spellIdKroma": 26531,
+			"itemIdKroma": 28738,
 			"modsterId": 7444,
 			"parentsModsterId": [
 				7560,
@@ -678,7 +678,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7188
+				7038
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -914,8 +914,8 @@
 		{
 			"id": 26540,
 			"itemId": 28747,
-			"spellIdKroma": 27347,
-			"itemIdKroma": 28897,
+			"spellIdKroma": 26540,
+			"itemIdKroma": 28747,
 			"modsterId": 7453,
 			"parentsModsterId": [
 				7566,
@@ -942,7 +942,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7197
+				7047
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -1063,8 +1063,8 @@
 		{
 			"id": 26545,
 			"itemId": 28752,
-			"spellIdKroma": 27352,
-			"itemIdKroma": 28902,
+			"spellIdKroma": 26545,
+			"itemIdKroma": 28752,
 			"modsterId": 7458,
 			"parentsModsterId": [
 				7565,
@@ -1088,7 +1088,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7202
+				7052
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -1096,8 +1096,8 @@
 		{
 			"id": 26546,
 			"itemId": 28753,
-			"spellIdKroma": 27353,
-			"itemIdKroma": 28903,
+			"spellIdKroma": 26546,
+			"itemIdKroma": 28753,
 			"modsterId": 7459,
 			"parentsModsterId": [
 				7570,
@@ -1124,7 +1124,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7203
+				7053
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -1216,8 +1216,8 @@
 		{
 			"id": 26550,
 			"itemId": 28757,
-			"spellIdKroma": 27357,
-			"itemIdKroma": 28907,
+			"spellIdKroma": 26550,
+			"itemIdKroma": 28757,
 			"modsterId": 7463,
 			"parentsModsterId": [
 				7572,
@@ -1235,7 +1235,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7207
+				7057
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -1521,8 +1521,8 @@
 		{
 			"id": 26560,
 			"itemId": 28767,
-			"spellIdKroma": 27367,
-			"itemIdKroma": 28917,
+			"spellIdKroma": 26560,
+			"itemIdKroma": 28767,
 			"modsterId": 7473,
 			"parentsModsterId": [
 				7578,
@@ -1551,7 +1551,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7217
+				7067
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -1927,8 +1927,8 @@
 		{
 			"id": 26572,
 			"itemId": 28779,
-			"spellIdKroma": 27379,
-			"itemIdKroma": 28929,
+			"spellIdKroma": 26572,
+			"itemIdKroma": 28779,
 			"modsterId": 7485,
 			"parentsModsterId": [],
 			"modsterActiveSpells": [
@@ -1942,7 +1942,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7229
+				7079
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -1986,8 +1986,8 @@
 		{
 			"id": 26574,
 			"itemId": 28781,
-			"spellIdKroma": 27381,
-			"itemIdKroma": 28931,
+			"spellIdKroma": 26574,
+			"itemIdKroma": 28781,
 			"modsterId": 7487,
 			"parentsModsterId": [
 				7582,
@@ -2007,7 +2007,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7231
+				7081
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -2015,8 +2015,8 @@
 		{
 			"id": 26575,
 			"itemId": 28782,
-			"spellIdKroma": 27382,
-			"itemIdKroma": 28932,
+			"spellIdKroma": 26575,
+			"itemIdKroma": 28782,
 			"modsterId": 7488,
 			"parentsModsterId": [
 				7584,
@@ -2034,7 +2034,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7232
+				7082
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -2350,8 +2350,8 @@
 		{
 			"id": 26586,
 			"itemId": 28793,
-			"spellIdKroma": 27393,
-			"itemIdKroma": 28943,
+			"spellIdKroma": 26586,
+			"itemIdKroma": 28793,
 			"modsterId": 7499,
 			"parentsModsterId": [
 				7582,
@@ -2378,7 +2378,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7243
+				7093
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -2409,8 +2409,8 @@
 		{
 			"id": 26588,
 			"itemId": 28795,
-			"spellIdKroma": 27395,
-			"itemIdKroma": 28945,
+			"spellIdKroma": 26588,
+			"itemIdKroma": 28795,
 			"modsterId": 7501,
 			"parentsModsterId": [],
 			"modsterActiveSpells": [
@@ -2424,7 +2424,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7245
+				7095
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -2478,8 +2478,8 @@
 		{
 			"id": 26591,
 			"itemId": 28798,
-			"spellIdKroma": 27398,
-			"itemIdKroma": 28948,
+			"spellIdKroma": 26591,
+			"itemIdKroma": 28798,
 			"modsterId": 7504,
 			"parentsModsterId": [
 				7567,
@@ -2505,7 +2505,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7248
+				7098
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -2746,8 +2746,8 @@
 		{
 			"id": 26599,
 			"itemId": 28806,
-			"spellIdKroma": 27406,
-			"itemIdKroma": 28956,
+			"spellIdKroma": 26599,
+			"itemIdKroma": 28806,
 			"modsterId": 7512,
 			"parentsModsterId": [
 				7575,
@@ -2778,7 +2778,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7256
+				7106
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -2809,8 +2809,8 @@
 		{
 			"id": 26601,
 			"itemId": 28808,
-			"spellIdKroma": 27408,
-			"itemIdKroma": 28958,
+			"spellIdKroma": 26601,
+			"itemIdKroma": 28808,
 			"modsterId": 7514,
 			"parentsModsterId": [
 				7585,
@@ -2828,7 +2828,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7258
+				7108
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -2861,8 +2861,8 @@
 		{
 			"id": 26603,
 			"itemId": 28810,
-			"spellIdKroma": 27410,
-			"itemIdKroma": 28960,
+			"spellIdKroma": 26603,
+			"itemIdKroma": 28810,
 			"modsterId": 7516,
 			"parentsModsterId": [
 				7575,
@@ -2895,7 +2895,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7260
+				7110
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -2903,8 +2903,8 @@
 		{
 			"id": 26604,
 			"itemId": 28811,
-			"spellIdKroma": 27411,
-			"itemIdKroma": 28961,
+			"spellIdKroma": 26604,
+			"itemIdKroma": 28811,
 			"modsterId": 7517,
 			"parentsModsterId": [
 				7568,
@@ -2930,7 +2930,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7261
+				7111
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -2961,8 +2961,8 @@
 		{
 			"id": 26606,
 			"itemId": 28813,
-			"spellIdKroma": 27413,
-			"itemIdKroma": 28963,
+			"spellIdKroma": 26606,
+			"itemIdKroma": 28813,
 			"modsterId": 7519,
 			"parentsModsterId": [
 				7574,
@@ -2988,7 +2988,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7263
+				7113
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -2996,8 +2996,8 @@
 		{
 			"id": 26607,
 			"itemId": 28814,
-			"spellIdKroma": 27414,
-			"itemIdKroma": 28964,
+			"spellIdKroma": 26607,
+			"itemIdKroma": 28814,
 			"modsterId": 7520,
 			"parentsModsterId": [
 				7586,
@@ -3020,7 +3020,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7264
+				7114
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -3247,8 +3247,8 @@
 		{
 			"id": 26615,
 			"itemId": 28822,
-			"spellIdKroma": 27422,
-			"itemIdKroma": 28972,
+			"spellIdKroma": 26615,
+			"itemIdKroma": 28822,
 			"modsterId": 7528,
 			"parentsModsterId": [],
 			"modsterActiveSpells": [
@@ -3264,7 +3264,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7272
+				7122
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -3272,8 +3272,8 @@
 		{
 			"id": 26616,
 			"itemId": 28823,
-			"spellIdKroma": 27423,
-			"itemIdKroma": 28973,
+			"spellIdKroma": 26616,
+			"itemIdKroma": 28823,
 			"modsterId": 7529,
 			"parentsModsterId": [
 				7571,
@@ -3297,7 +3297,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7273
+				7123
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -3305,8 +3305,8 @@
 		{
 			"id": 26617,
 			"itemId": 28824,
-			"spellIdKroma": 27424,
-			"itemIdKroma": 28974,
+			"spellIdKroma": 26617,
+			"itemIdKroma": 28824,
 			"modsterId": 7530,
 			"parentsModsterId": [
 				7582,
@@ -3333,7 +3333,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7274
+				7124
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -3341,8 +3341,8 @@
 		{
 			"id": 26618,
 			"itemId": 28825,
-			"spellIdKroma": 27425,
-			"itemIdKroma": 28975,
+			"spellIdKroma": 26618,
+			"itemIdKroma": 28825,
 			"modsterId": 7531,
 			"parentsModsterId": [
 				7589,
@@ -3367,7 +3367,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7275
+				7125
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -3630,8 +3630,8 @@
 		{
 			"id": 26628,
 			"itemId": 28835,
-			"spellIdKroma": 27435,
-			"itemIdKroma": 28985,
+			"spellIdKroma": 26628,
+			"itemIdKroma": 28835,
 			"modsterId": 7541,
 			"parentsModsterId": [
 				7576,
@@ -3651,7 +3651,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7285
+				7135
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -3659,8 +3659,8 @@
 		{
 			"id": 26629,
 			"itemId": 28836,
-			"spellIdKroma": 27436,
-			"itemIdKroma": 28986,
+			"spellIdKroma": 26629,
+			"itemIdKroma": 28836,
 			"modsterId": 7542,
 			"parentsModsterId": [
 				7590,
@@ -3679,7 +3679,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7286
+				7136
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -3877,8 +3877,8 @@
 		{
 			"id": 26637,
 			"itemId": 28844,
-			"spellIdKroma": 27444,
-			"itemIdKroma": 28994,
+			"spellIdKroma": 26637,
+			"itemIdKroma": 28844,
 			"modsterId": 7550,
 			"parentsModsterId": [
 				7587
@@ -3894,7 +3894,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7294
+				7144
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -3902,8 +3902,8 @@
 		{
 			"id": 26638,
 			"itemId": 28845,
-			"spellIdKroma": 27445,
-			"itemIdKroma": 28995,
+			"spellIdKroma": 26638,
+			"itemIdKroma": 28845,
 			"modsterId": 7551,
 			"parentsModsterId": [
 				7575,
@@ -3924,7 +3924,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7295
+				7145
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -3982,8 +3982,8 @@
 		{
 			"id": 26641,
 			"itemId": 28848,
-			"spellIdKroma": 27448,
-			"itemIdKroma": 28998,
+			"spellIdKroma": 26641,
+			"itemIdKroma": 28848,
 			"modsterId": 7554,
 			"parentsModsterId": [
 				7590
@@ -3999,7 +3999,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7298
+				7148
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -4007,8 +4007,8 @@
 		{
 			"id": 26642,
 			"itemId": 28849,
-			"spellIdKroma": 27449,
-			"itemIdKroma": 28999,
+			"spellIdKroma": 26642,
+			"itemIdKroma": 28849,
 			"modsterId": 7555,
 			"parentsModsterId": [
 				7581
@@ -4024,7 +4024,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7299
+				7149
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -4422,8 +4422,8 @@
 		{
 			"id": 26508,
 			"itemId": 28715,
-			"spellIdKroma": 27315,
-			"itemIdKroma": 28865,
+			"spellIdKroma": 26508,
+			"itemIdKroma": 28715,
 			"modsterId": 7421,
 			"parentsModsterId": [
 				7557,
@@ -4444,7 +4444,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7165
+				7015
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -4452,8 +4452,8 @@
 		{
 			"id": 26509,
 			"itemId": 28716,
-			"spellIdKroma": 27316,
-			"itemIdKroma": 28866,
+			"spellIdKroma": 26509,
+			"itemIdKroma": 28716,
 			"modsterId": 7422,
 			"parentsModsterId": [
 				7557,
@@ -4473,7 +4473,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7166
+				7016
 			],
 			"kromaAchievements": [],
 			"order": 0
@@ -4481,8 +4481,8 @@
 		{
 			"id": 26510,
 			"itemId": 28717,
-			"spellIdKroma": 27317,
-			"itemIdKroma": 28867,
+			"spellIdKroma": 26510,
+			"itemIdKroma": 28717,
 			"modsterId": 7423,
 			"parentsModsterId": [
 				7562,
@@ -4502,7 +4502,7 @@
 			],
 			"modsterAchievements": [],
 			"kromaHiddenAchievements": [
-				7167
+				7017
 			],
 			"kromaAchievements": [],
 			"order": 0

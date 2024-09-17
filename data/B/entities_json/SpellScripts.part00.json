@@ -538,7 +538,7 @@
 		{
 			"id": 149,
 			"typeId": 1,
-			"rawParams": "animId:9,targetGfxId:4317"
+			"rawParams": "animId:602,targetGfxId:7943"
 		},
 		{
 			"id": 150,
@@ -4903,7 +4903,7 @@
 		{
 			"id": 1142,
 			"typeId": 1,
-			"rawParams": "animId:0,targetGfxId:4232"
+			"rawParams": "animId:2,targetGfxId:4232"
 		},
 		{
 			"id": 1143,
@@ -5503,7 +5503,7 @@
 		{
 			"id": 1263,
 			"typeId": 1,
-			"rawParams": "targetGfxId:4473"
+			"rawParams": "targetGfxId:5034"
 		},
 		{
 			"id": 1264,
@@ -19813,7 +19813,7 @@
 		{
 			"id": 4553,
 			"typeId": 1,
-			"rawParams": "animId:0,targetGfxId:4599"
+			"rawParams": "targetGfxId:4599"
 		},
 		{
 			"id": 4554,
@@ -52931,6 +52931,11 @@
 			"rawParams": "animId:404,targetGfxId:4621,casterGfxId:4622"
 		},
 		{
+			"id": 11931,
+			"typeId": 1,
+			"rawParams": "animId:3"
+		},
+		{
 			"id": 11934,
 			"typeId": 1,
 			"rawParams": "targetGfxId:7277,casterGfxDisplayType:2"
@@ -61072,7 +61077,7 @@
 		},
 		{
 			"id": 14177,
-			"typeId": 1,
+			"typeId": 3,
 			"rawParams": "animId:32210,targetGfxId:7130,targetGfxDisplayType:2"
 		},
 		{
@@ -62088,7 +62093,7 @@
 		{
 			"id": 14402,
 			"typeId": 1,
-			"rawParams": "targetGfxId:5032"
+			"rawParams": "targetGfxId:8967"
 		},
 		{
 			"id": 14403,
@@ -62198,7 +62203,7 @@
 		{
 			"id": 14428,
 			"typeId": 1,
-			"rawParams": "targetGfxId:5033,targetGfxShowUnder2:1"
+			"rawParams": "targetGfxId:8968"
 		},
 		{
 			"id": 14429,
@@ -69581,6 +69586,11 @@
 			"rawParams": "animId:1"
 		},
 		{
+			"id": 17098,
+			"typeId": 1,
+			"rawParams": ""
+		},
+		{
 			"id": 17099,
 			"typeId": 1,
 			"rawParams": "targetGfxId:198"
@@ -69736,6 +69746,31 @@
 			"rawParams": "targetGfxId:4537,targetGfxId2:4532,targetGfxShowUnder2:1"
 		},
 		{
+			"id": 17630,
+			"typeId": 1,
+			"rawParams": "animId:1"
+		},
+		{
+			"id": 17632,
+			"typeId": 1,
+			"rawParams": "animId:32214"
+		},
+		{
+			"id": 18018,
+			"typeId": 1,
+			"rawParams": "glyphGfxId:9030"
+		},
+		{
+			"id": 18019,
+			"typeId": 1,
+			"rawParams": "targetGfxId:9031"
+		},
+		{
+			"id": 18066,
+			"typeId": 1,
+			"rawParams": "animId:4"
+		},
+		{
 			"id": 18084,
 			"typeId": 1,
 			"rawParams": "targetGfxId:4073"
@@ -69769,6 +69804,156 @@
 			"id": 18090,
 			"typeId": 1,
 			"rawParams": "targetGfxId:1231"
+		},
+		{
+			"id": 18095,
+			"typeId": 1,
+			"rawParams": "targetGfxId:8052"
+		},
+		{
+			"id": 18110,
+			"typeId": 1,
+			"rawParams": ""
+		},
+		{
+			"id": 18111,
+			"typeId": 1,
+			"rawParams": "animId:0"
+		},
+		{
+			"id": 18112,
+			"typeId": 1,
+			"rawParams": "animId:26"
+		},
+		{
+			"id": 18113,
+			"typeId": 1,
+			"rawParams": "animId:10,targetGfxId:8060,targetGfxId2:8061,targetGfxShowUnder2:1"
+		},
+		{
+			"id": 18114,
+			"typeId": 1,
+			"rawParams": "animId:4,targetGfxId:8060,targetGfxId2:8061,targetGfxShowUnder2:1"
+		},
+		{
+			"id": 18127,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4915"
+		},
+		{
+			"id": 18128,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4915"
+		},
+		{
+			"id": 18133,
+			"typeId": 9,
+			"rawParams": "{\"main\":{\"sequences\":[{\"gfxs\":[{\"type\":\"target\",\"gfxId\":8052,\"isOriented\":false,\"scaleX\":1.3,\"scaleY\":1.3}]}]}}"
+		},
+		{
+			"id": 18134,
+			"typeId": 9,
+			"rawParams": "{\"main\":{\"sequences\":[{\"endPolicy\":\"dontWait\",\"gfxs\":[{\"type\":\"cast\",\"casterAnimation\":\"AnimEmoteLaugh\"}]}]}}"
+		},
+		{
+			"id": 18135,
+			"typeId": 9,
+			"rawParams": "{\"main\":{\"sequences\":[{\"endPolicy\":\"dontWait\",\"gfxs\":[{\"type\":\"cast\",\"casterAnimation\":\"AnimEmoteCry\"}]}]}}"
+		},
+		{
+			"id": 18136,
+			"typeId": 1,
+			"rawParams": "animId:0,casterGfxId:9094,casterGfxDisplayType:2"
+		},
+		{
+			"id": 18137,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:9095,targetGfxDisplayType:2"
+		},
+		{
+			"id": 18138,
+			"typeId": 9,
+			"rawParams": "{\"main\":{\"sequences\":[{\"endPolicy\":\"dontWait\",\"gfxs\":[{\"type\":\"cast\",\"casterAnimation\":\"AnimAttaque1\"},{\"type\":\"caster\",\"gfxId\":9096,\"isOriented\":false}]}]}}"
+		},
+		{
+			"id": 18140,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:9092"
+		},
+		{
+			"id": 18141,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:9093,targetGfxDisplayType:2"
+		},
+		{
+			"id": 18142,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:9097,targetGfxDisplayType:2"
+		},
+		{
+			"id": 18143,
+			"typeId": 1,
+			"rawParams": "animId:2,targetGfxId:9098,targetGfxDisplayType:2"
+		},
+		{
+			"id": 18144,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:9099"
+		},
+		{
+			"id": 18145,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:9100"
+		},
+		{
+			"id": 18146,
+			"typeId": 1,
+			"rawParams": "animId:0,targetGfxId:9063,targetGfxId2:9064,targetGfxShowUnder2:1,casterGfxBeforePlayerChange:1"
+		},
+		{
+			"id": 18147,
+			"typeId": 1,
+			"rawParams": "animId:1"
+		},
+		{
+			"id": 18148,
+			"typeId": 1,
+			"rawParams": "animId:2,targetGfxId:9065,targetGfxId2:9066"
+		},
+		{
+			"id": 18149,
+			"typeId": 1,
+			"rawParams": "animId:3"
+		},
+		{
+			"id": 18150,
+			"typeId": 1,
+			"rawParams": "animId:5"
+		},
+		{
+			"id": 18152,
+			"typeId": 1,
+			"rawParams": ""
+		},
+		{
+			"id": 18158,
+			"typeId": 1,
+			"rawParams": "targetGfxId:9096"
+		},
+		{
+			"id": 18160,
+			"typeId": 2,
+			"rawParams": "animId:14054,targetGfxId:1570,targetGfxDisplayType:2"
+		},
+		{
+			"id": 18161,
+			"typeId": 1,
+			"rawParams": "targetGfxId:4615"
+		},
+		{
+			"id": 18164,
+			"typeId": 2,
+			"rawParams": "animId:404,missileGfxId:20402,missileGfxYOffset:5,missileCurvature:0,missileSpeed:10,missileOrientedToCurve:1"
 		}
 	]
 }

@@ -69,6 +69,11 @@
 			"id": 13,
 			"name": "Saison koliz\u00e9um 3",
 			"seasonId": 61
+		},
+		{
+			"id": 14,
+			"name": "Saison koliz\u00e9um 4",
+			"seasonId": 62
 		}
 	]
 }

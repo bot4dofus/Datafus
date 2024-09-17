@@ -6486,7 +6486,7 @@
 			],
 			"categoryId": 1,
 			"iconId": 968,
-			"completionCriterion": "SV=te,hc0,e1,s0,v",
+			"completionCriterion": "SV=te,hc0,e1,s0,a",
 			"activationCriterion": "GN>1,0&GL>50,0,e&(GB<1,3,0|GB<1,10,0|GB<1,7,0|GB<1,9,0|GB<1,2,0|GB<1,16,0|GB<1,17,0)&GN<6,1&GL>4,0",
 			"targetMonsterId": 0
 		},
@@ -6984,7 +6984,7 @@
 		{
 			"id": 1016,
 			"nameId": 1009724,
-			"descriptionId": 1085357,
+			"descriptionId": 1086759,
 			"incompatibleChallenges": [],
 			"categoryId": 3,
 			"iconId": 977,

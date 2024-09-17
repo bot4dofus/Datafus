@@ -7,6 +7,7 @@ package com.ankamagames.dofus.logic.common.managers
    import com.ankamagames.berilia.types.data.TextTooltipInfo;
    import com.ankamagames.dofus.kernel.Kernel;
    import com.ankamagames.dofus.logic.game.common.managers.ChatAutocompleteNameManager;
+   import com.ankamagames.dofus.logic.game.common.misc.PlayerIdName;
    import com.ankamagames.dofus.logic.game.roleplay.frames.RoleplayEntitiesFrame;
    import com.ankamagames.dofus.network.enums.ChatActivableChannelsEnum;
    import com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayCharacterInformations;
@@ -39,6 +40,7 @@ package com.ankamagames.dofus.logic.common.managers
       public static function showPlayerMenu(playerName:String, playerId:Number = 0, timestamp:Number = 0, fingerprint:String = null, chan:uint = 0, accountId:uint = 0) : void
       {
          var playerInfo:GameRolePlayCharacterInformations = null;
+         var playerIdName:PlayerIdName = null;
          if(playerName)
          {
             playerName = StringUtils.unescapeAllowedChar(playerName);
@@ -68,7 +70,8 @@ package com.ankamagames.dofus.logic.common.managers
          }
          else
          {
-            _modContextMenu.createContextMenu(MenusFactory.create(playerName));
+            playerIdName = new PlayerIdName(playerId,playerName);
+            _modContextMenu.createContextMenu(MenusFactory.create(playerIdName));
          }
       }
       

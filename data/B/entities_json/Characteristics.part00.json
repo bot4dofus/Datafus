@@ -412,7 +412,7 @@
 			"keyword": "weight",
 			"nameId": 714556,
 			"asset": "tx_pods",
-			"categoryId": 1,
+			"categoryId": 3,
 			"visible": true,
 			"order": 26,
 			"scaleFormulaId": 0,

@@ -4701,13 +4701,13 @@
 			"parentJobId": 44,
 			"isForgemagus": true,
 			"modifiableItemTypeIds": [
-				7,
-				6,
-				22,
 				271,
+				22,
+				5,
 				8,
+				7,
 				19,
-				5
+				6
 			],
 			"gatheredRessourceItem": -1,
 			"craftableItemIds": [],
@@ -4745,9 +4745,9 @@
 			"parentJobId": 48,
 			"isForgemagus": true,
 			"modifiableItemTypeIds": [
-				3,
+				4,
 				2,
-				4
+				3
 			],
 			"gatheredRessourceItem": -1,
 			"craftableItemIds": [],
@@ -5491,14 +5491,14 @@
 		},
 		{
 			"id": 152,
-			"nameId": 320682,
+			"nameId": 1091870,
 			"parentJobId": 1,
 			"isForgemagus": false,
 			"modifiableItemTypeIds": [],
-			"gatheredRessourceItem": 6659,
+			"gatheredRessourceItem": 30362,
 			"craftableItemIds": [],
 			"interactiveId": 104,
-			"range": 1,
+			"range": 2,
 			"useRangeInClient": false,
 			"useAnimation": "AnimPeche",
 			"cursor": 6,
@@ -5794,8 +5794,8 @@
 			"parentJobId": 64,
 			"isForgemagus": true,
 			"modifiableItemTypeIds": [
-				17,
-				16
+				16,
+				17
 			],
 			"gatheredRessourceItem": -1,
 			"craftableItemIds": [],
@@ -5815,8 +5815,8 @@
 			"parentJobId": 63,
 			"isForgemagus": true,
 			"modifiableItemTypeIds": [
-				1,
-				9
+				9,
+				1
 			],
 			"gatheredRessourceItem": -1,
 			"craftableItemIds": [],

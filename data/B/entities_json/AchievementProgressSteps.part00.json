@@ -3735,6 +3735,78 @@
 			"isCosmetic": true,
 			"achievementId": 7803,
 			"isBuyable": false
+		},
+		{
+			"id": 564,
+			"progressId": 14,
+			"score": 3,
+			"isCosmetic": true,
+			"achievementId": 7794,
+			"isBuyable": false
+		},
+		{
+			"id": 565,
+			"progressId": 14,
+			"score": 15,
+			"isCosmetic": true,
+			"achievementId": 7795,
+			"isBuyable": false
+		},
+		{
+			"id": 566,
+			"progressId": 14,
+			"score": 30,
+			"isCosmetic": true,
+			"achievementId": 7796,
+			"isBuyable": false
+		},
+		{
+			"id": 567,
+			"progressId": 14,
+			"score": 60,
+			"isCosmetic": true,
+			"achievementId": 7797,
+			"isBuyable": false
+		},
+		{
+			"id": 568,
+			"progressId": 14,
+			"score": 100,
+			"isCosmetic": true,
+			"achievementId": 7798,
+			"isBuyable": false
+		},
+		{
+			"id": 569,
+			"progressId": 14,
+			"score": 140,
+			"isCosmetic": true,
+			"achievementId": 7800,
+			"isBuyable": false
+		},
+		{
+			"id": 570,
+			"progressId": 14,
+			"score": 190,
+			"isCosmetic": true,
+			"achievementId": 7801,
+			"isBuyable": false
+		},
+		{
+			"id": 571,
+			"progressId": 14,
+			"score": 240,
+			"isCosmetic": true,
+			"achievementId": 7802,
+			"isBuyable": false
+		},
+		{
+			"id": 572,
+			"progressId": 14,
+			"score": 300,
+			"isCosmetic": true,
+			"achievementId": 7803,
+			"isBuyable": false
 		}
 	]
 }

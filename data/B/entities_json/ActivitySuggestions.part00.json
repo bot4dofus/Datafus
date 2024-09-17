@@ -6554,8 +6554,8 @@
 		},
 		{
 			"id": 2189,
-			"nameId": 861864,
-			"descriptionId": 872976,
+			"nameId": 1086814,
+			"descriptionId": 1086815,
 			"categoryId": 15,
 			"level": 20,
 			"mapId": 0,
@@ -13490,7 +13490,7 @@
 		},
 		{
 			"id": 3818,
-			"nameId": 870575,
+			"nameId": 1086813,
 			"descriptionId": 870229,
 			"categoryId": 7,
 			"level": 0,
@@ -16958,8 +16958,8 @@
 		},
 		{
 			"id": 4128,
-			"nameId": 1085177,
-			"descriptionId": 1085178,
+			"nameId": 1085934,
+			"descriptionId": 1085935,
 			"categoryId": 13,
 			"level": 100,
 			"mapId": 107227136,
@@ -16970,8 +16970,8 @@
 		},
 		{
 			"id": 4129,
-			"nameId": 1085179,
-			"descriptionId": 1085180,
+			"nameId": 1085936,
+			"descriptionId": 1085937,
 			"categoryId": 13,
 			"level": 140,
 			"mapId": 149427200,
@@ -16982,8 +16982,8 @@
 		},
 		{
 			"id": 4130,
-			"nameId": 1085181,
-			"descriptionId": 1085182,
+			"nameId": 1085938,
+			"descriptionId": 1085939,
 			"categoryId": 13,
 			"level": 100,
 			"mapId": 72361984,
@@ -16994,8 +16994,8 @@
 		},
 		{
 			"id": 4131,
-			"nameId": 1085183,
-			"descriptionId": 1085184,
+			"nameId": 1085940,
+			"descriptionId": 1085941,
 			"categoryId": 13,
 			"level": 60,
 			"mapId": 116392450,
@@ -17006,8 +17006,8 @@
 		},
 		{
 			"id": 4132,
-			"nameId": 1085185,
-			"descriptionId": 1085186,
+			"nameId": 1085942,
+			"descriptionId": 1085943,
 			"categoryId": 13,
 			"level": 150,
 			"mapId": 102760963,
@@ -17018,8 +17018,8 @@
 		},
 		{
 			"id": 4133,
-			"nameId": 1085187,
-			"descriptionId": 1085188,
+			"nameId": 1085944,
+			"descriptionId": 1085945,
 			"categoryId": 13,
 			"level": 180,
 			"mapId": 104333827,
@@ -17027,6 +17027,18 @@
 			"startDate": 0.0,
 			"endDate": 0.0,
 			"icon": "1231"
+		},
+		{
+			"id": 4134,
+			"nameId": 1097838,
+			"descriptionId": 1097839,
+			"categoryId": 12,
+			"level": 20,
+			"mapId": 165153537,
+			"isLarge": false,
+			"startDate": 0.0,
+			"endDate": 0.0,
+			"icon": "1233"
 		}
 	]
 }
