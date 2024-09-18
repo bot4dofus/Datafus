@@ -101,7 +101,7 @@ package com.ankamagames.dofus.misc
                case oe is ObjectEffectDate:
                   effect = new EffectInstanceDate();
                   EffectInstanceDate(effect).year = ObjectEffectDate(oe).year;
-                  EffectInstanceDate(effect).month = ObjectEffectDate(oe).month + 1;
+                  EffectInstanceDate(effect).month = ObjectEffectDate(oe).month;
                   EffectInstanceDate(effect).day = ObjectEffectDate(oe).day;
                   EffectInstanceDate(effect).hour = ObjectEffectDate(oe).hour;
                   EffectInstanceDate(effect).minute = ObjectEffectDate(oe).minute;
