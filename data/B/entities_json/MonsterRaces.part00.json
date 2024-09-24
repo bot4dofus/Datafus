@@ -5018,6 +5018,7 @@
 			"aggressiveImmunityCriterion": "null",
 			"aggressiveAttackDelay": 0,
 			"monsters": [
+				3646,
 				3668,
 				3669,
 				3670,

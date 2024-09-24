@@ -8736,6 +8736,11 @@
 			"rawParams": "animId:0,targetGfxId:4259"
 		},
 		{
+			"id": 2018,
+			"typeId": 1,
+			"rawParams": "animId:1,targetGfxId:1642,targetGfxShowUnder:1"
+		},
+		{
 			"id": 2019,
 			"typeId": 1,
 			"rawParams": "animId:0,targetGfxId:4216"
@@ -9749,6 +9754,11 @@
 			"id": 2294,
 			"typeId": 1,
 			"rawParams": "caster_separator:Animation du caster,animId:5,Gfx sur cible 1_separator:Gfx sur cible 1,targetGfxId:20001,targetGfxDisplayType:0,Gfx sur cible 2_separator:Gfx sur cible 2,targetGfxDisplayType2:0,Gfx sur le caster_separator:Gfx sur le caster,casterGfxDisplayType:0,other_separator:Autre"
+		},
+		{
+			"id": 2295,
+			"typeId": 1,
+			"rawParams": "animId:2,targetGfxId:20409,targetGfxDisplayType:0,targetGfxDisplayType2:0,casterGfxDisplayType:0"
 		},
 		{
 			"id": 2296,
@@ -24858,7 +24868,7 @@
 		{
 			"id": 5689,
 			"typeId": 1,
-			"rawParams": "animId:0,targetGfxId:20702,targetGfxDisplayType:0,targetGfxDisplayType2:0,casterGfxDisplayType:0"
+			"rawParams": "animId:0"
 		},
 		{
 			"id": 5690,
@@ -30881,6 +30891,11 @@
 			"rawParams": "animId:0,missileGfxId:4697,missileGfxYOffset:5,missileCurvature:0,missileSpeed:-2,missileOrientedToCurve:1,targetGfxId:4698,targetGfxDisplayType:2"
 		},
 		{
+			"id": 7031,
+			"typeId": 1,
+			"rawParams": "animId:1"
+		},
+		{
 			"id": 7032,
 			"typeId": 1,
 			"rawParams": "animId:2"
@@ -31059,6 +31074,11 @@
 			"id": 7074,
 			"typeId": 1,
 			"rawParams": "animId:10000,targetGfxId:4106,targetGfxId2:4107,targetGfxShowUnder2:1"
+		},
+		{
+			"id": 7075,
+			"typeId": 1,
+			"rawParams": "animId:1"
 		},
 		{
 			"id": 7076,
@@ -49654,6 +49674,11 @@
 			"id": 11174,
 			"typeId": 1,
 			"rawParams": "animId:0,targetGfxId:7371"
+		},
+		{
+			"id": 11176,
+			"typeId": 1,
+			"rawParams": "animId:2,targetGfxId:20316,targetGfxDisplayType:0,targetGfxDisplayType2:0,casterGfxDisplayType:0"
 		},
 		{
 			"id": 11181,
