@@ -68,25 +68,11 @@
 			"description": "Bo\u00eete de r\u00e9compense pour les songes infinis.",
 			"randomDropItems": [
 				{
-					"id": 4871,
-					"itemId": 21970,
-					"probability": 430.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 4869,
 					"itemId": 22058,
 					"probability": 50.0,
 					"minQuantity": 20,
 					"maxQuantity": 20
-				},
-				{
-					"id": 4868,
-					"itemId": 22058,
-					"probability": 150.0,
-					"minQuantity": 4,
-					"maxQuantity": 4
 				},
 				{
 					"id": 4856,
@@ -101,6 +87,20 @@
 					"probability": 70.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 4868,
+					"itemId": 22058,
+					"probability": 150.0,
+					"minQuantity": 4,
+					"maxQuantity": 4
+				},
+				{
+					"id": 4871,
+					"itemId": 21970,
+					"probability": 430.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -112,11 +112,11 @@
 			"description": "Bo\u00eete de r\u00e9compense pour les songes infinis.",
 			"randomDropItems": [
 				{
-					"id": 4874,
-					"itemId": 22058,
-					"probability": 50.0,
-					"minQuantity": 50,
-					"maxQuantity": 50
+					"id": 4876,
+					"itemId": 21973,
+					"probability": 430.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				},
 				{
 					"id": 4875,
@@ -140,11 +140,11 @@
 					"maxQuantity": 10
 				},
 				{
-					"id": 4876,
-					"itemId": 21973,
-					"probability": 430.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
+					"id": 4874,
+					"itemId": 22058,
+					"probability": 50.0,
+					"minQuantity": 50,
+					"maxQuantity": 50
 				}
 			],
 			"displayContent": true,
@@ -155,27 +155,6 @@
 			"name": "PSI 3-1 Narkasseth Imaginaire",
 			"description": "Bo\u00eete de r\u00e9compense pour les songes infinis.",
 			"randomDropItems": [
-				{
-					"id": 4901,
-					"itemId": 22058,
-					"probability": 160.0,
-					"minQuantity": 30,
-					"maxQuantity": 30
-				},
-				{
-					"id": 4902,
-					"itemId": 22058,
-					"probability": 50.0,
-					"minQuantity": 150,
-					"maxQuantity": 150
-				},
-				{
-					"id": 4903,
-					"itemId": 21966,
-					"probability": 70.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
 				{
 					"id": 4904,
 					"itemId": 21976,
@@ -189,6 +168,27 @@
 					"probability": 300.0,
 					"minQuantity": 15,
 					"maxQuantity": 15
+				},
+				{
+					"id": 4903,
+					"itemId": 21966,
+					"probability": 70.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 4901,
+					"itemId": 22058,
+					"probability": 160.0,
+					"minQuantity": 30,
+					"maxQuantity": 30
+				},
+				{
+					"id": 4902,
+					"itemId": 22058,
+					"probability": 50.0,
+					"minQuantity": 150,
+					"maxQuantity": 150
 				}
 			],
 			"displayContent": true,
@@ -200,13 +200,6 @@
 			"description": "Bo\u00eete de r\u00e9compense pour les songes infinis.",
 			"randomDropItems": [
 				{
-					"id": 4925,
-					"itemId": 22058,
-					"probability": 5000.0,
-					"minQuantity": 60,
-					"maxQuantity": 60
-				},
-				{
 					"id": 4931,
 					"itemId": 20649,
 					"probability": 45.0,
@@ -214,22 +207,29 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 4930,
-					"itemId": 20654,
-					"probability": 45.0,
+					"id": 4924,
+					"itemId": 22058,
+					"probability": 10000.0,
+					"minQuantity": 30,
+					"maxQuantity": 30
+				},
+				{
+					"id": 4925,
+					"itemId": 22058,
+					"probability": 5000.0,
+					"minQuantity": 60,
+					"maxQuantity": 60
+				},
+				{
+					"id": 4927,
+					"itemId": 21967,
+					"probability": 1800.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
 				},
 				{
-					"id": 4926,
-					"itemId": 22058,
-					"probability": 1500.0,
-					"minQuantity": 300,
-					"maxQuantity": 300
-				},
-				{
-					"id": 4952,
-					"itemId": 22416,
+					"id": 4930,
+					"itemId": 20654,
 					"probability": 45.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -242,18 +242,18 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 4927,
-					"itemId": 21967,
-					"probability": 1800.0,
+					"id": 4952,
+					"itemId": 22416,
+					"probability": 45.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
 				},
 				{
-					"id": 4924,
+					"id": 4926,
 					"itemId": 22058,
-					"probability": 10000.0,
-					"minQuantity": 30,
-					"maxQuantity": 30
+					"probability": 1500.0,
+					"minQuantity": 300,
+					"maxQuantity": 300
 				}
 			],
 			"displayContent": true,
@@ -265,25 +265,11 @@
 			"description": "Bo\u00eete de r\u00e9compense pour les songes infinis.",
 			"randomDropItems": [
 				{
-					"id": 4878,
+					"id": 4879,
 					"itemId": 22058,
-					"probability": 150.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
-					"id": 4880,
-					"itemId": 21965,
-					"probability": 70.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 4881,
-					"itemId": 21971,
-					"probability": 430.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
+					"probability": 50.0,
+					"minQuantity": 50,
+					"maxQuantity": 50
 				},
 				{
 					"id": 4877,
@@ -293,11 +279,25 @@
 					"maxQuantity": 5
 				},
 				{
-					"id": 4879,
+					"id": 4881,
+					"itemId": 21971,
+					"probability": 430.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 4880,
+					"itemId": 21965,
+					"probability": 70.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 4878,
 					"itemId": 22058,
-					"probability": 50.0,
-					"minQuantity": 50,
-					"maxQuantity": 50
+					"probability": 150.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -309,11 +309,11 @@
 			"description": "Bo\u00eete de r\u00e9compense pour les songes infinis.",
 			"randomDropItems": [
 				{
-					"id": 4890,
-					"itemId": 21974,
-					"probability": 420.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
+					"id": 4888,
+					"itemId": 22058,
+					"probability": 60.0,
+					"minQuantity": 150,
+					"maxQuantity": 150
 				},
 				{
 					"id": 4887,
@@ -323,25 +323,25 @@
 					"maxQuantity": 30
 				},
 				{
-					"id": 4861,
-					"itemId": 22058,
-					"probability": 300.0,
-					"minQuantity": 15,
-					"maxQuantity": 15
-				},
-				{
-					"id": 4888,
-					"itemId": 22058,
-					"probability": 60.0,
-					"minQuantity": 150,
-					"maxQuantity": 150
-				},
-				{
 					"id": 4889,
 					"itemId": 21966,
 					"probability": 70.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 4890,
+					"itemId": 21974,
+					"probability": 420.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 4861,
+					"itemId": 22058,
+					"probability": 300.0,
+					"minQuantity": 15,
+					"maxQuantity": 15
 				}
 			],
 			"displayContent": true,
@@ -353,9 +353,30 @@
 			"description": "Bo\u00eete de r\u00e9compense pour les songes infinis.",
 			"randomDropItems": [
 				{
-					"id": 4914,
-					"itemId": 20653,
+					"id": 4909,
+					"itemId": 21967,
+					"probability": 1800.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 4908,
+					"itemId": 22058,
+					"probability": 1500.0,
+					"minQuantity": 300,
+					"maxQuantity": 300
+				},
+				{
+					"id": 4913,
+					"itemId": 20652,
 					"probability": 45.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 4910,
+					"itemId": 21977,
+					"probability": 11415.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
 				},
@@ -367,11 +388,11 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 4913,
-					"itemId": 20652,
-					"probability": 45.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
+					"id": 4907,
+					"itemId": 22058,
+					"probability": 5000.0,
+					"minQuantity": 60,
+					"maxQuantity": 60
 				},
 				{
 					"id": 4906,
@@ -381,27 +402,6 @@
 					"maxQuantity": 30
 				},
 				{
-					"id": 4908,
-					"itemId": 22058,
-					"probability": 1500.0,
-					"minQuantity": 300,
-					"maxQuantity": 300
-				},
-				{
-					"id": 4910,
-					"itemId": 21977,
-					"probability": 11415.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 4909,
-					"itemId": 21967,
-					"probability": 1800.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 4912,
 					"itemId": 20966,
 					"probability": 150.0,
@@ -409,11 +409,11 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 4907,
-					"itemId": 22058,
-					"probability": 5000.0,
-					"minQuantity": 60,
-					"maxQuantity": 60
+					"id": 4914,
+					"itemId": 20653,
+					"probability": 45.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -425,9 +425,9 @@
 			"description": "Bo\u00eete de r\u00e9compense pour les songes infinis.",
 			"randomDropItems": [
 				{
-					"id": 4935,
-					"itemId": 21968,
-					"probability": 1800.0,
+					"id": 4951,
+					"itemId": 22418,
+					"probability": 45.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
 				},
@@ -439,27 +439,6 @@
 					"maxQuantity": 1000
 				},
 				{
-					"id": 4951,
-					"itemId": 22418,
-					"probability": 45.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 4936,
-					"itemId": 21980,
-					"probability": 11415.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 4938,
-					"itemId": 20965,
-					"probability": 150.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 4933,
 					"itemId": 22058,
 					"probability": 5000.0,
@@ -467,9 +446,16 @@
 					"maxQuantity": 200
 				},
 				{
-					"id": 4939,
-					"itemId": 20651,
-					"probability": 45.0,
+					"id": 4932,
+					"itemId": 22058,
+					"probability": 9000.0,
+					"minQuantity": 100,
+					"maxQuantity": 100
+				},
+				{
+					"id": 4935,
+					"itemId": 21968,
+					"probability": 1800.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
 				},
@@ -481,11 +467,25 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 4932,
-					"itemId": 22058,
-					"probability": 9000.0,
-					"minQuantity": 100,
-					"maxQuantity": 100
+					"id": 4939,
+					"itemId": 20651,
+					"probability": 45.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 4938,
+					"itemId": 20965,
+					"probability": 150.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 4936,
+					"itemId": 21980,
+					"probability": 11415.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -497,18 +497,11 @@
 			"description": "Bo\u00eete de r\u00e9compense pour les songes infinis.",
 			"randomDropItems": [
 				{
-					"id": 4864,
+					"id": 4882,
 					"itemId": 22058,
-					"probability": 300.0,
-					"minQuantity": 15,
-					"maxQuantity": 15
-				},
-				{
-					"id": 4884,
-					"itemId": 21966,
-					"probability": 70.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
+					"probability": 160.0,
+					"minQuantity": 30,
+					"maxQuantity": 30
 				},
 				{
 					"id": 4885,
@@ -518,6 +511,13 @@
 					"maxQuantity": 1
 				},
 				{
+					"id": 4864,
+					"itemId": 22058,
+					"probability": 300.0,
+					"minQuantity": 15,
+					"maxQuantity": 15
+				},
+				{
 					"id": 4883,
 					"itemId": 22058,
 					"probability": 50.0,
@@ -525,11 +525,11 @@
 					"maxQuantity": 150
 				},
 				{
-					"id": 4882,
-					"itemId": 22058,
-					"probability": 160.0,
-					"minQuantity": 30,
-					"maxQuantity": 30
+					"id": 4884,
+					"itemId": 21966,
+					"probability": 70.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -548,18 +548,11 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 4894,
-					"itemId": 21967,
-					"probability": 1800.0,
+					"id": 6910,
+					"itemId": 20657,
+					"probability": 45.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
-				},
-				{
-					"id": 4865,
-					"itemId": 22058,
-					"probability": 10000.0,
-					"minQuantity": 30,
-					"maxQuantity": 30
 				},
 				{
 					"id": 4895,
@@ -576,6 +569,13 @@
 					"maxQuantity": 60
 				},
 				{
+					"id": 4865,
+					"itemId": 22058,
+					"probability": 10000.0,
+					"minQuantity": 30,
+					"maxQuantity": 30
+				},
+				{
 					"id": 4893,
 					"itemId": 22058,
 					"probability": 1500.0,
@@ -583,9 +583,9 @@
 					"maxQuantity": 300
 				},
 				{
-					"id": 6910,
-					"itemId": 20657,
-					"probability": 45.0,
+					"id": 4897,
+					"itemId": 20964,
+					"probability": 150.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
 				},
@@ -597,9 +597,9 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 4897,
-					"itemId": 20964,
-					"probability": 150.0,
+					"id": 4894,
+					"itemId": 21967,
+					"probability": 1800.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
 				}
@@ -613,6 +613,27 @@
 			"description": "Bo\u00eete de r\u00e9compense pour les songes infinis.",
 			"randomDropItems": [
 				{
+					"id": 4917,
+					"itemId": 22058,
+					"probability": 1500.0,
+					"minQuantity": 1000,
+					"maxQuantity": 1000
+				},
+				{
+					"id": 4916,
+					"itemId": 22058,
+					"probability": 5000.0,
+					"minQuantity": 200,
+					"maxQuantity": 200
+				},
+				{
+					"id": 4915,
+					"itemId": 22058,
+					"probability": 10000.0,
+					"minQuantity": 100,
+					"maxQuantity": 100
+				},
+				{
 					"id": 4922,
 					"itemId": 20661,
 					"probability": 45.0,
@@ -620,9 +641,9 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 4918,
-					"itemId": 21968,
-					"probability": 1800.0,
+					"id": 4921,
+					"itemId": 20967,
+					"probability": 150.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
 				},
@@ -648,30 +669,9 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 4916,
-					"itemId": 22058,
-					"probability": 5000.0,
-					"minQuantity": 200,
-					"maxQuantity": 200
-				},
-				{
-					"id": 4917,
-					"itemId": 22058,
-					"probability": 1500.0,
-					"minQuantity": 1000,
-					"maxQuantity": 1000
-				},
-				{
-					"id": 4915,
-					"itemId": 22058,
-					"probability": 10000.0,
-					"minQuantity": 100,
-					"maxQuantity": 100
-				},
-				{
-					"id": 4921,
-					"itemId": 20967,
-					"probability": 150.0,
+					"id": 4918,
+					"itemId": 21968,
+					"probability": 1800.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
 				}
@@ -685,6 +685,13 @@
 			"description": "Bo\u00eete de r\u00e9compense pour les songes infinis.",
 			"randomDropItems": [
 				{
+					"id": 4945,
+					"itemId": 21981,
+					"probability": 11415.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
 					"id": 4950,
 					"itemId": 22417,
 					"probability": 45.0,
@@ -692,23 +699,9 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 4941,
-					"itemId": 22058,
-					"probability": 10000.0,
-					"minQuantity": 250,
-					"maxQuantity": 250
-				},
-				{
-					"id": 4942,
-					"itemId": 22058,
-					"probability": 5000.0,
-					"minQuantity": 500,
-					"maxQuantity": 500
-				},
-				{
-					"id": 4944,
-					"itemId": 21969,
-					"probability": 1850.0,
+					"id": 4949,
+					"itemId": 20658,
+					"probability": 45.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
 				},
@@ -720,22 +713,29 @@
 					"maxQuantity": 2500
 				},
 				{
-					"id": 4945,
-					"itemId": 21981,
-					"probability": 11415.0,
+					"id": 4944,
+					"itemId": 21969,
+					"probability": 1850.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 4942,
+					"itemId": 22058,
+					"probability": 5000.0,
+					"minQuantity": 500,
+					"maxQuantity": 500
+				},
+				{
+					"id": 4941,
+					"itemId": 22058,
+					"probability": 10000.0,
+					"minQuantity": 250,
+					"maxQuantity": 250
 				},
 				{
 					"id": 4948,
 					"itemId": 20660,
-					"probability": 45.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 4949,
-					"itemId": 20658,
 					"probability": 45.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -757,13 +757,6 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 5184,
-					"itemId": 24979,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5189,
 					"itemId": 24984,
 					"probability": 1.0,
@@ -771,8 +764,8 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 5188,
-					"itemId": 24983,
+					"id": 5184,
+					"itemId": 24979,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -787,6 +780,13 @@
 				{
 					"id": 5186,
 					"itemId": 24981,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5188,
+					"itemId": 24983,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -824,18 +824,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5192,
-					"itemId": 400,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5193,
 					"itemId": 2032,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5192,
+					"itemId": 400,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -939,18 +939,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5203,
-					"itemId": 16379,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5202,
 					"itemId": 428,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5203,
+					"itemId": 16379,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -962,18 +962,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5205,
-					"itemId": 16380,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5204,
 					"itemId": 395,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5205,
+					"itemId": 16380,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -1100,18 +1100,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5217,
-					"itemId": 1759,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5216,
 					"itemId": 1757,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5217,
+					"itemId": 1759,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -1192,18 +1192,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5224,
-					"itemId": 1805,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5225,
 					"itemId": 1807,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5224,
+					"itemId": 1805,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -1215,18 +1215,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5227,
-					"itemId": 1849,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5226,
 					"itemId": 1847,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5227,
+					"itemId": 1849,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -1238,18 +1238,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5228,
-					"itemId": 600,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5229,
 					"itemId": 1799,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5228,
+					"itemId": 600,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -1284,18 +1284,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5233,
-					"itemId": 16910,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5232,
 					"itemId": 473,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5233,
+					"itemId": 16910,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -1353,18 +1353,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5238,
-					"itemId": 2358,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5239,
 					"itemId": 16913,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5238,
+					"itemId": 2358,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -1376,18 +1376,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5240,
-					"itemId": 471,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5241,
 					"itemId": 16914,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5240,
+					"itemId": 471,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -1399,18 +1399,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5243,
-					"itemId": 16915,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5242,
 					"itemId": 2357,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5243,
+					"itemId": 16915,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -1422,18 +1422,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5245,
-					"itemId": 312,
-					"probability": 10.0,
-					"minQuantity": 20,
-					"maxQuantity": 20
-				},
-				{
 					"id": 5244,
 					"itemId": 312,
 					"probability": 90.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5245,
+					"itemId": 312,
+					"probability": 10.0,
+					"minQuantity": 20,
+					"maxQuantity": 20
 				}
 			],
 			"displayContent": true,
@@ -1445,18 +1445,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5246,
-					"itemId": 441,
-					"probability": 90.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5247,
 					"itemId": 441,
 					"probability": 10.0,
 					"minQuantity": 20,
 					"maxQuantity": 20
+				},
+				{
+					"id": 5246,
+					"itemId": 441,
+					"probability": 90.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -1514,18 +1514,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5252,
-					"itemId": 445,
-					"probability": 90.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5253,
 					"itemId": 445,
 					"probability": 10.0,
 					"minQuantity": 20,
 					"maxQuantity": 20
+				},
+				{
+					"id": 5252,
+					"itemId": 445,
+					"probability": 90.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -1537,8 +1537,50 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5262,
-					"itemId": 24785,
+					"id": 5260,
+					"itemId": 24755,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5255,
+					"itemId": 24726,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5254,
+					"itemId": 24601,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5259,
+					"itemId": 24754,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5257,
+					"itemId": 24752,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5261,
+					"itemId": 24778,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5256,
+					"itemId": 24734,
 					"probability": -1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -1565,6 +1607,13 @@
 					"maxQuantity": 1
 				},
 				{
+					"id": 5258,
+					"itemId": 24753,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
 					"id": 5265,
 					"itemId": 24799,
 					"probability": -1.0,
@@ -1586,57 +1635,8 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 5261,
-					"itemId": 24778,
-					"probability": -1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5260,
-					"itemId": 24755,
-					"probability": -1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5259,
-					"itemId": 24754,
-					"probability": -1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5258,
-					"itemId": 24753,
-					"probability": -1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5257,
-					"itemId": 24752,
-					"probability": -1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5256,
-					"itemId": 24734,
-					"probability": -1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5255,
-					"itemId": 24726,
-					"probability": -1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5254,
-					"itemId": 24601,
+					"id": 5262,
+					"itemId": 24785,
 					"probability": -1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -1674,18 +1674,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5272,
-					"itemId": 16452,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5271,
 					"itemId": 7018,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5272,
+					"itemId": 16452,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -1697,18 +1697,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5274,
-					"itemId": 16453,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5273,
 					"itemId": 405,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5274,
+					"itemId": 16453,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -1720,18 +1720,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5276,
-					"itemId": 2035,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5275,
 					"itemId": 425,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5276,
+					"itemId": 2035,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -1766,18 +1766,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5280,
-					"itemId": 16457,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5279,
 					"itemId": 16456,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5280,
+					"itemId": 16457,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -1789,18 +1789,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5281,
-					"itemId": 11109,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5282,
 					"itemId": 11499,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5281,
+					"itemId": 11109,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -1835,18 +1835,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5285,
-					"itemId": 16384,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5286,
 					"itemId": 7059,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5285,
+					"itemId": 16384,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -1973,18 +1973,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5297,
-					"itemId": 16463,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5298,
 					"itemId": 16464,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5297,
+					"itemId": 16463,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -1996,18 +1996,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5300,
-					"itemId": 1803,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5299,
 					"itemId": 1801,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5300,
+					"itemId": 1803,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -2019,18 +2019,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5301,
-					"itemId": 1784,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5302,
 					"itemId": 1788,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5301,
+					"itemId": 1784,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -2111,18 +2111,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5310,
-					"itemId": 16468,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5309,
 					"itemId": 16467,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5310,
+					"itemId": 16468,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -2134,18 +2134,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5311,
-					"itemId": 16469,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5312,
 					"itemId": 16470,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5311,
+					"itemId": 16469,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -2157,18 +2157,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5313,
-					"itemId": 16471,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5314,
 					"itemId": 16472,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5313,
+					"itemId": 16471,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -2180,18 +2180,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5316,
-					"itemId": 11500,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5315,
 					"itemId": 11106,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5316,
+					"itemId": 11500,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -2203,18 +2203,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5318,
-					"itemId": 16916,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5317,
 					"itemId": 461,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5318,
+					"itemId": 16916,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -2226,18 +2226,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5319,
-					"itemId": 7013,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5320,
 					"itemId": 16917,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5319,
+					"itemId": 7013,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -2272,18 +2272,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5323,
-					"itemId": 16488,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5324,
 					"itemId": 16919,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5323,
+					"itemId": 16488,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -2318,18 +2318,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5327,
-					"itemId": 7925,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5328,
 					"itemId": 16921,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5327,
+					"itemId": 7925,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -2364,18 +2364,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5331,
-					"itemId": 7016,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5332,
 					"itemId": 16923,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5331,
+					"itemId": 7016,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -2479,18 +2479,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5341,
-					"itemId": 444,
-					"probability": 90.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5342,
 					"itemId": 444,
 					"probability": 10.0,
 					"minQuantity": 20,
 					"maxQuantity": 20
+				},
+				{
+					"id": 5341,
+					"itemId": 444,
+					"probability": 90.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -2640,18 +2640,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5355,
-					"itemId": 23902,
-					"probability": 90.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5356,
 					"itemId": 23902,
 					"probability": 10.0,
 					"minQuantity": 20,
 					"maxQuantity": 20
+				},
+				{
+					"id": 5355,
+					"itemId": 23902,
+					"probability": 90.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -2663,18 +2663,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5357,
-					"itemId": 23903,
-					"probability": 90.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5358,
 					"itemId": 23903,
 					"probability": 10.0,
 					"minQuantity": 20,
 					"maxQuantity": 20
+				},
+				{
+					"id": 5357,
+					"itemId": 23903,
+					"probability": 90.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -2686,18 +2686,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5359,
-					"itemId": 23825,
-					"probability": 90.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5360,
 					"itemId": 23825,
 					"probability": 10.0,
 					"minQuantity": 20,
 					"maxQuantity": 20
+				},
+				{
+					"id": 5359,
+					"itemId": 23825,
+					"probability": 90.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -2709,18 +2709,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5362,
-					"itemId": 23824,
-					"probability": 90.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5361,
 					"itemId": 23824,
 					"probability": 10.0,
 					"minQuantity": 20,
 					"maxQuantity": 20
+				},
+				{
+					"id": 5362,
+					"itemId": 23824,
+					"probability": 90.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -2755,6 +2755,13 @@
 			"description": "",
 			"randomDropItems": [
 				{
+					"id": 6388,
+					"itemId": 17125,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
 					"id": 5365,
 					"itemId": 17123,
 					"probability": 49.0,
@@ -2764,13 +2771,6 @@
 				{
 					"id": 5366,
 					"itemId": 17421,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 6388,
-					"itemId": 17125,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -2815,18 +2815,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5371,
-					"itemId": 17128,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5372,
 					"itemId": 17129,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5371,
+					"itemId": 17128,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -2884,18 +2884,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5377,
-					"itemId": 17134,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5378,
 					"itemId": 17135,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5377,
+					"itemId": 17134,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -2907,18 +2907,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5380,
-					"itemId": 17137,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5379,
 					"itemId": 17136,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5380,
+					"itemId": 17137,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -2953,18 +2953,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5384,
-					"itemId": 17141,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5383,
 					"itemId": 17140,
 					"probability": 99.0,
 					"minQuantity": 10,
 					"maxQuantity": 10
+				},
+				{
+					"id": 5384,
+					"itemId": 17141,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
 				}
 			],
 			"displayContent": true,
@@ -3068,18 +3068,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5393,
-					"itemId": 17150,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5394,
 					"itemId": 17151,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5393,
+					"itemId": 17150,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -3160,18 +3160,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 5401,
-					"itemId": 17158,
-					"probability": 99.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 5402,
 					"itemId": 17159,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
+				},
+				{
+					"id": 5401,
+					"itemId": 17158,
+					"probability": 99.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -3206,50 +3206,22 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 6918,
-					"itemId": 30124,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5714,
-					"itemId": 27008,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5715,
-					"itemId": 27009,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5716,
-					"itemId": 27010,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5717,
-					"itemId": 27011,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5718,
-					"itemId": 27012,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
 					"id": 5719,
 					"itemId": 27013,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 6919,
+					"itemId": 30125,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 6918,
+					"itemId": 30124,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -3262,8 +3234,36 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 6919,
-					"itemId": 30125,
+					"id": 5718,
+					"itemId": 27012,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5717,
+					"itemId": 27011,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5716,
+					"itemId": 27010,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5715,
+					"itemId": 27009,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5714,
+					"itemId": 27008,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -3277,6 +3277,27 @@
 			"name": "Croquettes Quintessence de Poukachi",
 			"description": "",
 			"randomDropItems": [
+				{
+					"id": 5720,
+					"itemId": 26994,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5725,
+					"itemId": 26999,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5721,
+					"itemId": 26995,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
 				{
 					"id": 5722,
 					"itemId": 26996,
@@ -3294,27 +3315,6 @@
 				{
 					"id": 5724,
 					"itemId": 26998,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5725,
-					"itemId": 26999,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5720,
-					"itemId": 26994,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5721,
-					"itemId": 26995,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -3336,50 +3336,8 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 6912,
-					"itemId": 30122,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 6917,
-					"itemId": 30126,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5733,
-					"itemId": 27007,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5732,
-					"itemId": 27006,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5730,
-					"itemId": 27004,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5729,
-					"itemId": 27003,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
-				{
-					"id": 5728,
-					"itemId": 27002,
+					"id": 5726,
+					"itemId": 27000,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -3392,8 +3350,50 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 5726,
-					"itemId": 27000,
+					"id": 5728,
+					"itemId": 27002,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5729,
+					"itemId": 27003,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5730,
+					"itemId": 27004,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5732,
+					"itemId": 27006,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5733,
+					"itemId": 27007,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 6912,
+					"itemId": 30122,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 6917,
+					"itemId": 30126,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -3407,13 +3407,6 @@
 			"name": "Croquettes Quintessence de Bakushana",
 			"description": "",
 			"randomDropItems": [
-				{
-					"id": 5736,
-					"itemId": 27014,
-					"probability": 1.0,
-					"minQuantity": 1,
-					"maxQuantity": 1
-				},
 				{
 					"id": 5740,
 					"itemId": 27018,
@@ -3436,8 +3429,15 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 5741,
-					"itemId": 27019,
+					"id": 5737,
+					"itemId": 27015,
+					"probability": 1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 5736,
+					"itemId": 27014,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -3450,8 +3450,8 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 5737,
-					"itemId": 27015,
+					"id": 5741,
+					"itemId": 27019,
 					"probability": 1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -3482,18 +3482,18 @@
 			"description": "",
 			"randomDropItems": [
 				{
-					"id": 6385,
-					"itemId": 27621,
-					"probability": 90.0,
-					"minQuantity": 10,
-					"maxQuantity": 10
-				},
-				{
 					"id": 6386,
 					"itemId": 27621,
 					"probability": 10.0,
 					"minQuantity": 20,
 					"maxQuantity": 20
+				},
+				{
+					"id": 6385,
+					"itemId": 27621,
+					"probability": 90.0,
+					"minQuantity": 10,
+					"maxQuantity": 10
 				}
 			],
 			"displayContent": true,
@@ -3505,6 +3505,13 @@
 			"description": "",
 			"randomDropItems": [
 				{
+					"id": 6922,
+					"itemId": 30168,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
 					"id": 6907,
 					"itemId": 21517,
 					"probability": -1.0,
@@ -3512,8 +3519,8 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 7015,
-					"itemId": 30226,
+					"id": 6909,
+					"itemId": 30113,
 					"probability": -1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
@@ -3526,15 +3533,82 @@
 					"maxQuantity": 1
 				},
 				{
-					"id": 6922,
-					"itemId": 30168,
+					"id": 7015,
+					"itemId": 30226,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				}
+			],
+			"displayContent": true,
+			"displayChances": false
+		},
+		{
+			"id": 322,
+			"name": "Panoplie du Ma\u00eetre d'Armes",
+			"description": "",
+			"randomDropItems": [
+				{
+					"id": 7018,
+					"itemId": 30206,
 					"probability": -1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1
 				},
 				{
-					"id": 6909,
-					"itemId": 30113,
+					"id": 7017,
+					"itemId": 30205,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 7016,
+					"itemId": 30203,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 7019,
+					"itemId": 30208,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				}
+			],
+			"displayContent": true,
+			"displayChances": false
+		},
+		{
+			"id": 323,
+			"name": "Panoplie Aiguis\u00e9e",
+			"description": "",
+			"randomDropItems": [
+				{
+					"id": 7020,
+					"itemId": 29466,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 7022,
+					"itemId": 29465,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 7021,
+					"itemId": 29467,
+					"probability": -1.0,
+					"minQuantity": 1,
+					"maxQuantity": 1
+				},
+				{
+					"id": 7023,
+					"itemId": 29472,
 					"probability": -1.0,
 					"minQuantity": 1,
 					"maxQuantity": 1

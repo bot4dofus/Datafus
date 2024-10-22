@@ -9939,6 +9939,20 @@
 			"subareaId": 84,
 			"worldMapId": 1,
 			"level": 0
+		},
+		{
+			"id": 3634,
+			"categoryId": 2,
+			"gfx": 229,
+			"nameId": 1101807,
+			"mapId": 191105028,
+			"realMapId": 0,
+			"x": 5,
+			"y": -17,
+			"outdoor": true,
+			"subareaId": 95,
+			"worldMapId": 1,
+			"level": 0
 		}
 	]
 }

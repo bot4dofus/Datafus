@@ -2898,6 +2898,19 @@
 			"mimickable": false,
 			"craftXpRatio": -1,
 			"evolutiveTypeId": 0
+		},
+		{
+			"id": 304,
+			"nameId": 1101776,
+			"superTypeId": 6,
+			"categoryId": 1,
+			"isInEncyclopedia": true,
+			"plural": false,
+			"gender": 1,
+			"rawZone": "null",
+			"mimickable": false,
+			"craftXpRatio": -1,
+			"evolutiveTypeId": 0
 		}
 	]
 }
