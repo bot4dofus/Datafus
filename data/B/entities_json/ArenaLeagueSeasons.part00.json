@@ -33,14 +33,6 @@
 	],
 	"data": [
 		{
-			"uid": 62,
-			"nameId": 1100679,
-			"beginning": 1726558200000.0,
-			"closure": 1733819400000.0,
-			"resetDate": 0.0,
-			"flagObjectId": 30466
-		},
-		{
 			"uid": 28,
 			"nameId": 1057974,
 			"beginning": 1701765000000.0,
@@ -63,6 +55,14 @@
 			"closure": 1726558200000.0,
 			"resetDate": 0.0,
 			"flagObjectId": 30148
+		},
+		{
+			"uid": 62,
+			"nameId": 1100679,
+			"beginning": 1726558200000.0,
+			"closure": 1733214600000.0,
+			"resetDate": 0.0,
+			"flagObjectId": 30466
 		}
 	]
 }
