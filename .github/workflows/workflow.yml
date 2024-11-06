@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - uses: actions/setup-node@v3
         with:
@@ -62,7 +62,7 @@ jobs:
           cytrus-v6 download --game dofus --select "DofusInvoker.swf,**/*.d2i,**/*.d2o" --output data/U/
 
       - name: Upload files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Job_U
           path: |
@@ -74,10 +74,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Job_U
           path: data/U/
@@ -103,7 +103,7 @@ jobs:
           python src/A2.py data/A/DofusInvoker/scripts/com/ data/A/events.json
 
       - name: Upload files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Job_A
           path: |
@@ -115,10 +115,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Job_U
           path: data/U/
@@ -134,7 +134,7 @@ jobs:
           python src/B1.py data/U/data/common/ data/B/entities_json/
 
       - name: Upload files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Job_B
           path: |
@@ -146,10 +146,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Job_U
           path: data/U/
@@ -164,7 +164,7 @@ jobs:
           python src/C1.py data/U/data/i18n/ data/C/translations_json/
 
       - name: Upload files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Job_C
           path: |
@@ -176,7 +176,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -188,27 +188,27 @@ jobs:
           rm -r data/
 
       - name: Download files Job U
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Job_U
           path: data/U/
 
       - name: Download files Job A
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         continue-on-error: true
         with:
           name: Job_A
           path: data/A/
 
       - name: Download files Job B
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         continue-on-error: true
         with:
           name: Job_B
           path: data/B/
 
       - name: Download files Job C
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         continue-on-error: true
         with:
           name: Job_C
